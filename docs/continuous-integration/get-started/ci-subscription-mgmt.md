@@ -6,7 +6,7 @@ redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
 ---
 
-```mdx-code-block
+
 import Admin from '/docs/continuous-integration/shared/subscription-add-billing-admin.md';
 import Cancel from '/docs/continuous-integration/shared/subscription-cancel.md';
 import Create from '/docs/continuous-integration/shared/subscription-create.md';
@@ -15,7 +15,7 @@ import Billing from '/docs/continuous-integration/shared/subscription-update-bil
 import Invoice from '/docs/continuous-integration/shared/subscription-view-invoice.md';
 import View from '/docs/continuous-integration/shared/subscription-view-subscriptions.md';
 import License from '/docs/continuous-integration/shared/subscription-view-usage.md';
-```
+
 
 <Overview />
 

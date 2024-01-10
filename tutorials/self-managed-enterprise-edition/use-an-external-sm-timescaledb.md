@@ -2,7 +2,7 @@
 title: Use an external self-managed TimescaleDB with your installation
 description: Learn how to use an external self-managed TimescaleDB with Self-Managed Enterprise Edition installations.
 sidebar_label: External self-managed TimescaleDB
-# sidebar_position: 38
+sidebar_position: 60
 ---
 
 Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external self-managed TimescaleDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy TimescaleDB with VMs and replication.
@@ -69,7 +69,7 @@ You can update the DNS record dynamically using a script or use the service disc
 
 ## Set up TimescaleDB VMs on Debian-based systems
 
-:::caution
+:::warning
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 

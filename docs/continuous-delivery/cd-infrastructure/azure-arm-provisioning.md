@@ -4,10 +4,10 @@ description: Use ARM to provision resources in Azure.
 sidebar_position: 6
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness has first-class support for [Azure Resource Manager (ARM) templates](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) as an infrastructure and resource provisioner.
 
@@ -78,10 +78,10 @@ The Create Azure ARM Resources step provisions infrastructure and resources usin
 
 Here are the different options for adding the step.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Here's a YAML example of a step that uses a template and parameter file stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). The `subscription` and `resourceGroup` are set as [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) so you can select them each time the pipeline runs.
 
@@ -117,10 +117,10 @@ Here's a YAML example of a step that uses a template and parameter file stored i
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 1. In your Harness CD Deploy stage, add the **Create Azure ARM Resources** step.
    1. If you are using the step for dynamic infrastructure provisioning, add/configure the step in the stage **Environment** tab.
@@ -128,10 +128,10 @@ Here's a YAML example of a step that uses a template and parameter file stored i
 2. Configure the step using the settings described below.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Provisioner Identifier
 

@@ -70,7 +70,7 @@ A `Location` reference that points to the source code of the entity (typically a
 :::
 
 ### File Specification
-5. Defining the File: Specify the filename with its extension or provide the relative path from the root folder. For example, use .bazelrc, package.json, manifest/Dockerfile
+5. Defining the File: Specify the filename with its extension or provide the relative path from the root folder. For example, use .bazelrc, package.json, manifest/Dockerfile. Also you can provide the filename as a regex pattern, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*` 
 
 ### Specify the Pattern
 

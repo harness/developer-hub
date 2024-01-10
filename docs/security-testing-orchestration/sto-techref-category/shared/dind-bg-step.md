@@ -1,14 +1,16 @@
-:::note 
+The following use cases require a Docker-in-Docker background step in your pipeline:
+- Container image scans on Kubernetes and Docker build infrastructures
+  - Required for [Orchestration](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) and Dataload scan modes
+- [Security steps (not step palettes)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto) on Kubernetes and Docker build infrastructures
+  - Required for all target types and Orchestration/DataLoad modes
 
-Docker-in-Docker is not required for ingestion workflows where the scan data has already been generated.
+The following use cases do not require Docker-in-Docker:
+- Harness Cloud AMD64 build infrastructures
+- SAST/DAST/configuration scans that use [scanner templates (not Security steps)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto)
+- [Ingestion-only workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) where the scan data has already been generated
 
-:::
-
-You need to include a Docker-in-Docker background service in your stage if either of these conditions apply:
-* You configured your scanner using a generic Security step rather than a scanner-specific template such as Aqua Trivy, Bandit, Mend, Snyk, etc. 
-* You’re scanning a container image using an Orchestration or Extraction workflow. 
-
-<details><summary>Set up a Docker-in-Docker background step</summary>
+<details>
+<summary>Set up a Docker-in-Docker background step</summary>
 
 1. Go to the stage where you want to run the scan.
 
@@ -30,27 +32,27 @@ You need to include a Docker-in-Docker background service in your stage if eithe
        5. Under **Optional Configuration**, select the **Privileged** checkbox.
 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual setup" default>
-``````
+```
 
-```mdx-code-block
+
 import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/static/set-up-harness-for-sto-25.png'
-```
 
-```mdx-code-block
+
+
 <img src={set_up_harness_25} alt="Configure the background step" height="50%" width="50%" />
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="YAML" label="YAML setup" default>
-```
+
 
 ```yaml
 - step:
@@ -66,9 +68,9 @@ import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/
       privileged: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 </details>

@@ -40,7 +40,7 @@ export const certifications: CardItem[] = [
     description:
       " Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.",
     link: "/certifications/sto",
-    numberOfCerts: 1,
+    numberOfCerts: 2,
   },
 
   // {

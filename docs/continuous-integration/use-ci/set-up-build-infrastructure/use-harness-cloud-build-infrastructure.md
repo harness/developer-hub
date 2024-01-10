@@ -59,7 +59,7 @@ If a Harness Cloud image has multiple versions of a tool pre-installed, you can 
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 ```
 
-:::caution
+:::warning
 
 Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
@@ -150,25 +150,25 @@ Steps running in containers can't communicate with [Background steps](../manage-
 
 You can start using Harness Cloud in minutes.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor" default>
-```
+
 
 1. Go to the pipeline where you want to use Harness Cloud build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **Harness Cloud** and the desired **Platform**.
 4. Save and run your pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor">
-```
+
 
 To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
@@ -227,10 +227,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info
 
@@ -241,6 +241,10 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 :::
 
 ## Troubleshooting Harness Cloud build infrastructure
+
+### Can't use STO steps with Harness Cloud macOS runners
+
+Currently, [STO scan steps](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
 
 ### Don't use tools that only run on a specific cloud environment (such as gsutil)
 

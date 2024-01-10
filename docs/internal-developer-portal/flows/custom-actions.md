@@ -1,7 +1,7 @@
 ---
 title: Supported Custom Actions
 description: These Custom Actions are supported in Harness IDP
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
@@ -19,7 +19,9 @@ There are several repository providers supported out of the box such as **GitHub
 
 A list of all registered custom actions can be found under 
 
-`WorkFlows` -> `Installed Actions`
+`Workflows/Create/Self Service` -> `Installed Actions`
+
+![](./static/create_neww.png)
 
 ![](./static/fetch-actions.png)
 
@@ -28,7 +30,7 @@ A list of all registered custom actions can be found under
 
 ## Harness Specific Custom Actions
 
-1. `trigger:harness-custom-pipeline`
+### 1. `trigger:harness-custom-pipeline`
 
 ```YAML
 ## Example
@@ -65,9 +67,34 @@ Without the above parameter input the pipeline won't be executed. Please [take a
 
 :::
 
-2. `harness:create-secret`
+### 2. `trigger:trigger-pipeline-with-webhook`
 
-3. `harness:delete-secret`
+This custom action could be used to trigger a pipeline execution based on the [webhook url](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#trigger-a-deployment-using-the-curl-command-for-a-custom-trigger) input for [custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#create-the-custom-trigger). 
+
+![](./static/trigger-webhook-ca.png)
+
+```YAML
+## Example
+...
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:trigger-pipeline-with-webhook
+    input:
+    triggerWebhookurl: ${{ parameters.triggerWebhookurl }}
+    x_api_key: ${{ parameters.x_api_key }}
+...
+
+```
+
+In the above example API key is an optional paramenter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
+
+Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
+
+
+### 3. `harness:create-secret`
+
+### 4. `harness:delete-secret`
 
 ## Custom Field Extensions
 

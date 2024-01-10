@@ -96,8 +96,8 @@ cf = CfClient(api_key);
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -324,6 +324,7 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **3001** | SDK closed successfully                                                                  |
 | **4000** | Polling service started                                                                  |
 | **4001** | Polling service stopped                                                                  |
+| **4002** | Poller has fetched flags and groups from backend successfully                            |
 | **5000** | Streaming service started                                                                |
 | **5001** | Streaming service stopped                                                                |
 | **5002** | Streaming event received                                                                 |
@@ -339,3 +340,11 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **7004** | Metrics max target size exceeded                                                         |
 | **7005** | Metrics batch targets sending success                                                    |
 | **7006** | Metrics batch targets sending failed                                                     |
+| **8005** | Fetching flag by identifier request failed and is retrying                               |
+| **8006** | Fetching group by identifier request failed and is retrying                              |
+| **8007** | Fetching all flags request failed and is retrying                                        |
+| **8008** | Fetching all groups request failed and is retrying                                       |
+| **8009** | Fetching flag by identifier request failed                                               |
+| **8010** | Fetching group by identifier request failed                                              |
+| **8011** | Fetching all flags request failed                                                        |
+| **8012** | Fetching all groups request failed                                                       |

@@ -236,7 +236,7 @@ The Harness GitOps Agent can work on environments where traffic is routed throug
 To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the `agent itself and the argocd-repo-server. Follow these steps to set up proxy support for both components.
 
 1. **Agent:** Make sure that the agent is running in HTTP mode.  
-   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML after you create the agent.  
+   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap(\{agentname}-agent)` present in the YAML after you create the agent.  
    `GITOPS_SERVICE_PROTOCOL: HTTP1`
 2. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
 3. **Agent:** Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
@@ -274,7 +274,7 @@ spec:
      - name: HTTP_PROXY
        value: "http://squid.proxy-test:3128"
      - name: NO_PROXY
-       value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
+       value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),(\{agentname}-agent)
  initContainers:
    ... other init containers spec ...
    - name: sops-helm-secrets-tool
@@ -382,9 +382,11 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-GitOps Agent v0.60.0 supports redis:7.0.8-alpine and Repo server [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
+GitOps Agent v0.64.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.0](http://quay.io/argoproj/argocd:v2.9.0).
 
-Harness GitOps Agent from v0.60.0 onwards supports Argo CD version [v2.8.2](http://quay.io/argoproj/argocd:v2.8.2), while GitOps Agent versions v0.57.0 till v0.59.2 support Argo CD version [v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
+GitOps Agent v0.60.0 to v0.63.0 supports redis:7.0.8-alpine and Argo CD version [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
+
+GitOps Agent v0.57.0 to v0.59.2 supports Argo CD version [v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
 
 ### How long is a GitOps Agent version supported?
 

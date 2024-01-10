@@ -223,6 +223,33 @@ The following permissions allow an API key to manage IACM workspaces. They are a
 | `iac_workspace_approve` | Approve Infrastructure Workspace |
 | `iac_workspace_accessstate` | Access Infrastructure Workspace State |
 
+## Internal Developer Portal
+
+The following permissions allow an API key to interact with IDP Admin resources. They are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `idp_plugin_view` | View IDP custom plugins |
+| `idp_plugin_edit` | Create or Edit IDP custom plugins |
+| `idp_plugin_toggle` | Enable or Disable an IDP Plugin |
+| `idp_plugin_delete` | Delete IDP custom plugins |
+| `idp_scorecard_view` | View IDP Scorecards |
+| `idp_scorecard_edit` | Create or Edit IDP Scorecards |
+| `idp_scorecard_delete` | Delete IDP Scorecards |
+| `idp_layout_view` | View IDP Layout Configurations |
+| `idp_layout_edit` | Create or Edit IDP Layout Configurations |
+| `idp_catalogaccesspolicy_view` | View IDP Catalog Access Control Policies |
+| `idp_catalogaccesspolicy_create` | Create IDP Catalog Access Control Policies |
+| `idp_catalogaccesspolicy_edit` | Edit IDP Catalog Access Control Policies |
+| `idp_catalogaccesspolicy_delete` | Delete IDP Catalog Access Control Policies |
+| `idp_integration_view` | View IDP Integrations |
+| `idp_integration_create` | Create IDP Integrations |
+| `idp_integration_edit` | Edit IDP Integrations |
+| `idp_integration_delete` | Delete IDP Integrations |
+| `idp_advancedconfiguration_view` | View IDP Advanced Configurations |
+| `idp_advancedconfiguration_edit` | Create or Edit IDP Advanced Configurations |
+| `idp_advancedconfiguration_delete` | Delete IDP Advanced Configurations |
+
 ## Organizations
 
 The following permissions allow an API key to manage organizations. They are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).

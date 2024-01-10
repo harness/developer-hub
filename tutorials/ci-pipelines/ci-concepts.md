@@ -9,9 +9,9 @@ redirect_from:
   - /tutorials/ci-pipelines/ci-concepts
 ---
 
-```mdx-code-block
+
 import WhatCi from '/docs/continuous-integration/get-started/overview.md';
-```
+
 
 <WhatCi />
 

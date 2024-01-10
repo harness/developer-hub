@@ -68,7 +68,7 @@ The AWS Lambda step in the Workflow applies the alias just like you would using 
 
 ![](./static/4-lambda-workflows-and-deployments-04.png)
 
-By default, Harness names the alias with the name of the Environment by using the built-in Harness variable **${env.name}**. You can replace this with whatever alias you want, or use other built-in Harness variables by entering **$** and seeing what variables are available.
+By default, Harness names the alias with the name of the Environment by using the built-in Harness variable **$\{env.name}**. You can replace this with whatever alias you want, or use other built-in Harness variables by entering **$** and seeing what variables are available.
 
 ![](./static/4-lambda-workflows-and-deployments-05.png)
 

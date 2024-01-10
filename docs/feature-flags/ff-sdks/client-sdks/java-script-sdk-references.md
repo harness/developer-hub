@@ -113,8 +113,8 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 
 <details>
 <summary>What is a target?</summary> 
-Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about targets, go to [Targeting users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -412,7 +412,7 @@ var initialize = HarnessFFSDK.initialize
       var Event = HarnessFFSDK.Event  
   
       var log = msg => {  
-        document.querySelector('#log').innerHTML += `${msg}\n`  
+        document.querySelector('#log').innerHTML += `$\{msg}\n`  
       }  
   
       var cf = initialize(  

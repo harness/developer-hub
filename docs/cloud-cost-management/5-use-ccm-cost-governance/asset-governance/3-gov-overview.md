@@ -7,7 +7,7 @@ description: This topic talks about Harness cloud asset governance.
 
 The **Overview** page offers a consolidated summary of your organization's governance rules, enforcements, and cost savings resulting from rule executions. This provides a quick and easy way to monitor your cloud spend and ensure compliance with your governance policies. Additionally, you can access valuable recommendations for optimizing resource utilization, allowing you to achieve even greater cost savings. 
 
-  <docimage path={require('./static/gov-overview.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/gov-overview.png')} width="50%" height="50%" title="Click to view full size image" />
 
   - **All time realized savings** — The total cost savings achieved from the day you began utilizing CCM Asset Governance up to the present date.
   

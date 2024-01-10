@@ -11,9 +11,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import edit_flag from './static/2-edit-and-delete-a-feature-flag-06.png'
-```
+
 
 ## Edit the details of a flag
 

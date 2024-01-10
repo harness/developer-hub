@@ -21,7 +21,7 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 4. Select **+ New Rule**. 
 
 
-  <docimage path={require('./static/asset-governance-rule-creation.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/asset-governance-rule-creation.png')} width="60%" height="60%" title="Click to view full size image" />
 
 5. Enter a name for the rule.
 6. Select the cloud provider.
@@ -35,7 +35,7 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
 12. After evaluating the output, select **Run Once** to execute the rule. 
 
-  <docimage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 that can be enforced. These policies cannot be edited but can be cloned.
 
@@ -55,13 +55,13 @@ To create a rule set, perform the following steps:
 8. Select the cloud provider.
 9. Select the rules that you want to enforce. 
 
-  <docimage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 10. Select **Create Rule Set**. 
 The rule set is created successfully. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 
-  <docimage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
 11. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
 
@@ -86,16 +86,16 @@ To create enforcement, perform the following steps:
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
 13. Select **Finish**. 
 
-    <docimage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
+    <DocImage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. 
 
-<docimage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Furthermore, you can disable the enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) and switch to active mode.
   
-<docimage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 
@@ -107,7 +107,7 @@ Furthermore, you can disable the enforcement at any time using the toggle button
 4. Select the rule to view the evaluation details. 
 The target accounts, regions, and evaluation logs are displayed.
 
- <docimage path={require('./static/asset-gov-eval.png')} width="60%" height="60%" title="Click to view full size image" />
+ <DocImage path={require('./static/asset-gov-eval.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ## Use filters in rule evaluation
@@ -131,6 +131,6 @@ You can create filters to view selected rules:
       - Azure Subscription
       - Target Regions
 
-  <docimage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
+  <DocImage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
 
 5. Select **Apply**.

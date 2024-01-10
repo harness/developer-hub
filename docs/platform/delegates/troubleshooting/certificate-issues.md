@@ -31,7 +31,7 @@ To resolve the handshake exception, do the following:
 3. Follow the appropriate steps below, based on whether you use the OpenSSL tool.
 
 <details>
-   <summary>
+<summary>
    Use the OpenSSL tool
    </summary>
   
@@ -145,7 +145,7 @@ To resolve the handshake exception, do the following:
 </details>
 
 <details>
-   <summary>
+<summary>
    When the OpenSSL tool isn't present
    </summary>
 
@@ -175,7 +175,7 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
    ```
    JAVA_OPTS="-Djavax.net.debug=all"
    ```
-   
+
 </details>
 
 ### Signature check failure

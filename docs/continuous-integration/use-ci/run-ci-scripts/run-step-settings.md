@@ -9,18 +9,18 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
+
 
 You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="test" label="Run tests" default>
-```
+
 
 This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.md), and produces a report in JUnit XML format.
 
@@ -56,10 +56,10 @@ In Harness CI, you can [use test splitting (parallelism)](../run-tests/speed-up-
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="dependencies" label="Install dependencies">
-```
+
 
 This example installs Go dependencies.
 
@@ -74,10 +74,10 @@ This example installs Go dependencies.
                       go get example.com/my-go-module
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="version" label="Specify versions">
-```
+
 
 This example uses a **Run** step to select a version of Xcode.
 
@@ -93,10 +93,10 @@ This example uses a **Run** step to select a version of Xcode.
                       xcodebuild -version
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="repo" label="Clone a repo">
-```
+
 
 This example clones a GitHub repository.
 
@@ -117,10 +117,10 @@ To use this command, you would replace:
 * `REPO_NAME` with the name of the GitHub repo to clone.
 * `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="scripts" label="Run scripts">
-```
+
 
 **Run** steps are highly versatile, and you can use them to run all manner of individual commands or multi-line scripts.
 
@@ -159,10 +159,10 @@ Consider [creating plugins](../use-drone-plugins/custom_plugins.md) for scripts 
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add the Run step
 
@@ -170,19 +170,19 @@ You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage]
 
 In order for the **Run** step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. Go to the **Build** stage in the pipeline where you want to add the **Run** step.
 2. On the **Execution** tab, select **Add Step**, and select the **Run** step from the Step Library.
 3. Configure the [Run step settings](#settings) and then select **Apply Changes** to save the step.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#settings).
 
@@ -199,10 +199,10 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
                       pytest test_main.py --junit-xml=output-test.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run step settings
 
@@ -294,10 +294,10 @@ For **Shell**, select the shell type. Options include: **Bash**, **PowerShell**,
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="bash" label="Bash" default>
-```
+
 
 For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For example, the following step runs a Bash script that checks the Java version:
 
@@ -315,10 +315,10 @@ For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For
                       fi
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="powershell" label="PowerShell">
-```
+
 
 For PowerShell, set the `shell` to `Powershell` and enter your PowerShell script in `command`, for example:
 
@@ -390,10 +390,10 @@ In the `Run` step's PowerShell script, call the `ToString` value separately and 
                       echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="pwsh" label="Pwsh (PowerShell Core)">
-```
+
 
 You can run PowerShell Core commands in pods or containers that have `pwsh` installed. For PowerShell Core, set the `shell` to `Pwsh` and enter your PowerShell Core script in `command`. For example, this step runs `ForEach-Object` over a list of events.
 
@@ -407,10 +407,10 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
                       $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Sh">
-```
+
 
 You can use the `Sh` option to run any shell script, provided the necessary binaries are available. For example, this step pulls the latest `python` image and then executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
@@ -431,10 +431,10 @@ You can use the `Sh` option to run any shell script, provided the necessary bina
                       pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="python" label="Python">
-```
+
 
 For Python, set the `shell` to `python` and enter your Python commands in `command`, for example:
 
@@ -448,10 +448,10 @@ For Python, set the `shell` to `python` and enter your Python commands in `comma
                       print('Hello, world!')
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 #### Reference background services
 

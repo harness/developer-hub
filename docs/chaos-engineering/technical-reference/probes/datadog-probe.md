@@ -35,10 +35,11 @@ stringData:
   DD_APP_KEY: "xxxxxxxxxxxxxxxxxxxx"
 ```
 
-  The secret name, that is, <b>datadog-secret</b> has to be provided while configuring the probe using the `datadogCredentialsSecretName` field.
-  </TabItem>
+The secret name, that is, <b>datadog-secret</b> has to be provided while configuring the probe using the `datadogCredentialsSecretName` field.
+</TabItem>
 
   <TabItem value="linux" label="Linux">
+
   For a Linux chaos infrastructure, the secrets are provided using an environment file at the following path, which is located on the machine where the infrastructure executes:
 
 ```bash showLineNumbers title="/etc/linux-chaos-infrastructure/datadog.env"
@@ -46,12 +47,14 @@ DD_API_KEY="xxxxxxxxxxxxxxxxxxxx"
 DD_APP_KEY="xxxxxxxxxxxxxxxxxxxx"
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Defining the probe
+
 <Tabs>
   <TabItem value="kubernetes" label="Kubernetes" default>
+  
   For a Kubernetes chaos infrastructure, the probe is defined at <code>.spec.experiments[].spec.probe</code> path in the chaos engine manifest:
 
 ```yaml showLineNumbers
@@ -74,7 +77,7 @@ spec:
                           ####################################
 ```
 
-  </TabItem>
+</TabItem>
   <TabItem value="linux" label="Linux" default>
   For a Linux chaos infrastructure, the probe is defined at <code>.spec.tasks[].definition.chaos.probes</code> path in the Linux chaos experiment manifest:
 
@@ -92,19 +95,30 @@ spec:
             ####################################
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Schema
+
 Listed below is the Datadog Probe schema with common properties shared across all probes and properties unique to Datadog probe.
 
 <table>
   <tr>
-   <th><strong>Field</strong></th>
-   <th><strong>Description</strong></th>
-   <th><strong>Type</strong></th>
-   <th><strong>Range</strong></th>
-   <th><strong>Notes</strong></th>
+   <th>
+		<strong>Field</strong>
+  </th>
+   <th>
+		<strong>Description</strong>
+    </th>
+   <th>
+		<strong>Type</strong>
+    </th>
+   <th>
+		<strong>Range</strong>
+    </th>
+   <th>
+		<strong>Notes</strong>
+    </th>
   </tr>
   <tr>
    <td>name</td>
@@ -147,11 +161,21 @@ Listed below is the Datadog Probe schema with common properties shared across al
 
 <table>
   <tr>
-   <th><strong>Field</strong></th>
-   <th><strong>Description</strong></th>
-   <th><strong>Type</strong></th>
-   <th><strong>Range</strong></th>
-   <th><strong>Notes</strong></th>
+   <th>
+		<strong>Field</strong>
+    </th>
+   <th>
+		<strong>Description</strong>
+    </th>
+   <th>
+		<strong>Type</strong>
+    </th>
+   <th>
+		<strong>Range</strong>
+    </th>
+   <th>
+		<strong>Notes</strong>
+    </th>
   </tr>
   <tr>
    <td>publicId</td>
@@ -173,92 +197,68 @@ Listed below is the Datadog Probe schema with common properties shared across al
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>probeTimeout
-   </td>
-   <td>Flag to hold the timeout of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>attempt
-   </td>
-   <td>Flag to hold the attempt of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
-   </td>
+   <td>probeTimeout   </td>
+   <td>Flag to hold the timeout of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data   </td>
   </tr>
   <tr>
-   <td>interval
-   </td>
-   <td>Flag to hold the interval of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
-   </td>
+   <td>attempt   </td>
+   <td>Flag to hold the attempt of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: integer</code>   </td>
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.   </td>
   </tr>
   <tr>
-   <td>probePollingInterval
-   </td>
-   <td>Flag to hold the polling interval for the probes (applicable for all modes)
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration
-   </td>
+   <td>interval   </td>
+   <td>Flag to hold the interval of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries   </td>
   </tr>
   <tr>
-   <td>initialDelaySeconds
-   </td>
-   <td>Flag to hold the initial delay interval for the probes
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.
-   </td>
+   <td>probePollingInterval   </td>
+   <td>Flag to hold the polling interval for the probes (applicable for all modes)   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration   </td>
   </tr>
   <tr>
-   <td>stopOnFailure
-   </td>
-   <td>Flags to hold the stop or continue the experiment on probe failure
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: boolean</code>
-   </td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails
-   </td>
+   <td>initialDelaySeconds   </td>
+   <td>Flag to hold the initial delay interval for the probes   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: integer</code>   </td>
+   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.   </td>
+  </tr>
+  <tr>
+   <td>stopOnFailure   </td>
+   <td>Flags to hold the stop or continue the experiment on probe failure   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: boolean</code>   </td>
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails   </td>
   </tr>
 </table>
 
 ## Definition
+
 <Tabs>
   <TabItem value="kubernetes" label="Kubernetes" default>
 
@@ -280,7 +280,7 @@ probe:
       stopOnFailure: false
 ```
 
-  </TabItem>
+</TabItem>
   <TabItem value="linux" label="Linux">
 
 ```yaml
@@ -300,7 +300,7 @@ probes:
       stopOnFailure: false
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ### API test
@@ -325,26 +325,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-delete
-    spec:
-      probe:
-      - name: "datadog-probe"
-        type: "datadogProbe"
-        datadogProbe/inputs:
-          datadogSite: us5.datadoghq.com
-          syntheticsTest:
-            publicId: zgs-mq8-pgy
-            testType: api
-          datadogCredentialsSecretName: dd-secret
-        mode: "EOT"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-          stopOnFailure: false
+    - name: pod-delete
+      spec:
+        probe:
+          - name: "datadog-probe"
+            type: "datadogProbe"
+            datadogProbe/inputs:
+              datadogSite: us5.datadoghq.com
+              syntheticsTest:
+                publicId: zgs-mq8-pgy
+                testType: api
+              datadogCredentialsSecretName: dd-secret
+            mode: "EOT"
+            runProperties:
+              probeTimeout: 5s
+              interval: 2s
+              attempt: 1
+              stopOnFailure: false
 ```
 
-  </TabItem>
+</TabItem>
   <TabItem value="linux" label="Linux">
 
 ```yaml
@@ -385,7 +385,7 @@ spec:
             forceKill: false
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ### Browser test
@@ -410,26 +410,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-delete
-    spec:
-      probe:
-      - name: "datadog-probe"
-        type: "datadogProbe"
-        datadogProbe/inputs:
-          datadogSite: us5.datadoghq.com
-          syntheticsTest:
-            publicId: zgs-mq8-pgy
-            testType: browser
-          datadogCredentialsSecretName: dd-secret
-        mode: "EOT"
-        runProperties:
-          probeTimeout: 5s
-          interval: 2s
-          attempt: 1
-          stopOnFailure: false
+    - name: pod-delete
+      spec:
+        probe:
+          - name: "datadog-probe"
+            type: "datadogProbe"
+            datadogProbe/inputs:
+              datadogSite: us5.datadoghq.com
+              syntheticsTest:
+                publicId: zgs-mq8-pgy
+                testType: browser
+              datadogCredentialsSecretName: dd-secret
+            mode: "EOT"
+            runProperties:
+              probeTimeout: 5s
+              interval: 2s
+              attempt: 1
+              stopOnFailure: false
 ```
 
-  </TabItem>
+</TabItem>
   <TabItem value="linux" label="Linux">
 
 ```yaml
@@ -470,5 +470,5 @@ spec:
             forceKill: false
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>

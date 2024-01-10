@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import image_1 from './static/install-the-aws-cli-on-a-delegate-41.png'
 import image_2 from './static/install-the-aws-cli-on-a-delegate-42.png'
 import image_3 from './static/install-the-aws-cli-on-a-delegate-43.png'
-```
+
 
 If you want to run AWS CLI scripts on the Harness Delegate, you need to install the AWS CLI on its host(s).
 
@@ -46,9 +46,9 @@ In this topic:
 2. Click **Harness Delegates**.
 3. Click **Manage Delegate Profiles**, and then click **Add Delegate Profile**. The **Manage Delegate Profile** settings appear.
 
-```mdx-code-block
+
 <img src={image_1} height="300" width="500" />
-```
+
 
 Next, we'll add the script for installing the AWS CLI.
 
@@ -80,9 +80,9 @@ In the listing for the Delegate, in **Profile**, select the Delegate Profile you
 
 When you are prompted to confirm, click **Confirm**.
 
-```mdx-code-block
+
 <img src={image_2} height="200" width="400" />
-```
+
 
 The message `Delegate profile Install AWS CLI saved successfully` appears.
 
@@ -94,9 +94,9 @@ The Profile status icon indicates whether the script ran successfully.
 
 In the listing of the Delegate where you applied the profile, in **Profile**, click **View Logs**.
 
-```mdx-code-block
+
 <img src={image_3} height="300" width="500" />
-```
+
 
 :::note
 If you see the message, `Profile execution log temporarily unavailable. Try again in a few moments`, the Delegate is still applying the script. Simply wait a few more minutes.

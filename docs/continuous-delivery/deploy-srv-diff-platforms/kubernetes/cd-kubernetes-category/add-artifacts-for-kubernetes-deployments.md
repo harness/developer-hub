@@ -145,14 +145,14 @@ To add your container image, go to **Artifacts** in the Service Definition.
    
    ![](./static/add-artifacts-for-kubernetes-deployments-02.png)
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';   
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
     <TabItem value="Docker Registry" label="Docker Registry" default>
-```
+
 
 1. Select **Docker Registry**, and click **Continue**.
 2. The **Docker Registry** settings appear.
@@ -166,10 +166,10 @@ The Artifact is added to the Service Definition.
 
 ![](./static/add-artifacts-for-kubernetes-deployments-03.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Nexus" label="Nexus">
-```
+
 
 :::note
 
@@ -219,10 +219,10 @@ Based on your server and network configuration, choose one of the following and 
 
    The Artifact is added to the Service Definition.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Artifactory" label="Artifactory">
-```
+
 1. Select an [Artifactory Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) or create a new one.
    
 ![](./static/add-artifacts-for-kubernetes-deployments-11.png)
@@ -251,10 +251,10 @@ Based on your server and network configuration, choose one of the following and 
 
    ![](./static/add-artifacts-for-kubernetes-deployments-14.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Custom" label="Custom">
-```
+
 
 :::note
 
@@ -278,10 +278,10 @@ You can select a Custom Artifact Source to add your custom repository.
 
    You can only set an Artifact version number when using a Custom Artifact Source. The version you select determines the Artifact context for the deploy stage. You may refer to it anywhere in the stage by using the expression `<+artifact.version>`.
 
-```mdx-code-block
+
 </TabItem>    
 </Tabs>
-```
+
 
 ## Reference the artifact in your values.yaml file
 

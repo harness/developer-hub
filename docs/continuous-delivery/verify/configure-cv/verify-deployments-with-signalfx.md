@@ -6,10 +6,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 
 Harness Continuous Verification (CV) integrates with Splunk Observability [SignalFx] to:
@@ -207,14 +207,14 @@ Currently, Harness supports only Splunk Observability [SignalFx] metrics. The **
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
 
-   <details>
-   <summary><b>Sample query to check the number of Kubernetes pods in ready state</b></summary>
+<details>
+<summary><b>Sample query to check the number of Kubernetes pods in ready state</b></summary>
 
    Query: `data("k8s.container.ready")`
 
    ![Query - disk usage](./static/cv-signalfx-sample-log-query.png)
 
-   </details>
+</details>
 
 
 #### Assign services

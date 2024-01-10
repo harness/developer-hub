@@ -54,25 +54,25 @@ Setup Harness CD & GitOps in a few commands
 
 `harness update`             - Updates the CLI.
 
-`harness secret`             - Creates or deletes a Harness Secret.
+`harness secret`             - Creates, deletes, or updates a Harness Secret.
 
-`harness connector`          - Creates, deletes or update a Harness Connector.
+`harness connector`          - Creates, deletes, or updates a Harness Connector.
 
-`harness gitops-repository`  - Creates, deletes or update a GitOps Repository.
+`harness gitops-repository`  - Creates, deletes, or updates a GitOps Repository.
 
-`harness gitops-cluster`     - Creates, deletes or update a GitOps Cluster.
+`harness gitops-cluster`     - Creates, deletes, or updates a GitOps Cluster.
 
-`harness gitops-application` - Creates, deletes or update a GitOps Application.
+`harness gitops-application` - Creates, deletes, or updates a GitOps Application.
 
-`harness environment`        - Creates, deletes or update a Harness Environment.
+`harness environment`        - Creates, deletes, or updates a Harness Environment.
 
-`harness infrastructure`     - Creates, deletes or update a Harness Infeastructure.
+`harness infrastructure`     - Creates, deletes, or updates a Harness Infeastructure.
 
-`harness service`            - Creates, delete or update a Harness Service.
+`harness service`            - Creates, deletes, or updates a Harness Service.
 
-`harness pipeline`           - Creates, delete or update a Harness Pipeline.
+`harness pipeline`           - Creates, deletes, or updates a Harness Pipeline.
 
-## Global Options
+## Global options
 
 `--api-key`    - Accepts a Harness API Token as a value for CLI login.
 
@@ -89,6 +89,172 @@ Setup Harness CD & GitOps in a few commands
 `--version`    - Prints the utility version.
 
 `--help`       - Shows a list of commands or help for one command.
+
+## Local APPLY command options
+
+1. `harness secret apply help`
+
+   ```
+   NAME:
+      harness secret apply - Create a new secret or Update  an existing one.
+   
+   USAGE:
+      harness secret apply [command options] [arguments...]
+   
+   OPTIONS:
+      --token value        specify your secret token
+      --secret-name value  provide the secret name
+      --secret-type value  provide the secret type
+      --port value         port number for the ssh secret
+      --username value     username for the ssh secret
+      --passphrase value   passphrase for the ssh secret
+      --domain value       domain for cloud data center
+      --org-id value       provide an Organization Identifier
+      --project-id value   provide a Project Identifier
+      --help, -h           show help
+   ```
+
+2. `harness connector apply help`
+
+   ```
+   NAME:
+      harness connector apply - Create a new connector or Update  an existing one.
+
+   USAGE:
+      harness connector apply [command options] [arguments...]
+
+   OPTIONS:
+      --delegate-name value               delegate name for the k8s connector
+      --git-user value                    git username for the github connector
+      --aws-cross-account-role-arn value  cross account role arn for the aws connector
+      --aws-access-key value              access key for the aws connector
+      --aws-secret-Key value              access secret for the aws connector
+      --cloud-region value                region for the cloud connector
+      --host-ip value                     host ip or fqdn for the physical data center connector
+      --port value                        port for the physical data center connector
+      --org-id value                      provide an Organization Identifier
+      --project-id value                  provide a Project Identifier
+      --help, -h                          show help
+   ```
+   
+3. `harness environment apply help`
+
+   ```
+   NAME:
+      harness environment apply - Create a new environment or Update  an existing one.
+   
+   USAGE:
+      harness environment apply [command options] [arguments...]
+   
+   OPTIONS:
+      --org-id value      provide an Organization Identifier
+      --project-id value  provide a Project Identifier
+      --help, -h          show help
+   ```
+
+4. `harness infrastructure apply help`
+
+   ```
+   NAME:
+      harness infrastructure apply - Create a new infrastructure or Update  an existing one.
+   
+   USAGE:
+      harness infrastructure apply [command options] [arguments...]
+   
+   OPTIONS:
+      --cloud-project value  provide the Google Cloud Platform project name.
+      --cloud-region value   provide the Cloud Platform region name. For eg; 1.Creating GCP pipeline then provide gcp-region name, 2.Creating AWS based pipeline then provide aws-region name
+      --instance-name value  instance name for the cloud provider for PDC Infrastructure
+      --org-id value         provide an Organization Identifier
+      --project-id value     provide a Project Identifier
+      --help, -h             show help
+   ```
+
+5. `harness service apply help`
+
+   ```
+   NAME:
+      harness service apply - Create a new service or Update  an existing one.
+   
+   USAGE:
+      harness service apply [command options] [arguments...]
+   
+   OPTIONS:
+      --cloud-project value  provide the Google Cloud Platform project name.
+      --cloud-bucket value   provide the Google Cloud Platform bucket name.
+      --cloud-region value   provide the Google Cloud Platform bucket name.
+      --org-id value         provide an Organization Identifier
+      --project-id value     provide a Project Identifier
+      --help, -h             show help
+   ```
+
+6. `harness gitops-cluster apply help`
+
+   ```
+   NAME:
+      harness gitops-cluster apply - Create a new gitops-cluster or Update  an existing one.
+   
+   USAGE:
+      harness gitops-cluster apply [command options] [arguments...]
+   
+   OPTIONS:
+      --agent-identifier value  provide GitOps Agent Identifier.
+      --org-id value            provide an Organization Identifier
+      --project-id value        provide a Project Identifier
+      --help, -h                show help
+   ```
+
+7. `harness gitops-cluster link help`
+
+   ```
+   NAME:
+      harness gitops-cluster link - Links a GitOps-cluster with an environment.
+   
+   USAGE:
+      harness gitops-cluster link [command options] [arguments...]
+   
+   OPTIONS:
+      --agent-identifier value  provide GitOps Agent Identifier.
+      --cluster-id value        provide a Cluster Identifier.
+      --environment-id value    provide an Environment Identifier.
+      --org-id value            provide an Organization Identifier.
+      --project-id value        provide a Project Identifier.
+      --help, -h                show help
+   ```
+   
+8. `harness gitops-repository apply help`
+   
+   ```
+   NAME:
+      harness gitops-repository apply - Create a new gitops-repository or Update  an existing one.
+   
+   USAGE:
+      harness gitops-repository apply [command options] [arguments...]
+   
+   OPTIONS:
+      --agent-identifier value  provide GitOps Agent Identifier.
+      --org-id value            provide an Organization Identifier
+      --project-id value        provide a Project Identifier
+      --help, -h                show help
+   
+   ```
+
+9. `harness gitops-application apply help`
+
+   ```
+   NAME:
+      harness gitops-application apply - Create a new gitops-application or Update  an existing one.
+   
+   USAGE:
+      harness gitops-application apply [command options] [arguments...]
+   
+   OPTIONS:
+      --agent-identifier value  provide GitOps Agent Identifier.
+      --org-id value            provide an Organization Identifier
+      --project-id value        provide a Project Identifier
+      --help, -h                show help
+   
+   ```
 
 <!-- 
 ## Environment

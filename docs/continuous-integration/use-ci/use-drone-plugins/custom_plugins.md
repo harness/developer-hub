@@ -91,15 +91,15 @@ Use a **Plugin** step to run a plugin in a Harness CI pipeline. The following in
 
 For more information about configuring **Plugin** steps, go to the [Plugin step settings reference](./plugin-step-settings-reference.md) and [Use Drone plugins](./run-a-drone-plugin-in-ci.md).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 Add the **Plugin** step to the **Build** stage of your CI pipeline. The following settings are always or usually required:
 
@@ -118,10 +118,10 @@ For example, the following configuration could be used for the `clone.sh` plugin
   * `branch`: The branch to clone, such as `main`.
   * `path`: The location in the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage) where the repo should be cloned, such as `codebase`.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Add the `Plugin` step to your `CI` stage. The following settings are always or usually required:
 
@@ -147,10 +147,10 @@ For example, the following YAML definition could be used for the `clone.sh` plug
                       path: codebase ## Location in the stage workspace to clone the repo.
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Variables in plugin scripts
 

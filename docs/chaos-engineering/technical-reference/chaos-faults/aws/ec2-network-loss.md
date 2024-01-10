@@ -19,8 +19,8 @@ EC2 network loss:
 - Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
 
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute the fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - SSM agent is installed and running on the target EC2 instance.
 - The EC2 instance should be in a healthy state.
 - The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
@@ -37,9 +37,9 @@ EC2 network loss:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -91,7 +91,11 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+:::
+
  <h3>Mandatory tunables</h3>
     <table>
       <tr>
@@ -102,7 +106,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -120,12 +124,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -140,32 +144,32 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
             <td> The packet loss in percentage. </td>
-            <td> Default: 100 %. </td>
+            <td> Default: 100 %. For more information, go to <a href="#network-packet-loss"> network packet loss.</a></td>
         </tr>
         <tr>
             <td> DESTINATION_IPS </td>
             <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted. </td>
-            <td> Comma-separated IP(S) or CIDR(S) can be provided. If not provided, the fault induces network chaos for all IPs/destinations. </td>
+            <td> Comma-separated IP(S) or CIDR(S) can be provided. If not provided, the fault induces network chaos for all IPs/destinations. For more information, go to <a href="#run-wtih-destination-ips-and-destination-hosts"> destination IPs.</a></td>
         </tr>
         <tr>
             <td> DESTINATION_HOSTS </td>
             <td> DNS Names of the services, the accessibility to which, is impacted. </td>
-            <td> Ff not provided, the fault induces network chaos for all IPs/destinations or DESTINATION_IPS if already defined. </td>
+            <td> Ff not provided, the fault induces network chaos for all IPs/destinations or DESTINATION_IPS if already defined. For more information, go to <a href="#run-wtih-destination-ips-and-destination-hosts"> destination hosts.</a></td>
         </tr>
         <tr>
             <td> NETWORK_INTERFACE </td>
             <td> Name of ethernet interface considered for shaping traffic. </td>
-            <td> Default: `eth0`. </td>
+            <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> It defines sequence of chaos execution for multiple instance. </td>
-            <td> Default: parallel. Supports serial sequence. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds).  </td>
-            <td> For example, 30 s </td>
+            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
     </table>
 
