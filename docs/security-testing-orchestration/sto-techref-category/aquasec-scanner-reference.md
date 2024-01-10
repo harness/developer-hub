@@ -48,20 +48,17 @@ The recommended workflow is add an Aqua Security step to a Security Tests or CI 
 
 #### Scan Mode
 
-
-
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
-
 <StoSettingScanMode />
+<StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
 
 <StoSettingProductConfigName />
 
@@ -72,17 +69,13 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-
 import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
 <a name="target-name"></a>
 
 #### Name 
-
 
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
@@ -99,91 +92,77 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 <StoSettingTargetVariant  />
 
-<!-- =============================================================================  
+
 ### Container Image settings
 
-<!-- =============================================================================  
+ 
 <a name="container-type"></a>
 
-#### Type  (_orchestration_)
-
+#### Type
 
 import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
 
-
 <StoSettingImageType />
-
-<!-- =============================================================================  
 
 
 <a name="container-domain"></a>
 
 #### Domain (_extraction_)
 
-
-
 import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-
 
 <StoSettingImageDomain />
 
-<!-- =============================================================================  
+
 <a name="container-name"></a>
 
 #### Name
 
-
 import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
 
-
 <StoSettingImageName />
-
-<!-- =============================================================================  
 
 
 <a name="container-tag"></a>
 
 #### Tag
 
-
 import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
-
 
 <StoSettingImageTag />
 
+<a name="container-region"></a>
 
 #### Region  
 
-
 import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
-
 
 <StoSettingImageRegion />
 
-<!-- ============================================================================= -->
-
-<!-- ============================================================================= 
 
 ### Authentication settings
 
-#### Access ID (_orchestration_)
+<a name="auth-access-id"></a>
 
+#### Access ID 
 
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
 
-
 <StoSettingAuthAccessID />
+
+
+<a name="auth-access-token"></a>
 
 #### Access Token
 
-
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
 
 <StoSettingAuthAccessToken />
 
 
 #### Access Region
+
+<a name="auth-access-token"></a>
 
 The AWS region of the image to scan.
 
