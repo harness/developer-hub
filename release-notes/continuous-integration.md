@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-09T10:00
+date: 2024-01-17T10:00
 sidebar_position: 10
 ---
 
@@ -22,6 +22,19 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## January 2024
+
+### Version 1.8.1
+
+<!-- Jan 17, 2024 -->
+
+#### New features and enhancements
+
+To help identify pods that aren't cleaned up after a build, pod deletion logs now include the cluster endpoint targeted for deletion and the pod identifier, namespace, and API endpoint response for pods that can't be located for deletion. (CI-10636, ZD-54688)
+
+#### Fixed issues
+
+* Fixed a `NullPointerException` error that occurred if you provided no `args` when configuring [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby). (CI-10847, ZD-55658)
+* Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. (CI-10789, ZD-55265)
 
 ### Version 1.6.3
 
