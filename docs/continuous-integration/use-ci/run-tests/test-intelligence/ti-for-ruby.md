@@ -8,29 +8,40 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
-Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Ruby in three steps:
+Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
-1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
+## Enable TI for Ruby
 
-   You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to the [Run Tests step settings](#run-tests-step-settings).
+You can enable TI for Ruby in three steps:
 
-   ```yaml
-   - step:
-       type: RunTests
-       name: Run Ruby Tests
-       identifier: Run_Ruby_Tests
-       spec:
-         language: Ruby
-         buildTool: Rspec
-         runOnlySelectedTests: true ## Must be 'true' to enable TI.
-         preCommand: bundle install
-   ```
+<!-- no toc -->
+1. [Add the Run Tests step.](#add-the-run-tests-step)
+2. [Trigger test selection.](#trigger-test-selection)
+3. [(Optional) Add test splitting.](#add-test-splitting)
 
-   For additional YAML examples, go to [Pipeline examples](#pipeline-examples)
+### Add the Run Tests step
 
-2. Trigger test selection. **You need to run your pipeline twice to trigger test selection.**
+Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
+
+```yaml
+- step:
+    type: RunTests
+    name: Run Ruby Tests
+    identifier: Run_Ruby_Tests
+    spec:
+      language: Ruby
+      buildTool: Rspec
+      runOnlySelectedTests: true ## Must be 'true' to enable TI.
+      preCommand: bundle install
+```
+
+For additional YAML examples, go to [Pipeline examples](#pipeline-examples)
+
+### Trigger test selection
+
+After adding the **Run Tests** step, trigger test selection. **You need to run your pipeline twice to trigger test selection.**
 
 <details>
 <summary>Trigger test selection with a webhook trigger (Recommended)</summary>
@@ -50,7 +61,6 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 <details>
 <summary>Trigger test selection with a manual build</summary>
-
 1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
 
    If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
@@ -73,7 +83,17 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 </details>
 
-3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+:::info Why do I have to run the pipeline twice?
+
+The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+
+:::
+
+### Add test splitting
+
+Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
+
+You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
 ## Pipeline examples
 

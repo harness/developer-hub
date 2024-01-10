@@ -16,52 +16,62 @@ Currently, TI for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Su
 
 :::
 
-Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for C# in three steps:
+Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
+## Enable TI for C#
 
-1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
+You can enable TI for C# in three steps:
 
-   :::info
+<!-- no toc -->
+1. [Add the Run Tests step.](#add-the-run-tests-step)
+2. [Trigger test selection.](#trigger-test-selection)
+3. [(Optional) Add test splitting.](#add-test-splitting)
 
-   To use TI for Python, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
+### Add the Run Tests step
 
-   :::
+Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-   You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to the [Run Tests step settings](#run-tests-step-settings).
+:::info
 
-   ```yaml
-                - step:
-                     type: RunTests
-                     identifier: runTestsWithIntelligence
-                     name: runTestsWithIntelligence
-                     spec:
-                       connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                       image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
-                       language: Csharp
-                       buildEnvironment: Core
-                       frameworkVersion: "6.0"
-                       buildTool: Dotnet ## Specify Dotnet or Nunit.
-                       args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
-                       namespaces: aw,fc
-                       runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                       preCommand: |-
-                         dotnet tool install -g trx2junit
-                         export PATH="$PATH:/root/.dotnet/tools"
-                         dotnet restore
-                         dotnet build
-                       postCommand: trx2junit results.trx
-                       reports: ## Reports must be in JUnit XML format.
-                           type: JUnit
-                           spec:
-                             paths:
-                               - results.xml
-   ```
+To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
 
-   For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
+:::
 
-2. Trigger test selection. **You need to run your pipeline twice to trigger test selection.**
+You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
-   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+```yaml
+             - step:
+                  type: RunTests
+                  identifier: runTestsWithIntelligence
+                  name: runTestsWithIntelligence
+                  spec:
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
+                    language: Csharp
+                    buildEnvironment: Core
+                    frameworkVersion: "6.0"
+                    buildTool: Dotnet ## Specify Dotnet or Nunit.
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
+                    namespaces: aw,fc
+                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
+                    preCommand: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="$PATH:/root/.dotnet/tools"
+                      dotnet restore
+                      dotnet build
+                    postCommand: trx2junit results.trx
+                    reports: ## Reports must be in JUnit XML format.
+                        type: JUnit
+                        spec:
+                          paths:
+                            - results.xml
+```
+
+For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
+
+### Trigger test selection
+
+After adding the **Run Tests** step, trigger test selection. **You need to run your pipeline twice to trigger test selection.**
 
 <details>
 <summary>Trigger test selection with a webhook trigger (Recommended)</summary>
@@ -104,7 +114,17 @@ Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness C
 
 </details>
 
-3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+:::info Why do I have to run the pipeline twice?
+
+The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+
+:::
+
+### Add test splitting
+
+Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
+
+You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 

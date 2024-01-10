@@ -127,7 +127,7 @@ You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `
 
 The DinD service does not connect to the Kubernetes node daemon. It launches a new Docker daemon on the pod, and then other containers use that Docker daemon to run their commands.
 
-For details, go to [Run Docker-in-Docker in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
 
 ### Resource allocation for Kubernetes cluster build infrastructure
 
@@ -741,7 +741,7 @@ These are derived from your [Artifactory connector](https://developer.harness.io
 
 ### Test reports missing or test suites incorrectly parsed
 
-The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](./test-report-ref.md).
+The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
 ### Can I specify multiple paths for test reports in a Run step?
 
@@ -928,7 +928,7 @@ The commands specified in the Run step's commands override the default entry poi
 
 ### Does CI support running Docker-in-Docker images?
 
-Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
 
 ### Can I run docker-compose from Docker-in-Docker in a Background step?
 
@@ -974,7 +974,7 @@ You can build your own plugins or use one of the many preexisting plugins from t
 
 ### How do I convert Drone plugin settings to Harness CI?
 
-For information about using Drone plugins in Harness CI, including converting Drone YAML to Harness YAML, go to [Use Drone plugins](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
+For information about using Drone plugins in Harness CI, including converting Drone YAML to Harness YAML, go to [Use Drone plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
 
 ### How do I add a custom plugin to my Harness CI pipeline?
 
@@ -994,7 +994,7 @@ If you need a variable's value to remain distinct, either run the steps sequenti
 
 ### GitHub Action step can't connect to Docker daemon
 
-Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
 
 **Actions that launch DinD:** You can't use GitHub Actions that launch DinD in the same stage where DinD is already running in a Background step. If possible, run the GitHub Action in a separate stage or try to find a GitHub Action that doesn't use DinD.
 
@@ -1146,7 +1146,7 @@ Yes. Background steps have these limitations:
 
 ### How can a step call a service started by a Background step?
 
-For information about calling services started by Background steps, go to **Name and ID** and **Port Bindings** in [Background step settings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md).
+For information about calling services started by Background steps, go to **Name and ID** and **Port Bindings** in [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
 ### I can't connect to the hostname using the step ID from my Background step, and I get an "Unknown server host" error
 
