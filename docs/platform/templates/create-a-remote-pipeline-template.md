@@ -41,7 +41,7 @@ For information on inline pipeline templates, go to [Create a pipeline template]
 
 Harness templates let you reuse a pipeline template to create a pipeline, or share it with your teams for enhanced efficiency.
 
-Whenever you use a remote pipeline, Harness resolves the repositories when your pipeline starts up.
+When using a remote pipeline, Harness resolves the repositories at pipeline startup.
 
 You can have one of the following scenarios when using a template in your pipeline:
 
@@ -60,45 +60,58 @@ To use the template in your pipeline if your remote pipeline template and pipeli
 
 ## Create a remote pipeline template
 
-You can create a stage template from your account, org or project. This topic explains the steps to create a stage template from the project scope.
+You can create a pipeline template from your account, org, or project. This topic explains the steps to create a pipeline template from the project scope.
 
 To create a remote pipeline template, do the following:
 
-1. In your Harness Account, go to your project.
-2. In **Project SETUP**, select **Templates**.
-3. Select **New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings appear.
+1. In your Harness, go to your project.
+2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
+3. Select **+ New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings open.
 4. In **Name**, enter a name for the template.
-5. In **Version Label**, enter a version for the template.
-6. Select **Remote**.
-7. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
-8. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
-9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
-10. Harness auto-populates the **YAML Path**. You can change this path and the file name.
-11. Select **Start**.
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
+8. (Optional) Select the **Logo** icon to upload a logo image file.
+9. From the **Save To** list, select the scope where you want to save the template: Project, Organization, or Account. For this example, select Project.
+10. Under **How do you want to set up your template?**, select **Remote**.
+11. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 
-   :::info note
+     :::info note
    
-   The Git connector must use the **Enable API access** option and **Username and Token** authentication. 
+     The Git connector must use the **Enable API access** option and **Username and Token** authentication. 
    
-   Harness requires the token for API access.
+     Harness requires the token for API access.
    
-   Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
+     Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
    
-   ![](./static/create-a-remote-pipeline-template-24.png)  
+     ![](./static/create-a-remote-pipeline-template-24.png)  
    
-   For GitHub, the token must have the following scopes:
+     For GitHub, the token must have the following scopes:
    
-   ![](./static/create-a-remote-pipeline-template-25.png)
+     ![](./static/create-a-remote-pipeline-template-25.png)
    
-   :::
+     :::
+
+12. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
+13. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
+14. Harness auto-populates the **YAML Path**. You can change this path and the file name.
+15. Select **Start**.
 
 ## Add a stage
 
+This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 
+
+Other options include:
+
+   - **Build:** Use CI to build, test, and push artifacts to repositories.
+   - **Approval:** Manual and Jira approval stages.
+   - **Feature Flag:** Enable or disable functionality remotely without redeploying code.
+   - **Custom Stage:** Set up a stage configurable to your needs.
+
 To add a stage, do the following:
 
-1. Select **Add Stage**. The **Select Stage Type** settings appear.
-2. Select **Deploy**. The deploy stage type is a CD stage that enables you to deploy any service to your target environment.  
-The **About Your Stage** settings appear.
+1. Select **Add Stage**. The **Select Stage Type** settings open.
+2. Select **Deploy**. The **About Your Stage** settings open.
 3. In **Stage Name**, enter a name for your stage.
 4. Select the entity that this stage should deploy.
 4. In **Deployment Type**, select **Kubernetes**.
@@ -112,18 +125,16 @@ To add service details, do the following:
 2. Select **Continue**.
 3. In **Specify Environment**, select an existing environment or add a new one.
 4. In **Specify Infrastructure**, select an existing infrastructure or add a new one.
-5. Select **Continue**.  
-   The **Execution Strategies** settings appear.
+5. Select **Continue**. The **Execution Strategies** settings open.
 
 ## Define execution strategies
 
 To define execution strategies, do the following:
 
-1. In **Execution Strategies**, select the deployment strategy for your pipeline template.
-This topic uses the example of a rolling deployment.
+1. In **Execution Strategies**, select the deployment strategy for your pipeline template. This topic uses the example of a rolling deployment.
 For more information on different execution strategies, go to [Deployment concepts and strategies.](/docs/continuous-delivery/manage-deployments/deployment-concepts/)
-2. Click **Use Strategy**.
-3. Click **Save**. The **Save Template to Git** settings appear.
+2. Select **Use Strategy**.
+3. Select **Save**. The **Save Template to Git** settings open.
 
    ![](./static/create-a-remote-pipeline-template-26.png)
 
@@ -132,17 +143,16 @@ For more information on different execution strategies, go to [Deployment concep
 To save your remote pipeline template to Git, do the following:
 
 1. In **Select Branch to Commit**, You can select one of the following:
-	1. **Commit to an existing branch:** You can start a pull request if you like.
-	2. **Commit to a new branch:** Enter the new branch name. You can start a pull request if you like.
+	- **Commit to an existing branch:** You can start a pull request if you like.
+	- **Commit to a new branch:** Enter the new branch name. You can start a pull request if you like.
 2. Select **Save**. Your remote pipeline template is saved to the repo branch.
    
    ![](./static/create-a-remote-pipeline-template-27.png)
-3. Click the YAML file to see the YAML for the stage template.
+
+3. Click the YAML file to view the YAML for the stage template.
 4. Edit the YAML. For example, change the name of the template.
 5. Commit your changes to Git.
-6. Return to Harness and refresh the page.
-
-   A **Template Updated** message appears.
+6. Return to Harness and refresh the page. A **Template Updated** message opens.
 
    ![](./static/create-a-remote-pipeline-template-28.png)
 

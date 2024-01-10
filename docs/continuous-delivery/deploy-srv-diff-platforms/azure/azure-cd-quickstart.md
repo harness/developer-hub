@@ -58,7 +58,7 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
    - In **Personal Access Token**, select **Create or Select a Secret**.
    - Select **New Secret Text**.
    - In **Secret Name**, enter a name for the secret like **github-pat**.
-   - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, go to [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+   - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, go to [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
    - Ensure you PAT has the **repo** scope selected:
   
   ![](static/azure-repo.png)
@@ -84,9 +84,9 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
   Harness supports Go templating with a values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your `values.yaml` file. 
 
   We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.
-  
-  <details>
-  <summary>values YAML file</summary>
+
+<details>
+<summary>values YAML file</summary>
 
     ```yaml
     name: harness-quickstart  
@@ -118,7 +118,7 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
       secrets:  
         key2: value2
     ```
-  </details>
+</details>
 
 1.  Select **Add Manifest**.
 2.  In **Specify Manifest Type**, select **Values YAML**, and select **Continue**.
@@ -146,7 +146,7 @@ You add an artifact from your ACR repo to the Harness service. For example, we'l
 5. In **Details**, select **Specify credentials here**.
 6. Enter the credentials for the Azure App registration you want to use. Here's an example of how App registration settings map to the connector's **Details**:
 
-  <docimage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
 
    + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector):
      
@@ -165,7 +165,7 @@ You add an artifact from your ACR repo to the Harness service. For example, we'l
 
   Here's an example of how ACR settings map to **Artifact Details**:
 
-  <docimage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
 
 1.  Select **Submit**. The artifact is added to the service.
 
@@ -205,12 +205,6 @@ When using a pre-existing infrastructure, the target cluster is your own AKS clu
 Now that the stage's infrastructure is complete, you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) for this stage of the pipeline.
 
 ### Dynamically provisioned AKS infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
@@ -310,7 +304,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/1e16790b00a3b5b126e00a6ffa5cb23f18c3d899b0aa6f345b786cd6ba4631c7.png')} width="50%" height="50%" title="Select to view full size image" />  
+<DocImage path={require('./static/1e16790b00a3b5b126e00a6ffa5cb23f18c3d899b0aa6f345b786cd6ba4631c7.png')} width="50%" height="50%" title="Select to view full size image" />  
 
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>

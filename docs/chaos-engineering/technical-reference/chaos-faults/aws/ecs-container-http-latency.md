@@ -4,12 +4,9 @@ title: ECS container HTTP latency
 ---
 
 ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 ![ECS Container HTTP Latency](./static/images/ecs-container-http-latency.png)
-
-:::tip
-This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
-:::
 
 ## Use cases
 
@@ -45,20 +42,11 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Else, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-
-:::info note
-- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-- The ECS task container should be in a healthy state before and after introducing chaos.
-- Refer to the [superset permission or policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-- Refer to [AWS named rrofile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -107,6 +95,14 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
+:::info note
+- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+- The ECS task container should be in a healthy state before and after introducing chaos.
+- Refer to the [superset permission or policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Refer to [AWS named rrofile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+:::
+
    <h3>Mandatory tunables</h3>
     <table>
         <tr>
@@ -122,12 +118,12 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> LATENCY </td>
             <td> Provide latency to be added to request in milliseconds.</td>
-            <td> For example, 2000</td>
+            <td> For example, 2000 ms. For more information, go to <a href="#network-latency"> latency.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Port of the service to target </td>
-            <td> Defaults to port 80. </td>
+            <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -140,12 +136,12 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -155,12 +151,12 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> It defines a sequence of chaos execution for multiple instances. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30s. </td>
+            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -170,12 +166,12 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens to requests.</td>
-            <td> Defaults to 20000. </td>
+            <td> Defaults to 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to `eth0`. </td>
+          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
     </table>
 

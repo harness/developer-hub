@@ -29,7 +29,7 @@ You can add the **SSCA Enforcement** step to either the **Build** or **Deploy** 
 
 :::info
 
-SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
 
 :::
 
@@ -44,7 +44,7 @@ The **SSCA Enforcement** step has the following settings:
 
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
-<docimage path={require('./static/policy-ssca-enforce-step.png')} />
+<DocImage path={require('./static/policy-ssca-enforce-step.png')} />
 
 :::info ECR and GCR repos
 

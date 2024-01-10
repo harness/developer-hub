@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
-```
+
 
 When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required [Harness images from Google Container Registry (GCR)](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
 

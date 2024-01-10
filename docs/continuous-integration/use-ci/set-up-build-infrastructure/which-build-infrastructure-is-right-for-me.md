@@ -4,18 +4,18 @@ description: Compare Harness-hosted and self-hosted CI build infrastructure opti
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 You can run builds on Harness-hosted machines or your own infrastructure.
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -25,17 +25,17 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 
 Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted options">
-```
+
 
 Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="local" label="Local" default>
-```
+
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 With the local runner, which is also known as the Docker runner, you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
@@ -44,10 +44,10 @@ This option is recommended for small, limited-scale builds, such as one-off buil
 
 Self-hosted local build infrastructure is available with all CI plans. To learn more, go to [Set up a local runner build infrastructure](./define-a-docker-build-infrastructure.md).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes cluster">
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -57,10 +57,10 @@ When running builds in a Kubernetes cluster, each CI stage executes in a pod, an
 
 To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="vms" label="Virtual machines">
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -68,15 +68,15 @@ Your build infrastructure can use VMs from a Cloud provider, including AWS, Micr
 
 To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 ## Supported operating systems and architectures
 

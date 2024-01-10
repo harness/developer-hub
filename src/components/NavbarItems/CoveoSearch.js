@@ -214,14 +214,11 @@ const CoveoSearch = () => {
           className="coveo-script"
           src="https://static.cloud.coveo.com/searchui/v2.10094/js/CoveoJsSearch.min.js"
         ></script>
-        {/* <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script> */}
+
+        {isCoveoLoaded && (
+          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.7/js/coveo_template.js"></script>
+        )}
       </Head>
-      {isCoveoLoaded && (
-        <Head>
-          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.4/js/coveo_template.js"></script>
-          {/* <script src="/coveo_template.js"></script> */}
-        </Head>
-      )}
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>
       <div id="searchResultsCoveo" ref={searchResultsEl}></div>
     </div>

@@ -12,8 +12,8 @@ EC2 process kill fault kills the target processes running on an EC2 instance. Th
 EC2 process kill determines the resilience of applications when processes on EC2 instances are unexpectedly killed (or disrupted).
 
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute the fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - The EC2 instance should be in healthy state
 - The target processes should exist in the VM.
 - SSM agent is installed and running in the target EC2 instance.
@@ -31,9 +31,9 @@ EC2 process kill determines the resilience of applications when processes on EC2
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
-- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -85,7 +85,11 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
+
  <h3>Mandatory tunables</h3>
     <table>
       <tr>
@@ -96,7 +100,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -106,7 +110,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> PROCESS_IDS </td>
         <td> Process IDs of the target processes provided as comma-separated values. </td>
-        <td> For example, 183,253,857. </td>
+        <td> For example, 183,253,857. For more information, go to <a href="#process-ids"> process IDs.</a></td>
       </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -119,12 +123,12 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

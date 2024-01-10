@@ -15,6 +15,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 * Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 * Go to [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
 * Go to [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
+* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials).
 * Make sure you have set up an Azure account.
 * Make sure you have **View** and **Create/Edit** permissions for secrets.
 
@@ -29,6 +30,10 @@ Here's a visual summary:
 ## Limitations
 
 * Key Vault stores and manages secrets as sequences of octets (8-bit bytes), with a maximum size of 25k bytes each. For more information, go to [Azure Key Vault secrets](https://docs.microsoft.com/en-us/azure/key-vault/secrets/about-secrets).
+
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
 
 ## Create an Azure Reader role
 
@@ -69,7 +74,7 @@ In the **Select** drop-down, select the name of your Azure App registration.
 
 ![](../../secrets/static/azure-key-vault-06.png)
 
-Click **Save**.
+Select **Save**.
 
 On the **Access control (IAM)** page, select the **Role assignments** tab. Make sure your new role now appears under the **Reader** group.
 
@@ -172,7 +177,11 @@ To configure the details for your Azure Key Vault connector, you can do one of t
    This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.
    :::
 
-   5. Click **Continue**.
+5. Optional: Deselect **Purge Secrets**.
+
+   This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
+
+6. Select **Continue**.
 
 ### Reference JSON secrets
 
@@ -196,20 +205,19 @@ import Refjson from '/docs/platform/shared/reference-via-json.md';
 
 ## Set up delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this Connector. Click **Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this Connector. Select **Continue**.
 
 ## Set up vault
 
-Click **Fetch Vault**.
+Select **Fetch Vault**.
 
 After a slight delay, the **Vault** drop-down list populates with vaults corresponding to your client secret. Select the Vault you want to use.
 
-Click **Save and Continue**.
+Select **Save and Continue**.
 
 ## Test connection
 
-Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.
-
+Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
 :::important
 Important: Harness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  

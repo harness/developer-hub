@@ -1,14 +1,14 @@
 ---
 title: Build and Push to GCR (Pending deprecation)
 description: Use a CI pipeline to build and push an image to GCR.
-sidebar_position: 200
+sidebar_position: 50
 helpdocs_topic_id: gstwrwjwgu
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::caution
+:::warning
 
 Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr). The Build and Push to GCR step is pending deprecation. Instead, use the [Build and Push to GAR step](./build-and-push-to-gar.md).
 

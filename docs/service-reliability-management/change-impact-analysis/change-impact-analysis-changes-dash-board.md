@@ -19,7 +19,7 @@ The Changes dashboard is divided into the following sections:
 - Changes Timeline
 - Changes list
 
-<docimage path={require('./static/change-impact-changes-dashboard.png')} />
+<DocImage path={require('./static/change-impact-changes-dashboard.png')} />
 
 #### Filters
 
@@ -38,11 +38,11 @@ The **Changes Timeline** section shows a graphical representation of all the cha
 
 You can hover over a change event icon to see the details.
 
-<docimage path={require('./static/change-impact-hover-change-events.png')} />
+<DocImage path={require('./static/change-impact-hover-change-events.png')} />
 
 To view the change details for a specific time slot, select the time slot on the Changes timeline. A time window appears with the details of all the changes that occurred in that specific time slot. You can change the time slot by using the handles.
 
-<docimage path={require('./static/change-impact-change-event-timewindow.png')} />
+<DocImage path={require('./static/change-impact-change-event-timewindow.png')} />
 
 
 #### Changes list
@@ -55,7 +55,7 @@ The Changes list displays all the change events along with the following details
 - **TYPE**: Type of the change source. For example, infrastructure.
 - **SOURCE**: Name of the change source. For example, K8sCluster.
 
-<docimage path={require('./static/change-impact-changes-list.png')} />
+<DocImage path={require('./static/change-impact-changes-list.png')} />
 
 
 ### View change event details
@@ -71,5 +71,5 @@ The change event details screen appears. It displays the following details:
 
 You can hover over the timeline to view the change event details.
 
-<docimage path={require('./static/change-impact-change-event-details.png')} />
+<DocImage path={require('./static/change-impact-change-event-details.png')} />
 

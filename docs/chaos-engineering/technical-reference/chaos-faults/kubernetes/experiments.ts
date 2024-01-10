@@ -49,6 +49,18 @@ export const experiments: ExperimentDetails[] = [
     tags: ["node"],
     category: "kubernetes",
   },
+  {
+    name: "Node network loss",
+    description: "Node network loss introduces packet loss in the Kubernetes node.",
+    tags: ["node"],
+    category: "kubernetes",
+  },
+  {
+    name: "Node network latency",
+    description: "Node network latency introduces network latency to the Kubernetes node.",
+    tags: ["node"],
+    category: "kubernetes",
+  },
 
 {
     name: "Container kill",

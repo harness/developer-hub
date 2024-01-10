@@ -55,11 +55,9 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions |
 | ---  | ----------- |
 | Templates | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced templates at runtime</li><li>Copy</li></ul> |
-| Governance Policies | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Deployment Freeze | <ul><li>Manage</li><li>Override</li><li>Global</li></ul> |
 | Secrets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced secrets at runtime</li></ul> |
 | Connectors | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced connectors at runtime</li></ul> |
-| Governance Policy Sets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Evaluate: Can evaluate governance policy sets</li></ul> |
 | Variables | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Files | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access</li></ul> |
 | Dashboards | <ul><li>View</li><li>Manage</li></ul> |
@@ -114,6 +112,12 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Applications | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Sync: Deploy applications</li></ul> |
 | Repositories | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
+### Infrastructure as Code
+
+| Resource | Permissions |
+| ---  | ----------- |
+| IACM Workspaces | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Create/Edit Variables</li><li>Delete Variables</li><li>Approve</li><li>Access State</li></ul> |
+
 ### Service Reliability
 
 | Resource | Permissions |
@@ -131,3 +135,14 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Test Targets | <ul><li>View</li><li>Create/Edit</li></ul> |
 | Exemptions | <ul><li>View</li><li>Create/Edit</li><li>Approve/Reject</li></ul> |
 | External Tickets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+
+### Internal Developer Portal
+
+| Resource                | Permissions                                                              |
+|-------------------------|--------------------------------------------------------------------------|
+| Plugins                 | <ul><li>View</li><li>Create/Edit</li><li>Toggle</li><li>Delete</li></ul> |
+| Scorecards              | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
+| Layouts                 | <ul><li>View</li><li>Create/Edit</li></ul>                               |
+| Catalog Access Policies | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
+| Integrations            | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul>        |
+| Advanced Configurations | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |

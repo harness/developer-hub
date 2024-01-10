@@ -16,9 +16,9 @@ Node taint taints the node by applying the desired effect. Only the resources th
 
 :::info note
 - Kubernetes > 1.16 is required to execute this fault.
-- Node specified in the <code>TARGET_NODE</code> environment variable should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
-  - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
-  - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
+- Node specified in the `TARGET_NODE` environment variable should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
+  - Get node names against the applications pods using command `kubectl get pods -o wide`.
+  - Cordon the node using command `kubectl cordon NODENAME`.
 - The target nodes should be in the ready state before and after injecting chaos.
 :::
 
@@ -44,7 +44,7 @@ Node taint taints the node by applying the desired effect. Only the resources th
       <tr>
         <td> TAINT_LABEL </td>
         <td> Label and the effect to be tainted on the application node. </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint/#taint-label"> taint label.</a></td>
+        <td> For more information, go to <a href="#taint-label"> taint label.</a></td>
       </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -69,7 +69,7 @@ Node taint taints the node by applying the desired effect. Only the resources th
 
 ### Taint label
 
-Label and the effect that is tainted on the application node. Tune it by using the `TAINT_LABEL` environment variable.
+Label and the effect to taint on the application node. Tune it by using the `TAINT_LABEL` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

@@ -4,16 +4,10 @@ description: Clone a repository into the CD stage's workspace.
 sidebar_position: 3
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-:::note
-
-Currently, the Git Clone step in Deploy stages is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Add a Git Clone step to clone a repository into the CD stage's workspace.
 
@@ -42,10 +36,10 @@ By cloning the repository, you gain access to the necessary code, scripts, or co
 The Git Clone step uses a containerized step group. For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```
 - step:
@@ -61,19 +55,19 @@ The Git Clone step uses a containerized step group. For more information, go to 
          branch: main
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 1. In your Harness Deploy stage, in **Execution**, select **Add Step**.
 2. Select **Git Clone**.
 3. Configure the steps using the settings described below.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Connector
 

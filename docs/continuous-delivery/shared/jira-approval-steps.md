@@ -10,9 +10,9 @@ Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](/
 
 ### Before you begin
 
-* [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira.md)
-* [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
-* [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
+- [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira.md)
+- [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
+- [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 
 ### Visual Summary
 
@@ -20,18 +20,18 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 
 <!-- Video:
 https://www.youtube.com/embed/xVeICozz4lU-->
-<docvideo src="https://www.youtube.com/embed/xVeICozz4lU" />
+<DocVideo src="https://www.youtube.com/embed/xVeICozz4lU" />
 
 ### Limitations
 
-* Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
+- Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 
 ### Review: Jira Approval Stages vs Steps
 
 You can use Jira Approvals in two ways:
 
-* **Jira Approval step:** you can add a Jira Approval step to any CD or Approval stage.
-* **Jira Approval stage:** the Jira Approval stage includes Jira Create, Jira Approval, and Jira Update steps:
+- **Jira Approval step:** you can add a Jira Approval step to any CD or Approval stage.
+- **Jira Approval stage:** the Jira Approval stage includes Jira Create, Jira Approval, and Jira Update steps:
 
 ![](./static/adding-jira-approval-stages-08.png)
 
@@ -43,8 +43,8 @@ The Jira Create and Jira Update steps are described in other topics. This topic 
 
 See:
 
-* [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
-* [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
+- [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
+- [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 
 ### Step 1: Add a Jira Approval Step
 
@@ -75,9 +75,9 @@ In **Issue Key**, you can use an expression to reference the issue key from anot
 <details>
 <summary>Example pipeline</summary>
 
-Here's an example pipeline showing a Jira Create step (with the Id `Jira_Create`) and two subsequent Jira Update steps, JiraUpdate_1 and JiraUpdate_2. 
+Here's an example pipeline showing a Jira Create step (with the Id `Jira_Create`) and two subsequent Jira Update steps, JiraUpdate_1 and JiraUpdate_2.
 
-JiraUpdate_1 references the issue key from the Jira Create step using the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`. 
+JiraUpdate_1 references the issue key from the Jira Create step using the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`.
 
 JiraUpdate_2 references the issue key from JiraUpdate_1 using the expression `<+execution.steps.JiraUpdate_1.spec.issueKey>`, but it could also use the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`.
 
@@ -134,7 +134,6 @@ pipeline:
                     fields: []
                   timeout: 10m
         tags: {}
-
 ```
 
 </details>
@@ -143,8 +142,7 @@ Here's a video that demonstrates how to pass an issue key:
 
 <!-- Video:
 https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7-->
-<docvideo src="https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7" />
-
+<DocVideo src="https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7" />
 
 The expression follows the format `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>`.
 
@@ -157,25 +155,27 @@ The Jira Create or Jira Update step you want to reference must be **before** the
 There are two ways to get the information for the expression:
 
 - **Use the standard expression:** In the Jira Update step **Issue Key**, select **Expression**, and then paste the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>` with the correct `STAGE_ID` and `STEP_ID` values for the Jira Create step that creates the issue key.
-  
-  ![picture 0](static/f1e2ce091ba77fae22dbafbd06e9e2a994a13850118aa1700043c126f53eda7c.png)  
+
+  ![picture 0](static/f1e2ce091ba77fae22dbafbd06e9e2a994a13850118aa1700043c126f53eda7c.png)
 
   :::tip
-  
+
   When you have the Jira **Create** step open in Pipeline Studio, you can copy the `STAGE_ID` and `STEP_ID` values from the browser URL: `stageId=STAGE_ID&sectionId=EXECUTION&stepId=steps.0.step.STEP_ID`.
-  
-    For example, `stageId=Jira_Stage&sectionId=EXECUTION&stepId=steps.0.step.Jira_Create`.
-  
+
+  For example, `stageId=Jira_Stage&sectionId=EXECUTION&stepId=steps.0.step.Jira_Create`.
+
   :::
+
 - **Copy the expression from an executed step:** Select a successful execution, and click the Jira Create step in the execution.
+
   - Click the **Output** tab, locate the **Key** setting, and click the copy button.
-  
-  ![](./static/adding-jira-approval-stages-09.png)  
-  
+
+  ![](./static/adding-jira-approval-stages-09.png)
+
   Now you have the expression that references the issue key from this step.
-  
+
   Go back to your Jira Update step. You can just select **Edit Pipeline**.
-  
+
   In **Issue Key**, select **Expression**.
 
   ![](./static/adding-jira-approval-stages-10.png)
@@ -208,8 +208,8 @@ If you add rejection criteria it is used in addition to the settings in **Approv
 
 In Advanced, you can use the following options:
 
-* [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+- [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+- [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### Step 3: Apply and Test
 
@@ -234,22 +234,22 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 ![](./static/adding-jira-approval-stages-13.png)
 
 `Status` is an issue field. You can use any issue field.
-  
- If a field in the JEXL criteria includes spaces, enclose the field in quotation marks, as shown in the following example:
+
+If a field in the JEXL criteria includes spaces, enclose the field in quotation marks, as shown in the following example:
 
 `<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
 
 ### Approval variables
 
-After an approval is granted, [<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.     
+After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.
 
 ### Notes
 
-* To add comments in you can use **Comment** key. Use `\\` for line breaks.
+- To add comments in you can use **Comment** key. Use `\\` for line breaks.
 
 ![](./static/adding-jira-approval-stages-14.png)
 
 ### See also
 
-* [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)
-* [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)
+- [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)
+- [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)

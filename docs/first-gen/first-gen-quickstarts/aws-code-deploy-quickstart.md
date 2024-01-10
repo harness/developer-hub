@@ -126,7 +126,7 @@ Download the Linux SampleApp from AWS. This sample contains the required appspec
 
 You can find a list of all the download locations in step 19 of [Step 2: Deploy the Application to the Amazon EC2 Auto Scaling Group](https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorials-auto-scaling-group-create-deployment.html#tutorials-auto-scaling-group-create-deployment-console). Here is an example:
 
-<http://s3.amazonaws.com/aws-codedeploy-us-east-1/samples/latest/SampleApp_Linux.zip>
+[http://s3.amazonaws.com/aws-codedeploy-us-east-1/samples/latest/SampleApp_Linux.zip](http://s3.amazonaws.com/aws-codedeploy-us-east-1/samples/latest/SampleApp_Linux.zip)
 
 Once the file is downloaded, upload it to your S3 bucket. When you're done your bucket will look something like this:
 

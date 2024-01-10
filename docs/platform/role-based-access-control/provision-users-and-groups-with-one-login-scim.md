@@ -14,7 +14,7 @@ If OneLogin is your identity provider, you can efficiently provision and manage 
 
 This topic describes how to use a OneLogin SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both OneLogin and Harness.
 
-:::caution
+:::warning
 
 With the OneLogin SCIM integration, don't change provisioned users' email addresses in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 
@@ -62,7 +62,7 @@ To allow users to log in through your OneLogin SCIM integration, you must also s
 
 ## Provision individual users
 
-:::caution
+:::warning
 
 With the OneLogin SCIM integration, don't change a provisioned user's email address in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 
@@ -102,7 +102,7 @@ If an error prevents adding, deleting, or updating an individual user in Harness
 
 ## Provision OneLogin roles as Harness user groups
 
-:::caution
+:::warning
 
 With the OneLogin SCIM integration, don't change a provisioned user's email address in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 

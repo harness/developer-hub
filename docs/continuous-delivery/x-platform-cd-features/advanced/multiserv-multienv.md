@@ -137,7 +137,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Make sure that the feature flags `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -174,7 +174,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Make sure that the feature flags `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -226,8 +226,6 @@ Here you can see two service deployments run serially on the same infrastructure
 ## Propagating multiple services
 
 By default, you cannot propagate the multiservices from one stage to a subsequent stage.
-
-Currently, to enable multiservice propagation, you must have the Harness feature flag `CDS_MULTI_SERVICE_PROPAGATION` enabled in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 ## Using environment groups
 

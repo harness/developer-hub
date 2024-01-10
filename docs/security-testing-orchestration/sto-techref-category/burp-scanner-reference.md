@@ -11,9 +11,10 @@ To set up a Burp scan:
 
 1. Create a CI Build or Security Tests stage,
 2. Add a [Burp](#burp-step-configuration) or a [Security](#security-step-settings-deprecated)
-3. Configure the step as specified in the following sections. 
+3. Configure the step as specified in the following sections.
 
-<details><summary>Burp scan configuration in Security step</summary>
+<details>
+<summary>Burp scan configuration in Security step</summary>
 
 ![](./static/burp-security-scan-step.png)
 
@@ -21,20 +22,27 @@ To set up a Burp scan:
 
 ## Important notes for running Burp scans in STO
 
-
-
-
 ### Root access requirements 
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
 
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+
 ## Burp step configuration
 
-<details><summary>Orchestrated scan in a Burp scanner template</summary>
+<details>
+<summary>Orchestrated scan in a Burp scanner template</summary>
 
 ![](./static/burp-scanner-template.png)
 
@@ -44,11 +52,11 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 #### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -58,9 +66,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -99,9 +107,9 @@ Make sure that you give unique, descriptive names for the target and variant. Th
 
 ##### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-```
+
 
 <a name="scan-type"></a>
 <StoSettingScanTypeInst />
@@ -110,9 +118,9 @@ import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -120,9 +128,9 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
@@ -157,9 +165,9 @@ Use this setting to specify a specific scan to ingest. If this is not specified,
 
 #### Domain
 
-```mdx-code-block
+
 import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
-```
+
 <StoSettingInstanceDomain />
 
 <!-- ============================================================================= -->
@@ -167,9 +175,9 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 
 #### Protocol
 
-```mdx-code-block
+
 import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
-```
+
 
 <StoSettingInstanceProtocol />
 
@@ -178,9 +186,9 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 
 #### Port
 
-```mdx-code-block
+
 import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
-```
+
 
 <StoSettingInstancePort />
 
@@ -189,9 +197,9 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 
 #### Path
 
-```mdx-code-block
+
 import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
-```
+
 
 <StoSettingInstancePath />
 
@@ -209,9 +217,9 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -219,18 +227,18 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -269,17 +277,17 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Instance scan settings
 
-```mdx-code-block
+
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-```
+
 
 <StoLegacyInstance />
 
 #### Orchestration scan settings
 
-```mdx-code-block
+
 import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
-```
+
 
 <StoLegacyOrch />
 
@@ -301,15 +309,15 @@ The following settings are required for Security steps where the `policy_type` i
 
 #### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />

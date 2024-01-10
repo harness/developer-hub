@@ -2,13 +2,13 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-11-29T10:00
+date: 2024-01-02T10:00
 sidebar_position: 4
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
 
@@ -32,6 +32,111 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 </details>
+
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
+## January 2024
+
+### Harness version 1.17.8, Harness Delegate version 23.12.82000
+
+#### Fixed issues
+
+- For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
+
+   All special characters except `.`, `-`, and non-leading `$` and digits `0` through `9` are removed. 
+
+   **Example 1:** For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the `identifier`: `Harness_GroupNextGen_First`.
+
+   **Example 2:** For a user group in SCIM with the name `123#One.$Two.$Three.123`, the user group created in Harness will have the `identifier`: `One_$Two_$Three_123`.
+
+   The existing behavior of `.` and `-` changed to `_` has been retained.
+
+   The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
+
+### Version 23.12.81811
+
+#### Hotfix
+
+- Added support for the Tanzu application service Client ID and Secret ID via env variables in the delegate. (CDS-88086)
+
+   You can now create a Tanzu connector by setting the `AS_REFRESH_TOKEN_CLIENT_ID`, `TAS_REFRESH_TOKEN_CLIENT_SECRET`, `ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID` parameters, and providing the Refresh token. The connector will generate a Refresh token using the Client ID and Secret ID.
+
+## December 2023
+
+### Versions 23.12.81411, 23.12.81604, 23.12.81806
+
+#### Delegate security hotfix
+
+- Added additional log sanitization for Git connector flows.
+
+   If you are running delegate versions 23.11.814xx or 23.11.816xx, upgrade to delegate version 23.12.81604. If you are running version 23.12.818xx, upgrade to delegate version 23.12.81806 or later.
+
+### Harness version 81820, Harness Delegate version 23.12.81803
+
+#### Early access features
+
+- If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact. Updating existing green services is beneficial because new containers come up before old ones go down. For more information, go to [Update green services](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services). (CDS-82763)
+
+   Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
+
+#### Fixed issues
+
+- For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
+
+  This issue has been fixed. Harness now cleans up the kubeconfig token it creates during deployment or instance sync executions.
+
+  To receive this fix, upgrade your delegate to the latest delegate version.
+
+-  If instance refresh during an ASG deployment took too much time and timed out, a rollback was triggered. If the instance refresh was still in progress when the rollback was triggered, the rollback failed. (CDS-83821)
+
+  This issue has been fixed.
+
+- When streaming log messages from PowerShell scripts, Harness streamed only those console logs that had INFO and ERROR severity levels. (CDS-84570, ZD-53860)
+
+  This issue has been fixed. Now, Harness forwards console logs that have INFO, WARNING, DEBUG, and ERROR severity levels.
+
+- Harness printed logs from the Delete Stack step in the reverse order. (CDS-84744, ZD-53865)
+
+  This issue has been fixed.
+
+- The Jenkins step failed when attempting to resolve secrets in expressions used in its job parameters, and the following message was displayed: `Error occurred while starting Jenkins task java.lang.IllegalArgumentException: Illegal character in query at index` (CDS-84747, ZD-53836)
+
+  The issue has been resolved.
+
+- If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
+
+  This issue has been fixed. The delegate logs now include a more meaningful message.
+
+- There was an issue with the filtering of items that had tags on the delegate list page. This was resolved by adding an implicit tag before filtering the items in the UI. (PL-42743)
+
+- When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
+
+   This issue has been resolved, and the UI now displays "User added successfully".
+  
+### Version 23.12.81809
+
+#### Hotfix
+
+- Fixed an issue where GitHub Issue Comment event triggers were failing when used with GitHub Enterprise Server. (CDS-85419)
+
+### Version 23.12.81808
+
+#### Hotfix
+
+- Fixed an issue where Shell Script steps with SSH were failing with `Error while reading variables to process Script Output. Avoid exiting from script early: 2: No such file` for newer delegate versions. (CDS-87415, ZD-55629, ZD-55690)
+
+### Version 23.12.81804
+
+#### Hotfix
+
+- You can now use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
+
+:::info note
+Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 ## November 2023
 
@@ -201,6 +306,8 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 #### New features and enhancements
 
+- You can now configure the delegate logging level by setting the `LOGGING_LEVEL` environment variable. Valid values are `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, and `OFF`. If an invalid value is specified, the logging level defaults to `DEBUG`. If no value is specified, the logging level defaults to `INFO`. (PL-41644, ZD-51430)
+
 - When you [configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. (CI-9707)
    * For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
    * Both CI build pods and the SCM client on the delegate support this method.
@@ -227,6 +334,18 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
   This issue has been fixed.
 
 - The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
+
+### Version 23.12.81210
+
+#### Hotfix
+
+- GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618, ZD-54673)
+
+### Version 23.10.81203
+
+#### Hotfix
+
+- Added IRSA support for downloading S3 artifacts using WinRm/SSH. (CDS-81276, ZD-51938)
 
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
@@ -264,13 +383,13 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
 - When a [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) encounters a cert error, the error message shown in the Harness UI is now more informative. (CI-8509)
 
-- Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/viewing-builds#source-code-repository-links) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. (CI-9835, ZD-51754, ZD-51758, ZD-51763)
+- Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. (CI-9835, ZD-51754, ZD-51758, ZD-51763)
 
 - Fixed an issue where the latest delegate version was not reflected in the latest supported delegate version API. (PL-41151)
 
    For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-### Version 81015
+### Version 23.11.81015
 
 #### Hotfix
 
@@ -289,6 +408,14 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
 Harness NextGen release 80811 includes the following changes for the Harness Delegate.
 
+:::danger Breaking change
+
+When using the Terragrunt **All Modules** **Module Configuration**, the Terragrunt Plan and Apply commands don't include the  `--terragrunt-include-external-dependencies` CLI options flag. (CDS-87234)
+
+If your Terragrunt configuration has module dependencies and you want to target all dependencies, use CLI options from the corresponding Plan or Apply step to add the `--terragrunt-include-dependencies` flag.
+
+:::
+
 #### New features and enhancements
 
 - Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
@@ -303,6 +430,8 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 -->
 
 - Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+
+- Terragrunt steps now support CLI options flags.
 
 #### Fixed issues
 
@@ -400,6 +529,7 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 
 - Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
 
+
 ### Version 23.09.80512
 
 #### Hotfix
@@ -484,7 +614,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 - Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for pipelines, InputSets, and templates while using the [Edit Git details](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#edit-git-details-for-a-pipeline) feature. (CDS-75828)
 
-- Fixed an issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+- Fixed an issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a \<=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
 - Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
 
@@ -760,8 +890,6 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 
 - Added a new field in the release history for Blue Green deployments to differentiate between environments. (CDS-69961)
 
-  Enable the feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG` to leverage this feature. 
-
   This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
 
   Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
@@ -791,7 +919,7 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 
   When a multi-line string was passed as input for a child pipeline, the string was being converted to a single line. 
 
-  This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structures properly to process pipeline YAML and user inputs. Enable the feature flag, `PIE_PROCESS_ON_JSON_NODE` to leverage this fix.
+  This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structures properly to process pipeline YAML and user inputs.
 
 - Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
 
@@ -825,8 +953,6 @@ Harness NextGen release 79516 includes the following changes for the Harness Del
 #### Early access
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
-  
-  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
 
   This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
 

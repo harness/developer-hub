@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -31,23 +31,40 @@ The following diagram illustrates a CI build farm. The [Harness Delegate](/docs/
 
 ## Prepare the Azure VM
 
-These are the requirements to configure an Azure Application and VM. This VM is the primary VM where you will host your Harness Delegate and runner. You must have access to Azure and permission to create Azure Applications and VMs.
+These are the requirements to configure an Azure VM application, Entra ID app registration, and Azure VM. This VM is the primary VM where you will host your Harness Delegate and runner. You must have access to Azure and permission to create Azure applications, register applications in Entra ID, and create Azure VMs.
 
-1. In Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and create a VM to host your Harness Delegate and runner. Select a machine type with 4 vCPU and 16 GB memory or more. Harness recommends the following machine images:
+1. In Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and create a VM to host your Harness Delegate and runner. Select a machine type with 4 vCPU and 16 GiB memory or more. Harness recommends the following machine images:
 
    * [Ubuntu 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview)
    * [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22)
 
-2. Configure the VM to allow ingress on ports 22 and 9079.
-3. If you want to run Windows builds and be able to RDP into your build VMs, you must also allow ingress on port 3389.
-4. Create an Azure Application with the Owner role assigned to your Azure VM.
+2. Create a resource group for your VM.
+3. Configure the VM to allow ingress on the following:
 
-   To assign a role to your VM, log in to Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), select your VM, and go to **Access Control (IAM)**.
+   * Port 22 for Linux for SSH login.
+   * Port 3389 if you want to run Windows builds and be able to RDP into your build VMs.
+   <!-- Port 9079 not required? -->
 
-5. Make sure the Azure Application is a Contributor on the subscription.
-6. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and launch your Azure VM.
-7. [Install Docker](https://docs.docker.com/desktop/vm-vdi/) on the VM.
-8. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM.
+4. Install Docker and Docker Compose on the VM.
+
+   1. To install Docker on Windows, you must enable [Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) or [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) on your Azure VM.
+   2. Follow the Microsoft documentation to [prep Windows for containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce).
+   3. Install [Docker](https://docs.docker.com/desktop/vm-vdi/) and [Docker Compose](https://docs.docker.com/compose/install/) on the VM.
+
+5. [Create a VM application](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to?tabs=portal#create-the-vm-application), and assign your VM app to the **Contributor** role for your Azure subscription.
+
+   For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+
+6. Go to [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/) and [register your VM application](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
+7. Assign your Azure VM to the **Owner** role for your VM application.
+
+   1. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and select your Azure VM.
+   2. Select **Access control (IAM)**, and select **Add role assignment**.
+   3. On the **Role** tab, select the **Owner** role, and then select **Next**.
+   4. On the **Members** tab, select **User, group, or service principal**, select **Select members**, and then select the VM app that you registered in Entra ID.
+   5. Select **Next**, and then select **Review + assign**.
+
+   For more information, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
 
 ## Configure the Drone pool on the Azure VM
 
@@ -59,15 +76,16 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
    mkdir /runner
    cd /runner
    ```
+
 2. In the `/runner` folder, create a `pool.yml` file.
-3. Modify `pool.yml` as described in the following examples and the [Pool settings reference](#pool-settings-reference).
+3. Modify `pool.yml` as described in the [pool.yml examples](#poolyml-examples) and the [Pool settings reference](#pool-settings-reference).
 
 ### pool.yml examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="ubuntu" label="Ubuntu 18.04 pool.yml" default>
-```
+
 
 ```yaml
 version: "1"
@@ -82,15 +100,15 @@ instances:
       arch: amd64
     spec:
       account:
-        client_id: XXXXXX ## Your Azure Application ID. Required for the runner to be able to create new VMs.
+        client_id: XXXXXX ## Required for the runner to be able to create new VMs.
         client_secret: XXXXX ## Required for the runner to be able to create new VMs.
         subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
-        tenant_id: XXXXXX ## Your Directory ID. Required for the runner to be able to create new VMs.
-      location: eastus2 ## To minimize latency, use the same region as the delegate VM.
+        tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
+      location: eastus2 ## To minimize latency, use the same region as your Azure VM.
       size : Standard_F2s
       tags:
         tagName: tag
-      image:
+      image: ## Azure VM image specs to use for build VMs.
         username: azureuser
         password: XXXXXXX
         publisher: Canonical
@@ -99,10 +117,10 @@ instances:
         version: latest
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="windows" label="Windows Server 2019 pool.yml">
-```
+
 
 ```yaml
 version: "1"
@@ -114,15 +132,15 @@ instances:
     os: windows
   spec:
     account:
-      client_id: XXXXXX ## Your Azure Application ID. Required for the runner to be able to create new VMs.
+      client_id: XXXXXX ## Required for the runner to be able to create new VMs.
       client_secret: XXXXX ## Required for the runner to be able to create new VMs.
       subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
-      tenant_id: XXXXXX ## Your Directory ID. Required for the runner to be able to create new VMs.
-    location: eastus2 ## To minimize latency, use the same region as the delegate VM.
+      tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
+    location: eastus2 ## To minimize latency, use the same region as your Azure VM.
     size: Standard_F2s
     tags:
       tagName: tag
-    image:
+    image: ## Azure VM image specs to use for build VMs.
       username: XXXXXXX
       password: XXXXXXX
       publisher: MicrosoftWindowsServer
@@ -131,10 +149,10 @@ instances:
       version: latest
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Pool settings reference
 
@@ -152,14 +170,14 @@ The `account` settings (`client_id`, `client_secret`, `subscription_id`, and `te
 | `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
 | `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
 | `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
-| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your Azure application ID. To find the client ID in Azure, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`client_secret`: To create a client secret, go to your app in Azure, and then select **Certificates and Secrets**.</li><li>`subscription_id`: To find the subscription ID in Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your delegate VM.</li><li>`tenant_id`: Your Directory ID. To find the tenant ID in Azure, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li></ul></li><li>`image`: The image type to use for the build VM.</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
+| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your VM application's client ID from the Entra ID app registration. To find the client ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Application (client) ID** on the **Overview** page.</li><li>`client_secret`: To create a client secret, go to your app in Entra ID, and then select **Certificates and Secrets**.</li><li>`subscription_id`: The Azure subscription ID where your VM application is a Contributor.</li><li>`tenant_id`: Your Entra directory ID. To find the tenant ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Directory (tenant) ID** on the **Overview** page.</li></ul></li><li>`image`: The image type to use for the build VM. You can use your own custom-created image or use one from the [Azure VM image list](https://az-vm-image.info/).</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
 
 ## Start the runner
 
 [SSH into your Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-ssh?tabs=azurecli) and run the following command to start the runner:
 
 ```
-$ docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
 This command mounts the volume to the Docker container providing access to `pool.yml` to authenticate with Azure. It also exposes port 3000 and passes arguments to the container.
@@ -234,10 +252,10 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In Harness, go to the CI pipeline that you want to use the Azure VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
@@ -247,12 +265,12 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -274,7 +292,7 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
             ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

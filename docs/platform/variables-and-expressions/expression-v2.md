@@ -63,7 +63,7 @@ For example, consider a pipeline with two stages. In the second stage, add a She
 
 In the pipeline execution page, select the **Input** section of the Shell Script step in the second stage, and then copy the JSON.
 
-<docimage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
+<DocImage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
 
 ## Write expressions using JSON
 
@@ -463,8 +463,8 @@ To use JQ:
 * With container steps, your images must support JQ.
 * Your Harness Delegate must support JQ if your pipeline has a Shell Script step. For more information, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
 
-  <details>
-  <summary>Install JQ on Harness Delegate</summary>
+<details>
+<summary>Install JQ on Harness Delegate</summary>
 
   1. Open the `delegate.yaml` in a text editor.
   2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
@@ -486,7 +486,7 @@ To use JQ:
       apt-get install jq -y
      ```
 
-  </details>
+</details>
 
 Some JQ use cases are demonstrated in the following sections. These examples use the following sample pipeline.
 

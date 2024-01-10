@@ -1,14 +1,16 @@
 ---
-title: Test splitting for TI
+title: Split tests (parallelism) with TI
 description: Use test splitting (parallelism) to optimize TI.
 sidebar_position: 60
 ---
 
 <!-- Test splitting for python requires `junit_family=xunit1` in the code repo's `pytest.ini` file, or `-o junit_family="xunit1"` in the Build Arguments. CI-9225 automatically includes the build argument, so manual inclusion is no longer required. However, if they use their own reporting (to be used elsewhere than Harness) in pytest.ini, it is overridden. I am not sure if this caveat needs to be documented yet. -->
 
-You can enable [parallelism and test splitting](../speed-up-ci-test-pipelines-using-parallelism.md) in your **Run Tests** steps to further optimize test times.
+By default, Test Intelligence reduces test time by running only the necessary tests to validate your code changes. You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
 With parallelism, you specify how you want Harness to divide the work for a step or stage. When you use parallelism and test splitting with [Test Intelligence](./set-up-test-intelligence.md), Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
+
+For general information about how parallelism and test splitting work, go to [Split tests (parallelism)](../speed-up-ci-test-pipelines-using-parallelism.md).
 
 <details>
 <summary>Example: Time saved by combining TI with test splitting</summary>
@@ -45,7 +47,7 @@ If you are using the Visual editor, **Parallelism** is found under **Looping Str
 
 For more information about parallelism strategies and optimizing parallelism, go to [Split tests - Define a parallelism strategy](../speed-up-ci-test-pipelines-using-parallelism.md#define-a-parallelism-strategy) and [Split tests - Optimize parallelism](../speed-up-ci-test-pipelines-using-parallelism.md#optimize-parallelism).
 
-:::caution
+:::warning
 
 If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
 

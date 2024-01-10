@@ -11,10 +11,10 @@ redirect_from:
   - /docs/platform/automation/api/add-and-manage-api-keys
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness APIs use API keys to authenticate requests. You can create API keys for your personal account or for [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account). API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
@@ -41,7 +41,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 7. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
 8. Select **Generate Token** and copy the token.
 
-   :::caution
+   :::warning
 
    The token is only displayed once. Store the token somewhere secure that you can access when you make API requests.
 
@@ -53,7 +53,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    <!-- ![](./static/api-quickstart-04.png) -->
 
-   <docimage path={require('./static/api-quickstart-04.png')} />
+   <DocImage path={require('./static/api-quickstart-04.png')} />
 
 ## Create service account API keys and tokens
 
@@ -70,7 +70,7 @@ Use these steps to create an API key and service account token (SAT) for a servi
 9. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
 10. Select **Generate Token** and copy the token.
 
-   :::caution
+   :::warning
 
    The token is only displayed once. Store the token somewhere secure that you can access when you make API requests.
 
@@ -84,20 +84,20 @@ Use these steps to create an API key and service account token (SAT) for a servi
 
 Use these steps to edit the name, description, or tags for an API key. To edit tokens under API keys, go to [edit tokens](#edit-tokens) and [rotate tokens](#rotate-tokens).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="pat" label="Edit personal API keys" default>
-```
+
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, select **More Options** (&vellip;) next to the key you want to edit, and then select **Edit**.
 3. You can edit the name, description, and tags. You can't edit the Id.
 4. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sat" label="Edit service account API keys">
-```
+
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
 2. Select **Service Accounts** in the header, and then select the service account for which you want to edit an API key.
@@ -105,29 +105,29 @@ Use these steps to edit the name, description, or tags for an API key. To edit t
 4. You can edit the name, description, and tags. You can't edit the ID.
 5. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Edit tokens
 
 Use these steps to edit the name, description, tags, and expiration dates of tokens under API keys. You can also [rotate tokens](#rotate-tokens).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="pat" label="Edit personal access tokens" default>
-```
+
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, expand the token that you want to edit, select **More Options** (&vellip;), and then select **Edit**.
 3. You can edit the name, description, tags, and expiration date. You can't edit the Id or the token's value.
 4. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sat" label="Edit service account tokens">
-```
+
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
 2. Select **Service Accounts** in the header, and then select the service account for which you want to edit a token.
@@ -136,29 +136,29 @@ Use these steps to edit the name, description, tags, and expiration dates of tok
 5. You can edit the name, description, tags, and expiration date. You can't edit the ID or the token's value.
 6. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Rotate tokens
 
 As a security best practice, rotate tokens periodically. You can rotate tokens in Harness for symmetric encryption.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="pat" label="Rotate personal access tokens" default>
-```
+
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, expand the token that you want to rotate, select **More Options** (&vellip;), and then select **Rotate Token**.
 3. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
 4. Select **Rotate Token** and copy the token.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sat" label="Rotate service account tokens">
-```
+
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
 2. Select **Service Accounts** in the header, and then select the service account for which you want to rotate a token.
@@ -167,12 +167,12 @@ As a security best practice, rotate tokens periodically. You can rotate tokens i
 5. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
 6. Select **Rotate Token** and copy the token.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-:::caution
+</TabItem>
+</Tabs>
+
+
+:::warning
 
 The token is only displayed once. Store the token somewhere secure that you can access when you make API requests.
 
@@ -186,49 +186,49 @@ After rotating tokens make sure you always use the new token.
 
 Use these steps to delete an API key and all of its tokens. To delete individual tokens under API keys, go to [delete tokens](#delete-tokens).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="pat" label="Edit personal API keys" default>
-```
+
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, select **More Options** (&vellip;) next to the key you want to delete, and then select **Delete**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sat" label="Edit service account API keys">
-```
+
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
 2. Select **Service Accounts** in the header, and then select the service account for which you want to delete an API key.
 3. Select **More Options** (&vellip;) next to the key you want to delete, and then select **Delete**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Delete tokens
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="pat" label="Delete personal access tokens" default>
-```
+
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, expand the token that you want to delete, select **More Options** (&vellip;), and then select **Delete**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sat" label="Delete service account tokens">
-```
+
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
 2. Select **Service Accounts** in the header, and then select the service account for which you want to delete a token.
 3. Select the API key that has the token you want to delete.
 4. Select **More Options** (&vellip;) next to the token you want to delete, and then select **Delete**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

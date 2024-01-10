@@ -2,6 +2,8 @@
 title: Kubernetes deployments overview
 description: High-level view of Harness Kubernetes deployment.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart
 ---
 
 This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
