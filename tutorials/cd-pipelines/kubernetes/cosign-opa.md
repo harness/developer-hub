@@ -69,17 +69,17 @@ Let's use Docker Hub as an example of an image registry.
 3. Tag two versions of the image - one for **dev** and another for **prod** environment:
 
    ```bash
-   docker tag gcr.io/heptio-images/ks-guestbook-demo:0.1 YOUR_DOCKERHUB_USERNAME:guestbook-dev:0.1
+   docker tag gcr.io/heptio-images/ks-guestbook-demo:0.1 YOUR_DOCKERHUB_USERNAME/guestbook-dev:0.1
 
-   docker tag gcr.io/heptio-images/ks-guestbook-demo:0.1 YOUR_DOCKERHUB_USERNAME:guestbook-prod:0.1
+   docker tag gcr.io/heptio-images/ks-guestbook-demo:0.1 YOUR_DOCKERHUB_USERNAME/guestbook-prod:0.1
    ```
 
 4. [Download and install Cosign](https://github.com/sigstore/cosign#installation).
 
 5. ```bash
-   export IMAGE_DEV=YOUR_DOCKERHUB_USERNAME:guestbook-dev:0.1
+   export IMAGE_DEV=YOUR_DOCKERHUB_USERNAME/guestbook-dev:0.1
 
-   export IMAGE_PROD=YOUR_DOCKERHUB_USERNAME:guestbook-prod:0.1
+   export IMAGE_PROD=YOUR_DOCKERHUB_USERNAME/guestbook-prod:0.1
    ```
 
 6. Push the image:
@@ -93,9 +93,9 @@ Let's use Docker Hub as an example of an image registry.
 7. Check your docker repository to obtain the image digest for both images (in the form of **sha256:xxxx...**). It is likely that both images will have the same digest since they were tagged from the same source image. It is recommended to sign the image using a digest instead of a tag. Signing the image using a tag can lead you to sign a different image than intended.
 
    ```bash
-   cosign sign YOUR_DOCKERHUB_USERNAME:guestbook-dev@YOUR_IMAGE_DIGEST
+   cosign sign YOUR_DOCKERHUB_USERNAME/guestbook-dev@YOUR_IMAGE_DIGEST
 
-   cosign sign YOUR_DOCKERHUB_USERNAME:guestbook-prod@YOUR_IMAGE_DIGEST
+   cosign sign YOUR_DOCKERHUB_USERNAME/guestbook-prod@YOUR_IMAGE_DIGEST
    ```
 
 A window will open for both commands for you to sign in to your OIDC provider and, once authenticated, you'll see a success message from Sigstore:
