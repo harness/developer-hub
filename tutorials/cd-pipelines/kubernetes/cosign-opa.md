@@ -212,7 +212,7 @@ This Rego policy denies access unless the "env" value in the input data is "dev"
 
 Save both policies. In Harness, you add Rego policies to a Policy Set and when certain events happen (e.g. saving or running a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action using the Policy Set.
 
-From the **Policies** navigation menu, click on **Policy Sets** and **+ New Policy Set**. Give this policy a name (e.g. `Check Image Sign Policy Set`), select `harness_guestbook_pipeline` for **Entity Type that this policy set applies to**, and `On Run` for **On what event should the policy set be evaluated**. Click **Next**, select **Check Image Digest** and **Check Environment** policies, and click **Finish**.
+From the **Policies** navigation menu, click on **Policy Sets** and **+ New Policy Set**. Give this policy a name (e.g. `Check Image Sign Policy Set`), select `Custom` for **Entity Type that this policy set applies to**, and `On Step` for **On what event should the policy set be evaluated**. Click **Next**, select **Check Image Digest** and **Check Environment** policies, and click **Finish**.
 
 Now, let's go back to the pipeline and click on the **policy_enforcement** step. With all the default settings, select `Check Image Sign Policy Set` for the policy set and add the following in the payload section:
 
