@@ -136,6 +136,16 @@ Your resulting allowlist will impose a further filter on logins to Harness via b
 
 ![](./static/authentication-overview-50.png)
 
+### Allow public access to resources
+
+Public access to resources allows you to grant public access to view Harness resources without requiring authentication. 
+
+:::info note
+
+Currently, with this features, you can allow public access to your pipelines. For more information, go to [Allow public access to executions](/docs/platform/pipelines/allow-public-access-to-executions).
+
+:::
+
 ### Set inactive session timeout
 
 Harness logs a user out of their account after a session timeout if there has been no activity.
