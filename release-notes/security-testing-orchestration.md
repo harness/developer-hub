@@ -103,7 +103,7 @@ You can now scan your repositories and other components used in your code with [
 
 - Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
 
-## October 2023 
+## October 2023
 
 ### Version 1.72.0
 
@@ -111,10 +111,8 @@ You can now scan your repositories and other components used in your code with [
 
 ##### New features and enhancements
 
-
 import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
 import sto_exemptions_table from './static/sto-exemptions-table.png'
-
 
 - You can now provide feedback about the [AIDA-generated remediation step](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) for a selected issue. (STO-6593)
 
@@ -124,10 +122,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   - You can specify a time limit when you request an exemption. (STO-6367, formerly behind feature flag `STO_TIMEBOUND_EXEMPTIONS`)
 
-   
-    
     <img src={sto_exemptions_timebound} alt="Select the time limit for an exemption" height="75%" width="75%" />
-    
 
     The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
@@ -141,17 +136,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
     ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
 
-
-
-#### Early access
-
-- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
-
-  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
-
-  Each account user must sign the EULA only once.
-
-  The setting is inherited at the project scope.
+<!-- EULA RQMT REMOVED -- H4 Early access -- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**). Each account user must sign the EULA only once. The setting is inherited at the project scope. (PL-39723) -->
 
 #### Fixed issues
 
