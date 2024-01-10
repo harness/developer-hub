@@ -93,12 +93,12 @@ Let's use Docker Hub as an example of an image registry.
 7. Check your docker repository to obtain the image digest for both images (in the form of **sha256:xxxx...**). It is likely that both images will have the same digest since they were tagged from the same source image. It is recommended to sign the image using a digest instead of a tag. Signing the image using a tag can lead you to sign a different image than intended.
 
    ```bash
-   cosign sign YOUR_DOCKERHUB_USERNAME/guestbook-dev@YOUR_IMAGE_DIGEST
+   cosign sign YOUR_DOCKERHUB_USERNAME/guestbook-dev@YOUR_IMAGE_DIGEST -a env=dev
 
-   cosign sign YOUR_DOCKERHUB_USERNAME/guestbook-prod@YOUR_IMAGE_DIGEST
+   cosign sign YOUR_DOCKERHUB_USERNAME/guestbook-prod@YOUR_IMAGE_DIGEST -a env=prod
    ```
 
-A window will open for both commands for you to sign in to your OIDC provider and, once authenticated, you'll see a success message from Sigstore:
+Here, the flag `-a` adds an annotation to each signature. A window will open for both commands for you to sign in to your OIDC provider and, once authenticated, you'll see a success message from Sigstore:
 
 ![Cosign verify successful](../static/k8s-cosign-opa-tutorial/cosign_verify_success.png)
 
