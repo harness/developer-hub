@@ -82,6 +82,22 @@ The following deprecated API endpoints will no longer be supported:
 
 ## January 2024
 
+### Version 1.20.x <!--  January x, 2024 -->
+
+#### New features and enhancements
+
+- Grant public access to Harness pipelines
+
+   When you activate the **Allow public resources** authentication setting, pipeline executions for pipelines marked for public view will be accessible without the need to sign in to Harness. You can then mark your pipelines for public view and share pipeline execution URLs.
+
+#### Fixed issues
+
+- Fixed an issue that allowed userGroups with identifiers having invalid characters.
+
+- Intermittent errors occurred when pulling secrets from a custom secret manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
+
+   This issue has been resolved by adding the ability to add a timeout to fetch secrets from a custom provider as part of the custom secret manager configuration. 
+
 ### Version 1.19.6 <!--  January 8, 2024 -->
 
 #### New features and enhancements
