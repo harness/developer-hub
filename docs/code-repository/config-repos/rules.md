@@ -58,8 +58,9 @@ Store your CODEOWNERS file in the root of your code repo, at `docs/CODEOWNERS`, 
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or projects:
+In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups--> within your Harness account<!--, organizations, or projects:-->.
 
+<!--
 * Account: `@accountIdentifier/userOrGroupName`
 * Organization: `@accountIdentifier/orgIdentifier/userOrGroupName`
 * Project: `@accountIdentifier/orgIdentifier/projectIdentifier/userOrGroupName`
@@ -82,23 +83,30 @@ pipeline:
 You could then declare a CODEOWNER at the project level with `@accountID/my_cool_org/my_cool_project/userOrGroupName`.
 
 You can get user and group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
+-->
 
-For example, this CODEOWNERS file declares owners from users and groups in a specific Harness project:
+Declare CODEOWNERS by the email address associated with their Harness user profile.
+
+You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
 ```
 Harness ---
 
-# Global
-*             @accountID/orgID/projectID/projectOwnerGroup
+# Global owner
+* @email
 
-# .lock file
+# Specific file with multiple owners
+Gemfile.lock @email1 @email2
 
-*.lock        @accountID/orgID/projectID/userName
+# Subdirectory owners
+/some_directory/ @email
+/some_directory_2/ @email1 @email2
 
-# Component 1
-/component1/  @accountID/orgID/projectID/userOrGroupName1
+# Workspace owner
+WORKSPACE @email
 
-# Component 2
-/component2/  @accountID/orgID/projectID/userOrGroupName2
+# Wildcards
+**/src/** @email
+*.lock @email
 
 ```
