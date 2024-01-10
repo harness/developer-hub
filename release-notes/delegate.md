@@ -59,7 +59,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- In the HTTP step, when a MTLS server was used, the task was not assigned to a delegate. (CDS-87547)
+- In the HTTP step, when a MTLS server was used, the task was not assigned to a delegate. (CDS-87547, ZD-55531)
 
    This issue has been fixed.
 
