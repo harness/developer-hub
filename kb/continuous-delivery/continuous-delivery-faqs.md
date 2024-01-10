@@ -3285,25 +3285,18 @@ However, please note that the --timeout flag specifies the time to wait for any 
  
 Also, please make sure that your Helm chart includes the necessary readiness probes for your objects to be considered ready by Kubernetes. Harness will wait for the readiness probes to pass before considering the deployment successful.
 
-#### To store my shell script when I use Harness File Store I don’t see any option like Bitbucket, or GitHub.
+#### To store my shell script when I use Harness File Store I don't see any option like Bitbucket, or GitHub.
 As of today, we have only two options to select the shell script provision script. That is inline and Harness file store.
 
 #### How can I specify to use the account connector during migration?
 This config will do that  connector-scope: accountIn case you want to do it connector to connector basis you can refer to this - https://harness.github.io/migrator/advanced/overrides-and-settings
 
 #### How to download pipeline logs based on the given pipeline execution key?
-You can use the cURL command to download pipeline logs based on the given pipeline execution key. Here's an example command:
-```
-curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
-  -X 'POST' \
-  -H 'authorization: <Bearer TOKEN>' \
-  -H 'content-type: application/json' \
-  -H 'x-harness-token: <HARNESS-TOKEN>' \
-  --compressed
-  ```
-Replace ACCOUNT_ID, PIPELINE_EXECUTION_PREFIX_KEY, TOKEN, and HARNESS-TOKEN with your own values. You can find the PIPELINE_EXECUTION_PREFIX_KEY by going to the Builds page in Harness and selecting the pipeline execution you want to download logs for. The TOKEN and HARNESS-TOKEN can be obtained by following the steps.
+
+You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
 
 #### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
+
 The only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact. 
  
 This URL can be used in the file_urls setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
@@ -4372,3 +4365,15 @@ While it's not officially supported, you can obtain all Helm flags used in the S
 #### Why doesn't the pipeline roll back when the Container Step times out?
 
 The Container Step is being deprecated, and support for it will no longer be provided. Instead, we recommend incorporating a step group that is container-based in your pipeline and proceeding to create a Run step. This step will function similarly to the container step, but the rollback will operate as expected.
+
+#### We need to pull deployments events from harness to datadog/custom when any PROD deployment is successful.
+
+You can use Webhook notifications to post the pipeline event to an endpoint and you can review and use the JSON Harness posts to your webhook endpoint
+
+#### Does shell script step uses delegate selector from connector used
+
+By default shell script doesn’t uses the connector selector and task can go to any delegate, if you need to use same delegate you have to specify the selector
+
+####  Can we use command step for custom stage
+
+No this is not supported as of now, as currently command step is only applicable in ssh/winrm type deployment

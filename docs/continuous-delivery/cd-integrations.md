@@ -112,10 +112,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_REMOVE_COMMENTS_FROM_VALUES_YAML</td>
-        <td>Disables the resolving of comments in values.yaml files.</td>
-    </tr>
-    <tr>
         <td>PIE_GITX_OAUTH</td>
         <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Public Preview.</b></td>
     </tr>
