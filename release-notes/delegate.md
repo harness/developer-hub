@@ -55,6 +55,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
 
+### Version 24.01.82002
+
+#### Hotfix
+
+- In the HTTP step, when a MTLS server was used, the task was not assigned to a delegate. (CDS-87547, ZD-55531)
+
+   This issue has been fixed.
+
 ### Version 23.12.81811
 
 #### Hotfix
