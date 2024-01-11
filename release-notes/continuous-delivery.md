@@ -49,6 +49,34 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2024
 
+### Version 1.20.6
+
+
+#### New features and enhancements
+- Infinite filter in saved filter scroll(CDS-82429)
+  - Introduced infinite scrolling to the dropdown, allowing it to retrieve the list of available filters. This was achieved by making an API call to load the next set of filters(100+) when the user scrolls to the end of the current set.
+
+#### Fixed Issues
+
+- Branch Selector Dropdown Not Populating in Harness Code Repo: Issue Arises When Entity is Absent, Resulting in 'No Entity Found' Page (CDS-87788)
+  - Previous Behavior:- When attempting to access an entity stored in the Harness code repository and encountering a "no entity found" page, the branch selector dropdown is not being populated with the branches of the Harness code repository
+  - This issue is now resolved,the API calls are made correctly and branches will now be populated
+
+- Users not able to click hyperlinks in Harness approval message(CDS-87675, ZD-55826)
+  - Previous behavior:- If the user has a message with a http url. The https url is not a clickable url when the message is displayed in the approval step.
+  - The issue is fixed by adding logic to render clickable links within the text i.e if any URLs or hyperlink is present in the approval message it will convert them to clickable links. 
+
+- Issues while pulling tags of Images in Github container Registry when they have ``/`` inside artifact name (CDS-87457)
+  - Previous behavior:- While configuring the artifact service source, if the name of the image contained a ``/`` then the version of the images could not be pulled. This has been fixed; images versions are not retrieved.
+  - The issue was resolved by replacing ``/`` in the package name to ``%2F``, without this rest API was failing to list the tags.
+
+- Chained Pipeline Issue: APIs Not Triggered for Repository and Package Fetch During Runform When Dependent Fields Are Fixed, Resulting in Missing Data (CDS-87140)
+  - Previous behavior:- In chained pipeline when dependent fields were made runtime and was trying to fetch data during runform, APIs calls were made  to fetch repository and package. But when a dependent field is made fixed in a chained pipeline and then we try to fetch repositories and packages during reforms APIs calls are not made
+  - The issue is resolved by not calling the GAR repository and packages API when dependent fields have provided inputs in multiple stages(pipeline,chained pipeline)
+
+
+
+
 ### Version 1.19.6
 
 #### Behavior change
