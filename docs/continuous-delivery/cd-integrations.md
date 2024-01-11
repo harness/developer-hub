@@ -247,4 +247,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
+    <tr>
+        <td>CDS_SCOPE_INFRA_TO_SERVICES</td>
+        <td>Enables the **Scope to Specific Services** option in an infrastructure definition that limits an infrastructure to specific services. <b>This feature is in Beta.</b> </td>
+    </tr>    
 </table>
