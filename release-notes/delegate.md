@@ -1328,3 +1328,5 @@ This release introduces the following security enhancements:
 ##### Harness version 78214, Harness Delegate version 23.01.78101
 
 Harness NextGen release 78214 includes no changed features or fixes for the Harness Delegate.
+
+</details>
