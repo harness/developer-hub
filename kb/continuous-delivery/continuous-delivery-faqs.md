@@ -3288,18 +3288,11 @@ As of today, we have only two options to select the shell script provision scrip
 This config will do that  connector-scope: accountIn case you want to do it connector to connector basis you can refer to this - https://harness.github.io/migrator/advanced/overrides-and-settings
 
 ### How to download pipeline logs based on the given pipeline execution key?
-You can use the cURL command to download pipeline logs based on the given pipeline execution key. Here's an example command:
-```
-curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
-  -X 'POST' \
-  -H 'authorization: <Bearer TOKEN>' \
-  -H 'content-type: application/json' \
-  -H 'x-harness-token: <HARNESS-TOKEN>' \
-  --compressed
-  ```
-Replace ACCOUNT_ID, PIPELINE_EXECUTION_PREFIX_KEY, TOKEN, and HARNESS-TOKEN with your own values. You can find the PIPELINE_EXECUTION_PREFIX_KEY by going to the Builds page in Harness and selecting the pipeline execution you want to download logs for. The TOKEN and HARNESS-TOKEN can be obtained by following the steps.
+
+You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
 
 ### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
+
 The only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact. 
  
 This URL can be used in the file_urls setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
