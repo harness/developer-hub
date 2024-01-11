@@ -8,7 +8,7 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition brings a robust and flexible continuous delivery solution to organizations seeking control over their deployment infrastructure. This reference architecture serves as a guide, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their continuous delivery pipelines with this architecture, ensuring reliability, scalability, and consistent software deployments.
+Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This reference architecture serves as a guide, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with this architecture, ensuring reliability, scalability, and consistent software deployments.
 
 ### Scalability and performance
 
