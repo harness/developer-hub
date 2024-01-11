@@ -36,6 +36,8 @@ Yes, we will provide training resources such as documentation, in product video 
 
 Yes, the user preference settings in Account Settings is available to transition back to old Nav. We encourage users to familiarize themselves with the new interface to take advantage of the improved features and functionalities.
 
+![Radio button to turn off new navigation](kb/platform/static/nav_button.png)
+
 #### What steps are being taken to ensure a smooth transition for users?
 
 We have conducted extensive testing to identify and address potential issues. Additionally, our support team will be available to assist users during the transition period, and we encourage feedback to address any concerns.
