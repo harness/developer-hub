@@ -43,6 +43,10 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 ![](./static/idp-roles.png)
 
+- Added support for persistent platform favourites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
+
+- Enhanced the custom project picker to increase the hard limit of 50. 
+
 ## December 2023
 
 ### Version 0.17.0
