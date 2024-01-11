@@ -26,7 +26,7 @@ A build stage's infrastructure definition, the *build infrastructure*, defines "
 
 ### What kind of build infrastructure can I use? Which operating systems are supported?
 
-Harness has several build infrastructure options that support multiple types of operating systems, architectures, and cloud providers. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+For support operating systems, architectures, and cloud providers, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
 ### Can I use multiple build infrastructures in one pipeline?
 
@@ -1122,7 +1122,7 @@ Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-ca
 
 This typically indicates that the DinD Background step doesn't have sufficient resources. Try modifying the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
 
-You can also [add a parallel Run step to monitor and help debug the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures). For example, in this case it would help to use the Run step to monitor resource consumption by the Background step.
+You can also [add a parallel Run step to monitor and help debug the Background step](./articles/parallel-step-for-logging). For example, in this case it would help to use the Run step to monitor resource consumption by the Background step.
 
 ## Plugins and integrations
 
@@ -1430,7 +1430,7 @@ The step in Harness determines its status based on the exit status received from
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
-Yes. To do this, you can add a step that runs in parallel step to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Resource allocation - Use a parallel step to monitor failures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits#use-a-parallel-step-to-monitor-failures).
+Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](./articles/parallel-step-for-logging).
 
 ### Builds older than 30 days aren't on the Project Overview page.
 

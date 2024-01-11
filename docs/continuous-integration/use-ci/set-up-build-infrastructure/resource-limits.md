@@ -4,45 +4,46 @@ description: Learn about container resource allocation logic and troubleshooting
 sidebar_position: 90
 ---
 
+This topic describes container resource allocation logic, how you can configure resource limits (if possible for your build infrastructure), and troubleshooting issues related to resource allocation.
 
-import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
-import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
+## Build pod resource allocation
 
-
-This topic describes container resource allocation logic, how you can configure resource limits, and troubleshooting for issues related to resource allocation.
+By default, resource requests are always set to the minimum, and additional resources are requested only as needed during build execution, depending on the [resource request logic](#resource-request-logic-and-calculations). Resources are not consumed after a step's execution is done.
 
 * **What are Kubernetes container requests?** Containers are guaranteed to get requests. If a container requests a resource, Kubernetes only schedules it on a node that can give the container the requested resource.
 * **What are Kubernetes container limits?** This defines the upper limit for resource consumption by a Kubernetes container. When the container uses more than the defined limit, Kubernetes evicts the pod.
 
 For more information, go to the Kubernetes documentation on [Kubernetes best practices: Resource requests and limits](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits).
 
-## Build pod resource allocation
-
-By default, resource requests are always set to the minimum, and additional resources are requested only as needed during build execution, depending on the [resource request logic](#resource-request-logic-and-calculations). Resources are not consumed after a step's execution is done. Default resource minimums (requests) and maximums (limits) are as follows:
+Default resource minimums (requests) and maximums (limits) are as follows:
 
 | Component | Minimum CPU | Maximum CPU | Minimum memory | Maximum memory |
 | --------- | ----------- | ----------- | -------------- | -------------- |
 | Steps | 10m | 400m | 10Mi | 500Mi |
 | Add on (execution-related steps on containers in Kubernetes pods) | 100m | 100m | 100Mi | 100Mi |
 
-### Override resource limits
+## Override resource limits
 
 For an individual step, you can use the **Set Container Resources** settings to override the maximum resources limits:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-**Set Container Resources** settings don't apply to self-hosted VM or Harness Cloud build infrastructures.
+:::info
+
+**Set Container Resources** settings aren't available for self-hosted VM or Harness Cloud build infrastructures.
+
+:::
 
 To increase default resource limits across the board, you can contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_INCREASE_DEFAULT_RESOURCES`. This feature flag increases maximum CPU to 1000m and maximum memory to 3000Mi.
 
-### Resource request logic and calculations
+## Resource request logic and calculations
 
 Limit and request values are based on steps being parallel or sequential. Parallel steps sum the resources for each parallel step, and sequential steps take the maximum resources needed amongst the sequential steps.
 
-The total computed resource requirements are set as the limit and request values for the stage container. For example, if total CPU is 600m, then the stage container's memory limit and request values are both set to 600m. This ensures selection of appropriately-sized pods, and it avoids over- or under-utilization of resources. The stage container is also referred to as the Lite Engine.
+The total computed resource requirements are set as the limit and request values for the stage container (also referred to as the Lite-Engine). For example, if total CPU is 600m, then the stage container's memory limit and request values are both set to 600m. This ensures selection of appropriately-sized pods, and it avoids over- or under-utilization of resources.
 
-#### Resource calculation examples
+### Resource calculation examples
 
 <details>
 <summary>Calculation example #1: Sequential steps</summary>
@@ -194,72 +195,13 @@ If the pipeline had more than one Background step, each Background step's resour
 
 ## Troubleshooting
 
-The following troubleshooting guidance addresses some issues you might experience with resource limits or pod evictions. For additional troubleshooting guidance, go to [Troubleshoot CI](../../troubleshoot-ci/troubleshooting-ci.md).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to resource allocation and build infrastructure, such as:
 
-### CI pods appear to be evicted by Kubernetes autoscaling
-
-<Kubevict />
-
-### Use a parallel step to monitor failures
-
-If you need to debug failures that aren't captured in the standard [Build logs](../viewing-builds.md#build-details), you can add two Run steps to your pipeline that run in parallel with the failing step. The Run steps contain commands that monitor the activity of the failing step and generate logs that can help you debug the failing step.
-
-In your pipeline's YAML, add the two debug monitoring steps, as shown in the following example, alongside the failing step, and group the three steps in parallel. Make sure the `timeout` is long enough to cover the time it takes for the failing step to fail; otherwise the debug steps will timeout before capturing the full logs for the failing step.
-
-```yaml
-              - parallel:
-                  - step:
-                      type: Run
-                      name: failing step
-                      ...
-                  - step:
-                      type: Run
-                      name: Debug monitor 1
-                      identifier: debug_monitor_1
-                      spec:
-                        connectorRef: YOUR_DOCKER_CONNECTOR ## Specify your Docker connector's ID.
-                        image: alpine ## Specify an image relevant to your build.
-                        shell: Sh
-                        command: top -d 10
-                      timeout: 10m ## Allow enough time to cover the failing step.
-                  - step:
-                      type: Run
-                      name: Debug monitor 2
-                      identifier: debug_monitor_2
-                      spec:
-                        connectorRef: YOUR_DOCKER_CONNECTOR ## Specify your Docker connector's ID.
-                        image: alpine ## Specify an image relevant to your build.
-                        shell: Sh
-                        command: |-
-                          i=0
-                          while [ $i -lt 10 ]
-                          do
-                              df -h
-                              du -sh *
-                              sleep 10
-                              i=`expr $i + 1`
-                          done
-                      timeout: 10m ## Allow enough time to cover the failing step.
-              - step: ## Other steps are outside the parallel group.
-                  type: Run
-                  name: Run 3
-                  ...
-```
-
-After adding the debug monitoring steps, run your pipeline, and then check the debug steps' [Build logs](../viewing-builds.md#build-details).
-
-:::tip Parallel steps
-
-Your parallel group (under the `-parallel` flag) should only include the two debug monitoring steps and the failing step.
-
-You can arrange steps in parallel in the Visual editor by dragging and dropping steps to rearrange them.
-
-<!-- ![Three steps arranged in parallel in the Pipeline Studio's Visual editor.](./static/parallel-debug-steps.png) -->
-
-<DocImage path={require('./static/parallel-debug-steps.png')} />
-
-:::
-
-### Docker Hub rate limiting
-
-<Dhrl />
+* [CI pods appear to be evicted by Kubernetes autoscaling](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-pods-being-evicted)
+* [Docker Hub rate limiting](/kb/continuous-integration/continuous-integration-faqs/#docker-hub-rate-limiting)
+* [Use a parallel step to monitor failures](/kb/continuous-integration/articles/parallel-step-for-logging)
+* [Can I change the CPU/memory allocation for steps running on Harness cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-change-the-cpumemory-allocation-for-steps-running-on-harness-cloud)
+* [Can I prioritize my build pod if there are resource shortages on the host node?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-set-the-priority-class-level-can-i-prioritize-my-build-pod-if-there-are-resource-shortages-on-the-host-node)
+* [Experiencing OOM on java heap for the delegate](/kb/continuous-integration/continuous-integration-faqs/#experiencing-oom-on-java-heap-for-the-delegate)
+* [Out of memory errors with Gradle](/kb/continuous-integration/continuous-integration-faqs/#out-of-memory-errors-with-gradle)
+* [DinD Background step fails when Docker daemon disconnects or hit quota limit after some time](/kb/continuous-integration/continuous-integration-faqs/#dind-background-step-fails-when-docker-daemon-disconnects-or-hit-quota-limit-after-some-time)

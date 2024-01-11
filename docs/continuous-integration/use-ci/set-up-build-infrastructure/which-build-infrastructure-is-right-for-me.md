@@ -4,18 +4,12 @@ description: Compare Harness-hosted and self-hosted CI build infrastructure opti
 sidebar_position: 10
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 You can run builds on Harness-hosted machines or your own infrastructure.
 
-
-
-<Tabs>
-  <TabItem value="hosted" label="Harness Cloud" default>
-
+## Harness-hosted builds (Harness Cloud)
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -25,16 +19,11 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 
 Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
-
-</TabItem>
-  <TabItem value="selfhosted" label="Self-hosted options">
-
+## Self-hosted builds
 
 Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
 
-
-<Tabs>
-  <TabItem value="local" label="Local" default>
+### Local runners
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -44,10 +33,7 @@ This option is recommended for small, limited-scale builds, such as one-off buil
 
 Self-hosted local build infrastructure is available with all CI plans. To learn more, go to [Set up a local runner build infrastructure](./define-a-docker-build-infrastructure.md).
 
-
-</TabItem>
-  <TabItem value="k8s" label="Kubernetes cluster">
-
+### Kubernetes clusters
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -57,26 +43,13 @@ When running builds in a Kubernetes cluster, each CI stage executes in a pod, an
 
 To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-
-</TabItem>
-  <TabItem value="vms" label="Virtual machines">
-
+### Cloud provider virtual machines
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 Your build infrastructure can use VMs from a Cloud provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
 
 To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
-
-
-</TabItem>
-</Tabs>
-
-
-
-</TabItem>
-</Tabs>
-
 
 ## Supported operating systems and architectures
 
@@ -96,18 +69,18 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 
 | Feature | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted Cloud provider VMs |
 | - | - | - | - | - |
-| Test Intelligence | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Cache Intelligence | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
-| Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
-| [Delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) | ❌ Not supported | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
-| Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| [Cache to S3/GCS](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Multilayer caching](/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) in **Build and Push** steps | ✅ Supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| [Delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) | 🔸 Not applicable | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
+| [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Bring-your-own secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager) | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
-| STO step in Build stage | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
-| STO stage in CI pipeline |  ✅ Supported - Linux | ❌ Not supported  | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
-| Plugins (Containers) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Plugins (Host VM) | ✅ Supported | ❌ Not supported | 🔸 Not applicable | ❌ Not supported |
+| [STO](/docs/security-testing-orchestration) steps/stages | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
+| Plugins | ✅ Supported - Run on containers or host machine | <ul><li>✅ Supported - Run on containers</li><li>❌ Not supported - Run on host machine</li></ul> | <ul><li>✅ Supported - Run on containers</li><li>🔸 Not applicable - Run on host machine</li></ul> | <ul><li>✅ Supported - Run on containers</li><li>❌ Not supported - Run on host machine</li></ul> |
 | [GitHub Actions](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#github-actions) | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
 | [Bitrise Integrations](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#bitrise-integrations) | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
