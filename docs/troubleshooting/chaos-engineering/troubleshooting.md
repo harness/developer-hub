@@ -78,7 +78,7 @@ kubectl delete pods --namespace=<namespace_name> --field-selector=status.phase=F
 
 ## Chaos infrastructure is inactive, how to activate it?
 
-When you try to execute a previously created experiment but the chaos infrastructure is inactive, you can activate it by following the below steps.
+A chaos infrastructure could be inactive due to a variety of reasons. When you try to execute a previously created experiment but the chaos infrastructure is inactive, you can activate it by following the below steps.
 
 ![inactive infra](./static/images/inactive-infra.png)
 
@@ -91,3 +91,61 @@ When you try to execute a previously created experiment but the chaos infrastruc
 * Click **Save** to save your changes, and click **Run** to execute the chaos experiment.
 
 ![save](./static/images/save-n-run.png)
+
+## Unable to connect to Kubernetes infrastructure server
+
+Most times, chaos infrastructure errors are a result of issues with chaos infrsstructure setup. 
+
+### Workaround 
+If you are unable to connect to the Kubernetes infrastructure server, try the following:
+
+* Use **ping** on the subscriber or any other pod to test if the response times for app.harness.io or another URL are reasonable and consistent.
+* Use traceroute on app.harness.io to check the network route.
+* Use **nslookup** to confirm that the DNS resolution is working for app.harness.io.
+* Connect using the IP address for app.harness.io (you can get the IP address using `nslookup`). For example, http://35.23.123.321/#/login.
+* Check for local network issues, such as proxy errors or NAT license limits.
+* For some cloud platforms, like AWS EC2, ensure that the security groups allow outbound traffic on HTTPS 443.
+
+
+## Cluster in GCP has unschedulable pods
+
+GCP may throw an error stating that a cluster has unschedulable pods. This may occur if you don't have sufficient space in your Kubernetes cluster. 
+
+![](../static/troubleshooting-nextgen-00.png)
+
+### Workaround
+Depending on the size of the cluster you are using, without [autoscaling](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) enabled or enough space, your cluster can't run the delegate (remote component that helps access your k8s cluster and inject faults.
+To fix this issue, perform the following steps:
+1. Add more space or turn on autoscaling
+2. Wait for the cluster to restart
+3. Reconnect to the cluster
+4. Now rerun the following command:
+
+```
+$ kubectl apply -f harness-chaos-enable.yml
+```
+
+## Run multiple cluster-scoped chaos infrastructures on same clusters
+
+If the deployment entities are added to and removed from the same cluster, you might have two cluster-scoped chaos infrastructures running on the same cluster.
+
+### Workaround
+**Don't** run multiple cluster-scoped chaos infrastructures on the same cluster. This results in the chaos infrastructures overwriting each other's cluster-level resources.
+
+## Environment variable and secret usage references in source mode of command probe
+
+You can use secrets and environment variables in the [**source mode**](../../chaos-engineering/technical-reference/probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+
+```yaml
+source:
+  env:
+  - name: KEY
+    value: value
+  volumes:
+  - name: vol1
+    secrets:
+    - name: cm1
+  volumeMounts:
+  - name: vol1
+    mountPath: path
+ ```
