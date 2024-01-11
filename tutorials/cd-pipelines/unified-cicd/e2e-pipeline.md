@@ -77,6 +77,12 @@ harness connector --file docker-connector.yaml apply
 
 ## Build the CI stage
 
+<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
+
+:::info
+The 'Run Owasp Tests' step is a placeholder and does not actually run an OWASP scan. This is because this step is part of the Harness STO module, which is not available on free plans.
+:::
+
 Next, let's create the Continuous Integration (CI) pipeline that will do the following:
 
 - Clone the repository
