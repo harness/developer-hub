@@ -24,6 +24,16 @@ The diagram below shows a GitOps-driven CI/CD pipeline. The process involves bui
 
 ![PR Pipeline Architecture](../static/e2e/pr-pipeline-architecture.png)
 
+:::info
+
+Interested in doing this tutorial together? Harness is now offering a hands-on lab where we will guide you
+through this exercise and more. 
+
+* [CI/CD DevDays lab material and guide](https://harness-developer-hub.s3.us-east-2.amazonaws.com/labs/Harness_CI_CD_Dev_Days_Lab_Guide.pdf)
+* [Sign up for CI/CD DevDays](https://www.harness.io/events/harnessdevdays)
+
+:::
+
 ## Pre-requisites
 
 - A Harness free plan. If you don't have one, [sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=cd-devrel).
