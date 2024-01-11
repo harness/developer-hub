@@ -33,7 +33,7 @@ Pod API latency:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to API latency. </td>
-        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>

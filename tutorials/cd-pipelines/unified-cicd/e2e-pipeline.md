@@ -24,6 +24,16 @@ The diagram below shows a GitOps-driven CI/CD pipeline. The process involves bui
 
 ![PR Pipeline Architecture](../static/e2e/pr-pipeline-architecture.png)
 
+:::info
+
+Interested in doing this tutorial together? Harness is now offering a hands-on lab where we will guide you
+through this exercise and more. 
+
+* [CI/CD DevDays lab material and guide](https://harness-developer-hub.s3.us-east-2.amazonaws.com/labs/Harness_CI_CD_Dev_Days_Lab_Guide.pdf)
+* [Sign up for CI/CD DevDays](https://www.harness.io/events/harnessdevdays)
+
+:::
+
 ## Pre-requisites
 
 - A Harness free plan. If you don't have one, [sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=cd-devrel).
@@ -292,11 +302,11 @@ Finally, [create a trigger](https://developer.harness.io/docs/platform/triggers/
 
 ## Test the setup
 
-You can run the pipeline in one of two ways.
+There are two ways to trigger the pipeline:
 
-1. Commit a change any non-`configs` file (e.g. **README.md**) in the **main** branch of https://github.com/GITHUB_USERNAME/harness-gitops-workshop (be sure to replace **GITHUB_USERNAME**) and this will trigger the PR pipeline. Observe that the codebase commit SHA is tracked throughout the pipeline - from the image SHA to the **config.json** of the deployed applications.
-2. Click **Run Pipeline** from the Harness UI and optionally provide any updates to environment config variables.
+* Commit a change any non-`configs` file (such as a `README.md`) to the `main` branch of your GitOps workshop repo (`https://github.com/YOUR_GITHUB_USERNAME/harness-gitops-workshop`) to trigger the PR pipeline. Notice that the codebase commit SHA is tracked throughout the pipeline, from the image SHA to the `config.json` of the deployed applications.
+* Select **Run Pipeline** in the Harness UI. Optionally, you can provide any updates to environment config variables.
 
-A successful pipeline execution should look as follows:
+A successful pipeline execution shows a successful status for each stage in the pipeline.
 
 ![A successful pipeline execution](../static/e2e/successful-execution.png)

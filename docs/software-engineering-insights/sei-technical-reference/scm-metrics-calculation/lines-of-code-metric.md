@@ -1,6 +1,6 @@
 ---
 title: Lines of Code
-description: How is Lines of Code metric calculqted on SEI?
+description: How is Lines of Code metric calculated on SEI?
 sidebar_label: Lines of Code
 sidebar_position: 20
 ---
