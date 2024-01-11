@@ -18,6 +18,31 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## January 2023
+
+### Version 0.18.0
+
+<!-- Jan 11, 2024 -->
+
+🎉 Happy New Year to all our fantastic users! 🎉
+Since it's the first release of the year, we've wrapped up some interesting features for you, including a new Devtools Plugin and revamped RBAC roles.
+
+- **Docs:** [Configuring Layout of IDP Catalog pages](https://developer.harness.io/docs/internal-developer-portal/get-started/layout-deepdive) [Role-based access control (RBAC)](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles)
+
+- **Videos:** [How to set the Owner of a Software Component](https://youtu.be/pQvqWBrXIhk?si=LqkJBDo63we929L4)
+
+#### New features and enhancements
+
+- Added Support for New [Devtools Plugin](https://github.com/backstage/backstage/blob/master/plugins/devtools/README.md)
+
+![](./static/devtools.png)
+
+- Added support for [new custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook), that can execute pipeline with custom webhook based triggers. 
+
+- RBAC is revamped with new roles (IDP Admin and IDP Platform Engineering) and permissions. 
+
+![](./static/idp-roles.png)
+
 ## December 2023
 
 ### Version 0.17.0
