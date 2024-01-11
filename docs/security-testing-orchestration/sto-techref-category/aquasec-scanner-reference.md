@@ -7,6 +7,12 @@ sidebar_position: 25
 
 You can ingest container-image scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
 
+:::note
+
+Currently, this [early access feature](/release-notes/early-access) is behind the feature flag `STO_STEP_PALETTE_AQUASEC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 ## Important notes for running Aqua Security scans in STO
 
 
