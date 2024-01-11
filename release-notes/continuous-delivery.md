@@ -63,9 +63,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Issues while pulling tags of images in Github Container Registry when they have ``/`` inside the artifact name. (CDS-87457)
   - Previous behavior: While configuring the artifact source, if the name of the image contained a ``/``, then the image versions could not be pulled. This has been fixed. Image versions are now retrieved.
   - The issue was resolved by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
-
-
-
+- Issue with template inputs not showing up (CDS-84490)
+  - Previously, there was an issue where template inputs were not showing up in the Pipeline Editor due to an API issue.
+  - Fixing this caused another, worse more common error where the platform would get stuck in an infinite API call loop.
+  - The template input fix has been **reverted** fixing the inifinite API call loop issue.
 
 ### Version 1.19.6
 
