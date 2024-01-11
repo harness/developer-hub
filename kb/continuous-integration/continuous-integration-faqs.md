@@ -320,7 +320,7 @@ To do this, [use a script in a Run step](https://developer.harness.io/docs/conti
 
 Step containers are named sequentially starting with `step-1`.
 
-### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
+### When I run a build, Harness creates a new pod and doesn't run the build on the delegate
 
 This is the expected behavior. When you run a Build (CI) stage, each step runs on a new build farm pod that isn't connected to the delegate.
 
@@ -408,27 +408,33 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure)
 * [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates)
 
+### Certificate volumes aren't mounted to the build pod
+
+If the volumes are not getting mounted to the build containers, or you see other certificate errors in your pipeline, try the following:
+
+1. Add a [Run step](../../run-ci-scripts/run-step-settings.md) that prints the contents of the destination path. For example, you can include a command such as:
+
+   ```
+   cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt
+   ```
+
+2. Double-check that the base image used in the step reads certificates from the same path given in the destination path on the Delegate.
+
 ## Windows builds
 
 ### Error when running Docker commands on Windows build servers
 
 Make sure that the build server has the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about) installed. This error can occur if the container can't start on the build system.
 
+Docker commands aren't supported for [Windows builds on Kubernetes cluster build infrastructures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure).
+
 ### Is rootless configuration supported for builds on Windows-based build infrastructures?
 
 No, currently this is not supported for Windows builds.
 
-### What is the default user set on the Windows Lite-Engine and Addon image?
+### What is the default user set on the Windows Lite-Engine and Addon image? Can I change it?
 
-The default user for these images is `ContainerAdministrator`.
-
-### Can I change the default user in the Windows LE/Addon images?
-
-No. The default user for these images must be `ContainerAdministrator` because specific path and tool installations require it, and Windows doesn't allow setting the path otherwise.
-
-### How does `ContainerAdministrator` differ from other user identities in the Windows LE/Addon images?
-
-`ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container.
+The default user for these images is `ContainerAdministrator`. For more information, go to [Run Windows builds in a Kubernetes build infrastructure - Default user for Windows builds](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure#default-user-for-windows-builds).
 
 ### Can I use custom cache paths on a Windows platform with Cache Intelligence?
 
@@ -1580,6 +1586,10 @@ There are several [debug mode requirements](https://developer.harness.io/docs/co
 ### Re-run in debug mode isn't available for a new pipeline
 
 Debug mode is not available for a pipeline's first build. Run the pipeline again and, if it meets the [debug mode requirements](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/debug-mode#debug-mode-requirements), you should be able to trigger re-run in debug mode.
+
+## AIDA for CI
+
+For information about using AIDA to troubleshoot your Harness CI builds, go to [Troubleshoot builds with AIDA](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida/).
 
 ## CI with CD
 
