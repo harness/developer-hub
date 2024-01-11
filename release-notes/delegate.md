@@ -512,7 +512,7 @@ If your Terragrunt configuration has module dependencies and you want to target 
 
 - Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715)
 
-### Harness version 80504, Harness Delegate version 23.09.80505
+##### Harness version 80504, Harness Delegate version 23.09.80505
 
 Harness NextGen release 80504 includes the following changes for the Harness Delegate.
 
@@ -1263,7 +1263,7 @@ You can dynamically select delegates by hostname during pipeline runs. To do so,
 
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-### Harness version 78421, Harness Delegate 23.02.version 78306
+##### Harness version 78421, Harness Delegate 23.02.version 78306
 
 Harness NextGen release 78421 includes the following changes for the Harness Delegate.
 
@@ -1283,7 +1283,7 @@ This release introduces the following new features and enhancements:
 
 - Resolved a problem that caused SCM log information to be displayed in the Watcher. The information was redirected to the delegate `slf4j` stream for display in the delegate logs. (DEL-5744)
 
-### Harness version 78321, Harness Delegate version 23.02.78306
+##### Harness version 78321, Harness Delegate version 23.02.78306
 
 Harness NextGen release 78321 includes the following changes for the Harness Delegate.
 
