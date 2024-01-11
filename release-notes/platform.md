@@ -86,13 +86,40 @@ The following deprecated API endpoints will no longer be supported:
 
 #### New features and enhancements
 
-- Grant public access to Harness pipelines
+- Configure an absolute session timeout for your account (PL-43587)
 
-   When you activate the **Allow public resources** authentication setting, pipeline executions for pipelines marked for public view will be accessible without the need to sign in to Harness. You can then mark your pipelines for public view and share pipeline execution URLs.
+   A new **Absolute Session Timeout (in minutes)** setting is available on the Authentication page. When the **Absolute Session Timeout (in minutes)** is set, users will be logged out of their account after the configured timeout, regardless of any activity.
+
+   The default absolute session timeout is 0, which means that it is not set. You can set this to a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
+
+    :::info note
+    When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
+    :::
+
+- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS FF` for your account. (PL-43772)
+
+#### Early access features
+
+- Grant public access to Harness pipelines (PL-39999)
+
+   You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
+   
+   When you activate the **Allow public resources** authentication setting, you can then enable public view for your pipelines by setting the **Mark this pipeline for public view** option in the pipeline's **Advanced Options**.
+
+  ![](./static/allow-public-resources.png)
+
+  ![](./static/mark-for-public-view.png)
+
+   Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
+   
+   <!--  Add after merging https://github.com/harness/developer-hub/pull/4882
+
+   For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
+   -->
+
+   This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
 #### Fixed issues
-
-- Fixed an issue that allowed userGroups with identifiers having invalid characters.
 
 - Intermittent errors occurred when pulling secrets from a custom secret manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
 
