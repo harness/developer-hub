@@ -54,17 +54,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed Issues
 
-- Branch Selector Dropdown Not Populating in Harness Code Repo: Issue Arises When Entity is Absent, Resulting in 'No Entity Found' Page (CDS-87788)
-  - Previous Behavior:- When attempting to access an entity stored in the Harness code repository and encountering a "no entity found" page, the branch selector dropdown is not being populated with the branches of the Harness code repository
-  - This issue is now resolved,the API calls are made correctly and branches will now be populated
-
-- Users not able to click hyperlinks in Harness approval message(CDS-87675, ZD-55826)
-  - Previous behavior:- If the user has a message with a http url. The https url is not a clickable url when the message is displayed in the approval step.
-  - The issue is fixed by adding logic to render clickable links within the text i.e if any URLs or hyperlink is present in the approval message it will convert them to clickable links. 
-
-- Issues while pulling tags of Images in Github container Registry when they have ``/`` inside artifact name (CDS-87457)
-  - Previous behavior:- While configuring the artifact service source, if the name of the image contained a ``/`` then the version of the images could not be pulled. This has been fixed; images versions are not retrieved.
-  - The issue was resolved by replacing ``/`` in the package name to ``%2F``, without this rest API was failing to list the tags.
+- Branch selector dropdown not populating in Harness code repo: issue arises when entity is absent, resulting in 'no entity found' page. (CDS-87788)
+  - Previous behavior: When attempting to access an entity stored in the Harness code repository and encountering a "no entity found" page, the Branch selector dropdown was not populated with the branches of the Harness code repository.
+  - This issue is now resolved. The API calls are made correctly and branches are now populated.
+- Users are not able to click hyperlinks in Harness approval message. (CDS-87675, ZD-55826)
+  - Previous behavior: If the user has a message with an HTTP URL, the HTTPS URL is not a clickable URL in the message displayed in the Approval step.
+  - The issue is fixed by adding logic to render clickable links within the text. If any URLs or hyperlinks are present in the approval message they are converted to clickable links. 
+- Issues while pulling tags of images in Github Container Registry when they have ``/`` inside the artifact name. (CDS-87457)
+  - Previous behavior: While configuring the artifact source, if the name of the image contained a ``/``, then the image versions could not be pulled. This has been fixed. Image versions are now retrieved.
+  - The issue was resolved by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
 
 
 
