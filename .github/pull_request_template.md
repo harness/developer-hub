@@ -16,4 +16,4 @@ If tied to an Issue, list the Issue(s) here:
 Some items to keep track of. Screen shots of changes are optional but would help the maintainers review quicker. 
 
 - [ ] Tested Locally
-- [ ] *Optional* Screen Shoot. 
+- [ ] *Optional* Screenshot. 
