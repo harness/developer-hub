@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Run chaos experiments in sandbox to build resilience 
 description: Execute chaos experiments to improve the resilience of the Podtato head app in a sandbox.
 ---
-## Introduction
+
 This tutorial guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and improve the resilience of the application.
 
 ## Prerequisites

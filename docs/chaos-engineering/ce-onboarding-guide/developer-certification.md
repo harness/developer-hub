@@ -3,7 +3,6 @@ sidebar_position: 3
 title: HCE Developer certification 
 description: Obtain Harness developer certification
 ---
-## Introduction
 This tutorial guides you through registering for the Harness Chaos developer exam certification and completing it.
 
 ## Prerequisites
