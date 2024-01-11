@@ -66,10 +66,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Previous behavior:- While configuring the artifact service source, if the name of the image contained a ``/`` then the version of the images could not be pulled. This has been fixed; images versions are not retrieved.
   - The issue was resolved by replacing ``/`` in the package name to ``%2F``, without this rest API was failing to list the tags.
 
-- Chained Pipeline Issue: APIs Not Triggered for Repository and Package Fetch During Runform When Dependent Fields Are Fixed, Resulting in Missing Data (CDS-87140)
-  - Previous behavior:- In chained pipeline when dependent fields were made runtime and was trying to fetch data during runform, APIs calls were made  to fetch repository and package. But when a dependent field is made fixed in a chained pipeline and then we try to fetch repositories and packages during reforms APIs calls are not made
-  - The issue is resolved by not calling the GAR repository and packages API when dependent fields have provided inputs in multiple stages(pipeline,chained pipeline)
-
 
 
 
