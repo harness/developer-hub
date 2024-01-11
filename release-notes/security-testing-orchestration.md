@@ -2,9 +2,9 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-12-03T10:00
+date: 2023-12-21T10:00
 tags: [NextGen, "security testing orchestration"]
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 import Tabs from '@theme/Tabs';

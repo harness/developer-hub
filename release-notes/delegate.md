@@ -55,6 +55,22 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
 
+### Version 24.01.82002
+
+#### Hotfix
+
+- In the HTTP step, when a MTLS server was used, the task was not assigned to a delegate. (CDS-87547, ZD-55531)
+
+   This issue has been fixed.
+
+### Version 23.12.81811
+
+#### Hotfix
+
+- Added support for the Tanzu application service Client ID and Secret ID via env variables in the delegate. (CDS-88086)
+
+   You can now create a Tanzu connector by setting the `AS_REFRESH_TOKEN_CLIENT_ID`, `TAS_REFRESH_TOKEN_CLIENT_SECRET`, `ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID` parameters, and providing the Refresh token. The connector will generate a Refresh token using the Client ID and Secret ID.
+
 ## December 2023
 
 ### Versions 23.12.81411, 23.12.81604, 23.12.81806
@@ -638,8 +654,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 - In some scenarios for Amazon ECS blue/green deployments, the green application didn’t roll back consistently because the new service continued to run tasks in the `live-target-group`. To resolve this issue, Harness no longer fetches the count of running services in rollback tasks before rolling back the green service. The green service now rolls back consistently. (CDS-76795, ZD-49005)
 
-   This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
-
 ### Version 23.08.80310
 
 #### Hotfix
@@ -662,8 +676,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 #### Hotfix
 
 - In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
-
-   This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
 
 ### Harness version 80120, Harness Delegate version 23.08.80104
 

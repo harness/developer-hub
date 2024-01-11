@@ -28,29 +28,19 @@ This topic explains how to add a verification provider Connector at the Project 
    ![](../static/connect-to-monitoring-and-logging-systems-11.png)
    
 4. In **Name**, enter a name for this connector. You will use this name when selecting the Verification Provider in Harness Environments and Workflows. If you plan to use multiple providers of the same type, ensure that you give each provider a different name.
-5. Click **Continue**.
-6. In the **Controller URL** field, enter the URL of the AppDynamic controller in the format:  
- `  **http://<Controller\_Host>:<port>/controller </port>**  `
-   For example:  
- `  **https://xxxx.saas.appdynamics.com/controller**`
+5. Click **Continue**.
+6. In the **Controller URL** field, enter the URL of the AppDynamic controller in the format: `http://<Controller_Host>:<port>/controller</port>`. For example, `https://xxxx.saas.appdynamics.com/controller`.
 
    ![](../static/connect-to-monitoring-and-logging-systems-12.png)
 
-7. In **Account Name**, enter the name of AppDynamics account you want to use.
-
-   
-:::info note
-For Harness On-Prem, enter **customer1**.
-:::
-   
+7. In **Account Name**, enter the name of AppDynamics account you want to use. For Harness On-Prem, enter `customer1`.
 8. In **Authentication**, you can choose one of the following options:
-	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets)**.**
+	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets)**.**
 	* **API Client**: In **Client Id** and **Client Secret** fields, enter a valid Id and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets).
-  
 9. Click **Continue**. The Setup Delegates settings appear.
 10. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 11. Click **Save and Continue**.
-12. Once the Test Connection succeeds, click **Finish**. AppDynamics is listed under the list of Connectors.
+12. Once the Test Connection succeeds, click **Finish**. AppDynamics is listed under the list of Connectors.
 
 ### Add Prometheus
 
@@ -116,17 +106,17 @@ Usage scope is inherited from the secrets used in the settings. Pro or higher su
 ### Add Splunk
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Splunk**in **Monitoring and Logging Systems**. The Splunk connector settings appear.
-   
+2. In **Project Setup**, click **Connectors**.
+3. Click **+ Connector**, and click **Splunk**in **Monitoring and Logging Systems**. The Splunk connector settings appear.
+
    ![](../static/connect-to-monitoring-and-logging-systems-18.png)
-   
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format **https://<deployment-name>.cloud.splunk.com:8089.</deployment-name> ** The default port number is 8089, which is required for hosted Splunk, also. For example: **https://mycompany.splunkcloud.com:8089**.
-   
+
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+5. Click **Continue**.
+6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format `https://deployment-name.cloud.splunk.com:8089`. The default port number is 8089. The port number is required for hosted Splunk, such as `https://mycompany.splunkcloud.com:8089`.
+
    ![](../static/connect-to-monitoring-and-logging-systems-20.png)
-   
+
 
 Splunk APIs require that you authenticate with a non-SAML account. To access your Splunk Cloud deployment using the Splunk REST API and SDKs, submit a support case requesting access on the Support Portal. For managed deployments, Splunk Support opens port 8089 for REST access. You can specify a range of IP addresses to control who can access the REST API. For self-service deployments, Splunk Support defines a dedicated user and sends you credentials that enable that user to access the REST API. For information see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.2.0/RESTTUT/RESTandCloud).
 
@@ -246,13 +236,10 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
    
 5. Click **Continue**.
 
-6. Connect to a Datadog dashboard.
-   To connect to a Datadog dashboard:
+6. Connect to a Datadog dashboard. To connect to a Datadog dashboard:
 7. Copy the protocol and domain part of the URL such as `https://app.datadoghq.com/`.
 
-8. Append a trailing `api/` to create the following URL: `https://app.datadoghq.com/api/](https://app.datadoghq.com/api/`.
-    The trailing forward slash after `api`is mandatory. If your URL has `v1` at the end of it, remove `v1`.
-
+8. Append a trailing `api/` to create the following URL: `https://app.datadoghq.com/api/`. The trailing forward slash after `api`is mandatory. If your URL has `v1` at the end of it, remove `v1`.
 9.  In URL field, enter the URL `https://app.datadoghq.com/api/`. The trailing forward slash after api (api/) is mandatory.
     
 10. Your URL should look like one of the following:

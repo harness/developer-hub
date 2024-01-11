@@ -34,7 +34,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.2.0.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+The current version of this SDK is **1.2.3.** To use this version of the SDK, you also need to use Android API level 19 or higher.
 
 ## Requirements
 

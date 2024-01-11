@@ -112,10 +112,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_REMOVE_COMMENTS_FROM_VALUES_YAML</td>
-        <td>Disables the resolving of comments in values.yaml files.</td>
-    </tr>
-    <tr>
         <td>PIE_GITX_OAUTH</td>
         <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Public Preview.</b></td>
     </tr>
@@ -205,10 +201,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE</td>
         <td>Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_ECS_BG_GREEN_SERVICE_ROLLBACK</td>
-        <td>Enables the rollback of `green` service in ECS blue green deployments. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_DISABLE_EVALUATE_EXPORT_VARIABLES</td>

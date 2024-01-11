@@ -32,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-This SDK is currently in **beta version 0.5.1**. 
+This SDK is currently in **0.1.3**. 
 
 ## Requirements
 

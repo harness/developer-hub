@@ -1,6 +1,6 @@
 ---
-title: Enable protection rules
-description: Set up branch protection rules in Harness Code
+title: Enable branch rules
+description: Set up branch rules in Harness Code
 sidebar_position: 30
 ---
 

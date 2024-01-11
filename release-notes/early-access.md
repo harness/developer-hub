@@ -275,6 +275,10 @@ The following early access (beta) features are available for the Harness Feature
 
 No early access (beta) features are available for Harness Internal Developer Portal. -->
 
+<!-- ## Code early access features
+
+No early access (beta) features are available for Harness Code Repository. -->
+
 ## STO early access features
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.

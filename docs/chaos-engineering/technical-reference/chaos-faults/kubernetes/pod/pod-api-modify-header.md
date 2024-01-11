@@ -31,7 +31,7 @@ Pod API modify header:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to API header modification. </td>
-        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>

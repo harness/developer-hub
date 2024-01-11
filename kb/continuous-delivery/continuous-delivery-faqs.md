@@ -1465,7 +1465,7 @@ We have it added in our API docs which you can refer [here](https://apidocs.harn
 
 #### Does Harness have documentation for specific user roles?
 
-You can follow the [CD ramp-up guides](https://developer.harness.io/docs/category/ramp-up-guides), which include guides for developer, admin, pipeline designer, and platform engineer.
+You can follow the [CD new user onboarding guides](/docs/category/new-users), which include guides for developers, admins, pipeline designers, and platform engineers.
 
 #### Is it anticipated that the harness pipeline will initiate the verification of 'access' permissions to an environment at the outset of an execution, as opposed to conducting such verification progressively as the pipeline advances?
 
@@ -1585,7 +1585,7 @@ Harness uses a Service-based license model to charge Harness customers using its
 
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
 
-Please see the link for more details [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing)
+For more information, go to [Service-based licensing and usage for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd).
 
 #### Is there a way to tag the pipeline executions with specific values like release name in NG?
 
@@ -3288,18 +3288,11 @@ As of today, we have only two options to select the shell script provision scrip
 This config will do that  connector-scope: accountIn case you want to do it connector to connector basis you can refer to this - https://harness.github.io/migrator/advanced/overrides-and-settings
 
 ### How to download pipeline logs based on the given pipeline execution key?
-You can use the cURL command to download pipeline logs based on the given pipeline execution key. Here's an example command:
-```
-curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
-  -X 'POST' \
-  -H 'authorization: <Bearer TOKEN>' \
-  -H 'content-type: application/json' \
-  -H 'x-harness-token: <HARNESS-TOKEN>' \
-  --compressed
-  ```
-Replace ACCOUNT_ID, PIPELINE_EXECUTION_PREFIX_KEY, TOKEN, and HARNESS-TOKEN with your own values. You can find the PIPELINE_EXECUTION_PREFIX_KEY by going to the Builds page in Harness and selecting the pipeline execution you want to download logs for. The TOKEN and HARNESS-TOKEN can be obtained by following the steps.
+
+You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
 
 ### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
+
 The only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact. 
  
 This URL can be used in the file_urls setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
@@ -4233,3 +4226,127 @@ Yes, you can run pipeline stages in parallel, deploying different services simul
 
 #### What's the benefit of using step groups? 
 Step groups simplify managing related steps, allowing you to apply common settings like skipping and failure strategies to all members.
+
+#### Can the `[beta]` endpoint for "account connectors" on the Harness API return CCM connectors ?
+
+No, the endpoint may not directly provide CCM connectors. Please ensure that the correct values are used for the "Harness-Account" header and "x-api-key" header.
+example :
+
+```sh
+➜ curl -i -X GET \
+  'https://app.harness.io/v1/connectors/_lab_ccm' \
+  -H "Harness-Account: $HARNESS_ACCOUNT_ID" \
+  -H "x-api-key: $HARNESS_PLATFORM_API_KEY"
+```
+
+Expected Response : 
+
+```sh
+{"message":"Invalid request: Connector type [CEK8sCluster] is not supported","code":null,"errors":[],"error_metadata":null}
+```
+
+Instead please try using a non [beta] endpoint : 
+example :
+```sh
+➜ curl -i -X GET \
+  "https://app.harness.io/ng/api/connectors/_lab_ccm?accountIdentifier=$HARNESS_ACCOUNT_ID" \
+  -H "x-api-key: $HARNESS_PLATFORM_API_KEY"
+```
+
+#### Does Harness support SSH deployments using the GCP connector like AWS and Azure ?
+
+No, this feature is yet to be supported. We suggest to use ssh key or user and password as datacenter as an alternative at the moment.
+
+#### Is the design of Basic intended to incorporate that behavior, similar to what is done in first Gen, where Ecs revisions are not utilized in the same manner as Ecs ?
+
+Yes, the design of Basic includes that behavior because we manage the versions through the task name and handle versioning specifically for rollback purposes in first Gen, distinguishing it from the way Ecs revisions are managed. One needs to use rolling if they want harness to not perform the naming convention changes. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/)
+
+#### Can one configure how many versions of the tanzu apps required to be maintained for Blue-Green Deployments ?
+
+Yes, Users can now configure how many versions of the tanzu apps that they want Harness to maintain for Blue Green Deployments with enabling Feature Flag: `CDS_PCF_SUPPORT_BG_WITH_2_APPS_NG`. Currently we maintain 3 (Active, Inactive, and Most recent Successful deployment). With this feature we now manage Active and Inactive more inline with the industry standard Blue Green Deployment. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain)
+
+#### Is it considered an error when using helm template `--show-only` `templates/secret.yaml my-chart` results in an empty manifest, even though the template exists, and how can one prevent or handle this error message ?
+
+It will be feasible for them to consider adding a line at the top of their manifests to prevent rendering to be empty when using helm template `--show-only`. This approach would not only address the error but also provide the advantage of skipping these objects during deployment. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment/#ignore-a-manifest)
+
+
+#### Do we support expressions in tags for pipeline level ?
+
+Yes, we support pipeline expression tags to feteh details. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/tags-reference/)
+
+#### Is there a way to use the `<+stage>` output as json in our functors ?
+
+Yes, you can use the JSON format function to format the output of a stage as JSON and then use it in your functors. 
+Here's an example expression that formats the output of a stage named "myStage" as JSON:
+`<+json.format(<+pipeline.stages.myStage.output>)>`
+You can then use this expression in your functors to select specific values from the JSON output of the stage.
+
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/expression-v2)
+
+#### Is there a hardcoded timeout in the Custom Secrets Manager template when receiving passwords from a remote source ?
+
+Yes, currently, 20 sec is the timeout configured for the custom Secret Manager’s fetch secret task.
+
+#### How do we pass the output list of first step to next step looping strategy "repeat", the output can be a list or array which needs to be parsed ?
+
+The Output Variable of the shell script is a string, which you are trying to pass as a list of strings, to avoid this :
+- First you need to convert your array list into a string and then pass it as an output variable.
+- Then convert this string into a list of string again before passing it to the repeat strategy.
+
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/repeat-strategy)
+
+#### Can a trigger for a CD pipeline be configured to automatically pick up the tag value `<+trigger.payload.tag>` when the pipeline is executed via the trigger, and alternatively pick up `<+pipeline.variables.tag>` when the pipeline is executed manually ?
+
+For the above usecase we should use Ternary operators , refer the [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) for more on this.
+You can give a condition :
+`<+condition?<value_if_true>:<value_if_false>>`
+
+For the true condition `<+pipeline.triggerType>` should be WEHOOK_CUSTOM, please refer [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) and for the false condition you can put a runtime input `<+input>` or a pipeline variable
+
+Finally the ternary operator condition should look like:
+`<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.tag>:<+trigger.payload.tag>>`
+
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
+
+
+#### Does the Azure connector support service principles ?
+
+Yes. We support System Assigned Managed Identity and User Assigned Managed Identity in the Azure Global and Government environments.
+The service principal maps to a managed identity.
+
+#### How to carry forward the output variable when looping steps ?
+
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use `<+strategy.iteration>` to denote the iteration count.
+
+#### How many versions of Terraform does Harness support ?
+
+Harness supports the following Terraform versions: `v1.3.5, v1.1.9, v1.0.0, v0.15.5, v0.15.0 and v0.14.0`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#terraform-version-support)
+
+#### Why Does the Expression `<+artifacts.primary.identifier>` Return "primary" Instead of the Actual Identifier?
+
+To obtain the actual identifier instead, please open a support ticket to enable the feature flag `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+
+#### How to Generate a Clickable Link in Harness Approval Message?
+
+While we do not officially support it, a clickable link is accessible in the Input tab of the Harness Approval step.
+
+#### How Can I Leverage the Uninstall Helm Flag Within a Custom Script?
+
+While it's not officially supported, you can obtain all Helm flags used in the Service step. Here's an example of how to retrieve them: `<+pipeline.stages.deploy.spec.manifests.helm_hello_world.commandFlags>`
+
+#### Why doesn't the pipeline roll back when the Container Step times out?
+
+The Container Step is being deprecated, and support for it will no longer be provided. Instead, we recommend incorporating a step group that is container-based in your pipeline and proceeding to create a Run step. This step will function similarly to the container step, but the rollback will operate as expected.
+
+#### We need to pull deployments events from harness to datadog/custom when any PROD deployment is successful.
+
+You can use Webhook notifications to post the pipeline event to an endpoint and you can review and use the JSON Harness posts to your webhook endpoint
+
+#### Does shell script step uses delegate selector from connector used
+
+By default shell script doesn’t uses the connector selector and task can go to any delegate, if you need to use same delegate you have to specify the selector
+
+####  Can we use command step for custom stage
+
+No this is not supported as of now, as currently command step is only applicable in ssh/winrm type deployment

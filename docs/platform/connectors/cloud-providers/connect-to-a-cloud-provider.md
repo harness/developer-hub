@@ -25,5 +25,5 @@ For instructions and information about the Harness cloud provider connectors, go
 
 For more information about connectors in general, go to:
 
-- [Harness connectors API](https://apidocs.harness.io/tag/connectors)
+- [Harness connectors API](https://apidocs.harness.io/tag/Connectors/)
 - [Harness Terraform Provider connector resources](https://registry.terraform.io/providers/harness/harness/latest/docs)

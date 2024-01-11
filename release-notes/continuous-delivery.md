@@ -3,7 +3,7 @@ title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
 date: 2023-12-12T10:00:15
 tags: [NextGen, "continuous delivery"]
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
@@ -45,6 +45,72 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 </details>
+
+
+## January 2024
+
+### Version 1.19.6
+
+#### Behavior change
+
+There is a change in the permissions associated with [Overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2):
+- Previously: for service-specific, service, and infrastructure-specific overrides, the environment Create and Edit permissions were required.
+- Now: the environment Create and Edit permissions are not required. Only the service Create and Edit permissions are required.
+- Here is the comprehensive list of permissions required across different types:
+  - Service and infrastructure-specific: New, edit, clone, and delete actions:
+    - Service permission: `Create/Edit`
+  - Infrastructure-specific: New, edit, clone, and delete actions:
+    - Environment permission: `Create/Edit`
+  - Service-specific:  New, edit, clone, and delete actions:
+    - Service permission: `Create/Edit`
+  - Global Environment: New, edit, clone, and delete actions:
+    - Environment permission: `Create/Edit`
+
+#### New features and enhancements
+
+- Triggers now map payload attributes with pipeline inputs.	(CDS-87039)
+  - There are cases where you want to use input sets in a trigger, but provide a different value for the input set (override the default). 
+  - When a trigger is configured to use input sets, you can now pass input value overrides in the trigger's `inputYaml` field.
+     
+    <DocImage path={require('./static/78b4f649d9c4a9d0d858499e9508e846095f643d22b5f64dae60d6a30037b8cd.png')} width="60%" height="60%" title="Click to view full size image" />  
+  
+  - The values provided in the trigger's `inputYaml` field take precedence over any values provided by the input sets. This lets you override the input set values and use, for example, trigger payloads for specific inputs to the pipeline.
+
+#### Fixed issues
+
+- The Shell Script step was terminating when running on VM via SSH. (CDS-87415, ZD-55629, ZD-55690)
+  - Fixed a Shell Script step issue with SSH where it was failing for newer delegate versions with the error: `Error while reading variables to process Script Output. Avoid exiting from script early: 2: No such file`.
+  - Recent modification made directoryPath an optionally computed field which defaults to the user-provided working directory.
+  - To address this, the fix involves incorporating logic that ensures the presence of a backslash is in the directoryPath if it's absent.
+- Service phase fails to parse a variable value. (CDS-87290)
+  - There was an issue in the service phase of the stage execution where it fails to render a string variable, and throws the error `Invalid yaml: Malformed numeric value '00:00:00.100' at [Source: (StringReader); line: 36, column: 30]`. This was because variables with time format with milliseconds were being sent without quotes.
+  - Now, string variables with values such as `00:00:00.100` (time in milliseconds) are supported in Service variables.
+- Kubernetes Apply step started failing after upgrading to the current Harness delegate type (immutable). (CDS-87011)
+  - When using the `--dependency-update` flag with a Helm chart and Kubernetes Apply step, Harness didn't ignore the unrelated to Helm template output lines.
+  - Harness was trying to interpret some of the Helm template output as a manifest. This resulted in a failure during the step.
+  - This issue has been resolved. Now Harness will ignore anything unrelated to the manifest output when using the Kubernetes Apply step with the `--dependency-update` flag.
+- Container Step execution is failing with a delegate connectivity failure. (CDS-87005, ZD-54820)
+  - Pipelines run for extended periods of time (~20 hrs) resulted in the loss of connectivity to delegates.
+  - This issue has now been fixed. If the step's **Timeout** setting is not set, the default delegate task timeout will be 12 hours.
+- The Run step was missing from the CD stage when used in the Provision Infrastructure section of **Environment**. (CDS-86994	ZD-55259)
+  - Step request was sending the wrong payload to API. This is now fixed.
+- Subsequent Google Cloud Function Gen 1 deployments not happening if the first deploy fails.	(CDS-86746, ZD-55115)
+  - Function update was failing because the function state was not stable before deployment and Harness was waiting for it to a achieve stable state.
+  - Fixed the rollback logic for deployment of Google Cloud Function.
+- Unclear error message coming from Azure during Helm deployment. (CDS-85972)
+  - A Helm deployment to AKS was failing with an Azure permission error.
+  - For AKS Kubernetes cluster RBAC permission issues, Harness will print out additional hints regarding the Harness connector in question.
+- Harness service showing incorrect Helm chart version deployed in Harness UI. (CDS-85856, ZD-54508)
+  - The Harness service instance dashboard did not reflect the correct Helm chart version when instances were scaled up/down. The perpetual task did not not contain the updated Helm chart information which results in a mismatch of the Helm chart version value for the Kubernetes deployment.
+  - Fixed this issue by updating the `instanceSyncPerpetualTaskInfo` collection in Mongo every time the Helm chart information is updated.
+- Logs not present for the Copy command. (CDS-85662, ZD-54190)
+  - The call of 
+`saveExecutionLog("Command finished with status " + response.getStatus(), response.getStatus());`
+on class `ScriptSshExecutor.java` made the log stream terminate.
+  - Now we are closing the log stream consistently SSH executions.
+- Unable to enter matrix details in stage template. (CDS-85375)
+  - When editing the looping strategy setting in a stage template, the strategy editor disappeared arbitrarily. It should only get hidden when the entire strategy YAML is removed.
+  - This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
 
 ## December 2023
 
