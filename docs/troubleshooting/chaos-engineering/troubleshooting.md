@@ -98,7 +98,7 @@ source:
   - name: volume-secret
     secrets:
     - name: vm-credentials
-  volumeMounts:
+  volumeMount:
   - name: volume-secret
     mountPath: /etc/volume-secret
  ```
