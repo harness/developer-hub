@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot CI
-description: Troubleshoot common CI issues.
+description: Harness CI troubleshooting tool, guidance, and FAQs.
 sidebar_position: 10
 helpdocs_topic_id: jx7ew69ypa
 helpdocs_category_id: 99m8m1s55y
@@ -8,146 +8,57 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
-import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
-import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
-
-
-This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
-
-:::tip Troubleshooting tools
-
 [AIDA](./aida.md) and [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode.md) can help you troubleshoot errors and other issues in Harness CI.
 
-:::
+For troubleshooting guidance and questions related to Harness CI, go to the [Continuous Integration Knowledge Base](/kb/continuous-integration/continuous-integration-faqs).
 
-If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
+For troubleshooting guidance for the Harness Platform, delegates, connectors, secrets, or other modules go to the [Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
-## Secrets with line breaks and shell-interpreted special characters
+For additional support, you can [contact Harness Support](mailto:support@harness.io) or visit the [Harness Community](https://community.harness.io/).
 
-For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](/docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step).
+<!--Moved/addressed
 
-## Output variable length limit
+## Build infrastructure issues
 
-If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+### CI pods appear to be evicted by Kubernetes autoscaling
 
-## Multi-line output variables truncated
+(imported k8s-pod-eviction-trbs.md)
 
-Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+### Delegate is not able to connect to the created build farm
 
-## Git connector fails to connect to the SCM service
+If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
 
-The following SCM service errors can occur with [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference).
+For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
-### SCM request failed with: UNKNOWN
+### AKS builds timeout
 
-This error may occur if your Git connector uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
+Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
 
-### SCM connection errors when using self-signed certificates
+If you have a custom network security group, it must allow inbound traffic on port 8080, which the delegate service uses.
 
-If you have configured your build infrastructure to use self-signed certificates, your builds may fail when the Git connector attempts to connect to the SCM service. Build logs may contain the following error messages:
+For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
 
-```
-Connectivity Error while communicating with the scm service
-Unable to connect to Git Provider, error while connecting to scm service
-```
+### Isto Strict MTLS mode
 
-To resolve this issue, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML.
+link to k8s infra set up section
 
-For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
+### Harness Cloud build infrastructure issues
 
-```yaml
-environment:
-      - ACCOUNT_ID=XXXX
-      - DELEGATE_TOKEN=XXXX
-      - MANAGER_HOST_AND_PORT=https://app.harness.io
-      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-      - DEPLOY_MODE=KUBERNETES
-      - DELEGATE_NAME=test
-      - NEXT_GEN=true
-      - DELEGATE_TYPE=DOCKER
-      - SCM_SKIP_SSL=true
-```
+For troubleshooting information for Harness Cloud build infrastructure, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#troubleshooting-harness-cloud-build-infrastructure).
 
-For more information about self-signed certificates, delegates, and delegate environment variables, go to:
+### AWS VM build infrastructure issues
 
-* [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables.md)
-* [Docker delegate environment variables](/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables.md)
-* [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
-* [Install delegates](/docs/category/install-delegates)
-* [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
 
-## Clone codebase errors
-<!-- transferred with Clone Codebase revision -->
+### Local runner build infrastructure issues
 
-For troubleshooting information related to cloning codebases, go to [Configure codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
+For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting).
 
-## Logging issues
-<!-- transferred with View Builds revision -->
+## Can't generate SonarQube report due to shallow clone
 
-These are common issues encountered with build logs.
-
-### Truncated execution logs
-<!-- transferred with View Builds revision -->
-
-Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
-
-Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
-
-Note that the CI log limit is different from the [Harness CD log limit](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).
-
-#### Export full logs
-<!-- transferred with View Builds revision -->
-
-If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
-
-1. Add a step to your pipeline that records each step's complete logs into one or more files.
-2. If you have a lot of log files or your logs are large, add a step to compress the log files into an archive.
-3. Use an [Upload Artifact step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts) to upload the log files to cloud storage.
-4. Repeat the above process for each stage in your pipeline for which you want to export the full logs.
-5. Examine the log files in your cloud storage. If you used the **S3 Upload and Publish** or **Artifact Metadata Publisher** plugins, you can find direct links to your uploaded files on the **Artifacts** tab on the [Build detail page](../use-ci/viewing-builds.md).
-
-:::tip Log forwarding
-
-You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwarding), to forward logs to platforms suited for ingesting large logs.
-
-:::
-
-### Step logs disappear
-<!-- transferred with View Builds revision -->
-
-If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
-
-For more information about configuring connectivity, go to:
-
-* [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
-* [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
-
-### Logs don't load in real time
-<!-- transferred with View Builds revision -->
-
-[Network restrictions can prevent build logs from loading in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
-
-## Docker Hub rate limiting
-
-<Dhrl />
-
-## Can't connect to Docker daemon
-
-<!-- transferred with Plugins revision -->
-
-<DindTrbs />
-
-## Out of memory errors with Gradle
-
-If a build that uses Gradle experiences out of memory errors, add the following to your `gradle.properties` file:
-
-```
--XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
-```
-
-Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
+* Cause: If the [depth setting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Solution: Change the `depth` to `0`.
 
 ## Step continues running for a long time after the command is complete
 
@@ -215,59 +126,128 @@ pipeline:
             branch: main
 ```
 
-## Can't generate SonarQube report due to shallow clone
+## Out of memory errors with Gradle
 
-<!-- already in STO KB FAQs -->
+If a Gradle build experiences out of memory errors, add the following to your `gradle.properties` file:
 
-* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
-* Cause: If the [depth setting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
-* Solution: Change the `depth` to `0`.
+```
+-XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
+```
 
-## Build infrastructure issues
+Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
 
-### CI pods appear to be evicted by Kubernetes autoscaling
+## Docker Hub rate limiting
 
-<Kubevict />
+(imported from shared docker-hub-rate-limiting-trbs.md)
 
-### Delegate is not able to connect to the created build farm
+## Git connector fails to connect to the SCM service
 
-If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
+The following SCM service errors can occur with [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference).
 
-For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+### SCM request failed with: UNKNOWN
 
-### AKS builds timeout
+This error may occur if your Git connector uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
 
-Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
+### SCM connection errors when using self-signed certificates
 
-If you have a custom network security group, it must allow inbound traffic on port 8080, which the delegate service uses.
+If you have configured your build infrastructure to use self-signed certificates, your builds may fail when the Git connector attempts to connect to the SCM service. Build logs may contain the following error messages:
 
-For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
+```
+Connectivity Error while communicating with the scm service
+Unable to connect to Git Provider, error while connecting to scm service
+```
 
-### Istio MTLS STRICT mode
+To resolve this issue, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML.
 
-[A headless service is required if you are using Istio MTLS STRICT mode.](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode)
+For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
 
-### Harness Cloud build infrastructure issues
+```yaml
+environment:
+      - ACCOUNT_ID=XXXX
+      - DELEGATE_TOKEN=XXXX
+      - MANAGER_HOST_AND_PORT=https://app.harness.io
+      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+      - DEPLOY_MODE=KUBERNETES
+      - DELEGATE_NAME=test
+      - NEXT_GEN=true
+      - DELEGATE_TYPE=DOCKER
+      - SCM_SKIP_SSL=true
+```
 
-For troubleshooting information for Harness Cloud build infrastructure, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#troubleshooting-harness-cloud-build-infrastructure).
+For more information about self-signed certificates, delegates, and delegate environment variables, go to:
 
-### AWS VM build infrastructure issues
+* [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables.md)
+* [Docker delegate environment variables](/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables.md)
+* [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
+* [Install delegates](/docs/category/install-delegates)
+* [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
-For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
+## Multi-line output variables truncated
 
-### Local runner build infrastructure issues
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
 
-For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting).
+## Output variable length limit
+
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+
+## Secrets with line breaks and shell-interpreted special characters
+
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](/docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step).
+
+## Clone codebase errors
+
+For troubleshooting information related to cloning codebases, go to [Configure codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
+
+## Logging issues
+
+These are common issues encountered with build logs.
+
+### Truncated execution logs
+
+Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
+
+Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+
+Note that the CI log limit is different from the [Harness CD log limit](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).
+
+#### Export full logs
+
+If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
+
+1. Add a step to your pipeline that records each step's complete logs into one or more files.
+2. If you have a lot of log files or your logs are large, add a step to compress the log files into an archive.
+3. Use an [Upload Artifact step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts) to upload the log files to cloud storage.
+4. Repeat the above process for each stage in your pipeline for which you want to export the full logs.
+5. Examine the log files in your cloud storage. If you used the **S3 Upload and Publish** or **Artifact Metadata Publisher** plugins, you can find direct links to your uploaded files on the **Artifacts** tab on the [Build detail page](../use-ci/viewing-builds.md).
+
+:::tip Log forwarding
+
+You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwarding), to forward logs to platforms suited for ingesting large logs.
+
+:::
+
+### Step logs disappear
+
+If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+For more information about configuring connectivity, go to:
+
+* [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+* [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+
+### Logs don't load in real time
+
+[Network restrictions can prevent build logs from loading in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
+
+## Can't connect to Docker daemon
+
+(previously referenced shared snippet for docker daemon issue)
 
 ## Test Intelligence issues
-
-<!-- migrated with Run Tests in CI unification -->
 
 You might encounter these issues when using Test Intelligence.
 
 ### TI with Maven
-
-<!-- migrated with Run Tests in CI unification -->
 
 If you encounter issues with Test Intelligence when using Maven as your build tool, check the following configurations:
 
@@ -275,21 +255,7 @@ If you encounter issues with Test Intelligence when using Maven as your build to
 * If you attach Jacoco or any agent while running unit tests, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
 * If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
 
-   ```xml
-   <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-surefire-plugin</artifactId>
-       <version>2.22.1</version>
-       <configuration>
-           <!--  <forkCount>0</forkCount> -->
-           <useSystemClassLoader>false</useSystemClassLoader>
-       </configuration>
-   </plugin>
-   ```
-
 ### TI with Bazel
-
-<!-- migrated with Run Tests in CI unification -->
 
 If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
@@ -297,13 +263,9 @@ Bazel is already installed on Harness Cloud runners, and you don't need to speci
 
 ### TI with Gradle
 
-<!-- migrated with Run Tests in CI unification -->
-
 If you encounter issues with Test Intelligence when using Gradle as your build tool, check your configuration's Gradle compatibility, as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
 
 ### TI for Python
-
-<!-- migrated with Run Tests in CI unification -->
 
 If you encounter errors with TI for Python, make sure you have met the following requirements:
 
@@ -321,11 +283,7 @@ If you get errors related to code coverage for Python:
 
 ### TI for Ruby
 
-<!-- migrated with Run Tests in CI unification -->
-
 #### Cannot find rspec helper file
-
-<!-- migrated with Run Tests in CI unification -->
 
 The following log line indicates that Test Intelligence can't locate an rspec helper file in your code repo:
 
@@ -343,12 +301,10 @@ set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelli
 
 #### Dynamically generated code
 
-<!-- migrated with Run Tests in CI unification -->
-
 Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code.
 
 #### Rails apps using Spring
 
-<!-- migrated with Run Tests in CI unification -->
-
 Test Intelligence results can be inaccurate for Rails apps using [Spring](https://github.com/rails/spring).
+
+-->

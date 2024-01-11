@@ -29,7 +29,7 @@
 | **7. Authentication and User Management** ||
 | Deep dive into OAuth, SAML, and SCIM integrations | [Authentication](/docs/category/authentication) |
 | Set up and manage credentials, user and group permissions, and more | [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) |
-| Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci/) |
+| Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **8. Policy-Based Governance and Compliance** ||
 | Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart) |
 | Enforce governance within pipelines and understand templates for Harness CI | [Manage access control for asset governance rules](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov/) |

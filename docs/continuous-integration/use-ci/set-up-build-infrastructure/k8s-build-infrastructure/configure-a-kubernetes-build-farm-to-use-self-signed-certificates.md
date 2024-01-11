@@ -158,7 +158,27 @@ If you have STO scan steps in your pipeline, do the following:
 
 ## Troubleshooting SCM service connection issues
 
-If your builds fail due to a problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
+If your builds fail due to a problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML.
+
+For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
+
+```yaml
+environment:
+      - ACCOUNT_ID=XXXX
+      - DELEGATE_TOKEN=XXXX
+      - MANAGER_HOST_AND_PORT=https://app.harness.io
+      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+      - DEPLOY_MODE=KUBERNETES
+      - DELEGATE_NAME=test
+      - NEXT_GEN=true
+      - DELEGATE_TYPE=DOCKER
+      - SCM_SKIP_SSL=true
+```
+
+
+
+
+
 
 If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
 

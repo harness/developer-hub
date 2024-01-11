@@ -396,7 +396,7 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ## Continuous integration
 
-For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md) and the [Continuous Integration Knowledge Base](/kb/continuous-integration).
+For troubleshooting advice specific to Continuous Integration, go to the [Continuous Integration Knowledge Base](/kb/continuous-integration).
 
 ## Helm
 

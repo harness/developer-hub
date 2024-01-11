@@ -121,6 +121,10 @@ If you want to run Docker commands when using a Kubernetes cluster build infrast
 
 If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
 
+### Can I use Istio MTLS STRICT mode with Harness CI?
+
+Yes, but you must [create a headless service for Istio MTLS STRICT mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode).
+
 ### How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?
 
 You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `/var/run`. Following that, the steps can be executed as Docker commands. This works regardless of the Kubernetes container runtime.
@@ -161,15 +165,25 @@ Use the [Node Selector](https://developer.harness.io/docs/continuous-integration
 
 You need to set the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
+If you get `error checking push permissions` or similar, go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster).
+
 ### Why are build pods being evicted?
 
 Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes.
 
-If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds.md), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
+If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#infrastructure):
 
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
 ```
+
+### AKS builds timeout
+
+Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
+
+If you have a custom network security group, it must allow inbound traffic on port 8080, which the delegate service uses.
+
+For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
 
 ### How do I set the priority class level? Can I prioritize my build pod if there are resource shortages on the host node?
 
@@ -199,22 +213,25 @@ For information about building on OpenShift clusters, go to **Permissions Requir
 
 For information about permissions required to build on Kubernetes clusters, go to **Permissions Required** in the [Kubernetes Cluster Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference).
 
-### Delegates
+### How does the build pod communicate with the delegate?
 
-#### How the build pod communicates with delegate?
-The delegate will communicate to the temp pod which is created by the container step through the build pod IP. The build pod have a lite engine running with port 20001.
+The delegate communicates to the temp pod created by the container step through the build pod IP. Build pods have a lite engine running on port 20001.
 
-#### What's the purpose of adding SCM_SKIP_SSL=true in the delegate YAML?
+### Experiencing OOM on java heap for the delegate
 
-It skips SSL verification for SCM connections
+Check CPU utilization and try increasing the CPU request and limit amounts.
 
-#### What should we do on experiencing OOM on java heap for the delegate?
+Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
 
-Try increasing the CPU request and limit both. Check CPU utilization in-case.
+### I have multiple delegates in multiple instances. How can I ensure the same instance is used for each step?
 
-#### We have Kubernetes delegates with multiple instances and have noticed that during some executions, the same instance in each step and causes the pipeline to fail, as one delegate may have a file and the other instance does not. How can we ensure the same instance is used for each step?
+Use single replica delegates for tasks that require the same instance, and use a delegate selector by delegate name. The tradeoff is that you might have to compromise on your delegates' high availability.
 
-The workaround here is to use single replica delegates for these types of tasks and use a delegate name selector (this might compromise on delegate's high availability although)
+### Delegate is not able to connect to the created build farm
+
+If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
+
+For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
 ## Self-signed certificates
 
@@ -237,6 +254,38 @@ There are multiple ways you can do this:
 ### Where should I mount internal CA certs on the build pod?
 
 The usage of the mounted CA certificates depends on the specific container image used for the step. The default certificate location depends on the base image you use. The location where the certs need to be mounted depends on the container image being used for the steps that you intend to run on the build pod.
+
+### Git connector SCM connection errors when using self-signed certificates
+
+If you have configured your build infrastructure to use self-signed certificates, your builds may fail when the [code repo connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) attempts to connect to the SCM service. Build logs may contain the following error messages:
+
+```
+Connectivity Error while communicating with the scm service
+Unable to connect to Git Provider, error while connecting to scm service
+```
+
+To resolve this issue, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
+
+```yaml
+environment:
+      - ACCOUNT_ID=XXXX
+      - DELEGATE_TOKEN=XXXX
+      - MANAGER_HOST_AND_PORT=https://app.harness.io
+      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+      - DEPLOY_MODE=KUBERNETES
+      - DELEGATE_NAME=test
+      - NEXT_GEN=true
+      - DELEGATE_TYPE=DOCKER
+      - SCM_SKIP_SSL=true
+```
+
+For more information about self-signed certificates, delegates, and delegate environment variables, go to:
+
+* [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables)
+* [Docker delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables)
+* [Install delegates](https://developer.harness.io/docs/category/install-delegates)
+* [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure)
+* [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates)
 
 ## Windows builds
 
@@ -298,6 +347,77 @@ instances:
         type: "pd-balanced"
 ```
 
+### Step continues running for a long time after the command is complete
+
+In Windows builds, if the primary command in a Powershell script starts a long-running subprocess, the step continues to run as long as the subprocess exits (or until it reaches the step timeout limit). To resolve this:
+
+1. Check if your command launches a subprocess.
+2. If it does, check whether the process is exiting, and how long it runs before exiting.
+3. If the run time is unacceptable, you might need to add commands to sleep or force exit the subprocess.
+
+<details>
+<summary>Example: Subprocess with two-minute life</summary>
+
+Here's a sample pipeline that includes a Powershell script that starts a subprocess. The subprocess runs for no more than two minutes.
+
+```yaml
+pipeline:
+  identifier: subprocess_demo
+  name: subprocess_demo
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        identifier: BUild
+        type: CI
+        name: Build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Run_1
+                  type: Run
+                  name: Run_1
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    image: jtapsgroup/javafx-njs:latest
+                    shell: Powershell
+                    command: |-
+                      cd folder
+                      gradle --version
+                      Start-Process -NoNewWindow -FilePath "powershell" -ArgumentList "Start-Sleep -Seconds 120"
+                      Write-Host "Done!"
+                    resources:
+                      limits:
+                        memory: 3Gi
+                        cpu: "1"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              initTimeout: 900s
+              automountServiceAccountToken: true
+              nodeSelector:
+                kubernetes.io/os: windows
+              os: Windows
+          caching:
+            enabled: false
+            paths: []
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        build:
+          type: branch
+          spec:
+            branch: main
+```
+
+</details>
+
 ## Default user, root access, and run as non-root
 
 ### Which user does Harness use to run steps like Git Clone, Run, and so on? What is the default user ID for step containers?
@@ -338,7 +458,7 @@ No, you can't configure a [failure strategy](https://developer.harness.io/docs/p
 
 Currently, the built-in clone codebase step doesn't support recursive cloning. However, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) with `git clone --recursive`. This is similar to the process you would follow to [clone a subdirectory instead of the entire repo](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
-If you want to recursively clone a repo in addition to your default codebase, you can [pull the Git credentials from your code repo connector to use in your Run step](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step.md).
+If you want to recursively clone a repo in addition to your default codebase, you can [pull the Git credentials from your code repo connector to use in your Run step](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
 
 ### Can I clone a specific subdirectory rather than an entire repo?
 
@@ -425,7 +545,7 @@ properties:
 ### Initial Git clone fails due to missing plugin
 
 * Error: Git clone fails during the **Initialize** step, and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`
-* Platform: This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md) or the [VM build infrastructures](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
+* Platform: This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or the [VM build infrastructures](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
 * Cause: A required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
 * Solution: On the machine where the runner is running, stop the runner, set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin (such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`), and restart the runner.
    * For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
@@ -445,6 +565,12 @@ Yes. For more information, go to the Harness CI documentation on [Git Large File
 ### Can I run git commands in a CI Run step?
 
 Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), or use [Git LFS](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+
+### Git connector fails to connect to the SCM service. SCM request fails with UNKNOWN
+
+This error may occur if your [code repo connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
+
+[SCM service connection failures can also occur when using self-signed certificates](#git-connector-scm-connection-errors-when-using-self-signed-certificates).
 
 ## SCM status updates and PR checks
 
@@ -585,6 +711,10 @@ Yes, you can [pull Harness CI images from a private registry](https://developer.
 
 Go to [CI environment variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var).
 
+### Docker Hub rate limiting
+
+By default, Harness uses anonymous Docker access to pull Harness-required images. If you experience rate limiting issues when pulling images, try the solutions described in [Harness CI images - Docker Hub rate limiting](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#docker-hub-rate-limiting).
+
 ## Build and push images
 
 ### Where does a pipeline get code for a build?
@@ -616,7 +746,17 @@ For information about this, go to [Maven settings.xml](./articles/maven-settings
 
 To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
 
-Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance.md).
+Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance).
+
+### Out of memory errors with Gradle
+
+If a Gradle build experiences out of memory errors, add the following to your `gradle.properties` file:
+
+```
+-XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
+```
+
+Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
 
 ### Can I push without building?
 
@@ -683,17 +823,25 @@ Create a Docker connector for your desired container registry and use it in the 
 * Cause: This error can occur if you're running an ARM node pool instead of AMD.
 * Solution: Change your node pool to AMD and retry the build.
 
+### Build and Push to ECR step fails with error checking push permissions
+
+Go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster).
+
 ### Where does the Build and Push step expect the Dockerfile to be?
 
 The Dockerfile is assumed to be in the root folder of the codebase. You can use the **Dockerfile** setting in a Build and Push step to specify a different path to your Dockerfile.
 
 ### Can I use images from multiple Azure Container Registries (ACRs)?
 
-Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs.md).
+Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs).
 
 ### Is remote caching supported in Build and Push steps?
 
 Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
+
+### Build and Push to Docker fails with kaniko container runtime error
+
+Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
 
 ## Upload artifacts
 
@@ -716,6 +864,10 @@ In addition to the console view URL, you can reference privately-stored artifact
 ### Does the Upload Artifacts to S3 step compress files before uploading them?
 
 No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
+
+### Can I trim the parent folder name before uploading to S3?
+
+Yes. Go to [Trim parent folder name when uploading to S3](./articles/Trimming-parent-folder-name-while-uploading-files-to-S3).
 
 ### Connector errors with Upload Artifacts to S3 step.
 
@@ -763,7 +915,7 @@ Currently, publishing test reports from a Run step in a CD containerized step gr
 
 No. Test reports from tests run in Run steps also appear there if they are [correctly formatted](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
-## Test splitting (parallelism)
+## Test splitting
 
 ### Does Harness support test splitting (parallelism)?
 
@@ -772,7 +924,7 @@ Yes. How you do this depends on whether your tests run in a **Run** step or a **
 * [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/)
 
-## Test Intelligence (Run Tests steps)
+## Test Intelligence
 
 ### How do I use Test Intelligence?
 
@@ -878,7 +1030,7 @@ If you encounter errors with Python TI, make sure that:
 
 Harness doesn't recommend using TI with Ruby projects using dynamically generated code or Python projects using dynamic loading or metaclasses.
 
-## Script execution (CI Run steps)
+## Script execution
 
 ### Does Harness CI support script execution?
 
@@ -903,6 +1055,18 @@ If your step needs to execute Docker commands, then the image needs to have Dock
 ### When attempting to export an output variable from a Run step using a Python shell, the step fails with "no such file or directory"
 
 This can happen if you manually exit the Python script by calling `exit(0)`. When you declare an [output variable in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables), Harness runs some additional code at the end of your script to export the variable. If you exit the script manually in your Run step's command, then Harness can't run those additional lines of code.
+
+### Secrets with line breaks and shell-interpreted special characters
+
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step).
+
+### Output variable length limit
+
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+
+### Multi-line output variables truncated
+
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
 
 ## Entry point
 
@@ -995,7 +1159,7 @@ Error messages like `cannot connect to the Docker daemon` indicate that you migh
             value: "true"
 ```
 
-**Harness Cloud:** You don't need DinD Background steps with Harness Cloud build infrastructure, and you can run GitHub Actions in [Action steps](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step.md) instead of Plugin steps.
+**Harness Cloud:** You don't need DinD Background steps with Harness Cloud build infrastructure, and you can run GitHub Actions in [Action steps](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) instead of Plugin steps.
 
 ### GitHub Action step fails with "not a git repository or any of the parent directories"
 
@@ -1247,6 +1411,10 @@ For more information about configuring connectivity, go to:
 
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
 * [Allowlist Harness Domains and IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+
+### Step logs don't load in real time
+
+Go to [CI step logs don't load in real time](./articles/CI-step-logs-dont-load-in-real-time).
 
 ### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
 
