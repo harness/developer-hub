@@ -42,6 +42,10 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 link to k8s infra set up section
 
+If the delegate is not able to connect to the created build farm with [Istio MTLS STRICT mode](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode), and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+
+For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+
 ### Harness Cloud build infrastructure issues
 
 For troubleshooting information for Harness Cloud build infrastructure, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#troubleshooting-harness-cloud-build-infrastructure).
