@@ -25,9 +25,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## January 2024 
 
+<!-- 
+
 ### Version 1.78
 
-<!-- 2024-01-09 -->
+<!-- 2024-01-09 
 
 #### Feature enhancements
 
@@ -35,6 +37,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - OWASP scans now display the package name and version for all issues. (STO-6725)
 
+-->
 
 ## December 2023 
 
