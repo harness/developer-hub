@@ -446,3 +446,19 @@ spec:
           interval: 2s
           attempt: 1
 ```
+
+You can use secrets and environment variables in the source as shown below:
+
+```yaml
+source:
+  env:
+  - name: KEY
+    value: value
+  volumes:
+  - name: vol1
+    secrets:
+    - name: cm1
+  volumeMounts:
+  - name: vol1
+    mountPath: path
+ ```
