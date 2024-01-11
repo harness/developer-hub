@@ -70,7 +70,7 @@ Declarations like `"Resource": "*"` or `"Resource": "arn:aws:s3:::your-s3-bucket
 
 Declarations like `"Resource": "arn:aws:s3:::bucket-name/*"` limit access to object-level data, such as the contents of the bucket, and prevent access to higher-level data.
 
-You can either use a single expression, like `"Resource": "*"` or create separate declarations for different actions, for example:
+You can either use a single expression, like `"Resource": "*"`, or create separate declarations for different actions, for example:
 
 ```json
 {
