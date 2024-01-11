@@ -25,7 +25,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 <!-- Jan 11, 2024 -->
 
 🎉 Happy New Year to all our fantastic users! 🎉
-Since it's the first release of the year, we've wrapped up some interesting features for you, including a new Devtools Plugin and revamped RBAC roles.
+Since it's the first release of the year, we've wrapped up some interesting features for you, including a new Devtools Plugin and revamped access control permissions.
 
 - **Docs:** [Configuring Layout of IDP Catalog pages](https://developer.harness.io/docs/internal-developer-portal/get-started/layout-deepdive) [Role-based access control (RBAC)](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles)
 
