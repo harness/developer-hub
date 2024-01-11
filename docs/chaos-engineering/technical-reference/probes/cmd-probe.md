@@ -121,7 +121,7 @@ Listed below is the probe schema for the command probe with properties shared ac
   </tr>
   <tr>
    <td>inheritInputs</td>
-   <td>Flag for inheriting experiment pod attributes such as ENV, volumes, and volumeMounts into the probe pod   </td>
+   <td>Flag for inheriting experiment pod attributes such as ENV, volumes, and volumeMount into the probe pod   </td>
    <td>Optional   </td>
    <td><code>true, false</code>   </td>
    <td>Default is <code>false</code> i.e. the experiment pod attributes won't be inherited by the probe pod by default   </td>
@@ -190,7 +190,7 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>Depending on the type of the volume, additional properties need to be provided   </td>
   </tr>
   <tr>
-   <td>volumesMount   </td>
+   <td>volumeMount   </td>
    <td>Volume mount paths for the corresponding source pod volumes   </td>
    <td>Optional   </td>
    <td><code>type: string</code>   </td>
@@ -426,25 +426,20 @@ spec:
             imagePullPolicy: Always
             privileged: true
             hostNetwork: false
+            # using secrets and environment variables
+            env:
+            - name: name
+              value: test
+            volumes:
+            - name: volume-secret
+              secrets:
+              - name: vm-credentials
+            volumeMount:
+            - name: volume-secret
+              mountPath: /etc/volume-secret
         mode: "Edge"
         runProperties:
           probeTimeout: 5s
           interval: 2s
           attempt: 1
 ```
-
-You can use secrets and environment variables in the source as shown below:
-
-```yaml
-source:
-  env:
-  - name: KEY
-    value: value
-  volumes:
-  - name: vol1
-    secrets:
-    - name: cm1
-  volumeMounts:
-  - name: vol1
-    mountPath: path
- ```
