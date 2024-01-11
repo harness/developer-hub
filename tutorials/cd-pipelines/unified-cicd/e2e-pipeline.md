@@ -29,7 +29,7 @@ The diagram below shows a GitOps-driven CI/CD pipeline. The process involves bui
 Interested in doing this tutorial together? Harness is now offering a hands-on lab where we will guide you
 through this exercise and more. 
 
-* [CI/CD DevDays lab material and guide](https://harness-developer-hub.s3.us-east-2.amazonaws.com/labs/Harness_CI_CD_Dev_Day_Lab_Guide.pdf)
+* [CI/CD DevDays lab material and guide](https://harness-developer-hub.s3.us-east-2.amazonaws.com/labs/Harness_CI_CD_Dev_Days_Lab_Guide.pdf)
 * [Sign up for CI/CD DevDays](https://www.harness.io/events/harnessdevdays)
 
 :::
