@@ -153,3 +153,22 @@ To configure your account's session inactivity timeout, do the following:
    You can set this to a minimum of 30 minutes and a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
 
    ![](./static/SessionTimeout.png)
+
+
+### Set absolute session timeout
+
+Harness logs a user out of their account after a session timeout irrespective of any activity.
+
+To configure your account's session inactivity timeout, do the following:
+
+1. In your Harness account, select **Account Settings**.
+
+2. Select **Authentication**.
+
+3. In **Absolute Session Timeout (in minutes)**, enter the time in minutes to set the absolute session time out.
+
+   The default absolute session timeout is 0, that means absolute session timeout is not set.
+
+   You can set this to a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
+
+In case both inactive session timeout and absolute session timeout is set, the condition first met wlll be honoured.
