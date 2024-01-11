@@ -1118,6 +1118,12 @@ This error occurs because AWS Fargate doesn't support the use of privileged cont
 
 Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-cant-connect-to-docker-daemon).
 
+### DinD Background step fails when Docker daemon disconnects or hit quota limit after some time
+
+This typically indicates that the DinD Background step doesn't have sufficient resources. Try modifying the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
+
+You can also [add a parallel Run step to monitor and help debug the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures). For example, in this case it would help to use the Run step to monitor resource consumption by the Background step.
+
 ## Plugins and integrations
 
 ### Which Drone plugins are supported in Harness CI?
