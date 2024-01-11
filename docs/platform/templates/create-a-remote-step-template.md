@@ -8,7 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `NG_TEMPLATE_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable it. ​Harness enables you to add templates to create re-usable logic and Harness entities (like steps, stages, and pipelines) in your pipelines. You can link these templates in your pipelines or share them with your teams for improved efficiency.
+:::info note
+Currently, this feature is behind the feature flag `NG_TEMPLATE_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+
+:::
+
+Harness enables you to add templates to create re-usable logic and Harness entities (like steps, stages, and pipelines) in your pipelines. You can link these templates in your pipelines or share them with your teams for improved efficiency.
 
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness.
 
@@ -79,24 +84,36 @@ You can create a step template from your account, org, or project. ​This topic
 
 To create a remote step template from the project scope, do the following:
 
-1. In your Harness account, go to your project.​
-2. In **Project SETUP**, select **Templates**.
-3. Select **New Template**, and then select **Step**. ​The **Create New Step Template** settings appear.
+1. In your Harness, go to your project.
+2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
+3. Select **+ New Template**, and then select **Step**. The **Create New Step Template** settings open.
 4. In **Name**, enter a name for the template.​
-5. In **Version Label**, enter a version for the template.​
-6. Select **Remote**.
-7. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors). Important: The connector must use the **Enable API access** option and **Username and Token** authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider, and add it to Harness as a secret. Next, use the token in the credentials for the Git connector.​​
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
+8. Under **How do you want to set up your template?**, select **Remote**.
+9. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 
-   ![](./static/create-a-remote-step-template-18.png)
+     :::info note
+   
+     The Git connector must use the **Enable API access** option and **Username and Token** authentication. 
+   
+     Harness requires the token for API access.
+   
+     Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
+   
+     ![](./static/create-a-remote-pipeline-template-24.png)  
+   
+     For GitHub, the token must have the following scopes:
+   
+     ![](./static/create-a-remote-pipeline-template-25.png)
+   
+     :::
 
-    For GitHub, the token must have the following scopes:​
-
-    ![](./static/create-a-remote-step-template-19.png)
-
-8. In **Repository**, select your repository. If your repository isn't listed, enter its name. ​Create the repository in Git before entering it in **Select Repository** . Harness does not create the repository for you.
-9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. ​Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​
-10. Harness auto-populates the **YAML Path**. You can change this path and the file name.
-11. Select **Start**.​  
+10. In **Repository**, select your repository. If your repository isn't listed, enter its name. ​Create the repository in Git before entering it in **Select Repository** . Harness does not create the repository for you.
+11. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. ​Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​
+12. Harness auto-populates the **YAML Path**. You can change this path and the file name.
+13. Select **Start**.​  
 
     Your step template is created and you can now add steps from the step Library.
 
@@ -106,14 +123,11 @@ To create a remote step template from the project scope, do the following:
 
 To add step parameters, do the following:
 
-1. In **Step Library**, select **Shell Script** under **Utilities**.  
-The **Step Parameters** settings appear.​
+1. In **Step Library**, select **Shell Script** under **Utilities**. The **Step Parameters** settings open.​
 2. ​In **Script**, enter your script.
 3. Specify your **Input Variables** and **Output Variables**.
-4. In **Execution Target**,​ specify where you want to execute the script.  
-You can select **Specify on Target Host** or **On Delegate**.  
-For more information, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
-5. Select **Save**. The **Save Template to Git** settings appear.
+4. In **Execution Target**,​ specify where you want to execute the script. You can select **Specify on Target Host** or **On Delegate**. For more information, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
+5. Select **Save**. The **Save Template to Git** settings open.
 
     ![](./static/create-a-remote-step-template-21.png)
 
@@ -132,7 +146,7 @@ For more information, go to [Using shell scripts in CD stages](/docs/continuous-
 10. Commit your changes to Git.​
 11. Return to Harness and refresh the page.​​
 
-    A **Template Updated** message appears.
+    A **Template Updated** message opens.
 	
 	![](./static/create-a-remote-step-template-23.png)
 

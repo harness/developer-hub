@@ -66,12 +66,6 @@ You can add multiple health sources.
 
 #### **Add Amazon Managed Service for Prometheus as health source**
 
-:::note
-
-Currently, this feature is behind the feature flag `SRM_ENABLE_HEALTHSOURCE_AWS_PROMETHEUS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness now supports Amazon Managed Service for Prometheus as health source. To select Amazon Managed Service for Prometheus as health source:
 
 1. In Health Sources, click **Add**.   

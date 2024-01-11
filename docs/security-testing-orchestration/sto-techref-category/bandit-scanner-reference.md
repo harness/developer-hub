@@ -17,20 +17,28 @@ You can scan your code repositories using [Bandit](https://github.com/PyCQA/band
 ### Docker-in-Docker requirements
 
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 
 ### Root access requirements 
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 ## Bandit step settings for STO scans
 
@@ -43,11 +51,11 @@ The recommended workflow is to add a Bandit step to a Security Tests or CI Build
 
 ### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -58,9 +66,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 ### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -73,9 +81,9 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-```
+
 
 
 <StoSettingScanTypeRepo />
@@ -86,9 +94,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -97,9 +105,9 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
@@ -108,9 +116,9 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 #### Workspace (_repository_)
 
-```mdx-code-block
+
 import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+
 
 <StoSettingTargetWorkspace  />
 
@@ -118,9 +126,9 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -133,9 +141,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -143,9 +151,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
+
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
 
 <StoSettingCliFlags />
 
@@ -154,9 +162,9 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 ### Settings
@@ -201,9 +209,9 @@ STO supports the following policy\_type settings for Bandit:
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -218,9 +226,9 @@ The following settings are required for Bandit scans:
 * `repository_branch` — This tells Bandit the Git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 #### Ingestion file
 
@@ -231,9 +239,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ## YAML pipeline example
 
-```mdx-code-block
+
 import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
+
 
 <StoSettingYAMLexample />
 

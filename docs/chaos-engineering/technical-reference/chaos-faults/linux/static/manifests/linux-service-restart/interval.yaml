@@ -9,5 +9,5 @@ spec:
   serviceRestartChaos/inputs:
     services: "apache2,nginx"
     sequence: "parallel"
-    duration: 30
-    interval: 10
+    duration: 30s
+    interval: 10s

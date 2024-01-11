@@ -1,7 +1,7 @@
 ---
 title: Harness secrets management overview
 description: Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account. Some key points about Secret Management.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: hngrlb7rd6
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
@@ -13,9 +13,14 @@ Harness includes a built-in Secret Management feature that enables you to store 
 * Secrets are always stored in encrypted form and decrypted when they are needed.
 * Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secret management accessible publicly. This adds an important layer of security.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 ### Before you begin
 
 * Go to [Harness Key Concepts](../../../get-started/key-concepts.md)
+* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Visual Summary
 
@@ -54,7 +59,7 @@ If you are using a KMS, rotation of keys is not supported by Harness and you mig
 
 #### Using Third-Party Secret Managers
 
-You can also use third-party Secret Managers, for example, HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager.
+You can also use third-party Secret Managers, for example, HashiCorp Vault, Azure Key Vault, GCP Secrets Manager, and AWS Secrets Manager.
 
 These Secret Managers store the key, perform encryption and decryption, and also store the secrets (encrypted key pair). Neither the keys nor the secrets are stored in the Harness database. A reference to the secret is stored in the Harness database.
 
@@ -95,7 +100,7 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 - The secret manager is Google Cloud KMS or AWS KMS.
 
-- The secret manager is Google Cloud Secret Manager: The secret manager contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
+- The secret manager is Google Cloud Secret Manager: The secret contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
 
 - The secret is of the reference type: If a secret's reference path is edited, the path is updated in the database. However, the cached value continues to store the older path and fetches the stale secret.
 

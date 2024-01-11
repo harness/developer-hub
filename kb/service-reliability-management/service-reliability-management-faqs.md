@@ -43,3 +43,13 @@ Check if api token used is having Read metrics and Read entities scope
 
 ####  No Service is getting listed while using Dynatrace health source
 Only services with marked Key Requests are shown, so could you please check and confirm if service which you are expecting is having any metric marked as key request.
+
+#### Marking step as success manually for Prometheus CV  takes sometime time to reflect
+Marking a CV step as success manually will not change the status and you can expect a delay of (10 sec - 1 min) as this needs to cancel all the data collection/ learning engine task and that takes some time to reflect
+
+#### How to verify deployment for  Non APM metric(or OpenTelemetry app) from NewRelic Health Source Connector
+You can create a Custom metric health source and use the NewRelic Health Source Connector and you can use NRQL query to fetch the metric data
+
+
+#### Primary/Canary node is not getting identified while doing verification 
+Node is identified in case metrics were reported by your verification provider used here (AppD, Prometheus, etc.) for the duration of the analysis window, so you can check the API call being made and see if nodes were reporting data or not during that time. You can also navigate to the provider dashboard and verify directly.

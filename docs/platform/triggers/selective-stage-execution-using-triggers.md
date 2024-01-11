@@ -1,7 +1,7 @@
 ---
 title: Selective pipeline stage execution by using triggers
 description: Execute specific stages of a pipeline using webhook triggers
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. 

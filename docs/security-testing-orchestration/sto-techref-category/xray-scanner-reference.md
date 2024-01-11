@@ -20,24 +20,21 @@ The standard workflow is to create a CI Build or Security Tests stage to your pi
 
 ## Important notes for running Xray scans in STO
 
-:::info important notes
-
 - Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
 
 - For information about running Xray scans with custom SSL certificates, go to [Authenticating with RSA Keys](https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys) in the JFrog documentation.
-
-<!-- 
-
-RP - NEED TO SET UP CUSTOM CERTS TO RUN XRAY SCANS
-IF YOU WANT TO RUN XRAY SCANS USING CUSTOM CERTS, REFER TO https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys
-
--->
 
 - If you need to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
 
   You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-:::
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 
 ## Security step settings for Xray scans in STO
@@ -46,9 +43,9 @@ You can add a Security step to a Security Tests or CI Build stage and then confi
 
 ### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -63,15 +60,15 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 
 ### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />

@@ -4,17 +4,17 @@ title: ECS Container Volume Detach
 ---
 
 ECS container volume detach provides a mechanism to detach and remove volumes associated with ECS task containers in an Amazon ECS (Elastic Container Service) task.
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Container Volume Detach](./static/images/ecs-container-volume-detach.png)
 
 ## Use cases
-
-- This experiment allows you to test and validate the behavior of your ECS tasks when volumes are detached. You can verify the resilience and performance of your application during volume detachment scenarios, ensuring that the containers continue to function as expected.
+ECS container volume detach:
+- Allows you to test and validate the behavior of your ECS tasks when volumes are detached. You can verify the resilience and performance of your application during volume detachment scenarios, ensuring that the containers continue to function as expected.
 - By detaching volumes, you can safely remove the volume associations from the containers without deleting the volumes themselves. 
 - By detaching unnecessary volumes, you can optimize the resource utilization within your ECS tasks. This helps to free up storage space and minimize any potential performance impact associated with unused volumes.
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -34,12 +34,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -68,6 +66,7 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
+
 :::info note
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 - The ECS containers should be in a healthy state before and after introducing chaos.
@@ -85,12 +84,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
         <tr> 
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster </td>
-          <td> For example, <code>cluster-1</code>. </td>
+          <td> For example, <code>cluster-1</code>. For more information, go to <a href="#ecs-container-volume-detach"> cluster name.</a></td>
         </tr>
         <tr> 
           <td> SERVICE_NAME </td>
           <td> Name of the ECS service under chaos </td>
-          <td> For example, <code>nginx-svc</code>. </td>
+          <td> For example, <code>nginx-svc</code>. For more information, go to <a href="#ecs-container-volume-detach"> service name.</a></td>
         </tr>
         <tr>
           <td> REGION </td>
@@ -108,12 +107,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds) </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds)</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -123,12 +122,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds)  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
 
-### ECS Container Volume Detach
+### ECS container volume detach
 
 ECS container volume chaos will detach the volumes for specified chaos duration. Tune it by using the `SERVICE_NAME` and `CLUSTER_NAME` environment variable.
 

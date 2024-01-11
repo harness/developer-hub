@@ -12,70 +12,7 @@ This topic contains general troubleshooting information for error messages and o
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
 
- ### Contents
-
-- [Login issues](#login-issues)
-  - [Logged out automatically](#logged-out-automatically)
-    - [Troubleshooting steps](#troubleshooting-steps)
-    - [Notes](#notes)
-- [Delegate issues](#delegate-issues)
-  - [Failure to assign a delegate to a perpetual task](#failure-to-assign-a-delegate-to-a-perpetual-task)
-  - [Duplicate output in deployment logs](#duplicate-output-in-deployment-logs)
-  - [Running multiple delegates on the same host](#running-multiple-delegates-on-the-same-host)
-  - [Delegate setup](#delegate-setup)
-  - [Delegate can't connect to Harness Manager](#delegate-cant-connect-to-harness-manager)
-  - [Delegate successes followed by failures](#delegate-successes-followed-by-failures)
-  - [No delegates could reach the resource](#no-delegates-could-reach-the-resource)
-  - [Google Cloud Platform: cluster has unschedulable pods](#google-cloud-platform-cluster-has-unschedulable-pods)
-    - [Cause](#cause)
-    - [Solution](#solution)
-  - [Deleting a Kubernetes delegate](#deleting-a-kubernetes-delegate)
-  - [Self-destruct sequence initiated](#self-destruct-sequence-initiated)
-    - [Cause](#cause-1)
-    - [Solution](#solution-1)
-  - [Need to use long polling for delegate connection to Harness Manager](#need-to-use-long-polling-for-delegate-connection-to-harness-manager)
-  - [KubernetesClientException: Operation: \[list\] for kind: \[Deployment\] with name: \[null\] in namespace: \[default\] failed](#kubernetesclientexception-operation-list-for-kind-deployment-with-name-null-in-namespace-default-failed)
-- [Artifact collection](#artifact-collection)
-  - [Stage hanging on artifact collection](#stage-hanging-on-artifact-collection)
-- [Common errors and alerts](#common-errors-and-alerts)
-  - [No delegates could reach the resource](#no-delegates-could-reach-the-resource-1)
-  - [Harness SecretStore is not able to encrypt/decrypt](#harness-secretstore-is-not-able-to-encryptdecrypt)
-  - [You are not authorized to perform this operation: AmazonEC2: Status code 403](#you-are-not-authorized-to-perform-this-operation-amazonec2-status-code-403)
-  - [Git-upload-pack not permitted](#git-upload-pack-not-permitted)
-- [Naming conventions](#naming-conventions)
-- [Secrets](#secrets)
-  - [Secrets values hidden In log output](#secrets-values-hidden-in-log-output)
-  - [AWS KMS 403](#aws-kms-403)
-- [Triggers](#triggers)
-  - [zsh: no matches found](#zsh-no-matches-found)
-  - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
-- [Continuous delivery](#continuous-delivery)
-  - [Error with release name too long](#error-with-release-name-too-long)
-  - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
-- [Continuous integration](#continuous-integration)
-- [Helm](#helm)
-  - [Unable to get an update from the chart repository](#unable-to-get-an-update-from-the-chart-repository)
-- [Kubernetes](#kubernetes)
-  - [The deployment is invalid...may not be specified when `value` is not empty](#the-deployment-is-invalidmay-not-be-specified-when-value-is-not-empty)
-  - [NullPointerException: release name is reserved for internal Harness ConfigMap](#nullpointerexception-release-name-is-reserved-for-internal-harness-configmap)
-  - [The server doesn't have a resource type "deployments"](#the-server-doesnt-have-a-resource-type-deployments)
-  - [Invalid value LabelSelector](#invalid-value-labelselector)
-  - [Cannot create property](#cannot-create-property)
-- [Terraform](#terraform)
-  - [Provisioned resources already exist (Terraform state file locked)](#provisioned-resources-already-exist-terraform-state-file-locked)
-  - [TerraformValidation - Terraform validation result: false](#terraformvalidation---terraform-validation-result-false)
-- [AWS ECS](#aws-ecs)
-- [Harness secret managers](#harness-secret-managers)
-- [SAML SSO](#saml-sso)
-  - [Signed in user is not assigned to a role for the project (Harness)](#signed-in-user-is-not-assigned-to-a-role-for-the-project-harness)
-    - [Cause](#cause-2)
-    - [Solution](#solution-2)
-- [Shell scripts](#shell-scripts)
-  - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
-- [Harness policy engine](#harness-policy-engine)
-  - [Policy evaluation failed](#policy-evaluation-failed)
-- [YAML builder](#yaml-builder)
-  - [The incoming YAML document exceeds the limit: 3145728 code points](#the-incoming-yaml-document-exceeds-the-limit-3145728-code-points)
+<!-- TOC is not needed due to presence of minitoc in prod. -->
 
 ## Login issues
 
@@ -85,8 +22,8 @@ The following issues can occur when logging in to Harness.
 
 You are logged out of your Harness Manager session automatically, forcing you to log back in.
 
-:::note
-If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs.Typically, the solution is to clear local storage.
+:::info note
+If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs. Typically, the solution is to clear local storage.
 :::
 
 #### Troubleshooting steps
@@ -180,7 +117,7 @@ If the delegate can't connect to Harness Manager, try the following:
 
 If you have incorrectly used the same Kubernetes delegate YAML file for multiple delegates, you will see delegate successes followed by failures in the delegate logs. This sequence is the result of one delegate succeeding in its operation and the same operation failing with the second delegate.
 
-:::note
+:::info note
 To avoid any delegate conflicts, always use a new Kubernetes delegate YAML download for each delegate you install, and a unique name.
 :::
 
@@ -206,7 +143,7 @@ Add more space or turn on autoscaling, wait for the cluster to restart, reconnec
 
 `$ kubectl apply -f harness-delegate.yaml`
 
-For more information, see [Autoscaling deployments](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) from Google.
+For more information, go to [Autoscaling deployments](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) from Google.
 
 ### Deleting a Kubernetes delegate
 
@@ -321,7 +258,7 @@ Ensure that one of the IAM roles assigned to the user account used for AWS conne
 
 One possible cause of this error is if you are using a personal access token (PAT) for your GitHub connector and your GitHub organization uses SAML single sign-on (SSO).
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.
+To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. Go to [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.
 
 
 ```
@@ -329,13 +266,39 @@ org.eclipse.jgit.api.errors.TransportException: https://github.com/*******/*****
 ```
 ## Naming conventions
 
-:::note
+:::info note
 Typically, names for Harness entities can only contain alphanumerics, \_ and -.
 :::
 
 Some naming conventions in repositories and other artifact sources, or in target infrastructures, cannot be used by Harness. For example, if a Harness trigger webhook uses a push notification from a Git repo branch that contains a dot in its name, the trigger is unlikely to work.
 
 Character support in Harness environment and infrastructure definition entity names is restricted to alphanumeric characters, underlines, and hyphens. The restriction is due to compatibility issues with Harness backend components, database keys, and the YAML flow where Harness creates files with entity names on file systems.
+
+## Pipelines
+
+### Pipeline execution failures
+
+At times, you might encounter pipeline execution failures. You can troubleshoot the issues using validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available.
+
+![](./static/troubleshooting-nextgen-08.png)
+
+Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+
+![](./static/troubleshooting-nextgen-09.png)
+
+:::info note
+Some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
+
+:::
+
+Harness displays the complete error message, enabling you to troubleshoot the connector issue effectively.
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::
 
 ## Secrets
 
@@ -363,6 +326,10 @@ Next, ensure that your proxies are not blocking the URL or port 443.
 
 If this does not fix your error, and you are not using the default Harness KMS secret store, the AWS KMS access key provided in Harness for your own KMS store is likely invalid.
 
+### Secrets with line breaks and shell-interpreted special characters
+
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
+
 ## Triggers
 
 This section covers error messages you might see when creating, updating, deleting, or executing a trigger. It includes authorization or permission steps to resolve the errors.
@@ -389,7 +356,7 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 ![](./static/troubleshooting-nextgen-01.png)
 
-To resolve this, see [Manage roles](../platform/role-based-access-control/add-manage-roles).
+To resolve this, go to [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
 ## Continuous delivery
 
@@ -453,7 +420,7 @@ The following problems can occur when developing and deploying to Kubernetes.
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 
-See [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+Go to [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 If the ConfigMap is edited using kubectl or another tool between deployments future deployments often fail.
 
@@ -465,11 +432,11 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 **Do not create a ConfigMap that uses the same name as the release name.** Your ConfigMap will override the Harness internal ConfigMap and cause a NullPointerException.
 
-See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
+Go to [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 ### The server doesn't have a resource type "deployments"
 
-When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernetes cluster must have **Basic authentication enabled** or the connection will fail. For more information, see [Control plane security](https://cloud.google.com/kubernetes-engine/docs/concepts/security-overview#control_plane_security) from GCP. From GCP:
+When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernetes cluster must have **Basic authentication enabled** or the connection will fail. For more information, go to [Control plane security](https://cloud.google.com/kubernetes-engine/docs/concepts/security-overview#control_plane_security) from GCP. From GCP:
 
 You can handle cluster authentication in Google Kubernetes Engine by using Cloud IAM as the identity provider. However, legacy username-and-password-based authentication is enabled by default in Google Kubernetes Engine. For enhanced authentication security, you should ensure that you have disabled Basic Authentication by setting an empty username and password for the MasterAuth configuration. In the same configuration, you can also disable the client certificate which ensures that you have one less key to think about when locking down access to your cluster.
 
@@ -528,7 +495,7 @@ ConstructorException: Cannot create property=spec for JavaBean=class V1StatefulS
 ```
 Ensure that your YAML specification is formed correctly.
 
-For steps on how to add a security context for a pod or container, see [Configure a security context for a pod or container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
+For steps on how to add a security context for a pod or container, go to [Configure a security context for a pod or container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
 
 Here is an example:
 
@@ -564,8 +531,8 @@ Use a longer timeout for the Terraform Apply step.
 
 When the Terraform Apply times out, Terraform locks the Terraform state file. A Terraform [Force Unlock](https://www.terraform.io/docs/language/state/locking.html#force-unlock) needs to be performed.
 
-:::note
-Locking and unlocking of tfstate files is handled by Terraform automatically. You can disable state locking for most commands with the `-lock` flag but it is not recommended. See [State locking](https://www.terraform.io/docs/language/state/locking.html) from Terraform.
+:::info note
+Locking and unlocking of tfstate files is handled by Terraform automatically. You can disable state locking for most commands with the `-lock` flag but it is not recommended. Go to [State locking](https://www.terraform.io/docs/language/state/locking.html) from Terraform.
 :::
 
 After timeout, no resources may be added to the state file. A manual cleanup of any resources created must be performed as well.
@@ -630,13 +597,13 @@ If the email address used in Harness is different from the email address in the 
 
 Make sure the email address used in Harness matches the email address in the Azure app.
 
-For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md).
+For more information about SAML SSO configuration with Azure, go to [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md).
 
 ## Shell scripts
 
 This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
-### FileNotFoundExeption inside shell script execution task
+### FileNotFoundException inside shell script execution task
 
 This error happens when you are publishing output and your Shell Script step exits early from its script.
 
@@ -668,3 +635,34 @@ This error happens when you are adding YAML that exceeds the Harness limit of 3M
 
 To fix this error, you will need to reduce the size of the pipeline or template.
 
+## Connectors
+
+This section covers common problems experienced when using the [Connectors](/docs/category/connectors).
+
+### Connection test failures
+
+When you select **Connection Test** on the Connector Details page, at times, you might encounter a connection failure.
+
+![](./static/troubleshooting-nextgen-06.png)
+
+You can troubleshoot the issues using connector validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available.
+
+![](./static/troubleshooting-nextgen-07.png)
+
+Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+
+![](./static/troubleshooting-nextgen-05.png)
+
+:::info note
+Some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
+
+:::
+
+Harness displays the complete error message, enabling you to troubleshoot the connector issue effectively.
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::

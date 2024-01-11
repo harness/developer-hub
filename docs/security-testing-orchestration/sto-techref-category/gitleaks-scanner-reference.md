@@ -12,6 +12,15 @@ Gitleaks can publish results to [Static Analysis Results Interchange Format (SAR
 
 For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
+## For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+
 
 ## Gitleaks step settings for STO scans
 
@@ -25,11 +34,11 @@ The recommended workflow is to add a GitLeaks step to a Security Tests or CI Bui
 
 ### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeIngest />
@@ -41,9 +50,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 ### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -56,9 +65,9 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-```
+
 
 
 <StoSettingScanTypeRepo />
@@ -69,9 +78,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -80,9 +89,9 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
@@ -91,9 +100,9 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 #### Workspace (_repository_)
 
-```mdx-code-block
+
 import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+
 
 <StoSettingTargetWorkspace  />
 
@@ -101,9 +110,9 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -117,9 +126,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -127,9 +136,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
+
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
 
 <StoSettingCliFlags />
 
@@ -138,9 +147,9 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 ### Settings
@@ -346,7 +355,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: {}
+              nodeSelector: \{}
               os: Linux
   properties:
     ci:

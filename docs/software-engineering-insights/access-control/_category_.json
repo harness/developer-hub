@@ -1,0 +1,11 @@
+{
+    "label":"Access control",
+    "position": 75,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Acces control"
+    }
+ }

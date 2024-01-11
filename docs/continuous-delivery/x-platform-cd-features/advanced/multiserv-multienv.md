@@ -137,7 +137,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Make sure that the feature flags `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -174,7 +174,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Make sure that the feature flags `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -227,8 +227,6 @@ Here you can see two service deployments run serially on the same infrastructure
 
 By default, you cannot propagate the multiservices from one stage to a subsequent stage.
 
-Currently, to enable multiservice propagation, you must have the Harness feature flag `CDS_MULTI_SERVICE_PROPAGATION` enabled in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 ## Using environment groups
 
 You can select target environments and infrastructures using environment groups.
@@ -275,4 +273,8 @@ Max concurrency changes based on the following:
 * If you select **Deploy services in parallel**, Max concurrency is equal to the number of services.
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
+
+## Limitations
+
+* Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
 

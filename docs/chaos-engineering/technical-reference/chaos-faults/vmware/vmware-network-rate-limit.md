@@ -64,7 +64,7 @@ stringData:
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Name of the ethernet interface considered for shaping traffic. </td>
-        <td> For example, <code>ens160</code> </td>
+        <td> For example, <code>ens160</code>. For more information, go to <a href="#network-interface"> network interface. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>

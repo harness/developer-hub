@@ -2,7 +2,7 @@
 title: Use self-managed object storage with MinIO
 sidebar_label: External self-managed MinIO
 description: Learn how to use self-managed object storage with MinIO.
-sidebar_position: 2
+sidebar_position: 70
 ---
 
 Harness Self-Managed Enterprise Edition enables you to configure self-managed object storage with MinIO. MinIO is an object storage server designed for large-scale private cloud infrastructure. It aggregates persistent volumes into scalable distributed object storage using Amazon S3 REST APIs.

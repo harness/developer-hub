@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Integration with Harness CD
 description: HCE integration for continuous chaos validation within CD pipelines.
 ---

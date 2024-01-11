@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
 
@@ -73,17 +73,17 @@ You can use [Harness' expressions](/docs/platform/variables-and-expressions/runt
 
 For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 ![A Run step with echo commands and the corresponding build logs.](./static/built-in-cie-codebase-variables-reference-512.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
               - step:
@@ -120,10 +120,10 @@ In the [build logs](../viewing-builds.md), you can see the value of each variabl
 + echo open
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 

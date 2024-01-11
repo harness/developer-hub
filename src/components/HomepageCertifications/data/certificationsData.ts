@@ -24,7 +24,7 @@ export const certifications: CardItem[] = [
     description:
       "Drastically reduce rollbacks, deploy faster with less risk,spend more time building and coding, and less time fixing production with Progressive Delivery.",
     link: "/certifications/feature-flags",
-    numberOfCerts: 1,
+    numberOfCerts: 2,
   },
   {
     title: "Cloud Cost Management Certifications",
@@ -33,6 +33,14 @@ export const certifications: CardItem[] = [
       " Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
     link: "/certifications/cloud-cost-management",
     numberOfCerts: 1,
+  },
+  {
+    title: "Security Testing Orchestration Certifications",
+    module: MODULES.sto,
+    description:
+      " Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.",
+    link: "/certifications/sto",
+    numberOfCerts: 2,
   },
 
   // {

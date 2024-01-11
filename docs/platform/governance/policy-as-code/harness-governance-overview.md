@@ -65,7 +65,7 @@ A policy is a single rule. Policies are written as code in the OPA Rego policy l
 
 A policy itself is just the rule and it's not enforced anywhere. When a policy is added to a Policy Set, it is associated with the entity event on which it will be enforced (On Save, On Run, etc).
 
-Policies are written against an input payload. The input payload is the JSON of the entity that the policy is being enforced against (Pipeline, Feature Flag, etc).
+Policies are written against an input payload, which is the JSON representation of the entity that the policy is being enforced against (Pipeline, Feature Flag, etc). It's important to note that input JEXL expressions/variables are not resolved before the JSON is sent to OPA.
 
 Policies are saved within the hierarchy in the Harness platform: Account > Organizations > Projects.
 
@@ -179,7 +179,7 @@ Soon, policies can be applied to more entities, such as Connectors, Services, En
 
 #### Pipelines
 
-Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references and parameters at runtime. 
+Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references of stages/steps. 
 
 Policy Sets can be configured to be enforced automatically on these Pipeline events:
 

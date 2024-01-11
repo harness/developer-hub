@@ -28,14 +28,14 @@ This method reduces the risk of getting in the wrong state in the subsequent dep
 
 To enable declarative rollback, configure the following Harness service options. These options are defined in the service because they are tied to the service's manifests.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Set the following options in the Harness service YAML:
 
@@ -85,10 +85,10 @@ service:
     type: Kubernetes
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 
 To configure these options in Pipeline Studio, do the following:
 
@@ -98,14 +98,14 @@ To configure these options in Pipeline Studio, do the following:
 4. Expand **Advanced**.
 5. Select **Enable Declarative Rollback**.
 
-<docimage path={require('./static/1d291017453e675f4cac3d206b5fb18bcc56319ed29f50c964c336668f087057.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/1d291017453e675f4cac3d206b5fb18bcc56319ed29f50c964c336668f087057.png')} width="60%" height="60%" title="Click to view full size image" />
 
 The **Skip Resource Versioning** option is disabled automatically.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Important notes:

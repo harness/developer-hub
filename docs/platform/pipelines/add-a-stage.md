@@ -10,10 +10,10 @@ redirect_from:
   - /docs/platform/pipelines/add-a-custom-stage
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
@@ -63,10 +63,10 @@ Stage variables are variables that you add to a stage and then reference in the 
 
 You can add stage variables in the Pipeline Studio's Visual Editor or YAML Editor.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 To add stage variables, go to a stage's **Overview** tab, expand the **Advanced** section, and then select **Add Variable**.
 
@@ -77,10 +77,10 @@ To add stage variables, go to a stage's **Overview** tab, expand the **Advanced*
 <figcaption>The <b>Overview</b> tab for a <b>Deploy</b> stage.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -92,10 +92,10 @@ To add stage variables, go to a stage's **Overview** tab, expand the **Advanced*
             value: 90
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
@@ -127,17 +127,11 @@ On the **Advanced** tab, you can configure:
 
 ## Add a Custom stage
 
-:::note
+Harness has predefined stages for the most common release operations, such as Build (CI), Deploy (CD), and Approval stages. There are times when you need a stage to perform other operations that don't require the predefined settings of CI, CD, or Approval stages. For example, you might need a stage for ad hoc provisioning or to run jobs before a deployment stage. In these cases, you could use a Custom stage.
 
-Currently, the Custom stage feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Unlike the Build, Deploy, or Approval stages, the Custom stage has no predefined functionality or requirements. The Custom stage provides flexibility to support any use case outside of the standard stages.
 
-:::
-
-Harness has pre-defined stages for the most common release operations, such as Build (CI), Deploy (CD), and Approval stages; however, there are times when you need a stage to performs other operations that don't require the pre-defined settings of CI, CD, or Approval stages. For example, you might need a stage for ad hoc provisioning or to run jobs before a deployment stage. In these cases, you could use a Custom stage.
-
-Unlike the Build, Deploy, or Approval stages, the Custom stage has no pre-defined functionality or requirements. The Custom stage provides flexibility to support any use case outside of the standard stages.
-
-To add a custom stage to your pipeline, [add a stage](#add-a-stage) and select **Custom stage** as the stage type. The Custom stage is available in all modules that use pipelines (CI, CD, and so on).
+To add a Custom stage to your pipeline, [add a stage](#add-a-stage) and select **Custom** as the stage type. The Custom stage is available in all modules that use pipelines (CI, CD, and so on).
 
 ![](./static/add-a-custom-stage-58.png)
 
@@ -153,6 +147,30 @@ Like the standard stages, Custom stages support:
 Custom stages *don't* support [rollback](./define-a-failure-strategy-for-pipelines.md), but you can use [conditional executions](./w_pipeline-steps-reference/step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
 
 :::
+
+### Environments and Infrastructure Definitions in Custom stages
+
+:::info note
+
+This feature will be included an in upcoming release.
+
+The Environments and Infrastructure Definitions in the Custom stages feature will be behind the feature flag `CDS_CUSTOM_STAGE_WITH_ENV_INFRA`. Contact [Harness Support](mailto:support@harness.io) to inquire about the feature.
+
+:::
+
+You can also use **Environment** and **Infrastructure Definition** in Custom stages. 
+
+Please review these important notes about using **Environment** and **Infrastructure Definition** in Custom stages:
+
+- **Service** is not supported in Custom stages.
+- Both **Environment** and **Infrastructure Definition** are optional. You can have a Custom stage with no **Environment** or **Infrastructure Definition** or with only **Environment** or with both **Environment** and **Infrastructure Definition**. 
+- Currently, you can only use a single environment and single infrastructure.
+- Harness does not support environment propagation in the Custom stage.
+- Harness does not support dynamic infrastructure provisioning in the Custom stage.
+- Harnes does not support environment and infrastructure filtering in the Custom stage.
+- You can add both environment global and infrastructure global overrides in Custom stages.
+- Service-specific overrides are not supported as services are not supported in Custom stages.
+
 
 ### Steps available for Custom stages
 

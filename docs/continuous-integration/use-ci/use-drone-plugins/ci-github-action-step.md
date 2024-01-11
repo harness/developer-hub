@@ -4,11 +4,11 @@ description: Run GitHub Actions in your Harness CI pipelines.
 sidebar_position: 70
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
-```
+
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
 
@@ -28,10 +28,10 @@ For more information about using plugins in CI pipelines, go to [Explore plugins
 
 The following YAML examples use **GitHub Action** steps (`Action` steps) to set up Node.js, Go, Java, and Ruby environments.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="js" label="Setup Node.js" default>
-```
+
 
 This `Action` step uses the `actions/setup-node` GitHub Action to set up a Node.js environment that the subsequent steps in the stage can use.
 
@@ -46,10 +46,10 @@ This `Action` step uses the `actions/setup-node` GitHub Action to set up a Node.
                       node-version: '16'
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Go" label="Setup Golang">
-```
+
 
 This `Action` step uses the `actions/setup-go` GitHub Action to set up a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
 
@@ -64,10 +64,10 @@ This `Action` step uses the `actions/setup-go` GitHub Action to set up a Go envi
                       go-version: '1.17'
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Java" label="Setup Java">
-```
+
 
 This `Action` step uses the `actions/setup-java` GitHub Action to set up a Java environment that the subsequent steps in the stage can use. It specifies Java 17.
 
@@ -83,10 +83,10 @@ This `Action` step uses the `actions/setup-java` GitHub Action to set up a Java 
                       java-version: '17'
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Ruby" label="Setup Ruby">
-```
+
 
 This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby environment that the subsequent steps in the stage can use. It specifies Ruby 2.7.2.
 
@@ -101,17 +101,17 @@ This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby env
                       ruby-version: '2.7.2'
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Action step settings and specifications
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML editor" default>
-```
+
 
 To add a **GitHub Action** step in the YAML editor, add an `Action` step, for example:
 
@@ -145,10 +145,10 @@ The following cases *always* require environment variables:
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="visual" label="Visual editor">
-```
+
 
 1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
 2. Enter a **Name** and optional **Description**.
@@ -184,10 +184,10 @@ The following cases *always* require environment variables:
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 <details>
 <summary>YAML example: Pipeline with an Action step</summary>
@@ -247,10 +247,10 @@ pipeline:
 
 If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML editor" default>
-```
+
 
 In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
 
@@ -275,10 +275,10 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 
 For more information about configuring the Action step's settings, go to the [Action step settings and specifications](#action-step-settings-and-specifications) section, above.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Visual" label="Visual editor">
-```
+
 
 In the Visual editor, specify `GITHUB_TOKEN` in the **Environment Variables**. Enter `GITHUB_TOKEN` in the key field and the token or variable expression in the value field, for example:
 
@@ -293,10 +293,10 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 
 For more information about configuring the Action step's settings, go to the [Action step settings and specifications](#action-step-settings-and-specifications) section, above.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Output variables from GitHub Actions steps
 
@@ -322,7 +322,7 @@ For each expression:
 * Replace `[varName]` with the relevant variable name, wrapped in quotes.
 * In cross-stage references, replace `[stageID]` with the ID of the stage where the GitHub Actions step exists.
 
-:::caution
+:::warning
 
 GitHub Actions settings keys can include `-`, which is not supported by JEXL. Therefore, you must wrap these variable names in quotes when using them in Harness expressions.
 

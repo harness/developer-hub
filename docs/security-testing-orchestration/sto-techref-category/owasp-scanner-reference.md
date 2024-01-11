@@ -10,21 +10,31 @@ You can scan your code repositories using [OWASP Dependency-Check](https://owasp
 
 ## Important notes for running OWASP scans in STO
 
+
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 ## OWASP step configuration
 
@@ -39,11 +49,11 @@ The recommended workflow is to add an OWASP step to a Security Tests or CI Build
 
 ### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -54,9 +64,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 ### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -69,9 +79,9 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-```
+
 
 
 <StoSettingScanTypeRepo />
@@ -82,9 +92,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -93,9 +103,9 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
@@ -104,9 +114,9 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 #### Workspace
 
-```mdx-code-block
+
 import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+
 
 <StoSettingTargetWorkspace  />
 
@@ -114,9 +124,9 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -129,9 +139,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -139,9 +149,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
+
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
 
 <StoSettingCliFlags />
 
@@ -152,9 +162,9 @@ You can use this field to run the [dependency-check](https://jeremylong.github.i
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 
@@ -185,9 +195,9 @@ You can set up OWASP scans using a Security step: create a CI Build or Security 
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -203,17 +213,17 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Orchestrated scan settings
 
-```mdx-code-block
+
 import StoLegacyOrchestrated from './shared/legacy/_sto-ref-legacy-orchestrated.md';
-```
+
 
 <StoLegacyOrchestrated />
 
 #### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 

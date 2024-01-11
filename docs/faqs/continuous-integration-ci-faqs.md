@@ -36,7 +36,7 @@ When configuring permissions for a GitHub personal access token (PAT) that you'l
 
 ![](./static/continuous-integration-ci-faqs-20.png)
 
-:::caution
+:::warning
 
 When you enable API authentication in a GitHub connector (recommended), use the same personal access token for both [Authentication](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token) and [API authentication](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
 
@@ -132,11 +132,11 @@ For details, go to [Create and configure a codebase](https://developer.harness.i
 In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
 For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
-## How to Enable Test Intelligence?
+## How do I use Test Intelligence?
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
 
-For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+For information about how TI works and how to enable it, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 ## Does Harness CI support Multilayer caching?
 Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
@@ -144,3 +144,9 @@ Yes, for details, go to [https://developer.harness.io/docs/continuous-integratio
 ## Does Harness CI support script execution?
 
 Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+
+##  Does gsutil work in Harness cloud environment?
+
+No, gsutil is deprecated for use in Harness Cloud. Please use gcloud equivalent commands instead. 
+
+For example use `gcloud storage cp` instead of `gsutil cp`

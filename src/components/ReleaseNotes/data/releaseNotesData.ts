@@ -84,6 +84,13 @@ import {
             link: "/release-notes/cloud-cost-management",
           },
           {
+            title: "Code Repository release notes",
+            module: MODULES.code,
+            description:
+              "",
+            link: "/release-notes/code-repository",
+          },
+          {
             title: "Continuous Delivery and GitOps release notes",
             module: MODULES.cd,
             description:
@@ -138,6 +145,13 @@ import {
             description:
               "",
             link: "/release-notes/software-supply-chain-assurance",
+          },
+          {
+            title: "Software Engineering Insights release notes",
+            module: MODULES.sei,
+            description:
+              "",
+            link: "/release-notes/software-engineering-insights",
           },
         ],
       },

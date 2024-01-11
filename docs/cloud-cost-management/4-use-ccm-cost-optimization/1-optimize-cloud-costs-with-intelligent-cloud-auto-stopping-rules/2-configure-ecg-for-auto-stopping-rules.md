@@ -46,7 +46,7 @@ You can configure either metrics or process watcher for your rule.
 ECG is supported only for Unix-like machines. To install the agent,
 
 1. Download the ECG file from the S3 link:  
-<https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip>
+[https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip)
 2. Unzip the file.
 ```
 unzip ecg_1.1.0_linux_amd64.zip

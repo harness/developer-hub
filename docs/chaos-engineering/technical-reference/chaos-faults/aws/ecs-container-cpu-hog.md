@@ -7,9 +7,10 @@ title: ECS container CPU hog
 ECS container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM documentation that is in-built into the fault. This fault:
 - Causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
 - To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
+- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+
 
 ![ECS Container CPU Hog](./static/images/ecs-stress-chaos.png)
-
 
 ## Use cases
 ECS Container CPU hog:
@@ -22,8 +23,8 @@ ECS Container CPU hog:
 - Tests the ECS task sanity (service availability) and recovery of the task containers subject to CPU stress.
 
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute the fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - ECS container instance should be in a healthy state.
 - ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
 - You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations. Go to [systems manager documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
@@ -41,9 +42,9 @@ ECS Container CPU hog:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -109,7 +110,11 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
+
  <h3>Mandatory tunables</h3>
     <table>
         <tr>
@@ -138,12 +143,12 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -153,22 +158,22 @@ Below is an example AWS policy to execute the fault.
       <tr> 
         <td> CPU_CORE </td>
         <td> Number of CPU cores to consume.</td>
-        <td> Default: 0. </td>
+        <td> Default: 0. For more information, go to <a href="#cpu-cores"> CPU core.</a></td>
       </tr>
       <tr> 
         <td> CPU_LOAD </td>
         <td> Percentage of the CPU to consume.</td>
-        <td> Default: 100. </td>
+        <td> Default: 100. For more information, go to <a href="#cpu-load"> CPU load.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances</td>
-        <td> Default: parallel. Supports serial sequence. </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

@@ -20,20 +20,18 @@ You can perform a Web App Canary deployment using a single or multi-phase Workfl
 
 Make sure you have read the following:
 
-* [Azure Web App Deployments Overview](azure-web-app-deployments-overview.md)
-* Make sure that you have connected Harness to your Azure subscription as described in [Connect to Azure and Artifact Repo for Your Web App Deployments](connect-to-azure-for-web-app-deployments.md).
-* [Add Your Docker Image for Azure Web App Deployment](add-your-docker-image-for-azure-web-app-deployment.md)
-* [Add Non-Containerized Artifacts for Azure Web App Deployment](add-a-non-containerized-artifacts-for-azure-web-app-deployment.md)
-* [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md)
-* [Azure Web App Deployment Rollback](azure-web-app-deployment-rollback.md)
+- [Azure Web App Deployments Overview](azure-web-app-deployments-overview.md)
+- Make sure that you have connected Harness to your Azure subscription as described in [Connect to Azure and Artifact Repo for Your Web App Deployments](connect-to-azure-for-web-app-deployments.md).
+- [Add Your Docker Image for Azure Web App Deployment](add-your-docker-image-for-azure-web-app-deployment.md)
+- [Add Non-Containerized Artifacts for Azure Web App Deployment](add-a-non-containerized-artifacts-for-azure-web-app-deployment.md)
+- [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md)
+- [Azure Web App Deployment Rollback](azure-web-app-deployment-rollback.md)
 
 ### Visual Summary
 
 The following short video walks you through a Harness Azure Web App Canary Workflow setup.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/JrPdBERdrl8?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/JrPdBERdrl8?feature=oembed" />
 
 ### Supported Platforms and Technologies
 
@@ -61,9 +59,9 @@ You can perform a Web App Canary deployment using a single or multi-phase Workfl
 
 Enter the following settings and click **Submit**.
 
-* **Name:** the name for this Workflow.
-* **Workflow Type:** select **Canary Deployment**.
-* **Environment:** select the Harness Environment you added in [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md).
+- **Name:** the name for this Workflow.
+- **Workflow Type:** select **Canary Deployment**.
+- **Environment:** select the Harness Environment you added in [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md).
 
 ### Step 3: Create Phase 1
 
@@ -71,8 +69,8 @@ In your new Workflow, click **Add Phase**.
 
 In Workflow Phase, enter the following settings and click **Submit**.
 
-* **Service:** select the Harness Service you set up in [Add Your Docker Image for Azure Web App Deployment](add-your-docker-image-for-azure-web-app-deployment.md) or [Add Non-Containerized Artifacts for Azure Web App Deployment](add-a-non-containerized-artifacts-for-azure-web-app-deployment.md).
-* **Infrastructure Definition:** select the Web App Infrastructure Definition you set up in [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md).
+- **Service:** select the Harness Service you set up in [Add Your Docker Image for Azure Web App Deployment](add-your-docker-image-for-azure-web-app-deployment.md) or [Add Non-Containerized Artifacts for Azure Web App Deployment](add-a-non-containerized-artifacts-for-azure-web-app-deployment.md).
+- **Infrastructure Definition:** select the Web App Infrastructure Definition you set up in [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md).
 
 Harness generate the steps needed for the phase.
 
@@ -84,11 +82,11 @@ Open the **Slot Deployment** step.
 
 Enter the following settings and click **Submit**.
 
-* **Name:** enter a name for the step.
-* **App Service:** select the Azure Web App for deployment. Harness pulls the list of Web Apps using the credentials of the Azure Cloud Provider you selected in the phase's Infrastructure Definition.
-* **Deployment Slot:** select the Source slot for the deployment. This slot is where Harness deploys the new Web App version.Make sure the slot you select is running. Harness shows all slots regardless of their status.
-* **Target Slot:** select the Target slot for the deployment. This slot is where Harness will swap the App content and configurations elements during the **Swap Slot** step.Make sure the slot you select is running. Harness shows all slots regardless of their status.
-* **Slot Steady State Timeout:** enter a minimum of **30m**. The slot deployment relies on Azure and can take some time.
+- **Name:** enter a name for the step.
+- **App Service:** select the Azure Web App for deployment. Harness pulls the list of Web Apps using the credentials of the Azure Cloud Provider you selected in the phase's Infrastructure Definition.
+- **Deployment Slot:** select the Source slot for the deployment. This slot is where Harness deploys the new Web App version.Make sure the slot you select is running. Harness shows all slots regardless of their status.
+- **Target Slot:** select the Target slot for the deployment. This slot is where Harness will swap the App content and configurations elements during the **Swap Slot** step.Make sure the slot you select is running. Harness shows all slots regardless of their status.
+- **Slot Steady State Timeout:** enter a minimum of **30m**. The slot deployment relies on Azure and can take some time.
 
 When you are done, the step will look similar to this:
 
@@ -130,59 +128,59 @@ You can use multiple **Traffic %** steps to incrementally increase traffic. In-b
 
 The Script in this example is:
 
-
 ```
 curl -Is <stage-url> | head -n 1
 ```
+
 The Script output is:
 
-
 ```
-INFO   2021-02-02 12:01:05    Executing command ...  
-INFO   2021-02-02 12:01:17    HTTP/1.1 200 OK  
+INFO   2021-02-02 12:01:05    Executing command ...
+INFO   2021-02-02 12:01:17    HTTP/1.1 200 OK
 INFO   2021-02-02 12:01:17    Command completed with ExitCode (0)
 ```
+
 ### Step 6: Swap Slot
 
 You can perform a Web App Canary deployment using a single or multi-phase Workflow. In either method, make sure the **Swap Slot** step is in the final phase of the Workflow.The final step in the phase is Swap Slot. This step performs the Web App deployment slot swap. It is similar to doing a swap in the Azure portal or via the Azure CLI:
 
-
 ```
 az webapp deployment slot swap -n "web app name" -g "resource group name" -s "source slot name" --target-slot "target slot"
 ```
+
 Here is an example of the swap in the deployment logs:
 
-
 ```
-Sending request for swapping source slot: [stage] with target slot: [production]  
-Operation name : [Apply Web App Slot Configuration]  
-Status : [Succeeded]  
-Description : [Applied configuration settings from slot 'Production' to a site with deployment id 'anil-demowebapp__f3c3' in slot 'stage']  
-Operation name : [Microsoft.Web/sites/slots/StartSlotWarmup/action]  
-Status : [Succeeded]  
-Description : [Initial state for slot swap operation is (Source slot: 'stage', DeploymentId:'anil-demowebapp__f3c3') (TargetSlot: 'production', DeploymentId:'anil-DemoWebApp')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]  
-Operation name : [Microsoft.Web/sites/slots/StartSlotWarmup/action]  
-Status : [Succeeded]  
-Description : [Initial state for slot swap operation is (Source slot: 'stage', DeploymentId:'anil-demowebapp__f3c3') (TargetSlot: 'production', DeploymentId:'anil-DemoWebApp')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]  
-Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]  
-Status : [Succeeded]  
-Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']  
-Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]  
-Status : [Succeeded]  
-Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']  
-Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]  
-Status : [Succeeded]  
-Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']  
-Operation - [Swap Slots] was success  
-Swapping request returned successfully  
-Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]  
-Status : [Succeeded]  
-Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']  
-Operation name : [Microsoft.Web/sites/slots/SlotSwap/action]  
-Status : [Succeeded]  
-Description : [Finished swapping site. New state is (Slot: 'stage', DeploymentId:'anil-DemoWebApp'), (Slot: 'Production', DeploymentId:'anil-demowebapp__f3c3')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]  
+Sending request for swapping source slot: [stage] with target slot: [production]
+Operation name : [Apply Web App Slot Configuration]
+Status : [Succeeded]
+Description : [Applied configuration settings from slot 'Production' to a site with deployment id 'anil-demowebapp__f3c3' in slot 'stage']
+Operation name : [Microsoft.Web/sites/slots/StartSlotWarmup/action]
+Status : [Succeeded]
+Description : [Initial state for slot swap operation is (Source slot: 'stage', DeploymentId:'anil-demowebapp__f3c3') (TargetSlot: 'production', DeploymentId:'anil-DemoWebApp')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]
+Operation name : [Microsoft.Web/sites/slots/StartSlotWarmup/action]
+Status : [Succeeded]
+Description : [Initial state for slot swap operation is (Source slot: 'stage', DeploymentId:'anil-demowebapp__f3c3') (TargetSlot: 'production', DeploymentId:'anil-DemoWebApp')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]
+Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]
+Status : [Succeeded]
+Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']
+Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]
+Status : [Succeeded]
+Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']
+Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]
+Status : [Succeeded]
+Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']
+Operation - [Swap Slots] was success
+Swapping request returned successfully
+Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]
+Status : [Succeeded]
+Description : [Finished warming of site with deploymentId 'anil-demowebapp__f3c3']
+Operation name : [Microsoft.Web/sites/slots/SlotSwap/action]
+Status : [Succeeded]
+Description : [Finished swapping site. New state is (Slot: 'stage', DeploymentId:'anil-DemoWebApp'), (Slot: 'Production', DeploymentId:'anil-demowebapp__f3c3')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]
 Swapping slots done successfully
 ```
+
 The Workflow phase is complete. You can now deploy.
 
 ### Review: Artifact Check Step
@@ -199,12 +197,12 @@ The Workflow deploys:
 
 You can see the swap succeeded in the logs:
 
-
 ```
-...  
-Description : [Finished swapping site. New state is (Slot: 'stage', DeploymentId:'anil-DemoWebApp'), (Slot: 'Production', DeploymentId:'anil-demowebapp__f3c3')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]  
+...
+Description : [Finished swapping site. New state is (Slot: 'stage', DeploymentId:'anil-DemoWebApp'), (Slot: 'Production', DeploymentId:'anil-demowebapp__f3c3')'. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]
 Swapping slots done successfully
 ```
+
 And the same information is displayed in the Azure portal Activity log:
 
 ![](./static/create-an-azure-web-app-canary-deployment-21.png)
@@ -219,5 +217,4 @@ To see how to configure the settings in this topic using YAML, configure the set
 
 ### See Also
 
-* [Azure Web App Deployment Rollback](azure-web-app-deployment-rollback.md)
-
+- [Azure Web App Deployment Rollback](azure-web-app-deployment-rollback.md)

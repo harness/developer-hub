@@ -14,28 +14,24 @@ You can also use Azure ARM templates to provision the target infrastructure for 
 
 Currently, on [Azure Web App deployments](../azure-webapp-category/azure-web-app-deployments-overview.md) are supported for target infrastructure provisioning.
 
-
 ### Before You Begin
 
-* [Set Up Your Harness Account for Azure ARM](set-up-your-harness-account-for-azure-arm.md)
-* [Add Azure ARM Templates to Harness](add-azure-arm-templates.md)
-* For a conceptual overview of provisioning with ARM and Blueprints, see [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
+- [Set Up Your Harness Account for Azure ARM](set-up-your-harness-account-for-azure-arm.md)
+- [Add Azure ARM Templates to Harness](add-azure-arm-templates.md)
+- For a conceptual overview of provisioning with ARM and Blueprints, see [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
 
 ### Visual Summary
 
 Here's a short video showing how to provision Azure infrastructure using ARM and Harness:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
-
+<DocVideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
 
 You can use Azure ARM templates in Harness to provision any resources.
 
 1. **ARM Infrastructure Provisioner**: add your Azure ARM template as a Harness Infrastructure Provisioner.
 2. **Workflow Provisioner Step**: there are a few ways to use Workflows to provision:
-	1. Create a Canary Workflow or Multi-Service Workflow and add an **ARM/Blueprint Create Resource** step in its **Pre-deployment Steps** to provision the resources you need. You can use the Workflow to deploy anything else, or just omit any further phases and steps.
-	2. Create a Canary or Blue/Green Workflow that deploys a Harness Service of the Azure Web App type. Add an **ARM/Blueprint Create Resource** step to its **Provision Infrastructure** section.
+   1. Create a Canary Workflow or Multi-Service Workflow and add an **ARM/Blueprint Create Resource** step in its **Pre-deployment Steps** to provision the resources you need. You can use the Workflow to deploy anything else, or just omit any further phases and steps.
+   2. Create a Canary or Blue/Green Workflow that deploys a Harness Service of the Azure Web App type. Add an **ARM/Blueprint Create Resource** step to its **Provision Infrastructure** section.
 3. **Deploy:** the Workflow will provision the resource according to your ARM template.
 
 When you run the Workflow, it can provision the resources without deploying anything else.
@@ -44,7 +40,7 @@ When you run the Workflow, it can provision the resources without deploying anyt
 
 ### Limitations
 
-* See [Azure Resource Management (ARM) How-tos](azure-arm-and-blueprint-how-tos.md).
+- See [Azure Resource Management (ARM) How-tos](azure-arm-and-blueprint-how-tos.md).
 
 ### Step 1: Add the Infrastructure Provisioner
 
@@ -98,44 +94,44 @@ Harness accept ARM template parameters is a specific JSON format.
 
 Typically, a parameters JSON file includes the `$schema` key to specify the location of the JSON schema file, and the `contentVersion` to specify the version of the template:
 
-
 ```
-{  
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",  
-  "contentVersion": "1.0.0.0",  
-  "parameters": {  
-    "adminUsername": {  
-      "value": "johnsmith"  
-    },  
-    "adminPassword": {  
-      "value": "m2y&oD7k5$eE"  
-    },  
-    "dnsLabelPrefix": {  
-      "value": "genunique"  
-    }  
-  }  
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "johnsmith"
+    },
+    "adminPassword": {
+      "value": "m2y&oD7k5$eE"
+    },
+    "dnsLabelPrefix": {
+      "value": "genunique"
+    }
+  }
 }
 ```
+
 When you use parameters text or files with Harness, you must remove the `$schema` and `contentVersion` keys.
 
 Harness provisioning requires you remove these keys due to limitations in the Azure Java SDK and REST APIs. Only the parameter object key:value pairs are allowed.
 
 Using the example above, the parameters would be provided like this in Harness:
 
-
 ```
-{  
-    "adminUsername": {  
-      "value": "johnsmith"  
-    },  
-    "adminPassword": {  
-      "value": "m2y&oD7k5$eE"  
-    },  
-    "dnsLabelPrefix": {  
-      "value": "genunique"  
-    }  
+{
+    "adminUsername": {
+      "value": "johnsmith"
+    },
+    "adminPassword": {
+      "value": "m2y&oD7k5$eE"
+    },
+    "dnsLabelPrefix": {
+      "value": "genunique"
+    }
 }
 ```
+
 This format must be used whether the parameters are added using a remote file or inline.
 
 Click **Submit**.
@@ -154,31 +150,31 @@ At runtime, Harness will replace the variables with the values you or Harness su
 
 For example, here in an example of an Azure Web App template using Workflow variables:
 
-
 ```
-{  
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",  
-  "contentVersion": "1.0.0.0",  
-  "parameters": {  
-    "count": {  
-      "type": "int",  
-      "defaultValue": ${workflow.variables.count}  
-    },  
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "count": {
+      "type": "int",
+      "defaultValue": ${workflow.variables.count}
+    },
 ...
 ```
+
 Here is an example of parameters using Workflow variables:
 
-
 ```
-{  
-  "webAppName": {  
-    "value": "${workflow.variables.webAppParam}"  
-  },  
-  "publicIPAddresses_name": {  
-    "value": "my-publicIp"  
-  }  
+{
+  "webAppName": {
+    "value": "${workflow.variables.webAppParam}"
+  },
+  "publicIPAddresses_name": {
+    "value": "my-publicIp"
+  }
 }
 ```
+
 See [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) and [Built-in Variables List](../../../firstgen-platform/techref-category/variables/built-in-variables-list.md).
 
 ### Option: Use Template Outputs in Workflow Steps
@@ -201,32 +197,32 @@ Here is an example of a Blue/Green Azure Web App Workflow deployment that uses t
 
 ![](./static/provision-using-the-arm-blueprint-create-resource-step-05.png)In the **ARM/Blueprint Create Resource** step's **Execute ARM Deployment** section, you can see the ARM deployment:
 
-
 ```
-Starting template validation  
-Saving existing template for resource group - [anil-harness-arm-test]   
-Starting ARM Deployment at Resource Group scope ...   
-Resource Group - [anil-harness-arm-test]  
-Mode - [INCREMENTAL]  
-Deployment Name - [harness_533_1615316689992]  
+Starting template validation
+Saving existing template for resource group - [anil-harness-arm-test]
+Starting ARM Deployment at Resource Group scope ...
+Resource Group - [anil-harness-arm-test]
+Mode - [INCREMENTAL]
+Deployment Name - [harness_533_1615316689992]
 ARM Deployment request send successfully
 ```
+
 In the **ARM Deployment Steady state** section, you can see the deployment reach steady state:
 
-
 ```
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Succeeded]  
-  
-Microsoft.Web/sites/slots - anil-dynamic-provisioner-webApp/staging :: [Succeeded]  
-Microsoft.Web/sites - anil-dynamic-provisioner-webApp :: [Succeeded]  
-Microsoft.Web/serverfarms - anil-dynamic-provisioner-webApp-ServicePlan :: [Succeeded]  
-  
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Succeeded]
+
+Microsoft.Web/sites/slots - anil-dynamic-provisioner-webApp/staging :: [Succeeded]
+Microsoft.Web/sites - anil-dynamic-provisioner-webApp :: [Succeeded]
+Microsoft.Web/serverfarms - anil-dynamic-provisioner-webApp-ServicePlan :: [Succeeded]
+
 ARM Deployment - [harness_533_1615316689992] completed successfully
 ```
+
 In the **Slot Deployment** step, you will see that the values provided for the template outputs mapped to that step are used.
 
 Now you have provisioned the Web App target infrastructure and deployed to it using a single Workflow.
@@ -236,4 +232,3 @@ For information on rollback, see [Azure ARM Rollbacks](azure-arm-rollbacks.md).
 ### Configure As Code
 
 To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the **YAML** editor button.
-

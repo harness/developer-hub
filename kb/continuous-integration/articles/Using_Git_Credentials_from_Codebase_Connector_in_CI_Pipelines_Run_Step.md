@@ -1,45 +1,39 @@
 ---
-title:  Using Git Credentials from Codebase Connector in CI Pipeline's Run Step
+title:  Use codebase connector's Git credentials in a CI Run step
 ---
 
-## Introduction
+Harness CI supports seamless integration with version control systems through [codebase connectors](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). While most Git tasks are automated within the CI pipeline, there can be scenarios where you need to manually execute Git commands in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
-Harness allows seamless integration with version control systems through the Codebase Connector. While most Git tasks are automated within the CI pipeline, there might be scenarios where you would need to manually execute Git commands in a run step. This article explains how to leverage Git credentials from the Codebase Connector in a CI pipeline's run step using a ```.netrc``` file.
+This article explains how to use a `.netrc` file to leverage Git credentials from your pipeline's codebase connector in a CI Run step.
 
-## Instructions
+1. [Configure your CI pipeline's codebase.](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
 
-- Configure Codebase for CI Pipeline:
+   Make sure to select the code repo connector with the credentials that you want to use in the Run step.
 
-   Set up the Codebase Connector in Harness with the necessary Git repository credentials.
-- Create ```.netrc``` File in the Run Step:
+2. Add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that creates a `.netrc` file with the following content:
 
-  In scenarios where manual Git commands are required, create a .netrc file within the run step. Use the below content for the .netrc file
-  ```
-    cat <<EOF > ${HOME}/.netrc
-    machine ${DRONE_NETRC_MACHINE}
-    login ${DRONE_NETRC_USERNAME}
-    password ${DRONE_NETRC_PASSWORD}
-    EOF
-  ```
-- Execute Git Commands:
-  
-  With the .netrc file in place, you can now execute Git commands within your run step script. Git will automatically use the credentials from the .netrc file for authentication, enabling seamless manual Git operations.
+   ```
+     cat <<EOF > ${HOME}/.netrc
+     machine ${DRONE_NETRC_MACHINE}
+     login ${DRONE_NETRC_USERNAME}
+     password ${DRONE_NETRC_PASSWORD}
+     EOF
+   ```
 
-## Example:
+3. In the same Run step, add your Git commands. Git automatically uses the credentials from the `.netrc` file for authentication, enabling seamless manual Git operations.
 
-Below is a simple example of how the run step might look:
+   For example:
 
-```
-# Create the .netrc file
-cat <<EOF > ${HOME}/.netrc
-machine ${DRONE_NETRC_MACHINE}
-login ${DRONE_NETRC_USERNAME}
-password ${DRONE_NETRC_PASSWORD}
-EOF
+   ```
+   # Create the .netrc file
+   cat <<EOF > ${HOME}/.netrc
+   machine ${DRONE_NETRC_MACHINE}
+   login ${DRONE_NETRC_USERNAME}
+   password ${DRONE_NETRC_PASSWORD}
+   EOF
 
-# Run Git commands
-git clone https://github.com/your/repo.git
-git checkout master
-git pull origin master
-```
-  
+   # Run Git commands
+   git clone https://github.com/your/repo.git
+   git checkout master
+   git pull origin master
+   ```

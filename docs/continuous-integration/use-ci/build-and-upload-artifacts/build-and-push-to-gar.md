@@ -1,7 +1,7 @@
 ---
 title: Build and Push to GAR
 description: Use a CI pipeline to build and push an image to GAR.
-sidebar_position: 50
+sidebar_position: 23
 ---
 
 This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).
@@ -111,7 +111,7 @@ Later in the pipeline, you can use the same expression to pull the tagged image,
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
 
-For information about setting other kaniko runtime flags, go to [Set kaniko runtime flags](#set-kaniko-runtime-flags).
+For information about setting other kaniko runtime flags, go to [Set plugin runtime flags](#set-plugin-runtime-flags).
 
 ### Dockerfile
 
@@ -137,11 +137,11 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 ### Remote Cache Image
 
-Enter the name of the remote cache image, such as `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME`.
+Use this setting to enable remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+
+For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME`.
 
 The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
-
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 ### Run as User
 
@@ -173,11 +173,15 @@ You can find the following settings on the **Advanced** tab in the step settings
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
 * [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
-### Set kaniko runtime flags
+### Set plugin runtime flags
 
-With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
+**Build and Push** steps use plugins to complete build and push operations. With Kubernetes cluster build infrastructures, these steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md), and, with other build infrastructures, these steps use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
 
-You can set kaniko runtime flags by adding [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`. For example, to set `--skip-tls-verify`, you would add a stage variable named `PLUGIN_SKIP_TLS_VERIFY` and set the variable value to `true`.
+These plugins have a number of additional runtime flags that you might need for certain use cases. For information about the available flags, go to the [kaniko plugin documentation](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#additional-flags) and the [drone-docker plugin documentation](https://plugins.drone.io/plugins/docker).
+
+To set runtime flags for these plugins, add [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`.
+
+For example, to set `--skip-tls-verify` for kaniko, add a stage variable named `PLUGIN_SKIP_TLS_VERIFY` and set the variable value to `true`.
 
 ```yaml
         variables:
@@ -187,3 +191,16 @@ You can set kaniko runtime flags by adding [stage variables](/docs/platform/pipe
             required: false
             value: "true"
 ```
+
+To set `custom_dns` for drone-docker, add a stage variable named `PLUGIN_CUSTOM_DNS` and set the variable value to your custom DNS address.
+
+```yaml
+        variables:
+          - name: PLUGIN_CUSTOM_DNS
+            type: String
+            description: ""
+            required: false
+            value: "vvv.xxx.yyy.zzz"
+```
+
+Plugin runtime flags are also used to [build without pushing](./build-without-push.md).

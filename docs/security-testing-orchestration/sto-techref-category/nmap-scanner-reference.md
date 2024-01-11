@@ -11,19 +11,27 @@ You can scan your instances using [Nmap](https://nmap.org/), an open-source tool
 
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 ## Nmap step configuration
 
@@ -38,11 +46,11 @@ The recommended workflow is add an Nmap step to a Security Tests or CI Build sta
 
 #### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -50,9 +58,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -88,9 +96,9 @@ Accepted values(s):
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-```
+
 
 <a name="scan-type"></a>
 <StoSettingScanTypeInst />
@@ -99,9 +107,9 @@ import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -109,9 +117,9 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
@@ -123,9 +131,9 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 #### Domain
 
-```mdx-code-block
+
 import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
-```
+
 <StoSettingInstanceDomain />
 
 <!-- ============================================================================= -->
@@ -133,9 +141,9 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 
 #### Protocol
 
-```mdx-code-block
+
 import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
-```
+
 
 <StoSettingInstanceProtocol />
 
@@ -144,9 +152,9 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 
 #### Port
 
-```mdx-code-block
+
 import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
-```
+
 
 <StoSettingInstancePort />
 
@@ -155,9 +163,9 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 
 #### Path
 
-```mdx-code-block
+
 import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
-```
+
 
 <StoSettingInstancePath />
 
@@ -168,9 +176,9 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -182,9 +190,9 @@ You can use this field to run the [Nmap scanner](https://nmap.org/book/man-brief
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 <!-- 
@@ -221,9 +229,9 @@ You can set up Nmap scans using a Security step: create a CI Build or Security T
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -245,16 +253,16 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Instance scan settings
 
-```mdx-code-block
+
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-```
+
 
 <StoLegacyInstance />
 
 #### Ingestion file 
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />

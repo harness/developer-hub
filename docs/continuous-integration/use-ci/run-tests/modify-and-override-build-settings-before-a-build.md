@@ -31,16 +31,16 @@ You need permissions to create, edit, and view secrets at the account scope to b
 
 ## Transcribe the text secret into settings.xml
 
-Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](../run-ci-scripts/run-step-settings.md) or [Run Tests step](./set-up-test-intelligence.md) where your Maven tests run.
+Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](../run-ci-scripts/run-step-settings.md) or [Run Tests step](./test-intelligence/set-up-test-intelligence.md) where your Maven tests run.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="run" label="Run step" default>
-```
+
 
 If your Maven tests run in a **Run** step, add the following to the **Command**:
 
@@ -48,10 +48,10 @@ If your Maven tests run in a **Run** step, add the following to the **Command**:
 echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="run-tests" label="Run Tests step">
-```
+
 
 If your Maven tests run in a **Run Tests** step, add the following to the **Pre-Command**:
 
@@ -59,10 +59,10 @@ If your Maven tests run in a **Run Tests** step, add the following to the **Pre-
 echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Modify the Maven test command
 

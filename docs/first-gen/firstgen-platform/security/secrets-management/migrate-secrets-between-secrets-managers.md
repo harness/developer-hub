@@ -37,9 +37,9 @@ When migrating to HashiCorp Vault, the vault must not be read-only. If it is rea
 The migrated secrets are created in the vault at the path specified by:
 
 * Encrypted text:  
- `/<SECRET_ENGINE_NAME>/<BASE_PATH_IN_VAULT_CONFIGURATION>/<SECRET_TEXT>/<NAME OF THE SECRET>`
+ `/\<SECRET_ENGINE_NAME>/\<BASE_PATH_IN_VAULT_CONFIGURATION>/\<SECRET_TEXT>/<NAME OF THE SECRET>`
 * Encrypted file:  
-`/<SECRET_ENGINE_NAME>/<BASE_PATH_IN_VAULT_CONFIGURATION>/<CONFIG_FILE>/<NAME OF THE FILE>`
+`/\<SECRET_ENGINE_NAME>/\<BASE_PATH_IN_VAULT_CONFIGURATION>/\<CONFIG_FILE>/<NAME OF THE FILE>`
 
 #### Secret References and Migration
 
