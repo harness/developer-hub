@@ -52,10 +52,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 ### Version 1.20.6
 
 
-#### New features and enhancements
-- Infinite filter in saved filter scroll(CDS-82429)
-  - Introduced infinite scrolling to the dropdown, allowing it to retrieve the list of available filters. This was achieved by making an API call to load the next set of filters(100+) when the user scrolls to the end of the current set.
-
 #### Fixed Issues
 
 - Branch Selector Dropdown Not Populating in Harness Code Repo: Issue Arises When Entity is Absent, Resulting in 'No Entity Found' Page (CDS-87788)
