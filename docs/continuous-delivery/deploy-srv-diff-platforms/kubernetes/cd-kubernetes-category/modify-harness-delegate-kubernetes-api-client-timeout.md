@@ -10,7 +10,7 @@ Harness Delegate uses Kubernetes Java client to make programmatic API calls to t
 
 ## Configuration
 
-The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively.
+The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) and [connect timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) values are set to 120 and 60 seconds respectively.
 
 These values can be configured using environment variables by modifying the delegate's container environment. 
 

@@ -1,7 +1,7 @@
 ---
 title: Service onboarding pipelines
 description: Service onboarding pipelines use a software template and enable a developer to spawn new software applications easily while following the company's best practices.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
@@ -13,7 +13,7 @@ Service Onbaording in Harness IDP use Harness pipeline orchestrator and those co
 
 ![](./static/service-onboarding.png)
 
-In Harness IDP, a service onboarding pipeline (also known as a software template) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a template that prompts developers for details and creates a repository with a basic setup that includes a CI/CD process. The template is defined in a YAML file named `template.yaml`. The syntax of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
+In Harness IDP, a service onboarding pipeline (also known as a software template) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a template that prompts developers for details and creates a repository with a basic setup that includes a CI/CD process. The template is defined in a YAML file named `template.yaml`. The [syntax](https://backstage.io/docs/features/software-templates/input-examples) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
 <!-- See it in action: Demo video -->
 
@@ -31,7 +31,7 @@ The template actions currently supports only [custom stage](https://developer.ha
 
 :::
 
-Harness IDP ships the following actions to be used in the software template steps.
+Harness IDP ships the following Harness related built-in actions along with [some others](/docs/internal-developer-portal/flows/custom-actions.md) to be used in the software template steps.
 
 - `trigger:harness-custom-pipeline`
 - `harness:create-secret`
@@ -41,7 +41,7 @@ Learn more about how to use them in the [service onboarding tutorial](/tutorials
 
 ## Available UI pickers
 
-Harness IDP ships the following custom UI pickers that can be used in the template form for developers to select from.
+Harness IDP ships the following [custom UI pickers](/docs/internal-developer-portal/flows/custom-actions.md) that can be used in the template form for developers to select from.
 
 - `HarnessOrgPicker`
 - `HarnessProjectPicker`

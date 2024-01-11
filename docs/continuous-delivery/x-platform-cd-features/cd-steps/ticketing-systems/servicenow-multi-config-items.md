@@ -103,13 +103,13 @@ For example:
 4. In **Configure Fields**, select **Fields**.
 5. In **Add ServiceNow Fields**, select **Configuration Item** and **Task**, and select **Add**.
 
-  <docimage path={require('./static/b558dcc70b590aee872afa80deb88588b1a462c2c659345bdb13f76560b275ec.png')} width="60%" height="60%" title="Click to view full size image" />  
+  <DocImage path={require('./static/b558dcc70b590aee872afa80deb88588b1a462c2c659345bdb13f76560b275ec.png')} width="60%" height="60%" title="Click to view full size image" />  
 1. In **Configuration Item**, select **Expression**, and then enter `<+matrix.ci_item>`. This expression references the step's looping strategy we will add later.
 2. In **Task**, select **Expression**, and then enter the expression that references the sys_id in the previous ServiceNow Create step, using the format `<+pipeline.stages.stage.spec.execution.steps.STEP_ID.ticket.fields.sys_id>`. For example, `<+pipeline.stages.stage.spec.execution.steps.create.ticket.fields.sys_id>`.
   
   This expression references the `sys_id` value returned when the step in run.
   
-  <docimage path={require('./static/ad89de6217ebbf9e4ea20b399379ab1a31bcfb736a7f44465fa904b606c0dfaa.png')} width="60%" height="60%" title="Click to view full size image" />  
+  <DocImage path={require('./static/ad89de6217ebbf9e4ea20b399379ab1a31bcfb736a7f44465fa904b606c0dfaa.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 Next, we will add the looping strategy for the step.
 
@@ -143,7 +143,7 @@ The matrix looping strategy will loop through the config items.
 
 When you run the pipeline, you will see the looping strategy run for each config item Id in the step's matrix.
 
-<docimage path={require('./static/4ee00ab3a83c71ecc5c6af47b9a3dd0d6f4bee0af1d652bfe51bb2a5d04d645d.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/4ee00ab3a83c71ecc5c6af47b9a3dd0d6f4bee0af1d652bfe51bb2a5d04d645d.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Select the link in the step **Output** tab's **ticketUrl** to open a new browser tab and view the config item.
 

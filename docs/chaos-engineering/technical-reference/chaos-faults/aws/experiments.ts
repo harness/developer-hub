@@ -184,6 +184,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "ECS task scale",
+    description:
+      "ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "Lambda delete event source mapping",
     description:
       "Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration.",

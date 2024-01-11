@@ -10,14 +10,14 @@ For example, a TAS service uses a `manifest.yaml` file that specifies specific r
 
 ## Override TAS manifests
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';   
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="Environment overrides" label="Environment overrides" default>
-```
+
 
 To override the manifests of all services deployed to an environment, do the following: 
 
@@ -29,10 +29,10 @@ To override the manifests of all services deployed to an environment, do the fol
 
 4. Follow the same steps as you would when adding a manifest, and then select **Submit**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Service overrides" label="Service overrides">
-```
+
 
 To override the manifests of specific services deployed to an environment, do the following:
 
@@ -48,21 +48,21 @@ To override the manifests of specific services deployed to an environment, do th
 
 6. Follow the same steps as you would when adding a manifest in a service, and then select **Submit**.
 
-```mdx-code-block
+
 </TabItem>    
 </Tabs>
-```
+
 
 ## Override config files
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';   
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
 <TabItem2 value="Environment overrides" label="Environment overrides" default>
-```
+
 
 To override the config files of all services deployed to an environment, do the following: 
 
@@ -70,10 +70,10 @@ To override the config files of all services deployed to an environment, do the 
 2. In the environment's **Configuration** tab **> Environment Overrides**, select **+ New Config File Override** under **Config Files**.
 3. In **Config File Selection**, select the config file to override, and then select **Submit**.
 
-```mdx-code-block
+
 </TabItem2>
 <TabItem2 value="Service overrides" label="Service overrides">
-```
+
 
 To override the config files of specific services deployed to an environment, do the following:
 
@@ -87,20 +87,20 @@ To override the config files of specific services deployed to an environment, do
 
 6. Follow the steps to select the override file, and then select **Submit**.
 
-```mdx-code-block
+
 </TabItem2>    
 </Tabs2>
-```
+
 ## Override variables 
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';   
 import TabItem3 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs3>
 <TabItem3 value="Environment overrides" label="Environment overrides" default>
-```
+
 To override the variables of all services deployed to an environment, do the following:
 
 1. In **Environments**, select an environment.
@@ -109,10 +109,10 @@ To override the variables of all services deployed to an environment, do the fol
 4. Enter an override value. It can be fixed value, runtime input, or expression.
 5. Select **Save**.
 
-```mdx-code-block
+
 </TabItem3>
 <TabItem3 value="Service overrides" label="Service overrides">
-```
+
 
 To override the variables of specific services deployed to an environment, do the following:
 
@@ -123,7 +123,6 @@ To override the variables of specific services deployed to an environment, do th
 5. In **Add Variable**, select the variable name, and enter an override value. 
 6. Select **Submit**.
 
-```mdx-code-block
+
 </TabItem3>    
 </Tabs3>
-```

@@ -26,7 +26,7 @@ The Security Testing Orchestration Administrator exam tests your knowledge and s
 
 <br />
 
-## Exam Objectives 
+## Exam Objectives
 
 <details>
 <summary>List of Objectives</summary>

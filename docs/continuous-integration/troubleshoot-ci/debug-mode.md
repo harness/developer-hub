@@ -30,15 +30,15 @@ If debug mode isn't available for your pipeline, you might consider using [AIDA]
 
 ## Enable debug mode
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="remote" label="Remote builds" default>
-```
+
 
 Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, or Kubernetes cluster build infrastructures.
 
@@ -48,7 +48,7 @@ Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, o
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
 
-   <docimage path={require('./static/ci-rerun-build-in-debug-mode.png')} />
+   <DocImage path={require('./static/ci-rerun-build-in-debug-mode.png')} />
 
 4. Wait while the build runs. If the Run step fails, the build stops and generates log output with an SSH command you can use to SSH into the session on the remote host.
 
@@ -60,15 +60,15 @@ Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, o
 
    <!-- ![](./static/debug-remote-build-links.png) -->
 
-   <docimage path={require('./static/debug-remote-build-links.png')} />
+   <DocImage path={require('./static/debug-remote-build-links.png')} />
 
 5. While in the debug session, use the CLI to reproduce and troubleshoot the issue on the remote host.
 6. To terminate the debug session, abort the build, and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="local" label="Local builds">
-```
+
 
 Use these steps to use debug mode for builds on [local runner build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -81,7 +81,7 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
 
-   <docimage path={require('./static/ci-rerun-build-in-debug-mode.png')} />
+   <DocImage path={require('./static/ci-rerun-build-in-debug-mode.png')} />
 
 7. Wait while the build runs. If the Run step fails, the build stops and generates log output with an SSH command you can use to SSH into the debug session.
 
@@ -93,15 +93,15 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 
    <!-- ![](./static/debug-remote-build-links.png) -->
 
-   <docimage path={require('./static/debug-remote-build-links.png')} />
+   <DocImage path={require('./static/debug-remote-build-links.png')} />
 
 8. While in the debug session, use the CLI to reproduce and troubleshoot the issue.
 9. To terminate the debug session, abort the build, and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 

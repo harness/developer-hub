@@ -1,6 +1,7 @@
 ---
 title: Continuous Integration (CI) FAQs
 description: This article addresses some frequently asked questions about Harness Continuous Integration (CI).
+sidebar_position: 2
 ---
 
 #### Can we enable BuildKit support for the native build and push step?
@@ -104,7 +105,7 @@ No, the Post-Command script will only run if the "Run test" step pass.
 
 Yes, you can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
 
-#### Using <+codebase.gitUser> results in "None" when using Python as Shell for a Run step
+#### Using \<+codebase.gitUser> results in "None" when using Python as Shell for a Run step
 
 <!-- This is not a solution. -->
 
@@ -770,11 +771,11 @@ No. You could add the test report path in runstep, background step etc and the t
 
 This is the expected behavior. When you run a CI (Build) stage, the steps create build farm pods that are connected to the delegate.
 
-#### Can we use <+codebase.commitSha> variable in CD Stage to get commit id?
-Yes you can able to get the commit id by using <+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
+#### Can we use \<+codebase.commitSha> variable in CD Stage to get commit id?
+Yes you can able to get the commit id by using \<+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
 
-#### Will <+codebase.commitSha> variable will work in CD stage if CI stage is not present in the pipeline?
-The <+codebase.commitSha> variable will not work in the CD Stage without the CI stage in the pipeline.
+#### Will \<+codebase.commitSha> variable will work in CD stage if CI stage is not present in the pipeline?
+The \<+codebase.commitSha> variable will not work in the CD Stage without the CI stage in the pipeline.
 
 #### If user can again define clone step in the CD and will they can able to get the commidID there again without CI stage in the pipeline?
 No, user can't able to get commit id in that case.
@@ -913,7 +914,7 @@ If you leave the **Priority Class** field blank, the `PriorityClass` is set to t
 
 #### Is remote caching supported in Build and Push steps?
 
-For certain build infrastructures, you can use the **Remote Cache Image** setting in **Build and Push** steps to enable remote [Docker layer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
 
 #### Do Background steps have limitations?
 
@@ -980,3 +981,168 @@ In the `Tests` tab, the visualization graph provides insights into why each test
 #### In case of multi stage pipeline, will the CI stage execution update the build status in PR even if the clone codebase option is disabled in that stage?
 
 Yes, currently the CI stage execution updates the build status on PR even if the clone codebase option is disabled for that specific stage however there are some work in progres to improve this experience
+
+#### Why is the ```Enable Cache Intelligence``` option is greyed out in the CI pipeline?
+
+Harness cache intelligence is currently supported when you run the build in Harness cloud on Linux and Windows platforms. For all the other build infra, this option would be greyed out.
+
+#### Does Cache Intelligence have the capability to expire the cache?"
+
+Yes, The cache will be expired every 15 days
+
+#### Does harness override the cache when using the save cache to S3 step?
+
+By default ```save cache to s3``` step will not override the cache however there is an optional configuration which will overrode the cache with the same key if enabled
+
+#### Why the run step is failing with the error ```1 error occurred: * stat /tmp/engine/Zko3loXHTre2vfh-output.env: no such file or directory``` while trying to export the output variable from the run step which uses python shell?
+
+This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
+
+#### Is there a way to abort a running pipeline from a step in that pipeline?
+
+We could use the ```putHandleInterrupt``` API to abort a running pipeline from a step in that pipeline. More details about this pipeline can be reffered in the [doc](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt)
+
+#### Do we need to have a CI stage in the pipeline to get the PR updated with the build status?
+
+Yes, the build status is updated on the PR only when a CI stage is executed.
+
+#### When multiple CI stages exist in a pipeline, will the build status be updated on the pull request for each individual stage or for the entire pipeline?
+
+The build status will be updated for the individual CI stages
+
+#### Is there any character limit for the build status message updated on PR?
+
+Yes. Github has a limit of 140 characters for the message that can be updated on the PR post which the call will fail with an error ```description is too long (maximum is 140 characters)```
+
+#### What identifiers will be included in the build status message which is updated on PR during the CI stage execution?
+
+Pipeline identifier and stage identifier will be included in the build status message.
+
+#### How to configure the git connector to not update the PR with the build status?
+
+One option would be to remove the API access from the cdebase connector so that the build status will not be updated on the PR
+
+#### What is the complete format used in the build status messages which is updated on PR during the CI stage execution?
+
+The build status message format is ```<pipeline_identifier>-<stage_identifier> — Execution status of Pipeline - <pipeline_identifier> (execution_ID) Stage - <stage_identifier> was SUCCEEDED```
+
+#### Why the run step within the container step group is unable to publish the test report with the error ```Unable to collect test reports``` even after the report path is correctly configured?
+
+Currently publishing the test report via run step within the containerized step group is not supported. However the team is working on supporting this in the future release.
+
+#### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
+
+We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```
+
+#### What expression can I use to refer to the repository name configured for a trigger from the incoming payload?
+
+The expression ```<+eventPayload.repository.name>``` can be used to reference the repository name from the incoming trigger payload
+
+#### The expression ```<+eventPayload.repository.name>``` is giving only the repo name but not the project name and the clone step fails when we use this expression for the codebase repo if we are using account type bitbucket connector. What expression can be used to get the repository name including the project name?
+
+You could try the expression ```<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>``` to get the repo name including the project name from the payload
+
+
+
+#### How can user specify the size of the disk for the windows instance in the pool.yml file?
+
+Here's an example:
+
+```
+version: "1"
+instances:
+  - name: windows-ci-pool
+    default: true
+    type: amazon
+    pool: 1
+    limit: 4
+    platform:
+      os: windows
+    spec:
+      account:
+        region: us-east-2
+        availability_zone: us-east-2c
+        access_key_id: 
+        access_key_secret: 
+        key_pair_name: XXXXX
+      ami: ami-088d5094c0da312c0
+      size: t3.large
+      hibernate: true
+      network:
+        security_groups:
+          - sg-XXXXXXXXXXXXXX
+      disk:
+        size: 100
+        type: "pd-balanced"
+```
+
+
+#### What prerequisites are there for running Background steps?
+The build environment must have the necessary binaries for PostgreSQL. Depending on the build infrastructure, Background steps can use existing binaries in the environment or pull an image, such as a Docker image, containing the required binaries.
+
+#### Can Background steps use external images for PostgreSQL services?
+Yes, depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image from public or private Docker image, that contains the required PostgreSQL binaries.
+
+
+#### How do I add a Run step to test PostgreSQL services?
+
+In the same CI stage where you added the Background steps, include a Run step after the Background steps. Ensure that the Run step is not in the parallel group to avoid conflicts.
+
+
+#### What is the use of the Run step for psql commands?
+A4: The Run step for psql commands serves as a validation step before proceeding with subsequent actions.
+
+
+#### How user can copy a file into a pod in kubernetes cluster in build stage?
+For this, you can add the script in run step and achieve your requirement through that.
+
+
+#### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
+This error suggests that there is an issue accessing the entrypoint of the Docker image, commonly encountered in a Kubernetes cluster build infrastructure when working with PostgreSQL services.
+
+
+#### How can I resolve the "Failed to get image entrypoint" error in a Kubernetes cluster?
+To resolve this error, you may need to mount volumes for the PostgreSQL data in the build infrastructure settings and reference those volumes in the Background steps.
+
+
+#### How do user add volumes for PostgreSQL data in the build infrastructure settings?
+In the build infrastructure settings, configure one empty directory volume for each PostgreSQL service. This can typically be done through the Kubernetes configuration or deployment files.
+
+
+#### How can user check the LocalStack service is healthy?
+1. In the "Run" step
+1. Enter "localstack health" in the Name field.
+1. Enter the provided cURL command in the Command field.
+1. Expand the Optional Configuration section, configure the Container Registry field, and select your Docker Hub connector.
+1. Enter "curlimages/curl:7.83.1" in the Images field.
+
+
+#### Why does the cURL command reference "localstack:4566"?
+cURL command references "localstack:4566" because both the LocalStack service and the cURL step share the same Docker network. This allows the cURL command to reach the LocalStack service during the health check.
+
+
+#### How user can configure the Restore Cache step to check if a cache was restored?
+In the configuration of the Restore Cache step:
+
+1. Set it to fail if the target cache key isn't found.
+2. Enable a failure strategy that allows the pipeline to continue despite the step failure.
+
+#### How user use own plugins in Harness CI pipelines?
+1. Create your plugin to perform a specific task, written in any programming language.
+2. Integrate the plugin into your CI pipeline using a Plugin step.
+
+#### My pod is evicted during an Aqua scan, and I receive the signal "terminated." Could this be due to the image size (around 4GB)?
+
+Yes, pod eviction during an Aqua scan, especially with a large image size (around 4GB), could be attributed to resource constraints
+
+#### How can I address pod eviction during an Aqua scan?
+
+To address pod eviction during an Aqua scan, it's recommended to increase the container resources limit. This can be achieved by adjusting the resource requests and limits for the container.
+
+#### Can the size of the container image impact pod eviction during a scan?
+
+Yes, the size of the container image, especially if it's large (e.g., 4GB), can contribute to resource utilization. Ensuring that the container has sufficient resources allocated is crucial to prevent eviction during resource-intensive tasks like an Aqua scan.
+
+#### Why am I unable to connect to the hostname using the step identifier in a background step, resulting in the error "Unknown server host xxxx"?
+
+The utilization of Step Id is restricted to VM flows exclusively. To address this issue, consider using `localhost` or `127.0.0.1` instead.

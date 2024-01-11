@@ -5,10 +5,10 @@ description: Add Grafana Loki health source to a monitored service.
 sidebar_position: 8
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 :::info note
 Currently, this feature is behind the feature flag `SRM_ENABLE_GRAFANA_LOKI_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -117,14 +117,14 @@ In the **Define Health Source** tab of the Add New Health Source page, do the fo
    
    Sample logs are displayed that help you verify if the query is correct.
 
-   <details>
-   <summary><b>Sample log query</b></summary>
+<details>
+<summary><b>Sample log query</b></summary>
 
    Query for showing data from all filenames except syslog: `{filename=~".+",filename!="/var/log/syslog"}`
 
    ![Grafana Loki sample query](./static/cv-loki-log-query.png)
 
-   </details>
+</details>
 
 4. Select **Submit**.  
    

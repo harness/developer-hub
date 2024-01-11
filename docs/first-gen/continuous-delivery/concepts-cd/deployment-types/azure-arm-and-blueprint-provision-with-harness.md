@@ -22,11 +22,9 @@ Looking for How-tos? See [Azure Resource Management (ARM) How-tos](../../azure-d
 
 Here's a short video showing how to provision and deploy to the same Azure infrastructure using ARM and Harness:
 
-
-<docvideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
 
 Here's a visual summary of how you use your Azure ARM templates in Harness to provision infra and then deploy to it:
-
 
 ![](./static/azure-arm-and-blueprint-provision-with-harness-19.png)
 
@@ -41,13 +39,11 @@ Here's a visual summary of how you use your Azure ARM templates in Harness to pr
 
 Here's a short video showing how to provision Azure infrastructure using ARM and Harness:
 
-
-<docvideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
 
 Here's a short video showing how to provision Azure infrastructure using Blueprint and Harness:
 
-
-<docvideo src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed" />
 
 You can use Azure ARM templates/Blueprint definitions in Harness for general Azure provisioning.
 
@@ -73,19 +69,19 @@ You need to give Harness permissions in your Azure subscription so Harness can p
 
 As a summary, you'll need to manage the following permissions:
 
-* **Delegate** - The Harness Delegate will require permissions to create resources in Azure. It'll use the credentials you provide in the Harness Azure Cloud Provider.
-* **Azure** **Cloud Provider** - The Harness Azure Cloud Provider must have permissions for the resources you are planning to provision using ARM/Blueprint.  
-See [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
-* **Git Repo** - You'll add the Git repo where the ARM templates or Blueprints are located to Harness as a Source Repo Provider. For more information, see  [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
+- **Delegate** - The Harness Delegate will require permissions to create resources in Azure. It'll use the credentials you provide in the Harness Azure Cloud Provider.
+- **Azure** **Cloud Provider** - The Harness Azure Cloud Provider must have permissions for the resources you are planning to provision using ARM/Blueprint.  
+  See [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
+- **Git Repo** - You'll add the Git repo where the ARM templates or Blueprints are located to Harness as a Source Repo Provider. For more information, see  [Add Source Repo Providers](../../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md).
 
 #### Harness User Group Permissions Required
 
 To set up a Harness ARM/Blueprint Provisioner, your Harness User account must belong to a User Group with the following Application Permissions:
 
-* **Permission Type:** `Provisioners`.
-* **Application:** one or more Applications.
-* **Filter:** `All Provisioners`.
-* **Action:** `Create, Read, Update, Delete`.
+- **Permission Type:** `Provisioners`.
+- **Application:** one or more Applications.
+- **Filter:** `All Provisioners`.
+- **Action:** `Create, Read, Update, Delete`.
 
 ### No Artifact Required
 
@@ -101,5 +97,4 @@ When Harness deploys artifacts via Harness Services to the provisioned infrastru
 
 ### Next Steps
 
-* [Azure ARM and Blueprint How-tos](../../azure-deployments/azure-arm/azure-arm-and-blueprint-how-tos.md)
-
+- [Azure ARM and Blueprint How-tos](../../azure-deployments/azure-arm/azure-arm-and-blueprint-how-tos.md)

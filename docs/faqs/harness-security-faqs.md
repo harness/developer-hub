@@ -192,7 +192,7 @@ For more information, go to:
 
 File secrets *are not masked* in Harness logs. These can be encoded in different formats, but they are not masked in logs.
 
-:::caution
+:::warning
 
 If an output variable value contains a secret, be aware that the secret will be visible in the [build details](/docs/continuous-integration/use-ci/viewing-builds.md):
 

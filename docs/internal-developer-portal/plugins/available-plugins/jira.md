@@ -32,7 +32,24 @@ proxy:
 
 ### Secrets
 
-Since the `JIRA_TOKEN` variable is used in the application configuration, you must generate a Jira API key and set it as the value of `JIRA_TOKEN`. For information about how to generate a Jira API key, go to the [instructions](https://developer.atlassian.com/server/framework/atlassian-sdk/consuming-an-activity-streams-feed/#authentication).
+Since the `JIRA_TOKEN` variable is used in the application configuration, you must generate a Jira API key and set it as the value of `JIRA_TOKEN`. For information about how to generate a Jira API key, go to the [instructions](https://id.atlassian.com/manage-profile/security/api-tokens).
+
+- Select **Create API token**, give some label  and copy the generated token
+- **Base64 encode API token**: We need to prefix the token with the Jira user email and base64 encode it.
+```sh
+echo -n "jira-mail@example.com:hTBgqVcrcxRYpT5TCzTA9C0F" | base64
+```
+- **Create secret in Harness to store API token**: Once token is generated, click on the “input field” next to `JIRA_TOKEN` and you will see a pop-up to create or chose exiting secret
+
+![](./static/select-secret.png)
+
+- To create new secret, click on **New Secret Text** and enter values like below. Make sure you save Secret Value with “Basic” as prefix. 
+
+Example: `Basic xxxxYYYYYYXXXxxxxxxxYxx==`
+
+![](./static/add-secret.png)
+
+- After selecting the new secret, click on **Save Configurations** and then followed by **Enable Plugin** button. This will take few seconds to reflect the changes in the components.
 
 ### Delegate proxy
 

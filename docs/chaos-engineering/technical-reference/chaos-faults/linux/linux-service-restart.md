@@ -53,18 +53,18 @@ Linux service restart stops the target system services running in a Linux machin
   </tr>
   <tr>
     <td> interval </td>
-    <td> Duration of a single iteration of chaos (in seconds). Should be less than or equal to the <code>duration</code> input. </td>
-    <td> Defaults to 30. </td>
+    <td> Duration of a single iteration of chaos. Should be less than or equal to the <code>duration</code> input. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 
@@ -86,7 +86,7 @@ metadata:
 spec:
   serviceRestartChaos/inputs:
     services: "apache2,nginx"
-    duration: 30
+    duration: 30s
 ```
 
 ### Self-healing services
@@ -108,7 +108,7 @@ spec:
   serviceRestartChaos/inputs:
     services: "apache2,nginx"
     selfHealingServices: true
-    duration: 30
+    duration: 30s
 ```
 
 ### Sequence
@@ -130,7 +130,7 @@ spec:
   serviceRestartChaos/inputs:
     services: "apache2,nginx"
     sequence: "serial"
-    duration: 30
+    duration: 30s
 ```
 
 ### Interval
@@ -152,6 +152,6 @@ spec:
   serviceRestartChaos/inputs:
     services: "apache2,nginx"
     sequence: "parallel"
-    duration: 30
-    interval: 10
+    duration: 30s
+    interval: 10s
 ```

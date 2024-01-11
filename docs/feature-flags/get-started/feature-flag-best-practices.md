@@ -74,6 +74,7 @@ Add a description to your flag. This is optional on the Harness Platform, but we
 
 
 import ffimage from './static/1-feature-flag-best-practices-04.png';
+
 <img src={ffimage} alt="An example flag description" height = "300" width = "600"/>
 
 

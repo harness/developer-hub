@@ -42,7 +42,7 @@ You can create branches from tags.
 
 ## Delete a tag
 
-:::caution
+:::warning
 
 You can't recover tags that are deleted from Harness Code.
 

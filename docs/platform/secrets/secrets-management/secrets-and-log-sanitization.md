@@ -52,7 +52,6 @@ echo "text secret is: " <+secrets.getValue("doc-secret")>
 ```
 When you deploy the Pipeline, the log is sanitized and the output is:​
 
-
 ```
 Executing command ...  
 text secret is:  **************  

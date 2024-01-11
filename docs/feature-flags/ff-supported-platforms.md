@@ -9,17 +9,17 @@ Harness Feature Flags support [client-side and server-side SDKs](/docs/feature-f
 
 ## Supported client-side SDKs
 
-```mdx-code-block
+
 import Ff from '/docs/feature-flags/shared/ff-supported-platforms-shared.md';
-```
+
 
 <Ff />
 
 ## Supported server-side SDKs
 
-```mdx-code-block
+
 import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server.md';
-```
+
 
 <Ffs />
 

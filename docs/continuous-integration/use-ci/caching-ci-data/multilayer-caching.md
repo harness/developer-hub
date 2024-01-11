@@ -236,7 +236,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
    <!-- ![](./static/multilayer-caching-save-in-parallel.png) -->
 
-   <docimage path={require('./static/multilayer-caching-save-in-parallel.png')} />
+   <DocImage path={require('./static/multilayer-caching-save-in-parallel.png')} />
 
 6. Add steps between your **Restore Cache** and **Save Cache** steps to complete your CI pipeline. These could include steps to build code, run tests, build and push images, upload artifacts, and so on.
 

@@ -8,5 +8,5 @@ metadata:
 spec:
   processKillChaos/inputs:
     processNames: "nginx"
-    duration: 30
+    duration: 30s
     forceKill: true

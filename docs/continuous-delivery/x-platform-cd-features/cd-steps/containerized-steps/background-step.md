@@ -4,11 +4,6 @@ description: Run dependent services and DinD in your CD stages.
 sidebar_position: 2
 ---
 
-:::note
-
-Currently, the Background step in Deploy stages is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Background steps run dependent services needed for the entire lifetime of a CD step group or stage. For example, you can set up your stage to run multiple background services that implement a local, multi-service app.
 
@@ -75,11 +70,13 @@ The image name should include the tag, or it defaults to the `latest` tag if uns
 
 Supply a list of arguments in `exec` format. Enter each argument separately.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 <figure>
 
 ![Entry Point commands](../static/0c005ac860103a5b7fb3355c95dc13ff5eab09baae3d7636ec7bf40c7ccc166e.png)  
@@ -87,10 +84,10 @@ Supply a list of arguments in `exec` format. Enter each argument separately.
 <figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
 entrypoint:
@@ -98,10 +95,10 @@ entrypoint:
   - "--mtu=1450"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. 
 
 ### Shell and Command

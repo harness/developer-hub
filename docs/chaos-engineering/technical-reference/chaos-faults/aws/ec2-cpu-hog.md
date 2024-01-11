@@ -15,8 +15,8 @@ EC2 CPU hog:
 - Simulates a lack of CPU for processes running on the application, which degrades their performance. 
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
 - SSM IAM role should be attached to the target EC2 instance(s).
@@ -34,8 +34,9 @@ EC2 CPU hog:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -87,7 +88,9 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
 
   <h3>Mandatory tunables</h3>
     <table>
@@ -99,7 +102,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> EC2_INSTANCE_ID </td>
             <td> ID of the target EC2 instance. </td>
-            <td> For example: <code>i-044d3cb4b03b8af1f</code>. </td>
+            <td> For example: <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> multiple EC2 instances.</a></td>
         </tr>
         <tr>
             <td> REGION </td>
@@ -117,12 +120,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration to insert chaos (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Interval between successive chaos injection (in seconds). </td>
-            <td> Default: 60 s. </td>
+            <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -137,22 +140,22 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> CPU_CORE </td>
             <td> Number of CPU cores to consume. </td>
-            <td> Default: 0. </td>
+            <td> Default: 0. For more information, go to <a href="#cpu-core"> CPU core.</a></td>
         </tr>
         <tr>
             <td> CPU_LOAD </td>
             <td> Percentage of single CPU core that is consumed. </td>
-            <td> Defaults to 100. </td>
+            <td> Defaults to 100. For more information, go to <a href="#cpu-percentage"> CPU percentage.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30 s. </td>
+            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
     </table>
 

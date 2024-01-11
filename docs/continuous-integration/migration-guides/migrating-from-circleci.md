@@ -27,15 +27,15 @@ Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-
 
 Both Harness CI and CircleCI use pipelines to organize workflows. CircleCI organizes steps and commands into _jobs_, and each pipeline has one or more jobs. Similarly, Harness CI organizes steps, which contain commands, into _stages_, and each each pipeline has one or more stages. The following truncated examples provide a simple comparison of pipeline structure in CircleCI and Harness CI.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -45,10 +45,10 @@ jobs:
       - run: "execute-script-for-job1"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harnessci" label="Harness CI" default>
-```
+
 
 ```yaml
 stages:
@@ -58,10 +58,10 @@ stages:
                   type: Run
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
@@ -76,15 +76,15 @@ When creating pipelines, CircleCI supports pipeline configuration as code only. 
 
 Here are YAML examples of complete pipelines in CircleCI and Harness CI.
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 version: 2.1
@@ -148,10 +148,10 @@ workflows:
               matrix-var: ["python", "java"]
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="harness" label="Harness" default>
-```
+
 
 ```yaml
 pipeline:
@@ -264,12 +264,22 @@ pipeline:
       value: someval
 ```
 
-```mdx-code-block
+
   </TabItem2>
 </Tabs2>
-```
+
 
 </details>
+
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
 
 ## Comparison: CircleCI orbs and Harness plugins
 
@@ -324,15 +334,15 @@ In Harness CI, stages are executed in order of occurrence in the YAML config. St
 
 Here are YAML examples of multi-stage build pipelines in CircleCI and Harness CI.
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs3>
   <TabItem3 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -387,10 +397,10 @@ workflows:
           - job3
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="harness" label="Harness" default>
-```
+
 
 ```yaml
   stages:
@@ -465,10 +475,10 @@ workflows:
                     command: echo "step 1 in stage4 . stage 4 requires stage 3"
 ```
 
-```mdx-code-block
+
   </TabItem3>
 </Tabs3>
-```
+
 
 </details>
 
@@ -482,15 +492,15 @@ In Harness CI, you can define variables at the project, organization, and accoun
 - Organization-level variable reference: `<+variable.org.[var_id]>`
 - Project-level variable reference: `<+variable.[var_id]>`
 
-```mdx-code-block
+
 import Tabs4 from '@theme/Tabs';
 import TabItem4 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs4>
   <TabItem4 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -499,10 +509,10 @@ jobs:
       - run: echo $MY_ENV_VAR
 ```
 
-```mdx-code-block
+
   </TabItem4>
   <TabItem4 value="harness" label="Harness" default>
-```
+
 
 ```yaml
  - stage:
@@ -524,10 +534,10 @@ In addition to project, organization, and account variables, you can use built-i
 * [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
 
-```mdx-code-block
-  </TabItem4>
+
+</TabItem4>
 </Tabs4>
-```
+
 
 ## Comparison: Matrix jobs
 
@@ -537,15 +547,15 @@ In Harness, matrix looping strategies are one of several looping execution strat
 
 To learn about the looping strategies available in Harness, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
-```mdx-code-block
+
 import Tabs5 from '@theme/Tabs';
 import TabItem5 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs5>
   <TabItem5 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -568,10 +578,10 @@ workflows:
               os: [node,ubuntu ,python]
 ```
 
-```mdx-code-block
+
   </TabItem5>
   <TabItem5 value="harness" label="Harness" default>
-```
+
 
 ```yaml
   stages:
@@ -601,10 +611,10 @@ workflows:
           maxConcurrency: 3
 ```
 
-```mdx-code-block
+
   </TabItem5>
 </Tabs5>
-```
+
 
 ## Comparison: Triggers
 

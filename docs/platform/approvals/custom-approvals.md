@@ -61,7 +61,9 @@ Criteria can be the following:
 
 Custom Approval stages automatically contain Custom Approval steps, and you can add Custom Approval steps to other Approval stages, CD Build stages, and Feature Flags stages.
 
-In a Pipeline, click **Add Stage.**
+### Step 1: Add an Approval stage
+
+In a pipeline, click **Add Stage.**
 
 In **Select Stage Type**, click **Approval**.
 
@@ -75,7 +77,9 @@ Click the **Custom Approval** step to set up your **Step Parameters**.
 
 ![](./static/custom-approvals-02.png)
 
-If you were adding a Custom Approval step to a different type of stage, you would simply click **Add Step** in that stage's **Execution** and select **Custom Approval**.### Step 2: Set up a Custom Approval Step
+If you were adding a Custom Approval step to a different type of stage, you would simply click **Add Step** in that stage's **Execution** and select **Custom Approval**.
+
+### Step 2: Set up a Custom Approval Step
 
 The Custom Approval step has the following settings.
 
@@ -103,9 +107,11 @@ In **Retry Interval**, set how long the step should wait to run the script again
 
 For example, if the **Step Timeout** is set as `10m`, **Script Timeout** is set to `2m`, and **Retry Interval** is set to `30s`, then the script will be executed at least 4 times.
 
-How many times a script executes within the **Script Timeout** depends on how fast the script executes.### Option: Script Output Variables
+How many times a script executes within the **Script Timeout** depends on how fast the script executes.
 
-You can output variables from the script to be used in subsequent Pipeline steps or in the acceptance and rejection criteria.
+### Option: Script Output Variables
+
+You can output variables from the script to be used in subsequent pipeline steps or in the acceptance and rejection criteria.
 
 #### Exporting Variables
 
@@ -113,10 +119,10 @@ To export variables from the script to the acceptance and rejection criteria or 
 
 Let's look at a simple example of a script that exports the variable **name**:
 
-
 ```
 export name=123
 ```
+
 The `name` variable cannot be used outside the script unless you use **Script Output Variables**.
 
 You do not need to export the variables with `export` to use them with **Script Output Variables**. You can simply declare them, like `name="123"`. The `export` command is for using the variables in child processes within the script.In **Script Output Variables**, in **Value**, you enter the name of the script variable you want to output (for example, `name`).
@@ -131,7 +137,7 @@ Here's an example showing how the **Script Output Variables** references the e
 
 ![](./static/custom-approvals-04.png)
 
-To find the expression to reference your output variables, execute the Pipeline, locate the step, and click its **Output** tab. You can copy the Output variable there.
+To find the expression to reference your output variables, execute the pipeline, locate the step, and click its **Output** tab. You can copy the Output variable there.
 
 ![](./static/custom-approvals-05.png)
 
@@ -145,13 +151,13 @@ First, you create the variable in **Script**, then create a variable in **Script
 
 ## Set Approval Criteria
 
-The **Approval Criteria** in the step determines if the Pipeline or stage is approved.
+The **Approval Criteria** in the step determines if the pipeline or stage is approved.
 
 Custom Approval steps must have at least one **Approval Criteria**. You can also specify **Rejection Criteria**.
 
 ![](./static/custom-approvals-07.png)
 
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
+Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
 In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system.
 
@@ -206,15 +212,15 @@ In **Advanced**, you can use the following options:
 
 Click **Apply Changes**. The Custom Approval step is added to the stage.
 
-Run the Pipeline.
+Run the pipeline.
 
 When the Custom Approval step is reached, you can see its approval and rejection criteria.
 
 ## YAML example
 
-Here's the YAML for a Pipeline that demonstrates how to set up a Custom Approval stage and step.
+Here's the YAML for a pipeline that demonstrates how to set up a Custom Approval stage and step.
 
-You can paste this YAML into a new Pipeline and simply update the `pipeline` settings (`name`, `identifier`, `projectIdentifier`, `orgIdentifier`) if needed.
+You can paste this YAML into a new pipeline and simply update the `pipeline` settings (`name`, `identifier`, `projectIdentifier`, `orgIdentifier`) if needed.
 
 
 ```

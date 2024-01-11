@@ -4,12 +4,6 @@ description: Learn the basics of how provisioning works in Harness CD.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness provisioning is categorized into the following use cases:
 - **Ad hoc provisioning**: temporary and on-demand provisioning of resources for specific tasks or purposes.
 - **Dynamic infrastructure provisioning**: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.
@@ -29,7 +23,7 @@ For example, in the following figure, Harness Terraform Plan and Apply steps are
 
 <figure>
 
-<docimage path={require('./static/f530119b890406045779f2dbec421ec43fb9a0bfd3739b4f401b6f2c02f3a84f.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/f530119b890406045779f2dbec421ec43fb9a0bfd3739b4f401b6f2c02f3a84f.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 <figcaption>Figure 1: Ad hoc resource provisioning.</figcaption>
 </figure>
@@ -67,7 +61,7 @@ At deployment runtime, Harness does the following:
 
 <figure>
 
-<docimage path={require('./static/e4a8290505cd2ca85b1f0305b34c92a2aefb23ecec14b36e13baa7231499fa3e.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./static/e4a8290505cd2ca85b1f0305b34c92a2aefb23ecec14b36e13baa7231499fa3e.png')} width="80%" height="80%" title="Click to view full size image" />  
 
 <figcaption>Figure 2: CD stage target infrastructure provisioning and mapping.</figcaption>
 </figure>
@@ -124,7 +118,7 @@ Here you can see the expression used to map the output in the infrastructure set
 
 <figure>
 
-<docimage path={require('./static/519f60992faffa19425e1436699a0d3ce27de43a16de9ad1e90b86288122235f.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/519f60992faffa19425e1436699a0d3ce27de43a16de9ad1e90b86288122235f.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped output</figcaption>
 </figure>

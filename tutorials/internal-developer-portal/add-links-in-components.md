@@ -31,7 +31,7 @@ Follow the steps below to effectively integrate such links into your software co
  ![](./static/edit-icon.png)
 
  2. Now add **links** to the IDP yaml as shown in the example below.
-    
+
 <details>
 <summary>Link Attributes</summary>
 
@@ -39,7 +39,7 @@ Follow the steps below to effectively integrate such links into your software co
 
 - **title:** This serves as the display name or label for the link. It gives users a brief idea of what to expect when they click on the link or where it might lead them.
 
-- **icon:** An optional attribute, you can select from a category of supported icon that provides a visual representation or hint about the nature or category of the link. 
+- **icon:** An optional attribute, you can select from a category of supported icon that provides a visual representation or hint about the nature or category of the link.
 
 </details>
 

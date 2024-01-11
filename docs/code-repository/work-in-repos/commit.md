@@ -59,7 +59,7 @@ Select **Browse files** to inspect files in that commit.
 
 <!-- ![](./static/inspect-commit.png) -->
 
-<docimage path={require('./static/inspect-commit.png')} />
+<DocImage path={require('./static/inspect-commit.png')} />
 
 ## Revert a commit
 

@@ -121,7 +121,7 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -131,22 +131,22 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> IP_ADDRESSES </td>
             <td> IP addresses of the services whose accessibility is impacted. </td>
-            <td> Comma-separated IP(s) can be provided. </td>
+            <td> Comma-separated IP(s) can be provided. For more information, go to <a href="#run-with-destination-ips"> run with destination IP addresses.</a></td>
         </tr>
         <tr>
             <td> DESTINATION_HOSTS </td>
             <td> DNS Names of the services whose accessibility is impacted. </td>
-            <td> If this value is not provided, the fault induces network chaos for all IPs or destinations or IP_ADDRESSES if already defined. </td>
+            <td> If this value is not provided, the fault induces network chaos for all IPs or destinations or IP_ADDRESSES if already defined. For more information, go to <a href="#run-with-destination-hosts"> run with destination hosts.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. </td>
+            <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds).  </td>
-            <td> For example, 30 s. </td>
+            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
     </table>
 

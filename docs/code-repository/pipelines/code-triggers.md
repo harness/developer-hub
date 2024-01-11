@@ -11,7 +11,7 @@ Currently, Harness Code triggers must be configured in the YAML editor.
 1. Go to the pipeline where you want to add a trigger for a Harness Code repository.
 2. Make sure your [Harness Code repo is the pipeline's default codebase](./codebase-from-harness-code.md).
 3. Select **Triggers** in the Pipeline Studio header.
-4. Select **New Trigger**, and select the **Custom** trigger type.
+4. Select **New Trigger**, and select the **Harness Code Repository** webhook trigger type.
 5. Enter a trigger **Name** and then switch to the YAML editor.
 6. Replace the `source` and `inputYaml` sections with the following:
 
@@ -42,3 +42,9 @@ Currently, Harness Code triggers must be configured in the YAML editor.
 
 7. Save the trigger.
 8. To test the trigger, create a PR or push a change to your Code repository.
+
+:::tip
+
+You can also configure Harness Code Repository webhook triggers in the Visual editor.
+
+:::

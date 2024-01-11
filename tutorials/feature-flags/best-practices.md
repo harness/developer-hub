@@ -5,7 +5,7 @@ description: Testing in production, trunk-based development, using feature flags
 
 # Feature Flags best practices
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Feature Flags Certification today!"
@@ -13,7 +13,6 @@ description: Testing in production, trunk-based development, using feature flags
   closable={true}
   target="_self"
 />
-
 
 As teams adopt Feature Flags, or consider adopting the practice, they often wonder what problems they should conider early on to set them up for success.
 
@@ -27,7 +26,7 @@ Let’s start by making sure we’re all on the same page about feature flags, b
 
 Feature flags are a way that developers can conditionally turn certain sections of their code (or code paths) on or off. You can think of feature flags as an extension of Continuous Delivery - a way to put changes into production behind a flag and turn them on in a controlled way later (or hide and remove them in the same way). They form the basis of feature flag management.
 
-Not sure if you’re using feature flags, or doing feature flagging? Some other common terms are feature toggle, release toggle, experiment toggle, and in some situations, ops toggle.  And for those who aren’t using a formal feature flagging solution (whether built or bought), you may see feature flags represented as variables in a config file.
+Not sure if you’re using feature flags, or doing feature flagging? Some other common terms are feature toggle, release toggle, experiment toggle, and in some situations, ops toggle. And for those who aren’t using a formal feature flagging solution (whether built or bought), you may see feature flags represented as variables in a config file.
 
 Whatever version of a feature flag or feature toggle you’re using, you ultimately want to derive the benefits of using the feature flagging approach.
 
@@ -61,9 +60,9 @@ Feature flags bring many advantages, but often teams don’t think of how they w
 
 Even in scenarios where teams know what they want to clean up, they often find that they can have trouble knowing what a particular feature flag does. This is because oftentimes, the names are engineering-focused (something like _NEXT_OLD_GEO3_). We recommend giving feature flags human-readable names to help make feature flag management easier over time. While this won’t solve the potential problem of bloat all by itself, having easy-to-locate feature flags is a step forward in making timely cleanup or lifecycle management possible.
 
-As one example, if flags are for user-facing new features, give flags a name that less technical users from the company would identify with the feature. Remember, it won’t always be engineers working with feature flags. In the example above, let’s say that _NEXT_OLD_GEO3_ refers to a region-bound target group on a feature flag, and that flipping the flag will turn on a set of feature flags for users in Europe. Teams are working towards a new set of privacy or GDPR-compliant features, and they want to test them with real production data for the European user base. 
+As one example, if flags are for user-facing new features, give flags a name that less technical users from the company would identify with the feature. Remember, it won’t always be engineers working with feature flags. In the example above, let’s say that _NEXT_OLD_GEO3_ refers to a region-bound target group on a feature flag, and that flipping the flag will turn on a set of feature flags for users in Europe. Teams are working towards a new set of privacy or GDPR-compliant features, and they want to test them with real production data for the European user base.
 
-However, over time, you’ll want to phase out this flag as the features become permanent in production. This one flag alone might flip fifty others all on its own! You can imagine how it would be hard to find this flag to flip the features on, and then to clean it up. Here, it might make more sense to call the flag _Privacy_Features_Europe_. 
+However, over time, you’ll want to phase out this flag as the features become permanent in production. This one flag alone might flip fifty others all on its own! You can imagine how it would be hard to find this flag to flip the features on, and then to clean it up. Here, it might make more sense to call the flag _Privacy_Features_Europe_.
 
 In the end, the point is to make individual feature flags easier to find, especially so if non-engineering users will be making use of them. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](/docs/feature-flags/harness-policy-engine/).
 
@@ -71,7 +70,7 @@ In the end, the point is to make individual feature flags easier to find, especi
 
 Another feature flag management oversight that many teams make is not having a clear internal process or agreement around who owns removing stale flags. Or how often they want that process to happen. This can often lead to teams feeling there are too many feature flags or that they’re stuck in feature flag hell. That’s not where you want to be if you want to reap the benefits and continue to create more feature flags, especially in a production environment.
 
-One of the benefits of flagging is allowing teams all across the company to use flags for a wide variety of different scenarios such as experiment toggles to test user behavior, ops toggles, or using backend flags to modify system behavior. 
+One of the benefits of flagging is allowing teams all across the company to use flags for a wide variety of different scenarios such as experiment toggles to test user behavior, ops toggles, or using backend flags to modify system behavior.
 
 The downside is, with many new features and anyone having access to implement feature flags, you will find that your application code can have feature flags all over the place. In addition to having feature flags spread across the code base, the feature flag management system will also grow as each one of these new feature flags is established in the code. In other words, as use of feature flags grows within the organization, these are two places where hygiene needs to be maintained.
 
@@ -84,18 +83,18 @@ Some of the largest enterprises, such as Facebook, Pinterest, and Netflix, regul
 The thing is, feature flag hell can tend to creep up on teams as they blaze through their backlogs and start to speed up their software delivery processes. While it’s important to think about how flags will be managed once at scale, it pays dividends to plan for this in advance.
 
 ### Use flags on every change
+
 “Feature flagging sounds great, but how do we get started?”
 
 This is a question we get all the time, and it makes sense. But our answer is always the same: any code change you’re making, put it behind a feature flag!
 
-Instead of waiting for the right use case where you know exactly how you want to use flags for a given feature, or exactly what you might want to control, think of feature flags a little bit more like a Continuous Delivery pipeline in the sense that if you’re making a change, it should go through CD. Likewise, if you’re making a change, you should put it behind a flag. 
+Instead of waiting for the right use case where you know exactly how you want to use flags for a given feature, or exactly what you might want to control, think of feature flags a little bit more like a Continuous Delivery pipeline in the sense that if you’re making a change, it should go through CD. Likewise, if you’re making a change, you should put it behind a flag.
 
-Feature flags should be a core part of your testing process going forward, and the more of your changes are behind flags, the more optionality you will have in the future. If a change causes a system outage, you can turn it off if it’s behind a flag - even if you never anticipated that use case ahead of time. 
+Feature flags should be a core part of your testing process going forward, and the more of your changes are behind flags, the more optionality you will have in the future. If a change causes a system outage, you can turn it off if it’s behind a flag - even if you never anticipated that use case ahead of time.
 
 Similarly, being able to test a change in any given environment and collect data could always be useful, even if you’re not planning on it right now. Because many feature flags encompass discrete functionality, even in cases of multiple feature toggle configurations you can easily turn off combinations of feature flags.
 
 ![List of all feature flags](static/ff-best-practices/all-flags.png)
-
 
 ### Consider trunk-based development
 
@@ -111,7 +110,7 @@ Putting flags around certain code paths that control key configuration settings,
 
 Let’s say we’re rolling out a new feature to all of our premium users, and this feature requires both a frontend and a backend change. This is common. Most of your user-facing features will have multiple associated changes. It can seem like it makes sense to put all of these changes behind a single toggle.
 
-In practice, though, it is better to have a smaller toggle scope, with smaller feature flags linked together. When everything is behind one flag, it can be hard to know which code paths specifically caused a problem. Additionally, it can be difficult to test more discrete changes along the way as you iterate on the feature. 
+In practice, though, it is better to have a smaller toggle scope, with smaller feature flags linked together. When everything is behind one flag, it can be hard to know which code paths specifically caused a problem. Additionally, it can be difficult to test more discrete changes along the way as you iterate on the feature.
 
 ### Leverage feature flags as the first line of defense
 
@@ -131,7 +130,7 @@ Teams can put feature flags in production that are ready for a live run, and col
 
 Another application of this is trying out multiple solutions with real customers. Instead of having to make the risky decision behind closed doors and hoping for the best, teams are enabled to put multiple MVPs into production to see what best meets the customer’s needs. In the end, customers get more of what they want, and internal teams reduce their stress and risk factor. It’s a win-win.
 
-It’s important to remember here that in order to test in production effectively, you need to ensure that you’re able to capture the evaluation data from the test and apply that to the appropriate context. If you’re putting feature flags out there and you’re not able to collect data, how will you do the analysis that testing in production enables? 
+It’s important to remember here that in order to test in production effectively, you need to ensure that you’re able to capture the evaluation data from the test and apply that to the appropriate context. If you’re putting feature flags out there and you’re not able to collect data, how will you do the analysis that testing in production enables?
 
 This can be difficult to build, and even more so to map that data to the appropriate business context, such as impact on revenue, reduction in downtime, or customer satisfaction. You’ll want to make sure that you can capture evaluation data and apply it in the way that’s needed.
 
@@ -149,7 +148,7 @@ Obviously, it would be really nice if this could be automated in any way. You mi
 
 ## Conclusion
 
-Feature flagging can and will speed up your team, reduce the volume and severity of incidents, and make it easier than ever before to be reactive to your customers and to be a learning-focused organization. 
+Feature flagging can and will speed up your team, reduce the volume and severity of incidents, and make it easier than ever before to be reactive to your customers and to be a learning-focused organization.
 
 By implementing the right tools, practices, and processes at your organization, you’ll find that you’re able to go the full mile with feature flags and really ensure that you’re getting the most value out of them. Hopefully, with these feature flags best practices you will see smooth sailing and find more ways to use flags.
 

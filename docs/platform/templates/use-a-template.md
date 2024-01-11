@@ -23,17 +23,21 @@ This topic explains how to use an existing pipeline template in a pipeline.
 
 To use a pipeline template, do the following:
 
-1. In Harness, select **Deployments**, and then select **Pipelines**.
+1. In Harness, select your module or **Productivity View**, and then select **Pipelines**.
 
-2. Select **Create a Pipeline**.
+2. Select **+ Create a Pipeline**. The **Create new Pipeline** settings open.
 
     ![](./static/use-a-template-41.png)
 
-3. Enter a **Name** for your pipeline, and then select **Start with Template**.
+3. Enter a **Name** for your pipeline.
+4. (Optional) Select the pencil icon to enter a **Description**.
+5. (Optional) Select the pencil icon to add **Tags**.
+
+6. Select **Start with Template**.
 
    The next page lists all the available pipeline templates.
 
-4. Select the template that you want to use.
+7. Select the template that you want to use.
 
    ![](./static/use-a-template-42.png)
 
@@ -41,17 +45,17 @@ To use a pipeline template, do the following:
 
    ![](./static/use-a-template-43.png)
 
-5. In **Version Label**, select the version label. Harness recommends using the **Stable** version of the template. This ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
+8. In **Version Label**, select the version label. Harness recommends using the **Stable** version of the template. This ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
    
    You can also select the version from within the pipeline after you have added the template.
 
    ![picture 0](static/c070e05fbf3a000f5fc089c8cc20bc4b70a1782a2cde6508781f40e4fdb343c3.png)  
 
-6. In **Template Inputs**, you can view the number of step or stage inputs in that template.
-7. Select **YAML** to view the YAML details of the template.
-8. Select the **Activity Log** to track all template events. It shows you details, like who created the template and template version changes.
-9. Select **Use Template** to use this template to create your pipeline.
-10. Add the runtime input values (if required), and then select **Save**. The **Pipeline is published successfully** message appears.
+9. In **Template Inputs**, you can view the number of step or stage inputs in that template.
+10. Select **YAML** to view the YAML details of the template.
+11. Select the **Activity Log** to track all template events. It shows you details, like who created the template and template version changes.
+12. Select **Use Template** to use this template to create your pipeline.
+13. Add the runtime input values (if required), and then select **Save**. The **Pipeline is published successfully** message displays.
 
    You can also perform the following actions:
 
@@ -62,7 +66,7 @@ To use a pipeline template, do the following:
 
    ![](./static/use-a-template-44.png)
 
-11. After you've made all the changes, select **Run**, and then select **Run Pipeline**. The template is deployed.
+14. After you've made all the changes, select **Run**, and then select **Run Pipeline**. The template is deployed.
 
    ![](./static/use-a-template-45.png)
 

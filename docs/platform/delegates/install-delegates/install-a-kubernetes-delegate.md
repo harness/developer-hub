@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 This topic describes how to install the legacy Kubernetes delegate, which always auto upgrades to the default delegate version associated with a Harness Manager version.
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
 :::info note
 If you are migrating from Harness FirstGen to Harness NextGen, you must install new delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.
 :::
@@ -22,6 +26,10 @@ The delegate requires access to all the connectors and Harness Secrets needed to
 
 * Access all the secrets used by all the connectors used in a pipeline.
 * Create and update secrets in Kubernetes. This is necessary to pull the images needed to run individual Steps.
+
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
 
 
 ### Inline or standalone installation
