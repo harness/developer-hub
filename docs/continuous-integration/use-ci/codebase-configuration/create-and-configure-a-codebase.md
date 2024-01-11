@@ -202,7 +202,7 @@ Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-inte
 * [How do I improve codebase clone time?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-reduce-clone-codebase-time)
 * [The same Git commit is not used in all stages.](/kb/continuous-integration/continuous-integration-faqs/#the-same-git-commit-is-not-used-in-all-stages)
 * [Git fetch fails with invalid index-pack output when cloning large repos.](/kb/continuous-integration/continuous-integration-faqs/#git-fetch-fails-with-invalid-index-pack-output-when-cloning-large-repos)
-* [Initial Git clone fails due to missing plugin.](/kb/continuous-integration/continuous-integration-faqs/#initial-git-clone-fails-due-to-missing-plugin)
+* [Clone codebase fails due to missing plugin.](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
 
 For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
 

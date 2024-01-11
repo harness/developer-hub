@@ -240,45 +240,22 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 
 :::
 
-## Troubleshooting Harness Cloud build infrastructure
+## Troubleshoot Harness Cloud build infrastructure
 
-### Can't use STO steps with Harness Cloud macOS runners
+<!-- Add to best practices:
 
-Currently, [STO scan steps](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
+### Don't use tools that only run on a specific cloud environment (such as gcloud)
 
-### Don't use tools that only run on a specific cloud environment (such as gsutil)
+Harness Cloud sources build VMs from a variety of cloud providers. It is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses during any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
 
-With Harness Cloud build infrastructure, builds run on Ubuntu VMs that are hosted on variety of cloud providers. It is not possible to predict where the VM is running; therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
+-->
 
-### Connector delegate error with Harness Cloud build infrastructure
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness Cloud build infrastructure, including:
 
-Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
-
-1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
-2. Select the connector that you want to edit.
-3. Select **Edit Details**.
-4. Select **Continue** until you reach **Select Connectivity Mode**.
-5. Select **Change** and select **Connect through Harness Platform**.
-6. Select **Save and Continue** and select **Finish**.
-
-### Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
-
-Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
-
-```
-While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connector and updating the connectivity to go via the Harness platform.
-```
-
-To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
-
-To change the connector's connectivity settings:
-
-1. Go to **Account Settings** and select **Account Resources**.
-2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
-3. Select **Edit Details**.
-4. Select **Continue** until you reach **Select Connectivity Mode**.
-5. Select **Change** and select **Connect through Harness Platform**.
-6. Select **Save and Continue** and select **Finish**.
-
-
-<!-- whitelist removed - DOC-2875 -->
+* [Account verification error with Harness Cloud on Free plan.](/kb/continuous-integration/continuous-integration-faqs/#account-verification-error-with-harness-cloud-on-free-plan)
+* [Can't use STO steps with Harness Cloud macOS runners.](/kb/continuous-integration/continuous-integration-faqs/#cant-use-sto-steps-with-harness-cloud-macos-runners)
+* [Is Harness Cloud compatible with tools like gsutil or gcloud?](/kb/continuous-integration/continuous-integration-faqs/#does-gsutil-work-with-harness-cloud)
+* [Connector or delegate errors when using Harness Cloud.](/kb/continuous-integration/continuous-integration-faqs/#connector-errors-with-harness-cloud-build-infrastructure)
+* [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs.md#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
+* [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
+* [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)

@@ -193,7 +193,7 @@ If the pipeline had more than one Background step, each Background step's resour
 
 </details>
 
-## Troubleshooting
+## Troubleshoot resource limits
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to resource allocation and build infrastructure, such as:
 

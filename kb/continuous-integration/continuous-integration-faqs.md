@@ -32,9 +32,92 @@ For support operating systems, architectures, and cloud providers, go to [Which 
 
 Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
 
+## Local runner build infrastructure
+
 ### Can I run builds locally? Can I run builds directly on my computer?
 
 Yes. For instructions, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+
+### How do I check the runner status for a local runner build infrastructure?
+
+To confirm that the runner is running, send a cURL request like `curl http://localhost:3000/healthz`.
+
+If the running is running, you should get a valid response, such as:
+
+```json
+{
+ "version": "0.1.2",
+ "docker_installed": true,
+ "git_installed": true,
+ "lite_engine_log": "no log file",
+ "ok": true
+}
+```
+
+### How do I check the delegate status for a local runner build infrastructure?
+
+The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
+
+```
+docker ps
+docker logs --follow <docker-delegate-container-id>
+```
+
+The container ID should be the container with image name `harness/delegate:latest`.
+
+Successful setup is indicated by a message such as `Finished downloading delegate jar version 1.0.77221-000 in 168 seconds`.
+
+### Runner can't find an available, non-overlapping IPv4 address pool.
+
+The following runner error can occur during stage setup (the **Initialize** step in build logs):
+
+```
+Could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network.
+```
+
+This error means the number of Docker networks has exceeded the limit. To resolve this, you need to clean up unused Docker networks. To get a list of existing networks, run [`docker network ls`](https://docs.docker.com/engine/reference/commandline/network_ls/), and then remove unused networks with [`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/) or [`docker network prune`](https://docs.docker.com/engine/reference/commandline/network_prune/).
+
+### Docker daemon fails with invalid working directory path on Windows local runner build infrastructure
+
+The following error can occur in Windows local runner build infrastructures:
+
+```
+Error response from daemon: the working directory 'C:\harness-DIRECTORY_ID' is invalid, it needs to be an absolute path
+```
+
+This error indicates there may be a problem with the Docker installation on the host machine.
+
+1. Run the following command (or a similar command) to check if the same error occurs:
+
+   ```
+   docker run -w C:\blah -it -d mcr.microsoft.com/windows/servercore:ltsc2022
+   ```
+
+2. If you get the `working directory is invalid` error again, uninstall Docker and follow the instructions in the Windows documentation to [Prepare Windows OS containers for Windows Server](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).
+3. Restart the host machine.
+
+### How do I check if the Docker daemon is running in a local runner build infrastructure?
+
+To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
+
+### Runner process quits after terminating SSH connection for local runner build infrastructure
+
+If you launch the Harness Docker Runner binary within an SSH session, the runner process can quit when you terminate the SSH session.
+
+To avoid this with macOS runners, use this command when you [start the runner binary](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-harness-docker-runner-1):
+
+```
+./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
+disown
+```
+
+For Linux runners, you can use a tool such as `nohup` when you start the runner, for example:
+
+```
+nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
+```
+
+## Self-hosted VM build infrastructures
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -87,7 +170,7 @@ No. To [use Harness Cloud build infrastructure](https://developer.harness.io/doc
 
 ### Connector errors with Harness Cloud build infrastructure
 
-To use Harness Cloud build infrastructure, all connectors must connect through the Harness Platform. This means that:
+To use Harness Cloud build infrastructure, all connectors used in the stage must connect through the Harness Platform. This means that:
 
 * GCP connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
 * Azure connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
@@ -95,13 +178,49 @@ To use Harness Cloud build infrastructure, all connectors must connect through t
 
 For more information, go to [Use Harness Cloud build infrastructure - Requirements for connectors and secrets](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets).
 
+To change the connector's connectivity mode:
+
+1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
+2. Select the connector that you want to edit.
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
+
+### Built-in Harness Docker Connector doesn't work with Harness Cloud build infrastructure
+
+Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
+
+```
+While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. \
+Please update the connectors: [harnessImage] to connect via the Harness platform instead. \
+This can be done by editing the connector and updating the connectivity to go via the Harness platform.
+```
+
+To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
+
+To change the connector's connectivity settings:
+
+1. Go to **Account Settings** and select **Account Resources**.
+2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
+
 ### Can I change the CPU/memory allocation for steps running on Harness cloud?
 
 Unlike with other build infrastructures, you can't change the CPU/memory allocation for steps running on Harness Cloud. Step containers running on Harness Cloud build VMs automatically use as much as CPU/memory as required up to the available resource limit in the build VM.
 
 ### Does gsutil work with Harness Cloud?
 
-No, gsutil is deprecated and can't be used with Harness Cloud. Please use gcloud-equivalent commands instead, such as `gcloud storage cp` instead of `gsutil cp`.
+No, gsutil is deprecated. You should use gcloud-equivalent commands instead, such as `gcloud storage cp` instead of `gsutil cp`.
+
+However, neither gsutil nor gcloud are recommended with Harness Cloud build infrastructure. Harness Cloud sources build VMs from a variety of cloud providers, and it is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses for any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
+
+### Can't use STO steps with Harness Cloud macOS runners
+
+Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
 
 ## Kubernetes clusters
 
@@ -544,13 +663,15 @@ properties:
           cpu: "2" ## Set the maximum number of cores to use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`.
 ```
 
-### Initial Git clone fails due to missing plugin
+### Clone codebase fails due to missing plugin
 
-* Error: Git clone fails during the **Initialize** step, and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`
+* Error: Git clone fails during stage initialization, and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`
 * Platform: This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or the [VM build infrastructures](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
 * Cause: A required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
-* Solution: On the machine where the runner is running, stop the runner, set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin (such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`), and restart the runner.
-   * For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
+* Solution:
+   1. On the machine where the runner is running, stop the runner.
+   2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin (such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`). For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
+   3. Restart the runner.
 
 ### How do I configure the Git Clone step? What is the Clone Directory setting?
 
@@ -660,7 +781,7 @@ This can occur if an expression or variable is called before it's value is resol
 
 Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#init-timeout) in the stage Infrastructure settings.
 
-### Problems cloning code repo during Initialize step
+### Problems cloning code repo during initialization.
 
 For codebase issues, go to [Codebases](#codebases).
 
@@ -671,8 +792,6 @@ Artifacts and images are pulled into the [stage workspace](https://developer.har
 ### Can I get a list of internal Harness-specific images that CI uses?
 
 For information about the backend/Harness-specific images that Harness CI uses to execute builds, including how to get a list of images and tags that your builds use, go to [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci).
-
-Harness CI images are stored in the [Harness GCR project](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness)
 
 ### How often are Harness CI images updated?
 
@@ -1092,7 +1211,7 @@ You can run the service in a [Background step](https://developer.harness.io/docs
 
 ### How do I run the default entry point of the image used in the Run step?
 
-The commands specified in the Run step's commands override the default entry point. If you want to run those commands in the Run step, you nee dto include them in the Run step's commands.
+The commands specified in the Run step's commands override the default entry point. If you want to run those commands in the Run step, you need to include them in the Run step's commands.
 
 ## Docker in Docker
 
