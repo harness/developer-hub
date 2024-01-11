@@ -39,7 +39,7 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 - Added support for [new custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook), that can execute pipeline with custom webhook based triggers. 
 
-- RBAC is revamped with new roles (IDP Admin and IDP Platform Engineering) and permissions. 
+- Access Control is revamped with new roles (IDP Admin and IDP Platform Engineering) and permissions. 
 
 ![](./static/idp-roles.png)
 
