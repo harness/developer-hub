@@ -1,7 +1,7 @@
 ---
 title: Webhook triggers reference
 description: This topic provides settings information for triggers.
-sidebar_position: 9
+sidebar_position: 10
 helpdocs_topic_id: rset0jry8q
 helpdocs_category_id: lussbhnyjt
 helpdocs_is_private: false
@@ -84,23 +84,26 @@ For the **Custom** payload type, you must create a secure token and add it to yo
 
 ### Connector
 
-Select the [code repo connector](/docs/category/code-repo-connectors) that connects to your Git provider account. The generic Git connector is not supported; you must use a provider-specific connector.
+Select the [code repo connector](/docs/category/code-repo-connectors) that connects to your Git provider account. Harness uses this connector to register a webhook in your Git provider and to receive data from PRs (for PR triggers). The generic Git connector is not supported; you must use a provider-specific connector.
 
-:::info Personal Access Token Permissions
+If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
-The personal access token used for connector authentication must have the appropriate scopes/permissions.
+#### Code repo connector permissions for webhook triggers
 
-For example, a GitHub personal access token for a GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+Git event webhook triggers require specific permissions:
+
+* The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
+* The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the [GitHub connector's credentials](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#credentials-settings) must have all `repo`, `user`, and `admin:repo_hook` scopes.
+
+![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
 
 For information about other provider's token scopes, go to:
 
 * [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
 * [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
 * [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
-
-:::
-
-If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
 ### Event and Actions
 
@@ -115,12 +118,12 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |
-| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul> |
+| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers). |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
-| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#source-branch-target-branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
+| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
 | | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
-| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#source-branch-target-branch-and-changed-files-conditions). |
+| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#branch-and-changed-files-conditions). |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
@@ -204,9 +207,9 @@ In case the API call using the GitHub retrofit REST client to fetch the webhook 
 
 ## Conditions settings
 
-Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). These form the overall set of criteria to trigger a pipeline based on changes in a given source.
+Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). With the exception of [JEXL conditions](#jexl-conditions), each trigger condition is comprised of an [attribute](#attributes), [operator](#operators), and [matching value](#matches-value). Together, the cumulative result of all conditions, along with the other trigger setting, form the overall set of criteria to trigger a pipeline based on changes in a given source.
 
-For example:
+For example, you can create conditions that:
 
 * Trigger a pipeline when a specific value is passed in the source payload.
 * Trigger a pipeline when there's a change in a specific file or a pull request.
@@ -226,21 +229,38 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 :::
 
-With the exception of [JEXL conditions](#jexl-conditions), trigger conditions include an **Attribute**, **Operator**, and **Matches Value**.
-
 ### Attributes
 
 Some attributes are predefined and some require you to define a value.
 
-#### Built-in Git payload expressions
+The default attribute conditions depend on the selected provider and [event type](#event-and-actions). For example, GitHub push event triggers provide attribute conditions for **Branch Name** and **Changed Files**.
+
+### Operators
+
+Some operators require single values and some operators allow single or multiple values.
+
+Single-value operators include:
+
+* **Equals** and **Not Equals:** Expects a single, full path value.
+* **Starts With:** Expects a single value. Harness matches any full path starting with the value.
+* **Ends With:** Expects a single value. Harness matches any full path ending with the value.
+* **Contains:** Expects a single value. Harness matches any full path containing the value.
+* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
+* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
+
+### Matches Value
+
+Matches values are the values for the trigger to match. Acceptable values and value formatting depend on the condition type, attribute, and operator.
+
+Depending on the attribute and operator, you can supply a single value, comma-separated values, and Regex or JEXL.
+
+### Built-in Git payload expressions
 
 To create dynamic triggers, Harness includes built-in Git payload expressions for referencing trigger details, such as a PR number.
 
 * Main expressions:
   * `<+trigger.type>`
     * Webhook
-  * `<+trigger.sourceRepo>`
-    * Github, Gitlab, Bitbucket, Custom
   * `<+trigger.event>`
     * PR, PUSH, etc.
 * PR and Issue Comment expressions
@@ -262,7 +282,7 @@ To create dynamic triggers, Harness includes built-in Git payload expressions fo
   * `<+trigger.event>`
     * PR, PUSH, etc.
 
-#### Referencing payload fields
+### Reference payload fields
 
 You can reference any payload fields using the expression `<+trigger.payload.[path-in-json]>`, where `[path-in-json]` is the path to the field in the JSON payload, such as `<+trigger.payload.pull_request.user.login>`.
 
@@ -273,28 +293,15 @@ How you reference the path depends on:
 
 Always make sure the path you use works with the provider's payload format and the event type.
 
-### Operators
+:::info
 
-Some operators require single values and some operators allow single or multiple values.
+For instructions on using default values for pipeline inputs based on a trigger's payload, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
-Single-value operators include:
+:::
 
-* **Equals** and **Not Equals:** Expects a single, full path value.
-* **Starts With:** Expects a single value. Harness matches any full path starting with the value.
-* **Ends With:** Expects a single value. Harness matches any full path ending with the value.
-* **Contains:** Expects a single value. Harness matches any full path containing the value.
-* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
-* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
+### Branch and Changed Files Conditions
 
-### Matches Value
-
-Matches values are the values for the trigger to match. Acceptable values and value formatting depend on the condition type, attribute, and operator.
-
-Depending on the attribute and operator, you can supply a single value, comma-separated values, and Regex or JEXL.
-
-### Source Branch, Target Branch, and Changed Files Conditions
-
-You can configure triggers to match the source branch, target branch, and/or changed files in a Git merge. Available conditions depend on the [event type](#event-and-actions) selected. For example, any event that belongs to a merge will have **Source Branch** and **Target Branch** conditions.
+You can configure triggers to match a branch name, specific source branch, specific target branch, and/or changed files in a Git merge. Available conditions depend on the [event type](#event-and-actions) selected. For example, any event that belongs to a merge can have **Source Branch** and **Target Branch** conditions, and push event triggers can have a **Branch Name** condition (which is the same as **Target Branch**).
 
 For example, the following image shows a trigger that would start a pipeline if both of the following conditions were true:
 
@@ -400,6 +407,12 @@ You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 
+:::note
+
+For instructions on using default values in pipeline inputs, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
 
 :::note
@@ -414,14 +427,14 @@ For all Git providers supported by Harness, a webhook is automatically created i
 
 For each repo, Harness creates one webhook with a superset of all permissions, rather than separate webhooks for each Git event type. The following Git events are included in the webhooks that Harness registers.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="github" label="GitHub" default>
-```
+
 
 [GitHub events](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads):
 
@@ -432,10 +445,10 @@ import TabItem from '@theme/TabItem';
 * `pull_request`
 * `pull_request_review`
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="gitlab" label="GitLab">
-```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
 
 [GitLab events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html):
 
@@ -444,10 +457,10 @@ import TabItem from '@theme/TabItem';
 * Merge request events
 * Push events
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Bitbucket" label="Bitbucket">
-```
+
 
 * [Bitbucket Cloud events](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/):
   * `issue`
@@ -456,31 +469,19 @@ import TabItem from '@theme/TabItem';
   * Pull requests
   * Branch push tag
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Manual and custom webhook registration
 
-Use the manual webhook registration process if automatic webhook registration fails or is impossible (as with custom webhooks).
+Use the manual webhook registration process if [automatic webhook registration fails](./triggering-pipelines/#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
 
-:::info Webhook registration permissions
+:::info
 
-You must have the appropriate level of access to configure repo webhooks in your Git provider, and the personal access token used for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes/permissions.
-
-For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
-
-For information about other provider's token scopes, go to:
-
-* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
-* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
-* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
-
-:::
-
-:::info note
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
+
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.

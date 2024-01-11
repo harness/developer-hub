@@ -21,7 +21,7 @@ Roles are applied together with [resource groups](/docs/platform/role-based-acce
 * You can assign the **Organization Admin** role with a resource group that is limited to specific projects or specific organizations.
 * You can assign the **Pipeline Executor** role with a resource group that only allows access to specific pipelines, rather than all pipelines in the project.
 
-:::caution Least privilege
+:::warning Least privilege
 
 RBAC is additive. The total expanse of a user/service account's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user/service account.
 
@@ -72,13 +72,13 @@ Harness creates these roles for you depending on the modules you use. These role
 
 * Feature Flag Manage Role
 * CET Admin
-* Code Admin
 * Chaos Admin
 * CCM Admin
 * CCM Viewer
 * Security Testing SecOps Role
 * Security Testing Developer Role
 * GitOps Admin Role
+* Code Admin (for [Harness Code Repository](/docs/code-repository/get-started/overview.md))
 
 ## Manage roles in Harness
 
@@ -86,7 +86,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
 <!-- ![](./static/add-manage-roles-17.png) -->
 
-<docimage path={require('./static/add-manage-roles-17.png')} />
+<DocImage path={require('./static/add-manage-roles-17.png')} />
 
 ### Create a role
 
@@ -103,7 +103,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
    <!-- ![](./static/add-manage-roles-19.png) -->
 
-   <docimage path={require('./static/add-manage-roles-19.png')} />
+   <DocImage path={require('./static/add-manage-roles-19.png')} />
 
 6. Select **Apply Changes**.
 

@@ -1,0 +1,13 @@
+	{
+  "position": 30,
+  "label": "Troubleshooting Chaos Engineering",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Troubleshooting Chaos Engineering"
+   },
+  "customProps": {
+    "description": "Solutions to common pain points and known issues."
+  }
+}

@@ -22,7 +22,7 @@ Here's a ten minute video that walks you through adding a Harness Kubernetes clu
 
 <!-- Video:
 https://www.youtube.com/watch?v=wUC23lmqfnY-->
-<docvideo src="https://www.youtube.com/watch?v=wUC23lmqfnY" />
+<DocVideo src="https://www.youtube.com/watch?v=wUC23lmqfnY" />
 
 ## Kubernetes Cluster Connector vs Platform Connectors
 
@@ -62,44 +62,45 @@ For Harness CI, the delegate requires CRUD permissions on Secret and Pod.
 Here is a same Service Account and RoleBinding that lists the minimum permissions:
 
 ```yaml
-apiVersion: v1  
-kind: Namespace  
-metadata:  
-  name: cie-test  
----  
-apiVersion: v1  
-kind: ServiceAccount  
-metadata:  
-  name: cie-test-sa  
-  namespace: cie-test  
----  
-kind: Role  
-apiVersion: rbac.authorization.k8s.io/v1  
-metadata:  
-  name: sa-role  
-  namespace: cie-test  
-rules:  
-  - apiGroups: [""]  
-    resources: ["pods", "secrets"]  
-    verbs: ["get", "list", "watch", "create", "update", "delete"]  
-  - apiGroups: [""]  
-    resources: ["events"]  
-    verbs: ["list", "watch"]  
----  
-kind: RoleBinding  
-apiVersion: rbac.authorization.k8s.io/v1  
-metadata:  
-  name: sa-role-binding  
-  namespace: cie-test  
-subjects:  
-  - kind: ServiceAccount  
-    name: cie-test-sa  
-    namespace: cie-test  
-roleRef:  
-  kind: Role  
-  name: sa-role  
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cie-test
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cie-test-sa
+  namespace: cie-test
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sa-role
+  namespace: cie-test
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "secrets"]
+    verbs: ["get", "list", "watch", "create", "update", "delete"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sa-role-binding
+  namespace: cie-test
+subjects:
+  - kind: ServiceAccount
+    name: cie-test-sa
+    namespace: cie-test
+roleRef:
+  kind: Role
+  name: sa-role
   apiGroup: rbac.authorization.k8s.io
 ```
+
 ### Builds (CI)
 
 A Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
@@ -123,10 +124,10 @@ For Harness CI, the resources required for the Kubernetes cluster depends on the
 Below is a rough estimation of the resources required, based on the number of daily builds:
 
 | **PRs/Day** | **Nodes with 4 CPU, 8GB RAM,100GB disk** | **Nodes with 8 CPU, 16GB RAM, 200GB disk** |
-| --- | --- | --- |
-| 100 | 19 - 26 | 11 - 15 |
-| 500 | 87 - 121 | 45 - 62 |
-| 1000 | 172 - 239 | 89 - 123 |
+| ----------- | ---------------------------------------- | ------------------------------------------ |
+| 100         | 19 - 26                                  | 11 - 15                                    |
+| 500         | 87 - 121                                 | 45 - 62                                    |
+| 1000        | 172 - 239                                | 89 - 123                                   |
 
 ## Credential Validation
 
@@ -190,14 +191,18 @@ For the password, select or create a new Harness [Encrypted Text secret](../../.
 
 This is not used, typically. Some Connectors have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.
 
+:::info Kubernetes Authentication Deprecation Notice
+Basic authentication is not supported in Kubernetes client version 1.19 and later.
+:::
+
 ## Service Account
 
-Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select. The service account does not have to be associated with a delegate.
+Select or create a Harness encrypted text secret containing the decoded service account token for the service account. The secret must contain the decoded token for the connector to function correctly. The service account doesn't have to be associated with a delegate.
 
-In Kubernetes 1.24 and later versions, the automatic generation of ServiceAccount token secrets has been deprecated. Instead, you can use the TokenRequest subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the TokenRequest subresource:
+In Kubernetes version 1.24 and later, service account token secrets are no longer automatically generated. Instead, you can use the `TokenRequest` subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the `TokenRequest` subresource:
 
-1. Create a TokenRequest manifest. Write a YAML or JSON manifest that describes the TokenRequest object. The manifest should specify the namespace and name of the ServiceAccount for which you want to obtain a token. Here's an example TokenRequest manifest:
-   
+1. Create a `TokenRequest` manifest. Write a YAML or JSON manifest that describes the `TokenRequest` object. The manifest should specify the namespace and name of the `ServiceAccount` for which you want to obtain a token. Here's an example `TokenRequest` manifest:
+
    ```yaml
    apiVersion: authentication.k8s.io/v1
    kind: TokenRequest
@@ -205,22 +210,25 @@ In Kubernetes 1.24 and later versions, the automatic generation of ServiceAccoun
      name: my-token-request
    spec:
      audiences:
-     - api
+       - api
      expirationSeconds: 3600
    ```
 
-   In this example, the `audiences` field specifies the intended audience of the token, which is set to api. The `expirationSeconds` field determines the token's validity period (in this case, 3600 seconds or 1 hour).
-2. Apply the TokenRequest. Use the kubectl command-line tool to apply the TokenRequest manifest to the Kubernetes cluster:
-   
+   In this example, the `audiences` field specifies the intended audience of the token, which is set to `api`. The `expirationSeconds` field determines the token's validity period (in this case, `3600` seconds or one hour).
+
+2. Apply the `TokenRequest`. Use the kubectl command-line tool to apply the `TokenRequest` manifest to the Kubernetes cluster:
+
    ```
    kubectl apply -f token-request.yaml
    ```
-3. Retrieve the token: After applying the TokenRequest, a TokenRequest object is created in the cluster. You can retrieve the token using the following command:
-   
+
+3. Retrieve the token. After applying the `TokenRequest`, a `TokenRequest` object is created in the cluster. You can retrieve the token using the following command:
+
    ```
    kubectl get tokenrequest my-token-request -o jsonpath='{.status.token}' | base64
    ```
-4. Paste the token into **Service Account Token**.
+
+4. Paste the token into a Harness encrypted text secret and then use that secret for the connector's **Service Account Token**.
 
 ## OpenID Connect
 
@@ -238,17 +246,17 @@ For example, in Okta, this is the Issuer URL for the [Authorization Server](http
 (./static/kubernetes-cluster-connector-settings-reference-02.png)
 Providers use different API versions. If you want to identify the version also, you can obtain it from the token endpoint.
 
-In Okta, in the authentication server **Settings**, click the **Metadata URI**. Locate the **token\_endpoint**. Use the **token\_endpoint** URL except for the **/token** part. For example, you would use `https://dev-00000.okta.com/oauth2/default/v1` from the following endpoint:
-
+In Okta, in the authentication server **Settings**, click the **Metadata URI**. Locate the **token_endpoint**. Use the **token_endpoint** URL except for the **/token** part. For example, you would use `https://dev-00000.okta.com/oauth2/default/v1` from the following endpoint:
 
 ```
 "token_endpoint":"https://dev-00000.okta.com/oauth2/default/v1/token"
 ```
+
 ### OIDC Username and Password
 
 Login credentials for a user assigned to the provider app.
 
-* **OIDC** **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
+- **OIDC** **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
 
 ![](./static/kubernetes-cluster-connector-settings-reference-04.png)
 
@@ -298,10 +306,10 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 
 To install a delegate in your AWS infrastructure, do the following:
 
-* Install a Harness Kubernetes delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes delegate, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
-* In the Kubernetes Cluster Connector settings, select the delegate.
-* When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
+- Install a Harness Kubernetes delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
+- Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes delegate, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
+- In the Kubernetes Cluster Connector settings, select the delegate.
+- When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 
 ## OpenShift Support
 
@@ -313,43 +321,43 @@ The following shell script is a quick method for obtaining the service account t
 
 Set the `SERVICE_ACCOUNT_NAME` and `NAMESPACE` values to the values in your infrastructure.
 
-
 ```shell
-SERVICE_ACCOUNT_NAME=default  
-NAMESPACE=mynamepace  
-SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o json | jq -r '.secrets[].name')  
-TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o json | jq -r '.data["token"]' | base64 -D)  
+SERVICE_ACCOUNT_NAME=default
+NAMESPACE=mynamepace
+SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o json | jq -r '.secrets[].name')
+TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o json | jq -r '.data["token"]' | base64 -D)
 echo $TOKEN
 ```
+
 Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 
 ### OpenShift notes
 
-* If you decide to use a username/password for credentials in the Harness Kubernetes Cluster Connector, do not use the username/password for the OpenShift platform. Use the cluster's username and password.
-* Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
-* The token does not need to have global read permissions. The token can be scoped to the namespace.
-* The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: <https://hub.docker.com/u/openshift> and <https://access.redhat.com/containers>.
-* Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
+- If you decide to use a username/password for credentials in the Harness Kubernetes Cluster Connector, do not use the username/password for the OpenShift platform. Use the cluster's username and password.
+- Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+- The token does not need to have global read permissions. The token can be scoped to the namespace.
+- The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).
+- Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 
 ## YAML Example
 
 ```yaml
-connector:  
-  name: Doc Kubernetes Cluster  
-  identifier: Doc_Kubernetes_Cluster  
-  description: ""  
-  orgIdentifier: ""  
-  projectIdentifier: ""  
-  tags: {}  
-  type: K8sCluster  
-  spec:  
-    credential:  
-      type: ManualConfig  
-      spec:  
-        masterUrl: https://00.00.00.000  
-        auth:  
-          type: UsernamePassword  
-          spec:  
-            username: john.doe@example.io  
+connector:
+  name: Doc Kubernetes Cluster
+  identifier: Doc_Kubernetes_Cluster
+  description: ""
+  orgIdentifier: ""
+  projectIdentifier: ""
+  tags: {}
+  type: K8sCluster
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        masterUrl: https://00.00.00.000
+        auth:
+          type: UsernamePassword
+          spec:
+            username: john.doe@example.io
             passwordRef: account.gcpexample
 ```

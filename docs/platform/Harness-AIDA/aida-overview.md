@@ -5,9 +5,9 @@ sidebar_position: 2
 ---
 
 :::info important
-Currently, AIDA  for CCM and STO are beta features that are behind the feature flags `CCM_GOVERNANCE_GENAI_ENABLE` and `STO_AI_ENHANCED_REMEDIATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
+Currently, AIDA for CCM is a beta feature that is behind the feature flags `CCM_GOVERNANCE_GENAI_ENABLE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
-AIDA for CI is generally available.
+AIDA is generally available for CI and STO.
 
 :::
 
@@ -33,9 +33,9 @@ To learn more about the AI capabilities in Harness, go to each module's AIDA doc
 
 To enable AIDA in your Harness account:
 
-1. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag for AIDA in CCM or STO. You don't need to do this for CI, because AIDA for CI is generally available.
+1. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag for AIDA in CCM. You don't need to do this for CI or STO, because AIDA is generally available for these modules.
 2. Agree to the AIDA EULA. Review the [AIDA Terms](https://www.harness.io/legal/aida-terms) and [AIDA Data Privacy](https://www.harness.io/legal/aida-privacy) information.
-3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting.
+3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects. 
 
 ## AIDA terms and data privacy information
 

@@ -4,6 +4,7 @@ title: ECS network restrict
 ---
 
 ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. 
+This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](./ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
 
@@ -19,7 +20,6 @@ ECS network restrict:
 
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -39,12 +39,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -111,51 +109,51 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default. 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> IP_ADDRESS </td>
         <td> Provide the IP address/CIRD range. If no IP/CIRD range is provided then it will remove all the rules from the security group for a specified chaos interval.</td>
-        <td> Defaults to '' </td>
+        <td> Default: ''. For more information, go to <a href="#ip-address-or-cidr-range"> IP address.</a></td>
       </tr>
       <tr> 
         <td> RULE_TYPE </td>
         <td> Provide the rule type either <code>outbound</code> or <code>inbound</code> rule </td>
-        <td> Default to 'outbound' </td>
+        <td> Default: outbound. For more information, go to <a href="#rule-type"> rule type.</a> </td>
       </tr>
       <tr> 
         <td> RULE_MODE </td>
         <td> Provide the mode to modify, <code>add</code> means add a new rule and <code>remove</code> means removing the existing rule. To remove a rule please provide the exact rule details. </td>
-        <td> Defaults to <code>remove</code>. </td>
+        <td> Defaults: remove. For more information, go to <a href="#rule-mode"> rule mode.</a></td>
       </tr>
       <tr> 
         <td> PROTOCOL </td>
         <td> Provide the protocol of the rule. </td>
-        <td> Default to 'tcp' </td>
+        <td> Default: tcp. For more information, go to <a href="#protocol"> protocol.</a></td>
       </tr>
       <tr> 
         <td> FROM_PORT </td>
         <td> Provide the from port of the rule.</td>
-        <td> Defaults to <code>80</code>. </td>
+        <td> Default: 80. For more information, go to <a href="#from-port-and-to-port"> from port.</a></td>
       </tr>
       <tr> 
         <td> TO_PORT </td>
         <td> Provide the to port of the rule. </td>
-        <td> Default to '80' </td>
+        <td> Default: 80. For more information, go to <a href="#from-port-and-to-port"> to port.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
-### IP Address or CIDR range
+### IP address or CIDR range
 
 IP address or the CIDR range. Tune it by using the `IP_ADDRESS` environment variable. If no IP address or CIDR range is provided, the fault detaches all the available rules from inbound or outbound traffic from the target security group.
 

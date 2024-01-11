@@ -1,0 +1,10 @@
+{
+   "label":"Software Engineering Insights",
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Software Engineering Insights"
+   }
+}

@@ -1,7 +1,7 @@
 ---
 title: Trigger deployments using custom triggers
 description: Trigger deployments using cURL and Webhooks
-sidebar_position: 6
+sidebar_position: 7
 helpdocs_topic_id: qghequ5vxu
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -56,8 +56,6 @@ For example:
 Conditions support Harness built-in expressions for accessing trigger settings, Git payload data, and headers.
 
 JEXL expressions are also supported.
-
-For details on these settings, go to the [Triggers reference](./triggers-reference).
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the trigger.
 

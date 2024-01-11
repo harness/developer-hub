@@ -77,6 +77,16 @@ The following permissions allow an API key to interact with Chaos Engineering. T
 | `chaos_chaosgameday_edit` | Edit Chaos GameDay |
 | `chaos_chaosgameday_delete` | Delete Chaos GameDay |
 
+## Code Repository
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `code_repository_view` | View repositories |
+| `code_repository_edit` | Update repository settings, such as descriptions, webhooks, and rules. |
+| `code_repository_create` | Create repositories |
+| `code_repository_delete` | Delete repositories |
+| `code_repository_push` | Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags. |
+
 ## Connectors
 
 The following permissions allow an API key to manage connectors. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
@@ -198,6 +208,47 @@ The following permissions allow an API key to manage governance policies. They a
 | `core_governancePolicySets_view` | View Policy Sets |
 | `core_governancePolicySets_delete` | Delete Policy Sets |
 | `core_governancePolicySets_evaluate` | Evaluate Policy Sets |
+
+## Infrastructure as Code Management
+
+The following permissions allow an API key to manage IACM workspaces. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `iac_workspace_view` | View Infrastructure Workspace |
+| `iac_workspace_edit` | Create/Edit Infrastructure Workspace |
+| `iac_workspace_delete` | Delete Infrastructure Workspace |
+| `iac_workspace_editvariable` | Create/Edit Infrastructure Workspace Variable |
+| `iac_workspace_deletevariable` | Delete Infrastructure Workspace Variable |
+| `iac_workspace_approve` | Approve Infrastructure Workspace |
+| `iac_workspace_accessstate` | Access Infrastructure Workspace State |
+
+## Internal Developer Portal
+
+The following permissions allow an API key to interact with IDP Admin resources. They are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `idp_plugin_view` | View IDP custom plugins |
+| `idp_plugin_edit` | Create or Edit IDP custom plugins |
+| `idp_plugin_toggle` | Enable or Disable an IDP Plugin |
+| `idp_plugin_delete` | Delete IDP custom plugins |
+| `idp_scorecard_view` | View IDP Scorecards |
+| `idp_scorecard_edit` | Create or Edit IDP Scorecards |
+| `idp_scorecard_delete` | Delete IDP Scorecards |
+| `idp_layout_view` | View IDP Layout Configurations |
+| `idp_layout_edit` | Create or Edit IDP Layout Configurations |
+| `idp_catalogaccesspolicy_view` | View IDP Catalog Access Control Policies |
+| `idp_catalogaccesspolicy_create` | Create IDP Catalog Access Control Policies |
+| `idp_catalogaccesspolicy_edit` | Edit IDP Catalog Access Control Policies |
+| `idp_catalogaccesspolicy_delete` | Delete IDP Catalog Access Control Policies |
+| `idp_integration_view` | View IDP Integrations |
+| `idp_integration_create` | Create IDP Integrations |
+| `idp_integration_edit` | Edit IDP Integrations |
+| `idp_integration_delete` | Delete IDP Integrations |
+| `idp_advancedconfiguration_view` | View IDP Advanced Configurations |
+| `idp_advancedconfiguration_edit` | Create or Edit IDP Advanced Configurations |
+| `idp_advancedconfiguration_delete` | Delete IDP Advanced Configurations |
 
 ## Organizations
 

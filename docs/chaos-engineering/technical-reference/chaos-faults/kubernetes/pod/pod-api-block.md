@@ -31,13 +31,18 @@ Pod API block:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> TARGET_CONTAINER </td>
+        <td> Name of the container subject to API block. </td>
+        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+      </tr>
+      <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
         <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
       </tr>
       <tr>
         <td> PATH_FILTER </td>
-        <td> Api path or route used for the filtering </td>
+        <td> API path or route used for the filtering </td>
         <td> For more information, go to <a href="#path-filter">path filter </a>.</td>
       </tr>
     </table>
@@ -53,6 +58,11 @@ Pod API block:
         <td> Port where the proxy listens for requests.</td>
         <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
       </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>  
       <tr>
         <td> SERVICE_DIRECTION </td>
         <td> Direction of the flow of control, ingress or egress </td>
@@ -81,7 +91,12 @@ Pod API block:
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path </a>.</td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a>.</td>
+      </tr>
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

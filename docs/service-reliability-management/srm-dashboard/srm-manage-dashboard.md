@@ -26,7 +26,7 @@ On a Harness dashboard, you can perform the following actions:
 
     - **Change the dashboard time zone**: Adjust the time zone settings for your dashboard to align with your preferences.
 
-<docimage path={require('./static/srm-dashboards-settings.png')} />
+<DocImage path={require('./static/srm-dashboards-settings.png')} />
 
 For more detailed information, go to [Use dashboard actions](/docs/platform/dashboards/use-dashboard-actions).
 
@@ -49,6 +49,6 @@ Hover over a Harness dashboard tile to access the following actions:
 
     - **Clear the cache and refresh the data**: Clear cached data and refresh it to display the most current information.
 
-<docimage path={require('./static/srm-tile-actions.png')} />
+<DocImage path={require('./static/srm-tile-actions.png')} />
 
 

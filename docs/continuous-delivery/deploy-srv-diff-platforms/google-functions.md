@@ -13,21 +13,24 @@ This topic explains how to deploy new Cloud Functions to Google Cloud using Harn
 Harness integration with Google's serverless offering Google Functions.
 
 Harness supports the following:
+
 - Harness supports deploying Google Functions [1st gen and 2nd gen](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available).
-- To review the differences between Google Functions 1st gen and 2nd gen, go to  [Google Cloud Function documentation](https://cloud.google.com/functions/docs/concepts/version-comparison).
+- To review the differences between Google Functions 1st gen and 2nd gen, go to [Google Cloud Function documentation](https://cloud.google.com/functions/docs/concepts/version-comparison).
 
 ### Harness Cloud Functions 1st gen support
 
 Harness supports the following:
-- Basic deployments. 
+
+- Basic deployments.
   - Harness deploys the new function and terminates the old one by sending 100% of traffic to the new function.
 - For rollback, Harness does not perform revision-based rollback. Instead, in case of deployment failure, Harness will take a snapshot of the last known good state of the function and reapply.
 
-<docvideo src="https://www.loom.com/share/60a793fc62a748c5a9aad071eb60bdf1" />
+<DocVideo src="https://www.loom.com/share/60a793fc62a748c5a9aad071eb60bdf1" />
 
 ### Harness Cloud Functions 2nd gen support
 
 Harness supports the following:
+
 - Basic, blue green, and canary deployments.
 - Harness leverages the Cloud Run [revisions](https://cloud.google.com/run/docs/managing/revisions) capability that Google Cloud offers to configure rollback.
 
@@ -52,15 +55,14 @@ Here's a high-level summary of the setup steps.
 5. Select **New Environment**, name the new environment and select **Save**.
 6. In **Infrastructure Definition**, select **New Infrastructure**.
    1. In Google Cloud Provider Details, create or select the Harness GCP connector, **GCP project**, and **GCP region**, and select **Save**.
-7.  Select Configure and select the deployment strategy: basic, canary, or blue green.
-8.  Harness will automatically add the **Deploy Cloud Function** step. No further configuration is needed.
-    1.  For canary and blue green strategies, the **Cloud Function Traffic Shift** step is also added. In this step's **Traffic Percent** setting, enter the percentage of traffic to switch to the new revision of the function.
-    2.  For canary deployments, you can add multiple **Cloud Function Traffic Shift** steps to rollout the shift.
-    3.  For blue green deployments, you can simply use 100 in the **Traffic Percent** setting.
-9.  Select **Save**, and then run the pipeline.
+7. Select Configure and select the deployment strategy: basic, canary, or blue green.
+8. Harness will automatically add the **Deploy Cloud Function** step. No further configuration is needed.
+   1. For canary and blue green strategies, the **Cloud Function Traffic Shift** step is also added. In this step's **Traffic Percent** setting, enter the percentage of traffic to switch to the new revision of the function.
+   2. For canary deployments, you can add multiple **Cloud Function Traffic Shift** steps to rollout the shift.
+   3. For blue green deployments, you can simply use 100 in the **Traffic Percent** setting.
+9. Select **Save**, and then run the pipeline.
 
 </details>
-
 
 ## Cloud Functions permission requirements
 
@@ -72,7 +74,7 @@ The permissions listed below work for both 1st and 2nd gen.
 
 :::
 
-When you set up a Harness GCP connector to connect Harness with your GCP account, the GCP IAM user or service account must have the appropriate permissions assigned to their account. 
+When you set up a Harness GCP connector to connect Harness with your GCP account, the GCP IAM user or service account must have the appropriate permissions assigned to their account.
 
 <details>
 <summary>Cloud Functions minimum permissions</summary>
@@ -112,7 +114,7 @@ For Google Cloud Storage (GCS), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
+Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 For Google Cloud Source, the following roles are required:
 
@@ -123,10 +125,9 @@ For more information, go to Cloud Source Repositories [Access control with IAM](
 
 </details>
 
-
 ## Cloud Functions services
 
-The Harness Cloud Functions service the following: 
+The Harness Cloud Functions service the following:
 
 - **Function Definition**:
   - You can enter the function manifest YAML in Harness for use a remote function manifest YAML in a Git repo.
@@ -146,12 +147,11 @@ When you deploy a function using the manifest file, the Cloud Functions service 
 
 </details>
 
-
 ### Function Definition
 
-The **Function Definition** is the parameter file you use to define your Google Function. The parameter file you add here maps to one Google Function. 
+The **Function Definition** is the parameter file you use to define your Google Function. The parameter file you add here maps to one Google Function.
 
-To use Google Cloud Functions, in the Harness service, in **Deployment Type**, you select **Google Cloud Functions**. 
+To use Google Cloud Functions, in the Harness service, in **Deployment Type**, you select **Google Cloud Functions**.
 
 Next, in **Google Cloud Function Environment Version**, you select **1st gen** or **2nd gen**.
 
@@ -164,7 +164,6 @@ The option you select in **Google Cloud Function Environment Version** determine
 - Google Functions 2nd gen: The YAML parameters for Google Functions 2nd gen are defined in the [google.cloud.functions.v2 function message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#function) from Google Cloud.
   - You can define details of the [ServiceConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#google.cloud.functions.v2.ServiceConfig) and [BuildConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#buildconfig) via the YAML as seen in the below examples.
 - Google Functions 1st gen: The YAML parameters for Google Functions 1st gen are defined in the [google.cloud.functions.v1 CloudFunction message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v1#cloudfunction) from Google Cloud.
-
 
 ### 1st gen function definition example
 
@@ -214,7 +213,6 @@ function:
     entryPoint: myFunction
   environment: GEN_2
 function_id: my-http-function
-
 ```
 
 </details>
@@ -255,9 +253,9 @@ function_id: my-storage-function
   timeout: 180s
 
 ```
+
 </details>
- 
- 
+
 <details>
 <summary>Example 4: A Cloud Function that uses service config and environment variables</summary>
 
@@ -266,15 +264,16 @@ function:
   name: canaryDemo-<+env.name>
   serviceConfig:
     environment_variables:
-        MY_ENV_VAR: 'True'
-        GCF_FF_KEY: '<+env.variables.GCF_FF_KEY>'
+      MY_ENV_VAR: "True"
+      GCF_FF_KEY: "<+env.variables.GCF_FF_KEY>"
   buildConfig:
     runtime: python39
     entryPoint: hello_world
   environment: GEN_2
 function_id: canaryDemo-<+env.name>
 ```
-</details>  
+
+</details>
 
 <details>
 <summary>Example 5: A Cloud Function that uses secret environment variables</summary>
@@ -298,8 +297,21 @@ function:
   environment_variables:
     MY_ENV_VAR1: value1
     MY_ENV_VAR2: value2
-  secret_environment_variables: [{ key: "MY_SECERT_ENV_VAR1", project_id: <project_id>, secret: "<secretName1>", version: "<secretVersion1>" }, { key: "MY_SECERT_ENV_VAR2", project_id: <project_id>, secret: "<secretName2>", version: "<secretVersion2>" }]
-
+  secret_environment_variables:
+    [
+      {
+        key: "MY_SECERT_ENV_VAR1",
+        project_id: <project_id>,
+        secret: "<secretName1>",
+        version: "<secretVersion1>",
+      },
+      {
+        key: "MY_SECERT_ENV_VAR2",
+        project_id: <project_id>,
+        secret: "<secretName2>",
+        version: "<secretVersion2>",
+      },
+    ]
 ```
 
 </details>
@@ -314,14 +326,11 @@ You use a Harness GCP connector to connect to your Cloud Storage bucket. The GCP
 
 Here's how you add a Harness Cloud Function service.
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
 
 Here's a Cloud Functions service YAML example.
 
@@ -355,10 +364,8 @@ service:
               type: GoogleCloudStorage
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="API" label="API">
-```
 
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
@@ -381,10 +388,8 @@ curl -i -X POST \
   }]'
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
 
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
@@ -398,7 +403,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
   yaml = <<-EOT
@@ -428,15 +433,13 @@ resource "harness_platform_service" "example" {
                                 bucket: cloud-functions-automation-bucket
                                 artifactPath: helloworld
                               identifier: helloworld
-                              type: GoogleCloudStorage              
+                              type: GoogleCloudStorage
               EOT
 }
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
 
 To configure a Harness Cloud Function service in the Harness Manager, do the following:
 
@@ -451,10 +454,8 @@ To configure a Harness Cloud Function service in the Harness Manager, do the fol
 7. In **Artifacts**, add the Google Cloud Storage location of the ZIP file that corresponds to the manifest YAML.
 8. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ### Using service variables in manifest YAML
 
@@ -464,11 +465,9 @@ In the **Variables** section of the service, you can add service variables and t
 
 For example, you could create a variable named **entryPoint** for the manifest `entryPoint` setting and set its value as a fixed value, runtime input, or expression.
 
-Next, in your manifest YAML file, you could reference the variable like this (see <+serviceVariables.entryPoint>):
+Next, in your manifest YAML file, you could reference the variable like this (see \<+serviceVariables.entryPoint>):
 
 Now, when you add that service to a pipeline, you will be prompted to enter a value for this variable in the pipeline **Services** tab. The value you provide is then used as the `entryPoint` in your manifest YAML.
-
-
 
 ## Cloud Functions environments
 
@@ -476,14 +475,11 @@ The Cloud Function environment contains an Infrastructure Definition that identi
 
 Here's an example of a Cloud Functions environment.
 
-```mdx-code-block
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
-```mdx-code-block
+
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
-```
 
 ```YAML
 environment:
@@ -498,10 +494,8 @@ environment:
 
 ```
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="API" label="API">
-```
 
 Create an environment using the [Create Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2) API.
 
@@ -526,11 +520,8 @@ curl -i -X POST \
   }'
 ```
 
-
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
-```
 
 For the Terraform Provider resource, go to [harness_platform_environment](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) and [harness_platform_environment_service_overrides](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_service_overrides).
 
@@ -563,10 +554,8 @@ resource "harness_platform_environment" "example" {
 }
 ```
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="Harness Manager" label="Harness Manager">
-```
 
 To create an environment, do the following:
 
@@ -578,10 +567,8 @@ To create an environment, do the following:
 
 Pipelines require that an environment have an infrastructure definition. We'll cover that next.
 
-```mdx-code-block
   </TabItem1>
 </Tabs1>
-```
 
 ## Define the infrastructure
 
@@ -598,18 +585,15 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 
 You will need a Harness GCP Connector with [correct permissions](#cloud-functions-permission-requirements) to deploy Cloud Functions in GCP.
 
-You can pick the same GCP connector you used in the Harness service to connect to Google Cloud Storage for the artifact, or create a new connector. 
+You can pick the same GCP connector you used in the Harness service to connect to Google Cloud Storage for the artifact, or create a new connector.
 
 ### Pre-existing Functions infrastructure
 
-```mdx-code-block
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
 <Tabs2>
   <TabItem2 value="YAML" label="YAML" default>
-```
 
 Here's a YAML example of a Cloud Function infrastructure definition.
 
@@ -631,10 +615,8 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
-```mdx-code-block
   </TabItem2>
   <TabItem2 value="API" label="API">
-```
 
 Create an infrastructure definition using the [Create Infrastructure](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure) API.
 
@@ -659,10 +641,8 @@ curl -i -X POST \
   }'
 ```
 
-```mdx-code-block
   </TabItem2>
   <TabItem2 value="Terraform Provider" label="Terraform Provider">
-```
 
 For the Terraform Provider resource, go to [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
 
@@ -697,11 +677,8 @@ resource "harness_platform_infrastructure" "example" {
 }
 ```
 
-
-```mdx-code-block
   </TabItem2>
   <TabItem2 value="Harness Manager" label="Harness Manager">
-```
 
 To create the ASG infrastructure definition in an environment, do the following:
 
@@ -712,37 +689,32 @@ To create the ASG infrastructure definition in an environment, do the following:
 5. In **Create New Infrastructure**, in **Name**, enter a name for the new infrastructure definition.
 6. In **Deployment Type**, select **Google Cloud Functions**.
 7. In **Google Cloud Provider Details**, in **Connector**, select or create a Harness GCP connector that connects Harness with the account where you want the Cloud Function deployed.
-   
+
    You can use the same GCP connector you used when adding the Cloud Function artifact in the Harness service. Ensure the GCP credentials in the GCP connector credentials meets the [requirements](#cloud-functions-permission-requirements).
+
 8. In **Project**, select the GCP project where you want to deploy.
 9. In **Region**, select the GCP region where you want to deploy.
 10. Select **Save**.
 
 The infrastructure definition is added.
 
-
-```mdx-code-block
   </TabItem2>
 </Tabs2>
-```
 
 ### Dynamically provisioned Functions infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:
+
    1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
    2. Select the type of provisioner that you want to use.
-   
+
       Harness automatically adds the provisioner steps for the provisioner type you selected.
+
    3. Configure the provisioner steps to run your provisioning scripts.
    4. Select or create a Harness infrastructure in **Environment**.
+
 2. **Map the provisioner outputs to the Infrastructure Definition**:
    1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
    2. Map the provisioning script/template outputs to the required infrastructure settings.
@@ -762,8 +734,9 @@ To add dynamic provisioning to a Harness pipeline Deploy stage, do the following
 
 1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
 2. Select the type of provisioner that you want to use.
-   
+
    Harness automatically adds the necessary provisioner steps.
+
 3. Set up the provisioner steps to run your provisioning scripts.
 
 For documentation on each of the required steps for the provisioner you selected, go to the following topics:
@@ -776,7 +749,6 @@ For documentation on each of the required steps for the provisioner you selected
 - [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
 - [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
 
-
 #### Mapping provisioner output
 
 Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
@@ -784,8 +756,9 @@ Once you set up dynamic provisioning in the stage, you must map outputs from you
 1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
 2. In the Harness infrastructure, in **Select Infrastructure Type**, select **Google Cloud Platform** if it is not already selected.
 3. In **Google Cloud Provider Details**, enable the option **Map Dynamically Provisioned Infrastructure**.
-   
+
    A **Provisioner** setting is added and configured as a runtime input.
+
 4. Map the provisioning script/template outputs to the required infrastructure settings.
 
 To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
@@ -842,12 +815,11 @@ output "region_name" {
 
 ```
 
-
 In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.project_name>`.
 
 <figure>
 
-<docimage path={require('./static/6d3712e9196c409f2d49747939b91c8913adfe7a44d2b47b019f01187d36e719.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/6d3712e9196c409f2d49747939b91c8913adfe7a44d2b47b019f01187d36e719.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs</figcaption>
 </figure>
@@ -868,22 +840,21 @@ The basic deployment execution strategy uses the **Deploy Cloud Function** step.
 <summary>YAML example of Deploy Cloud Function step</summary>
 
 ```yaml
-          execution:
-            steps:
-              - step:
-                  name: Deploy Cloud Function
-                  identifier: deployCloudFunction
-                  type: DeployCloudFunction
-                  timeout: 10m
-                  spec: {}
+execution:
+  steps:
+    - step:
+        name: Deploy Cloud Function
+        identifier: deployCloudFunction
+        type: DeployCloudFunction
+        timeout: 10m
+        spec: {}
 ```
 
 </details>
 
-
 ### Canary
 
-Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the canary deployment. 
+Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the canary deployment.
 
 The step group consists of:
 
@@ -891,84 +862,81 @@ The step group consists of:
 - First Cloud Function Traffic Shift step: routes 10% of traffic over to the new function version.
 - Second Cloud Function Traffic Shift step: routes 100% of traffic over to the new function version.
 
-
 <details>
 <summary>YAML example of canary deployment step group</summary>
 
 ```yaml
-          execution:
-            steps:
-              - stepGroup:
-                  name: Canary Deployment
-                  identifier: canaryDepoyment
-                  steps:
-                    - step:
-                        name: Deploy Cloud Function With No Traffic
-                        identifier: deployCloudFunctionWithNoTraffic
-                        type: DeployCloudFunctionWithNoTraffic
-                        timeout: 10m
-                        spec: {}
-                    - step:
-                        name: Cloud Function Traffic Shift
-                        identifier: cloudFunctionTrafficShiftFirst
-                        type: CloudFunctionTrafficShift
-                        timeout: 10m
-                        spec:
-                          trafficPercent: 10
-                    - step:
-                        name: Cloud Function Traffic Shift
-                        identifier: cloudFunctionTrafficShiftSecond
-                        type: CloudFunctionTrafficShift
-                        timeout: 10m
-                        spec:
-                          trafficPercent: 100
+execution:
+  steps:
+    - stepGroup:
+        name: Canary Deployment
+        identifier: canaryDepoyment
+        steps:
+          - step:
+              name: Deploy Cloud Function With No Traffic
+              identifier: deployCloudFunctionWithNoTraffic
+              type: DeployCloudFunctionWithNoTraffic
+              timeout: 10m
+              spec: {}
+          - step:
+              name: Cloud Function Traffic Shift
+              identifier: cloudFunctionTrafficShiftFirst
+              type: CloudFunctionTrafficShift
+              timeout: 10m
+              spec:
+                trafficPercent: 10
+          - step:
+              name: Cloud Function Traffic Shift
+              identifier: cloudFunctionTrafficShiftSecond
+              type: CloudFunctionTrafficShift
+              timeout: 10m
+              spec:
+                trafficPercent: 100
 ```
 
 </details>
 
 ### Blue Green
 
-Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the blue green deployment. 
+Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the blue green deployment.
 
-The step group consists of: 
+The step group consists of:
 
 - Deploy Cloud Function With No Traffic step: deploys the new function version but does not route any traffic over to the new function version.
 - Cloud Function Traffic Shift step: routes 100% of traffic over to the new function version.
 
 You can also route traffic incrementally using multiple Cloud Function Traffic Shift steps with gradually increasing routing percentages.
 
-
 <details>
 <summary>YAML example of blue green deployment step group</summary>
 
 ```yaml
-          execution:
-            steps:
-              - stepGroup:
-                  name: Blue Green Deployment
-                  identifier: blueGreenDepoyment
-                  steps:
-                    - step:
-                        name: Deploy Cloud Function With No Traffic
-                        identifier: deployCloudFunctionWithNoTraffic
-                        type: DeployCloudFunctionWithNoTraffic
-                        timeout: 10m
-                        spec: {}
-                    - step:
-                        name: Cloud Function Traffic Shift
-                        identifier: cloudFunctionTrafficShift
-                        type: CloudFunctionTrafficShift
-                        timeout: 10m
-                        spec:
-                          trafficPercent: 100
+execution:
+  steps:
+    - stepGroup:
+        name: Blue Green Deployment
+        identifier: blueGreenDepoyment
+        steps:
+          - step:
+              name: Deploy Cloud Function With No Traffic
+              identifier: deployCloudFunctionWithNoTraffic
+              type: DeployCloudFunctionWithNoTraffic
+              timeout: 10m
+              spec: {}
+          - step:
+              name: Cloud Function Traffic Shift
+              identifier: cloudFunctionTrafficShift
+              type: CloudFunctionTrafficShift
+              timeout: 10m
+              spec:
+                trafficPercent: 100
 ```
 
 </details>
 
-
 ### Rollbacks
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically. 
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically.
 
 The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
 

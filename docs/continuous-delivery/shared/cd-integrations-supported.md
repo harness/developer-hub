@@ -1,11 +1,11 @@
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Deployments" label="Deployments">
-```
+
 
 <details>
 <summary>Platform features for all deployment types</summary>
@@ -57,7 +57,8 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
     - 1.16
     - 1.27
     - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
-    - By default Harness ships with kubectl client - 1.25
+    - By default, Harness ships with kubectl client - 1.24.3
+    - Harness has certified versions 1.25, 1.26, and 1.27 of kubectl. You must install the respective client version of the delegate for Harness to leverage it.
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
@@ -77,6 +78,15 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
       - StatefulSet
       - HorizontalPodAutoScalar
       - PodDisruptionBudget
+- **Deployment Performance**
+    - Helm deployments might start failing at the delegate due to a large index.yaml files. This causes a CPU spike on the delegate. If you do not provide enough resources to the delegate, you might see failures in pipeline executions. 
+     - Certified Limits:
+       - Index.yaml file size limit 15Mb
+       - 5000 Helm charts have been deployed
+       - Kubernetes delegate size: 8GB, 2 CPU
+       - 10 parallel deployments
+         
+
 - **Supported integrations:**
   - Traffic Shifting for Advanced Deployment Strategies:
     - Istio
@@ -124,6 +134,8 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.24.3
 - 1.24.9
 - 1.25.6
+- 1.26.0
+- 1.27.0
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
@@ -496,6 +508,16 @@ If you are using Harness Continuous Delivery (CD) but not Harness Continuous Int
 
 Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
+Harness has been tested with the following versions of Jenkins:
+- 2.432
+- 2.424
+- 2.425
+- 2.401.2
+- 2.414.2
+- 2.398
+- 2.397
+
+
 - **Overview:**
   - [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines)
 
@@ -533,7 +555,7 @@ GitOps supports the following:
 - **Limitations:**
   - Self-hosted environments
     - Agents installed in custom namespaces are not yet supported.
-  
+
 </details>
 
 <details>
@@ -561,10 +583,10 @@ For non-native deployments, Harness provides a custom deployment option using De
 </details>
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Provisioners" label="Provisioners">
-```
+
 
 Harness supports the following infrastructure provisioning tools:
 
@@ -606,10 +628,10 @@ Some Harness features might require specific Terraform versions.
 Harness also supports Terraform Cloud and Enterprise.
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Controls/Utilities" label="Controls/Utilities">
-```
+
 
 - **Containerized steps:**
   - [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
@@ -637,14 +659,13 @@ Harness also supports Terraform Cloud and Enterprise.
 - **Build:**
   - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)
   - [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step)
-  - [GitHub Action Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/github-action-plugin)
   - [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step)
   - [Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="File Store" label="File Store">
-```
+
 
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
 
@@ -679,10 +700,10 @@ The following table lists where you can store your manifests or config files for
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="CD Artifacts" label="Artifacts">
-```
+
 
 All artifact sources are covered in [CD artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
@@ -728,20 +749,20 @@ The following table lists Harness integrations and their artifact source support
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Ticketing/Approvals" label="Ticketing/Approvals">
-```
+
 
 You can use the following ticketing systems for creating and updating tickets, and as approval gates:
 - Jira ([ticketing](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages), [approvals](/docs/platform/Approvals/adding-jira-approval-stages))
 - ServiceNow ([ticketing](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages), [approvals](/docs/platform/Approvals/service-now-approvals))
 - [Harness manual approvals](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Governance" label="Governance">
-```
+
 
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
 
@@ -769,10 +790,10 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Notes
 

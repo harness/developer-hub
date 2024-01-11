@@ -8,23 +8,23 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import create_pipeline from './static/git-experience-overview-02.png'
 import branch_selection from './static/git-experience-overview-03.png'
-```
+
 
 Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git. You can use Git as the single source of truth and modify your configurations using your Git credentials.
 
 With Harness Git Experience, you can easily select the repository and branch from which to execute your pipelines. This provides seamless access to your Harness resources and their configurations stored in Git, simplifying your pipeline execution.
 
-### Before you begin
+## Before you begin
 
 * Make sure you have a Git repo with at least one branch.​
-* Make sure you have a Git connector with a Personal Access Token (PAT) for your Git account.​
+* Make sure you have a [Harness Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with a Personal Access Token (PAT) for your Git account.​
 
-### Supported Git providers
+## Supported Git providers
 
-The following section lists the support for Git providers for Harness Git Sync:​
+The following Git providers are supported for Harness Git Sync:​
 
 * GitHub
 * Bitbucket Cloud
@@ -35,60 +35,67 @@ The following section lists the support for Git providers for Harness Git Sync:�
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
 :::info note
-Git Sync may be noticeably delayed if your delegate is in a Kubernetes or AWS build farm rather than Harness Cloud because of encryption and decryption across two connections.
+
+Git Sync may be noticeably delayed if your delegate is in a cloud provider (GCP, AWS, Azure, Physical Data Center) rather than Harness Cloud because of encryption and decryption across two connections.
+
 :::
 
-### Supported Harness entities
+## Supported Harness entities
 
 You can save the following Harness resources in Git using Harness Git Experience:
 
 * Pipelines
 * Input sets
 * Templates
+* Services
+* Environment 
+* Infrastructure Definitions 
+
 
 :::info note
+
 Artifact Source templates are not supported with Git Experience.
 
 :::
 
-### What is Harness Git Experience?
+## What is Harness Git Experience?
 
 Harness Git Experience lets you choose a Git-First approach for managing Harness configurations as code, using Git as the source of truth.
 
 You can do this by creating a resource with the **Remote** option and specifying the Git repo and branch where you want to save your configurations.
 
+
 For example, you can create a pipeline by choosing the **Remote** option and save it in Git by providing the repo name and branch name along with the file path.
 
-```mdx-code-block
-<img src={create_pipeline} alt="create-pipeline" height="300" width="700"/>
-```
+![picture 0](static/4bf16b3027a09d352305e9491d2e707d17b4f821aa6f896f671422dd732e9521.png)  
+
 Harness Git Experience lets you modify the configurations stored in Git through the Harness UI and save it back to Git.
 
 You can save the modifications in the existing branch or a new branch through a PR.
 
-### Harness Git Experience workflow
+## Harness Git Experience workflow
 
 * When you create a Remote resource in Harness, the configurations are stored in Git.
 * You can select the branch from which you want to run the pipeline.
 
-  ```mdx-code-block
+  
   <img src={branch_selection} alt="branch-selection" height="300" width="700"/>
-  ```
+  
 
   You can also select the branch in the **Run Pipeline** settings.
 
-  <docimage path={require('./static/86a197e9afb88cb6816cea527bd7b8cee41d7d3d39f7c5104ebeedc00d6f050f.png')} width="60%" height="60%" title="Click to view full size image" />    
+  <DocImage path={require('./static/86a197e9afb88cb6816cea527bd7b8cee41d7d3d39f7c5104ebeedc00d6f050f.png')} width="60%" height="60%" title="Click to view full size image" />    
 
-* During pipeline execution, the configurations of the required resources and any referenced entities like input sets, are fetched from Git.  
-If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.  
-If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.
+* During pipeline execution, the configurations of the required resources and any referenced entities like input sets, are fetched from Git.
+  * If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.
+  * If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.
 * Harness resolves all the dependencies and then proceeds with the pipeline execution.
 
-### Key features
+## Key features
 
-Following are the key features of Harness Git Experience:
+Here are the key features of Harness Git Experience:
 
-#### Multiple repo support
+### Multiple repo support
 
 Your Harness resources and their configurations can exist in multiple repos. You can choose the repository where you wish to make the modifications before pushing each configuration. At pipeline execution, Harness pulls them all together to execute your pipeline as you designed it. This gives you the flexibility to manage your Git repositories in the way you want.
 
@@ -100,15 +107,31 @@ You can store your configurations in the following ways:
 * Store the configuration files of different environments in different branches.
 * Store the pipelines in one repository, and other configuration files in another. 
 
-  :::important
-  To link input sets and pipelines from different repositories, enable `Allow different repo for Pipeline and InputSets` in the default settings.
-  For more information, go to [Default settings](/docs/platform/Settings/default-settings).
-  :::
+:::important
+
+To link input sets and pipelines from different repositories, enable `Allow different repo for Pipeline and InputSets` in the default settings.
+For more information, go to [Default settings](/docs/platform/Settings/default-settings).
+
+:::
 
 
-#### Multiple branch support
+### Multiple branch support
 
 Multiple users can make commits to multiple branches for the resources that are synced with the Git Provider. This provides the flexibility for various branching workflows.
+
+### Bi-Directional sync
+
+:::note
+
+Currently, Bi-Directional sync is behind the feature flag `PIE_GIT_BI_DIRECTIONAL_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. Enable this setting to have Git Experience sync two-way (bidirectionally) between Harness and your Git repo.
+
+Changes made on either the Git repo or Harness are synched automatically.
+
+For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup).
 
 ### What can I do with Harness Git Experience?
 

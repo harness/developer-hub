@@ -22,14 +22,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
    The description and [tags](../../../platform/references/tags-reference.md) are optional.
 
-4. Configure the default codebase settings.
-
-   * **Clone Codebase:** When enabled, Harness automatically clones the [codebase](../codebase-configuration/create-and-configure-a-codebase.md), specified by the **Connector** and **Repository URL**, before executing the steps in the stage. If disabled, Harness doesn't clone a codebase when initializing the stage.
-   * **Connector:** A Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors and the default codebase configuration, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
-   * **Repository URL:** If not populated automatically, enter the full URL to the code repository that you want the pipeline to use.
-
-   The codebase **Connector** and **Repository URL** settings are available when you add the *first* stage to a pipeline. After you add the first stage, you manage these in the pipeline's **Codebase** settings (not the stage's settings). For more information, go to [Edit the default codebase configuration](../codebase-configuration/create-and-configure-a-codebase.md#edit-the-default-codebase-configuration).
-
+4. Configure the [default codebase settings](../codebase-configuration/create-and-configure-a-codebase.md).
 5. Select **Set Up Stage**.
 6. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](/docs/category/set-up-build-infrastructure), and add steps to the stage.
 
@@ -72,7 +65,7 @@ These settings are for the [Harness SSCA module](/docs/software-supply-chain-ass
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For some examples, go to:
 
 * [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
-* [Set kaniko runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-kaniko-runtime-flags)
+* [Set plugin runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-plugin-runtime-flags)
 
 ## Infrastructure
 
@@ -82,14 +75,14 @@ Infrastructure is where the build runs the steps in this stage. It is a build fa
 
 The first stage requires you to configure a build infrastructure. In stages after the first, you can either **Propagate from an existing stage** or **Use a New Infrastructure**.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="cloud" label="Cloud">
-```
+
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -100,10 +93,10 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="kubernetes" label="Kubernetes" default>
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -204,7 +197,7 @@ Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-
 
 You can use the **Run as Non-Root** and **Run as User** settings to run builds as a non-root user or a specific user ID.
 
-:::caution
+:::warning
 
 Using a non-root user can require other changes to your pipeline.
 
@@ -278,10 +271,10 @@ If you use large images in your Build stage's steps, you might find that the ini
 
 By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="local" label="Local">
-```
+
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -292,10 +285,10 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="vm" label="VMs">
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -307,10 +300,10 @@ The following **Platform** settings are available:
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
 * **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Execution
 

@@ -64,7 +64,7 @@ The following is a detailed list of exam objectives:
 | 9.1 | Manage and troubleshoot CI in Kubernetes build infrastructures |
 | 9.2 | Implement and manage CI pipelines for MacOS and Windows build environments |
 
-  
+
 </details>
 
 <br />

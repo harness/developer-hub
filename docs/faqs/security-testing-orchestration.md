@@ -1,33 +1,10 @@
 ---
-title: Security Testing Orchstration FAQs
+title: Security Testing Orchestration FAQs
 description: This article addresses some frequently asked questions about Harness security features.
 sidebar_position: 5
 ---
 
 This article addresses some frequently asked questions about Security Testing Orchestration (STO).
-
-In this topic:
-
-<!-- TOC start -->
-- [What is a security scanner?](#what-is-a-security-scanner)
-- [How many scanners does STO support?](#how-many-scanners-does-sto-support)
-- [Do similar category tools show identical issues?](#do-similar-category-tools-show-identical-issues)
-- [What is an STO Target?](#what-is-an-sto-target)
-- [Can I use STO with custom or unsupported scanners?](#can-i-use-sto-with-custom-or-unsupported-scanners)
-- [How does STO identify new issues and display them in the UI?](#how-does-sto-identify-new-issues-and-display-them-in-the-ui)
-- [Why do I need to use Docker-in-Docker? Why is root privilege required?](#why-do-i-need-to-use-docker-in-docker-why-is-root-privilege-required)
-- [What RBAC roles does STO support?](#what-rbac-roles-does-sto-support)
-- [How do I set up a  CheckMarx scan step in YAML?](#how-do-i-set-up-a--checkmarx-scan-step-in-yaml)
-- [What is the purpose of the “Security Review” tab in STO?](#what-is-the-purpose-of-the-security-review-tab-in-sto)
-- [What open-source scanner integrations does STO support?](#what-open-source-scanner-integrations-does-sto-support)
-- [What is the difference between an STO pipeline, a CD pipeline, and a CI pipeline?](#what-is-the-difference-between-an-sto-pipeline-a-cd-pipeline-and-a-ci-pipeline)
-- [Does STO require Harness CI or Harness CD?](#does-sto-require-harness-ci-or-harness-cd)
-- [What infrastructure does STO support for running scans?](#what-infrastructure-does-sto-support-for-running-scans)
-- [How does STO deduplicate detected issues?](#how-does-sto-deduplicate-detected-issues)
-- [I don't have any scanner licenses and I'm just getting started with security scanning. Where do I begin?](#i-dont-have-any-scanner-licenses-and-im-just-getting-started-with-security-scanning-where-do-i-begin)
-- [Why don't I see results from specific scans in the Security Testing Dashboard?](#why-dont-i-see-results-from-specific-scans-in-the-security-testing-dashboard)
-- [How does STO ensure High Availability and data protection for my scan data and vulnerability information?](#how-does-sto-ensure-high-availability-and-data-protection-for-my-scan-data-and-vulnerability-information)
-<!-- TOC end -->
 
 ### What is a security scanner?  
 
@@ -53,7 +30,7 @@ In theory, similar scanners should identify similar issues for the same target. 
 
 ### What is an STO Target? 
 
-Every instance of a scanner has a specific _target_, which is the object or software/code artifact it is set up to scan. It might be a repo, a container, or an instance and for some scanner categories, an artifact maybe collection of configuration files.  A _baseline target_ refers to a master branch or foundational/baseline software artifact against which developers wants to compare new/incremental code. 
+Every instance of a scanner has a specific _target_, which is the object or software/code artifact it is set up to scan. It might be a repo, a container, or an instance and for some scanner categories, an artifact maybe collection of configuration files.  A _target baseline_ refers to a baseline variant, such as a `main` branch or a `latest` image tag, against which developers want to compare new code. 
 
 STO supports the following test targets and form factors:
 * Repository
@@ -108,13 +85,15 @@ The following table specifies where the target to be tested is located.
 
 ### Can I use STO with custom or unsupported scanners? 
 
-Yes. STO supports a generic JSON format for ingesting results from custom or unsupported scanners. See [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
+Yes. You can easily ingest [Static Analysis Results Interchange Format (SARIF)](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) data from any tool that supports this format. SARIF is an open data format supported by many scan tools, especially tools available as GitHub Actions.
+
+STO also supports a [generic JSON format](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) for ingesting results from custom or unsupported scanners. 
 
 By ingesting your custom issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 
 ### How does STO identify new issues and display them in the UI? 
 
-You can define _baseline_ for each target. The baseline is the object that you want to update. For example, your scan target might be a codebase for a specific service that you're looking to update. You specify the main branch as the baseline target. You run scans on the main branch and any number of non-main branches. Each scan has its own set of identified issues. 
+You can define a [_baseline_](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) for each target. The baseline is the object that you want to update. For example, your scan target might be a codebase for a specific service that you're looking to update. You specify the `main` branch as the baseline. You run scans on the `main` branch and any number of non-main branches. Each scan has its own set of identified issues. 
 
 STO identifies an issue as "new" like this:
 
@@ -128,7 +107,7 @@ STO identifies an issue as "new" like this:
 
 When Harness acquired ZeroNorth in 2021, the STO development team used Docker-in-Docker to speed up the integration between the ZeroNorth and Harness platforms. Some scanners explicitly require Docker-in-Docker, which requires Privileged mode. 
 
-On March 14, 2023, Harness introduced a set of new UIs (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps do not require Docker-in-Docker *unless* you are scanning a container image. For more information, go to [What's new: Improved UIs and set-up workflows for popular scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#whats-new-improved-uis-and-set-up-workflows-for-popular-scanners).
+On March 14, 2023, Harness introduced a set of new UIs (scanner templates) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps do not require Docker-in-Docker *unless* you are scanning a container image on Kubernetes or Docker build infrastructures. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
 
 :::info note 
 Harness is currently working to remove this requirement for other scanners that don't need it and to provide other ways to orchestrate scans. 
@@ -138,11 +117,13 @@ Harness is currently working to remove this requirement for other scanners that 
 
 Harness  supports two RBAC roles specifically for STO users. You can customize these roles as needed in the Harness platform. 
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline).
+* **Developer** role — Permissions needed for developer workflows. 
 
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions. These workflows are covered in [Create an integrated STO/CI pipeline](/tutorials/security-tests/cicd-integrated-pipeline).
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions. 
 
-### How do I set up a  CheckMarx scan step in YAML?
+These workflows are covered in [Add Security Testing roles](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles).
+
+### How do I set up a CheckMarx scan step in YAML?
 
 Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference).
 
@@ -168,8 +149,8 @@ Here's an example. See also the [Checkmarx scanner reference](/docs/security-tes
     failureStrategies: []
 ```
 
-### What is the purpose of the “Security Review” tab in STO? 
-The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows). 
+### What is the purpose of the **Exemptions** page in STO? 
+The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions to override Fail on Severity thresholds for specific issues in STO](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows). 
 
 ### What open-source scanner integrations does STO support? 
 
@@ -179,19 +160,21 @@ For detailed information about supported scanners, both open-source and commerci
 
 In Harness NextGen, there are no hard distinctions between CI, CD, and STO pipelines. You can create integrated pipelines that implement any mix of CI, CD, and STO use cases. Harness platform components are generic to all three modules: you can use and reuse delegates, connectors, secrets, and other components across across multiple stages and pipelines. 
 
-You can easily include scans in CI workflows. To run a scan, you add a standalone Security stage or a Security step to a CI Build stage. The pipeline uses the same platform components to build code and run scans. 
+You can easily include scans in CI workflows. To run a scan, you add a standalone Security stage or a Security step to a CI Build stage. The pipeline uses the same platform components to build code and run scans. For an example of this type of workflow, go to [Create a build-scan-push pipeline (STO and CI)](/tutorials/security-tests/build-scan-push-sto-ci).
 
 For CD workflows, Harness recommends that you add a standalone Security stage (for static scans) before the deployment and another stage (for dynamic scans) after the deployment. 
 
 ### Does STO require Harness CI or Harness CD?
 
-No, you can run STO as a standalone product. STO supports integrations with with external tools using standard triggers and webhooks. Thus you can use STO to add security scans to your CI and CD workflows if you're using an external tool such as GitHub. 
+No, you can run STO as a standalone product. STO supports integrations with external tools using standard triggers and webhooks. Thus you can use STO to add security scans to your CI and CD workflows if you're using an external tool such as GitHub. 
 
 ![](./static/sto-faqs-02.png)
 
-### What infrastructure does STO support for running scans?
+### What infrastructures are supported for running STO scans?
 
-STO supports running scans using Kubernetes clusters and Docker delegates on VMs. When STO is used as a Security step in a CI Build stage, the stage runs scans and builds using the same infrastructure. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure) in the CI docs.
+STO supports running scans on Harness Cloud, Kubernetes, Docker, and VMs. STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) to orchestrate scans and ingest issues. 
+
+For more information, go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported#sto-support-by-ci-build-infrastructure-type) > Harness SaaS > Build Infrastructure. 
 
 ### How does STO deduplicate detected issues? 
 

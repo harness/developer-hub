@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.3.0.**
+The current version of this SDK is **1.4.0.**
 
 ## Requirements
 
@@ -61,7 +61,7 @@ Add the following dependency in your project's pom.xml file:
 <dependency>  
     <groupId>io.harness</groupId>  
     <artifactId>ff-java-server-sdk</artifactId>  
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.
@@ -70,7 +70,7 @@ If you are using the Harness Java sample application from the [Java SDK GitHub 
 
 
 ```
-implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.3.0'
+implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.3.1'
 ```
 ## Initialize the SDK
 
@@ -95,8 +95,8 @@ String apiKey = System.getProperty("FF_API_KEY", "<default api key>");
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 

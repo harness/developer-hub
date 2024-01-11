@@ -14,28 +14,29 @@ redirect_from:
 Harness Feature Flags (FF) is a feature management solution with smart capabilities, such as GitOps, pipelines, automations, and monitoring.
 
 ```
-if(HarnessFeatureFlag["newamazingfeature"] == true) {  
-  renderNewAmazingFeature();  
+if(HarnessFeatureFlag["newamazingfeature"] == true) {
+  renderNewAmazingFeature();
 }
 ```
+
 A Feature Flag is a decision point in your code that can change the behavior of your software. It can help you plan the following strategies:
 
-* Who gets access to the feature first
-* Who can test the changes
-* Progressive rollouts of the feature
-* Turn on a feature on a specific date
+- Who gets access to the feature first
+- Who can test the changes
+- Progressive rollouts of the feature
+- Turn on a feature on a specific date
 
 Watch this video for an introduction to Feature Flags:
 
 <!-- Video:
 https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
-<docvideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" /> 
+<DocVideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" />
 
-## First time setup 
+## First time setup
 
 Here's how to get started with Harness Feature Flags:
 
-- Install one of our [open-source SDKS](/docs/category/sdks-overview) into your application code. 
+- Install one of our [open-source SDKS](/docs/category/sdks-overview) into your application code.
 - Add a flag statement around the code you want to control.
 - The SDKs will fetch the right configuration per session from Harness.
 - Use the Feature Flags UI to toggle flags on or off for some or all of your end users.

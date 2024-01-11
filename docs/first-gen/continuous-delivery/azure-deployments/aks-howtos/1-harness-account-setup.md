@@ -149,17 +149,17 @@ To set up the Azure Cloud Provider, do the following:
 3. Click **Add Cloud Provider**. The **Cloud Provider** dialog appears.
 4. In **Type**, select **Microsoft Azure**. The Cloud Provider dialog changes to display the Microsoft Azure settings.
 5. In **Display Name**, enter a name for the Cloud Provider, such as **azure**. You will use this name when setting up the **Artifact Source** settings in Harness later.
-6. In **Client ID**, enter the **Client/****Application ID** for the Azure app registration you are using. It is found in the Azure Active Directory **App registrations**. For more information, see [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.  
+6. In **Client ID**, enter the **Client/****Application ID** for the Azure app registration you are using. It is found in the Microsoft Entra ID (formerly Active Directory) **App registrations**. For more information, see [Quickstart: Register an app with the Microsoft Entra ID (formerly Active Directory) v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.  
   
    To access resources in your Azure subscription, you must assign the Azure App registration using this Client ID to a role in that subscription. Later, when you set up an Artifact Source in a Harness Source, you will select a subscription. If the Azure App registration using this Client ID is not assigned a role in a subscription, no subscriptions will be available. For more information, see [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) from Microsoft.
 	 
-7. In **Tenant ID**, enter the Tenant ID of the Azure Active Directory in which you created your application. 
+7. In **Tenant ID**, enter the Tenant ID of the Microsoft Entra ID (formerly Active Directory) in which you created your application. 
 
    This is also called the **Directory ID**. For more information, see [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id) from Azure.
 	 
 8. In **Key**, enter the authentication key for your application. 
 
-    This is found in **Azure Active Directory**, **App Registrations**. Doubleclick the App name. Click **Settings**, and then click **Keys**. 
+    This is found in **Microsoft Entra ID (formerly Active Directory)**, **App Registrations**. Doubleclick the App name. Click **Settings**, and then click **Keys**. 
 		
 		You cannot view existing key values, but you can create a new key. For more information, see [Get application ID and authentication key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) from Azure. Azure has previewed a new App Registrations blade that displays keys in the **Certificates & secrets** tab, under **Client secrets**.
 		

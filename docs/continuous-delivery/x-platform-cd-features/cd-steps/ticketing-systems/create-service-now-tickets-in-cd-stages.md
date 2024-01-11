@@ -15,29 +15,38 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 
 ## Important notes
 
-* You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Create ServiceNow step setup.
-* You must install the Harness application before using templates to create ServiceNow tickets.​
-* Make sure you have the following roles:
-	+ `x_harne_harness_ap.integration_user_role​` to access supported APIs, view Harness support details and access Templates.
-	+ `itil` for end-to-end integration with Harness platform.​
 * While it's not a strict limitation, some users can forget that when you use a ServiceNow Create step, it creates a new, independent ServiceNow ticket every time it is run (as opposed to updating the same issue).  
-* It is important to remember that you should only add ServiceNow Create to a stage if you want to create a new ServiceNow ticket on every run of the stage.
-* The ServiceNow API only allows date time and time values in the UTC timezone only. Consequently, input for any datetime/time fields in Harness ServiceNow steps must be provided in UTC format irrespective of time zone settings in your ServiceNow account.  
-  The timezone settings govern the display value of the settings not their actual value. The display values in the Harness UI depend on ServiceNow timezone settings.
+* Remember that you should only add ServiceNow Create to a stage if you want to create a new ServiceNow ticket on every run of the stage.
 
-### ServiceNow user roles
+## Important notes for using templates
 
-You can install the Harness app in your ServiceNow instance from the ServiceNow [store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh). For more information, go to ServiceNow [Installation Guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
+* You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Create ServiceNow step setup.
+* You must install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) before using templates to create ServiceNow tickets.​
+* Make sure you have the following roles:
+	+ `x_harne_harness_ap.integration_user_role​` to access templates.
+	+ `itil` for end-to-end integration with Harness platform.​
+
+### Required ServiceNow integration app for Harness templates
+
+The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using Harness templates. You can install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
+
+For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
+
+## Important note for using the ServiceNow API
+
+The ServiceNow API only allows date time and time values in the UTC timezone. Consequently, input for any datetime/time fields in Harness ServiceNow steps must be provided in UTC format, irrespective of time zone settings in your ServiceNow account.
+
+The timezone settings govern the display value of the settings not their actual value. The display values in the Harness UI depend on ServiceNow timezone settings.
 
 ## Add a ServiceNow Create step
 
 1. In a Harness CD or Approval stage, in **Execution**, select **Add Step**.
 
-![](./static/create-service-now-tickets-in-cd-stages-05.png)
+   ![](./static/create-service-now-tickets-in-cd-stages-05.png)
 
 2. Select **ServiceNow Create**. The ServiceNow Create settings appear.
 
-![](./static/create-service-now-tickets-in-cd-stages-06.png)
+   ![](./static/create-service-now-tickets-in-cd-stages-06.png)
 
 3. In **Name**, enter a name that describes the step.
 
@@ -45,7 +54,7 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 
-![](./static/create-service-now-tickets-in-cd-stages-07.png)
+   ![](./static/create-service-now-tickets-in-cd-stages-07.png)
 
 ## Configure fields
 
@@ -55,7 +64,7 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
    You can use Harness variables in the **Short Description** and **Description** fields.
 4. Click **Fields**. The **Add ServiceNow Fields** settings appear.
 
-![](./static/create-service-now-tickets-in-cd-stages-08.png)
+   ![](./static/create-service-now-tickets-in-cd-stages-08.png)
 
 5. Select **Provide Field List** to add custom fields.
 6. Enter **Key** for the field.
@@ -63,23 +72,45 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
    The properties are specified as key-value pairs, the name being the field name (not the label) in ServiceNow and a valid value.​
 8. Select **Add**.
 
-![](./static/create-service-now-tickets-in-cd-stages-09.png)
+   ![](./static/create-service-now-tickets-in-cd-stages-09.png)
 
-Once you are done, this is how the dialog looks:
+   Once you are done, this is how the dialog looks:
 
-![](./static/create-service-now-tickets-in-cd-stages-10.png)
+   ![](./static/create-service-now-tickets-in-cd-stages-10.png)
 
-## Create from template
+## Create from Form Template
 
-Select **Create From Template** to create a ticket using an existing template.
+Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
-In **Template Name**, you can either enter the name of an existing template or provide an expression.
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
 
-![](./static/create-service-now-tickets-in-cd-stages-11.png)
+:::note
+Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+:::
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
 Your ServiceNow ticket is now added to your Pipeline.
+
+## Create from Standard Template
+
+This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*.
+
+:::note
+This feature is behind the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+:::
+
+Select **Create From Standard Template** to create a ticket by using an existing standard template in your ServiceNow integration.
+
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
+
+:::note
+Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+:::
+
+If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
+
+Your ServiceNow ticket is now added to your pipeline.
 
 ## Normal and standard change requests
 
@@ -99,7 +130,7 @@ In **Type**, select **Normal** or **Emergency**.
 
 Custom table support is now available in Harness' ServiceNow integration as part of the Ticket Type setting.
 
-<docimage path={require('./static/bcbbdbca197e5323c43f669c0e22b23f1bccea47c48264685c59cd69491af1e8.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/bcbbdbca197e5323c43f669c0e22b23f1bccea47c48264685c59cd69491af1e8.png')} width="60%" height="60%" title="Click to view full size image" />
 
 This feature is available in ServiceNow Create and Update steps.
 
@@ -114,20 +145,19 @@ In ServiceNow, a table extending task is a task that involves creating a new tab
 
 </details>
 
-
 Harness supports two use cases, and you should have sufficient permissions for each use case:
-- **Standard use case**: you should have sufficient permissions on the custom table, such as basic create, read, and update permissions. Also, you should have any additional permissions requireed to update specific fields within that custom table, if required.
-- **Template use case**: this use case is covered below.
+- **Standard use case**: You should have sufficient permissions on the custom table, such as basic create, read, and update permissions. Also, you should have any additional permissions required to update specific fields within that custom table, if required.
+- **Template use case**: This use case is covered below.
 
 For standard use cases, the custom table being used should allow access to this table via web services.
 
-   <docimage path={require('./static/f435a9ea3265d0696da26c80efd5bf8c6c2ff329f7c1a667727d294ef15d8c84.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/f435a9ea3265d0696da26c80efd5bf8c6c2ff329f7c1a667727d294ef15d8c84.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Using custom table support with the template flow
 
 This section describes how to use custom tables via the Harness ServiceNow app in the ServiceNow store.
 
-:::notes
+:::\notes
 
 - Cross-scope privileges are required to be added for the ServiceNow user only when using custom tables with templates (via the Harness app on the ServiceNow store).
 - The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
@@ -138,16 +168,14 @@ To use custom tables via the Harness ServiceNow app, do the following:
 
 1. Add three (create, read, write) cross-scope privileges from the **harness-app** to the global scope with the target name as the table name (**u_st** in this example) and set the **Status** as **Allowed**.
    
-   <docimage path={require('./static/7c4ff638b97d3452edca6e45cc4ff70fe64134dde21b56eedd3e7b7aa33575e6.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/7c4ff638b97d3452edca6e45cc4ff70fe64134dde21b56eedd3e7b7aa33575e6.png')} width="60%" height="60%" title="Click to view full size image" />
 
    ![Alt text](static/servicenow-custom-tables.gif)
 2. The ServiceNow user should be granted the read permission on the custom table at a minimum. In most cases, this is achieved with the **itil** role only.
 3. The custom table being used should allow access to this table via web services.
 
-   <docimage path={require('./static/f435a9ea3265d0696da26c80efd5bf8c6c2ff329f7c1a667727d294ef15d8c84.png')} width="60%" height="60%" title="Click to view full size image" />
-
+   <DocImage path={require('./static/f435a9ea3265d0696da26c80efd5bf8c6c2ff329f7c1a667727d294ef15d8c84.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ## See also
 
 * [Update ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages)
-

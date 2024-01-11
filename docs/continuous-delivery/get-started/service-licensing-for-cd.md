@@ -29,7 +29,7 @@ Go to **Account Settings** > **Subscriptions** or enter the following URL using 
 https://app.harness.io/ng/account/ACCOUNT_ID/settings/subscriptions
 ```
 
-<docimage path={require('./static/7998c6375586533d4f1c0192d27bff9d1c82e2311a007a4ad2bf7f7a37dd7da9.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/7998c6375586533d4f1c0192d27bff9d1c82e2311a007a4ad2bf7f7a37dd7da9.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## What are Service Instances? 
@@ -89,7 +89,7 @@ HorizontalPodAutoscalers will also impact the instance count. If the HorizontalP
 
 You can see the instance count in the Service Dashboard for your service.
 
-<docimage path={require('./static/ad3c4ad2ace7b18449351ff7c933f05e35adafbbbd1a48a2b56f95bdade420f5.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/ad3c4ad2ace7b18449351ff7c933f05e35adafbbbd1a48a2b56f95bdade420f5.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 From the Delegate installed on the cluster or that has access to a Kubernetes cluster, We run the instance sync job every 10 minutes.
 
@@ -115,7 +115,7 @@ AWS Auto Scaling will also impact the instance count because if it's attached to
 
 You can see the instance count in the Service Dashboard for your service.
 
-<docimage path={require('./static/97ba19d1c0a5b0cc6c63675c94e7d38162a0f83ab43209643d0d87fe87c7157b.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/97ba19d1c0a5b0cc6c63675c94e7d38162a0f83ab43209643d0d87fe87c7157b.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 ## Tanzu Application Services (formerly Pivotal Cloud Foundry)
 
@@ -194,9 +194,27 @@ Harness needs to query external sources to be able to know which instances exist
 Depending on where you add the **Fetch Instances** step in your pipeline stage, Harness will query the instances. We recommend querying the instances **after the service is deployed**.
 
  
+## Deleting a licensed service in Harness
 
+Harness allows users to delete services that have not been deployed by a pipeline. However, deleting a service that was previously deployed carries licensing implications in Harness. By default, Harness does not permit you to delete such a service.
 
+When a user deletes a service in Harness, it means the Harness service object is deleted. However, the resources that were deployed are not cleaned up automatically (the manifests, resources, etc.). It is the user's responsibility to clean up those resources in their respective infrastructures.
 
+### Important notes
+
+- Services are used by Harness to calculate service licenses.
+- Once a user deploys a service, regardless of the pipeline outcome (success or failure), the service is considered active.
+- By default, Harness does not allow users to delete an active service because it is used in license calculations.
+- Users can delete active services if they have enabled [Force Delete](/docs/platform/references/entity-deletion-reference/#force-delete) on their account.
+
+### Enabling Force Delete for Services
+
+To enable Force Delete for services, do the following: 
+
+1. In your Harness account, go to **Account Resources** > **Default Settings** > **General**.
+2. Enable **Enable Force Delete of Harness Resources**.
+
+Once enabled, you can delete services that have been deployed. Harness will no longer manage the resources or track the deployed instances associated with the service. This will affect your Service Dashboard view, which provides information about tracked instances for a given service.
 
 
 

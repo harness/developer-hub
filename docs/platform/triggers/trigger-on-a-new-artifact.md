@@ -1,21 +1,19 @@
 ---
 title: Trigger pipelines on a new artifact
 description: Trigger Harness Pipeline deployments in response to a new artifact version being added to a registry.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: c1eskrgngf
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
 :::note
 
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -64,21 +62,29 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
 
 ## Important notes
 
-* **One artifact triggers deployment:** If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
-* **All artifacts trigger deployment:** All artifacts collected during the polling interval will trigger a deployment, with one deployment triggered for each artifact collected.
-  
+- **One artifact triggers deployment:** If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
+- **All artifacts trigger deployment:** All artifacts collected during the polling interval will trigger a deployment, with one deployment triggered for each artifact collected.
+
   :::note
 
   To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
 
   :::
-* **Trigger based on file name:** The trigger is executed based on _file names_ and not metadata changes.
-* Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
-* In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
-* Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
-* Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact. 
-* The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
-* Due to a Docker API limitation, image build numbers/tags are always listed in lexical order. To ensure that executions are triggered with the image pushed last, a best practice is to create build numbers or tags that can be sorted lexically using their creation date. Using this method, higher build numbers are assigned for higher creation dates. This ensures that the image pushed last is used when more than one image is pushed over a short period of time, such as less than 5 minutes.
+
+- **Trigger based on file name:** The trigger is executed based on *file names* and not metadata changes.
+- Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
+- In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
+- Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
+
+  :::note
+
+  When you link a Docker repository to a trigger, the trigger status will remain `pending` until there are available tags. After the first artifact push, the trigger status changes to `success` because of new tags, but this alone will not activate the pipeline. **The pipeline will only be triggered after a second push to Docker.**
+
+  :::
+  
+- Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact.
+- The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
+- Due to a Docker API limitation, image build numbers/tags are always listed in lexical order. To ensure that executions are triggered with the image pushed last, a best practice is to create build numbers or tags that can be sorted lexically using their creation date. Using this method, higher build numbers are assigned for higher creation dates. This ensures that the image pushed last is used when more than one image is pushed over a short period of time, such as less than 5 minutes.
 
 Familiarize yourself with Harness CD pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
@@ -88,8 +94,7 @@ This 5 minutes video walks you through building an app from source code and push
 
 <!-- Video:
 https://www.youtube.com/embed/nIPjsANiKRk-->
-<docvideo src="https://www.youtube.com/embed/nIPjsANiKRk" />
-
+<DocVideo src="https://www.youtube.com/embed/nIPjsANiKRk" />
 
 ## Artifact polling
 
@@ -97,7 +102,7 @@ Once you have created a trigger to listen for new artifacts, Harness will poll f
 
 Polling is immediate because Harness uses a perpetual task framework that constantly monitors for new builds/tags.
 
-## Using the <+trigger.artifact.build> and <+lastPublished.tag> expressions
+## Using the \<+trigger.artifact.build> and \<+lastPublished.tag> expressions
 
 When you add a Harness service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
@@ -121,7 +126,6 @@ If you want the pipeline to deploy the last successful published artifact versio
 
 ![last published artifact regex](./static/trigger-on-a-new-artifact-31.png)
 
-
 You can also set tag as a runtime input and then use `<+trigger.artifact.build>` in the trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
 
 ## Create an artifact trigger
@@ -137,58 +141,49 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. The **On New Artifact Trigger** options are listed under **Artifact**. Each of the **Artifact** options are described below.
 5. Select the artifact registry where your artifact is hosted. If you artifact is hosted on Docker Hub and you select GCR, you won't be able to set up your trigger.
 
-
-```mdx-code-block
 <Tabs>
 <TabItem value="Docker Registry Artifacts" label="Docker Registry Artifacts">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**. This is where you tell Harness what artifact repository to poll for changes.
 3. Create or select the connector to connect Harness to the repository, and then select **Continue**. For steps on Docker Registry connectors, go to [Add Docker Registry Artifact Servers](../../first-gen/firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
 4. In **Artifact Details**, enter the artifact for this trigger to listen for and select **Submit**. For example, in Docker Hub, you might enter `library/nginx`. The artifact is now listed in trigger.
-   
+
    ![](./static/trigger-on-a-new-artifact-25.png)
-   
+
 5. Select **Continue**.
 
    In your Docker Registry connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.
-   
-```mdx-code-block
+
 </TabItem>
 <TabItem value="GCR Artifacts" label="GCR Artifacts">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
 3. Create or select the GCP connector to connect Harness to GCR, and then select **Continue**. For steps on GCP connectors, go to [Add a Google Cloud Platform (GCP) Connector](../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md).
 4. In **Artifact Details**, in GCR Registry URL, select the location of the registry, listed as **Hostname** in GCR.
-   
-   ![](./static/trigger-on-a-new-artifact-26.png)
-   
-5. In **Image Path**, enter the artifact for this trigger to listen for. You can click the copy button in GCR and then paste the path into Harness.
-   
-   ![](./static/trigger-on-a-new-artifact-27.png)
-   
-6.  Select **Submit**, and then select **Continue**. 
 
-```mdx-code-block
+   ![](./static/trigger-on-a-new-artifact-26.png)
+
+5. In **Image Path**, enter the artifact for this trigger to listen for. You can click the copy button in GCR and then paste the path into Harness.
+
+   ![](./static/trigger-on-a-new-artifact-27.png)
+
+6. Select **Submit**, and then select **Continue**.
+
 </TabItem>
 <TabItem value="ECR Artifacts" label="ECR Artifacts">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
 3. In **Artifact Repository**, create or select the AWS Connector to connect Harness to ECR, and then select **Continue**. For information about configuring AWS connectors, go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 4. In **Artifact Location**, in **Region**, select the region for the ECR service you are using.
-5. (Optional) In **Registry ID**, enter the AWS account ID of the ECR registry you want to use. This field is useful when the AWS connector can access AWS accounts other than the one it is configured with. If you do not specify a registry ID, Harness uses the default registry associated with the AWS account. 
+5. (Optional) In **Registry ID**, enter the AWS account ID of the ECR registry you want to use. This field is useful when the AWS connector can access AWS accounts other than the one it is configured with. If you do not specify a registry ID, Harness uses the default registry associated with the AWS account.
 6. In **Image Path**, enter the path to the repo and image. You can copy the URI value from the repo in ECR. For example, `public.ecr.aws/l7w9l6a8/todolist` (public repo) or `085111111113.dkr.ecr.us-west-2.amazonaws.com/todolist` (private repo).
 7. Select **Continue**.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="AWS S3" label="AWS S3">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -198,28 +193,24 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 6. In **File Path Regex**, enter a regex like `todolist*.zip`. The expression must either contain a `*` or end with `/`.
 7. Select **Continue**.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Artifactory" label="Artifactory">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
 3. Create or select the Artifactory connector to connect Harness to Artifactory, and then select **Continue**. For steps on Artifactory connectors, go to [Artifactory Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
 4. In **Artifact Details**, in **Repository Format**, select **Generic** or **Docker**.
-	1. Generic:
-		1. **Repository:** enter the **Name** of the repo.
-		2. **Artifact Directory:** enter the **Repository Path**.
-	2. Docker:
-		1. **Repository:** enter the **Name** of the repo.
-		2. **Artifact/Image Path:** enter the **Repository Path**.
-		3. **Repository URL (optional):** enter the **URL to file**.
+   1. Generic:
+      1. **Repository:** enter the **Name** of the repo.
+      2. **Artifact Directory:** enter the path to the **Directory** that is inside the repo.
+   2. Docker:
+      1. **Repository:** enter the **Name** of the repo.
+      2. **Artifact/Image Path:** enter the path to the **Artifact/Image** that is inside the repo.
+      3. **Repository URL (optional):** enter the **URL to file**.
 5. Select **Continue**.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="ACR" label="ACR">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -229,10 +220,8 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 6. In **Repository**, select the repository to use.
 7. Select **Continue**.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Bamboo" label="Bamboo">
-```
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -240,10 +229,8 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. In **Artifact Details**, specify the plan name, artifact paths, and builds to monitor.
 5. Select **Continue**.
 
-```mdx-code-block
 </TabItem>    
 </Tabs>
-```
 
 ## Set conditions
 
@@ -255,8 +242,8 @@ You can use wildcards in the condition's value and you can select **Regex**.
 
 For example, if the build is `todolist-v2.0`:
 
-* With regex not selected, both `todolist*` or `*olist*` will match.
-* With regex selected, the regex `todolist-v\d.\d` will match.
+- With regex not selected, both `todolist*` or `*olist*` will match.
+- With regex selected, the regex `todolist-v\d.\d` will match.
 
 If the regex expression does not result in a match, Harness ignores the value.
 
@@ -272,18 +259,15 @@ To configure a condition based on artifact metadata, do the following:
 
 1. In the configuration of an artifact trigger, select **Conditions**.
 2. In **Metadata Conditions**, select **Add**.
-4. Enter an expression in **Attribute**.
-5. Select an operator and a value to match to the metadata attribute when the expression is resolved.
+3. Enter an expression in **Attribute**.
+4. Select an operator and a value to match to the metadata attribute when the expression is resolved.
 
 When the trigger is executed, the metadata condition is evaluated and, if the condition matches, the pipeline is executed.
 
 Here are the artifact metadata expressions you can use:
 
-
-```mdx-code-block
 <Tabs>
   <TabItem value="Docker registry" label="Docker registry" default>
-```
 
 You can use the following expressions:
 
@@ -296,11 +280,8 @@ You can use the following expressions:
 <+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
 ```
 
-
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="ECR" label="ECR">
-```
 
 You can use the following expressions:
 
@@ -312,11 +293,8 @@ You can use the following expressions:
 <+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
 ```
 
-
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="ACR" label="ACR">
-```
 
 You can use the following expressions:
 
@@ -329,11 +307,8 @@ You can use the following expressions:
 <+pipeline.stages.s1.spec.artifacts.primary.metadata.url>
 ```
 
-
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="GAR" label="GAR">
-```
 
 Here are the expressions for Google Artifact Registry (GAR).
 
@@ -344,11 +319,8 @@ Here are the expressions for Google Artifact Registry (GAR).
 <+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHA>
 ```
 
-
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Artifactory" label="Artifactory">
-```
 
 You can use the following expressions:
 
@@ -357,11 +329,8 @@ You can use the following expressions:
 <+pipeline.stages.tas_0.spec.artifacts.primary.metadata.url>
 ```
 
-
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Jenkins" label="Jenkins">
-```
 
 You can use the following expressions:
 
@@ -369,10 +338,8 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Jenkins_ArtifactSource.spec.artifacts.primary.metadata.url>
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Nexus 2" label="Nexus 2">
-```
 
 You can use the following expressions:
 
@@ -384,10 +351,8 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Nexus 3" label="Nexus 3">
-```
 
 You can use the following expressions:
 
@@ -402,23 +367,14 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.groupId>
 ```
 
-```mdx-code-block
-  </TabItem>  
+</TabItem>  
 </Tabs>
-```
 
 ## Define multi-region artifact source
 
-:::note
-
-Currently, multi-region artifact sources are behind the feature flag `CDS_NG_TRIGGER_MULTI_ARTIFACTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-
 Once you've selected an artifact in the trigger, you will see the **Define Multi Region Artifact Source** option.
 
-When artifact repositories such as Google Artifact Registry (GAR) are enabled with multiregion support, artifacts of the same version are available across different regions for easy consumption. 
+When artifact repositories such as Google Artifact Registry (GAR) are enabled with multiregion support, artifacts of the same version are available across different regions for easy consumption.
 
 Each region can have similar artifacts. This support enables the configuration of Harness triggers using artifacts from multiple regions.
 
@@ -431,12 +387,14 @@ To configure multi region for the artifact, do the following:
 3. In **Configuration**, in the **Listen on** section, add an artifact. This will be the primary region where the artifact is available. The Harness connector you use should be pointing to the region.
 
    Once you have added an artifact you will see the **Define Multi Region Artifact Source** option.
+
 4. Select **Define Multi Region Artifact Source** and add artifacts corresponding to other regions. Add as many regions as needed for the trigger.
 5. When you are done, select **Continue** to move to **Conditions**.
 6. Select the conditions required for the artifacts across different regions.
 
    When the artifact version is available across different regions, the condition is evaluated for all the artifacts and the pipeline is triggered.
-8. Complete the trigger setup.
+
+7. Complete the trigger setup.
 
 ## Select pipeline inputs
 
@@ -462,6 +420,5 @@ Trigger artifact expressions used in a pipeline are resolved when you rerun a pi
 
 ## See also
 
-* [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
-* [Trigger pipelines using Git events](triggering-pipelines.md)
-
+- [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
+- [Trigger pipelines using Git events](triggering-pipelines.md)

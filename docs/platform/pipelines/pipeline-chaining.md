@@ -48,8 +48,6 @@ To chain pipelines in Harness, perform the following steps:
 3. Select the child pipeline from the list. You can select any pipeline across different orgs and projects corresponding to your access and permissions and chain it to your parent pipeline.
    
    For more information on access, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
-
-   ![](./static/pipeline-chain-list.png)
    
    :::info note
    You must have execute permissions for the parent and child pipeline to ensure successful execution.
@@ -91,7 +89,7 @@ To use the output of a parent pipeline in the child pipeline and its stages, do 
 The **Inputs** tab supports auto suggestions.
 :::
    
-Now, when the parent pipeline is run and the child pipeline stage is executed, the child pipeline, 
+Now, when the parent pipeline is run and the child pipeline is executed, the child pipeline uses its pipeline-level runtime variable. That variable is resolved to the value of the parent pipeline output variable.
 
 Here's an example of a child and parent pipeline where a parent pipeline output expression is mapped and used in a child pipeline stage.
 

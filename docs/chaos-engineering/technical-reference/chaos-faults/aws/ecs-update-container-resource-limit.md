@@ -4,6 +4,7 @@ title: ECS update container resource limit
 ---
 
 ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task.
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Update Container Resource Limit](./static/images/ecs-update-container-resource-limit.png)
 
@@ -23,7 +24,6 @@ Modifying the container resource limits using the ECS update container resource 
 :::
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -43,12 +43,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -118,12 +116,12 @@ Here is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -132,25 +130,25 @@ Here is an example AWS policy to execute the fault.
       </tr>
       <tr> 
         <td> CPU </td>
-        <td> This is the CPU resouce set of the target ECS container. </td>
-        <td> Default to 256 </td>
+        <td> CPU resouce set of the target ECS container. </td>
+        <td> Default: 256. For more information, go to <a href="#cpu-and-memory-resource-limit"> CPU limit.</a> </td>
       </tr>
       <tr> 
         <td> Memory </td>
-        <td>  This is the Memory resouce set of the target ECS container</td>
-        <td> Default to 256 </td>
+        <td> Memory resouce set of the target ECS container</td>
+        <td> Default: 256. For more information, go to <a href="#cpu-and-memory-resource-limit"> memory limit.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
 
-### CPU And Memory Resource limit
+### CPU and memory resource limit
 
-It specifies the CPU and Memory limit for the task containers. You can tune it using the `CPU` and `MEMORY` environment variable.
+CPU and memory limit for the task containers. Tune it by using the `CPU` and `MEMORY` environment variables.
 
 The following YAML snippet illustrates the use of this environment variable:
 

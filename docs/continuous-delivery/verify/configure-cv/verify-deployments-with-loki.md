@@ -7,10 +7,10 @@ helpdocs_is_published: true
 ---
 # Set up a Grafana Loki health source
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 :::info note
 Currently, this feature is behind the feature flag `SRM_ENABLE_GRAFANA_LOKI_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -185,9 +185,9 @@ To add a health source:
       
    4. Select a connector for the Grafana Loki health source, and then select **Apply Selected**.  
          The selected connector appears in the **Select Connector** dropdown. The **Grafana Loki Logs** option is selected by default in the **Select Feature** field.
-         
-      <details>
-      <summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
+
+<details>
+<summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
 
          1.	In the Create or Select an Existing Connector dialog, select **+ New Connector**.
          
@@ -218,7 +218,7 @@ To add a health source:
                
                The Grafana Loki connector is added to the list of connectors.
 
-      </details>
+</details>
        
       
 3. Select **Next**.
@@ -249,14 +249,14 @@ To add a health source:
    
    Sample logs are displayed that help you verify if the query is correct.
 
-   <details>
-   <summary><b>Sample log query</b></summary>
+<details>
+<summary><b>Sample log query</b></summary>
 
    Query for showing data from all filenames, except for syslog: `{filename=~".+",filename!="/var/log/syslog"}`
 
    ![Grafana Loki sample query](./static/cv-loki-log-query.png)
 
-   </details>
+</details>
 
 
 ### Save the health source settings

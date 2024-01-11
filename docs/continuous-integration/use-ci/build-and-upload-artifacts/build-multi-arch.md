@@ -1,13 +1,13 @@
 ---
 title: Build multi-architecture images
 description: You can build multi-architecture images in a CI pipeline.
-sidebar_position: 120
+sidebar_position: 42
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 To build multi-architecture images in a CI pipeline, use a separate stage to build and push each architecture.
 
@@ -15,7 +15,7 @@ For example, the following pipeline has two stages. The two stages have similar 
 
 * A variation of a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). Notice that each stage uses a different Kubernetes cluster connector (`infrastructure.spec.connectorRef`) and other settings due to the different architecture requirements.
 * A [Run step](../run-ci-scripts/run-step-settings.md) that prepares the Dockerfile.
-* A [Build and Push step](./build-and-upload-an-artifact.md) that builds and uploads the image.
+* A [Build and Push step](./build-and-upload-an-artifact.md) that builds and uploads the image. If the images are uploaded to the same repository, use `tags` to differentiate them, such as `1.0-linux-amd64` and `1.0-linux-arm64`.
 
 ```yaml
 pipeline:
@@ -84,7 +84,7 @@ pipeline:
                     connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     repo: my-repo/ci-demo
                     tags:
-                      - "1.0"
+                      - "1.0-linux-amd64"
                     dockerfile: harnessDockerfileui
                     target: dev-env
                     resources:
@@ -144,7 +144,7 @@ pipeline:
                     connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     repo: my-repo/ci-demo
                     tags:
-                      - "1.0"
+                      - "1.0-linux-arm64"
                     dockerfile: harnessDockerfileui
                     target: dev-env
                     resources:

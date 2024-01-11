@@ -144,6 +144,6 @@ To update the Lambda function code, follow these steps:
 1. [Download](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/aws-proxymanager-0.1.3.zip) the latest code package in the form of a .zip file.
 2. Select the **Code** tab in **Lambda** > **Functions**.
 
-    <docimage path={require('./static/lambda-function-code.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('./static/lambda-function-code.png')} width="50%" height="50%" title="Click to view full size image" />
 
 3. Click **Upload from** and choose the zip file you downloaded, and then click **Save**.

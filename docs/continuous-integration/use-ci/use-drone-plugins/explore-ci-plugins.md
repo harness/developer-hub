@@ -33,9 +33,9 @@ Harness CI supports `DRONE_` environment variables. For more information, go to 
 
 :::-->
 
-## Bitrise Integrations
+## Bitrise integrations
 
-How you run [Bitrise Integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+How you run [Bitrise integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 * With Harness Cloud build infrastructure, use the [Bitrise step](./ci-bitrise-plugin.md).
 * With other build infrastructures, you can use a [custom plugin](./custom_plugins.md).
@@ -50,3 +50,27 @@ How you run [GitHub Actions](https://github.com/marketplace?type=actions) in Har
 ## Jira integrations
 
 If you want your CI pipelines to update Jira issues, you can use a **Plugin** step as explained in [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
+
+## Scanner integrations
+
+The [Harness Security Testing Orchestration module](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#harness-sto-scanner-support) provides first-class support for many security scanners. You can also use the [Drone SonarScanner plugin](https://plugins.drone.io/plugins/sonar-node-plugin) in a [Plugin step](./plugin-step-settings-reference.md), for example:
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    image: kytay/sonar-node-plugin ## This is the sonarscanner plugin image.
+                    settings:
+                      sonar_host:
+                        from_secret: sonar_host
+                      sonar_token:
+                        from_secret: sonar_token
+                      use_node_version: 16.18.1
+```
+
+For information about SonarScanner plugin settings, go to the [Drone SonarScanner plugin documentation](https://plugins.drone.io/plugins/sonar-node-plugin).
+
+For information about the Plugin step settings, go to the [Plugin step settings documentation](./plugin-step-settings-reference.md).

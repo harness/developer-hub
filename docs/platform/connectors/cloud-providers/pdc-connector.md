@@ -10,14 +10,14 @@ PDCs are typically used in traditional deployments, including [Secure Shell (SSH
 
 ## Add a Physical Data Center connector
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Here's an example of a PDC connector YAML:
 
@@ -35,10 +35,10 @@ connector:
       - hostname: ec2-54-222-142-249.us-west-2.compute.amazonaws.com
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="API" label="API">
-```
+
 
 Create the PDC connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
@@ -60,10 +60,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
       - hostname: ec2-54-222-142-249.us-west-2.compute.amazonaws.com'
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 1. In your project, org, or account, select **Connectors**, and then select **New Connector**.
 2. Select **Physical Data Center**.
@@ -73,10 +73,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 6. Select the Harness delegate(s) you want to use to perform the connection, and then select **Save and Continue**.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Manually enter hosts
 

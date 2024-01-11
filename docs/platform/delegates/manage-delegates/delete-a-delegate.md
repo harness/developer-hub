@@ -12,6 +12,10 @@ This topic describes how to delete a delegate from your Kubernetes cluster and H
 
 ### Identify the delegate type
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
 Harness Delegate is installed as a Kubernetes [Deployment](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/) object**.** A legacy delegate, on the other hand, is installed as a Kubernetes [StatefulSet](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/) object. This means that the process used to delete a legacy delegate differs from the process used to delete Harness Delegate.
 
 You can verify the delegate you're using by looking at its manifest file or by running `kubectl get all -n harness-delegate-ng`.

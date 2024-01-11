@@ -180,7 +180,7 @@ The **Tenant ID** is the ID of the Microsoft Entra ID in which you created your 
 For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 :::
 
-This is the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
+This is the authentication key for your application. This is found in **Microsoft Entra ID (formerly Active Directory)**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
 
 [![](./static/add-microsoft-azure-cloud-provider-47.png)
 ](./static/add-microsoft-azure-cloud-provider-47.png)

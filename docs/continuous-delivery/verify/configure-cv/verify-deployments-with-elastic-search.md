@@ -6,10 +6,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 
 Harness Continuous Verification (CV) integrates with Elasticsearch to:

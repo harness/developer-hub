@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/sto-certification-developer-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/sto-certification-admin-review-guide.md";
-// import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-details.md";
+import AdminCertificationReviewDetails from "./data/sto-certification-admin-review-guide.md";
+import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-details.md";
 // import ArchitectCertificationReviewDetails from "./data/sto-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
@@ -55,7 +55,7 @@ export default function CertificationsSTO() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCE}>
+    <div className={styles.certificationsSTO}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -120,7 +120,7 @@ export default function CertificationsSTO() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Developer (BETA COMING SOON) </h2>
+                  <h2>Security Testing Orchestration - Developer</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_sto_badge.svg`}
                     alt="Harness Certified Expert - STO Engineering Developer"
@@ -132,14 +132,14 @@ export default function CertificationsSTO() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA)</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy your applications
                     with STO projects.
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="">
+                    <Link href="https://university.harness.io/security-testing-orchestration-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -152,11 +152,11 @@ export default function CertificationsSTO() {
 
           {/* Developer Exam Details */}
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA)</h2>
+            <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/security-testing-orchestration-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -188,7 +188,7 @@ export default function CertificationsSTO() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Administrator (BETA COMING SOON)</h2>
+                  <h2>Security Testing Orchestration - Administrator </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Harness Certified Expert - STO Administrator"
@@ -200,33 +200,23 @@ export default function CertificationsSTO() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  {/* <h3>Review Study Guide</h3>
+                  <h3>Review Study Guide </h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain STO
                     Engineering projects and the overall Harness Platform. This
                     exam builds upon the{" "}
-                    <a href="/certifications/continuous-delivery?lvl=developer">
-                      STO Engineering Developer Certification
+                    <a href="/certifications/sto?lvl=developer">
+                      STO Developer Certification
                     </a>
                     .
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
+                    <Link href="https://university.harness.io/security-testing-orchestration-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
-                    </Link> */}
-                  {/* <Link href="/tutorials/cd-pipelines">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-                  {/* </div> */}
-                  <h3>Coming Soon...</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain STO projects and the overall Harness Platform.
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -234,20 +224,19 @@ export default function CertificationsSTO() {
           </div>
 
           {/* Admin Exam Details */}
-          {/* <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details </h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
+                <Link href="https://university.harness.io/security-testing-orchestration-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-            
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Architect Tab Content */}

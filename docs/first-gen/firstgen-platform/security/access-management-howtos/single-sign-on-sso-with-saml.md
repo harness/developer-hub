@@ -281,7 +281,7 @@ To get this information, do the following:
 6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets).
 7. Select the above secret reference in the Client Secret field in your Harness account.
 
-When the user authenticating SAML is part of more than 150 groups in Azure active directory, you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
+When the user authenticating SAML is part of more than 150 groups in Microsoft Entra ID (formerly Active Directory), you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
 
 To set `User.Read.All` access for the application, do the following:
 

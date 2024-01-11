@@ -24,7 +24,7 @@ For instructions on adding roles to your service account, go to the Google docum
 
 Alternately, you can use a service account that has only the **Storage Object Viewer** permission needed to query GCR, and then use either an in-cluster Kubernetes delegate or a direct [Kubernetes Cluster Connector](kubernetes-cluster-connector-settings-reference.md) with the Kubernetes service account token for performing deployment.
 
-:::caution
+:::warning
 
 Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
@@ -138,6 +138,7 @@ This feature is currently behind a feature flag. Contact [Harness Support](mailt
 
 In the case of accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to Harness GCP connector. You must provide the following information:
 
-* Workload Pool ID - This identifies the workload pool created on the GCP side and it is the Pool ID value.
-* Provider ID - This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
-* BILLING_PROJECT_NUMBER - The project number or ID used for quota and billing. The principal needs to have `serviceusage.services.use` permission on this project. This has to be the GCP Project number that you use to configure the workload identify federation.
+* Workload Pool ID: This identifies the workload pool created on the GCP side and it is the Pool ID value.
+* Provider ID: This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
+* Project ID: The project number of the Google Cloud Project that is used to create a workload identity pool.
+* Service Account Email: This is the service account that was linked to the workload identity pool in the last step.

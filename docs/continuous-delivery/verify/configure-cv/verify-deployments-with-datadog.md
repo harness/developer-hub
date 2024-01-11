@@ -156,13 +156,6 @@ Click **Submit**. The Health Source is displayed in the Verify step.
 
 ### Configure Datadog formulas as Harness queries
 
-:::info note 
-
-Currently,this feature is behind the feature flag SRM_DATADOG_METRICS_FORMULA_SUPPORT. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-
 In manual query mode, the Datadog metrics health source provides support for formulas.
 These formulas follow a specific format: 
 
@@ -182,8 +175,8 @@ kubernetes.cpu.usage{cluster-name:chi-play};kubernetes.memory.total{cluster-name
 
 In the example above, 'a' and 'b' represent the respective queries:
 
-* a = kubernetes.memory.usage{cluster-name:chi-play}
-* b = kubernetes.memory.total{cluster-name:chi-play}
+* a = kubernetes.memory.usage\{cluster-name:chi-play}
+* b = kubernetes.memory.total\{cluster-name:chi-play}
 
 You can use multiple queries represented by alphabetical variables (example: a, b, c, and so on) in the final formula, but only one formula is allowed per query.
 

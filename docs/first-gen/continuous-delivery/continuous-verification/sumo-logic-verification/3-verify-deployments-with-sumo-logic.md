@@ -68,7 +68,7 @@ Add an expression that evaluates to the hostname value for the **Message** field
 
 [![](./static/3-verify-deployments-with-sumo-logic-12.png)](./static/3-verify-deployments-with-sumo-logic-12.png)
 
-In the service infrastructure where your Workflow deployed your artifact (see [Add a Service Infrastructure](../../model-cd-pipeline/environments/environment-configuration.md#add-a-service-infrastructure)), the hostname is listed in a JSON **name** label under a **host** label.Locate the **name** label that displays the same value as the **Host** field in your Sumo Logic **Message**. Locate the path to that **name** label and use it as the expression in **Expression for Host/Container name**.The default expression is **${instance.host.hostName}**.
+In the service infrastructure where your Workflow deployed your artifact (see [Add a Service Infrastructure](../../model-cd-pipeline/environments/environment-configuration.md#add-a-service-infrastructure)), the hostname is listed in a JSON **name** label under a **host** label.Locate the **name** label that displays the same value as the **Host** field in your Sumo Logic **Message**. Locate the path to that **name** label and use it as the expression in **Expression for Host/Container name**.The default expression is **$\{instance.host.hostName}**.
 
 For AWS EC2 hostnames, use the expression `${instance.hostName`}.
 

@@ -233,13 +233,19 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <td valign="top">
         <p> Deployment Types Fargate, EC2:</p>
         <ul>
-          <li>Canary</li>
-          <li>Blue/Green:<ul>
+          <li>
+          Canary
+          </li>
+          <li>
+          Blue/Green:
+            <ul>
               <li>Using ALB/NLB and Target Group</li>
               <li>Using Route 53 DNS</li>
             </ul>
           </li>
-          <li>Multi-Service:<ul>
+          <li>
+          Multi-Service:
+            <ul>
               <li> >Caveat: It is created as a Basic Workflow</li>
             </ul>
           </li>

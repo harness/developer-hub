@@ -12,7 +12,7 @@ Harness does not require scripting, and configurations are passed to pipelines s
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, that make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](../use-ci/run-tests/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/run-tests/test-intelligence/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
 Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
@@ -41,14 +41,14 @@ In GitHub Actions, if a job has a lot of steps, those steps might be organized i
 
 The following truncated examples provide a simple comparison of stage and step structure in GitLab CI and Harness CI.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="github" label="GitHub Actions">
-```
+
 
 ```yaml
 jobs:
@@ -63,10 +63,10 @@ jobs:
            python -m compileall ./
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 ```yaml
   stages:
@@ -92,10 +92,10 @@ jobs:
                     command: python -m compileall ./
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
@@ -110,10 +110,10 @@ Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub
 
 Here are YAML examples of complete workflows in GitHub Actions and Harness CI.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gha" label="GitHub Actions">
-```
+
 
 ```yaml
 name: Github_actions
@@ -170,10 +170,10 @@ jobs:
            echo "Testing on ${{ matrix.version }}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 ```yaml
 pipeline:
@@ -288,19 +288,29 @@ pipeline:
       value: someval
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 </details>
 
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
+
 ## Comparison: Clone a codebase
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gha" label="GitHub Actions" default>
-```
+
 
 GitHub Actions workflows are inherently associated with a code repo because the workflow YAML exists in the `.github/workflows` directory in the target code repo. The workflow can use [actions/checkout](https://github.com/actions/checkout) in a step to clone the associated codebase into the workflow workspace.
 
@@ -319,10 +329,10 @@ jobs:
         uses: actions/checkout@v2
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness">
-```
+
 
 In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). [Codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
@@ -368,17 +378,17 @@ For example, in the following YAML example, the `connectorRef` references a Dock
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Comparison: Access Docker
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gha" label="GitHub Actions" default>
-```
+
 
 To log in to Docker Hub in a GitHub Actions workflow, you use `docker/login-action` in a step. You then use other `docker` actions in other steps to pull images, push images, and so on.
 
@@ -398,10 +408,10 @@ To log in to Docker Hub in a GitHub Actions workflow, you use `docker/login-acti
         tags: user/pythonsample:latest
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness">
-```
+
 
 To interact with Docker registries in Harness, you use a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). In the following YAML example, the `connectorRef` references a Docker connector and the `image` indicates the image to pull. You do not need an extra step to connect to Docker - Harness handles the login/connection through the connector configuration.
 
@@ -432,10 +442,10 @@ In the previous example, a Docker connector was used to pull an image for a scri
              dockerfile: pythondockerfile
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Comparison: Environment variables
 
@@ -443,10 +453,10 @@ In GitHub Actions, you can use predefined environment variables, define custom v
 
 This range of variable definition is also possible in Harness CI. In addition to built-in variables, you can define variables within individual pipelines, stages, and steps as well as at the project, organization, and account levels.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gha" label="GitHub Actions">
-```
+
 
 This GitHub Actions example defines environment variables at the workflow and job levels.
 
@@ -464,10 +474,10 @@ jobs:
         run: echo "$JOB_VAR $ENV_VAR"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness">
-```
+
 
 To reference project, organization, and account variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
 
@@ -507,10 +517,10 @@ To learn more about defining and fetching variables go to:
 * [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Comparison: Matrix jobs
 
@@ -518,10 +528,10 @@ In both Harness CI and GitHub Actions, you can define matrix strategies for your
 
 In Harness, matrix looping strategies are one of several looping execution strategies. To learn about the looping strategies available in Harness, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gha" label="GitHub Actions">
-```
+
 
 ```yaml
 jobs:
@@ -534,10 +544,10 @@ jobs:
         run: echo "Testing on ${{ matrix.testparam }}"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 The following example describes a stage in a Harness CI pipeline that includes one step with matrix and parallelism strategies. The looping strategies are defined in `strategy` at the stage level. One matrix strategy, called `testparam`, is defined in `matrix` and parallelism is defined by `maxConcurrency: 3`. The script in the `Run` step calls the inputs from the matrix strategy by using the expression `+matrix.testparam>`.
 
@@ -563,10 +573,10 @@ The following example describes a stage in a Harness CI pipeline that includes o
           maxConcurrency: 3
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Comparison: Triggers
 
@@ -578,10 +588,10 @@ Harness CI supports webhook, artifact, manifest and schedule triggers. The two m
 * [Triggers](/docs/category/triggers)
 * [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gha" label="GitHub Actions" default>
-```
+
 
 This GitHub Actions trigger listens for specific words in the name of pull requests against the `main` branch.
 
@@ -595,10 +605,10 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'go') || contains(github.event.pull_request.labels.*.name, 'gojava')
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness">
-```
+
 
 This Harness CI example shows a `cron` trigger on the `main` branch.
 
@@ -628,10 +638,10 @@ trigger:
                 branch: main
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## See also
 
@@ -639,5 +649,5 @@ Review the following information before proceeding with migration:
 
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
+* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

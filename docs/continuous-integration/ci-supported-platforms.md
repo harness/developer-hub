@@ -5,9 +5,9 @@ sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
-```
+
 
 <Ci />
 

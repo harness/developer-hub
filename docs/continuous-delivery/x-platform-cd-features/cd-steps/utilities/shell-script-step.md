@@ -144,6 +144,11 @@ print = functools.partial(print, flush=True)
 
 You might have to make similar changes to your script depending on its contents.
 
+:::note
+The color codes that Harness uses for shell script logs is aligned with the I/O stream from the executed command. Typically, stdout is used for logging successful commands, with its logs color-coded to represent informational data. Conversely, stderr is generally used for error logging, with logs color-coded accordingly. However, note that some commands also output successful executions to stderr, and that Harness cannot control this variance in I/O stream usage.
+:::
+
+
 ### Shell Script steps and failures
 
 A failed Shell Script step does not prevent a stage deployment from succeeding.
@@ -192,6 +197,46 @@ In case of PowerShell, if the script executes on Delegate it requires the powers
 ### Script
 
 The Bash or Powershell script.
+
+### Script Location
+
+**Inline** - The user can define the script inline the step yaml. This means the script body will be defined directly as part of the step.
+
+```YAML
+              - step:
+                  type: ShellScript
+                  name: Echo Welcome Message
+                  identifier: shell_ID
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "Hello"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+**Harness File Store** - User can reference the Shell Script from the Harness File Store. Harness will fetch the script from the file store and execute it. The Shell script YAML will show a reference via the file path in the File Store to the shell script. The Script needs to be as file usage type: `script`. The script extension supported is `.sh` for bash. For the shell type, powershell, Harness supports `.ps1`  file extensions in the file store.
+
+```YAML
+              - step:
+                  type: ShellScript
+                  name: Echo Welcome Message
+                  identifier: shell_ID
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Harness
+                      spec:
+                        file: /message.sh
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
 
 ### Script input variables
 
@@ -376,7 +421,7 @@ Here's an example showing how the **Script Output Variables** references the exp
 
 <!-- ![](./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png) -->
 
-<docimage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
+<DocImage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
 
 
 So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.
@@ -576,7 +621,7 @@ If your deployment type is Kubernetes and you want to use a Delegate installed o
 
 Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
 
-The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
+The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more.
 
 <details>
 <summary>Common secondary script examples</summary>
@@ -714,3 +759,38 @@ sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEV
 ```
 
 </details>
+
+### Running Kubernetes Commands in the Shell Script
+
+You can run Kubernetes commands (kubectl) in a Shell script step. The step doesn't require you to provide an infrastructure. All that is required is a Harness Kubernetes delegate installed on a target cluster with the correct permissions.
+
+Example script:
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+```
+
+The step might look like this:
+
+```
+              - step:
+                  type: ShellScript
+                  name: Kubectl scale blue green
+                  identifier: Kubectl_scale_blue_green
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+                          kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
+
