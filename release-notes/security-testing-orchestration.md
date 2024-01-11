@@ -24,20 +24,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-<!-- 
+
 ## January 2024 
 
-### Version 1.78
+### January 11 runner update
 
-<!-- 2024-01-09 
+<!-- 2024-01-11 -->
 
 #### Feature enhancements
 
 - You can now scan .exe and .net files using the OWASP scan step. (STO-6852, ZD-55558)
 
 - OWASP scans now display the package name and version for all issues. (STO-6725)
-
--->
 
 ## December 2023 
 
