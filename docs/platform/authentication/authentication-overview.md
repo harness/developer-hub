@@ -158,7 +158,7 @@ To configure your account's session inactivity timeout, do the following:
 
 ### Set absolute session timeout
 
-When **Absolute Session Timeout (in minutes)** is set, a Harness user is logged out of their account after the configured timeout, irrespective of any activity.
+When the **Absolute Session Timeout (in minutes)** is set, users will be logged out of their account after the configured timeout, regardless of any activity.
 
 To configure your account's absolute session timeout, do the following:
 
