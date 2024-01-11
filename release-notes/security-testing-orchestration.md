@@ -23,9 +23,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
-## January 2024 
 
 <!-- 
+## January 2024 
 
 ### Version 1.78
 

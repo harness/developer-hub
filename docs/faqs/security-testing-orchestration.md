@@ -6,29 +6,6 @@ sidebar_position: 5
 
 This article addresses some frequently asked questions about Security Testing Orchestration (STO).
 
-In this topic:
-
-<!-- TOC start -->
-- [What is a security scanner?](#what-is-a-security-scanner)
-- [How many scanners does STO support?](#how-many-scanners-does-sto-support)
-- [Do similar category tools show identical issues?](#do-similar-category-tools-show-identical-issues)
-- [What is an STO Target?](#what-is-an-sto-target)
-- [Can I use STO with custom or unsupported scanners?](#can-i-use-sto-with-custom-or-unsupported-scanners)
-- [How does STO identify new issues and display them in the UI?](#how-does-sto-identify-new-issues-and-display-them-in-the-ui)
-- [Why do I need to use Docker-in-Docker? Why is root privilege required?](#why-do-i-need-to-use-docker-in-docker-why-is-root-privilege-required)
-- [What RBAC roles does STO support?](#what-rbac-roles-does-sto-support)
-- [How do I set up a  CheckMarx scan step in YAML?](#how-do-i-set-up-a--checkmarx-scan-step-in-yaml)
-- [What is the purpose of the “Security Review” tab in STO?](#what-is-the-purpose-of-the-security-review-tab-in-sto)
-- [What open-source scanner integrations does STO support?](#what-open-source-scanner-integrations-does-sto-support)
-- [What is the difference between an STO pipeline, a CD pipeline, and a CI pipeline?](#what-is-the-difference-between-an-sto-pipeline-a-cd-pipeline-and-a-ci-pipeline)
-- [Does STO require Harness CI or Harness CD?](#does-sto-require-harness-ci-or-harness-cd)
-- [What infrastructure does STO support for running scans?](#what-infrastructure-does-sto-support-for-running-scans)
-- [How does STO deduplicate detected issues?](#how-does-sto-deduplicate-detected-issues)
-- [I don't have any scanner licenses and I'm just getting started with security scanning. Where do I begin?](#i-dont-have-any-scanner-licenses-and-im-just-getting-started-with-security-scanning-where-do-i-begin)
-- [Why don't I see results from specific scans in the Security Testing Dashboard?](#why-dont-i-see-results-from-specific-scans-in-the-security-testing-dashboard)
-- [How does STO ensure High Availability and data protection for my scan data and vulnerability information?](#how-does-sto-ensure-high-availability-and-data-protection-for-my-scan-data-and-vulnerability-information)
-<!-- TOC end -->
-
 ### What is a security scanner?  
 
 A _security scanner_ is a tool that scans a software target and detects security issues and vulnerabilities. Examples of target types include code repos, container images, and websites. Developers, DevOps engineers, SecOps engineers, and others often include scanners at different phases of the software development life cycle. A wide variety of scan tools are available, such as:
