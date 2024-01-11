@@ -2,7 +2,7 @@
 title: Configure Harness Self-Managed Enterprise Edition to use external databases
 sidebar_label: Configure external databases
 description: Harness supports multiple databases when you deploy the on-prem Harness Self-Managed Enterprise Edition. Tutorials are available for you to learn about your configuration options.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 By default, Harness Self-Managed Enterprise Edition uses an embedded database, which is sufficient for evaluation or small to medium scale deployments. However, as your deployment scales and becomes critical for your organization, it's essential to switch to a more robust external database solution. 
