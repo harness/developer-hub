@@ -137,6 +137,47 @@ For AWS VMs, you can set `hibernate` in your `pool.yml` to hibernate warm VMs wh
 
 Yes. Docker is required for [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
 
+### AWS build VM creation fails with no default VPC
+
+When you run the pipeline, if VM creation in the runner fails with the error `no default VPC`, then you need to set `subnet_id` in `pool.yml`.
+
+### AWS VM builds stuck at the initialize step on health check
+
+If your CI build gets stuck at the initialize step on the health check for connectivity with lite engine, either lite engine is not running on your build VMs or there is a connectivity issue between the runner and lite engine.
+
+1. Verify that lite-engine is running on your build VMs.
+   1. SSH/RDP into a VM from your VM pool that is in a running state.
+   2. Check whether the lite-engine process is running on the VM.
+   3. Check the [cloud init output logs](#where-can-i-find-logs-for-self-hosted-aws-vm-lite-engine-and-cloud-init-output) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
+2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
+   1. Run `nc -vz <build-vm-ip> 9079` from the runner.
+   2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) in AWS allows the runner to communicate with the build VMs.
+   3. Make sure there are no firewall or anti-malware restrictions on your AMI that are interfering with the cloud init script's ability to download necessary dependencies. For details about these dependencies, go to [Set up an AWS VM Build Infrastructure - Start the runner](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#start-the-runner).
+
+### AWS VM delegate connected but builds fail
+
+If the delegate is connected but your AWS VM builds are failing, check the following:
+
+1. Make sure your the AMIs, specified in `pool.yml`, are still available.
+   * Amazon reprovisions their AMIs every two months.
+   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
+2. Confirm your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) and security group settings in `runner/pool.yml`.
+
+### Use internal or custom AMIs with self-hosted AWS VM build infrastructure
+
+If you are using an internal or custom AMI, make sure it has Docker installed.
+
+Additionally, make sure there are no firewall or anti-malware restrictions interfering with initialization, as described in [CI builds stuck at the initialize step on health check](#aws-vm-builds-stuck-at-the-initialize-step-on-health-check).
+
+### Where can I find logs for self-hosted AWS VM lite engine and cloud init output?
+
+* Linux
+   * Lite engine logs: `/var/log/lite-engine.log`
+   * Cloud init output logs: `/var/log/cloud-init-output.log`
+* Windows
+   * Lite engine logs: `C:\Program Files\lite-engine\log.out`
+   * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
+
 ## Harness Cloud
 
 ### What is Harness Cloud?
