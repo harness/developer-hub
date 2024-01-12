@@ -47,13 +47,12 @@ This is a NoSQL MongoDB database microservice accountable for storing users' inf
 
 ## Harness execution plane
 
-**Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. The Kubernetes execution plane consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, etc., and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
+**Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. 
 
 ## Chaos infrastructure
 
 Chaos infrastructure components help facilitate the chaos fault injection and hypothesis validation, and enable chaos automation for target resources.
 
-:::info
-- The [Kubernetes execution plane](./kubernetes) consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, etc., and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
-- The [Linux execution plane](./linux) consists of only the Linux chaos infrastructure daemon service.
-:::
+The [Kubernetes execution plane](./kubernetes) consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
+
+The [Linux execution plane](./linux) consists of only the Linux chaos infrastructure daemon service.

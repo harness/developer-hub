@@ -7,7 +7,7 @@ sidebar_position: 10
 
 Harness IDP is built on top of the [Backstage plugin architecture](https://backstage.io/docs/plugins/) and supports a curated list of plugins. Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. The curated list of plugins is a subset of publicly available [Backstage plugins](https://backstage.io/plugins). We are constantly adding new plugins from the marketplace and building new plugins of our own. Coming later this year, you will have the option to build a custom plugin and make IDP even more personal for your organization.
 
-![Plugins section in IDP](./static/plugins-section-in-idp.png)
+![Plugins section in IDP](./static/plugins-page.png)
 
 ## Configuration
 

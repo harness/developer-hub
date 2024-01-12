@@ -1,60 +1,157 @@
-.main {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-flow: row wrap;
-  gap: 16px;
+// index.module.scss
+
+.dropdownContainer {
+  position: relative;
+  width: 360px;
+  height: 40px;
+  margin: 20px 0;
+  // padding: 6px;
+  .dropdownHeader {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 4px;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+      p {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
+    }
+  }
 }
 
-.RoadmapSection {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-
-  border: 2px solid #d9dae5;
-  border-radius: 8px;
-  padding: 16px;
-  gap: 16px;
-  .verticalLine {
-    border-left: 2px solid #d9dae5;
+.dropdownList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1;
+  a {
+    text-decoration: none;
   }
-  .section {
+  li {
     width: 100%;
+    height: 40px;
+    padding: 10px;
     display: flex;
-    flex-direction: column;
-    height: auto;
-    gap: 20px;
-    min-height: 400px;
-    .features {
-      --ifm-link-color: var(--ifm-color-emphasis-800);
-      --ifm-link-hover-color: var(--ifm-color-emphasis-700);
-      --ifm-link-hover-decoration: none;
-
-      box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
-      border: 2px solid var(--ifm-color-emphasis-200);
-      transition: all var(--ifm-transition-fast) ease;
-      transition-property: border, box-shadow;
-      border-radius: 8px;
-      padding: 16px !important;
-      min-height: 150px;
-      width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    img {
+      width: 24px;
+      height: 24px;
     }
+    p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  }
+  li:hover {
+    background-color: #effbff;
+  }
+}
 
-    .sectionDescription {
+.dropdownContainer .dropdownList {
+  display: block;
+}
+
+.roadmap {
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #383946;
+
+    span {
+      text-transform: uppercase;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #0b0b0d;
+    text-align: justify;
+  }
+
+  .RoadmapSection {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    // gap: 16px;
+
+    .section {
+      margin-right: 16px;
+      padding: 16px;
+
+      background-color: #fafbfc;
+      border: 0.5px solid #b0b1c3;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-      i {
-        margin-top: 5px;
-      }
-      .titleLine {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+      min-height: 400px;
+
+      .sectionDescription {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
         margin: 0;
-        padding: 0;
-        h4 {
+
+        .titleLine {
           margin: 0;
           padding: 0;
-          font-size: 24px;
+          h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 26px;
+            letter-spacing: 0px;
+            text-align: left;
+          }
+          p {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            line-height: 26px;
+            letter-spacing: 0px;
+            text-align: left;
+          }
         }
       }
     }
