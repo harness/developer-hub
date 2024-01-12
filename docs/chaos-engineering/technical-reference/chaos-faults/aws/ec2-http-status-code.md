@@ -103,7 +103,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
           <td> EC2_INSTANCE_ID </td>
           <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="./ec2-cpu-hog/#multiple-ec2-instances"> EC2 instance ID.</a></td>
+          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
         </tr>
         <tr>
           <td> REGION </td>

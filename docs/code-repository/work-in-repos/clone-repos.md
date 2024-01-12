@@ -14,7 +14,7 @@ After [creating a repository](../config-repos/create-repo.md), you can work dire
 
    When you select **Generate Clone Credentials**, Harness Code automatically creates an [API token](/docs/platform/automation/api/add-and-manage-api-keys) in your user profile.
 
-   :::caution
+   :::warning
 
    Tokens carry many privileges; treat your user tokens as passwords and store them securely.
 

@@ -3,7 +3,7 @@ title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
 date: 2023-12-12T10:00:15
 tags: [NextGen, "continuous delivery"]
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
@@ -46,7 +46,114 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+
+## January 2024
+
+### Version 1.19.6
+
+#### Behavior change
+
+There is a change in the permissions associated with [Overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2):
+- Previously: for service-specific, service, and infrastructure-specific overrides, the environment Create and Edit permissions were required.
+- Now: the environment Create and Edit permissions are not required. Only the service Create and Edit permissions are required.
+- Here is the comprehensive list of permissions required across different types:
+  - Service and infrastructure-specific: New, edit, clone, and delete actions:
+    - Service permission: `Create/Edit`
+  - Infrastructure-specific: New, edit, clone, and delete actions:
+    - Environment permission: `Create/Edit`
+  - Service-specific:  New, edit, clone, and delete actions:
+    - Service permission: `Create/Edit`
+  - Global Environment: New, edit, clone, and delete actions:
+    - Environment permission: `Create/Edit`
+
+#### New features and enhancements
+
+- Triggers now map payload attributes with pipeline inputs.	(CDS-87039)
+  - There are cases where you want to use input sets in a trigger, but provide a different value for the input set (override the default). 
+  - When a trigger is configured to use input sets, you can now pass input value overrides in the trigger's `inputYaml` field.
+     
+    <DocImage path={require('./static/78b4f649d9c4a9d0d858499e9508e846095f643d22b5f64dae60d6a30037b8cd.png')} width="60%" height="60%" title="Click to view full size image" />  
+  
+  - The values provided in the trigger's `inputYaml` field take precedence over any values provided by the input sets. This lets you override the input set values and use, for example, trigger payloads for specific inputs to the pipeline.
+
+#### Fixed issues
+
+- The Shell Script step was terminating when running on VM via SSH. (CDS-87415, ZD-55629, ZD-55690)
+  - Fixed a Shell Script step issue with SSH where it was failing for newer delegate versions with the error: `Error while reading variables to process Script Output. Avoid exiting from script early: 2: No such file`.
+  - Recent modification made directoryPath an optionally computed field which defaults to the user-provided working directory.
+  - To address this, the fix involves incorporating logic that ensures the presence of a backslash is in the directoryPath if it's absent.
+- Service phase fails to parse a variable value. (CDS-87290)
+  - There was an issue in the service phase of the stage execution where it fails to render a string variable, and throws the error `Invalid yaml: Malformed numeric value '00:00:00.100' at [Source: (StringReader); line: 36, column: 30]`. This was because variables with time format with milliseconds were being sent without quotes.
+  - Now, string variables with values such as `00:00:00.100` (time in milliseconds) are supported in Service variables.
+- Kubernetes Apply step started failing after upgrading to the current Harness delegate type (immutable). (CDS-87011)
+  - When using the `--dependency-update` flag with a Helm chart and Kubernetes Apply step, Harness didn't ignore the unrelated to Helm template output lines.
+  - Harness was trying to interpret some of the Helm template output as a manifest. This resulted in a failure during the step.
+  - This issue has been resolved. Now Harness will ignore anything unrelated to the manifest output when using the Kubernetes Apply step with the `--dependency-update` flag.
+- Container Step execution is failing with a delegate connectivity failure. (CDS-87005, ZD-54820)
+  - Pipelines run for extended periods of time (~20 hrs) resulted in the loss of connectivity to delegates.
+  - This issue has now been fixed. If the step's **Timeout** setting is not set, the default delegate task timeout will be 12 hours.
+- The Run step was missing from the CD stage when used in the Provision Infrastructure section of **Environment**. (CDS-86994	ZD-55259)
+  - Step request was sending the wrong payload to API. This is now fixed.
+- Subsequent Google Cloud Function Gen 1 deployments not happening if the first deploy fails.	(CDS-86746, ZD-55115)
+  - Function update was failing because the function state was not stable before deployment and Harness was waiting for it to a achieve stable state.
+  - Fixed the rollback logic for deployment of Google Cloud Function.
+- Unclear error message coming from Azure during Helm deployment. (CDS-85972)
+  - A Helm deployment to AKS was failing with an Azure permission error.
+  - For AKS Kubernetes cluster RBAC permission issues, Harness will print out additional hints regarding the Harness connector in question.
+- Harness service showing incorrect Helm chart version deployed in Harness UI. (CDS-85856, ZD-54508)
+  - The Harness service instance dashboard did not reflect the correct Helm chart version when instances were scaled up/down. The perpetual task did not not contain the updated Helm chart information which results in a mismatch of the Helm chart version value for the Kubernetes deployment.
+  - Fixed this issue by updating the `instanceSyncPerpetualTaskInfo` collection in Mongo every time the Helm chart information is updated.
+- Logs not present for the Copy command. (CDS-85662, ZD-54190)
+  - The call of 
+`saveExecutionLog("Command finished with status " + response.getStatus(), response.getStatus());`
+on class `ScriptSshExecutor.java` made the log stream terminate.
+  - Now we are closing the log stream consistently SSH executions.
+- Unable to enter matrix details in stage template. (CDS-85375)
+  - When editing the looping strategy setting in a stage template, the strategy editor disappeared arbitrarily. It should only get hidden when the entire strategy YAML is removed.
+  - This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
+
 ## December 2023
+
+### Version 1.17.8
+
+#### Fixed issues
+
+
+- Run step missing from CD stage if used in the provision infrastructure section of **Environment**. (CDS-86994, ZD-55259)
+- Deploy CDK Error. (CDS-86930, ZD-55227)
+  - This was caused by user error, but it describes an important configuration consideration. The user used a common image (`https://gallery.ecr.aws/amazonlinux/amazonlinux`) for the step that did not include the AWS CDK requirements. This resulted in a CDK error. 
+  - The image used in CDK steps should be created based on the Harness `aws-cdk-plugin` image available at `https://hub.docker.com/r/harness/aws-cdk-plugin`, documented [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/#docker-image-registry-connector-and-image-for-all-steps). The Harness image contains the Harness logic around the AWS CDK. You can a custom image built from `harness/aws-cdk-plugin:1.0.0` by adding support for different programming languages. See the tags at `https://hub.docker.com/r/harness/aws-cdk-plugin`tags.
+- Null AWS ASG name in logs for blue green Traffic Shift step. (CDS-86744)
+  - Harness has fixed the logs for the ASG blue green Traffic Shift step. It no longer displays null ASG names.
+- Deleting a template navigated the user to the deleted template’s details page. (CDS-86640, ZD-55063)
+  - Now a generic message is displayed when the template has been deleted.
+- Git Experience org policies not enforced. (CDS-86541, ZD-54808).
+  - Now when the Enforce Git Experience setting is enabled Harness selects the remote store type and the inline store option (storing the pipeline in Harness) is disabled.
+- Helm deployment fails to fetch the manifest when using native AWS connector for ECR. (CDS-86418, ZD-54707)
+  - The OCI Helm ECR store configuration feature did not work when IRSA and IAM were configured in the AWS connector. This resulted in null pointer exception, failing the deployment.
+  - The OCI Helm ECR store now supports IRSA and IAM configured in the AWS connector.
+- Pipeline failure at service phase. (CDS-85942, ZD-54701)
+  - Harness has improved error handling when users are not passing the manifest Id in the service input. This is required when file and folder paths are used as a runtime input.
+- A deployment was failing with Terraform errors.	(CDS-85684)
+  - The Terraform tasks working directory was created based on account, org, project and provisioner identifier. This might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on the same delegate.
+  - Now, every Terraform step execution will run in a unique working directory.
+- Harness asking for chart version for multiple manifest files instead of the primary manifest.	(CDS-85660, ZD-54364).
+  - Now Harness follows this process:
+    - Call service API to returns the whole service yaml.
+    - Use service YAML to create an FQN of with the primary manifest that the user selected.
+    - Return the list of chart versions corresponding to primary manifest.
+- UI was removing explicit null values in YAML. (CDS-83555)
+  - For the Shell Script step and Shell Script step template, users can now make the **Execution Target** setting a runtime input.
+- The console view for Deployment Verification (CV) not showing errors.	(CDS-81291, ZD-52005)
+  - A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment. The console view displayed `No analysis` while the pipeline view displayed a more verbose output.
+  - This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
+- Error connecting to Git Sync service. (CDS-81261, ZD-51238)
+  - The pipeline had 66 remote templates for which the template request made a single GRPC request. This delayed the response from the Git side and timed out the thread.
+  - Now Harness makes GRPC requests in batches of 20 to get remote templates.
+- Creating the Terraform resource `harness_platform_file_store_file` without content crashes.	(CDS-77833)
+  - Now Harness provides an empty file when content is null.
+- Changes in input set fixed value for Environment caused Save button to be disabled. (CDS-74710)
+  - Now, in the input set, an `Unsaved changes` link appears when users make changes.
 
 ### Version 1.16.6
 

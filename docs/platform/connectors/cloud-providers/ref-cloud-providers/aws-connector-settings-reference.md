@@ -23,9 +23,12 @@ Consider the following user and access type requirements:
 - **DescribeRegions:** Required for all AWS Cloud Provider connections.
 
 :::important
+
 Amazon requires the Amazon EKS Pod execution role to run pods on the AWS Fargate infrastructure. For more information, go to [Amazon EKS Pod execution IAM role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html) in the AWS documentation.
 
-:::caution
+:::
+
+:::warning
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target or build infrastructure.
 
@@ -59,13 +62,32 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 ## AWS S3 policies and permissions
 
-Several policies are required to read from AWS S3, write to AWS S3, or both read and write to AWS S3.
+Harness requires several policies to [read from AWS S3](#read-from-aws-s3), [write to AWS S3](#write-to-aws-s3), or both [read and write to AWS S3](#read-and-write-to-aws-s3). The policies you need depend on how you plan to use the connector in Harness.
 
-:::tip
+Make sure your policy declarations allow the necessary `Resource` access for the capacity in which you plan to use the connector. Be mindful of object-level and bucket-level access for [Amazon S3 resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html) in your policy declarations.
 
-If you want to use an S3 bucket that is in a separate account than the account used to set up the AWS Cloud Provider, you can grant cross-account bucket access. For more information, go to the AWS documentation on [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html).
+Declarations like `"Resource": "*"` or `"Resource": "arn:aws:s3:::your-s3-bucket"` allow access to bucket-level data that is required for functions like `"Action": "s3:ListBucket"`.
 
-:::
+Declarations like `"Resource": "arn:aws:s3:::bucket-name/*"` limit access to object-level data, such as the contents of the bucket, and prevent access to higher-level data.
+
+You can either use a single expression, like `"Resource": "*"`, or create separate declarations for different actions, for example:
+
+```json
+{
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::your-s3-bucket"
+},
+{
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::your-s3-bucket/*"
+}
+```
 
 ### Read from AWS S3
 
@@ -82,7 +104,7 @@ There are two required policies to read from AWS S3:
 - **Description:** `Provides read-only access to all buckets via the AWS Management Console`
 - **Policy JSON:**
 
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -107,7 +129,7 @@ There are two required policies to read from AWS S3:
 - **Description:** `Harness S3 policy that uses EC2 permissions.`
 - **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -134,7 +156,7 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 - **Description:** `Custom policy for pushing to S3.`
 - **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -157,7 +179,7 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 - **Description:** `Harness S3 policy that uses EC2 permissions.`
 - **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -177,12 +199,17 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 
 You can have a single policy that reads and writes to an S3 bucket.
 
+For more information, go to the following AWS documentation:
+
+- [Allow read and write access to objects in an S3 Bucket](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket.html)
+- [Allow read and write access to objects in an S3 Bucket, programmatically and in the console](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket-console.html).
+
 <details>
-<summary>S3 read and write policy JSON example</summary>
+<summary>JSON example: S3 read and write policy</summary>
 
-Here is a JSON example of a policy that includes AWS console access:
+Here is an example of an S3 read and write policy declaration that includes AWS console access:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -217,10 +244,9 @@ Here is a JSON example of a policy that includes AWS console access:
 
 </details>
 
-For more information, go to the following AWS documentation:
+### Cross-account bucket access
 
-- [Allow read and write access to objects in an S3 Bucket](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket.html)
-- [Allow read and write access to objects in an S3 Bucket, programmatically and in the console](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket-console.html).
+If you want to use an S3 bucket that is in a separate account than the account provided in your [Harness AWS connector settings](#harness-aws-connector-settings), you can grant cross-account bucket access. For more information, go to the AWS documentation on [Bucket Owner Granting Cross-Account Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html).
 
 ## AWS Elastic Container Registry (ECR) policies and permissions
 
@@ -234,7 +260,7 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 - **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
 - **Policy JSON:**
 
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -265,7 +291,7 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 - **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess`
 - **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -306,7 +332,7 @@ The required policies depend on what you are provisioning. Here are some example
 
 This example policy gives full access to create and manage EKS clusters.
 
-```
+```json
 {
      "Version": "2012-10-17",
      "Statement": [
@@ -333,7 +359,7 @@ This example policy gives full access to create and manage EKS clusters.
 
 This example policy gives limited permission to EKS clusters.
 
-```
+```json
  {
      "Version": "2012-10-17",
      "Statement": [
@@ -386,7 +412,7 @@ To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the p
 
 ### Prerequisites
 
-Make sure you've met the following requirements to connect to the EKS cloud connector.
+Make sure your EKS cluster meets the following requirements to connect to the EKS cloud connector:
 
 - The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
   - Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
@@ -441,6 +467,7 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
       // Verify the binary
       aws-iam-authenticator help
       ```
+
 - You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
 
 - You have created the EKS cluster.
@@ -498,14 +525,17 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
 
 ### Sample delegate YAML file
 
+<details>
+<summary>Sample delegate YAML file</summary>
+
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
   name: harness-delegate
-​
+
 ---
-​
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -519,9 +549,9 @@ roleRef:
   kind: ClusterRole
   name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
-​
+
 ---
-​
+
 apiVersion: v1
 kind: Secret
 metadata:
@@ -532,9 +562,9 @@ data:
   # Enter base64 encoded username and password, if needed
   PROXY_USER: ""
   PROXY_PASSWORD: ""
-​
+
 ---
-​
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -746,8 +776,9 @@ spec:
             - name: config-volume
               configMap:
                 name: newdel-upgrader-config
-
 ```
+
+</details>
 
 ### Connecting to EKS
 
@@ -777,22 +808,18 @@ To connect to EKS, do the following:
 A **Provisioner** setting is added and configured as a runtime input.
 
 7. Configure the following fields to connect to a cluster:
-
-:::note
-You can configure these fields to use fixed values, runtime inputs, or expressions. One of these value types is selected by default but you can change the selection. For information about how to configure these value types, go to [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
-:::
-
-    1. In **Connector**, create or select an AWS connector.
-
-    2. (Optional) In **Region**, specify an AWS Region if you want the next field (**Cluster**) to show clusters from only that AWS Region.
-
+   * In **Connector**, create or select an AWS connector.
+   * (Optional) In **Region**, specify an AWS Region if you want the next field (**Cluster**) to show clusters from only that AWS Region. 
       The Cluster field, by default, fetches all the clusters in all the AWS Regions associated with the AWS account. The credentials that the AWS connector uses, on the other hand, might limit the connector to only certain AWS Regions. In such a scenario, specifying the AWS Region ensures that the Cluster field is populated with a usable list of clusters.
+   * In **Cluster**, select the Kubernetes cluster that you want to use.
+   * In **Namespace**, select a namespace to use on the Kubernetes cluster.
+   * In **Release name**, specify a release name.
 
-    3. In **Cluster**, select the Kubernetes cluster that you want to use.
+   :::tip
 
-    4. In **Namespace**, select a namespace to use on the Kubernetes cluster.
+   These fields can use [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
-    5. In **Release name**, specify a release name.
+   :::
 
 8. (Optional) Select **Allow simultaneous deployments on the same infrastructure**.
 
@@ -800,25 +827,25 @@ You can configure these fields to use fixed values, runtime inputs, or expressio
 
 10. Select **Save**.
 
+### Set up EKS Authentication in AWS and Harness
+
+To set up EKS Authentication in AWS and Harness, you need:
+
+* A Harness AWS connector.
+* AWS IAM Authenticator installed via `INIT_SCRIPT` on your EKS cluster's Harness Delegate.
+* An IAM role in your AWS account with the necessary permissions.
+* A Kubernetes Service Account configured in the EKS cluster.
+
+<details>
+<summary>Video: Native EKS authentication support</summary>
+
 Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
 
 <!-- Video:
 https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
 <DocVideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
 
-### FAQ
-
-#### What are the required components to set up the EKS Authentication feature in AWS and Harness?
-
-**In Harness**
-
-1. AWS Connector.
-2. Install AWS IAM Authenticator on the delegate via `INIT_SCRIPT`.
-
-**In AWS**
-
-1. An IAM Role in the AWS account with the correct permissions.
-2. Configure a Kubernetes Service Account in the EKS cluster.
+</details>
 
 ## AWS Serverless Lambda
 
@@ -1096,7 +1123,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 
 </details>
 
-:::caution
+:::warning
 
 Ensure that the AWS IAM roles applied to the credentials you use (the Harness delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service.
 

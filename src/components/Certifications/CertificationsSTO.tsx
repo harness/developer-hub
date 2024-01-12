@@ -188,7 +188,7 @@ export default function CertificationsSTO() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Administrator (BETA)</h2>
+                  <h2>Security Testing Orchestration - Administrator </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Harness Certified Expert - STO Administrator"
@@ -200,7 +200,7 @@ export default function CertificationsSTO() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA)</h3>
+                  <h3>Review Study Guide </h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain STO
                     Engineering projects and the overall Harness Platform. This
@@ -225,7 +225,7 @@ export default function CertificationsSTO() {
 
           {/* Admin Exam Details */}
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA)</h2>
+            <h2 id="exam-details">Exam Details </h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>

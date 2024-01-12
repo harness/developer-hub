@@ -109,6 +109,8 @@ spec:
       targetPort: ## Specify port number
 ```
 
+If the delegate is not able to connect to the created build farm with Istio MTLS STRICT mode, and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+
 ## Create a Kubernetes cluster connector and install the delegate
 
 A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) creates a connection between Harness and your Kubernetes cluster. This connector works through a Harness Delegate that you will install on a pod in your cluster.
@@ -212,7 +214,7 @@ Specify a Kubernetes service account that you want step containers to use when c
 
 Use the **Run as Non-Root** and **Run as User** settings to override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions.
 
-:::caution
+:::warning
 
 Using a non-root user can require other changes to your pipeline.
 

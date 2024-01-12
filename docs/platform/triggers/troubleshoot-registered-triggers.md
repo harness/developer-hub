@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot failed triggers
 description: Troubleshoot failures of your registered triggers in the Harness platform.
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';

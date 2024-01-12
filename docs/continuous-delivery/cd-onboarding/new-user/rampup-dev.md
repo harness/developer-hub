@@ -2,6 +2,8 @@
 title: Developer day to day guide
 description: Daily deployment tasks for devs.
 sidebar_position: 2
+redirect_from:
+  - /docs/continuous-delivery/ramp-up/developer-role/rampup-dev
 ---
 
 This guide is intended to get users in the **Developer role** started with Harness CD.

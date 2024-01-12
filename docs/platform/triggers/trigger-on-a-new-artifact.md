@@ -1,7 +1,7 @@
 ---
 title: Trigger pipelines on a new artifact
 description: Trigger Harness Pipeline deployments in response to a new artifact version being added to a registry.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: c1eskrgngf
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -75,6 +75,13 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
 - Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
 - In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
 - Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
+
+  :::note
+
+  When you link a Docker repository to a trigger, the trigger status will remain `pending` until there are available tags. After the first artifact push, the trigger status changes to `success` because of new tags, but this alone will not activate the pipeline. **The pipeline will only be triggered after a second push to Docker.**
+
+  :::
+  
 - Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact.
 - The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
 - Due to a Docker API limitation, image build numbers/tags are always listed in lexical order. To ensure that executions are triggered with the image pushed last, a best practice is to create build numbers or tags that can be sorted lexically using their creation date. Using this method, higher build numbers are assigned for higher creation dates. This ensures that the image pushed last is used when more than one image is pushed over a short period of time, such as less than 5 minutes.

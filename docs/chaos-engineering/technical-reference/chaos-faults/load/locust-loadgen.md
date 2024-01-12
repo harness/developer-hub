@@ -62,12 +62,12 @@ data:
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Time taken to inject chaos into the target resource (in seconds). </td>
-            <td> Defaults to 60s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos. </a></td>
+            <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Defaults to 60s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults/#chaos-interval"> chaos interval.</a></td>
+            <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> USERS </td>

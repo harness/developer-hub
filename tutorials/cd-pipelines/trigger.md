@@ -38,7 +38,7 @@ Verify the following:
 1. Log in to your Harness instance.
 2. Select **Projects**, and then select **Default Project**.
 
-   :::caution
+   :::warning
 
    For the pipeline to run successfully, you must follow all of the following steps as they are, including the naming conventions.
 

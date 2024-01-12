@@ -2,9 +2,9 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-12-03T10:00
+date: 2023-12-21T10:00
 tags: [NextGen, "security testing orchestration"]
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,6 +22,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+
+
+## January 2024 
+
+### January 11 runner update
+
+<!-- 2024-01-11 -->
+
+#### Feature enhancements
+
+- You can now scan .exe and .net files using the OWASP scan step. (STO-6852, ZD-55558)
+
+- OWASP scans now display the package name and version for all issues. (STO-6725)
 
 ## December 2023 
 

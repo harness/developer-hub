@@ -65,7 +65,7 @@ You can use Group By and filters together. For example, your filter could select
 
 ![](./static/use-ccm-cost-categories-08.png)
 
-:::caution
+:::warning
 When including multiple cost categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with overlapping rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple cost category filter in a Perspective. However, if you must add a multiple cost category filter, avoid overlapping shared cost buckets between cost categories to prevent any potential errors.
 :::
 

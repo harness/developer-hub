@@ -255,7 +255,7 @@ Here's an example:
     name: build_push_test_image
     identifier: build_push_test_image
     spec:
-    connectorRef: mydockerhubconnector
+    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
     tags:
       - <+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE
@@ -410,7 +410,7 @@ Here's an example:
     name: build_push_test_image
     identifier: BuildAndPushDockerRegistry_1
     spec:
-    connectorRef: mydockerhubconnector
+    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
     tags:
       - <+sequenceID>
@@ -421,17 +421,19 @@ Here's an example:
 
 ## YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+
 ```yaml
 pipeline:
-  name: v3-sto-ci-tutorial-test
-  identifier: v3stocitutorialtest
-  projectIdentifier: mystosandbox
-  orgIdentifier: default
+  name: sto-ci-tutorial-test
+  identifier: stocitutorialtest
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: mygithubconnector
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: <+input>
         build: <+input>
   stages:
@@ -469,7 +471,7 @@ pipeline:
                   name: build_push_test_image
                   identifier: build_push_test_image
                   spec:
-                    connectorRef: dbothwelldockerhubhc
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
@@ -492,7 +494,7 @@ pipeline:
                       type: docker_v2
                       name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                       domain: docker.io
-                      access_token: <+secrets.getValue("mydockerhubpat")
+                      access_token: <+secrets.getValue("YOUR_IMAGE_REGISTRY_ACCESS_TOKEN")
                       tag: <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
                     sbom:
                       format: spdx-json
@@ -501,7 +503,7 @@ pipeline:
                   name: build_push_prod_image
                   identifier: build_push_prod_image
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>

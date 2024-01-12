@@ -121,7 +121,7 @@ Listed below is the probe schema for the command probe with properties shared ac
   </tr>
   <tr>
    <td>inheritInputs</td>
-   <td>Flag for inheriting experiment pod attributes such as ENV, volumes, and volumeMounts into the probe pod   </td>
+   <td>Flag for inheriting experiment pod attributes such as ENV, volumes, and volumeMount into the probe pod   </td>
    <td>Optional   </td>
    <td><code>true, false</code>   </td>
    <td>Default is <code>false</code> i.e. the experiment pod attributes won't be inherited by the probe pod by default   </td>
@@ -149,14 +149,7 @@ Listed below is the probe schema for the command probe with properties shared ac
   </tr>
   <tr>
    <td>annotations   </td>
-   <td>Annotations for the source probe pod   </td>
-   <td>Optional   </td>
-   <td><code>type: string</code>   </td>
-   <td>Annotations to be added to the source probe pod   </td>
-  </tr>
-  <tr>
-   <td>annotations   </td>
-   <td>Annotations for the source probe pod   </td>  
+   <td>Annotations for the source probe pod </td>
    <td>Optional   </td>
    <td><code>type: string</code>   </td>
    <td>Annotations to be added to the source probe pod   </td>
@@ -190,13 +183,6 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>Key-Value label(s) of the node(s) to be used for deploying the source probe pod   </td>
   </tr>
   <tr>
-   <td>volume   </td>
-   <td>Volumes to be mounted to the source probe pod   </td>
-   <td>Optional   </td>
-   <td>N/A   </td>
-   <td>Depending on the type of the volume, additional properties need to be provided   </td>
-  </tr>
-  <tr>
    <td>volumes   </td>
    <td>Volumes to be mounted to the source probe pod   </td>
    <td>Optional   </td>
@@ -204,7 +190,7 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>Depending on the type of the volume, additional properties need to be provided   </td>
   </tr>
   <tr>
-   <td>volumesMount   </td>
+   <td>volumeMount   </td>
    <td>Volume mount paths for the corresponding source pod volumes   </td>
    <td>Optional   </td>
    <td><code>type: string</code>   </td>
@@ -440,6 +426,17 @@ spec:
             imagePullPolicy: Always
             privileged: true
             hostNetwork: false
+            # using secrets and environment variables
+            env:
+            - name: name
+              value: test
+            volumes:
+            - name: volume-secret
+              secrets:
+              - name: vm-credentials
+            volumeMount:
+            - name: volume-secret
+              mountPath: /etc/volume-secret
         mode: "Edge"
         runProperties:
           probeTimeout: 5s

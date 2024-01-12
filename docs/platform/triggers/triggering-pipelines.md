@@ -1,7 +1,7 @@
 ---
 title: Trigger pipelines using Git events
 description: Trigger pipelines in response to Git events.
-sidebar_position: 4
+sidebar_position: 5
 helpdocs_topic_id: hndnde8usz
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -52,7 +52,7 @@ These steps assume you're familiar with [creating CD pipelines](/docs/continuous
 
 ### Configure the trigger
 
-:::caution
+:::warning
 
 All triggers in a Harness account have the same URL: `https://app.harness.io/gateway/ng/api/webhook?accountIdentifier=ACCOUNT_ID`. This means that you must set up your trigger conditions carefully to ensure that triggers start pipelines for relevant events only.
 
@@ -62,7 +62,7 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
 2. **Payload Type** is automatically populated based on the selected SCM provider.
 3. For **Connector**, select a [code repo connector](/docs/category/code-repo-connectors) for your SCM provider.
 
-   - A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
+   - A connector is required for all Git trigger types except **Custom** and **Harness Code**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
    - For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 
 4. For **Event**, select a [Git event type](./triggers-reference.md#event-and-actions), and, if required, select one or more **Actions**.
@@ -72,7 +72,7 @@ For details on trigger settings, go to the [Triggers reference](./triggers-refer
 
 #### Code repo connector permissions for webhook triggers
 
-Git event webhook triggers require specific permissions:
+Git event webhook triggers require specific permissions in the connector:
 
 - The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
 - The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.

@@ -67,3 +67,9 @@ Following are the key fields that you must update:
 The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
+
+## Failed to register 
+
+If after registering an entity your're unable to find the same in your catalog. Please check in the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab wait for few mins it will get registered and if it's under the **Failed** tab try re-registering the entitiy. 
+
+![](./static/devtools.png)

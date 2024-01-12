@@ -247,7 +247,7 @@ In the following YAML example, step `alpha` exports an output variable called `m
 
 </details>
 
-:::caution
+:::warning
 
 If an output variable value contains a secret, be aware that the secret will be visible in the following areas of the pipeline execution:
 

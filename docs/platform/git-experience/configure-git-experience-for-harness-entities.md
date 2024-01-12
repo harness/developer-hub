@@ -239,7 +239,7 @@ Harness loads your pipeline depending on where you saved your remote pipeline.
 - If you saved your pipeline on a non-default branch, Harness uses the metadata of this pipeline to load it from the non-default branch.
 - If you saved your pipeline in a branch that is no longer available, Harness throws an error. You must select a branch to load your pipeline in this case.
 
-:::caution
+:::warning
 Harness fetches your pipeline details from the default branch if you created your remote pipeline before version 77808. Select the corresponding branch and proceed to load a pipeline residing in a branch other than the default branch.
 
 :::
