@@ -21,20 +21,20 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 ### <a href="#phase-1"> Phase 1: Initial setup</a>
 
-| **Step**                                           | **Details**                                                                | **Demo video** |
-| -------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
-| <a href="#phase1-step-1">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility |                |
-| <a href="#phase1-step-2">Configure RBAC</a>        | Configure access control to restrict access                                |                |
-| <a href="#phase1-step-3">Configure SSO</a>         | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                |
+| **Step**                                                          | **Details**                                                                | **Demo video** |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
+| <a href="#step-1-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility |                |
+| <a href="#step-2-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                |
+| <a href="#step-3-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                |
 
 ### <a href="#phase-2"> Phase 2: Cost reporting</a>
 
-| **Step**                                                     | **Details**                                                               | **Demo video** |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------- | -------------- |
-| <a href="#phase2-step-1">Explore cost using perspectives</a> | A perspective can be used to visualize data from multiple cloud providers |                |
-| <a href="#phase2-step-2">Explore cost using dashboards</a>   | Explore cost data using powerful BI dashboard                             |                |
-| <a href="#phase2-step-3">Root cost analysis</a>              | Understand detailed breakdown of cloud spend                              |                |
-| <a href="#phase2-step-4">Cost anomalies</a>                  | Protect from anomalous spend                                              |                |
+| **Step**                                                                              | **Details**                                                               | **Demo video** |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------- |
+| <a href="#step-1-explore-cost-using-perspectives">Explore cost using perspectives</a> | A perspective can be used to visualize data from multiple cloud providers |                |
+| <a href="#step-2-explore-cost-using-dashboards">Explore cost using dashboards</a>     | Explore cost data using powerful BI dashboard                             |                |
+| <a href="#step-3-performing-root-cost-analysis">Root cost analysis</a>                | Understand detailed breakdown of cloud spend                              |                |
+| <a href="#step-4-cost-anomalies">Cost anomalies</a>                                   | Protect from anomalous spend                                              |                |
 
 ### <a href="#phase-3"> Phase 3: Cost optimization</a>
 
