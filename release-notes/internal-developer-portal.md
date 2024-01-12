@@ -47,9 +47,13 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 - Enhanced the custom project picker to increase the hard limit of 50. 
 
-- Added support for regex in file name input in Scorecards. 
+- Added support for regex in file name input in Scorecards.
 
 ![](./static/checks-idp.png)
+
+- We now have a new intuitive Plugins Page.
+
+![](./static/new-plugin-page.png)
 
 ## December 2023
 
