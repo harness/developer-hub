@@ -230,7 +230,7 @@ To create a new Harness text or file secret in Azure Key Vault, do the following
 Select **Inline Secret Value** or **Reference Secret**:
 
 - **Inline Secret Value:** Enter the value for the encrypted text. For Azure Key Vault, you can set an expiry date in **Expires on**.
-- **Reference Secret:** Enter the _name_ of the existing secret in your **Azure Key Vault**, and then select **Test** to test the reference path. You can also specify the secret's version (for example: `azureSecret/05`.
+- **Reference Secret:** Enter the _name_ of the existing secret in your **Azure Key Vault**, and then select **Test** to test the reference path. You can also specify the secret's version (for example: `azureSecret/05`).
 
 For details on text secrets, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
 
