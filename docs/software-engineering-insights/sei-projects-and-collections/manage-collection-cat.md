@@ -6,7 +6,7 @@ sidebar_position: 30
 
 Collection categories are broad classifications that serve as containers for [Collections](./manage-collections.md) but are not, themselves, Collections. For example, **Teams** is an Collection category; whereas **Engineering Team** and **Docs Team** are Collections under the **Teams** category.
 
-Each [Harness project](/docs/category/organizations-and-projects) has three default Collection categories: Teams, Projects, and Sprints. You can modify the default categories and create custom categories.
+Each [Harness project](/docs/category/organizations-and-projects) has two default Collection categories: Teams and Sprints. You can modify the default categories and create custom categories.
 
 :::info Harness projects and Collection projects
 

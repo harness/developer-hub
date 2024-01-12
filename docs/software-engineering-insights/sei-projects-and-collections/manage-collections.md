@@ -20,7 +20,7 @@ Inheritance flows down the Collection levels. For example, Collection categories
 
 ## View Collections
 
-In your Harness project, go to the SEI module, select **Account**, and then select **Collection Setup** under **Data Settings**.
+In your Harness project, go to the SEI module, select your **Project**, and then select **Collections**.
 
 <!-- image: where to find Collections list -->
 
