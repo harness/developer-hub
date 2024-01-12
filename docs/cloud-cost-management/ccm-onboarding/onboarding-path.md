@@ -1,5 +1,5 @@
 ---
-title: CCM onboarding path
+title: CCM onboarding guide
 description: Ramp up on Harness CCM
 sidebar_position: 1
 ---
@@ -19,7 +19,49 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 :::
 
-### <a href="#phase-1-initial-setup"> Phase 1: Initial setup</a>
+### <a href="#phase-1"> Phase 1: Initial setup</a>
+
+| **Step**                                           | **Details**                                                                | **Demo video** |
+| -------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
+| <a href="#phase1-step-1">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility |                |
+| <a href="#phase1-step-2">Configure RBAC</a>        | Configure access control to restrict access                                |                |
+| <a href="#phase1-step-3">Configure SSO</a>         | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                |
+
+### <a href="#phase-2"> Phase 2: Cost reporting</a>
+
+| **Step**                                                     | **Details**                                                               | **Demo video** |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------- | -------------- |
+| <a href="#phase2-step-1">Explore cost using perspectives</a> | A perspective can be used to visualize data from multiple cloud providers |                |
+| <a href="#phase2-step-2">Explore cost using dashboards</a>   | Explore cost data using powerful BI dashboard                             |                |
+| <a href="#phase2-step-3">Root cost analysis</a>              | Understand detailed breakdown of cloud spend                              |                |
+| <a href="#phase2-step-4">Cost anomalies</a>                  | Protect from anomalous spend                                              |                |
+
+### <a href="#phase-3"> Phase 3: Cost optimization</a>
+
+| **Step**                                                                      | **Details**                                                                                              | **Demo video** |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------- |
+| <a href="#phase3-step-1">Recommendations</a>                                  | Explore right sizing recommendations for node pools and other resource types                             |                |
+| <a href="#phase3-step-2">AutoStopping - Stop resources when they are idle</a> | Create AutoStopping rules to stop resources (VMs, k8s workloads, ECS tasks etc) when they are not in use |                |
+
+### <a href="#phase-4"> Phase 4: Cost governance</a>
+
+| **Step**                                      | **Details**                                                                                                                          | **Demo video** |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
+| <a href="#phase4-step-1">Setup budgets</a>    | Setting up a cloud budget is crucial to control costs, prevent overspending, and maintain financial transparency in cloud operations |                |
+| <a href="#phase4-step-2">Asset governance</a> | Powerful governance based on cloud custodian policies                                                                                |                |
+
+
+### <a href="#phase-5"> Phase 5: Automation</a>
+
+| **Step**                                        | **Details**                                 | **Demo video** |
+| ----------------------------------------------- | ------------------------------------------- | -------------- |
+| <a href="#phase5-step-1">Terraform provider</a> | Manage CCM entities using Terraform         |                |
+| <a href="#phase5-step-2">CCM APIs</a>           | Integrate with CCM APIs to extend the usage |                |
+
+
+## Phase 1: Initial setup
+
+### Step 1. Setup cost visibility
 
 First step in setting up Harness CCM is to create the cloud connector for respective cloud providers. A cloud connector is the configuration details which Harness uses to access the cloud provider APIs. At first, CCM will have the readonly permissions to access the cost data from the cloud providers.
 
@@ -32,9 +74,19 @@ Connector setup varies based on the cloud provider.
 
 After the connectors are created, it will take atleast 24hrs for the cost data to be visible in CCM.
 
-### <a href="#phase-2-deploy-to-qa"> Phase 2: Cost reporting </a>
+### Step 2. Configure RBAC
 
-#### Explore cost using perspectives
+CCM provides various set of RBAC permissions to control access to various entities. For more information go to [CCM Roles and Permissions](docs/cloud-cost-management/access-control/ccm-roles-and-permissions.md).
+
+### Step 3. Configure SSO
+
+Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. The user can choose between a variety of SSO integrations according to their needs.
+
+For more information, go to [Authentication](docs/platform/authentication/authentication-overview.md).
+
+## Phase 2: Cost reporting
+
+### Step 1. Explore cost using perspectives
 
 A perspective can be used to visualize data from multiple cloud providers. 
 
@@ -43,7 +95,7 @@ CCM generates default perspectives based on cloud connectors, allowing users to 
 For more information, go to [Create perspectives](docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 
-#### Explore cost using dashboards
+### Step 2. Explore cost using dashboards
 
 CCM leverages comprehensive BI dashboards, offering powerful capabilities. While both perspectives and dashboards enable exploration of cost data similarly, dashboards leverage a complete Business Intelligence platform for advanced scenarios. CCM utilizes Google's Looker to empower its dashboards, enabling diverse data visualizations and report creation.
 
@@ -52,8 +104,7 @@ Furthermore, dashboards facilitate common use cases such as scheduled report del
 For more information, go to [Create Dashboards](docs/cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/access-ccm-dashboards.md)
 
 
-#### Performing root cost analysis
-
+### Step 3. Performing root cost analysis
 
 In the realm of cloud computing, root cost analysis takes on a crucial role in understanding and optimizing the expenses associated with utilizing cloud services. Cloud computing offers scalability, flexibility, and cost-effectiveness, but without proper management, it can lead to unexpected expenses. Root cost analysis in this context involves dissecting the various components contributing to the overall cloud expenditure, including compute, storage, network usage, data transfer, and additional services like databases or specialized tools.
 
@@ -62,7 +113,7 @@ By conducting root cost analysis in cloud computing, businesses can gain insight
 For more information, go to [Root cost analysis](docs/cloud-cost-management/3-use-ccm-cost-reporting/3-root-cost-analysis/perform-root-cost-analysis.md)
 
 
-#### Cost anomalies
+### Step 4. Cost anomalies
 
 Detecting strange spending patterns in cloud computing is really important. It helps save money by spotting where resources are wasted and stops budgets from being used up unexpectedly. It also helps prevent security problems by catching unusual activities early, like someone getting into an account they shouldn't. Finding these odd spending habits also helps make sure everything runs smoothly, avoids wasting resources, and lets companies follow the rules about data security and money management. Overall, keeping an eye on weird spending in the cloud is key for saving money, staying secure, and running things efficiently.
 
