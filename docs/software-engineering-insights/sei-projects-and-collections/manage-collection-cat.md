@@ -8,12 +8,6 @@ Collection categories are broad classifications that serve as containers for [Co
 
 Each [Harness project](/docs/category/organizations-and-projects) has two default Collection categories: Teams and Sprints. You can modify the default categories and create custom categories.
 
-:::info Harness projects and Collection projects
-
-The **Projects** Collection category is not the same as your Harness projects. This category is meant to represent sub-projects under the umbrella of the Harness Project. For example, if your Harness projects align with apps that you develop, your sub-projects could be epics, components, or Jira projects.
-
-:::
-
 For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./manage-collection-cat.md).
 
 ## View, edit, and enable/disable Collection categories
