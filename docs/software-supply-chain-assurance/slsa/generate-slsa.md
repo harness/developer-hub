@@ -35,7 +35,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 <!-- ![](./static/slsa-build-stage-settings.png) -->
 
-<docimage path={require('./static/slsa-build-stage-settings.png')} />
+<DocImage path={require('./static/slsa-build-stage-settings.png')} />
 
 :::info
 

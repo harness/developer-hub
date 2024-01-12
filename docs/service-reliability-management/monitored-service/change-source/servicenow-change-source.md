@@ -36,7 +36,7 @@ To add ServiceNow as a change source to a monitored service, do the following:
 6.  Select **Submit**.  
     The custom incident change source is added to the monitored service. A webhook URL and cURL commands are generated.
 
-    <docimage path={require('./static/add-servicenow-change-source.png')} />
+    <DocImage path={require('./static/add-servicenow-change-source.png')} />
 
 
 ## Copy webhook URL
@@ -90,7 +90,7 @@ A business rule is essential to define trigger conditions and configure the Harn
 1. In your ServiceNow account, navigate to **System Definition** > **Business Rules**, and then select **New**.  
    The settings page appears.
 
-   <docimage path={require('./static/servicenow-business-rule.png')} />
+   <DocImage path={require('./static/servicenow-business-rule.png')} />
    
 2. In the **When to run** tab, set the conditions for the business rule. Ensure it includes the following conditions:
    
@@ -101,7 +101,7 @@ A business rule is essential to define trigger conditions and configure the Harn
    - **Conditions**: Define the conditions that must be met for the rule to execute.
   
 3. In the **Advanced** tab, write a script to configure the webhook URL that you [copied in Harness SRM](#copy-webhook-url). Below is a sample script that you can modify according to your specific requirements:
-      
+
 <details>
 <summary><b>Expand to view the sample script for the ServiceNow business rule.</b></summary>
 
@@ -181,7 +181,7 @@ When a ServiceNow incident is triggered, it generates a change event in the Harn
    - **Changes Section**: Lists the ServiceNow incident along with other change incidents. 
  
 
- <docimage path={require('./static/change-impact-view-servicenow-incident.png')} />
+ <DocImage path={require('./static/change-impact-view-servicenow-incident.png')} />
 
 
 ### View ServiceNow incident Change card
@@ -202,5 +202,5 @@ When a ServiceNow incident is triggered, it generates a change event in the Harn
       
    - Incident Link: A link that navigates you directly to the incident page in your ServiceNow account for more detailed information.
 
-<docimage path={require('./static/servicenow-change-card.png')} />
+<DocImage path={require('./static/servicenow-change-card.png')} />
 

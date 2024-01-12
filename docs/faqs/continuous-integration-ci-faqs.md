@@ -36,7 +36,7 @@ When configuring permissions for a GitHub personal access token (PAT) that you'l
 
 ![](./static/continuous-integration-ci-faqs-20.png)
 
-:::caution
+:::warning
 
 When you enable API authentication in a GitHub connector (recommended), use the same personal access token for both [Authentication](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token) and [API authentication](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
 

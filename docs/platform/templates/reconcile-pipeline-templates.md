@@ -4,9 +4,9 @@ description: This topic explains how to reconcile pipeline template changes in H
 sidebar_position: 15
 ---
 
-APIs detect changes in Harness pipeline templates that require reconciliation. This topic explains how to view referenced entity changes detected in your pipeline templates and reconcile them.
+Harness detects updates made to referenced entities if those updates are made outside of Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline.
 
-For example, let's say you have a pipeline template with an environment in a CD stage. You must reconcile the change if you update the environment via the **Environment** tab and not via the **Pipeline Studio** in the UI.
+For example, consider that a CD stage in a pipeline references an environment. If you update the environment on the Environment tab and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
 
 ## How Harness detects changes
 
@@ -25,6 +25,18 @@ Harness fetches the response of the validation event from the Get Pipeline valid
 Harness calls the refreshed YAML API `POST https://app.harness.io/template/api/refresh-template/refreshed-yaml` when you select the **Reconcile** option in the **Pipeline Studio**. This API gets the latest pipeline YAML. Harness shows the differences between the original and the refreshed YAML in the UI on the Template Error Inspection page.
 
 ![](./static/template-error-inspection.png)
+
+## What changes are shown
+
+When reconciling a pipeline, Harness shows you the diff between the current YAML configuration and the updated YAML configuration. 
+
+The diff shows only those changes that involve runtime inputs. The following list illustrates the updates that Harness highlights in the diff:
+
+- A field requiring a runtime input was added. This includes scenarios in which the referenced entity was updated to reference another entity, and this change introduced runtime inputs to the configuration (for example, a referenced service was updated to use an artifact source template, and the source template requires runtime inputs). 
+
+  The converse is true: a field requiring a runtime input is removed, either directly or by the removal of a referenced entity such as the artifact source template in the previous example.
+
+- A field's value type was changed from a fixed value or expression to a runtime input, or from a runtime input to a fixed value or expression.
 
 ## Resolve conflicts in the pipeline YAML
 

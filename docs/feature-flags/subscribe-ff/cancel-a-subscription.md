@@ -7,9 +7,9 @@ helpdocs_category_id: hdxts68dvo
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import cancel_sub from './static/9-cancel-a-subscription-06.png'
-```
+
 
 To cancel your subscription: 
 
@@ -23,7 +23,7 @@ To cancel your subscription:
 	* **Priority**: Select **Priority:Normal**.
 4. Click **Send Feedback.**
 
-	```mdx-code-block
+	
 	<img src={cancel_sub} alt="An example of the feedback form requesting cancellation." height="400" width="500" />
-	```
+	
 

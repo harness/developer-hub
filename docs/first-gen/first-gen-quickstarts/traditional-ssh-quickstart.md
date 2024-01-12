@@ -105,7 +105,7 @@ For this tutorial, we'll use a Todo List app artifact, todolist.war, available i
   
 	 * **Type:** Select **Artifactory**.
 	 * **Display Name:** Enter **Artifactory Public**.
-	 * **Artifactory URL**: Enter **https://harness.jfrog.io/artifactory**.
+	 * **Artifactory URL**: Enter `https://harness.jfrog.io/artifactory`.
 	 * **Username/****Select Encrypted Password****:** Leave these settings empty. 
 	 
 3. Click **Test** and then **Submit**. If the test fails, that means the Delegate can't connect to https://harness.jfrog.io/harness. Make sure that the EC2 instance hosting the Delegate can make outbound connections to https://harness.jfrog.io/harness.

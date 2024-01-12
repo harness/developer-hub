@@ -20,8 +20,7 @@ This topic summarizes how to:
 
 ## Video summary of Kustomize deployments
 
-
-<docvideo src="https://youtu.be/NQUWw7V520I" />
+<DocVideo src="https://youtu.be/NQUWw7V520I" />
 
 ## Set up your Kubernetes cluster for Kustomize
 
@@ -101,7 +100,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
      - In **Personal Access Token**, click **Create or Select a Secret**.
      - Click **New Secret Text**.
      - In **Secret Name**, enter a name for the secret like **github-pat**.
-     - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+     - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      - Ensure you PAT has the **repo** scope selected:
 
        ![](static/repoScope.png)
@@ -112,60 +111,60 @@ All connections and operations are performed by Harness Delegates. So we'll also
 
    Expand the section below to learn more about installing delegates.
 
-   <details>
-   <summary>Install a new delegate</summary>
+<details>
+<summary>Install a new delegate</summary>
 
-   1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
-   2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
-   3. In **Install your Delegate**, select **Kubernetes Manifest**.
-   4. Enter a delegate name.
-      - Delegate names must be unique within a namespace and should be unique in your cluster.
-      - A valid name includes only lowercase letters and does not start or end with a number.
-      - The dash character (“-”) can be used as a separator between letters.
-   5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+1.  In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
+2.  In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
+3.  In **Install your Delegate**, select **Kubernetes Manifest**.
+4.  Enter a delegate name.
+    - Delegate names must be unique within a namespace and should be unique in your cluster.
+    - A valid name includes only lowercase letters and does not start or end with a number.
+    - The dash character (“-”) can be used as a separator between letters.
+5.  At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
 
-   `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
+`curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
-   1. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+1.  Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
 
-   | **Value**                   | **Description**                                                                                                                                                                                                                                                                                                                      |
-   | :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `PUT_YOUR_DELEGATE_NAME`    | Name of the delegate.                                                                                                                                                                                                                                                                                                                |
-   | `PUT_YOUR_ACCOUNT_ID`       | Harness account ID.                                                                                                                                                                                                                                                                                                                  |
-   | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints.                                                                                                                                                                                                                                                      |
-   | `PUT_YOUR_DELEGATE_TOKEN`   | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+| **Value**                   | **Description**                                                                                                                                                                                                                                                                                                                      |
+| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PUT_YOUR_DELEGATE_NAME`    | Name of the delegate.                                                                                                                                                                                                                                                                                                                |
+| `PUT_YOUR_ACCOUNT_ID`       | Harness account ID.                                                                                                                                                                                                                                                                                                                  |
+| `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints.                                                                                                                                                                                                                                                      |
+| `PUT_YOUR_DELEGATE_TOKEN`   | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
 
-   Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
+Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
 
-   | **Harness cluster location** | **Harness Manager endpoint**  |
-   | :--------------------------- | :---------------------------- |
-   | SaaS prod-1                  | https://app.harness.io        |
-   | SaaS prod-2                  | https://app.harness.io/gratis |
-   | SaaS prod-3                  | https://app3.harness.io       |
+| **Harness cluster location** | **Harness Manager endpoint**  |
+| :--------------------------- | :---------------------------- |
+| SaaS prod-1                  | https://app.harness.io        |
+| SaaS prod-2                  | https://app.harness.io/gratis |
+| SaaS prod-3                  | https://app3.harness.io       |
 
-   1. Install the delegate by running the following command:
+1.  Install the delegate by running the following command:
 
-   `kubectl apply -f harness-delegate.yaml`
+`kubectl apply -f harness-delegate.yaml`
 
-   The successful output looks like this.
+The successful output looks like this.
 
-   ```
-   namespace/harness-delegate-ng unchanged
-   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
-   secret/cd-doc-delegate-account-token created
-   deployment.apps/cd-doc-delegate created
-   service/delegate-service configured
-   role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
-   rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
-   serviceaccount/upgrader-cronjob-sa unchanged
-   secret/cd-doc-delegate-upgrader-token created
-   configmap/cd-doc-delegate-upgrader-config created
-   cronjob.batch/cd-doc-delegate-upgrader-job created
-   ```
+```
+namespace/harness-delegate-ng unchanged
+clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
+secret/cd-doc-delegate-account-token created
+deployment.apps/cd-doc-delegate created
+service/delegate-service configured
+role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
+rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
+serviceaccount/upgrader-cronjob-sa unchanged
+secret/cd-doc-delegate-upgrader-token created
+configmap/cd-doc-delegate-upgrader-config created
+cronjob.batch/cd-doc-delegate-upgrader-job created
+```
 
-   1. Select **Verify** to make sure that the delegate is installed properly.
+1.  Select **Verify** to make sure that the delegate is installed properly.
 
-   </details>
+</details>
 
 9. Back in **Set Up Delegates**, you can select the new Delegate.
    In the list of Delegates, you can see your new Delegate and its tags.

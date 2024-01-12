@@ -14,18 +14,18 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 ## Before you begin
 
-* [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
-* [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
-* The [Helm charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
+- [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
+- [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
+- The [Helm charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
 
 ## Important notes
 
-* Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
-* Helm 2 was deprecated by the Helm community in November 2020 and is no longer supported by Helm. If you continue to maintain the Helm 2 binary on your delegate, it might introduce high and critical vulnerabilities and put your infrastructure at risk.
-  
+- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
+- Helm 2 was deprecated by the Helm community in November 2020 and is no longer supported by Helm. If you continue to maintain the Helm 2 binary on your delegate, it might introduce high and critical vulnerabilities and put your infrastructure at risk.
+
   To safeguard your operations and protect against potential security vulnerabilities, Harness will launch an update to deprecate the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`) on **July 30, 2023**. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
-  If your delegate is set to auto-upgrade, Harness will automatically remove the binary from your delegate. This will result in pipeline and workflow failures for services deployed via Helm 2. 
+  If your delegate is set to auto-upgrade, Harness will automatically remove the binary from your delegate. This will result in pipeline and workflow failures for services deployed via Helm 2.
 
   :::info note
   If your development team still uses Helm 2, you can reintroduce the binary on the delegate. Harness is not responsible for any vulnerabilities or risks that might result from reintroducing the Helm 2 binary.
@@ -45,16 +45,18 @@ See [Supported Platforms and Technologies](/docs/get-started/supported-platforms
 
 ## Commands used by Harness to perform a Helm Chart Deployment managed by Harness
 
-When using the Harness-managed Helm Chart Deployment approach, Harness uses a mix of `helm` and `kubectl` commands to perform the deployment. 
+When using the Harness-managed Helm Chart Deployment approach, Harness uses a mix of `helm` and `kubectl` commands to perform the deployment.
 
 1. The command we run to perform **Fetch Files**, depends on the store type Git or Helm Repo.
 
 For Git:
+
 ```
 git clone {{YOUR GIT REPO}}
 ```
 
 For Helm Repo:
+
 ```
 helm pull {{YOUR HELM REPO}}
 ```
@@ -71,7 +73,7 @@ helm template release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-dele
 kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
 ```
 
-4. Harness will then run the `kubectl apply`  command to apply the manifest files to the Kubernetes clusters.
+4. Harness will then run the `kubectl apply` command to apply the manifest files to the Kubernetes clusters.
 
 ```
 kubectl --kubeconfig=config apply --filename=manifests.yaml
@@ -89,38 +91,70 @@ kubectl --kubeconfig=config describe --filename=manifests.yaml
 kubectl --kubeconfig=config rollout undo Deployment/test-deploy --namespace=default --to-revision=1
 ```
 
- 
 ## ChartMuseum binaries
 
 Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
-* **ChartMuseum binary v0.8.2:** the default ChartMuseum binary used by Harness is v0.8.2.
-* **ChartMuseum binary v0.12.0:** to use ChartMuseum binary v0.12.0 you must enable the feature flag `USE_LATEST_CHARTMUSEUM_VERSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+- **ChartMuseum binary v0.8.2:** the default ChartMuseum binary used by Harness is v0.8.2.
+- **ChartMuseum binary v0.12.0:** to use ChartMuseum binary v0.12.0 you must enable the feature flag `USE_LATEST_CHARTMUSEUM_VERSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 ## Helm OCI Chart Registry Support
 
-Harness supports the following Helm OCI chart registries:
-  - Amazon ECR
-  - Azure Container Registry
-  - DockerHub
-  - JFrog Artifactory
-  - Google Artifact Registry
+To use a Helm OCI chart registry, do the following.
 
-Helm OCI chart support includes the following deployment types:
+1. In Specify Helm Chart Store, select **OCI Helm**.
+2. In **Select Connection Type**, select **Direct Connection** or **Cloud Provider**.
+3. Provide the connection information for the connectio type, described below.
 
-- Native Helm
-- Helm charts with Kubernetes deployments.
+### Direct Connection
 
-Harness OCI chart registry support details:
+The **Direct Connection** option uses the Harness OCI Helm Registry connector which requires following authentication settings:
 
-- You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
-- Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
-- You can define expressions for the **Chart Name** and **Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+- OCI URL
+- Username (For Auth with Creds)
+- Password (For Auth with Creds)
+
+Harness supports the following Helm OCI chart registries in **Direct Connection**:
+
+- Amazon ECR
+- Azure Container Registry
+- DockerHub
+- JFrog Artifactory
+- Google Artifact Registry
+
+### Cloud Provider
+
+Harness supports ECR only via the **Cloud Provider** option. 
+
+Cloud Provider is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. This option uses an AWS connector. The credentials for this connector generate the authentication token used to access the ECR registry.
+
+The Cloud Provider option does not depend on OCI, but uses the official ECR APIs to fetch the chart and chart version. The OCI URL is not required.
+
+Harness supports all the AWS authentication types to fetch the Helm chart from ECR. 
+
+For steps on configuring the AWS connector, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/). For the required AWS policies, go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions).
+
+### Manifest details for ECR
+
+After you select the **Cloud Provider** option, you can configure the manifest details for fetching the chart from ECR:
+
+1. In **Manifest Identifier**, enter a unique identify for the manifest.
+2. In **Base Path**, enter the path to the chart folder. The default is `/`.
+3. In **Chart Name**, enter the ECR repository name.
+4. In **Region**, enter the AWS region of the ECR repository.
+5. In **Registry Id**, enter the AWS account Id.
+6. In **Chart Version**, enter the version number. This option only works when **Chart Name** and **Region** are configured.
 
 ### Important notes
 
-- You cannot be trigger pipelines using the On New Manifest trigger if your service uses the OCI Helm connector. 
-
+- Helm OCI chart support includes the following deployment types:
+  - Native Helm
+  - Helm charts with Kubernetes deployments.
+- Harness OCI chart registry support details:
+  - You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
+  - Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
+- You can define expressions for the **Chart Name** and **Base Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+  - You cannot trigger pipelines using the **On New Manifest** trigger if your service uses the OCI Helm connector.
 
 ## Visual summary
 
@@ -128,8 +162,7 @@ Here's a quick video showing you how to add different types of manifests. It als
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
-<docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
-
+<DocVideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 
 ## Artifacts and Helm charts
 
@@ -140,13 +173,12 @@ Harness supports image artifacts with Helm charts in the following ways.
 
 The image artifact is identified in the Helm chart values.yaml file. For example:
 
-
 ```yaml
-...  
-containers:  
-  - name: nginx  
-    image: docker.io/bitnami/nginx:1.21.1-debian-10-r0  
-...
+
+---
+containers:
+  - name: nginx
+    image: docker.io/bitnami/nginx:1.21.1-debian-10-r0
 ```
 
 If the image is hardcoded then you do not use the **Artifacts** section of the service. Any artifacts added here are ignored.
@@ -159,13 +191,12 @@ You add an image artifact to the **Artifacts** section of the service and then r
 
 Artifacts in the **Artifacts** section are referenced using the `<+artifact.image>` expression. For example:
 
-
 ```yaml
-...  
-image: <+artifact.image>  
-pullPolicy: IfNotPresent  
-dockercfg: <+artifact.imagePullSecret>  
-...
+
+---
+image: <+artifact.image>
+pullPolicy: IfNotPresent
+dockercfg: <+artifact.imagePullSecret>
 ```
 
 This is the same method when using artifacts with standard Kubernetes deployments. See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
@@ -180,8 +211,9 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
 2. In **Service Definition**, select **Kubernetes**.
 3. In **Manifests**, click **Add Manifest**.
 4. In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
-   
+
    ![](./static/deploy-helm-charts-02.png)
+
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
 For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
@@ -190,7 +222,6 @@ If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connect
 
 You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
-
 - **Manifest Identifier**: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. Ex: `helm_chart`.
 - **Chart name**: Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. Ex: `todolist`.
 - **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
@@ -198,9 +229,11 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
   - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart). For example, `1.4.1`.
 - **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. For example, `Version 2`.
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
+
   - If you do not enter a values.yaml in **Values YAML**, Harness uses the default values.yaml file in the root of the chart.
   - If you want to use a different values.yaml file, enter the path to that file.
   - For example, let's imagine a Helm Chart with the following Values YAML files:
+
   * dev-values.yaml
   * qa-values.yaml
   * prod-values.yaml
@@ -216,15 +249,16 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   The values YAML file(s) must be in this chart. You cannot enter a location to a values YAML file in a chart located somewhere else.If you use multiple files in **Values YAML**, priority is given from the last file to the first file.
 
-  For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last. 
-  
+  For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last.
+
   ![]./static/deploy-helm-charts-05.png)
-  
-  All files contain the same key:value pair. 
+
+  All files contain the same key:value pair.
 
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
   You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
+
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
@@ -245,28 +279,28 @@ Once your Helm chart is added, it appears in the **Manifests** section. For exam
 ## Using subcharts
 
 :::note
-This feature is currently behind the feature flag, `NG_CDS_HELM_SUB_CHARTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+This feature is currently behind the feature flag, `NG_CDS_HELM_SUB_CHARTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 Helm charts can have dependencies called subcharts. You can define subcharts in your service YAML. Helm downloads these dependencies from exisiting or seperate repositories. Harness fetches the defined subcharts during pipeline execution.
 
 ### Important notes
 
-* Helm subcharts are supported for the following deployment types only.
-    - Kubernetes deployments using canary, blue/green, and rolling deployment strategies
-    - Native Helm deployments using basic strategy
-* Harness Continuous Delivery (CD) captures the parent chart as the deployed instance. Harness Continuous Verification (CV) detects and verifies the parent chart as the deployed instance. CV cannot simultaneously verify all subcharts as deployed instances. 
+- Helm subcharts are supported for the following deployment types only.
+  - Kubernetes deployments using canary, blue/green, and rolling deployment strategies
+  - Native Helm deployments using basic strategy
+- Harness Continuous Delivery (CD) captures the parent chart as the deployed instance. Harness Continuous Verification (CV) detects and verifies the parent chart as the deployed instance. CV cannot simultaneously verify all subcharts as deployed instances.
 
 ### Service configuration
 
-To configure Helm subcharts, you must define the subchart name and path in your service YAML. 
+To configure Helm subcharts, you must define the subchart name and path in your service YAML.
 
 To resolve dependencies, you must configure the Helm command `Template` with the flag, `--dependency-update`. This allows Harness to fetch your dependencies defined in `Chart.yaml`.
 
 :::important
 Helm charts store their dependencies in the `charts/` folder. Make sure that all subcharts are located within the `charts/` folder inside your parent chart. Look at the sample [Harness respository](https://github.com/thisrohangupta/custom-remote-test-repo/tree/main/parent-chart) for structural guidance.
 
-Here is a sample directory: 
+Here is a sample directory:
 
 ```
 charts/
@@ -276,6 +310,7 @@ charts/
 		 - Chart.yaml
 		 - values.yaml
 ```
+
 :::
 
 Here is a sample service YAML where a subchart is defined.
@@ -312,7 +347,7 @@ service:
 
 ### Pipeline execution of a Helm chart with subcharts
 
-During pipeline execution, Harness fetches the subcharts and dependencies for the deployment based on the values in the service YAML. 
+During pipeline execution, Harness fetches the subcharts and dependencies for the deployment based on the values in the service YAML.
 
 You can see the subchart and the list of files fetched in the fetch section of the pipeline execution log.
 
@@ -326,13 +361,12 @@ You can see the `template` command with the `--dependency-update` flag running i
 
 If the image artifact is not hardcoded in the Helm chart, add the artifact in **Artifacts** and use the expression `<+artifact.image>` in your values.yaml. For example:
 
-
 ```yaml
-...  
-image: <+artifact.image>  
-pullPolicy: IfNotPresent  
-dockercfg: <+artifact.imagePullSecret>  
-...
+
+---
+image: <+artifact.image>
+pullPolicy: IfNotPresent
+dockercfg: <+artifact.imagePullSecret>
 ```
 
 This is the same method when using artifacts with standard Kubernetes deployments. For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
@@ -404,68 +438,67 @@ The Helm chart deployment runs.
 
 You will see Harness fetch the Helm chart. Here is an example:
 
-
 ```bash
-Helm repository: Bitnami Helm Repo  
-  
-Chart name: nginx  
-  
-Chart version: 9.4.1  
-  
-Helm version: V3  
-  
-Repo url: https://charts.bitnami.com/bitnami  
-  
-Successfully fetched values.yaml  
-  
-Fetching files from helm chart repo  
-  
-Helm repository: Bitnami Helm Repo  
-  
-Chart name: nginx  
-  
-Helm version: V3  
-  
-Repo url: https://charts.bitnami.com/bitnami  
-  
-Successfully fetched following files:  
-  
-- nginx/.helmignore  
-- nginx/charts/common/.helmignore  
-- nginx/charts/common/templates/validations/_postgresql.tpl  
-- nginx/charts/common/templates/validations/_cassandra.tpl  
-- nginx/charts/common/templates/validations/_mongodb.tpl  
-- nginx/charts/common/templates/validations/_mariadb.tpl  
-- nginx/charts/common/templates/validations/_validations.tpl  
-- nginx/charts/common/templates/validations/_redis.tpl  
-- nginx/charts/common/templates/_ingress.tpl  
-- nginx/charts/common/templates/_names.tpl  
-- nginx/charts/common/templates/_affinities.tpl  
-- nginx/charts/common/templates/_storage.tpl  
-- nginx/charts/common/templates/_utils.tpl  
-- nginx/charts/common/templates/_errors.tpl  
-- nginx/charts/common/templates/_capabilities.tpl  
-- nginx/charts/common/templates/_secrets.tpl  
-- nginx/charts/common/templates/_warnings.tpl  
-- nginx/charts/common/templates/_tplvalues.tpl  
-- nginx/charts/common/templates/_images.tpl  
-- nginx/charts/common/templates/_labels.tpl  
-- nginx/charts/common/Chart.yaml  
-- nginx/charts/common/values.yaml  
-- nginx/charts/common/README.md  
-- nginx/Chart.lock  
-- nginx/templates/svc.yaml  
-- nginx/templates/health-ingress.yaml  
-- nginx/templates/ldap-daemon-secrets.yaml  
-- nginx/templates/tls-secrets.yaml  
-- nginx/templates/NOTES.txt  
-- nginx/templates/pdb.yaml  
-- nginx/templates/ingress.yaml  
-- nginx/templates/server-block-configmap.yaml  
-- nginx/templates/serviceaccount.yaml  
-- nginx/templates/hpa.yaml  
-- nginx/templates/servicemonitor.yaml  
-  
+Helm repository: Bitnami Helm Repo
+
+Chart name: nginx
+
+Chart version: 9.4.1
+
+Helm version: V3
+
+Repo url: https://charts.bitnami.com/bitnami
+
+Successfully fetched values.yaml
+
+Fetching files from helm chart repo
+
+Helm repository: Bitnami Helm Repo
+
+Chart name: nginx
+
+Helm version: V3
+
+Repo url: https://charts.bitnami.com/bitnami
+
+Successfully fetched following files:
+
+- nginx/.helmignore
+- nginx/charts/common/.helmignore
+- nginx/charts/common/templates/validations/_postgresql.tpl
+- nginx/charts/common/templates/validations/_cassandra.tpl
+- nginx/charts/common/templates/validations/_mongodb.tpl
+- nginx/charts/common/templates/validations/_mariadb.tpl
+- nginx/charts/common/templates/validations/_validations.tpl
+- nginx/charts/common/templates/validations/_redis.tpl
+- nginx/charts/common/templates/_ingress.tpl
+- nginx/charts/common/templates/_names.tpl
+- nginx/charts/common/templates/_affinities.tpl
+- nginx/charts/common/templates/_storage.tpl
+- nginx/charts/common/templates/_utils.tpl
+- nginx/charts/common/templates/_errors.tpl
+- nginx/charts/common/templates/_capabilities.tpl
+- nginx/charts/common/templates/_secrets.tpl
+- nginx/charts/common/templates/_warnings.tpl
+- nginx/charts/common/templates/_tplvalues.tpl
+- nginx/charts/common/templates/_images.tpl
+- nginx/charts/common/templates/_labels.tpl
+- nginx/charts/common/Chart.yaml
+- nginx/charts/common/values.yaml
+- nginx/charts/common/README.md
+- nginx/Chart.lock
+- nginx/templates/svc.yaml
+- nginx/templates/health-ingress.yaml
+- nginx/templates/ldap-daemon-secrets.yaml
+- nginx/templates/tls-secrets.yaml
+- nginx/templates/NOTES.txt
+- nginx/templates/pdb.yaml
+- nginx/templates/ingress.yaml
+- nginx/templates/server-block-configmap.yaml
+- nginx/templates/serviceaccount.yaml
+- nginx/templates/hpa.yaml
+- nginx/templates/servicemonitor.yaml
+
 Done.
 ```
 
@@ -473,38 +506,38 @@ Next, Harness will initialize and prepare the workloads, apply the Kubernetes ma
 
 In **Wait for Steady State** you will see the workloads deployed and the pods scaled up and running (the release name has been shortened for readability):
 
-
 ```bash
-kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only  
-  
-kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --namespace=default --watch=true  
-  
-Status : release-e008...ee-nginx   Waiting for deployment spec update to be observed...  
-  
-Event  : release-e008...ee-nginx   Deployment   release-e008...ee-nginx   default     Scaled up replica set release-e008...ee-nginx-779cd786f6 to 1   ScalingReplicaSet  
-  
-Status : release-e008...ee-nginx   Waiting for deployment spec update to be observed...  
-  
-Status : release-e008...ee-nginx   Waiting for deployment "release-e008...ee-nginx" rollout to finish: 0 out of   
-  
-Event  : release-e008...ee-nginx   ReplicaSet   release-e008...ee-nginx-779cd786f6   default   Created pod: release-e008...ee-nginx-779n765l   SuccessfulCreate  
-  
-Status : release-e008...ee-nginx   Waiting for deployment "release-e008...ee-nginx" rollout to finish: 0 of 1 updated replicas are available...  
-  
-Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Successfully assigned default/release-e008...ee-nginx-779n765l to gke-doc-account-default-pool-d910b20f-argz   Scheduled  
-  
-Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Pulling image "docker.io/bitnami/nginx:1.21.1-debian-10-r0"   Pulling  
-  
-Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Successfully pulled image "docker.io/bitnami/nginx:1.21.1-debian-10-r0" in 3.495150157s   Pulled  
-  
-Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Created container nginx   Created  
-  
-Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Started container nginx   Started  
-  
-Status : release-e008...ee-nginx   deployment "release-e008...ee-nginx" successfully rolled out  
-  
+kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only
+
+kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --namespace=default --watch=true
+
+Status : release-e008...ee-nginx   Waiting for deployment spec update to be observed...
+
+Event  : release-e008...ee-nginx   Deployment   release-e008...ee-nginx   default     Scaled up replica set release-e008...ee-nginx-779cd786f6 to 1   ScalingReplicaSet
+
+Status : release-e008...ee-nginx   Waiting for deployment spec update to be observed...
+
+Status : release-e008...ee-nginx   Waiting for deployment "release-e008...ee-nginx" rollout to finish: 0 out of
+
+Event  : release-e008...ee-nginx   ReplicaSet   release-e008...ee-nginx-779cd786f6   default   Created pod: release-e008...ee-nginx-779n765l   SuccessfulCreate
+
+Status : release-e008...ee-nginx   Waiting for deployment "release-e008...ee-nginx" rollout to finish: 0 of 1 updated replicas are available...
+
+Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Successfully assigned default/release-e008...ee-nginx-779n765l to gke-doc-account-default-pool-d910b20f-argz   Scheduled
+
+Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Pulling image "docker.io/bitnami/nginx:1.21.1-debian-10-r0"   Pulling
+
+Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Successfully pulled image "docker.io/bitnami/nginx:1.21.1-debian-10-r0" in 3.495150157s   Pulled
+
+Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Created container nginx   Created
+
+Event  : release-e008...ee-nginx   Pod   release-e008...ee-nginx-779n765l   default   Started container nginx   Started
+
+Status : release-e008...ee-nginx   deployment "release-e008...ee-nginx" successfully rolled out
+
 Done.
 ```
+
 You deployment is successful.
 
 ### Helm Steady State Check
@@ -513,20 +546,19 @@ Harness has two ways of performing Helm Steady State Checks for Native Helm Depl
 
 #### Disabled Setting - Native Helm steady state for jobs - Default Mode
 
-Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs objects that are being created as part of the deployment and wait for them to reach a steady state. 
+Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs objects that are being created as part of the deployment and wait for them to reach a steady state.
 
 **Helm Steady State with Setting Disabled**
 
 ```
-kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only  
-  
-kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --namespace=default --watch=true  
+kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only
+
+kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --namespace=default --watch=true
 ```
 
+#### Enable Setting - Native Helm steady state for jobs
 
-#### Enable Setting -  Native Helm steady state for jobs
-By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
-
+By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status.
 
 **Helm Steady State with Setting Enabled**
 
@@ -544,53 +576,51 @@ Helm chart deployments support versioning and rollback in the same way as standa
 
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
-
 ## Trigger the pipeline on a new chart version
 
 You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
 
 ## Fetch Helm chart dependencies
 
-Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag. 
-  
-Harness fetches dependent Helm charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart. 
+Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag.
+
+Harness fetches dependent Helm charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart.
 
 For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
 
 To update Helm chart dependencies:
 
-* For Kubernetes with Helm deployments (as described in this topic), configure **Helm Command Flags** with the **Template** command type and `--dependency-update` flag.
+- For Kubernetes with Helm deployments (as described in this topic), configure **Helm Command Flags** with the **Template** command type and `--dependency-update` flag.
 
-* For Native Kubernetes deployments, add the command flag `--depdency-update` to the **Install** and **Upgrade** command types.
+- For Native Kubernetes deployments, add the command flag `--depdency-update` to the **Install** and **Upgrade** command types.
 
 :::info
-  
+
 All dependency repositories must be available and accessible from the Harness Delegate(s) used by the deployment.
 
 :::
 
-## Service hooks 
+## Service hooks
 
+Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart.
 
-Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
+Harness supports two types of service hooks: preHook and postHook. These are the service hook actions supported by Harness:
 
-Harness supports two types of service hooks: preHook and postHook. These are the service hook actions supported by Harness: 
+- Fetch files: Service hooks can be triggered before or after the manifest files are fetched.
+- Manifest templates: Service hooks can be triggered before or after the manifest has been rendered.
+- Steady state check: Service hooks can be triggered before or after the steady state check.
 
-* Fetch files: Service hooks can be triggered before or after the manifest files are fetched. 
-* Manifest templates: Service hooks can be triggered before or after the manifest has been rendered. 
-* Steady state check: Service hooks can be triggered before or after the steady state check.
+Each service hook has its own context variable:
 
-Each service hook has its own context variable: 
-
-| **Action** | **Context Variable and Description** |
-| :--- | :--- |
-| Fetch files | `$MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded. |
-| Manifest template | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`$MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
+| **Action**         | **Context Variable and Description**                                                                                                                                                                                         |
+| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fetch files        | `$MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded.                                                                                                                      |
+| Manifest template  | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`$MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file.                                    |
 | Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
 
 You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
-Here are some sample service hook YAMLs: 
+Here are some sample service hook YAMLs:
 
 ```
 hooks:
@@ -643,19 +673,20 @@ For more information about Helm dependencies, go to [Helm dependency](https://he
 
 <!-- Video:
 https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
-<docvideo src="https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537" />
+<DocVideo src="https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537" />
 
 ### Use case: Add private repositories as a Helm Chart dependency
 
-1. Add a repository in Helm using the following script: 
+1. Add a repository in Helm using the following script:
 
    ```
-   helm repo add test-remote-name 
-   https://url.to.chart.example.artifactory/artifactory/harness-helm-charts/ --username 
+   helm repo add test-remote-name
+   https://url.to.chart.example.artifactory/artifactory/harness-helm-charts/ --username
    <+secrets.getValue("username")> --password <+secrets.getValue("password")>
    ```
-2. Add the required name and version of the dependency in the `Chart.yaml` to reference these dependencies. 
-   
+
+2. Add the required name and version of the dependency in the `Chart.yaml` to reference these dependencies.
+
    The repository name starts with `@` followed by the name you used for the repository in your script.
 
    ```
@@ -664,7 +695,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    description: A Helm chart for Kubernetes
    name: todolist
    version: 0.2.0
-   
+
    dependencies:
      - name: trivy-operator
        version: "0.1.9"
@@ -675,21 +706,23 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    ```
 
 3. Run the `--dependency-update` command flag in the manifest configuration to update dependencies as shown in the image below:
-   
+
    ![](./static/dependency-update.png)
 
 ### Use case: Use secrets to encrypt and decrypt files
 
-1. Install [SOPS](https://github.com/mozilla/sops) or [AGE](https://github.com/FiloSottile/age) keys to generate a public key to encrypt files. 
-2. Enter the following commands to encrypt and save your files in your Git repository: 
-   
+1. Install [SOPS](https://github.com/mozilla/sops) or [AGE](https://github.com/FiloSottile/age) keys to generate a public key to encrypt files.
+2. Enter the following commands to encrypt and save your files in your Git repository:
+
    ```
    export SOPS_AGE_KEY=<"ENTER_YOUR_SOPS_AGE_KEY">
    sops --encrypt --age $SOPS_AGE_KEY secrets.yaml > secrets.enc.yaml
    ```
+
    This command creates a `secrets.yaml` file.
+
 3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve the values in your Chart. This file will be used to override values wherever required:
-   
+
    ```
    cd $MANIFEST_FILES_DIRECTORY    //go to the directory containing manifest-files
    export SOPS_AGE_KEY=<+secrets.getValue("agesecret")> // export the PRIVATE Key to be used to decrypt
@@ -697,8 +730,8 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    helm secrets decrypt secrets.enc.yaml     // or by using helm secrets
    helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temporary folder
    ```
-   
-4. Add the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values. Please remember that files submitted through this method take precedence, followed by the override files set in the Harness service. Avoid using encrypted files as overrides as they will replace decrypted values with encrypted ones. An example on how to configure this is shown in the image below: 
+
+4. Add the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values. Please remember that files submitted through this method take precedence, followed by the override files set in the Harness service. Avoid using encrypted files as overrides as they will replace decrypted values with encrypted ones. An example on how to configure this is shown in the image below:
 
    ![](./static/dependency-update-secrets-yaml.png)
 
@@ -706,19 +739,20 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
 
 If you want to use the uninstall command in the **Manifest Details**, be aware of the following:
 
-* When the deployment is successful, Harness won't execute this command.
-* If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
-* If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
+- When the deployment is successful, Harness won't execute this command.
+- If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
+- If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
 
 ## Authentication for Google Cloud with Helm OCI connector
 
- To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
-  
- **Username**: A _json_key or _json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
-  
- **Password**: Your Google service account file content.
- 
+To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
+
+**Username**: A \_json_key or \_json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
+
+**Password**: Your Google service account file content.
+
 ## Active Feature Flags
+
 :::note
 
 To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
@@ -750,13 +784,4 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
         <td> There is a behavior change in how Harrness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
     </tr>
-    <tr>
-        <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
-        <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
-    </tr>
-    <tr>
-        <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
-        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
-    </tr>
 </table>
-

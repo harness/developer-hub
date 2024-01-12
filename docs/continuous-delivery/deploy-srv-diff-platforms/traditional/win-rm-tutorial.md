@@ -79,7 +79,7 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 2. In **Specify Artifact Repository Type**, select **Artifactory** and click **Continue**.
 3. For the Artifactory Connector, select **New Artifactory Connector**.
 4. In **Name**, enter a name for the connector: **artifactory-connector** and click **Continue**.
-5. In **Details**, enter the following URL path for **Artifactory Repository URL** or click the tooltip and copy the URL: **https://harness.jfrog.io/artifactory**. In this tutorial, we will use the artifacts stored in that repository.
+5. In **Details**, enter the following URL path for **Artifactory Repository URL** or click the tooltip and copy the URL: `https://harness.jfrog.io/artifactory`. In this tutorial, we will use the artifacts stored in that repository.
 6. For **Authentication**, click the down-drop arrow for **Username and Password**. Then, select **Anonymous (no credentials required)**. Click **Continue**.
    	
 	![](static/win-rm-tutorial-129.png)
@@ -87,7 +87,7 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 7. Click **Continue** to connect with Artifactory by using a Harness Delegate.
 8. In **Delegates Setup**, retain the default selection: **Use any available delegate**.
 9. Click **Save and Continue**.
-10. In **Connection Test**, Harness validates the Artifactory Repository authentication and permissions for the repo. Click **Continue**. If the test fails, that means the Delegate can't connect to **https://harness.jfrog.io/artifactory/**. Make sure that the EC2 instance hosting the Delegate can make outbound connections to **https://harness.jfrog.io/artifactory**/.
+10. In **Connection Test**, Harness validates the Artifactory Repository authentication and permissions for the repo. Click **Continue**. If the test fails, that means the Delegate can't connect to `https://harness.jfrog.io/artifactory/`. Make sure that the EC2 instance hosting the Delegate can make outbound connections to `https://harness.jfrog.io/artifactory/`.
 
 ### Set up Artifact Location and Details
 
@@ -97,7 +97,7 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.zip**, ava
 2. For **Repository**, enter: **todolist-tutorial**. Note that if you select the down-drop menu for Repository, Harness loads any available repositories and displays them for selection.
 3. for **Artifact Directory**, enter a forward slash **/**.
 4. For **Artifact Details**, keep the default **Value**.
-5. For **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
+5. For **Artifact Path**, leave the default Runtime Input value **\<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
 
 ## Define the target infrastructure
 
@@ -348,7 +348,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs</figcaption>
 </figure>
@@ -386,6 +386,19 @@ After selecting the Execution Strategy, we are now ready to run the pipeline.
 
 You have now successfully created and completed the steps for running a pipeline by using WinRM.
 
+## Permission to perform WinRM Deployments in AWS
+
+We use the WinRM Credentials to connect to hosts to perform deployment.
+
+We use the AWS Connector to retrieve instances from the AWS Account. The specific calls we make:
+
+- Retrieve the instances at runtime during the infrastructure step - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+- Retrieve the instances during instance sync to show service instances in the service - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+
+To use describe instance API, the action is `ec2:DescribeInstances`
+
+Per AWS documentation: Example policies for working with the AWS CLI or an AWS SDK - [Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html)
+
 ## Notes
 
 ### Reference hosts in steps using expressions
@@ -394,13 +407,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
+* [\<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [\<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [\<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
-* [<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
+* [\<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
+* [\<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

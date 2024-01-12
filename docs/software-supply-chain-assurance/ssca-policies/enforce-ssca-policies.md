@@ -44,7 +44,7 @@ The **SBOM Enforcement** step has the following settings:
 
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
-<docimage path={require('./static/policy-ssca-enforce-step.png')} />
+<DocImage path={require('./static/policy-ssca-enforce-step.png')} />
 
 
 :::info ECR and GCR repos

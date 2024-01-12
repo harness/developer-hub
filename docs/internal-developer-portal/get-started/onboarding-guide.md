@@ -6,7 +6,7 @@ redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
 ---
 
-This guide describes the steps a Harness account admin can take to set up the IDP module. During the Beta phase, the module needs to be enabled on request. [Read more](./enabling-module.md).
+This guide describes the steps a Harness account admin can take to set up the IDP module. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
 
 **Prerequisite**: IDP should be provisioned for the given account. The required resources, services, configurations etc. should be in place before starting the harness catalog onboarding flow
 
@@ -21,7 +21,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 3. Only Harness account admins and users having the "Manage" permission for the "Developer Portal" resource can perform the onboarding. We recommend creating an "IDP Admin" role with the above mentioned permission and assign it to your team who will be responsible for configuring IDP.
 
-![](static/role-explain.png)
+![](static/idp-roles.png)
 
 ![](static/first_step.png)
 
@@ -48,7 +48,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 7. Connector setup 
 
-:::caution
+:::warning
 ### Limitations
 - Only the following set of connectors are supported  
   - GitHub
@@ -73,33 +73,33 @@ In the **Connector** tab under IDP **Admin** you can add the connectors.
 ![](static/admin.png)
 ![](static/connector.png)
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="Connector">
 <TabItem value="azure-connector" label="Azure Repository">
-```
+
 1. Select **Azure Repo** under **Create or Select a Connector**.
 2. Click on the dropdown under **Azure Repo Connector** and select **+New Connector**. 
 3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo).
 4. After the connection test runs, select Finish to save the connector.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bitbucket-connector" label="Bitbucket">
-```
+
 1. Select **Bitbucket** under **Create or Select a Connector**.
 2. Click on the dropdown under **Bitbucket Connector** and select **+New Connector**. 
 3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
 4. After the connection test runs, select Finish to save the connector.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="github-connector" label="GitHub">
-```
+
 1. Select **GitHub** under **Create or Select a Connector**.
 2. Click on the dropdown under **GitHub Connector** and select **+New Connector**. 
 3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
@@ -107,10 +107,10 @@ import TabItem from '@theme/TabItem';
 
 More instructions on [using github app in github connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="gitlab-connector" label="GitLab">
-```
+
 1. Select **GitLab** under **Create or Select a Connector**.
 2. Click on the dropdown under **GitLab Connector** and select **+New Connector**. 
 3. Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference).
@@ -118,10 +118,10 @@ More instructions on [using github app in github connector](https://developer.ha
 
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 
 

@@ -7,4 +7,10 @@ export const experiments: ExperimentDetails[] = [
     tags: ["cf", "cloud-foundry", "app"],
     category: "cloud-foundry",
   },
+  {
+    name: "CF app route unmap",
+    description: "CF app route unmap causes a Cloud Foundry app route to be temporarily un-mapped and later mapped back to the app.",
+    tags: ["cf", "cloud-foundry", "app"],
+    category: "cloud-foundry",
+  },
 ];

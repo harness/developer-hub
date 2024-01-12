@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import image_1 from './static/delegate-installation-08.png'
 import image_2 from './static/delegate-installation-09.png'
 import image_3 from './static/delegate-installation-10.png'
-```
+
 
 :::note 
 This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification and other providers with the Harness Manager.
@@ -77,23 +77,23 @@ All Delegates are identified by your Harness account ID. But, depending on the t
 
 For Delegates running on virtual machines, such as the Shell Script and Docker Delegates running on an AWS EC2 instance, the Delegate is identified by the combination of **Hostname** and **IP**:
 
-```mdx-code-block
+
 <img src={image_1} height="300" width="500" />
-```
+
 
 Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
 
 For Kubernetes and ECS Delegates, the IP can change if a pod is rescheduled, for example. Consequently, Kubernetes Delegates are identified by a suffix using a unique six letter code in their **Hostname** (the first six letters that occur in your account ID):
 
-```mdx-code-block
+
 <img src={image_2} height="100" width="500" />
-```
+
 
 ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
 
-```mdx-code-block
+
 <img src={image_3} height="300" width="500" />
-```
+
 
 
 ## How Does Harness Manager Pick Delegates?
@@ -134,7 +134,7 @@ spec:
       harness.io/app: harness-delegate  
 ...
 ```
-:::caution
+:::warning
 For the Kubernetes Delegate, you only need one Delegate in the cluster. Simply increase the number of replicas, and nothing else. Do not add another Delegate to the cluster in an attempt to achieve HA.
 :::
 

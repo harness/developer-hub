@@ -15,8 +15,8 @@ Lambda update function memory:
 - Helps build resilience to unexpected scenarios such as hitting a memory limit with the Lambda function, that slows down the service and impacts its delivery. Running out of memory due to smaller limits interrupts the flow of the given function.
 - Checks the performance of the application (or service) running with a new memory limit.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - Access to operate AWS Lambda functions.
 - Lambda function must be up and running.
 - Kubernetes secret must have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
@@ -33,12 +33,10 @@ Lambda update function memory:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
-- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
-:::
 
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
 Below is an example AWS policy to execute the fault.
 
@@ -61,8 +59,11 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>
@@ -79,7 +80,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> MEMORY_IN_MEGABYTES </td>
         <td> Provide the value of the memory limit of a function in megabytes.</td>
-        <td> Minimum memory limit on a Lambda function is 128Mb and the maximum is 10240 Mb. </td>
+        <td> Minimum (128MB) and the maximum (10240 MB) memory limit on a Lambda function. For more information, go to <a href="#memory-limit"> memory limit.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -97,22 +98,22 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive instance termination.</td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

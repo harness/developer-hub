@@ -13,7 +13,7 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 import Closeclient from '../shared/close-sdk-client.md'
 
 
-:::caution 
+:::warning 
 In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
@@ -35,7 +35,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.3.0**
+The current version of this SDK is **1.4.0**
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
@@ -61,9 +61,9 @@ Install the SDK by using the `dotnet add package` command, for example: 
 
 
 ```
-dotnet add package ff-dotnet-server-sdk --version 1.3.0
+dotnet add package ff-dotnet-server-sdk --version 1.4.0
 ```
-:::caution
+:::warning
 In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
@@ -89,8 +89,8 @@ public static String apiKey = "YOUR_API_KEY";
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -138,11 +138,11 @@ For example:
 
 
 ```
-Target target = Target.builder()  
-                            .Name("Harness_Target_1")   
-                            .Identifier("HT_1")  
-                            .Attributes(new Dictionary<string, string>(){{"email", "demo@harness.io"}})  
-                            .build();
+Target target = Target.builder()
+    .Name(".NET SDK Target 1")
+    .Identifier("DotNetTarget1")
+    .Attributes(new Dictionary<string, string>(){{"email", "demo@harness.io"}})
+    .build();
 ```
  
 
@@ -187,16 +187,16 @@ CfClient.Instance.Initialize(apiKey, Config.Builder().Build());
 
 
 ```
-public static String apiKey = Environment.GetEnvironmentVariable("FF_API_KEY");  
+        public static String apiKey = Environment.GetEnvironmentVariable("FF_API_KEY");
         public static String flagName = Environment.GetEnvironmentVariable("FF_FLAG_NAME") is string v && v.Length > 0 ? v : "harnessappdemodarkmode";  
   
-                static void Main(string[] args)  
+        static void Main(string[] args)
         {  
   
             // Create a feature flag client  
-            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());  
+            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());
+            CfClient.Instance.WaitForInitialization();
   
-              
             // Create a target (different targets can get different results based on rules)  
             Target target = Target.builder()  
                             .Name("DotNetSDK")   
@@ -369,7 +369,8 @@ namespace getting_started
         {  
   
             // Create a feature flag client  
-            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());  
+            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());
+            CfClient.Instance.WaitForInitialization();
               
             // Create a target (different targets can get different results based on rules)  
   

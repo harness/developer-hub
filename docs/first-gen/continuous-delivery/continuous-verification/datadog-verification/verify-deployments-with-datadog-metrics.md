@@ -93,7 +93,7 @@ Find the where the same name is identified in the deployment environment, and us
 
    [![](./static/verify-deployments-with-datadog-metrics-09.png)](./static/verify-deployments-with-datadog-metrics-09.png)
    
-5. Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default expression is **${host.hostName}**. In most cases, this expression will work.
+5. Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default expression is **$\{host.hostName}**. In most cases, this expression will work.
 
 ### Step 7: Analysis Time Duration
 

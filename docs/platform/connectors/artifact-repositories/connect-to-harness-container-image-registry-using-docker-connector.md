@@ -21,7 +21,7 @@ All of these options require [permissions](../../role-based-access-control/permi
 
 :::tip Rate Limiting
 
-To prevent rate limiting or throttling issues when pulling images, using credentials, instead of anonymous access, and configure the default Harness Docker connector to pull images from GRC. For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
+To prevent rate limiting or throttling issues when pulling images, using credentials, instead of anonymous access, and configure the default Harness Docker connector to pull images from GCR. For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
 
 :::
 
@@ -108,7 +108,7 @@ You can also [use a private registry for STO scanner images](/docs/security-test
 
 1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
 
-   :::caution
+   :::warning
 
    Do not change the image names in your private registry. The image names must match the names specified by Harness.
 
