@@ -4408,3 +4408,11 @@ No, Harness entities use immutable entity identifiers to refer to entities, and 
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts#conditional-executions)
+
+#### Do we have predefined rollback step while using shell script provisioning
+
+No, Out for the box Rollback step is not available and you need to add your own scripts under Rollback section of the stage Environment
+
+#### How can we trigger a pipeline at specific time
+
+You can make use of CRON based trigger to execute a pipeline
