@@ -368,7 +368,7 @@ const config = {
               },
               {
                 label: "Code Repository",
-                to: "https://gitness.com/",
+                to: "https://www.harness.io/products/code-repository",
               },
               {
                 label: "Continuous Integration",
