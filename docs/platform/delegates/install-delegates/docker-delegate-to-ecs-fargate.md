@@ -28,7 +28,7 @@ Review the following information about using Harness ECS-configured Docker deleg
 
 Use these steps to deploy a delegate to an ECS cluster as an ECS service. The installed delegate connects to your AWS resources.
 
-This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+This process requires a delegate with an immutable image type. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
 
 :::info
 You can also [use a Terraform module to deploy a delegate to an ECS cluster](#deploy-a-delegate-using-terraform).
@@ -256,7 +256,7 @@ Use the following steps to create a task definition. For information about task 
 
 2. After the service is created and modified, use the JSON files to register the task and service definitions.
 
-3. From AWS CLI, use the following instruction to register the task definition:
+3. From AWS CLI, use the following instructions to register the task definition:
 
    ```
    aws ecs register-task-definition --cli-input-json file://task-spec.json

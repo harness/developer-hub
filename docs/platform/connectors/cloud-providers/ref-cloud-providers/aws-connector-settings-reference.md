@@ -417,11 +417,11 @@ Specify the credentials that enable Harness to connect your AWS account. There a
 
 * **Assume IAM Role on Delegate:** This assumes the SA of the delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure. If the Harness Delegate is in an EKS cluster that uses IAM roles for service accounts, you must select **Use IRSA**.
 * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../secrets/add-use-text-secrets.md) for both.
-* **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa)
+* **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa).
 
 :::warning
 
-Ensure that the AWS IAM roles applied to the credentials you use (the Harness delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service.
+Ensure that the AWS IAM roles applied to the credentials you use (the Harness delegate or the access key) include the policies needed by Harness to deploy to the target AWS service.
 
 If the IAM role used by your AWS connector does not have the policies required by the AWS service you want to access, you can modify or switch the role. This entails changing the role assigned to the AWS account or Harness delegate that your AWS connector is using. When you switch or modify the IAM role used by the connector, it might take up to 5 minutes to take effect.
 
@@ -449,7 +449,7 @@ If the administrator of the account to which the role belongs provided you with 
 
 By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors.
 
-If you want to use an AWS GovCloud account for this connector, select it in the **Test Region** field. GovCloud is used by organizations such as government agencies at the federal, state, and local level, as well as contractors, educational institutions. It is also used for regulatory compliance with these organizations.
+If you want to use an AWS GovCloud account for this connector, select it in the **Test Region** field. GovCloud is used by organizations such as government agencies at the federal, state, and local levels, as well as contractors, and educational institutions. It is also used for regulatory compliance with these organizations.
 
 You can access AWS GovCloud with AWS GovCloud credentials (AWS GovCloud account access key and AWS GovCloud IAM user credentials). You can't access AWS GovCloud with standard AWS credentials. Likewise, you can't access standard AWS regions using AWS GovCloud credentials.
 
