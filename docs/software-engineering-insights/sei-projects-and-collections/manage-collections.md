@@ -24,7 +24,7 @@ In your Harness project, go to the SEI module, select **Account**, and then sele
 
 <!-- image: where to find Collections list -->
 
-Collection categories are shown as tabs on the **Collection Setup** page. Select a category tab to view the Collections under that category. This page shows only Collection categories and Collections relevant to the current project. Switch projects to view Collection categories and Collections for other projects.
+Collection categories are shown as tabs on the **Collections** page. Select a category tab to view the Collections under that category. This page shows only Collection categories and Collections relevant to the current project. Switch projects to view Collection categories and Collections for other projects.
 
 <!-- image: Collections list page -->
 
@@ -40,7 +40,7 @@ Options for editing Collections are only available on **Flat List** view.
 
 ## Add and edit Collections
 
-1. In your Harness project, go to the SEI module, select **Account**, and then select **Collection Setup** under **Data Settings**.
+1. In your Harness project, go to the SEI module, select your **Project**, and then select **Collections**.
 2. Select the tab for the Collection category where you want to add or edit a Collection. This page shows only Collection categories and Collections relevant to the current project. Make sure you are in the correct project before creating or editing Collections.
 3. To edit an existing Collection, select the Collection in the **Name** column. To add a Collection, select **+ [Collection Category]**. For example, in the **Teams** category, select **+ Teams**.
 4. In the **Basic Info** settings, you can:
@@ -48,7 +48,7 @@ Options for editing Collections are only available on **Flat List** view.
    * Enter a **Name**, **Description**, and **Tags**. Collection names must be unique within each project.
    * Specify users who can manage this Collection.
    * Change the associated **Collection Category**.
-   * Change the Collection's position in the hierarchy by changing the **Parent Node**.
+   * Change the Collection's position in the hierarchy by changing the **Parent Collection**.
 
 5. Use the **Insights** settings to [manage Insights associations](#manage-insights-associations). By default, child Collections automatically inherit Insights associations from their ancestor Collections.
 6. Use the **Definition** settings to define [integrations](/docs/category/integrations) associated with the Collection. By default, if you don't specify any integrations, the Collection automatically inherits integrations from the associated project.
