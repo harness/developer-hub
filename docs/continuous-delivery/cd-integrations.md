@@ -20,7 +20,7 @@ The following table describes each of the active feature flags relevant to Harne
 
 :::note
 
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](https://developer.harness.io/docs/get-started/beta-preview-ga/) in the descriptions below.
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](/docs/get-started/release-status/) in the descriptions below.
 
 :::
 
