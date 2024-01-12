@@ -8,7 +8,7 @@ This section walks you through some common pain points and their workarounds.
 
 ## Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [node memory hog](../../chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog) or [pod memory hog](../../chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating out of memory scenario. 
+When a memory stress fault (such as [Linux memory stress](../../chaos-engineering/technical-reference/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](../../chaos-engineering/technical-reference/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating out of memory scenario. 
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 ### Workaround
@@ -49,52 +49,12 @@ spec:
 ```
 
 :::tip
-The `--vm-populate` in the above manifest is an example to demonstrate how the `stressNGFlags` flag attribute can be utilized. The actual flags placed are entirely your choice (as long as you can validate the said flag in the original stress-ng cmd). 
+The `--vm-populate` in the above manifest populates the memory thereby stressing it. This is an example to demonstrate how the `stressNGFlags` flag attribute can be utilized.
 :::
-
-## Cleanup chaos pods in a namespace
-
-When you execute chaos experiments, multiple pods are created with respect to these experiments. If you wish to cleanup the chaos pods in your namespace, execute the commands below:
-
-### Workaround
-
-* List all the pods in your namespace:
-
-```
-kubectl get pod -n <namespace_name>
-```
-
-* To delete specific pods in your namespace:
-
-```
-kubectl delete pod <pod_name> -n <namespace_name>
-```
-
-* To delete all evicted pods in your namespace:
-
-```
-kubectl delete pods --namespace=<namespace_name> --field-selector=status.phase=Failed
-```
-
-## Chaos infrastructure is inactive, how to activate it?
-
-A chaos infrastructure could be inactive due to a variety of reasons. When you try to execute a previously created experiment but the chaos infrastructure is inactive, you can activate it by following the below steps.
-
-![inactive infra](./static/images/inactive-infra.png)
-
-### Workaround
-
-* Navigate to **Overview** tab. Select an infrastructure from the dropdown menu. Click **Next**.
-
-![navigate](./static/images/activate.png)
-
-* Click **Save** to save your changes, and click **Run** to execute the chaos experiment.
-
-![save](./static/images/save-n-run.png)
 
 ## Unable to connect to Kubernetes infrastructure server
 
-Most times, chaos infrastructure errors are a result of issues with chaos infrsstructure setup. 
+Most times, chaos infrastructure errors are a result of issues with chaos infrastructure setup. 
 
 ### Workaround 
 If you are unable to connect to the Kubernetes infrastructure server, try the following:
@@ -125,13 +85,6 @@ To fix this issue, perform the following steps:
 $ kubectl apply -f harness-chaos-enable.yml
 ```
 
-## Run multiple cluster-scoped chaos infrastructures on same clusters
-
-If the deployment entities are added to and removed from the same cluster, you might have two cluster-scoped chaos infrastructures running on the same cluster.
-
-### Workaround
-**Don't** run multiple cluster-scoped chaos infrastructures on the same cluster. This results in the chaos infrastructures overwriting each other's cluster-level resources.
-
 ## Environment variable and secret usage references in source mode of command probe
 
 You can use secrets and environment variables in the [**source mode**](../../chaos-engineering/technical-reference/probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
@@ -139,13 +92,13 @@ You can use secrets and environment variables in the [**source mode**](../../cha
 ```yaml
 source:
   env:
-  - name: KEY
-    value: value
+  - name: name
+    value: test
   volumes:
-  - name: vol1
+  - name: volume-secret
     secrets:
-    - name: cm1
-  volumeMounts:
-  - name: vol1
-    mountPath: path
+    - name: vm-credentials
+  volumeMount:
+  - name: volume-secret
+    mountPath: /etc/volume-secret
  ```
