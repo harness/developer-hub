@@ -52,7 +52,7 @@ The following example uses a [Git generator](https://argo-cd.readthedocs.io/en/s
           syncPolicy:  
             automated: {}
     ```
-    To get the project Id, go to **Agents** and find the Argo Project Id you want to use to create the ApplicationSet.
+    To get the project Id, go to **GitOps Agents** and find the Argo Project Id you want to use to create the ApplicationSet.
 
     ![](static/harness-git-ops-application-set-tutorial-33.png)
 2. Navigate to `applicationset/examples/git-generator-files-discovery/cluster-config/engineering/dev/config.json`. 

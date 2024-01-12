@@ -1,10 +1,10 @@
 ---
-title: ApplicationSet Basics
+title: ApplicationSet basics
 description: Understand the basics for ApplicationSet.
 sidebar_position: 1
 ---
 
-This topic describes Harness ApplicationSets concepts.
+This topic describes Harness ApplicationSet concepts.
 
 A typical GitOps application syncs a source manifest to a destination cluster. If you have multiple target clusters, you could create separate GitOps applications for each one, but that makes management more challenging. What if you want to sync an application with 100s of target clusters? Managing 100s of GitOps applications is not easy.
 
