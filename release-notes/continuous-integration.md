@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-17T10:00
+date: 2024-01-15T10:00
 sidebar_position: 10
 ---
 
@@ -23,9 +23,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## January 2024
 
-### Version 1.8.1
+### Version 1.8.2
 
-<!-- Jan 17, 2024 -->
+<!-- Jan 15, 2024 -->
 
 #### New features and enhancements
 
