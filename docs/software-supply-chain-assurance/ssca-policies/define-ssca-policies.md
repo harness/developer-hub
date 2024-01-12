@@ -176,67 +176,89 @@ In this section, you can find examples of various rules that you can create for 
 
 **Block 'curl' below a Certain Version**
 
+```
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": "<="}
+```
 
 This rule blocks the usage of 'curl' if the version is 3.0.0 or lower.
 
 **Block Versions of 'log4j' using Regex**
 
+```
 Rule: "name": {"value": ".*log4j.*", "operator": "~"}, "version": {"value": "3.0.0", "operator": "<"}
+```
 
 Targets any component matching the regex '.log4j.' that is below version 3.0.0.
 
 **Block 'busybot' Between Version 3.0.0 and 5.0.0**
 
+```
 Rule: "name": {"value": "busybot", "operator": "=="}, "version": {"value": "3.0.0,5.0.0", "operator": "><"}
+```
 
 Prohibits the usage of 'busybot' for versions strictly between 3.0.0 and 5.0.0.
 
 **Block 'curl' at or Above a Certain Version**
 
+```
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": ">="}
+```
 
 Blocks 'curl' if its version is 3.0.0 or higher.
 
 **Block 'curl' Above a Certain Version**
 
+```
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": ">"}
+```
 
 Blocks 'curl' if its version is greater than 3.0.0.
 
 **Block 'curl' Except a Specific Version**
 
+```
 Rule: "name": {"value": "curl", "operator": "=="}, "version": {"value": "3.0.0", "operator": "!"}
+```
 
 Blocks all versions of 'curl' except for 3.0.0.
 
 **Block Specific 'log4j' Version**
 
+```
 Rule: "name": {"value": ".*log4j.*", "operator": "~"}, "version": {"value": "3.0.0", "operator": "=="}
+```
 
 Blocks the specific version 3.0.0 of any component matching '.log4j.'.
 
 **Block Components with Regex Pattern in Name**
 
+```
 Rule: {"name": {"value": "c.*", "operator": "~"}}
+```
 
 Blocks any component whose name starts with 'c'.
 
 **Block Components with a Specific License**
 
+```
 Rule: {"license": {"value": "BSD-3-Clause", "operator": "=="}}
+```
 
 Blocks components with the 'BSD-3-Clause' license.
 
 **Block Components Within a Version Range**
 
+```
 Rule: {"version": {"value": "1.3.0,2.12.0", "operator": ">=<"}}
+```
 
 Targets components whose versions are greater than or equal to 1.3.0 and less than 2.12.0.
 
 **Block Components from a Specific Supplier**
 
+```
 Rule: {"supplier": {"value": "Organization: Red Hat, Inc.", "operator": "=="}}
+```
 
 Blocks components supplied by "Red Hat, Inc."
 
@@ -246,13 +268,17 @@ Allow list rules are grouped under licenses, suppliers or purls
 
 **Allow a list of licenses based on various criteria**
 
+```
 Rule: "licenses": [   {"license": {       "value": "MIT",       "operator": "==",     }},     {"license": {       "value": ".*Apache.*",       "operator": "~",     }},     {"license": {       "value": ".*eclipse.*",       "operator": "~",     }},   ],
+```
 
 This group of rules permits components based on their license types. The first rule explicitly allows components with the 'MIT' license. The next two rules use regex to allow any licenses containing 'Apache' or 'eclipse' in their names, respectively. This grouping ensures a broad but specific allowance based on license criteria.
 
 **Allow a list of suppliers**
 
+```
 Rule: "suppliers": [{"supplier": {    "value": ".*Red Hat.*",     "operator": "~",   },  { "value": ".*Apache.*",     "operator": "~",   }}],
+```
 
 These rules allow components from suppliers that include ‘Red Hat' or 'Apache’ in their names. The use of regex (~) allows for flexible matching to any supplier name that contains 'Red Hat', accommodating variations in naming.
 

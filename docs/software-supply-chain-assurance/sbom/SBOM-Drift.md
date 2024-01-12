@@ -97,7 +97,10 @@ SBOM drift generates the following output variables in the SBOM Orchestration st
 
 You can use these variables to trigger an action such as manual review. For example, if a new license has been added, you may want to review it before approving the pipeline execution. For this you can add an approval stage and in the stage’s advanced configuration tab check for following in the Conditional Execution section
 
+```
 <+pipeline.stages.Build.spec.execution.steps.SscaOrchestration_1.artifact_SscaOrchestration_1.stepArtifacts.publishedSbomArtifacts[0].drift.licenseAdded> > 0
+
+```
 
 Note: Use the variable expression as applicable for your piprline
 
