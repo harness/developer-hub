@@ -49,7 +49,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2024
 
-### Version 1.20.6
+### Version 1.20.7
 
 
 #### Fixed Issues
