@@ -19,8 +19,8 @@ With respect to HCE, you can choose one of the two paths:
 ## Interaction between execution plane and control plane
 
 The **execution plane** consists of components required to orchestrate the chaos injection (the process of injecting chaos into target resources). These components are installed in clusters (external or internal depending on the type of chaos infrastructure used). Some of the components include:
-1. Workflow controller: Helps create chaos experiments.
-2. Subscriber: Serves as a bridge between the execution plane and control plane.
+1. Workflow controller: Helps execute chaos experiments.
+2. Subscriber: Serves as a bridge between the execution plane and control plane. It also performs other tasks required to orchestrate the chaos experiment executions.
 
 The **control plane** consists of microservices that help with the functioning of the web-based portal. This portal is used to create, schedule, and monitor chaos experiments.
 
