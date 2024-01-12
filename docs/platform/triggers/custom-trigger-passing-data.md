@@ -1,5 +1,5 @@
 ---
-title: Passing data in Custom triggers
+title: Passing data in custom triggers
 description: You can pass data in the cURL command used to initiate a Custom trigger.
 sidebar_position: 9
 ---
