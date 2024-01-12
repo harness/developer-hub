@@ -1520,11 +1520,11 @@ The failure type should be `Unknown`. Please refer more on this in the following
 #### How can a customer do migrating of Service Override for Environments for large configurations?
 
 
-- ##### Terraform or APIs Used for Initial Configuration:
+- #### Terraform or APIs Used for Initial Configuration:
 
    - If the customer initially created the Harness configuration using Terraform, they can easily change the organization identifier by modifying the configuration file.
 Likewise, if APIs were used for the initial configuration, the same approach applies to change the organization identifier.
-- ##### Creation from UI:
+- #### Creation from UI:
 
    - If the customer originally created the configuration through the user interface (UI), a different process is required.
 In such cases, the customer can follow these steps:
@@ -3095,7 +3095,7 @@ Please read more on this in the following [Documentation](https://apidocs.harnes
 Harness has provided video-configured guide on setting up the Github App with Git connectors.
 Please refer the same in this [Documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/)
 
-Hanress uses private keys to secure the Github App in the platform which ensures the security maintenance of the Github public App as well !
+Harness uses private keys to secure the Github App in the platform which ensures the security maintenance of the Github public App as well !
 
 #### What is the limitation time limit for a pipeline execution ?
 
@@ -3236,15 +3236,15 @@ If approval is added as stage then these variables will not be available and onl
 #### What is the equivalent variable for  $\{artifact.label.get(“labelkey)} In NG
 You can use  `<+artifact.label.get(“labelkey”)>`
 
-### "Is there an expression, such as '\<+pipeline.stages.Deploy.strategy.finalStatus>', to get the status of a stage outside of the looping strategy?"
+#### "Is there an expression, such as '\<+pipeline.stages.Deploy.strategy.finalStatus>', to get the status of a stage outside of the looping strategy?"
 The expression "\<+strategy.currentStatus>" only works within the context of the looping strategy, there is no expression like "\<+pipeline.stages.Deploy.strategy.finalStatus>" to get the status of a stage outside of the looping strategy.
 
 You can try using the expression "\<+pipeline.stages.STAGE_ID.status>" to get the status of a specific stage.
 
-### Unable to edit Delegate profiles in NextGen
+#### Unable to edit Delegate profiles in NextGen
 DelegateProfile is deprecated in Harness NextGen, and you can leverage INIT_SCRIPT to run scripts at delegate startup. There is no option to associate Delegate configurations with delegates in Harness NextGen.
 
-### I have a pipeline containing different stages DEV-QA-UAT-PROD. In UAT I'm using Canary deployment and in PROD it's Blue-Green. In these scenarios how Harness provides proper Roll Back strategies?
+#### I have a pipeline containing different stages DEV-QA-UAT-PROD. In UAT I'm using Canary deployment and in PROD it's Blue-Green. In these scenarios how Harness provides proper Roll Back strategies?
 Harness provides a declarative rollback feature that can perform rollbacks effectively in different deployment scenarios.
  
 For Canary deployment in UAT, you can define the percentage of traffic to route to the new version and set up conditions to switch traffic between the old and new versions. If an anomaly is detected during the canary deployment, Harness will automatically trigger a rollback to the previous version.
@@ -3254,26 +3254,26 @@ For Blue-Green deployment in PROD, you can define the conditions to switch traff
 You can define the failure strategy on stages and steps in your pipeline to set up proper rollback strategies. You can add a failure strategy in the deploy stage by either ignoring the failure for the shell script or getting a manual intervention where you can mark that step as a success. Additionally, you can use the declarative rollback feature provided by Harness to perform rollbacks effectively in different deployment scenarios.
 
 
-### We have a parent pipeline with the child pipelines and wanted to know if there is any built-in variable to check if the pipeline is triggered by another pipeline. 
+#### We have a parent pipeline with the child pipelines and wanted to know if there is any built-in variable to check if the pipeline is triggered by another pipeline. 
 There is no built-in variable to check if a pipeline is triggered by another pipeline. Even if a pipeline is triggered by another pipeline, it will still be considered a "Manual" trigger type. You may need to use a custom variable or some other method to track this information.
 
-### After moving the pipeline source code from Inline to Repository. Is there a way to roll back this change as we cannot find it in the UI?
+#### After moving the pipeline source code from Inline to Repository. Is there a way to roll back this change as we cannot find it in the UI?
 No, You should not face any issues with the trigger when it comes to inline or remote pipeline. There is no way to roll back. 
  
 However, you can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline let us know if you encounter any issues with the trigger we will help you with the next steps.
 
-### Is it possible to remove permissible actions from the Wait Step?
+#### Is it possible to remove permissible actions from the Wait Step?
 No, it is not possible to remove the permissible actions from the Wait Step. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
 
-### How to change the pipeline source code back from the repository to inline? Is there a way to roll back this change as we cannot find it in the UI?
+#### How to change the pipeline source code back from the repository to inline? Is there a way to roll back this change as we cannot find it in the UI?
 There is no way to roll back, You can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline. 
 
-### Is it possible to remove permissible actions from the Wait Step?
+#### Is it possible to remove permissible actions from the Wait Step?
 No, removing the permissible actions from the Wait Step is not possible. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
 
 However, you can set a failure strategy for the Wait Step to ensure that the pipeline execution fails if the step is marked as failed. Additionally, you can set a longer timeout duration to ensure that the mandatory waiting time is enforced.
 
-### We want our helm deployments through Harness to wait for the objects to be in the ready state and then only exit with status. Currently, it is executing helm upgrade and exiting but we wanted to run something like this: helm upgrade --install --atomic --timeout 20m \<release_name> \<chart_name> How can we do this with Harness?
+#### We want our helm deployments through Harness to wait for the objects to be in the ready state and then only exit with status. Currently, it is executing helm upgrade and exiting but we wanted to run something like this: helm upgrade --install --atomic --timeout 20m \<release_name> \<chart_name> How can we do this with Harness?
 
 Using --atomic and --timeout flags to the Helm command in the "Command" field of the "Helm Deployment" step. This should work to ensure that the deployment waits for the objects to be in the ready state and then exits with status.
  
@@ -3281,37 +3281,37 @@ However, please note that the --timeout flag specifies the time to wait for any 
  
 Also, please make sure that your Helm chart includes the necessary readiness probes for your objects to be considered ready by Kubernetes. Harness will wait for the readiness probes to pass before considering the deployment successful.
 
-### To store my shell script when I use Harness File Store I don’t see any option like Bitbucket, or GitHub.
+#### To store my shell script when I use Harness File Store I don’t see any option like Bitbucket, or GitHub.
 As of today, we have only two options to select the shell script provision script. That is inline and Harness file store.
 
-### How can I specify to use the account connector during migration?
+#### How can I specify to use the account connector during migration?
 This config will do that  connector-scope: accountIn case you want to do it connector to connector basis you can refer to this - https://harness.github.io/migrator/advanced/overrides-and-settings
 
-### How to download pipeline logs based on the given pipeline execution key?
+#### How to download pipeline logs based on the given pipeline execution key?
 
 You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
 
-### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
+#### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
 
 The only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact. 
  
 This URL can be used in the file_urls setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
 
-### How to pass the dynamic tag of the image from the CI pipeline to the CD Pipeline to pull the image.
+#### How to pass the dynamic tag of the image from the CI pipeline to the CD Pipeline to pull the image.
 A project or org or account level variable can be created and A shell_script/Run Step can be added in the P1 pipeline to export or output the required variable then the P2 pipeline can access this variable and perform the task based on its value.
  
 The shell script will use this API to update the value of the variable - https://apidocs.harness.io/tag/Variables#operation/updateVariable
 
-### "How can I dynamically reference step group IDs within a loop, such as loop_0, loop_1, loop_2, as they change dynamically?"
+#### "How can I dynamically reference step group IDs within a loop, such as loop_0, loop_1, loop_2, as they change dynamically?"
 You can achieve this usecase using the expression \<+execution.steps.step-group-id\<+strategy.identifierPostFix>.steps.step-id.output.outputVariables.var>
 
-### How does Harness GitOps ensure consistency between the desired state of infrastructure and its actual state?
+#### How does Harness GitOps ensure consistency between the desired state of infrastructure and its actual state?
 
 Harness GitOps ensures consistency between the desired state of infrastructure and its actual state by continuously monitoring the desired state in Git and syncing it with the live state in the Kubernetes cluster using an operator. 
 
 This ensures that the target state (cluster) is continually converged with the desired state (manifests), making the deployed applications and infrastructures fully-traceable and fully-versioned artifacts.
 
-### How do Harness CD SSH deployments handle authentication and authorization for remote servers?
+#### How do Harness CD SSH deployments handle authentication and authorization for remote servers?
 To authenticate and authorize remote servers for SSH deployments, Harness CD uses SSH Private Key to authenticate to the remote VM/server. For steps, you can refer to Passwordless SSH using public-private key pairs.
 
 #### How to refer to the name and identifier for Infrastructure Definition using build-in variables from another stage?
@@ -3354,13 +3354,13 @@ Number-type variables are always treated as doubles as per design (double-precis
 4.94065645841247E-324 to 1.79769313486232E308 for positive values.
 You can explicitly cast it to an integer-like expression.intValue()
 
-### Are policies supported in a GitOps application?
+#### Are policies supported in a GitOps application?
 OPA policies are not supported in a GitOps application in Harness. Currently, it is supported for pipelines, templates and flags.
 
-### How to disable auto sync for production environments only within the GitOps app
+#### How to disable auto sync for production environments only within the GitOps app
 You can update the RBAC to disable auto-sync for the entire GitOps app, but this may not be ideal if you want to enable auto-sync for other environments within the app.
 
-### How the order or precedence of file in the k8sdeploy component is used when multiple values yaml were used.
+#### How the order or precedence of file in the k8sdeploy component is used when multiple values yaml were used.
 When using multiple values YAML files in Harness Kubernetes Services, the highest priority is given to the last file, and the lowest priority to the first file.
 
 #### How to make Pipeline  input value required?
@@ -3842,42 +3842,39 @@ You can use conditional execution and use expression \<+artifact.tag> to check i
 
 To achieve this use case you will need to use two different delegates with the required Terraform version installed.
 
-### Are policies supported in a GitOps application?
-Policies are not supported in a GitOps application in Harness. Currently, it is supported for pipelines, templates and flags.
-
-### How can I check if the CloudFormation Stack is created successfully?
+#### How can I check if the CloudFormation Stack is created successfully?
 
 After running the pipeline, you can check your AWS Management console for CloudFormation to verify the creation of the new CloudFormation Stack.
 
-### How do I create a Google Cloud Storage bucket in the Google Cloud console?
+#### How do I create a Google Cloud Storage bucket in the Google Cloud console?
 
 You can create a Google Cloud Storage bucket by logging into the Google Cloud console and following the steps outlined in the Create new Bucket documentation: https://cloud.google.com/storage/docs/creating-buckets
 
-### Which storage options does Harness support for Google Cloud Functions 1st gen?
+#### Which storage options does Harness support for Google Cloud Functions 1st gen?
 
 For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
 
-### What are the limitations when using Google Cloud Functions 2nd gen with Harness?
+#### What are the limitations when using Google Cloud Functions 2nd gen with Harness?
 
 Harness does not currently support Google Cloud Source Repository for Google Cloud Functions 2nd gen. Only Google Cloud Storage is supported for this version.
 
-### Can access to specific environments be restricted for users or user groups?
+#### Can access to specific environments be restricted for users or user groups?
 
 Yes, access to specific environments can be restricted to users or user groups. By creating resource groups, and roles, and assigning permissions, users or groups can be limited to deploying to specific environments only.
 
-### What role do environment variables play, and where can they be utilized?
+#### What role do environment variables play, and where can they be utilized?
 
 Environment variables serve as global variables for a specific environment. These variables can be leveraged in pipelines, manifests, and other configurations associated with that environment.
 
-### How are service configurations overridden in specific environments?
+#### How are service configurations overridden in specific environments?
 
 Service configuration overrides allow you to override service properties when deploying into a particular environment. This flexibility enables you to customize settings based on the target environment.
 
-### Can an environment have multiple infrastructure definitions?
+#### Can an environment have multiple infrastructure definitions?
 
 Yes, an environment can contain multiple infrastructure definitions, each representing a specific VM, Kubernetes cluster, or target infrastructure. When selecting an environment in a pipeline, you can choose from these definitions.
 
-### What is the role of Environment Service Overrides in override priority?
+#### What is the role of Environment Service Overrides in override priority?
 
 Environment Service Overrides take precedence at the highest level in the priority order. Understanding how these overrides impact service settings is crucial for effective configuration.
 
@@ -3920,7 +3917,7 @@ Also one can go through [Delegate FAQs](https://developer.harness.io/docs/faqs/h
 
 #### What is the proper method for constructing a Harness pipeline to execute a rolling restart of a service, analogous to the "kubectl rollout restart deployment `<deploymentName>` " command ?
 
-Hanress uses `patchManifest` stage type with `LAST_ROLLOUT = now()` in Spinnaker to achieve it today. Please read more on this in the Spinnaker [Documentation](https://spinnaker.io/docs/guides/user/kubernetes-v2/patch-manifest/)
+Harness uses `patchManifest` stage type with `LAST_ROLLOUT = now()` in Spinnaker to achieve it today. Please read more on this in the Spinnaker [Documentation](https://spinnaker.io/docs/guides/user/kubernetes-v2/patch-manifest/)
 
 #### How does the newly introduced support for Azure Logs as a Health Source in Harness contribute to service monitoring, particularly through the utilization of Cloud Metrics and Cloud Logs ? 
 
@@ -4350,3 +4347,64 @@ By default shell script doesn’t uses the connector selector and task can go to
 ####  Can we use command step for custom stage
 
 No this is not supported as of now, as currently command step is only applicable in ssh/winrm type deployment
+
+#### How would licensing work if a prospect prefers to use Harness CD solely as a script orchestrator for their existing pre-defined process without utilizing Harness Service or Environment for tracking ?
+
+We don't charge separately for infrastructure provisioning swimlanes or custom script orchestration like 'cdk deploy.' Our current licensing model is straightforward, and there's no additional fee for this usage.
+
+#### Can I use the same cluster for running the Harness delegate and containerized step group(s), or is it required to use separate clusters ?
+
+Certainly! one has the flexibility to use the same cluster for both the Harness delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
+
+#### What are the Google Cloud Functions supported by Harness ?
+
+Harness supports deploying Google Functions 1st gen and 2nd gen. But for Google Cloud Functions 2nd gen, Harness does not support Google Cloud Source Repository at this time. Only Google Cloud Storage is supported. For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#supported-versions)
+
+#### Is there a way to show instances over time in NextGen, similar to the current “Service instances over time” dashboard in First gen ?
+
+Yes, the Instance view per service is visible in the Service Dashboard.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#services-dashboard)
+
+#### Can the linking of a GitOps cluster to an environment behave similarly to updating existing entities, allowing for seamless updates rather than producing an error when a link already exists ?
+
+Indeed, the linking of a GitOps cluster to an environment involves an 'insert' call, creating a new link. However, it's worth noting that there's also an 'update' call in place, enabling the system to update the link when necessary, akin to the behavior observed with secret/connector/pipeline entities.
+Please follow more in our [API Documentation](https://apidocs.harness.io/tag/Clusters/#operation/AgentClusterService_Update)
+
+#### Do instances deployed over 30 days ago show in the Active Service breakdown? How are Service Instances (SIs) counted, considering those active within the last 30 days but deployed earlier, and those removed before 30 days ?
+
+Yes. We don't show instances deployed older than 30 days in Active Service breakdown. However, we would still count the SIs that were active in the last 30days even if they are deployed earlier. SIs which got removed before 30days will not be accounted in the SI calculation.
+
+#### Does Harness support Azure Container Apps ?
+No, due to low customer request it is not on our roadmap. Please feel free to create a request for the same.
+Please read more on what we support in Harness in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations)
+
+#### Does Harness provides drift detection for k8s non-gitops pipelines ?
+
+No, this feature is still under development and not yet supported. We hope to deliver this soon !
+
+#### What safeguard is implemented regarding step inputs or parameters in a system to be part of the expanded JSON ?
+
+Following steps are measures one can consider : 
+- If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+- Harness uses the greater than sign `(>)` to terminate expressions. To avoid ambiguous results, make sure that your scripts do not include a greater than sign.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/expression-v2/#limitations)
+
+#### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in curl to execute the pipeline like CG triggers ?
+
+Yes, one can use custom webhook triggers with placeholders for services, artifacts, and tags to provide dynamic values in cURL to execute the pipeline. You can pass in this data when the pipeline execution is triggered using a custom cURL trigger. Please read more on custom triggers in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)
+
+#### What recommendation can be made if a service's chart is currently on V3?
+
+Yes, If the chart is v3 in service should be same.
+Note! If your development team still uses Helm 2, you can reintroduce the binary on the delegate. Harness is not responsible for any vulnerabilities or risks that might result from reintroducing the Helm 2 binary. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#important-notes)
+
+#### Does Harness entities rely on account name changes ?
+
+No, Harness entities use immutable entity identifiers to refer to entities, and these identifiers are generated automatically based on the entity name. If an entity name is changed, the identifier remains the same. Therefore, Harness entities do not rely on account name changes.
+
+#### How does Conditional Execution behave in a stage when considering steps that have their own Conditional Execution compared to those that don't within the same stage ?
+
+The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts#conditional-executions)
