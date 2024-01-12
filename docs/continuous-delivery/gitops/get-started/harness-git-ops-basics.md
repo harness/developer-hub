@@ -16,6 +16,17 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 Want to jump right in? Try the [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md).
 
+## ArgoCD with Terraform Video Demo
+
+Here's a quick demo showing how you can orchestrate cluster creation with Harness Infrastructure as Code Management, and use an Argo CD-based pipeline with Harness Continuous Delivery and GitOps. 
+
+This is a more advanced demo than a simple GitOps sync, but it shows how Harness integrates GitOps into common DevOps practices.
+
+<!-- Video:
+[https://www.youtube.com/watch?v=02RIvOGd0zg](https://youtu.be/FUSehVlmETM?si=2LedL48wneKs185Z)-->
+<docvideo src="https://youtu.be/FUSehVlmETM?si=2LedL48wneKs185Z" />
+
+
 ## Harness GitOps Summary
 
 **What is GitOps?** GitOps is simply using Git to perform Operations Team (Ops) tasks, such as building infrastructure, release automation, and orchestration.
