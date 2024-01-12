@@ -453,7 +453,7 @@ For more information about self-signed certificates, delegates, and delegate env
 
 If the volumes are not getting mounted to the build containers, or you see other certificate errors in your pipeline, try the following:
 
-1. Add a [Run step](../../run-ci-scripts/run-step-settings.md) that prints the contents of the destination path. For example, you can include a command such as:
+1. Add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that prints the contents of the destination path. For example, you can include a command such as:
 
    ```
    cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt
