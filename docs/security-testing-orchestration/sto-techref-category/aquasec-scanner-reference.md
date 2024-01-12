@@ -148,13 +148,13 @@ import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-regio
 
 ### Authentication settings
 
-<a name="auth-access-id"></a>
+<a name="auth-access-domain"></a>
 
-#### Access ID 
+#### Access Domain
 
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
 
-<StoSettingAuthAccessID />
+<StoSettingAuthDomain />
 
 
 <a name="auth-access-token"></a>
@@ -165,10 +165,9 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 <StoSettingAuthAccessToken />
 
+<!-- a name="auth-access-region"></a>
 
 #### Access Region
-
-<a name="auth-access-token"></a>
 
 The AWS region of the image to scan.
 
