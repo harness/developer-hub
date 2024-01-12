@@ -22,6 +22,11 @@ Before you begin the tutorial, you need to have a Harness account. To create one
 
 ![verify](./static/sandbox/verify-email.png)
 
+## High-level flow of control in a sandbox
+
+Below is a diagram that shows a high-level view of the flow of control in a sandbox environment:
+
+![control flow](./static/sandbox/sandbox-flow-of-control.png)
 
 ## Execute pod delete on the Podtato head app
 
@@ -46,9 +51,9 @@ Once you have created an account with Harness, click **Get started** of the **Ch
 :::note
 * A sandbox once created can't be deleted.
 * All users within a sandbox can share the same sandbox.
-The first time you create a sandbox, the session starts automatically. After that, you will need to explicitly **Start** the session.
-You will have total of 20 sessions (each session is 60 minutes) valid for 30 days from the day of creation of the sandbox.
-You can **Stop** anytime and restart the session. The remaining part of the time will be added to the unused quota.
+* The first time you create a sandbox, the session starts automatically. After that, you will need to explicitly **Start** the session.
+* You will have total of 20 sessions (each session is 60 minutes) valid for 30 days from the day of creation of the sandbox.
+* You can **Stop** anytime and **restart** the session. The remaining part of the time will be added to the unused quota.
 :::
 
 ### Execute pod delete experiment
