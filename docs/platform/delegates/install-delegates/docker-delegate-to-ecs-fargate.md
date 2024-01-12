@@ -4,13 +4,11 @@ description: Provides information and YAML for the installation of a delegate in
 sidebar_position: 5
 ---
 
-# Deploy a Docker delegate to Amazon ECS or AWS Fargate
-
 Harness Delegate carries out the tasks in your Continuous Integration (CI) and Continuous Delivery (CD) pipelines. The delegate is a software component that installs in your environment and registers with Harness Manager. The delegate connects to Harness Manager for the assignment and completion of CI/CD tasks.
 
-You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Container Service (ECS) or AWS Fargate. This tutorial steps through the process of installing the delegate into an ECS cluster as an ECS service. The installed delegate connects to your AWS resources.
+You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Container Service (ECS) or AWS Fargate.
 
-:::info note
+:::info
 Delegate scope for a delegate for Amazon ECS is based on the token you use.
 :::
 
@@ -18,19 +16,27 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 
-## Deploy a delegate to Amazon ECS 
+## Considerations before using ECS-configured Docker delegates
 
-Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+Review the following information about using Harness ECS-configured Docker delegates to ensure seamless and secure deployment of your applications and services.
 
-:::info note
-You can also use a Terraform module to deploy a delegate. For more information, go to [Deploy a delegate using Terraform](#deploy-a-delegate-using-terraform).
+* **ECS-configured Docker delegates do not auto-update:** If you are using a delegate configured through ECS, auto-update of the delegate is not supported.
+* **Concerns with auto-upgrading the delegate:** The convenience of automatic updates is obvious, but it raises certain security concerns. As delegates are updated, new binaries and tools may be introduced. There is no way to scan these additions, which can lead to potential vulnerabilities. Due to these concerns, Harness recommends using custom delegates for production use. If you use the Docker delegate on AWS ECS Fargate, Harness recommends that you manually update the delegate on a regular cadence, either every 3 or 6 months. This ensures a balance between security and feature updates.
+* **Limitations with Docker delegate on an AWS ECS Fargate-backed instance:** When operating ECS delegates on AWS Fargate, it's critical to note that AWS Fargate will terminate the delegate if the tasks running on the delegate exceed the infrastructure's specified limits. This is a limitation inherent in using infrastructure not owned by the customer. Harness Delegate cannot circumvent this restriction. However, ECS delegates operating on an EC2 instance do not have this issue. To avoid this limitation, consider using Kubernetes delegates where the infrastructure and associated YAML definitions address these issues.
+
+## Deploy a delegate to Amazon ECS
+
+Use these steps to deploy a delegate to an ECS cluster as an ECS service. The installed delegate connects to your AWS resources.
+
+This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+
+:::info
+You can also [use a Terraform module to deploy a delegate to an ECS cluster](#deploy-a-delegate-using-terraform).
 :::
 
 ### Create the cluster
 
-Create an ECS cluster. Use an EC2 instance type with networking. 
-
-For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
+Create an ECS cluster. Use an EC2 instance type with networking. For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
 
 ### Create the task definition
 
@@ -122,9 +128,7 @@ Use the following steps to create a service.
    ecs create-service --service-name <SERVICE_NAME> --task-definition
    ```
    
-   Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. 
-   
-   For information on the specification of ECS service parameters, go to [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
+   Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. For information on the specification of ECS service parameters, go to [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
    
 2. Use the following instruction to increase the count of replica pods to the desired number:
 
@@ -136,11 +140,9 @@ Use the following steps to create a service.
 
 Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires a delegate with an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
 
-### Create the cluster 
+### Create the cluster
 
-Create a cluster on Amazon Fargate. Use an instance type with networking.
-
-For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
+Create a cluster on Amazon Fargate. Use an instance type with networking. For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
 
 ### Create the task definition
 
@@ -251,20 +253,20 @@ Use the following steps to create a task definition. For information about task 
       "enableECSManagedTags": true
     }
    ```
-   
- 2. After the service is created and modified, use the JSON files to register the task and service definitions.
- 
- 3. From AWS CLI, use the following instruction to register the task definition:
- 
-    ```
-    aws ecs register-task-definition --cli-input-json file://task-spec.json
-    ```
-    
- 4. Then register the service definition:
- 
-    ```
-    aws ecs create-service --cli-input-json file://service.json
-    ```
+
+2. After the service is created and modified, use the JSON files to register the task and service definitions.
+
+3. From AWS CLI, use the following instruction to register the task definition:
+
+   ```
+   aws ecs register-task-definition --cli-input-json file://task-spec.json
+   ```
+
+4. Then register the service definition:
+
+   ```
+   aws ecs create-service --cli-input-json file://service.json
+   ```
 
 ## Deploy a delegate using Terraform
 
@@ -335,23 +337,3 @@ resource "aws_iam_policy" "delegate_aws_access" {
 EOF
 }
 ```
-
-## Limitations
-
-This section details the specific limitations associated with using ECS-configured Docker delegates in Harness. Review these limitations to ensure seamless and secure deployment of your applications and services.
-
-**ECS-configured Docker delegates do not auto-update**
-
-If you are using a delegate configured through ECS, auto-update of the delegate is not supported.
-
-**Concerns with auto-upgrading the delegate**
-
-The convenience of automatic updates is obvious, but it raises certain security concerns. As delegates are updated, new binaries and tools may be introduced. There is no way to scan these additions, which can lead to potential vulnerabilities. Due to these concerns, Harness recommends using custom delegates for production use.
-
-If you use the Docker delegate on AWS ECS Fargate, Harness recommends that you manually update the delegate on a regular cadence, either every 3 or 6 months. This ensures a balance between security and feature updates.
-
-**Limitations with Docker delegate on an AWS ECS Fargate-backed instance**
-
-When operating ECS delegates on AWS Fargate, it's critical to note that AWS Fargate will terminate the delegate if the tasks running on the delegate exceed the infrastructure's specified limits. This is a limitation inherent in using infrastructure not owned by the customer. Harness Delegate cannot circumvent this restriction. However, ECS delegates operating on an EC2 instance do not have this issue.
-
-To avoid this limitation, consider using Kubernetes delegates. In this setup, the infrastructure and associated YAML definitions address these issues.
