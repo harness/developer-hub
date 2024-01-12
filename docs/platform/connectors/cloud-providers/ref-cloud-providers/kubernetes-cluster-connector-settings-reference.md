@@ -260,7 +260,7 @@ To use the platform-agnostic Kubernetes cluster connector with your AWS EKS infr
 3. In the connector settings, select to connect through the delegate that you installed in your cluster.
 4. When setting up the EKS cluster as build infrastructure or the target Infrastructure for a deployment, select your Kubernetes Cluster Connector.
 
-To use an EKS cluster for Kubernetes cluster build infrastructure in Harness CI, you must create a platform-agnostic Kubernetes cluster connector for the stage's build infrastructure, and then you can use either type of connector in individual steps in the stage. However,for individual steps in a build stage, if your EKS clusters use IRSA (for the delegate's service account or with OIDC Provider) or Fargate nodes in EKS clusters, use an [AWS connector configured for EKS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/##connect-to-elastic-kubernetes-service-eks).
+To use an EKS cluster for Kubernetes cluster build infrastructure in Harness CI, you must create a platform-agnostic Kubernetes cluster connector for the stage's build infrastructure, and then you can use either type of connector in individual steps in the stage. However, for individual steps in a build stage, if your EKS clusters use IRSA (for the delegate's service account or with OIDC Provider) or Fargate nodes in EKS clusters, use an [AWS connector configured for EKS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/##connect-to-elastic-kubernetes-service-eks).
 
 ## OpenShift Support
 
