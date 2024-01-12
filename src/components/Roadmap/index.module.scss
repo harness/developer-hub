@@ -110,9 +110,11 @@
     margin-top: 25px;
     display: flex;
     justify-content: space-between;
-    gap: 16px;
+    align-content: center;
+    // gap: 16px;
 
     .section {
+      margin-right: 16px;
       padding: 16px;
 
       background-color: #fafbfc;
