@@ -256,6 +256,6 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Can't use STO steps with Harness Cloud macOS runners.](/kb/continuous-integration/continuous-integration-faqs/#cant-use-sto-steps-with-harness-cloud-macos-runners)
 * [Is Harness Cloud compatible with tools like gsutil or gcloud?](/kb/continuous-integration/continuous-integration-faqs/#does-gsutil-work-with-harness-cloud)
 * [Connector or delegate errors when using Harness Cloud.](/kb/continuous-integration/continuous-integration-faqs/#connector-errors-with-harness-cloud-build-infrastructure)
-* [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs.md#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
+* [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs/#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
 * [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
 * [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)

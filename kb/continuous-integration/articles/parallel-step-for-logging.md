@@ -56,8 +56,8 @@ Your parallel group (under the `-parallel` flag) should include only the two deb
 
 You can arrange steps in parallel in the Visual editor by dragging and dropping steps to rearrange them.
 
-<!-- ![Three steps arranged in parallel in the Pipeline Studio's Visual editor.](./static/parallel-debug-steps.png) -->
+<!-- ![Three steps arranged in parallel in the Pipeline Studio's Visual editor.](../static/parallel-debug-steps.png) -->
 
-<DocImage path={require('./static/parallel-debug-steps.png')} />
+<DocImage path={require('../static/parallel-debug-steps.png')} />
 
 :::
