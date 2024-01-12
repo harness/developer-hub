@@ -102,7 +102,7 @@ If you are unable to connect to the Kubernetes infrastructure server, try the fo
 * Use **ping** on the subscriber or any other pod to test if the response times for app.harness.io or another URL are reasonable and consistent.
 * Use traceroute on app.harness.io to check the network route.
 * Use **nslookup** to confirm that the DNS resolution is working for app.harness.io.
-* Connect using the IP address for app.harness.io (you can get the IP address using `nslookup`). For example, http://35.23.123.321/#/login.
+* Connect using the IP address for app.harness.io (you can get the IP address using `nslookup`). For example, `http://35.23.123.321/#/login`.
 * Check for local network issues, such as proxy errors or NAT license limits.
 * For some cloud platforms, like AWS EC2, ensure that the security groups allow outbound traffic on HTTPS 443.
 
