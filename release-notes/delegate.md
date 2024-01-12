@@ -106,7 +106,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 -  If instance refresh during an ASG deployment took too much time and timed out, a rollback was triggered. If the instance refresh was still in progress when the rollback was triggered, the rollback failed. (CDS-83821)
 
-  This issue has been fixed.
+   This issue has been fixed.
 
 - When streaming log messages from PowerShell scripts, Harness streamed only those console logs that had INFO and ERROR severity levels. (CDS-84570, ZD-53860)
 
@@ -148,10 +148,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - You can now use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
 
-:::info note
-Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
+    :::info note
+    Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+    
+    :::
 
 #### November 2023
 
@@ -173,7 +173,7 @@ Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact 
 
 - There was an issue with Harness not properly handling delegate reconnects, which affected delegate metrics. During a disconnect, Harness would mark `delegate_connected` as 0, but after a reconnect, it failed to increment the `delegate_connected` to 1. (PL-42431, ZD-52829, ZD-53399, ZD-53878)
 
-This issue has been resolved, and now Harness increments the `delegate_connected` to 1 during reconnection. As a result, the `io_harness_custom_metric_delegate_connected` and `io_harness_custom_metric_task_failed` metrics are now accurately reported.
+   This issue has been resolved, and now Harness increments the `delegate_connected` to 1 during reconnection. As a result, the `io_harness_custom_metric_delegate_connected` and `io_harness_custom_metric_task_failed` metrics are now accurately reported.
 
 - Fixed the following issues:
 
@@ -1235,7 +1235,7 @@ Harness NextGen release 78619 includes the following changes for the Harness Del
 
 - The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
 
- This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
+   This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
 
 ###### Fixed issues
 
@@ -1247,7 +1247,7 @@ The new delegate installation wizard is now available in all delegate installati
 
 Harness NextGen release 78507 includes the following changes for the Harness Delegate.
 
-:::note
+:::info note
 The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
 
 The repository at https://app.harness.io/storage/harness-download/harness-helm-charts/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/harness-helm-charts/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/delegate-helm-chart/.
@@ -1267,7 +1267,7 @@ You can dynamically select delegates by hostname during pipeline runs. To do so,
 
 Harness NextGen release 78421 includes the following changes for the Harness Delegate.
 
-:::note
+:::info note
 The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
 
 The repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
