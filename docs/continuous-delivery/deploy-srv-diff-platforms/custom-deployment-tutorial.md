@@ -1311,3 +1311,395 @@ infrastructureDefinition:
         value: <+service.name>
   allowSimultaneousDeployments: false
 ```
+
+### Google App Engine - Sample
+
+#### Deployment Template
+
+```YAML
+template:
+  name: Google AppEngine
+  identifier: Google_AppEngine
+  versionLabel: v1
+  type: CustomDeployment
+  tags: {}
+  spec:
+    infrastructure:
+      variables: []
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |-
+              #
+              # Script is expected to query Infrastructure and dump json
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+              #
+
+              cat > $INSTANCE_OUTPUT_PATH <<_EOF_
+              {
+                "data": [
+                  {
+                    "functionName": "<+service.name>"
+                  }
+                ]
+              } 
+              _EOF_
+      instanceAttributes:
+        - name: hostname
+          jsonPath: functionName
+          description: ""
+      instancesListPath: data
+    execution:
+      stepTemplateRefs:
+        - account.Deploy_AppEngine
+
+```
+
+#### Deployment Step - Google App Engine
+
+```YAML
+template:
+  name: Deploy AppEngine
+  type: Step
+  spec:
+    type: ShellScript
+    timeout: 10m
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+            export PATH=$PATH:/opt/harness-delegate/google-cloud-sdk/bin
+
+            #KEY_FILE="/root/gae_sa.json"
+
+            gcloud config set account harness@harnessauth.iam.gserviceaccount.com
+            gcloud config set project ${GC_PROJECT}
+            gcloud config list
+            gcloud app versions list
+
+            echo "Unzipping Artifact..."
+
+
+            echo "Starting App Deploy..."
+
+            gcloud app deploy app.yaml --project ${GC_PROJECT} -q --verbosity=debug
+      environmentVariables: []
+      outputVariables: []
+  identifier: Deploy_AppEngine
+  versionLabel: v1
+
+```
+
+
+### Elasticbeanstalk - Sample
+
+#### Deployment Template 
+
+```YAML
+template:
+  name: Elastic Beanstalk
+  identifier: Elastic_Beanstalk
+  versionLabel: v1
+  type: CustomDeployment
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    infrastructure:
+      variables:
+        - name: EnvironmentName
+          type: String
+          value: ""
+          description: AWS Beanstalk Environment Name
+        - name: Region
+          type: String
+          value: ""
+          description: AWS Region
+        - name: stsRole
+          type: String
+          value: None
+          description: STS Role to Assume. Leave it blank if not necessary
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |+
+              echo "Starting"
+
+              export AWS_DEFAULT_REGION=<+infra.variables.Region>
+              export AWS_STS_ROLE=<+infra.variables.stsRole>
+              NAME="Harness-Assume-Role"
+
+              if [ "$AWS_STS_ROLE" != "None" ]; then
+                echo "Assuming STS Role..."
+
+              # Cleanup current sessions
+                unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+                unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+                KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                        --role-session-name "$NAME" \
+                                        --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+              --output text`)
+
+                export AWS_ACCESS_KEY_ID=${KST[0]}
+                export AWS_SECRET_ACCESS_KEY=${KST[1]}
+                export AWS_SESSION_TOKEN=${KST[2]}
+
+              else
+                 echo "Skipping STS AssumeRole..."
+              fi
+
+
+              #INSTANCE_OUTPUT_PATH=`aws elasticbeanstalk describe-instances-health --environment-name=<+infra.variables.EnvironmentName>`
+              aws elasticbeanstalk describe-instances-health --environment-name=<+infra.variables.EnvironmentName> > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+
+      instanceAttributes:
+        - name: hostname
+          jsonPath: InstanceId
+          description: Elastic Beanstalk InstanceID
+        - name: instancename
+          jsonPath: InstanceId
+          description: Elastic Beanstalk InstanceID
+      instancesListPath: InstanceHealthList
+    execution:
+      stepTemplateRefs:
+        - account.Prepare_AWS_ElasticBeanstalk
+        - account.Create_Version
+        - account.Update_Environment
+        - account.Steady_State_Check
+  icon:
+
+```
+
+#### Execution Step - Elasticbeanstalk
+
+##### Prepare Step
+
+```YAML
+template:
+  name: Prepare AWS ElasticBeanstalk
+  type: Step
+  spec:
+    type: ShellScript
+    timeout: 10m
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+            export AWS_DEFAULT_REGION=<+infra.custom.vars.Region>
+            AWS_STS_ROLE=<+infra.custom.vars.stsRole>
+            NAME="Harness-Assume-Role"
+            export VERSION_LABEL=${VERSION}
+
+            if [ ! -z "$AWS_STS_ROLE" ]; then
+              echo "Assuming STS Role..."
+
+            # Unset existing AWS session keys
+              unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+              unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+              KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                      --role-session-name "$NAME" \
+                                      --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --output text`)
+
+              export AWS_ACCESS_KEY_ID=${KST[0]}
+              export AWS_SECRET_ACCESS_KEY=${KST[1]}
+              export AWS_SESSION_TOKEN=${KST[2]}
+
+            else
+               echo "Skipping STS AssumeRole..."
+            fi
+      environmentVariables: []
+      outputVariables: []
+  identifier: Prepare_AWS_ElasticBeanstalk
+  versionLabel: v1
+  description: ""
+  tags:
+    ElasticBeanstalk Template: ""
+
+```
+
+##### Create Version Step
+
+```YAML
+template:
+  name: Create Version
+  identifier: Create_Version
+  versionLabel: v1
+  type: Step
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    timeout: 20m
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+            export AWS_DEFAULT_REGION=<+infra.variables.Region>
+            export AWS_STS_ROLE=<+infra.variables.stsRole>
+            NAME="Harness-Assume-Role"
+            export VERSION_LABEL=<+artifact.filePath>
+
+            if [ "$AWS_STS_ROLE" != "None" ]; then
+            echo "Assuming STS Role..."
+
+            # Unset existing AWS session keys
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+            unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+            KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                      --role-session-name "$NAME" \
+                                      --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --output text`)
+
+            export AWS_ACCESS_KEY_ID=${KST[0]}
+            export AWS_SECRET_ACCESS_KEY=${KST[1]}
+            export AWS_SESSION_TOKEN=${KST[2]}
+
+            else
+            echo "Skipping STS AssumeRole... Will use the current IAM role."
+            fi
+
+            VERSION_EXISTS=`aws elasticbeanstalk describe-application-versions --application-name=<+service.name> --version-labels=${VERSION_LABEL} | jq -r '.ApplicationVersions' | jq length`
+
+            if [ $VERSION_EXISTS -gt 0 ]; then
+              echo "Version already exists, Harness skipping this step..."
+            else
+
+            echo "Creating EB app version ${VERSION_LABEL} in EB app \"<+service.name>\" on region ${AWS_DEFAULT_REGION}"
+
+            aws elasticbeanstalk create-application-version --application-name "<+service.name>" --description "Version created by Harness." \
+             --version-label "${VERSION_LABEL}" --source-bundle S3Bucket=<+artifact.bucketName>,S3Key=<+artifact.filePath>
+            fi
+      environmentVariables: []
+      outputVariables: []
+      delegateSelectors: <+input>
+
+```
+
+##### Update Environment Step
+
+```YAML
+template:
+  name: Update Environment
+  identifier: Update_Environment
+  versionLabel: v1
+  type: Step
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    timeout: 25m
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: "#!/bin/bash\nexport AWS_DEFAULT_REGION=<+infra.variables.Region>\nAWS_STS_ROLE=<+infra.variables.stsRole>\nNAME=\"Harness-Assume-Role\"\nexport VERSION_LABEL=<+artifact.filePath>\n\nif [ \"$AWS_STS_ROLE\" != \"None\" ]; then\necho \"Assuming STS Role...\"\n\n# Unset existing AWS session keys\nunset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN\n\nunset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN\n\nKST=(`aws sts assume-role --role-arn \"$AWS_STS_ROLE\" \\\n                          --role-session-name \"$NAME\" \\\n                          --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \\\n--output text`)\n\nexport AWS_ACCESS_KEY_ID=${KST[0]}\nexport AWS_SECRET_ACCESS_KEY=${KST[1]}\nexport AWS_SESSION_TOKEN=${KST[2]}\n\nelse\necho \"Skipping STS AssumeRole...\"\nfi\n\n# See if EB_APP_VERSION is in the EB app\nNB_VERS=`aws elasticbeanstalk describe-applications --application-name \"<+service.name>\" | jq '.Applications[] | .Versions[]' | grep -c \"\\\"${VERSION_LABEL}\\\"\"`\nif [ ${NB_VERS} = 0 ];then\n\techo \"No app version called \\\"${VERSION_LABEL}\\\" in EB application \\\"${EB_APP}\\\".\"\n\texit 4\nfi\n\naws elasticbeanstalk update-environment --environment-name <+infra.variables.EnvironmentName> --version-label ${VERSION_LABEL}"
+      environmentVariables: []
+      outputVariables: []
+      delegateSelectors: <+input>
+
+```
+
+##### Steady State Check Step
+
+```YAML
+template:
+  name: Steady State Check
+  identifier: Steady_State_Check
+  versionLabel: v1
+  type: Step
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    timeout: 25m
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+            export AWS_DEFAULT_REGION=<+infra.variables.Region>
+            AWS_STS_ROLE=<+infra.variables.stsRole>
+            NAME="Harness-Assume-Role"
+            export VERSION_LABEL=<+artifact.filePath>
+
+            if [ ! -z "$AWS_STS_ROLE" ]; then
+            echo "Assuming STS Role..."
+
+            # Unset existing AWS session keys
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+            unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+            KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                      --role-session-name "$NAME" \
+                                      --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --output text`)
+
+            export AWS_ACCESS_KEY_ID=${KST[0]}
+            export AWS_SECRET_ACCESS_KEY=${KST[1]}
+            export AWS_SESSION_TOKEN=${KST[2]}
+
+            else
+            echo "Skipping STS AssumeRole..."
+            fi
+            #######
+            echo "Checking for Steady State..."
+            APP_INFO=`aws elasticbeanstalk describe-environments --environment-name <+infra.variables.EnvironmentName>`
+            APP_STATUS=`echo ${APP_INFO}  | jq '.Environments[] | .Status' | sed -e 's/^"//' -e 's/"$//'`
+            APP_HEALTHSTATUS=`echo ${APP_INFO}  | jq '.Environments[] | .HealthStatus' | sed -e 's/^"//' -e 's/"$//'`
+            APP_HEALTH=`echo ${APP_INFO}  | jq '.Environments[] | .Health' | sed -e 's/^"//' -e 's/"$//'`
+
+            echo "Current APP Status: " ${APP_STATUS}
+            echo "Current APP Health Status" ${APP_HEALTHSTATUS}
+            echo "Current APP Health" ${APP_HEALTH}
+
+            while [ "$APP_STATUS" != "Ready" ] || [ "$APP_HEALTHSTATUS" != "Ok" ] || [ "$APP_HEALTH" != "Green" ]; do
+              APP_INFO=`aws elasticbeanstalk describe-environments --environment-name <+infra.variables.EnvironmentName>`
+              APP_STATUS=`echo ${APP_INFO}  | jq '.Environments[] | .Status' | sed -e 's/^"//' -e 's/"$//'`
+              APP_HEALTHSTATUS=`echo ${APP_INFO}  | jq '.Environments[] | .HealthStatus' | sed -e 's/^"//' -e 's/"$//'`
+              APP_HEALTH=`echo ${APP_INFO}  | jq '.Environments[] | .Health' | sed -e 's/^"//' -e 's/"$//'`
+              echo "---"
+              echo "Checking for Steady State..."
+              echo "Current APP Status: " ${APP_STATUS} " - Desired: Ready "
+              echo "Current APP Health Status" ${APP_HEALTHSTATUS} " - Desired: Ok"
+              echo "Current APP Health" ${APP_HEALTH} " - Desired: Green"
+              sleep 2
+            done
+
+            echo "------"
+            echo ${APP_INFO}
+      environmentVariables: []
+      outputVariables: []
+      delegateSelectors: <+input>
+```
