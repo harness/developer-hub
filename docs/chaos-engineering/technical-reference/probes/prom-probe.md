@@ -39,54 +39,53 @@ Listed below is the probe schema for the Prometheus probe, with properties share
 
 <table>
   <tr>
-   <td><strong>Field</strong> </td>
-   <td><strong>Description</strong> </td>
-   <td><strong>Type</strong> </td>
-   <td><strong>Range</strong> </td>
-   <td><strong>Notes</strong> </td>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
   </tr>
   <tr>
-   <td>name </td>
-   <td>Flag to hold the name of the probe </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>name</code> holds the name of the probe. It can be set based on the use case
-   </td>
+    <td>name</td>
+    <td>Flag to hold the name of the probe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>name</code> holds the name of the probe. It can be set based on the use case</td>
   </tr>
   <tr>
-   <td>type   </td>
-   <td>Flag to hold the type of the probe </td>
-   <td>Mandatory </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code> </td>
-   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe. </td>
+    <td>type</td>
+    <td>Flag to hold the type of the probe</td>
+    <td>Mandatory</td>
+    <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code></td>
+    <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.</td>
   </tr>
   <tr>
-   <td>mode </td>
-   <td>Flag to hold the mode of the probe </td>
-   <td>Mandatory </td>
-   <td><code>SOT, EOT, Edge, Continuous, OnChaos</code> </td>
-   <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only. </td>
+    <td>mode</td>
+    <td>Flag to hold the mode of the probe</td>
+    <td>Mandatory</td>
+    <td><code>SOT, EOT, Edge, Continuous, OnChaos</code></td>
+    <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.</td>
   </tr>
   <tr>
-   <td>endpoint </td>
-   <td>Flag to hold the prometheus endpoints for the promProbe </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>endpoint</code> contains the prometheus endpoints </td>
+    <td>endpoint</td>
+    <td>Flag to hold the prometheus endpoints for the promProbe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>endpoint</code> contains the prometheus endpoints</td>
   </tr>
   <tr>
-   <td>query </td>
-   <td>Flag to hold the promql query for the promProbe </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>query</code> contains the promql query to extract out the desired prometheus metrics via running it on the given prometheus endpoint </td>
+    <td>query</td>
+    <td>Flag to hold the promql query for the promProbe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>query</code> contains the promql query to extract out the desired prometheus metrics via running it on the given prometheus endpoint</td>
   </tr>
   <tr>
-   <td>queryPath </td>
-   <td>Flag to hold the path of the promql query for the promProbe </td>
-   <td>Optional </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>queryPath</code> field is used in case of complex queries that spans multiple lines, the queryPath attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the ChaosEngine OR the ChaosExperiment CR. </td>
+    <td>queryPath</td>
+    <td>Flag to hold the path of the promql query for the promProbe</td>
+    <td>Optional</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>queryPath</code> field is used in case of complex queries that spans multiple lines, the queryPath attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the ChaosEngine OR the ChaosExperiment CR.</td>
   </tr>
 </table>
 
@@ -94,35 +93,34 @@ Listed below is the probe schema for the Prometheus probe, with properties share
 
 <table>
   <tr>
-   <td><strong>Field</strong></td>
-   <td><strong>Description</strong> </td>
-   <td><strong>Type</strong> </td>
-   <td><strong>Range</strong> </td>
-   <td><strong>Notes</strong> </td>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
   </tr>
   <tr>
-   <td>type </td>
-   <td>Flag to hold type of the data used for comparison </td>
-   <td>Mandatory </td>
-   <td><code>float</code> </td>
-   <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. Prometheus probe only compares with float data. </td>
+    <td>type</td>
+    <td>Flag to hold type of the data used for comparison</td>
+    <td>Mandatory</td>
+    <td><code>float</code></td>
+    <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. Prometheus probe only compares with float data.</td>
   </tr>
   <tr>
-   <td>criteria </td>
-   <td>Flag to hold criteria for the comparison </td>
-   <td>Mandatory </td>
-   <td>It supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type. </td>
-   <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation. </td>
+    <td>criteria</td>
+    <td>Flag to hold criteria for the comparison</td>
+    <td>Mandatory</td>
+    <td>It supports <code>{`&gt;=, &lt;=, ==, &gt;, &lt;, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.</td>
+    <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation.</td>
   </tr>
   <tr>
-   <td>value </td>
-   <td>Flag to hold value for the comparison </td>
-   <td>Mandatory </td>
-   <td>N/A <code>type: string</code> </td>
-   <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation. </td>
+    <td>value</td>
+    <td>Flag to hold value for the comparison</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.</td>
   </tr>
 </table>
-
 ### Authentication
 
 This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password", encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
@@ -162,47 +160,46 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
 
 <table>
   <tr>
-   <td><strong>Field</strong> </td>
-   <td><strong>Description</strong> </td>
-   <td><strong>Type</strong> </td>
-   <td><strong>Range</strong> </td>
-   <td><strong>Notes</strong> </td>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
   </tr>
   <tr>
-   <td>caFile </td>
-   <td>Flag to hold the ca file path </td>
-   <td>Optional </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification </td>
+    <td>caFile</td>
+    <td>Flag to hold the ca file path</td>
+    <td>Optional</td>
+    <td><code>string</code></td>
+    <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification</td>
   </tr>
   <tr>
-   <td>certFile </td>
-   <td>Flag to hold the client cert file path </td>
-   <td>Optional </td>
-   <td><code>string</code> </td>
-   <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification </td>
+    <td>certFile</td>
+    <td>Flag to hold the client cert file path</td>
+    <td>Optional</td>
+    <td><code>string</code></td>
+    <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification</td>
   </tr>
   <tr>
-   <td>keyFile </td>
-   <td>Flag to hold the client key file path </td>
-   <td>Optional </td>
-   <td><code>string</code> </td>
-   <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification </td>
-   </tr>
-  <tr>
-   <td>insecureSkipVerify </td>
-   <td>Flag to skip the tls certificates checks </td>
-   <td>Optional </td>
-   <td><code>boolean</code> </td>
-   <td>The <code>insecureSkipVerify</code> skip the tls certificates checks </td>
+    <td>keyFile</td>
+    <td>Flag to hold the client key file path</td>
+    <td>Optional</td>
+    <td><code>string</code></td>
+    <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification</td>
   </tr>
   <tr>
-   <td>serverName </td>
-   <td>Flag to hold the server name </td>
-   <td>Optional </td>
-   <td><code>string</code> </td>
-   <td>The <code>serverName</code> name of the server </td>
+    <td>insecureSkipVerify</td>
+    <td>Flag to skip the tls certificates checks</td>
+    <td>Optional</td>
+    <td><code>boolean</code></td>
+    <td>The <code>insecureSkipVerify</code> skip the tls certificates checks</td>
+  </tr>
+  <tr>
+    <td>serverName</td>
+    <td>Flag to hold the server name</td>
+    <td>Optional</td>
+    <td><code>string</code></td>
+    <td>The <code>serverName</code> name of the server</td>
   </tr>
 </table>
 
