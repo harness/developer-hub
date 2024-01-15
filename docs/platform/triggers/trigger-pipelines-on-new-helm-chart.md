@@ -1,7 +1,7 @@
 ---
 title: Trigger pipelines on new Helm chart
 description: Trigger Harness Pipelines in response to a new Helm chart version being added to an HTTP Helm repo.
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_topic_id: 54eqk0d1bd
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false
@@ -29,7 +29,7 @@ import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
+- You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 
 ### Summary and important notes
 
@@ -41,11 +41,11 @@ When you add a Helm Chart Trigger to a Pipeline, you tell Harness what Helm Char
 
 Typically, you add a Helm Chart Trigger to a Pipeline that deploys the same Helm Chart. The Helm Chart is added to the CD stage in the Pipeline, as part of the Harness Service **Manifest**. And the same Helm Chart is added to the Trigger.
 
-However, the Helm Chart you specify in the Trigger does not have to be used in the Pipeline. 
+However, the Helm Chart you specify in the Trigger does not have to be used in the Pipeline.
 
-You can have a change in a Helm Chart trigger any Pipeline, even one that isn't deploying a Helm Chart. 
+You can have a change in a Helm Chart trigger any Pipeline, even one that isn't deploying a Helm Chart.
 
-You can have a change in a Helm Chart trigger a Pipeline that deploys a different Helm Chart. 
+You can have a change in a Helm Chart trigger a Pipeline that deploys a different Helm Chart.
 
 #### Chart polling
 
@@ -60,13 +60,15 @@ Harness looks to see what has changed in the repo to determine if a new chart ve
 When you add the Helm Chart to Harness as a Manifest, you have different options for the Chart Version.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-04.png)
-* **Fixed Value:** if you use [Fixed Value](../variables-and-expressions/runtime-inputs.md) for **Chart Version** (for example, `0.1.4`), Helm Chart Triggers will work, but Harness will not select the latest chart version. Instead, Harness will select the hardcoded chart version in **Chart Version** (`0.1.4`).
-* **Runtime Input:** if you use [Runtime input](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your trigger as part of the **Trigger Pipeline Inputs**. Go to [Select pipeline inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
-* **Expression:** if you use [Expression](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can:
-	+ Use a [Harness variable expression](../variables-and-expressions/harness-variables.md), like a Service variable.
-	+ Use the expression `<+trigger.manifest.version>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
+
+- **Fixed Value:** if you use [Fixed Value](../variables-and-expressions/runtime-inputs.md) for **Chart Version** (for example, `0.1.4`), Helm Chart Triggers will work, but Harness will not select the latest chart version. Instead, Harness will select the hardcoded chart version in **Chart Version** (`0.1.4`).
+- **Runtime Input:** if you use [Runtime input](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your trigger as part of the **Trigger Pipeline Inputs**. Go to [Select pipeline inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
+- **Expression:** if you use [Expression](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can:
+  - Use a [Harness variable expression](../variables-and-expressions/harness-variables.md), like a Service variable.
+  - Use the expression `<+trigger.manifest.version>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
+
 #### OCI Helm registries are not supported with Harness Triggers
 
 You cannot use [OCI Helm Registries](../connectors/artifact-repositories/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
@@ -90,19 +92,18 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
 ### Select the Helm Chart for the Trigger to listen on
 
-Define what Helm Chart you want Harness to listen on for the Trigger. 
+Define what Helm Chart you want Harness to listen on for the Trigger.
 
 1. In **Listen on New Artifact**, click **Define Manifest Source**.
 2. In **Specify Helm Chart Store**, select the repo type.
-	1. HTTP Helm: go to [HTTP Helm Repo Connector Settings Reference](../connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
-	2. Google Cloud Storage: go to [Google Cloud Platform (GCP) Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
-	3. AWS S3: go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+   1. HTTP Helm: go to [HTTP Helm Repo Connector Settings Reference](../connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
+   2. Google Cloud Storage: go to [Google Cloud Platform (GCP) Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+   3. AWS S3: go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 3. Once you have selected a Connector, click **Continue**.
 4. In **Manifest Details**, enter the name of the Helm Chart to listen on in **Chart Name**. For example, `nginx` or `etcd`.
 5. In **Helm Version**, select the version of Helm your repo uses.
 
    ![](./static/trigger-pipelines-on-new-helm-chart-07.png)
-
 
 :::note
 The required settings are determined by the Helm Chart Store you selected.
@@ -125,8 +126,8 @@ You can use wildcards in the condition's value and you can select **Regex**.
 
 For example, if the build is `todolist-v2.0`:
 
-* With Regex not selected, both `todolist*` or `*olist*` will match.
-* With Regex selected, the regex `todolist-v\d.\d` will match.
+- With Regex not selected, both `todolist*` or `*olist*` will match.
+- With Regex selected, the regex `todolist-v\d.\d` will match.
 
 If the regex expression does not result in a match, Harness ignores the value.
 
@@ -139,6 +140,7 @@ If your Pipeline uses [runtime inputs](../variables-and-expressions/runtime-inpu
 For example, here's an example where you select Runtime Inputs in the Trigger:
 
 ![](./static/trigger-pipelines-on-new-helm-chart-09.png)
+
 ### Test Trigger
 
 Once your Trigger is set up, click **Create Trigger**. The new Trigger is listed.
@@ -159,30 +161,30 @@ You can use Harness CI to build and push to your registry. For examples, go to t
 
 Add repo:
 
-
 ```
 helm repo add nexus_http https://nexus3.dev.example.io/repository/<repo_name>/ --username '<username>' --password '<password>'
 ```
-Fetch chart:
 
+Fetch chart:
 
 ```
 helm fetch nexus_http/<chart_name>
 ```
+
 Next, update the version in your chart.
 
 Package the chart:
 
-
 ```
 helm package <filename>
 ```
-Push the new version to the Helm HTTP Server:
 
+Push the new version to the Helm HTTP Server:
 
 ```
 curl -u <username>:<password> https://nexus3.dev.example.io/repository/<repo_name>/ --upload-file <chart_name>-<chart_version>.tgz -v
 ```
+
 Now your Helm chart HTTP server should have the new version of the Helm chart.
 
 ### Option: enable or disable Trigger
@@ -190,6 +192,7 @@ Now your Helm chart HTTP server should have the new version of the Helm chart.
 You can enable or disable Triggers using the Enabled toggle:
 
 ![](./static/trigger-pipelines-on-new-helm-chart-13.png)
+
 ### Option: reuse Trigger YAML to create new Triggers
 
 You can reuse Triggers by copying and pasting Trigger YAML. This can be helpful when you have advanced Conditions you don't want to set up each time.
@@ -204,6 +207,5 @@ Trigger manifest expressions used in a pipeline are resolved when you rerun a pi
 
 ### See also
 
-* [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
-* [Trigger Pipelines using Git Events](triggering-pipelines.md)
-
+- [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
+- [Trigger Pipelines using Git Events](triggering-pipelines.md)

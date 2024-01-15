@@ -3,13 +3,13 @@ title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
 date: 2023-11-02T17:20
-sidebar_position: 8
+sidebar_position: 9
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
 
@@ -24,6 +24,26 @@ These release notes describe recent changes to Harness Continuous Error Tracking
 :::
 
 ## December 2023
+
+### Versions ET-Service 5.32.2 and ET-Collector 5.32.3
+
+<!-- December 18, 2023 -->
+
+#### New features and enhancements
+
+- Improve the design of the format selection in the notification wizard. (CET-1944)
+
+#### Fixed issues
+
+- Incorrect characters were allowed in the name of the agent configuration. Now, only allowed characters can be used. (CET-1785)
+
+- Events plotted by the Event Distribution graph did not refresh if an event was marked as hidden or resolved. Now, changes to the state of the events will display properly on the Event Distribution graph. (CET-1949)
+
+- Improved input validation in the notification dialog box. Missing values or incorrect values would not be allowed. (CET-1990, CET-1989)
+
+- Tiny links would direct to 404 if the event was missing. Now, if an event cannot be found, the tiny links direct to the CET page and show an error message. (CET-1991)
+
+- Various dependencies were upgraded to prevent security issues. (CET-2032)
 
 ### Versions ET-Service 5.31.0 and ET-Collector 5.31.0
 
@@ -262,7 +282,7 @@ The CET Agent list is failing to load correctly when running in SMP installation
 
 #### New features and enhancements
 
-Harness Continuous Error Tracking (CET) is now available for public preview to provide developer-first observability for modern applications. This is the first release of CET and the module is now available for Public Preview.
+Harness Continuous Error Tracking (CET) is now available for Limited GA to provide developer-first observability for modern applications. This is the first release of CET and the module is now available for Limited GA.
 
 As a new module in the Harness Platform, CET helps developers proactively identify and resolve errors across the entire software delivery lifecycle (SDLC).
 

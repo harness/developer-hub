@@ -4,10 +4,12 @@ description: Learn how to install the Harness Self-Managed Enterprise Edition us
 sidebar_position: 5
 ---
 
+<DocsTag  backgroundColor= "#ff8ac1" text="Paid product"  textColor="#ca136c"  />
+
 This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an OpenShift environment. [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) is a cloud-based platform that utilizes Kubernetes to assist developers in the building of applications. It provides automated installation, upgrades, and life cycle management of the container stack, which includes the operating system, Kubernetes, cluster services, and applications. This can be done on any cloud platform.
 
 :::info important
-This feature is currently in beta. Harness has tested and verified OpenShift version 4.13.x. For more information about beta features, go to [Beta, public preview, and GA definitions](/docs/get-started/beta-preview-ga/).
+This feature is currently in beta. Harness has tested and verified OpenShift version 4.13.x. For more information about beta features, go to [Beta, Limited GA, and GA definitions](/docs/get-started/release-status/).
 
 :::
 

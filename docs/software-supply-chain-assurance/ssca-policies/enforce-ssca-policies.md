@@ -4,7 +4,7 @@ description: Use SSCA to enforce software supply chain security policies.
 sidebar_position: 20
 ---
 
-Enforce SSCA policies in the CI and CD stages of your Harness pipelines to ensure that your artifacts only contain approved components.
+Enforce SBOM policies in the CI and CD stages of your Harness pipelines to ensure that your artifacts only contain approved components.
 
 :::tip Tutorial
 
@@ -16,35 +16,36 @@ For an end-to-end walkthrough, try this tutorial: [Generate SBOM and enforce pol
 
 To enforce SSCA policies in a Harness pipeline, you need:
 
-* A pipeline that includes [SBOM generation](../sbom/generate-sbom.md).
-* An [SSCA policy file](./create-ssca-policies.md).
+* A pipeline that includes SBOM Enforcement step.
+* SBOM OPA policies that you want to enforce.
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../sbom/generate-sbom.md#generate-a-key-pair).
 
 ## Add an SSCA Enforcement step
 
-You can add the **SSCA Enforcement** step to either the **Build** or **Deploy** stage of a Harness pipeline.
+You can add the **SBOM Enforcement** step to either the **Build** or **Deploy** stage of a Harness pipeline.
 
 * In a **Build** stage, add the **SSCA Enforcement** step after the artifact (image) has been pushed to an artifact repository.
 * In a **Deploy** stage, add the **SSCA Enforcement** step before the deployment step.
 
 :::info
 
-SSCA Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
+SBOM Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
 
 :::
 
-The **SSCA Enforcement** step has the following settings:
+The **SBOM Enforcement** step has the following settings:
 
 * **Name:** Enter a name for the step.
 * **Artifact Type:** Select **Image**.
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 * **Image:** Enter the repo path (in your container registry) and tag for the relevant image, such as `my-docker-repo/my-artifact:latest`.
 * **Public Key:** Select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
-* **File Path:** Provide the path to your [SSCA policy file](./create-ssca-policies.md).
+* **Policy Sets:** Select the policy set that you want to use for enforcement. You can select multiple policy sets from Account, Org or Project.
 
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
-<docimage path={require('./static/policy-ssca-enforce-step.png')} />
+<DocImage path={require('./static/policy-ssca-enforce-step.png')} />
+
 
 :::info ECR and GCR repos
 

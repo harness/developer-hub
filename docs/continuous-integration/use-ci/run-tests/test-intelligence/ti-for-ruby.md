@@ -4,17 +4,9 @@ description: Set up TI for Ruby codebases.
 sidebar_position: 40
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
-
-:::note
-
-Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Ruby in three steps:
 
@@ -23,22 +15,21 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
    You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to the [Run Tests step settings](#run-tests-step-settings).
 
    ```yaml
-                 - step:
-                     type: RunTests
-                     name: Run Ruby Tests
-                     identifier: Run_Ruby_Tests
-                     spec:
-                       language: Ruby
-                       buildTool: Rspec
-                       runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                       preCommand: bundle install
+   - step:
+       type: RunTests
+       name: Run Ruby Tests
+       identifier: Run_Ruby_Tests
+       spec:
+         language: Ruby
+         buildTool: Rspec
+         runOnlySelectedTests: true ## Must be 'true' to enable TI.
    ```
 
    For additional YAML examples, go to [Pipeline examples](#pipeline-examples)
 
 2. Trigger test selection. **You need to run your pipeline twice to trigger test selection.**
 
-   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
 
 <details>
 <summary>Trigger test selection with a webhook trigger (Recommended)</summary>
@@ -50,7 +41,7 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 3. To trigger test selection, activate the trigger again (by opening a PR or pushing changes to your codebase).
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI _doesn't_ apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
@@ -67,7 +58,7 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
    <!-- ![](../static/set-up-test-intelligence-04.png) -->
 
-   <docimage path={require('../static/set-up-test-intelligence-04.png')} />
+   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
@@ -75,7 +66,7 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 3. To trigger test selection, open a new PR (or push changes) to your codebase, and then run your pipeline again.
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI _doesn't_ apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
@@ -89,65 +80,60 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 <!-- Video:
 https://www.youtube.com/watch?v=jwYZysdZuNI-->
-<docvideo src="https://www.youtube.com/embed/jwYZysdZuNI" />
+<DocVideo src="https://www.youtube.com/embed/jwYZysdZuNI" />
 
 ### YAML examples
 
-```mdx-code-block
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-```
 
 This example shows a pipeline that:
 
-* Uses [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
-* Uses a [Run step](../../run-ci-scripts/run-step-settings.md) to install dependencies. This is not always required; it depends on your build infrastructure and needs.
-* Runs tests on Ruby with RSpec and Test Intelligence.
-* Uses [parallelism](./ti-test-splitting.md) (`parallelism`, `enableTestSplitting`) to further improve test times.
+- Uses [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+- Uses a [Run step](../../run-ci-scripts/run-step-settings.md) to install dependencies. This is not always required; it depends on your build infrastructure and needs.
+- Runs tests on Ruby with RSpec and Test Intelligence.
+- Uses [parallelism](./ti-test-splitting.md) (`parallelism`, `enableTestSplitting`) to further improve test times.
 
 ```yaml
-    - stage:
-        strategy:
-          parallelism: 2
-        name: test
-        identifier: test
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Dependencies
-                  identifier: dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      apt-get update -y
-                      apt -y install libarchive-tools
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: run_tests
-                  spec:
-                    language: Ruby
-                    buildTool: Rspec
-                    testGlobs: "**/test/unit/**/*_test.rb" ## Optional
-                    runOnlySelectedTests: true ## Must be 'true' to use TI.
-                    enableTestSplitting: true ## Optional. Apply parallelism to further improve test times.
-                    preCommand: bundle install
+- stage:
+    strategy:
+      parallelism: 2
+    name: test
+    identifier: test
+    type: CI
+    spec:
+      cloneCodebase: true
+      platform:
+        os: Linux
+        arch: Amd64
+      runtime:
+        type: Cloud
+        spec: {}
+      execution:
+        steps:
+          - step:
+              type: Run
+              name: Dependencies
+              identifier: dependencies
+              spec:
+                shell: Sh
+                command: |-
+                  apt-get update -y
+                  apt -y install libarchive-tools
+          - step:
+              type: RunTests
+              name: Run Tests
+              identifier: run_tests
+              spec:
+                language: Ruby
+                buildTool: Rspec
+                testGlobs: "**/test/unit/**/*_test.rb" ## Optional
+                runOnlySelectedTests: true ## Must be 'true' to use TI.
+                enableTestSplitting: true ## Optional. Apply parallelism to further improve test times.
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Ruby with RSpec and Test Intelligence.
 
@@ -183,7 +169,6 @@ pipeline:
                     language: Ruby
                     buildTool: Rspec
                     runOnlySelectedTests: true ## Must be 'true' to use TI.
-                    preCommand: bundle install
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -194,10 +179,8 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ## Run Tests step settings
 
@@ -212,10 +195,10 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
-* [Kubernetes cluster build infrastructure](../../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Local runner build infrastructure](../../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Additional Configuration** for stages that use self-hosted VM build infrastructure.
-* [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Additional Configuration** for stages that use Harness Cloud build infrastructure.
+- [Kubernetes cluster build infrastructure](../../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+- [Local runner build infrastructure](../../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
+- [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Additional Configuration** for stages that use self-hosted VM build infrastructure.
+- [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Additional Configuration** for stages that use Harness Cloud build infrastructure.
 
 </details>
 
@@ -228,9 +211,9 @@ For **Image**, provide the FQN (fully-qualified name) or artifact name and tag o
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
-* **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+- **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
+- **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+- **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
 </details>
 
@@ -250,14 +233,14 @@ This setting is optional for Ruby. You can provide additional runtime arguments 
 
 This setting is optional for Ruby. You can use this setting if you want your test reports to be stored somewhere other than the default location or have a different name than the default report name.
 
-You can specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+You can specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported.
 
 ```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
+reports:
+  type: JUnit
+  spec:
+    paths:
+      - tmp/junit.xml
 ```
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
@@ -268,16 +251,9 @@ Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
 ### Pre-Command, Post-Command, and Shell
 
-* **Pre-Command:** Enter commands for setting up the environment before running the tests, such as `bundle install`
-
-:::info
-
-If you need to run `bundle install` before running tests, you must include `bundle install` in **Pre-Command**.
-
-:::
-
-* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests.
-* **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
+- **Pre-Command:** Enter commands for setting up the environment before running the tests.
+- **Post-Command:** You can enter commands used for cleaning up the environment after running the tests.
+- **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 
 ### Run Only Selected Tests
 
@@ -322,9 +298,9 @@ Settings specific to containers are not applicable in a stages that use VM or Ha
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
-* **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-* **If Not Present:** The image is pulled only if it isn't already present locally.
-* **Never:** The image is not pulled.
+- **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+- **If Not Present:** The image is pulled only if it isn't already present locally.
+- **Never:** The image is not pulled.
 
 #### Run as User
 
@@ -340,8 +316,8 @@ For container-based build infrastructures, you can enable this option to run the
 
 These settings specify the maximum resources used by the container at runtime. These setting are only available for container-based build infrastructures, such as a Kubernetes cluster build infrastructure.
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+- **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+- **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 

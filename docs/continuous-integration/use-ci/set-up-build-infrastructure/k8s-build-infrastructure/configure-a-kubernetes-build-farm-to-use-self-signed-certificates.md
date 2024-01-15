@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -72,7 +72,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    Both CI build pods and the SCM client on the delegate support this method.
 
-   :::caution
+   :::warning
 
    Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
 
@@ -80,8 +80,8 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    :::
 
-   <details>
-   <summary>Legacy: CI_MOUNT_VOLUMES</summary>
+<details>
+<summary>Legacy: CI_MOUNT_VOLUMES</summary>
    
    Prior to the introduction of `DESTINATION_CA_PATH`, you used `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` to mount certs.
    
@@ -118,13 +118,43 @@ CI build infrastructure pods can interact with servers using self-signed certifi
                   path: ca.bundle
    ```
 
-   </details>
+</details>
 
 3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
 ## Additional configuration for pipelines with STO scan steps
 
-If you have STO scan steps in your pipeline, follow the steps to [enable self-signed certificates](#enable-self-signed-certificates), and complete the additional steps and requirements described in [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+If you have STO scan steps in your pipeline, do the following:
+
+1. Follow the steps to [enable self-signed certificates](#enable-self-signed-certificates).
+
+2. If you're storing your certificates in a local registry and [need to run Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto), specify the local certificate path on the delegate.
+
+   Suppose your self-signed certs are stored at `https://my-registry.local.org:799` and you log in like this:
+
+   `docker login my-registry.local.org:799`
+
+   You would then need to configure or extend the `DESTINATION_CA_PATH` on the delegate as follows. Note the `value` path:
+
+   ```yaml
+   env:
+   - name: DESTINATION_CA_PATH
+              value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt"
+            volumeMounts:
+            - name: certvol
+              mountPath: opt/harness-delegate/ca-bundle
+              subPath:  ca.bundle
+          volumes:
+          - name: certvol
+            secret:
+              secretName: addcerts
+              items:
+              - key: ca.bundle
+                path: ca.bundle
+   ``` 
+   
+
+3. Complete the additional steps and requirements described in [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
 
 ## Troubleshooting SCM service connection issues
 

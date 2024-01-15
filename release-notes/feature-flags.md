@@ -3,7 +3,7 @@ title: Feature Flags release notes
 sidebar_label: Feature Flags
 date: 2023-11-24T16:19:25
 tags: [NextGen, "feature flags"]
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
@@ -15,9 +15,45 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: December 12th 2023
+### Latest Updated: January 8th 2024
+
+## January 2024
+
+### Apex SDK
+
+#### Version 0.1.3 Beta
+
+ - It now re-authenticates using the `FFPoller`, to ensure that scheduled jobs continue to run after the auth token has expired.
+ - It now includes a synchronous initialization option.
+
+### Android SDK
+
+#### Version 1.2.3
+
+ - Fixed uncaught exception error that occurs if initialization fails.
+
+### Flutter SDK
+
+#### Version 2.1.1
+
+ - We've added support for Kotlin version 1.7.x for Android projects. Previously, the compilation would fail due to Kotlin compilation issues.
+ - We've upgraded Feature Flags' Android SDK to 1.2.3, which ensures the SDK will not crash the application should initialization fails. For full details of all Feature Flags Android SDK relases, please see the: [Feature Flags' Android Client SDK Changelog](https://github.com/harness/ff-android-client-sdk/releases).
+
+# Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 ## December 2023
+
+### Android SDK
+
+#### Version 1.2.2 
+
+ - We resolved a `ClassCastException` that would cause the SDK to crash when returning the default variation. 
+ - We have now resolved the `jsonVariation` issue and it is now returning the default variation.
+ - We did some refactoring to improve the code quality. 
+ - We no longer post metrics for default variations being used.
 
 ### Erlang SDK
 
@@ -35,6 +71,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Added the `Harness-Target` header.
 
 ### .NET SDK
+
+#### Version 1.4.1 
+
+ - The thread safety metrics issue have been resolved.
+ - We no longer store duplicate targets used by metrics in memory. 
+ - Uses the global target identifier for evaluation metrics.
+ - `Config.ConnectionTimeout` is being treated as seconds internally rather than milliseconds. 
 
 #### Version 1.4.0
 
@@ -116,8 +159,8 @@ We encourage users to migrate to our React SDK. For more information on transiti
  - The below requests now implement a retry mechanism of up to 10 retries on retryable errors:
     - target-segments, 
     - feature-config, 
-    - target-segments/{identifier}, and 
-    - feature-config/{identifier}.
+    - target-segments/\{identifier}, and 
+    - feature-config/\{identifier}.
 
 Fixed issues
 
@@ -268,7 +311,7 @@ Fixed Issues
  - To resolve this, we:
   - Fixed the gitSync function for newly created environment.
   - Added gitSync for deleted environments. 
-- Sending a GET request to the /targets/${IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404.
+- Sending a GET request to the /targets/$\{IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404.
 - Previously, a multivareate flag's variation values had an erroneous maximum limit of 2704 bytes, with a poor error message if this was exceeded. 
 This limit has been raised to 25000 bytes, with a clear error message if this is exceeded.
 - Targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, while evaluations worked as expected, the updated attributes were not shown in the UI. This fix ensures targets are correctly upserted.
@@ -963,7 +1006,7 @@ This includes the following:
 
  - This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method.
 
-## Previous releases
+</details>
 
 <details>
 <summary>2022 releases</summary>

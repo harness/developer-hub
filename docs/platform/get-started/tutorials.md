@@ -6,8 +6,6 @@ sidebar_position: 3
 
 In addition to the reference documentation, there are a variety of tutorials available.
 
-- [Install CD Community Edition](/tutorials/platform/install-cd-community-edition)
-
 - [Install Harness Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate)
 
 - [Customize delegate to install third-party tools](/tutorials/platform/customize-delegate)

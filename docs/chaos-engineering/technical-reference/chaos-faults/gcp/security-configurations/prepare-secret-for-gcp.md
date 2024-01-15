@@ -60,7 +60,7 @@ To create the service account and secret:
     client_x509_cert_url: "<client-x509-cert-url>"
   ```
 
-  :::caution
+  :::warning
   Newline (\n) characters within the private key are crucial. Avoid using double quotes to prevent their loss.
   :::
 

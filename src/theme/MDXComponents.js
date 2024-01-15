@@ -13,10 +13,10 @@ export default {
   ...MDXComponents,
   // Map the "highlight" tag to our <Highlight /> component!
   // `Highlight` will receive all props that were passed to `highlight` in MDX
-  docvideo: DocVideo,
-  ctabanner: CTABanner,
-  docimage: DocImage,
-  accordion: Accordion,
+  DocVideo: DocVideo,
+  CTABanner: CTABanner,
+  DocImage: DocImage,
+  Accordion: Accordion,
   DocsButton: DocsButton,
   DocsTag: DocsTag,
 };

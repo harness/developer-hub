@@ -78,7 +78,7 @@ If you [enabled error tracking in the Run Tests step](./run-tests/test-intellige
 
 <!-- ![](./static/ci-builds-et.png) -->
 
-<docimage path={require('./static/ci-builds-et.png')} />
+<DocImage path={require('./static/ci-builds-et.png')} />
 
 The following event types are reported:
 
@@ -95,6 +95,6 @@ Select the event's **Location** to open the [Automated Root Cause Analysis (ARC)
 
 <!-- ![](./static/ci-builds-et-arc.png) -->
 
-<docimage path={require('./static/ci-builds-et-arc.png')} />
+<DocImage path={require('./static/ci-builds-et-arc.png')} />
 
 :::

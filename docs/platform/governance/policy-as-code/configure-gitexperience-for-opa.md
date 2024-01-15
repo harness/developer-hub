@@ -4,7 +4,6 @@ description: Configure Git Experiemce for your policies.
 sidebar_position: 9
 ---
 
-
 You can create policies and store them in your Git repository. These policies are called remote policies.
 Whenever you modify your policy and push the changes, Harness uses the updated policies.
 
@@ -12,7 +11,8 @@ For information on creating an inline policy, go to [Harness Policy As Code Quic
 
 This topic explains how to create a remote policy and apply it using Harness Git Experience.
 
-You can store your policies in one of the following Git providers: 
+You can store your policies in one of the following Git providers:
+
 - GitHub
 - Bitbucket Cloud
 - Bitbucket Server
@@ -20,7 +20,9 @@ You can store your policies in one of the following Git providers:
 - GitLab
 
 ## Prerequisites
+
 To create a remote policy, you must have:
+
 - **Create/Edit** permissions for policies.
 - A Git repo with at least one branch.
 - A Git connector with a Personal Access Token (PAT) for your Git account.​​
@@ -35,11 +37,11 @@ To create a remote policy, you must have:
 
 ## Demo video
 
-<docvideo src="https://www.loom.com/share/ce2ad5d95b464daa941da264cc43795a?sid=a28b9465-0915-45ed-85e5-62f7dbcdcd8c"/>
+<DocVideo src="https://www.loom.com/share/ce2ad5d95b464daa941da264cc43795a?sid=a28b9465-0915-45ed-85e5-62f7dbcdcd8c"/>
 
 ## Create a remote policy
 
-To create a remote policy in Harness: 
+To create a remote policy in Harness:
 
 1. Select **Policies** and then select **New Policy**.
 2. Enter a name for your policy.
@@ -52,18 +54,18 @@ To create a remote policy in Harness:
 8. Click **Apply**.
 9. Enter your own Rego policy and select **Save**.
 
-    The **Save Policy to Git** settings appear.
+   The **Save Policy to Git** settings appear.
 
 10. In **Select Branch to Commit**, commit to an existing or new branch.
 
     - **Commit to an existing branch**: you can start a pull request if you like.
     - **Commit to a new branch**: enter the new branch name. You can start a pull request if you like.
-12. Select **Save**.
 
-   Your policy now appears in the list as a remote policy with the repository details next to it.
+11. Select **Save**.
 
-Harness displays the last sync details for this remote policy as well as the **Commit ID**. The sync frequency is every five minutes. Each time the **Commit ID** changes, the latest policy is pulled from Git. 
+Your policy now appears in the list as a remote policy with the repository details next to it.
 
+Harness displays the last sync details for this remote policy as well as the **Commit ID**. The sync frequency is every five minutes. Each time the **Commit ID** changes, the latest policy is pulled from Git.
 
 :::important
 Harness always evaluates policies using the main or default branch of the Git repository. Policies are not evaluated until you commit them to the default branch of your repository. To do this, you can merge them or commit directly to the default branch.

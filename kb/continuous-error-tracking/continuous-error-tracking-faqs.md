@@ -811,7 +811,7 @@ There are two ways to change the CET Micro-Agent's location of its log file:
 - For the environment variable, use the parameter ET_LOG_FILE
 - For the JVM argument, use the parameter -Dharness.log.file
 
-Example: -Dharness.log.file=<path/to/file.log>
+Example: -Dharness.log.file=\<path/to/file.log>
 
 
 

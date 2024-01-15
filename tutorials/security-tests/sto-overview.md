@@ -1,14 +1,14 @@
 ---
 title: Harness STO overview
 sidebar_position: 10
-description: Harness STO enables DevOps teams to ensure that vulnerabilities are caught and fixed before your products are ever released. 
+description: Harness STO enables DevOps teams to ensure that vulnerabilities are caught and fixed before your products are ever released.
 hide_table_of_contents: true
 keywords: [STO]
 ---
 
 # Harness STO overview
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Security Testing Orchestration certification today!"
@@ -17,9 +17,7 @@ keywords: [STO]
   target="_self"
 />
 
-```mdx-code-block
 import WhatSTO from '/docs/security-testing-orchestration/get-started/overview.md';
-```
 
 <WhatSTO />
 

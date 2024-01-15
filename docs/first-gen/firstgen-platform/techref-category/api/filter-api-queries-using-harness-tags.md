@@ -65,7 +65,7 @@ The entity types that might be available include the following:
 * TRIGGER
 * WORKFLOW
 
-The `tags: [{name: "<NAME>", value: "<VALUE>"}]}}]` segment of the query uses the `TagInput` format:
+The `tags: [{name: "\<NAME>", value: "\<VALUE>"}]}}]` segment of the query uses the `TagInput` format:
 
 
 ```

@@ -3,7 +3,7 @@ title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
 tags: [NextGen, "Internal Developer Portal", "IDP"]
 date: 2023-08-09T10:00:15
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
@@ -18,7 +18,79 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## January 2023
+
+### Version 0.18.0
+
+<!-- Jan 11, 2024 -->
+
+🎉 Happy New Year to all our fantastic users! 🎉
+Since it's the first release of the year, we've wrapped up some interesting features for you, including a new Devtools Plugin and revamped access control permissions.
+
+- **Docs:** [Configuring Layout of IDP Catalog pages](https://developer.harness.io/docs/internal-developer-portal/get-started/layout-deepdive) [Role-based access control (RBAC)](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles)
+
+- **Videos:** [How to set the Owner of a Software Component](https://youtu.be/pQvqWBrXIhk?si=LqkJBDo63we929L4)
+
+#### New features and enhancements
+
+- Added Support for New [Devtools Plugin](https://github.com/backstage/backstage/blob/master/plugins/devtools/README.md)
+
+![](./static/devtools.png)
+
+- Added support for [new custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook), that can execute pipeline with custom webhook based triggers. 
+
+- Access Control is revamped with new roles (IDP Admin and IDP Platform Engineering) and permissions. 
+
+![](./static/idp-roles.png)
+
+- Added support for persistent platform favourites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
+
+- Enhanced the custom project picker to increase the hard limit of 50. 
+
+- Added support for regex in file name input in Scorecards.
+
+![](./static/checks-idp.png)
+
+- We now have a new intuitive Plugins Page.
+
+![](./static/new-plugin-page.png)
+
 ## December 2023
+
+### Version 0.17.0
+
+<!-- Dec 21, 2023 -->
+
+Jingle bells, jingle bells, jingle all the way to Harness IDP's End-of-Year Release! 🛷 As we close the chapter on a year of incredible milestones, we want to express our heartfelt thanks to our amazing customers and prospects. Your support, feedback, and enthusiasm have been the North Star 🌟 guiding us in enhancing and evolving Harness IDP. The debut of our new module and the strides we've made together are testaments to your invaluable collaboration and spirit.
+
+In this release, we're excited to unveil features like the HTTP actions support in the scaffolder-backend 🌐, the innovative Developer Portal stage for seamless self-service flows 🚀, and the integration of OPA/Governance policies to ensure streamlined and secure management 🛡️. Plus, we've squashed some pesky bugs 🐛 to make your experience smoother than ever!
+
+- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [Supported OPA Policies in IDP](/docs/internal-developer-portal/scorecards/opa-implementation), [New IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
+
+- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/tutorials/internal-developer-portal/opa-scorecards)
+
+#### Early access features
+
+- Added a [new stage](/docs/internal-developer-portal/flows/idp-stage), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
+
+![](./static/idp-stage.png)
+
+- Added a [Cookiecutter step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#2-cookiecutter) to enable use of cookiecutter based templates in the IDP stage.[IDP-1437]
+- Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog) to register software components in IDP catalog.[IDP-1438]
+- Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
+
+This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+
+#### New features and enhancements
+
+- Added support for [http actions](https://roadie.io/backstage/plugins/scaffolder-http-requests/) in the scaffolder-backend.  [IDP-1853]. 
+- Added [OPA/Governance policies](/docs/internal-developer-portal/scorecards/opa-implementation) for Backstage entities. [IDP-1514]
+
+#### Bug Fixes
+
+- Fixed support for special character “-”(hyphen) in the URLs.[IDP-1804]
+- Fixed URL replace in JIRA Plugin to fetch host details.[IDP-1863]
+- Fixed display of Secret deleted error message added on OAuth Page. [IDP-1811]
 
 ### Version 0.16.0
 
@@ -54,7 +126,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](https://developer.harness.io/docs/internal-developer-portal/get-started/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
 
 #### New features and enhancements
 
@@ -99,7 +171,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 <!-- Oct 26, 2023 -->
 
-Post-public preview, we've taken your genius tips and mixed them into the Internal Developer Portal. Also, we've fixed a few bugs along the way. Dive in and see what's new! But before that here are some links of recently released tutorials and docs to help you get started with IDP. 
+Post-Limited GA, we've taken your genius tips and mixed them into the Internal Developer Portal. Also, we've fixed a few bugs along the way. Dive in and see what's new! But before that here are some links of recently released tutorials and docs to help you get started with IDP. 
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i) 

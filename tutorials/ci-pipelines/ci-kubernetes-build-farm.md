@@ -8,7 +8,7 @@ title: Build on a Kubernetes cluster
 
 # Build and test on a Kubernetes cluster build infrastructure
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -53,31 +53,29 @@ This tutorial assumes you have experience with Kubernetes, such as setting up se
 
 In addition to a Harness account, you need the following accounts and tools:
 
-* A **GitHub account** where you can fork the tutorial repo.
-* A **Docker Hub account and repo** where the pipeline can push and pull app images.
-* A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) and run the build farm. The cluster needs the following minimum specifications:
-  * Pods: 3 (two for the Delegate and one for the build farm)
-  * Machine type: 4vCPU
-  * Memory: 16GB RAM
-  * Networking: Outbound HTTPS for the Harness and Docker Hub connections. Allow port 22 for SSH.
-  * Namespace: During the tutorial, when you install the Harness Delegate, the `harness-delegate-ng` namespace is created. You'll use the same namespace for the build infrastructure.
-* A **Kubernetes service account** with permission to create entities in the target namespace. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. Usually, the `cluster-admin` permission or `namespace admin` permission is sufficient. For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
+- A **GitHub account** where you can fork the tutorial repo.
+- A **Docker Hub account and repo** where the pipeline can push and pull app images.
+- A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) and run the build farm. The cluster needs the following minimum specifications:
+  - Pods: 3 (two for the Delegate and one for the build farm)
+  - Machine type: 4vCPU
+  - Memory: 16GB RAM
+  - Networking: Outbound HTTPS for the Harness and Docker Hub connections. Allow port 22 for SSH.
+  - Namespace: During the tutorial, when you install the Harness Delegate, the `harness-delegate-ng` namespace is created. You'll use the same namespace for the build infrastructure.
+- A **Kubernetes service account** with permission to create entities in the target namespace. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. Usually, the `cluster-admin` permission or `namespace admin` permission is sufficient. For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
-:::caution
+:::warning
 
 Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
 :::
 
-```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
 
 <CISignupTip />
 
 ## Prepare the codebase
 
-1. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
+1. Fork the tutorial repo [harness-community/goHelloWorldServer](https://github.com/harness-community/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
 2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 3. Make note of the token; you'll need it later in the tutorial.
 4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
@@ -108,17 +106,17 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 3. Enter a recognizable name, such as `CI kubernetes tutorial connector`, and select **Continue**.
 4. Configure the **Details** as follows, and then select **Continue**:
 
-   * **URL Type:** Select **Repository**.
-   * **Connection Type:** Select **HTTP**.
-   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/keen-software/goHelloWorldServer.git`.
+   - **URL Type:** Select **Repository**.
+   - **Connection Type:** Select **HTTP**.
+   - **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/YOUR_ACCOUNT/goHelloWorldServer.git`.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
 
 5. Configure the **Credentials** as follows, and then select **Continue**:
 
-   * **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
-   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
-   * **Enable API access:** Select this option and select the same personal access token secret.
+   - **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
+   - **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+   - **Enable API access:** Select this option and select the same personal access token secret.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)
 
@@ -142,10 +140,10 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
    If delegate installation succeeds, the `kubectl apply` command should produce output similar to the following:
 
    ```
-   namespace/harness-delegate-ng created  
-   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created  
-   secret/ci-quickstart created  
-   statefulset.apps/ci-quickstart created  
+   namespace/harness-delegate-ng created
+   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created
+   secret/ci-quickstart created
+   statefulset.apps/ci-quickstart created
    service/delegate-service created
    ```
 
@@ -184,10 +182,10 @@ Next, you need to define the build infrastructure. Harness offers several [build
 3. Under **Platform**, select the **Kubernetes Cluster** field to open the **Create or Select an Existing Connector** window.
 4. Select **New Connector**, and configure the connector as follows. For detailed instructions and information about these settings, go to [Add a Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/).
 
-   * **Name:** Enter `ci-delegate`
-   * **Details:** Select **Use the credentials of a specific Harness Delegate**.
-   * **Delegates Setup:** Select the Kubernetes Delegate you installed earlier in [Prepare the codebase](#prepare-the-codebase).
-   * **Connection Test:** Wait for the test to finish and then click **Finish**.
+   - **Name:** Enter `ci-delegate`
+   - **Details:** Select **Use the credentials of a specific Harness Delegate**.
+   - **Delegates Setup:** Select the Kubernetes Delegate you installed earlier in [Prepare the codebase](#prepare-the-codebase).
+   - **Connection Test:** Wait for the test to finish and then click **Finish**.
 
 5. In **Namespace**, enter `harness-delegate-ng`, and then select **Continue**.
 
@@ -202,14 +200,14 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 3. Select the **Container Registry** field, select **New Connector**, and then select **Docker Registry**.
 4. Create a Docker Registry connector to connect to your Docker Hub account.
 
-   * **Name:** Enter a recognizable name for the connector.
-   * **Provider Type:** Select **Docker Hub**.
-   * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
-   * **Username:** Enter the username for your Docker Hub account.
-   * **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.
-   * **Select Connectivity Mode:** Select **Connect through a Harness Delegate**.
-   * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
-   * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
+   - **Name:** Enter a recognizable name for the connector.
+   - **Provider Type:** Select **Docker Hub**.
+   - **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
+   - **Username:** Enter the username for your Docker Hub account.
+   - **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.
+   - **Select Connectivity Mode:** Select **Connect through a Harness Delegate**.
+   - **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
+   - Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
 5. Back in the **Run** step settings, enter `golang:1.17` in the **Image** field.
 6. Enter the following code in the **Command** field:
@@ -228,10 +226,10 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 8. Select **Apply Changes** to save the step.
 9. Add a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
-   * **Name:** Enter a name, such as `Build and push to Docker`.
-   * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
-   * **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
-   * **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.
+   - **Name:** Enter a name, such as `Build and push to Docker`.
+   - **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
+   - **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
+   - **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.
 
 10. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
@@ -258,9 +256,9 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 4. Select **Continue**.
 5. Add a **Background** step to this stage and configure it as follows. For more information, go to the [Background step settings reference](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
-   * **Name:** Enter a recognizable name.
-   * **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
-   * **Image:** Enter `[docker_username]/[repo_name]:<+pipeline.sequenceId>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:<+pipeline.sequenceId>`.
+   - **Name:** Enter a recognizable name.
+   - **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
+   - **Image:** Enter `[docker_username]/[repo_name]:<+pipeline.sequenceId>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:<+pipeline.sequenceId>`.
 
    :::info
 
@@ -271,10 +269,10 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 6. Select **Apply Changes** to save the step.
 7. Add a **Run** step to your `Run integration test` stage and configure it as follows:
 
-   * **Name:** Enter a recognizable name, such as `Test server connection`.
-   * **Container Registry:** Select the same Docker Connector as you have for the other steps.
-   * **Image:** Enter `curlimages/curl:7.73.0`.
-   * **Command:** Enter the following code, which runs a simple server connection test:
+   - **Name:** Enter a recognizable name, such as `Test server connection`.
+   - **Container Registry:** Select the same Docker Connector as you have for the other steps.
+   - **Image:** Enter `curlimages/curl:7.73.0`.
+   - **Command:** Enter the following code, which runs a simple server connection test:
 
    ```
    sleep 10
@@ -282,7 +280,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
    curl localhost:8080?Hello!_I_am_a_nice_demo!
    ```
 
-12. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
+8. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ## Run the pipeline
 
@@ -300,22 +298,22 @@ You can switch to **Console view** for a focused view of the logs.
 
 For this pipeline, note the following log details:
 
-* In the logs for the **Build and push image to Docker Hub** step, you can see that the build number, such as `11`, is used as an image tag, for example:
+- In the logs for the **Build and push image to Docker Hub** step, you can see that the build number, such as `11`, is used as an image tag, for example:
 
-   ```
-   --destination=myrepo/ciquickstart:11
-   ```
+  ```
+  --destination=myrepo/ciquickstart:11
+  ```
 
-* In the **Initialize** step of the **Run Integration Test** stage, you can see the image with the same tag is pulled from your Docker Hub repo:
+- In the **Initialize** step of the **Run Integration Test** stage, you can see the image with the same tag is pulled from your Docker Hub repo:
 
-   ```
-   Pulling image "myrepo/ciquickstart:11"
-   Successfully pulled image "myrepo/ciquickstart:11" in 1.878887425s
-   ```
+  ```
+  Pulling image "myrepo/ciquickstart:11"
+  Successfully pulled image "myrepo/ciquickstart:11" in 1.878887425s
+  ```
 
-* You can find the pushed image and the associated tag in your Docker Hub repo.
+- You can find the pushed image and the associated tag in your Docker Hub repo.
 
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
+  ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
 
 ## Continue your Continuous Integration journey
 
@@ -415,7 +413,6 @@ pipeline:
                       sleep 10
                       curl localhost:8080
                       curl localhost:8080?Hello!_I_am_a_nice_demo!
-
 ```
 
 </details>

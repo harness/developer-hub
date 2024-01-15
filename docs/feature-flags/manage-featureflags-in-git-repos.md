@@ -12,7 +12,7 @@ helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import git_1 from './static/5-manage-featureflags-in-git-repos-04.png'
 import git_2 from './static/5-manage-featureflags-in-git-repos-05.png' 
 import git_3 from './static/5-manage-featureflags-in-git-repos-06.png' 
@@ -21,9 +21,8 @@ import git_5 from './static/5-manage-featureflags-in-git-repos-08.png'
 import git_6 from './static/4-git-blue-circle.png'  
 import git_7 from './static/5-manage-featureflags-in-git-repos-09.png' 
 import git_8 from './static/8-git-off.png' 
-```
 
-:::caution
+:::warning
  There is a known issue with this feature. When you turn on a Feature Flag, some target rules may be reordered in your Git repo. This doesn't affect the functionality of your Feature Flag or targets and we are working to fix this issue as soon as possible.
 :::
 
@@ -48,43 +47,8 @@ The following example YAML file shows:
 
 ### Example YAML file for flags
 
-<details>
-  <summary>Example of a YAML file for Feature Flags</summary>
-
-Here is a sample `flags.yaml` file:
-
-```
-featureFlags:  
- flags:  
-  - flag:   
-     name: Flag_1  
-     identifier: Flag_1   
-     description: "GitExFlag"   
-     permanent: false   
-     spec:   
-         type: boolean   
-         default:  
-             onVariation: "true"   
-             offVariation: "false"  
-         variations:  
-            - identifier: "true"  
-              value: "true"   
-            - identifier: "false"   
-              value: "false"     
-      environments:   
-         - identifier: Env_1   
-           default:  
-              onVariation: "true"   
-              offVariation: "false"  
-           state: "on"  
-targetRules:  
-   - targets:   
-          - identifier: T1  
-            variation: "false"   
-projectIdentifier: FF_Docs_Demo  
-orgIdentifier: Docs
-```
-</details> 
+<!-- <details> 
+</details>  -->
 
 The synchronization between the Harness Platform and the `flags.yaml` file works in both directions:
 
@@ -94,7 +58,7 @@ The synchronization between the Harness Platform and the `flags.yaml` file works
 
 If you don’t see the changes you made in Git reflected on the Harness Platform after approxymately 5 min, refresh the page.
 
-:::caution
+:::warning
  Syncing changes between a remote file and the Harness Platform can take up to 5 mins. During this window the changes are commited to the remote file but not yet pulled and synced by the Harness Platform. Any changes made to the Harness Platform within that window trigger remote file updates, which overwrite the content of the remote file.
 :::
 
@@ -129,7 +93,7 @@ You can create the connector beforehand in Harness, or you can create it while s
 
 You must set up Git Experience before you can turn on syncing with Git in your Feature Flags project. 
 
-:::caution
+:::warning
 Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
 :::
 
@@ -165,7 +129,7 @@ To set up Git Experience:
 
 You can turn the synchronization between the Harness Platform and Git on or off. The Git Experience icon is displayed on many pages, and you can toggle it on or off from any page where it appears.
 
-:::caution
+:::warning
  Turning sync on triggers an immediate attempt to sync Harness content to the remote file.
  Any changes you made to the remote file before syncing are overwritten. This can result in losing content or configurations that are not yet synced to Harness.
 :::
@@ -186,9 +150,8 @@ To turn on synchronization between the Harness Platform and Git:
 
     If you enable only **Sync with Git**, each time you make a change to a flag on Harness, you are prompted to confirm which branch you want to commit to, and to add a commit message. For example:
 
-    ```mdx-code-block
-    <img src={git_2} alt="An example commit message." height="500" width="400" />
-    ```
+    
+
 
 1. Optionally, you can select **Always commit to this branch and do not prompt for commit message**. 
 
@@ -212,11 +175,11 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
   Now, whenever you change a flag in Harness, an auto-commit is done automatically, and your flag changes are synced to the flag configuration file (for example, `flags.yaml`) in the Git repository. Auto-committed have the prefix `[AUTO-COMMIT]`, for example:
 
-  ```mdx-code-block
+  
   <img src={git_5} alt="A screenshot of an auto commit message on GitHub. " height="500" width="700" />
-  ```  
+  
 
-  <details>
+<details>
   <summary>Possible Auto-commit messages</summary>
 
   [AUTO-COMMIT] Created feature flag  
@@ -241,7 +204,7 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
   [AUTO-COMMIT] Added feature flag to targets
 
-  </details>
+</details>
 
 ## Turn off syncing with Git
 
@@ -257,9 +220,8 @@ To turn off syncing with Git:
 
   When syncing is off, the branch icon is a red warning circle:
 
-  ```mdx-code-block
   <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
-  ``` 
+
 
 ## Reset the Git connection
 

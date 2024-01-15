@@ -20,7 +20,7 @@ The following table describes each of the active feature flags relevant to Harne
 
 :::note
 
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Public Preview Feature Categorization](https://developer.harness.io/docs/get-started/beta-preview-ga/) in the descriptions below.
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](/docs/get-started/release-status/) in the descriptions below.
 
 :::
 
@@ -30,8 +30,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td width="600"><b>Description</b></td>
     </tr>
     <tr>
+        <td>CDS_ASG_SHIFT_TRAFFIC_STEP_NG</td>
+        <td>Enables incremental traffic shifting for ASG blue green deployments.</td>
+    </tr>
+    <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
-        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b>This feature is in Public Preview.</b></td>
+        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>OPA_PIPELINE_GOVERNANCE</td>
@@ -39,15 +43,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_HELM_VERSION_3_8_0</td>
-        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate. This feature in in Public Preview. </td>
+        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate. This feature in in Limited GA. </td>
     </tr>
     <tr>
         <td>NG_PIPELINE_TEMPLATE</td>
-        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is Public Preview.</b> </td>
+        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is Limited GA.</b> </td>
     </tr>
     <tr>
         <td>OPA_GIT_GOVERNANCE</td>
-        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Public Preview.</b> </td>
+        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Limited GA.</b> </td>
     </tr>
     <tr>
         <td>NG_CUSTOM_STAGE</td>
@@ -67,24 +71,16 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Disables Helm repository caching on the Harness delegate. This should only be enabled if users are experiencing failures with Harness Delegate failing to fetch Helm Charts. Caching could be the source of the issue. This Feature is in Beta. </td>
     </tr>
     <tr>
-        <td>PIPELINE_ROLLBACK</td>
-        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">Post deployment rollback.</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CD_GIT_WEBHOOK_POLLING</td>
-        <td>Enables configurable polling for <a href="/docs/platform/triggers/triggering-pipelines/">GitHub Webhooks</a> This allows users to set polling interval for Harness Delegate to poll your GitHub instance. <b>This feature is in Public Preview.</b></td>
+        <td>Enables configurable polling for <a href="/docs/platform/triggers/triggering-pipelines/">GitHub Webhooks</a> This allows users to set polling interval for Harness Delegate to poll your GitHub instance. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_DISABLE_WINRM_COMMAND_ENCODING_NG</td>
-        <td>Prevents the encoding of WinRM commands. By default Harness encodes the winrm commands we run on hosts. User's can disable this behavior via this feature flag. <b>This feature is in Public Preview.</b></td>
+        <td>Prevents the encoding of WinRM commands. By default Harness encodes the winrm commands we run on hosts. User's can disable this behavior via this feature flag. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_TERRAFORM_S3_SUPPORT</td>
-        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is Public Preview.</b> </td>
-    </tr>
-    <tr>
-        <td>PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT</td>
-        <td>Enables pipeline settings and limits in project <b>Default Settings</b>. This feature lets you set certain pipeline settings and limits for all pipelines in a project. <b>This feature is in Public Preview.</b></td>
+        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is Limited GA.</b> </td>
     </tr>
     <tr>
         <td>CDP_USE_K8S_DECLARATIVE_ROLLBACK</td>
@@ -92,7 +88,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDC_SERVICE_DASHBOARD_REVAMP_NG</td>
-        <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Public Preview.</b></td>
+        <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
@@ -104,15 +100,11 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_SERVICE_CONFIG_LAST_STEP</td>
-        <td>Allows users on the last step of manifest/artifact/config files, if these configs are in edit mode. <b>This feature is in Public Preview.</b></td>
+        <td>Allows users on the last step of manifest/artifact/config files, if these configs are in edit mode. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>PIE_USE_SECRET_FUNCTOR_WITH_RBAC</td>
         <td>Performs RBAC check on secrets when used in pipeline execution. <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_SERVICENOW_TICKET_TYPE_V2</td>
-        <td>Enables ServiceNow custom table support.</td>
     </tr>
     <tr>
         <td>CDS_GIT_CONFIG_FILES</td>
@@ -120,25 +112,13 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_REMOVE_COMMENTS_FROM_VALUES_YAML</td>
-        <td>Disables the resolving of comments in values.yaml files.</td>
-    </tr>
-    <tr>
-        <td>NG_EXPRESSIONS_NEW_INPUT_ELEMENT</td>
-        <td>Suggests probable expressions when selecting <b>Expression</b> for a setting using autocomplete.</td>
-    </tr>
-    <tr>
         <td>PIE_GITX_OAUTH</td>
-        <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Public Preview.</b></td>
+        <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES</td>
         <td>Enables the ability to <a href="/docs/platform/variables-and-expressions/runtime-inputs/#multiple-selection">choose multiple values from a list of allowed values</a>
 .</td>
-    </tr>
-    <tr>
-        <td>CDS_NG_TRIGGER_MULTI_ARTIFACTS</td>
-        <td>Allows creation of multi-region artifact triggers.</td>
     </tr>
     <tr>
         <td>CDS_AUTO_APPROVAL</td>
@@ -149,20 +129,16 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Allows you to change the expression value for the primary artifact identifier. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_TRIGGER_ACTIVITY_PAGE</td>
-        <td>Enables the <a href="/docs/platform/triggers/troubleshoot-registered-triggers">Trigger Activity page</a> <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
         <td>CDS_SUPPORT_HPA_AND_PDB_NG</td>
-        <td>Enables <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/#managed-workloads-table">PDB and HPA tracking</a></p> as managed resources by Harness.<b>This feature is in Public Preview.</b></td>
+        <td>Enables <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/#managed-workloads-table">PDB and HPA tracking</a></p> as managed resources by Harness.<b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_SSH_SSHJ</td>
-        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Public Preview.</b></td>
+        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_SSH_CLIENT</td>
-        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Public Preview</b> </td>
+        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Limited GA</b> </td>
     </tr>
     <tr>
         <td>CD_TRIGGER_CATALOG_API_ENABLED</td>
@@ -175,7 +151,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_TEMPLATE_ERROR_HANDLING</td>
-        <td>Adds enhanced error handling for templates by schema validation errors. <b>This feature is in Public Preview.</b></td>
+        <td>Adds enhanced error handling for templates by schema validation errors. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
@@ -183,7 +159,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_AZURE_WEBAPP_LISTING_APP_NAMES_AND_SLOTS</td>
-        <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
+        <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT</td>
@@ -200,7 +176,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_ENV_PROPAGATION</td>
-        <td>Enables environment propagation across CD stages. <b>This feature is in Public Preview.</b></td>
+        <td>Enables environment propagation across CD stages. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_RECONFIGURE_JIRA_APPROVAL_TIMEOUT</td>
@@ -212,7 +188,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>PIE_RETRY_STEP_GROUP</td>
-        <td>Retries failed step group with default post-retry action set to <b>Mark as Failure</b>. <b>This feature is in Public Preview.</b></td>
+        <td>Retries failed step group with default post-retry action set to <b>Mark as Failure</b>. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CDS_MERGED_RUN_AND_RETRY_PIPELINE_COMPONENT</td>
@@ -225,10 +201,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE</td>
         <td>Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_ECS_BG_GREEN_SERVICE_ROLLBACK</td>
-        <td>Enables the rollback of `green` service in ECS blue green deployments. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_DISABLE_EVALUATE_EXPORT_VARIABLES</td>
@@ -269,14 +241,14 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_SHELL_VARIABLES_EXPORT</td>
-        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Public Preview.</b></td>
+        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
-        <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
-    </tr>
+        <td>CDS_SCOPE_INFRA_TO_SERVICES</td>
+        <td>Enables the **Scope to Specific Services** option in an infrastructure definition that limits an infrastructure to specific services. <b>This feature is in Beta.</b> </td>
+    </tr>    
 </table>

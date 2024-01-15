@@ -98,7 +98,7 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="./azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>

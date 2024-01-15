@@ -42,27 +42,27 @@ The Perspectives provide deep insights into your AWS costs. The costs include al
   
     + **Service**: Each of your active [AWS services](https://aws.amazon.com/) is displayed.
 
-		<docimage path={require('./static/aws-services-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
+		<DocImage path={require('./static/aws-services-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
 	+ **Account**: Each AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. The chart displays the account name and the account ID. If the account name is unavailable, it displays only the account ID.   
 		
-		 <docimage path={require('./static/analyze-cost-for-aws-09.png')} width="60%" height="60%" title="Click to view full size image" />
+		 <DocImage path={require('./static/analyze-cost-for-aws-09.png')} width="60%" height="60%" title="Click to view full size image" />
 		 
 	+ **Instance Type**: Each [Amazon EC2 instance type](https://aws.amazon.com/ec2/instance-types/) you are using.
 	
-	  <docimage path={require('./static/instance-type-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
+	  <DocImage path={require('./static/instance-type-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 	  
 	+ **Usage Type**: Usage types are the units that each service uses to measure the usage of a specific type of resource. For example, the BoxUsage:t2.micro(Hrs) usage type filters by the running hours of Amazon EC2 t2.micro instances.
 
-	  <docimage path={require('./static/usage-type-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
+	  <DocImage path={require('./static/usage-type-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
 	+ **Billing Entity**: Helps you identify whether your invoices or transactions are for AWS Marketplace or for purchases of other AWS services. For more information, go to [Billing Entity](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html).
 
-	  <docimage path={require('./static/aws-billing-entity-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
+	  <DocImage path={require('./static/aws-billing-entity-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
 	+ **Line item Type**: Each line item type refers to the different types of charges applicable to your setup. For more information, go to [Line Item details](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html).
 
-	  <docimage path={require('./static/aws-lineitemtype-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
+	  <DocImage path={require('./static/aws-lineitemtype-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
   * **Region**: Each AWS region you are currently running services in.
   * **Product**: Each of your active products with its cloud costs.
@@ -88,7 +88,7 @@ Perform the following steps to add filters.
 	* **LIKE**: Applies a filter to show entries with conditions that precisely match the specified pattern.
 5. Select a value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
 
-  <docimage path={require('./static/analyze-cost-for-aws-11.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/analyze-cost-for-aws-11.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ### Next Steps

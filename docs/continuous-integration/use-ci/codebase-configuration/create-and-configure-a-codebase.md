@@ -15,7 +15,9 @@ This topic assumes you have an understanding of the [CI pipeline creation proces
 
 ## Code repo connectors
 
-Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
+Harness uses code repo connectors to connect to third-party Git providers, such as Bitbucket, GitHub, GitLab, and others. You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).
+
+For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
 
 * Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 * Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
@@ -31,16 +33,17 @@ If you prefer to use the YAML editor, you can [create connectors in YAML](../../
 
 ## Configure the default codebase
 
-When you add a **Build** stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. The first codebase declared in a pipeline becomes the pipeline's *default codebase*.
+When you add a **Build** stage to a CI pipeline, you specify where your build code is stored. This becomes the pipeline's *default codebase*.
 
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
-4. For **Connector**, select or create a [code repo connector](#code-repo-connectors).
-5. If **Repository Name** is not automatically populated, you can specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
-6. Select **Set Up Stage**.
+4. Configure your codebase connection.
+   * To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
+   * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](#code-repo-connectors), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
+5. Select **Set Up Stage**.
 
-If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
+If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages). You can also [clone multiple repositories in a stage](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
 ![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
 
@@ -64,6 +67,27 @@ pipeline:
 
 </details>
 
+<details>
+<summary>YAML example: Harness Code Repository codebase configuration</summary>
+
+This configuration is for repositories in the [Harness Code Repository module](/docs/code-repository).
+
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: YOUR_HARNESS_CODE_REPO_NAME
+        build: <+input>
+```
+
+</details>
+
 ## Disable Clone Codebase for specific stages
 
 After defining the default codebase in the first Build stage, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for individual stages. You might disable **Clone Codebase** if the codebase is not needed for the stage's operations, or you need to use specific `git clone` arguments (such as to [clone a subdirectory instead of an entire repo](./clone-subdirectory.md)). You can also [clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
@@ -72,7 +96,7 @@ In the Visual editor, you can disable **Clone Codebase** in the stage's **Overvi
 
 <!-- ![](./static/disable-clone-codebase-visual.png) -->
 
-<docimage path={require('./static/disable-clone-codebase-visual.png')} />
+<DocImage path={require('./static/disable-clone-codebase-visual.png')} />
 
 In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
 
@@ -90,25 +114,25 @@ For more information about Build stage settings, go to [CI Build stage settings]
 
 ## Edit the default codebase configuration
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
 
 <!-- ![A pipeline's codebase settings as shown in the Pipeline Studio's Visual editor.](./static/create-and-configure-a-codebase-03.png) -->
 
-<docimage path={require('./static/create-and-configure-a-codebase-03.png')} />
+<DocImage path={require('./static/create-and-configure-a-codebase-03.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
 
@@ -133,10 +157,10 @@ pipeline:
             cpu: 400m
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 
@@ -229,3 +253,7 @@ To resolve this issue:
 ### Pipeline status updates aren't sent to PRs
 
 For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
+
+### Troubleshoot Git event triggers
+
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

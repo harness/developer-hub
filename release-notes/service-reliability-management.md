@@ -3,13 +3,13 @@ title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
 date: 2023-11-15T10:00:20
 tags: [NextGen, "service reliability management"]
-sidebar_position: 13
+sidebar_position: 14
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/service-reliability-management/rss.xml" />
 

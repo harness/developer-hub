@@ -2,4 +2,4 @@ In your Harness account, go to **Account Settings** to view which Harness module
 
 <!-- ![](/docs/continuous-integration/get-started/static/ci_account_overview.png) -->
 
-<docimage path={require('/docs/continuous-integration/get-started/static/ci_account_overview.png')} />
+<DocImage path={require('/docs/continuous-integration/get-started/static/ci_account_overview.png')} />
