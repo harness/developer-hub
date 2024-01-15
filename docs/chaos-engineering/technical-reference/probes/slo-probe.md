@@ -3,9 +3,9 @@ title: SLO probe
 sidebar_position: 7
 ---
 
-Service Level Objective (SLO) probes let users validate the error budget for a given SLO when the corresponding application is under chaos, and determine the verdict based on the percentage change of the error budget. The probe leverages the API from the Service Reliability Management (SRM) module, and fetches the error budget values during the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the user in the probe configuration.
+Service Level Objective (SLO) probes let users validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget. The probe leverages the API from the Service Reliability Management (SRM) module and fetches the error budget values during the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the user in the probe configuration.
 
-## Defining the probe
+## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
@@ -47,24 +47,16 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
   </tr>
   <tr>
-   <td>name
-   </td>
-   <td>Flag to hold the name of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase.
-   </td>
+   <td>name</td>
+   <td>Flag to hold the name of the probe</td>
+   <td>Mandatory</td>
+   <td>N/A <code>type: string</code></td>
+   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase.</td>
   </tr>
   <tr>
-   <td>type
-   </td>
-   <td>Flag to hold the type of the probe
-   </td>
-   <td>Mandatory
-   </td>
+   <td>type </td>
+   <td>Flag to hold the type of the probe </td>
+   <td>Mandatory </td>
    <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe. </code>
    </td>
    <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
@@ -109,81 +101,53 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
   </tr>
   <tr>
-   <td>evaluationTimeout
-   </td>
-   <td>Flags to hold the total evaluation time for the probe
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
+   <td>evaluationTimeout</td>
+   <td>Flags to hold the total evaluation time for the probe </td>
+   <td>Optional</td>
+   <td>N/A <code>type: string</code> </td>
    <td>The <code>evaluationTimeout</code> is the time period for which the error budget values are fetched and based on the chaos execution time period, the percentage change is calculated.
    </td>
   </tr>
+  <tr>
+  <td> insecureSkipVerify</td>
+  <td> Optional </td>
+  <td> bool </td>
+  <td> Flag to skip certificate checks </td>
+  <td> The <code>insecureSkipVerify</code> contains flag to skip certificate checks.</td>
+    </tr>
+  <tr>
+  <td> sloSourceMetadata </td>
+  <td> Mandatory</td>
+  <td> SLO source metadata </td>
+  <td> string </td>
+  <td> </td>
+    </tr>
 </table>
 
-### Source Metadata
+### SLO source metadata
 
 <table>
   <tr>
-   <td><strong>Field</strong>
-   </td>
-   <td><strong>Description</strong>
-   </td>
-   <td><strong>Type</strong>
-   </td>
-   <td><strong>Range</strong>
-   </td>
+   <td><strong>Field</strong> </td>
+   <td><strong>Description</strong> </td>
+   <td><strong>Type</strong> </td>
+   <td><strong>Range</strong> </td>
    <td><strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>apiTokenSecret
-   </td>
-   <td>Flag to hold API Token secret 
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>apiTokenSecret</code> contains the API Token. The secret should be added with <code>X-API-KEY</code> as the key and should be present in the same namespace where experiment is running.
-   </td>
+   <td>apiTokenSecret </td>
+   <td>Flag to hold API Token secret  </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>apiTokenSecret</code> contains the API Token. The secret should be added with <code>X-API-KEY</code> as the key and should be present in the same namespace where experiment is running. </td>
   </tr>
   <tr>
-   <td>accountIdentifier
-   </td>
-   <td>Flag to hold Account ID
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>Account ID of the entity
-   </td>
-  </tr>
-  <tr>
-   <td>orgIdentifier
-   </td>
-   <td>Flag to hold Org ID
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>Organization ID of the entity
-   </td>
-  </tr>
-  <tr>
-   <td> projectIdentifier
-   </td>
-   <td>Flag to hold Project Identifier
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>Project ID of the entity
-   </td>
+   <td>scope </td>
+   <td> Flag to hold scope </td>
+   <td> Mandatory </td>
+   <td> Identifier </td>
+   <td> </td>
   </tr>
 </table>
 
@@ -237,6 +201,40 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
    <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.
    </td>
+  </tr>
+</table>
+
+### Evaluation window
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>evaluationStartTime
+   </td>
+   <td>Flag to hold the evaluation start time of the probe
+   </td>
+   <td>Optional</td>
+   <td>positive integer </td>
+   <td>It represents the start time of the probe evaluation</td>
+  </tr>
+  <tr>
+   <td>evaluationEndTime
+   </td>
+   <td>Flag to hold the evaluation end time of the probe </td>
+   <td>Optional</td>
+   <td> positive integer</td>
+   <td>It represents the end time of the probe evaluation </td>
   </tr>
 </table>
 

@@ -3,14 +3,14 @@ title: Kubernetes probe
 sidebar_position: 5
 ---
 
-With the proliferation of custom resources & operators, especially in the case of stateful applications, the steady-state is manifested as status parameters/flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors/label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports following CRUD operations:
+With the proliferation of custom resources and operators, especially in the case of stateful applications, the steady state is manifested as status parameters or flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors or label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports the following CRUD operations:
 
-- **create:** It creates Kubernetes resource based on the data provided inside the probe.k8sProbe/inputs.data field.
-- **delete:** It deletes matching kubernetes resource via GVR and filters (field selectors/label selectors).
-- **present:** It checks for the presence of kubernetes resource based on GVR and filters (field selectors/label selectors).
-- **absent:** It checks for the absence of kubernetes resource based on GVR and filters (field selectors/label selectors).
+- **create:** Creates Kubernetes resource based on the data provided inside the probe.k8sProbe/inputs.data field.
+- **delete:** Deletes matching kubernetes resource via GVR and filters (field selectors/label selectors).
+- **present:** Checks for the presence of kubernetes resource based on GVR and filters (field selectors or label selectors).
+- **absent:** Checks for the absence of kubernetes resource based on GVR and filters (field selectors or label selectors).
 
-## Defining the probe
+## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
@@ -56,7 +56,7 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    </td>
    <td>Flag to hold the group of the kubernetes resource for the k8sProbe
    </td>
-   <td>Mandatory
+   <td>Optional
    </td>
    <td>N/A <code>type: string</code>
    </td>
@@ -92,7 +92,7 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    </td>
    <td>Flag to hold the namespace of the kubernetes resource for the k8sProbe
    </td>
-   <td>Mandatory
+   <td>Optional
    </td>
    <td>N/A <code>type: string</code>
    </td>
@@ -136,15 +136,15 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    </td>
   </tr>
   <tr>
-   <td>data
+   <td>resourceNames
    </td>
-   <td>Flag to hold the Kubernetes resource manifest
+   <td>Flag to hold the resourceNames of the Kubernetes resource
    </td>
    <td>Optional
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>data</code> contains Kubernetes resource manifest that is relevant solely for the purpose of the creation operation.
+   <td>The <code>resourceNames</code> contains Kubernetes resources used for many requests.
    </td>
   </tr>
 </table>
@@ -259,9 +259,9 @@ probe:
       attempt: 1
 ```
 
-### Create Operation
+### Create operation
 
-It creates the kubernetes resource based on the data specified inside in the `probe.k8sProbe/inputs.data` field.
+It creates the Kubernetes resources based on the data specified inside in the `probe.k8sProbe/inputs.data` field.
 
 Use the following example to tune this:
 
@@ -319,9 +319,9 @@ spec:
 ```
 
 
-### Delete Operation
+### Delete operation
 
-It deletes matching kubernetes resources via GVR and filters (field selectors/label selectors) provided at `probe.k8sProbe/inputs`.
+It deletes matching Kubernetes resources via GVR and filters (field selectors or label selectors) provided at `probe.k8sProbe/inputs`.
 
 Use the following example to tune this:
 
@@ -367,9 +367,9 @@ spec:
           attempt: 1
 ```
 
-### Present Operation
+### Present operation
 
-It checks for the presence of kubernetes resource based on GVR and filters (field selectors/labelselectors) provided at `probe.k8sProbe/inputs`.
+It checks for the presence of Kubernetes resources based on GVR and filters (field selectors or labelselectors) provided at `probe.k8sProbe/inputs`.
 
 Use the following example to tune this:
 
@@ -415,9 +415,9 @@ spec:
           attempt: 1
 ```
 
-### Absent Operation
+### Absent operation
 
-It checks for the absence of kubernetes resource based on GVR and filters (field selectors/labelselectors) provided at `probe.k8sProbe/inputs`.
+It checks for the absence of Kubernetes resources based on GVR and filters (field selectors or labelselectors) provided at `probe.k8sProbe/inputs`.
 
 Use the following example to tune this:
 

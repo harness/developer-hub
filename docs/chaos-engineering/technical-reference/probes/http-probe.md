@@ -3,17 +3,17 @@ title: HTTP probe
 sidebar_position: 3
 ---
 
-HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is a part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
+The HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
 
 The HTTP GET method sends a GET request to the specified URL. The response code received is matched with the response code based on the given criteria (`==`, `!=`, `oneOf`).
 
-HTTP POST method sends a `POST` request to the provided URL.
+The HTTP POST method sends a `POST` request to the provided URL.
 
 :::info YAML only feature
 In the case of a complex `POST` request in which the body spans multiple lines, the `bodyPath` attribute is used to specify the path to a file consisting of the same. This file is available to the experiment pod through a ConfigMap resource, wherein the ConfigMap name is defined in the [chaos engine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [chaos experiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. The `body` and `bodyPath` attributes are mutually exclusive. Go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe) to learn more.
 :::
 
-## Defining the probe
+## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
@@ -39,7 +39,7 @@ spec:
 
 ## Schema
 
-Listed below is the probe schema for HTTP Probe with common properties shared across all probes and properties unique to HTTP probe.
+Listed below is the probe schema for HTTP probe, with common properties shared across all probes and properties unique to HTTP probe.
 
 <table>
   <tr>
@@ -339,8 +339,8 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the http endpoint. The username:password, encoded in base64 or bearer token should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
-It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+This establishes a fundamental authentication mechanism for the HTTP endpoint. The username:password, encoded in base64 or bearer token, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+It is important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
 
 <table>
   <tr>
@@ -353,18 +353,6 @@ It's important to note that `credentials` and `credentialsFile` are two options 
    <td><strong>Range</strong>
    </td>
    <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>type
-   </td>
-   <td>Flag to hold the authentication type
-   </td>
-   <td>Optional
-   </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>type</code> encompasses the authentication method, which includes support for both Basic and Bearer authentication types
    </td>
   </tr>
   <tr>
@@ -395,7 +383,7 @@ It's important to note that `credentials` and `credentialsFile` are two options 
 
 ### TLS
 
-It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+It offers a mechanism to validate TLS certifications for the HTTP endpoint. You can supply the `cacert` or the client certificate and client key to perform the validation.
 Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
 
 <table>
@@ -459,6 +447,18 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
    <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
    </td>
   </tr>
+  <tr>
+   <td>serverName
+   </td>
+   <td>Flag to hold the server name
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>serverName</code> name of the server
+   </td>
+  </tr>
 </table>
 
 ## Definition
@@ -484,9 +484,9 @@ probe:
 ```
 
 
-### HTTP Get Request
+### HTTP GET request
 
-The HTTP Get method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (==, !=, oneOf). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (==, !=, oneOf). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
 
 Use the following example to tune this:
 
@@ -526,9 +526,9 @@ spec:
           probePollingInterval: 2s
 ```
 
-### HTTP Post Request(http body is a simple)
+### HTTP POST request (HTTP body is simple)
 
-This section holds the HTTP body necessary for making an HTTP POST request, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
+The request contains the HTTP body necessary for making an HTTP POST request, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
 
 Use the following example to tune this:
 
@@ -572,11 +572,13 @@ spec:
           probePollingInterval: 2s
 ```
 
-### HTTP Post Request(http body is a complex)
+### HTTP POST request (HTTP body is complex)
 
 For complex POST requests with multi-line bodies, the 'bodyPath' attribute comes into play. It allows you to specify the path to a file containing the required body content. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `httpProbe/inputs.method.post.body` field.
 
-Please note that it is mutually exclusive with the 'body' field. If 'body' is specified, it will be used for the POST request; otherwise, 'bodyPath' will be used.
+:::tip
+HTTP POST request is mutually exclusive with the 'body' field. If 'body' is specified, it will be used for the POST request; otherwise, 'bodyPath' will be used.
+:::
 
 Use the following example to tune this:
 
@@ -623,9 +625,11 @@ spec:
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the http endpoint. The username:password, encoded in base64 or bearer token should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+Authentication establishes a fundamental mechanism for the HTTP endpoint. The "username:password", encoded in base64 or bearer token, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
 
-It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+:::tip
+The `credentials` and `credentialsFile` are two options that can't be used simultaneously.
+:::
 
 Use the following example to tune this:
 
@@ -723,9 +727,9 @@ spec:
           probePollingInterval: 2s
 ```
 
-### TLS With Custom Certificates
+### TLS with custom certificates
 
-It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the cacert or the client certificate and client key, to perform the validation.
+It offers a mechanism to validate TLS certifications for the http endpoint. You can supply the cacert or the client certificate and client key, to perform the validation.
 
 Please take note that the CA certificate file must be incorporated into the experiment pod as either a configMap or secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
 
@@ -777,9 +781,9 @@ spec:
           probePollingInterval: 2s
 ```
 
-### TLS Skip Certificate Verification
+### TLS skip certificate verification
 
-You can bypass the tls certificate checks by enabling the `insecureSkipVerify` option.
+You can bypass the TLS certificate checks by enabling the `insecureSkipVerify` option.
 
 Use the following example to tune this:
 

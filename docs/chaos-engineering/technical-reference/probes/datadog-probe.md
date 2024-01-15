@@ -6,10 +6,9 @@ sidebar_position: 8
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Datadog probe allows you to query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and utilize its results through the fault's chaos duration to evaluate the probe outcome.
+Datadog probe allows you to query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results through the fault's chaos duration to evaluate the probe outcome.
 
 - Both [API tests](https://docs.datadoghq.com/synthetics/api_tests/) and [Browser tests](https://docs.datadoghq.com/synthetics/browser_tests) are supported.
-
 - The probe may only be executed in the **EOT mode**, as the probe evaluation is based on the result of all the test iterations executed through the fault chaos duration.
 
 :::note
@@ -49,7 +48,7 @@ DD_APP_KEY="xxxxxxxxxxxxxxxxxxxx"
   </TabItem>
 </Tabs>
 
-## Defining the probe
+## Probe definition
 <Tabs>
   <TabItem value="kubernetes" label="Kubernetes" default>
   For a Kubernetes chaos infrastructure, the probe is defined at <code>.spec.experiments[].spec.probe</code> path in the chaos engine manifest:

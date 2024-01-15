@@ -3,13 +3,13 @@ title: Prometheus probe
 sidebar_position: 6
 ---
 
-Prometheus probe allows users to run Prometheus queries and match the resulting output against specific conditions. The intent behind this probe is to allow users to define metrics-based SLOs in a declarative way and determine the experiment verdict based on its success. The probe runs the query on a Prometheus server defined by the endpoint, and checks whether the output satisfies the specified criteria. A PromQL query needs to be provided, whose outcome is then used for the probe validation.
+The Prometheus probe allows users to run Prometheus queries and match the resulting output against specific conditions. The intent behind this probe is to allow users to define metrics-based SLOs in a declarative way and determine the experiment verdict based on their success. The probe runs the query on a Prometheus server defined by the endpoint and checks whether the output satisfies the specified criteria. The outcome of a PromQL query (that is provided) is used for probe validation.
 
 :::info YAML only feature
 In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [ChaosExperiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. Also, `query` and `queryPath` attributes are mutually exclusive. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
 :::
 
-## Defining the probe
+## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
@@ -144,7 +144,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>Flag to hold type of the data used for comparison
    </td>
-   <td>Optional
+   <td>Mandatory
    </td>
    <td><code>float</code>
    </td>
@@ -179,8 +179,11 @@ Listed below is the probe schema for the Prometheus probe, with properties share
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field. 
-It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password", encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+
+:::tip
+The `credentials` and `credentialsFile` are two options that can't be used simultaneously.
+:::
 
 <table>
   <tr>
@@ -223,7 +226,7 @@ It's important to note that `credentials` and `credentialsFile` are two options 
 
 ### TLS
 
-It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation. 
+It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation.
 Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
 
 <table>
@@ -285,6 +288,18 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
    <td><code>boolean</code>
    </td>
    <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
+   </td>
+  </tr>
+  <tr>
+   <td>serverName
+   </td>
+   <td>Flag to hold the server name
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>serverName</code> name of the server
    </td>
   </tr>
 </table>
@@ -402,7 +417,7 @@ probe:
 ```
 
 
-### Prometheus Query(query is a simple)
+### Prometheus query (simple query)
 
 This section holds the PromQL query used to extract the desired Prometheus metrics by executing it on the specified Prometheus endpoint. You can input the Prometheus query in the 'query' field, and this can be initiated by configuring the `.promProbe/inputs.query` field.
 
@@ -444,11 +459,13 @@ spec:
           attempt: 1
 ```
 
-### Prometheus Query(query is a complex)
+### Prometheus query (complex query)
 
-For intricate queries that extend across multiple lines, you can utilize the 'queryPath' attribute to specify the path to a file containing the query. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `promProbe/inputs.queryPath` field.
+For intricate queries that extend across multiple lines, you can use the 'queryPath' attribute to specify the path to a file containing the query. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `promProbe/inputs.queryPath` field.
 
-Please note that it is mutually exclusive with the 'query' field. If 'query' is specified, it will be used for the query; otherwise, 'queryPath' will be used.
+:::tip
+The fields 'queryPath' and 'query' are mutually exclusive. If 'query' is specified, it is used for the query; otherwise, 'queryPath' is used.
+:::
 
 Use the following example to tune this:
 
@@ -492,9 +509,11 @@ spec:
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password" encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
 
-It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+:::tip
+The `credentials` and `credentialsFile` are two options that can't be used simultaneously.
+:::
 
 Use the following example to tune this:
 
@@ -536,11 +555,13 @@ spec:
           attempt: 1
 ```
 
-### TLS With Custom Certificates
+### TLS with custom certificates
 
-It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation.
 
-Please take note that the CA certificate file must be incorporated into the experiment pod as either a configMap or secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+:::tip
+The CA certificate file must be incorporated into the experiment pod either as a configMap or a secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+:::
 
 Use the following example to tune this:
 
@@ -587,9 +608,9 @@ spec:
           attempt: 1
 ```
 
-### TLS Skip Certificate Verification
+### TLS skip certificate verification
 
-You can bypass the tls certificate checks by enabling the `insecureSkipVerify` option.
+You can bypass the TLS certificate checks by enabling the `insecureSkipVerify` option.
 
 Use the following example to tune this:
 
