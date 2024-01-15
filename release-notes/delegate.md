@@ -59,7 +59,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Addition of extra logs to capture CI pod cleanup issues for windows. (CI-10636)
+- Added extra logs to capture CI pod cleanup issues for Windows. (CI-10636, ZD-54688)
 
 ### Version 24.01.82002
 
