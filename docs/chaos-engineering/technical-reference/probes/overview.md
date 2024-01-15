@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Declarative hypothesis
 
-Declarative Hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment, and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specs in the respective Chaos Engine which can be validated by the Chaos Operator.
+Declarative hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment, and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specs in the respective Chaos Engine which can be validated by the Chaos Operator.
 
 This hypothesis serves as a way to ensure that the experiment is well-defined and that the results can be easily understood. It also helps to ensure that the experiment is repeatable and that the results can be compared across different runs.
 
