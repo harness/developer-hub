@@ -4420,3 +4420,11 @@ You can make use of CRON based trigger to execute a pipeline
 ####   I need to run my step in delegate host?
 
 You can create a shell script and select option as execute on delegate under Execution Target
+
+####  How to setup trigger for on new artifcat for jfrog?
+
+You can create a docker connector(using jfrog details) and create a trigger on New artifact of type docker by selecting the jfrog connector created as first step.
+
+#### How to get the certs path in windows os?
+
+Local machine certificate can be found at HKEY_LOCAL_MACHINE root in the registry, and Current user certificate store is located under the HKEY_CURRENT_USER registry root.
