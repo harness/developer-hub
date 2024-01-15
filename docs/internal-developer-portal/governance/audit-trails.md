@@ -29,6 +29,10 @@ The Account Audit Trail includes the following IDP events:
 | URL Allow List                | Create, Update         |
 | Layout                        | Update                 |
 | Plugin                        | Enable, Disable        |
+| Software Components           | Create, Delete         |
+
+In addition to above any changes to the catalog entities due to system refresh calls are being captured and tracked as audit events.
+//TODO: Add Image when available
 
 Each event in the Account Audit Trail list provides the following details:
 
