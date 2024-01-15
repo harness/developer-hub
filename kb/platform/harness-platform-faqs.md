@@ -2417,3 +2417,14 @@ This can either be left blank, as it is not required, or you can add a Key (aka 
 
 The Deafult entityID is `app.harness.io` unless otherwise specified.
 
+#### Unable to refer Custom Secret manager template stored in GIT
+
+Currently, we do not support reference of Custom Secret manager template stored in GIT, please create inline template and you will be able to refer those
+
+#### Upon successful azure saml login for prod account harness is redirecting to stage/dev account
+
+Please check if entity id is set correctly in case if you are using multiple account, as if you are using vanity url then the entity id needs to be set accordingly while setting up saml in Harness as well as on azure side
+
+#### What will be entity id in case of on-prem setup or if vanity url is used
+
+In case of above it needs to be the domain used to access harness(example : vanity.harness.io) 
