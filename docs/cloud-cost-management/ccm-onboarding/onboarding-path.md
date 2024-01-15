@@ -21,11 +21,11 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 ### <a href="#phase-1"> Phase 1: Initial setup</a>
 
-| **Step**                                                          | **Details**                                                                | **Demo video** |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
-| <a href="#step-1-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility |                |
-| <a href="#step-2-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                |
-| <a href="#step-3-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                |
+| **Step**                                                          | **Details**                                                                | **Demo video**                                                         |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| <a href="#step-1-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
+| <a href="#step-2-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                                                                        |
+| <a href="#step-3-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                                                                        |
 
 ### <a href="#phase-2"> Phase 2: Cost reporting</a>
 
@@ -120,3 +120,29 @@ Detecting strange spending patterns in cloud computing is really important. It h
 For more information, go to [Cost anomalies](docs/first-gen/cloud-cost-management/ccm-anomaly-detection/detect-cost-anomalies-with-ce.md)
 
 
+## Phase 3: Cost optimization
+
+Utilizing Cloud Cost Management not only offers in-depth insights into cloud expenses but also generates actual cost savings by implementing optimization techniques on cloud resources.
+
+
+### Step 1. Recommendations
+
+CCM can provide three types of recommendations.
+
+1. Right sizing recommendations coming from the cloud providers that are linked
+2. Workload & Nodepool recommendations computed by CCM for the connected kubernetes clusters
+3. Various other recommendations coming from Asset Governance policies
+
+For more information on recommendations, go to [Recommendations](https://developer.harness.io/docs/category/recommendations)
+
+#### Workflow for recommendations
+
+Recommendations are generated daily, and Cloud Cost Management (CCM) offers Jira integration to streamline the workflow for implementing these suggestions. Once a Jira account is connected, CCM can automatically generate Jira issues and assign them to the appropriate team member for implementation.
+
+The workflow unfolds as follows:
+
+1. A cloud engineer or the designated cost owner reviews the daily recommendations.
+2. A Jira ticket is created for implementing each recommendation and is assigned to the respective owner within the engineering team.
+3. The engineering team reviews and works on implementing the recommendations. Once a recommendation is successfully implemented, the Jira status can be updated, marking the recommendation as applied in CCM.
+
+For more information on Jira workflow, go to [View and apply recommendations](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md)
