@@ -55,6 +55,15 @@ You can update (or edit) a probe from within an experiment or from the **Resilie
 Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID. 
 :::
 
+When you wish to enter the probe name in the manifest (manually) as a probeRef annotation, follow the below format:
+
+```
+probeRef: '[{"name":"probe-name","mode":"SOT"}]'
+```
+Here, `probe-name` is the name of your probe.
+
+If you use the user interface, this step is not required.
+
 ### Step 1: Navigate to Chaos experiment
 * Choose the experiment whose resilience probe/s you wish to update. Navigate to the **Experiment builder** section of the experiment.
 
@@ -97,6 +106,7 @@ Not available yet
 
 When a probe is force deleted, it will not be available for use. You will lose history of that probe, but experiment runs that used the probe will contain the history of the probe.
 Once the probe is deleted, information pertaining to the probe reference is also deleted from all the manifest references, that is, the probe is removed from the probeRef annotation. This ensures that the next possible run will not schedule the probe.
+Only when you **hard delete** a probe, you can reuse the name of that probe. 
 
 ## Resilience probes support
 Resilience probes are supported by the following features:
