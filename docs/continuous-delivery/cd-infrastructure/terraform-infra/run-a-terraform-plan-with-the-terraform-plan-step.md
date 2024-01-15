@@ -18,7 +18,7 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 ## Before You Begin
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
+* [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ## Important: Install Terraform on Delegates
