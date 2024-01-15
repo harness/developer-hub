@@ -100,7 +100,7 @@ The following deprecated API endpoints will no longer be supported:
 
 #### Early access features
 
-- Grant public access to Harness pipelines (PL-39999)
+- Grant public access to Harness pipelines (PL-43499)
 
    You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
    
