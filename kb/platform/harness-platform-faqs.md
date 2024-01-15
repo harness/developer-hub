@@ -2441,3 +2441,12 @@ Please check if you have required Role and permission granted to view Projects, 
 #### I want to share delegate from one project to another?
 
 In this case you can install the delegate on org level if both project are under same org, otherwise need to install delegate on Account level. As delegate installed under project has scope limited to same project
+
+####  What permission do I need to see deployments for all projects?
+
+You can create a role and add view permission for pipeline with account scope, you can find sample one as below for having execute permission similarly you can create one for just view access
+https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples
+
+####   How to signout?
+
+You can click on My profile Under bottom left and you will able to see Sign Out option coming in.
