@@ -203,7 +203,7 @@ result = client.string_variation('identifier_of_your_string_flag', target, "")
 ```
 ### Evaluate a number Variation 
 
-
+We recommend using the newer `int_or_float_variation` method, which replaces `int_variation` and `number_variation` . 
 ```
 result = client.int_or_float_variation('identifier_of_your_number_flag', target, -1)
 ```
