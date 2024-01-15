@@ -4416,3 +4416,7 @@ No, Out for the box Rollback step is not available and you need to add your own 
 #### How can we trigger a pipeline at specific time
 
 You can make use of CRON based trigger to execute a pipeline
+
+####   I need to run my step in delegate host?
+
+You can create a shell script and select option as execute on delegate under Execution Target
