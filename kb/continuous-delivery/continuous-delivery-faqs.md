@@ -4420,3 +4420,152 @@ You can make use of CRON based trigger to execute a pipeline
 ####   I need to run my step in delegate host?
 
 You can create a shell script and select option as execute on delegate under Execution Target
+
+#### How can I get the stage execution ID?
+
+Currently, we do not have inbuilt variables to provide the stage execution ID.
+Only pipeline execution ID can be fetched using the inbuilt variable - <+pipeline.executionId>
+
+#### How to get stage execution ID using Shell script?
+
+The following script can provide the stage execution ID -
+
+```
+url="<+stage.executionUrl>"
+stage_value=$(echo "$url" | grep -oP 'stage=([^&]+)' | awk -F'=' '{print $2}')
+echo "The last stage value is: $stage_value"
+```
+
+#### I want to limit the scope to just template viewers, so set the role bindings accordingly. But the problem is that there is a default role-binding for Organization Viewer which overrides my other settings and allows them to see all Org level resources.
+
+The project_viewer and org_viewer are the default group to which the user will get added. This is by design but you can remove the roles assigned to these groups and only add the required user group to that user and it should work as expected.
+
+#### What is the use of terraform-config-inspect binary in delegates?
+
+This binary is used for rendering the terraform code in the CG version and is not used for NG-related deployments.
+
+#### We want to tag a build and push it to GitHub, Can this be done using any inbuilt harness functionality or we have to use commands to achieve this?
+
+Unfortunately, we don't have any built-in feature in Harness to tag a build and push it to SCM.
+You will have to use the command line Git, IDEs, or other Git tools.
+
+#### How does swapping work for AGS Blue Green deployment?
+
+This is how ASG Blue Green deployment works during swapping routes. If you have a load balancer with 2 listeners, Listener A forwards to Target Group TG1 and Listener B forwards to Target Group TG2, then after swapping routes the result will be as follows:
+Listener A forwards to Target Group TG2 and Listener B forwards to Target Group TG1.
+This is how traffic is shifting from stage to prod. Listener A - always belongs to stage and Listener B - is to prod, but the TGs should swap.
+
+#### What does feature flag CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG do?
+
+When this feature flag is activated, If the harness inbuilt secret manager is used then the encryption will happen at the manager’s end for TF plans.
+
+#### Is it possible to retry the entire stage for Timeout Errors in the failure strategy?
+
+At present, We don't have the feature to retry an entire stage in a pipeline, we only allow retry steps for individual steps within a stage of a pipeline for Timeout Errors in failure strategy. 
+
+#### We are facing an issue with the wrong password getting used for secrets. we have a special character(&., |) in the password. How to resolve it?
+
+You can reference secrets in scripts, but text secrets with line breaks or other special characters(recognized in the shell)might interfere with script execution.
+To address this, you can encode the value as base64 and decode and write the secret to a file. For example, the following command decodes a secret from base64 -
+writes it to a file:
+echo <+secrets.getValue("my_secret")> | base64 -d > /path/to/file.txt
+
+#### What happens if my delegate uses a CG token?
+
+Since the CG token did not have any scope, The delegate will get registered at the account level in NG.
+
+#### Why is AIDA providing the response even if it is disabled?
+
+The AIDA bot has multiple flavors, The one you see is the AIDA support bot and this is enabled by default. Other AIDA bots need to be enabled in account settings. The AIDA support bot does not collect any data and just works on our Harness docs and knowledge base. We leverage the OpenAIs framework to form answers from inputs from docs based on the questions. No account data is collected for this.
+ 
+Once you enable the AIDA in settings, you will see the AIDA suggestions for your pipeline failures and OPA policies. Terms and conditions are specific to the above modules.
+ 
+The AIDA support bot is just to help you with simple queries related to Harness. let me know if you still want to get this disabled for your account.
+
+#### How can I pass variables from one pipeline to other pipelines? 
+
+You can define a variable at the project/org/account level depending on the pipeline's scope and use that variable in all 3 pipelines.
+ 
+If the values of the variable need to be updated by pipeline 1 before pipeline 2 can use it. You can use the API to update the variable value from pipeline 1 - https://apidocs.harness.io/tag/Variables#operation/updateVariable
+
+#### Why can't my delegate create a release in the namespace?
+
+Note that the delegate must have either cluster-admin permissions in the target cluster (allowing it to deploy to any namespace in the cluster) or admin permissions in the target namespace (distributed model https://developer.harness.io/docs/faqs/harness-delegate-faqs/#can-i-install-the-delegate-in-other-namespaces This model places a delegate in each namespace in the cluster. It limits each delegate to deploying into its own namespace.).
+
+#### Why is Harness requesting the use of work email instead of personal email for account registration?
+
+Harness has identified a surge in unauthorized usage of the free pipeline minutes offered on Harness Cloud. To address this concern and enhance security, we now require users to register their accounts using their official work email instead of personal email.
+
+#### Pipeline tags do not get updated when YAML is updated via GIT?
+
+If a user modifies the branch in the YAML, adds new tags, saves the changes, and then navigates to the List page, the Metadata may become out of sync. This can lead to discrepancies between the displayed tags and the actual configuration.
+
+#### What steps can users take to mitigate the impact of tag synchronization issues?
+
+Currently, we consider tags as metadata and DB is the source of truth for metadata. To make sure tags are updated always. Please
+use UI to update the Tags.
+
+#### How to access custom variables in scripts?
+
+You can access the variables using the expression.
+Also for your reference, you can click on the copy icon by the side of the variable to get its corresponding expression for access.
+
+#### How do I add custom certificates to Harness delegates?
+
+You can use the instructions mentioned here to install custom certificates - https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/
+
+#### Do we need the root user on Delegate for installing certs?
+
+Importing certificates involves two steps: firstly, importing certs into the Delegate Java trust store, and secondly, importing the certificate into the underlying OS (RHEL). The first step does not require the root user, but the second one does due to restrictions imposed by Red Hat. Therefore, the overall answer is YES.
+If you wish to run the delegate as a non-root user while including custom certs to bypass Red Hat restrictions, you can create your own delegate Docker image with the necessary certificates. The steps for doing this are documented here: https://github.com/harness/delegate-dockerfile?tab=readme-ov-file#build-image-with-custom-ca-certs
+
+#### Do we need to add the SecurityContext for installing custom certs?
+
+If you are already running the delegate as the root user, then this setting is not required. By default, if fsGroup is not set, Kubernetes will mount files with user=root and group=root. In this scenario, only the root user can read the file. Setting fsGroup to 1001 allows a non-root user to read the file. When starting a delegate without running as root and also setting fsGroup to 1001, the delegate can import certs into the Java trust store but is unable to import them into the underlying OS.
+
+#### If the approval step is timed out, Is there any way to continue deployment?
+
+You can use the failure strategy to move the pipeline forward if the approval step is timeout.
+On the approval step's advance section, go to failure strategy and use the mark as success to make the step successful and the pipeline will move to the next step.
+
+#### Why is the GitConfig block not available for remote pipeline policy evaluation?
+
+Policies are evaluated first in case of pipelines being saved and for the first time, we create the pipeline inline and then perform git sync to sync the file with git repo. This may cause a false alert for the first save but should not have an issue in the next modifications.
+
+#### Can you please help me with how to pass expressions required as runtime input to the static pipeline from the API?
+
+f you are making use of runtime inputs you can check the below API call which allows you to pass a runtime input YAML for the pipeline:
+https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetYaml
+ 
+There is another API that gives you a runtime input template YAML which you can use in the first API call:
+https://apidocs.harness.io/tag/Pipeline-Input-Set#operation/runtimeInputTemplate
+
+#### Can I turn off the feature to Not hide/replace secrets with ***?
+
+By design, we hide the secrets, and currently, we don't have a feature to unhide it.
+
+#### We would like to know if it is possible to have 2 Harness projects using the same pipeline that is saved in the Git repo?
+
+Unfortunately no, All the Harness pipelines are associated with a project ID, and only one project ID is allowed for the pipeline.
+
+#### What does the exceeding quota log error in the harness delegate log mean?
+
+We collect delegate logs in case we need to troubleshoot any issues in your pipelines so that you don't have to collect and send us logs. The error is harmless since it doesn't affect any functionality. You can choose to disable sending logs to us by adding an env variable in the delegate YAML documented at https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/
+
+
+#### What are the best possible ways to create harness deployment secrets, connectors, pipelines, etc?
+
+Creating resources is totally up to the customer's requirement, we provide all three ways to create harness resources -
+* Via Terraform
+* Via UI
+* Via API
+ 
+The docs for API and terraform resource provider and harness docs. Please go through it and choose the one which best suits your needs - 
+API docs - [API-Docs](https://apidocs.harness.io/)
+Terraform provider - [TF-Docs](https://registry.terraform.io/providers/harness/harness/latest/docs)
+Harness docs - [Harness-Docs] (https://developer.harness.io/docs/continuous-delivery)
+
+#### How do I delete the Harness entity even if my pipelines or other entities reference it?
+
+You can force delete a Harness entity even if your pipelines or other entities reference it.
+The Harness account admin can enable or disable the force delete option in the account's default settings.
