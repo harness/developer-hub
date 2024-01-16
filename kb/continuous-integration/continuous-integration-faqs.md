@@ -1693,3 +1693,8 @@ For steps, you can set a custom timeout limit in each step's **Optional Configur
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
+
+
+
+<!-- PLEASE ORGANIZE NEW QUESTION UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
+
