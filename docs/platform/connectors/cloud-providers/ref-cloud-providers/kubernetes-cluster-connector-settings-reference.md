@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Cluster Connector Settings Reference
-description: This topic provides settings and permissions for the Kubernetes Cluster Connector. The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere. For clo…
+title: Kubernetes cluster connector settings reference
+description: This topic provides settings and permissions for the Kubernetes cluster connector.
 # sidebar_position: 2
 helpdocs_topic_id: sjjik49xww
 helpdocs_category_id: 1ehb4tcksy
@@ -8,9 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the [Harness Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector). The Kubernetes cluster connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
-
-For cloud platform-specific connectors, go to [Cloud Connectors](/docs/category/cloud-providers/).
+This topic provides settings and permissions for the [Harness Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector). The Kubernetes cluster connector is a platform-agnostic connection to a Kubernetes cluster located anywhere. For cloud platform-specific connectors, go to [Cloud Connectors](/docs/category/cloud-providers/).
 
 This video demonstrates how to add a Harness Kubernetes cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, and then the Kubernetes cluster connector uses the delegate to connect to the cluster when a Harness pipeline runs.
 
@@ -47,10 +45,10 @@ The Kubernetes cluster connector is platform-agnostic. You can use it to access 
 
 For example, if you have a GKE Kubernetes cluster hosted in GCP, you can use the Kubernetes cluster connector to connect Harness to the cluster in GCP (for example to run your Harness CI build infrastructure), but the Kubernetes cluster connector can't also access Google Container Registry (GCR). In this case, you have two options:
 
-* Use a GCP Connector to access the GKE cluster and all other GCP resources you need.
-* Use a Kubernetes Cluster Connector for the GKE cluster and a GCP Connector for all other GCP services and resources.
+* Use a GCP connector to access the GKE cluster and all other GCP resources you need.
+* Use a Kubernetes cluster connector for the GKE cluster and a GCP connector for all other GCP services and resources.
 
-When you set up a Harness CD deployment, you specify the connector to use for the artifact and target cluster. If you create both a Kubernetes Cluster connector and a GCP connector, you select the GCP connector for the GCR container and the Kubernetes cluster connector for the target cluster.
+When you set up a Harness CD deployment, you specify the connector to use for the artifact and target cluster. If you create both a Kubernetes cluster connector and a GCP connector, you select the GCP connector for the GCR container and the Kubernetes cluster connector for the target cluster.
 
 The option you use depends on how your clusters are configured, where they are located, and how your teams use Harness.
 
@@ -67,9 +65,9 @@ In general, the following permissions are required:
 
 ### Builds (CI)
 
-If you are only using the Kubernetes Cluster Connector for Harness Continuous Integration (CI), you can use a reduced set of permissions.
+If you are only using the Kubernetes cluster connector for Harness Continuous Integration (CI), you can use a reduced set of permissions.
 
-For Harness CI, the delegate requiresCRUD permissions on Secret and Pod, and a Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
+For Harness CI, the delegate requires CRUD permissions on Secret and Pod, and a Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
 
 For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) in the Kubernetes documentation.
 
@@ -125,7 +123,7 @@ If you don't want to use `verbs: ["*"]` for the Role, you can list out all of th
 
 The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
 
-## Harness CI Cluster Requirements
+## Harness CI cluster requirements
 
 For Harness CI, the resources required for the Kubernetes cluster depends on the number of builds running in parallel, as well as the resources required for each build.
 
@@ -137,7 +135,7 @@ Below is a rough estimation of the resources required, based on the number of da
 | 500         | 87 - 121                                 | 45 - 62                                    |
 | 1000        | 172 - 239                                | 89 - 123                                   |
 
-## Kubernetes Cluster connector settings
+## Kubernetes cluster connector settings
 
 ### Basic settings
 
@@ -251,14 +249,14 @@ The following settings are part of the provider app you use to log in:
 
 ## Amazon AWS EKS Support
 
-You can use a Kubernetes Cluster connector for AWS EKS by selecting the [Inherit Delegate Credentials option](#use-the-credentials-of-a-specific-harness-delegate). You can also use your [EKS service account](#service_account) token for authentication.
+You can use a Kubernetes cluster connector for AWS EKS by selecting the [Inherit Delegate Credentials option](#use-the-credentials-of-a-specific-harness-delegate). You can also use your [EKS service account](#service_account) token for authentication.
 
 To use the platform-agnostic Kubernetes cluster connector with your AWS EKS infrastructure:
 
 1. Install a Harness Kubernetes delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
 2. Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes delegate, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
 3. In the connector settings, select to connect through the delegate that you installed in your cluster.
-4. When setting up the EKS cluster as build infrastructure or the target Infrastructure for a deployment, select your Kubernetes Cluster Connector.
+4. When setting up the EKS cluster as build infrastructure or the target infrastructure for a deployment, select your Kubernetes cluster connector.
 
 To use an EKS cluster for Kubernetes cluster build infrastructure in Harness CI, you must create a platform-agnostic Kubernetes cluster connector for the stage's build infrastructure, and then you can use either type of connector in individual steps in the stage. However, for individual steps in a build stage, if your EKS clusters use IRSA (for the delegate's service account or with OIDC Provider) or Fargate nodes in EKS clusters, use an [AWS connector configured for EKS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/##connect-to-elastic-kubernetes-service-eks).
 
@@ -282,7 +280,7 @@ Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 
 ### OpenShift notes
 
-- If you decide to use username and password credentials in the Harness Kubernetes Cluster Connector, don't use the username and password for the OpenShift platform. Use the cluster's username and password.
+- If you decide to use username and password credentials in the Harness Kubernetes cluster connector, don't use the username and password for the OpenShift platform. Use the cluster's username and password.
 - Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies. Use `apiVersion: apps.openshift.io/v1` instead of `apiVersion: v1`.
 - The SA token doesn't need global read permissions. The token can be scoped to the namespace.
 - The Kubernetes containers must be OpenShift-compatible containers. If you're already using OpenShift, then this is already configured. Be aware that OpenShift can't deploy any Kubernetes container. You can get OpenShift images from the public repos at [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).

@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes Cluster Connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md). For a list of the platforms and technologies supported by Harness, go to [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md).
+You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md). For a list of the platforms and technologies supported by Harness, go to [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md).
 
-This page explains how to set up the provider-agnostic Kubernetes Cluster Connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](../../../get-started/key-concepts.md). 
+This page explains how to set up the provider-agnostic Kubernetes cluster connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](../../../get-started/key-concepts.md).
 
-This video shows how to add a Kubernetes Cluster Connector and install the Kubernetes Delegate in the target cluster at the same time:
+This video shows how to add a Kubernetes cluster connector and install the Kubernetes Delegate in the target cluster at the same time:
 
 <!-- Video:
 https://www.youtube.com/embed/wUC23lmqfnY-->
@@ -29,7 +29,7 @@ In general, the following permissions are required:
 - **Deployments:** A Kubernetes service account with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each of the entity types Harness uses. In general, cluster admin permission or namespace admin permission is sufficient.
 - **Builds:** A Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
 
-For a detailed list of roles and policies, go to the [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+For a detailed list of roles and policies, go to the [Kubernetes cluster connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 :::tip
 
@@ -41,7 +41,7 @@ If you don't want to use `verbs: ["*"]` for the Role, you can list out all of th
 
 ### Connect to Amazon EKS
 
-To connect Harness to Amazon EKS, you can use the platform-agnostic Kubernetes Cluster Connector or an [AWS connector configured for EKS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/##connect-to-elastic-kubernetes-service-eks).
+To connect Harness to Amazon EKS, you can use the platform-agnostic Kubernetes cluster connector or an [AWS connector configured for EKS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/##connect-to-elastic-kubernetes-service-eks).
 
 To use an EKS cluster for Kubernetes cluster build infrastructure in Harness CI, you must create a platform-agnostic Kubernetes cluster connector for the stage's build infrastructure, and then you can use either type of connector in individual steps in the stage.
 
@@ -69,7 +69,7 @@ To use an AKS cluster for deployments, the AKS cluster must have local accounts 
 
 ### Enter credentials
 
-1. Select how you want Harness to connect to the cluster. For details about these setting, go to the [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+1. Select how you want Harness to connect to the cluster. For details about these setting, go to the [Kubernetes cluster connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
    - **Specify master URL and credentials:**
       - Provide the Kubernetes master node URL. To get the master URL, use `kubectl cluster-info`.
@@ -175,7 +175,7 @@ For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/r
 
 ### Set up delegates
 
-Harness uses Kubernetes Cluster Connectors at pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates. Regardless of the authentication method selected for a Kubernetes Cluster connector, you must use Harness Delegates to perform authentication for the connector.
+Harness uses Kubernetes cluster connectors at pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates. Regardless of the authentication method selected for a Kubernetes cluster connector, you must use Harness Delegates to perform authentication for the connector.
 
 Select one of the following:
    * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
