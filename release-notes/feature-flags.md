@@ -39,6 +39,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've added support for Kotlin version 1.7.x for Android projects. Previously, the compilation would fail due to Kotlin compilation issues.
  - We've upgraded Feature Flags' Android SDK to 1.2.3, which ensures the SDK will not crash the application should initialization fails. For full details of all Feature Flags Android SDK relases, please see the: [Feature Flags' Android Client SDK Changelog](https://github.com/harness/ff-android-client-sdk/releases).
 
+### Java SDK
+
+#### Version 1.5.0
+
+ - Upgraded `okhttp` and the following CVEas have been resolved:
+ -- CVE-2023-3635, 
+ -- CVE-2022-24329,
+ -- CVE-2020-29582
+
+ - Delete events were throwing `ApiException` errors. This is now resolved. 
+ - The `commons-collections404` has now been removed.
+ - `maven-model` has now been removed.
+ - `threetenbp` has now been removed. 
+ - Add GraalVM example application (experimental).
+ - The Gradle `dependency-check` plugin has been added. 
+ - Add Gradle dependency-check plugin.
+ - `ch.qos.logback:logback-classic` has been upgraded from 1.2.11 to 1.3.12. (FFM-10373)
+
 # Previous releases
 
 <details>
