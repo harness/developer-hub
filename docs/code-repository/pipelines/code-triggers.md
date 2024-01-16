@@ -84,19 +84,12 @@ trigger:
 </TabItem>
 </Tabs>
 
-### Permissions required for creating and updating Triggers
+## Permissions required for creating and updating Triggers
 
-Triggers creation are supported with two modes of permissions
+By default, the **Pipelines: Create/Edit** and **Execute** permissions are required for creating and editing triggers.
 
-1. Mandatory pipeline Create/Edit and pipeline execute permissions
-2. Optional pipeline Create/Edit pipeline execute permissions
+For more information, go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 
-This can be enabled using the settings available at Project level as part of the pipeline settings group
-<img width="1298" alt="image" src="https://github.com/harness/developer-hub/assets/104134358/d4ec7fa4-5801-48e9-a69e-484ecebf4ae3">
-
-This setting mandates pipeline Create/Edit permissions for Trigger Create/Edit by default.
-
-You can chose to toggle off the mandatory pipeline Create/Edit permissions to create and update Triggers . This will decouple the pipeline Create/Edit permissions for Trigger creation and enable pipeline to be editable only for required users.
 
 
 
