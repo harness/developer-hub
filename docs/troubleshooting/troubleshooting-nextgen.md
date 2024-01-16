@@ -216,6 +216,18 @@ io.fabric8.kubernetes.client.KubernetesClientException: Operation: [list]  for k
 ```
 3. Apply harness-delegate.yaml again to restart the Kubernetes delegate (`kubectl apply -f harness-delegate.yaml`).
 
+### Out-of-memory error (Java heap space)
+
+The delegate throws an error indicating `java.lang.OutOfMemoryError` or that the delegate has run out of heap space.
+
+#### Cause
+
+The container has run out of memory or the delegate has exceeded heap space.
+
+#### Solution
+  
+Review the container's memory usage. Harness recommends that you use `Xms` and `Xmx` or `MinRAMPercentage` and `MaxRAMPercentage` JVM arguments to adjust the heap size of the delegate. You can provide these arguments via the `JAVA_OPTS` environment variable when you set up the delegate.
+
 ## Artifact collection
 
 This section lists common errors you might receive when Harness attempts to collect artifacts.
