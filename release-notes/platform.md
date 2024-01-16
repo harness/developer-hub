@@ -82,6 +82,14 @@ The following deprecated API endpoints will no longer be supported:
 
 ## January 2024
 
+### Version 1.21.x <!--  January xx, 2024 -->
+
+#### Fixed issues
+
+- When editing user group data, member data was not added as expected. Now, the User Group data related to the User Group Members is not lost when the User Group is updated. (PL-43855, ZD-55944)
+- Fix error message while querying through invalid regex pattern in search term in `usergroup` list API. (PL-43761)
+- With this fix we have added a capability to add timeout to fetch secrets from custom provider as part of custom secret manager config. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
+
 ### Version 1.20.9 <!--  January 15, 2024 -->
 
 #### New features and enhancements
