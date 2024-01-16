@@ -700,6 +700,19 @@ Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade
 
   When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
 
+##### Feature Flags
+
+ - The Specific Targeting section of the Flag detail page would not display a variation if the name was not set has now been fixed. If the name is not set, the page will now fall back to the identifier. (FFM-9858)
+ - The Feature Flags onboarding wasn't able fetch metrics to complete the verification step. This has now been resolved. (FFM-9743)
+ - A new Feature Flag targeting rule could be saved without adding a target or target group which has now been fixed. (FFM-9871)
+ - The feature flag module did not ship with an OOTB role that could toggle flags. This meant that:
+ -- Customers on the free tier could only toggle flags as admin users because they were unable to create custom roles.
+ - As a result of resolving, you can now:
+ -- ship with an OOTB "feature flag admin" role that contains all the feature flag permissions (excluding delete),
+ -- assign users the "feature flag admin" role to allow them to toggle flags. (FFM-9542)
+ - The Feature Flag Pipeline steps, RBAC permissions for specific environments (or environment types) returned a `no permissions` error when the user had the required permission. This has now been resolved. (FFM-9672)
+
+
 ##### Continuous Integration
 
 - You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
@@ -1304,6 +1317,8 @@ gsutil -m cp \
 - [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to generate the initial call graph and for subsequent pipeline runs. (CI-8932)
 
 - When you [enable Test Intelligence for Scala or Kotlin](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala), the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
+
+
 
 ##### Harness Delegate
 
