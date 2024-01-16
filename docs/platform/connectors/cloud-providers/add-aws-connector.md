@@ -18,7 +18,7 @@ This topic explains how to set up an AWS connector.
 
 The necessary IAM roles and policies needed by the AWS account used in the connector depend on which AWS service you are using with Harness and which operations you want Harness to perform in AWS. For an extensive description of roles and policies, go to the [AWS Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 
-AWS connectors can also inherit IAM roles from Harness delegates running in AWS. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
+AWS connectors can also inherit IAM roles from Harness Delegates running in AWS. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
 
 :::warning
 
@@ -26,7 +26,7 @@ The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API
 
 :::
 
-If you find that the IAM role associated with your AWS connector doesn't have the policies required by the AWS service you want to access, you can modify or change the role assigned to the AWS account or the Harness delegate that your AWS connector is using. You may need to wait up to five minutes for the change to take effect.
+If you find that the IAM role associated with your AWS connector doesn't have the policies required by the AWS service you want to access, you can modify or change the role assigned to the AWS account or the Harness Delegate that your AWS connector is using. You may need to wait up to five minutes for the change to take effect.
 
 :::tip
 
@@ -50,7 +50,7 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 Review the following information carefully to ensure you select the correct credentials configuration for your AWS connector.
 
 1. Select one of the following three primary options:
-   * **Assume IAM Role on Delegate:** With this option, the connector inherits authentication credentials from the Harness delegate that is running in AWS. For example, you can select a Harness Delegate running in Amazon Elastic Kubernetes Service (EKS). However, this option is not valid for IAM roles for service accounts (IRSA).
+   * **Assume IAM Role on Delegate:** With this option, the connector inherits authentication credentials from the Harness Delegate that is running in AWS. For example, you can select a Harness Delegate running in Amazon Elastic Kubernetes Service (EKS). However, this option is not valid for IAM roles for service accounts (IRSA).
       * If the Harness Delegate in your EKS cluster uses IAM roles for service accounts, you must select **Use IRSA**, not **Assume IAM Role on Delegate**.
       * If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration and select the **Use IRSA** option for your connector credentials. This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
    * **AWS Access Key:** Provide an [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for the IAM role you want the connector to use.
@@ -77,8 +77,8 @@ Harness uses AWS connectors during pipeline runs to authenticate and perform ope
 
 1. Select how you want Harness to connect to AWS:
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and AWS. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-   * **Connect through a Harness Delegate:** Harness communicates with AWS through a Harness delegate in AWS. You must choose this option if you chose **Use IRSA** or **Assume IAM Role on Delegate** for the [connector credentials](#configure-credentials).
-2. If connecting through a Harness delegate, select either:
+   * **Connect through a Harness Delegate:** Harness communicates with AWS through a Harness Delegate in AWS. You must choose this option if you chose **Use IRSA** or **Assume IAM Role on Delegate** for the [connector credentials](#configure-credentials).
+2. If connecting through a Harness Delegate, select either:
    * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
    * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates.
       * To learn more about delegate tags, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
