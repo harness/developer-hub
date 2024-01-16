@@ -2,7 +2,6 @@
 id: pod-http-latency
 title: Pod HTTP latency
 ---
-## Introduction
 
 Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting the proxy server and redirecting the traffic through it. This fault:
 - Injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.

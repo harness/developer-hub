@@ -2,7 +2,6 @@
 id: kube-security-cis
 title: Kube security CIS
 ---
-## Introduction
 
 Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark. CIS benchmark is a set of security best practices to improve the resilience of the Kubernetes cluster.
 

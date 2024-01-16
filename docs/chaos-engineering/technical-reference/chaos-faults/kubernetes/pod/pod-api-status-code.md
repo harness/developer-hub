@@ -2,7 +2,6 @@
 id: pod-api-status-code
 title: Pod API status code
 ---
-## Introduction
 
 Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 

@@ -2,7 +2,6 @@
 id: ec2-io-stress
 title: EC2 IO stress
 ---
-## Introduction
 
 EC2 IO stress disrupts the state of infrastructure resources. This fault:
 - Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.

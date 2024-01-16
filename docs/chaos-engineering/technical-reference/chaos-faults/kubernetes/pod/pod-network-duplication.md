@@ -2,7 +2,6 @@
 id: pod-network-duplication
 title: Pod network duplication
 ---
-## Introduction
 
 Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos to disrupt the network connectivity to Kubernetes pods. This fault injects chaos on the specific container by starting a traffic control (tc) process with netem rules to add egress delays. 
 

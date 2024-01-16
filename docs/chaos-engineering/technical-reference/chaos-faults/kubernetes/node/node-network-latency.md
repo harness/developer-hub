@@ -3,8 +3,6 @@ id: node-network-latency
 title: Node network latency
 ---
 
-## Introduction
-
 Node network latency is a Kubernetes node-level chaos fault that induces packet latency across the entire node. Similar to pod network latency, this fault uses traffic control (tc) along with netem rules to inject network latency.
 
 ![Node Network Latency](./static/images/node-network-latency.png)

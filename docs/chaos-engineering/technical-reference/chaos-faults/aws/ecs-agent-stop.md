@@ -2,7 +2,6 @@
 id: ecs-agent-stop
 title: ECS agent stop
 ---
-## Introduction
 
 ECS agent stop disrupts the state of infrastructure resources. This fault:
 - Induces an agent stop chaos on AWS ECS using Amazon SSM Run command, that is carried out by using SSM documentation which is in-built in the fault for the give chaos scenario.

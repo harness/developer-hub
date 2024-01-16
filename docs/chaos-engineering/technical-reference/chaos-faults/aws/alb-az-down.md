@@ -2,7 +2,6 @@
 id: alb-az-down
 title: ALB AZ down
 ---
-## Introduction
 ALB (Application Load Balancer) AZ (Availability Zones) down takes down the AZ on a target application load balancer for a specific duration thereby impacting the delivery. This fault restricts access to certain availability zones for a specific duration.
 
 ![ALB AZ Down](./static/images/alb-az-down.png)

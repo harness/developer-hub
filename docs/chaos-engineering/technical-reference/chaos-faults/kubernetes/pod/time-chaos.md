@@ -2,9 +2,8 @@
 id: time-chaos
 title: Time Chaos
 ---
-## Introduction
 
-Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod.
+Time chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod.
 
 ![Time Chaos](./static/images/time-chaos.png)
 

@@ -2,7 +2,6 @@
 id: pod-network-corruption
 title: Pod network corruption
 ---
-## Introduction
 
 Pod network corruption is a Kubernetes pod-level chaos fault that injects corrupted packets of data into the specified container. This is achieved by starting a traffic control (tc) process with netem rules to add egress packet corruption.
 

@@ -2,7 +2,6 @@
 id: node-taint
 title: Node taint
 ---
-## Introduction
 
 Node taint taints the node by applying the desired effect. Only the resources that contain the corresponding tolerations can bypass the taints.
 

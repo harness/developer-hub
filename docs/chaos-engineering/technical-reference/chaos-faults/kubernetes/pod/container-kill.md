@@ -2,7 +2,6 @@
 id: container-kill
 title: Container kill
 ---
-## Introduction
 
 Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific or random replicas of an application resource.
 

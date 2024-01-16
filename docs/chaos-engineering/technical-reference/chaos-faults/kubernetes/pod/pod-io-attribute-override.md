@@ -5,7 +5,7 @@ title: Pod IO attribute override
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-Pod IO Attribute Override, modify the properties of files located within the mounted volume of the pod. 
+Pod IO attribute override modifies the properties of files located within the mounted volume of the pod. 
 This fault should be used as a sanity test for validating your application's failover capability against unexpected changes in file attributes, such as permissions, ownership, or timestamps.
 
 ![Pod IO Attribute Override](./static/images/pod-io-attribute-override.png)

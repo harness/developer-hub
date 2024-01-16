@@ -2,7 +2,6 @@
 id: lambda-toggle-event-mapping-state
 title: Lambda toggle event mapping state
 ---
-## Introduction
 
 Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery. 
 

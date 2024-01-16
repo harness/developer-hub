@@ -5,7 +5,7 @@ title: Pod IO error
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-The pod-io-error chaos fault simulates an error that can occur during system calls of the files located within the mounted volume of the pod.
+The pod IO error simulates an error that can occur during system calls of the files located within the mounted volume of the pod.
 When triggered, it causes the call to fail and return an error, potentially disrupting critical processes that rely on accurate file operations.
 
 ![Pod IO Error](./static/images/pod-io-error.png)

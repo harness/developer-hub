@@ -2,8 +2,6 @@
 id: lambda-delete-function-concurrency
 title: Lambda delete function concurrency
 ---
-## Introduction
-
 Lambda delete function concurrency is an AWS fault that deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
 
 ![Lambda Delete Function Concurrency](./static/images/lambda-delete-function-concurrency.png)

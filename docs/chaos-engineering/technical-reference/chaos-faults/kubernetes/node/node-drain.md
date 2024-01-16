@@ -2,7 +2,6 @@
 id: node-drain
 title: Node drain
 ---
-## Introduction
 
 Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes. 
 

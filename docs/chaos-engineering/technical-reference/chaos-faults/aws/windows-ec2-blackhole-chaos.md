@@ -2,8 +2,6 @@
 id: windows-ec2-blackhole-chaos
 title: Windows EC2 blackhole chaos
 ---
-## Introduction
-
 Windows EC2 blackhole chaos results in loss of access to the given target hosts or IPs by injecting firewall rules. This fault:
 - Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters). 
 - Limits the impact, that is, blast radius to only the traffic that you wish to test, by specifying the destination hosts or IP addresses. 

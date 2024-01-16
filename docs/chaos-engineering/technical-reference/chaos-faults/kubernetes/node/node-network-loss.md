@@ -3,8 +3,6 @@ id: node-network-loss
 title: Node network loss
 ---
 
-## Introduction
-
 Node network loss is a Kubernetes node-level chaos fault that induces packet loss across the entire node. Similar to pod network loss, this fault uses traffic control (tc) along with netem rules to inject network loss.
 
 ![Node Network Loss](./static/images/node-network-loss.png)

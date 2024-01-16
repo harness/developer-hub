@@ -2,7 +2,6 @@
 id: docker-service-kill
 title: Docker service kill
 ---
-## Introduction
 Docker service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** status).
 - Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration.
 - The application node goes back to normal state and services are resumed after a specific duration. 

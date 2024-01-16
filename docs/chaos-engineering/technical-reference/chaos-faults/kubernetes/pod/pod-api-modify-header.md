@@ -2,7 +2,6 @@
 id: pod-api-modify-header
 title: Pod API modify header
 ---
-## Introduction
 
 Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 

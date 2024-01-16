@@ -2,7 +2,6 @@
 id: clb-az-down
 title: CLB AZ down
 ---
-## Introduction
 
 CLB (Classic Load Balancer) AZ (Availability Zones) down takes down the AZ on a target CLB for a specific duration. This fault restricts access to certain availability zones for a specific duration.
 

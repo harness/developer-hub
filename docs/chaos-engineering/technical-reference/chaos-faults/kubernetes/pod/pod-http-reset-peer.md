@@ -2,7 +2,6 @@
 id: pod-http-reset-peer
 title: Pod HTTP reset peer
 ---
-## Introduction
 
 Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault:
 - Stops the outgoing HTTP requests by resetting the TCP connection. 

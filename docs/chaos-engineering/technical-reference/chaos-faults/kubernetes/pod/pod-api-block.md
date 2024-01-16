@@ -2,7 +2,6 @@
 id: pod-api-block
 title: Pod API block
 ---
-## Introduction
 
 Pod API block is a Kubernetes pod-level chaos fault that blocks the api requests through path filtering. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 

@@ -2,8 +2,6 @@
 id: ec2-cpu-hog
 title: EC2 CPU hog
 ---
-## Introduction
-
 EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes CPU chaos on the target EC2 instances using the `EC2_INSTANCE_ID` environment variable for a specific duration.
 
 ![EC2 CPU Hog](./static/images/ec2-cpu-hog.png)

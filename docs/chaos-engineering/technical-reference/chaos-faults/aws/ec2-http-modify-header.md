@@ -2,7 +2,6 @@
 id: ec2-http-modify-header
 title: EC2 HTTP modify header
 ---
-## Introduction
 
 EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies the headers of requests and responses of the service. 
 

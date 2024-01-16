@@ -2,7 +2,6 @@
 id: rds-instance-reboot
 title: RDS instance reboot
 ---
-## Introduction
 
 RDS instance reboot derives the instance under chaos from an RDS cluster.
 

@@ -2,8 +2,6 @@
 id: node-restart
 title: Node restart
 ---
-## Introduction
-
 Node restart disrupts the state of the node by restarting it.
 
 ![Node Restart](./static/images/node-restart.png)

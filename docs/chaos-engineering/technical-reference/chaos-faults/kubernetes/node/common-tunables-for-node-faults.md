@@ -1,7 +1,6 @@
 ---
 title: Common node fault tunables
 ---
-## Introduction
 Fault tunables which are common to all the node faults are described here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
 ### Target single node

@@ -2,8 +2,6 @@
 id: ec2-stop-by-id
 title: EC2 stop by ID
 ---
-## Introduction
-
 EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
 ![EC2 Stop By ID](./static/images/ec2-stop-by-id.png)

@@ -2,7 +2,6 @@
 id: ec2-memory-hog
 title: EC2 memory hog
 ---
-## Introduction
 
 EC2 memory hog disrupts the state of infrastructure resources. This fault:
 - Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.

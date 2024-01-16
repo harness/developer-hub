@@ -2,7 +2,6 @@
 id: ec2-dns-chaos
 title: EC2 DNS chaos
 ---
-## Introduction
 
 EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
 

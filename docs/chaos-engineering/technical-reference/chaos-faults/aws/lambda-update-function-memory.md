@@ -2,8 +2,6 @@
 id: lambda-update-function-memory
 title: Lambda update function memory
 ---
-## Introduction
-
 Lambda update function memory causes the memory of a Lambda function to update to a specific value for a certain duration. This fault:
 - Determines a safe overall memory limit value for the function. Smaller the memory limit, higher will be the time taken by the Lambda function under load.
 

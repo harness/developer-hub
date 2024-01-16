@@ -2,7 +2,6 @@
 id: pod-dns-error
 title: Pod DNS error
 ---
-## Introduction
 
 Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrupt DNS resolution in pods. It removes access to services by blocking the DNS resolution of host names or domains.
 

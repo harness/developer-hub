@@ -2,7 +2,6 @@
 id: lambda-update-role-permission
 title: Lambda update role permission
 ---
-## Introduction
 Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
 
 

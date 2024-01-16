@@ -2,7 +2,6 @@
 id: rds-instance-delete
 title: RDS instance delete
 ---
-## Introduction
 
 RDS instance delete removes an instances from AWS RDS cluster. This makes the cluster unavailable for a specific duration.
 

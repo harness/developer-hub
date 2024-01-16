@@ -2,8 +2,6 @@
 id: lambda-update-function-timeout
 title: Lambda update function timeout
 ---
-## Introduction
-
 Lambda update function timeout causes a timeout of a Lambda function, thereby updating the timeout to a specific value for a certain duration. Timeout errors interrupt the flow of the given function.
 Hitting a timeout is a frequent scenario with Lambda functions. This can break the service and impact the delivery. Such scenarios can occur despite the availability aids provided by AWS. 
 
