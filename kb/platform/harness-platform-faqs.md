@@ -2432,3 +2432,36 @@ This can either be left blank, as it is not required, or you can add a Key (aka 
 
 The Deafult entityID is `app.harness.io` unless otherwise specified.
 
+#### Unable to refer Custom Secret manager template stored in GIT
+
+Currently, we do not support reference of Custom Secret manager template stored in GIT, please create inline template and you will be able to refer those
+
+#### Upon successful azure saml login for prod account harness is redirecting to stage/dev account
+
+Please check if entity id is set correctly in case if you are using multiple account, as if you are using vanity url then the entity id needs to be set accordingly while setting up saml in Harness as well as on azure side
+
+#### What will be entity id in case of on-prem setup or if vanity url is used
+
+In case of above it needs to be the domain used to access harness(example : vanity.harness.io) 
+
+
+#### How can I easily disable pipeline triggers
+
+You can navigate to the trigger under pipeline and can toggle the enable button to disable the trigger on top left
+
+####  I'm not able to view the projects
+
+Please check if you have required Role and permission granted to view Projects, you can reach out to your account admin to confirm the permission granted for your account
+
+#### I want to share delegate from one project to another?
+
+In this case you can install the delegate on org level if both project are under same org, otherwise need to install delegate on Account level. As delegate installed under project has scope limited to same project
+
+####  What permission do I need to see deployments for all projects?
+
+You can create a role and add view permission for pipeline with account scope, you can find sample one as below for having execute permission similarly you can create one for just view access
+https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples
+
+####   How to signout?
+
+You can click on My profile Under bottom left and you will able to see Sign Out option coming in.

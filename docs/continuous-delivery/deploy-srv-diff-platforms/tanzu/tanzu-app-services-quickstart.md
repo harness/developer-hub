@@ -339,12 +339,6 @@ Harness services represent your microservices or applications. You can add the s
 
 ### Add the manifest and artifact as an artifact bundle
 
-:::note
-
-Currently, TAS artifact bundle is behind the feature flag `CDS_ENABLE_TAS_ARTIFACT_AS_MANIFEST_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 #### Demo Video
 
 <!-- Video:

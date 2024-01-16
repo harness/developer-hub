@@ -34,7 +34,6 @@ You must select **Run only selected tests** (`runOnlySelectedTests: true`) to en
       language: Ruby
       buildTool: Rspec
       runOnlySelectedTests: true ## Must be 'true' to enable TI.
-      preCommand: bundle install
 ```
 
 For additional YAML examples, go to [Pipeline examples](#pipeline-examples)
@@ -151,7 +150,6 @@ This example shows a pipeline that:
                 testGlobs: "**/test/unit/**/*_test.rb" ## Optional
                 runOnlySelectedTests: true ## Must be 'true' to use TI.
                 enableTestSplitting: true ## Optional. Apply parallelism to further improve test times.
-                preCommand: bundle install
 ```
 
 </TabItem>
@@ -191,7 +189,6 @@ pipeline:
                     language: Ruby
                     buildTool: Rspec
                     runOnlySelectedTests: true ## Must be 'true' to use TI.
-                    preCommand: bundle install
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -274,14 +271,7 @@ Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
 ### Pre-Command, Post-Command, and Shell
 
-- **Pre-Command:** Enter commands for setting up the environment before running the tests, such as `bundle install`
-
-:::info
-
-If you need to run `bundle install` before running tests, you must include `bundle install` in **Pre-Command**.
-
-:::
-
+- **Pre-Command:** Enter commands for setting up the environment before running the tests.
 - **Post-Command:** You can enter commands used for cleaning up the environment after running the tests.
 - **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 

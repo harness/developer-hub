@@ -154,7 +154,7 @@ If you have STO scan steps in your pipeline, do the following:
    ``` 
    
 
-3. Complete the additional steps and requirements described in [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+3. Complete the additional steps and requirements described in [Add custom certificates to a delegate](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
 
 ## Troubleshoot Kubernetes cluster build infrastructures
 

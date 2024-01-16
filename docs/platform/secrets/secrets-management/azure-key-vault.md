@@ -153,10 +153,8 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    ![](../../secrets/static/specify-credentials.png)
 
-   The secret that you reference here should have the Azure authentication key as the **Secret Value**. The image below shows the creation of a secret with Azure authentication key as its value:
-
-   ![](../../secrets/static/azure-key-vault-13.png)
-
+   The secret that you reference here should have the Azure authentication key as the **Secret Value**.
+   
    To create and exchange the azure authentication key, follow these steps:
 
    1. Navigate to Azure's **Certificates & secrets** page. (For details, go to Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
@@ -182,12 +180,6 @@ To configure the details for your Azure Key Vault connector, you can do one of t
    This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
 
 6. Select **Continue**.
-
-### Reference JSON secrets
-
-import Refjson from '/docs/platform/shared/reference-via-json.md';
-
-<Refjson />
 
 ### Use the credentials of a specific delegate
 
@@ -223,6 +215,28 @@ Once the Test Connection succeeds, select **Finish**. You can now see the connec
 Important: Harness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
 The Test Connection fails if you do not have the Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets if you have View permissions.
 :::
+
+## Creating and referencing Azure Vault secrets
+
+To create a new Harness text or file secret in Azure Key Vault, do the following:
+
+1. In **Account/Organization/Project Settings**, select **Secrets**.
+2. Select New Secret and then select **Text**, **File**, **SSH Credential**, or **WinRM Credential**.
+   For details on creating **SSH Credential** or **WinRM Credential**, go to [Add SSH keys](/docs/platform/secrets/add-use-ssh-secrets/) or [Add WinRM keys](/docs/platform/secrets/add-winrm-keys).
+3. In **Secrets Manager**, select the Harness Azure Key Vault connector to use.
+
+### Text secrets
+
+Select **Inline Secret Value** or **Reference Secret**:
+
+- **Inline Secret Value:** Enter the value for the encrypted text. For Azure Key Vault, you can set an expiry date in **Expires on**.
+- **Reference Secret:** Enter the _name_ of the existing secret in your **Azure Key Vault**, and then select **Test** to test the reference path. You can also specify the secret's version (for example: `azureSecret/05`).
+
+For details on text secrets, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
+
+### File secrets
+
+For details on file secrets, go to [Add and reference file secrets](/docs/platform/secrets/add-file-secrets).
 
 ## Reference JSON secrets
 

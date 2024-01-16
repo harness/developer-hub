@@ -11,7 +11,7 @@ Currently, this feature is behind the feature flag `CDB_AIDA_WIDGET`. Contact [H
 
 Dashboard Intelligence by Harness AI Development Assistant (AIDA™) is your copilot for dashboard creation in Harness. This feature is available directly in the **Dashboard Editor** when you create or edit a dashboard. For more information on AIDA, go to [Overview of AIDA](/docs/platform/Harness-AIDA/aida-overview).
 
-This feature is currently in Beta. For more information, go to [Beta, public preview, and GA definitions](/docs/get-started/beta-preview-ga/).
+This feature is currently in Beta. For more information, go to [Beta, Limited GA, and GA definitions](/docs/get-started/release-status/).
 
 This topic provides details on the current features, limitations, and best practices for dashboard engineering.
 

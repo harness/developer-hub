@@ -70,6 +70,14 @@ The chaos infrastructure connects to the Harness control plane through outbound 
 
 The chaos infrastructure setup involves the creation of CRDs and RBAC resources. This setup typically needs cluster-admin intervention. To learn more, go to [Kubernetes roles for the chaos infrastructure](../chaos-engineering/technical-reference/security/introduction#kubernetes-roles-for-chaos-infrastructure).
 
+### Can you run multiple cluster-scoped chaos infrastructures on same clusters?
+
+It is recommended that you **don't** run multiple cluster-scoped chaos infrastructures on the same cluster since this would result in the chaos infrastructures overwriting each other's cluster-level resources.
+
+## Chaos infrastructure is inactive, how to execute my experiment?
+
+A chaos infrastructure could be inactive due to a variety of reasons. When you try to execute an experiment but the chaos infrastructure is inactive, you can switch over to a different infrastructure that is active (represented with a green circle at the right side of the infrastructure name) and execute your experiment or create a new chaos infrastructure (provided you have the necessary privileges to create one) and execute your experiment on it.
+
 ### How do I control user actions in a given environment in Harness Chaos?
 
 The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](../chaos-engineering/technical-reference/security/introduction#user-authorization-and-role-based-access-control).

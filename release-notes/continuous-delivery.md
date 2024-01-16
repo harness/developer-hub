@@ -49,6 +49,29 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2024
 
+### Version 1.20.9
+
+
+#### Fixed Issues
+
+- Branch selector dropdown not populating in Harness code repo: issue arises when entity is absent, resulting in 'no entity found' page. (CDS-87788)
+  - Previous behavior: When attempting to access an entity stored in the Harness code repository and encountering a "no entity found" page, the Branch selector dropdown was not populated with the branches of the Harness code repository.
+  - This issue is now resolved. The API calls are made correctly and branches are now populated.
+- Users are not able to click hyperlinks in Harness approval message. (CDS-87675, ZD-55826)
+  - Previous behavior: If the user has a message with an HTTP URL, the HTTPS URL is not a clickable URL in the message displayed in the Approval step.
+  - The issue is fixed by adding logic to render clickable links within the text. If any URLs or hyperlinks are present in the approval message they are converted to clickable links. 
+- Issues while pulling tags of images in Github Container Registry when they have ``/`` inside the artifact name. (CDS-87457)
+  - Previous behavior: While configuring the artifact source, if the name of the image contained a ``/``, then the image versions could not be pulled. This has been fixed. Image versions are now retrieved.
+  - The issue was resolved by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
+- Issue with template inputs not showing up (CDS-84490)
+  - Previously, there was an issue where template inputs were not showing up in the Pipeline Editor due to an API issue.
+  - Fixing this caused another, worse more common error where the platform would get stuck in an infinite API call loop.
+  - The template input fix has been **reverted** fixing the inifinite API call loop issue.
+- Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
+  - Previous behavior: Docker connector health check was failing but the same credential is working in the run step
+  - This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.
+  - This item requires Harness Delegate version 23.11.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate.md).
+
 ### Version 1.19.6
 
 #### Behavior change

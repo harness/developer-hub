@@ -368,7 +368,7 @@ const config = {
               },
               {
                 label: "Code Repository",
-                to: "https://gitness.com/",
+                to: "https://www.harness.io/products/code-repository",
               },
               {
                 label: "Continuous Integration",
@@ -643,7 +643,7 @@ const config = {
       {
         id: "roadmap",
         path: "roadmap",
-        // sidebarPath: require.resolve("./sidebars-roadmap.js"),
+        sidebarPath: false,
         editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ["**/shared/**", "**/static/**"],

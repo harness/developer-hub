@@ -56,6 +56,17 @@ import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techr
 
 </details>
 
+<details>
+<summary>Supported ingestion formats</summary>
+
+
+import StoSupportedFormats from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-ingestion-formats.md';
+
+
+<StoSupportedFormats />
+
+</details>
+
 
 </TabItem>
   <TabItem value="Data ingestion">
