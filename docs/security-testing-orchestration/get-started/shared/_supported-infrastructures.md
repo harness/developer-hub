@@ -12,26 +12,26 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     <tr>
         <td>Linux</td>
         <td>amd64</td>
-        <td align="center">✅</td>
-        <td align="center">✅</td>
-        <td align="center">✅</td>
-        <td align="center">✅</td>
+        <td align="left">✅ Supported</td>
+        <td align="left">✅ Supported</td>
+        <td align="left">✅ Supported</td>
+        <td align="left">✅ Supported</td>
     </tr>
     <tr>
         <td>Linux</td>
         <td>arm64</td>
-        <td align="center">❌</td>
-        <td align="center">❌</td>
-        <td align="center">❌</td>
-        <td align="center">❌</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
     </tr>
     <tr>
         <td>Windows</td>
         <td>amd64</td>
         <td align="center">Roadmap</td>
-        <td align="center">❌</td>
+        <td align="center">❌ Not supported</td>
         <td align="center">Roadmap</td>
-        <td align="center">❌</td>
+        <td align="center">❌ Not supported</td>
     </tr>
     <tr>
         <td>MacOS</td>
@@ -39,6 +39,6 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
         <td align="center">Roadmap</td>
         <td align="center">Roadmap</td>
         <td align="center">Roadmap</td>
-        <td align="center">❌</td>
+        <td align="center">❌ Not supported</td>
     </tr>
 </table>
