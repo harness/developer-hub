@@ -17,6 +17,9 @@ const Roadmap = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedModule, setSelectedModule] = useState(roadmap[0]);
   const [key, setKey] = useState(Object.keys(roadmap[0].horizon));
+  const [mobileViewHorizon, setMobileViewHorizon] = useState(
+    Object.entries(selectedModule.horizon)[0]
+  );
   const [selectedDropdownModule, setSelectedDropdownModule] = useState({
     value: "cd",
     name: "Continuous Delivery & GitOps",
@@ -26,6 +29,17 @@ const Roadmap = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleSwitchTab = (key: any) => {
+
+    Object.entries(selectedModule.horizon).map((val) => {
+      if (key === val[0]) {
+        setMobileViewHorizon(val);
+      }
+    });
+  };
+  useEffect(() => {
+    setMobileViewHorizon(Object.entries(selectedModule.horizon)[0]);
+  }, [selectedModule]);
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => {
@@ -33,7 +47,6 @@ const Roadmap = () => {
           const currentURL = window.location.href;
           const url = new URL(currentURL);
           const target = url.hash.slice(1);
-          console.log(target);
           roadmap.map((mod) => {
             if (mod.module == target) {
               setSelectedModule(mod);
@@ -149,7 +162,6 @@ const Roadmap = () => {
                       />
                     ))}
                 </div>
-                <div className={styles.verticalLine}></div>
                 <div className={styles.section}>
                   <div className={styles.sectionDescription}>
                     <div className={styles.titleLine}>
@@ -176,6 +188,33 @@ const Roadmap = () => {
                 </div>
               </div>
             )}
+
+            <div className={styles.RoadmapSectionMobile}>
+              <ul className={styles.tabItems}>
+                {key &&
+                  key.map((key, index) => (
+                    <div
+                      className={`${styles.listTabItems} ${
+                        mobileViewHorizon[0] === key ? styles.active : ""
+                      }`}
+                      onClick={() => handleSwitchTab(key)}
+                    >
+                      <li key={index}>{key}</li>
+                    </div>
+                  ))}
+              </ul>
+              <div className={styles.mobileRoadmapColumn}>
+                {mobileViewHorizon &&
+                  mobileViewHorizon[1].feature.map((feature) => (
+                    <HorizonCard
+                      module={selectedModule.module}
+                      tag={feature.tag}
+                      title={feature.title}
+                      description={feature.description}
+                    />
+                  ))}
+              </div>
+            </div>
           </div>
         );
       }}

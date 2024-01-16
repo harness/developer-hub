@@ -35,13 +35,7 @@ While you can create projects from within the SEI module, projects are part of t
 
 Collection categories are broad classifications that serve as containers for Collections but are not, themselves, Collections. For example, **Teams** is an Collection category; whereas **Engineering Team** and **Docs Team** are Collections under the **Teams** category.
 
-Each project has three default Collection categories: Teams, Projects, and Sprints. You can modify the default categories and create custom categories.
-
-:::info Harness projects and Collection projects
-
-The **Projects** Collection category is not the same as your Harness projects. This category is meant to represent sub-projects under the umbrella of the Harness Project. For example, if your Harness projects align with apps that you develop, then your sub-projects could be epics, components, or Jira projects.
-
-:::
+Each project has two default Collection categories: Teams and Sprints. You can modify the default categories and create custom categories.
 
 For information about configuring Collection categories, go to [Manage Collection categories](./manage-collection-cat.md).
 

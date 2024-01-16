@@ -105,11 +105,16 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence) on a repo, you must generate the initial call graph, which creates a baseline for test selection in future builds. In subsequent builds, the call graph section shows information about tests selected by TI for that run.
-
 Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 
 ![](./static/set-up-set-up-test-intelligence-531.png)
+
+The call graph can be empty if:
+
+* You just enabled Test Intelligence. Your first TI run won't report selected tests. Subsequent runs can report selected tests, if any are selected. The first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
+* TI selected all tests. Lots of code changes and changes to certain files cause TI to select all tests. In this case, no call graph is generated because it would be too large and not useful.
+
+For more information about how and when TI selects tests, go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence).
 
 </details>
 
@@ -181,6 +186,12 @@ The **Unit Test Metrics** dashboard aggregates data from test reports in JUnit X
 
 You can find this and other [dashboards](/docs/platform/dashboards/dashboards-overview/) under the **Dashboards** section of your Harness account.
 
-## Troubleshooting: Test suites incorrectly parsed
+## Troubleshoot test reports
 
-The parsed test report in the **Tests** tab comes strictly from the provided test reports. Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](./test-report-ref.md).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to test reports in Harness CI, including:
+
+* [Test suites incorrectly parsed](/kb/continuous-integration/continuous-integration-faqs/#test-reports-missing-or-test-suites-incorrectly-parsed)
+* [Test reports missing](/kb/continuous-integration/continuous-integration-faqs/#test-reports-missing-or-test-suites-incorrectly-parsed)
+* [Test report truncated](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-test-report-truncated-in-tests-tab)
+* [Multiple test report paths](/kb/continuous-integration/continuous-integration-faqs/#can-i-specify-multiple-paths-for-test-reports-in-a-run-step)
+* [Test Intelligence call graph is empty](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)

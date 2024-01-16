@@ -55,6 +55,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
 
+### Version 24.01.82005
+
+#### Hotfix
+
+- Added extra logs to capture CI pod cleanup issues for Windows. (CI-10636, ZD-54688)
+
 ### Version 24.01.82002
 
 #### Hotfix

@@ -154,18 +154,13 @@ If you have STO scan steps in your pipeline, do the following:
    ``` 
    
 
-3. Complete the additional steps and requirements described in [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+3. Complete the additional steps and requirements described in [Add custom certificates to a delegate](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
 
-## Troubleshooting SCM service connection issues
+## Troubleshoot Kubernetes cluster build infrastructures
 
-If your builds fail due to a problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:
 
-If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
-
-1. Add a [Run step](../../run-ci-scripts/run-step-settings.md) that prints the contents of the destination path. For example, you can include a command such as:
-
-   ```
-   cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt
-   ```
-
-2. Double-check that the base image used in the step reads certificates from the same path given in the destination path on the Delegate.
+* [SCM service connection issues](/kb/continuous-integration/continuous-integration-faqs/#git-connector-scm-connection-errors-when-using-self-signed-certificates)
+* [How do I make internal CA certs available to the delegate pod?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-make-internal-ca-certs-available-to-the-delegate-pod)
+* [Where should I mount internal CA certs on the build pod?](/kb/continuous-integration/continuous-integration-faqs/#where-should-i-mount-internal-ca-certs-on-the-build-pod)
+* [Certificate volumes aren't mounted to the build pod](/kb/continuous-integration/continuous-integration-faqs/#certificate-volumes-arent-mounted-to-the-build-pod)

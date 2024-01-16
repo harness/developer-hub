@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-01-08:T10:00:30
+date: 2024-01-15:T10:00:30
 sidebar_position: 3
 ---
 
@@ -81,6 +81,49 @@ The following deprecated API endpoints will no longer be supported:
 - GET api/resourcegroup
 
 ## January 2024
+
+### Version 1.20.9 <!--  January 15, 2024 -->
+
+#### New features and enhancements
+
+- Configure an absolute session timeout for your account (PL-43587)
+
+   A new **Absolute Session Timeout (in minutes)** setting is available on the Authentication page. When the **Absolute Session Timeout (in minutes)** is set, users will be logged out of their account after the configured timeout, regardless of any activity.
+
+   The default absolute session timeout is 0, which means that it is not set. You can set this to a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
+
+    :::info note
+    When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
+    :::
+
+- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS FF` for your account. (PL-43772)
+
+#### Early access features
+
+- Grant public access to Harness pipelines (PL-43499)
+
+   You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
+   
+   When you activate the **Allow public resources** authentication setting, you can then enable public view for your pipelines by setting the **Mark this pipeline for public view** option in the pipeline's **Advanced Options**.
+
+  ![](./static/allow-public-resources.png)
+
+  ![](./static/mark-for-public-view.png)
+
+   Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
+   
+   <!--  Add after merging https://github.com/harness/developer-hub/pull/4882
+
+   For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
+   -->
+
+   This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
+
+#### Fixed issues
+
+- Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
+
+   This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
 
 ### Version 1.19.6 <!--  January 8, 2024 -->
 
@@ -662,13 +705,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Go has been upgraded from version 1.20.5 to version 1.21.0. This upgrade remediates CVE-2023-39533. (PL-40734)
 
-- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. (PL-39723)
-
-  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
-
-  Each account user must sign the EULA only once.
-
-  The setting is inherited at the project scope.
+<!-- EULA RQMT REMOVED -- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**). Each account user must sign the EULA only once. The setting is inherited at the project scope. (PL-39723) -->
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
