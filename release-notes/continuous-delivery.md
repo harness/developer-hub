@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-12-12T10:00:15
+date: 2023-01-16T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -67,10 +67,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Previously, there was an issue where template inputs were not showing up in the Pipeline Editor due to an API issue.
   - Fixing this caused another, worse more common error where the platform would get stuck in an infinite API call loop.
   - The template input fix has been **reverted** fixing the inifinite API call loop issue.
-- Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
-  - Previous behavior: Docker connector health check was failing but the same credential is working in the run step
-  - This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.
-  - This item requires Harness Delegate version 23.11.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate.md).
 
 ### Version 1.19.6
 
