@@ -103,8 +103,18 @@ config:
 
 ## View test reports and test selection
 
-For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
+Test results and test selection are reported on the **Tests** tab. The visualization call graph provides insights into why each test was selected. You can drill down into selected tests to examine selected classes/methods in more detail. For more information about test reports and test selection, go to [View tests](../viewing-tests.md).
 
-## Troubleshooting Test Intelligence
+## Troubleshoot Test Intelligence
 
-For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+
+* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
+* [Ruby Test Intelligence can't find rspec helper file.](/kb/continuous-integration/continuous-integration-faqs/#ruby-test-intelligence-cant-find-rspec-helper-file)
+* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
+* [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)
+* [Errors when running TI with Maven.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-errors-with-maven)
+* [Gradle version not compatible with Test Intelligence.](/kb/continuous-integration/continuous-integration-faqs/#gradle-version-not-compatible-with-test-intelligence)

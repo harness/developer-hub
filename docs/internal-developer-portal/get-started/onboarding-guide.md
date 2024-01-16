@@ -21,7 +21,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 3. Only Harness account admins and users having the "Manage" permission for the "Developer Portal" resource can perform the onboarding. We recommend creating an "IDP Admin" role with the above mentioned permission and assign it to your team who will be responsible for configuring IDP.
 
-![](static/role-explain.png)
+![](static/idp-roles.png)
 
 ![](static/first_step.png)
 

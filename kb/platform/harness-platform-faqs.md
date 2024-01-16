@@ -498,9 +498,24 @@ We donot have this option as of now.
 
 Yes, delegate upgrader job can be set to point to a custom private registry, refer to this [Documentation](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-#### Can we set `SCM_SKIP_SSL = true` while working on docker delegate?
+#### Can I set SCM_SKIP_SSL while working on Docker delegate?
 
-Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
+Yes, you can add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML.
+
+For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
+
+```yaml
+environment:
+      - ACCOUNT_ID=XXXX
+      - DELEGATE_TOKEN=XXXX
+      - MANAGER_HOST_AND_PORT=https://app.harness.io
+      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+      - DEPLOY_MODE=KUBERNETES
+      - DELEGATE_NAME=test
+      - NEXT_GEN=true
+      - DELEGATE_TYPE=DOCKER
+      - SCM_SKIP_SSL=true
+```
 
 #### Will user can create one more project under the project ?
 
@@ -846,9 +861,9 @@ If you need auto upgrade to be disabled they can perform operations: First run t
 
 Dashboard is a licensed functionality. To enable it you need to get a license.
 
-#### How are Harness secrets tied to connectors.
+#### Connector error causing pipeline failure
 
-Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors.
+Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
 
 #### How to avoid pulling Harness delegate images from a public repo?
 
@@ -2204,3 +2219,249 @@ You can Navigate to Authentication tab and go to ldap setting and try Synchroniz
 #### While trying to link sso group, not getting the option for user group
 
 Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down
+
+#### How to capture SAML Tracer
+
+You can install SAML Tracer extension in your browser its available for all browsers. 
+With the SAML-tracer extension running one needs to do the following:
+
+1. At the login page hit "X Clear" in SAML tracer(top left) and then perform a login attempt.
+2. When the login session is captured hit "Export" and attach this export to the ticket.
+
+#### In case multiple Harness instances and setup with SAML App redirecting to a different Harness instance instead of one expected.
+
+In case you have say Sandbox and production Harness instances and you are using the Azure SAML APP which also has multiple Harness apps. 
+It is important to specify the Entity ID below the Authorisation in Harness UI while creating the SAML App integration. 
+
+#### How to inspect your certificates for delegate certificate issue. 
+
+The below commands will hep you inspect your certificates. 
+
+Inspect a certificate chain - x509 PEM file
+```
+Keytool -printcert -file /path/to/cert
+```
+
+```
+openssl x509 -text -noout -in certificate.pem
+```
+
+Inspect a truststore file
+
+```
+keytool -list -v -keystore /path/to/truststore
+```
+
+#### Delegate fails to register with handshake exceptions. 
+
+While creating a delegate it might start to register and then fail with SSLHandshakeException. 
+
+To resolve the handshake exception, do the following:
+
+Run to the command below to test the certificate chain you used to install Harness Manager.
+```
+curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
+```
+Then Install the certificate on the delegate
+
+Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting/certificate-issues#handshake-exception
+
+#### Delegate connectivity issues because of proxy IP.
+
+While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
+We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
+
+#### How to Avoid Hitting the GitHub API Rate Limit When Using Multiple Templates and Git-Stored Pipelines?
+
+To minimize GitHub calls from Harness, enabling the bi-directional git experience may significantly reduce the number of requests.
+
+#### Why am I getting an error while creating a template using a service account token generated under a project?
+
+You are likely using a token scoped to a project when creating a resource at the account level, the same applies to a project token while creating a resource at the organization level. To create resources across different levels (account/organization/project), your token must be at a higher level or at the same level as the scope.
+
+#### Why is my Terraform plugin crashing when using the Harness provider?
+
+Generally, this issue is related to a bug in our provider. Before opening a ticket, please try using the latest provider version. Run your script again to see if the problem persists. If the issue continues, please proceed to open a support ticket for further assistance.
+
+#### How should complex expressions be correctly utilized?
+
+When using a complex expression, ensure the expression is wrapped within `<+ >`. For example: `<+<+org.name>.toLowerCase()>/<+<+project.name>.toLowerCase()>>`.
+
+#### How can I retrieve a specific type of connector across multiple accounts, organizations, and projects using the API?
+
+Unfortunately, it's only possible to retrieve all connectors within a specific scope, the following attribute `includeAllConnectorsAvailableAtScope` allows you to retrieve easily all connectors above the project scope using the API Method `Fetches the list of Connectors corresponding to the request's filter criteria`.
+
+#### How can user build debug delegate image ?
+
+You can build and push from local to gcr-play or any other place you want.
+ - Copy delegate.jar from local machine (change Dockerfile-minimal in harness core)
+
+``` 
+COPY delegate.jar delegate.jar 
+```
+
+- Build image:
+```./scripts/bazel/build_bazel_delegate.sh immutable
+cd dockerization/delegate/
+docker build -t us.gcr.io/gcr-play/delegate:<give your tag> -f Dockerfile-minimal .
+docker push us.gcr.io/gcr-play/delegate:<your-tag>
+```
+
+If you want to publish this in dockerhub, then in place of gcr use your private dockerhub, do a docker login before pushing image.
+Also there is a GitHub PR trigger to publish immutable delegate from your changes: `trigger publish-delegate`
+
+#### What do we need to backup to recover quickly when Harness infrastructure is lost ?
+
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours. Back up recommendation is to use Velero tool. You can refer to mentioned doc for fuurther info [docs](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
+
+#### If the infrastructure is lost, how should it be restored?
+
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore harness namespace.
+
+#### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
+
+No, user permissions in Harness with JIT provisioning and SAML authentication do not inherit from the SAML provider. Permissions need to be explicitly configured in the Harness Account. The JIT provisioning process ensures that users are dynamically created in Harness based on SAML authentication, but their permissions within Harness need to be set up independently.
+
+####  Does Harness support permission mapping or inheritance from external systems in any Single Sign-On (SSO) model?
+
+No, Harness does not support permission mapping or inheritance from external systems, including in various Single Sign-On (SSO) models. User permissions must be explicitly configured within the Harness Account, and as of now, there is no support for permission discovery or synchronization from external systems. All permissions need to be manually configured within the Harness Account.
+
+#### How does SCIM work in Harness, and what are its limitations?
+
+SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
+
+#### Does Role-Based Access Control (RBAC) apply to Git Bi-Directional Sync in Harness?
+
+ No, RBAC settings specific to Git Bi-Directional Sync are not available. The RBAC of the entity is used, and there are no individual role bindings for fine-grained control over bi-directional sync. As of now, the options for controlling bi-directional sync are limited to enabling or disabling it.
+
+#### What is the default timeout for custom secret manager script timeout? Can the timeout be configurable?
+
+It defaults to 60 seconds. Timeout is not configurable.
+
+#### Why is kinit (from the krb5-workstation package) not included in our immutable image for non-root users, leading customers to bake it in themselves?
+
+The decision to exclude kinit from our immutable image is primarily driven by concerns related to image bloat. We maintain a specific set of binaries, including Delegate-required SDKs, in the Delegate to address the specific use cases of our Continuous Delivery (CD) customers. By excluding non-essential binaries, we aim to optimize image size and streamline the image for CD workflows. You can refer the [docs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+
+####  Can customers enable root privileges to add the kinit binary to the image?
+
+Enabling root privileges to add the kinit binary is an option, but it may pose security concerns for some customers. The exclusion of kinit in the immutable image aligns with security considerations and is designed to provide a minimal and secure image for CD use cases. If customers have specific security requirements, they may consider installing the required binaries, such as kinit from the krb5-workstation package, manually, even in an air-gapped environment.
+You can refer the [docs](https://developer.harness.io/docs/platform/delegates/install-delegates/enable-root-user-privileges-to-add-custom-binaries).
+
+#### Are metrics for the Docker Delegate published, and how can Prometheus scraping be configured?
+
+Yes, metrics for the Docker Delegate are published. To enable Prometheus scraping, you would likely need to open a port on the container and bind it to the Delegate metric port. This allows Prometheus, running separately, to scrape and collect metrics from the Docker Delegate.
+
+#### How can user only edit existing pipeline but should not be able to create any new pipeline?
+
+You can create the Roles and Resource Group like below..
+- Roles : Create/Edit,
+- RG : Select the specific pipelines within RG that the user should be able to edit.
+This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
+
+#### Why am I receiving a 400 status code error with an "unsuccessful HTTP call" message when using a Jira step in Harness?
+
+The following 400 Invalid format error typically occurs when using a Jira step in Harness:
+
+```
+"Unsuccessful HTTP call: status code = 400, \
+message = {"errorMessages": [,"errors": {"customfield_54321":"Invalid format. \
+ Expected an array of objects with either an Option ID or an existing value."}]}"
+```
+
+Often, this is related to the configuration of a custom field. In this case, the custom field `customfield_54321` is an array field, and the provided value didn't match the expected format. It can also indicate that the Jira plugin in your Jira step isn't compatible with Harness because Harness doesn't provide the data in the required format for the plugin.
+
+
+The error arises because the value being passed to Jira doesn't match the expected format. Jira expects the value to be in the format of an array of objects, and in the following example it has a String as its value:
+
+```json
+"customfield_54321": [
+    {
+        "id": "12345",
+        "value": "Test Operations"
+    }
+]
+```
+
+The error message indicates that Harness doesn't support this specific Jira plugin, leading to the formatting issue.
+
+If you encounter a similar problem with this Jira plugin or any other plugin, it is recommended to reach out to your Jira support team to explore potential solutions. They can provide the necessary guidance and support to ensure the smooth and efficient operation of your Jira instance.
+
+#### What steps can we take to prevent encountering 429 errors when utilizing DockerHub connectors in Harness?
+
+ If you are facing 429 rate limiting errors when attempting to pull Docker images from DockerHub using Harness, you can mitigate this issue by adjusting your authentication settings:
+
+1. **Authentication Method:** By default, Harness utilizes anonymous access to the Harness Docker Hub for image pulls.
+
+2. **Switch to Username and Password Authentication:** To overcome rate limiting issues, select "Username and Password" as your authentication method in your Docker connector configuration.
+
+3. **Provide Login Details:** Once you've selected "Username and Password" authentication, enter your DockerHub login credentials (username and password) in the connector settings.
+
+By configuring Harness to use your DockerHub credentials, you ensure that you have the necessary access privileges to pull images without encountering rate limiting issues.
+
+These adjustments will help you avoid 429 errors and ensure a smoother experience when working with DockerHub connectors in Harness.
+
+#### How Do Delegates Share Information Like Helm Chart Contents Within the Same Stage?
+
+The process of sharing information between delegates within the same stage in Harness follows this flow:
+
+1. **Task T1 - Downloading values.yaml File:**
+   - Harness Manager creates Task T1, instructing it to download the `values.yaml` file.
+   - Delegate1 is assigned Task T1, and it retrieves the `values.yaml` file from the designated source (e.g., Git/Remote).
+   - Delegate1 then sends the contents of the `values.yaml` file back to Harness Manager.
+
+2. **Task T2 - Downloading and Applying Manifest Files:**
+   - After receiving the `values.yaml` file content, Harness Manager creates Task T2.
+   - Task T2 includes the content of the `values.yaml` file.
+   - Delegate2 is assigned Task T2.
+
+3. **Delegate2's Actions:**
+   - Delegate2 executes the following actions:
+     - Downloads the manifest files from the specified source (e.g., Git, Remote, Helm Artifact Source).
+     - Utilizes the content of the `values.yaml` file to render the manifest files, customizing them as needed.
+     - Applies the rendered manifest files to the target cluster.
+
+**Important Note:** The output of Task T1 (values Fetch task) is the content of the `values.yaml` file. This content is then passed to Task T2, enabling Delegate2 to use it in rendering and applying the manifest files.
+
+This process ensures that delegates effectively share information and utilize it as required for the deployment process within the same stage.
+
+#### What should we put (if anything) in the "JIT Validation Key" and "JIT Validation Value" fields when JIT provisioning is enabled in SAML?
+
+This can either be left blank, as it is not required, or you can add a Key (aka saml attribute) to expect, along with the value of the attribute/key to expect, in this way you can have some users that send this defined attribute and others that do not which allows you to selectively provision users via JIT
+
+#### What is the default entityID (audience restriction) the Service Provider endpoint(ACS URL) uses when not defined?
+
+The Deafult entityID is `app.harness.io` unless otherwise specified.
+
+#### Unable to refer Custom Secret manager template stored in GIT
+
+Currently, we do not support reference of Custom Secret manager template stored in GIT, please create inline template and you will be able to refer those
+
+#### Upon successful azure saml login for prod account harness is redirecting to stage/dev account
+
+Please check if entity id is set correctly in case if you are using multiple account, as if you are using vanity url then the entity id needs to be set accordingly while setting up saml in Harness as well as on azure side
+
+#### What will be entity id in case of on-prem setup or if vanity url is used
+
+In case of above it needs to be the domain used to access harness(example : vanity.harness.io) 
+
+
+#### How can I easily disable pipeline triggers
+
+You can navigate to the trigger under pipeline and can toggle the enable button to disable the trigger on top left
+
+####  I'm not able to view the projects
+
+Please check if you have required Role and permission granted to view Projects, you can reach out to your account admin to confirm the permission granted for your account
+
+#### I want to share delegate from one project to another?
+
+In this case you can install the delegate on org level if both project are under same org, otherwise need to install delegate on Account level. As delegate installed under project has scope limited to same project
+
+####  What permission do I need to see deployments for all projects?
+
+You can create a role and add view permission for pipeline with account scope, you can find sample one as below for having execute permission similarly you can create one for just view access
+https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples
+
+####   How to signout?
+
+You can click on My profile Under bottom left and you will able to see Sign Out option coming in.

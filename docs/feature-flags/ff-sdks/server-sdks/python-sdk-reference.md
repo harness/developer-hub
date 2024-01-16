@@ -201,11 +201,11 @@ result = cf.bool_variation("identifier_of_your_bool_flag", target, False);
 ```
 result = client.string_variation('identifier_of_your_string_flag', target, "")
 ```
-### Evaluate a number Variation
+### Evaluate a number Variation 
 
-
+We recommend using the newer `int_or_float_variation` method, which replaces `int_variation` and `number_variation` . 
 ```
-result = client.number_variation('identifier_of_your_number_flag', target, -1)
+result = client.int_or_float_variation('identifier_of_your_number_flag', target, -1)
 ```
 ### Evaluate a JSON Variation
 
@@ -219,6 +219,32 @@ client.json_variation('identifier_of_your_json_flag', target, {})
 If you evaluate a feature flag when initialization fails, the default variation you provided is returned as the evaluation result.
 
 :::
+
+## Check the type of a flag
+If you would like to know the type of a flag at any point, you can use the method `get_flag_type`
+
+This is helpful if you don't know the types of flags up front, or if you would like to create a type agnostic wrapper. 
+
+Note, this feature is specific to the Python SDK at present, and we have no current plans of rolling it out to other SDK languages. 
+```
+# Get the flag type
+flag_type = client.get_flag_type(flag_identifier)
+log.info("Flag '%s' is of type '%s'", flag_identifier, flag_type)
+```
+
+Flag types are defined as followed:
+
+```
+class FeatureFlagType(str, Enum):
+    BOOLEAN = "boolean"
+    INT_OR_FLOAT = "int"
+    STRING = "string"
+    JSON = "json"
+    FLAG_NOT_FOUND = "flag_not_found"
+```
+
+For a full example, see the [Python SDK GitHub repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/get_flag_type_example/get_flag_type.py)
+
 
 ## Test your app is connected to Harness
 
@@ -324,6 +350,7 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **3001** | SDK closed successfully                                                                  |
 | **4000** | Polling service started                                                                  |
 | **4001** | Polling service stopped                                                                  |
+| **4002** | Poller has fetched flags and groups from backend successfully                            |
 | **5000** | Streaming service started                                                                |
 | **5001** | Streaming service stopped                                                                |
 | **5002** | Streaming event received                                                                 |
@@ -339,3 +366,11 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **7004** | Metrics max target size exceeded                                                         |
 | **7005** | Metrics batch targets sending success                                                    |
 | **7006** | Metrics batch targets sending failed                                                     |
+| **8005** | Fetching flag by identifier request failed and is retrying                               |
+| **8006** | Fetching group by identifier request failed and is retrying                              |
+| **8007** | Fetching all flags request failed and is retrying                                        |
+| **8008** | Fetching all groups request failed and is retrying                                       |
+| **8009** | Fetching flag by identifier request failed                                               |
+| **8010** | Fetching group by identifier request failed                                              |
+| **8011** | Fetching all flags request failed                                                        |
+| **8012** | Fetching all groups request failed                                                       |

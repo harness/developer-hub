@@ -373,45 +373,17 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 </Tabs>
 
 
-## Troubleshooting
+## Troubleshoot AWS VM build infrastructure
 
-### Build VM creation fails with no default VPC
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
 
-When you run the pipeline, if VM creation in the runner fails with the error `no default VPC`, then you need to set `subnet_id` in `pool.yml`.
-
-### CI builds stuck at the initialize step on health check
-
-If your CI build gets stuck at the initialize step on the health check for connectivity with lite engine, either lite engine is not running on your build VMs or there is a connectivity issue between the runner and lite engine.
-
-1. Verify that lite-engine is running on your build VMs.
-   1. SSH/RDP into a VM from your VM pool that is in a running state.
-   2. Check whether the lite-engine process is running on the VM.
-   3. Check the cloud init output [logs](#logs) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
-2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
-   1. Run `nc -vz <build-vm-ip> 9079` from the runner.
-   2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](#vpc-ports-and-security-groups) in AWS allows the runner to communicate with the build VMs.
-   3. Make sure there are no firewall or anti-malware restrictions on your AMI that are interfering with the cloud init script's ability to download necessary dependencies. For details about these dependencies, go to [Start the runner](#start-the-runner).
-
-### Delegate connected but builds fail
-
-If the delegate is connected but your builds are failing, check the following:
-
-1. Make sure your the AMIs, specified in `pool.yml`, are still available.
-   * Amazon reprovisions their AMIs every two months.
-   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
-2. Confirm your [security group setup](#vpc-ports-and-security-groups) and security group settings in `runner/pool.yml`.
-
-### Using internal or custom AMIs
-
-If you are using an internal or custom AMI, make sure it has Docker installed.
-
-Additionally, make sure there are no firewall or anti-malware restrictions interfering with initialization, as described in [CI builds stuck at the initialize step on health check](#ci-builds-stuck-at-the-initialize-step-on-health-check).
-
-### Logs
-
-* Linux
-   * Lite engine logs: `/var/log/lite-engine.log`
-   * Cloud init output logs: `/var/log/cloud-init-output.log`
-* Windows
-   * Lite engine logs: `C:\Program Files\lite-engine\log.out`
-   * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
+* [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
+* [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
+* [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
+* [Use internal or custom AMIs](/kb/continuous-integration/continuous-integration-faqs/#use-internal-or-custom-amis-with-self-hosted-aws-vm-build-infrastructure)
+* [Where can I find self-hosted VM lite engine and cloud init output logs?](/kb/continuous-integration/continuous-integration-faqs/#where-can-i-find-logs-for-self-hosted-aws-vm-lite-engine-and-cloud-init-output)
+* [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
+* [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
+* [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
+* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
+* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

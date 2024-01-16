@@ -15,6 +15,9 @@ sidebar_position: 8
     - Pipelines
     - Templates
     - Input sets
+    - Services
+    - Environments
+    - Infrastructure Definitions
 
 In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git, such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
 
@@ -43,10 +46,10 @@ Here is the comparison matrix for Harness FirstGen Continuous Deployment vs Harn
 
 | **Feature**                    | **Configuration as Code** | **Git Experience** |
 |--------------------------------|---------------------------|--------------------|
-| **Service**                    | Yes                       | No                 |
-| **Service Definition**         | Yes                       | No                 |
-| **Environment**                | Yes                       | No                 |
-| **Infrastructure Definition**  | Yes                       | No                 |
+| **Service**                    | Yes                       | Yes                |
+| **Service Definition**         | Yes                       | Yes                |
+| **Environment**                | Yes                       | Yes                |
+| **Infrastructure Definition**  | Yes                       | Yes                |
 | **Trigger**                    | Yes                       | No                 |
 | **Pipeline**                   | Yes                       | Yes                |
 | **Input Set**                  | N/A                       | Yes                |
@@ -62,9 +65,9 @@ The nesting and relational constructs of Continuous Deployment entities make the
 
 | **Feature**                   | **Harness** | **Gitlab** | **Git Actions** | **Azure DevOps** | **Jenkins** | **Google Deploy** |
 |-------------------------------|-------------|------------|--------------------|------------------|-------------|-------------------|
-| **Service**                   | No          | No         | No                 | No               | No          | No                |
-| **Environment**               | No          | No         | No                 | No               | No          | No                |
-| **Infrastructure Definition** | No          | No         | No                 | No               | No          | No                |
+| **Service**                   | Yes         | No         | No                 | No               | No          | No                |
+| **Environment**               | Yes         | No         | No                 | No               | No          | No                |
+| **Infrastructure Definition** | Yes         | No         | No                 | No               | No          | No                |
 | **Pipeline**                  | Yes         | Yes        | Yes                | Yes              | Yes         | Yes               |
 | **Trigger**                   | No          | No         | No                 | No               | No          | No                |
 | **Template**                  | Yes         | Yes        | No                 | No               | Yes         | No                |
@@ -86,17 +89,7 @@ For more information, go to:
 - [Pipelines](/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
 - [Input Set](/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
 - [Templates](/docs/platform/Templates/templates-best-practices#remote-template-versioning)
-
-## Why doesn't the Git Experience support services, environments and infrastructure definitions?
-
-Applications no longer manage services, environments, and infrastructure definitions in a single repository. The Git Experience gives you the flexibility to manage these resources in any repo and branch.
-
-Frequent conflicts and sync errors in Configuration as Code made it difficult to scale. Terraform Provider solves this problem by allowing you to configure and manage resources via code.
-
-In the Git Experience, pipelines, templates, and input sets are powerful constructs to manage.  However, modifications to services, environments, and infrastructure definitions after initial configuration are minimal. These entities are metadata and pointers to the service configuration. You can modify and audit changes to these entities through code using the Terraform Provider.
-
-Entities like services, environments, and infrastructure definitions are highly interdependent. The Git Experience in NextGen supports entity storage in multiple branches and versions, which can result in breaking changes in the interdependent files. Such files are not automatically reconciled and do not have the latest working changes.
-
+- [Services](/docs/platform/git-experience/manage-services-using-git-experience.md)
 
 ## Why does Harness support the storage of only a few entities in Git?
 
@@ -104,6 +97,9 @@ You can store the following configurations in Git using the Git Experience:
 - Pipelines
 - Templates
 - Input sets
+- Services
+- Environment 
+- Infrastructure Definitions
 
 Implementing pipelines as code is an industry standard. The most recommended practice for Continuous Integration and Continuous Deployment is to manage the pipeline state in Git. 
 
@@ -115,16 +111,7 @@ Following are some benefits of implementing pipelines as code:
 
 The above benefits apply to both Continuous Integration and Continuous Deployment. Harness extends these benefits to entities like templates and input sets because they are part of the pipeline. They would benefit from similar capabilities as pipeline as code.
 
-In Harness, services and environments reside outside the pipeline. Managing them separately increases the risk of misconfiguration. Pipelines fail if changes are not resolved or propagated correctly from the core entity to the pipeline.
-
-Following are some challenges of managing Continuous Deployment Constructs in Git:
-
-* Services depend on the manifest configuration, variables, artifacts, and config files corresponding to the service. To manage and leverage them together, you need to use a nested structure in their Git repositories. When entities are moved or distributed between different repositories or locations, this would break. Services have their own life cycle outside the pipeline.
-
-* Environments have similar constraints. They depend on their corresponding infrastructures. You need to use a specific folder structure for environment variables and service-specific overrides and group them in a single repository. Any modifications to such entities can result in breaking changes. Others who consume that environment as a target deployment location cannot use the configuration. Environments and infrastructures have their own cycles that reside outside the pipeline.
-
-
-## What is an alternative to manage other entities in Git?
+## What is an alternative to managing other entities in Git?
 
 Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform Provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
 

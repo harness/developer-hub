@@ -29,6 +29,9 @@ Here are some Harness YAML examples for test tools that produce JUnit XML output
 
 ### C, C++
 
+<details>
+<summary>CTest Output JUnit</summary>
+
 You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctest.1.html#cmdoption-ctest-output-junit) command with CTest.
 
 ```yaml
@@ -49,7 +52,12 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
                           - /harness/build/out.xml
 ```
 
+</details>
+
 ### Java - Gradle
+
+<details>
+<summary>Gradle</summary>
 
 This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
 
@@ -71,7 +79,12 @@ This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-tes
                     runOnlySelectedTests: true
 ```
 
+</details>
+
 ### PHP
+
+<details>
+<summary>PHPUnit</summary>
 
 ```yaml
               - step:
@@ -90,14 +103,14 @@ This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-tes
                           - /harness/phpunit/junit.xml
 ```
 
+</details>
+
 ### Python
 
 For Python, use pytest or unittest. You can also [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
 
-
-<Tabs>
-  <TabItem value="run" label="Run step" default>
-
+<details>
+<summary>Pytest in a Run step</summary>
 
 This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md).
 
@@ -125,10 +138,10 @@ If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with
 
 :::
 
+</details>
 
-</TabItem>
-  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-
+<details>
+<summary>Pytest with Test Intelligence (Run Tests step)</summary>
 
 This example runs pytest with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
@@ -155,12 +168,12 @@ This example runs pytest with [Test Intelligence](./test-intelligence/set-up-tes
                           - out_report.xml*
 ```
 
-
-</TabItem>
-</Tabs>
-
+</details>
 
 ### Ruby - Cucumber
+
+<details>
+<summary>Cucumber</summary>
 
 ```yaml
               - step:
@@ -180,6 +193,8 @@ This example runs pytest with [Test Intelligence](./test-intelligence/set-up-tes
                           - /harness/cucumber/junit.xml
 ```
 
+</details>
+
 ## JUnit converters, formatters, and plugins
 
 If your test tool doesn't automatically produce test results in JUnit XML format, there are JUnit converters, formatters, and plugins available for all major languages. Some examples of conversion tools and corresponding Harness YAML are provided below.
@@ -188,6 +203,9 @@ If your test tool doesn't automatically produce test results in JUnit XML format
 
 * [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit)
 * [.NET trx2JUnit](https://github.com/gfoidl/trx2junit)
+
+<details>
+<summary>Example: NUnit to JUnit</summary>
 
 ```yaml
               - step:
@@ -249,12 +267,17 @@ The following example runs tests with [Test Intelligence](./test-intelligence/se
 ```
 -->
 
+</details>
+
 ### Clojure
 
 * [Kaocha JUnit Plugin](https://clojars.org/lambdaisland/kaocha-junit-xml)
 * [Clojure.test JUnit Plugin](https://github.com/ruedigergad/test2junit)
 
 ### Go
+
+<details>
+<summary>Go Junit Report</summary>
 
 You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) tool.
 
@@ -276,7 +299,12 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
                           - report.xml
 ```
 
+</details>
+
 ### Java - Maven
+
+<details>
+<summary>Maven Surefire Plugin</summary>
 
 This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
@@ -297,6 +325,8 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
                       type: JUnit
                     runOnlySelectedTests: true
 ```
+
+</details>
 
 ### JavaScript
 
@@ -403,7 +433,7 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 
 </details>
 
-### Ruby
+### Ruby - Minitest, RSpec
 
 <details>
 <summary>Minitest</summary>
@@ -457,3 +487,13 @@ Add the [RSpec JUnit formatter](https://rubygems.org/gems/rspec_junit_formatter)
 ## Code coverage reports and test report artifacts
 
 For information about code coverage reports and publishing report URLs to the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
+
+## Troubleshoot test reports
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to test reports in Harness CI, including:
+
+* [Test suites incorrectly parsed](/kb/continuous-integration/continuous-integration-faqs/#test-reports-missing-or-test-suites-incorrectly-parsed)
+* [Test reports missing](/kb/continuous-integration/continuous-integration-faqs/#test-reports-missing-or-test-suites-incorrectly-parsed)
+* [Test report truncated](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-test-report-truncated-in-tests-tab)
+* [Multiple test report paths](/kb/continuous-integration/continuous-integration-faqs/#can-i-specify-multiple-paths-for-test-reports-in-a-run-step)
+* [Test Intelligence call graph is empty](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)

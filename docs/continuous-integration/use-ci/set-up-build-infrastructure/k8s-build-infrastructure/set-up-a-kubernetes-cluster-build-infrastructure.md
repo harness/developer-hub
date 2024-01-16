@@ -109,6 +109,8 @@ spec:
       targetPort: ## Specify port number
 ```
 
+If the delegate is not able to connect to the created build farm with Istio MTLS STRICT mode, and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+
 ## Create a Kubernetes cluster connector and install the delegate
 
 A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) creates a connection between Harness and your Kubernetes cluster. This connector works through a Harness Delegate that you will install on a pod in your cluster.
@@ -309,9 +311,20 @@ Go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-wi
 
 Go to [Configure a Kubernetes build farm to use self-signed certificates](./configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md).
 
-## Troubleshooting Kubernetes cluster build infrastructures
+## Troubleshoot Kubernetes cluster build infrastructures
 
-For troubleshooting guidance for Kubernetes cluster build infrastructures and Kubernetes delegates, go to:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including:
 
-- [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md)
-- [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)
+* [How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?](/kb/continuous-integration/continuous-integration-faqs/#how-can-you-execute-docker-commands-in-a-ci-pipeline-that-runs-on-a-kubernetes-cluster-that-lacks-a-docker-runtime)
+* [How do I configure the build pod to communicate with the Kubernetes API server?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-configure-the-build-pod-to-communicate-with-the-kubernetes-api-server)
+* [Do I have to mount a service account on the build pod?](/kb/continuous-integration/continuous-integration-faqs/#do-i-have-to-mount-a-service-account-on-the-build-pod)
+* [What types of volumes can be mounted on a CI build pod?](/kb/continuous-integration/continuous-integration-faqs/#what-types-of-volumes-can-be-mounted-on-a-ci-build-pod)
+* [How can I run the build pod on a specific node?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-run-the-build-pod-on-a-specific-node)
+* [I want to use an EKS build infrastructure with an AWS connector that uses IRSA](/kb/continuous-integration/continuous-integration-faqs/#i-want-to-use-an-eks-build-infrastructure-with-an-aws-connector-that-uses-irsa)
+* [Why are build pods being evicted?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-pods-being-evicted)
+* [AKS builds timeout](/kb/continuous-integration/continuous-integration-faqs/#aks-builds-timeout)
+* [What permissions are required to run CI builds in an OpenShift cluster?](/kb/continuous-integration/continuous-integration-faqs/#what-permissions-are-required-to-run-ci-builds-in-an-openshift-cluster)
+* [Delegate is not able to connect to the created build farm](/kb/continuous-integration/continuous-integration-faqs/#delegate-is-not-able-to-connect-to-the-created-build-farm)
+* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+
+For more questions and issues related to Kubernetes delegates, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

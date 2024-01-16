@@ -82,57 +82,75 @@ You can create a stage template from your account, org, or project. ​This topi
 
 To create a remote stage template from the project scope, do the following:
 
-1. In your Harness account, go to your project.​
-2. In **Project SETUP**, select **Templates**.
-3. Select **New Template**, and then select **Stage**. ​The **Create New Stage Template** settings appear.
+1. In your Harness, go to your project.
+2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
+3. Select **+ New Template**, and then select **Stage**. The **Create New Stage Template** settings open.
 4. In **Name**, enter a name for the template.​
-5. In **Version Label**, enter a version for the template.​
-6. Select **Remote**.
-7. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors). Important: The connector must use the **Enable API access** option and **Username and Token** authentication. ​Harness requires the token for API access. Generate the token in your account on the Git provider, and add it to Harness as a secret. Next, use the token in the credentials for the Git connector.​​
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
+8. Under **How do you want to set up your template?**, select **Remote**.
+9. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
+     
+     :::info note
+   
+     The Git connector must use the **Enable API access** option and **Username and Token** authentication. 
+   
+     Harness requires the token for API access.
+   
+     Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
+   
+     ![](./static/create-a-remote-pipeline-template-24.png)  
+   
+     For GitHub, the token must have the following scopes:
+   
+     ![](./static/create-a-remote-pipeline-template-25.png)
+   
+     :::
 
-   ![](./static/create-a-remote-stage-template-88.png)
+10. In **Repository**, select your repository. If your repository isn't listed, enter its name. ​Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.​
+11. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here. Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​​
+12. ​Harness auto-populates the **YAML Path**. You can change this path and the file name.
+13. Select **Start**.​​  
 
-   For GitHub, the token must have the following scopes:​
-
-   ![](./static/create-a-remote-stage-template-89.png)
-
-8. In **Repository**, select your repository. If your repository isn't listed, enter its name. ​Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.​
-9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here. Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​​
-10. ​Harness auto-populates the **YAML Path**. You can change this path and the file name.
-11. Select **Start**.​​  
-
-    Your Stage Template is created and the **Select Stage Type** settings appear.
+    Your Stage Template is created and the **Select Stage Type** settings open.
 
     ![](./static/create-a-remote-stage-template-90.png)
 
 ### Step 2: Add the stage parameters
 
+This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 
+
+Other options include:
+
+   - **Build:** Use CI to build, test, and push artifacts to repositories.
+   - **Approval:** Manual and Jira approval stages.
+   - **Feature Flag:** Enable or disable functionality remotely without redeploying code.
+   - **Custom Stage:** Set up a stage configurable to your needs.
+
 To add stage parameters, do the following:
 
-1. Select **Deploy** in the **Select** **Stage Type** settings.  
-The deploy stage type is a CD stage that enables you to deploy any service to your target environment.​
+1. Select **Deploy** in the **Select Stage Type** settings.
 
-   The **About your Stage** settings appear.
+   The **About your Stage** settings open.
 
    ![](./static/create-a-remote-stage-template-91.png)
 
 2. Select the type of deployment this stage must perform.​  
 A stage can deploy services and other workloads. The default selection is **Service**.
-3. Select **Set Up Stage**. The Template Studio page appears.
+3. Select **Set Up Stage**. The Template Studio page opens.
 4. In **Select Service**, select an existing service or add a new one.
 
    ![](./static/create-a-remote-stage-template-92.png)
 
 5. Select **Continue**.
-
 6. In **Specify Environment**, select an existing environment or add a new one.
 7. In **Specify Infrastructure**, select an existing infrastructure or add a new one.
 8. Select **Continue**.
-9. In **Execution Strategies**, select **Rolling**, and then select **Use Strategy**.  
-In **Execution**, you can see the **Rollout Deployment** step is added automatically.
+9. In **Execution Strategies**, select **Rolling**, and then select **Use Strategy**. In **Execution**, you can see the **Rollout Deployment** step is added automatically.
 10. Select **Save**.
 
-    The **Save Template to Git** settings appear.
+    The **Save Template to Git** settings open.
 
     ![](./static/create-a-remote-stage-template-93.png)
 
@@ -153,7 +171,7 @@ In **Execution**, you can see the **Rollout Deployment** step is added automatic
 15. Commit your changes to Git.​​
 16. Return to Harness and refresh the page.​​​
 
-    A **Template Updated** message appears.
+    A **Template Updated** message opens.
 	
 	​![](./static/create-a-remote-stage-template-95.png)
 

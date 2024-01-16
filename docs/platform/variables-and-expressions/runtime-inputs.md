@@ -357,7 +357,7 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 ![](./static/runtime-inputs-03.png)
 
-Harness provides suggestions for built-in expressions as you type.
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
 
 ![](./static/runtime-inputs-10.png)
 
@@ -372,7 +372,7 @@ In free-text fields, such as **Command**, you can directly enter values using th
 
 When writing pipelines in YAML, enter the expression using the appropriate syntax.
 
-When you type `<+`, Harness provides suggestions for built-in expressions as you type.
+When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
 
 ![](./static/runtime-inputs-13.png)
 
