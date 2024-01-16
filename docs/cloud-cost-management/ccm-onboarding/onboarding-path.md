@@ -137,7 +137,7 @@ For more information on recommendations, go to [Recommendations](https://develop
 
 #### Workflow for recommendations
 
-Recommendations are generated daily, and Cloud Cost Management (CCM) offers Jira integration to streamline the workflow for implementing these suggestions. Once a Jira account is connected, CCM can automatically generate Jira issues and assign them to the appropriate team member for implementation.
+Recommendations are generated daily, and CCM offers Jira integration to streamline the workflow for implementing these suggestions. Once a Jira account is connected, CCM can automatically generate Jira issues and assign them to the appropriate team member for implementation.
 
 The workflow unfolds as follows:
 
@@ -145,4 +145,31 @@ The workflow unfolds as follows:
 2. A Jira ticket is created for implementing each recommendation and is assigned to the respective owner within the engineering team.
 3. The engineering team reviews and works on implementing the recommendations. Once a recommendation is successfully implemented, the Jira status can be updated, marking the recommendation as applied in CCM.
 
-For more information on Jira workflow, go to [View and apply recommendations](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md)
+For more information on Jira workflow, go to [View and apply recommendations](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
+
+### Step 2. AutoStopping
+
+Cloud resources utilized for non-production setups, like QA and UAT, often remain idle for extended periods. AutoStopping efficiently addresses this by intelligently stopping these resources when not in use and automatically restarting them when needed. This feature helps minimize idle costs associated with maintaining these environments.
+
+AutoStopping employs a detection mechanism that listens for signals, including network traffic, to identify activity. This ensures a responsive and adaptive approach to resource management.
+
+Furthermore, AutoStopping is versatile and can seamlessly integrate with a variety of workloads like:
+
+- EC2 VMs, ASG
+- Kubernetes workloads (Deployments, Statefulset)
+- ECS workloads
+- RDS databases
+- Azure VMs
+- GCP VMs
+
+For more information on AutoStopping, go to [AutoStopping](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/review-autostopping-rules-reqs.md).
+
+#### Sample application
+
+AutoStopping is configured individually for each application. CCM facilitates testing AutoStopping by offering a sample HTTP application that can be installed into the cloud account. This allows users to assess and validate the functionality of AutoStopping in a practical setting.
+
+For more information on AutoStopping sample app, go to [Sample app](tutorials/cloud-costs/cloud-autostopping/kubernetes-autostopping-quick-start-guide.md).
+
+#### Rollout AutoStopping rules for all non-prod accounts
+
+TODO - Write down the process
