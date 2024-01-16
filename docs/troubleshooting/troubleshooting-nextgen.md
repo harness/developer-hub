@@ -408,7 +408,7 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ## Continuous integration
 
-For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
+For troubleshooting advice specific to Continuous Integration, go to the [Continuous Integration Knowledge Base](/kb/continuous-integration).
 
 ## Helm
 
@@ -428,7 +428,7 @@ To fix this, find the delegate that the Helm update ran on, and then SSH to the 
 
 The following problems can occur when developing and deploying to Kubernetes.
 
-### The deployment is invalid...may not be specified when `value` is not empty
+### The deployment is invalid ... may not be specified when value is not empty
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 

@@ -498,9 +498,24 @@ We donot have this option as of now.
 
 Yes, delegate upgrader job can be set to point to a custom private registry, refer to this [Documentation](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-#### Can we set `SCM_SKIP_SSL = true` while working on docker delegate?
+#### Can I set SCM_SKIP_SSL while working on Docker delegate?
 
-Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
+Yes, you can add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML.
+
+For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
+
+```yaml
+environment:
+      - ACCOUNT_ID=XXXX
+      - DELEGATE_TOKEN=XXXX
+      - MANAGER_HOST_AND_PORT=https://app.harness.io
+      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+      - DEPLOY_MODE=KUBERNETES
+      - DELEGATE_NAME=test
+      - NEXT_GEN=true
+      - DELEGATE_TYPE=DOCKER
+      - SCM_SKIP_SSL=true
+```
 
 #### Will user can create one more project under the project ?
 
@@ -846,9 +861,9 @@ If you need auto upgrade to be disabled they can perform operations: First run t
 
 Dashboard is a licensed functionality. To enable it you need to get a license.
 
-#### How are Harness secrets tied to connectors.
+#### Connector error causing pipeline failure
 
-Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors.
+Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
 
 #### How to avoid pulling Harness delegate images from a public repo?
 

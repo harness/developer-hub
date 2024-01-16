@@ -13,13 +13,17 @@ import TabItem from '@theme/TabItem';
 
 You can add code coverage to a Harness CI pipeline by configuring code coverage tools in your codebase and adding code coverage commands to steps that run tests.
 
+:::info
+
+This documentation is not exhaustive. For information about languages or code coverage tools not described here, refer to the documentation for that tool or language.
+
+:::
+
 For more information about running tests in Harness CI, go to [Run tests in CI pipelines](./run-tests-in-ci.md).
 
 ## Code coverage by language
 
 The following examples show how to include code coverage in a Harness CI pipeline for different languages.
-
-For information about available code coverage tools, configuring specific tools, or code coverage for languages not described here, refer to the documentation for that tool or language.
 
 ### Go
 
