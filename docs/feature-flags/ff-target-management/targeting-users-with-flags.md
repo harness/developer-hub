@@ -75,9 +75,7 @@ To add specific Targets: 
 
 In most cases, you will not want to change the bucketing behavior for a percentage rollout. By default, we us the identifier as the unique string that helps determine which state a user is allocated in to according to the assigned rollout probabilities (see below).
 
-Occasionally, you may want to use a value other than the target ID for the percentage rollout assignment, such as in cases where you don't want the percentage distributiont to apply evenly across all possible targets in the system.
-
-In these cases, you can choose a different attribute to use to bucket your targets by in your percentage rollout assignment. Be warned, once you are bucketing by any value other than the identifier we can no longer say with certainly what the final probabilities in your percentage rollout will end up being.
+Occasionally, you may want to use a value other than the target ID for the percentage rollout assignment, such as in cases where you don't want the percentage distribution to apply evenly across all possible targets in the system. In these cases, you can choose a different attribute to use to bucket your targets by in your percentage rollout assignment. However, please be aware that once you are bucketing by any value other than the identifier we can no longer say with certainly what the final probabilities in your percentage rollout will end up being.
 
 ![Bucketing a percentage rollout by a specific attribute](./static/bucketby.png)
 
