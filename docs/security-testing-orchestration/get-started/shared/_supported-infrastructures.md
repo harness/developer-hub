@@ -5,9 +5,9 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
         <th>Operating System</th>
         <th>Architecture</th>
         <th>Harness Cloud</th>
-        <th>Docker</th>
-        <th>VMs</th>
-        <th>Kubernetes</th>
+        <th>Self-hosted local runner</th>
+        <th>Self-hosted Cloud provider VMs</th>
+        <th>Self-hosted Kubernetes cluster</th>
     </tr>
     <tr>
         <td>Linux</td>
@@ -35,18 +35,10 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     </tr>
     <tr>
         <td>MacOS</td>
-        <td>amd64</td>
-        <td align="center">Roadmap</td>
-        <td align="center">Roadmap</td>
-        <td align="center">Roadmap</td>
-        <td align="center">❌</td>
-    </tr>
-    <tr>
-        <td>MacOS</td>
         <td>arm64</td>
-        <td align="center">❌</td>
-        <td align="center">❌</td>
-        <td align="center">❌</td>
+        <td align="center">Roadmap</td>
+        <td align="center">Roadmap</td>
+        <td align="center">Roadmap</td>
         <td align="center">❌</td>
     </tr>
 </table>
