@@ -85,9 +85,9 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
   </tr>
   <tr>
     <td>insecureSkipVerify</td>
+    <td>Flag to skip certificate checks</td>
     <td>Optional</td>
     <td>bool</td>
-    <td>Flag to skip certificate checks</td>
     <td>The <code>insecureSkipVerify</code> contains flag to skip certificate checks.</td>
   </tr>
   <tr>
@@ -95,7 +95,7 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
     <td>Mandatory</td>
     <td>SLO source metadata</td>
     <td>string</td>
-    <td></td>
+    <td> Comprises of identifiers used to fetch the details from SRM module. It includes APITokenSecret which is required to authenticate the request and the scope for the SLO entity.</td>
   </tr>
 </table>
 
@@ -120,8 +120,8 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
     <td>scope</td>
     <td>Flag to hold scope</td>
     <td>Mandatory</td>
-    <td>Identifier</td>
-    <td></td>
+    <td> N/A </td>
+    <td> Identifier such as accountID, orgID and projectID</td>
   </tr>
 </table>
 
