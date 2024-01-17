@@ -2503,7 +2503,7 @@ When debugging a pod with an exit code of 127, you can inspect the pod logs to g
 kubectl logs <pod-name>
 ```
 
-Replace <pod-name> with the actual name of your pod. Examining the logs can provide insights into the specific command or process that failed and help you diagnose and resolve the issue.
+Replace `<pod-name>` with the actual name of your pod. Examining the logs can provide insights into the specific command or process that failed and help you diagnose and resolve the issue.
 
 #### Where are the settings for individual user email notifications?
 
