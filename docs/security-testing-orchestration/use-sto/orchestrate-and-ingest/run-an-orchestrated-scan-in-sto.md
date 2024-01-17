@@ -51,6 +51,6 @@ Now that you've set up the Security step with the previous settings, you can sav
 ### See Also
 
 * [STO Ingestion Workflows](./sto-workflows-overview.md)
-* [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
+* [Run an Ingestion-Only scan in an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
 * [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md)
 

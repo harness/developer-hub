@@ -64,6 +64,6 @@ Data-load scans are a sub-category of orchestrated scans. Instead of running a s
 ### See Also
 
 * [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md)
-* [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
+* [Run an Ingestion-Only scan in an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
 * [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md)
 
