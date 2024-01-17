@@ -166,7 +166,15 @@ These variables provide information about the branch, PR, or tag associated with
 
 * Value: The PR's target branch or the branch specified for a branch build.
 * Expression: `<+codebase.branch>`
-* Exclusions: `null` for all tag builds.
+* Exclusions: For tag builds, this is `null` or the tag path (such as `refs/tags/TAG_NAME`).
+
+`<+codebase.branch>` always resolves to the target branch, which is the PR target branch or the branch selected for a branch build.
+
+For PR builds/triggers, Harness recommends using [`<+codebase.sourceBranch>`](#codebasesourcebranch) and [`<+codebase.targetBranch>`](#codebasetargetbranch) instead of `<+codebase.branch>`.
+
+For branch builds, the target branch and source branch are the same. This means that `<+codebase.branch>`, [`<+codebase.sourceBranch>`](#codebasesourcebranch), and [`<+codebase.targetBranch>`](#codebasetargetbranch) all have the same value for branch builds.
+
+For tag builds, Harness doesn't recommend `branch` expressions. Instead, use [`<+codebase.tag>`](#codebasetag).
 
 ### codebase.prNumber
 
@@ -200,11 +208,12 @@ These variables provide information about the branch, PR, or tag associated with
 
 * Value: The source branch for a PR.
 * Expression:
-   * Manual builds: `<+codebase.sourceBranch>`
+   * Manual PR builds: `<+codebase.sourceBranch>`
    * Webhook triggers: `<+codebase.sourceBranch>` or `<+trigger.sourceBranch>`
 * Exclusions:
-   * Tag builds: Always `null`.
-   * Branch builds: `null` or the same as [`<+codebase.branch>`](#codebasebranch).
+   * Tag builds: Always `null`. Instead, use [`<+codebase.tag>`](#codebasetag).
+   * Manual branch builds: Always `null`. Instead, use [`<+codebase.branch>`](#codebasebranch).
+   * Reruns of webhook trigger or manual PR builds: Resolves to `null` when manually rerun, despite being resolved as expected in the initial run. Instead of rerunning the build (with the **Re-run** option on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds)), initiate a new build (for example, push a change to trigger the webhook or run a new manual PR build).
 
 ### codebase.tag
 
@@ -214,13 +223,14 @@ These variables provide information about the branch, PR, or tag associated with
 
 ### codebase.targetBranch
 
-* Value:
-   * PR builds: The PR's target branch.
-   * Branch builds: `null` or the same as [`<+codebase.branch>`](#codebasebranch).
-   * Tag builds: `null` or the tag path, such as `refs/tags/TAG_NAME`.
+* Value: The target branch for a PR.
 * Expression:
-   * Manual builds: `<+codebase.targetBranch>`
+   * Manual PR builds: `<+codebase.targetBranch>`
    * Webhook triggers: `<+codebase.targetBranch>` or `<+trigger.targetBranch>`
+* Exclusions:
+   * Tag builds: `null` or the tag path, such as `refs/tags/TAG_NAME`. Consider using [`<+codebase.tag>`](#codebasetag).
+   * Manual branch builds: Always `null`. Instead, use [`<+codebase.branch>`](#codebasebranch).
+   * Reruns of webhook trigger or manual PR builds: Resolves to `null` when manually rerun, despite being resolved as expected in the initial run. Instead of rerunning the build (with the **Re-run** option on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds)), initiate a new build (for example, push a change to trigger the webhook or run a new manual PR build).
 
 ## Commit variables
 

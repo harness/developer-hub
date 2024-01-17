@@ -27,13 +27,12 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- Jan 22, 2024 -->
 
-#### New features and enhancements
-
-* x
-
 #### Fixed issues
 
-* x
+* (CI-9717, CI-10547, CI-10802, ZD-51159, ZD-55152, ZD-55166)
+* (CI-10964, ZD-56252)
+* Added indexing to handle a `IncorrectResultSizeDataAccessException` error that rarely occurred in builds with [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) if some non-unique values were assigned. (CI-10884, ZD-55815)
+* Improved resolution of `<+codebase.sourceBranch>` and `<+codebase.targetBranch>` for Bitbucket repos. (CI-10743, ZD-55284)
 
 ### Version 1.8.2
 
