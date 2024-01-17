@@ -4,4 +4,4 @@ Generally an Ingestion scan consists of a scan step (to generate the data file) 
 
 In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest  data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format. 
 
-For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+For more information, go to [Run an Ingestion-Only scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
