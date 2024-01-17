@@ -56,8 +56,8 @@ The following terms are the same:
 * Tables
 * Trellis Score
 
-The The following features are currently not supported in the SEI module of Harness: 
+The following features are currently not supported in the SEI module of Harness: 
 
-* Licence Usafe
+* License Usage
 * Delegates (Alternative: Ingestion Satellites)
 * Connectors (Alternative: Integrations)

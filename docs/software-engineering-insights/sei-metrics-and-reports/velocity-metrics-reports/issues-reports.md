@@ -36,12 +36,7 @@ The following settings are available to configure the Issues Report:
    * Select the visualization style for the widget, such as bar chart, donut chart, multi-line chart, or percentage-stacked bar chart.
    * Select the date format.
 
-<figure>
-
-![](../static/issues-report-widget.png)
-
-<figcaption>An Issues Report configured to show <b>Ticket count</b> on the Y-axis and <b>Assignee</b> across the X-axis. For each Assignee, the issues are stacked by <b>Priority</b>.</figcaption>
-</figure>
+![](./static/issues-report.png)
 
 ### Issues Report use cases
 
@@ -130,12 +125,10 @@ The **Issue Resolution Time Report** can help answer questions like:
 * Is the resolution times for a project or component decreasing over time?
 * On average, how long does it take fix customer issues? Are we able to meet the SLA timeline?
 
-<figure>
-
-![](../static/issue-resolution-time-report.png)
-
-<figcaption>An Issue Resolution Time Report grouped by quarter.</figcaption>
-</figure>
+<img
+  src={require('./static/issues-resolution.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 By default, the Issue Resolution Time Report is filtered by issues closed (**Last Closed Date**) within a selected time range. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
 
@@ -244,6 +237,11 @@ The benefits of the **Jira Releases Report** include:
 * **Improved predictability:** By tracking lead time for each release, you can gain a better understanding of the time required to deliver features and enhancements. This improved predictability allows you to set realistic expectations with stakeholders and ensure smoother project planning and resource allocation.
 * **Continuous process improvement:** The combination of Jira releases and lead time measurements facilitates a continuous improvement mindset. By analyzing lead time data, you can identify patterns, recurring issues, and areas of inefficiency.
 
+<img
+  src={require('./static/jira-releases.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
 #### Best practices
 
 To get the most benefit from this report, the following best practices are recommended:
@@ -274,13 +272,6 @@ These reports measure the first assignee or response on an issue, including who 
 * **Issue Response Time Report:** Issue response time is the elapsed time between when an issue is created and the first response.
 * **Issue Response Time Trends Report:** Analyze changes over time in initial response time.
 * **Issue Response Time Single Stat:** Show a [single stat](#issue-single-stats) related to initial response time.
-
-<figure>
-
-![](../static/issue-first-assignee-report.png)
-
-<figcaption>Issue First Assignee Report</figcaption>
-</figure>
 
 For details about issues bouncing between assignees or being reassigned to new assignees, use the [issue bounce reports](#issue-bounce-reports) and [issue hops reports](#issue-hops-reports).
 

@@ -14,7 +14,7 @@ Effort investment, also known as alignment, helps you analyze how engineering te
 * Identify whether teams are working on uncategorized work; indicating hygiene gaps, deviation from strategic initiatives, or other issues.
 * Ensure teams aren't deviating from business goals.
 
-## Effort investment reports and widgets
+## Effort investment reports
 
 Add these widgets to your Insights to analyze effort investment metrics.
 
@@ -41,7 +41,7 @@ Reports can be filtered by different attributes available through your [integrat
 
 Categories define the data that you want to compare within an Investment profile. For example, you could compare issue types (such as bugs, stories, and tasks), projects, components, or other dimensions (such as infrastructure, support, and development).
 
-To add a category, select Add Category, enter a name, and then select Filters.
+To add a category, select `Add Category`, enter a `Name`, and then select `Filters`.
 
 ### Allocation Goals
 
