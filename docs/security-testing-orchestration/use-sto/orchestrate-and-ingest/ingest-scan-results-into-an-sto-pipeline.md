@@ -1,6 +1,6 @@
 ---
-title: Run an Ingestion-Only scan in an STO Pipeline
-description: With ingestionOnly, the scanner saves the results to a shared folder. The pipeline then ingests this data and analyzes, deduplicates, and displays the results.
+title: Run an ingestion-only scan in an STO Pipeline
+description: In an ingestion-only workflow, the scan step ingest results generated in a previous step or outside the pipeline. The pipeline then analyzes, deduplicates, and displays the results.
 sidebar_label: Ingestion-only workflows
 sidebar_position: 30
 helpdocs_topic_id: d24n34qdbk
@@ -9,16 +9,25 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can run scans in a separate Run step, or outside Harness entirely, and ingest the results into your pipelines. This enables you to create advanced workflows that aren't possible with orchestrated scans. You can run custom scans with advanced settings that address specific security requirements. You can ingest results from multiple scans into the same pipeline, aggregate and deduplicate the data, and view all your results in a single pane of glass.
+You can run scans in a separate step, or outside the pipeline, and then ingest the results into your pipeline. Ingestion-only workflows enable you to do the following:
 
- To ingest scan results from outside a Security or scanner step, you set up your pipeline as follows:
+- Ingest scan results from scanners that don't currently have integrations with Harness STO. 
+- Create advanced workflows that aren't possible with orchestrated scans. 
+- Run custom scans with advanced settings that address specific security requirements. 
+- Ingest results from multiple scans into the same pipeline, aggregate and deduplicate the data, and view all your results in a single pane of glass.
+
+To ingest scan results from outside a Security step, you set up your pipeline as follows:
 
 1. A Run step saves scan results to a shared folder. The step might run the scan locally or download results from an external source.
 
 2. A [Security step or scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto) ingests the results from the shared folder. Then it analyzes, deduplicates, and displays the results.
 
+![](../static/ingest-scan-results-into-an-sto-pipeline-00.png)
+
 For a complete list of supported scanners, go to [Harness STO scanner support
-](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support). If your scanner isn't listed, you can still ingest your scan results into STO. 
+](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).  
+
+If your scanner isn't listed, you can still ingest your scan results into STO. 
 
 - If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data). 
 
@@ -37,8 +46,8 @@ Here are some example workflows that illustrate how to set up an ingestion pipel
 
 ### See Also
 
-* [STO Ingestion Workflows](./sto-workflows-overview.md)
+- [STO ingestion workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview)
 - [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data)
-* [Ingest Results from Custom or Unsupported Scanners](./ingesting-issues-from-other-scanners.md)
-* [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md)
+- [Ingest Results from custom or unsupported scanners](./ingesting-issues-from-other-scanners.md)
+- [Security step settings reference](../../sto-techref-category/security-step-settings-reference.md)
 
