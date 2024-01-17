@@ -57,6 +57,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Add Gradle dependency-check plugin.
  - `ch.qos.logback:logback-classic` has been upgraded from 1.2.11 to 1.3.12. (FFM-10373)
 
+### Python SDK
+
+#### Version 1.4.0
+
+ - You can now add `get_flag_type` public method which enables you to check the type of a flag at any time. If you'd like to see an example of this, have a look at the [`get_flag_type.py`](https://github.com/harness/ff-python-server-sdk/blob/main/examples/get_flag_type_example/get_flag_type.py).(FFM-10393)
+ -  We've added a more robust variation method, `int_or_float_variation` to evaluate number flags. This method ensures that a number flag with either integer or float variations (or both) will be evaluated correctly. The `int_variation` and `number_variation` methods could fail to evaluate depending on if the variation served was of the expected type. We recommend using this new method going forward for number flag evaluations.
+
 # Previous releases
 
 <details>
