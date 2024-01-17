@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.5.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-java-server-sdk/releases)
 
 ## Requirements
 

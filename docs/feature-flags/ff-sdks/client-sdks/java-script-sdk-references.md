@@ -32,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.21.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-javascript-client-sdk/releases)
 
 ## Requirements
 

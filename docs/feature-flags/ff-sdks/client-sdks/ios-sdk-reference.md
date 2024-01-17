@@ -34,7 +34,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.2**.
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-ios-client-sdk/releases)
 
 ## Requirements
 

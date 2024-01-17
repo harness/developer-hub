@@ -30,7 +30,7 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Version
 
-The current version of this SDK is **1.4.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-react-client-sdk/releases)
 
 ## Prerequisites
 
