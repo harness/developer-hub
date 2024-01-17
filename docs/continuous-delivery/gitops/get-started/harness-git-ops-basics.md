@@ -22,7 +22,7 @@ Here's a quick demo showing how you can orchestrate cluster creation with Harnes
 
 This is a more advanced demo than a simple GitOps sync, but it shows how Harness integrates GitOps into common DevOps practices.
 
-<DocVideo src="https://youtu.be/FUSehVlmETM?si=2LedL48wneKs185Z" />
+<DocVideo src="https://www.youtube.com/watch?v=FUSehVlmETM" />
 
 ## Harness GitOps Summary
 
