@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
+- [Orchestrated workflows](#orchestrated-workflows-in-sto)
+- [Ingestion-only workflows](#ingestion-only-workflows-in-sto)
+- [Extraction workflows](#extraction-workflows-in-sto)
+
 ### Orchestrated workflows in STO
 
 You can set up a fully orchestrated workflow in one Security step that runs the scan and ingests the results. This is the easiest workflow to implement and is good for running scans with default settings.
