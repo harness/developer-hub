@@ -48,7 +48,6 @@ To enable AIDA in your Harness account, go to **Account Settings**, select **Acc
 
 Additionally, for AIDA for CCM, you must Contact [Harness Support](mailto:support@harness.io) to enable the feature flag for AIDA for CCM. You don't need to do this for CI or STO because AIDA is generally available for these modules.
 
-To enable AIDA in you Harness Account:
 
 ## AIDA terms and data privacy information
 
