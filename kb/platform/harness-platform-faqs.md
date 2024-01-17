@@ -2466,15 +2466,15 @@ https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-har
 
 You can click on My profile Under bottom left and you will able to see Sign Out option coming in.
 
-#### I can see that the legacy delegate is a statefulset object, what does this mean? and what's the major diference from Deployment type
+#### I can see that a legacy delegate is a statefulset object, what does this mean? and what's the major difference from Deployment type?
 
 **StatefulSet:**
 - **Purpose:** StatefulSets are designed for stateful applications that require stable network identities and stable storage.
-Instances: StatefulSets maintain a sticky identity for each pod. Each pod has a unique and stable hostname, allowing for persistent storage and network identities.
+Instances: StatefulSets maintains a sticky identity for each pod. Each pod has a unique and stable hostname, allowing for persistent storage and network identities.
 
-- **Naming:** Pods in a StatefulSet get named in a predictable and consistent manner, which is often based on an index.
+- **Naming:** Pods in a StatefulSet get named predictably and consistently, which is often based on an index.
 
-- **Scaling:** Scaling stateful applications may involve more complex operations due to the need for stable identities. Pods are typically created in a sequential order, and scaling may involve specific considerations for data migration or coordination.
+- **Scaling:** Scaling stateful applications may involve more complex operations due to the need for stable identities. Pods are typically created in sequential order, and scaling may involve specific considerations for data migration or coordination.
 
 **Key Difference:**
 The major difference between a Deployment and a StatefulSet lies in how they handle the identity and state of the pods:
@@ -2505,19 +2505,19 @@ kubectl logs <pod-name>
 
 Replace <pod-name> with the actual name of your pod. Examining the logs can provide insights into the specific command or process that failed and help you diagnose and resolve the issue.
 
-#### Where are the settings for an individual user email notifications?
+#### Where are the settings for individual user email notifications?
 
-The notifications on Harness are configured on the User Group where the user is attached to. All the notification preferences are displayed there:
+The notifications on Harness are configured on the User Group to which the user is attached. All the notification preferences are displayed there:
 - https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#edit-notification-preferences
 
-#### Why I'm experiencing issues when creating a secret with same name that is deleted recently?
-First, when you tried to delete a resource in Harness, we soft deleted it so you were not able to re-use the same identifier. Now this is not happening anymore, but in case you still experiencing issues, you can either keep the same name but change only the identifier or enable the Force Delete so you can delete the resource with no existent references issues on the process:
+#### Why I'm experiencing issues when creating a secret with the same name that was deleted recently?
+First, when you tried to delete a resource in Harness, we soft-deleted it so you were not able to re-use the same identifier. Now this is not happening anymore, but in case you still experiencing issues, you can either keep the same name but change only the identifier or enable the Force Delete so you can delete the resource with no existent references issues on the process:
 
 - https://developer.harness.io/docs/platform/references/entity-deletion-reference/#force-delete
 
-#### Whats the harness variable replacement for a service name?
+#### What's the harness variable replacement for a service name?
 
-For this scenario you can use the following variable: <+service.name>
+For this scenario, you can use the following variable: `<+service.name>`
 
 #### What is ingress.yaml used for?
 
@@ -2529,18 +2529,18 @@ By using Ingress, you can manage external access to your services more flexibly 
 
 #### How can I easily disable pipeline triggers?
 
-In the triggers page you'll see a toggle icon on the right side under Enabled, you just need to toggle it off and the trigger will be disabled.
+On the triggers page, you'll see a toggle icon on the right side under Enabled, you just need to toggle it off and the trigger will be disabled.
 
-#### what is my webhook identifier to trigger pipelines?
+#### What is my webhook identifier to trigger pipelines?
 
 When you name an entity, Harness automatically generates its identifier. You can edit the Identifier when you are creating the entity, but not after the entity is saved. If you rename the entity, the Identifier remains the same. The generated Identifier is based on the entity name and meets the identifier naming restrictions. If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of -1, -2, etc.
 
-#### How do i verify my account?
+#### How do I verify my account?
 
 Harness has identified an increase in the unauthorized usage of the free pipeline minutes Harness makes available on Harness Cloud. To combat such unauthorized usage, Harness requires that you use your work email, not your personal email, to register your account.
  
-If you face this issue on an account which was registered using your work mail ID, please reach out to our support team and share the execution URL where you got this error so we can review it futher.
+If you face this issue on an account that was registered using your work mail ID, please reach out to our support team and share the execution URL where you got this error so we can review it further.
 
-#### Does harness AIDA supports APIs for developer to create custom AI/ML solutions?
+#### Does harness AIDA support APIs for developers to create custom AI/ML solutions?
 
 No! AIDA does not offer Rest APIs to be used by Harness Users.
