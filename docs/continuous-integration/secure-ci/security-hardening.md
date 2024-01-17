@@ -6,11 +6,15 @@ sidebar_position: 10
 
 Harness offers features that help you build securely with Harness CI. Combine these features with known industry best practices.
 
+The information is targeted at Harness CI. It is not a comprehensive explanation of all security features and capabilities throughout all Harness products.
+
+## Access control
+
+[Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness) helps you control access to your Harness account, organizations, and projects. For [authentication](/docs/platform/authentication/authentication-overview), Harness supports SSO and 2FA log-in methods, as well as SAML authentication through various IDPs.
+
 ## Branch protection and PR checks
 
-- Code module ?
-- Branch protection/PR checks (link)
-- CODEOWNERS
+Failed CI pipelines don't inherently block PR merges. Harness can [send pipeline statuses to your PRs](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks), but you must configure branch protections and checks (such as protection rules, CODEOWNERS, linting, and other checks or restrictions) *in your source control provider*.
 
 ## SLSA
 
@@ -26,42 +30,43 @@ Store tokens, passwords, and other sensitive data as [secrets](/docs/category/se
 APP_STORE_PASSWORD=<+secrets.getValue("my_app_store_password_secret")>
 ```
 
-When you use secrets and variables in your CI pipelines, it is important to understand how those secrets appear in build logs. For example, secrets in [Run step output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables) are exposed in logs. For more information about secrets masking and sanitization, go to:
+When you use secrets and variables in your CI pipelines, it is important to understand how those secrets appear in build logs. For example, secrets in [Run step output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables) are exposed in logs. For information about secrets masking and sanitization, go to:
 
-* [Harness Platform - Secrets in output, secrets sanitization](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs)
-* [Harness Platform - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
-* [Harness Platform - Secrets and log sanitization](https://developer.harness.io/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)
+* [Secrets in output, secrets sanitization](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs)
+* [Line breaks and shell-interpreted characters](/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Secrets and log sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)
 
-For information about managing secrets in Harness, go to:
+For more information about managing secrets in Harness, go to:
 
-* [Harness Platform - Secrets documentation](/docs/category/secrets)
+* [Secrets documentation](/docs/category/secrets)
 * [Authenticate GCP secrets in scripts](./authenticate-gcp-key-in-run-step)
-* [CI Knowledge Base - Override secrets in settings.xml at runtime](/kb/continuous-integration/articles/maven-settings-xml)
+* [Override secrets in settings.xml at runtime](/kb/continuous-integration/articles/maven-settings-xml)
 
-## Tokens
+## Tokens and keys
 
-- harness tokens (links) - how to generate, understand token permissions
-- External tokens in secrets - understand scope
-- OIDC
+Harness APIs use Harness API keys and tokens to authenticate requests. Make sure to create tokens with the appropriate permission scopes. Tokens inherit permissions from the account used to create them. For more information, go to [Manage API keys](docs/platform/automation/api/add-and-manage-api-keys).
 
-## Access control
+You can store tokens and keys from non-Harness providers as [secrets in Harness](#secrets). Harness provides information about required permissions for third-party tokens and keys when relevant, such as authentication credentials for [Git connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo#code-repo-connector-permissions-and-access); however, this is limited to the permissions necessary for successful integration with Harness.
 
-[Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness) helps you control access to your Harness account, organizations, and projects. For [authentication](), Harness supports SSO and 2FA log-in methods, as well as SAML authentication through various IDPs.
+For information about creating keys/tokens for a specific provider or tool, refer to the documentation for that provider or tool.
 
 ## Network security
 
 For network security and private networking, Harness supports the following:
 
 * [IP allowlists](/docs/platform/Security/add-manage-ip-allowlist)
+* [Secure connect for Harness Cloud](./secure-connect)
+* [OIDC](#oidc)
 
-- allowlists (link)
-- Private networking with Harness-hosted runners: Harness Cloud secure connect (add to Harness Cloud page or create separate page)
-- OIDC
+## OIDC
 
-## FAQs and troubleshooting
+You can use OpenID Connect (OIDC) with Harness CI.
 
-- Add tiles to CI landing page for security & mobile dev
-- FAQs about secrets, security, etc.
+With Harness Cloud, you can leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp). GCP connectors are used for functionality such as the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar). You can also [Configure OIDC with GCP WIF for builds on Harness Cloud](/tutorials/platform/configure-oidc-gcp-wif-ci-hosted).
+
+OIDC in also available in other areas of Harness, such as in the [platform-agnostic Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#openid-connect).
+
+## FAQ and troubleshooting
 
 * [Can I reference a secret type output variable exported from a CD custom stage in a CI stage?](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#can-i-reference-a-secret-type-output-variable-exported-from-a-cd-or-custom-stage-in-ci-stage)
 * [Secrets with line breaks and shell-interpreted characters](/kb/continuous-integration/continuous-integration-faqs/#secrets-with-line-breaks-and-shell-interpreted-special-characters)
