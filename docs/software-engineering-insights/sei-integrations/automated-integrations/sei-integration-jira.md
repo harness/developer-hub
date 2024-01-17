@@ -52,7 +52,7 @@ To integrate with the on-premises Jira instances, you must username and password
 
 To integrate with the on-premises (self-managed) Jira instances you can configure the integration using satellite. The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
 
-To integrate with **On-Premises Jira** instances, you can use your Jira account email as the value for the **Username** and use the **API Key** that you previously generated within your Atlassian account as the value for the **API Key** field with the relevant permission. Make sure to select the satellite integration checkbox while configuring the integration.
+To integrate with on-premises Jira instances, you can use your Atlassian account **Username** and **Password** with the relevant permission for authentication. Make sure to select the satellite integration checkbox while configuring the integration.
 
 Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
@@ -97,7 +97,7 @@ Test with the following curl command:
 curl -u "USERNAME:PASSWORD" -X GET "https://host:port/context/rest/api/search?jql=key-<JIRA_KEY>"
 ```
 
-* While using the generated managed token for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
+* While using the generated managed token (Bearer token) for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
 
 Test with the following curl command:
 
@@ -153,7 +153,7 @@ If you encounter any issues during the integration process, go to the Satellite 
 If you also have an [SEI Salesforce integration](../other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Under **Salesforce Field Mapping**, select the Jira field that contains your Salesforce case IDs.
 
@@ -166,7 +166,7 @@ What constitutes a miss depends on your _hygiene categories_. There are several 
 To add custom hygiene categories:
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Select **Add Custom Hygiene Miss Criteria** and configure the new hygiene category:
 

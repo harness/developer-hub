@@ -208,7 +208,10 @@ You can choose to measure lead time exclusively by JIRA statuses. This feature i
 
 Since lead time is being measured by JIRA statuses only, the start event will be `Ticket Created` by default. Additionally, you have the option to add stages to your workflow, each with its name and description, and define the threshold by setting acceptable time limits for each stage.
 
-![](./static/jira-status.png)
+<img
+  src={require('./static/jira-status.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 To ensure accurate lead time measurement, at least one stage, apart from the release stage, is mandatory when measuring lead time by JIRA statuses. This ensures that the lead time metric captures the entire workflow process with all the steps involved in bringing an issue to its final state.
 
@@ -221,7 +224,10 @@ Intermediate stages allow for a more detailed analysis of the time spent at each
 
 For existing profiles already in use, the release stage remains disabled by default.
 
-![](./static/jira-release.png)
+<img
+  src={require('./static/jira-release.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 In cases where a single ticket is associated with multiple versions, the user can choose between two methods for the calculation:
 

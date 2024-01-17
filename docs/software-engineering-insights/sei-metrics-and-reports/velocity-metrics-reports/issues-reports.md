@@ -38,14 +38,6 @@ The following settings are available to configure the Issues Report:
 
 ![](./static/issues-report.png)
 
-<figure>
-<img
-  src={require('./static/issues-report.png').default}
-  alt="Example banner" height="50%" width="100%" border="1"
-/>
-<figcaption>An Issues Report configured to show <b>Ticket count</b> on the Y-axis and <b>Assignee</b> across the X-axis. For each Assignee, the issues are stacked by <b>Priority</b>.</figcaption>
-</figure>
-
 ### Issues Report use cases
 
 Here are some examples of configurations for the Issues Report.

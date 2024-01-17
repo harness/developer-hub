@@ -133,12 +133,8 @@ By default, the **Individual Raw Stats** widget shows the following raw, pre-cal
 
 You can edit the widget to show different values (add/remove columns) or apply filtering.
 
-<figure>
+![](./static/raw-stats.png)
 
-![](./static/trellis-score-raw-stats.png)
-
-<figcaption>Individual Raw Stats</figcaption>
-</figure>
 
 You can use the **Download** icon to download the raw stats report.
 
