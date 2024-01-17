@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
       1. Launch Microsoft Entra ID (formerly Active Directory).
       2. Copy the tenant ID from the Tenant information.
 
-      ![](./static/set-up-cost-visibility-for-azure-03.png')
+      ![](./static/set-up-cost-visibility-for-azure-03.png)
 
       If you don't find the tenant ID in the Azure console, run the `az account show` command using the Azure CLI.
 
