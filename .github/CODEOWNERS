@@ -27,7 +27,7 @@
 # Documentation
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @michaelcretzman @roshnisarangadharan 
+/docs/continuous-delivery/ @krishi0408 @roshnisarangadharan @SushrutHarness 
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @aimurphy
@@ -63,10 +63,10 @@
 /docs/feature-flags/ @ethangj @HarnessTheChaos
 
 # FirstGen Docs
-/docs/first-gen/ @michaelcretzman
+/docs/first-gen/ @krishi0408 @SushrutHarness 
 
 # FAQ Docs
-/docs/faqs/ @michaelcretzman
+/docs/faqs/ @krishi0408 @SushrutHarness 
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @suryabhagvat
@@ -74,7 +74,7 @@
 # Release Notes
 
 #CD Release Notes
-release-notes/continuous-delivery.md @michaelcretzman @roshnisarangadharan 
+release-notes/continuous-delivery.md @krishi0408 @SushrutHarness  @roshnisarangadharan 
 
 #CCM Release Notes
 release-notes/cloud-cost-management.md @rdsoze
