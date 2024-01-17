@@ -32,7 +32,7 @@ Here are some key benefits of Harness AIDA:
 | Automate feature flags integration                                                                                               | Incorporate feature flags into your development process through tailored code generation for seamless integration. | FF       | Beta                |
 | Dashboard Intelligence                                                                                                           | AIDA empowers you to craft customized dashboards with widget-level control through interactive prompts.            | Platform | Beta                |
 | Policy As Code Assistant                                                                                                         | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards.                    | CD       | Development         |
-| Semantic Search                                                                                                                  | Search code repositories to provide accurate and context-aware results in Harness CODE.                            | CODE     | Development         |
+| Semantic Search                                                                                                                  | Search code repositories to provide accurate and context-aware results in Harness Code.                            | CODE     | Development         |
 
 <!-- Currently, AIDA is available for CCM, CI, and STO. -->
 
