@@ -219,6 +219,8 @@ Use the **Include stage execution details in approval** option to include stage 
 
   For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
 
+  Refer this [knowledge based article](/kb/continuous-delivery/articles/harness-approval-notifications) to see the best practices for approval message.
+
 - Artifact details are not supported currently.
 - Environment and infrastructure filters' details are not supported currently.
 - GitOps CD stage metadata is not supported.
@@ -236,3 +238,4 @@ Go to:
 
 - [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
 - [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
+- [Using Harness Approval APIs](/kb/continuous-delivery/articles/harness-approval-api)

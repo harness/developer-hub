@@ -8,7 +8,18 @@ title: "Using Harness Approval Notifications"
 Harness Approval Notifications is a feature designed to keep your team in the loop during crucial decision points in your deployment pipeline. These notifications are sent when the Harness Approval Step is waiting for an approval, and also when it gets approved or rejected.
 These notifications provide stakeholders with real-time information about the pipeline, ensuring transparency and informed decision-making.
 
-These notifications contains approval message, pipeline execution url, and some other details like org, project and approval expiry time. If the pipeline which is containing this approval step also has a CD Stage, the notification contains data related to the service, environment and infrastructure as well.
+These notifications contains the following information:
+1. Pipeline Name
+2. Pipeline execution url
+3. User who triggered the pipeline
+4. Stage Name
+5. Approval message
+6. Organization
+7. Project
+8. Pipeline Start Time
+9. Approval Expiry Time
+
+If the option `Include stage execution details in approval` is selected in the Harness Approval Step configuration, the notification will also contain the summary of completed, running and upcoming stages. If the pipeline which is containing this approval step also has a CD Stage, the notification contains data related to the service, environment and infrastructure as well.
 
 Familiarize yourself with the Approval Notifications. [The Harness documentation provides](/docs/platform/approvals/adding-harness-approval-stages/#approval-notifications-to-approvers) detailed information on it.
 
@@ -16,7 +27,7 @@ In certain scenarios some of the fields present in the approval notification mig
 
 ### A Sample Scenario using Harness Approval Notifications
 
-Consider a sample scenario where you an external system which builds a new artifact tag and once this process is complete, it automatically triggers a pipeline to deploy these new builds to the Production Environment. In an ideal scenario, the deployment pipeline would consist of 2 stages:
+Consider a sample scenario where you have an external system which builds a new artifact tag and once this process is complete, it automatically triggers a pipeline to deploy these new builds to the Production Environment. In an ideal scenario, the deployment pipeline would consist of 2 stages:
 
 - **Stage 1: Prod Approval Stage**
 
@@ -144,7 +155,7 @@ trigger:
                       - identifier: <+trigger.payload.infraId>
 ```
 
-## Triggering the pipeline
+### Triggering the pipeline
 
 Let's say you trigger the pipeline using the above configurations, while providing a payload like:
 
@@ -156,9 +167,9 @@ Let's say you trigger the pipeline using the above configurations, while providi
 }
 ```
 
-Now the pipeline will run it's course to the first stage and wait for an approval, once it starts waiting for approval, the approval notification will be sent based on the communication channels(Slack/Email/MS Teams) being configured in the user group used for the approval, which will look something like below:
+The pipeline will run it's course to the first stage and wait for an approval, once it starts waiting for approval, the approval notification will be sent based on the communication channels(Slack/Email/MS Teams) being configured in the user group used for the approval, which will look something like below:
 
-<docimage path={require('../static/harness-approval-notification.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/harness-approval-notification.png')} width="60%" height="60%" title="Click to view full size image" />
 
 If you observe the `Upcoming stages` information, it contains the trigger expressions for Service, Environment and Infra ID's as we supplied these expressions in the trigger yaml. But it wouldn't be much useful for the approvers and they would have to navigate through the pipeline to see what service will get deployed in which environment after they approve this pipeline.
 
@@ -194,9 +205,9 @@ Considering the above scenario itself, let's change the approval message in the 
 
 After executing the pipeline again using the trigger, the notification will now look something like:
 
-<docimage path={require('../static/harness-approval-message.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/harness-approval-message.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Now the approval message contains the resolved expressions for the service, environment and infra. Similarly approval message can be used to provide more useful information that may be needed for an approver to approve the pipeline.
+As we can see, the approval message contains the resolved expressions for the service, environment and infra. Similarly approval message can be used to provide more useful information that may be needed for an approver to approve the pipeline.
 
 
 ### Harness Documentation
