@@ -31,7 +31,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.3.0**.
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-python-server-sdk/releases)
 
 ## Requirements
 

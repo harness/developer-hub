@@ -32,7 +32,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **2.1.1.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-flutter-client-sdk/releases)
 
 ## Flutter and Dart requirements
 
