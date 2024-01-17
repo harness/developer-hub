@@ -63,10 +63,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed Issues
 
-- Git branch field not added to merged YAML when pipeline template is using stage template (CDS-88378)
-  - Previous Behavior: When using a pipeline template with a stage template it was not honoring the gitBranch field for service selection. 
-  - The issue is fixed now and the gitBranch value is being picked up correctly.
-
 - Making edits to more than one variable simultaneously only applied the changes to the last variable in the list(CDS-88198, ZD-56156)
   - Previous Behavior: Making edits to more than one variable simultaneously only applied the changes to the last variable in the list.
   - The issue only occurred in Template Studio for pipeline templates, not for stage or step group templates. The issue is fixed now.
