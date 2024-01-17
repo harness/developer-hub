@@ -118,3 +118,56 @@ If you want to use an input set as part of a trigger, create and sync the input 
 
 For more details, go to [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md).
 
+
+### Customizing Input Configuration in Trigger YAML through Override YAML
+Suppose you have several input sets that you wish to employ both manually and via triggers. However, you desire the capability to specify a different value for the trigger, allowing you to override a particular parameter when utilizing triggers.
+
+For example: if a user has a input set ``inputSet1`` like this:
+```
+inputSet:
+  name: i1
+  tags: {}
+  identifier: inputSet1
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: trigger_overrides
+    variables:
+      - name: TAG
+        type: String
+        value: test_trigger_override
+```
+For triggers, users can effortlessly customize the value of the TAG by extending the Trigger YAML. Following the ``inputSetRefs`` section, users can now include an ``overrideInputs`` section, allowing them to specify and update the value of the variable they intend to override.
+Reference Yaml:
+```
+trigger:
+  name: test1
+  identifier: test1
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute: []
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipelineIdentifier: trigger_overrides
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions: []
+        headerConditions: []
+  inputSetRefs:
+    - i1
+  overrideInputs: |
+    pipeline:
+      identifier: trigger_overrides
+      variables:
+        - name: TAG
+          type: String
+          value: test_trigger_override
+```
+
+:::info note
+When overrideInputs are provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the overrideInputs section will override and take preference over the corresponding values from other configurations.
+:::
