@@ -86,9 +86,11 @@ The following deprecated API endpoints will no longer be supported:
 
 #### Fixed issues
 
+- Tooltips in the left-hand navigation were incorrectly displaying behind the stage execution details panel, now, tooltip will be clearly visible on the Execution Page. (PL-43993)
+- Fixed the ACL list roles API to correctly display `HarnessManaged`, `CreatedAt`, and `LastModifiedAt` date fields, ensuring accurate role management data in responses. (PL-43952)
+- MultiSelect dropdowns in the Harness NG UI app would "reset-to-top" after each selection. Now, fixed across all MultiSelect dropdowns unless explicitly specified by the user. (PL-43925)
 - When editing user group data, member data was not added as expected. Now, the User Group data related to the User Group Members is not lost when the User Group is updated. (PL-43855, ZD-55944)
-- Fix error message while querying through invalid regex pattern in search term in `usergroup` list API. (PL-43761)
-- With this fix we have added a capability to add timeout to fetch secrets from custom provider as part of custom secret manager config. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
+- Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
 
 ### Version 1.20.9 <!--  January 15, 2024 -->
 
