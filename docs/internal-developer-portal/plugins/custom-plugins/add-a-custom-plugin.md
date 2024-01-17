@@ -146,7 +146,7 @@ proxy:
   /mynewplugin:
     target: https://somerandomapi.com/api/v2
     pathRewrite:
-      /api/proxy/dynatrace/?: /
+      /api/proxy/mynewplugin/?: /
     headers:
       Authorization: "Api-Token ${SECRET_TOKEN}"
 ```
