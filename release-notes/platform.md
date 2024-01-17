@@ -96,7 +96,7 @@ The following deprecated API endpoints will no longer be supported:
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS FF` for your account. (PL-43772)
+- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
 
 #### Early access features
 
