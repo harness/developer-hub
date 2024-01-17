@@ -2465,3 +2465,82 @@ https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-har
 ####   How to signout?
 
 You can click on My profile Under bottom left and you will able to see Sign Out option coming in.
+
+#### I can see that the legacy delegate is a statefulset object, what does this mean? and what's the major diference from Deployment type
+
+**StatefulSet:**
+- **Purpose:** StatefulSets are designed for stateful applications that require stable network identities and stable storage.
+Instances: StatefulSets maintain a sticky identity for each pod. Each pod has a unique and stable hostname, allowing for persistent storage and network identities.
+
+- **Naming:** Pods in a StatefulSet get named in a predictable and consistent manner, which is often based on an index.
+
+- **Scaling:** Scaling stateful applications may involve more complex operations due to the need for stable identities. Pods are typically created in a sequential order, and scaling may involve specific considerations for data migration or coordination.
+
+**Key Difference:**
+The major difference between a Deployment and a StatefulSet lies in how they handle the identity and state of the pods:
+
+- **StatefulSet** provides stable identities: Pods in a StatefulSet have stable and predictable identities, making them suitable for applications that require persistent storage and network identifiers.
+- **Deployment** is more suitable for stateless applications: Deployments are well-suited for applications where each instance is interchangeable, and statelessness is a design principle.
+
+#### What is exit status 127 in a delegate pod?
+
+In a Kubernetes context, when you see an exit code of 127, it is typically associated with issues related to the execution of container commands within a pod. Here are some common scenarios in a Kubernetes context:
+
+**Command or Binary Not Found:**
+- The container might be trying to execute a command or binary that is not installed or not available in the container's filesystem. Ensure that the necessary commands or binaries are included in the container image.
+
+**Incorrect Path or Command Name:**
+- If there's a mistake in the path or the name of the command specified in the Kubernetes pod definition, it could result in a 127 exit code. Double-check the command configuration in your pod specification.
+
+**Permissions Issues:**
+- Ensure that the container has the necessary permissions to execute the specified command. This includes both file system permissions within the container and the user permissions under which the container is running.
+
+**Image or Container Initialization Failures:**
+- If the container fails to start or initialize properly, it might result in a 127 exit code. Check the container logs for any error messages that might indicate initialization issues.
+When debugging a pod with an exit code of 127, you can inspect the pod logs to get more details about what went wrong. Use the following command to view the logs for a specific pod:
+
+```
+kubectl logs <pod-name>
+```
+
+Replace <pod-name> with the actual name of your pod. Examining the logs can provide insights into the specific command or process that failed and help you diagnose and resolve the issue.
+
+#### Where are the settings for an individual user email notifications?
+
+The notifications on Harness are configured on the User Group where the user is attached to. All the notification preferences are displayed there:
+- https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#edit-notification-preferences
+
+#### Why I'm experiencing issues when creating a secret with same name that is deleted recently?
+First, when you tried to delete a resource in Harness, we soft deleted it so you were not able to re-use the same identifier. Now this is not happening anymore, but in case you still experiencing issues, you can either keep the same name but change only the identifier or enable the Force Delete so you can delete the resource with no existent references issues on the process:
+
+- https://developer.harness.io/docs/platform/references/entity-deletion-reference/#force-delete
+
+#### Whats the harness variable replacement for a service name?
+
+For this scenario you can use the following variable: <+service.name>
+
+#### What is ingress.yaml used for?
+
+In Kubernetes, an Ingress resource is used to manage external access to services within a cluster. The Ingress resource allows you to define how external HTTP/S traffic should be directed to your services, enabling you to expose services to the external world and define routing rules.
+
+An Ingress resource is typically defined in a YAML file, often named ingress.yaml. This file specifies the configuration for routing external traffic to different services based on rules such as hostnames, paths, and backend services.
+
+By using Ingress, you can manage external access to your services more flexibly than using raw services or NodePort services. It provides a way to route traffic based on various criteria and allows you to handle SSL termination and other features. Keep in mind that the actual implementation of Ingress may vary depending on the Kubernetes cluster, as different cluster providers may have different Ingress controllers.
+
+#### How can I easily disable pipeline triggers?
+
+In the triggers page you'll see a toggle icon on the right side under Enabled, you just need to toggle it off and the trigger will be disabled.
+
+#### what is my webhook identifier to trigger pipelines?
+
+When you name an entity, Harness automatically generates its identifier. You can edit the Identifier when you are creating the entity, but not after the entity is saved. If you rename the entity, the Identifier remains the same. The generated Identifier is based on the entity name and meets the identifier naming restrictions. If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of -1, -2, etc.
+
+#### How do i verify my account?
+
+Harness has identified an increase in the unauthorized usage of the free pipeline minutes Harness makes available on Harness Cloud. To combat such unauthorized usage, Harness requires that you use your work email, not your personal email, to register your account.
+ 
+If you face this issue on an account which was registered using your work mail ID, please reach out to our support team and share the execution URL where you got this error so we can review it futher.
+
+#### Does harness AIDA supports APIs for developer to create custom AI/ML solutions?
+
+No! AIDA does not offer Rest APIs to be used by Harness Users.
