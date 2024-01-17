@@ -188,6 +188,21 @@ Fixed issues
 
  - The percentage rollout bucket by logic is now fixed to match Golang SDK.
 
+### SMP 0.11.0 Release
+
+ - The Feature Flag Pipeline steps, RBAC permissions for specific environments (or environment types) returned a `no permissions` error when the user had the required permission. This has now been resolved. (FFM-9672)
+ - The feature flag module did not ship with an OOTB role that could toggle flags. This meant that:
+ -- Customers on the free tier could only toggle flags as admin users because they were unable to create custom roles.
+  - As a result of resolving, you can now:
+ -- ship with an OOTB "feature flag admin" role that contains all the feature flag permissions (excluding delete),
+ -- assign users the "feature flag admin" role to allow them to toggle flags. (FFM-9542)
+ 
+### SMP 0.12.0 Release
+
+  - The Specific Targeting section of the Flag detail page would not display a variation if the name was not set has now been fixed. If the name is not set, the page will now fall back to the identifier. (FFM-9858)
+ - The Feature Flags onboarding wasn't able fetch metrics to complete the verification step. This has now been resolved. (FFM-9743)
+ - A new Feature Flag targeting rule could be saved without adding a target or target group which has now been fixed. (FFM-9871)
+
 ## October 2023
 
 ### Golang SDK
