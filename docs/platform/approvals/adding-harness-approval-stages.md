@@ -219,7 +219,7 @@ Use the **Include stage execution details in approval** option to include stage 
 
   For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
 
-  Refer this [knowledge based article](/kb/continuous-delivery/articles/harness-approval-notifications) to see the best practices for approval message.
+  Go to this [knowledge base article](/kb/continuous-delivery/articles/harness-approval-notifications) for approval messages best practices.
 
 - Artifact details are not supported currently.
 - Environment and infrastructure filters' details are not supported currently.
