@@ -1,7 +1,9 @@
 ---
 title: Use GCP secrets in scripts
 description: Use base64 encoding and decoding to avoid errors with GCP secrets in Run steps.
-sidebar_position: 30
+sidebar_position: 11
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step
 ---
 
 This page explains how to handle JSON-formatted GCP credentials in scripts, such as in Run steps or Background steps. The information on this page **doesn't** apply to `.json` credentials supplied to [Harness GCP connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
