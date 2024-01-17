@@ -6,7 +6,7 @@ sidebar_position: 2
 
 :::info
 
-This Feature is in **BETA** phase and is behind a Feature Flag. It's only enabled on few accounts on request. 
+This Feature is in **BETA** phase and is behind `IDP_ENABLE_CUSTOM_PLUGINS` Feature Flag. Please contact the IDP product team if you would like to try out Custom Plugins.
 
 :::
 
@@ -127,8 +127,9 @@ new-plugin/
 ![](./static/ci-cd-tab.png)
 
 - **Menu Item in SideNav**: Here's an example of TODO plugin in side nav. 
-
 ![](./static/to-do-plugin.png)
+
+- **Conditional**: Here's an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L86C33-L86C33) of the Harness CI/CD plugin, also conditional is required if you want to check for the annotations in `catalog-info.yaml` in case of absence of adequate annotation required the plugin won't show up for the particular software component. 
 
 ## Configurations
 
