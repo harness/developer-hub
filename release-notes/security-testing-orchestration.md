@@ -39,6 +39,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### Fixed issue
 
+Fixed an issue on Self-Managed Enterprise Edition platforms where approving or rejecting an exemption threw a 500 error. (STO-6958)
 
 
 ### January 11 runner update
