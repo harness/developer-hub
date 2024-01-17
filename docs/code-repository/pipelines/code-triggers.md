@@ -83,3 +83,15 @@ trigger:
 
 </TabItem>
 </Tabs>
+
+### Permissions required for creating and updating Triggers
+
+Triggers creation are supported with two modes of permissions
+
+1. **Mandatory Mode** : Users need both pipeline creation/editing and pipeline execution permissions.
+2. **Optional Mode** : Users can create/edit pipelines and execute them, but it's not mandatory.
+
+This can be enabled using the settings available at Project level as part of the pipeline settings group
+![](./static/code_repo_permission.png)
+
+You have the option to turn off the necessary permissions for creating or editing pipelines in order to manage triggers separately. By doing this, you can allow only specific users to edit the pipeline while still enabling them to create or update triggers.
