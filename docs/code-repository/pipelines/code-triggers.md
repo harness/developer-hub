@@ -83,3 +83,17 @@ trigger:
 
 </TabItem>
 </Tabs>
+
+## Permissions required for creating and updating Triggers
+
+By default, the **Pipelines: Create/Edit** and **Execute** permissions are required for creating and editing triggers.
+
+For more information, go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+
+
+
+
+
+
+
+   
