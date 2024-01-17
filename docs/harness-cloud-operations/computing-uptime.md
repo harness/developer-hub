@@ -163,7 +163,7 @@ All the Platform SLIs are applicable here.
 || Links in notifications don’t work |Degraded performance|
 | Admin operations not working (Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) | For a consecutive duration of 30 secs | Major outage|
 
-## Developer Platform
+## Internal Developer Portal (IDP)
 All the Platform SLIs are applicable here. 
 
 | **SLI**         | **Threshold**                           | **Availability**|
