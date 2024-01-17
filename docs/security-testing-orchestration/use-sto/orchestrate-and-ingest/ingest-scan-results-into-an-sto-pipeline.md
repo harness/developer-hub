@@ -27,13 +27,6 @@ To ingest scan results from outside a Security step, you set up your pipeline as
 For a complete list of supported scanners, go to [Harness STO scanner support
 ](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).  
 
-If your scanner isn't listed, you can still ingest your scan results into STO. 
-
-- If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data). 
-
-- For other scanners, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
-
-
 ### Example workflows 
 
 Here are some example ingestion-only workflows that target specific use cases:
@@ -44,9 +37,10 @@ Here are some example ingestion-only workflows that target specific use cases:
 - [Create a build-scan-push pipeline (STO only)](/tutorials/security-tests/build-scan-push-sto-only)
 
 
-### See Also
+### See also
 
-- [STO ingestion workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview)
 - [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data)
-- [Ingest Results from custom or unsupported scanners](./ingesting-issues-from-other-scanners.md)
+- [Ingest Results from unsupported scanners](./ingesting-issues-from-other-scanners.md)
+- [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
+- [STO technical reference](/docs/category/sto-technical-reference)
 

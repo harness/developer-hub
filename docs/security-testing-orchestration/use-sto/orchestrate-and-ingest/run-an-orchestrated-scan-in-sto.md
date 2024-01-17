@@ -31,9 +31,10 @@ Here are some example workflows that illustrate how to set up an orchestrated sc
 - [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap)
 
 
-### See Also
+### See also
 
-* [STO Ingestion Workflows](./sto-workflows-overview.md)
-* [Run an Ingestion-Only scan in an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
-* [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md)
+- [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
+- [STO technical reference](/docs/category/sto-technical-reference)
+- [Run an ingestion-only scan in an STO pipeline](ingest-scan-results-into-an-sto-pipeline.md)
+
 
