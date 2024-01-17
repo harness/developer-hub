@@ -13,7 +13,7 @@ Lambda update function memory:
 - Helps build resilience to unexpected scenarios such as hitting a memory limit with the Lambda function, that slows down the service and impacts its delivery. Running out of memory due to smaller limits interrupts the flow of the given function.
 - Checks the performance of the application (or service) running with a new memory limit.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Access to operate AWS Lambda functions.
 - Lambda function must be up and running.
@@ -63,8 +63,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -86,8 +86,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

@@ -17,7 +17,7 @@ EC2 network latency:
 - Simulates jittery connection with transient latency spikes between microservices.
 - Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.  
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - SSM agent is installed and running on the target EC2 instance.
 - The EC2 instance should be in healthy state.
@@ -94,8 +94,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 :::
 
-<h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -112,8 +112,10 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

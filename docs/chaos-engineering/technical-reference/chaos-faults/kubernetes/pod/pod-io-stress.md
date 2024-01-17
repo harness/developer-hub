@@ -16,15 +16,13 @@ Pod IO stress:
 - Checks how the application functions under high disk latency conditions and when I/O traffic is very high.
 - Checks how the application functions under large I/O blocks, and when other services monopolize the I/O disks. 
 
-:::info note
-- Kubernetes> 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

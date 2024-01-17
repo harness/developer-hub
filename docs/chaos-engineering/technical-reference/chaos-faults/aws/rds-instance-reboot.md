@@ -12,7 +12,7 @@ RDS instance reboot derives the instance under chaos from an RDS cluster.
 RDS instance reboot determines the resilience of an application when an instance under chaos is derived from an RDS cluster.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - AWS access to reboot RDS instances.
 - The RDS instance must be in a healthy state.
@@ -62,8 +62,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -85,8 +85,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

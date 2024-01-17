@@ -13,15 +13,13 @@ Pod API status code:
 - Simulates situations where the API may be temporarily unavailable or rate-limited by returning temporary error codes like 503 (Service Unavailable) or 429 (Too Many Requests).
 - It can be used for content filtering, by selectively filter or block certain responses. For example, you can change the status code to 404 (Not Found) for specific paths or patterns, indicating that the requested resource does not exist.
 
-:::info note
-- Kubernetes> 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -53,8 +51,9 @@ Pod API status code:
         <td> For more information, go to <a href="#path-filter">path filter </a>.</td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -211,9 +210,9 @@ spec:
               value: '/status'   
 ```
 
-### Path Filter
+### Path filter
 
-API sub path/route to filter the api calls. Tune it by using the `PATH_FILTER` environment variable.
+API sub path (or route) to filter the API calls. Tune it by using the `PATH_FILTER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -254,9 +253,7 @@ spec:
 A comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
 
 :::note
-
 It is applicable only for the egress `SERVICE_DIRECTION`.
-
 :::
 
 The following YAML snippet illustrates the use of this environment variable:

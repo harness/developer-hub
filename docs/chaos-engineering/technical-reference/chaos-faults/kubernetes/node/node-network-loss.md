@@ -13,11 +13,11 @@ Node network loss:
 - Tests the node and inter-node communication resilience against packet loss.
 - Simulates scenarios where specific nodes might experience network problems due to issues like faulty NICs or network misconfigurations.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes > 1.16
 - Nodes should be in a healthy state before and after injecting chaos.
 
-<h3>Optional tunables</h3>
+### Optional tunables
 <table>
     <thead>
         <tr>

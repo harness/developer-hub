@@ -13,7 +13,7 @@ ECS agent stop disrupts the state of infrastructure resources. This fault:
 ECS agent stop halts the agent that manages the task container on the ECS cluster, thereby impacting its delivery. 
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The ECS container instance should be in healthy state.
 - ECS container metadata should be enabled (this feature is disabled by default). To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
@@ -107,8 +107,8 @@ Below is an example AWS policy to execute the fault.
 :::
 
 
-<h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
           <th> Tunable </th>
           <th> Description </th>
@@ -125,8 +125,10 @@ Below is an example AWS policy to execute the fault.
           <td> For example, <code>us-east-2</code></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

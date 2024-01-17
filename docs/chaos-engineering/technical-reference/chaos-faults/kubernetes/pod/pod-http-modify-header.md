@@ -12,15 +12,13 @@ Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos 
 
 Pod HTTP modify header can be used to test resilience towards incorrect or incomplete headers in application services.
 
-:::info note
-- Kubernetes> 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -47,8 +45,9 @@ Pod HTTP modify header can be used to test resilience towards incorrect or incom
         <td> Default: response. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#header-mode">header mode </a> </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

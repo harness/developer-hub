@@ -17,7 +17,7 @@ EC2 IO stress:
 - Verifies the disk performance on increasing IO threads and varying IO block sizes.
 - Checks how the application functions under high disk latency conditions, when IO traffic is high and includes large I/O blocks, and when other services monopolize the IO disks. 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.

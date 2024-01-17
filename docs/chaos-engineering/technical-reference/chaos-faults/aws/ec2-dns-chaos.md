@@ -14,7 +14,7 @@ EC2 DNS chaos:
 - Determines the impact of DNS chaos on the infrastructure and standalone tasks. 
 - Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - SSM agent is installed and running on the target EC2 instance.
 - The EC2 instance should be in a healthy state.

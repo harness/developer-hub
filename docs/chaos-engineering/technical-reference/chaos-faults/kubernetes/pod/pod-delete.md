@@ -25,14 +25,12 @@ Pod delete:
   - Forced deletion of pods as a result of eviction.
   - Leader-election in complex applications.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods are in the running state before and after chaos injection.
-:::
 
-## Fault tunables
-<h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

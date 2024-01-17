@@ -13,15 +13,13 @@ Time Chaos:
 - It is used to identify potential weaknesses in the system's ability to recover and handle time-related faults, leading to improvements in fault-tolerant designs and system resilience.
 -  It can be used in various simulations to mimic real-world scenarios where time synchronization or manipulation is critical.
 
-:::info note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -34,8 +32,8 @@ Time Chaos:
       </tr>
     </table>
 
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

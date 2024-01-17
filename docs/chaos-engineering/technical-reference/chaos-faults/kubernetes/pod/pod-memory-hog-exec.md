@@ -20,15 +20,13 @@ Pod memory hog exec:
 - Verifies application restarts on OOM (out of memory) kills. 
 - Tests how the overall application stack behaves when such a situation occurs.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

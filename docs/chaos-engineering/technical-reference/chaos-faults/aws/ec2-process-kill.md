@@ -11,7 +11,7 @@ EC2 process kill fault kills the target processes running on an EC2 instance. Th
 EC2 process kill determines the resilience of applications when processes on EC2 instances are unexpectedly killed (or disrupted).
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in healthy state
 - The target processes should exist in the VM.
@@ -89,8 +89,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
- <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -112,8 +112,10 @@ Below is an example AWS policy to execute the fault.
         <td> For example, 183,253,857. For more information, go to <a href="#process-ids"> process IDs.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

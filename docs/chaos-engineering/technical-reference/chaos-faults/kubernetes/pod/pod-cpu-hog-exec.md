@@ -17,15 +17,13 @@ CPU hog exec:
 - Verifies multi-tenant load issues, that is, when the load increases on one container, this does not cause downtime in other containers. 
 
 
-:::info note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

@@ -19,14 +19,13 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 - It verifies pod priority and QoS setting for eviction purposes. 
 - It also verifies application restarts on OOM kills. 
 
-:::info note
+### Prerequisites
+- Kubernetes > 1.16 
 - The target nodes should be in the ready state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -43,8 +42,10 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
         <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">target nodes with labels.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

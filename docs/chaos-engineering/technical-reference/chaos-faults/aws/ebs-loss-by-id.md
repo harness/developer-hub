@@ -10,7 +10,7 @@ EBS (Elastic Block Store) loss by ID disrupts the state of EBS volume by detachi
 ## Use cases
 EBS loss by ID tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17 
 - Appropriate AWS access to attach or detach an EBS volume for the instance.
 - The EBS volume should be attached to the instance.
@@ -69,8 +69,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -87,8 +87,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+    
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

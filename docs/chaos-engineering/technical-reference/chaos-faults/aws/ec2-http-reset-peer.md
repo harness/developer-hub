@@ -13,7 +13,7 @@ EC2 HTTP reset peer:
 - Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 - Determines the application's resilience to a lossy (or flaky) HTTP connection.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
@@ -91,8 +91,8 @@ Below is an example AWS policy to execute the fault.
 :::
 
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -119,8 +119,10 @@ Below is an example AWS policy to execute the fault.
             <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h3>Optional tunable</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

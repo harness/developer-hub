@@ -11,7 +11,7 @@ EC2 HTTP modify body injects HTTP chaos which affects the request or response by
 ## Use cases
 EC2 HTTP modify body tests the application's resilience to erroneous (or incorrect) HTTP response body.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - SSM agent is installed and running in the target EC2 instance.
 - The EC2 instance should be in a healthy state.
@@ -89,8 +89,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -117,8 +117,9 @@ Below is an example AWS policy to execute the fault.
             <td> If no value is provided, the response will be an empty body (defaults to empty body). For more information, go to <a href="#modifying-the-response-body"> response body.</a></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

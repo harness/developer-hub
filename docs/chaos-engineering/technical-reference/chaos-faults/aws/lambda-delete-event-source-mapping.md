@@ -14,7 +14,7 @@ Lambda delete event source mapping:
 - Determines whether proper error handling or auto-recovery options have been configured for the application.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - AWS Lambda event source mapping must be healthy and attached to the Lambda function.
 - Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
@@ -67,8 +67,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -90,8 +90,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-2</code></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

@@ -15,7 +15,7 @@ Windows EC2 memory hog:
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance must be in a healthy state.
 - SSM agent must be installed and running on the target EC2 Windows instance in the admin mode.
@@ -93,7 +93,7 @@ Below is an example AWS policy to execute the fault.
 :::
 
 
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
     <tr>
         <th> Tunable </th>
@@ -111,8 +111,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
     </tr>
 </table>
-<h3>Optional tunables</h3>
-<table>
+
+### Optional tunables
+  <table>
     <tr>
         <th> Tunable </th>
         <th> Description </th>

@@ -12,12 +12,11 @@ Kube security CIS:
 - Determines the compliance of the Kubernetes cluster with the CIS benchmark.
 - Finds and fixes the security issues in the Kubernetes cluster.
 
-:::info note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate permissions to execute this fault.
-:::
 
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
     <tr>
         <th> Tunable </th>
@@ -30,7 +29,8 @@ Kube security CIS:
         <td> Default: <code>/run/containerd/containerd.sock</code>. </td>
     </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
 <table>
     <tr>
         <th> Tunable </th>

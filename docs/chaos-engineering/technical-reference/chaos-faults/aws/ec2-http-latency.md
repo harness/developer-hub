@@ -16,8 +16,7 @@ EC2 HTTP latency:
 - Simulates latency to specific API services for (or from) a given microservice.
 - Simulates a slow response on specific third party (or dependent) components (or services). 
 
-
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - SSM agent is installed and running on the target EC2 instance.
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
@@ -96,8 +95,8 @@ Below is an example AWS policy to execute the fault.
 :::
 
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -124,8 +123,9 @@ Below is an example AWS policy to execute the fault.
             <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

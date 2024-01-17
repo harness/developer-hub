@@ -13,7 +13,7 @@ EC2 CPU hog:
 - Simulates a lack of CPU for processes running on the application, which degrades their performance. 
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
@@ -90,8 +90,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -108,8 +108,9 @@ Below is an example AWS policy to execute the fault.
             <td> For example: <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

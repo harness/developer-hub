@@ -19,17 +19,16 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 - It also verifies pod creation and scheduling SLIs on the cluster nodes.
 - It also helps determine the performance of the kubelet for a specific node.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the healthy state before and after injecting chaos.
 :::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -39,10 +38,11 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
         <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node</a>.</td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+    
+### Optional tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

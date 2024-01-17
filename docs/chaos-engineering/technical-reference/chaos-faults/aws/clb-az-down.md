@@ -14,7 +14,7 @@ CLB AZ down:
 - Detaches the AZ from the classic load balancer thereby disrupting the dependent application's performance. 
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Appropriate AWS access to attach or detach an AZ from CLB.
 - A minimum of one AZ attached to the CLB after injecting chaos; otherwise, the fault fails to detach the given AZ.
@@ -64,8 +64,9 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -87,8 +88,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

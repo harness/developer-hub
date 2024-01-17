@@ -12,7 +12,7 @@ Windows EC2 blackhole chaos results in loss of access to the given target hosts 
 
 Windows EC2 blackhole chaos determines the performance of the application (or process) running on the EC2 instances.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance must be in a healthy state.
 - SSM agent must be installed and running on the target EC2 instance.
@@ -89,8 +89,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -112,8 +112,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

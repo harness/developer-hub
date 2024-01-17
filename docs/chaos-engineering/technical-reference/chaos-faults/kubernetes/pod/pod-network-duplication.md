@@ -13,15 +13,13 @@ Pod network duplication:
 - Determines the application's resilience to duplicate network.
 - Simulates a degraded network with varied percentages of dropped packets between microservices (dropped at the destination).
 
-:::info note
-- Kubernetes> 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes> 1.16 
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -185,7 +183,7 @@ spec:
               value: "60"
 ```
 
-### Source And Destination Ports
+### Source and destination ports
 
 By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
 
@@ -224,7 +222,7 @@ spec:
           value: '60'
 ```
 
-### Ignore Source and Destination Ports
+### Ignore source and destination ports
 
 By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
 

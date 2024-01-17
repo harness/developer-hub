@@ -17,15 +17,13 @@ Pod DNS error:
 - Simulates malfunctioning of DNS server (loss of access to specific domains from a given microservice.
 - Simulates access to the cloud provider dependencies, and access to specific third party services.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
 
-## Fault tunables
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description  </th>

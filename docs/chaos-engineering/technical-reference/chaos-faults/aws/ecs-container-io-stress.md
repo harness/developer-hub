@@ -16,7 +16,7 @@ ECS container IO stress determines how a container recovers from a memory exhaus
 File system read and write evicts the application (task container) and impacts its delivery. These issues are also known as noisy-neighbour problems.
 Injecting a rogue process into a target container starves the main microservice process (typically pid 1) of the resources allocated to it (where the limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all task containers.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
 - You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
@@ -111,8 +111,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
         <th> Variables </th>
         <th> Description </th>
@@ -129,8 +129,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-<table>
+    
+### Optional tunables
+  <table>
     <tr>
       <th> Variables </th>
       <th> Description </th>

@@ -23,10 +23,8 @@ Before executing the SSH chaos experiment, ensure that you follow the steps in t
 If you use the default names for ConfigMap and secrets, you won't need to modify the experiment. If you use different names, update the respective environment variables with their names. For example, if your script file is `test.sh` instead of `script.sh`, update the `CHAOS SCRIPT PATH` environment variable with the correct value.
 :::
 
-## Fault tunables
-
-  <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Variables </th>
             <th> Description </th>
