@@ -237,6 +237,10 @@ Steps running in containers can't communicate with [Background steps](../manage-
 
 </details>
 
+## Secure connect (private networking)
+
+You can use Harness Cloud build infrastructure in firewalled environments. For more information, go to [Secure connector for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
 ## Troubleshoot Harness Cloud build infrastructure
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness Cloud build infrastructure, including:

@@ -1,7 +1,7 @@
 ---
 title: Use GCP secrets in scripts
 description: Use base64 encoding and decoding to avoid errors with GCP secrets in Run steps.
-sidebar_position: 11
+sidebar_position: 30
 redirect_from:
   - /docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step
 ---
