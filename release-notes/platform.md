@@ -91,7 +91,7 @@ The following deprecated API endpoints will no longer be supported:
 - Multi-select dropdowns would reset to the top after each selection. This issue is fixed for all multi-select dropdowns unless explicitly specified by the user. (PL-43925)
 - When editing user group data, member data was not added as expected. Now, the user group data related to the user group members is not lost when the user group is updated. (PL-43855, ZD-55944)  
 - Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
-- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connector working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China etc.). Now the correct Azure resource manager endpoint we will be choosen based on the environment selected in the connector.(PL-43333)
+- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connectors working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China, and so on). Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector. (PL-43333, ZD-54717)  
 
 ### Version 1.20.9 <!--  January 15, 2024 -->
 
