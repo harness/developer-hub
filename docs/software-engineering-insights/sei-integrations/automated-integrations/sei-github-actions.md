@@ -11,15 +11,9 @@ You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://gith
 
 You can use the GitHub Action integration to integrate GitHub Actions with SEI.
 
-:::info
-The GitHub Action integration is in BETA and is currently behind the entitlement`ALLOW_GITHUB_ACTION_TILE`. Contact SEI Support to enable the feature.
-
-For more information about supported integrations on SEI, go to [What’s supported](/docs/software-engineering-insights/sei-supported-platforms).
-:::
-
 ## Requirements
 
-You can either configure the integration using **Github OAuth** or use a **Github personal access token (PAT)**. In case you’re using the integration using a PAT ensure to Copy the token somewhere that you can retrieve it when you configure the integration. For instructions, go to the Github documentation on Creating a personal API token.
+You can either configure the integration using **Github OAuth** or use a **Github Personal Access Token (PAT)**. In case you’re using the integration using a PAT ensure to Copy the token somewhere that you can retrieve it when you configure the integration. For instructions, go to the Github documentation on Creating a personal API token.
 
 If you can't use OAuth, you must create a GitHub personal access token to configure the SEI GitHub integration.
 
@@ -29,7 +23,7 @@ If you can't use OAuth, you must create a GitHub personal access token to config
    - If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 
 :::info
-The 'Triage Rule' and 'Trend' fields are not supported on the Stacks and Aggregation option for the Github Actions integration.
+The `Triage Rule` and `Trend` fields are not supported on the Stacks and Aggregation option for the Github Actions integration.
 :::
 
 import Tabs from '@theme/Tabs';
@@ -107,7 +101,7 @@ Following widgets are supported for Github Action integration:
 
 ## Ingest artifacts and environment variable data
 
-This topic provides step-by-step instructions on how to set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions.
+This section provides step-by-step instructions on how to set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions.
 
 ### Pre-requisites
 
@@ -126,7 +120,7 @@ Follow these steps to set up the workflow:
    - Set the role as `Ingestion`.
 2. Create Organization/Repository Secret
    - To securely store the SEI API Key, you can create a GitHub secret in either your organization or your repository, depending on your preference.
-   - For Organization Secret, go to [creating secrets in an organization](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-an-organization) Give the secret a name (e.g., `SEI\_API\_KEY\`) and store the SEI API Key value.
+   - For Organization Secret, go to [creating secrets in an organization](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-an-organization) Give the secret a name (e.g., `SEI_API_KEY`) and store the SEI API Key value.
    - For Repository Secret, go to [creating secrets in a repository](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-a-repository)Give the secret a name (e.g., `SEI\_API\_KEY\`) and store the SEI API Key value.
 3. Create the GitHub Actions Integration and make a note of the Integration ID, which you will need in the next steps. For more information, go to [configure the integration on the cloud](#configure-the-integration-on-the-cloud).
 4. Append the following steps to your existing GitHub Actions workflow configuration:
@@ -147,7 +141,7 @@ Follow these steps to set up the workflow:
   run: curl '${{ env.base_url }}/v1/cicd/push_job_run_params' -H 'accept:application/json' -H 'authorization:Apikey ${{ secrets.SEI_API_KEY }}' -H 'content-type:application/json' --data-raw '${{ env.payload }}' --compressed --globoff
 ```
 
-5. Make sure to update the `integration\_id\` in the workflow step with your actual SEI Integration ID. Also, update the `base\_url\` according to your environment:
+5. Make sure to update the `INTEGRATION_ID` in the workflow step with your actual SEI Integration ID. Also, update the `BASE_URL` according to your environment:
 
    - For testui: [https://testapi1.propelo.ai](https://testapi1.propelo.ai)
    - For US: [https://api.propelo.ai](https://api.propelo.ai)
@@ -155,7 +149,7 @@ Follow these steps to set up the workflow:
 
 6. If there is an issue with the SEI endpoint (e.g., if the endpoint is down, 500 internal server error), and you want the workflow run to fail if artifacts are not sent to SEI, use the -f flag in the curl command. For example:
 
-   For example: `curl -f \<REQUEST>`
+   For example: `curl -f <REQUEST>`
 
 7. Refer to the metadata below to request and ingest the artifact data from GitHub Actions into SEI.
 

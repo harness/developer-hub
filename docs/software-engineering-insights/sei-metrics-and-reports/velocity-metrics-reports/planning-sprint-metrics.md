@@ -92,34 +92,31 @@ You can use the **Sprint Report** field to limit data to a selected _sprint stre
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of sprint metrics, like [commit done points](#commit-done-points), [creep points](#creep-points), or [commit points](#commit-points).
 
-<figure>
-
-![](../static/sprint-metrics-trend-report.png)
-
-<figcaption>Sprint Metrics Trend Report</figcaption>
-</figure>
+<img
+  src={require('./static/sprint-metrics-trend.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 ### Sprint Metrics Percentage Trend Report
 
 Use the **Sprint Metrics Percentage Trend Report** to examine a time series trend of selected [sprint metrics ratios](#sprint-metrics-ratios). This report is recommended for visualizing changes in the [commit done ratio](#commit-done-ratio), [done to commit ratio](#done-to-commit-ratio), and [creep to commit ratio](#creep-to-commit-ratio).
 
-<figure>
+<img
+  src={require('./static/sprint-metrics-percentage-trend.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
-![](../static/sprint-metrics-percentage-trend-report.png)
-
-<figcaption>Sprint Metrics Percentage Trend Report</figcaption>
-</figure>
 
 ### Sprint Metrics Single Stat
 
 The **Sprint Metrics Single Stat** widget presents a single sprint metric averaged over the selected time interval.
 
-<figure>
 
-![](../static/sprint-metric-single-stat.png)
+<img
+  src={require('./static/sprint-metrics-single-stat.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
-<figcaption>Sprint Metrics Single Stat</figcaption>
-</figure>
 
 For example, the **Sprint Metrics Single Stat** widget can help you [use historical metrics for sprint prediction and performance assessment](#use-historical-metrics-for-sprint-prediction-and-performance-assessment).
 

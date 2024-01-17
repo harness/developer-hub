@@ -11,7 +11,7 @@ To create or edit Investment profiles:
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Investment** under **Profiles**.
-4. To create a profile, select **New Investment Profile**. To edit an existing profile, select the profile's name in the profiles list.
+4. To create a profile, select **+Add Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 ## Basic Info
 
@@ -23,11 +23,15 @@ To create or edit Investment profiles:
 * **Issue Management System:** Select the issue management tool, either **Jira** or **Azure**, to associate with this Investment profile.
 * **Default Profile:** Enable this setting if you want to make this Investment profile the default Investment profile. The default profile is automatically selected when creating new widgets that use Investment profiles.
 
+![](./static/investment-profile.png)
+
 ## Categories
 
 Categories define the data that you want to compare within an Investment profile. For example, you could compare issue types (such as bugs, stories, and tasks), projects, components, or other dimensions (such as infrastructure, support, and development).
 
 To add a category, select **Add Category**, enter a name, and then select **Filters**.
+
+![](./static/investment-categories.png)
 
 ## Allocation Goals
 

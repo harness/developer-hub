@@ -25,6 +25,8 @@ Projects, Collection categories, and Collections provide a broad way of organizi
 
 Collection categories and Collections exist under their associated project; they don't span across projects. While multiple projects can have Collection categories and Collections with the same name, these are distinct groups under their designated project.
 
+![](./static/projects.png)
+
 [Insights](../sei-insights.md) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
 
 On your [Insights](../sei-insights.md), widgets derive data from [integrations](/docs/category/integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/integrations) defined in the associated project.

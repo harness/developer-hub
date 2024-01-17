@@ -33,7 +33,7 @@ import TabItem from '@theme/TabItem';
 
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **PagerDuty** integration, and select **Install**.
 4. Configure and save the integration.
 
@@ -64,7 +64,7 @@ satellite:
 integrations:
   - id: '<INTEGRATION_ID>'
     application: pagerduty
-    url: <PAGERDUTY_URL>
+    url: <PAGERDUTY_INSTANCE_URL>
     username: <PAGERDUTY_USERNAME>
     api_key: <PAGERDUTY_API_KEY>
 ```
