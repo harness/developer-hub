@@ -66,7 +66,7 @@ Refer [API Documentation](https://apidocs.harness.io/tag/Approvals#operation/add
 There can be some usecases where multiple approvals are waiting in a pipeline, and we want to approve a specific one out of them using the API. To overcome this limitation, the configuration of Harness Approval Step contains a parameter—`callback_id`. This parameter is optional, allowing users to provide a unique identifier to each approval step, so that it can be identified easily.
 This parameter can be configured while adding an Harness Approval step to the pipeline, like shown in the below image
 
-<docimage path={require('../static/harness-approval-api.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/harness-approval-api.png')} width="60%" height="60%" title="Click to view full size image" />
 
 This `callback_id` can now be passed to the same API, to further filter the approval instances waiting in a particular pipeline execution. Here's a sample curl request:
 
