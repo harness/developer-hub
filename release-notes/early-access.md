@@ -22,7 +22,7 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
-### AIDA support automatically available
+### Grant public access to Harness pipeline executions
 
 * **Release date:** January 2024
 * **Release version:** 1.20.9
