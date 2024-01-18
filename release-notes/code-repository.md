@@ -2,7 +2,7 @@
 title: Code Repository release notes
 sidebar_label: Code Repository
 tags: [NextGen, "code repository"]
-date: 2024-01-04T10:00
+date: 2024-01-22T10:00
 sidebar_position: 7
 ---
 
@@ -22,6 +22,14 @@ These release notes describe recent changes to Harness Code Repository.
 :::
 
 ## January 2024
+
+### Version xxxx
+
+<!-- ?? Jan 2024 -->
+
+#### New features and enhancements
+
+You can include videos in PR comments.
 
 ### Initial GA release
 
