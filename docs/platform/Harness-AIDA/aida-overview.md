@@ -10,7 +10,8 @@ The Harness Platform leverages Harness AI Development Assistant (AIDA:tm:) to re
 
 | Module | Feature | Description | Availability |
 | ------ | ------- | ----------- | ------------ |
-| Platform | Harness Support | Browse and discover Harness features and documentation. | Generally available |
+| Platform | Harness Support | AIDA can answer questions and suggest relevant documentation to help you browse and discover Harness features and documentation. | Generally available |
+| Platform | Harness Support | AIDA provides content recommendations when you create a support ticket. | Beta |
 | Platform | Dashboard Intelligence | AIDA empowers you to craft customized dashboards with widget-level control through interactive prompts. | Beta |
 | CCM | [Generate governance rules](/docs/category/harness-aida-for-asset-governance) | Generate rules for asset governance accompanied with detailed descriptions to optimize your cloud spend. | Generally available |
 | CD | Troubleshoot CD deployments | Resolve your deployment failures with AIDA's root cause analysis (RCA). | Generally available |
