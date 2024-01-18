@@ -1,5 +1,5 @@
 ---
-title: Create a service onboarding pipeline using IDP-Stage
+title: Create a service onboarding pipeline (using IDP Stage)
 description: Create a basic service onboarding pipeline in Harness IDP
 sidebar_position: 2
 ---
@@ -41,7 +41,9 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 4. In **Stage Name**, enter a name **self-service-flow** for the stage, and then click **Set Up Stage**.
 
-5. Now go to the YAML view and from line number 7 `stages:` replace it with the following YAML (make sure you have used the same stage name as described above.)
+5. The below given YAML will create a service onbaording pipeline for you using IDP stage as [described in this docs](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps). 
+
+6. Now go to the YAML view and from line number 7 `stages:` replace it with the following YAML (make sure you have used the same stage name as described above.)
 
 ```YAML
   stages:
@@ -59,7 +61,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
                   identifier: idpcookiecutter
                   spec:
                     templateType: public
-                    publicTemplateUrl: <+pipeline.variables.public_template_url>
+                    publicTemplateUrl: https://github.com/devesh-harness/test-cookicutter
                     cookieCutterVariables:
                       app_name: <+pipeline.variables.project_name>
               - step:
@@ -193,7 +195,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 The above YAML will create a service onbaording pipeline for you using IDP stage as [described in this docs](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps). 
 
-6. Now Save the pipeline. 
+7. Now Save the pipeline. 
 
 ### Create a software template definition in IDP
 
@@ -220,7 +222,6 @@ spec:
       required:
         - project_name
         - template_type
-        - public_template_url
         - repository_type
         - repositoty_description
         - repository_default_branch
@@ -234,11 +235,7 @@ spec:
         template_type:
           title: Type of the Template
           type: string
-          description: Type of the Template
-        public_template_url:
-          title: Give a Public template URL
-          type: string
-          description: Give a Public Cookiecutter Template  
+          description: Type of the Template 
         repository_type:
           type: string
           title: Repository Type
@@ -280,11 +277,10 @@ spec:
       name: Creating your react app
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://app.harness.io/ng/account/********************/module/ci/orgs/default/projects/projctidp/pipelines/SelfServiceflowreposetup/pipeline-studio/?storeType=INLINE"
+        url: "https://app.harness.io/ng/account/*******************/module/idp-admin/orgs/default/projects/projctidp/pipelines/newdjangoproject_Clone/pipeline-studio?storeType=INLINE"
         inputset:
           project_name: ${{ parameters.project_name }}
           template_type: ${{ parameters.template_type }}
-          public_template_url: ${{ parameters.public_template_url }}
           repository_type: ${{ parameters.repository_type }}
           repositoty_description: ${{ parameters.repository_description }}
           repository_default_branch: ${{ parameters.repository_default_branch }}
