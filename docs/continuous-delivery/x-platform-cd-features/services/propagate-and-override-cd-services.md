@@ -125,7 +125,7 @@ pipeline:
         name: Deploy to QA
         identifier: Deploy_to_QA
         template:
-          templateRef: Deploy_Stage_2
+          templateRef: Deploy_Stage_1
           versionLabel: "1.01"
           templateInputs:
             type: Deployment
@@ -137,7 +137,7 @@ pipeline:
         name: Deploy to Prod
         identifier: Deploy_to_Prod
         template:
-          templateRef: Deploy_Stage_2
+          templateRef: Deploy_Stage_1
           versionLabel: "1.01"
           templateInputs:
             type: Deployment
