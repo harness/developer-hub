@@ -26,19 +26,27 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
         <td align="center">❌ Not supported</td>
     </tr>
     <tr>
+        <td>macOS</td>
+        <td>arm64 (M1)</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
+    <td align="center">❌ Not supported</td>
+    </tr>
+    <tr>
         <td>Windows</td>
         <td>amd64</td>
-        <td align="center">Roadmap</td>
+        <td align="center">Coming soon</td>
         <td align="center">❌ Not supported</td>
-        <td align="center">Roadmap</td>
+        <td align="center">Coming soon</td>
         <td align="center">❌ Not supported</td>
     </tr>
     <tr>
-        <td>MacOS</td>
+        <td>Windows</td>
         <td>arm64</td>
-        <td align="center">Roadmap</td>
-        <td align="center">Roadmap</td>
-        <td align="center">Roadmap</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
+        <td align="center">❌ Not supported</td>
         <td align="center">❌ Not supported</td>
     </tr>
 </table>
