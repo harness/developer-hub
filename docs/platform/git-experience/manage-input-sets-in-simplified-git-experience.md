@@ -120,36 +120,24 @@ For more details, go to [Manage a Harness Pipeline Repo Using Git Experience](ma
 
 
 ### Customizing Input Configuration in Trigger YAML through Override YAML
-Suppose you have several input sets that you wish to employ both manually and via triggers. However, you desire the capability to specify a different value for the trigger, allowing you to override a particular parameter when utilizing triggers.
+Suppose you have several input sets that you wish to use both manually and via triggers. However, you desire the capability to specify a different value for the trigger, allowing you to override a particular parameter when utilizing triggers.
+You can do the following so as to define overriden value in the Trigger Yaml:
 
-For example: if a user has a input set ``inputSet1`` like this:
-```
-inputSet:
-  name: i1
-  tags: {}
-  identifier: inputSet1
-  orgIdentifier: default
-  projectIdentifier: default_project
-  pipeline:
-    identifier: trigger_overrides
-    variables:
-      - name: TAG
-        type: String
-        value: test_trigger_override
-```
-For triggers, users can effortlessly customize the value of the TAG by extending the Trigger YAML. Following the ``inputSetRefs`` section, users can now include an ``overrideInputs`` section, allowing them to specify and update the value of the variable they intend to override.
-Reference Yaml:
+1. You need to define a section``inputYaml`` in trigger YAML as depicted in the sample below. 
+2. Please note that it is important to structure the ``inputYaml`` similar to what is defined in the pipeline and it is important to note that you provide correct ``identifier``. 
+
+Let's have a look at a sample yaml:-
 ```
 trigger:
-  name: test1
-  identifier: test1
+  name: dummy-svc-cd
+  identifier: dummy_svc_cd
   enabled: true
-  description: ""
+  description: sample desc
   tags: {}
   stagesToExecute: []
   orgIdentifier: default
-  projectIdentifier: default_project
-  pipelineIdentifier: trigger_overrides
+  projectIdentifier: sample_svc_cd
+  pipelineIdentifier: sample_svc_cd
   source:
     type: Webhook
     spec:
@@ -157,17 +145,37 @@ trigger:
       spec:
         payloadConditions: []
         headerConditions: []
-  inputSetRefs:
-    - i1
-  overrideInputs: |
+  pipelineBranchName: master
+  inputYaml: |
     pipeline:
-      identifier: trigger_overrides
-      variables:
-        - name: TAG
-          type: String
-          value: test_trigger_override
-```
+      template:
+        templateInputs:
+          stages:
+            - stage:
+                identifier: deployment_setup
+                template:
+                  templateInputs:
+                    type: Deployment
+                    spec:
+                      service:
+                        serviceRef: dummy_svc
+                        serviceInputs:
+                          serviceDefinition:
+                            type: Kubernetes
+                            spec:
+                              artifacts:
+                                primary:
+                                  primaryArtifactRef: harness_hello_world
+                                  sources:
+                                    - identifier: harness_hello_world
+                                      type: Ecr
+                                      spec:
+                                        tag: <+trigger.payload.tag>
+  inputSetRefs:
+    - dummy_svc
 
+```
 :::info note
-When overrideInputs are provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the overrideInputs section will override and take preference over the corresponding values from other configurations.
+1. When ``inputYaml`` is provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the  ``inputYaml`` section will override and take preference over the corresponding values from other configurations.
+2. The order of input values doesn't matter, but as mentioned above the structure of the ``inputYaml`` is very important.
 :::

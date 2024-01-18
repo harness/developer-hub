@@ -1,0 +1,46 @@
+
+rigger:
+  name: dummy-svc-cd
+  identifier: dummy_svc_cd
+  enabled: true
+  description: sample desc
+  tags: {}
+  stagesToExecute: []
+  orgIdentifier: default
+  projectIdentifier: sample_svc_cd
+  pipelineIdentifier: sample_svc_cd
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions: []
+        headerConditions: []
+  pipelineBranchName: master
+  inputYaml: |
+    pipeline:
+      template:
+        templateInputs:
+          stages:
+            - stage:
+                identifier: deployment_setup
+                template:
+                  templateInputs:
+                    type: Deployment
+                    spec:
+                      service:
+                        serviceRef: dummy_svc
+                        serviceInputs:
+                          serviceDefinition:
+                            type: Kubernetes
+                            spec:
+                              artifacts:
+                                primary:
+                                  primaryArtifactRef: harness_hello_world
+                                  sources:
+                                    - identifier: harness_hello_world
+                                      type: Ecr
+                                      spec:
+                                        tag: <+trigger.payload.tag>
+  inputSetRefs:
+    - dummy_svc
