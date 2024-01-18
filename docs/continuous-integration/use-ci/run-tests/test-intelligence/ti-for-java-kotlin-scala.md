@@ -8,38 +8,49 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
-Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Java, Kotlin, or Scala in three steps:
+Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
-1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
+## Enable TI for Java, Kotlin, or Scala
 
-   You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to the [Run Tests step settings](#run-tests-step-settings).
+You can enable TI for Java, Kotlin, or Scala in three steps:
 
-   ```yaml
-                 - step:
-                     type: RunTests
-                     name: Run Tests
-                     identifier: Run_Tests
-                     spec:
-                       connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                       image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
-                       language: Java ## Specify Java, Kotlin, or Scala.
-                       buildTool: Maven ## Specify your build tool.
-                       args: test
-                       packages: io.harness.
-                       runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                       postCommand: mvn package -DskipTests
-                       reports: ## Reports must be in JUnit XML format.
-                         type: JUnit
-                         spec:
-                           paths:
-                             - "target/reports/*.xml"
-   ```
+<!-- no toc -->
+1. [Add the Run Tests step.](#add-the-run-tests-step)
+2. [Trigger test selection.](#trigger-test-selection)
+3. [(Optional) Add test splitting.](#add-test-splitting)
 
-   For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
+### Add the Run Tests step
 
-2. Trigger test selection. **You need to run your pipeline twice to trigger test selection.**
+Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Tests
+                  identifier: Run_Tests
+                  spec:
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## Specify your build tool.
+                    args: test
+                    packages: io.harness.
+                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
+                    postCommand: mvn package -DskipTests
+                    reports: ## Reports must be in JUnit XML format.
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/reports/*.xml"
+```
+
+For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
+
+### Trigger test selection
+
+After adding the **Run Tests** step, trigger test selection. **You need to run your pipeline twice to trigger test selection.**
 
 <details>
 <summary>Trigger test selection with a webhook trigger (Recommended)</summary>
@@ -82,7 +93,17 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 </details>
 
-3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+:::info Why do I have to run the pipeline twice?
+
+The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+
+:::
+
+### Add test splitting
+
+Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
+
+You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 
@@ -226,6 +247,15 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 </details>
 
+<details>
+<summary>Bazel container images</summary>
+
+If your [build tool](#build-tool) is Bazel, and you use a Bazel container image to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
+
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the **Run Tests** step.
+
+</details>
+
 ### Language
 
 Select the source code language to build: **Java**, **Kotlin**, or **Scala**.
@@ -237,9 +267,9 @@ Select the build automation tool: [Bazel](https://bazel.build/), [Maven](https:/
 <details>
 <summary>Bazel container images</summary>
 
-If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+If your build tool is Bazel, and you use a [container image](#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
-Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the **Run Tests** step.
 
 </details>
 
@@ -477,6 +507,13 @@ These settings specify the maximum resources used by the container at runtime. T
 
 You can set the step's timeout limit. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-## Troubleshooting Test Intelligence
+## Troubleshoot Test Intelligence
 
-For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+
+* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
+* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+* [Errors when running TI with Maven.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-errors-with-maven)
+* [Gradle version not compatible with Test Intelligence.](/kb/continuous-integration/continuous-integration-faqs/#gradle-version-not-compatible-with-test-intelligence)

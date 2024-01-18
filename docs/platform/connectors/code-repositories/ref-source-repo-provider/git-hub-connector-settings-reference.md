@@ -201,7 +201,7 @@ Enabling API access requires configuring an API authentication method, either a 
 1. For **API Authentication**, select **Personal Access Token**.
 2. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-   If you are using **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+   With **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
 
    ![](../../static/add-a-git-hub-connector-36.png)
 
@@ -215,7 +215,6 @@ Enabling API access requires configuring an API authentication method, either a 
 ![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 </details>
-
 
 </TabItem>
   <TabItem value="ghapp" label="GitHub App">

@@ -65,7 +65,8 @@ Values in the webhook payload are mapped to the build's codebase variables. The 
 Some codebase variables aren't resolved in these scenarios:
 
 * **Cron triggers:** Builds started from cron triggers don't contain specific Git event information and, therefore, don't provide a payload to resolve codebase variables in the same way as PR and push triggers.
-* **Non-default codebases:** Codebase variables are only resolved for the pipeline's [default codebase](./create-and-configure-a-codebase.md). If a pipeline [clones additional codebases](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) through **Run** or **Git Clone** steps, codebase variables are not produced for these additional codebases.
+* **Non-default codebases:** Codebase variables are only resolved for the pipeline's [default codebase](./create-and-configure-a-codebase.md). If you [disable clone codebase](./create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages) or a stage [clones additional codebases](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) through **Run** or **Git Clone** steps, codebase variables are not produced for these non-default codebases.
+* **Git provider:** Not all Git providers are supported. Some providers don't provide relevant values for all expressions.
 
 ## Reference codebase variables
 

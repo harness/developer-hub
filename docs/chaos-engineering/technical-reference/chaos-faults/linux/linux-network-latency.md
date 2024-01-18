@@ -19,8 +19,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -33,7 +32,8 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
     <td> For example: <code>eth0,ens192</code> </td>
   </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

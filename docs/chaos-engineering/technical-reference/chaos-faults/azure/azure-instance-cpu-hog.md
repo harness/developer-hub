@@ -21,7 +21,7 @@ Azure instance CPU hog:
 - Verifies the autopilot functionality of cloud managed clusters. 
 - Verifies multi-tenant load issues. When the load on one container increases, the fault checks for any downtime in other containers. 
 
-:::note
+###Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
 - Azure Run Command agent should be installed and running in the target Azure instance.
 - Azure disk should be in a healthy state.
@@ -49,15 +49,15 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Fault tunables
-
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -72,10 +72,11 @@ stringData:
             <td> All the instances must be from the same resource group. For more information, go to <a href="#cpu-core"> resource group field in the YAML file. </a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+  <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>

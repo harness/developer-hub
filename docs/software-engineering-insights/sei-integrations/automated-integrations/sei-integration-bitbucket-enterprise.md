@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 5. Configure and **Save** the integration.
    * Provide a **Name** for the integration.
    * The **Description** and **Tags** are optional.
-   * Enter the **URL** for the **Bitbucket Private Instance** in the format `https://bitbucket.org/<teamName_or_username>/<repo-name>/src`
+   * Enter the **URL** for the **Bitbucket Private Instance** in the format `https://bitbucket.org/<TEAMNAME_OR_USERNAME>/<REPOSITORY_NAME>/src`
    * Enter your **Username**
    * Enter the **Bitbucket API Key**. To generate an API key for your Bitbucket instance, go to [Managing API tokens for Bitbucket](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
    * Enter **Tags** and the **List of repositories** you want to ingest. You can leave this option blank if you want to ingest all the repositories from organizations accessible to the token user.
@@ -54,7 +54,7 @@ satellite:
 integrations:
   - id: '<INTEGRATION_ID>'
     application: bitbucket_server
-    url: 'https://bitbucket.org/<TEAM_NAME_or_USERNAME>/<REPO_NAME>/src'
+    url: 'https://bitbucket.org/<TEAMNAME_or_USERNAME>/<REPO_NAME>/src'
     username: <BITBUCKET_USERNAME>
     api_key: <BITBUCKET_API_KEY>
     metadata:
@@ -72,8 +72,6 @@ integrations:
   <TabItem value="public-onprem" label="Public On-Prem">
 
 The steps for configuring the public on-premises integration for Bitbucket is similar to the private on-premises integration, with the exception of using satellite to communicate with the Bitbucket server. Instead, the public on-premises integration directly uses the credentials provided by the user to authenticate with the Bitbucket server.
-
-
 
 </TabItem>
 </Tabs>

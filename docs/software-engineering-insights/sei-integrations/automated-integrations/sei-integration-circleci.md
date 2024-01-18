@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **CircleCI** integration, and select **Install**.
 4. Configure and save the integration.
 
@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Circle CI server.
 
-Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your system. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 Here’s a sample `satellite.yml` file:
 

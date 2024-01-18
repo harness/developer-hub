@@ -42,7 +42,7 @@ Review the following image specifications for information about image components
 * [macOS arm64 (M1) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-13-Readme.md)
 * [Windows Server 2022 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
 
-In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
+**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
 ## Requirements for connectors and secrets
 
@@ -131,12 +131,13 @@ pipeline:
 
 ### Harness Cloud best practices
 
-* Don't hardcode system environment variables, instead use references like `$HOME` or `$USER`.
-* Don't hardcode the number of processors/threads, instead use commands like `nproc` to specify threads/jobs in your build and test commands.
-* Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
-* You can add steps to your pipeline to [specify versions of tools](#specify-versions) and [lock versions, set up environments,or install additional tools](#lock-versions-or-install-additional-tools).
+* Don't hardcode system environment variables. Instead, use references like `$HOME` or `$USER`.
+* Don't hardcode the number of processors/threads. Instead, use commands like `nproc` to specify threads/jobs in your build and test commands.
+* Don't use tools that only run on a specific cloud environment, such as `gcloud`. Harness Cloud sources its build VMs from a variety of cloud providers. It is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses during any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
+* Know the [requirements for connectors and secrets](#requirements-for-connectors-and-secrets).
+* Know that Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
+* Know that you can add steps to your pipeline to [specify versions of tools](#specify-versions) and [lock versions, set up environments, or install additional tools](#lock-versions-or-install-additional-tools).
 * Run `apt-get update` before [installing additional software](#lock-versions-or-install-additional-tools) that might not be in the image's packages list.
-* Make sure you meet the [requirements for connectors and secrets](#requirements-for-connectors-and-secrets).
 
 ### Specify versions
 
@@ -236,45 +237,14 @@ Steps running in containers can't communicate with [Background steps](../manage-
 
 </details>
 
-## Troubleshooting Harness Cloud build infrastructure
+## Troubleshoot Harness Cloud build infrastructure
 
-### Can't use STO steps with Harness Cloud macOS runners
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness Cloud build infrastructure, including:
 
-Currently, [STO scan steps](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
-
-### Don't use tools that only run on a specific cloud environment (such as gsutil)
-
-With Harness Cloud build infrastructure, builds run on Ubuntu VMs that are hosted on variety of cloud providers. It is not possible to predict where the VM is running; therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
-
-### Connector delegate error with Harness Cloud build infrastructure
-
-Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
-
-1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
-2. Select the connector that you want to edit.
-3. Select **Edit Details**.
-4. Select **Continue** until you reach **Select Connectivity Mode**.
-5. Select **Change** and select **Connect through Harness Platform**.
-6. Select **Save and Continue** and select **Finish**.
-
-### Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
-
-Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
-
-```
-While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connector and updating the connectivity to go via the Harness platform.
-```
-
-To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
-
-To change the connector's connectivity settings:
-
-1. Go to **Account Settings** and select **Account Resources**.
-2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
-3. Select **Edit Details**.
-4. Select **Continue** until you reach **Select Connectivity Mode**.
-5. Select **Change** and select **Connect through Harness Platform**.
-6. Select **Save and Continue** and select **Finish**.
-
-
-<!-- whitelist removed - DOC-2875 -->
+* [Account verification error with Harness Cloud on Free plan.](/kb/continuous-integration/continuous-integration-faqs/#account-verification-error-with-harness-cloud-on-free-plan)
+* [Can't use STO steps with Harness Cloud macOS runners.](/kb/continuous-integration/continuous-integration-faqs/#cant-use-sto-steps-with-harness-cloud-macos-runners)
+* [Is Harness Cloud compatible with tools like gsutil or gcloud?](/kb/continuous-integration/continuous-integration-faqs/#does-gsutil-work-with-harness-cloud)
+* [Connector or delegate errors when using Harness Cloud.](/kb/continuous-integration/continuous-integration-faqs/#connector-errors-with-harness-cloud-build-infrastructure)
+* [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs/#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
+* [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
+* [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)

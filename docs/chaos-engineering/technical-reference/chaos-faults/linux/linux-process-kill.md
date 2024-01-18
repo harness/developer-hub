@@ -21,8 +21,7 @@ Linux process kill:
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -45,7 +44,8 @@ Linux process kill:
     <td> For example, <code>nginx,redis</code> </td>
   </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -58,7 +58,7 @@ Linux process kill:
     <td> Default: <code>false</code>. </td>
   </tr>
   <tr>
-    <td> duration </td>
+    <td> Duration </td>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
@@ -90,7 +90,7 @@ spec:
     duration: 30s
 ```
 
-### Process Names
+### Process names
 
 The `processNames` input variable targets process names to kill.
 
@@ -111,7 +111,7 @@ spec:
     duration: 30s
 ```
 
-### Process Command
+### Process command
 
 The `processCommand` input variable targets the processes, based on the command used to start processes, if available. A substring match is made on the given command to determine the target processes.
 
@@ -132,7 +132,7 @@ spec:
     duration: 30s
 ```
 
-### Force Kill
+### Force kill
 
 The `forceKill` input variable specifies whether to force kill the target processes using the `SIGKILL` signal or gracefully kill the target processes with the `SIGTERM` signal.
 

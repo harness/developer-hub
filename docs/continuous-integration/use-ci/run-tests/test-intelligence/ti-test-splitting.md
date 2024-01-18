@@ -30,13 +30,24 @@ Note that while parallelism for TI can improve the total time it takes to run al
 To enable test splitting for TI, you must:
 
 <!-- no toc -->
-1. [Define a parallelism strategy.](#define-the-parallelism-strategy)
+1. [Define a parallelism strategy.](#define-a-parallelism-strategy)
 2. [Enable test splitting on the Run Tests step.](#enable-test-splitting-on-the-run-tests-step)
 3. [Use an expression to differentiate report names for each run.](#differentiate-report-names)
 
 ### Define a parallelism strategy
 
-Go to the pipeline where you want to enable parallelism for TI, and define a parallelism strategy on either the stage where you have the **Run Tests** step or on the **Run Tests** step itself. For example:
+Go to the pipeline where you want to enable parallelism for TI, and define a parallelism strategy on either:
+
+* The stage where you have the **Run Tests** step. (Recommended)
+* On the **Run Tests** step itself.
+
+:::warning
+
+If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
+
+:::
+
+For example:
 
 ```yaml
         strategy:
@@ -47,11 +58,6 @@ If you are using the Visual editor, **Parallelism** is found under **Looping Str
 
 For more information about parallelism strategies and optimizing parallelism, go to [Split tests - Define a parallelism strategy](../speed-up-ci-test-pipelines-using-parallelism.md#define-a-parallelism-strategy) and [Split tests - Optimize parallelism](../speed-up-ci-test-pipelines-using-parallelism.md#optimize-parallelism).
 
-:::warning
-
-If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
-
-:::
 
 ### Enable Test Splitting on the Run Tests step
 

@@ -13,12 +13,10 @@ You can measure sprint hygiene scores with the **Issue Hygiene Report** and the 
 
 The **Issue Hygiene Report** shows your overall hygiene score and individual scores for each [hygiene category](#issue-hygiene-categories). Scores represent _hygiene misses_ in the designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user.
 
-<figure>
-
-![](./static/issue-hygiene-report-widget.png)
-
-<figcaption>The Issue Hygiene Report. The hygiene score can help you understand how well your tickets are organized in your issue management system.</figcaption>
-</figure>
+<img
+  src={require('./static/issue-hygiene.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 Each hygiene miss is tallied against a score of 100. A score of 100 indicates that no tickets were submitted with missing hygiene points.
 

@@ -15,6 +15,18 @@ This guide explains what you need to know to get started using Harness SEI
 
 If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide.md) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts.md) before onboarding to SEI.
 
+## Single Sign-On with SEI
+
+Harness supports Single Sign-On (SSO) with SAML, LDAP (including Active Directory and OpenLDAP) and OAuth integrating with your SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. 
+
+Review the following resources to learn about the SSO configuration options on the Harness Platform.
+
+* [Authentication overview](../../platform/authentication/authentication-overview.md)
+* [Single Sign-On (SSO) with SAML](../../platform/authentication/single-sign-on-saml.md)
+* [Single Sign-On (SSO) with LDAP](../../platform/authentication/single-sign-on-sso-with-ldap.md)
+* [Single Sign-On (SSO) with OAuth](../../platform/authentication/single-sign-on-sso-with-oauth.md)
+* [Two-factor authentication](../../platform/authentication/two-factor-authentication.md)
+
 ## Learn about Harness SEI concepts and features
 
 Review the following resources to learn about the features, components, and key concepts of Harness SEI.

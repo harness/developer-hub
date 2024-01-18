@@ -2,7 +2,6 @@
 id: pod-cpu-hog
 title: Pod CPU hog
 ---
-## Introduction
 
 Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod. This fault applies stress on the target pods by smimulating lack of CPU for processes running on the Kubernetes application. This degrades the performance of the application. 
 
@@ -17,15 +16,14 @@ CPU hog:
 - Verifies the autopilot functionality of cloud managed clusters. 
 - Verifies multi-tenant load issues, that is, when the load increases on one container, this does not cause downtime in other containers. 
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
