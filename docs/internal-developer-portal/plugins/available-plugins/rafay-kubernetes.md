@@ -121,4 +121,4 @@ This plugin exports a UI tab that are displayed as new cards under overview tab 
 
 ## Support
 
-The plugin is owned by Rafay Systems and managed in the public[npm package](https://www.npmjs.com/package/@rafaysystems/backstage-plugin-rafay/v/0.1.9?activeTab=code). Reach out to [Rafay Systems](https://rafay.co/) to report bugs or suggest new features for the plugin.
+The plugin is owned by Rafay Systems and managed in the public [npm package](https://www.npmjs.com/package/@rafaysystems/backstage-plugin-rafay/v/0.1.9?activeTab=code). Reach out to [Rafay Systems](https://rafay.co/) to report bugs or suggest new features for the plugin.
