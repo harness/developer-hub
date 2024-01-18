@@ -128,7 +128,7 @@ trigger:
 ```
 ![](./static/input_set_with_override.png)
 
-We observe that the artifact tag and ``var2`` are coming from the override inputs. ``var1`` is still coming from the input set, since we didn't override it in the trigger's yaml.
+We observe that the artifact tag and ``var2`` are coming from the override inputs. ``var1`` is still coming from the input set, since we didn't override it in the trigger's YAML.
 
 
 :::info note
