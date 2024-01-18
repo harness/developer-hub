@@ -8,7 +8,17 @@ This tutorial guides you through registering for the Harness Chaos developer exa
 ## Prerequisites
 Before you begin, [execute the Podtato head application in sandbox](./run-experiments-in-sandbox).
 
-### Developer certification exam
+## Steps involved in obtaining developer certification
+
+The diagram represents the steps involved in obtaining the Harness developer certification. 
+
+![diagram](./static/dev-cert/exam-flowchart.png)
+
+:::tip
+In the preceding diagram, steps 4 (navigate to app.harness.io) and 1 (register for exam) can be interchanged. This means you can attempt the interactive learning first and then move to the questions.
+:::
+
+## Developer certification exam
 
 1. Once you are done with executing the Podtato head application, you can attempt the Harness Chaos Engineering Developer certification exam. Navigate to [Harness developer hub](https://developer.harness.io/certifications/chaos-engineering?lvl=developer) or click **Go to Harness University**.
 

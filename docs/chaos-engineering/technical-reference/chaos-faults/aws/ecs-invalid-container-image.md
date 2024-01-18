@@ -17,7 +17,7 @@ ECS invalid container image:
   - Testing the resilience of your system during image updates, including verifying if the updated image is pulled successfully and if the container starts with the new image.
   - Validating the performance and availability of your application after the container image updates, that includes checking if the updated image performs as expected and if there are issues with the new image.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -76,8 +76,8 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
 - Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
           <th> Tunable </th>
           <th> Description </th>
@@ -99,8 +99,9 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

@@ -19,7 +19,7 @@ ECS container HTTP latency:
   - Evaluating the impact of HTTP latency on the performance and availability of your application.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is currently running, restart it to get the metadata directory.
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
@@ -103,8 +103,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to [AWS named rrofile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -126,8 +126,10 @@ Below is an example AWS policy to execute the fault.
             <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

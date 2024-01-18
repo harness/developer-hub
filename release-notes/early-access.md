@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-12-12T10:00
+date: 2024-01-18T10:00
 sidebar_position: 2
 ---
 
@@ -21,6 +21,26 @@ Early access features are behind feature flags. You can contact [Harness Support
 ## Platform early access features
 
 The following early access (beta) features are available for the Harness Platform.
+
+### Grant public access to Harness pipeline executions
+
+* **Release date:** January 2024
+* **Release version:** 1.20.9
+* **Issue number:** PL-43499
+* **Feature flag:** `PL_ALLOW_TO_SET_PUBLIC_ACCESS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
+
+### AIDA:tm: recommends docs when creating support tickets
+
+* **Release date:** December 2023
+* **Release version:** 81820
+* **Issue number:** CDS-85267
+* **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+AIDA replaces Coveo to provide content recommendations when you enter a subject in the **Submit a ticket** form.
 
 ### SCIM user provisioning enhancements
 
@@ -259,9 +279,9 @@ These features were released as early access (beta) features, and they have sinc
 
 ### Platform features promoted to GA
 
-### AIDA support automatically available
+#### AIDA support automatically available
 
-* **GA date:** January 2024
+* **GA date:** Late 2023
 * **Early access release date:** October 2023
 * **Early access release version:** 81008
 * **Issue number:** PL-41700
@@ -269,19 +289,9 @@ These features were released as early access (beta) features, and they have sinc
 
 AIDA's support chat feature is now always available without requiring you to enable the feature in **Settings**.
 
-### AIDA:tm: replaces Coveo for support case deflection
-
-* **GA date:** January 2024
-* **Early access release date:** December 2023
-* **Early access release version:** 81820
-* **Issue number:** CDS-85267
-* **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
-
-AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form.
-
 #### Harness AI Development Assistant (AIDA:tm:)
 
-* **GA date:** January 2024
+* **GA date:** Late 2023
 * **Early access release date:** June 2023
 
 The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.

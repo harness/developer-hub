@@ -16,7 +16,7 @@ VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS se
 - It simulates malfunctioning of DNS server, that is, loss of access to specific domains from a given microservice, loss of access to cloud provider dependencies, and loss of access to specific third party services.
 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -36,14 +36,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ``` 
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -63,10 +61,12 @@ stringData:
         <td> Defaults to 54. For more information, go to <a href="#run-dns-chaos-with-port"> DNS chaos with port.</a> </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -106,10 +106,11 @@ stringData:
         <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
       </tr>
     </table>
-    <h3>Secret fields</h3>
-     <table>
+
+### Secret tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

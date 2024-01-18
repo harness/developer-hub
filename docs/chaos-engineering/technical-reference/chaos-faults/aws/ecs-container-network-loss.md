@@ -23,7 +23,7 @@ The task may stall or get corrupted while waiting endlessly for a packet. The fa
 - It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
 - This fault helps improve the resilience of the services over time.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The ECS container instance should be in a healthy state.
 - Adequate AWS access to stop and start an EC2 instance.
@@ -116,8 +116,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-    <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
         <th> Variables </th>
         <th> Description </th>
@@ -134,8 +134,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Variables </th>
         <th> Description </th>

@@ -2,7 +2,6 @@
 id: kubelet-service-kill
 title: Kubelet service kill
 ---
-## Introduction
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** state).
 - Kubelet service is stopped (or killed) on a node to make it unschedulable for a specific duration. 
@@ -14,17 +13,15 @@ Kubelet service kill makes the application unreachable on the account of the nod
 ## Use cases
 Kubelet service kill fault determines the resilience of an application when a node becomes unschedulable, that is, **NotReady** state.
 
-:::info note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it or subject to eviction. This is achieved using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
-:::
 
-## Fault tunables
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -41,8 +38,10 @@ Kubelet service kill fault determines the resilience of an application when a no
         <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

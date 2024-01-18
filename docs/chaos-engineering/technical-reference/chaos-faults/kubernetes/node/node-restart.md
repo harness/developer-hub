@@ -2,8 +2,6 @@
 id: node-restart
 title: Node restart
 ---
-## Introduction
-
 Node restart disrupts the state of the node by restarting it.
 
 ![Node Restart](./static/images/node-restart.png)
@@ -15,8 +13,8 @@ Node restart disrupts the state of the node by restarting it.
 - It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies) or not.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. 
   - Below is a sample secret file:
 
@@ -46,12 +44,10 @@ Node restart disrupts the state of the node by restarting it.
 
 - The target nodes should be in the ready state before and after injecting chaos.
 
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -68,8 +64,11 @@ Node restart disrupts the state of the node by restarting it.
         <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">tagret node with labels.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

@@ -19,8 +19,7 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Optional tunables</h3>
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

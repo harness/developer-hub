@@ -2,7 +2,6 @@
 id: pod-http-latency
 title: Pod HTTP latency
 ---
-## Introduction
 
 Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting the proxy server and redirecting the traffic through it. This fault:
 - Injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
@@ -17,13 +16,12 @@ Pod HTTP latency:
 - Simulates a slow response on specific third-party or dependent components or services. 
 
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
 
-## Fault tunables
+### Mandatory tunables
 
   <h3>Mandatory tunables</h3>
     <table>
@@ -48,8 +46,9 @@ Pod HTTP latency:
         <td> Default: 2000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-latency#latency">latency </a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

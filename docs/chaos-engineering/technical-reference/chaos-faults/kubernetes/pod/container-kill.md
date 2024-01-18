@@ -2,7 +2,6 @@
 id: container-kill
 title: Container kill
 ---
-## Introduction
 
 Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific or random replicas of an application resource.
 
@@ -14,15 +13,13 @@ Container kill:
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow when certain replicas are not available.
 - Tests the recovery of pods that possess sidecar containers.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description  </th>

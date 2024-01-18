@@ -11,7 +11,7 @@ ECS task scale:
 - Affects the availability of a task in a cluster. 
 - Determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - [Sufficient AWS permissions to scale the ECS tasks](#permissions-required).
 - The target ECS tasks should be in a healthy state.
@@ -61,10 +61,10 @@ Below is an example AWS permission to help execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
         </tr>
@@ -89,10 +89,11 @@ Below is an example AWS permission to help execute the fault.
         <td> Default: 5. For more information, go to <a href="#ecs-task-replicas"> task replicas.</a></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

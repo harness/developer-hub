@@ -15,8 +15,7 @@ CF app stop:
 - Checks resilience against abrupt stopping of the application components/microservices.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
-## Fault tunables
-<h3>Mandatory fields</h3>
+### Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -45,7 +44,7 @@ CF app stop:
   </tr>
 </table>
 
-<h3>Optional fields</h3>
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>
