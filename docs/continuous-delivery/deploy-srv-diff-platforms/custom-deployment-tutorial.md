@@ -586,26 +586,30 @@ You can expand each instances and copy the expression for the instance metadata 
 
 For example, the expression for the instancename of the 4th instance fetched here is (the stage name is `DT_Tutorial`):
 
-```
+```Sh
 <+pipeline.stages.DT_Tutorial.spec.execution.steps.fetchInstances.deploymentInfoOutcome.serverInstanceInfoList[3].hostName>
 ```
 
 To reference the entire instance list, you can use this expression:
 
-```
+```Sh
 <+pipeline.stages.DT_Tutorial.spec.execution.steps.fetchInstances.deploymentInfoOutcome.serverInstanceInfoList>
 ```
 
-## Deployment Template Samples
+## Deployment Template Sample Library
 
 
 ### Salesforce Deployment Template Support
 
+**Author**: Harness.io 
+**Version**: 1.0 
+**Description**: This deployment template will help users deploy salesforce application. 
+
 #### Pre-Requisite
 
-You will need to ensure the salesforce binary is installed on your delegate. You can install the binary via the INIT_SCRIPT
+You will need to ensure the salesforce binary is installed on your delegate. You can install the binary via the INIT_SCRIPT.
 
-```
+```YAML
 
 initScript: "
             wget https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz
@@ -987,6 +991,10 @@ pipeline:
 
 ### Google Cloud Run Deployment Template 
 
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy Google Cloud Run-based services. 
+
 #### Pre-Requisites
 
 Users need to install the gcloud cli on the delegate to deploy this template.
@@ -1314,6 +1322,10 @@ infrastructureDefinition:
 
 ### Google App Engine - Sample
 
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy Google Apple Engine services. 
+
 #### Deployment Template
 
 ```YAML
@@ -1401,7 +1413,11 @@ template:
 ```
 
 
-### Elasticbeanstalk - Sample
+### Elastic Beanstalk - Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy Elastic Beanstalk services. 
 
 #### Deployment Template 
 
@@ -1483,7 +1499,8 @@ template:
 
 ```
 
-#### Execution Step - Elasticbeanstalk
+#### Execution Step - Elastic Beanstalk
+
 
 ##### Prepare Step
 
