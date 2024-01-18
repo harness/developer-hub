@@ -1,5 +1,7 @@
 Harness STO can automatically ingest, aggregate, normalize, and deduplicate data from the following scanners and formats. 
 
+You can ingest [SARIF data](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) from any scanner that supports this format. Harness STO also supports an [STO Custom JSON format](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) for unsupported scanners that can't publish to SARIF.
+
 - **Anchore Enterprise** — JSON
 - **Aqua Security** — JSON
 - **Aqua Trivy** — JSON

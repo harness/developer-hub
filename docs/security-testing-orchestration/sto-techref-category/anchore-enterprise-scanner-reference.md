@@ -30,9 +30,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoDinDRequirements />
 
 :::note
-For Orchestrated and Extraction scans, you might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. 
-
-In the pipeline example below, the Docker-in-Docker step has resource limits of 2048Mi and 1000m. 
+For Orchestrated and Extraction scans, you might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines).
 :::
 
 
@@ -116,13 +114,6 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 <StoSettingTargetVariant  />
 
-#### Workspace
-
-
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
-
-<StoSettingTargetWorkspace  />
 
 ### Container Image
 
@@ -382,7 +373,7 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
    3. Launches an orchestration scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
    4. Deduplicates and normalizes the scan data and ingests it into STO.
 
-Note that in this example, the resource limits for the Docker-in-Docker step are increased to ensure that the step has enough memory to store the scanned image. For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines#increase-memorycpu-for-the-docker-in-docker-background-step)
+Note that in this example, the resource limits for the Docker-in-Docker step are increased to ensure that [the step has enough memory to store the scanned image](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines#increase-memorycpu-for-the-docker-in-docker-background-step).
 
 <details>
 <summary>Anchore Enterprise orchestration pipeline example</summary>
