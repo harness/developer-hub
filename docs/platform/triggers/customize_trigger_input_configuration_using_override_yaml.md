@@ -3,7 +3,6 @@ title: Customize trigger input configuration using override YAML
 description: Customaize trigger input using override YAML
 sidebar_position: 9
 ---
-### Customize trigger input configuration using override YAML
 
 
 Suppose you have a CD pipeline with three different stages, each intended for a different environment. You wish to deploy one stage manually and the others via triggers. In an ideal scenario, you would create different input sets for each environment. However, managing numerous input sets with only one or two variable changes can be tedious and prone to mistakes.
