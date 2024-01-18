@@ -31,8 +31,14 @@ The Account Audit Trail includes the following IDP events:
 | Plugin                        | Enable, Disable        |
 | Software Components           | Create, Delete         |
 
+:::info
+
+The audit trails on Plugins is dependant on other srvices latest version, which are yet to be released, so it might take a week or two to make this available for our users. 
+
+:::
+
 In addition to above any changes to the catalog entities due to system refresh calls are being captured and tracked as audit events.
-//TODO: Add Image when available
+
 
 Each event in the Account Audit Trail list provides the following details:
 
@@ -40,11 +46,10 @@ Each event in the Account Audit Trail list provides the following details:
 2. **Resource name and Type:** Identifies the resource type and its name where the event occurred. For example, monitored service, agent, or user.
 3. **Organization and Project:** Name of the organization and the project in which the event occurred.
 
-//TODO: Add Image Once Available
+![](./static/audit-trail.png)
 
 When you click on a resource name, you will be directed to the corresponding event page. For instance, clicking on an Check resource will take you to the Checks listing page, while clicking on a Catalog Connector resource will redirect you to the Connectors page.
 
-//TODO: Add Image Once Available
 
 To see more information about a particular event, select the messaging icon next to it. The Event Summary page appears, displaying the following information:
 
@@ -55,4 +60,4 @@ To see more information about a particular event, select the messaging icon next
 
 You can also see a snapshot of changes in YAML format by expanding YAML Difference.
 
-//TODO: Add Image Once Available
+![](./static/yaml-diff-audit-trail.png)
