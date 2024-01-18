@@ -52,6 +52,12 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 
+### Supported CI build infrastructures
+
+import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
+
+<StoInfraSupport />
+
 ### Supported ingestion formats
 
 
