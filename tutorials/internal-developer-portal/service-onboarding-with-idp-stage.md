@@ -193,7 +193,6 @@ You can also create a new project for the service onboarding pipelines. Eventual
       value: <+input>
 ```
 
-The above YAML will create a service onbaording pipeline for you using IDP stage as [described in this docs](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps). 
 
 7. Now Save the pipeline. 
 
