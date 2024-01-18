@@ -37,6 +37,12 @@ For detailed information on how delegates are selected during execution, go to [
 
 You can select a delegate based on its tags in the **Delegate Selector** settings of Harness entities like pipelines and connectors.
 
+#### How does Harness handle multiple tags?
+
+When you use multiple delegate tags in the **Delegate Selector** settings of a step, Harness selects only the delegate(s) that have all the selectors.
+
+This means that if there are multiple tags, the delegate must match all of them to be selected. For instance, if you have a delegate with three tags and you only provide two of them in the **Delegate Selector** settings, the delegate is still eligible for selection as long as the two tags are present for that delegate.
+
 ### Delegate selector priority
 
 You can use delegate selectors at multiple places, such as the pipeline, stage, and step levels.
