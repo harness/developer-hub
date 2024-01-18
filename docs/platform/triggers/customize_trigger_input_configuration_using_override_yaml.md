@@ -77,7 +77,7 @@ We observe that the artifact tag, as well as var1 and var2 are coming from the i
 
 ![](./static/input_set_without_override.png)
 
-If you want to change the tag to ``v0.5`` during the pipeline trigger execution, you can define an inputYaml in the trigger YAML. The inputYaml is similar to the Input set YAML; you only need to modify the value of the variable you want to override.
+If you want to change the tag to ``v0.5`` during the pipeline trigger execution, you can define an ``inputYaml`` in the trigger YAML. The inputYaml is similar to the Input set YAML; you only need to modify the value of the variable you want to override.
 
 ```yaml
 trigger:
