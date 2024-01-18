@@ -55,12 +55,6 @@ This stage now uses the exact same Service as the stage you selected.
 
 ## Propagating services through multiple stages
 
-:::info
-
-This feature is currently behind the feature flag, `CDS_PROPAGATE_STAGE_TEMPLATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 When defining a pipeline, you can pass the service, its variables, artifact, and manifest inputs through multiple stages. You can propagate a service from a previous templated or non-templated stage. You can also propagate a service from one templated stage to another stage referring to a different template.
 
 ### Limitations
@@ -131,7 +125,7 @@ pipeline:
         name: Deploy to QA
         identifier: Deploy_to_QA
         template:
-          templateRef: Deploy_Stage_1
+          templateRef: Deploy_Stage_2
           versionLabel: "1.01"
           templateInputs:
             type: Deployment
@@ -143,7 +137,7 @@ pipeline:
         name: Deploy to Prod
         identifier: Deploy_to_Prod
         template:
-          templateRef: Deploy_Stage_1
+          templateRef: Deploy_Stage_2
           versionLabel: "1.01"
           templateInputs:
             type: Deployment
