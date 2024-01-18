@@ -42,16 +42,6 @@ You can now grant public access to Harness pipelines. New settings on the Authen
 
 AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form.
 
-### AIDA support automatically available
-
-* **Release date:** October 2023
-* **Release version:** 81008
-* **Issue number:** PL-41700
-* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-AIDA is now always available without requiring you to enable the feature in **Settings**.
-
 ### Harness AI Development Assistant (AIDA:tm:)
 
 * **Release date:** June 2023
@@ -333,6 +323,15 @@ No early access (beta) features are available for the Harness Software Supply Ch
 These features were released as early access (beta) features, and they have since been promoted to GA. This list is not exhaustive.
 
 ### Platform features promoted to GA
+
+### AIDA support automatically available
+
+* **GA date:** Late 2023
+* **Early access release date:** October 2023
+* **Release version:** 81008
+* **Issue number:** PL-41700
+
+AIDA is now always available without requiring you to enable the feature in **Settings**.
 
 #### Google Cloud Secret Manager
 
