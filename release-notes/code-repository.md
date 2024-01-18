@@ -6,10 +6,8 @@ date: 2024-01-04T10:00
 sidebar_position: 7
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/code-repository/rss.xml" />
 

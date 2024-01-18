@@ -52,7 +52,6 @@ Perform the following steps to view Orphaned EBS Volumes and Snapshots Dashboard
   
   * **Custom**: Custom allows you to select the date range.
   
-   ```mdx-code-block
 <img src={custom_dashboard} alt="EBS screenshot." height="500" width="600" />
      
        

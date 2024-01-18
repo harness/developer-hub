@@ -119,6 +119,7 @@ async function docsPluginEnhanced(context, options) {
       ).then((items) =>
         items.forEach((item) => {
           feed.addItem(item);
+
           const feedModule = new Feed({
             id: item.id,
             title: item.title,
@@ -136,18 +137,23 @@ async function docsPluginEnhanced(context, options) {
             0,
             rssPath.lastIndexOf("/") + 1
           );
-
-          try {
+          // console.log("item", item.id);
+          if (item.id == "index") {
+            fs.writeFileSync(
+              path.join(outDir, rssBasePath, "rss.xml"),
+              feedModule.rss2()
+            );
+            return;
+          } else {
             fs.writeFileSync(
               path.join(outDir, rssBasePath, item.id, "rss.xml"),
               feedModule.rss2()
             );
-          } catch (err) {
-            console.error(err);
           }
         })
       );
-
+      // console.log(path.join(outDir, rssPath));
+      // console.log({ feed: feed.rss2() });
       try {
         fs.writeFileSync(path.join(outDir, rssPath), feed.rss2());
       } catch (err) {
