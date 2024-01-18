@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-12-12T10:00
+date: 2024-01-18T10:00
 sidebar_position: 2
 ---
 
@@ -22,15 +22,15 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
-### AIDA support automatically available
+### Grant public access to Harness pipeline executions
 
-* **Release date:** October 2023
-* **Release version:** 81008
-* **Issue number:** PL-41700
-* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+* **Release date:** January 2024
+* **Release version:** 1.20.9
+* **Issue number:** PL-43499
+* **Feature flag:** `PL_ALLOW_TO_SET_PUBLIC_ACCESS`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-AIDA is now always available without requiring you to enable the feature in **Settings**.
+You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
 
 ### AIDA:tm: replaces Coveo for support case deflection
 
@@ -40,7 +40,7 @@ AIDA is now always available without requiring you to enable the feature in **Se
 * **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form. 
+AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form.
 
 ### Harness AI Development Assistant (AIDA:tm:)
 
@@ -323,6 +323,15 @@ No early access (beta) features are available for the Harness Software Supply Ch
 These features were released as early access (beta) features, and they have since been promoted to GA. This list is not exhaustive.
 
 ### Platform features promoted to GA
+
+### AIDA support automatically available
+
+* **GA date:** Late 2023
+* **Early access release date:** October 2023
+* **Release version:** 81008
+* **Issue number:** PL-41700
+
+AIDA is now always available without requiring you to enable the feature in **Settings**.
 
 #### Google Cloud Secret Manager
 
