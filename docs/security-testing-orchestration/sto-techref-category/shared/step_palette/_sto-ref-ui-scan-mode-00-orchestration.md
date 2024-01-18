@@ -1,1 +1,1 @@
-* **Orchestration** A fully-orchestrated scan. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.
+* **Orchestration** Configure the step to [run a scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) and then ingest, normalize, and deduplicate the results.
