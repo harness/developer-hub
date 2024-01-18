@@ -5,7 +5,7 @@ sidebar_position: 40
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-An existing chaos experiment may be edited to update the experiment's metadata, faults, schedule, etc. This section describes two actions:
+You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes two actions:
 1. Editing an experiment 
 2. Bulk updating cron schedules
 
@@ -27,7 +27,7 @@ You can either update the changes to the same experiment and save it or create a
 
 ## Bulk update cron schedules
 
-You can update multiple cron scheduled chaos experiments in one go. One important aspect is that you can **bulk update** multiple cron schedules to a **single value**, that is, the cron schedules you select to update will all be updated to a single common value. You **can't** map different cron schedules to their respective values while performing a bulk-update.
+You can update multiple cron-scheduled chaos experiments in one go. One important aspect is that you can **bulk update** multiple cron schedules to a **single value**, that is, the cron schedules you select to update will all update to a single common value. You **can't** map different cron schedules to their respective values while performing a bulk update.
 You can: 
 1. Bulk disable active schedules
 2. Bulk enable inactive cron schedules
