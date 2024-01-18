@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-12-12T10:00
+date: 2024-01-18T10:00
 sidebar_position: 2
 ---
 
@@ -24,13 +24,13 @@ The following early access (beta) features are available for the Harness Platfor
 
 ### AIDA support automatically available
 
-* **Release date:** October 2023
-* **Release version:** 81008
-* **Issue number:** PL-41700
-* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+* **Release date:** January 2024
+* **Release version:** 1.20.9
+* **Issue number:** PL-43499
+* **Feature flag:** `PL_ALLOW_TO_SET_PUBLIC_ACCESS`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-AIDA is now always available without requiring you to enable the feature in **Settings**.
+You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
 
 ### AIDA:tm: replaces Coveo for support case deflection
 
@@ -40,7 +40,17 @@ AIDA is now always available without requiring you to enable the feature in **Se
 * **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form. 
+AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form.
+
+### AIDA support automatically available
+
+* **Release date:** October 2023
+* **Release version:** 81008
+* **Issue number:** PL-41700
+* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+AIDA is now always available without requiring you to enable the feature in **Settings**.
 
 ### Harness AI Development Assistant (AIDA:tm:)
 
