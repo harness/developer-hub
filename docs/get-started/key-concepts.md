@@ -34,11 +34,11 @@ For more information, go to [Projects and Organizations](../platform/organizatio
 
 A Harness account is the top-level entity, containing organizations and projects. Resources can be added at all levels, and are available to all lower levels. Teams can manage resources independently with projects, without relying on account admins.
 
+![](./static/learn-harness-key-concepts-04.png)
+
 ## Product modules
 
 Your project can add Harness products as modules, such as Continuous Integration or Continuous Delivery.
-
-![](./static/learn-harness-key-concepts-08.png)
 
 ## Pipelines
 
