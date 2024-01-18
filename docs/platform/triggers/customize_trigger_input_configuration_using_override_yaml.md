@@ -12,6 +12,29 @@ To address this, overriding input YAML provides the flexibility to change a spec
 :::note
 You can only customize parameters using YAML in this setup.
 :::
+Let's go through the feature with an example:-
+Suppose you have a trigger:
+```
+ trigger:
+  name: triggerWithInputSet
+  identifier: triggerWithInputSet
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute: []
+  orgIdentifier: default
+  projectIdentifier: test
+  pipelineIdentifier: testTriggerOverrideInputs
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions: []
+        headerConditions: []
+  inputSetRefs:
+    - myInputSet
+```
 
 Suppose you have a input set:
 ```
@@ -106,5 +129,5 @@ We observe that the artifact tag and ``var2`` are coming from the override input
 
 :::info note
 1. When ``inputYaml`` is provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the  ``inputYaml`` section will override and take preference over the corresponding values from other configurations.
-2. Please note that it is important to structure the ``inputYaml`` similar to what is defined in the pipeline and it is important to note that you provide correct pipeline, stage/step ``identifier``. 
+2. It's crucial to structure the ``inputYaml`` similarly to what is defined in the Input Set. Additionally, ensure that you provide the correct pipeline, stage, or step ``identifier``.
 :::
