@@ -14,7 +14,7 @@ ECS instance stop induces stress on an AWS ECS cluster. It derives the instance 
 EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The ECS container instance should be in a healthy state.
 - Adequate AWS access to stop and start an EC2 instance.
@@ -81,10 +81,10 @@ Below is an example AWS policy to execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
         </tr>
@@ -99,10 +99,11 @@ Below is an example AWS policy to execute the fault.
         <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

@@ -15,7 +15,7 @@ VMware Windows CPU hog applies stress on the CPU resources on Windows OS based V
 - It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
 - It verifies the autopilot functionality of cloud managed clusters.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
@@ -36,14 +36,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -63,10 +61,12 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

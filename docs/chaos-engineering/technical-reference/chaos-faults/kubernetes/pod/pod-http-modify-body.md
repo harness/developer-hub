@@ -2,7 +2,6 @@
 id: pod-http-modify-body
 title: Pod HTTP modify body
 ---
-## Introduction
 
 Pod HTTP modify body is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable. This is achieved by starting the proxy server and redirecting the traffic through the proxy server. This fault can be used to overwrite the HTTP response body by providing the new body value as `RESPONSE_BODY`.
 
@@ -12,15 +11,13 @@ Pod HTTP modify body is a Kubernetes pod-level chaos fault that injects chaos on
 
 Pod HTTP modify body tests the application's resilience to erroneous or incorrect HTTP response body.
 
-:::info note
-- Kubernetes> 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.17
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -42,8 +39,9 @@ Pod HTTP modify body tests the application's resilience to erroneous or incorrec
         <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#response-body">response body </a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

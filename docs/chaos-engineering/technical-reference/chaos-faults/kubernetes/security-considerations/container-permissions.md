@@ -6,7 +6,7 @@ sidebar_position: 10
 This topic lists the various categories of Kubernetes faults and the container permissions required to execute them.
 
 
-### Supported Kubernetes faults and required container permissions
+### Supported Kubernetes faults and container permissions
 
 The following table shows the supported Kubernetes faults and the required fault container permissions to execute them.
 

@@ -2,7 +2,6 @@
 id: pod-http-reset-peer
 title: Pod HTTP reset peer
 ---
-## Introduction
 
 Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault:
 - Stops the outgoing HTTP requests by resetting the TCP connection. 
@@ -19,15 +18,13 @@ Pod HTTP reset peer:
 - Simulates connection resets due to resource limitations on the server side such as out of memory error, process kills, overload on the server due to high amounts of traffic. 
 
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -49,8 +46,9 @@ Pod HTTP reset peer:
         <td> Default: 0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#reset-timeout">reset timeout </a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

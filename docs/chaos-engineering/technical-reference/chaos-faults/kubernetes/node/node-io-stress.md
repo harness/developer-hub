@@ -4,7 +4,6 @@ id: node-io-stress
 redirect_from:
   - /docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress
 ---
-## Introduction
 
 Node IO stress causes I/O stress on the Kubernetes node. 
 
@@ -18,15 +17,13 @@ Node IO stress causes I/O stress on the Kubernetes node.
 - It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
 - It checks if the application functions under high disk latency conditions. when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The target nodes should be in the ready state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -43,8 +40,11 @@ Node IO stress causes I/O stress on the Kubernetes node.
         <td>If both the environment variables are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

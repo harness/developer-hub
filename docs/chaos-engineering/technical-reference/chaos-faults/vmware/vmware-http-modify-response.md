@@ -15,7 +15,7 @@ VMware HTTP modify response injects HTTP chaos by modifying the status code, bod
 - VMware HTTP modify response determines the resilience of an application to modifications in the status code or body or header of the request (or response). 
 - It measures how accurately the application spots incorrect HTTP response body.
 
-:::note
+### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
 - Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -33,14 +33,11 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
-
-  <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -70,8 +67,9 @@ stringData:
             <td> Defaults to 'status_code'. It accepts 'body', and 'header' as well. For more information, go to <a href="#modifying-the-response-status-code"> modifying status code of the response.</a></td>
         </tr>
     </table>
-    <h3> Status code modification fields </h3>
-    <table>
+
+### Status code modification tunables
+  <table>
     <tr>
         <td> STATUS_CODE </td>
         <td> Modified the status code for the HTTP response. </td>
@@ -85,16 +83,18 @@ stringData:
         <td> Defaults to true, wherein the body is replaced by a default template for the status code. For more information, go to <a href="#modifying-the-response-status-code"> modify response body field. </a></td>
     </tr>
     </table>
-    <h3> Body modification fields </h3>
-    <table>
+
+### Body modification tunables
+   <table>
         <tr>
             <td> RESPONSE_BODY </td>
             <td> Body string used to overwrite the HTTP response body. </td>
             <td> If no value has been provided, the response will be an empty body. Defaults to empty body. For more information, go to <a href="#modifying-the-response-body"> response body field. </a></td>
         </tr>
     </table>
-    <h3> Header modification fields</h3>
-    <table>
+
+### Header modification tunables
+  <table>
         <tr>
             <td> HEADERS_MAP </td>
             <td> Map of the headers to modify (or add). </td>
@@ -106,8 +106,9 @@ stringData:
             <td> Defaults to response. Supports request as well.  For more information, go to <a href="#modifying-the-request-headers"> header mode field. </a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+  <table>
         <tr>
             <th> Variables </th>
             <th> Description </th>

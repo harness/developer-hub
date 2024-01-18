@@ -14,7 +14,7 @@ ECS container volume detach:
 - By detaching volumes, you can safely remove the volume associations from the containers without deleting the volumes themselves. 
 - By detaching unnecessary volumes, you can optimize the resource utilization within your ECS tasks. This helps to free up storage space and minimize any potential performance impact associated with unused volumes.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -74,8 +74,8 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
 - Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
           <th> Tunable </th>
           <th> Description </th>
@@ -97,8 +97,9 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+ 
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

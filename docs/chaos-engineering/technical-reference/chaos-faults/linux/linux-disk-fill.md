@@ -21,8 +21,7 @@ Linux disk fill:
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Optional tunables</h3>
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>
