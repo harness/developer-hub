@@ -44,12 +44,12 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrchestrated from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrchestration from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
 <StoSettingScanMode />
-<StoSettingScanModeOrchestrated />
+<StoSettingScanModeOrchestration />
 <StoSettingScanModeIngest />
 
 <!-- ---------------------------------------------------------------------------- -->
@@ -133,7 +133,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 ### Authentication settings
 
-Settings for the AWS account to use when running an orchestrated scan.
+Settings for the AWS account to use when running an orchestration scan.
 
 #### Access ID 
 

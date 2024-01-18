@@ -19,7 +19,7 @@ helpdocs_is_published: true
 * STO supports all languages supported by SonarScanner.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
-* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestrated and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
+* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 * You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
@@ -55,7 +55,7 @@ A Docker-in-Docker background step is not required for this workflow.
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 

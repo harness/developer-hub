@@ -1,6 +1,6 @@
 ---
 title: STO ingestion workflows
-description: STO supports three workflows for ingesting data --  run a local scan (orchestrated), ingest results from a shared folder (ingestion-only), and download results from an external scanner (data-load).
+description: STO supports three workflows for ingesting data --  run a local scan (orchestration), ingest results from a shared folder (ingestion-only), and download results from an external scanner (data-load).
 sidebar_position: 10
 helpdocs_topic_id: cjqnd71y07
 helpdocs_category_id: utstv3qzqt
@@ -10,15 +10,15 @@ helpdocs_is_published: true
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
-- [Orchestrated workflows](#orchestrated-workflows-in-sto)
+- [Orchestration workflows](#orchestration-workflows-in-sto)
 - [Ingestion-only workflows](#ingestion-only-workflows-in-sto)
 - [Extraction workflows](#extraction-workflows-in-sto)
 
-### Orchestrated workflows in STO
+### Orchestration workflows in STO
 
-You can set up a fully orchestrated workflow in one Security step that runs the scan and ingests the results. This is the easiest workflow to implement and is good for running scans with default settings.
+You can set up a fully orchestration workflow in one Security step that runs the scan and ingests the results. This is the easiest workflow to implement and is good for running scans with default settings.
 
-For more information, go to [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md).
+For more information, go to [Run an Orchestration Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md).
 
 ### Ingestion-only workflows in STO
 
@@ -33,7 +33,7 @@ For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/sec
 
 ### Extraction workflows in STO
 
-Extraction scans are a sub-category of orchestrated scans. Instead of running a scan, the Security step pulls issues from an external source. Specifically, you configure the Security Step to download from the external tool rather than running an orchestrated scan. This workflow is supported for scanners that support downloading results via an API endpoint.
+Extraction scans are a sub-category of orchestration scans. Instead of running a scan, the Security step pulls issues from an external source. Specifically, you configure the Security Step to download from the external tool rather than running an orchestration scan. This workflow is supported for scanners that support downloading results via an API endpoint.
 
 ![](../static/sto-workflows-overview-04.png)
 

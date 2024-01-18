@@ -12,7 +12,7 @@ helpdocs_is_published: true
 In an ingestion-only workflow, the scan step ingest results generated in a previous step or outside the pipeline. The pipeline then analyzes, deduplicates, and displays the results. Ingestion-only workflows enable you to do the following:
 
 - Ingest results from scanners that don't currently have integrations with Harness STO. 
-- Create advanced workflows that aren't possible with orchestrated scans. 
+- Create advanced workflows that aren't possible with orchestration scans. 
 - Run custom scans with advanced settings that address specific security requirements. 
 - Ingest results from multiple scans into the same pipeline, aggregate and deduplicate the data, and view all your results in a single pane of glass.
 
