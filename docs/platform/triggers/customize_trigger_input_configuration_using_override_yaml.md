@@ -132,6 +132,7 @@ We observe that the artifact tag and ``var2`` are coming from the override input
 
 
 :::info note
-1. When ``inputYaml`` is provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the  ``inputYaml`` section will override and take preference over the corresponding values from other configurations.
-2. It's crucial to structure the ``inputYaml`` similarly to what is defined in the Input Set. Additionally, ensure that you provide the correct pipeline, stage, or step ``identifier``.
+1. When ``inputYaml`` is provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the  ``inputYaml`` section will override and take preference over the corresponding values in the Input Set.
+2. It's crucial to structure the ``inputYaml`` similarly to what is defined in the Pipeline Input Set. Additionally, ensure that you provide the correct pipeline, stage, or step ``identifier``.
+3. If you have an array structure in the Input YAML and need to override one of its values, it's crucial to maintain the structure outlined in the Input Set YAML.
 :::
