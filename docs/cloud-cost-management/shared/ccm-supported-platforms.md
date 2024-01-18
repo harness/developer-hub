@@ -585,7 +585,9 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 </Tabs>
 
 :::important note
-Harness does not currently support AWS China regions.
+- Harness does not currently support AWS China regions.
+
+- CCM FirstGen support was discontinued as on 31/12/2022. To migrate to Next Gen, please create Next Gen connectors and delete any existing First Gen connectors.
 :::
 
 
