@@ -13,7 +13,9 @@ To address this, overriding input YAML provides the flexibility to change a spec
 You can only customize parameters using YAML in this setup.
 :::
 Let's go through the feature with an example:-
-Suppose you have a trigger:
+
+
+Suppose you have a trigger referring to an Input set `myInputSet` :
 ```
  trigger:
   name: triggerWithInputSet
@@ -36,7 +38,7 @@ Suppose you have a trigger:
     - myInputSet
 ```
 
-Suppose you have a input set:
+Input Set:
 ```
 inputSet:
   name: myInputSet
@@ -125,7 +127,9 @@ trigger:
           value: overridenValue
 ```
 ![](./static/input_set_with_override.png)
+
 We observe that the artifact tag and ``var2`` are coming from the override inputs. ``var1`` is still coming from the input set, since we didn't override it in the trigger's yaml.
+
 
 :::info note
 1. When ``inputYaml`` is provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the  ``inputYaml`` section will override and take preference over the corresponding values from other configurations.
