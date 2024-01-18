@@ -11,7 +11,7 @@ You can scan your repositories and other components used in your code with [Anch
 
 ### All data ingestion methods are supported
 
-You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [`orchestratedScan` pipeline example](#anchore-enterprise-orchestration-example) and a [`dataLoad` pipeline example](#anchore-enterprise-dataload-example) below.
+You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [Orchestration pipeline example](#anchore-enterprise-orchestration-example) below.
 
 ### Scans in air-gapped environments are supported
 
@@ -30,9 +30,9 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoDinDRequirements />
 
 :::note
-You might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. 
+For Orchestrated and Extraction scans, you might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. 
 
-In the pipeline examples below, the Docker-in-Docker step has resource limits of 2048Mi and 1000m. 
+In the pipeline example below, the Docker-in-Docker step has resource limits of 2048Mi and 1000m. 
 :::
 
 
@@ -52,7 +52,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-<!-- step-palette 
+<!-- step-palette -->
 
 ## Anchore Enterprise step configuration
 
@@ -75,6 +75,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
+
 
 
 #### Scan Configuration
@@ -211,10 +212,6 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`.
 
 
-
-<StoSettingAuthDomain />
-
-
 #### Access ID
 
 
@@ -256,11 +253,15 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 <a name="cli-flags"></a>
 
+
+
 #### Additional CLI flags
 
 You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
 
 <a name="fail-on-severity"></a>
+
+<!-- step-palette -->
 
 #### Fail on Severity
 
@@ -269,11 +270,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
-
 ### Settings
 
 You can use this field to provide environment variables to be used during the execution of the step. 
-
 
 
 ### Additional Configuration
@@ -299,13 +298,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step settings for Anchore Enterprise scans in STO
-
-<!-- step-palette -->
-:::note
-You need to use a Security step to set up an Anchore Enterprise integration. An Anchore Enterprise scanner template is under development and will be available soon. 
-:::
-
+## Security step settings for Anchore Enterprise scans in STO (legacy)
 
 To set up your Anchore Enterprise integration with a Security step, do the following: 
 
@@ -371,8 +364,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 <!-- step-palette -->
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+<!-- import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md'; -->
 
 <StoSettingFailOnSeverity />
 
@@ -383,97 +375,95 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 This example uses a Security step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
 
 1. A Background step that runs Docker-in-Docker. This is [required](#docker-in-docker-requirements) to scan container images.
-2. A Security step that does the following:
+2. An Anchore step that does the following:
 
    1. Extracts the `owasp/nettacker:latest` image from Anchore Enterprise.
    2. Logs in to the Anchore Enterprise API based on the `product_domain`, `product_access_id`, `product_access_token` settings.
    3. Launches an orchestration scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
    4. Deduplicates and normalizes the scan data and ingests it into STO.
 
+Note that in this example, the resource limits for the Docker-in-Docker step are increased to ensure that the step has enough memory to store the scanned image. For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines#increase-memorycpu-for-the-docker-in-docker-background-step)
+
 <details>
-<summary>Anchore Enterprise dataload ingestion pipeline example</summary>
+<summary>Anchore Enterprise orchestration pipeline example</summary>
 
 ```yaml
 
 pipeline:
-  allowStageExecutions: false
-  projectIdentifier: STO
+  name: anchore step palette
+  identifier: anchore_step_palette
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   stages:
     - stage:
-        name: build
-        identifier: build
+        name: anchore
+        identifier: anchore
         type: SecurityTests
         spec:
           cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              containerSecurityContext:
-                privileged: true
-              os: Linux
-          sharedPaths:
-            - /var/run
-            - /shared/customer_artifacts
           execution:
             steps:
               - step:
                   type: Background
-                  name: Background_1
-                  identifier: Background_1
+                  name: docker_dind
+                  identifier: docker_dind
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
+                    command: dockerd
                     privileged: true
-                    entrypoint:
-                      - dockerd
                     resources:
                       limits:
                         memory: 2048Mi
-                        cpu: 1000m  
+                        cpu: 1000m
               - step:
-                  type: Security
-                  name: Security_1
-                  identifier: Security_1
+                  type: Anchore
+                  name: Anchore_1
+                  identifier: Anchore_1
                   spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: owasp/nettacker
+                      type: container
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                      args:
+                        cli: "--force"
                     privileged: true
-                    settings:
-                      policy_type: orchestratedScan
-                      scan_type: container
-                      product_name: anchore
-                      product_config_name: default
-                      container_domain: docker.io
-                      container_project: owasp/nettacker
-                      container_tag: latest
-                      product_domain: https://anchore.qa.harness.io/api
-                      container_type: docker_v2
-                      product_access_id: aubrey.klaft@harness.io
-                      product_access_token: <+secrets.getValue("anchoretoken")>
-                      LOG_LEVEL: debug
-                    imagePullPolicy: Always
+                    image:
+                      type: docker_v2
+                      name: owasp/nettacker
+                      tag: latest
+                    auth:
+                      access_token: <+secrets.getValue("YOUR_ACCESS_TOKEN_SECRET")>
+                      access_id: <+secrets.getValue("YOUR_ACCESS_ID_SECRET")>
+                      domain: YOUR_DOMAIN_URL
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
           caching:
             enabled: false
             paths: []
           slsa_provenance:
             enabled: false
-        variables:
-          - name: runner_tag
-            type: String
-            value: dev
-  identifier: anchore_scan
-  name: anchore scan
-
-
 
 ```
 
 </details>
+
+<!-- hiding this example, since it uses the old-style Security step rather than the scanner template 
 
 ## Anchore Enterprise dataLoad example
 
@@ -488,9 +478,6 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
    4. Deduplicates and normalizes the scan data and ingests it into STO. 
 
 Note that in this example, the resource limages for the Security step are increased to ensure that the container used to run the scan has enough memory and CPU.
-
-<details>
-<summary>Anchore Enterprise dataload ingestion pipeline example</summary>
 
 ```yaml
 
@@ -511,7 +498,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -528,7 +515,7 @@ pipeline:
                   name: Background_1
                   identifier: Background_1
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -571,9 +558,6 @@ pipeline:
             type: String
             value: dev
 
-
-
 ```
-
-</details>
+-->
 
