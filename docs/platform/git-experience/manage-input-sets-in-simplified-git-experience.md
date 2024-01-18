@@ -119,7 +119,7 @@ If you want to use an input set as part of a trigger, create and sync the input 
 For more details, go to [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md).
 
 
-### Customizing Input Configuration in Trigger YAML through Override YAML
+### Customize trigger input configuration using override YAML
 Suppose you have several input sets that you wish to use both manually and via triggers. However, you desire the capability to specify a different value for the trigger, allowing you to override a particular parameter when utilizing triggers.
 You can do the following so as to define overriden value in the Trigger Yaml:
 
