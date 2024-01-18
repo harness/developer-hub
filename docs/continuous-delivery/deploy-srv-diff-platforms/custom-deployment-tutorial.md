@@ -80,7 +80,7 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 1. Note the default tag added to the Delegate. You will use this to select this Delegate in future steps.
 
-![](./static/custom-deployment-tutorial-13.png)
+   ![](./static/custom-deployment-tutorial-13.png)
 
 ## Create custom Deployment Template
 
@@ -205,7 +205,7 @@ You can map any additional attributes containing information you want to referen
 
 ## Add Execution steps
 
-1. Now that the Deployment Template **Infrastructure** is complete, click **Continue** to view **Exectuion**.
+1. Now that the Deployment Template **Infrastructure** is complete, click **Continue** to view **Execution**.
 
   You can create or select step templates in Execution.
 
@@ -522,8 +522,8 @@ The stage **Execution** must include the **Fetch Instances** step and a step to 
 
 There are two questions to consider when deciding where to put the **Fetch Instances** and deployment steps:
 
-1. Will you only know the instancs **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
-2. Will you only know the instancs **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
+1. Will you only know the instances **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
+2. Will you only know the instances **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
 
 Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances. But in some cases, such as Kubernetes, you might want to place the **Fetch Instances** step after the deployment so that you are getting the pods that Kubernetes created. If you put **Fetch Instances** step before deployment, you will be using the pods that already exist.
 
@@ -574,7 +574,7 @@ Let's look at an example:
 ]
 ```
 
-In this example, the **Host Object Array Path** is `$` and the **instancename** field would use  `instance.vmIp`.
+In this example, the **Host Object Array Path** is `$` and the **instancename** field would use `instance.vmIp`.
 
 ### Referencing fetched instances using expressions
 
@@ -586,18 +586,17 @@ You can expand each instances and copy the expression for the instance metadata 
 
 For example, the expression for the instancename of the 4th instance fetched here is (the stage name is `DT_Tutorial`):
 
-```Sh
+```shell
 <+pipeline.stages.DT_Tutorial.spec.execution.steps.fetchInstances.deploymentInfoOutcome.serverInstanceInfoList[3].hostName>
 ```
 
 To reference the entire instance list, you can use this expression:
 
-```Sh
+```shell
 <+pipeline.stages.DT_Tutorial.spec.execution.steps.fetchInstances.deploymentInfoOutcome.serverInstanceInfoList>
 ```
 
 ## Deployment Template Sample Library
-
 
 ### Salesforce Deployment Template Support
 
@@ -609,7 +608,7 @@ To reference the entire instance list, you can use this expression:
 
 You will need to ensure the salesforce binary is installed on your delegate. You can install the binary via the INIT_SCRIPT.
 
-```YAML
+```yaml
 
 initScript: "
             wget https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz
@@ -618,13 +617,11 @@ initScript: "
             mv sdfx /usr/local/bin/"
 ```
 
-
-
 #### Deployment Template Setup
 
 This Deployment Template lets you define the deployment type for Salesforce Deployments. In the template, we define how to fetch the deployed salesforce app by fetching by the `componentName: <+service.name>`. 
 
-```YAML
+```yaml
 template:
   name: Salesforce
   identifier: Salesforce
@@ -662,7 +659,7 @@ template:
 
 #### Execution Salesforce Deployment Step Template 
 
-```YAML
+```yaml
 template:
   name: Salesforce download artifact
   type: Step
@@ -744,7 +741,7 @@ template:
 
 #### Salesforce App Service Setup - Sample
 
-```YAML
+```yaml
 service:
   name: helloWorldHarness
   identifier: helloWorldHarness
@@ -772,7 +769,7 @@ service:
 #### Salesforce App Infrastructure Definition Setup - Sample
 
 
-```YAML
+```yaml
 infrastructureDefinition:
   name: SalesForceDevSandbox
   identifier: SalesForceDevSandbox
@@ -794,7 +791,7 @@ infrastructureDefinition:
 
 #### Sample Salesforce Pipeline Setup - CI/CD 
 
-```YAML
+```yaml
 pipeline:
   name: SalesForce E2E
   identifier: SalesForce_E2E
@@ -1000,7 +997,6 @@ pipeline:
 Users need to install the gcloud cli on the delegate to deploy this template.
 
 ```
-
 initScript: "
             curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-459.0.0-linux-x86_64.tar.gz
             tar -xf google-cloud-cli-459.0.0-linux-x86_64.tar.gz
@@ -1012,7 +1008,7 @@ initScript: "
 
 #### Deployment Template Setup
 
-```YAML
+```yaml
 template:
   name: Google Cloud Run
   identifier: Google_Cloud_Run
@@ -1081,7 +1077,7 @@ template:
 
 #### Execution Step Setup
 
-```YAML
+```yaml
 template:
   name: Deploy Google Cloud Run
   identifier: Deploy_Google_Cloud_Run
@@ -1119,7 +1115,7 @@ template:
 
 #### Pipeline Sample Setup - CI/CD 
 
-```YAML
+```yaml
 pipeline:
   name: Build and Deploy to Google Cloud Run
   identifier: Build_and_Deploy_to_Google_Cloud_Run
@@ -1250,7 +1246,7 @@ pipeline:
 
 #### Google Cloud Run - Sample Service 
 
-```YAML
+```yaml
 service:
   name: spring-forward-harness-example
   identifier: Spring_Forward
@@ -1282,7 +1278,7 @@ service:
 
 #### Google Cloud Run - Sample Infrastructure Definition
 
-```YAML
+```yaml
 infrastructureDefinition:
   name: Dev
   identifier: Dev
@@ -1328,7 +1324,7 @@ infrastructureDefinition:
 
 #### Deployment Template
 
-```YAML
+```yaml
 template:
   name: Google AppEngine
   identifier: Google_AppEngine
@@ -1375,7 +1371,7 @@ template:
 
 #### Deployment Step - Google App Engine
 
-```YAML
+```yaml
 template:
   name: Deploy AppEngine
   type: Step
@@ -1421,7 +1417,7 @@ template:
 
 #### Deployment Template 
 
-```YAML
+```yaml
 template:
   name: Elastic Beanstalk
   identifier: Elastic_Beanstalk
@@ -1504,7 +1500,7 @@ template:
 
 ##### Prepare Step
 
-```YAML
+```yaml
 template:
   name: Prepare AWS ElasticBeanstalk
   type: Step
@@ -1556,7 +1552,7 @@ template:
 
 ##### Create Version Step
 
-```YAML
+```yaml
 template:
   name: Create Version
   identifier: Create_Version
@@ -1620,7 +1616,7 @@ template:
 
 ##### Update Environment Step
 
-```YAML
+```yaml
 template:
   name: Update Environment
   identifier: Update_Environment
@@ -1646,7 +1642,7 @@ template:
 
 ##### Steady State Check Step
 
-```YAML
+```yaml
 template:
   name: Steady State Check
   identifier: Steady_State_Check
