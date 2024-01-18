@@ -11,7 +11,7 @@ To address this, overriding input YAML provides the flexibility to change a spec
 :::note
 You can only customize parameters using YAML in this setup.
 :::
-Let's go through the feature with an example:-
+Let's go through the feature with an example:
 
 
 Suppose you have a trigger referring to an Input set `myInputSet` :
