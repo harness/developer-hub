@@ -22,6 +22,93 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
+## January x, 2024, version 1.19.9
+
+### New features and enhancements
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.0](https://github.com/harness/helm-charts/releases/tag/harness-0.13.0) |
+| Air Gap Bundle | [0.13.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.0) |
+| NG Manager | 1.19.9 |
+| CI Manager | 1.6.10 |
+| Pipeline Service | 1.56.5 |
+| Platform Service | 1.8.1 |
+| Access Control Service | 1.29.1 |
+| Delegate | xx.xx.xxxxx |
+| Change Data Capture | xxxxxx |
+| Test Intelligence Service | release-xxx |
+| NG UI | x.xxx.xx |
+| LE NG | xxxxx |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.0/sto_images.tgz" \
+  .
+```
+
+#### Self-Managed Enterprise Edition
+
+
+#### Continuous Delivery & GitOps
+
+- Triggers now map payload attributes with pipeline inputs.	(CDS-87039)
+  - There are cases where you want to use input sets in a trigger, but provide a different value for the input set (override the default). 
+  - When a trigger is configured to use input sets, you can now pass input value overrides in the trigger's `inputYaml` field.
+     
+    <DocImage path={require('./static/78b4f649d9c4a9d0d858499e9508e846095f643d22b5f64dae60d6a30037b8cd.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- The Shell Script step was terminating when running on VM via SSH. (CDS-87415, ZD-55629, ZD-55690)
+  - Fixed a Shell Script step issue with SSH where it was failing for newer delegate versions with the error: `Error while reading variables to process Script Output. Avoid exiting from script early: 2: No such file`.
+  - Recent modification made directoryPath an optionally computed field which defaults to the user-provided working directory.
+  - To address this, the fix involves incorporating logic that ensures the presence of a backslash is in the directoryPath if it's absent.
+
+- Service phase fails to parse a variable value. (CDS-87290)
+  - There was an issue in the service phase of the stage execution where it fails to render a string variable, and throws the error `Invalid yaml: Malformed numeric value '00:00:00.100' at [Source: (StringReader); line: 36, column: 30]`. This was because variables with time format with milliseconds were being sent without quotes.
+  - Now, string variables with values such as `00:00:00.100` (time in milliseconds) are supported in Service variables.
+
+#### Continuous Delivery
+
+#### Harness Platform
+
+- Perpetual tasks weren't assigned after a delegate restart. (PL-43646, ZD-55426, ZD-55572)
+
+   Fixed race condition where a perpetual task was assigned at the same time as the delegate abruptly shutting down due to a pod restart.
+
+   This item is available with Harness Platform version 1.19.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When Harness user groups were created during SCIM sync, dots were not converted to underscores in Harness for user group IDs. (PL-43576, ZD-55266)
+
+   This issue has been resolved. Now, SCIM group names that contain dots are converted to underscores in Harness for group identifiers. For example, a SCIM group named "abc.xyz" is created as follows:
+   
+   `UserGroupIdentifier: "abc_xyz"`
+   
+   `UserGroupName: "abc.xyz"`
+
+- In the **Add new Encrypted Text** dialog, the **Regions** list for Google Secrets Manager integration included unsupported values.(PL-43575, ZD-55268)
+
+   This issue has been resolved and the **Regions** list has been updated with the correct GCP regions.
+
+
+
 ## January 8, 2024, version 81720
 
 ### New features and enhancements
