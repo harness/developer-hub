@@ -85,7 +85,9 @@ gsutil -m cp \
   - There was an issue in the service phase of the stage execution where it fails to render a string variable, and throws the error `Invalid yaml: Malformed numeric value '00:00:00.100' at [Source: (StringReader); line: 36, column: 30]`. This was because variables with time format with milliseconds were being sent without quotes.
   - Now, string variables with values such as `00:00:00.100` (time in milliseconds) are supported in Service variables.
 
-#### Continuous Delivery
+#### Continuous Integration
+
+
 
 #### Harness Platform
 
