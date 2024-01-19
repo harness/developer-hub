@@ -175,7 +175,7 @@ Currently, allowlist verification for delegate registration is behind the featur
 
    Fixed race condition where a perpetual task was assigned at the same time as the delegate abruptly shutting down due to a pod restart.
 
-   This item is available with Harness Platform version 1.19.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 1.19.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 1.17.8 <!--  January 2, 2024 -->
 
