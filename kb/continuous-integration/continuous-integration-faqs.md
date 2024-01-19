@@ -1330,7 +1330,7 @@ This can happen if you manually exit the Python script by calling `exit(0)`. Whe
 
 ### Secrets with line breaks and shell-interpreted special characters
 
-For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step).
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step).
 
 ### Output variable length limit
 

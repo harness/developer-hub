@@ -32,7 +32,7 @@ export const featuredTutorials: CardItem[] = [
     },
   ];
   */
-  
+
   // Docs
   export const docsCards: CardSections = [
     {
@@ -40,13 +40,6 @@ export const featuredTutorials: CardItem[] = [
       description:
         "",
       list: [
-        {
-          title: "CI Tutorials",
-          module: MODULES.ci,
-          description:
-            "Dive in with these hands-on tutorials.",
-          link: "/tutorials/ci-pipelines",
-        },
         {
           title: "Get started with CI",
           module: MODULES.ci,
@@ -60,6 +53,20 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Learn about creating Harness CI pipelines.",
           link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
+        },
+        {
+          title: "Mobile development",
+          module: MODULES.ci,
+          description:
+            "Learn about mobile development with Harness CI.",
+          link: "/docs/continuous-integration/use-ci/mobile-dev-with-ci",
+        },
+        {
+          title: "Secure CI",
+          module: MODULES.ci,
+          description:
+            "Security hardening features and practices for Harness CI.",
+          link: "/docs/continuous-integration/secure-ci/security-hardening",
         },
       ],
     },

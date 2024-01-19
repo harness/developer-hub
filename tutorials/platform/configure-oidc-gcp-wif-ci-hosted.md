@@ -4,10 +4,10 @@ description: Configure OpenID Connect (OIDC) with GCP Workload Identity Federati
 title: Configure OIDC with GCP WIF for Harness CI Cloud builds (beta feature)
 ---
 
-This tutorial shows how to Configure OpenID Connect (OIDC) with GCP Workload Identity Federation (WIF) for the Continuous Integration hosted builds workflow (beta feature). For more information on OIDC, go to [Use OIDC](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc).
+This tutorial shows how to Configure OpenID Connect (OIDC) with GCP Workload Identity Federation (WIF) for CI builds on Harness Cloud build infrastructure. OIDC support in Harness is a beta feature. For more information on OIDC, go to [Use OIDC](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc).
 
-:::info note
-This feature is currently behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::note
+OIDC support in Harness is currently behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ## Prerequisites
