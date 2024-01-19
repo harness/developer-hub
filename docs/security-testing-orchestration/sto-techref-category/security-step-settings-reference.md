@@ -52,7 +52,7 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 
-### Supported CI build infrastructures
+### Supported operating systems and architectures
 
 import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
 
