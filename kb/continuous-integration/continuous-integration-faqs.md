@@ -301,7 +301,7 @@ You can adjust CPU and memory allocation for individual steps running on a Kuber
 
 For default resource request and limit values, go to [Build pod resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits#build-pod-resource-allocation).
 
-### Why do steps request less memory and CPU than the maximum limit?
+### Why do steps request less memory and CPU than the maximum limit? Why do step containers request fewer resources than the limit I set in the step settings?
 
 By default, resource requests are always set to the minimum, and additional resources (up to the specified maximum limit) are requested only as needed during build execution. For more information, go to [Build pod resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits#build-pod-resource-allocation).
 
@@ -373,7 +373,7 @@ For information about building on OpenShift clusters, go to **Permissions Requir
 
 For information about permissions required to build on Kubernetes clusters, go to **Permissions Required** in the [Kubernetes Cluster Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference).
 
-### How does the build pod communicate with the delegate?
+### How does the build pod communicate with the delegate? What port does the lite-engine listen on?
 
 The delegate communicates to the temp pod created by the container step through the build pod IP. Build pods have a lite engine running on port 20001.
 
@@ -397,27 +397,19 @@ For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshootin
 
 ### If my pipeline consists of multiple CI stages, are all the steps across different stages executed within the same build pod?
 
-No, each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within their dedicated pods. In the presence of multiple CI stages, distinct build pods are generated for each individual stage.
+No. Each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within the stage's dedicated pod. If your pipeline has multiple CI stages, distinct build pods are generated for each individual stage.
 
-### When does the cleanup of build pods occur in a pipeline with multiple CI stages? Does it happen after the entire pipeline execution is finished?
+### When does the cleanup of build pods occur? Does it happen after the entire pipeline execution is finished?
 
-The build pod cleanup takes place immediately after the completion of each stage's execution, even in the presence of multiple CI stages within the same pipeline.
+Build pod cleanup takes place immediately after the completion of a stage's execution. This is true even if there are multiple CI stages in the same pipeline; as each build stage ends, the pod for that stage is cleaned up.
 
 ### Is the build pod cleaned up in the event of a failed stage execution?
 
-Yes, the build pod gets cleaned up after the stage execution regardless of whether the stage succeeds or fails.
+Yes, the build pod is cleaned up after stage execution, regardless of whether the stage succeeds or fails.
 
-### Do we get an error in the execution UI if the pod cleanup task failed? 
+### How do I know if the pod cleanup task fails?
 
-Currently, failure in the pod cleanup task is not reflected in the execution UI however the team is working on improving this behaviour.
-
-### What port does the lite-engine container listen on which will be used by delegate to communicate with it?
-
-lite-engine container within the build pod will be listening on port 20001
-
-### Why the cpu/memory request value of the step container is very less even after the cpu/memory for the step has been overridden in the UI?
-
-The resource request for the step containers are always set to minimum and additional resources are requested only as needed during build execution. More details about the resoiurce allocation in the build pod can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/)
+To help identify pods that aren't cleaned up after a build, pod deletion logs include details such as the cluster endpoint targeted for deletion. If a pod can't be located for cleanup, then the logs include the pod identifier, namespace, and API endpoint response from the pod deletion API. You can find logs in the [Build details](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds#build-details).
 
 ## Self-signed certificates
 
@@ -656,6 +648,12 @@ If you want to recursively clone a repo in addition to your default codebase, yo
 
 Yes. For instructions, go to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
+### Does the built-in clone codebase step fetch all branches? How can I fetch all branches?
+
+The built-in clone codebase step fetches only one or two branches from the repo, depending on the build type (tag, PR, or branch).
+
+If you need to clone all branches in a repo, you can execute the necessary git commands in a Run step.
+
 ### Can I clone the default codebase to a different folder than the root?
 
 The built-in clone codebase step always clones your repo to the root of the workspace, `/harness`. If you need to clone elsewhere, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) and use a [Git Clone or Run step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) to clone your codebase to a specific subdirectory.
@@ -691,13 +689,17 @@ You can use the expressions `<+eventPayload.repository.name>` or `<+trigger.payl
 
 If you want both the repo and project name, and your Git provider's webhook payload doesn't include a single payload value with both names, you can concatenate two expressions together, such as `<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>`.
 
-### The expression `<+eventPayload.repository.name>` causes the clone step to fail when used with a Bitbucket account connector.
+### The expression eventPayload.repository.name causes the clone step to fail when used with a Bitbucket account connector.
 
 Try using the expression `<+trigger.payload.repository.name>` instead.
 
-### Codebase expressions aren't resolved.
+### Codebase expressions aren't resolved or resolve to null.
 
-For information about when codebase expressions are resolved, go to [CI codebase variables reference - Variable resolution](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#variable-resolution).
+Empty or `null` values primarily occur due to the build type (tag, branch, or PR) and start conditions (manual or automated trigger). For example, `<+codebase.branch>` is always `null` for tag builds, and `<+trigger.*>` expressions are always `null` for [manual builds](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#manual-builds).
+
+Other possible causes for `null` values are that the connector doesn't have API access enabled in the connector's settings or that your pipeline doesn't use the built-in clone codebase step.
+
+For more information about when codebase expressions are resolved, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
 ### How can I share the codebase configuration between stages in a CI pipeline?
 
@@ -752,7 +754,7 @@ For details about Git Clone step settings, go to:
 * [Git Clone step - Clone Directory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#clone-directory)
 * [All Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step)
 
-### Does Harness CI support Git Large File Storage?
+### Does Harness CI support Git Large File Storage (git-lfs)?
 
 Yes. For more information, go to the Harness CI documentation on [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
 
@@ -760,41 +762,21 @@ Yes. For more information, go to the Harness CI documentation on [Git Large File
 
 Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), or use [Git LFS](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
 
+### How do I handle authentication for git commands in a Run step?
+
+You can store authentication credentials as [secrets](https://developer.harness.io/docs/category/secrets/) and use [expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs#expressions), such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call them in your git commands.
+
+You could also [pull credentials from a git connector used elsewhere in the pipeline](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+
+### Can I use codebase variables when cloning a codebase in a Run step?
+
+No. [Codebase variables](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) are resolved only for the built-in Clone Codebase functionality. These variables are not resolved for git commands in Run steps or Git Clone steps.
+
 ### Git connector fails to connect to the SCM service. SCM request fails with UNKNOWN
 
 This error may occur if your [code repo connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
 
-[SCM service connection failures can also occur when using self-signed certificates](#git-connector-scm-connection-errors-when-using-self-signed-certificates).
-### What causes codebase variables to return null in the CI pipeline?
-Codebase variables may return null if API access is not enabled on the git connector. Ensure that API access is enabled on the git connector to utilize codebase variables.
-
-### Why the expression ```<+trigger.prNumber>``` is returning null when running a CI pipeline manually for a PR?
-
-This is expected as the trigger variable will be resolved when the pipeline is executed via trigger. You could you ```<+codebase.prNumber>``` instead which will resolve to PR number even if the pipeline executed manually. More details about all the codebase variables can be found [here](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
-
-### How do I handle authentication, while cloning a private repo by explicitly running the git clone command in the run step?
-
-You could either create PAT as a Harness secret and pass it in the git clone command or create a ```.netrc``` file to pull the git credential from your pipeline's codebase connector. More details about creating ```.netrc``` can be reffered [here](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
-
-### Does the built in clone step support git-lfs?
-
-The built-in clone stpe doesnt support git-lfs however you could run the git clone in a run step and perfrom git lfs. More details about the same can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs/)
-
-### Can I use codebase variables if Im running the explicit clone commands in a runstep?
-
-No, codebase variables will not be resolved if you are running the git commands in a run step and the pipeline is not configured with a codebase connector
-
-### Does Harness utilize the Git connector embedded in the codebase or the connector linked to the trigger to update the build status on a Pull Request?
-
-Git connector configured in the codebase will be used to update the build status on PR during build execution
-
-### Does the builtin clone step step fetch all the branches from the configured repo?
-
-No, the clone step will fetch only one or two branches from the repo based on the build type
-
-### How can we fetch all the branches fetched while cloning the repo?
-
-We would need to run the git clone commands explicitly in a run step to fetch all the branches from the code base
+Also, [SCM service connection failures can occur when using self-signed certificates](#git-connector-scm-connection-errors-when-using-self-signed-certificates).
 
 ## SCM status updates and PR checks
 
@@ -805,6 +787,10 @@ Yes. Your PRs can use the build status as a PR status check. For more informatio
 ### How do I configure my pipelines to send PR build validations?
 
 For instructions, go to [SCM status checks - Pipeline links in PRs](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks#pipeline-links-in-prs).
+
+### What connector does Harness uses to send build status updates to PRs?
+
+Harness uses the pipeline's codebase connector, specified in the [pipeline's default codebase configuration](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) to send status updates to PRs in your Git provider.
 
 ### Can I use the Git Clone step, instead of the built-in clone codebase step, to get build statues on my PRs?
 
@@ -1001,7 +987,7 @@ For more information, go to:
 
 Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#set-plugin-runtime-flags) on any Build and Push step.
 
-### Does kaniko support non-root users?
+### Can I run Build and Push steps as non-root? Does kaniko support non-root users?
 
 With a Kubernetes cluster build infrastructure, **Build and Push** steps use the kaniko plugin. kaniko requires root access to build Docker images, and it does not support non-root users. However, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
@@ -1015,9 +1001,19 @@ If your security policy strictly forbids running any step as root, you can use t
 
 The buildah plugin requires that you use a Kubernetes cluster build infrastructure that is configured to run as non-root with `anyuid SCC` (Security Context Constraints) enabled. For information about the buildah plugin, go to [Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-### Can I enable BuildKit support with Build and Push steps?
+### Can I enable BuildKit support with Build and Push steps? How do I run Docker build commands with buildkit enabled?
 
-The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and-push-steps-what-is-kaniko) to build images. If you need to use BuildKit, you can't use the built-in Build and Push steps. Instead, you need to [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage), and then run `docker build` and `docker push` in a Run step.
+The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and-push-steps-what-is-kaniko) to build images. If you need to use BuildKit, you can't use the built-in Build and Push steps.
+
+Instead, you need to:
+
+1. [Run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+2. Run `docker build` and `docker push` commands in a Run step.
+   To run `docker build` with builtkit enabled, use something like:
+
+   ```
+   DOCKER_BUILDKIT=1 docker build -t IMAGE_NAME:TAG .
+   ```
 
 ### Is there a way to use the newer version of kaniko?
 
@@ -1053,6 +1049,18 @@ Go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster)
 
 The Dockerfile is assumed to be in the root folder of the codebase. You can use the **Dockerfile** setting in a Build and Push step to specify a different path to your Dockerfile.
 
+### Why isn't the Build and Push step parsing the syntax in my Dockerfile?
+
+In a Kubernetes cluster build infrastructure, Build and Push steps use kaniko, which doesn't support `# syntax` in the Dockerfile.
+
+If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
+
+### Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?
+
+In a Kubernetes cluster build infrastructure, the Build and Push steps use kaniko. Kaniko optimizes the build process by creating directories for volumes, but it skips copying the contents into image layers. This behavior is expected and enhances the efficiency of the build.
+
+If you want to include the volume content in the image layers, consider using `COPY` instructions in your Dockerfile to directly copy the data into the image during the build.
+
 ### Can I use images from multiple Azure Container Registries (ACRs)?
 
 Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs).
@@ -1064,56 +1072,6 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 ### Build and Push to Docker fails with kaniko container runtime error
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
-
-### Is it necessary to run the built-in build and push step with root user?
-Yes, build and push steps in CI uses kaniko to perform the build under the hood which requires root access.
-
-### How can we run the build in harness using non root user?
-
-We could use buildah plugin to perform the build using non root user. More details about the same can be found in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin)
-
-### How can we pass the kaniko arguments to the build and push step?
-
-We need to add a stage variable in the format ```PLUGIN_<flag_name>```. For example, if you want pass the kaniko flag ```--no-push```, we need to add a stage variable ```PLUGIN_NO_PUSH``` with a value ```true```
-
-### Can we pass all the kaniko falgs to the build and push step?
-
-Currently, we can pass the below list of flags however the product team is workig on supporting all the kaniko flags in the future release
-
-```
-PLUGIN_EXPAND_TAG - enable for semver tagging
-PLUGIN_AUTO_TAG - enable auto generation of build tags
-PLUGIN_AUTO_TAG_SUFFIX - the suffix of auto build tags
-PLUGIN_CREATE_REPOSITORY - create ECR repository
-PLUGIN_CUSTOM_LABELS - additional k=v labels
-PLUGIN_REGISTRY_MIRRORS - docker registry mirrors
-PLUGIN_SNAPSHOT_MODE - Specify one of full, redo or time as snapshot mode
-PLUGIN_LIFECYCLE_POLICY - Path to lifecycle policy file
-PLUGIN_REPOSITORY_POLICY - Path to repository policy file
-PLUGIN_ARTIFACT_FILE - Artifact file location that will be generated by the plugin. This file will include information of docker images that are uploaded by the plugin.
-PLUGIN_NO_PUSH - Set this flag if you only want to build the image, without pushing to a registry
-PLUGIN_VERBOSITY - Set this flag with value as oneof <panic|fatal|error|warn|info|debug|trace> to set the logging level for kaniko. Defaults to info.
-PLUGIN_TAR_PATH - Set this flag to save the image as a tarball at path
-```
-
-### Why the native build and push step is not parsing the ```# syntax``` in dockerfile?
-
-The native build and push step is using kaniko under the hood and kaniko doesnt support ```# syntax``` in the docker file yet
-
-### Is there a way we can get the  ```# syntax``` line in the docker file being detected while building the image?
-
-We could use dind build with buildkit enabled or some other plugin such as buildha instead of kaniko to be able to parse ```# syntax``` in dockerfile
-
-### How to run the docker build command with buildkit enabled?
-
-You could run ```DOCKER_BUILDKIT=1 docker build -t <image_name>:<tag> . ```
-### Why does Kaniko avoid including the contents of the volume defined by the keyword VOLUME in dockerfile on the final image?
-
-Kaniko optimizes the build process by creating directories for volumes but skips copying the contents into image layers. This behavior is expected and enhances the efficiency of the build
-
-### Is there a way to include the contents of a specific VOLUME in the image layers during the Kaniko build process?
-
-If you want to include volume contents in the image layers, consider using COPY instructions in your Dockerfile to directly copy the data into the image during the build.
 
 ## Upload artifacts
 
@@ -1449,14 +1407,6 @@ If the Action allows you to override the `working-directory`, such as with the [
 
 Harness doesn't have OOTB support for Datadog Pipeline Visibility, but you can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
 
-### How does the entry point for the background step and plugin step are retrieved during the execution?
-
-We would make an additional connection to the container registry endpoint to retrive the entrypoint dueing the execution.
-
-### What happens if a Fully Qualified Name (FQN) isn't used for the image in the background and plugin steps that are configured with an image from a private repo?
-
-If FQN isn't specified for the image, the system will attempt to connect to DockerHub public endpoint to retrieve the entry point during the execution
-
 ## Workspaces, shared volumes, and shared paths
 
 ### What is a workspace in a CI pipeline?
@@ -1588,6 +1538,10 @@ For information about calling services started by Background steps, go to **Name
 
 Not all build infrastructures use the step ID when referencing services running in Background steps. For more information, go to [Background step settings - Name and ID](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#name-and-id) and [Background step settings - Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings).
 
+### How is the Background step's entrypoint retrieved during a build?
+
+Harness connects to the container registry endpoint, based on the container registry specified in the step settings, to retrieve the entrypoint.
+
 ### Why is Background step always marked as successful even if there are failures executing the entry point?
 
 This is the expected behavior. Once a Background step initializes, Harness proceeds to the next step in the stage and marks the Background step successful. If your services in Background steps aren't starting, or your subsequent steps are running too soon, [add a Run step after the Background step as a health check](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/health-check-services/).
@@ -1615,6 +1569,10 @@ Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.har
 ### Can I configure service dependencies in Gradle builds?
 
 Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
+
+### What happens if I don't provide the Fully Qualified Name (FQN) for an image in a private repo?
+
+FQN is required for images in private repos.
 
 ## Conditional executions, looping, parallelism, and failure strategies
 
@@ -1812,3 +1770,6 @@ For troubleshooting and FAQs for Platform components that aren't specific to CI,
 
 <!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->
 
+<!-- Please don't use code notation in headings. It doesn't render correctly. -->
+
+<!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
