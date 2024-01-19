@@ -187,10 +187,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>PIE_RETRY_STEP_GROUP</td>
-        <td>Retries failed step group with default post-retry action set to <b>Mark as Failure</b>. <b>This feature is in Limited GA.</b></td>
-    </tr>
-    <tr>
         <td>CDS_MERGED_RUN_AND_RETRY_PIPELINE_COMPONENT</td>
         <td>Enables the <b>Run Pipeline</b> form to be used for <b>Retry From (Failed) Stage</b>.</td>
     </tr>
