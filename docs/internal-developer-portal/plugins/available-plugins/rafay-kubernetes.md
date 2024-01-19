@@ -18,7 +18,7 @@ description: Deploy and view clusters, namespaces, workloads and more using Rafa
 ```yaml
 proxy:
   '/rs-plugin':
-    target: ${RAFAY_CONSOLE_URL}
+    target: <rafay_console_url>
     pathRewrite:
       /api/proxy/rs-plugin/?: /
     headers:
