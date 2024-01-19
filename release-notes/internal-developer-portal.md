@@ -20,6 +20,35 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## January 2023
 
+### Version 0.19.0
+
+<!-- Jan 19, 2024 -->
+
+🐣 "Easter Came Early This Year! 🎁 In our latest release, we've added the magic of custom plugins 🔌✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for. It's time to spring into action with these egg-citing new features!" 🌷✨
+
+- **Docs:** [Custom Plugins](https://developer.harness.io/docs/category/custom-plugins), [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage), [How to add custom plugins in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin)
+
+#### Early access features
+
+- We have added support for [custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview), which enables users to upload their own frontend backstage plugins to Harness IDP. This feature is behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. [IDP-771]
+
+![](./static/layout.png)
+![](./static/custom-plugin-view.png)
+
+#### New features and enhancements
+
+- Added support for [Audit Trails](https://developer.harness.io/docs/internal-developer-portal/governance/audit-trails). [IDP-1280]
+- Added support for a new plugin [Rafay Kubernetes Operations Platform](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes). [IDP-1979]
+- Added support for connector types in Git based steps under IDP stage, which will allow users to toggle between pulic and private repositories. [IDP-1982]
+
+#### Bug Fixes
+
+- Fixed the issue with side Nav items display, when user switches from old to new Nav using "New Navigation Design (Beta)" toggle. [IDP-1964]
+- Fixed the issue with scaffolder task missing "created by" with adding a migration that will correct the data eventually. [IDP-1961]
+- Fixed the issue with Backstage Permissions Sync Job Bug. [IDP-1980]
+
+
 ### Version 0.18.0
 
 <!-- Jan 11, 2024 -->
