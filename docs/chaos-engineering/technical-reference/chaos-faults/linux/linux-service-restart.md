@@ -20,8 +20,7 @@ Linux service restart stops the target system services running in a Linux machin
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -34,7 +33,8 @@ Linux service restart stops the target system services running in a Linux machin
     <td> For example <code>nginx,apache2,sshd</code> </td>
   </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

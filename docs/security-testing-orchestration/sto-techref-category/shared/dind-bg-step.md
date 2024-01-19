@@ -39,12 +39,8 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="Visual" label="Visual setup" default>
-```
-
 
 import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/static/set-up-harness-for-sto-25.png'
-
-
 
 <img src={set_up_harness_25} alt="Configure the background step" height="50%" width="50%" />
 
@@ -53,6 +49,8 @@ import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/
 </TabItem>
 <TabItem value="YAML" label="YAML setup" default>
 
+
+Add a Background step to your pipeline and set it up as follows:
 
 ```yaml
 - step:

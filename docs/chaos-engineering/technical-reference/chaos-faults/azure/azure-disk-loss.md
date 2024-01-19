@@ -13,7 +13,7 @@ Azure disk loss:
 - Determines the resilience of an application to unexpected disk detachment. 
 - Determines how quickly the Azure instance recovers from such failures. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate Azure access to detach and attach a disk.
 - Azure disk should be connected to an instance.
@@ -40,15 +40,15 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Fault tunables
-
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -63,10 +63,11 @@ stringData:
             <td> For example, <code>TeamDevops</code>. For more information, go to <a href="#detach-virtual-disks-by-name"> resource group field in the YAML file. </a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>

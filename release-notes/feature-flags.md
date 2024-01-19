@@ -57,6 +57,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Add Gradle dependency-check plugin.
  - `ch.qos.logback:logback-classic` has been upgraded from 1.2.11 to 1.3.12. (FFM-10373)
 
+### Node.js SDK
+
+#### Version 1.6.0
+
+ - We now support `strictNullChecks` when passing an `undefined` target to client variation methods. (FFM-10413)
+
 ### Python SDK
 
 #### Version 1.4.0

@@ -14,7 +14,7 @@ VMware Windows Disk Stress applies stress on the disk resources on Windows OS ba
 - VMware Windows Disk Stress simulates the situation of high disk usage for processes running on the application, which degrades their performance. 
 - It also helps verify the application's ability to handle disk failures and its failover mechanisms. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -38,14 +38,11 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-:::
+### Mandatory tunables
 
-## Fault tunables
-
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -65,10 +62,12 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

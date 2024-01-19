@@ -2,7 +2,6 @@
 id: ec2-stop-by-tag
 title: EC2 stop by tag
 ---
-## Introduction
 
 EC2 stop by tag stops an EC2 instance using the provided tag and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
@@ -13,7 +12,7 @@ EC2 stop by tag:
 - Determines the performance of the application (or process) running on the EC2 instance.
 - Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Appropriate AWS access to stop and start an EC2 instance. 
 - The EC2 instances should be in a healthy state.
@@ -68,8 +67,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
- <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -86,8 +85,10 @@ Below is an example AWS policy to execute the fault.
         <td> For more information, go to <a href="#target-single-instance"> region.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

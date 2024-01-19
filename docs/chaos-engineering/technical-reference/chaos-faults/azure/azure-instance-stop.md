@@ -11,7 +11,7 @@ Azure instance stop:
 - Determines the resilience of an application to unexpected power off of the Azure instances. 
 - Determines how the application handles the requests and how quickly it recovers from such failures.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate Azure access to start and stop an instance.
 - Azure instance should be in a healthy state.
@@ -39,15 +39,15 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Fault tunables
-
-  <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -62,10 +62,11 @@ stringData:
         <td> For example, <code>TeamDevops</code>. For more information, go to <a href="#stop-instances-by-name"> resource group field in the YAML file. </a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

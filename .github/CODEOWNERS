@@ -27,7 +27,7 @@
 # Documentation
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @michaelcretzman @roshnisarangadharan 
+/docs/continuous-delivery/ @krishi0408 @roshnisarangadharan @SushrutHarness 
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @aimurphy
@@ -60,13 +60,13 @@
 /docs/infra-as-code-management/ @RickCraig
 
 # FF Docs
-/docs/feature-flags/ @ethangj @HarnessTheChaos
+/docs/feature-flags/ @HarnessTheChaos @jenniferopal 
 
 # FirstGen Docs
-/docs/first-gen/ @michaelcretzman
+/docs/first-gen/ @krishi0408 @SushrutHarness 
 
 # FAQ Docs
-/docs/faqs/ @michaelcretzman
+/docs/faqs/ @krishi0408 @SushrutHarness 
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @suryabhagvat
@@ -74,7 +74,7 @@
 # Release Notes
 
 #CD Release Notes
-release-notes/continuous-delivery.md @michaelcretzman @roshnisarangadharan 
+release-notes/continuous-delivery.md @krishi0408 @SushrutHarness  @roshnisarangadharan 
 
 #CCM Release Notes
 release-notes/cloud-cost-management.md @rdsoze
@@ -92,7 +92,7 @@ release-notes/continuous-integration.md @aimurphy
 release-notes/delegate.md @brian-f-harness @harishkammanahalli
 
 #FF Release Notes
-release-notes/feature-flags.md @ethangj @HarnessTheChaos
+release-notes/feature-flags.md @HarnessTheChaos @jenniferopal 
 
 #IDP Release Notes
 release-notes/internal-developer-portal.md @Debanitrkl
@@ -130,7 +130,7 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/error-tracking/ @M-Tsur
 
 # FF Tutorials
-/tutorials/feature-flags/ @ethangj @HarnessTheChaos 
+/tutorials/feature-flags/ @HarnessTheChaos @jenniferopal 
 
 # HDH Tutorials
 /tutorials/hdh/ @ravilach

@@ -2,7 +2,6 @@
 id: ec2-dns-chaos
 title: EC2 DNS chaos
 ---
-## Introduction
 
 EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
 
@@ -15,7 +14,7 @@ EC2 DNS chaos:
 - Determines the impact of DNS chaos on the infrastructure and standalone tasks. 
 - Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - SSM agent is installed and running on the target EC2 instance.
 - The EC2 instance should be in a healthy state.

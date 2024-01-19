@@ -51,7 +51,7 @@ The recommended workflow is to add an OWASP step to a Security Tests or CI Build
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
@@ -211,13 +211,13 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `tool_args` — You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
 
-#### Orchestrated scan settings
+#### Orchestration scan settings
 
 
-import StoLegacyOrchestrated from './shared/legacy/_sto-ref-legacy-orchestrated.md';
+import StoLegacyOrchestration from './shared/legacy/_sto-ref-legacy-orchestrated.md';
 
 
-<StoLegacyOrchestrated />
+<StoLegacyOrchestration />
 
 #### Ingestion file
 
