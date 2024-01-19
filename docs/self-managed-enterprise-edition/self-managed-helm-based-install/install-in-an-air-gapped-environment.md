@@ -67,7 +67,9 @@ Air-gapped environment installation requires Docker build architecture amd64.
 
 Run the following command before you save Docker images to your private registry.
 
- `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
+ ```
+ export DOCKER_DEFAULT_PLATFORM=linux/amd64
+```
 
 ## Save Docker images to your private registry
 
