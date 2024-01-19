@@ -196,7 +196,7 @@ If an output variable's length is greater than 64KB, steps can fail or truncate 
 
 ## Secrets with line breaks and shell-interpreted special characters
 
-For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](/docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step).
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step).
 
 ## Clone codebase errors
 
