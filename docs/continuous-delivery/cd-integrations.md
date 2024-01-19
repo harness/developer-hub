@@ -187,8 +187,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>PIE_RETRY_STEP_GROUP</td>
-        <td>Retries failed step group with default post-retry action set to <b>Mark as Failure</b>. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>CD_MAKE_CD_LICENSE_USAGE_ASYNC</td>
@@ -242,10 +240,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_SCOPE_INFRA_TO_SERVICES</td>
-        <td>Enables the **Scope to Specific Services** option in an infrastructure definition that limits an infrastructure to specific services. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_ECS_BG_VALIDATION</td>

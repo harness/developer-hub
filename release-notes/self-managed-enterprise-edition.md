@@ -578,6 +578,8 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 ## Previous releases
 
+### 2023 releases
+
 <details>
 <summary>2023 releases</summary>
 
@@ -7057,6 +7059,8 @@ This release includes the following fixed issues.
   Changing the signature of the authorization header to Authorization: Bearer `<token>` has fixed this issue.
 
 </details>
+
+### 2022 releases
 
 <details>
 <summary>2022 releases</summary>
