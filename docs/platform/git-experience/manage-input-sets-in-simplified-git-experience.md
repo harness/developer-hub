@@ -117,3 +117,4 @@ This default is applicable *only* if the trigger is webhook-based. For all other
 If you want to use an input set as part of a trigger, create and sync the input set before creating the trigger.
 
 For more details, go to [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md).
+

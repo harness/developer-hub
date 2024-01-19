@@ -1,12 +1,12 @@
 ---
 title: Customize trigger input configuration using override YAML
-description: Customaize trigger input using override YAML
+description: Customize trigger input using override YAML
 sidebar_position: 9
 ---
 
 
 Suppose you have a CD pipeline with three different stages, each intended for a different environment. You wish to deploy one stage manually and the others via triggers. In an ideal scenario, you would create different input sets for each environment. However, managing numerous input sets with only one or two variable changes can be tedious and prone to mistakes.
-To address this, overriding input YAML provides the flexibility to change a specific parameter when utilizing triggers.
+To address this, overriding input YAML provides the flexibility to change  a specific parameter in the associated ``Input Set``.
 
 :::note
 You can only customize parameters using YAML in this setup.
@@ -133,5 +133,5 @@ We observe that the artifact tag and ``var2`` are coming from the override input
 :::info note
 1. When ``inputYaml`` is provided, the user-supplied values take precedence over all other configurations. In other words, any values specified in the  ``inputYaml`` section will override and take preference over the corresponding values in the Input Set.
 2. It's crucial to structure the ``inputYaml`` similarly to what is defined in the Pipeline Input Set. Additionally, ensure that you provide the correct pipeline, stage, or step ``identifier``.
-3. If you have an array structure in the Input YAML and need to override one of its values, it's crucial to maintain the structure outlined in the Input Set YAML.
+3. If you have an array structure in the Input YAML and need to override one of its values you need to provide the entire array structure in the input YAML, you cannot override only one part of the array.
 :::
