@@ -96,6 +96,13 @@ JavaScript SDK version to get the latest updates. For the newest JavaScript SDK 
 * [JavaScript SDK GitHub Repo](https://github.com/harness/ff-javascript-client-sdk/releases)
 * [official Feature Flags Releases Page](https://developer.harness.io/release-notes/feature-flags)
 
+## Release mode for Android applications
+In release mode, Flutter applies optimizations that can affect the behavior of native Android code, including code used by our Flutter Android plugin.
+
+Please add the following rule to your ProGuard configuration to ensure proper functionality when running your Android app in release mode
+
+`-keep class io.harness.cfsdk.** { *; }`
+
 ## Initialize the SDK
 
 To initialize the Flutter SDK, you need to:
