@@ -17,8 +17,5 @@ To view the output variables for a scan, go to the Pipeline Execution page, sele
 
 ![output variables for a scan](../static/output-variables-in-ui.png)
 
-:::note
-If a scan step fails because the [Fail on Severity](./fail-pipelines-by-severity.md) threshold was reached, the build results do not include any output variables. 
-:::
 
 For information about how severity levels are calculated, go to [Severities](./severities.md).

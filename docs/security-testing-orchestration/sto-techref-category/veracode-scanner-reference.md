@@ -50,7 +50,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 * `product_name` = `veracode`
 * `scan_type` = `repository`
 * `policy_type` — STO supports the following scan policy types for Veracode:
-	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestrated Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
+	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestration Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
 	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 	+ `dataLoad` — A Security step downloads and ingests results from an external scanner.
 * `product_config_name` = `default`

@@ -19,8 +19,7 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Optional tunables</h3>
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

@@ -4,12 +4,6 @@ description: Ensure only specific services are deployed to a specific infrastruc
 sidebar_position: 6
 ---
 
-:::note
-
-Currently, the **Scope to Specific Services** option in an infrastructure definition is behind the feature flag `CDS_SCOPE_INFRA_TO_SERVICES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 When you add a CD stage to a pipeline, you select the Harness service to deploy and the target infrastructure where the service is deployed. In some cases, you do not want to allow any service to be deployed to a specific infrastructure. Instead, you want to place a limitation on the infrastructure so that only specific services may be deployed to it.
 
 To limit an infrastructure to specific services, there is an option named **Scope to Specific Services** in the infrastructure definition.

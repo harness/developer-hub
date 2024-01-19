@@ -6,13 +6,17 @@ sidebar_position: 1
 
 In order to calculate metrics, you must integrate your SDLC tools with SEI.
 
-SEI integrations are handled through SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. For example, an SEI GitHub integration authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
+SEI integrations are handled through SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. 
+
+For example, an SEI GitHub integration authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
 
 To integrate a tool with SEI, you can use either an application-specific SEI integration the generic SEI integration.
 
 :::info
 Please note that after adding an integration, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
 :::
+
+![](./static/integrations-overview.png)
 
 ## Application-specific SEI integrations
 

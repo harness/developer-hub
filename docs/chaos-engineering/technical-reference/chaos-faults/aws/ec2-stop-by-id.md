@@ -2,8 +2,6 @@
 id: ec2-stop-by-id
 title: EC2 stop by ID
 ---
-## Introduction
-
 EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
 ![EC2 Stop By ID](./static/images/ec2-stop-by-id.png)
@@ -14,7 +12,7 @@ EC2 stop by ID:
 - Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Access to start and stop an EC2 instance in AWS.
 - The EC2 instance should be in a healthy state.
@@ -69,8 +67,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
- <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -87,8 +85,9 @@ Below is an example AWS policy to execute the fault.
         <td> </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

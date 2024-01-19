@@ -12,7 +12,7 @@ The NLB (Network Load Balancer) AZ (Availability Zone) down fault triggers the u
 - With this experiment, you can evaluate the application's behavior and assess its ability to handle and recover from a scenario where traffic from a particular AZ is blocked.
 - It conducts an application test by deliberately blocking traffic originating from a specific AZ on the network load balancer. This experiment involves intentionally preventing incoming and outgoing traffic from the designated AZ from reaching the application through the load balancer.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -58,8 +58,8 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -81,8 +81,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

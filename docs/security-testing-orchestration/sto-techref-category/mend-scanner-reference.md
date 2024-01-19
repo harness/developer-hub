@@ -50,7 +50,7 @@ The recommended workflow is add a Mend step to a Security Tests or CI Build stag
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
@@ -211,7 +211,7 @@ This field is required for Extraction scans.
 
 #### Include 
 
-If you're running an orchestrated scan on a code repository, you can use this setting to specify the files to include in the scan. By default, a Mend scan includes all files in the code repository. 
+If you're running an orchestration scan on a code repository, you can use this setting to specify the files to include in the scan. By default, a Mend scan includes all files in the code repository. 
 
 This setting corresponds to the [**Includes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
 
@@ -220,7 +220,7 @@ This setting corresponds to the [**Includes** configuration parameter](https://d
 
 #### Exclude
 
-If you're running an orchestrated scan on a code repository, you can use this setting to specify the  specific files to exclude from the scan. By default, a Mend scan includes all files in the code repository. 
+If you're running an orchestration scan on a code repository, you can use this setting to specify the  specific files to exclude from the scan. By default, a Mend scan includes all files in the code repository. 
 
 This setting corresponds to the [**excludes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
 

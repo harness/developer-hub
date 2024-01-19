@@ -11,7 +11,7 @@ To create or edit a Trellis profile:
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Trellis** under **Profiles**.
-4. To create a profile, select **New Trellis Profile**. To edit an existing profile, select the profile's name in the profiles list.
+4. To create a profile, select **+Add Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 :::info Predefined Trellis profiles
 
@@ -19,8 +19,7 @@ Some Trellis profiles are automatically created when you create a Harness projec
 
 You can't delete predefined profiles. If you don't want to use a predefined profile, make sure it isn't associated with any Collections.
 
-<!-- image Trellis_home_add_integrations.png - Trellis Score Profiles before integrating SCM or Issue Management tools -->
-<!-- image .gitbook/assets/Trellis\_profiles\_home.png - Trellis Score Profiles page with Predefined profiles -->
+![](./static/trellis-profile.png)
 
 :::
 
@@ -33,10 +32,17 @@ Configure basic information for the Trellis profile, such as a **Name** and an o
 In the **Association** section of your Trellis profile, you can map [Collections](../sei-projects-and-collections/manage-collections.md) to the Trellis profile, map development stages, and configure exclusions.
 
 * **Associations:** Select Collections to associate with this Trellis Profile.
-* **Development stage mapping:** Select relevant development stages as defined in your issue management tool. This is useful if you want to attribute scores to developers based on their contributions at different stages of a project's life cycle.
+* **Investment profile mapping:** It refers to the allocation of effort investment categories used in the calculation of your Trellis score. 
+
+![](./static/trellis-associations.png)
+
 * **Exclusions:** Exclusions are useful in scenarios where you want to ignore certain types of PRs and commits.
    * **Exclude pull requests:** List PRs to exclude from Trellis Score calculations. If excluding PRs, the commits associated with those PRs are also excluded.
    * **Exclude commits:** List commits to exclude from Trellis Score calculations. If excluding commits, only the commits are excluded. PRs that contain those commits are not excluded, unless you also excluded them in **Exclude pull requests**.
+
+* **Development stage mapping:** Select relevant development stages as defined in your issue management tool. This is useful if you want to attribute scores to developers based on their contributions at different stages of a project's life cycle.
+
+![](./static/trellis-advanced-options.png)
 
 ## Factors and Weights
 
@@ -51,6 +57,8 @@ In the subsections for the individual factors, you can:
 
 * Adjust the metrics that are included in each factor's calculation. For information about the metrics behind each factor, go to [Trellis Score](../sei-metrics-and-reports/trellis-score.md).
 * Define target performance ranges for each metric.
+
+![](./static/factors-and-weights.png)
 
 ### Enable the Impact factor
 

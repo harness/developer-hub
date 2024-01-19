@@ -20,8 +20,7 @@ Linux network corruption:
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Mandatory fields</h3>
+### Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -34,7 +33,8 @@ Linux network corruption:
     <td> For example, <code>eth0,ens192</code> </td>
   </tr>
 </table>
-<h3>Optional fields</h3>
+
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

@@ -2,8 +2,6 @@
 id: lambda-update-function-timeout
 title: Lambda update function timeout
 ---
-## Introduction
-
 Lambda update function timeout causes a timeout of a Lambda function, thereby updating the timeout to a specific value for a certain duration. Timeout errors interrupt the flow of the given function.
 Hitting a timeout is a frequent scenario with Lambda functions. This can break the service and impact the delivery. Such scenarios can occur despite the availability aids provided by AWS. 
 
@@ -16,7 +14,7 @@ Lambda update function timeout:
 - Checks the performance of the application (or service) running with a new timeout.
 - Determines a safe overall timeout value for the function.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Access to operate AWS Lambda service.
 - Lambda function must be up and running.
@@ -66,8 +64,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -89,8 +87,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
-    <h2>Optional tunables</h2>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

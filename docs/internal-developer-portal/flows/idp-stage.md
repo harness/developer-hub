@@ -66,9 +66,26 @@ This functionality is limited to the modules and settings that you have access t
 
 ![](./static/infrastructure.png)
 
+## Pipeline Variables
+
+5. Before adding the execution steps we need to create some **[pipeline variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/)** with [runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) which we will be using as **[expression inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)** in various steps under execution. 
+
+6. To add pipeline varialbes go to the right nav of your pag and select **Variables** icon.
+
+7. Under **Custom Variables** select **+Add Variable**.
+
+8. Add a name to the variable and select the input type as **Runtime**.
+
+
+![](./static/add-pipeline-variable.png)
+
+To use the pipeline variable select the input type as **Expressions** and follow the [JEXL format](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/#reference-variables-in-a-pipeline) to add the variable. 
+
+![](./static/add-repo-details.png)
+
 ## Execution Steps
 
-5. Now add the steps under the **Execution Tab**. The following is the list of suggested steps to be used in the execution.
+9. Now add the steps under the **Execution Tab**. The following is the list of suggested steps to be used in the execution.
 
 ![](./static/idp-stage.png)
 

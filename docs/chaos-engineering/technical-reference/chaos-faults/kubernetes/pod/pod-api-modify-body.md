@@ -4,7 +4,6 @@ title: Pod API modify body
 redirect_from:
   - /docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-modify-body
 ---
-## Introduction
 
 Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
@@ -16,15 +15,13 @@ Pod API modify body:
 - Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
 - It can be useful for obscuring or redacting personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
-:::info note
-- Kubernetes> 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -56,8 +53,9 @@ Pod API modify body:
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#path-filter">path filter </a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -137,7 +135,7 @@ Pod API modify body:
 
 ### Target service port
 
-Port of the targeted service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -211,7 +209,7 @@ spec:
 
 ### Path Filter
 
-API sub path/route to filter the api calls. Tune it by using the `PATH_FILTER` environment variable.
+API sub path (or route) to filter the API calls. Tune it by using the `PATH_FILTER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -251,9 +249,7 @@ spec:
 A comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
 
 :::note
-
 It is applicable only for the egress `SERVICE_DIRECTION`.
-
 :::
 
 The following YAML snippet illustrates the use of this environment variable:

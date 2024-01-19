@@ -11,7 +11,7 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 
 - VMware disk loss determines the resilience of an application to the unplanned scaling of K8s pods.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - The VM should be in a healthy state before and after injecting chaos.
 - The target disks should be attached to the VM.
@@ -32,14 +32,11 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
-
-  <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -54,10 +51,12 @@ stringData:
         <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. For more information, go to <a href="#virtual-disk-names"> virtual disk names. </a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

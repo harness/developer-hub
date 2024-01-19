@@ -14,7 +14,7 @@ This topic covers basic terminology and concepts related to SEI. For information
 
 ## Projects
 
-Projects are a centralized hub in SEI enabling users to organize and navigate across Collection hierarchies, and easily access dashboards associated with specific Collections.
+Projects are a centralized hub in Harness SEI enabling users to organize and navigate across Collection hierarchies, and easily access dashboards associated with specific Collections.
 
 By default, a Project consists of two top-level Collection categories: Teams and Sprints, each with options to customize. Each Collection category can have other Collections defined under them in parent-child relationships.
 
@@ -22,13 +22,13 @@ For more information, Go to [Projects and Collections](../sei-projects-and-colle
 
 ## Insights
 
-Insights in SEI provide a visual representation of key metrics and KPIs, enabling engineering teams to monitor their performance and identify areas for improvement. To create a dashboard in SEI, users can utilize pre-built widgets that are specifically designed to display relevant data points. These widgets can be customized and arranged on the insight canvas to create a comprehensive view of team performance.
+Insights in SEI provide a visual representation of key metrics and KPIs, enabling engineering teams to monitor their performance and identify areas for improvement. To create a Insight in SEI, users can utilize pre-built reports that are specifically designed to display relevant data points. These reports can be customized and arranged on the insight canvas to create a comprehensive view of team performance.
 
 For more information, go to [Insights](../sei-insights)
 
 ## Ingestion Satellite
 
-Ingestion Satellite is used to integrate your on-premise tools and custom integrations into your SEI workspace. It enables data ingestion and integration with various third-party applications and services. For more information, go to Ingestion Satellite Overview
+Ingestion Satellite is used to integrate your on-premise tools and custom integrations into your SEI workspace. It enables data ingestion and integration with various third-party applications and services.
 
 For more information, Go to [Ingestion Satellite](../sei-ingestion-satellite/satellite-overview)
 
@@ -63,6 +63,5 @@ SEI provides 3 different types of profiles:
 ### Metrics & Reports
 
 Metrics and Reports in SEI refer to various key performance indicators and data-driven insights that are used to assess and improve a software development team's performance and productivity. These are predefined widgets which can be customized and used for generating insights on tracking, analyzing, and optimizing different aspects of the development process. 
-
 
 For more information, go to [Metrics & Reports](/docs/category/metrics-and-reports)
