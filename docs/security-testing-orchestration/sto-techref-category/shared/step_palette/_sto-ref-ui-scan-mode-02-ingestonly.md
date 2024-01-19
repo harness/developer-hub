@@ -1,1 +1,1 @@
-* **Ingestion**  Ingestion scans are not orchestrated. The Security step ingest results from a previous scan (for a scan run in an previous step) and then normallizes and compresses the results. 
+* **Ingestion** Configure the step to [read scan results from a data file](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) and then ingest, normalize, and deduplicate the data. 

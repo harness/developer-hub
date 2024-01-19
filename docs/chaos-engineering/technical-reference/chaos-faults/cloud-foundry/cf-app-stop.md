@@ -25,7 +25,7 @@ CF app stop:
   <tr>
     <td> cfDeploymentPlatform </td>
     <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code> </td>
+    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform.</a> </td>
   </tr>
   <tr>
     <td> organization </td>
@@ -54,22 +54,17 @@ CF app stop:
   <tr>
     <td> faultInjectorPort </td>
     <td> Local server port used by the fault-injector utility. </td>
-    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. </td>
+    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. For more information, go to <a href="#fault-injector-port"> fault injector port.</a></td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration.</a></td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>
     <td> Skip SSL validation while invoking CF APIs. </td>
-    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. </td>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. For more information, go to <a href="#skip-ssl-validation"> skip SSL validation.</a></td>
   </tr>
   <tr>
     <td> rampTime </td>
