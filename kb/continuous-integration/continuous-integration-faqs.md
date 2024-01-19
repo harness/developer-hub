@@ -395,6 +395,30 @@ If the delegate is not able to connect to the created build farm with [Istio MTL
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
+### If my pipeline consists of multiple CI stages, are all the steps across different stages executed within the same build pod?
+
+No, each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within their dedicated pods. In the presence of multiple CI stages, distinct build pods are generated for each individual stage.
+
+### When does the cleanup of build pods occur in a pipeline with multiple CI stages? Does it happen after the entire pipeline execution is finished?
+
+The build pod cleanup takes place immediately after the completion of each stage's execution, even in the presence of multiple CI stages within the same pipeline.
+
+### Is the build pod cleaned up in the event of a failed stage execution?
+
+Yes, the build pod gets cleaned up after the stage execution regardless of whether the stage succeeds or fails.
+
+### Do we get an error in the execution UI if the pod cleanup task failed? 
+
+Currently, failure in the pod cleanup task is not reflected in the execution UI however the team is working on improving this behaviour.
+
+### What port does the lite-engine container listen on which will be used by delegate to communicate with it?
+
+lite-engine container within the build pod will be listening on port 20001
+
+### Why the cpu/memory request value of the step container is very less even after the cpu/memory for the step has been overridden in the UI?
+
+The resource request for the step containers are always set to minimum and additional resources are requested only as needed during build execution. More details about the resoiurce allocation in the build pod can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/)
+
 ## Self-signed certificates
 
 ### Can I mount internal CA certs on the CI build pod?
@@ -741,6 +765,36 @@ Yes. You can run any commands in a Run step. With respect to Git, for example, y
 This error may occur if your [code repo connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
 
 [SCM service connection failures can also occur when using self-signed certificates](#git-connector-scm-connection-errors-when-using-self-signed-certificates).
+### What causes codebase variables to return null in the CI pipeline?
+Codebase variables may return null if API access is not enabled on the git connector. Ensure that API access is enabled on the git connector to utilize codebase variables.
+
+### Why the expression ```<+trigger.prNumber>``` is returning null when running a CI pipeline manually for a PR?
+
+This is expected as the trigger variable will be resolved when the pipeline is executed via trigger. You could you ```<+codebase.prNumber>``` instead which will resolve to PR number even if the pipeline executed manually. More details about all the codebase variables can be found [here](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
+
+### How do I handle authentication, while cloning a private repo by explicitly running the git clone command in the run step?
+
+You could either create PAT as a Harness secret and pass it in the git clone command or create a ```.netrc``` file to pull the git credential from your pipeline's codebase connector. More details about creating ```.netrc``` can be reffered [here](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
+
+### Does the built in clone step support git-lfs?
+
+The built-in clone stpe doesnt support git-lfs however you could run the git clone in a run step and perfrom git lfs. More details about the same can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs/)
+
+### Can I use codebase variables if Im running the explicit clone commands in a runstep?
+
+No, codebase variables will not be resolved if you are running the git commands in a run step and the pipeline is not configured with a codebase connector
+
+### Does Harness utilize the Git connector embedded in the codebase or the connector linked to the trigger to update the build status on a Pull Request?
+
+Git connector configured in the codebase will be used to update the build status on PR during build execution
+
+### Does the builtin clone step step fetch all the branches from the configured repo?
+
+No, the clone step will fetch only one or two branches from the repo based on the build type
+
+### How can we fetch all the branches fetched while cloning the repo?
+
+We would need to run the git clone commands explicitly in a run step to fetch all the branches from the code base
 
 ## SCM status updates and PR checks
 
@@ -1010,6 +1064,56 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 ### Build and Push to Docker fails with kaniko container runtime error
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
+
+### Is it necessary to run the built-in build and push step with root user?
+Yes, build and push steps in CI uses kaniko to perform the build under the hood which requires root access.
+
+### How can we run the build in harness using non root user?
+
+We could use buildah plugin to perform the build using non root user. More details about the same can be found in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin)
+
+### How can we pass the kaniko arguments to the build and push step?
+
+We need to add a stage variable in the format ```PLUGIN_<flag_name>```. For example, if you want pass the kaniko flag ```--no-push```, we need to add a stage variable ```PLUGIN_NO_PUSH``` with a value ```true```
+
+### Can we pass all the kaniko falgs to the build and push step?
+
+Currently, we can pass the below list of flags however the product team is workig on supporting all the kaniko flags in the future release
+
+```
+PLUGIN_EXPAND_TAG - enable for semver tagging
+PLUGIN_AUTO_TAG - enable auto generation of build tags
+PLUGIN_AUTO_TAG_SUFFIX - the suffix of auto build tags
+PLUGIN_CREATE_REPOSITORY - create ECR repository
+PLUGIN_CUSTOM_LABELS - additional k=v labels
+PLUGIN_REGISTRY_MIRRORS - docker registry mirrors
+PLUGIN_SNAPSHOT_MODE - Specify one of full, redo or time as snapshot mode
+PLUGIN_LIFECYCLE_POLICY - Path to lifecycle policy file
+PLUGIN_REPOSITORY_POLICY - Path to repository policy file
+PLUGIN_ARTIFACT_FILE - Artifact file location that will be generated by the plugin. This file will include information of docker images that are uploaded by the plugin.
+PLUGIN_NO_PUSH - Set this flag if you only want to build the image, without pushing to a registry
+PLUGIN_VERBOSITY - Set this flag with value as oneof <panic|fatal|error|warn|info|debug|trace> to set the logging level for kaniko. Defaults to info.
+PLUGIN_TAR_PATH - Set this flag to save the image as a tarball at path
+```
+
+### Why the native build and push step is not parsing the ```# syntax``` in dockerfile?
+
+The native build and push step is using kaniko under the hood and kaniko doesnt support ```# syntax``` in the docker file yet
+
+### Is there a way we can get the  ```# syntax``` line in the docker file being detected while building the image?
+
+We could use dind build with buildkit enabled or some other plugin such as buildha instead of kaniko to be able to parse ```# syntax``` in dockerfile
+
+### How to run the docker build command with buildkit enabled?
+
+You could run ```DOCKER_BUILDKIT=1 docker build -t <image_name>:<tag> . ```
+### Why does Kaniko avoid including the contents of the volume defined by the keyword VOLUME in dockerfile on the final image?
+
+Kaniko optimizes the build process by creating directories for volumes but skips copying the contents into image layers. This behavior is expected and enhances the efficiency of the build
+
+### Is there a way to include the contents of a specific VOLUME in the image layers during the Kaniko build process?
+
+If you want to include volume contents in the image layers, consider using COPY instructions in your Dockerfile to directly copy the data into the image during the build.
 
 ## Upload artifacts
 
@@ -1344,6 +1448,14 @@ If the Action allows you to override the `working-directory`, such as with the [
 ### Can I integrate my CI builds with the Datadog Pipeline Visibility feature?
 
 Harness doesn't have OOTB support for Datadog Pipeline Visibility, but you can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
+
+### How does the entry point for the background step and plugin step are retrieved during the execution?
+
+We would make an additional connection to the container registry endpoint to retrive the entrypoint dueing the execution.
+
+### What happens if a Fully Qualified Name (FQN) isn't used for the image in the background and plugin steps that are configured with an image from a private repo?
+
+If FQN isn't specified for the image, the system will attempt to connect to DockerHub public endpoint to retrieve the entry point during the execution
 
 ## Workspaces, shared volumes, and shared paths
 
