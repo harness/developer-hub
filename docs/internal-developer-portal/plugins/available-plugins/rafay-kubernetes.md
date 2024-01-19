@@ -51,7 +51,7 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 ## Layout
 
-This plugin exports a UI tab that are displayed as new cards under overview tab for a service or for any other layout page. These are auto-ingested and you can view them under **Admin** > **Layout**, select **Service** in the dropdown menu. 
+This plugin exports new cards under overview tab for a service or for any other layout page. These are auto-ingested and you can view them under **Admin** > **Layout**, select **Service** in the dropdown menu. 
 
 ```yaml
         - component: EntitySwitch
