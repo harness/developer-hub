@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/chaos-engineering/get-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies).
 
 ### How to add and manage a custom chaos hub?
 
@@ -60,7 +60,7 @@ To report an issue which is not mentioned here, head over to **Help** in Harness
 ### What are the identity providers supported by Harness Chaos for user authentication? 
 
 The Harness platform is fully integrated with several public OAuth providers, with support for two-factor authentication and domain whitelisting. 
-To learn more, go to [authentication overview](../platform/authentication/authentication-overview.md). 
+To learn more, go to [authentication overview](/docs/platform/authentication/authentication-overview.md). 
 
 ### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users’ environments?
 
@@ -115,4 +115,4 @@ Harness provides an audit log to the account admin where user actions on the cha
 
 ### Can Harness perform security chaos tests in the users’ environments?
 
-Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the correct rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen.md).
+Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the correct rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen/).
