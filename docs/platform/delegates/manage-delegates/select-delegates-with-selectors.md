@@ -113,9 +113,6 @@ Delegates can be selected for the connector used in a stage's **Infrastructure**
 
 ![](./static/select-delegates-with-selectors-25.png)
 
-import Selector from '/docs/platform/shared/selector-infrastructure.md'
-
-<Selector />
 
 ### Selecting a delegate for a step using tags
 
