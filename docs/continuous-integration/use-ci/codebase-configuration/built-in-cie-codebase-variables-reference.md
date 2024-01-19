@@ -41,6 +41,14 @@ Manual builds occur when you manually run a pipeline from within Harness. You ca
 * **Manual pull request (PR) builds**: Manually run a pipeline and select the **Git Pull Request** build type. Harness looks for the source code attached to the specified **Pull Request Number**, and it clones that specific source code for the build.
 * **Manual tag builds:** Manually run a pipeline and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
 
+:::info
+
+`trigger.*` expressions are always `null` for manual builds. Trigger expressions get values from automated triggers, such as webhook triggers. Since manual builds don't use an automated trigger, there are no values available for these expressions.
+
+If you build both manually and through triggers, consider using expressions that can resolve for both build types, such as `<+codebase.prNumber>` instead of `<+trigger.prNumber>`.
+
+:::
+
 ### Webhook triggers
 
 You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
