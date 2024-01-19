@@ -27,7 +27,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 🎁 In our latest release, we've added improvements to scorecards✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for.
 
 - **Docs:** [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
-- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage), [How to add custom plugins in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/add-a-custom-plugin)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage)
 
 
 #### New features and enhancements
