@@ -3,7 +3,7 @@ title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
 date: 2023-11-02T17:20
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 import Tabs from '@theme/Tabs';
@@ -282,7 +282,7 @@ The CET Agent list is failing to load correctly when running in SMP installation
 
 #### New features and enhancements
 
-Harness Continuous Error Tracking (CET) is now available for public preview to provide developer-first observability for modern applications. This is the first release of CET and the module is now available for Public Preview.
+Harness Continuous Error Tracking (CET) is now available for Limited GA to provide developer-first observability for modern applications. This is the first release of CET and the module is now available for Limited GA.
 
 As a new module in the Harness Platform, CET helps developers proactively identify and resolve errors across the entire software delivery lifecycle (SDLC).
 

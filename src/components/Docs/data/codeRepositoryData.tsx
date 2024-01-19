@@ -73,7 +73,7 @@ import {
             title: "Repositories",
             module: MODULES.code,
             description:
-              "Create repositories and configure branch protection rules.",
+              "Create repositories and configure branch rules.",
             link: "/docs/category/manage-repositories",
           },
           {

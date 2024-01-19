@@ -17,7 +17,7 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 - It simulates premature connection loss, such as firewall issues, between microservices by verifying connection timeouts.
 - It simulates connection resets due to resource limitations on the server side, such as running out of memory, killing processes, or overloading the server due to high amounts of traffic.
 
-:::note
+### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
 - Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -35,14 +35,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -72,10 +70,12 @@ stringData:
             <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>

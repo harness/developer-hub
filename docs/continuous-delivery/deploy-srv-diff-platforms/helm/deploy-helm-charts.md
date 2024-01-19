@@ -100,7 +100,21 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 ## Helm OCI Chart Registry Support
 
-Harness supports the following Helm OCI chart registries:
+To use a Helm OCI chart registry, do the following.
+
+1. In Specify Helm Chart Store, select **OCI Helm**.
+2. In **Select Connection Type**, select **Direct Connection** or **Cloud Provider**.
+3. Provide the connection information for the connectio type, described below.
+
+### Direct Connection
+
+The **Direct Connection** option uses the Harness OCI Helm Registry connector which requires following authentication settings:
+
+- OCI URL
+- Username (For Auth with Creds)
+- Password (For Auth with Creds)
+
+Harness supports the following Helm OCI chart registries in **Direct Connection**:
 
 - Amazon ECR
 - Azure Container Registry
@@ -108,20 +122,39 @@ Harness supports the following Helm OCI chart registries:
 - JFrog Artifactory
 - Google Artifact Registry
 
-Helm OCI chart support includes the following deployment types:
+### Cloud Provider
 
-- Native Helm
-- Helm charts with Kubernetes deployments.
+Harness supports ECR only via the **Cloud Provider** option. 
 
-Harness OCI chart registry support details:
+Cloud Provider is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. This option uses an AWS connector. The credentials for this connector generate the authentication token used to access the ECR registry.
 
-- You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
-- Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
-- You can define expressions for the **Chart Name** and **Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+The Cloud Provider option does not depend on OCI, but uses the official ECR APIs to fetch the chart and chart version. The OCI URL is not required.
+
+Harness supports all the AWS authentication types to fetch the Helm chart from ECR. 
+
+For steps on configuring the AWS connector, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/). For the required AWS policies, go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions).
+
+### Manifest details for ECR
+
+After you select the **Cloud Provider** option, you can configure the manifest details for fetching the chart from ECR:
+
+1. In **Manifest Identifier**, enter a unique identify for the manifest.
+2. In **Base Path**, enter the path to the chart folder. The default is `/`.
+3. In **Chart Name**, enter the ECR repository name.
+4. In **Region**, enter the AWS region of the ECR repository.
+5. In **Registry Id**, enter the AWS account Id.
+6. In **Chart Version**, enter the version number. This option only works when **Chart Name** and **Region** are configured.
 
 ### Important notes
 
-- You cannot be trigger pipelines using the On New Manifest trigger if your service uses the OCI Helm connector.
+- Helm OCI chart support includes the following deployment types:
+  - Native Helm
+  - Helm charts with Kubernetes deployments.
+- Harness OCI chart registry support details:
+  - You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
+  - Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
+- You can define expressions for the **Chart Name** and **Base Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+  - You cannot trigger pipelines using the **On New Manifest** trigger if your service uses the OCI Helm connector.
 
 ## Visual summary
 

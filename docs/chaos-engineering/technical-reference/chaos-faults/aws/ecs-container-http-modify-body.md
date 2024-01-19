@@ -15,7 +15,7 @@ ECS container HTTP modify body:
 - Tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is currently running, you may need to restart it to get the metadata directory.
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
@@ -99,8 +99,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -122,8 +122,9 @@ Below is an example AWS policy to execute the fault.
             <td> If no value is provided, the response will be an empty body (defaults to empty body). For more information, go to <a href="#modifying-the-response-body"> response body.</a></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+    
+### Optional tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

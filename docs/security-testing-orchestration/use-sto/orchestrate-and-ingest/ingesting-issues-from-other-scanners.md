@@ -28,7 +28,7 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
   You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
 
-3. Add a **Custom Ingest** step and configure the scanner to ingest the results of the scan. For information about how to configure this step, go to [Custom Ingest settings reference](docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference.md).
+3. Add a **Custom Ingest** step and configure the scanner to ingest the results of the scan. For information about how to configure this step, go to [Custom Ingest settings reference](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference.md).
 
 
 ###  JSON data format reference

@@ -183,12 +183,14 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 ### YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial.  If you copy this example, replace the placeholder values with appropriate values for your project, organization, and app instance ID.
+
 ```yaml
 pipeline:
   name: v1-dast-zap-scan-gruyere-test
   identifier: v1dastzapscangruyeretest
-  projectIdentifier: mystosandbox
-  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -216,12 +218,12 @@ pipeline:
                     target:
                       name: https://google-gruyere.appspot.com
                       type: instance
-                      variant: MY_APP_INSTANCE_ID
+                      variant: YOUR_APP_INSTANCE_ID
                     advanced:
                       log:
                         level: info
                       fail_on_severity: critical
                     instance:
-                      domain: https://google-gruyere.appspot.com/MY_APP_INSTANCE_ID
+                      domain: https://google-gruyere.appspot.com/YOUR_APP_INSTANCE_ID
                       protocol: https
 ```

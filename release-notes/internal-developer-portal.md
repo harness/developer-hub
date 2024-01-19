@@ -3,7 +3,7 @@ title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
 tags: [NextGen, "Internal Developer Portal", "IDP"]
 date: 2023-08-09T10:00:15
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
@@ -17,6 +17,80 @@ Review the notes below for details about recent changes to Harness Internal Deve
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## January 2023
+
+### Version 0.19.0
+
+<!-- Jan 19, 2024 -->
+
+🎁 In our latest release, we've added improvements to scorecards✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for.
+
+- **Docs:** [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage)
+
+
+#### New features and enhancements
+
+- Added support for [Audit Trails](https://developer.harness.io/docs/internal-developer-portal/governance/audit-trails). [IDP-1280]
+- Added support for a new plugin [Rafay Kubernetes Operations Platform](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes). [IDP-1979]
+- Added support for connector types in Git based steps under IDP stage, which will allow users to toggle between pulic and private repositories. [IDP-1982]
+- Added support for entities `annotation` and `harnessData` from `catalog-info.yaml` to be added as variable(JEXL format) input in Scorecard Checks. eg., `<+metadata.harnessData.branch>` will fetch the value for the branch in the follwing YAML as `catalog-info.yaml`. [IDP-1964]
+
+```YAML
+...
+metadata:
+  name: idp-module
+  harnessData:
+    branch: develop
+    path: idp
+    priority: P0,P1
+  annotations:
+    jira/project-key: IDP
+...
+```
+
+#### Bug Fixes
+
+- Fixed the issue with side Nav items display, when user switches from old to new Nav using "New Navigation Design (Beta)" toggle. [IDP-1964]
+- Fixed the issue with scaffolder task missing "created by" with adding a migration that will correct the data eventually. [IDP-1961]
+- Fixed the issue with Backstage Permissions Sync Job Bug. [IDP-1980]
+
+
+### Version 0.18.0
+
+<!-- Jan 11, 2024 -->
+
+🎉 Happy New Year to all our fantastic users! 🎉
+Since it's the first release of the year, we've wrapped up some interesting features for you, including a new Devtools Plugin and revamped access control permissions.
+
+- **Docs:** [Configuring Layout of IDP Catalog pages](https://developer.harness.io/docs/internal-developer-portal/get-started/layout-deepdive) [Role-based access control (RBAC)](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles)
+
+- **Videos:** [How to set the Owner of a Software Component](https://youtu.be/pQvqWBrXIhk?si=LqkJBDo63we929L4)
+
+#### New features and enhancements
+
+- Added Support for New [Devtools Plugin](https://github.com/backstage/backstage/blob/master/plugins/devtools/README.md)
+
+![](./static/devtools.png)
+
+- Added support for [new custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook), that can execute pipeline with custom webhook based triggers. 
+
+- Access Control is revamped with new roles (IDP Admin and IDP Platform Engineering) and permissions. 
+
+![](./static/idp-roles.png)
+
+- Added support for persistent platform favourites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
+
+- Enhanced the custom project picker to increase the hard limit of 50. 
+
+- Added support for regex in file name input in Scorecards.
+
+![](./static/checks-idp.png)
+
+- We now have a new intuitive Plugins Page.
+
+![](./static/new-plugin-page.png)
 
 ## December 2023
 
@@ -89,7 +163,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](https://developer.harness.io/docs/internal-developer-portal/get-started/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
 
 #### New features and enhancements
 
@@ -134,7 +208,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 <!-- Oct 26, 2023 -->
 
-Post-public preview, we've taken your genius tips and mixed them into the Internal Developer Portal. Also, we've fixed a few bugs along the way. Dive in and see what's new! But before that here are some links of recently released tutorials and docs to help you get started with IDP. 
+Post-Limited GA, we've taken your genius tips and mixed them into the Internal Developer Portal. Also, we've fixed a few bugs along the way. Dive in and see what's new! But before that here are some links of recently released tutorials and docs to help you get started with IDP. 
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i) 

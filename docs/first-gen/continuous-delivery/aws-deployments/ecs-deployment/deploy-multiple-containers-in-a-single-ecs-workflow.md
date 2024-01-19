@@ -33,7 +33,7 @@ Put simply, they improve performance by freeing your application container from 
 
 For example, a telemetry sidecar container that must start before and shut down after the other containers in a task, or an initialization container that must complete its work before other containers in the task can start.
 
-Here is a blog post from AWS explaining another sidecar use: [Deploying an NGINX Reverse Proxy Sidecar Container on Amazon ECS](https://aws.amazon.com/blogs/compute/nginx-reverse-proxy-sidecar-container-on-amazon-ecs/).
+Here is a blog post from AWS explaining another sidecar use: [Deploying an NGINX Reverse Proxy Sidecar Container on Amazon ECS](https://containersonaws.com/pattern/nginx-reverse-proxy-sidecar-ecs-fargate-task).
 
 ### Review: New ARN and Resource ID Format Must be Enabled
 

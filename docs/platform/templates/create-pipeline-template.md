@@ -60,53 +60,50 @@ Here is a quick overview of pipeline templates:
 
 ### Step 1: Add a template
 
-First, we'll create a project-level template in the Deployments module. You can do this in any project.
+You can create a pipeline template from your account, org, or project. This topic explains the steps to create a pipeline template from the project scope.
 
 To add a template, do the following:
 
-1. In Harness, navigate to the **Deployments** module.
-2. In **Projects**, select the desired project.
-3. Under **Project Setup**, select **Templates**.
-4. In **Templates**, select **New Template**.
-
-5. Select **Pipeline** to create a pipeline template.
-
-   ![](./static/create-pipeline-template-67.png)
-
-   The **Create New Pipeline Template** dialog opens.
-
-6. In **Name**, enter a name for the pipeline, for example `Quickstart`.
-
+1. In your Harness, go to your project.
+2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
+3. Select **+ New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings open.
+4. In **Name**, enter a name for the template, for example `Quickstart`.
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
 7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
 
    ![](./static/create-pipeline-template-68.png)
 
-   You'll see the Git Repository Details option only if you're creating a template on a Git-enabled Project. For more information, go to [Harness Git Experience overview](../git-experience/git-experience-overview.md).
+   You'll see the Git Repository Details option only if you're creating a template on a Git-enabled project. For more information, go to [Harness Git Experience overview](../git-experience/git-experience-overview.md).
 
 8. In **Git Repository Details**, in **Repository Display Name**, select your Git repository and Branch.
 
-9. Once you've entered all the details, select **Continue**.
+9. (Optional) Select the **Logo** icon to upload a logo image file.
+10. From the **Save To** list, select the scope where you want to save the template: Project, Organization, or Account. For this example, select Project.
+11. Under **How do you want to set up your template?**, select **Inline**.
+
+12. Once you've entered all the details, select **Continue**.
 
    ![](./static/create-pipeline-template-69.png)
 
 ### Step 2: Add a stage
 
+This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 
+
+Other options include:
+
+   - **Build:** Use CI to build, test, and push artifacts to repositories.
+   - **Approval:** Manual and Jira approval stages.
+   - **Feature Flag:** Enable or disable functionality remotely without redeploying code.
+   - **Custom Stage:** Set up a stage configurable to your needs.
+
 To add a stage to the template, do the following:
 
 1. Follow the steps above to add a template.
-
-2. Click **Add Stage**. The **Select Stage Type** settings appear.
-
-   ![](./static/create-pipeline-template-70.png)
-
-3. Select **Deploy**. The deploy stage type is a CD stage that enables you to deploy any service to your target environment.
-
-   You can also select Build for CI, and Approval for Manual and Jira Approval Stages. More options will be added soon. This document uses the Deploy stage type.The **About Your Stage** settings appear.
-
+2. Select **Add Stage**. The **Select Stage Type** settings open.
+3. Select **Deploy**. The **About Your Stage** settings open.
 4. In **Stage Name**, enter a name for your stage.
-
 5. Select the entity that this stage should deploy. Currently, for deploy, only service can be deployed and it is selected by default.
-
 6. Select **Set Up Stage**.
 
    ![](./static/create-pipeline-template-71.png)
@@ -137,7 +134,7 @@ To add infrastructure details, do the following:
 
    ![](./static/create-pipeline-template-74.png)
 
-6. Select **Next**. The **Execution Strategies** settings appear.
+6. Select **Next**. The **Execution Strategies** settings open.
 
    ![](./static/create-pipeline-template-75.png)
 
@@ -172,7 +169,7 @@ To define execution strategies, do the following:
 
 8. Select **Save as new Template**.
 
-   **Save as new Template** settings appear.
+   **Save as new Template** settings open.
 
    ![](./static/create-pipeline-template-79.png)
 

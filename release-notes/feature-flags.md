@@ -3,7 +3,7 @@ title: Feature Flags release notes
 sidebar_label: Feature Flags
 date: 2023-11-24T16:19:25
 tags: [NextGen, "feature flags"]
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
@@ -15,7 +15,65 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: December 19th 2023
+### Latest Updated: January 17th 2024
+
+## January 2024
+
+### Apex SDK
+
+#### Version 0.1.3 Beta
+
+ - It now re-authenticates using the `FFPoller`, to ensure that scheduled jobs continue to run after the auth token has expired.
+ - It now includes a synchronous initialization option.
+
+### Android SDK
+
+#### Version 1.2.3
+
+ - Fixed uncaught exception error that occurs if initialization fails.
+
+### Flutter SDK
+
+#### Version 2.1.1
+
+ - We've added support for Kotlin version 1.7.x for Android projects. Previously, the compilation would fail due to Kotlin compilation issues.
+ - We've upgraded Feature Flags' Android SDK to 1.2.3, which ensures the SDK will not crash the application should initialization fails. For full details of all Feature Flags Android SDK relases, please see the: [Feature Flags' Android Client SDK Changelog](https://github.com/harness/ff-android-client-sdk/releases).
+
+### Java SDK
+
+#### Version 1.5.0
+
+ - Upgraded `okhttp` and the following CVEas have been resolved:
+ -- CVE-2023-3635, 
+ -- CVE-2022-24329,
+ -- CVE-2020-29582
+
+ - Delete events were throwing `ApiException` errors. This is now resolved. 
+ - The `commons-collections404` has now been removed.
+ - `maven-model` has now been removed.
+ - `threetenbp` has now been removed. 
+ - Add GraalVM example application (experimental).
+ - The Gradle `dependency-check` plugin has been added. 
+ - Add Gradle dependency-check plugin.
+ - `ch.qos.logback:logback-classic` has been upgraded from 1.2.11 to 1.3.12. (FFM-10373)
+
+### Node.js SDK
+
+#### Version 1.6.0
+
+ - We now support `strictNullChecks` when passing an `undefined` target to client variation methods. (FFM-10413)
+
+### Python SDK
+
+#### Version 1.4.0
+
+ - You can use the new `get_flag_type` public method to check the type of a flag at any time. If you'd like to see an example of this, have a look at the [`get_flag_type.py`](https://github.com/harness/ff-python-server-sdk/blob/main/examples/get_flag_type_example/get_flag_type.py).(FFM-10393)
+ -  We've added a more robust variation method, `int_or_float_variation` to evaluate number flags. This method ensures that a number flag with either integer or float variations (or both) will be evaluated correctly. The `int_variation` and `number_variation` methods could fail to evaluate depending on if the variation served was of the expected type. We recommend using this new method going forward for number flag evaluations.
+
+# Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 ## December 2023
 
@@ -160,6 +218,21 @@ Fixed issues
 #### Version 1.2.0
 
  - The percentage rollout bucket by logic is now fixed to match Golang SDK.
+
+### SMP 0.11.0 Release
+
+ - The Feature Flag Pipeline steps, RBAC permissions for specific environments (or environment types) returned a `no permissions` error when the user had the required permission. This has now been resolved. (FFM-9672)
+ - The feature flag module did not ship with an OOTB role that could toggle flags. This meant that:
+ -- Customers on the free tier could only toggle flags as admin users because they were unable to create custom roles.
+  - As a result of resolving, you can now:
+ -- ship with an OOTB "feature flag admin" role that contains all the feature flag permissions (excluding delete),
+ -- assign users the "feature flag admin" role to allow them to toggle flags. (FFM-9542)
+ 
+### SMP 0.12.0 Release
+
+  - The Specific Targeting section of the Flag detail page would not display a variation if the name was not set has now been fixed. If the name is not set, the page will now fall back to the identifier. (FFM-9858)
+ - The Feature Flags onboarding wasn't able fetch metrics to complete the verification step. This has now been resolved. (FFM-9743)
+ - A new Feature Flag targeting rule could be saved without adding a target or target group which has now been fixed. (FFM-9871)
 
 ## October 2023
 
@@ -979,7 +1052,7 @@ This includes the following:
 
  - This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method.
 
-## Previous releases
+</details>
 
 <details>
 <summary>2022 releases</summary>

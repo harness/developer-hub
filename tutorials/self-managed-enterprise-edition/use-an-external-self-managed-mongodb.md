@@ -2,7 +2,7 @@
 title: Use an external self-managed MongoDB with your installation
 description: Learn how to use an external self-managed MongoDB with Self-Managed Enterprise Edition installations.
 sidebar_label: External self-managed MongoDB
-# sidebar_position: 2
+sidebar_position: 30
 ---
 
 Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external self-managed MongoDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy MongoDB with VMs and replication.

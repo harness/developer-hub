@@ -66,7 +66,7 @@ The recommended workflow is add a Anchore Enterprise step to a Security Tests or
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
@@ -208,7 +208,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Domain
 
-The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`
+The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`.
 
 
 
@@ -258,8 +258,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
-
+You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
 
 <a name="fail-on-severity"></a>
 
@@ -307,7 +306,6 @@ In the **Advanced** settings, you can use the following options:
 You need to use a Security step to set up an Anchore Enterprise integration. An Anchore Enterprise scanner template is under development and will be available soon. 
 :::
 
-/step-palette -->
 
 To set up your Anchore Enterprise integration with a Security step, do the following: 
 
@@ -322,7 +320,7 @@ To set up your Anchore Enterprise integration with a Security step, do the follo
 
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `orchestratedScan`, `dataLoad`, or `ingestionOnly`. 
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
-	+ `product_domain` : The fully-qualified URL to the scanner API, for example https://anchore.company.io/api or http://192.0.2.1:8228
+	+ `product_domain` : The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`.
 	+ `product_access_id` : Username to log in to the scanner.
 	+ `product_access_token` : The access token to log in to the scanner. In most cases this is a password or an API key. 
 	  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
@@ -333,7 +331,7 @@ To set up your Anchore Enterprise integration with a Security step, do the follo
 
 * [`fail_on_severity`](#fail-on-severity)
 + `tool_args`
-	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`. 
+	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`. 
 
 
 ### Container image settings (required)
@@ -389,7 +387,7 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
 
    1. Extracts the `owasp/nettacker:latest` image from Anchore Enterprise.
    2. Logs in to the Anchore Enterprise API based on the `product_domain`, `product_access_id`, `product_access_token` settings.
-   3. Launches an orchestrated scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
+   3. Launches an orchestration scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
    4. Deduplicates and normalizes the scan data and ingests it into STO.
 
 <details>

@@ -2,7 +2,6 @@
 id: container-kill
 title: Container kill
 ---
-## Introduction
 
 Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific or random replicas of an application resource.
 
@@ -14,15 +13,13 @@ Container kill:
 - Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow when certain replicas are not available.
 - Tests the recovery of pods that possess sidecar containers.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description  </th>
@@ -56,7 +53,7 @@ Container kill:
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

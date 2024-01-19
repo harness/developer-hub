@@ -8,34 +8,13 @@ CF_PASSWORD=XXXXXXXXXXXXXXXXXXXXXXX
 UAA_SERVER_ENDPOINT=XXXXXXXXXXXXXXX
 ```
 
-:::note
+:::info
 If the secrets file is not provided, the secrets are attempted to be derived as environment variables by the fault-injector utility.
 :::
 
-<table>
-  <tr>
-    <th> ENV Name </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> CF_API_ENDPOINT </td>
-    <td> API endpoint for the CF setup </td>
-    <td> For example, <code>https://api.system.cf-setup.com</code> </td>
-  </tr>
-  <tr>
-    <td> CF_USERNAME </td>
-    <td> Username for the CF user </td>
-    <td> For example, <code>username</code> </td>
-  </tr>
-  <tr>
-    <td> CF_PASSWORD </td>
-    <td> Password for the CF user </td>
-    <td> For example, <code>password</code> </td>
-  </tr>
-  <tr>
-    <td> UAA_SERVER_ENDPOINT </td>
-    <td> API endpoint for the UAA server for the CF setup </td>
-    <td> For example, <code>https://uaa.system.cf-setup.com</code> </td>
-  </tr>
-</table>
+| ENV name | Description | Example |
+| -------- | ----------- | ------- |
+| CF_API_ENDPOINT | API endpoint for the CF setup | `https://api.system.cf-setup.com` |
+| CF_USERNAME | Username for the CF user | `username` |
+| CF_PASSWORD | Password for the CF user | `password` |
+| UAA_SERVER_ENDPOINT | API endpoint for the UAA server for the CF setup | `https://uaa.system.cf-setup.com` |

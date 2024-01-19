@@ -19,7 +19,7 @@ VMware IO stress causes disk stress on the target VMware VMs. It aims to verify 
 - It checks whether the application functions well under high disk latency conditions.
 - It checks for high I/O traffic that includes large I/O blocks, and in what cases other services monopolize the I/O disks. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -39,14 +39,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -66,10 +64,12 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -96,7 +96,7 @@ stringData:
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores that are subject to CPU stress.</td>
-        <td> Defaults to 1. For more information, go to <a href="./vmware-cpu-hog#cpu-cores"> CPU cores. </a></td>
+        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog/#cpu_cores"> CPU cores. </a></td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

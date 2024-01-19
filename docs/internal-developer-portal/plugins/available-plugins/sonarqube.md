@@ -33,7 +33,7 @@ description: Components to display code quality metrics from SonarCloud and Sona
 
 - If SonarQube is deployed on-prem, `sonar.mycompany.com` will not be accessible from outside, so a delegate proxy has to be selected. Please ensure you have [Harness Delegate installed](https://developer.harness.io/docs/platform/delegates/install-delegates/overview) for the same. 
 
-![](./static/delegate-proxy-sonarqube.png)
+![](./static/sonar.png)
 
 ## Layout
 

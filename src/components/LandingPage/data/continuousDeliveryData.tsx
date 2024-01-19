@@ -77,7 +77,7 @@ export const ServerlessList: CardItem[] = [
 
 export const UnifiedCICDList: CardItem[] = [
   {
-    title: "End-To-End CI/CD Pipeline",
+    title: "Docker Hub Kubernetes CI/CD Pipeline",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: <>Set up CI/CD with a GitOps pipeline</>,

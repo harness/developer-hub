@@ -235,7 +235,6 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
       language: Ruby
       buildTool: Rspec
       runOnlySelectedTests: true
-      preCommand: bundle install
 ```
 
 </TabItem>
@@ -252,7 +251,6 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
       language: Ruby
       buildTool: Rspec
       runOnlySelectedTests: true
-      preCommand: bundle install
 ```
 
 </TabItem>

@@ -19,7 +19,7 @@ Azure instance memory hog:
 - Verifies pod priority and QoS setting for eviction purposes. 
 - Verifies application restarts on OOM (out of memory) kills.
 
-:::note
+### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
 - Azure Run Command agent is installed and running in the target Azure instance.
 - Azure instance should be in a healthy state.
@@ -47,22 +47,22 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Fault tunables
-
-<h3>Mandatory fields</h3>
+### Mandatory tunables
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
     <tr>
         <td> AZURE_INSTANCE_NAMES </td>
         <td> Names of the target Azure instances. </td>
-        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2. </code> For more information, go to <a href="./azure-instance-stop#stop-instances-by-name"> stop instance by name.</a></td>
+        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2. </code> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name.</a></td>
     </tr>
     <tr>
         <td> RESOURCE_GROUP </td>
@@ -70,10 +70,11 @@ stringData:
         <td> All the instances must be from the same resource group. For more information, go to <a href="#multiple-workers"> resource group field in the YAML file. </a></td>
     </tr>
 </table>
-<h3>Optional fields</h3>
+
+### Optional tunables
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -95,7 +96,7 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="./azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>

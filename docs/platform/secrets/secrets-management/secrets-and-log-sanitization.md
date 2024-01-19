@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness sanitizes deployment logs and any script outputs to mask text secret values.
+Harness sanitizes deployment logs and any script outputs to mask text secret values and JSON web tokens (JWTs).
 
 First, let's review secrets in Harness, and then look at how Harness sanitizes logs and outputs to prevent secrets from being exposed.
 
@@ -20,7 +20,7 @@ You can create secrets in Harness as described in:
 * [Add and Reference File Secrets](/docs/platform/secrets/add-file-secrets)
 * [Add SSH Secrets](/docs/platform/secrets/add-use-ssh-secrets.md)
 
-For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md).
+For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, go to [Add a Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md).
 
 Once a secret is added, you can use other Harness entities instead of settings.
 
@@ -41,7 +41,7 @@ Any secrets manager requires a running Harness Delegate to encrypt and decrypt s
 
 ### Sanitization
 
-When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (\*) so that the secret value is never displayed.​
+When a text secret or a JWT is displayed in a deployment log, Harness substitutes the value with asterisks (\*) so that the secret value is never displayed.​
 
 For example, if you have a Harness text secret with the identifier **doc-secret** containing `foo`.​
 
@@ -107,7 +107,7 @@ type: kubernetes.io/dockercfg
 Here is the deployed Secret in the log:​
 
 
-```
+```yaml
 apiVersion: v1​  
 kind: Secret  
 metadata:  
@@ -115,7 +115,8 @@ metadata:
 stringData:  
     key2: '***'
 ```
-### Changing Secrets in Scripts and RBAC
+
+### Changing secrets in scripts and RBAC
 
 Harness log sanitizing only detects exact matches of a secret or any line of it if it is multi-line.
 
@@ -125,6 +126,6 @@ If the modification is minor, the secret value can be easily deciphered which is
 
 To avoid this issue, use Harness RBAC to control which users can access a secret.​
 
-### Log Sanitizer Detects Exact Matches Only
+### Log sanitizer detects exact matches only
 
 The log sanitizer detects only exact matches of the secret or any line of the secret if the secret is multiline.

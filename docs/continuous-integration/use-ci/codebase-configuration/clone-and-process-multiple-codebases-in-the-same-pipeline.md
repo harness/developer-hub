@@ -28,7 +28,7 @@ If you need to clone LFS-enabled repositories or run `git lfs` commands (such as
 
 When you add a **Build** stage to a CI pipeline, you specify the Git account or repository where your code is stored. The codebase declared in a pipeline's first stage becomes the pipeline's default codebase, and this repo is cloned into the workspace automatically when the pipeline runs.
 
-For more information about creating pipelines, configuring the **Build** stage, and specifying the default codebase, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md), [Create and configure a codebase](./create-and-configure-a-codebase.md), and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+For more information about creating pipelines, configuring the **Build** stage, and specifying the default codebase, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md), [Configure codebase](./create-and-configure-a-codebase.md), and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add a Git Clone or Run step
 
@@ -184,7 +184,7 @@ Add this variable to all stages where you need to override the `SSH-keyscan` tim
   <TabItem value="run" label="Add a Run step">
 
 
-You can use scripts in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage.
+You can use `git` commands in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
 
 For example, this step clones a GitHub repository.
 
@@ -211,6 +211,11 @@ For information about **Run** step settings, go to [Use Run steps](../run-ci-scr
 </TabItem>
 </Tabs>
 
+:::tip
+
+When cloning additional codebases that use the same credentials as your default codebase, you can [use your default codebase connector's credentials in your Run step](/kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+
+:::
 
 ## Build an artifact from both code repos
 

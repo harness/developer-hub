@@ -15,7 +15,7 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "End-To-End CI/CD Pipeline",
+          title: "Docker Hub Kubernetes CI/CD Pipeline",
           module: MODULES.cd,
           description:
             "Execute a GitOps-driven CI/CD pipeline.",

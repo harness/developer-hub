@@ -19,7 +19,7 @@ Lead time is based on time spent in stages defined in a [Workflow profile](../..
 For example, the default configuration for a [PR-based Workflow profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
 
 * PR creation time.
-* Time to first comment.
+* Time to Comment.
 * Approval time.
 * Merge time.
 
@@ -27,11 +27,16 @@ Similarly, the default configuration for a [Ticket-based Workflow profile](../..
 
 * Lead time to First Commit.
 * PR Creation time.
-* Time to first comment.
+* Time to Comment.
 * Approval time.
 * Merge time.
 
 When [calculating lead time](#lead-time-calculation), the time spent in each stage depends on the stages that a PR or issue actually goes through. For example, if your Workflow profile includes a *time to comment* stage, but there are no comments on the PR or ticket, then the *time to comment* is zero.
+
+<img
+  src={require('./static/default-lead-time.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 You can configure grading thresholds (good, acceptable, and slow) for each stage. These thresholds determine grades that appear on your lead time widgets. Grades are reported for each stage as well as a cumulative grade for all stages combined.
 
@@ -39,85 +44,75 @@ You can modify Workflow profile stages and grades according to your team's SDLC 
 
 For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](../../sei-profiles/workflow-profile.md#configure-the-velocity-lead-time-type-workflow-profile).
 
-### Development Stages in Velocity Lead Time
+### Development Stages
 
-#### Lead Time to First commit
+#### Lead Time to First Commit
 
 This metric refers to the amount of time that passes from the beginning of a development cycle (like the start of a sprint or when a feature is first planned) to the first commit in the SCM. Essentially, it measures how long it takes to start actual coding work after a task is defined.
 
 #### PR Creation Time
 
+This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
+
+<!--
+
 This metric can be defined as either:
 
 * Time from Commit to First PR Creation: This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
-* Time from Commit to Last PR Creation: This measures the time from the first commit to the creation of the last pull request that includes this commit. This could be longer, especially in cases where commits are made early but the PR is created much later after further development.
+* Time from Commit to Last PR Creation: This measures the time from the first commit to the creation of the last pull request that includes this commit. This could be longer, especially in cases where commits are made early but the PR is created much later after further development. -->
 
 #### Time to Comment
 
-Users can choose to calculate this as either:
+This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
+
+<!-- Users can choose to calculate this as either:
   
 * Time from PR Creation to First Comment: This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
 * Time from PR Creation to Last Comment: This is the time taken from the creation of the PR to the last comment made. It could indicate the overall duration of discussion or review on the PR.
+-->
 
 #### Approval Time
+
+This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
+
+<!--
 
 This metric can be defined as either:
   
 * Time from the PR Creation to the First Approval: This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
-* Time from the PR Creation to the Last Approval: This is the duration from the PR creation to the last approval it receives. In workflows requiring multiple approvals, this metric indicates the total time taken for all necessary reviews.
+* Time from the PR Creation to the Last Approval: This is the duration from the PR creation to the last approval it receives. In workflows requiring multiple approvals, this metric indicates the total time taken for all necessary reviews. -->
 
 #### Merge Time
+
+This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
+
+<!--
 
 This metric can be defined as either:
 
 * Time to Merge the First PR: This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
 * Time to Merge for the Last PR Merge: This measures the time taken to merge the last pull request. In scenarios with multiple PRs, this metric can show how long it takes to integrate all changes from various PRs into the main branch.
 
-:::info
-Note that for Lead Time For Changes Report you can choose to enable or disable the Development Stages based on your requirements.
-:::
+-->
 
 ### Lead time calculation
 
 Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to first PR comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the pull request, then the *time to comment* is zero.
 
-The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based Workflow profile, which has four stages: PR creation time, time to first comment, approval time, and merge time.
+The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based Workflow profile, which has four stages: PR creation time, time to comment, approval time, and merge time.
 
 When reviewing these examples, consider the following:
 
 * *Time to Comment* helps you understand the lead time between PR creation time and the associated review.
 * There are two ways to track the time taken for a PR approval:
-  * Default *Approval Time* configuration: The overall approval time, starting from PR creation.
-  * *Approval Time* minus *Time to Comment*: Time spent in the review cycle when an active reviewer is involved.
+  * **Default *Approval Time* configuration:** The overall approval time, starting from PR creation.
+  * ***Approval Time* minus *Time to Comment*:** Time spent in the review cycle when an active reviewer is involved.
 * The *overall lead time* is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
 
 <details>
 <summary>PR Lead Time calculation example #1</summary>
-
-For this example, assume the following series of events occurs:
-
-1. Contributor makes a commit (`Commit created event`).
-2. Contributor creates a Pull Request (`Pull Request created event`).
-3. The Pull Request is approved by an approver (`Pull Request approval event`).
-4. The Pull Request is merged to the repository (`Pull Request Merged event`).
-
-As a result the following calculations are made:
-
-```
-PR creation time = Time to First PR creation - Time to Commit (Default)
-Time to Comment = Time to First comment - Time to PR creation (Default)
-Approval Time = 0
-Merge Time = Time for the First approval - Time to the PR creation(Default)
-```
-
-Approval Time is calculated as `0` because there were no review comments made on the PR.
-
-</details>
-
-<details>
-<summary>PR Lead Time calculation example #2</summary>
 
 For this example, assume the following series of events occurs:
 
@@ -139,7 +134,7 @@ Merge Time = Pull Request Merged event - Pull Request approval event
 </details>
 
 <details>
-<summary>PR Lead Time calculation example #3</summary>
+<summary>PR Lead Time calculation example #2</summary>
 
 For this example, assume the following series of events occurs:
 
@@ -170,6 +165,13 @@ Use the **Lead Time by Time Spent in Stages Report** to calculate lead time for 
 
 Lead time is based on the stages configured in the [Workflow profile](#workflow-profiles-for-lead-time). Elapsed time for a stage is based on when an issue enters a given stage and when it leaves that stage. Overall lead time for all issues is based on all issues that have passed through the defined stages.
 
+
+<img
+  src={require('./static/leadtime-time-spent-stages.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
+
 When configuring the [Workflow profile](../../sei-profiles/workflow-profile.md) for this report, make sure you only track issues in issue management. To do this:
 
 * Make sure the **Start Event** is **Ticket Created**.
@@ -180,11 +182,36 @@ This report requires that you set the **Issues Resolved In** filter, because onl
 
 :::tip Tips
 
-* For the most accurate lead time measurements, be diligent about updating issue statuses, and make sure your workflow has a sufficient variety of statuses to capture the entire development process. This report tracks the entire issue lifecycle, including bounces back into previous stages.
-* Use this report along with the [Jira Releases Report](./issues-reports.md#configure-the-jira-releases-report), which helps analyze your team's release pattern and understand the average time elapsed between issue creation and release.
-* To reduce load time for this widget, you can enable **Pre-Calculation**. This setting prepares Lead Time calculations, rather than running calculations in real time each time you load the Insight. Pre-calculation must be enabled for specific **Lead Time by Time Spent in Stages Report** widgets - You can't enable it globally. The following time ranges are pre-calculated: Last two weeks, last month, last three months, last 30 days, last quarter, and last two quarters.
+* For the most accurate lead time measurements, be diligent about updating issue statuses, and make sure your workflow has a sufficient variety of statuses to capture the entire development process.
+* This report tracks the entire issue lifecycle, including bounces back into previous stages.
+Use this report along with the Jira Releases Report, which helps analyze your team's release pattern and understand the average time elapsed between issue creation and release.
+
+<!-- * To reduce load time for this report, you can request to enable pre-calculation for this report. This setting allows Lead Time to be calculated for specific time intervals. Essentially, when a user requests to load the report, if the data has already been calculated and is present in the database, the request will be served from stored data instead of a live calculation. This way, users can quickly view the data without having to wait for a live calculation to be performed.
+* To make a report precalculated, please request the support team to enable the precalculation flag for a particular report (using report ID). After some time, the report will have the `<PRE-CALCULATED>` tag applied to the header.
+
+You can't enable it globally. The following time ranges are pre-calculated: Last two weeks, last month, last three months, last 30 days, last quarter, and last two quarters. -->
 
 :::
+
+
+## SCM PR Lead Time by Stage Report
+
+Use the **SCM PR Lead Time by Stage Report** to examine PR velocity based on time spent in various PR lifecycle stages. By default, this report shows the average time for all PRs. You can drill down to explore data for individual PRs. You can also configure this report to show the median, 90th percentile, or 95th percentile, instead of the average time.
+
+<img
+  src={require('./static/scm-pr-leadtime-stage.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
+
+To add the SCM PR Lead Time by Stage Report to Insights:
+
+* Go to **Insight** where you want to add the widget. Make sure you are in the correct project.
+* Select **Settings**, and then select **Add Widget**.
+* Select the **SCM PR Lead Time by Stage Report** widget.
+* Configure the filters for the widget, such as `source/destination branch`, `reviewer`, `label`, and so on. This defines the types of commits or PRs that are considered in the lead time calculation.
+* On the Settings tab, select the relevant **Workflow profile**, and then select **Next: Place Widget**
+* Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
 ## Issue Lead Time by Stage Report
 
@@ -192,13 +219,18 @@ The **Issue Lead Time by Stage Report** tracks lead time by development stages. 
 
 This report is useful for measuring the velocity of tasks from the time they are created in issue management to the time they are deployed through CI/CD.
 
+<img
+  src={require('./static/issue-leadtime-stage.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
 Lead time is based on the stages configured in the [Workflow profile](#workflow-profiles-for-lead-time). Elapsed time for a stage is based on the first time an issue enters a given stage and the first time it leaves that stage. Overall lead time for all issues is based on all tickets that have passed through the defined stages.
 
 When configuring the [Workflow profile](../../sei-profiles/workflow-profile.md) for this report, make sure:
 
-* The **Start Event** is **Ticket Created**. This ensures that lead time tracking starts in issue management.
+* The **Start Event** is `Ticket Created`. This ensures that lead time tracking starts in issue management.
 * Configure stages for issue management and other tools you want to track, such as SCM and CI/CD.
-* Stages flow sequentially from one tool to the next, such as *Development in Progress* in Jira followed by your SCM development stages (first commit and PR creation-to-merge time).
+* Stages flow sequentially from one tool to the next, such as *`Development in Progress`* in Jira followed by your SCM development stages (first commit and PR creation-to-merge time).
 * Stages *do not* overlap. Meaning, the same event *is not* tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
 This report requires that you set the **Issues Resolved In** filter, because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
@@ -227,6 +259,12 @@ When you configure a single stat widget:
 You might want to set the time range to **Use Insight time**, which allows the user to select a time range when viewing the Insight where this widget is present.
 
 ## DORA Lead Time For Changes
+
+DORA calculation is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the profile level. 
+
+DORA Lead Time for Change and DORA Mean Time for Restore reports do not require a DORA profile to be associated in the widget configuration, as it is already expected to be associated with a collection under which Insight is defined. 
+
+DORA profiles can be configured to calculate the Lead time concerning either Issue (`start event: Ticket Created`) or SCM Pull Requests (`start event: Commit Created`).
 
 For information about the Lead Time For Changes DORA metric, go to [DORA metrics](../dora-metrics.md).
 

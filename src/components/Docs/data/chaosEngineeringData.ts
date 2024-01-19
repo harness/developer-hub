@@ -98,6 +98,13 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/",
         },
         {
+          title: "SSH faults",
+          module: MODULES.ce,
+          description:
+            "Execute SSH chaos faults.",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/ssh/",
+        },
+        {
           title: "Linux chaos faults",
           module: MODULES.ce,
           description:

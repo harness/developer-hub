@@ -42,7 +42,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 ## Burp step configuration
 
 <details>
-<summary>Orchestrated scan in a Burp scanner template</summary>
+<summary>Orchestration scan in a Burp scanner template</summary>
 
 ![](./static/burp-scanner-template.png)
 
@@ -54,7 +54,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
@@ -72,7 +72,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 <StoSettingProductConfigName />
 
-The following configurations are available for Orchestrated scans. These are [built-in configurations](https://portswigger.net/burp/documentation/scanner/scan-configurations/burp-scanner-built-in-configs) provided by Burp Enterprise.  
+The following configurations are available for Orchestration scans. These are [built-in configurations](https://portswigger.net/burp/documentation/scanner/scan-configurations/burp-scanner-built-in-configs) provided by Burp Enterprise.  
 -  `Default` This is the same as the `Crawl and Audit - Lightweight` built-in configuration.
 -  `Never stop Crawl due to application errors`
 -  `Never stop audit due to application errors`
@@ -133,13 +133,6 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 
 <StoSettingTargetVariant  />
-
-:::note
-
-Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
-
-:::
-
 
 
 ### Authentication settings

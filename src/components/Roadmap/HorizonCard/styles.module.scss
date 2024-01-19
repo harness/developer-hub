@@ -1,0 +1,98 @@
+.card {
+  width: 100%;
+  height: 143px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 2px solid #d9dae5;
+  background-color: white;
+  .tag {
+    width: auto;
+    height: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    p {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15px;
+      letter-spacing: 0px;
+      text-align: left;
+      background: #cdf4fe;
+      color: #004ba4;
+    }
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin: 0;
+  }
+  p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin: 0;
+  }
+}
+
+.cd:hover {
+  border-color: var(--mod-cd-200);
+}
+.cd:focus {
+  border-color: var(--mod-cd-200);
+}
+
+.ci:hover {
+  border-color: var(--mod-ci-200);
+}
+.ci:focus {
+  border-color: var(--mod-ci-200);
+}
+.ff:hover {
+  border-color: var(--mod-ff-200);
+}
+.ff:focus {
+  border-color: var(--mod-ff-200);
+}
+.ccm:hover {
+  border-color: var(--mod-ccm-200);
+}
+.ccm:focus {
+  border-color: var(--mod-ccm-200);
+}
+.srm:hover {
+  border-color: var(--mod-srm-200);
+}
+.srm:focus {
+  border-color: var(--mod-srm-200);
+}
+.sto:hover {
+  border-color: var(--mod-sto-200);
+}
+.sto:focus {
+  border-color: var(--mod-sto-200);
+}
+.ce:hover {
+  border-color: var(--mod-ce-200);
+}
+.ce:focus {
+  border-color: var(--mod-ce-200);
+}
+.platform:hover {
+  border-color: var(--primary);
+}
+.platform:focus {
+  border-color: var(--primary);
+}

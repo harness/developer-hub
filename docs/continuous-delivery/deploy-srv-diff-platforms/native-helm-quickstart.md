@@ -323,17 +323,15 @@ For example, let's say you have a Pipeline that performs a Native Helm deploymen
 You might have several retries configured in the Pipeline, but all of them will fail when Harness runs a `helm history` in the prepare stage with the message: `there is an issue with latest release <latest release failure reason>`.
 
 Enable the **Ignore Release History Failed Status** option to have Harness ignore these errors and proceed with install/upgrade.
+![](./static/native-helm-quickstart-155.png)
 
 #### Options for connecting to a Helm chart store
 
 The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
 
-  * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to any OCI-based registry.
-  * **Feature flag enabled**. You can choose between connectors in the following categories:
-    - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
-    - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
-
-    For the steps and settings of each option, go to [Connectors](/docs/category/connectors).
+- **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
+- **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
+  - For details on using different authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 ### Helm commands performance analysis
 Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness delegate.

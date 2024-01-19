@@ -2,7 +2,6 @@
 id: kube-security-cis
 title: Kube security CIS
 ---
-## Introduction
 
 Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark. CIS benchmark is a set of security best practices to improve the resilience of the Kubernetes cluster.
 
@@ -13,12 +12,11 @@ Kube security CIS:
 - Determines the compliance of the Kubernetes cluster with the CIS benchmark.
 - Finds and fixes the security issues in the Kubernetes cluster.
 
-:::info note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate permissions to execute this fault.
-:::
 
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
     <tr>
         <th> Tunable </th>
@@ -31,7 +29,8 @@ Kube security CIS:
         <td> Default: <code>/run/containerd/containerd.sock</code>. </td>
     </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
 <table>
     <tr>
         <th> Tunable </th>
@@ -46,7 +45,7 @@ Kube security CIS:
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>

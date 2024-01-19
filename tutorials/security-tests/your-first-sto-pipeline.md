@@ -99,7 +99,7 @@ Do the following:
 Every STO scan has a specific [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 
 - The name specifies the repository, image, or instance to scan.
-- The variant specifies the branch, tag, version, or other variant. object it is set up to scan: a code repository, a container, or an instance.
+- The variant specifies the codebase branch, image tag, app version, or other variant. 
 
 </details>
 
@@ -127,6 +127,8 @@ import TabItem from '@theme/TabItem';
 
 </TabItem>
   <TabItem value="YAML" label="YAML">
+
+Add a `Bandit` step to your `SecurityTests` stage and configure it as follows. 
 
 - `type:` [`Bandit`](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
 - `name:` A name for the step.
@@ -291,7 +293,7 @@ Here's an example of a container image vulnerability detected by a paid version 
 
 ### New feature: AI-enhanced remediation
 
-Harness AIDA&#174 uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results.
+Harness AIDA™ uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results.
 
 For more information, go to [Fix issues using AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
@@ -468,14 +470,14 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 
 ## YAML pipeline example
 
-Here's an example of the pipeline you created in this tutorial.
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
 
 ```yaml
 pipeline:
   name: your-first-pipeline-v2
   identifier: yourfirstpipelinev2
-  projectIdentifier: dbothwellstosandbox
-  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -511,7 +513,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: mygithubconnector
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: <+input>
         build: <+input>
 ```
@@ -554,13 +556,13 @@ Here's the YAML of the integrated workflow example we examined in this tutorial.
 
 ``` yaml
 pipeline:
-  projectIdentifier: STO_tutorial_test_2023_09_29
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
   orgIdentifier: foobar
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: account.GitHub_STO_Tutorial
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: dvpwa
         build: <+input>
   stages:
@@ -575,7 +577,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: account.k8sdelegateconnector
+              connectorRef: YOUR_K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -618,7 +620,7 @@ pipeline:
                   name: buildAndPush_PRIVATE
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: account.foobardockerhubsto
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: foobar/sto-tutorial-test-private
                     tags:
                       - <+pipeline.sequenceId>
@@ -647,7 +649,7 @@ pipeline:
                   name: buildAndPush_PUBLIC
                   identifier: buildAndPush_PUBLIC
                   spec:
-                    connectorRef: account.foobardockerhubsto
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: foobar/sto-tutorial-test
                     tags:
                       - <+pipeline.sequenceId>

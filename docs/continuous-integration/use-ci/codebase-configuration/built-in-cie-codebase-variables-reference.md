@@ -41,6 +41,14 @@ Manual builds occur when you manually run a pipeline from within Harness. You ca
 * **Manual pull request (PR) builds**: Manually run a pipeline and select the **Git Pull Request** build type. Harness looks for the source code attached to the specified **Pull Request Number**, and it clones that specific source code for the build.
 * **Manual tag builds:** Manually run a pipeline and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
 
+:::info
+
+`trigger.*` expressions are always `null` for manual builds. Trigger expressions get values from automated triggers, such as webhook triggers. Since manual builds don't use an automated trigger, there are no values available for these expressions.
+
+If you build both manually and through triggers, consider using expressions that can resolve for both build types, such as `<+codebase.prNumber>` instead of `<+trigger.prNumber>`.
+
+:::
+
 ### Webhook triggers
 
 You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
@@ -65,7 +73,8 @@ Values in the webhook payload are mapped to the build's codebase variables. The 
 Some codebase variables aren't resolved in these scenarios:
 
 * **Cron triggers:** Builds started from cron triggers don't contain specific Git event information and, therefore, don't provide a payload to resolve codebase variables in the same way as PR and push triggers.
-* **Non-default codebases:** Codebase variables are only resolved for the pipeline's [default codebase](./create-and-configure-a-codebase.md). If a pipeline [clones additional codebases](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) through **Run** or **Git Clone** steps, codebase variables are not produced for these additional codebases.
+* **Non-default codebases:** Codebase variables are only resolved for the pipeline's [default codebase](./create-and-configure-a-codebase.md). If you [disable clone codebase](./create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages) or a stage [clones additional codebases](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) through **Run** or **Git Clone** steps, codebase variables are not produced for these non-default codebases.
+* **Git provider:** Not all Git providers are supported. Some providers don't provide relevant values for all expressions.
 
 ## Reference codebase variables
 

@@ -53,7 +53,7 @@ Sound fun? Let's get started.
 
 This is a simple guide that covers the basics of deploying Docker images to Kubernetes using Helm. It does not cover the following:
 
-* **Ingress Rules** - Harness supports Ingress Rules for Kubernetes deployments. You can learn how to use Ingress Rules in [Ingress Rules](../kubernetes-deployments/set-up-kubernetes-ingress-rules.md). For a Harness deployment using Helm, you can add Ingress rules in a Helm chart file (**kind: Ingress**) and Harness will use those during deployment. For information about Ingress rules and Helm, see [Secure Kubernetes Services With Ingress, TLS And LetsEncrypt](https://docs.bitnami.com/kubernetes/how-to/secure-kubernetes-services-with-ingress-tls-letsencrypt/) from Bitnami.
+* **Ingress Rules** - Harness supports Ingress Rules for Kubernetes deployments. You can learn how to use Ingress Rules in [Ingress Rules](../kubernetes-deployments/set-up-kubernetes-ingress-rules.md). For a Harness deployment using Helm, you can add Ingress rules in a Helm chart file (**kind: Ingress**) and Harness will use those during deployment. For information about Ingress rules and Helm, see [Secure Kubernetes Services With Ingress, TLS And LetsEncrypt](https://docs.bitnami.com/tutorials/secure-kubernetes-services-with-ingress-tls-letsencrypt/) from Bitnami.
 
 #### What Harness Needs Before You Begin
 

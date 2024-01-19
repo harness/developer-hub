@@ -14,15 +14,17 @@ The Harness Code supports these features:
 * [Collaborate and develop](/docs/category/collaborate-and-develop):
    * Clone repositories to work locally.
    * Commit, branch, and tag directly in the Harness Platform.
-* Create, review, and merge [pull requests](/docs/category/pull-requests)
+* Create, review, and merge [pull requests](/docs/category/pull-requests):
    * Conduct code reviews.
    * Implement status checks.
    * Define merge requirements.
    * Specify merge strategies.
-* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md), and set up [triggers](./pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories.
+   * Assign [code owners](./config-repos/rules.md) and create [branch rules](./config-repos/rules.md).
+* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md), and set up [triggers](./pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories. You can also use Harness Code Repository with the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
 * [Configure webhooks](./config-repos/webhooks.md) to integrate your repositories with third-party applications.
-* [Code owners](./config-repos/rules.md)
-* Notifications
-* [Branch rules](./config-repos/rules.md)
+* Use keyword search to query your code.
+* Get email notifications for PRs and repositories you're affiliated with.
+   * You can manage these settings in your user profile.
+   * With Harness Self-Managed Enterprise Edition, notifications require an [SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).

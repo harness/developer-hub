@@ -2,7 +2,6 @@
 id: ec2-http-reset-peer
 title: EC2 HTTP reset peer
 ---
-## Introduction
 
 EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault stops the outgoing HTTP requests by resetting the TCP connection for the requests.
 
@@ -14,7 +13,7 @@ EC2 HTTP reset peer:
 - Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 - Determines the application's resilience to a lossy (or flaky) HTTP connection.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
@@ -92,8 +91,8 @@ Below is an example AWS policy to execute the fault.
 :::
 
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -102,7 +101,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
           <td> EC2_INSTANCE_ID </td>
           <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="./ec2-cpu-hog/#multiple-ec2-instances"> EC2 instance ID.</a></td>
+          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
         </tr>
         <tr>
           <td> REGION </td>
@@ -120,8 +119,10 @@ Below is an example AWS policy to execute the fault.
             <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h3>Optional tunable</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

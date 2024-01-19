@@ -189,7 +189,6 @@ You can set a specific version of your template as the stable version by selecti
 
 You can delete your templates at any time. When you delete a template, all references to the template in your pipelines are also deleted.
 
-![](./static/template-13.png)
 ## Template inputs
 
 You can customize templates using placeholder expressions and [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) for their parameters and data types. Each time you run a pipeline that uses the template, users can provide values for these inputs.
@@ -265,20 +264,18 @@ To create a template filter in Harness, do the following:
    
    ![](./static/template-filter-icon.png)
 
-   The **New Filter** settings appear.
+   The **New Filter** settings open.
 4. In **Name**, enter the name of an existing template, and then select **New Filter**.
    
    ![](./static/template-new-filter-settings.png)
    
-6. In **Filter Name**, enter a name for the filter.
-7. Set the visibility of the filter by selecting one of the following: 
+5. In **Filter Name**, enter a name for the filter.
+6. Set the visibility of the filter by selecting one of the following: 
    - **Only me**
    - **Everyone**
 
    If you do not select anything, the visibility is set to **Only me** by default.
 
-   ![](./static/template-filter-config.png)
+7. Select **Save**, and then **Apply**.
 
-8. Select **Save**, and then **Apply**.
-
-Your filter now appears in the saved filter list. You can view the templates by selecting this filter.
+   Your filter now displays in the saved filter list. You can view the templates by selecting this filter.

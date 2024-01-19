@@ -21,7 +21,7 @@ All of these options require [permissions](../../role-based-access-control/permi
 
 :::tip Rate Limiting
 
-To prevent rate limiting or throttling issues when pulling images, using credentials, instead of anonymous access, and configure the default Harness Docker connector to pull images from GRC. For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
+To prevent rate limiting or throttling issues when pulling images, using credentials, instead of anonymous access, and configure the default Harness Docker connector to pull images from GCR. For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
 
 :::
 

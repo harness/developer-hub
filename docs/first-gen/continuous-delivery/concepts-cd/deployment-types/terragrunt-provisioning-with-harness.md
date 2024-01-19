@@ -85,7 +85,7 @@ As a summary, you will need to manage the following permissions:
 
 ### Supported Terraform Versions with Terragrunt
 
-The following recommendations are from [Terragrunt](https://terragrunt.gruntwork.io/docs/get-started/supported-terraform-versions/). In practice, as Terragrunt notes, the version compatibility is more relaxed.
+The following recommendations are from [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/supported-versions/). In practice, as Terragrunt notes, the version compatibility is more relaxed.
 
 |                       |                        |
 | --------------------- | ---------------------- |

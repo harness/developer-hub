@@ -1,4 +1,7 @@
-* Before you can use Harness AIDA, you must read the [AIDA Data Privacy Overview](https://www.harness.io/legal/aida-privacy), sign an [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness, and [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview#enable-aida).
+* Before you can use Harness AIDA, you must do the following:
+  1. Read the [AIDA Data Privacy Overview](https://www.harness.io/legal/aida-privacy).
+  2. Sign an [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness
+  3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.  
 
 * Before you implement an AI-generated suggestion, consider carefully the reliability and extent of the publicly-known information about that issue. The accuracy, reliability, and completeness of a suggestion depends on the publicly-known information about the detected issue. An AI-generated suggestion is not guaranteed to remediate the issue and could possibly introduce other issues.
 

@@ -8,6 +8,7 @@ import { experiments as KubeResilienceExperiments } from "./kube-resilience/expe
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as LinuxExperiments } from "./linux/experiments";
 import { experiments as SecuritychaosExperiments } from "./security-chaos/experiments";
+import { experiments as SshExperiments } from "./ssh/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 import { experiments as WindowsExperiments } from "./windows/experiments";
@@ -66,6 +67,12 @@ export const categories: FaultCardItem[] = [
     description: <>Chaos faults for security CIS </>,
     faults: SecuritychaosExperiments.length,
     category: "security-chaos",
+  },
+  {
+    title: "SSH",
+    description: <>Chaos faults for SSH</>,
+    faults: SshExperiments.length,
+    category: "ssh",
   },
   {
     title: "VMware",

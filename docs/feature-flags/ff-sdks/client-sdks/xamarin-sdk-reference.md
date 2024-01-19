@@ -33,8 +33,7 @@ Make sure you read and understand the following:
 
 ## Version
 
-The current Android version of this SDK is **0.5.4.**
-The current iOS version of this SDK is **0.5.1.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-xamarin-client-sdk/releases)
 
 ## Prerequisites
 

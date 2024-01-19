@@ -50,7 +50,7 @@ To add Splunk as a verification provider, do the following:
 
 ### Step 3: URL
 
-Enter the URL for accessing the REST API on the Splunk server. Include the port number in the format **https://&lt;deployment-name&gt;.cloud.splunk.com:8089**: The default port number is 8089.The port number is required for hosted Splunk, also. For example: **https://mycompany.splunkcloud.com:8089**.For more information, see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.1.3/RESTTUT/RESTandCloud) from Splunk.
+Enter the URL for accessing the REST API on the Splunk server. Include the port number in the format `https://deployment-name.cloud.splunk.com:8089`. The default port number is 8089. The port number is required for hosted Splunk, such as `https://mycompany.splunkcloud.com:8089`. For more information, go to the Splunk documentation on [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.1.3/RESTTUT/RESTandCloud).
 
 ### Step 4: Username and Encrypted Password
 

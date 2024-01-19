@@ -84,6 +84,13 @@ import {
             link: "/release-notes/cloud-cost-management",
           },
           {
+            title: "Code Repository release notes",
+            module: MODULES.code,
+            description:
+              "",
+            link: "/release-notes/code-repository",
+          },
+          {
             title: "Continuous Delivery and GitOps release notes",
             module: MODULES.cd,
             description:

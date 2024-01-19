@@ -123,7 +123,7 @@ export const certifications: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Chaos Engineering  - Developer (BETA)",
+    title: "Chaos Engineering  - Developer",
     module: MODULES.ce,
     type: certType.developer,
     description:

@@ -58,20 +58,20 @@ You can create a secret manager template in the account, org, or project scope.�
 
 To create a secret manager template, do the following:
 
-1. In your Harness Account, go to your project.​
-2. In **Project Setup**, select **Templates**, and then select **New Template**.​
-
-   ![](./static/create-a-secret-manager-template-29.png)
-
-3. Select **Secret Manager**. The **Secret Manager Template** settings appear.​
+1. In your Harness, go to your project.
+2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
+3. Select **+ New Template**, and then select **Secrets Manager**. The **Create New Secrets Manage Template** settings open.
 4. Enter a **Name** for your secret manager template.​
-5. In **Version Label**, enter the version of the secret manager template, for example `v1`.
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
+7. In **Version Label**, enter the version of the secret manager template, for example `v1`.
 
    ![](./static/create-a-secret-manager-template-30.png)
 
     Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
-
-6. Select **Start**.​
+8. (Optional) Select the **Logo** icon to upload a logo image file.
+9. From the **Save To** list, select the scope where you want to save the template: Project, Organization, or Account. For this example, select Project.
+10. Select **Start**.​
 
 ### Step 2: Add a shell script to the secret manager template
 
@@ -120,4 +120,3 @@ This does not apply if you want to run the custom secrets manager on the Harness
 ### See also
 
 * [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager.md)
-

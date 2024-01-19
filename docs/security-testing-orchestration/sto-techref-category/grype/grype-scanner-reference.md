@@ -65,7 +65,7 @@ The recommended workflow is add a Grype step to a Security Tests or CI Build sta
 
 
 import StoSettingScanMode from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
@@ -260,7 +260,7 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 #### Important Notes
 
 * STO supports Grype scans of containers and repositories.
-* STO supports [orchestrated scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
+* STO supports [orchestrationscans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 #### Target and variant
 

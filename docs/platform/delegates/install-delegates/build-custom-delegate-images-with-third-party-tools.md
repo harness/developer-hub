@@ -37,7 +37,6 @@ When you build a custom delegate image, you modify the image you select with use
 
 The first lines of the script provide information about the base image and user privileges. This example uses the minimal image with delegate minor version 77029.
 
-
 ```
 FROM harness/delegate:22.10.77029.minimal  
 USER root
@@ -46,31 +45,28 @@ The delegate container is granted root user privileges.
 
 The first `RUN` block installs or updates the `unzip` and `yum-utils` tools. The `--nodocs` option prevents the installation of documentation on the image.
 
-
 ```
 RUN microdnf update \  
   && microdnf install --nodocs \  
     unzip \  
     yum-utils
 ```
-The second `RUN` block uses the `yum` utility to create a configuration file for the HashiCorp repository, and then uses the `microdnf` package manager to install the required Terraform components:
 
+The second `RUN` block uses the `yum` utility to create a configuration file for the HashiCorp repository, and then uses the `microdnf` package manager to install the required Terraform components:
 
 ```
 RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \  
   && microdnf install -y terraform   
 ```
-The final `RUN` block retrieves the Kubernetes `kubectl` command-line tool that is required to manipulate clusters. The Linux `chmod +x` instruction makes the utility executable:
 
+The final `RUN` block retrieves the Kubernetes `kubectl` command-line tool that is required to manipulate clusters. The Linux `chmod +x` instruction makes the utility executable:
 
 ```
 RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \  
   && curl -LO "https://dl.k8s.io/release/$(curl> -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl 
 ```
-  
 
 The `ENV` instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
-
 
 ```
 ENV PATH=/opt/harness-delegate/tools/:$PATH
@@ -81,6 +77,7 @@ The final instruction switches the user back to `harness` to ensure the custom i
 ```
 USER harness
 ```
+
 The complete script is as follows:
 
 ```
@@ -169,7 +166,6 @@ Delegate auto-upgrade is not compatible with custom images.
 
 Open the delegate manifest file and locate the container `spec` (`spec.containers`). Change the image path to reflect the repository location of your uploaded image as shown in the following YAML.
 
-
 ```
  spec:  
      terminationGracePeriodSeconds: 600  
@@ -182,7 +178,6 @@ Open the delegate manifest file and locate the container `spec` (`spec.container
          allowPrivilegeEscalation: false  
          runAsUser: 0   
 ```
-   
 
 For purposes of this example, the image was uploaded to `example/org:custom-delegate`.
 
@@ -191,7 +186,6 @@ For purposes of this example, the image was uploaded to `example/org:custom-dele
 Before you deploy a custom delegate, you must suspend its auto-upgrade functionality. This step prevents your image from being automatically upgraded and the installed binaries removed. 
 
 To suspend auto-upgrade, in the delegate manifest, locate the `CronJob` resource. In the resource `spec`, set the `suspend` field to `true` as shown in the following YAML:
-
 
 ```
 apiVersion: batch/v1beta1  
@@ -206,13 +200,12 @@ spec:
  schedule: "0 */1 * * *"  
  concurrencyPolicy: Forbid  
  startingDeadlineSeconds: 20  
-
 ```
+
 ### Example manifest file
 
 For the complete file, expand the following example.
 
-Example manifest
 ```
 apiVersion: v1  
 kind: Namespace  
@@ -456,6 +449,7 @@ spec:
                name: custom-del-upgrader-config  
 
 ```
+
 ### Deploy the delegate
 
 You can deploy the delegate from Harness Manager or by applying the modified delegate manifest file to your cluster.

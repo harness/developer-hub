@@ -22,6 +22,35 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## January 2024
+
+### Version 1.28.1
+
+#### New features and enhancements
+
+* Adds optimisation to utilise memory efficiently, reduce latency, and enhance server performance. (CHAOS-3581)
+
+* Linux infrastructure is automatically versioned with the help of the API. Previously, the versions were hardcoded for every release. (CHAOS-3580)
+
+* Adds a condition to the experiment such that a resilience probe can't be added more than once in a single fault within an experiment. The same resilience probe can be used in another fault within the same experiment, though. (CHAOS-3520)
+
+* Adds a generic audit function that is used to generate all audit trails, thereby reducing redundancy. This generic function is customized based on the type of audit (Chaos experiment, Gameday, Chaos infrastructure, and so on). (CHAOS-3484)
+
+* With this release, the Linux chaos infrastructure binary uses static linking instead of dynamic linking. This removes any dependency on the OS built-in programs including `glibc`. (CHAOS-3334)
+
+* Enhanced the performance of the API (GetExperiment) that was used to fetch details of Kubernetes and Linux experiments. An optional field is added that fetches the average resilience score. (CHAOS-3218)
+
+* Adds support for bulk-disable (disable enabled CRON schedules selected by user) and bulk-enable (enable disabled CRON schedules selected by user) CRON-scheduled experiments, with a limit of 20 experiments for every operation. (CHAOS-3174)
+
+#### Fixed issues
+
+* After selecting an experiment, when a user tried to select an active infrastructure for the experiment, the page would throw an error. This has been fixed. (CHAOS-3585)
+
+* Editing a Linux experiment to change the infrastructure would not update the infrastructure. This has been fixed. (CHAOS-3536)
+
+* When multiple faults are executed in parallel, faults that transitioned into an "errored" state would not reflect in the logs, whereas faults in **success** state reflected in the logs with an "errored" status. This has been fixed. (CHAOS-3363)
+
+
 ## December 2023
 
 ### Version 1.27.1
@@ -30,27 +59,27 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Adds a filter to the **listWorkflow** API so that data can be filtered based on whether it is CRON-enabled or not. (CHAOS-3424)
 
-* While selecting a chaos infrastructure to create an experiment, you can list the active infrastructures by clicking the checkbox **Show active only**. (CHAOS-3350)
+* While selecting a chaos infrastructure to create an experiment, users can list the active infrastructures by clicking the checkbox **Show active only**. (CHAOS-3350)
 
-* Metrics for Dynatrace Probe (Metrics Selector and Entity Selector) were both optional previously and now have been termed as required, this change ensures that these properties are always passed while creating a dynatrace probe. (CHAOS-3330)
+* Metrics for the Dynatrace probe (**Metrics Selector** and **Entity Selector**) have been made compulsory. This ensures that the required properties are always passed while creating a Dynatrace probe. (CHAOS-3330)
 
-* Experiment creation is now supported against inactive chaos infrastructure(s). This has been done to aid preparatory actions in environments which require agents to be scaled down (K8s) / stopped (Linux) except during the chaos execution window. (CHAOS-3241)
+* An experiment can be created against inactive chaos infrastructure(s). This was done to complement the preparatory actions in environments that require agents to be scaled down (K8s) or stopped (Linux) except during the chaos execution window. (CHAOS-3241)
 
-* With this release, ACCESS_KEY invalidation after a chaos infrastructure is successfully connected is now deprecated. Now onwards users can use same manifest to connect same chaos infrastructures. (CHAOS-3164)
+* This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Added UI support for searching conditions for selection while creating a Chaos Guard Rule. (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](../docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
 
-* Adds support for using secretRef & configMapRef with tunables for VMWare Chaos Faults. (CHAOS-2750)
+* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](../docs/chaos-engineering/technical-reference/chaos-faults/vmware). (CHAOS-2750)
 
-* Adds support for encoding metrics queries which are constructed and executed via the metrics/data explorer before the API call [POST] incase of Dynatrace Probes. (CHAOS-2852)
+* Adds support for encoding metrics queries in Dynatrace probes. These metrics are constructed and executed using the metrics (or data) explorer before the API call [POST]. (CHAOS-2852)
 
 #### Fixed issues
 
-* For timedout experiment runs, The execution nodes used to still remain in running state. This has been fixed & shows timeout status for nodes also. (CHAOS-3094)
+* After an experiment timed out, the execution nodes would remain in the **running** state. This has been fixed. (CHAOS-3094)
 
-* While adding a probe without the `description` key, it was breaking the `addProbe` API. The API is now fixed to take a blank string if no value is provided in the description or the key in missing in the API request. (CHAOS-3224)
+* Adding a probe without the `description` key broke the `addProbe` API. The API is now fixed to accept a blank string if no value is provided in the `description` or the key is missing in the API request. (CHAOS-3224)
 
-* Incase of Probe failures, Probe success Iteration ratio used to come 2 times in logs. This has been fixed now. (CHAOS-3421)
+* For probe failures, the probe success iteration ratio would show up twice in the experiment logs. This has been fixed. (CHAOS-3421)
 
 ## November 2023
 

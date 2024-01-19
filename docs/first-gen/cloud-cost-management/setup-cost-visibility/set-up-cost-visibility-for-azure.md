@@ -32,7 +32,7 @@ Perform the following steps to connect to your Azure account:
 
 ### Provide Azure Account Details
 
-You need to provide a name for your connector and enter the tenant ID of your Azure Active Directory (AD).
+You need to provide a name for your connector and enter the tenant ID of your Microsoft Entra ID (formerly Active Directory) (AD).
 
 1. Enter a name for the Azure Connector.
 2. Enter Tenant ID of your Azure AD account. A tenant represents an organization. It's a dedicated instance of Azure AD that an organization or app developer receives at the beginning of a relationship with Microsoft.  
@@ -41,7 +41,7 @@ Each Azure AD tenant is distinct and separate from other Azure AD tenants.
   
 To find your tenant ID, do the following:  
 
-1. Click **Where do you find Tenant ID?**. and then click **Launch Azure Active Directory**.
+1. Click **Where do you find Tenant ID?**. and then click **Launch Microsoft Entra ID (formerly Active Directory)**.
 2. Copy the tenant ID from the **Tenant information**.
    
      ![](./static/set-up-cost-visibility-for-azure-43.png)

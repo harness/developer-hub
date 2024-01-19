@@ -990,7 +990,7 @@ For example, assume a looping strategy is applied to a step with the identifier 
 
 If you are using with in the loop you can denote the same as `<+pipeline.stages.my_build_step_<+strategy.iteration>.output.outputVariables.my_variable>`
 
-See [Iteration Counts](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
+See [Iteration Counts](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
 
 #### How do I get the output variables from pieeline execution using Harness NG API?
 

@@ -54,23 +54,23 @@ Setup Harness CD & GitOps in a few commands
 
 `harness update`             - Updates the CLI.
 
-`harness secret`             - Creates or deletes a Harness Secret.
+`harness secret`             - Creates, deletes, or updates a Harness Secret.
 
-`harness connector`          - Creates, deletes or update a Harness Connector.
+`harness connector`          - Creates, deletes, or updates a Harness Connector.
 
-`harness gitops-repository`  - Creates, deletes or update a GitOps Repository.
+`harness gitops-repository`  - Creates, deletes, or updates a GitOps Repository.
 
-`harness gitops-cluster`     - Creates, deletes or update a GitOps Cluster.
+`harness gitops-cluster`     - Creates, deletes, or updates a GitOps Cluster.
 
-`harness gitops-application` - Creates, deletes or update a GitOps Application.
+`harness gitops-application` - Creates, deletes, or updates a GitOps Application.
 
-`harness environment`        - Creates, deletes or update a Harness Environment.
+`harness environment`        - Creates, deletes, or updates a Harness Environment.
 
-`harness infrastructure`     - Creates, deletes or update a Harness Infeastructure.
+`harness infrastructure`     - Creates, deletes, or updates a Harness Infeastructure.
 
-`harness service`            - Creates, delete or update a Harness Service.
+`harness service`            - Creates, deletes, or updates a Harness Service.
 
-`harness pipeline`           - Creates, delete or update a Harness Pipeline.
+`harness pipeline`           - Creates, deletes, or updates a Harness Pipeline.
 
 ## Global options
 
@@ -102,7 +102,9 @@ Setup Harness CD & GitOps in a few commands
       harness secret apply [command options] [arguments...]
    
    OPTIONS:
-      --secret-type value  provide the secret type.
+      --token value        specify your secret token
+      --secret-name value  provide the secret name
+      --secret-type value  provide the secret type
       --port value         port number for the ssh secret
       --username value     username for the ssh secret
       --passphrase value   passphrase for the ssh secret
@@ -122,17 +124,18 @@ Setup Harness CD & GitOps in a few commands
       harness connector apply [command options] [arguments...]
 
    OPTIONS:
-      --delegate-name value               delegate name for the k8s connector
-      --git-user value                    git username for the github connector
-      --aws-cross-account-role-arn value  cross account role arn for the aws connector
-      --aws-access-key value              access key for the aws connector
-      --aws-secret-Key value              access secret for the aws connector
-      --cloud-region value                region for the cloud connector
-      --host-ip value                     host ip or fqdn for the physical data center connector
-      --port value                        port for the physical data center connector
-      --org-id value                      provide an Organization Identifier
-      --project-id value                  provide a Project Identifier
-      --help, -h                          show help
+     --delegate-name value               delegate name for the Kubernetes connector
+     --docker-user value                 docker username for the Docker connector
+     --git-user value                    git username for the GitHub connector
+     --aws-cross-account-role-arn value  cross-account role ARN for the AWS connector
+     --aws-access-key value              access key for the AWS connector
+     --aws-secret-Key value              access secret for the AWS connector
+     --cloud-region value                region for the cloud connector
+     --host-ip value                     host IP or FQDN for the physical data center connector
+     --port value                        port for the physical data center connector
+     --org-id value                      provide an Organization Identifier
+     --project-id value                  provide a Project Identifier
+     --help, -h                          show help
    ```
    
 3. `harness environment apply help`
@@ -248,6 +251,7 @@ Setup Harness CD & GitOps in a few commands
    
    OPTIONS:
       --agent-identifier value  provide GitOps Agent Identifier.
+      --git-user value          provide your GitHub username
       --org-id value            provide an Organization Identifier
       --project-id value        provide a Project Identifier
       --help, -h                show help

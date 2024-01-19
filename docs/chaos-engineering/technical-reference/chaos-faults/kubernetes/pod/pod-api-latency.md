@@ -2,7 +2,6 @@
 id: pod-api-latency
 title: Pod API latency
 ---
-## Introduction
 
 Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
 
@@ -15,16 +14,14 @@ Pod API latency:
 - Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error handling mechanisms.
 - It can be used to test, how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
 
-## Fault tunables
+## Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
     <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -33,7 +30,7 @@ Pod API latency:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to API latency. </td>
-        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -56,8 +53,9 @@ Pod API latency:
         <td> For more information, go to <a href="#path-filter">path filter </a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -206,9 +204,9 @@ spec:
               value: '/status'
 ```
 
-### Path Filter
+### Path filter
 
-API sub path/route to filter the api calls. Tune it by using the `PATH_FILTER` environment variable.
+API sub path (or route) to filter the API calls. Tune it by using the `PATH_FILTER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -246,9 +244,7 @@ spec:
 A comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
 
 :::note
-
 It is applicable only for the egress `SERVICE_DIRECTION`.
-
 :::
 
 The following YAML snippet illustrates the use of this environment variable:

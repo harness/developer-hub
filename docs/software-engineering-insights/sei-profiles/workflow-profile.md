@@ -13,6 +13,8 @@ You can configure the profile depending on the factors you want to include in yo
 * Track time spent in source code lifecycle stages, such as commit to merge and activities related to pull requests.
 * Track lead time and DORA metrics for your engineering teams through your CI/CD tools.
 
+![](./static/workflow-profile.png)
+
 ## Configure Workflow profiles
 
 To add or edit Workflow profiles:
@@ -20,7 +22,7 @@ To add or edit Workflow profiles:
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Workflow** under **Profiles**.
-4. To create a profile, select **Add Profile**. To edit a profile, select the profile's name in the profiles list.
+4. To create a profile, select **+Add Profile**. To edit a profile, select the profile's name in the profiles list.
 
 :::tip
 
@@ -34,6 +36,8 @@ When creating a new workflow profile, you will need to choose the profile type. 
 
 * **DORA Profile:** Supports the four key DORA metrics - Lead time for changes, Deployment frequency, Mean time to restore, and Change failure rate. 
 * **Velocity Lead Time Profile:** Supports all the pre-defined workflow profile-based widgets.
+
+![](./static/workflow-profile-settings.png)
 
 ## DORA Profile
 
@@ -49,6 +53,8 @@ Lead Time for Changes measures the time it takes for a task to progress from dev
   * Ticket Created: This event ensures that lead time tracking starts in issue management.
   * Commit Created: This event ensures that lead time tracking starts when the first commit is committed.
   * API Event: This This event triggers the lead time calculation based on a custom API event.
+
+![](./static/lead-time-for-changes.png)
   
 To learn more about how lead time metrics are calculated, Go to [Lead Time for Changes calculation](../sei-metrics-and-reports/dora-metrics.md#lead-time-for-changes-calculation).
 
@@ -59,6 +65,8 @@ Deployment Frequency measures how frequently a team successfully deploys code to
 * Specify the tool used for measuring deployments in your team.
 * Select any existing integrations you wish to use for calculating deployment frequency.
 * Defind the settings for how you want to calculate deployment frequency. The additional filters being used to define the deployments will be applicable to all the integrations that you selected.
+
+![](./static/deployment-frequency.png)
 
 ### Mean Time to Restore
 
@@ -75,6 +83,8 @@ Change Failure Rate is computed by dividing the total number of deployments caus
 * Choose any existing integrations you want to utilize for calculating the change failure rate.
 * Select how to configure your integration between SCM (Source Code Management) and CI/CD.
 * Add attributes and filters to identify and define deployments causing failure and total deployments.
+
+![](./static/change-failure-rate.png)
 
 Total deployments represent all deployments that have occurred within a specified time range, regardless of whether they resulted in success or failure.
 
@@ -143,6 +153,9 @@ To create a Velocity Lead Time profile, you need to follow these key steps:
    * **Tags on Commits of Merged PRs:** Specify values that tags on commits of merged pull requests should start with or contain.
    * **Labels on Pull Requests:** Define values for labels on pull requests that should start with or contain specific values.
 
+![](./static/velocity-profile.png)
+
+
 :::tip
 Separate multiple values with a comma.
 :::
@@ -168,31 +181,58 @@ Similarly, the default configuration for a [Ticket-based Workflow profile](#conf
 
 When calculating lead time, the time spent in each stage depends on the stages that a PR or issue actually goes through. For example, if your Workflow profile includes a *time to comment* stage, but there are no comments on the PR or ticket, then the *time to comment* is zero.
 
+<img
+  src={require('./static/default-lead-time.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
 You can configure grading thresholds (good, acceptable, and slow) for each stage. These thresholds determine grades that appear on your lead time widgets. Grades are reported for each stage as well as a cumulative grade for all stages combined.
 
 You can modify Workflow profile stages and grades according to your team's SDLC process. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
+## Add the Jira Release stage
+
+:::info
+This feature is currently not supported on Harness SEI. 
+:::
+
+<!-- When configuring a workflow profile in Jira, you have the option to add a release stage. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
+
+By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to `Ticket Created` and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
+
+If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile. -->
+
 ## Measure Lead Time by JIRA Statuses
 
-You can choose to measure lead time exclusively by JIRA statuses. This feature is especially useful for teams using JIRA as their primary issue management tool. To enable this functionality, the `VELOCITY_JIRA_RELEASE_PROFILE` entitlement is required. If this entitlement is not present, the older profile for the Lead Time by Time Spent in Stages report will be used instead. It is a mandatory configuration for the JIRA releases report.
+You can choose to measure lead time exclusively by JIRA statuses. This feature is especially useful for teams using JIRA as their primary issue management tool. It is a mandatory configuration for the JIRA releases report.
 
-Since lead time is being measured by JIRA statuses only, the start event will be Ticket Created by default. Additionally, you have the option to add stages to your workflow, each with its name and description, and define the threshold by setting acceptable time limits for each stage.
+Since lead time is being measured by JIRA statuses only, the start event will be `Ticket Created` by default. Additionally, you have the option to add stages to your workflow, each with its name and description, and define the threshold by setting acceptable time limits for each stage.
+
+<img
+  src={require('./static/jira-status.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 To ensure accurate lead time measurement, at least one stage, apart from the release stage, is mandatory when measuring lead time by JIRA statuses. This ensures that the lead time metric captures the entire workflow process with all the steps involved in bringing an issue to its final state.
 
 Intermediate stages allow for a more detailed analysis of the time spent at each phase of the workflow, enabling teams to identify potential bottlenecks and areas for optimization. When measuring lead time by JIRA statuses, stages can only be added before the release stage.
 
-* For newly created profile the release stage is disabled by default in the configuration. However, selecting the checkbox to measure Lead Time only using Jira Statuses enables the Release Stage settings. 
-* In this case, the selection for the "Issue Management System" and "Start Event" is disabled. Since JIRA is selected as the issue management platform, Ticket Created is the only start event supported. 
-* If you switch to Azure as the issue management system, the release stage is disabled from the profile configuration. 
-* Choosing a start event other than "Ticket Created" removes the release stage from the configuration.
+* For newly created profiles the release stage is disabled by default in the configuration. However, selecting the checkbox to measure Lead Time only using Jira Statuses enables the Release Stage settings.
+* In this case, the selection for the `Issue Management System` and `Start Event` is disabled. Since JIRA is selected as the issue management platform, `Ticket Created` is the only start event supported
+* If you want to switch to Azure as the issue management system, you’ll have to disable the release stage from the profile configuration.
+* You cannot choose a start event other than `Ticket Created` when the release stage is configured as it will lead to incorrect settings.
 
 For existing profiles already in use, the release stage remains disabled by default.
 
+<img
+  src={require('./static/jira-release.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
 In cases where a single ticket is associated with multiple versions, the user can choose between two methods for the calculation:
 
-* Considering the Earliest Released Version: This option measures lead time to the first released version linked to the ticket. This approach prioritizes the initial delivery of value to stakeholders, emphasizing the initial completion of the issue and its subsequent release.
-* Considering the Latest Released Version: This option measures lead time to the most recently released version associated with the ticket. This approach focuses on the final iteration of the issue, capturing the cumulative development effort and ensuring that the lead time reflects the issue's final state as it reaches users.
+* **Considering the Earliest Released Version:** This option measures lead time to the first released version linked to the ticket. This approach prioritizes the initial delivery of value to stakeholders, emphasizing the initial completion of the issue and its subsequent release.
+* **Considering the Latest Released Version:** This option measures lead time to the most recently released version associated with the ticket. This approach focuses on the final iteration of the issue, capturing the cumulative development effort and ensuring that the lead time reflects the issue's final state as it reaches users.
 
 ## Stages
 
@@ -200,13 +240,13 @@ Depending on your chosen start event, the stage configuration can vary:
 
 You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages you can customize the fields, define ideal and acceptable time ranges, grades, and more. This refines how you track KPIs.
 
-* For **"Ticket Created"** Start Event by default the Development stages are enabled which includes Lead time to first commit, PR creation time, Time to first comment, Approval time, and Merge time (requires destination branch confirmation). For Approval Time you have the option to choose between choosing the First Approval or the Final Approval depending on your workflow's needs.
+* For **Ticket Created** Start Event by default the Development stages are enabled which includes Lead time to first commit, PR creation time, Time to Comment, Approval time, and Merge time (requires destination branch confirmation). For Approval Time you have the option to choose between choosing the First Approval or the Final Approval depending on your workflow's needs.
   
   PR review stages cannot be rearranged. Default values for stages are customizable to meet specific requirements. We can add new custom stages at the beginning of the workflow or after the completion of the Development stages.
 
-* For **"Commit Created"** Start Event Workflow starts with "Commit Created" followed by PR Creation Time, Time to First Comment, Approval Time, and Merge Time stages. Default values are customizable based on specific requirements. Custom stages can only be added after completing the default stages.
+* For **Commit Created** Start Event Workflow starts with `Commit Created` followed by PR Creation Time, Time to Comment, Approval Time, and Merge Time stages. Default values are customizable based on specific requirements. Custom stages can only be added after completing the default stages.
 
-* For **"API Event"** Start Event Development stages are the same as for **"Ticket Created"** and the PR review stages cannot be rearranged. The default values are customizable and custom stages can be added at the beginning or after the development stages.
+* For **API Event** Start Event Development stages are the same as for `Ticket Created` and the PR review stages cannot be rearranged. The default values are customizable and custom stages can be added at the beginning or after the development stages.
 
 ### Add a custom stage
 
@@ -216,6 +256,8 @@ To add custom stages, follow these steps:
 2. Add a stage name and description.
 3. Define the Stage Definition by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and set event parameters.
 4. Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
+
+![](./static/custom-stage.png)
 
 ## Configuration examples​
 
@@ -227,7 +269,7 @@ The following examples describe Workflow profile configurations to track Lead Ti
 Use this profile configuration to track Lead Time across the PR lifecycle and gain insight into your SCM tools, such as GitHub, Bitbucket, GitLab, and so on.
 
 1. Select Workflow under Profiles.
-2. Select New Workflow Profile.
+2. Select Add Profile.
 3. Under Profile Info, enter a Name and optional Description.
 4. Under Lead Time for Changes, select Stages, and set the Start Event to Commit Created.
 5. Review the pre populated Stages that represent the PR lifecycle, from PR creation to merge. You can edit, add, and remove stages as needed. You can edit the data or fields that drive each stage, set time range goals, and more.
@@ -240,7 +282,7 @@ If you want to include CI/CD builds and deployments in your lead time calculatio
 <summary>Track Lead Time in Issue Management and SCM​</summary>
 
 1. Select Workflow under Profiles.
-2. Select New Workflow Profile.
+2. Select Add Profile.
 3. Under Profile Info, enter a Name and optional Description, and then select the Issue Management System to associate with this profile.
 4. Under Lead Time for Changes, select Stages, and set the Start Event to Ticket Created.
 5. Review the pre populated Development Stages and edit them, if necessary. These stages represent the progression of code in your SCM tool, from first commit to PR merge.
@@ -261,7 +303,7 @@ If you want to include CI/CD builds and deployments in your lead time calculatio
 Use this profile configuration to use an API event to initiate Lead Time tracking.
 
 1. Select Workflow under Profiles.
-2. Select New Workflow Profile.
+2. Select Add Profile.
 3. Under Profile Info, enter a Name and optional Description.
 4. Under Lead Time for Changes, select Stages, and set the Start Event to API Event.
 5. Use the following REST API request to push custom API events to SEI:

@@ -1,0 +1,9 @@
+{
+  "position": 10,
+  "label": "SSH",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "SSH faults documentation"
+  }
+}

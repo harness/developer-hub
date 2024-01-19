@@ -2,7 +2,6 @@
 id: pod-api-modify-header
 title: Pod API modify header
 ---
-## Introduction
 
 Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
@@ -14,15 +13,13 @@ Pod API modify header:
 - This fault can be utilized to validate the caching behavior of your API or client applications. By overriding cache-related headers, such as the "Cache-Control" or "ETag" headers, you can simulate cache validation scenarios.
 - It can be used to test content negotiation capabilities. By modifying the "Accept" header in the API request, you can simulate different content types or formats that the client application can accept.
 
-:::info note
-- Kubernetes> 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes> 1.17
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -31,7 +28,7 @@ Pod API modify header:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to API header modification. </td>
-        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -54,8 +51,9 @@ Pod API modify header:
         <td> For more information, go to <a href="#path-filter">path filter </a>.</td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -207,9 +205,9 @@ spec:
               value: '/status'  
 ```
 
-### Path Filter
+### Path filter
 
-API sub path/route to filter the api calls. Tune it by using the `PATH_FILTER` environment variable.
+API sub path (or route) to filter the API calls. Tune it by using the `PATH_FILTER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -249,9 +247,7 @@ spec:
 A comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
 
 :::note
-
 It is applicable only for the egress `SERVICE_DIRECTION`.
-
 :::
 
 The following YAML snippet illustrates the use of this environment variable:

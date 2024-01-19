@@ -17,7 +17,7 @@ The type of API specs could be added in IDP.
 
 1. **openapi** - An API definition in YAML or JSON format based on the [OpenAPI](https://swagger.io/specification/) version 2 or version 3 spec.
 
-2. **asyncapi** - An API definition based on the [AsyncAPI](https://www.asyncapi.com/docs/specifications/latest/) spec.
+2. **asyncapi** - An API definition based on the [AsyncAPI specification](https://www.asyncapi.com/docs/reference/specification/latest).
 
 3. **graphql** - An API definition based on [GraphQL schemas](https://spec.graphql.org/) for consuming [GraphQL](https://spec.graphql.org/) based APIs.
 

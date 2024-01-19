@@ -12,7 +12,7 @@ ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on 
 
 This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Sufficient AWS access to stop the ECS tasks.
 - The target ECS tasks should be in a healthy state.
@@ -65,10 +65,10 @@ Below is an example AWS policy to help execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-    <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
         </tr>
@@ -93,10 +93,12 @@ Below is an example AWS policy to help execute the fault.
         <td> `SERVICE_NAME` and `TASK_REPLICA_ID` are mutually exclusive. If both the values are provided, `SERVICE_NAME` takes precedence. For more information, go to <a href="#ecs-task-replica-ids"> ECS task replica ID.</a></td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+
+### Optional tunables
+  <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

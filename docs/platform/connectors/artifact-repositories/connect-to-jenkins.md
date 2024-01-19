@@ -27,7 +27,7 @@ Make sure the user account for this connection has the following required permis
 * Overall: Read.
 * Job: Build.
 
-For token-based authentication, go to **http://Jenkins-IP-address/jobs/me/configure** to check and change your API access token. The token is added as part of the HTTP header.
+For token-based authentication, go to `http://JENKINS_IP_ADDRESS/jobs/me/configure` to check and change your API access token. The token is added as part of the HTTP header.
 
 See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
 
@@ -67,7 +67,7 @@ If you use Okta or 2FA for connections to Jenkins, use **API token** for **Auth
 
 * **Username:** enter the user account username.
 * **Password/API Token:** select/create a Harness Encrypted Text secret using the Jenkins API token or password.  
-For token-based authentication, go to `http://Jenkins-IP-address/jobs/me/configure` to check and change your API access token. The token is added as part of the HTTP header.
+For token-based authentication, go to `http://JENKINS_IP_ADDRESS/jobs/me/configure` to check and change your API access token. The token is added as part of the HTTP header.
 * **Bearer Token (HTTP Header):** select/create a Harness Encrypted Text secret using the OpenShift OAuth Access Token in **Bearer Token (HTTP Header)**. The **Bearer Token (HTTP Header)** option is only for Jenkins servers hosted/embedded in an OpenShift cluster and using this authentication method. For more information, see [Authentication](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/authentication.html) from OpenShift.
 
 Click **Submit**.

@@ -1980,6 +1980,20 @@ Ensure that the AWS IAM user you use has the correct policies for pulling from E
 </details>
 </details>
 
+<details>
+<summary>AWS roles for IRSA auth</summary>
+
+If you are using IRSA for authentication in the Harness AWS connector that pulls from ECR, ensure the following AWS roles are mapped to the Kubernetes service account.
+
+- `ecr:DescribeImages`
+- `ecr:DescribeRepository`
+- `ecr:GetAuthorizationToken`
+- `ecr:BatchGetImage`
+- `ecr:GetDownloadUrlForLayer`
+
+</details>
+
+
 ### ECR artifact expressions
 
 You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
@@ -3501,10 +3515,10 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
 | AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
 | Azure Container Registry         | 500           | Lexical (descending)                                                                                   |
-| Google Artifact Registry(Docker) | 2,147,483,647 | Lexical (descending)                                                                                   |
+| Google Artifact Registry(Docker) | 2,147,483,647 | Descending order of created at.                                                                                   |
 | Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
 | Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
-| Github Packages                  | No Limit      | Descending order of created at.                                                                                                       |
+| Github Packages                  | No Limit      | Descending order of created at.                                                                        |
 | Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus2                           | No Limit      | Lexical (descending)                                                                                   |

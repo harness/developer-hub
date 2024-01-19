@@ -18,6 +18,12 @@ You can save the following Harness resources in Git using Harness Git Experience
 - Input sets
 - Templates
 
+The following entities are supported behind feature flags:
+
+- Services (feature flag is `CDS_SERVICE_GITX`).
+- Environments (feature flag is `CDS_ENV_GITX`).
+- Infrastructure Definitions (feature flag is `CDS_INFRA_GITX`).
+
 :::note
 
 Artifact Source templates are not supported with Git Experience.

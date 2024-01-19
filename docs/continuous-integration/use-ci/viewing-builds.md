@@ -36,11 +36,13 @@ When troubleshooting failed builds, you can switch to **Console View** to alloca
 
 #### Troubleshoot build log issues
 
-These are common issues related to build logs:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for issues and questions related to build logs, such as:
 
-* [Truncated execution logs](../troubleshoot-ci/troubleshooting-ci.md#truncated-execution-logs)
-* [CI step logs don't load in real time](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
-* [Step logs disappear](../troubleshoot-ci/troubleshooting-ci.md#step-logs-disappear)
+* [Truncated execution logs](/kb/continuous-integration/continuous-integration-faqs/#truncated-execution-logs)
+* [Step logs disappear](/kb/continuous-integration/continuous-integration-faqs/#step-logs-disappear)
+* [CI step logs don't load in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
+* [Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background](/kb/continuous-integration/continuous-integration-faqs/#step-succeeds-even-when-explicitly-executing-exit-1-in-a-bash-script-that-is-runs-in-scripts-background)
+* [A previous execution is missing from my Builds dashboard or Project Overview page.](/kb/continuous-integration/continuous-integration-faqs/#builds-older-than-30-days-arent-on-the-project-overview-page)
 
 ### Inputs tab
 

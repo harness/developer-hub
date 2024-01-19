@@ -124,18 +124,43 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
 ## Additional configuration for pipelines with STO scan steps
 
-If you have STO scan steps in your pipeline, follow the steps to [enable self-signed certificates](#enable-self-signed-certificates), and complete the additional steps and requirements described in [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+If you have STO scan steps in your pipeline, do the following:
 
-## Troubleshooting SCM service connection issues
+1. Follow the steps to [enable self-signed certificates](#enable-self-signed-certificates).
 
-If your builds fail due to a problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
+2. If you're storing your certificates in a local registry and [need to run Docker-in-Docker](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto), specify the local certificate path on the delegate.
 
-If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
+   Suppose your self-signed certs are stored at `https://my-registry.local.org:799` and you log in like this:
 
-1. Add a [Run step](../../run-ci-scripts/run-step-settings.md) that prints the contents of the destination path. For example, you can include a command such as:
+   `docker login my-registry.local.org:799`
 
-   ```
-   cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt
-   ```
+   You would then need to configure or extend the `DESTINATION_CA_PATH` on the delegate as follows. Note the `value` path:
 
-2. Double-check that the base image used in the step reads certificates from the same path given in the destination path on the Delegate.
+   ```yaml
+   env:
+   - name: DESTINATION_CA_PATH
+              value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt"
+            volumeMounts:
+            - name: certvol
+              mountPath: opt/harness-delegate/ca-bundle
+              subPath:  ca.bundle
+          volumes:
+          - name: certvol
+            secret:
+              secretName: addcerts
+              items:
+              - key: ca.bundle
+                path: ca.bundle
+   ``` 
+   
+
+3. Complete the additional steps and requirements described in [Add custom certificates to a delegate](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+## Troubleshoot Kubernetes cluster build infrastructures
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:
+
+* [SCM service connection issues](/kb/continuous-integration/continuous-integration-faqs/#git-connector-scm-connection-errors-when-using-self-signed-certificates)
+* [How do I make internal CA certs available to the delegate pod?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-make-internal-ca-certs-available-to-the-delegate-pod)
+* [Where should I mount internal CA certs on the build pod?](/kb/continuous-integration/continuous-integration-faqs/#where-should-i-mount-internal-ca-certs-on-the-build-pod)
+* [Certificate volumes aren't mounted to the build pod](/kb/continuous-integration/continuous-integration-faqs/#certificate-volumes-arent-mounted-to-the-build-pod)

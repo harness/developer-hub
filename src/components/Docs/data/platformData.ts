@@ -52,6 +52,13 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/platform/get-started/key-concepts",
         },
         {
+          title: "Harness AIDA",
+          module: MODULES.platform,
+          description:
+            "Learn about how AIDA improves your experience on the Harness platform.",
+          link: "/docs/category/harness-aida",
+        },
+        {
           title: "Delegates",
           module: MODULES.platform,
           description:

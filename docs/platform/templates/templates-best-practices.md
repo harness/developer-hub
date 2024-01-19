@@ -147,10 +147,11 @@ pipeline:
 
 Harness supports the following stage types as templates:
 
-- Build
-- Deploy
-- Custom
-- Approval
+   - **Build:** Use CI to build, test, and push artifacts to repositories.
+   - **Deploy:** The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 
+   - **Approval:** Manual and Jira approval stages.
+   - **Feature Flag:** Enable or disable functionality remotely without redeploying code.
+   - **Custom Stage:** Set up a stage configurable to your needs.
 
 You can configure a stage template at the project, org, and account scope. Harness supports versioning of Stage templates in Harness or via Harness Git Experience.
 

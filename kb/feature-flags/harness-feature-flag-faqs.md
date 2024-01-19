@@ -91,6 +91,10 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
 
+### CanI call initialize more than once to update attributes?
+
+Currently, FF doesn't have an option to update attributes without closing the SDK. You need to close and reinitialize the SDK to update attributes.
+
 ## FF auth-secret
 
 ### What is the purpose of the auth-secret setting in the Harness Relay Proxy configuration?
@@ -134,15 +138,15 @@ Currently, the API returns the total number of evals.
 
 The `eventUrl`, used by the Metrics service, sends a metrics payload that includes a map of Flags, Targets, and Evaluation results. This data is used to populate the Targets list with targets that might not exist in the UI. This endpoint is enabled by default, and you can disable it, if needed.
 
-### What is the purpose of the `/stream` endpoint? How does it maintain its connection state? Can I expect disruptions or issues with it?
+### What is the purpose of the stream endpoint? How does it maintain its connection state? Can I expect disruptions or issues with it?
 
 The `/stream` endpoint serves as a long-lived connection using server-sent events (SSE) to maintain its connection state. A `keepalive` signal is dispatched every 20 seconds to ensure that the connection remains active and open. The primary purpose of the `/stream` connection is to remain continuously open and receptive to events. You should not experience disruptions or issues. Its role is to detect changes in a designated flag and provide updated values as needed.
 
-### Can I expect to see data transmission on the `/stream` endpoint, and how should I maintain its livelines?
+### Can I expect to see data transmission on the stream endpoint, and how should I maintain its livelines?
 
 While using the `/stream` endpoint, you can't observe data transmission. To keep the connection alive, a `keepalive` signal must be sent at the network level. This ensures that the connection remains open and responsive to events.
 
-### Is there a maximum duration for the `/stream` connection, and what happens if it's terminated?
+### Is there a maximum duration for the stream connection, and what happens if it's terminated?
 
 The `/stream` connection is automatically terminated by the load balancer every 24 hours. In such cases, the FF SDK is designed to promptly reestablish the connection to ensure continuous operation.
 

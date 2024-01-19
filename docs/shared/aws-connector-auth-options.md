@@ -1,4 +1,6 @@
-The **Use IRSA** option allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account. Instead, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
+The **Use IRSA** option allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. This option is also necessary if the delegate uses IRSA on an EKS cluster with OIDC Provider.
+
+By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account. Instead, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
 
 1. Verify your firewall policy and make sure to whitelist all AWS endpoints for the services you're using. For more details, go to [view AWS service endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#view-service-endpoints).
 2. Modify your delegate YAML, as described below.
@@ -44,7 +46,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       ---
       ```
 
-    2. Add `serviceAccountName` to the Deployment spec. For example:
+    2. Add `serviceAccountName` to `Deployment.template.spec`. For example:
 
       ```
       ...
@@ -67,9 +69,3 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
 7. If you haven't already installed the delegate, [Install the Kubernetes delegate](https://developer.harness.io/tutorials/platform/install-delegate/) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
 
 </details>
-
-:::tip
-
-To create an AWS Connector with a delegate using IAM Roles for Service Accounts (IRSA) on the EKS cluster with OIDC Provider, select **Use IRSA** in **Credentials**.
-
-:::

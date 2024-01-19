@@ -412,7 +412,7 @@ Here's an example:
     name: build_local_image
     identifier: build_local_image
     spec:
-      connectorRef: mydockerhubconnector
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: docker
       shell: Sh
       command: |-
@@ -593,7 +593,7 @@ Here's an example:
     name: push_image
     identifier: push_image
     spec:
-      connectorRef: mydockerhubconnector
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: docker
       shell: Sh
       command: |-
@@ -608,10 +608,12 @@ Here's an example:
 
 ## YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
+
 ```yaml
 pipeline:
-  projectIdentifier: STO
-  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -627,7 +629,7 @@ pipeline:
                   name: run-semgrep-scan
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: returntocorp/semgrep
                     shell: Sh
                     command: |-
@@ -668,7 +670,7 @@ pipeline:
                   name: build_local_image
                   identifier: build_local_image
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: docker
                     shell: Sh
                     command: |-
@@ -715,7 +717,7 @@ pipeline:
                   name: push_image
                   identifier: push_image
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: docker
                     shell: Sh
                     command: |-

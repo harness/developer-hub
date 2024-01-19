@@ -25,7 +25,7 @@ export default function SRM() {
                 Tutorials
               </button>
             </Link>
-            <Link href="/release-notes//service-reliability-management">
+            <Link href="/release-notes/service-reliability-management">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />

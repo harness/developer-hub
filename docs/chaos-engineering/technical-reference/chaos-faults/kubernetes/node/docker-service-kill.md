@@ -2,7 +2,6 @@
 id: docker-service-kill
 title: Docker service kill
 ---
-## Introduction
 Docker service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** status).
 - Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration.
 - The application node goes back to normal state and services are resumed after a specific duration. 
@@ -12,18 +11,15 @@ Docker service kill makes the application unreachable on the account of the node
 ## Use cases
 Docker service kill fault determines the resilience of an application when a node becomes unschedulable, that is, NotReady state.
 
-:::info note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it or subject to eviction. This is achieved using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
-:::
 
-## Fault tunables
-
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -40,8 +36,9 @@ Docker service kill fault determines the resilience of an application when a nod
         <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults/#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -60,7 +57,7 @@ Docker service kill fault determines the resilience of an application when a nod
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> MASK </td>

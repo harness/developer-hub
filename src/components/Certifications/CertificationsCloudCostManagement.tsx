@@ -8,6 +8,7 @@ import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/ccm-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/ccm-certification-developer-exam-details.md";
 import AdminCertificationExamDetails from "./data/ccm-certification-admin-exam-details.md";
+import AdminCertificationReviewDetails from "./data/ccm-certification-admin-review-guide.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -197,79 +198,86 @@ export default function CloudCostManagement() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide (BETA Coming Soon)</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of CCM.
                   </div>
-                   {/* Button */}
+                  <AdminCertificationReviewDetails />
+                  <div className={styles.btnContainer}>
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Admin Exam Details */}
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details (BETA Coming Soon)</h2>
+              <div className={styles.examDetailsCard}>
+                <AdminCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="#">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Admin Exam Details */}
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA Coming Soon)</h2>
-            <div className={styles.examDetailsCard}>
-              <AdminCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/cloud-cost-management-developer">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-     
 
 
-      {/* Architect Tab Content */}
-      <div
-        className={clsx(
-          styles.tabContent,
-          certType[tab] === certType.architect && styles.active
-        )}
-      >
-        <div className={styles.studyGuide}>
-          <h2 id="prepare">Prepare for the Exam</h2>
+          {/* Architect Tab Content */}
           <div
             className={clsx(
-              styles.studyGuideCard,
-              styles[certType.architect]
+              styles.tabContent,
+              certType[tab] === certType.architect && styles.active
             )}
           >
-            <div className={styles.info}>
-              <i className="fa-solid fa-circle-info"></i>
-              <strong>Get Certified</strong> | Harness Expert
-            </div>
-            <div className={styles.innerCard}>
-              <div className={styles.left}>
-                <h2>Cloud Cost Management - Architect (BETA COMING SOON)</h2>
-                <img
-                  src={`${baseUrl}img/cert_arc_ccm_badge.svg`}
-                  alt="Harness Certified Expert - CCM Architect"
-                  className={styles.badge}
-                />
-                <span className={styles.productVersion}>
-                  <strong>Product version: </strong>  Harness CCM Enterprise
-                  Plan
-                </span>
-              </div>
-              <div className={styles.right}>
-                <h3>Coming Soon...</h3>
-                <div className={styles.desc}>
-                  Assess key technical job functions and advanced skills in
-                  design, implementation and management of CCM.
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.architect]
+                )}
+              >
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
+                </div>
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Cloud Cost Management - Architect (BETA COMING SOON)</h2>
+                    <img
+                      src={`${baseUrl}img/cert_arc_ccm_badge.svg`}
+                      alt="Harness Certified Expert - CCM Architect"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong>  Harness CCM Enterprise
+                      Plan
+                    </span>
+                  </div>
+                  <div className={styles.right}>
+                    <h3>Coming Soon...</h3>
+                    <div className={styles.desc}>
+                      Assess key technical job functions and advanced skills in
+                      design, implementation and management of CCM.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div >
-  );
+      </div >
+      );
 }

@@ -2,7 +2,6 @@
 id: pod-network-partition
 title: Pod network partition
 ---
-## Introduction
 
 Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.
 
@@ -12,15 +11,13 @@ Pod network partition is a Kubernetes pod-level fault that blocks 100 percent in
 
 Pod network partition tests the application's resilience to lossy or flaky network.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16 
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

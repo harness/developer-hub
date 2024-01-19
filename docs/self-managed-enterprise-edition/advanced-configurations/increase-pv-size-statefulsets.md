@@ -2,7 +2,7 @@
 title: Increase Persistent Volume (PV) size for StatefulSets
 sidebar_label: Increase PV size for StatefulSets
 description: Learn how to increase the PV size for StatefulSets in your Kubernetes cluster during a Helm upgrade.
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 You can manually update the Persistent Volume (PV) size associated with a StatefulSet in your Kubernetes clusters. This topic describes how to increase the PV size for StatefulSets in your Kubernetes clusters during a Helm upgrade.
