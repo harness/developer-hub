@@ -1,6 +1,6 @@
 ---
 title: Run an ingestion scan in an STO Pipeline
-description: In an *ingestion scan*, you configure a step to ingest scan results from a data file. Ingestion scans support a wide variety of use cases.
+description: Configure a step to ingest scan results from a data file. 
 sidebar_label: Ingestion scans
 sidebar_position: 30
 helpdocs_topic_id: d24n34qdbk
