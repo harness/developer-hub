@@ -5,14 +5,14 @@ sidebar_label: Navigate and drill down into detected issues
 sidebar_position: 60
 ---
 
-The Security Testing Dashboard enables you to view, navigate, discover and investigate detected vulnerabilities in your organization. This dashboard includes a set of filters for drilling down into specific issues by project, creation date, scanner, target, pipeline, severity, and so on. You can drill down to a set of relevant issues and then click on a pie slice, chart element, or other UI element to view details on the relevant issues.
+The Security Testing Dashboard enables you to view, navigate, discover, and investigate detected vulnerabilities in your organization. This dashboard includes a set of filters for drilling down into specific issues by project, creation date, scanner, target, pipeline, severity, and so on. You can drill down to a set of relevant issues and then click on a pie slice, chart element, or other UI element to view details on the relevant issues.
 
-To open the Security Testing Dashboard, select **Dashboards** (left menu) and then **Security Testing** (top checkbox).
+To open the Security Testing Dashboard, open the view selector (top left in the Harness workspace). Select **Dashboards** and then **Security Testing**.
 
 :::note
 - This dashboard requires an Enterprise account.
-- This dashboard shows only results for targets that have baselines defined. You should define a baseline for every target in your project. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
-- You must click **Refresh** (top right) to apply the filter after you configure it.
+- This dashboard shows only results for targets that have baselines defined. You should [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) in your project. 
+- You must click **Update** (top right) to apply the filter after you configure it.
 - To view details for an issue from the search results, click the pipeline name or ID and choose **View in Harness Platform**. 
 
    ![](../static/sto-dashboard-view-issue-in-harness-platform.png)

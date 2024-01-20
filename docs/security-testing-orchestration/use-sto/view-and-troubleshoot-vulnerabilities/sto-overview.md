@@ -22,7 +22,7 @@ import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-star
 
 </details>
 
-To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline target, such as a feature or developer branch, go to the build results for that target and click **Security Tests**.
+To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
 
 <figure>
 
