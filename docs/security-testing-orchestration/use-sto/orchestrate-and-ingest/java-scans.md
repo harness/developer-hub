@@ -1,7 +1,7 @@
 ---
 title: Scanning Java Binaries in STO
-description: This is the recommended workflow for scanning Java binary (.jar, .class) files in an STO pipeline. 
-sidebar_position: 80
+description: How to scan Java binary (.jar, .class) files. 
+sidebar_position: 90
 sidebar_label: Scan Java binaries
 ---
 
