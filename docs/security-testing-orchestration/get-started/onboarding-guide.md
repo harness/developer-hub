@@ -22,7 +22,7 @@ import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
-The entire setup workflow should take about 30 minutes.
+The entire setup should take about 30 minutes.
 
 ## STO Requirements 
 
@@ -56,17 +56,17 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 ### Add Security Testing roles
 
-Harness includes two RBAC roles specifically for STO users:
+Harness includes two [RBAC roles](//docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
 
-* **Developer** role — Permissions needed for developer workflows: 
+* **Developer** role — Permissions for developer workflows: 
 
   - Configure and run scans
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
   - View scan results and troubleshoot detected issues
   - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
-  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if specific issues are detected
+  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, )
    
-* **SecOps** role — Permissions needed for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
+* **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
 These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
@@ -75,7 +75,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 :::
 
 <details>
-<summary>Assign Security Testing Roles: Default Workflow</summary>
+<summary>Assign Security Testing roles: default workflow</summary>
 
 
 1. Select **Account Settings** (left menu) > **Access Control**.
@@ -89,7 +89,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 ### Set up a build infrastructure for STO
 
-You need a Harness build infrastructure to run scans in STO. First, review the supported build infrastructures in [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported). Then select the infrastructure you want to use: 
+You need a Harness build infrastructure to run scans in STO. First, review [Operating systems and architectures supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-operating-systems-and-architectures). Then select the infrastructure you want to use: 
 
 - [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) 
 
