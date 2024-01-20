@@ -17,9 +17,19 @@ sidebar_position: 45
 
 The following workflow describes how to set up an ingestion pipeline for any scanner that supports SARIF. 
 
-1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/scan_results`.
- 
-   ![](../static/ingesting-issues-from-other-scanners-00.png)
+1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** in the visual editor, or add it to the YAML like this:  
+  
+  ```yaml
+      - stage:
+        name: scan_stage
+        identifier: scan_stage
+        type: Security
+        spec:
+          cloneCodebase: false
+          sharedPaths:
+            - /shared/scan_results
+  ```
+   
 
 2. Publish your scan results to a data file in [SARIF 2.1.0 ](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) format.  
 
@@ -51,7 +61,7 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
          log:
          level: debug
       ingestion:
-         file: /path/of/file.sarif
+         file: /shared/scan_results/gitleaks.sarif
    description: gitleaks step
 ```
 
