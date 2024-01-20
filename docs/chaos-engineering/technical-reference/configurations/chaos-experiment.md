@@ -3,7 +3,7 @@ title: Chaos Experiment
 sidebar_position: 2
 ---
 
-Granular definition of chaos intent specified via image, librar, necessary permissions, low-level chaos parameters (default values).
+Granular definition of chaos intent specified via image, library, necessary permissions, low-level chaos parameters (default values).
 
 This section describes the fields in the ChaosExperiment and the possible values that can be set against the same.
 

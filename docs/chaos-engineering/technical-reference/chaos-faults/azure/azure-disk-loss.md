@@ -89,7 +89,7 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods.</td>
-            <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+            <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
