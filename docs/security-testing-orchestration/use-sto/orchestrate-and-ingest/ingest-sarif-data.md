@@ -17,15 +17,11 @@ sidebar_position: 45
 
 The following workflow describes how to set up an ingestion pipeline for any scanner that supports SARIF. 
 
-1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** in the visual editor, or add it to the YAML like this:  
+1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** > **Shared Paths** in the visual editor, or add it to the YAML like this:  
   
   ```yaml
       - stage:
-        name: scan_stage
-        identifier: scan_stage
-        type: Security
         spec:
-          cloneCodebase: false
           sharedPaths:
             - /shared/scan_results
   ```
@@ -64,8 +60,6 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
          file: /shared/scan_results/gitleaks.sarif
    description: gitleaks step
 ```
-
-
 
 ## Example workflows for ingesting SARIF data into STO
 
