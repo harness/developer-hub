@@ -183,7 +183,7 @@ Harness includes a built-in Secrets Manager that enables you to store encrypted 
 In this step, you'll create a secret for your GitHub and DockerHub access tokens. Then you'll use the secret when you set up the connector to your GitHub repo.
 
 <details>
-<summary>Create a Secret for your GitHub access token: Default Workflow</summary>
+<summary>Create a Secret for your GitHub access token: default workflow</summary>
 
 1. In your Github account, a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has the following scopes:
 	* repo
