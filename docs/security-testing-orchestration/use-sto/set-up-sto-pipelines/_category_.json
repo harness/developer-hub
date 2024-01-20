@@ -3,12 +3,13 @@
     "position": 10,
     "collapsible": "true",
     "collapsed": "true",
-    "className": "red",
+    "className": "red",   
     "link": {
         "type": "generated-index",
         "title": "Set up STO pipelines"
     },
     "customProps": {
-        "ref": "doc-2894"
+        "ref": "doc-2894",
+        "description": "You can add certs to your delegate, pipelines, and local scanner images.",
     }
 }
