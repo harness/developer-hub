@@ -419,7 +419,7 @@ pipeline:
               os: Linux
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           execution:
             steps:
               - step:
@@ -520,7 +520,7 @@ pipeline:
               os: Linux
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           execution:
             steps:
               - step:

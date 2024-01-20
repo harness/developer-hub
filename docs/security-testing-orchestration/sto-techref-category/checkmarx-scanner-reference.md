@@ -396,7 +396,7 @@ pipeline:
             type: Cloud
             spec: {}
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
   identifier: CheckmarxGitAction
   name: CheckmarxGitAction
 

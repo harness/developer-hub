@@ -217,7 +217,7 @@ Here's an example of a configured Gitleaks step.
 
 The following pipeline shows an end-to-end ingestion workflow. The pipeline consists of a Build stage with two steps:
 
-1. A Run step that sends a `gitleaks detect` command to the local Gitleaks container to scan the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) specified for the pipeline. This command specifies the output file for the scan results: `/shared/customer_artifacts/sarif_simple.sarif`. 
+1. A Run step that sends a `gitleaks detect` command to the local Gitleaks container to scan the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) specified for the pipeline. This command specifies the output file for the scan results: `/shared/scan_results/sarif_simple.sarif`. 
 
 2. A Gitleaks step that auto-detects the data file type (SARIF) and then ingests and normalizes the data from the output file. 
 
@@ -251,7 +251,7 @@ pipeline:
                           image: zricethezav/gitleaks:latest
                           shell: Sh
                           command: |
-                            gitleaks detect --source /harness --report-path /shared/customer_artifacts/ingest-data.sarif --report-format 'sarif' --exit-code 0 --redact -v
+                            gitleaks detect --source /harness --report-path /shared/scan_results/ingest-data.sarif --report-format 'sarif' --exit-code 0 --redact -v
                           resources:
                             limits:
                               memory: 2048Mi
@@ -273,9 +273,9 @@ pipeline:
                             log:
                               level: info
                           ingestion:
-                            file: /shared/customer_artifacts/ingest-data.sarif
+                            file: /shared/scan_results/ingest-data.sarif
           sharedPaths:
-            - /shared/customer_artifacts
+            - /shared/scan_results
           caching:
             enabled: false
             paths: []
@@ -345,7 +345,7 @@ pipeline:
                               memory: 2048Mi
                               cpu: 2000m
           sharedPaths:
-            - /shared/customer_artifacts
+            - /shared/scan_results
           caching:
             enabled: false
             paths: []

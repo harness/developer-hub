@@ -15,7 +15,7 @@ The following steps outline the basic workflow:
 
 2. Add the SARIF data to your pipeline. If you ran the scan outside the pipeline, do the following:
 
-   1. In the stage where you ingest the results, go to **Overview** > **Shared Paths** and create a folder under `/shared` such as `/shared/customer_artifacts`.
+   1. In the stage where you ingest the results, go to **Overview** > **Shared Paths** and create a folder under `/shared` such as `/shared/scan_results`.
 
    2. Use a Run step to add your scan results to the shared folder.
 
@@ -309,7 +309,7 @@ pipeline:
                       file: /harness/codeql.sarif
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
   identifier: codeql_ingestion
   name: codeql ingestion 
 
