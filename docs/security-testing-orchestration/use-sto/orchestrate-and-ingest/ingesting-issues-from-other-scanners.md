@@ -21,9 +21,14 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
 
 ### Required steps to ingest data from unsupported scanners into STO
 
-1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/scan_results`.
- 
-   ![](../static/ingesting-issues-from-other-scanners-00.png)
+1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** > **Shared Paths** in the visual editor, or add it to the YAML like this:  
+  
+   ```yaml
+         - stage:
+         spec:
+            sharedPaths:
+               - /shared/scan_results
+   ```
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
   You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
