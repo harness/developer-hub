@@ -7,11 +7,8 @@ redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/exemptions
 ---
 
-
-
 import StoConceptExemptions from '../shared/_exemptions.md';
-
 
 <StoConceptExemptions />
 
-For a full workflow description, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows).
+For a full workflow description, go to [Exemptions to override Fail on Severity thresholds for specific issues in STO](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows).
