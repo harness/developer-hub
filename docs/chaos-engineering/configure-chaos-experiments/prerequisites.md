@@ -43,4 +43,4 @@ To add a new user to a project:
 
 ## Prerequisites for individual chaos faults
 
-In the [chaos faults reference](/docs/chaos-engineering/technical-reference/chaos-faults/), you'll find fault-specific requirements listed in the **Use cases** section of each fault, as shown, for example, in the use cases for the [Docker service kill](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/docker-service-kill#use-cases) fault. 
+In the [chaos faults reference](/docs/chaos-engineering/technical-reference/chaos-faults/), you'll find fault-specific requirements listed in the **Use cases** section of each fault, as shown, for example, in the use cases for the [Kubelet service kill](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill#use-cases) fault.
