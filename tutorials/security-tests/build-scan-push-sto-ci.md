@@ -88,7 +88,7 @@ Do the following:
 
    3. For **Repository Name**, click the type selector ("tack" button on the right) and then select **Runtime Expression**.
 
-4. Expand **Overview** > **Advanced** and add the following stage variables.
+5. Expand **Overview** > **Advanced** and add the following stage variables.
 
    You'll be specifying runtime inputs for some of these variables. This enables you to specify the code repo, branch, image label, and image tag, and other variables at runtime.
 
@@ -104,7 +104,7 @@ Do the following:
 
    - `DOCKER_IMAGE_TAG` — Select **String** and **Runtime Input**.
 
-5. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
+6. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 

@@ -98,7 +98,7 @@ import TabItem from '@theme/TabItem';
 
    1. Name = **run_semgrep_scan**
 
-   2. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif`
+   2. Command = `semgrep /harness --sarif --config auto -o /shared/scan_results/semgrep.sarif`
 
       This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file.
 
