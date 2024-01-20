@@ -9,7 +9,6 @@
         "title": "Set up STO pipelines"
     },
     "customProps": {
-        "ref": "doc-2894",
-        "description": "You can add certs to your delegate, pipelines, and local scanner images.",
+        "ref": "doc-2894"
     }
 }
