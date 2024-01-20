@@ -46,13 +46,16 @@ import StoConceptBaselines from '/docs/security-testing-orchestration/get-starte
 
 <StoConceptBaselines />
 
-### Where was an issue detected: in the variant, in the baseline, or both? 
+### Is an issue unique to the variant or common to the baseline? 
 
-Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) with separate lists of issues that make it easy to determine where and when a specific issue was detected:
+Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) with separate lists of issues that make it easy to determine
 
-- Only in the current scan of the selected variant
-- Also in previous scans of the selected variant
-- Also in previous scans of the baseline
+- Issues only in the variant.
+- Issues common to the variant and the baseline.
+
+If you scanned the baseline, or the baseline isn't defined, you'll see
+  - New issues only in the current scan (first list).
+  - Old issues common to the previous scan (second list). 
 
 <figure>
 
