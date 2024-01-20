@@ -191,7 +191,7 @@ pipeline:
             type: Cloud
             spec: {}
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
 
 
 ```
@@ -358,7 +358,7 @@ pipeline:
                     ingestion:
                       file: /harness/result.sarif
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
           infrastructure:
             type: KubernetesDirect
             spec:

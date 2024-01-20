@@ -17,7 +17,7 @@ sidebar_position: 45
 
 The following workflow describes how to set up an ingestion pipeline for any scanner that supports SARIF. 
 
-1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
+1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/scan_results`.
  
    ![](../static/ingesting-issues-from-other-scanners-00.png)
 
@@ -25,7 +25,7 @@ The following workflow describes how to set up an ingestion pipeline for any sca
 
    You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. 
 
-3. Copy the SARIF file to the `/shared/customer_artifacts` folder. 
+3. Copy the SARIF file to the `/shared/scan_results` folder. 
 
 3. Add an ingestion step after the Run step and configure it as follows.
 
