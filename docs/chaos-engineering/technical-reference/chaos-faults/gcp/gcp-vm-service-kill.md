@@ -2,9 +2,9 @@
 id: gcp-vm-service-kill
 title: GCP VM service kill
 ---
-GCP VM service kill fault can stop a given service for specified duration that can cause the node turning unschedulable (in **NotReady** status).
+GCP VM service kill fault stops a given service for specified duration. As a consequence, the node becomes unschedulable and it transitions to **NotReady** state.
 - GCP VM service kill stops a target service on a node to make it unschedulable for a specific duration.
-- The node reverts to its normal state and services resume after a set period, or occasionally, a new node replica may substitute the existing one.
+- The node reverts to its original state and services resume after a specific duration. Sometimes, a new node replica may substitute the existing one.
 
 ![GCP VM service service Kill](./static/images/gcp-vm-service-kill.png)
 
@@ -12,8 +12,8 @@ GCP VM service kill fault can stop a given service for specified duration that c
 The GCP VM service kill fault assesses a GKE node's resilience by evaluating the service operating on it.
 
 ### Prerequisites
-- Kubernetes > 1.23 is required to execute this fault.
-- Node specified in the <code>VM_INSTANCE_NAMES</code> environment variable (the node for which the target service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it or subject to eviction. This is achieved using the following steps:
+- Kubernetes > 1.23
+- Cordon the node specified in the <code>VM_INSTANCE_NAMES</code> environment variable (the node for which the target service is killed) before executing the chaos fault. This ensures that the fault resources aren't scheduled on it or subject to eviction. You can achieve this using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
@@ -49,7 +49,7 @@ stringData:
       <tr>
         <td> SERVICE_NAME </td>
         <td> Name of the target service to stop on node. </td>
-        <td> For example, <code>containerd</code>. For For more information, go to <a href = "#target-service">serivce name.</a></td>
+        <td> For example, <code>containerd</code>. For more information, go to <a href = "#target-service">service name.</a></td>
       </tr>
       <tr>
         <td> GCP_PROJECT_ID </td>
@@ -127,9 +127,9 @@ spec:
           value: 'project-id'
 ```
 
-### Target Service
+### Target service
 
-Name of the target service to be killed on the specified VM instance. Tune it by using the `SERVICE_NAME` environment variable.
+Name of the target service to kill on the specified VM instance. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

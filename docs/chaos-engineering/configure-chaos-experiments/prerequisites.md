@@ -3,11 +3,11 @@ title: Prerequisites
 sidebar_position: 1
 ---
 
-This topic describes the requirements and resources you need to run chaos experiments on your target environments.
+This topic describes the resources required to run chaos experiments on your target environments.
 
 ## Chaos infrastructure requirements
 
-The following are the chaos infrastructure Execution Plane components and required resources. These components are installed in your target cluster, allowing the chaos infrastructure to run experiments there. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
+The table below lists the chaos infrastructure execution plane components and the required resources. You can install these components in your target cluster, allowing the chaos infrastructure to run experiments here. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
 
 | Deployment | Container | CPU<br />required | Memory<br />required | Image |
 |------------|-----------|-------------------|----------------------|-------|
@@ -19,7 +19,7 @@ The following are the chaos infrastructure Execution Plane components and requir
 
 ## Add users to a project to run chaos experiments
 
-You must have at least one user in a project, and allow that user to do chaos experiments. The following steps generate an email invitation to the new user(s) to add themselves to the project.
+You must have at least one user in a project, and set up permissions such that the user can perform chaos experiments. The following steps generate an email invitation to the new user(s) to add themselves to the project.
 
 
 To add a new user to a project: 
@@ -33,7 +33,7 @@ To add a new user to a project:
 1. Select **New User**, and then:
 
 	1. In **New User(s)**, add the email(s) of the user(s) you want to add. 
-	1. In **User Groups**, select any of the existing user groups to which the user should be added. 
+	1. In **User Groups**, select any of the existing user groups to which you can add the user. 
 	1. Add the roles for the user(s) to enforce their access permissions. 
 
 	![Add New User](./static/add-new-user.png)

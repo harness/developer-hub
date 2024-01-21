@@ -32,7 +32,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "GCP VM service kill",
     description:
-     "It disrupts the VM instance's state by halting a service for a specific chaos duration.",
+     "It disrupts the state of the VM instance by halting a service for a specific chaos duration.",
     tags: ["service stop"],
     category: "gcp",
   },
