@@ -1,6 +1,6 @@
 ---
 title: Fortify on Demand scanner reference for STO
-description: Repository scans with Fortify on Demand
+description: Scan code repositories with Fortify on Demand.
 sidebar_label: Fortify on Demand scanner reference
 sidebar_position: 180
 ---

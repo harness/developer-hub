@@ -1,6 +1,6 @@
 ---
 title: Snyk scanner reference for STO
-description: Image and repository scans with Snyk
+description: Scan code repositories and container images with Snyk
 sidebar_label: Snyk scanner reference
 sidebar_position: 10
 ---

@@ -1,11 +1,11 @@
 ---
 title: Mend (formerly Whitesource) scanner reference for STO
-description: Container and repository scans with Mend
+description: Scan code repositories and container images with Mend.
 sidebar_label: Mend scanner reference
 sidebar_position: 220
 ---
 
-You can scan container images and repositories using [Mend](https://www.mend.io). 
+You can scan code repositories and container images using [Mend](https://www.mend.io). 
 
 
 ## Important notes for running Mend scans in STO

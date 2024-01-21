@@ -1,6 +1,6 @@
 ---
 title: Aqua Trivy scanner reference for STO
-description: Image scans with Aqua Trivy
+description: Scan container images with  Aqua Trivy.
 sidebar_position: 30
 sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu

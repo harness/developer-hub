@@ -1,6 +1,6 @@
 ---
 title: Exemptions to override Fail on Severity thresholds for specific issues in STO
-description: Developers can request exemptions, but only SecOps can approve them. 
+description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Override the Fail on Severity threshold for specific issues
 sidebar_position: 60
 ---

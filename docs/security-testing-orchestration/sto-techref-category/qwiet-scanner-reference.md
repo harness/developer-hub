@@ -1,6 +1,6 @@
 ---
 title: Qwiet AI (formerly ShiftLeft) scanner reference for STO
-description: Repository scans with Qwiet
+description: Scan code repositories with Qwiet AI.
 sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
 sidebar_position: 330
 ---

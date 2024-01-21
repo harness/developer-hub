@@ -1,6 +1,6 @@
 ---
 title: ScoutSuite scanner reference for STO
-description: Configuration scans with ScoutSuite
+description: Scan configurations with ScoutSuite.
 sidebar_label: ScoutSuite scanner reference
 sidebar_position: 350
 ---

@@ -1,6 +1,6 @@
 ---
 title: Custom Ingest step reference for STO
-description: ingest JSON or SARIF data from external scanners
+description: Ingest SARIF or JSON scan results.
 sidebar_label: Custom Ingest step reference
 sidebar_position: 130
 ---

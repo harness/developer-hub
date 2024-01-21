@@ -1,6 +1,6 @@
 ---
 title: Data Theorem scanner reference for STO
-description: Repository scans with Data Theorem
+description: Scan code repositories with Data Theorem.
 sidebar_label: Data Theorem scanner reference
 sidebar_position: 140
 ---

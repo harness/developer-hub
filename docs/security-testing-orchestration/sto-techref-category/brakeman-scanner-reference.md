@@ -1,6 +1,6 @@
 ---
 title: Brakeman scanner reference for STO
-description: Repository scans with Brakeman
+description: Scan code repositories with Brakeman.
 sidebar_label: Brakeman scanner reference
 sidebar_position: 80
 ---

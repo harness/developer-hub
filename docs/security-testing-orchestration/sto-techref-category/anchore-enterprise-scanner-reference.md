@@ -1,6 +1,6 @@
 ---
 title: Anchore Enterprise scanner reference for STO
-description: Container scans with Anchore Enterprise
+description: Scan container images with Anchore Enterprise.
 sidebar_label: Anchore Enterprise scanner reference
 sidebar_position: 20
 ---

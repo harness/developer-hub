@@ -1,6 +1,6 @@
 ---
 title: Checkmarx scanner reference for STO
-description: Repository scans with Checkmarx
+description: Scan code repositories with Checkmarx.
 sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---

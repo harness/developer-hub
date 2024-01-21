@@ -1,6 +1,6 @@
 ---
 title: Fortify scanner reference for STO
-description: Repository scans with Fortify
+description: Scan code repositories with Fortify.
 sidebar_label: Fortify scanner reference
 sidebar_position: 170
 ---

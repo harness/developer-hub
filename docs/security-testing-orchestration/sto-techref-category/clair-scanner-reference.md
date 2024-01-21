@@ -1,6 +1,6 @@
 ---
 title: Clair scanner reference for STO
-description: Image scans with Clair
+description: Scan container images with Clair.
 sidebar_label: Clair scanner reference
 sidebar_position: 110
 ---

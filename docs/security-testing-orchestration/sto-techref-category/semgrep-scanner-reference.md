@@ -1,6 +1,6 @@
 ---
 title: Semgrep scanner reference for STO
-description: Repository scans with Semgrep
+description: Scan code repositories with Semgrep.
 sidebar_label: Semgrep settings reference
 sidebar_position: 360
 ---

@@ -1,6 +1,6 @@
 ---
 title: Zed Attack Proxy (ZAP) scanner reference for STO
-description: App instance scans using ​Zed Attack Proxy (ZAP)
+description: Scan application instances with ​Zed Attack Proxy (ZAP).
 sidebar_label: Zed Attack Proxy (ZAP) scanner reference
 sidebar_position: 430
 helpdocs_topic_id: m9494vxwac
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-For a detailed example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap) tutorial.
+For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap) tutorial.
 
 ## Important notes for running ZAP scans in STO
 

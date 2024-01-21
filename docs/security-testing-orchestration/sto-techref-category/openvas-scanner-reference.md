@@ -1,6 +1,6 @@
 ---
 title: OpenVAS scanner reference for STO
-description: Instance scans with OpenVAS
+description: Scan application instances with OpenVAS.
 sidebar_label: OpenVAS scanner reference
 sidebar_position: 280
 ---

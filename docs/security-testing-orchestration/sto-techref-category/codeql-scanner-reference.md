@@ -1,6 +1,6 @@
 ---
 title: CodeQL scanner reference for STO
-description: Repository scans with CodeQL
+description: Scan code repositories with CodeQL.
 sidebar_label: CodeQL scanner reference
 sidebar_position: 120
 ---
