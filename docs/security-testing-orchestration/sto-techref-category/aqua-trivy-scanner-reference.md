@@ -319,8 +319,67 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ## YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project and organization.
 
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+```yaml
+pipeline:
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: false
+          sharedPaths:
+            - /var/run
+            - /shared/scan_results
+          execution:
+            steps:
+              - step:
+                  type: AquaTrivy
+                  name: AquaTrivy_1
+                  identifier: AquaTrivy_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      name: redhat/ubi8-minimal
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                      args:
+                        cli: "--scanners vuln"
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: redhat/ubi8-minimal
+                      domain: docker.io
+                      tag: latest
+                    sbom:
+                      format: spdx-json
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
+        description: ""
+  identifier: trivyorchestration
+  name: trivy-orchestration
 
 
-<StoSettingYAMLexample />
+
+```
+
+
+
