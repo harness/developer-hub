@@ -1,0 +1,3 @@
+The identifier for the target you’re scanning. Use a descriptive, unique identifier such as `codebaseAlpha` or `jsmith/myalphaservice`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
+
+It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) for every target. 

@@ -67,11 +67,9 @@ The target type of the scanned object. You can ingest data for the following tar
 
 ### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 
 <!-- ---------------------------------------------------------------------------- -->

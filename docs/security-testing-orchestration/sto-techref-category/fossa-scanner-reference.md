@@ -95,10 +95,10 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
+<StoSettingTargetName />
 
-<StoSettingProductID />
 
 <a name="target-variant"></a>
 
