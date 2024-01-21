@@ -1,6 +1,6 @@
 ---
 title: STO Tutorials
-description: Get started with STO
+description: Your first pipeline, targeted quickstarts, and build-scan-push workflows.
 sidebar_position: 30
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/sto-tutorials

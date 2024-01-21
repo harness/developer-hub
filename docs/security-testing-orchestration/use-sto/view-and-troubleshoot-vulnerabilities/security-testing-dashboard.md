@@ -2,7 +2,7 @@
 title: Navigate and drill down into detected issues in the Security Testing Dashboard
 description: View, navigate, discover, and investigate detected issues in the Security Testing Dashboard. 
 sidebar_label: Navigate and drill down into detected issues
-sidebar_position: 60
+sidebar_position: 35
 ---
 
 The Security Testing Dashboard enables you to view, navigate, discover, and investigate detected vulnerabilities in your organization. This dashboard includes a set of filters for drilling down into specific issues by project, creation date, scanner, target, pipeline, severity, and so on. You can drill down to a set of relevant issues and then click on a pie slice, chart element, or other UI element to view details on the relevant issues.

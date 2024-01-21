@@ -1,7 +1,7 @@
 ---
 title: Discover and remediate issues in Security Tests
 description: View, navigate, discover, and investigate detected issues from an individual scan 
-sidebar_position: 10
+sidebar_position: 20
 sidebar_label: Discover and remediate detected issues
 ---
 
