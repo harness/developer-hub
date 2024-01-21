@@ -89,7 +89,7 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 <a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
-<StoSettingScanTypeCont />
+<!-- StoSettingScanTypeCont / -->
 
 
 #### Name 
