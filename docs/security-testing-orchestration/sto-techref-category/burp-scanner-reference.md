@@ -5,20 +5,7 @@ sidebar_label: Burp scanner reference
 sidebar_position: 90
 ---
 
-You can scan your application instances automatically using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
-
-To set up a Burp scan:
-
-1. Create a CI Build or Security Tests stage,
-2. Add a [Burp](#burp-step-configuration) or a [Security](#security-step-settings-deprecated)
-3. Configure the step as specified in the following sections.
-
-<details>
-<summary>Burp scan configuration in Security step</summary>
-
-![](./static/burp-security-scan-step.png)
-
-</details>
+You can scan your application instances using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
 
 ## Important notes for running Burp scans in STO
 
@@ -39,27 +26,21 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Burp step configuration
-
-<details>
-<summary>Orchestration scan in a Burp scanner template</summary>
-
-![](./static/burp-scanner-template.png)
-
-</details>
+## Burp step settings for STO scans
 
 ### Scan settings
 
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
+<StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 <a name="scan-config"></a>
@@ -216,20 +197,13 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 ## Security step settings for Burp scans in STO (legacy)
 
-#### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
+:::note
+You can set up Burp scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Burp step](#burp-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
 
 <StoLegacyTargetAndVariant />
 

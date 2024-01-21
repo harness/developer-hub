@@ -40,18 +40,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Brakeman step settings for STO scans
 
-The recommended workflow is to add an Brakeman step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Brakeman scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
-
-
-
-
-
-<details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png)
-
-</details>
 
 ### Scan settings
 
@@ -204,7 +192,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Brakeman scans in STO (legacy)
 
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Brakeman scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Brakeman step](#brakeman-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 
