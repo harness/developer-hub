@@ -6,7 +6,7 @@ sidebar_position: 70
 ---
 
 
-You can scan your container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
+You can scan your repositories and container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
 
 ## Important notes for running Black Duck Hub scans in STO
 
@@ -303,7 +303,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Black Duck Hub scans in STO (legacy)
 
-You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Black Duck Hub scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Black Duck Hub step](#black-duck-hub-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 
