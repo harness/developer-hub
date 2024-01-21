@@ -1,6 +1,6 @@
 ---
-title: STO ingestion workflows
-description: STO supports three workflows for ingesting data --  run a local scan (orchestration), ingest results from a shared folder (ingestion-only), and download results from an external scanner (data-load).
+title: STO scan modes
+description: Ingest results using orchestration, ingestion, and extraction.
 sidebar_position: 10
 helpdocs_topic_id: cjqnd71y07
 helpdocs_category_id: utstv3qzqt
@@ -8,32 +8,32 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-STO supports three different workflows to ingest scan results into a pipeline:
+STO supports three scan modes to ingest scan results into a pipeline:
 
-- [Orchestration workflows](#orchestration-workflows-in-sto)
-- [Ingestion-only workflows](#ingestion-only-workflows-in-sto)
-- [Extraction workflows](#extraction-workflows-in-sto)
+- [Orchestration scans](#orchestration-workflows-in-sto)
+- [Ingestion scans](#ingestion-only-workflows-in-sto)
+- [Extraction scans](#extraction-workflows-in-sto)
 
-### Orchestration workflows in STO
+### Orchestration scans in STO
 
-You can set up a fully orchestration workflow in one Security step that runs the scan and ingests the results. This is the easiest workflow to implement and is good for running scans with default settings.
+In an *orchestration scan*, you scan a target and ingest the results in one step. This is the easiest workflow to implement and is good for running scans with default settings.
 
 For more information, go to [Run an Orchestration Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md).
 
-### Ingestion-only workflows in STO
+### Ingestion scans in STO
 
-A Security step ingests scan results generated in a previous step, or outside the pipeline. This provides the most flexibility. You can ingest results from highly targeted scans that address specific use cases. You can also ingest results from scanners that currently have no STO integration. Ingestion-only workflows provide the most flexibility and robustness, but might require more work to set up.
+In an *ingestion scan*, you configure a step to ingest scan results from a data file. You can generate your scan data in a previous step of the pipeline, or download your data from an outside source. Ingestion scans provide the most flexibility and robustness, but might require more work to set up.
 
-An ingestion-only workflow requires at least two steps:
+An ingestion scan requires at least two steps:
 
-1. A Run step saves the scan data to a shared folder. The Run step might run a scan locally or download scan results from an external tool.
-2. A Security step ingests the data from the shared folder.
+1. A Run step saves the scan data to a shared folder. 
+2. A Security or Security Tests step ingests the data from the shared folder.
 
 For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
 
-### Extraction workflows in STO
+### Extraction scans in STO
 
-Extraction scans are a sub-category of orchestration scans. Instead of running a scan, the Security step pulls issues from an external source. Specifically, you configure the Security Step to download from the external tool rather than running an orchestration scan. This workflow is supported for scanners that support downloading results via an API endpoint.
+*Extraction scans* are a sub-category of orchestration scans. Instead of running a scan, the step pulls issues from an external source. Specifically, you configure the step to download from the external tool rather than running an orchestration scan. This workflow is supported for scanners such as [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) and [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) that support downloading results via an API endpoint.
 
 ![](../static/sto-workflows-overview-04.png)
 

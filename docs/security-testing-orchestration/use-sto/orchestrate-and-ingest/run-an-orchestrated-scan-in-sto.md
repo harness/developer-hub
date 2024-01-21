@@ -1,7 +1,7 @@
 ---
 title: Run an Orchestration scan in an STO Pipeline
-description: An orchestration scan is a fully automated workflow that scans an object and ingests the results into Harness in one Security step. Orchestration scans are the easiest to set up and are a great way to get started with STO.
-sidebar_label: Orchestration workflows
+description: Scan a target and ingest the results in one step.
+sidebar_label: Orchestration scans
 sidebar_position: 20
 helpdocs_topic_id: wk018r6x3g
 helpdocs_category_id: utstv3qzqt
@@ -9,9 +9,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-An *orchestration scan* is a fully automated workflow that scans an object and ingests the results into Harness in one step. Orchestration scans are the easiest to set up and are a great way to get started with STO.
+In an *orchestration scan*, you scan a target and ingest the results in one step. Orchestration scans are the easiest to set up and are a great way to get started with STO.
 
-To set up an orchestration scan, you specify the following information:
+To set up an orchestration scan, you specify information such as:
 
 * The scan tool and settings.
 * Access credentials to access the object to scan (if the object is remote).

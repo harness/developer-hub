@@ -1,6 +1,6 @@
 ---
 title: Use governance policies and security scan results to stop STO pipelines automatically 
-description: How to create and apply governance policies to stop pipelines automatically based on detected severities
+description: Use governance policies to stop pipelines based on issue severities.
 sidebar_label: Stop pipelines using OPA
 sidebar_position: 220
 ---
@@ -143,7 +143,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: MY_GITHUB_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         build: <+input>
   stages:
     - stage:
@@ -172,8 +172,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: MY_DELEGATE_CONNECTOR
-              namespace: sto-lab
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
