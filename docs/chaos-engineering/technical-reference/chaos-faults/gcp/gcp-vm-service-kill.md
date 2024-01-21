@@ -6,7 +6,7 @@ GCP VM service kill fault stops a given service for specified duration. As a con
 - GCP VM service kill stops a target service on a node to make it unschedulable for a specific duration.
 - The node reverts to its original state and services resume after a specific duration. Sometimes, a new node replica may substitute the existing one.
 
-![GCP VM service service Kill](./static/images/gcp-vm-service-kill.png)
+![GCP VM service service kill](./static/images/gcp-vm-service-kill.png)
 
 ## Use cases
 The GCP VM service kill fault assesses a GKE node's resilience by evaluating the service operating on it.
