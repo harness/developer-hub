@@ -217,8 +217,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
-
 <StoSettingCliFlags />
+
+For example, you can customize the security issues to detect using the `scanners` argument. To scan vulnerabilities only, add `--scanners vuln` to this field.
 
 <a name="fail-on-severity"></a>
 
@@ -230,10 +231,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
+<!-- 
 ### Settings
 
-You can add a `tool_args` setting to run the trivy image scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners ("vuln")`. 
+You can add a `tool_args` setting to run the scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners vuln`. 
 
+-->
 
 ### Additional Configuration
 
@@ -258,11 +261,10 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Aqua Trivy scans in STO (legacy)
 
-You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
+:::note
+You can set up Aqua Trivy scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Aqua Trivy step](#aqua-trivy-step-settings-for-sto-scans) instead.
+:::
 
-#### Important Notes
-
-* STO supports container scans only with Aqua Trivy.
 
 #### Scan types
 
@@ -282,10 +284,10 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 #### Aqua Trivy scan settings
 
 * `product_name` = `aqua-trivy`
-* `scan_type` = `containerImage`, `ingestionOnly`
-* `product_config_name` — Specify one of the following:
+* `policy_type` = `containerImage`, `ingestionOnly`
+* `product_config_name` 
 	+ `aqua-trivy` — Run the Trivy image scanner with default settings.
-	+ `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode.
+	<!-- + `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode. -->
 * `container_domain` — The image registry domain, for example `docker.io`
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
