@@ -149,25 +149,29 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-
 
 <StoSettingCliFlags />
 
+ For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `-skip testID_1, testID_3, testID_5`
+
 <a name="fail-on-severity"></a>
 
-
 #### Fail on Severity
-
 
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
+<!-- >
+
 ### Settings
 
 You can add a `tool_args` setting to run the [bandit scanner binary](https://pypi.org/project/bandit/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
+
+commenting out...this is functionally equivalent to using Additional CLI flags
+
+-->
 
 
 ### Additional Configuration
@@ -194,7 +198,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Bandit scans in STO (legacy)
 
-You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
+:::note
+You can set up Bandit scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Bandit step](#bandit-step-settings-for-sto-scans) instead.
+:::
 
 
 #### Scan policy types
@@ -232,15 +238,54 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-
-
-
 ## YAML pipeline example
 
+If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
 
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-
-
-<StoSettingYAMLexample />
+```yaml
+pipeline:
+  name: your-first-pipeline-v2
+  identifier: yourfirstpipelinev2
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
+  tags: {}
+  stages:
+    - stage:
+        name: bandit_repo_scan
+        identifier: bandit_repo_scan
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Bandit
+                  name: bandit_repo_scan
+                  identifier: bandit_repo_scan
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: <+input>
+                      type: repository
+                      variant: <+input>
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: critical
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: <+input>
+        build: <+input>
+```
 
 
