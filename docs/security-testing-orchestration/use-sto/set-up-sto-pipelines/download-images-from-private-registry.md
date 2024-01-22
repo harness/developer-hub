@@ -1,6 +1,6 @@
 ---
-title: Configure STO to Download Images from a Private Registry
-description: You can set up STO to download your scanner images from a private registry instead of GCR.
+title: Configure STO to download images from a private registry
+description: Store your scanner images in a private registry. Useful for air-gapped environments.
 sidebar_position: 40
 ---
 
@@ -89,7 +89,7 @@ You need a Docker connector that points to your private container registry. For 
 
    :::
 
-2. If your registry automatically downloads the latest images from the public Harness registry, you might want to [specify the images to use in your pipelines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines). This ensures your pipelines use specific image versions. You must update this specification when you want to adopt a new version of an image.
+2. If your registry automatically downloads the latest images from the public Harness registry, you might want to [specify the images to use in your pipelines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines). This ensures that your pipelines use specific image versions. You must update this specification when you want to adopt a new version of an image.
 
 3. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
 
@@ -156,13 +156,13 @@ The following pipeline downloads its Security Scan image (bandit) and all of its
 
 ```yaml
 pipeline:
-  projectIdentifier: my_project
-  orgIdentifier: my_org
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         repoName: dvpwa
         build: <+input>
   stages:
@@ -177,8 +177,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR 
-              namespace: harness-delegate-ng
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               harnessImageConnectorRef: account.harnessImage
@@ -190,7 +190,7 @@ pipeline:
                   name: docker-dind
                   identifier: dockerdind
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: account.harnessImage
                     image: docker:dind
                     shell: Sh
                     entrypoint:
@@ -214,7 +214,7 @@ pipeline:
                       runner_registry_image_prefix: harness
                       # Here the Harness Delegate uses anonymous access to download from the Harness GCR project rather than a private registry.
         variables: []
-  identifier: STO_Tutorial_1
-  name: STO Tutorial 1
+  identifier: sto_scanner_image_download_example
+  name: sto_scanner_image_download_example
 
 ```

@@ -1,11 +1,11 @@
 ---
 title: Clair scanner reference for STO
-description: Image scans with Clair
+description: Scan container images with Clair.
 sidebar_label: Clair scanner reference
 sidebar_position: 110
 ---
 
-You can set up Clair scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan container images using [Clair](https://github.com/quay/clair), an open-source project for the static analysis of vulnerabilities in application containers. Create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Clair scans in STO
 

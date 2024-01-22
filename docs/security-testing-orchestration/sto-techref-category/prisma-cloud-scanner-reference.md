@@ -1,6 +1,6 @@
 ---
 title: Prisma Cloud (formerly Twistlock) scanner reference for STO
-description: Image scans with Prisma Cloud
+description: Scan container images with Prisma Cloud.
 sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
 sidebar_position: 300
 ---
@@ -34,21 +34,10 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Prisma Cloud step configuration in STO
+## Prisma Cloud step settings for STO
 
 The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
 
-
-
-
-
-
-<details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png)
-
-</details>
 
 ### Scan
 
@@ -59,7 +48,7 @@ The recommended workflow is add a PrismaCloud step to a Security Tests or CI Bui
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
@@ -99,11 +88,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -115,14 +102,6 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 <StoSettingTargetVariant  />
 
-
-### Ingestion File
-
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
-
-<StoSettingIngestionFile  />
 
 ### Container Image 
 
@@ -200,51 +179,11 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 <!-- ============================================================================= -->
 <a name="auth-domain"></a>
 
-#### Domain (_extraction_)
-
-
+#### Domain 
 
 import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
 
-
 <StoSettingAuthDomain />
-
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
-
-#### Enforce SSL
-
-
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
-
-
-<StoSettingProductSSL />
-
-<!-- ============================================================================= -->
-<a name="auth-access-api-version"></a>
-
-#### API Version
-
-
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
-
-
-<StoSettingApiVersion />
-
-<!-- ============================================================================= -->
-<a name="auth-type"></a>
-
-#### Type
-
-
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
-
-
-<StoSettingAuthType />
-
-<!-- ============================================================================= -->
-
-<a name="auth-access-id"></a>
 
 #### Access ID
 
@@ -272,6 +211,13 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 For Extraction scans, the name of the image that you want to extract from Prisma Cloud. 
 
+### Ingestion File
+
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+
+<StoSettingIngestionFile  />
+
+
 ### Log Level, CLI flags, and Fail on Severity
 
 <a name="log-level"></a>
@@ -291,8 +237,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
-
 <StoSettingCliFlags />
+
+For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`.
 
 
 #### Fail on Severity
@@ -302,10 +249,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
-
+<!-- 
 ### Settings
 
 You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` : `--publish FALSE`.
+
+-->
 
 ### Additional Configuration
 
@@ -330,7 +279,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Prisma Cloud scans in STO (legacy)
 
-You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Prisma Cloud scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Prisma Cloud step](#prisma-cloud-scan-settings) instead.
+:::
 
 #### Target and variant
 

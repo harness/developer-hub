@@ -2,18 +2,15 @@
 id: pod-network-latency
 title: Pod network latency
 ---
-## Introduction
 
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
 - Initiates a traffic control (tc) process with netem rules to add egress delays.
-- Degrades the nwtwork without marking the pod as unhealthy or unworthy of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container).
+- Degrades the network without marking the pod as unhealthy or unworthy of traffic by kube-proxy (unless there is a liveness probe that measures the latency and restarts (or crashes) the container).
 - Issues with microservice communication across the services can be resolved by using middleware that switches the traffic based on certain SLOs or performance parameters. 
   - Such issues can also be resolved by setting up alerts and notifications to highlight a degradation, so that they can be addressed, and rectified. A
   - Issues can also be resolved by understanding the impact of the failure and determining the last point before degradation in the application stack. 
 
-
 ![Pod Network Latency](./static/images/pod-network-latency.png)
-
 
 ## Use cases
 Pod network latency:
@@ -26,15 +23,12 @@ Pod network latency:
 - Simulates a degraded data-plane of service-mesh infrastructure.  
 
 
-:::info note
-- Kubernetes> 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes> 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
-
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -203,7 +197,7 @@ spec:
               value: "60"
 ```
 
-### Source And Destination Ports
+### Source and destination ports
 
 By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
 
@@ -242,7 +236,7 @@ spec:
           value: '60'
 ```
 
-### Ignore Source and Destination Ports
+### Ignore source and destination ports
 
 By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignore via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
 

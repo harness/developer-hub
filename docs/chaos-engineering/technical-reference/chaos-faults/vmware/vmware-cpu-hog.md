@@ -15,7 +15,7 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. 
 - It verifies the autopilot functionality of cloud managed clusters. 
 - It verifies multi-tenant load issues, that is, when the load on one container increases, it should not cause downtime in other containers.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -36,14 +36,13 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -63,10 +62,11 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -93,12 +93,12 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 

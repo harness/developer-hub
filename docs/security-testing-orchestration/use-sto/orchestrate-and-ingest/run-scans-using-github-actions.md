@@ -1,6 +1,6 @@
 ---
 title: Run STO scans using GitHub Action and Drone Plugin steps
-description: STO can ingest data from any scanner that can publish in SARIF format.  
+description: Pipeline examples that use GitHub Actions and Drone plugins.  
 sidebar_label: Scan and ingest from GitHub Actions and Drone Plugins
 sidebar_position: 70
 ---
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 ### Important notes for using GitHub Action and Drone Plugin steps in STO 
 
-* GitHub Action security scans are useful primarily for integrated CI/STO pipelines, which require both CI and STO licenses. For more information, go to [Migrate from GitHub Actions to Harness CI](/docs/continuous-integration/migration-guides/migrating-from-githubactions/).
+* GitHub Action security scans are useful primarily for integrated CI/STO pipelines, which require both CI and STO licenses. 
 
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 * As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practice to configure these settings in the YAML editor.
 
 
-### Example setups for using GitHub Action and Drone Plugin steps in STO 
+### Example workflows for using GitHub Action and Drone Plugin steps in STO 
 
 
 
@@ -138,17 +138,19 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 <details>
 <summary>YAML pipeline example</summary>
 
+If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connector.
+
 ```yaml
 pipeline:
-  projectIdentifier: myProject
-  orgIdentifier: myOrg
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
   tags: {}
-  identifier: nodejs-repo-scane
-  name: NodeJS repo scan
+  identifier: nodejs_repo_scan
+  name: nodejs_repo_scan
   properties:
     ci:
       codebase:
-        connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:
@@ -191,7 +193,7 @@ pipeline:
             type: Cloud
             spec: {}
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
 
 
 ```
@@ -292,7 +294,7 @@ Given this, you would set up the Action step in your Harness pipeline like this.
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: plugins/github-actions
                     privileged: true
                     settings:
@@ -307,16 +309,18 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 <details>
 <summary>YAML pipeline example</summary>
 
+If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
+
 ```yaml
 
 pipeline:
-  projectIdentifier: STO
-  orgIdentifier: default
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR_NodeGoat_Harness_Hosted
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:
@@ -333,7 +337,7 @@ pipeline:
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: plugins/github-actions
                     privileged: true
                     settings:
@@ -358,17 +362,17 @@ pipeline:
                     ingestion:
                       file: /harness/result.sarif
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: MY_K8S_CONNECTOR
-              namespace: harness-qa-delegate
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
-  identifier: njsscan_dbothwell_v3
-  name: njsscan dbothwell v3
+  identifier: njsscan_example
+  name: njsscan_example
 
 
 ```

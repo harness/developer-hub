@@ -14,7 +14,7 @@ VMware Windows Memory hog applies stress on the Memory resources on Windows OS b
 - VMware Windows Memory hog simulates the situation of lack of Memory for processes running on the application, which degrades their performance. 
 - It verifies the autopilot functionality of services or application on the VM.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -38,14 +38,10 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-:::
-
-## Fault tunables
-
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -65,10 +61,12 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

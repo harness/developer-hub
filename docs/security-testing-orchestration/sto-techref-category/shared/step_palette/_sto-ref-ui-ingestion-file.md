@@ -1,7 +1,12 @@
-The results data file to use when running an Ingestion scan. 
- 
-Generally an Ingestion scan consists of a scan step (to generate the data file) and an ingestion step (to ingest the data file).
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/myscan.latest.sarif`.  
 
-In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest  data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format. 
+- The data file must be in a [supported format](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-ingestion-formats) for the scanner.
 
-For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+- The data file must be accessible to the scan step. It's good practice to save your results files to a [shared path](/docs/continuous-integration/get-started/key-concepts#stages) in your stage. In the visual editor, go to the stage where you're running the scan. Then go to **Overview** > **Shared Paths**. You can also add the path to the YAML stage definition like this:  
+  
+  ```yaml
+      - stage:
+        spec:
+          sharedPaths:
+            - /shared/scan_results
+  ``` 

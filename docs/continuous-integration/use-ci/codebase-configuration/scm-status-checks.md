@@ -11,18 +11,15 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#pipeline-links-in-prs). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
 
 :::warning
 
-You must configure branch protections and checks, such as protection rules, CODEOWNERS, linting, and other checks or restrictions, in your source control provider.
+Failed pipelines don't inherently block PR merges. Harness can send pipeline statuses to your PRs, but you must configure branch protections and checks (such as protection rules, CODEOWNERS, linting, and other checks or restrictions) in your source control provider.
 
 :::
 
-If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#source-code-repo-links). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
-
-If you want to pull PR status check information into a Harness pipeline, you can [add custom SCM status checks to your CI pipelines](#custom-scm-status-checks).
-
-You can also use the Harness CI Jira plugin to [update deployments and builds in Jira when your Harness pipelines run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
+If you want to pull PR status check information into a Harness pipeline, such as to determine whether to run a specific step based on the outcome of a check, you can [add custom SCM status checks to your CI pipelines](#custom-scm-status-checks).
 
 ## SCM links in build details
 
@@ -35,6 +32,12 @@ When [viewing builds](../viewing-builds.md) in Harness, builds triggered by webh
 When viewing a PR in your SCM provider, if a manual or webhook build ran from that PR, then you can follow the **Details** link from the PR's Git status to the build details page in Harness. This is supported for both manual and webhook PR builds, but it is not supported for all SCM providers.
 
 ![A PR's Git status with a link to a Harness CI build.](../static/ci-builds-gh-pr-link.png)
+
+To get status updates in your PRs, you must:
+
+1. [Configure a default codebase for your pipeline.](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase) Your pipeline must have a Build stage. Build updates are only exported for Build stages.
+2. Make sure you enable API access in your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#code-repo-connectors) settings.
+3. Run PR builds. Branch and tag builds don't send PR status updates. You can use [webhook triggers](/docs/platform/triggers/triggering-pipelines) to automatically run builds when PRs are created or updated.
 
 ## Custom SCM status checks
 
@@ -163,17 +166,12 @@ You can package your status check script in a [custom plugin](../use-drone-plugi
 </TabItem>
 </Tabs>
 
-
 ## Troubleshoot status checks
 
-### Pipeline status updates aren't sent to PRs
+Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for common questions and issues related to codebases and SCM status checks, such as:
 
-Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. If status updates aren't being sent, make sure that you have [configured a default codebase](./create-and-configure-a-codebase/#edit-the-default-codebase-configuration) and that it is using the correct code repo connector. Also make sure the build that ran was a PR build and not a branch or tag build.
-
-### Failed pipelines don't block PRs merges
-
-Although Harness can send pipeline statuses to your PRs, you must configure branch protection rules and other checks in your SCM provider.
-
-### Troubleshoot Git event triggers
+* [Failed pipelines don't block PR merges.](/kb/continuous-integration/continuous-integration-faqs/#failed-pipelines-dont-block-pr-merges)
+* [Pipeline status updates aren't sent to PRs.](/kb/continuous-integration/continuous-integration-faqs/#pipeline-status-updates-arent-sent-to-prs)
+* [Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.](/kb/continuous-integration/continuous-integration-faqs/#build-statuses-dont-show-on-my-prs-even-though-the-code-base-connectors-token-has-all-repo-permissions)
 
 For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

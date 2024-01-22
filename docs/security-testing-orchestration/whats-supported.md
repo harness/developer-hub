@@ -85,7 +85,7 @@ In addition to ingesting scan data in the external scanner's native format, STO 
   <TabItem value="Build infrastructure">
 
 
-####  STO support by CI build infrastructure type
+####  Operating systems and architectures supported for STO
 
 
 import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';

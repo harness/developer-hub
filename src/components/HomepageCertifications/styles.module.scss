@@ -257,7 +257,12 @@
 @media screen and (max-width: 512px) {
   .homepageCertifications {
     .inner {
+      padding-top: 40px;
+      background-position: top;
       .dualColumn {
+        .left {
+          width: 100%;
+        }
         .right {
           margin-top: 0;
           .cards {

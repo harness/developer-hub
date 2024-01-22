@@ -40,7 +40,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
 | `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
-| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata.  `-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin` |
+| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata. Can be optional. Relevant fields vary by use case. For example, use `-CgroupID` to map group info. | `-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin` |
 
 <!-- ![A Plugin step configured for the Nexus Publisher plugin.](./static/sonatype-nexus-plugin-visual-settings.png) -->
 
@@ -233,3 +233,10 @@ pipeline:
             type: Cloud
             spec: {}
 ```
+
+## Troubleshoot uploading artifacts
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
+
+* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
+* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)

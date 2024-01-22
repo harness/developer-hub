@@ -1,6 +1,6 @@
 ---
 title: OWASP Dependency-Check scanner reference for STO
-description: Repository scans with OWASP Dependency Check
+description: Scan code repositories with OWASP Dependency Check.
 sidebar_label: OWASP Dependency-Check scanner reference
 sidebar_position: 290
 ---
@@ -38,20 +38,14 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## OWASP step configuration
 
-The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure OWASP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-
-
-
-
-
+The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
 ### Scan Mode
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
@@ -93,10 +87,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <!-- ============================================================================= -->
 <a name="target-variant"></a>
@@ -211,13 +204,13 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `tool_args` — You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
 
-#### Orchestrated scan settings
+#### Orchestration scan settings
 
 
-import StoLegacyOrchestrated from './shared/legacy/_sto-ref-legacy-orchestrated.md';
+import StoLegacyOrchestration from './shared/legacy/_sto-ref-legacy-orchestrated.md';
 
 
-<StoLegacyOrchestrated />
+<StoLegacyOrchestration />
 
 #### Ingestion file
 

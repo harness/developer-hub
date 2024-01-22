@@ -1,6 +1,6 @@
 ---
 title: Aqua Security scanner reference for STO
-description: Image scans with Aqua Security
+description: Scan container images with Aqua Security.
 sidebar_label: Aqua Security scanner reference
 sidebar_position: 25
 ---
@@ -55,7 +55,7 @@ The recommended workflow is add an Aqua Security step to a Security Tests or CI 
 #### Scan Mode
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 <StoSettingScanMode />
@@ -83,10 +83,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 

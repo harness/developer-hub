@@ -158,3 +158,13 @@ API key authentication is required. For more information about API keys, go to [
        }
    ]'
    ```
+
+## Troubleshoot Harness images
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness-required images and pipeline initialization, such as:
+
+* [How do I get a list of tags available for an image in the Harness image registry?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-get-a-list-of-tags-available-for-an-image-in-the-harness-image-registry)
+* [Build failed with "failed to pull image" or "ErrImagePull"](/kb/continuous-integration/continuous-integration-faqs/#build-failed-with-failed-to-pull-image-or-errimagepull)
+* [What access does Harness use to pull the Harness internal images from the public image repo?](/kb/continuous-integration/continuous-integration-faqs/#what-access-does-harness-use-to-pull-the-harness-internal-images-from-the-public-image-repo)
+* [Can I use my own private registry to store Harness CI images?](#i-dont-want-to-pull-images-from-a-public-registry)
+* [Docker Hub rate limiting](#docker-hub-rate-limiting)

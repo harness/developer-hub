@@ -16,40 +16,51 @@ Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Har
 
 :::
 
-Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Python in three steps:
+Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
-1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
+## Enable TI for Python
 
-   :::info
+You can enable TI for Python in three steps:
 
-   To use TI for Python, your codebase must be Python 3.
+<!-- no toc -->
+1. [Add the Run Tests step.](#add-the-run-tests-step)
+2. [Trigger test selection.](#trigger-test-selection)
+3. [(Optional) Add test splitting.](#add-test-splitting)
 
-   :::
+### Add the Run Tests step
 
-   In the Run Tests step, you must select **Run only selected tests** (`runOnlySelectedTests: true`). For information about each setting, go to the [Run Tests step settings](#run-tests-step-settings).
+Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-   ```yaml
-                 - step:
-                     type: RunTests
-                     name: Run Python Tests
-                     identifier: Run_Python_Tests
-                     spec:
-                       language: Python
-                       buildTool: Pytest ## Specify pytest or unittest.
-                       runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                       preCommand: |- ## Optional
-                         python3 -m venv .venv
-                         . .venv/bin/activate
+:::info
 
-                         python3 -m pip install -r requirements/test.txt
-                         python3 -m pip install -e .
-   ```
+To use TI for Python, your codebase must be Python 3.
 
-   For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
+:::
 
-2. Trigger test selection. **You need to run your pipeline twice to trigger test selection.**
+In the Run Tests step, you must select **Run only selected tests** (`runOnlySelectedTests: true`). For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
-   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
+                  spec:
+                    language: Python
+                    buildTool: Pytest ## Specify pytest or unittest.
+                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
+                    preCommand: |- ## Optional
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+```
+
+For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
+
+### Trigger test selection
+
+After adding the **Run Tests** step, trigger test selection. **You need to run your pipeline twice to trigger test selection.**
 
 <details>
 <summary>Trigger test selection with a webhook trigger (Recommended)</summary>
@@ -92,7 +103,17 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 </details>
 
-3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+:::info Why do I have to run the pipeline twice?
+
+The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+
+:::
+
+### Add test splitting
+
+Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
+
+You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 
@@ -392,6 +413,12 @@ These settings specify the maximum resources used by the container at runtime. T
 
 The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-## Troubleshooting Test Intelligence
+## Troubleshoot Test Intelligence
 
-For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+
+* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
+* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
+* [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)

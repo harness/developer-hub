@@ -2,7 +2,7 @@
 | ------- | ---------|
 | **1. Understanding and Troubleshooting Harness Delegates**  ||
 | Manage and troubleshoot Kubernetes Delegates  | [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)  |
-| Implement and troubleshoot networking and connectivity issues  | [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci/) |
+| Implement and troubleshoot networking and connectivity issues  | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **2. Managing Build Environments and Dependencies** | |
 | Navigate and solve issues in Docker-in-Docker build environments  | [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/) |
 | Implement and troubleshoot dependency caching mechanisms | [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
@@ -23,7 +23,7 @@
 | Utilize matrix and looping strategies for test execution                                 | [Use looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/)                                                                        |
 | **8. Managing Connectivity and Networking in CI Pipelines**                                 ||
 | Ensure effective communication between Delegates, Harness Manager, and external services | [Communication with Harness Manager](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#communication-with-harness-manager)                                                         |
-| Troubleshoot connectivity issues in webhook triggers and pipeline steps                  | [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci/)|
+| Troubleshoot connectivity issues in webhook triggers and pipeline steps                  | [Troubleshoot CI](/docs/category/troubleshoot-ci)|
 | **9. Implementing and Managing CI in Diverse Infrastructures**                              | |
 | Manage and troubleshoot CI in Kubernetes build infrastructures                           | [Set up a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) |
 | Implement and manage CI pipelines for MacOS and Windows build environments               | [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/)                                            |

@@ -2,12 +2,6 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
 {
-    name: "Docker service kill",
-    description: "Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
-    tags: [ "node"],
-    category: "kubernetes",
-  },
-  {
     name: "Kubelet service kill",
     description:"Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
     tags: ["node"],

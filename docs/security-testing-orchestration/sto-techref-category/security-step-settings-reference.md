@@ -14,7 +14,7 @@ This section describes how to set up each of the external scanners supported by 
 For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
 
 
-### Scanner categories
+### Scanner categories supported by STO
 
 
 import StoSupportedCategories from './shared/_sto-supported-categories.md';
@@ -23,7 +23,7 @@ import StoSupportedCategories from './shared/_sto-supported-categories.md';
 <StoSupportedCategories />
 
 
-### Data ingestion methods
+### Data ingestion methods supported by STO
 
 
 import StoSupportedMethods from './shared/_sto-supported-methods.md';
@@ -34,9 +34,7 @@ import StoSupportedMethods from './shared/_sto-supported-methods.md';
 The scanner, targets, and scan approach combinations are covered in the next section.
 
 
-
-
-### Harness STO scanner support
+### Scanners supported by STO
 
 
 import StoSupportedScanners from './shared/_sto-supported-scanners.md';
@@ -52,13 +50,21 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 
-### Supported ingestion formats
+### Ingestion formats supported by STO
 
 
 import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
 
 
 <StoSupportedFormats />
+
+###  Operating systems and architectures supported by STO
+
+
+import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
+
+
+<StoInfraSupport />
 
 ### Docker-in-Docker requirements for STO
 

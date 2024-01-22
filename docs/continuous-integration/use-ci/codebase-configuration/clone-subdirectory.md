@@ -8,29 +8,20 @@ If you want to clone a subdirectory instead of your entire Git repo, you can dis
 
 You can also use this pattern if you need to use specific `git clone` arguments to clone your codebase.
 
-## Disable Clone Codebase
+:::warning
 
-You must disable **Clone Codebase** so that you can clone the repo according to your specifications. If **Clone Codebase** is enabled, then the build clones the pipeline's [default codebase](./create-and-configure-a-codebase.md#configure-the-default-codebase) automatically.
+This topic explains how to use a Run step to run specific `git clone` arguments (such as `--recursive` or `sparse-checkout`) *instead* of using the built-in [clone codebase](./create-and-configure-a-codebase.md) functionality.
 
-In the Visual editor, you can disable **Clone Codebase** in the Build stage's **Overview** tab.
+Disabling the built-in clone step removes access to some associated functionality, such as PR status updates or resolution of `<+codebase.*>` expressions.
 
-<!-- ![](./static/disable-clone-codebase-visual.png) -->
+:::
 
-<DocImage path={require('./static/disable-clone-codebase-visual.png')} />
+## Determine if you need to disable Clone Codebase
 
-In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
+* **Clone with my git commands instead of using the built-in clone step:** If **Clone Codebase** is enabled, then the build clones the pipeline's [default codebase](./create-and-configure-a-codebase.md#configure-the-default-codebase) automatically. If you don't want to clone the default codebase, you must [disable Clone Codebase](./create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages) so that you can clone the repo with your desired `git` commands.
+* **Clone with my git commands and use the built-in clone step:** If you want to clone files from another repo *in addition to* the default codebase, then *do not* disable **Clone Codebase**. For this pattern, follow the instructions in [Clone multiple code repos in one pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) and use the **Run** step option.
 
-```yaml
-    - stage:
-        name: build
-        identifier: build
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: false
-```
-
-## Add a Run step to clone the codebase
+## Add a Run step with git commands
 
 Add a [Run step](../run-ci-scripts/run-step-settings.md) containing your desired `git` commands, such as [`git sparse-checkout`](https://git-scm.com/docs/git-sparse-checkout) to clone a subdirectory instead of an entire repo.
 
@@ -44,3 +35,9 @@ Add a [Run step](../run-ci-scripts/run-step-settings.md) containing your desired
                     command: |-
                       git sparse-checkout ...
 ```
+
+:::tip
+
+Store tokens and passwords as [Harness secrets](/docs/category/secrets) and use variable expressions, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call them in your commands.
+
+:::

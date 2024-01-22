@@ -19,15 +19,13 @@ Pod IO latency:
 
 <IOFaultsCaution />
 
-:::info note
-- Kubernetes 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -45,8 +43,8 @@ Pod IO latency:
       </tr>
     </table>
 
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -154,7 +152,7 @@ spec:
           value: '60'
 ```
 
-### Mount Path
+### Mount path
 
 Mount path of the volume mounted to the target application. Tune it by using the `MOUNT_PATH` environment variable.
 
@@ -189,7 +187,7 @@ spec:
           value: '60'
 ```
 
-### Advanced Fault Tunables
+### Advanced fault tunables
 
 - `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.

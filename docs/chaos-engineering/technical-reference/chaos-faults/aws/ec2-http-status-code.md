@@ -2,7 +2,6 @@
 id: ec2-http-status-code
 title: EC2 HTTP status code
 ---
-## Introduction
 EC2 HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server.
 
 ![EC2 HTTP Modify Response](./static/images/ec2-http-status-code.png)
@@ -14,7 +13,7 @@ EC2 HTTP status code:
 - Simulates unavailability of specific APIs for (or from) a given microservice (TBD or Path Filter) (404).
 - Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x).
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - SSM agent is installed and running in the target EC2 instance.
 - The EC2 instance should be in a healthy state.
@@ -93,8 +92,8 @@ Below is an example AWS policy to execute the fault.
 :::
 
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -129,8 +128,9 @@ Below is an example AWS policy to execute the fault.
             <td> If true, then the body is replaced by a default template for the status code. Default: True.</td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

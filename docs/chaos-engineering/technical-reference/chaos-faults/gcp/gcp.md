@@ -107,3 +107,22 @@ This fault determines the resilience of an application that runs on a VM instanc
 </FaultDetailsCard>
 
 <!-- Code for Fault Card ends here -->
+
+<FaultDetailsCard category="gcp">
+
+### GCP VM service kill
+
+<!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
+
+It shuts down a service on GCP VM instances (identifiable by name) for a specific duration.
+
+<!-- <Accordion color='green'/> has same usage as details but green in color -->
+
+<Accordion color="green">
+<summary>Use cases</summary>
+    This fault determines the resilience of a GKE node instance when a service on the instance unexpectedly stops (or fails).
+</Accordion>
+
+<!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
+
+</FaultDetailsCard>

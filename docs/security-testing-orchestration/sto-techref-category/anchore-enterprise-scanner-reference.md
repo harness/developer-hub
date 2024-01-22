@@ -1,6 +1,6 @@
 ---
 title: Anchore Enterprise scanner reference for STO
-description: Container scans with Anchore Enterprise
+description: Scan container images with Anchore Enterprise.
 sidebar_label: Anchore Enterprise scanner reference
 sidebar_position: 20
 ---
@@ -66,7 +66,7 @@ The recommended workflow is add a Anchore Enterprise step to a Security Tests or
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
@@ -100,10 +100,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -306,7 +305,6 @@ In the **Advanced** settings, you can use the following options:
 You need to use a Security step to set up an Anchore Enterprise integration. An Anchore Enterprise scanner template is under development and will be available soon. 
 :::
 
-/step-palette -->
 
 To set up your Anchore Enterprise integration with a Security step, do the following: 
 
@@ -388,7 +386,7 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
 
    1. Extracts the `owasp/nettacker:latest` image from Anchore Enterprise.
    2. Logs in to the Anchore Enterprise API based on the `product_domain`, `product_access_id`, `product_access_token` settings.
-   3. Launches an orchestrated scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
+   3. Launches an orchestration scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
    4. Deduplicates and normalizes the scan data and ingests it into STO.
 
 <details>
@@ -420,7 +418,7 @@ pipeline:
               os: Linux
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           execution:
             steps:
               - step:
@@ -521,7 +519,7 @@ pipeline:
               os: Linux
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           execution:
             steps:
               - step:

@@ -1,8 +1,8 @@
 ---
 title: SonarQube SonarScanner reference for STO
-description: Repository scans with SonarQube SonarScanner
+description: Scan code repositories with SonarQube SonarScanner.
 sidebar_position: 390
-sidebar_label: SonarQube SonarScanner scanner reference
+sidebar_label: SonarScanner scanner reference
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -11,7 +11,6 @@ helpdocs_is_published: true
 
  You can run an automated [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) scan to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
  
- You can set up SonarQube scans using a [SonarQube step](#sonarqube-step-configuration) or a [Security step (_legacy workflow_)](#security-step-configuration-legacy).
 
 ## Important notes for running SonarQube scans in STO
 
@@ -19,11 +18,9 @@ helpdocs_is_published: true
 * STO supports all languages supported by SonarScanner.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
-* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestrated and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
+* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 * You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 ### For more information
 
@@ -57,7 +54,7 @@ A Docker-in-Docker background step is not required for this workflow.
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
@@ -89,11 +86,9 @@ import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -218,10 +213,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-
-
-<StoSettingCliFlags />
+You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. The following flag increases the timeout window: `-sonar.ws.timeout 300`
 
 <a name="fail-on-severity"></a>
 
@@ -233,10 +225,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
-
+<!--
 ### Settings
 
 You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`.
+
+-->
 
 ### Additional Configuration
 
@@ -260,9 +254,11 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for SonarQube scans in STO (legacy)
 
-You can add a Security step to a Security Tests or CI Build stage and then configure it as described below. 
+:::note
+You can set up SonarQube scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [SonarQube step](#sonarqube-step-settings-for-sto-scans) instead.
+:::
 
-### Docker-in-Docker requirements
+#### Docker-in-Docker requirements
 
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
@@ -271,15 +267,15 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoDinDRequirements />
 
 
-### Scan types
+#### Scan modes
 
-STO supports the following scan types for SonarQube:
+STO supports the following scan modes for SonarQube:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
 * `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
 
-### Target and variant
+#### Target and variant
 
 
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
@@ -287,7 +283,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-### SonarQube SonarScanner settings
+#### SonarQube SonarScanner settings
 
 * `product_name` = `sonarqube`
 * `scan_type` = `repository`

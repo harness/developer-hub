@@ -29,7 +29,7 @@ Click **Go to Dashboards**.
 ![go-to-dashboard](./static/overview/go-to-dashboard.png)
 
 ### Step 3. Select Chaos from list of modules
-From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](./create-a-new-dashboard). Here, you can select a predefined chaos dashboards.
+From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](./create-a-new-dashboard.md). Here, you can select a predefined chaos dashboards.
 
 ![select-chaos](./static/overview/select-chaos.png)
 
@@ -51,4 +51,4 @@ You can view the data, and download the data in different formats (such as JSON,
 
 ## Next steps
 
-[Create a new dashboard](./create-a-new-dashboard) 
+[Create a new dashboard](./create-a-new-dashboard.md) 

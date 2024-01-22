@@ -5,8 +5,6 @@ redirect_from:
   - /docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-rate-limit
 ---
 
-## Introduction
-
 Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition.
 
 ![Pod Network Rate Limit](./static/images/pod-network-rate-limit.png)
@@ -18,15 +16,14 @@ Pod network rate limit:
 - Evaluate the impact of network rate limits on security-related functions such as DDoS mitigation or intrusion detection, and assessing whether the system can withstand such scenarios.
 - Determine the optimal network bandwidth allocation for different pods and applications to effectively plan resource usage and accommodate growth without degradation in performance.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16 
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
 
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -49,8 +46,8 @@ Pod network rate limit:
       </tr>
     </table>
 
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -181,7 +178,7 @@ spec:
           value: '60'
 ```
 
-### Advance Tunables
+### Advance tunables
 
 - `MIN_BURST`: It contains the size of the peakrate bucket
 - `PEAK_RATE`: It contains the maximum depletion rate of the bucket
@@ -269,7 +266,7 @@ spec:
           value: '60'
 ```
 
-### Source And Destination Ports
+### Source and destination ports
 
 By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
 

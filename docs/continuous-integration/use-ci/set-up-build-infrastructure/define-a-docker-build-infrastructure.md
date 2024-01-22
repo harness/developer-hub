@@ -419,94 +419,18 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 :::
 
-## Troubleshooting
+## Troubleshoot local runner build infrastructure
 
-### Check runner status
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to using a local runner build infrastructure, such as:
 
-To confirm that the runner is running, send a cURL request like `curl http://localhost:3000/healthz`.
-
-If the running is running, you should get a valid response, such as:
-
-```json
-{
- "version": "0.1.2",
- "docker_installed": true,
- "git_installed": true,
- "lite_engine_log": "no log file",
- "ok": true
-}
-```
-
-### Check the delegate status
-
-The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
-
-```
-docker ps
-docker logs --follow <docker-delegate-container-id>
-```
-
-The container ID should be the container with image name `harness/delegate:latest`.
-
-Successful setup is indicated by a message such as `Finished downloading delegate jar version 1.0.77221-000 in 168 seconds`.
-
-### Clone codebase fails due to missing plugin
-
-If [clone codebase](../codebase-configuration/create-and-configure-a-codebase.md) fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
-
-To resolve this issue:
-
-1. On the machine where the runner is running, stop the runner.
-2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
-   For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
-3. Restart the runner.
-
-### Runner can't find an available, non-overlapping IPv4 address pool.
-
-The following runner error can occur during stage setup (the **Initialize** step in build logs):
-
-```
-Could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network.
-```
-
-This error means the number of Docker networks has exceeded the limit. To resolve this, you need to clean up unused Docker networks. To get a list of existing networks, run [`docker network ls`](https://docs.docker.com/engine/reference/commandline/network_ls/), and then remove unused networks with [`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/) or [`docker network prune`](https://docs.docker.com/engine/reference/commandline/network_prune/).
-
-### Docker daemon fails with invalid working directory path on Windows
-
-The following error can occur in Windows local runner build infrastructures:
-
-```
-Error response from daemon: the working directory 'C:\harness-DIRECTORY_ID' is invalid, it needs to be an absolute path
-```
-
-This error indicates there may be a problem with the Docker installation on the host machine.
-
-1. Run the following command (or a similar command) to check if the same error occurs:
-
-   ```
-   docker run -w C:\blah -it -d mcr.microsoft.com/windows/servercore:ltsc2022
-   ```
-
-2. If you get the `working directory is invalid` error again, uninstall Docker and follow the instructions in the Windows documentation to [Prepare Windows OS containers for Windows Server](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).
-3. Restart the host machine.
-
-### Check if the Docker daemon is running
-
-To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
-
-### Runner process quits after terminating SSH connection
-
-If you launch the Harness Docker Runner binary within an SSH session, the runner process can quit when you terminate the SSH session.
-
-To avoid this with macOS runners, use this command when you [start the runner binary](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-harness-docker-runner-1):
-
-```
-./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
-disown
-```
-
-For Linux runners, you can use a tool such as `nohup` when you start the runner, for example:
-
-```
-nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
-```
+* [How do I check the runner status?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-the-runner-status-for-a-local-runner-build-infrastructure)
+* [How do I check the delegate status?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-the-delegate-status-for-a-local-runner-build-infrastructure)
+* [How do I check that the Docker daemon is running?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-if-the-docker-daemon-is-running-in-a-local-runner-build-infrastructure)
+* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
+* [Runner can't find an available, non-overlapping IPv4 address pool](/kb/continuous-integration/continuous-integration-faqs/#runner-cant-find-an-available-non-overlapping-ipv4-address-pool)
+* [Docker daemon fails with invalid working directory path on Windows](/kb/continuous-integration/continuous-integration-faqs/#docker-daemon-fails-with-invalid-working-directory-path-on-windows-local-runner-build-infrastructure)
+* [Runner process quits after terminating SSH connection](/kb/continuous-integration/continuous-integration-faqs/#runner-process-quits-after-terminating-ssh-connection-for-local-runner-build-infrastructure)
+* [Can I use self-signed certs with local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-self-signed-certs-with-local-runner-build-infrastructure)
+* [Git connector SCM connection errors when using self-signed certificates](/kb/continuous-integration/continuous-integration-faqs/#git-connector-scm-connection-errors-when-using-self-signed-certificates)
+* [Step continues running for a long time after the command is complete](/kb/continuous-integration/continuous-integration-faqs/#step-continues-running-for-a-long-time-after-the-command-is-complete)
+* [Is a Docker image required to use the Run step on local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)

@@ -1,6 +1,6 @@
 ---
 title: Sniper scanner reference for STO
-description: Instance scans with Sniper
+description: Scan application instances with Sniper.
 sidebar_label: Sniper scanner reference 
 sidebar_position: 370
 ---

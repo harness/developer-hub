@@ -304,3 +304,14 @@ The maximum memory and cores that the container can use.
 
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. Do not include spaces when entering a fixed value. The default value is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+
+## Troubleshoot Background steps
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Background steps, including:
+
+* [Do Background steps have limitations?](/kb/continuous-integration/continuous-integration-faqs/#do-background-steps-have-limitations)
+* [Can Background steps run multiple services simultaneously?](/kb/continuous-integration/continuous-integration-faqs/#can-background-steps-run-multiple-services-simultaneously)
+* [How can a step call a service started by a Background step?](/kb/continuous-integration/continuous-integration-faqs/#how-can-a-step-call-a-service-started-by-a-background-step)
+* [I can't connect to the hostname using the step ID from my Background step, and I get an "Unknown server host" error](/kb/continuous-integration/continuous-integration-faqs/#i-cant-connect-to-the-hostname-using-the-step-id-from-my-background-step-and-i-get-an-unknown-server-host-error)
+* [Why is Background step always marked as successful even if there are failures executing the entry point?](/kb/continuous-integration/continuous-integration-faqs/#why-is-background-step-always-marked-as-successful-even-if-there-are-failures-executing-the-entry-point)
+* [How can I health check services running in Background steps?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-make-sure-my-background-service-is-healthy-before-running-the-rest-of-my-pipeline-how-can-i-test-that-my-background-service-is-running)

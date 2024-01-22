@@ -35,6 +35,7 @@ Yes, we will provide training resources such as documentation, in product video 
 #### Can I still access the old navigation after the rollout?
 
 Yes, the user preference settings in Account Settings is available to transition back to old Nav. We encourage users to familiarize themselves with the new interface to take advantage of the improved features and functionalities.
+![](./static/image.png)
 
 #### What steps are being taken to ensure a smooth transition for users?
 

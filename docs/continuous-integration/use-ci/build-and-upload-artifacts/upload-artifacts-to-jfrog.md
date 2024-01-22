@@ -155,14 +155,12 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 :::
 
-## Troubleshooting the Upload Artifacts to JFrog step
+## Troubleshoot uploading artifacts
 
-You might encounter these issues when using the **Upload Artifacts to JFrog Artifactory** step.
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
 
-### Certificate signed by unknown authority
-
-If you get a `certificate signed by unknown authority` error, make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
-
-### mkdir permission denied when running as non-root
-
-With a Kubernetes cluster build infrastructure, the **Upload Artifacts to JFrog** step must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+* [Certificate signed by unknown authority error.](/kb/continuous-integration/continuous-integration-faqs/#upload-artifacts-to-jfrog-step-throws-certificate-signed-by-unknown-authority)
+* [mkdir permission denied when running as non-root.](/kb/continuous-integration/continuous-integration-faqs/#mkdir-permission-denied-when-running-upload-artifacts-to-jfrog-as-non-root)
+* [Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?](/kb/continuous-integration/continuous-integration-faqs/#can-i-run-the-upload-artifacts-to-jfrog-artifactory-step-with-a-non-root-user)
+* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
+* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)
