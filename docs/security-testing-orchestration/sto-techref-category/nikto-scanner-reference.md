@@ -39,10 +39,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add a Nikto step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-
-
-
-
 ### Scan settings
 
 #### Scan Mode
@@ -143,6 +139,19 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 <StoSettingInstancePath />
 
+### Ingestion settings
+
+
+<a name="ingestion-file"></a>
+
+#### Ingestion File
+
+
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+
+
+<StoSettingIngestionFile  />
+
 
 ### Log Level, CLI flags, and Fail on Severity
 
@@ -160,12 +169,8 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI Flags
 
-You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you can customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `-Tuning x01`
+You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you might want to customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `-Tuning x01`
 
-
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-
-<StoSettingCliFlags />
 
 #### Fail on Severity
 
@@ -203,7 +208,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Nikto scans in STO (*legacy*)
 
-You can set up Nikto scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Nikto scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Nikto step](#nikto-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 
@@ -213,7 +220,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-#### Nexus scan settings
+#### Nikto scan settings
 
 * `product_name` = `nikto`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
