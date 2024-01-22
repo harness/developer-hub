@@ -5,7 +5,7 @@ sidebar_label: OpenVAS scanner reference
 sidebar_position: 280
 ---
 
-You can run OpenVAS scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest OpenVAS scan results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running OpenVAS scans in STO
 
