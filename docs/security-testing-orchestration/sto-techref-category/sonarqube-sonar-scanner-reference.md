@@ -11,7 +11,6 @@ helpdocs_is_published: true
 
  You can run an automated [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) scan to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
  
- You can set up SonarQube scans using a [SonarQube step](#sonarqube-step-configuration) or a [Security step (_legacy workflow_)](#security-step-configuration-legacy).
 
 ## Important notes for running SonarQube scans in STO
 
@@ -214,10 +213,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-
-
-<StoSettingCliFlags />
+You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. The following flag increases the timeout window: `-sonar.ws.timeout 300`
 
 <a name="fail-on-severity"></a>
 
@@ -229,10 +225,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
-
+<!--
 ### Settings
 
 You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`.
+
+-->
 
 ### Additional Configuration
 
@@ -256,9 +254,11 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for SonarQube scans in STO (legacy)
 
-You can add a Security step to a Security Tests or CI Build stage and then configure it as described below. 
+:::note
+You can set up SonarQube scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [SonarQube step](#sonarqube-step-settings-for-sto-scans) instead.
+:::
 
-### Docker-in-Docker requirements
+#### Docker-in-Docker requirements
 
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
@@ -267,15 +267,15 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoDinDRequirements />
 
 
-### Scan types
+#### Scan modes
 
-STO supports the following scan types for SonarQube:
+STO supports the following scan modes for SonarQube:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
 * `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
 
-### Target and variant
+#### Target and variant
 
 
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
@@ -283,7 +283,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-### SonarQube SonarScanner settings
+#### SonarQube SonarScanner settings
 
 * `product_name` = `sonarqube`
 * `scan_type` = `repository`

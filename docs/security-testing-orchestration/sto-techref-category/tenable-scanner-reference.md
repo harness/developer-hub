@@ -6,7 +6,7 @@ sidebar_position: 400
 ---
 
 
-You can set up Tenable scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can set up Tenable scans and ingest results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Tenable scans in STO
 
