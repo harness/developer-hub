@@ -36,7 +36,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Prowler step configuration
+## Prowler step settings for STO
 
 ### Scan settings
 
@@ -121,14 +121,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 <StoSettingTargetWorkspace  />
 
-### Ingestion File 
 
-
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
-
-<StoSettingIngestionFile  />
 
 ### Authentication settings
 
@@ -163,6 +156,11 @@ The AWS region of the configuration to scan.
 <!-- ---------------------------------------------------------------------------- -->
 <a name="auth-enforce-ssl"></a>
 
+### Ingestion file 
+
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+
+<StoSettingIngestionFile  />
 
 ### Log Level, CLI flags, and Fail on Severity
 
@@ -180,7 +178,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, you can exclude specific checks from a scan like this: `-excluded-checks s3_bucket_public_access`
+You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: `-excluded-checks s3_bucket_public_access`
 
 <!-- ============================================================================= -->
 <a name="fail-on-severity"></a>
@@ -216,7 +214,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Prowler scans in STO (*legacy*)
 
-You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Prowler scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Prowler step](#prowler-step-settings-for-sto) instead.
+:::
 
 #### Target and variant
 
@@ -235,7 +235,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 	+ Accepted values(s):
 		- `default`, `hipaa`, `gdpr`, `exclude_extras`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, you can exclude specific check from a scan like this: `tool_args` = `-excluded-checks s3_bucket_public_access`
+* `tool_args` — You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, the following argument excludes a specific check from a scan: `tool_args` = `-excluded-checks s3_bucket_public_access`
 
 
 #### Configuration scan settings
