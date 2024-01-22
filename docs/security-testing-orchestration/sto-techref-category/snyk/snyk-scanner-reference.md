@@ -42,27 +42,12 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Snyk step configuration
+## Snyk step settings for STO
 
 The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-<!--
 
-
-
-
-
-
-<details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png)
-
-</details>
-
--->
-
-### Scan
+### Scan settings
 
 
 <a name="scan-mode"></a>
@@ -88,7 +73,7 @@ import StoSettingProductConfigName from '../shared/step_palette/_sto-ref-ui-prod
 <StoSettingProductConfigName />
 
 
-### Target
+### Target settings
 
 <a name="target-type"></a>
 
@@ -132,15 +117,6 @@ import StoSettingTargetWorkspace from '../shared/step_palette/_sto-ref-ui-target
 <StoSettingTargetWorkspace  />
 
 
-
-### Ingestion File
-
-
-import StoSettingIngestionFile from '../shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
-
-<StoSettingIngestionFile  />
-
 ### Authentication
 
 
@@ -152,6 +128,13 @@ import StoSettingAuthAccessToken from '../shared/step_palette/_sto-ref-ui-auth-a
 
 <StoSettingAuthAccessToken />
 
+x### Ingestion File
+
+
+import StoSettingIngestionFile from '../shared/step_palette/_sto-ref-ui-ingestion-file.md';
+
+
+<StoSettingIngestionFile  />
 
 ### Log Level, CLI flags, and Fail on Severity
 
@@ -199,7 +182,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Snyk scans in STO (legacy)
 
-You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Snyk scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Snyk step](#snyk-step-settings-for-sto) instead.
+:::
 
 #### Target and variant
 
