@@ -81,6 +81,25 @@ gsutil -m cp \
 
 - The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403)
 
+#### Continuous Integration
+
+- The Get Started workflow can now auto-generate starter pipelines from [Harness Code repositories](/docs/code-repository). (CI-10780)
+
+- Enhanced log retention for custom approval steps. (CI-10273, ZD-53345, ZD-53410)
+
+
+#### Harness Platform
+
+- Upgraded Janino to version 3.1.11. (PL-43320, ZD-54505)
+
+- Upgraded `ch.qos.logback` from version 1.2.11 to 1.2.13. (PL-43260)
+
+- Upgraded YamlBeans to version 1.17. (PL-42905, ZD-51149, ZD-53760, ZD-53919)
+
+- Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
+
+- The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
+
 ### Fixed issues
 
 #### Continuous Delivery & GitOps
@@ -195,7 +214,17 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 #### Continuous Integration
 
+- If you configured an optional step setting (such as **Limit Memory**, **Limit CPU**, or **Timeout**) to accept runtime input (`<+input>`), and then provided no value for that setting at runtime, the pipeline could fail due to invalid `null` input. This has been fixed, and the effected settings can how handle empty (`null`) runtime input. (CI-10514, ZD-54217)
 
+- Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#use-the-s3-upload-and-publish-plugin). (CI-10258, ZD-53311)
+
+- Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
+
+- Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/download-logs). (CI-9657, ZD-50664)
+
+- Improved error messaging related to addon disconnects. (CI-8877)
+
+- Fixed an issue with SCM service logging. (CI-8872)
 
 #### Harness Platform
 
@@ -216,6 +245,32 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 - In the **Add new Encrypted Text** dialog, the **Regions** list for Google Secrets Manager integration included unsupported values.(PL-43575, ZD-55268)
 
    This issue has been resolved and the **Regions** list has been updated with the correct GCP regions.
+
+- The Access Management page didn't display all **Users** in the list. (PL-43038)
+
+- Execution links were not available in pipeline failure Slack notifications. (PL-42974, ZD-53195)
+
+   This issue has been resolved. Now, in Slack notifications, the "Node status" keyword, such as "failed," is a hyperlink that provides direct access to the associated node execution URL.
+
+- The delegate was rejecting tasks due to an issue where the CPU and memory calculation wasn't showing the latest usage value. This was caused by the dynamic request handling feature that rejects tasks if the CPU and memory usage exceeds a certain threshold. The pods weren't scaled by HPA because the CPU and memory usage within the pods was within the limit. (PL-42600, ZD-54025, ZD-54324)
+
+- For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
+
+   All special characters except `.`, `-`, and non-leading `$` and digits `0` through `9` are removed. 
+
+   **Example 1:** For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the `identifier`: `Harness_GroupNextGen_First`.
+
+   **Example 2:** For a user group in SCIM with the name `123#One.$Two.$Three.123`, the user group created in Harness will have the `identifier`: `One_$Two_$Three_123`.
+
+   The existing behavior of `.` and `-` changed to `_` has been retained.
+
+   The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
+
+   This item requires Harness Delegate version 23.12.82000. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Added RBAC checks to the delegate list API. Now, only delegates for which users have permission are shown in the list on the Delegates page. (PL-42268, ZD-52174)
+
+  This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 
