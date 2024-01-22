@@ -10,8 +10,6 @@ You can set up Qwiet scans using a Security step: create a CI Build or Security 
 ## Important notes for running Qwiet scans in STO
 
 
-
-
 ### Docker-in-Docker requirements
 
 
@@ -40,7 +38,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
 
@@ -61,14 +58,11 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Ingestion file
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />
 
 ### Fail on Severity
-
 
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 
