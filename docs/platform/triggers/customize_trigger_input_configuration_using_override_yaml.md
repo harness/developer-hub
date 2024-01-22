@@ -4,9 +4,10 @@ description: Customize trigger input using override YAML
 sidebar_position: 9
 ---
 
+For instance, consider a pipeline that requires a ``Service`` input among others. While most inputs can be predefined in an ``Input Set``, the ``Service`` name needs to be extracted from the trigger payload.
 
-Suppose you have a CD pipeline with three different stages, each intended for a different environment. You wish to deploy one stage manually and the others via triggers. In an ideal scenario, you would create different input sets for each environment. However, managing numerous input sets with only one or two variable changes can be tedious and prone to mistakes.
-To address this, overriding input YAML provides the flexibility to change  a specific parameter in the associated ``Input Set``.
+Previously, triggering a pipeline allowed either using all values from an Input Set or defining all values directly in the trigger configuration. However, with the introduction of overriding input YAML, it becomes possible to mix and match inputs from both the Input Set and the trigger. This flexibility enables users to provide specific details, like the Service Name, directly from the trigger payload while utilizing the rest of the inputs from the predefined ``Input Set``.
+
 
 :::note
 You can only customize parameters using YAML in this setup.
