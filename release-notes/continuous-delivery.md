@@ -54,6 +54,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### New features and enhancements
 
 - Grouping and Collapsible Support for Overrides(CDS-82376)
+  - Overrides are now grouped by information in their configurations.
+  - They are now collapsible, and thusly, are easier to search through.
 
 #### Behaviour change
 
@@ -68,14 +70,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - The issue only occurred in Template Studio for pipeline templates, not for stage or step group templates. The issue is fixed now.
 
 - Http step with mtls not working(CDS-87547,ZD-55531)
+  - Previously, Some customers reported an error trying to use the HTTP Step with MTLS. This was caused due to an exception during the delegate capability check for HTTP step; we will now additionally validate the delegate to fix the problem.
 
 - Pipeline was failing with delegate error(CDS-87440,ZD-55387)
   - Expected behavior: Users can fetch JSON format in the delegate using curl command and the same should work in UI
   - Previous Behavior: The JSON format was fetched using curl in the delegate but the same was not working in the UI.
   - The issue is fixed now.To address intermittent capability check failures for an internal URL, the HTTP step's connectivity check timeouts have been increased from 15 seconds to 30 seconds. Users can expect improved reliability in scenarios where intermittent failures were previously encountered.
-
-- Nexus logs for npm deployment type is showing image path as null(CDS-86601)
-  - Previous behavior:- 
 
 - Harness bidirectional sync webhook feature not working(CDS-85694,ZD-54338)
   - Previous behavior:- The problem involved the failure of the API when the source or target commit ID was NULL. Furthermore, unrelated PUSH webhook events from Github, triggered during create or branch operations, were incorrectly marked as errors in the UI
@@ -89,9 +89,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Previous Issue: There was an intermittent issue of Template Inputs not being displayed in the Pipeline Editor
   - This issue is now fixed.
   
-
-
-
 ### Version 1.20.9
 
 
