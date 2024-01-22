@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Introduction
 
-The following tables gives a detailed feature availability comparison between Harness IDP and Self-Managed Backstage for various features like [Software Catalog](https://developer.harness.io/docs/category/software-catalog), [Workflows](https://developer.harness.io/docs/category/self-service-flows), [Plugins](https://developer.harness.io/docs/category/plugins), [Scorecards](https://developer.harness.io/docs/category/scorecards), [Governance](https://developer.harness.io/docs/category/governance) and Platform. 
+The following tables gives a detailed feature availability comparison between Harness IDP and Self-Managed Backstage for various features like [Software Catalog](https://developer.harness.io/docs/category/software-catalog), [Workflows](https://developer.harness.io/docs/category/self-service-flows), [Plugins](https://developer.harness.io/docs/category/plugins), [Scorecards](https://developer.harness.io/docs/category/scorecards), [Governance](https://developer.harness.io/docs/category/governance) and [Platform](https://developer.harness.io/docs/get-started/harness-platform-architecture). 
 
 | **Software Catalog**          | **Self Managed Backstage**  | **Harness IDP**  |
 |-------------------------------|-----------------------------|------------------|
