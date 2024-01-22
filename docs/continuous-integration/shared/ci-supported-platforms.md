@@ -15,7 +15,7 @@ The following table lists Harness support for CI platforms, repos, registries, a
       <td>
         <ul>
           <li>Azure Repos</li>
-          <li>Bitbucked</li>
+          <li>Bitbucket</li>
           <li>GitHub</li>
           <li>GitLab</li>
           <li>AWS CodeCommit</li>
@@ -25,10 +25,10 @@ The following table lists Harness support for CI platforms, repos, registries, a
       </td>
       <td>
         <ul>
-          <li>Artifactory</li>
+          <li>JFrog Artifactory</li>
           <li>AWS S3</li>
           <li>GCP GCS</li>
-          <li>JFrog</li>
+          <li>Azure Artifacts ?</li>
         </ul>
       </td>
       <td>
