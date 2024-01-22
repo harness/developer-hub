@@ -1,11 +1,11 @@
 ---
 title: Fossa scanner reference for STO
-description: Image and repository scans with Fossa
+description: Scan code repositories with Fossa.
 sidebar_label: Fossa scanner reference
 sidebar_position: 190
 ---
 
-You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
+You can ingest scan results from [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
 ## Important notes for running Fossa scans in STO
@@ -89,16 +89,16 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 <a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
-<StoSettingScanTypeCont />
+<!-- StoSettingScanTypeCont / -->
 
 
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
+<StoSettingTargetName />
 
-<StoSettingProductID />
 
 <a name="target-variant"></a>
 

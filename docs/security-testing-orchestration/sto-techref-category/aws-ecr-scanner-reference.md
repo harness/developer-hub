@@ -1,6 +1,6 @@
 ---
 title: AWS ECR scanner reference for STO
-description: Image scans with AWS ECR
+description: Scan container images with AWS ECR.
 sidebar_label: AWS ECR scanner reference
 sidebar_position: 40
 ---
@@ -55,7 +55,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 <StoSettingScanMode />
 <StoSettingScanModeDataLoad />
-<StoSettingScanModeIngest />
+<!-- StoSettingScanModeIngest / -->
 
 #### Scan Configuration
 
@@ -83,11 +83,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -182,7 +180,7 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 The AWS region of the image to scan.
 
-
+<!-- 
 ### Ingestion settings
 
 
@@ -195,6 +193,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 
 <StoSettingIngestionFile  />
+
+-->
 
 
 ### Log Level, CLI flags, and Fail on Severity
@@ -248,7 +248,11 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for Amazon ECR scans in STO (legacy)
+## Security step settings for AWS ECR scans in STO (legacy)
+
+:::note
+You can set up ECR scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [AWS ECR step](#aws-ecr-step-settings-for-sto-scans) instead.
+:::
 
 * `product_name` = `aws-ecr`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`

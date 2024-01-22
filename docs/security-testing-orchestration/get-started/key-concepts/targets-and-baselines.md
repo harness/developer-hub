@@ -1,5 +1,5 @@
 ---
-title: Targets, variants, and baseline in STO
+title: Targets, variants, and baselines in STO
 description: What to scan - repo/branch, image/tag, app/version, and baseline (root) element.
 sidebar_label: Targets, baselines, and variants
 sidebar_position: 10

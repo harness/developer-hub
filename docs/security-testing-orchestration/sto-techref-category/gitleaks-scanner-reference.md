@@ -1,6 +1,6 @@
 ---
 title: Gitleaks scanner reference for STO
-description: Repository scans with Gitleaks
+description: Scan code repositories with Gitleaks.
 sidebar_label: Gitleaks scanner reference
 sidebar_position: 200
 
@@ -79,10 +79,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <!-- ============================================================================= -->
 <a name="target-variant"></a>

@@ -1,11 +1,11 @@
 ---
 title: Data Theorem scanner reference for STO
-description: Repository scans with Data Theorem
+description: Scan code repositories with Data Theorem.
 sidebar_label: Data Theorem scanner reference
 sidebar_position: 140
 ---
 
-You can run Data Theorem scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can run Data Theorem scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 
 ## Important notes for running Data Theorem scans in STO

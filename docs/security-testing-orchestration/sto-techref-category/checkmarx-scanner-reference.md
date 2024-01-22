@@ -1,6 +1,6 @@
 ---
 title: Checkmarx scanner reference for STO
-description: Repository scans with Checkmarx
+description: Scan code repositories with Checkmarx.
 sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---
@@ -35,7 +35,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Checkmarx step configuration
+## Checkmarx step settings for STO scans
 
 The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Checkmarx scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
 
@@ -93,10 +93,9 @@ import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-t
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -228,7 +227,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
+You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `-incremental`.  
 
 ### Running incremental scans with Checkmarx
 
@@ -250,7 +249,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can use this field to provide environment variables to be used during the execution of the step. As an exemple, if you need to access your Checkmarx server through a proxy, you can add this setting: 
+You can use this field to provide environment variables to be used during the execution of the step. For example, if you need to access your Checkmarx server through a proxy, you can add this setting: 
 
 * key = `JAVA_TOOL_OPTIONS`
 * value = `-DproxySet=true -Dhttp.proxyHost=MY_PROXY_ADDRESS -Dhttp.proxyPort=MY_PROXY_PORT`
@@ -288,8 +287,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Checkmarx scans in STO (legacy)
 
-
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Checkmarx scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Checkmarx step](#checkmarx-step-settings-for-sto-scans) instead.
+:::
 
 
 #### Target and variant

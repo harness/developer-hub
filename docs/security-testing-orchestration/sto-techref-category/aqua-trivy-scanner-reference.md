@@ -1,6 +1,6 @@
 ---
 title: Aqua Trivy scanner reference for STO
-description: Image scans with Aqua Trivy
+description: Scan container images with  Aqua Trivy.
 sidebar_position: 30
 sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu
@@ -105,10 +105,10 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
 
-<StoSettingProductID />
+<StoSettingTargetName />
 
 
 #### Variant
@@ -217,8 +217,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
-
 <StoSettingCliFlags />
+
+For example, you can customize the security issues to detect using the `scanners` argument. To scan vulnerabilities only, add `--scanners vuln` to this field.
 
 <a name="fail-on-severity"></a>
 
@@ -230,10 +231,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
+<!-- 
 ### Settings
 
-You can add a `tool_args` setting to run the trivy image scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners ("vuln")`. 
+You can add a `tool_args` setting to run the scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners vuln`. 
 
+-->
 
 ### Additional Configuration
 
@@ -258,11 +261,10 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Aqua Trivy scans in STO (legacy)
 
-You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
+:::note
+You can set up Aqua Trivy scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Aqua Trivy step](#aqua-trivy-step-settings-for-sto-scans) instead.
+:::
 
-#### Important Notes
-
-* STO supports container scans only with Aqua Trivy.
 
 #### Scan types
 
@@ -282,10 +284,10 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 #### Aqua Trivy scan settings
 
 * `product_name` = `aqua-trivy`
-* `scan_type` = `containerImage`, `ingestionOnly`
-* `product_config_name` — Specify one of the following:
+* `policy_type` = `containerImage`, `ingestionOnly`
+* `product_config_name` 
 	+ `aqua-trivy` — Run the Trivy image scanner with default settings.
-	+ `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode.
+	<!-- + `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode. -->
 * `container_domain` — The image registry domain, for example `docker.io`
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
@@ -317,8 +319,67 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ## YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project and organization.
 
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+```yaml
+pipeline:
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: false
+          sharedPaths:
+            - /var/run
+            - /shared/scan_results
+          execution:
+            steps:
+              - step:
+                  type: AquaTrivy
+                  name: AquaTrivy_1
+                  identifier: AquaTrivy_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      name: redhat/ubi8-minimal
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                      args:
+                        cli: "--scanners vuln"
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: redhat/ubi8-minimal
+                      domain: docker.io
+                      tag: latest
+                    sbom:
+                      format: spdx-json
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
+        description: ""
+  identifier: trivyorchestration
+  name: trivy-orchestration
 
 
-<StoSettingYAMLexample />
+
+```
+
+
+
