@@ -146,9 +146,7 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 #### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
 
 <StoSettingIngestionFile  />
 

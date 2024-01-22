@@ -33,7 +33,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Nmap step configuration
+## Nmap step settings for STO
 
 The recommended workflow is add an Nmap step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -168,6 +168,19 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 <StoSettingInstancePath />
 
+### Ingestion settings
+
+
+<a name="ingestion-file"></a>
+
+#### Ingestion File
+
+
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+
+
+<StoSettingIngestionFile  />
+
 
 ### Log Level, CLI flags, and Fail on Severity
 
@@ -224,7 +237,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Nmap scans in STO (*legacy*)
 
-You can set up Nmap scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Nmap scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Nmap step](#nmap-step-settings-for-sto) instead.
+:::
 
 #### Target and variant
 
