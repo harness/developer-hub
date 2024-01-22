@@ -119,9 +119,7 @@ In addition to the console output of logs, storing log output to files on the co
 
 ### Log file path
 
-Configure logging within your module codebase to direct logs to the designated file
-
-`/opt/harness/logs/pod.log`
+Configure logging within your module codebase to direct logs to the designated file, for example, `/opt/harness/logs/pod.log`.
 
 ### Log file archives
 
@@ -349,3 +347,13 @@ Rancher Support bundle kit
 Kit to extract data from rancher deployments
 
 Has a mechanism to replicate the customer environment using the extracted data by passing the data to the simulator.
+
+## Send logs to Harness
+
+To send your log bundles to Harness, do the following:
+
+1. Go to [Harness secure file drop](https://harness.sendsafely.com/d/support).
+2. Enter your email address, and then select **Submit**.
+3. Complete the MFA.
+4. Drag your file(s) or click to add the file manually for upload.
+5. Select **Submit**.
