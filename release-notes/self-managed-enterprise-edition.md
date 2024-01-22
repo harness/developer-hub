@@ -190,6 +190,9 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   - The pipeline had 66 remote templates for which the template request made a single GRPC request. This delayed the response from the Git side and timed out the thread.
   - Now Harness makes GRPC requests in batches of 20 to get remote templates  
 
+- Creating the Terraform resource `harness_platform_file_store_file` without content crashes.	(CDS-77833)
+  - Now Harness provides an empty file when content is null.
+
 #### Continuous Integration
 
 
