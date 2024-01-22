@@ -6,7 +6,7 @@ sidebar_position: 360
 ---
 
 
-You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
+You can ingest scan results from [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
 - [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep)
@@ -50,17 +50,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below.
 
 
-
-
-
-<details>
-<summary>Semgrep scanner template</summary>
-
-![](static/semgrep-step-config-example.png)
-
-</details>
-
-### Scan
+### Scan settings
 
 
 <a name="scan-mode"></a>
@@ -210,7 +200,7 @@ pipeline:
                     command: semgrep --sarif --config auto -o /harness/results.sarif /harness
                     envVariables:
                       SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: returntocorp/semgrep
                     resources:
                       limits:
@@ -234,8 +224,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -244,7 +234,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         build: <+input>
 
 ```
