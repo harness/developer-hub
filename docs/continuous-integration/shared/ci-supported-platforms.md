@@ -28,7 +28,7 @@ The following table lists Harness support for CI platforms, repos, registries, a
           <li>JFrog Artifactory</li>
           <li>AWS S3</li>
           <li>GCP GCS</li>
-          <li>Azure Artifacts ?</li>
+          <li>Sonatype Nexus</li>
         </ul>
       </td>
       <td>
