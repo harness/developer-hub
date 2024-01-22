@@ -109,7 +109,7 @@ The subdomain URL will be in the following format, with `{company}` being the na
 
 `https://\{company}.harness.io`
 
-Contact [Harness Support](mailto:support@harness.io) to set up your Account's subdomain URL. The subdomain URL cannot be changed later.Harness automatically detects your Account ID from the subdomain URL and redirects you to the Account's login mechanism.
+Contact [Harness Support](mailto:support@harness.io) to set up your Account's subdomain URL. The subdomain URL cannot be changed later. Harness automatically detects your Account ID from the subdomain URL and redirects you to the Account's login mechanism.
 
 ## Restrict Email Domains
 
