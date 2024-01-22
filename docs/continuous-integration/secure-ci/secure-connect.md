@@ -42,10 +42,12 @@ Once enabled, traffic related to the configured connector is tunneled through th
 
 When you enable secure connect, Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
 
-You can use these environment variables in cURL commands to tunnel other clients through the established secure connect tunnel. For example, in the following command, replace `YOUR_ENDPOINT_URL` with the endpoint that you want to route through the secure connect tunnel:
+You can use these environment variables in cURL commands to tunnel other clients through the established secure connect tunnel, for example:
 
 ```
 curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
 ```
+
+Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure connect tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
 
 :::
