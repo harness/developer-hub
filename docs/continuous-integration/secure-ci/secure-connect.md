@@ -10,11 +10,11 @@ Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECUR
 
 :::
 
-To use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) in firewalled environments, such as a corporate network, you can create a secure connect tunnel between the Harness FRP server and an FRP client running in your environment. This allows you to use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and on-premises code repositories. Secure connect is a faster alternative to allowlisting IPs.
+To use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) in firewalled environments, such as a corporate network, you can create a secure connect tunnel between the Harness Cloud network and your private network. This allows you to use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and on-premises code repositories. Secure connect is a faster alternative to allowlisting IPs.
 
 To configure secure connect:
 
-1. Run the FRP client (FRPC) in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
+1. Run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
 
    ```
    docker run -it -e REMOTE_PORT=ANY_PORT_FROM_30000_TO_30100  -e REMOTE_SERVER=sc.harness.io -e API_KEY=YOUR_HARNESS_API_KEY harness/frpc-signed
@@ -37,3 +37,15 @@ To configure secure connect:
    * [AWS connectors](/docs/platform/connectors/cloud-providers/add-aws-connector)
 
 Once enabled, traffic related to the configured connector is tunneled through the FRPC.
+
+:::tip
+
+When you enable secure connect, Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
+
+You can use these environment variables in cURL commands to tunnel other clients through the established secure connect tunnel. For example, in the following command, replace `YOUR_ENDPOINT_URL` with the endpoint that you want to route through the secure connect tunnel:
+
+```
+curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
+```
+
+:::
