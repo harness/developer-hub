@@ -5,7 +5,7 @@ sidebar_label: ScoutSuite scanner reference
 sidebar_position: 350
 ---
 
-You can run ScoutSuite scans on your configurations using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest ScoutSuite scan results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running ScoutSuite scans in STO
 
