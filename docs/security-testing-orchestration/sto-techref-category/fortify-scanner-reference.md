@@ -1,6 +1,6 @@
 ---
 title: Fortify scanner reference for STO
-description: Scan code repositories with Fortify.
+description: Ingest Fortify scan results into your pipelines.
 sidebar_label: Fortify scanner reference
 sidebar_position: 170
 ---

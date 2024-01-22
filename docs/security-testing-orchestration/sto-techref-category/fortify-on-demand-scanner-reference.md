@@ -1,11 +1,11 @@
 ---
 title: Fortify on Demand scanner reference for STO
-description: Scan code repositories with Fortify on Demand.
+description: Ingest Fortify on Demand scan results into your pipelines.
 sidebar_label: Fortify on Demand scanner reference
 sidebar_position: 180
 ---
 
-You can run Fortify scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest Fortify on Demand data into your pipelines using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Fortify on Demand scans in STO
 
