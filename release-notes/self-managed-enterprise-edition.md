@@ -69,8 +69,17 @@ gsutil -m cp \
   - There are cases where you want to use input sets in a trigger, but provide a different value for the input set (override the default). 
   - When a trigger is configured to use input sets, you can now pass input value overrides in the trigger's `inputYaml` field.
      
-    <DocImage path={require('./static/78b4f649d9c4a9d0d858499e9508e846095f643d22b5f64dae60d6a30037b8cd.png')} width="60%" height="60%" title="Click to view full size image" />
+    <DocImage path={require('./static/78b4f649d9c4a9d0d858499e9508e846095f643d22b5f64dae60d6a30037b8cd.png')} width="60%" height="60%" title="Click to view full size image" />  
+  
+  - The values provided in the trigger's `inputYaml` field take precedence over any values provided by the input sets. This lets you override the input set values and use, for example, trigger payloads for specific inputs to the pipeline.
 
+- AIDA:tm: replaces Coveo for support case deflection (CDS-85267)
+
+  AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form.
+
+  This feature is behind the feature flag `CDS_AIDA_SUPPORT_DEFLECTION`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+
+- The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403)
 
 ### Fixed issues
 
@@ -84,6 +93,102 @@ gsutil -m cp \
 - Service phase fails to parse a variable value. (CDS-87290)
   - There was an issue in the service phase of the stage execution where it fails to render a string variable, and throws the error `Invalid yaml: Malformed numeric value '00:00:00.100' at [Source: (StringReader); line: 36, column: 30]`. This was because variables with time format with milliseconds were being sent without quotes.
   - Now, string variables with values such as `00:00:00.100` (time in milliseconds) are supported in Service variables.
+
+- Kubernetes Apply step started failing after upgrading to the current Harness delegate type (immutable). (CDS-87011)
+  - When using the `--dependency-update` flag with a Helm chart and Kubernetes Apply step, Harness didn't ignore the unrelated to Helm template output lines.
+  - Harness was trying to interpret some of the Helm template output as a manifest. This resulted in a failure during the step.
+  - This issue has been resolved. Now Harness will ignore anything unrelated to the manifest output when using the Kubernetes Apply step with the `--dependency-update` flag.
+
+- Container Step execution is failing with a delegate connectivity failure. (CDS-87005, ZD-54820)
+  - Pipelines run for extended periods of time (~20 hrs) resulted in the loss of connectivity to delegates.
+  - This issue has now been fixed. If the step's **Timeout** setting is not set, the default delegate task timeout will be 12 hours.
+
+- Deploy CDK Error. (CDS-86930, ZD-55227)
+  - This was caused by user error, but it describes an important configuration consideration. The user used a common image (`https://gallery.ecr.aws/amazonlinux/amazonlinux`) for the step that did not include the AWS CDK requirements. This resulted in a CDK error. 
+  - The image used in CDK steps should be created based on the Harness `aws-cdk-plugin` image available at `https://hub.docker.com/r/harness/aws-cdk-plugin`, documented [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/#docker-image-registry-connector-and-image-for-all-steps). The Harness image contains the Harness logic around the AWS CDK. You can a custom image built from `harness/aws-cdk-plugin:1.0.0` by adding support for different programming languages. See the tags at `https://hub.docker.com/r/harness/aws-cdk-plugin`tags.
+
+- Subsequent Google Cloud Function Gen 1 deployments not happening if the first deploy fails.	(CDS-86746, ZD-55115)
+  - Function update was failing because the function state was not stable before deployment and Harness was waiting for it to a achieve stable state.
+  - Fixed the rollback logic for deployment of Google Cloud Function.
+
+- Null AWS ASG name in logs for blue green Traffic Shift step. (CDS-86744)
+  - Harness has fixed the logs for the ASG blue green Traffic Shift step. It no longer displays null ASG names.
+
+- A null pointer exception was thrown during ASG rolling deployment. (CDS-86426)
+  - An NPE was thrown when the ASG deployments was missing the launch template part of the base ASG (the ASG used as a template when creating new ASGs).
+  - Harness provides a better error message targeting the problem. The issue has been resolved.
+
+- Helm deployment fails to fetch the manifest when using native AWS connector for ECR. (CDS-86418, ZD-54707)
+  - The OCI Helm ECR store configuration feature did not work when IRSA and IAM were configured in the AWS connector. This resulted in null pointer exception, failing the deployment.
+  - The OCI Helm ECR store now supports IRSA and IAM configured in the AWS connector.
+
+- During pipeline execution, the console view wasn't showing steps inside of the step group. (CDS-86129, ZD-54757)
+  - Logs for steps which were inside a step group are now be visible in console view also.
+
+- Unclear error message coming from Azure during Helm deployment. (CDS-85972)
+  - A Helm deployment to AKS was failing with an Azure permission error.
+  - For AKS Kubernetes cluster RBAC permission issues, Harness will print out additional hints regarding the Harness connector in question.
+
+- Pipeline failure at service phase. (CDS-85942, ZD-54701)
+  - Harness has improved error handling when users are not passing the manifest Id in the service input. This is required when file and folder paths are used as a runtime input.
+
+- Harness service showing incorrect Helm chart version deployed in Harness UI. (CDS-85856, ZD-54508)
+  - The Harness service instance dashboard did not reflect the correct Helm chart version when instances were scaled up/down. The perpetual task did not not contain the updated Helm chart information which results in a mismatch of the Helm chart version value for the Kubernetes deployment.
+  - Fixed this issue by updating the `instanceSyncPerpetualTaskInfo` collection in Mongo every time the Helm chart information is updated.
+
+- Templates not deleted even after removing references. (CDS-85828, ZD-54300, ZD-54616)
+  - The error was related to the reference calculation during the movement of pipelines from inline to remote.
+  - This issue has been fixed now, and the template references are updated accurately.
+
+- Helm binary path is not added to system path by default on immutable delegate image. (CDS-85763)
+  - Harness has added Helm v3.12.0 into the `env` path for delegates. Customers will no longer need to use the full path to access this version it Shell Script steps.
+
+- When you set **Default Store Type For Entities- Pipelines/InputSets/Templates** to **Remote**, the creation of environments and services failed. (CDS-85691, ZD-54497)
+
+  This issue has been fixed.
+
+- A deployment was failing with Terraform errors.	(CDS-85684)
+  - The Terraform tasks working directory was created based on account, org, project and provisioner identifier. This might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on the same delegate.
+  - Now, every Terraform step execution will run in a unique working directory.
+
+- Logs not present for the Copy command. (CDS-85662, ZD-54190)
+  - The call of 
+`saveExecutionLog("Command finished with status " + response.getStatus(), response.getStatus());`
+on class `ScriptSshExecutor.java` made the log stream terminate.
+  - Now we are closing the log stream consistently SSH executions.
+
+- The header of the listing page for input sets displays a Git branch in the page header. Harness allowed you to change that branch, giving you the impression that, when you selected a branch, the list would refresh and show the input sets on the branch you selected. However, no matter which branch you selected, the list of input sets would not change. You also could not use any of the input sets after changing to a different branch. (CDS-85365, ZD-54302)
+
+  - The reason for the input set list not changing is that the page header is designed to show the branch on which the pipeline is stored. The page lists all the input sets that have been configured regardless of the branch you select. 
+
+  - This issue has been fixed. Harness no longer allows you to change the branch displayed in the header.
+
+- The dates in the banner that announces the end-of-support and end-of-life dates for Harness FirstGen were incorrect. (CDS-85223)
+
+  This issue has been fixed. The banner now has the correct dates. 
+
+- Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865)
+  There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+
+- Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
+
+  This issue has been fixed. You can now access Helm chart metadata before deployment by using the expression `<+manifests.MANIFEST_ID.helm.fieldName>`. In the expression, replace `MANIFEST_ID` and `fieldName` with the appropriate values. If you use multiple Helm charts, the primary manifest is used as runtime input.
+
+- If instance refresh during an ASG deployment took too much time and timed out, a rollback was triggered. If the instance refresh was still in progress when the rollback was triggered, the rollback failed. (CDS-83821)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
+
+  This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Error connecting to Git Sync service. (CDS-81261, ZD-51238)
+  - The pipeline had 66 remote templates for which the template request made a single GRPC request. This delayed the response from the Git side and timed out the thread.
+  - Now Harness makes GRPC requests in batches of 20 to get remote templates  
 
 #### Continuous Integration
 
