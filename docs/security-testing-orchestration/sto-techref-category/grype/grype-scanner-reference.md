@@ -40,7 +40,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Grype step configuration
+## Grype step settings for STO
 
 The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Grype scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -214,6 +214,8 @@ import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref
 
 <StoSettingCliFlags />
 
+For example, you can report vulnerabilities with known fixes only using `--only-fixed`.
+
 <a name="fail-on-severity"></a>
 
 
@@ -224,11 +226,13 @@ import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-t
 
 <StoSettingFailOnSeverity />
 
-
+<!-- 
 
 ### Settings
 
 You can add a `tool_args` setting to run the [grype scanner](https://github.com/anchore/grype) with specific command-line arguments. For example, you can report vulnerabilities with known fixes only using `--only-fixed`: `tool_args` = `--only-fixed`.
+
+-->
 
 ### Additional Configuration
 
@@ -252,7 +256,9 @@ In the **Advanced** settings, you can use the following options:
  
 ## Security step settings for Grype scans in STO (legacy)
  
-You can set up a Security step with [Grype](https://github.com/anchore/grype) to detect vulnerabilities and misconfigurations in your container images.
+:::note
+You can set up Grype scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Grype step](#grype-step-settings-for-sto) instead.
+:::
 
 
 #### Important Notes
