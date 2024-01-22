@@ -1,12 +1,14 @@
 ---
 title: Harness IDP vs Self Managed Backstage - In-depth Feature Comparison
 description: All the features that are available in Harness IDP and the differentiator against Self Managed Backstage
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 ## Introduction
 
 The following tables gives a detailed feature availability comparison between Harness IDP and Self-Managed Backstage for various features like [Software Catalog](https://developer.harness.io/docs/category/software-catalog), [Workflows](https://developer.harness.io/docs/category/self-service-flows), [Plugins](https://developer.harness.io/docs/category/plugins), [Scorecards](https://developer.harness.io/docs/category/scorecards), [Governance](https://developer.harness.io/docs/category/governance) and [Platform](https://developer.harness.io/docs/get-started/harness-platform-architecture). 
+
+## Software Catalog
 
 | **Software Catalog**          | **Self Managed Backstage**  | **Harness IDP**  |
 |-------------------------------|-----------------------------|------------------|
@@ -18,6 +20,8 @@ The following tables gives a detailed feature availability comparison between Ha
 | Custom catalog processors     | Yes                         | Roadmap          |
 | Automated Service Discovery   | No                          | Roadmap          |
 
+
+## Workflows
 
 | **Workflows**                                      |  **Self Managed Backstage** | **Harness IDP**  |
 |----------------------------------------------------|-----------------------------|------------------|
@@ -37,12 +41,16 @@ The following tables gives a detailed feature availability comparison between Ha
 | Scheduled execution                                                                | No          | Yes               |
 
 
+## Plugins
+
 | **Plugins**                                 | **Self Managed Backstage**  | **Harness IDP**   |
 |---------------------------------------------|-----------------------------|-------------------|
 | Install and configure plugins               | Yes                         | Yes               |
 | Customize catalog layout using plugins      | Yes                         | Yes               |
 | Write custom plugins                        | Yes                         | Yes               |
 
+
+## Scorecards
 
 | **Scorecards**                                  | **Self Managed Backstage**  | **Harness IDP**   |
 |-------------------------------------------------|-----------------------------|-------------------|
@@ -52,6 +60,8 @@ The following tables gives a detailed feature availability comparison between Ha
 | Custom Data Source                              | No                          | Roadmap           |
 
 
+## Governance
+
 | **Governance**                                           | **Self Managed Backstage**     |**Harness IDP**    |
 |----------------------------------------------------------|--------------------------------|-------------------|
 | Approval gates via Jira/ServiceNow/etc. for workflows    | No                             | Yes               |
@@ -59,6 +69,8 @@ The following tables gives a detailed feature availability comparison between Ha
 | Open Policy Agent based Policies                         | No                             | Yes               |
 | Audit Trails                                             | No                             | Yes               |
 
+
+## Platform
 
 | **Platform**                                             | **Self Managed Backstage**  | **Harness IDP**   |
 |----------------------------------------------------------|-----------------------------|-------------------|
@@ -70,6 +82,8 @@ The following tables gives a detailed feature availability comparison between Ha
 | Alerting based on metrics trends                         | No                          | Yes               |
 | Project and Org based hierarchy of entities              | No                          | Limited           |
 
+
+## Miscellaneous
 
 | **Miscellaneous**                                        | **Self Managed Backstage**  | **Harness IDP**   | 
 |----------------------------------------------------------|-----------------------------|-------------------|
