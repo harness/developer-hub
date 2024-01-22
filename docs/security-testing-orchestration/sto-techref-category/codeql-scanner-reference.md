@@ -69,19 +69,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## CodeQL step settings for STO scans
 
-The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. You can also configure CodeQL scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
-
-
-
-
-
-<details>
-<summary>CodeQL Step Palette</summary>
-
-![](./static/codeql-security-scan-step.png)
-
-</details>
-
+The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Scan Mode
 
@@ -199,7 +187,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## CodeQL pipeline example
 
-The following pipeline example is an ingestion workflow. It consists of two steps.  A Run step installs CodeQL, scans the repository defined in the Codebase object, and publishes the scan results to a SARIF file. A CodeQL step then ingests the SARIF file. 
+The following pipeline illustrates a simple ingestion scan. It consists of two steps.  A Run step generates an example CodeQL data file in SARIF format. A CodeQL step then ingests the data. 
 
 ![](./static/codeql-ingestion-pipeline-example.png)
 
@@ -312,12 +300,6 @@ pipeline:
   name: codeql ingestion 
 
 ```
-
-
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-
-
-<StoSettingYAMLexample />
 
 <!-- END yaml pipeline example ----------------------------------------------------------------------------- -->
 
