@@ -468,6 +468,7 @@
             width: 85px;
             height: auto;
             margin-top: 12px;
+            margin-bottom: 25px;
           }
           .productVersion {
             font-size: 12px;
@@ -722,11 +723,39 @@
 
 @media screen and (max-width: 599px) {
   /* for mobile */
-  .certifications {
+  .certifications,
+  .certificationsCI,
+  .certificationsCD,
+  .certificationsFF,
+  .certificationsCCM,
+  .certificationsSRM,
+  .certificationsSTO,
+  .certificationsCE,
+  .certificationsPlatform {
+    padding: 10px;
+    background: none;
+    .hero {
+      .right {
+        background: url(/img/cert_harness_bg.svg) no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        img {
+          width: 25%;
+          height: auto;
+        }
+      }
+    }
     .tabs {
+      margin-top: 20px;
+      .listTabItems li {
+        padding: 4px 8px !important;
+        font-size: 12px;
+      }
       .certCard {
         .certCardContainer {
           flex-direction: column;
+          justify-content: center;
           .left {
             flex-basis: unset;
             min-width: unset;
@@ -745,13 +774,72 @@
       }
     }
   }
+
+  .certificationsCI {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ci_bg.svg);
+      }
+    }
+  }
+  .certificationsCD {
+    .hero {
+      .right {
+        background-image: url(/img/cert_cd_bg.svg);
+      }
+    }
+  }
+
+  .certificationsFF {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ff_bg.svg);
+      }
+    }
+  }
+  .certificationsCCM {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ccm_bg.svg);
+      }
+    }
+  }
+
+  .certificationsSTO {
+    .hero {
+      .right {
+        background-image: url(/img/cert_sto_bg.svg);
+      }
+    }
+  }
+  .certificationsCE {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ce_bg.svg);
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 393px) {
   /* for mobile */
-  .certifications {
+  .certifications,
+  .certificationsCI,
+  .certificationsCD,
+  .certificationsFF,
+  .certificationsCCM,
+  .certificationsSRM,
+  .certificationsSTO,
+  .certificationsCE,
+  .certificationsPlatform {
+    background: none;
+    padding: 10px;
     .hero {
       .right {
+        background: url(/img/cert_harness_bg.svg) no-repeat;
+        background-position: center;
+        background-size: cover;
+
         img {
           width: 25%;
           height: auto;
@@ -759,8 +847,16 @@
       }
     }
     .tabs {
+      margin-top: 10px;
+      .listTabItems {
+        li {
+          padding: 4px 8px !important;
+          font-size: 12px;
+        }
+      }
       .certCard {
         .certCardContainer {
+          justify-content: center;
           .right {
             .btnContainer {
               flex-direction: column;
@@ -802,6 +898,50 @@
         flex-direction: column;
         gap: 18px;
         align-items: center;
+      }
+    }
+  }
+  .certificationsCI {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ci_bg.svg);
+      }
+    }
+  }
+  .certificationsCD {
+    .hero {
+      .right {
+        background-image: url(/img/cert_cd_bg.svg);
+      }
+    }
+  }
+
+  .certificationsFF {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ff_bg.svg);
+      }
+    }
+  }
+  .certificationsCCM {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ccm_bg.svg);
+      }
+    }
+  }
+
+  .certificationsSTO {
+    .hero {
+      .right {
+        background-image: url(/img/cert_sto_bg.svg);
+      }
+    }
+  }
+  .certificationsCE {
+    .hero {
+      .right {
+        background-image: url(/img/cert_ce_bg.svg);
       }
     }
   }

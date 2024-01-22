@@ -9,7 +9,7 @@ GCP VM service kill fault stops a given service for specified duration. As a con
 ![GCP VM service service kill](./static/images/gcp-vm-service-kill.png)
 
 ## Use cases
-The GCP VM service kill fault assesses a GKE node's resilience by evaluating the service operating on it.
+GCP VM service kill fault assesses a GKE node's resilience by evaluating the service operating on it.
 
 ### Prerequisites
 - Kubernetes > 1.23
@@ -94,6 +94,11 @@ stringData:
         <td> RAMP_TIME </td>
         <td> Period to wait before injecting chaos (in seconds). </td>
         <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults/#ramp-time">ramp time.</a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 
