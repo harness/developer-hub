@@ -5,7 +5,7 @@ sidebar_label: Fortify scanner reference
 sidebar_position: 170
 ---
 
-You can run Fortify scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest code repository scan results from Fortify using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Fortify scans in STO
 

@@ -5,7 +5,7 @@ sidebar_label: Fortify on Demand scanner reference
 sidebar_position: 180
 ---
 
-You can ingest Fortify on Demand data into your pipelines using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest scan results from Fortify on Demand using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Fortify on Demand scans in STO
 

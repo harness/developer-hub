@@ -1,11 +1,11 @@
 ---
 title: Fossa scanner reference for STO
-description: Scan code repositories and container images with Fossa.
+description: Scan code repositories with Fossa.
 sidebar_label: Fossa scanner reference
 sidebar_position: 190
 ---
 
-You can scan code repositories and container images using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
+You can ingest scan results from [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
 ## Important notes for running Fossa scans in STO
