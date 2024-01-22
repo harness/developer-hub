@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 :::info important
 
-Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023.
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
 :::
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';

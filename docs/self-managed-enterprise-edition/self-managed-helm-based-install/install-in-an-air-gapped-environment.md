@@ -4,7 +4,7 @@ description: Learn how to install the Harness Self-Managed Enterprise Edition us
 sidebar_position: 4
 ---
 
-<DocsTag  backgroundColor= "#ff8ac1" text="Paid product"  textColor="#ca136c"  />
+<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
 
 This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment and how to obtain and transfer Docker images to a private registry with secure access. The steps include pulling Docker images, saving images as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Enterprise Edition in restricted, offline environments.
 
