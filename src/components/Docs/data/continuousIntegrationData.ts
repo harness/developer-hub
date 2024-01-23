@@ -108,7 +108,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Plugins",
           module: MODULES.ci,
           description:
-            "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+            "Plugins perform predefined tasks. Use plugins to incorporate custom scripts, Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
           link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
         },
         {
@@ -158,7 +158,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Plugins",
           module: MODULES.ci,
           description:
-            "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+            "Plugins run scripts and perform predefined tasks. You can use existing plugins or write your own custom plugins.",
           link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
         },
         {
