@@ -55,11 +55,11 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
         },
         {
-          title: "Mobile development",
+          title: "Development guides",
           module: MODULES.ci,
           description:
-            "Learn about mobile development with Harness CI.",
-          link: "/docs/continuous-integration/mobile-dev-with-ci",
+            "Guides for using Harness CI for popular languages and platforms, including mobile development.",
+          link: "/docs/category/development-guides",
         },
         {
           title: "Secure CI",

@@ -1,11 +1,11 @@
 {
-   "label":"Language guides",
+   "label":"Development guides",
    "position": 41,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Language guides"
+      "title":"Development guides"
    }
 }
