@@ -1,5 +1,5 @@
 ---
-title: Secure CI
+title: Security hardening for Harness CI
 description: Best practices and features to help you build securely with Harness CI.
 sidebar_position: 10
 ---
