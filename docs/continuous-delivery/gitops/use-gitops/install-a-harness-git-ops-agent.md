@@ -135,53 +135,85 @@ In case of **Helm Chart**, run the following command to install the `helm-chart`
 helm install gitops-agent ./gitops-agent.tgz -n default
 ```
 
+:::note
+
+For Helm based installations, if your account is behind the feature flag `GITOPS_AGENT_HELM_V2`, you will be able to download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
+
+```
+helm repo add gitops-agent https://harness.github.io/gitops-helm/
+helm repo update gitops-agent
+helm install argocd gitops-agent/gitops-helm --values override.yaml --namespace default
+```
+
+Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 In the following output example you can see all of the Harness GitOps objects created in Kubernetes.
 
 This example output is for installing a new Harness GitOps Agent without using an existing Argo CD instance using the YAML.
 
 ```
 % kubectl apply -f harness-gitops-agent.yaml -n default  
-customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io created  
-customresourcedefinition.apiextensions.k8s.io/appprojects.argoproj.io created  
-serviceaccount/argocd-application-controller created  
-serviceaccount/argocd-redis created  
-serviceaccount/example-agent created  
-role.rbac.authorization.k8s.io/example-agent created  
-role.rbac.authorization.k8s.io/argocd-application-controller created  
-clusterrole.rbac.authorization.k8s.io/argocd-application-controller-default created  
-clusterrole.rbac.authorization.k8s.io/example-agent created  
-rolebinding.rbac.authorization.k8s.io/argocd-application-controller created  
-rolebinding.rbac.authorization.k8s.io/argocd-redis created  
-clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller-default created  
-rolebinding.rbac.authorization.k8s.io/example-agent created  
-clusterrolebinding.rbac.authorization.k8s.io/example-agent created  
-configmap/argocd-cm created  
-configmap/argocd-cmd-params-cm created  
-configmap/argocd-gpg-keys-cm created  
-configmap/argocd-rbac-cm created  
-configmap/argocd-ssh-known-hosts-cm created  
-configmap/argocd-tls-certs-cm created  
-secret/argocd-secret created  
-service/argocd-metrics created  
-service/argocd-redis created  
-service/argocd-repo-server created  
-deployment.apps/argocd-redis created  
-deployment.apps/argocd-repo-server created  
-statefulset.apps/argocd-application-controller created  
-networkpolicy.networking.k8s.io/argocd-application-controller-network-policy created  
-networkpolicy.networking.k8s.io/argocd-redis-network-policy created  
-networkpolicy.networking.k8s.io/argocd-repo-server-network-policy created  
-secret/example-agent created  
-configmap/example-agent created  
-deployment.apps/example-agent created  
-configmap/example-agent-upgrader created  
-role.rbac.authorization.k8s.io/example-agent-upgrader created  
-rolebinding.rbac.authorization.k8s.io/example-agent-upgrader created  
-serviceaccount/example-agent-upgrader created  
-Warning: batch/v1beta1 CronJob is deprecated in v1.21+, unavailable in v1.25+; use batch/v1 CronJob  
-cronjob.batch/example-agent-upgrader created
+networkpolicy.networking.k8s.io/argocd-application-controller created
+networkpolicy.networking.k8s.io/argocd-applicationset-controller created
+networkpolicy.networking.k8s.io/argocd-repo-server created
+networkpolicy.networking.k8s.io/argocd-redis created
+serviceaccount/argocd-application-controller created
+serviceaccount/argocd-applicationset-controller created
+serviceaccount/argocd-repo-server created
+serviceaccount/argocd-redis created
+serviceaccount/gitops-agent created
+serviceaccount/gitops-agent-upgrader created
+secret/argocd-secret created
+secret/gitops-agent created
+configmap/argocd-cm created
+configmap/argocd-cmd-params-cm created
+configmap/argocd-gpg-keys-cm created
+configmap/argocd-rbac-cm created
+configmap/argocd-ssh-known-hosts-cm created
+configmap/argocd-tls-certs-cm created
+configmap/gitops-agent created
+configmap/gitops-agent-upgrader created
+customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io configured
+customresourcedefinition.apiextensions.k8s.io/applicationsets.argoproj.io configured
+customresourcedefinition.apiextensions.k8s.io/appprojects.argoproj.io configured
+clusterrole.rbac.authorization.k8s.io/argocd-application-controller-default created
+clusterrole.rbac.authorization.k8s.io/argocd-repo-server-default created
+clusterrole.rbac.authorization.k8s.io/example-agent created
+clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller-default created
+clusterrolebinding.rbac.authorization.k8s.io/argocd-repo-server-default created
+clusterrolebinding.rbac.authorization.k8s.io/example-agent created
+role.rbac.authorization.k8s.io/argocd-application-controller created
+role.rbac.authorization.k8s.io/argocd-applicationset-controller created
+role.rbac.authorization.k8s.io/argocd-repo-server created
+role.rbac.authorization.k8s.io/argocd-server created
+role.rbac.authorization.k8s.io/gitops-agent created
+role.rbac.authorization.k8s.io/gitops-agent-upgrader created
+rolebinding.rbac.authorization.k8s.io/argocd-application-controller created
+rolebinding.rbac.authorization.k8s.io/argocd-applicationset-controller created
+rolebinding.rbac.authorization.k8s.io/argocd-repo-server created
+rolebinding.rbac.authorization.k8s.io/argocd-server created
+rolebinding.rbac.authorization.k8s.io/gitops-agent created
+rolebinding.rbac.authorization.k8s.io/gitops-agent-upgrader created
+service/argocd-applicationset-controller-metrics created
+service/argocd-applicationset-controller created
+service/argocd-repo-server-metrics created
+service/argocd-repo-server created
+service/argocd-server created
+service/argocd-redis created
+deployment.apps/argocd-applicationset-controller created
+deployment.apps/argocd-repo-server created
+deployment.apps/argocd-server created
+deployment.apps/argocd-redis created
+deployment.apps/gitops-agent created
+statefulset.apps/argocd-application-controller created
+cronjob.batch/gitops-agent-upgrader created
+ingress.networking.k8s.io/argocd-applicationset-controller created
 ```
 :::note
+
+This list would appear slightly different on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled. Contact [Harness Support](mailto:support@harness.io) to enable this.
 
 If the Harness GitOps Agent is being deployed to a cluster running Kubernetes v1.21 or less, Harness requires you replace `apiVersion: apiextensions.k8s.io/v1` with `apiVersion: apiextensions.k8s.io/v1beta1` in the deployment YAML file.
 
