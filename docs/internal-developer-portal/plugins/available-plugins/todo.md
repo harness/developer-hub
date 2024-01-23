@@ -12,7 +12,7 @@ description: Browse TODO comments in your project's source code.
 
 :::info
 
-Presently the plugin is on-hold and is disabled in all accounts in prod. 
+Presently the plugin is on-hold and is disabled on all accounts in prod. 
 
 :::
 
