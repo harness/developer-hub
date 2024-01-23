@@ -472,6 +472,10 @@ For example, if the Terraform Plan step with the Id `TfPlan` is in the **Executi
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
 
+:::note
+When `Run on Remote Workspac` option is selected, to export JSON representation of terraform plan won't be available. 
+:::
+
 ### Scope of Expression
 
 JSON representation of the Terraform plan is available only between the Terraform Plan step and subsequent Terraform Apply step. The expression will fail to resolve if used after the Terraform Apply step.
