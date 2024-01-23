@@ -10,6 +10,12 @@ description: Browse TODO comments in your project's source code.
 | **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/todo) |
 | **Type**       | Open-source plugin                                                        |
 
+:::info
+
+Presently the plugin is on-hold and is disabled in all accounts in prod. 
+
+:::
+
 ## Configuration
 
 ### Application configuration YAML
