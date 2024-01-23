@@ -108,6 +108,16 @@ The **Helm Chart** option lets you download a `helm-chart` file for the Harness 
 
 ![](./static/install-a-harness-git-ops-agent-96.png)
 
+:::note
+
+For Helm based installations, if your account is behind the feature flag `GITOPS_AGENT_HELM_V2`, you will be able to download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
+
+![](./static/install-a-harness-git-ops-agent-97.png)
+
+Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 ## Install the Agent
 
 Select **Download & Continue**. You are prompted to save the YAML file.
@@ -267,15 +277,12 @@ The Harness GitOps Agent can work on environments where traffic is routed throug
 
 To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the `agent itself and the argocd-repo-server. Follow these steps to set up proxy support for both components.
 
-1. **Agent:** Make sure that the agent is running in HTTP mode.  
-   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap(\{agentname}-agent)` present in the YAML after you create the agent.  
-   `GITOPS_SERVICE_PROTOCOL: HTTP1`
-2. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
-3. **Agent:** Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
+1. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the ConfigMap `gitops-agent`. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
+2. **Agent:** Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
    ```
    localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
-4. **ArgoCD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment as well the second initcontainer under the `argocd-repo-server` deployment , namely the `sops-helm-secrets-tool` since it downloads resources from the internet using `wget`. 
+3. **ArgoCD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment as well the second initcontainer under the `argocd-repo-server` deployment , namely the `sops-helm-secrets-tool` since it downloads resources from the internet using `wget`. 
 
 An example of how the repo-server yaml would look like:
 
@@ -285,8 +292,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  labels:
-   app.kubernetes.io/component: repo-server
    app.kubernetes.io/name: argocd-repo-server
+   app.kubernetes.io/instance: argocd
+   app.kubernetes.io/component: repo-server
+   app.kubernetes.io/managed-by: Helm
    app.kubernetes.io/part-of: argocd
 
 ... other objects ...
@@ -408,13 +417,15 @@ spec:
 ```
    
 
-## GitOps Agent FAQs
+## GitOps Agent FAQs - TODO
 
 Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-GitOps Agent v0.64.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.0](http://quay.io/argoproj/argocd:v2.9.0).
+GitOps Agent v0.66.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.3](http://quay.io/argoproj/argocd:v2.9.3).
+
+GitOps Agent v0.64.0 to v0.65.0 supports redis:7.0.11-alpine and Repo server [argocd:v2.9.0](http://quay.io/argoproj/argocd:v2.9.0).
 
 GitOps Agent v0.60.0 to v0.63.0 supports redis:7.0.8-alpine and Argo CD version [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
 
