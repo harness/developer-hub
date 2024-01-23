@@ -22,7 +22,11 @@ For additional support, you can [contact Harness Support](mailto:support@harness
 
 ### CI pods appear to be evicted by Kubernetes autoscaling
 
-(imported k8s-pod-eviction-trbs.md)
+Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes. If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds.md), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
+
+```
+"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
+```
 
 ### Delegate is not able to connect to the created build farm
 
