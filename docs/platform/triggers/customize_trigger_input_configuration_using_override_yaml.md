@@ -1,22 +1,22 @@
 ---
-title: Customize trigger input configuration using override YAML
-description: Customize trigger input using override YAML
+title: Override pipeline input provided using input set in Trigger configuration
+description: Customize pipeline input provided using inputset in Trigger configuration
 sidebar_position: 9
 ---
 
 For instance, consider a pipeline that requires a ``Service`` input among others. While most inputs can be predefined in an ``Input Set``, the ``Service`` name needs to be extracted from the trigger payload.
 
-Previously, triggering a pipeline allowed either using all values from an Input Set or defining all values directly in the trigger configuration. However, with the introduction of overriding input YAML, it becomes possible to mix and match inputs from both the Input Set and the trigger. This flexibility enables users to provide specific details, like the Service Name, directly from the trigger payload while utilizing the rest of the inputs from the predefined ``Input Set``.
+Previously, triggering a pipeline allowed either using all values from an Input Set or defining all values directly in the trigger configuration. With the support of overriding pipeline input using input YAML in trigger, it is possible to reuse the input set and supply specific input values for pipeline in trigger configuration. This flexibility enables users to provide specific details, like the Service Name, directly from the trigger payload while utilizing the rest of the inputs from the predefined ``Input Set``.
 
 
 :::note
-You can only customize parameters using YAML in this setup.
+You can only customize input parameters using YAML in this setup.
 :::
 Let's go through the feature with an example:
 
 
 Suppose you have a trigger referring to an Input set `myInputSet` :
-```
+```yaml
  trigger:
   name: triggerWithInputSet
   identifier: triggerWithInputSet
@@ -39,7 +39,7 @@ Suppose you have a trigger referring to an Input set `myInputSet` :
 ```
 
 Input Set:
-```
+```yaml
 inputSet:
   name: myInputSet
   tags: {}
