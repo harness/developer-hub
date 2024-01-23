@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-22T10:00
+date: 2024-01-23T10:00
 sidebar_position: 10
 ---
 
@@ -40,9 +40,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 <!-- Improved the error message that appears when there is a connectivity problem between the delegate and runner in a [local runner build infrastructure]. (CI-10827) -->
 <!-- CI-10825 marked as "RN candidate = no" -->
 
-### Version 1.9.x
+### Version 1.9.4
 
-<!-- Jan 22, 2024 -->
+<!-- Jan 23, 2024 -->
 
 #### New features and enhancements
 
