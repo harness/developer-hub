@@ -43,7 +43,7 @@ When using [OIDC](/docs/continuous-integration/secure-ci/security-hardening/#oid
 
 ### Version 1.9.4
 
-<!-- Jan 22, 2024 -->
+<!-- Jan 23, 2024 -->
 
 #### New features and enhancements
 
