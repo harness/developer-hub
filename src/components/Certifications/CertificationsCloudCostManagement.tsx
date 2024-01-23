@@ -185,7 +185,7 @@ export default function CloudCostManagement() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Cloud Cost Management - Administrator (BETA COMING SOON)
+                    Cloud Cost Management - Administrator (BETA)
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
@@ -198,14 +198,14 @@ export default function CloudCostManagement() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA Coming Soon)</h3>
+                  <h3>Review Study Guide (BETA)</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of CCM.
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/cloud-cost-management-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -218,11 +218,11 @@ export default function CloudCostManagement() {
 
             {/* Admin Exam Details */}
             <div className={styles.examDetails}>
-              <h2 id="exam-details">Exam Details (BETA Coming Soon)</h2>
+              <h2 id="exam-details">Exam Details (BETA)</h2>
               <div className={styles.examDetailsCard}>
                 <AdminCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university.harness.io/cloud-cost-management-administrator">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
