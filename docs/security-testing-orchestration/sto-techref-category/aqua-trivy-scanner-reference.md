@@ -98,7 +98,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 
 
-<a name="scan-type"></a>
+
 <StoSettingScanTypeCont />
 
 
@@ -111,6 +111,8 @@ import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.
 <StoSettingTargetName />
 
 
+
+
 #### Variant
 
 
@@ -118,6 +120,15 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 
 <StoSettingTargetVariant  />
+
+#### Auto-detecting the target and variant
+
+import StoSettingTargetVariantAutodetect from './shared/step_palette/_sto-ref-ui-target_variant_autodetect.md';
+
+
+<StoSettingTargetVariantAutodetect />
+
+
 
 ### Container Image settings
 
