@@ -1,0 +1,11 @@
+{
+   "label":"Language guides",
+   "position": 41,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Language guides"
+   }
+}
