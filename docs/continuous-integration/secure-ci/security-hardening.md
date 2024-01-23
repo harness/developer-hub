@@ -30,7 +30,7 @@ Store tokens, passwords, and other sensitive data as [secrets](/docs/category/se
 APP_STORE_PASSWORD=<+secrets.getValue("my_app_store_password_secret")>
 ```
 
-When you use secrets and variables in your CI pipelines, it is important to understand how those secrets appear in build logs. For example, secrets in [Run step output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables) are exposed in logs. For information about secrets masking and sanitization, go to:
+When you use secrets and variables in your CI pipelines, it is important to understand how those secrets appear in build logs. For example, secrets in [Run step output variables](/docs/continuous-integration/use-ci/run-step-settings/#output-variables) are exposed in logs. For information about secrets masking and sanitization, go to:
 
 * [Secrets in output, secrets sanitization](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs)
 * [Line breaks and shell-interpreted characters](/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
