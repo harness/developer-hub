@@ -417,6 +417,6 @@ If you want to upload a compressed file, you must use a [Run step](../run-step-s
 
 :::tip
 
-Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 :::

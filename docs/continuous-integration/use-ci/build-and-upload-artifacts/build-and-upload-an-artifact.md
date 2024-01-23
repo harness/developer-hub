@@ -61,7 +61,13 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 - [Upload artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 - [Upload artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
 
-For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to upload the artifact.
+For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to upload the artifact. You can also [send artifacts by email](../use-drone-plugins/drone-email-plugin).
+
+:::tip Artifacts tab
+
+Regardless of how you upload artifacts, you can [publish any URL to the Artifacts tab](./artifacts-tab).
+
+:::
 
 ## Troubleshoot building and pushing artifacts and images
 

@@ -50,20 +50,6 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/ci-pipelines/test/codecov",
   },
   {
-    title: "Terraform Cloud notification triggers",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-       Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: '15 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
-  },
-  {
     title: "Python application",
     module: MODULES.ci,
     description:
@@ -265,7 +251,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish any URL to the Artifacts tab.",
-    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    link: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

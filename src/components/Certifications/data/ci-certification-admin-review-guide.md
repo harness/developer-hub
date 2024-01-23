@@ -11,7 +11,7 @@
 | Dive into CI Build Infrastructures and their diverse options | [Harness CI](/tutorials/ci-pipelines/fastest-ci/#harness-ci) |
 | Understand Ephemeral Environments and the specific requirements for a K8s Build environment | [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/) |
 | **3. Artifact Management and Connectivity** ||
-| Grasp Artifacts and Packages spanning from jar to container image, helm, and more | [Artifacts Tab](/tutorials/ci-pipelines/publish/artifacts-tab/) |
+| Grasp Artifacts and Packages spanning from jar to container image, helm, and more | [Artifacts Tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) |
 | Describe and configure Artifact Repositories like cont registry, object store, jfrog, nexus, etc | [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) |
 | Delve into Harness Connectors: configuration of Git, DockerHub, and more | [Connectors](/docs/category/connectors) |
 | **4. Harness CI Pipelines and Advanced Features** ||

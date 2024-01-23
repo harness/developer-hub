@@ -72,7 +72,7 @@ export const FeaturedList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish any URL to the Artifacts tab.",
-    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    link: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

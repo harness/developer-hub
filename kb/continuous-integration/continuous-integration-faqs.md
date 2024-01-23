@@ -1081,11 +1081,11 @@ You can [use the Drone Email plugin to send emails and attachments from CI pipel
 
 ### How do I show content on the Artifacts tab?
 
-You can use the [Artifact Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) to store artifact URLs and display them on the Artifacts tab.
+You can use the [Artifact Metadata Publisher plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) to store artifact URLs and display them on the Artifacts tab.
 
 ### Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?
 
-Currently, the Artifacts tab contains only links. Therefore, any content you want to make available on the Artifacts tab must be uploaded to cloud storage and then queried. You can [use the Artifacts Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) for this.
+Currently, the Artifacts tab contains only links. Therefore, any content you want to make available on the Artifacts tab must be uploaded to cloud storage and then queried. You can [use the Artifacts Metadata Publisher plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) for this.
 
 You can provide one or more URLs to artifacts. For example, to reference artifacts stored in S3 buckets, you can provide the URL to the target artifact, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
 
