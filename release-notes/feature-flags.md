@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: January 17th 2024
+### Latest Updated: January 23rd 2024
 
 ## January 2024
 
@@ -56,6 +56,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - The Gradle `dependency-check` plugin has been added. 
  - Add Gradle dependency-check plugin.
  - `ch.qos.logback:logback-classic` has been upgraded from 1.2.11 to 1.3.12. (FFM-10373)
+
+### Javascript SDK
+
+#### Version 1.22.0
+
+ - You can now update the cache key to be target and instance dependent. (FFM-10453)
 
 ### Node.js SDK
 
