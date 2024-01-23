@@ -519,7 +519,7 @@ spec:
   steps:
     - id: trigger
       name: Creating your react app
-      action: trigger:create-and-trigger-pipeline-with-inputset
+      action: trigger:harness-custom-pipeline
       input:
         url: ""
         slack_id: ${{ parameters.slackid }}
@@ -698,3 +698,4 @@ pipeline:
 
 </TabItem>
 </Tabs>
+
