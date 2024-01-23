@@ -11,11 +11,11 @@ Harness Self-Managed Enterprise Edition offers a useful support bundle utility f
 
 ## Command for log recording
 
-You can set the start and end time for a process you want to keep track of, but please note that the log collection window must not exceed 24 hours. Once you start recording, the tool will automatically gather logs and relevant data from pods and ConfigMaps. Additionally, it can also collect past logs from the service. Furthermore, you can specify the particular service from which you want to collect the data.
+To keep track of a process, you have the option to set its start and end time. However, keep in mind that the log collection window should not exceed 24 hours. Once you start recording, the tool will automatically gather logs and relevant data from pods and ConfigMaps. It can also collect past logs from the service. Moreover, you can choose the specific service from which you want to collect the data.
 
 ## Pod logs collection
 
-The support bundle utility collects relevant log files from all Kubernetes pods running within the cluster, including both standard output and error logs. Timestamp data is included for each log entry.
+The support bundle utility retrieves log files from Kubernetes pods, including standard output and error logs, along with timestamp data for each entry.
 
 ## ConfigMap logs collection
 
@@ -23,7 +23,7 @@ The support bundle utility identifies ConfigMaps that contain log files or direc
 
 ## Deployment data and manifests
 
-The Support Bundle Utility collects all the deployment, services, ingress, and virtual services manifests, as well as the Helm values configuration.
+The support bundle utility collects all the deployment, services, ingress, and virtual services manifests, as well as the Helm values configuration.
 
 ## HAR file collection (optional)
 
@@ -35,7 +35,7 @@ All the logs, ConfigMaps, HAR files, and any other necessary files are combined 
 
 ## Configure log outputs
 
-Allow log level configurable through the charts - platform + ci services
+Allow log level configurable through the charts - platform + CI services
 
 ## Security
 
@@ -55,7 +55,7 @@ The support bundle utility is optimized to minimize any impact on system perform
 
 The support bundle utility scales with the number of pods and ConfigMaps in the system. This process handles large volumes of logs efficiently, with minimal compromise on performance and resource utilization.
 
-Dependencies and Assumptions
+## Dependencies and Assumptions
 
 The support bundle utility would require access and permissions to collect logs from pods, ConfigMaps, and HAR files.
 
@@ -69,19 +69,13 @@ It accepts user inputs, validate them, and trigger the log bundling process.
 
 ## Support bundle generator
 
-The support bundle generation will be responsible for collecting the necessary diagnostic info when prompted by the user.
+The process of generating the support bundle involves collecting diagnostic information as required by the user. This process involves interacting with various system components to gather logs, ConfigMaps (excluding secrets), and override files.
 
-It will interact with different system components to gather logs, ConfigMaps (excluding secrets), and override files.
-
-The generator is designed to handle concurrent requests from multiple users and ensure proper resource utilization.
+The support bundle generator is optimized to handle concurrent requests from multiple users and ensure efficient use of resources.
 
 ## Log collection
 
-The log collection module will interact with the underlying infrastructure to gather logs from all Harness pods in the Kubernetes cluster.
-
-It leverages Kubernetes APIs to access pod logs and utilize standard logging mechanisms to capture logs from pods.
-
-Relevant log files or streams are identified, and the logs are aggregated and stored for further processing.
+The module responsible for collecting logs will communicate with the underlying infrastructure to gather logs from each Harness pod within the Kubernetes cluster. This process makes use of Kubernetes APIs to access pod logs and standard logging mechanisms to capture logs from the pods. The module identifies relevant log files or streams, and aggregates and stores the logs for further processing.
 
 ## ConfigMap and override files collection
 
@@ -129,7 +123,7 @@ Use the following configurations:
 
 - Maximum individual log file size: 50 MB
 
-- The maximum retention period for logs: 10 days
+- Maximum log retention period: 10 days
 
 - Maximum total size of all log files combined: 1 GB
 
