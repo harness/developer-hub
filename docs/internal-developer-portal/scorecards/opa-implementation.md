@@ -52,7 +52,7 @@ deny[msg] {
 }
 ```
 
-In the REGO scrpit we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
+In the REGO script we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
 
 #### Success: 
 
@@ -93,7 +93,7 @@ deny[msg] {
 
 #### Success: 
 
-You deploy the Pipeline and during the dry run the Socres of all the services you have used in the pipeline turns to be more than the set limit(here: 50). As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
+You deploy the Pipeline and during the dry run the Scores of all the services you have used in the pipeline turns to be more than the set limit(here: 50). As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
 
 #### Failure: 
 Some of the services you have used have a score less than the set limit(here: 50). As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.
