@@ -746,6 +746,25 @@ https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs
 The expression \<+pipeline.execution.Url> has been deprecated.
 :::
 
+
+
+### \<+pipeline.executionMode>
+
+The execution mode  of the pipeline. This will tell the execution mode(i.e NORMAL, POST_EXECUTION_ROLLBACK) of the pipeline.
+
+![](./static/execution-mode-expression.png)
+
+We can use the expression `<+pipeline.executionMode>` under conditional execution.
+
+![](./static/execution-mode-conditional-execution.png)
+
+For example:
+
+**Output:**
+
+![](./static/execution-mode-execution-output.png)
+
+
 ### \<+pipeline.name>
 
 The name of the current pipeline.
