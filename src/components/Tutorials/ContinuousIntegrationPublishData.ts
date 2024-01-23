@@ -19,7 +19,7 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Publish an Image to a Google Artifact Registry.",
-          link: "/tutorials/ci-pipelines/publish/google-gar",
+          link: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar",
         },
         {
           title: "Publish to the Artifacts tab",

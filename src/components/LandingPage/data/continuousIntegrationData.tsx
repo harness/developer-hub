@@ -244,7 +244,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/ci-pipelines/publish/google-gar",
+    link: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
