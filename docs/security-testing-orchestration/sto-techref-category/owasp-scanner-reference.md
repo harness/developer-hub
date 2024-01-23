@@ -1,6 +1,6 @@
 ---
 title: OWASP Dependency-Check scanner reference for STO
-description: Repository scans with OWASP Dependency Check
+description: Scan code repositories with OWASP Dependency Check.
 sidebar_label: OWASP Dependency-Check scanner reference
 sidebar_position: 290
 ---
@@ -38,13 +38,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## OWASP step configuration
 
-The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure OWASP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-
-
-
-
-
+The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
 ### Scan Mode
@@ -93,10 +87,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <!-- ============================================================================= -->
 <a name="target-variant"></a>

@@ -101,11 +101,11 @@ new-plugin/
 5. Now Click Next and start adding the **Plugin Metadata**. You have to fill the following fields 
     
     - **Plugin Name** : Add a name for your Plugin
-    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` incluign `@`, eg: `@parsifal-m/plugin-dev-quotes-homepage`
-    - **Description** : Add an aptful description for your plugin, espciailly the function of the plugin.
-    - **Category** : Add an functionaly category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
+    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, eg: `@parsifal-m/plugin-dev-quotes-homepage`
+    - **Description** : Add an apt description for your plugin, especially the function of the plugin.
+    - **Category** : Add an functional category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
     - **Created By** : Add the [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups) you belong to from the dropdown. 
-    - **Plugin applies to entity** : Add the software componenets to which your plugin applies to usually it's **Service**. 
+    - **Plugin applies to entity** : Add the software components to which your plugin applies to usually it's **Service**. 
     - **Add Plugin Screenshots (optional)** : Not available yet
     - **Additional fields** : Fill it as shown in the image below. 
     ![](./static/additional-fields.png)
@@ -165,7 +165,7 @@ proxy:
 
 :::info
 
-Onve you enable the PLugin it will aprroximately take around 30 minutes for the plugin to be enabled as we rebuild the IDP image with your plugin. 
+Once you enable the PLugin it will approximately take around 30 minutes for the plugin to be enabled as we rebuild the IDP image with your plugin. 
 
 :::
 

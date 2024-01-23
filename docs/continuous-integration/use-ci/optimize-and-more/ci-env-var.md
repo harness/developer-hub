@@ -412,6 +412,7 @@ ID of the user that started the build.
 
 * `PLATFORM` and `VERSION`: Build infrastructure platform details.
 * `HARNESS_INFRA`: Build infrastructure type.
+* `HARNESS_HTTP_PROXY`: Indicates a connector is using [Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 <!-- `DRONE_STAGE_ARCH`: Reports `amd64` or `arm64` for VM build infrastructures only.-->
 <!-- `DRONE_STAGE_OS`: The build infrastructure's operating system, such as `linux`.-->
 <!-- `DRONE_STAGE_TYPE`: The stage build infrastructure type, such as `KUBERNETES_DIRECT` or `docker`.-->

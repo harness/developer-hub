@@ -146,7 +146,7 @@ Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are e
 3. Select **Continue**.
 4. In the **Environments** tab, enable **Deploy to multiple Environments or Infrastructures**.
 5. Select **Environment** or **Environment Group**.  
-   You can select one or more environments or environment groups, and then one or more infrastructures in each environment or environment group.
+   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
 6. In **Infrastructures**, select **Deploy to filtered list**, and then select **+ Add Filters**.
 7. In **FILTERS ON ENTITIES**, select **Infrastructure**.
 8. In **Type**, select: 
@@ -184,7 +184,7 @@ Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are en
 4. Select **Continue**.
 5. In the **Environments** tab, enable **Deploy to multiple Environments or Clusters**.
 6. Select **Environment** or **Environment Group**.  
-   You can select one or more environments or environment groups, and then one or more infrastructures in each environment or environment group.
+   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
 7. In **Clusters**, select **Deploy to filtered list**, and then select **+ Add Filters**.
 8. In **FILTERS ON ENTITIES**, select **Clusters**.
 9. In **Type**, select: 

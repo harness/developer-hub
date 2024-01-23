@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-01-16T10:00:15
+date: 2024-01-22:T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -49,6 +49,46 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2024
 
+### Version 1.21.5
+
+#### New features and enhancements
+
+- Grouping and Collapsible Support for Overrides(CDS-82376)
+  - Overrides are now grouped by information in their configurations.
+  - They are now collapsible, and thusly, are easier to search through.
+
+#### Behaviour change
+
+- Delegate selectors are not getting honored for any of the plugin steps.(CDS-85489)
+  - Previous behavior: Until now, there was uncertainty in the assignment of plugin steps to delegates. If a step was set to use a specific delegate (D1), it may or may not have actually used that delegate. Consequently, the pipeline could run successfully, even if the step ended up on a different delegate (D2). After the upcoming fix, the plugin step will consistently be directed to the configured delegate (D1). However, if D1 faces challenges such as lacking capabilities, permissions, or network policy issues to run the task, the current pipeline will begin to fail.
+  - If pipelines start to fail due to delegate issues after this update, make sure your delegate selectors are set properly.
+
+#### Fixed Issues
+
+- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list(CDS-88198, ZD-56156)
+  - Previous Behavior: Making edits to more than one variable simultaneously only applied the changes to the last variable in the list.
+  - The issue only occurred in Template Studio for pipeline templates, not for stage or step group templates. The issue is fixed now.
+
+- Http step with mtls not working(CDS-87547,ZD-55531)
+  - Previously, Some customers reported an error trying to use the HTTP Step with MTLS. This was caused due to an exception during the delegate capability check for HTTP step; we will now additionally validate the delegate to fix the problem.
+
+- Pipeline was failing with delegate error(CDS-87440,ZD-55387)
+  - Expected behavior: Users can fetch JSON format in the delegate using curl command and the same should work in UI
+  - Previous Behavior: The JSON format was fetched using curl in the delegate but the same was not working in the UI.
+  - The issue is fixed now.To address intermittent capability check failures for an internal URL, the HTTP step's connectivity check timeouts have been increased from 15 seconds to 30 seconds. Users can expect improved reliability in scenarios where intermittent failures were previously encountered.
+
+- Harness bidirectional sync webhook feature not working(CDS-85694,ZD-54338)
+  - Previous behavior:- The problem involved the failure of the API when the source or target commit ID was NULL. Furthermore, unrelated PUSH webhook events from Github, triggered during create or branch operations, were incorrectly marked as errors in the UI
+  - These events are unrelated to bidirectional GitExperience processing and will now be disregarded instead of being flagged as failures.
+
+- WimRM connector changed to SSH connector when the template was added to the pipeline. (CDS-85388)
+  - Previous Behavior: If a stage template was created with a WinRM connector and then used in a pipeline, the template inputs would display the SSH connector attribute instead of WinRM connector. 
+  - This issue is fixed now. The type of connector selected will remain consistent throughout the platform.
+
+- Template Issue not being displayed in the pipeline(CDS-84490,ZD-53823,54260)
+  - Previous Issue: There was an intermittent issue of Template Inputs not being displayed in the Pipeline Editor
+  - This issue is now fixed.
+  
 ### Version 1.20.9
 
 

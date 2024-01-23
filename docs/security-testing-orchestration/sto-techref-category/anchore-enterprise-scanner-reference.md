@@ -1,6 +1,6 @@
 ---
 title: Anchore Enterprise scanner reference for STO
-description: Container scans with Anchore Enterprise
+description: Scan container images with Anchore Enterprise.
 sidebar_label: Anchore Enterprise scanner reference
 sidebar_position: 20
 ---
@@ -99,10 +99,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 #### Name 
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -498,7 +497,7 @@ pipeline:
               os: Linux
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           execution:
             steps:
               - step:

@@ -99,7 +99,7 @@ If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE`
         <tr>
             <td> RAMP_TIME </td>
             <td> Wait period before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults/#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

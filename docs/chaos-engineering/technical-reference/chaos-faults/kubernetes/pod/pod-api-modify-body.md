@@ -30,27 +30,27 @@ Pod API modify body:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to API body modification. </td>
-        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
-        <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#target-service-port">target service port</a></td>
+        <td> Defaults to port 80. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#target-service-port">target service port</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> RESPONSE_BODY </td>
         <td> String body to overwrite the HTTP response body.</td>
-        <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#response-body">response body </a></td>
+        <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#response-body">response body </a></td>
       </tr>
       <tr>
         <td> PATH_FILTER </td>
         <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#path-filter">path filter </a></td>
+        <td> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#path-filter">path filter </a></td>
       </tr>
     </table>
 

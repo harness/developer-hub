@@ -5,10 +5,10 @@ sidebar_position: 9
 
 ## Before you begin
 
-- [Probes overview](./overview)
-- [Configure probes](../../configure-chaos-experiments/probes/configure-and-add-probe)
+- [Probes overview](./overview.md)
+- [Configure probes](../../configure-chaos-experiments/probes/configure-and-add-probe.md)
 
-This section discusses various operations that can be performed on [resilience probes](./overview).
+This section discusses various operations that can be performed on [resilience probes](./overview.md).
 
 ## Create resilience probes
 

@@ -20,6 +20,43 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## January 2023
 
+### Version 0.19.0
+
+<!-- Jan 19, 2024 -->
+
+🎁 In our latest release, we've added improvements to scorecards✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for.
+
+- **Docs:** [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage)
+
+
+#### New features and enhancements
+
+- Added support for [Audit Trails](https://developer.harness.io/docs/internal-developer-portal/governance/audit-trails). [IDP-1280]
+- Added support for a new plugin [Rafay Kubernetes Operations Platform](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes). [IDP-1979]
+- Added support for connector types in Git based steps under IDP stage, which will allow users to toggle between public and private repositories. [IDP-1982]
+- Added support for entities `annotation` and `harnessData` from `catalog-info.yaml` to be added as variable(JEXL format) input in Scorecard Checks. eg., `<+metadata.harnessData.branch>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`. [IDP-1964]
+
+```YAML
+...
+metadata:
+  name: idp-module
+  harnessData:
+    branch: develop
+    path: idp
+    priority: P0,P1
+  annotations:
+    jira/project-key: IDP
+...
+```
+
+#### Bug Fixes
+
+- Fixed the issue with side Nav items display, when user switches from old to new Nav using "New Navigation Design (Beta)" toggle. [IDP-1964]
+- Fixed the issue with scaffolder task missing "created by" with adding a migration that will correct the data eventually. [IDP-1961]
+- Fixed the issue with Backstage Permissions Sync Job Bug. [IDP-1980]
+
+
 ### Version 0.18.0
 
 <!-- Jan 11, 2024 -->
@@ -43,7 +80,7 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 ![](./static/idp-roles.png)
 
-- Added support for persistent platform favourites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
+- Added support for persistent platform favorites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
 
 - Enhanced the custom project picker to increase the hard limit of 50. 
 
@@ -79,7 +116,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog) to register software components in IDP catalog.[IDP-1438]
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
 
-This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases until those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
 
 #### New features and enhancements
 

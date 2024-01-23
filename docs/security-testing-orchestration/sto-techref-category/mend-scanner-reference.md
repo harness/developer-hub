@@ -1,11 +1,11 @@
 ---
 title: Mend (formerly Whitesource) scanner reference for STO
-description: Container and repository scans with Mend
+description: Scan code repositories and container images with Mend.
 sidebar_label: Mend scanner reference
 sidebar_position: 220
 ---
 
-You can scan container images and repositories using [Mend](https://www.mend.io). 
+You can scan code repositories and container images using [Mend](https://www.mend.io). 
 
 
 ## Important notes for running Mend scans in STO
@@ -89,11 +89,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
@@ -258,9 +256,16 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `log.files.path /tmp/sto_scan_logs`.
+Use this field to run the Mend scanner with specific command-line arguments.
 
-<!-- TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
+<!-- 
+
+You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. 
+
+
+For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `log.files.path /tmp/sto_scan_logs`.
+
+TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
 
 #### Fail on Severity
 
@@ -269,11 +274,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
+<!-- 
 ### Settings
 
 You can add a `tool_args` setting to run the scanner with additional arguments. For example, you can pipe your scan output to a file like this: `tool-args > /tmp/sto_scan_logs/scan-session-output.LATEST.txt`.
 
-<!-- TBD Don't know if this is a good example, or even if it works...I'm assuming the Settings field in the step palette is intended more for non-scanner-specific command-line arguments. -->
+TBD Don't know if this is a good example, or even if it works...I'm assuming the Settings field in the step palette is intended more for non-scanner-specific command-line arguments. -->
 
 
 ### Additional Configuration
@@ -297,7 +303,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Mend scans in STO (legacy)
 
-You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Mend scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Mend step](#mend-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 

@@ -8,10 +8,12 @@ GCP VM disk loss by label disrupts the state of GCP persistent disk volume filte
 
 ## Use cases
 
-- GCP VM disk loss by label fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
+GCP VM disk loss by label fault:
+- Determines the resilience of the GKE infrastructure. 
+- Determines how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 
 ### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
+- Kubernetes > 1.16
 - Service account should have editor access (or owner access) to the GCP project.
 - Target disk volume should not be a boot disk of any VM instance.
 - Disk volumes with the target label should be attached to their respective instances.
@@ -90,6 +92,11 @@ stringData:
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
         <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 
