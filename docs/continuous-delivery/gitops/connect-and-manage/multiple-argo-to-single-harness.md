@@ -59,25 +59,35 @@ The following steps show you how to install a GitOps Agent into an existing Argo
 
    Alternatively, the **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster if you prefer using Helm.
 
+   If your account is behind the feature flag `GITOPS_AGENT_HELM_V2`, you will be able to download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
+   
+   Contact [Harness Support](mailto:support@harness.io) to enable this.
+
    :::
 
 10. Log in to the cluster hosting Argo CD.
 11. Run the install command provided in the Agent installer, such as `kubectl apply -f gitops-agent.yml -n argocd`. You'll see output similar to this:
     ```bash
-    serviceaccount/byoa-agent-agent created  
-    role.rbac.authorization.k8s.io/byoa-agent-agent created  
-    clusterrole.rbac.authorization.k8s.io/byoa-agent-agent created  
-    rolebinding.rbac.authorization.k8s.io/byoa-agent-agent created  
-    clusterrolebinding.rbac.authorization.k8s.io/byoa-agent-agent created  
-    secret/byoa-agent-agent created  
-    configmap/byoa-agent-agent created  
-    deployment.apps/byoa-agent-agent created  
-    configmap/byoa-agent-agent-upgrader created  
-    role.rbac.authorization.k8s.io/byoa-agent-agent-upgrader created  
-    rolebinding.rbac.authorization.k8s.io/byoa-agent-agent-upgrader created  
-    serviceaccount/byoa-agent-agent-upgrader created  
-    cronjob.batch/byoa-agent-agent-upgrader created
+    serviceaccount/gitops-agent created
+    serviceaccount/gitops-agent-upgrader created
+    secret/gitops-agent created
+    configmap/gitops-agent created
+    configmap/gitops-agent-upgrader created
+    clusterrole.rbac.authorization.k8s.io/byoa-agent-agent created
+    clusterrolebinding.rbac.authorization.k8s.io/byoa-agent-agent created
+    role.rbac.authorization.k8s.io/gitops-agent created
+    role.rbac.authorization.k8s.io/gitops-agent-upgrader created
+    rolebinding.rbac.authorization.k8s.io/gitops-agent created
+    rolebinding.rbac.authorization.k8s.io/gitops-agent-upgrader created
+    deployment.apps/gitops-agent created
+    cronjob.batch/gitops-agent-upgrader created
     ```
+   :::note
+   
+   This list would appear slightly different on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled.
+   
+   :::
+
 12. In the Harness GitOps Agent installer, select **Continue**.
    
    The Agent has registered with Harness.
