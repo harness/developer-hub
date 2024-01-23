@@ -104,7 +104,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference">Aqua Security</a> Orchestration, Extraction, Ingestion </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference">AWS ECR</a> Extraction </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Extraction, Ingestion</li>
-          		<i><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT)</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a>  Orchestration, Ingestion</li>
