@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-15T10:00
+date: 2024-01-22T10:00
 sidebar_position: 10
 ---
 
@@ -22,6 +22,39 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## January 2024
+
+<!-- Version 1.10.x -->
+
+<!-- Jan 29, 2024 -->
+
+<!-- New features and enhancements -->
+
+<!-- When using [OIDC], the OIDC token ID is stored in the [Harness environment variable] `PLUGIN_OIDC_TOKEN_ID`. (CI-10852) (Add to env var list/OIDC/security hardening docs. See discussion on ticket. Also add 2nd proxy variable `HARNESS_HTTP/HTTPS_PROXY` for secure connect.)-->
+
+<!-- Fixed issues -->
+
+<!-- [PR status updates] now send correctly when using a [GitHub App in a GitHub connector] with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177) -->
+<!-- The Run Tests step now respects the Test Globs setting with [TI for Ruby]. (CI-10907, ZD-55937) -->
+<!-- Added a missing field validation for **Repository Name** when using [Harness Code Repository] as the pipeline's [default codebase]. (CI-11042) -->
+<!-- Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325) -->
+<!-- Improved the error message that appears when there is a connectivity problem between the delegate and runner in a [local runner build infrastructure]. (CI-10827) -->
+<!-- CI-10825 marked as "RN candidate = no" -->
+
+### Version 1.9.x
+
+<!-- Jan 22, 2024 -->
+
+#### New features and enhancements
+
+The [codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) `<+codebase.sourceBranch>` and `<+codebase.targetBranch>` are now always `null` for branch and tag builds. These expressions are primarily for differentiating the target and source branches for PR builds. For branch and tag builds, use `<+codebase.branch>` and `<+codebase.tag>`. (CI-10743, ZD-55284)
+
+#### Early access features
+
+[Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. (CI-8922)
+
+#### Fixed issues
+
+Added indexing to handle a `IncorrectResultSizeDataAccessException` error that rarely occurred in builds with [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) if some non-unique values were assigned. (CI-10884, ZD-55815)
 
 ### Version 1.8.2
 
