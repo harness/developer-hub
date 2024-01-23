@@ -27,13 +27,14 @@ A template is a kind of entity that exists in the software catalog. You can crea
 
 :::info
 
-The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+Please refer to the [support matrix](/docs/internal-developer-portal/flows/custom-actions#custom-actions-usage-limitations) for custom actions before using them, also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
 
 :::
 
 Harness IDP ships the following Harness related built-in actions along with [some others](/docs/internal-developer-portal/flows/custom-actions.md) to be used in the software template steps.
 
 - `trigger:harness-custom-pipeline`
+- `trigger:trigger-pipeline-with-webhook`
 - `harness:create-secret`
 - `harness:delete-secret`
 
