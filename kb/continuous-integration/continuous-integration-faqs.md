@@ -8,7 +8,7 @@ redirect_from:
 
 ## Can I use Harness CI for mobile app development?
 
-Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/mobile-dev-with-ci)
 
 ## I have a MacOS build, do I have to use homebrew as the installer?
 

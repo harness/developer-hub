@@ -52,7 +52,7 @@ Explore the documentation to learn what your Harness CI pipelines can do.
 
 With Harness CI, you can build and test code in any language.
 
-For guidance on some popular languages and platforms, check out the [CI language guides](/tutorials/ci-pipelines/build) and [Mobile development with Harness CI](/docs/continuous-integration/use-ci/mobile-dev-with-ci).
+For guidance on some popular languages and platforms, check out the [CI language guides](/tutorials/ci-pipelines/build) and [Mobile development with Harness CI](/docs/continuous-integration/mobile-dev-with-ci).
 
 :::
 

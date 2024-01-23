@@ -1,10 +1,13 @@
 ---
 title: Mobile development with Harness CI
 description: Use Harness CI for developing mobile apps
-sidebar_position: 120
+sidebar_position: 42
+sidebar_label: Mobile development
+redirect_from:
+  - /docs/continuous-integration/use-ci/mobile-dev-with-ci
 ---
 
-Harness CI provides many solutions to support mobile app development.
+Harness CI supports mobile app development.
 
 ## Mobile app development guides
 
@@ -52,14 +55,11 @@ For more information about the commands to use in your Run steps, refer to the p
 
 Here are some examples of pipelines for mobile development. These pipelines are for example purposes only. They are meant to help you conceptualize how you can organize a Harness pipeline for mobile development.
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <Tabs>
   <TabItem value="ex1" label="Example: Build and upload to JFrog" default>
-
 
 This example builds an iOS app from an Xcode project and then uploads the artifact to JFrog Artifactory.
 
@@ -304,10 +304,8 @@ pipeline:
   orgIdentifier: default
 ```
 
-
 </TabItem>
   <TabItem value="ex2" label="Example: Use Fastlane and Swift">
-
 
 This example uses fastlane to build and test a Swift-based iOS app project. This example uses [step templates](/docs/platform/templates/template) to repeat common steps in each stage. You can use [input sets](/docs/platform/pipelines/input-sets) to make customizable templates that allow users to use the same pipeline for multiple use cases by varying the input for certain values provided at runtime.
 
@@ -491,10 +489,8 @@ pipeline:
         build: <+input>
 ```
 
-
 </TabItem>
   <TabItem value="ex3" label="Example: Build, test, deploy in one stage">
-
 
 This example demonstrates a pipeline that builds, tests, and deploys a mobile app in one stage.
 
@@ -589,10 +585,8 @@ The above example was adapted from a [Canopas blog post that used GitLab CI to d
 
 :::
 
-
 </TabItem>
   <TabItem value="ex4" label="Example: Use Bitrise Integrations">
-
 
 This example shows how you can run Bitrise Integrations in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to deploy an Android app. This example is based on [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-android-apps.html), and the same concepts apply to [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-apps.html).
 
@@ -640,7 +634,5 @@ This example shows how you can run Bitrise Integrations in the Harness CI [Bitri
                       SERVICE_ACCOUNT_KEY_URL: <+secrets.getValue("json_key_path")>
 ```
 
-
 </TabItem>
 </Tabs>
-
