@@ -1,25 +1,25 @@
 ---
 title: Run Docker-in-Docker in a Build stage
 description: You can run Docker-in-Docker as a Background step in a Build stage.
-sidebar_position: 30
+sidebar_position: 50
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+ - /docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md).
 
-CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](../codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](./run-step-settings.md).
-
-To configure DinD in Harness CI, you need to add a [DinD Background step](#add-a-dind-background-step) and a [Run step that runs Docker commands](#add-a-docker-run-step) to your [pipeline](#prepare-a-pipeline).
+To configure DinD in Harness CI, you need to add a [DinD Background step](#add-a-dind-background-step) and a [Run step that runs Docker commands](#add-a-docker-run-step) to your [pipeline](#prepare-a-pipeline-for-dind).
 
 ## Kubernetes cluster build infrastructure required
 
-Docker-in-Docker (DinD) with privileged mode is necessary when using a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) only. For other infrastructure types, you can run Docker commands directly on the host.
+Docker-in-Docker (DinD) with privileged mode is necessary only when using a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). For other infrastructure types, you can run Docker commands directly on the host.
 
 ## Privileged mode required
 
@@ -55,7 +55,7 @@ To demonstrate how to set up DinD in Harness CI, this topic creates a pipeline t
 
 ## Add a DinD Background step
 
-In your **Build** stage, select the **Execution** tab, and add a [Background step](../manage-dependencies/background-step-settings.md) configured as follows:
+In your **Build** stage, select the **Execution** tab, and add a [Background step](./background-step-settings.md) configured as follows:
 
 1. For **Name**, enter `dind_Service`.
 2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
@@ -63,19 +63,15 @@ In your **Build** stage, select the **Execution** tab, and add a [Background ste
 4. Under **Additional Configuration**, select **Privileged**. [Privileged mode is required](#privileged-mode-required) Docker-in-Docker to run correctly.
 5. In **Entry Point**, you can provide a list of arguments, if needed. For example, the entry point for the `docker:dind` image is `docker-entrypoint.sh`. If you want to add a `--mtu` argument, you would include both the image entry point and the additional argument in the **Entry Point** specification.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-
 
 <!-- ![](./static/dind-background-step-entry-point.png) -->
 
 <DocImage path={require('./static/dind-background-step-entry-point.png')} />
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML">
-
 
 ```yaml
 entrypoint:
@@ -83,14 +79,12 @@ entrypoint:
   - "--mtu=1450"
 ```
 
-
 </TabItem>
 </Tabs>
 
-
 ## Add a Docker Run step
 
-After the **Background** step, add a **Run** step to run your Docker commands. Configure the [Run step settings](./run-step-settings.md#run-step-settings) as follows:
+After the **Background** step, add a **Run** step to run your Docker commands. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings) as follows:
 
 1. Enter a **Name**.
 2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).

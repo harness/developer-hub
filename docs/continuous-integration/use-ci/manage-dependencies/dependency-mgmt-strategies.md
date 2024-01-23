@@ -10,6 +10,6 @@ You can use [Background steps](./background-step-settings) to maintain long-runn
 * [Run LocalStack as a Background step](/tutorials/ci-pipelines/test/localstack)
 * [Run multiple PostgreSQL instances in Background steps](./multiple-postgres.md)
 * [Run health checks on background services](./health-check-services.md)
-* [Run Docker-in-Docker in a Kubernetes cluster build infrastructure](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md)
+* [Run Docker-in-Docker in a Kubernetes cluster build infrastructure](./run-docker-in-docker-in-a-ci-stage.md)
 
 You can also manage dependencies through [caching and shared volumes](../caching-ci-data/share-ci-data-across-steps-and-stages.md), or by installing dependencies in [Run steps](../run-ci-scripts/run-step-settings.md).

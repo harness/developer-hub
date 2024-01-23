@@ -277,7 +277,7 @@ For requirements, recommendations, and settings for using a Kubernetes cluster b
 
 ### Can I run Docker commands on a Kubernetes cluster build infrastructure?
 
-If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
 
@@ -291,7 +291,7 @@ You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `
 
 The DinD service does not connect to the Kubernetes node daemon. It launches a new Docker daemon on the pod, and then other containers use that Docker daemon to run their commands.
 
-For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 ### Resource allocation for Kubernetes cluster build infrastructure
 
@@ -1007,7 +1007,7 @@ The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and
 
 Instead, you need to:
 
-1. [Run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+1. [Run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 2. Run `docker build` and `docker push` commands in a Run step.
    To run `docker build` with builtkit enabled, use something like:
 
@@ -1053,7 +1053,7 @@ The Dockerfile is assumed to be in the root folder of the codebase. You can use 
 
 In a Kubernetes cluster build infrastructure, Build and Push steps use kaniko, which doesn't support `# syntax` in the Dockerfile.
 
-If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
+If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
 
 ### Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?
 
@@ -1326,7 +1326,7 @@ The commands specified in the Run step's commands override the default entry poi
 
 ### Does CI support running Docker-in-Docker images?
 
-Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 ### Can I run docker-compose from Docker-in-Docker in a Background step?
 
@@ -1380,7 +1380,7 @@ If you need a variable's value to remain distinct, either run the steps sequenti
 
 ### GitHub Action step can't connect to Docker daemon
 
-Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 **Actions that launch DinD:** You can't use GitHub Actions that launch DinD in the same stage where DinD is already running in a Background step. If possible, run the GitHub Action in a separate stage or try to find a GitHub Action that doesn't use DinD.
 
