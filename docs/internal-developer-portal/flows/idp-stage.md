@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
+Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
 
 :::
 
@@ -70,7 +70,7 @@ This functionality is limited to the modules and settings that you have access t
 
 5. Before adding the execution steps we need to create some **[pipeline variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/)** with [runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) which we will be using as **[expression inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)** in various steps under execution. 
 
-6. To add pipeline varialbes go to the right nav of your pag and select **Variables** icon.
+6. To add pipeline variables go to the right nav of your pag and select **Variables** icon.
 
 7. Under **Custom Variables** select **+Add Variable**.
 
@@ -211,13 +211,13 @@ First select the type of the input it could be a [Fixed Value](https://developer
 
 In case of **Fixed Value** provide the absolute value of template URL, for eg. `https://github.com/devesh-harness/test-cookicutter`
 
-In case of **Runtme Input** provide the absolute value of the template URL after you run the pipeline. 
+In case of **Runtime Input** provide the absolute value of the template URL after you run the pipeline. 
 
 In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-pipeline#manage-variables-in-the-pipeline).  
 
 #### Configure Template
 
-Provide the input required the temlate in terms of key value pairs in this step. 
+Provide the input required the template in terms of key value pairs in this step. 
 
 ![](./static/key-value-cookiecutter.png)
 
@@ -248,7 +248,7 @@ This step is to create the repository in your git provider which will be later u
     organization: <+pipeline.variables.organization>
     repository: <+pipeline.variables.project_name>
     repoType: <+pipeline.variables.repository_type>
-    description: <+pipeline.variables.repositoty_description>
+    description: <+pipeline.variables.repository_description>
     defaultBranch: <+pipeline.variables.repository_default_branch>
 ```
 
@@ -317,7 +317,7 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### File Name, Path
-Name the `catalog-info.yaml` followed by providing a path if you don't want to regster in the root of the repo created in the `Create Repo` step. 
+Name the `catalog-info.yaml` followed by providing a path if you don't want to register in the root of the repo created in the `Create Repo` step. 
 
 #### File Content
 
@@ -441,7 +441,7 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 
 ### 7. Slack Notify
 
-This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered succesfully in your Software Catalog. 
+This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
 
 <Tabs>
@@ -455,7 +455,7 @@ This step is used to notify in your team's clack channel or individual developer
     identifier: slacknotify
     spec:
     slackId: <+pipeline.variables.slack_id>
-    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catlog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
+    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
     token: slacksecrettestws
 ```
 
@@ -577,7 +577,7 @@ pipeline:
                     organization: <+pipeline.variables.organization>
                     repository: <+pipeline.variables.project_name>
                     repoType: <+pipeline.variables.repository_type>
-                    description: <+pipeline.variables.repositoty_description>
+                    description: <+pipeline.variables.repository_description>
                     defaultBranch: <+pipeline.variables.repository_default_branch>
               - step:
                   type: CreateCatalog
@@ -624,7 +624,7 @@ pipeline:
                   identifier: slacknotify
                   spec:
                     slackId: <+pipeline.variables.slack_id>
-                    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catlog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
+                    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
                     token: slacksecrettestws
           cloneCodebase: false
           caching:
