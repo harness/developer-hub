@@ -16,7 +16,7 @@ At a high level, Cloud Custodian integrates seamlessly with services, features, 
 
 
 :::info important
-Currently, Harness supports AWS and Azure cloud governance.
+Currently, Harness supports GCP, AWS and Azure cloud governance.
 :::
 
 ## Anatomy of a cloud asset governance rule
@@ -189,6 +189,14 @@ Enable the following permissions in AWS to execute cloud governance rules:
 To learn how to add missing permissions in AWS, go to [Add permissions](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#add-permissions).
 :::
 
+## Cloud Asset Governance for GCP
+Now, Harness CCM supports CAG for GCP.
+<DocImage path={require('./static/GCP-connector-CAG.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+:::info important
+Please note, we do not support Regions for Asset Governance Rules for GCP.
+:::
 
 
 
