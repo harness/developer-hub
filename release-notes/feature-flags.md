@@ -61,7 +61,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.22.0
 
- - You can now update the cache key to be target and instance dependent. (FFM-10453)
+- When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
 
 ### Node.js SDK
 
