@@ -79,7 +79,7 @@ stages:
 <Tabs>
 <TabItem value="Harness Cloud">
 
-Harness Cloud runners include pre-installed libraries and tools, and you can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install additional dependencies or additional versions. For details about pre-installed tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Harness Cloud runners include pre-installed libraries and tools, and you can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install additional dependencies or additional versions. For details about pre-installed tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 ```yaml
 - step:
@@ -96,7 +96,7 @@ Harness Cloud runners include pre-installed libraries and tools, and you can use
 
 <TabItem value="Self-hosted">
 
-You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies.
+You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies.
 
 ```yaml
 - step:
@@ -187,7 +187,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and run your tests.
+Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build and run your tests.
 
 <Tabs>
 <TabItem value="Harness Cloud">
@@ -359,7 +359,7 @@ If not already included on your build machine, you can specify a container image
 <Tabs>
 <TabItem value="Harness Cloud">
 
-In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
 ```yaml
 - step:
@@ -379,7 +379,7 @@ You can also use **Run** steps to install different shell tools into the build e
 </TabItem>
 <TabItem value="Self-hosted">
 
-In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
 ```yaml
 - step:

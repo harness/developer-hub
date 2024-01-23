@@ -57,7 +57,7 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate and prepare artifacts to upload, such as [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your pipeline that generate and prepare artifacts to upload, such as [Run steps](/docs/continuous-integration/use-ci/run-step-settings). The steps you use depend on what artifacts you ultimately want to upload.
 
 For example, this tutorial uses three **Run** steps to generate and prepare an artifact:
 
@@ -222,7 +222,7 @@ For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/pla
 
 This tutorial also uses an expression for the `target`: The expression `<+pipeline.sequenceId>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
-If you want to upload a compressed file, you must use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to compress the artifact before uploading it.
 
 :::
 

@@ -22,7 +22,7 @@ You can use Harness CI to upload artifacts, such as Docker images or test result
 - [Build and push to GitHub Container Registry (GHCR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ghcr.md)
 - [Build and push to a JFrog Artifactory Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-jfrog.md)
 
-For other non-Docker upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to build and upload the artifact.
+For other non-Docker upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to build and upload the artifact.
 
 :::tip
 
@@ -59,7 +59,7 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 - [Upload artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 - [Upload artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
 
-For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to upload the artifact.
+For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to upload the artifact.
 
 ## Troubleshoot building and pushing artifacts and images
 

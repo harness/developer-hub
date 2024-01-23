@@ -87,7 +87,7 @@ If you need to use Intel-based architecture and [Rosetta](https://developer.appl
 
 ## Install dependencies
 
-Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies in the build environment.
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
@@ -234,7 +234,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>

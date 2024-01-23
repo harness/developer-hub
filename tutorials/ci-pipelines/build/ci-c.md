@@ -31,7 +31,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies in the build environment.
 
 You can run any commands in Run steps as long as the necessary binaries are available on the host machine or the referenced container image. For example, you can run cURL commands, build commands for CMake, Ninja, or MSBuild, or any other commands you might otherwise run on the command line.
 

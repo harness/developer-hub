@@ -1,28 +1,27 @@
 ---
 title: Use CI Run steps
 description: This topic describes settings for the CI Run step.
-sidebar_position: 20
-sidebar_label: Use Run steps
+sidebar_position: 90
+sidebar_label: Run scripts
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/category/run-scripts
+  - /docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
-
 You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
-
 
 <Tabs>
   <TabItem value="test" label="Run tests" default>
 
-
-This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.md), and produces a report in JUnit XML format.
+This example runs `pytest`, includes [code coverage](./run-tests/code-coverage.md), and produces a report in JUnit XML format.
 
 ```yaml
               - step:
@@ -52,14 +51,12 @@ This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.
 
 :::tip
 
-In Harness CI, you can [use test splitting (parallelism)](../run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times for any language or test tool.
+In Harness CI, you can [use test splitting (parallelism)](./run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times for any language or test tool.
 
 :::
 
-
 </TabItem>
   <TabItem value="dependencies" label="Install dependencies">
-
 
 This example installs Go dependencies.
 
@@ -74,10 +71,8 @@ This example installs Go dependencies.
                       go get example.com/my-go-module
 ```
 
-
 </TabItem>
   <TabItem value="version" label="Specify versions">
-
 
 This example uses a **Run** step to select a version of Xcode.
 
@@ -93,10 +88,8 @@ This example uses a **Run** step to select a version of Xcode.
                       xcodebuild -version
 ```
 
-
 </TabItem>
   <TabItem value="repo" label="Clone a repo">
-
 
 This example clones a GitHub repository.
 
@@ -117,10 +110,8 @@ To use this command, you would replace:
 * `REPO_NAME` with the name of the GitHub repo to clone.
 * `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-
 </TabItem>
   <TabItem value="scripts" label="Run scripts">
-
 
 **Run** steps are highly versatile, and you can use them to run all manner of individual commands or multi-line scripts.
 
@@ -155,36 +146,30 @@ For example, this step is from the [Terraform notifications tutorial](/tutorials
 
 :::tip
 
-Consider [creating plugins](../use-drone-plugins/custom_plugins.md) for scripts that you reuse often.
+Consider [creating plugins](./use-drone-plugins/custom_plugins.md) for scripts that you reuse often.
 
 :::
-
 
 </TabItem>
 </Tabs>
 
-
 ## Add the Run step
 
-You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md).
+You need a [CI pipeline](./prep-ci-pipeline-components.md) with a [Build stage](./set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../get-started/tutorials.md).
 
 In order for the **Run** step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
-
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-
 1. Go to the **Build** stage in the pipeline where you want to add the **Run** step.
 2. On the **Execution** tab, select **Add Step**, and select the **Run** step from the Step Library.
-3. Configure the [Run step settings](#settings) and then select **Apply Changes** to save the step.
-
+3. Configure the [Run step settings](#run-step-settings) and then select **Apply Changes** to save the step.
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-
-In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#settings).
+In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#run-step-settings).
 
 ```yaml
               - step:
@@ -199,10 +184,8 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
                       pytest test_main.py --junit-xml=output-test.xml
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ## Run step settings
 
@@ -228,10 +211,10 @@ Depending on the stage's build infrastructure, some settings might be unavailabl
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
-* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Run** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binary you need.
+* [Kubernetes cluster build infrastructure](./set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Local runner build infrastructure](./set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Run** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binary you need.
 * [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
-* [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
+* [Harness Cloud build infrastructure](./set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
 
 </details>
 
@@ -294,10 +277,8 @@ For **Shell**, select the shell type. Options include: **Bash**, **PowerShell**,
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
-
 <Tabs>
   <TabItem value="bash" label="Bash" default>
-
 
 For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For example, the following step runs a Bash script that checks the Java version:
 
@@ -315,10 +296,8 @@ For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For
                       fi
 ```
 
-
 </TabItem>
   <TabItem value="powershell" label="PowerShell">
-
 
 For PowerShell, set the `shell` to `Powershell` and enter your PowerShell script in `command`, for example:
 
@@ -340,7 +319,7 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 If your PowerShell script echoes a stage variable that has a concatenated values that includes a [`ToString`](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.psobject.tostring) representation of a Powershell object (such as the result of `Get-Date`), this output might unexpectedly print to multiple lines in the build logs.
 
-For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](/docs/platform/variables-and-expressions/runtime-inputs#expressions) into a single expression, including the `ToString` value.
+For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) into a single expression, including the `ToString` value.
 
 ```yaml
         variables:
@@ -390,10 +369,8 @@ In the `Run` step's PowerShell script, call the `ToString` value separately and 
                       echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
-
 </TabItem>
   <TabItem value="pwsh" label="Pwsh (PowerShell Core)">
-
 
 You can run PowerShell Core commands in pods or containers that have `pwsh` installed. For PowerShell Core, set the `shell` to `Pwsh` and enter your PowerShell Core script in `command`. For example, this step runs `ForEach-Object` over a list of events.
 
@@ -407,10 +384,8 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
                       $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
 ```
 
-
 </TabItem>
   <TabItem value="sh" label="Sh">
-
 
 You can use the `Sh` option to run any shell script, provided the necessary binaries are available. For example, this step pulls the latest `python` image and then executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
@@ -431,10 +406,8 @@ You can use the `Sh` option to run any shell script, provided the necessary bina
                       pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 ```
 
-
 </TabItem>
   <TabItem value="python" label="Python">
-
 
 For Python, set the `shell` to `python` and enter your Python commands in `command`, for example:
 
@@ -448,18 +421,16 @@ For Python, set the `shell` to `python` and enter your Python commands in `comma
                       print('Hello, world!')
 ```
 
-
 </TabItem>
 </Tabs>
 
-
 #### Reference background services
 
-You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`. The exact format depends on your build infrastructure. For more information, go to [Background step settings - Name and ID](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#name-and-id) and [Background step settings - Port Bindings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#port-bindings).
+You can reference services started in [Background steps](./manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`. The exact format depends on your build infrastructure. For more information, go to [Background step settings - Name and ID](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#name-and-id) and [Background step settings - Port Bindings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#port-bindings).
 
 <figure>
 
-![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
+![](./manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
 
 <figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
@@ -486,9 +457,9 @@ If your script produces an output variable, you must declare the output variable
 
 ### Report Paths
 
-If relevant to the commands in your Run step, you can specify one or more paths to files that store [test results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+If relevant to the commands in your Run step, you can specify one or more paths to files that store [test results in JUnit XML format](./run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for the Run step to be able to [publish test results](../run-tests/viewing-tests.md).
+This setting is required for the Run step to be able to [publish test results](./run-tests/viewing-tests.md).
 
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
@@ -580,13 +551,13 @@ Maximum resources limits for the resources used by the container at runtime:
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
 * [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ## Run step logs and test results
 
-During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
+During and after pipeline runs, you can find step logs on the [Build details page](./viewing-builds.md).
 
-If your pipeline runs tests, you can [view test reports](../run-tests/viewing-tests.md) on the Build details page.
+If your pipeline runs tests, you can [view test reports](./run-tests/viewing-tests.md) on the Build details page.
 
 ## Troubleshoot script execution (Run steps)
 

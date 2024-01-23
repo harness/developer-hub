@@ -23,13 +23,13 @@ There are several ways to run scripts and use plugins in Harness CI. You can run
 * [Use Bitrise Integrations in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin)
 * [Use GitHub Actions in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step)
 * [Write your own plugins (reusable custom scripts)](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins)
-* [Use a Run step to run any script in Harness CI](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+* [Use a Run step to run any script in Harness CI](/docs/continuous-integration/use-ci/run-step-settings)
 * [Deploy Android apps with Harness CI](/tutorials/ci-pipelines/build/android#deploy-to-the-google-play-store)
 * [Deploy iOS apps with Harness CI](/tutorials/ci-pipelines/build/ios#deploy-to-the-app-store)
 
 ## Variables and secrets for mobile development
 
-You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to run all manner of commands or scripts. If your Run step defines or ingests a variable, make sure you understand how [output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) and [environment variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#environment-variables) work in Run steps. You can also [declare variables at the stage level](/docs/platform/pipelines/add-a-stage/#stage-variables) and redefine their values in steps.
+You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to run all manner of commands or scripts. If your Run step defines or ingests a variable, make sure you understand how [output variables](/docs/continuous-integration/use-ci/run-step-settings#output-variables) and [environment variables](/docs/continuous-integration/use-ci/run-step-settings#environment-variables) work in Run steps. You can also [declare variables at the stage level](/docs/platform/pipelines/add-a-stage/#stage-variables) and redefine their values in steps.
 
 Store tokens, passwords, and other sensitive data as [secrets](/docs/category/secrets) and then [use expressions to reference secrets](/docs/platform/secrets/add-file-secrets#reference-an-encrypted-file-secret) in your pipelines. For example, you can use an expression as the value for a variable:
 
@@ -39,7 +39,7 @@ APP_STORE_PASSWORD=<+secrets.getValue("my_app_store_password_secret")>
 
 ## App distribution with Harness CI
 
-You can run distribution scripts for your preferred mobile development tool's CLI in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
+You can run distribution scripts for your preferred mobile development tool's CLI in a [Run step](/docs/continuous-integration/use-ci/run-step-settings).
 
 For more information about the commands to use in your Run steps, refer to the provider's documentation. Here are some examples:
 

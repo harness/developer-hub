@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
+Your CI pipelines can run tests in [Run steps](../run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
 
 ## Publish reports to the Tests tab
 
@@ -44,7 +44,7 @@ If you used a **Run** step, the **Tests** tab contains information about the tot
 
 If you ran tests in multiple steps/stages, or parallel steps/stages, use the **Step/Stage** dropdown menu to switch between reports from different steps or stages.
 
-![](../run-ci-scripts/static/run-a-script-in-a-ci-stage-529.png)
+![](./static/run-a-script-in-a-ci-stage-529.png)
 
 ### Results from Run Tests steps (Test Intelligence)
 

@@ -13,7 +13,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md).
+CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md).
 
 To configure DinD in Harness CI, you need to add a [DinD Background step](#add-a-dind-background-step) and a [Run step that runs Docker commands](#add-a-docker-run-step) to your [pipeline](#prepare-a-pipeline-for-dind).
 
@@ -84,7 +84,7 @@ entrypoint:
 
 ## Add a Docker Run step
 
-After the **Background** step, add a **Run** step to run your Docker commands. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings) as follows:
+After the **Background** step, add a **Run** step to run your Docker commands. Configure the [Run step settings](../run-step-settings.md#run-step-settings) as follows:
 
 1. Enter a **Name**.
 2. For **Container Registry**, select your [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).

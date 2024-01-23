@@ -31,7 +31,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
+If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to install any dependencies.
 
 <Tabs>
 <TabItem value="Harness Cloud">
@@ -155,7 +155,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) steps to build and run your tests.
+Add [**Run**](/docs/continuous-integration/use-ci/run-step-settings) steps to build and run your tests.
 
 <Tabs>
 <TabItem value="Harness Cloud">

@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="run" label="Run step" default>
 
-You can run any type of test for any codebase in a [Run step](../run-ci-scripts/run-step-settings.md).
+You can run any type of test for any codebase in a [Run step](../run-step-settings.md).
 
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
@@ -36,7 +36,7 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
                           - output-test.xml
 ```
 
-For more information about configuring **Run** steps, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+For more information about configuring **Run** steps, go to [Use Run steps](../run-step-settings.md).
 
 :::tip
 

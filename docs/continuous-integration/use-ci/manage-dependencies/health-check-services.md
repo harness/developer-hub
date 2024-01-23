@@ -165,9 +165,9 @@ For a **Background** step to run a service, the build environment must have the 
 
 ## Add health checks
 
-In each step group, after the **Background** step, add a [Run step](../run-ci-scripts/run-step-settings.md) that runs a health check on that service. The commands necessary for a health check depend on the service you're running. The following YAML examples use `psql` commands to run health checks on PostgreSQL services. For more information about this use case, go to [Run multiple PostgreSQL instances in Background steps](./multiple-postgres.md#test-the-services).
+In each step group, after the **Background** step, add a [Run step](../run-step-settings.md) that runs a health check on that service. The commands necessary for a health check depend on the service you're running. The following YAML examples use `psql` commands to run health checks on PostgreSQL services. For more information about this use case, go to [Run multiple PostgreSQL instances in Background steps](./multiple-postgres.md#test-the-services).
 
-For the **Run** step to run the health check commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
+For the **Run** step to run the health check commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-step-settings.md#container-registry-and-image).
 
 
 

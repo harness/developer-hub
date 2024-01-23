@@ -4,7 +4,7 @@ description: You can write your own plugins.
 sidebar_position: 20
 ---
 
-Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. While you can [run scripts in CI pipelines](/docs/category/run-scripts), if you reuse a script, it is easier to maintain a single plugin rather than modify multiple instances of a script.
+Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. While you can [run scripts in CI pipelines](/docs/continuous-integration/use-ci/run-step-settings), if you reuse a script, it is easier to maintain a single plugin rather than modify multiple instances of a script.
 
 You can write your own plugins and run them in a **Plugin** step in your Harness CI pipelines. There are also many [preexisting plugins](./explore-ci-plugins.md) you can use.
 

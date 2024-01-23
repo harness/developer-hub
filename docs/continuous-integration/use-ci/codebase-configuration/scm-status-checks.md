@@ -41,7 +41,7 @@ To get status updates in your PRs, you must:
 
 ## Custom SCM status checks
 
-If you want to pull PR status check information into a Harness pipeline, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
+If you want to pull PR status check information into a Harness pipeline, you can use [Run steps](../run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
 
 ### Add a custom status check
 
@@ -49,12 +49,12 @@ These steps explain how to add a status check that uses the GitHub API. For info
 
 1. You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md).
 2. Create [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to use for authentication, and save the token as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets).
-3. Add a [Run step](../run-ci-scripts/run-step-settings.md) to your **Build** (`CI`) stage.
+3. Add a [Run step](../run-step-settings.md) to your **Build** (`CI`) stage.
 4. Enter a **Name** for the step.
 5. If required by your build infrastructure, provide the **Container Registry** and **Image**.
    * **Container Registry** is a container registry connector, such as a Docker connector.
    * **Image** is the FQN or artifact name and tag of a Docker image that has cURL installed, such as `curlimages/curl:latest` for the [official cURL Docker Hub image](https://hub.docker.com/r/curlimages/curl).
-   * To learn more about this setting and when it is required, go to [Use Run steps - Container Registry and Image](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
+   * To learn more about this setting and when it is required, go to [Use Run steps - Container Registry and Image](../run-step-settings.md#container-registry-and-image).
 6. For **Shell**, select **Sh**.
 7. In **Command**, enter a script that calls the GitHub API, for example:
 
@@ -70,7 +70,7 @@ These steps explain how to add a status check that uses the GitHub API. For info
 
    If you use the above script, replace `YOUR_GITHUB_ORGANIZATION` with your GitHub organization name, and replace `YOUR_GITHUB_TOKEN_SECRET_ID` with the ID of the Harness text secret that contains your GitHub personal access token.
 
-8. Configure additional settings as necessary for your script and build infrastructure. For example, you might want to set container resource limits, export output variables, or inject environment variables. For more information about **Run** step settings, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+8. Configure additional settings as necessary for your script and build infrastructure. For example, you might want to set container resource limits, export output variables, or inject environment variables. For more information about **Run** step settings, go to [Use Run steps](../run-step-settings.md).
 
 The above script is a basic GitHub status check. You can modify the script to include more commands, get other information from the payload, or call a different SCM provider's API. For example, the following script takes different actions depending on the resulting status, and it includes environment variables and [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md):
 

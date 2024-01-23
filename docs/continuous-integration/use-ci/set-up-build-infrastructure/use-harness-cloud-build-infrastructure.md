@@ -141,7 +141,7 @@ pipeline:
 
 ### Specify versions
 
-If a [Harness Cloud image](#platforms-and-image-specifications) has multiple versions of a tool pre-installed, you can specify the version that you want to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a [Run step](../run-ci-scripts/run-step-settings.md) to select an Xcode version:
+If a [Harness Cloud image](#platforms-and-image-specifications) has multiple versions of a tool pre-installed, you can specify the version that you want to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a [Run step](../run-step-settings.md) to select an Xcode version:
 
 ```
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
@@ -155,7 +155,7 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 
 ### Lock versions or install additional tools
 
-If your build requires a specific version of a tool or you need to use a version/tool that isn't pre-installed on the [Harness Cloud image](#platforms-and-image-specifications), you must add a step (such as a [Run step](../run-ci-scripts/run-step-settings.md) or [Plugin step](../use-drone-plugins/explore-ci-plugins.md)) to install the version/tool directly on the build machine or run a Docker image that has the required version/tool.
+If your build requires a specific version of a tool or you need to use a version/tool that isn't pre-installed on the [Harness Cloud image](#platforms-and-image-specifications), you must add a step (such as a [Run step](../run-step-settings.md) or [Plugin step](../use-drone-plugins/explore-ci-plugins.md)) to install the version/tool directly on the build machine or run a Docker image that has the required version/tool.
 
 When installing additional tools, run `apt-get update` before installing new software that might not be in the packages list.
 

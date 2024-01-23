@@ -84,7 +84,7 @@ stages:
 <Tabs>
 <TabItem value="Harness Cloud">
 
-The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install additional dependencies or run `dotnet restore`.
+The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install additional dependencies or run `dotnet restore`.
 
 ```yaml
 - step:
@@ -101,7 +101,7 @@ The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud ru
 
 <TabItem value="Self-hosted">
 
-You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies or run commands such as `dotnet restore`.
+You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies or run commands such as `dotnet restore`.
 
 ```yaml
 - step:
@@ -191,7 +191,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and run your tests.
+Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build and run your tests.
 
 <Tabs>
 <TabItem value="Harness Cloud">

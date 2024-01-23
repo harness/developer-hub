@@ -110,7 +110,7 @@ https://www.youtube.com/watch?v=jwYZysdZuNI-->
 This example shows a pipeline that:
 
 - Uses [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
-- Uses a [Run step](../../run-ci-scripts/run-step-settings.md) to install dependencies. This is not always required; it depends on your build infrastructure and needs.
+- Uses a [Run step](../../run-step-settings.md) to install dependencies. This is not always required; it depends on your build infrastructure and needs.
 - Runs tests on Ruby with RSpec and Test Intelligence.
 - Uses [parallelism](./ti-test-splitting.md) (`parallelism`, `enableTestSplitting`) to further improve test times.
 

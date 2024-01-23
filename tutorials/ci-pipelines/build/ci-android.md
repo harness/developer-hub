@@ -149,7 +149,7 @@ If you need to use Intel-based architecture and [Rosetta](https://developer.appl
 
 Many Android packages, such as command-line tools and an emulator, are already installed on Harness Cloud Linux machines. For more information about preinstalled tools and libraries, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies in the build environment.
 
 ```yaml
 - step:
@@ -165,7 +165,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 </TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
 
-Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies in the build environment.
 
 ```yaml
 - step:

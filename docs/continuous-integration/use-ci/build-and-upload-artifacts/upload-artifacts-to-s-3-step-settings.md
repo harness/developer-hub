@@ -104,7 +104,7 @@ The name of the S3 bucket name where you want to upload the artifact.
 
 Path to the file or directory that you want to upload.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
 
 #### Endpoint URL
 
@@ -206,7 +206,7 @@ In your pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plu
    * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
    * `aws_bucket`: The target S3 bucket.
    * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-   * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+   * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
    * `target`: Optional. Provide a path, relative to the `aws_bucket`, where you want to store the artifact. Do not include the bucket name; you specified this in `aws_bucket`. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a `target`, Harness uploads the artifact to the bucket's main directory. You might want to use expressions, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 * **Image Pull Policy:** Select **If Not Present**.
 
@@ -240,7 +240,7 @@ In your pipeline's `CI` stage, add a [Plugin step](../use-drone-plugins/plugin-s
 
 For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
 
 :::
 

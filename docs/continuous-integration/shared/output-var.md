@@ -69,7 +69,7 @@ Use either of the following expressions to reference an output variable in a dif
 
 <figure>
 
-![](../use-ci/run-ci-scripts/static/run-step-output-variable-example.png)
+![](../use-ci/static/run-step-output-variable-example.png)
 
 <figcaption>To reference an output variable, the variable expression must include the originating step's ID and the variable's name.</figcaption>
 </figure>

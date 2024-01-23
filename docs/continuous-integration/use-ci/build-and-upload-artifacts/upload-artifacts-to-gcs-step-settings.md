@@ -57,7 +57,7 @@ The GCS destination bucket name.
 
 Path to the file or directory that you want to upload.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
 
 #### Target
 

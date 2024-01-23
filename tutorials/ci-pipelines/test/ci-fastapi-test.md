@@ -175,7 +175,7 @@ And this CI stage uses a Kubernetes cluster build infrastructure:
 
 ### Install dependencies
 
-Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies for the FastAPI project.
+Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies for the FastAPI project.
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
@@ -216,7 +216,7 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-set
 
 ### Run tests
 
-Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that runs unit tests and outputs the results in JUnit XML format.
+Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that runs unit tests and outputs the results in JUnit XML format.
 
 This tutorial runs basic unit tests, but you can run all types of tests (integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 

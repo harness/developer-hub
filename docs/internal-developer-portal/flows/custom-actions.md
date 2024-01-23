@@ -133,7 +133,7 @@ projectId:
 
 | **Custom Action**                      | **Pipelines and Stages**    |
 |----------------------------------------|-----------------------------|
-| trigger:harness-custom-pipeline        | Supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step) | 
+| trigger:harness-custom-pipeline        | Supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) |
 | trigger:trigger-pipeline-with-webhook  | Supports all the pipelines with a custom webhook based trigger          | 
 
 

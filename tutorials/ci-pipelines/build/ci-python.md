@@ -31,7 +31,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies in the build environment.
 
 <Tabs>
 <TabItem value="Harness Cloud">

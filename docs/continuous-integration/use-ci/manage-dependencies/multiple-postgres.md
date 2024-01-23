@@ -172,9 +172,9 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 
 ## Test the PostgreSQL services
 
-You can add a [Run step](../run-ci-scripts/run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
+You can add a [Run step](../run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
 
-For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
+For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-step-settings.md#container-registry-and-image).
 
 
 <Tabs>
@@ -182,7 +182,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 
 
 1. In the same **Build** stage as your **Background** steps, add a **Run** step after (*not* in parallel with) your **Background** steps.
-2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
+2. Configure the [Run step settings](../run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
 
 
 <Tabs>
@@ -207,7 +207,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h Background_2 -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
+* Configure [other settings](../run-step-settings.md#run-step-settings), if needed.
 
 
 </TabItem>
@@ -233,7 +233,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h localhost -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
+* Configure [other settings](../run-step-settings.md#run-step-settings), if needed.
 
 
 </TabItem>
@@ -248,7 +248,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
   <TabItem value="YAML" label="YAML" default>
 
 
-In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-ci-scripts/run-step-settings.md) depend on your build infrastructure.
+In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-step-settings.md) depend on your build infrastructure.
 
 
 <Tabs>

@@ -523,7 +523,7 @@ As per the current design you can not create project under the project. The proj
 
 #### How to customized build pipeline. Ex: Create a script to clone the repo from TFS?
 
-User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
+User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-step-settings) and you should be able to clone the repo.
 
 #### How the active service count will show in License subscription?
 

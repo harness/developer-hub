@@ -261,7 +261,7 @@ If you encounter issues with Test Intelligence when using Maven as your build to
 
 ### TI with Bazel
 
-If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
 Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
 
