@@ -417,3 +417,19 @@ pipeline:
 </Tabs>
 
 </details>
+
+## See also
+
+* [View test reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#view-reports-on-the-artifacts-tab)
+* [View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/code-coverage/#view-code-coverage-reports-on-the-artifacts-tab)
+* [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
+* [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
+* [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
+* [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#view-artifacts-on-the-artifacts-tab)
+
+## Troubleshoot the Artifacts tab
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to the Artifacts tab, such as:
+
+* [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
+* [Do Upload Artifacts steps compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
