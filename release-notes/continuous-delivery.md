@@ -95,6 +95,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Remove application details from NewRelic if it is empty (CDS-88190)
   - 
+
 ### Version 1.21.5
 
 #### New features and enhancements
