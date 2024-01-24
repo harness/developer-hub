@@ -1,52 +1,55 @@
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
-  "Q2 2024 May-July": {
+  "time one": {
     description: "Description",
     feature: [
       {
-        title: "List UI Improvements",
-        description: "Revamping and optimizing the list view feature in our application's user interface across all modules",
-        tag: ["UI"],
-      },
-      {
-        tag: ["Pipeline", "Platform"],
-        title: "Pipeline Data Retention",
-        description: "Extended Data Retention, Data Archiving and Compliance capabilites ",
-      },
-    ],
-  },
-  "Q3 Aug-Oct": {
-    description: "Description two",
-    feature: [
-      {
-        tag: ["Pipeline", "Template"],
-        title: "Template Library",
-        description: "Open Source repository for Pipeline Templates",
-      },
-      {
-        tag: ["Pipeline"],
-        title: "Priority Queue for Pipeline Execution",
-        description: "description2 ",
-      },
-    ],
-  },
-  "Long Term": {
-    description: "Description threes",
-    feature: [
-      {
-        tag: ["Pipeline"],
-        title: "Move Project Across Orgs",
+        title: "cd title 1",
         description: "description 1",
       },
       {
-        tag: ["Pipeline"],
-        title: "Pipeline Analytics",
+        tag: ["K8s", "security"],
+        title: "cd title 2",
         description: "description2 ",
       },
       {
-        tag: ["Pipeline"],
-        title: " DAG Support For Pipeline",
-        description: "Enable complex flows such as parallel execution, stage grouping, etc.",
+        title: " cd title 3",
+        description: "description 3",
+      },
+    ],
+  },
+  "time two": {
+    description: "Description two",
+    feature: [
+      {
+        tag: ["K8s", "security"],
+        title: "cd title 1",
+        description: "description 1",
+      },
+      {
+        title: "cd title 2",
+        description: "description2 ",
+      },
+      {
+        title: " cd title 3",
+        description: "description 3",
+      },
+    ],
+  },
+  "time three": {
+    description: "Description threes",
+    feature: [
+      {
+        title: "cd title 1",
+        description: "description 1",
+      },
+      {
+        title: "cd title 2",
+        description: "description2 ",
+      },
+      {
+        title: " cd title 3",
+        description: "description 3",
       },
     ],
   },
