@@ -83,8 +83,8 @@ The following steps show you how to install a GitOps Agent into an existing Argo
     cronjob.batch/gitops-agent-upgrader created
     ```
    :::note
-   
-   This list would appear slightly different on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled.
+
+   This list will have slight differences on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled.
    
    :::
 

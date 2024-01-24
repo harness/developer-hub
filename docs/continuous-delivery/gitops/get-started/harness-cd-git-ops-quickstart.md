@@ -174,7 +174,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
 :::note
 
-   This list would appear slightly different on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled. Contact [Harness Support](mailto:support@harness.io) to enable this.
+This list will have slight differences on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled. Contact [Harness Support](mailto:support@harness.io) to enable this.
 
 :::
 

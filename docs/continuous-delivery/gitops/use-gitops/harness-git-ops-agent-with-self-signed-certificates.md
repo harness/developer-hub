@@ -65,7 +65,7 @@ In this topic we will do the following:
 
    :::note
 
-   For accounts with `GITOPS_AGENT_HELM_V2` feature flag enabled, the ConfigMap name would be `gitops-agent`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+   For accounts with the `GITOPS_AGENT_HELM_V2` feature flag enabled, the ConfigMap name would be `gitops-agent`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 
    :::
 3. Save and apply the modified manifest:
