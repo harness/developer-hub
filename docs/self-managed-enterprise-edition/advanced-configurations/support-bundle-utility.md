@@ -1,51 +1,41 @@
 ---
-title: Support bundle utility
-description: This topic describes the support bundle utility for Harness Self-Managed Enterprise Edition.
+title: Support bundle utility plugin
+description: This topic describes the support bundle utility plugin for Harness Self-Managed Enterprise Edition.
 sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition offers a useful support bundle utility feature. This feature allows you to gather data from various services on your system. The tool records logs from all pods running in a Kubernetes cluster, relevant ConfigMaps (excluding secrets), HAR files for HTTP traffic, and any application-specific data dumps, if required. All the collected data is compiled into a downloadable bundle that you can use for troubleshooting and customer support purposes.
+Harness Self-Managed Enterprise Edition provides a support bundle utility plugin option that enables you to troubleshoot system issues more efficiently. This feature allows you to collect data from various services on your system. The tool records logs from all pods running in a Kubernetes cluster, relevant ConfigMaps (excluding secrets), HAR files for HTTP traffic, and any application-specific data dumps, if needed. All the gathered data is then compiled into a downloadable bundle that you can use for troubleshooting and customer support purposes.
 
-## Command for log recording
+## Log recording
 
-To keep track of a process, you have the option to set its start and end time. However, keep in mind that the log collection window should not exceed 24 hours. Once you start recording, the tool will automatically gather logs and relevant data from pods and ConfigMaps. It can also collect past logs from the service. Moreover, you can choose the specific service from which you want to collect the data.
+To keep track of a process, you have the option to set its start and end time. However, keep in mind that the log collection window can't exceed 24 hours. Once you start recording, the tool automatically gathers logs and relevant data from pods and ConfigMaps. It can also collect past logs from the service. Moreover, you can choose the specific service from which you want to collect data.
 
-## Pod logs collection
+## Log collection
 
 The support bundle utility retrieves log files from Kubernetes pods, including standard output and error logs, along with timestamp data for each entry.
 
-## ConfigMap logs collection
+### ConfigMap log collection
 
 The support bundle utility identifies ConfigMaps that contain log files or directories and includes them in the support bundle. Secrets and sensitive information are excluded.
 
-## Deployment data and manifests
+### Deployment data and manifests
 
 The support bundle utility collects all the deployment, services, ingress, and virtual services manifests, as well as the Helm values configuration.
 
-## HAR file collection (optional)
+### HAR file collection (optional)
 
 The process of bundling logs includes collecting relevant HAR files from the system or components responsible for capturing HTTP traffic during the specified period.
 
 ## Bundle packaging
 
-All the logs, ConfigMaps, HAR files, and any other necessary files are combined into a bundle that can be easily downloaded. The bundle is compressed using a format that is easily shareable and extractable. To indicate the recording period, appropriate metadata and timestamps is included in the bundle by following specific naming conventions, such as harness_smp_timestamp.tgz. Once the bundle is created, FTP credentials will be generated for the user to upload it to Google Cloud.
-
-## Configure log outputs
-
-Allow log level configurable through the charts - platform + CI services
+All necessary files such as logs, ConfigMaps, and HAR files are bundled together in a compressed format that you can extract and share. The bundle includes appropriate metadata and timestamps following specific naming conventions such as `harness_smp_timestamp.tgz` to indicate the recording period. Upon bundle creation, FTP credentials are generated for you to upload the bundle to Google Cloud.
 
 ## Security
 
-The support bundle utility adheres to security best practices to protect sensitive or confidential information.
-
-User secrets and sensitive information must not be collected by the service.
-
-Special steps must be taken to ensure any sensitive or confidential data is present in the collected samples (eg: service logs printing out secrets, etc) is redacted.
-
-The support bundle is encrypted or secured during transit and at rest.
+The support bundle utility follows security best practices to safeguard sensitive and confidential information. No secrets or sensitive data are collected. The support bundle is encrypted during transit and at rest.
 
 ## Performance
 
@@ -55,23 +45,11 @@ The support bundle utility is optimized to minimize any impact on system perform
 
 The support bundle utility scales with the number of pods and ConfigMaps in the system. This process handles large volumes of logs efficiently, with minimal compromise on performance and resource utilization.
 
-## Dependencies and Assumptions
+## Dependencies
 
-The support bundle utility would require access and permissions to collect logs from pods, ConfigMaps, and HAR files.
+The support bundle utility requires access and permissions to collect logs from pods, ConfigMaps, and HAR files. Compatibility with the underlying infrastructure and systems is ensured for effective log collection.
 
-Integration with the relevant components of the system would be necessary.
-
-Compatibility with the underlying infrastructure and systems is ensured for effective log collection.
-
-The interface is accessible through a command-line interface for users to initiate the log bundling process.
-
-It accepts user inputs, validate them, and trigger the log bundling process.
-
-## Support bundle generator
-
-The process of generating the support bundle involves collecting diagnostic information as required by the user. This process involves interacting with various system components to gather logs, ConfigMaps (excluding secrets), and override files.
-
-The support bundle generator is optimized to handle concurrent requests from multiple users and ensure efficient use of resources.
+The interface is accessible through a command-line interface for users to initiate the log bundling process. The CLI accepts user inputs, validates them, and triggers the log bundling process.
 
 ## Log collection
 
@@ -97,29 +75,21 @@ Encryption and key generation for the support bundle package, so that only the p
 
 ## Log storage
 
-Incomplete logs due to truncation
+Harness recommends storing your log output to files within the container. This method provides greater flexibility and completeness of log collection, while ensuring a seamless experience. It seamlessly integrates with the support bundle tool, making log retrieval effortless and enhancing the overall support process. This helps to improve the efficiency and effectiveness of the support process.
 
-Limited capability to retrieve logs for specific durations
+## Log file archives
 
-Lack of flexibility and completeness in the current log collection process
+The support bundle utility includes archiving to enable you to manage your log files efficiently.
 
-No control over log file sizes
-
-Improved Logging Implementation
-
-In addition to the console output of logs, storing log output to files on the container is advised. This strategic shift enhances the overall flexibility and completeness of log collection while ensuring a frictionless experience. The integration of this solution facilitates effortless log retrieval through the support bundle tool, contributing to a more efficient and effective support process.
-
-## Logging configurations
+## Configure support bundle logs
 
 ### Log file path
 
-Configure logging within your module codebase to direct logs to the designated file, for example, `/opt/harness/logs/pod.log`.
+Ensure that logs are directed to `/opt/harness/logs/pod.log` by configuring logging in the module codebase.
 
-### Log file archives
+### Default log file configuration
 
-Implement log file archiving to manage log files efficiently.
-
-Use the following configurations:
+Harness has set the following default configuration:
 
 - Maximum individual log file size: 50 MB
 
@@ -129,27 +99,33 @@ Use the following configurations:
 
 - Format for archived log filename: `pod.%d{yyyy-MM-dd}.%i.log`
 
-Troubleshoot.sh by Replicated will be used for collecting support bundles.
-
 ## Installation
 
 ### Prerequisites
 
 The following prerequisites are needed.
 
+- Git
+
+- Access to the cluster
+
 - kubectl (optional when using the binary)
 
-- Access to cluster
+- Krew (not required when using the binary)
 
 ### Installation options
 
-You can install the support bundle utility using Krew or by downloading the binary.
+You can install the support bundle utility using Krew or by downloading the binary. For instructions to install Krew, go to [Installing](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) in the Krew documentation.
 
-To install the plugin using Krew, run the following.
+#### Install using Krew
+
+To install the plugin using Krew, run the following command.
 
 ```
 kubectl krew install support-bundle
 ```
+
+#### Install by downloading the binary
 
 To download the binary, do the following:
 
@@ -163,64 +139,69 @@ To download the binary, do the following:
 
 ## Support bundle manifest
 
-To collect data, we need to create a CRD manifest and provide the data we need to collect.
+To collect data, you must create a Custom Resource Definition (CRD) manifest and configure the data you want to collect.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 ```
 
-Here are some examples of collectors
+### Collect logs
 
-### Log collection
+There are two ways Harness collects logs:
 
-There are two ways to collect logs
+- For services with file logging enabled, Harness fetches the log files. You can use the following script to configure the number of log files.
 
-For services that have file logging enabled, we exec into the pod and fetch the log files. Using this script we can provide how many log files we want to copy over.
+   ```yaml
+   apiVersion: troubleshoot.sh/v1beta2
+   kind: SupportBundle
+   metadata:
+     name: supportbundle
+   spec:
+     collectors:
+       - exec:
+           name: logs/<SERVICE_NAME>
+           selector:
+             - app.kubernetes.io/name=<SERVICE_NAME>
+           namespace: <your-namespace>
+           command:
+             - "/bin/bash"
+             - "-c"
+             - |
+               logs_path="/opt/harness/logs"
+               num_files=2 # <--- define number of files required
 
-```yaml
-apiVersion: troubleshoot.sh/v1beta2
-kind: SupportBundle
-metadata:
-  name: supportbundle
-spec:
-  collectors:
-    - exec:
-        name: logs/<name-of-service>
-        selector:
-          - app.kubernetes.io/name=<name-of-service>
-        namespace: <your-namespace>
-        command:
-          - "/bin/bash"
-          - "-c"
-          - |
-            logs_path="/opt/harness/logs"
-            num_files=2 # <--- define number of files required
+               for file in $(ls $logs_path/pod*.log | sort -n -k1,1 | tail -n $num_files); do
+                   echo "==> $file &lt;=="
+                   cat "$file"
+                done
+            timeout: 100s
+   ```
 
-            for file in $(ls $logs_path/pod*.log | sort -n -k1,1 | tail -n $num_files); do
-                echo "==> $file &lt;=="
-                cat "$file"
-            done
-        timeout: 100s
-```
+- For services without file logging, Harness collects Kubernetes logs. 
 
-For a service that doesn’t have file logging, we can collect Kubernetes logs. The drawback is that only 10MB of logs are available.
+   ```yaml
+    apiVersion: troubleshoot.sh/v1beta2
+    kind: SupportBundle
+    metadata:
+      name: supportbundle
+    spec:
+      collectors:
+       - logs:
+           selector:
+             - app.kubernetes.io/name=<SERVICE_NAME>
+   ```
 
-```yaml
-apiVersion: troubleshoot.sh/v1beta2
-kind: SupportBundle
-metadata:
-  name: supportbundle
-spec:
-  collectors:
-    - logs:
-        selector:
-          - app.kubernetes.io/name=<name-of-service>
-```
+:::info
+Services without file logging have a maximum of 10MB logs available.
 
-### Helm release values collection
+:::
 
-To collect Helm release data and values. For more information, go to [Helm](https://troubleshoot.sh/docs/collect/helm/) in the Troubleshoot documentation.
+### Collect Helm release value data
+
+The support bundle utility plugin allows you to collect Helm release data and values. For more information, go to [Helm](https://troubleshoot.sh/docs/collect/helm/) in the Troubleshoot.sh documentation.
+
+To collect Helm release values, use the following configuration.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -235,9 +216,9 @@ spec:
       release-name: <name of the release> # <-- Optional. Note: If this is provided, namespace is mandatory
 ```
 
-### ConfigMaps collection
+### Collect ConfigMap data
 
-To collect ConfigMap data. For more, refer here
+To collect ConfigMap data, use the following configuration.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -248,16 +229,17 @@ spec:
   collectors:
     - configMap:
         selector:
-          - <your-app-selector-label>
+          - <YOUR_APP_SELECTOR_LABEL>
 ```
 
 :::info note
-The tool by default redacts any password or secrets with common regex patterns. To redact custom patterns, refer to Section 4.5
+The tool by default redacts any password or secrets with common regex patterns.
+
 :::
 
-#### Example Manifest
+#### Example manifest
 
-Here is an example manifest that collects Helm values for the release and logs, ConfigMap data for the `ng-manager` service.
+The following example manifest collects Helm values for releases and logs ConfigMap data for the `ng-manager` service.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -272,7 +254,7 @@ spec:
         name: logs/platform/ng-manager
         selector:
           - app.kubernetes.io/name=ng-manager
-        namespace: akashs
+        namespace: YOUR_NAMESPACE
         command:
           - "/bin/bash"
           - "-c"
@@ -287,64 +269,41 @@ spec:
         timeout: 100s
 ```
 
-For more example manifests, refer here: link-to-be-updated
+## Generate the support bundle
 
-Supported Collectors
-Many more types of collectors are supported by the tool.
+The process of generating the support bundle involves collecting diagnostic information as required by the user. This process involves interacting with various system components to gather logs, ConfigMaps (excluding secrets), and override files. The support bundle generator is optimized to handle concurrent requests from multiple users and ensure efficient use of resources.
 
-List of collectors: All Collectors 
+### Methods to generate the bundle
 
-Redacting Data
-Redactors are used to define logic for redacting sensitive data from the support bundle. We can define custom regex patterns or values to redact them.
+The command to generate the support bundle varies based on the installation type.
 
-Collecting Support Bundle
-Based on the way you installed the tool
+- If you have installed the tool using Krew package manager, then run the following command to generate the support bundle.
 
-If you have installed using the Krew package manager
+   ```
+   kubectl support-bundle /path/to/support-bundle.yaml
+   ```
 
-```
-kubectl support-bundle /path/to/support-bundle.yaml
-```
+- If you have installed the tool by downloading the binary, then run the following command to generate the support bundle.
 
-If you downloaded the binary
+   ```
+   ./collect /path/to/support-bundle.yaml
+   ```
 
-`./collect /path/to/support-bundle.yaml`
+This command will generate a compressed file named `support-bundle-*.tar.gz`. Extract the file to access collected data.
 
-This will generate an archived file named support-bundle-*, unzip that archive and that will contain the collected data
+### Location of collected data
 
-Helm release data will be inside the helm folder
+The data collected using the provided example manifest will be stored in the directories listed below.
 
-Cluster resources data will be inside the cluster-resource folder, which contains the deployment, sts, pod, etc. data.
+- Helm release data is included the `helm` folder.
 
-Logs will be inside the logs folder (assuming you used the example manifest), or it will be inside the folder based on the name of the collector in the manifest.
+- Cluster resources data is inside the `cluster-resource` folder. This includes the deployment, sts, and pod data.
 
-The utility detects errors or crashes in the system and automatically creates a support bundle for sharing.
-
-A support bundle tool for Kubernetes that can collect a variety of data defined using a yaml manifest
-
-Can also generate dynamic data like running a pod and collecting the data produced by that pod. Good for when we want to run some debug tests.
-
-Has support for a variety of collector specs: here
-
-Can also analyze data as per requirements: here
-
-Automatically redacts any sensitive data and can also provide custom logic for redaction: here
-
-Support Tools script
-
-Minimal shell script to collect Kubernetesx data (specifically logs)
-
-Can be used as a reference when developing
-
-Rancher Support bundle kit
-
-Kit to extract data from rancher deployments
-
-Has a mechanism to replicate the customer environment using the extracted data by passing the data to the simulator.
+- Logs are inside the `logs` folder.
 
 ## Send logs to Harness
 
-To send your log bundles to Harness, do the following:
+To send your log bundle files to Harness, do the following:
 
 1. Go to [Harness secure file drop](https://harness.sendsafely.com/d/support).
 2. Enter your email address, and then select **Submit**.
