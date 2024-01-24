@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
 title: CE onboarding guide 
-description: CE onboarding guide
+description: CE onboarding guide to jump-start your journey into chaos engineering
 ---
-This guide gives a simple introduction to Chaos Engineering and describe the basic steps for getting started with Harness Chaos Engineering (HCE).
+This guide gives a simple introduction to Chaos Engineering and describes the basic steps for getting started with Harness Chaos Engineering (HCE).
 
 ## What is Chaos Engineering?
 In simple terms, Chaos engineering is the technique of inducing chaos, that is, unexpected failures in the application. 

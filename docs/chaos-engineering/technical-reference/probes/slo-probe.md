@@ -1,6 +1,7 @@
 ---
 title: SLO probe
 sidebar_position: 7
+description: Features and specification of the SLO probe
 ---
 
 Service Level Objective (SLO) probes let users validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget. The probe leverages the API from the Service Reliability Management (SRM) module and fetches the error budget values during the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the user in the probe configuration.

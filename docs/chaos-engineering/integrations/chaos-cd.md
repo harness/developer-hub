@@ -1,6 +1,7 @@
 ---
-title: Use CE with Continuous Delivery
+title: Use HCE with Continuous Delivery
 sidebar_position: 2
+description: Integrating HCE with CD 
 ---
 
 You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. Some benefits include:

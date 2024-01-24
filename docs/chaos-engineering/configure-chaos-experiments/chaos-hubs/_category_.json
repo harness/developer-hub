@@ -8,6 +8,6 @@
       "title":"Chaos hubs"
    },
   "customProps": {
-    "description": "Chaos hubs documentation"
+    "description": "Collection of experiment templates and faults to create and launch chaos experiments"
   }
 }

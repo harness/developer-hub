@@ -1,6 +1,7 @@
 ---
 title: Create a new chaos dashboard
 sidebar_position: 2
+description: Guide to create a new dashboard and visualize entities of a chaos experiment
 ---
 
 This section will guide you through creating a new chaos dashboard, and creating custom visualizations for various entities of a chaos experiment.

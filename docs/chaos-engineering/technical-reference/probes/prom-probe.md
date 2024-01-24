@@ -1,6 +1,7 @@
 ---
 title: Prometheus probe
 sidebar_position: 6
+description: Features and specification of the Prometheus probe
 ---
 
 The Prometheus probe allows users to run Prometheus queries and match the resulting output against specific conditions. The intent behind this probe is to allow users to define metrics-based SLOs in a declarative way and determine the experiment verdict based on their success. The probe runs the query on a Prometheus server defined by the endpoint and checks whether the output satisfies the specified criteria. The outcome of a PromQL query (that is provided) is used for probe validation.

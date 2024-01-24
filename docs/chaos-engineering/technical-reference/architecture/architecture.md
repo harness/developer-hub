@@ -1,10 +1,11 @@
 ---
 title: Architecture
 sidebar_position: 1
+description: HCE architecture and its components
 ---
-This section describes the Harness Chaos Engineering (CE) architecture along with the components.
+This section describes the Harness Chaos Engineering (HCE) architecture along with the components.
 
-Below is an overview of the CE architecture.
+Below is an overview of the HCE architecture.
 
 ![Overview](./static/architecture/overview.png)
 
@@ -13,7 +14,7 @@ CE comprises two parts:
 1. **Harness control plane**
 2. **Chaos infrastructure**
 
-The diagram below gives a peek into the CE architecture.
+The diagram below gives a peek into the HCE architecture.
 ![Architecture](./static/architecture/HCE-architecture.png)
 
 ## Harness control plane
@@ -22,7 +23,7 @@ The diagram below gives a peek into the CE architecture.
 
 ### Control plane components
 
-The control plane in CE contains many components, which are described below.
+The control plane in HCE contains many components, which are described below.
 
 #### Chaos infrastructure
 

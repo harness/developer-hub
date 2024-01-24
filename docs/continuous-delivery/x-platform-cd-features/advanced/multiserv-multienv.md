@@ -225,7 +225,8 @@ Here you can see two service deployments run serially on the same infrastructure
 
 ## Propagating multiple services
 
-You can propagate a stage configured with multi-service from Stage 1 to Stage 2. If configured in Stage 1, you will notice the option to propagate from previous stage in stage 2.
+
+You can propagate a stage configured with multi-service from previous configured stage. In the example below, If configured multi-service in stage `deployKubernetes` you will be able to reference the service configuration in stage `dev`.
 
 ```yaml
     - stage:
@@ -333,6 +334,21 @@ You can propagate a stage configured with multi-service from Stage 1 to Stage 2.
                 type: StageRollback
         when:
           pipelineStatus: Success
+    - stage:
+        name: dev
+        identifier: dev
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          services:
+            useFromStage:
+              stage: Deploy_Kubernetes
+```
+
+In the subesequent stage you will see a Propagate from previous stage option. This will allow you to pick the previous stage's service configuration.
+
+```yaml
     - stage:
         name: dev
         identifier: dev
