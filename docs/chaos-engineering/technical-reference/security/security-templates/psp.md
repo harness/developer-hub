@@ -1,6 +1,7 @@
 ---
 title: Pod Security Policy
 sidebar_position: 2
+description: Applying Pod Security Policy to pods in a cluster 
 ---
 
 This section describes pod security policy, and applying pod security policies to the pods in a cluster. 

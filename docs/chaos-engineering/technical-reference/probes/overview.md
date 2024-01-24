@@ -1,6 +1,7 @@
 ---
 title: Overview
 sidebar_position: 1
+description: Declarative hypthesis to specify expected outcome of a chaos experiment
 ---
 
 ## Declarative hypothesis

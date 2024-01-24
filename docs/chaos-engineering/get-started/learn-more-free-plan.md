@@ -2,6 +2,7 @@
 title: Harness CE free plan
 sidebar_label: Harness CE free plan
 sidebar_position: 40
+description: This section discusses HCE free plans
 ---
 
 Harness is the industry’s first software delivery platform to use AI to simplify your DevOps processes—CI, CD, GitOps, Feature Flags, Cloud Costs, Chaos Engineering, and much more. 

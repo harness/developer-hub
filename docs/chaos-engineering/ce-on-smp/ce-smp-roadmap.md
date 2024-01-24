@@ -1,6 +1,6 @@
 ---
 title: Roadmap and feature availability
-description: The features available and the roadmap for the self-Managed Enterprise edition of Harness Chaos Engineering.
+description: Features and the roadmap for the self-managed enterprise edition of HCE
 ---
 
 
