@@ -2,6 +2,7 @@
 title: Harness CE powered by LitmusChaos
 sidebar_label: Powered by LitmusChaos
 sidebar_position: 30
+description: HCE is powered by open source CNCF project LitmusChaos
 ---
 
 Harness Chaos Engineering (CE) is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). Harness CE adds additional features to make the practice of chaos engineering for enterprises easy.

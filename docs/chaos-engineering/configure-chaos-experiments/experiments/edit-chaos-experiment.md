@@ -1,6 +1,7 @@
 ---
 title: Edit and update chaos experiments
 sidebar_position: 40
+description: Guide to edit and update chaos expriments
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

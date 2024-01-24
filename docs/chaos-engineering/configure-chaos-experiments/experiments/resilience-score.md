@@ -1,6 +1,7 @@
 ---
-title: How resilience score is calculated
+title: Calculating resilience score
 sidebar_position: 15
+description: Determine the resilience of target environment using resilience score
 ---
 
 The **resilience score** is a quantitative measure obtained when you run a chaos experiment. This score represents how resilient the target environment is when you run that chaos experiment on it.

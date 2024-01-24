@@ -1,6 +1,7 @@
 ---
 title: Create and run chaos experiments
 sidebar_position: 20
+description: Guide to create and execute chaos experiments
 ---
 
 import Launch from '../shared/launch-experiment-from-hub.md'

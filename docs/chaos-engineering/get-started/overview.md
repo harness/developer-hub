@@ -4,11 +4,12 @@ sidebar_label: Overview
 sidebar_position: 1
 redirect_from:
   - /docs/chaos-engineering/get-started/introduction-to-chaos-module
+description: This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 ---
 
 ## Introduction
 
-Welcome to Harness Chaos Engineering (CE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
+Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. How would you ensure that your application performs as expected under different failure conditions?
 
