@@ -81,19 +81,123 @@ To build your custom delegate image, do the following:
 
 2. Add the lines below to your delegate Dockerfile after the `RUN curl -s -L -o delegate.jar $BASEURL/$DELEGATEVERSION/delegate.jar` line and before the `USER 1001` line because root access is required to run the script. Replace the directory paths with your local directory locations.
 
-   ```
+   ```yaml
+   USER root
+
+   RUN curl -s -L -o delegate.jar $BASEURL/$DELEGATEVERSION/delegate.jar
+
    COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
    
    RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
+
+   USER 1001
    
    ```
    
    This copies all the certificates from the local `./my-custom-ca` directory to `/opt/harness-delegate/my-ca-bundle/` directory inside the container.
 
-   :::info caution
+   :::info warning
    Don't copy your certificates to the folder `/opt/harness-delegate/ca-bundle` folder. This folder is reserved for storing additional certificates to install the delegate.
+
+   Set the user to root before you run the `load_certificates.sh` script. Then set the user back to normal access after you run the script.
 
    :::
 
-3. Build your custom image.
+3. Run the `load_certificates.sh` script.
 
+4. Build your custom image.
+
+### Examples
+
+You can use the released delegate image as your base image. You can also use OS images like UBI or Ubuntu as a base to build a delegate image with custom certs.
+
+#### Use the released delegate image
+
+```
+FROM docker.io/harness/delegate:<IMAGE_TAG>
+
+USER root
+
+# This is only needed for running Harness CI module
+ENV DESTINATION_CA_PATH=<PATH_TO_LIST_OF_PODS_IN_THE_BUILD_POD_WHERE_YOU_WANT_TO_MOUNT_THE_CERTS>
+
+
+# Please take the source scripts from this GitHub repo
+RUN curl -o load_certificates.sh https://raw.githubusercontent.com/harness/delegate-dockerfile/main/immutable-scripts/load_certificates.sh
+
+COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
+   
+RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
+
+USER 1001
+
+CMD [ "./start.sh" ]
+
+```
+
+#### Use a UBI base image
+
+```
+# Copyright 2022 Harness Inc. All rights reserved.
+# Use of this source code is governed by the PolyForm Free Trial 1.0.0 license
+# that can be found in the licenses directory at the root of this repository, also available at
+# https://polyformproject.org/wp-content/uploads/2020/05/PolyForm-Free-Trial-1.0.0.txt.
+
+FROM redhat/ubi8-minimal:8.8
+
+LABEL name="harness/delegate-minimal" \
+      vendor="Harness" \
+      maintainer="Harness"
+
+RUN microdnf update --nodocs --setopt=install_weak_deps=0 \
+  && microdnf install --nodocs \
+    procps \
+    hostname \
+    lsof \
+    findutils \
+    tar \
+    gzip \
+    shadow-utils \
+    glibc-langpack-en \
+  && useradd -u 1001 -g 0 harness \
+  && microdnf remove shadow-utils \
+  && microdnf clean all \
+  && rm -rf /var/cache/yum \
+  && mkdir -p /opt/harness-delegate/
+
+COPY immutable-scripts /opt/harness-delegate/
+
+WORKDIR /opt/harness-delegate
+
+ARG TARGETARCH
+ARG BASEURL=https://app.harness.io/public/shared/delegates
+ARG DELEGATEVERSION
+
+COPY --from=eclipse-temurin:17.0.7_7-jre-ubi9-minimal /opt/java/openjdk/ /opt/java/openjdk/
+ENV JAVA_HOME=/opt/java/openjdk/
+
+RUN mkdir -m 777 -p client-tools/scm/93b3c9f1 \
+  && curl -s -L -o client-tools/scm/93b3c9f1/scm https://app.harness.io/public/shared/tools/scm/release/93b3c9f1/bin/linux/$TARGETARCH/scm \
+  && chmod -R 775 /opt/harness-delegate \
+  && chown -R 1001 /opt/harness-delegate \
+  && chown -R 1001 $JAVA_HOME/lib/security/cacerts
+RUN mkdir -p /opt/harness-delegate/additional_certs_pem_split
+
+
+ENV LANG=en_US.UTF-8
+ENV HOME=/opt/harness-delegate
+ENV CLIENT_TOOLS_DOWNLOAD_DISABLED=true
+ENV INSTALL_CLIENT_TOOLS_IN_BACKGROUND=true
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV SHARED_CA_CERTS_PATH=/opt/harness-delegate/additional_certs_pem_split
+
+RUN curl -s -L -o delegate.jar $BASEURL/$DELEGATEVERSION/delegate.jar
+
+COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
+   
+RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
+
+USER 1001
+
+CMD [ "./start.sh" ]
+```
