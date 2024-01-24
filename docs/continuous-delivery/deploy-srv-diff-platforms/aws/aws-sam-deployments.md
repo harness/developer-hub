@@ -241,6 +241,12 @@ To configure the SAM Build step, do the following:
 2. In **Container Registry**, you can see that the Harness Docker Registry connector is already set up.
 3. In **Image**, you can see a SAM build image is already set up. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
 
+:::warning
+
+If you are using Harness' SAM build image, please check the [harnessdev/sam-build](https://hub.docker.com/r/harnessdev/sam-build/tags) DockerHub repository for the newest one. Be warned, the image bearing the `latest` tag may not be newest image.
+
+:::
+
 #### AWS SAM build command options (required)
 
 The [--use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option is set up by Harness automatically. This command ensures that AWS SAM packages and builds the application code inside a Docker container that is configured with the necessary dependencies and runtime environment specified in the AWS SAM template.
@@ -292,6 +298,12 @@ To configure the SAM Deploy step, do the following:
 2. In **Container Registry**, you can see that the Harness Docker Registry connector is already set up.
 3. In **Image**, you can see a SAM deploy image is already set up. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
 4. In Stake Name, enter the name of the CloudFormation stack that will be created or updated as part of the deployment process.
+
+:::warning
+
+If you are using Harness' SAM deploy image, please check the [harnessdev/sam-deploy](https://hub.docker.com/r/harnessdev/sam-deploy/tags) DockerHub repository for the newest one. Be warned, the image bearing the `latest` tag may not be newest image.
+
+:::
 
 Here's a summary of the step's tasks that you will see in the step log once its run:
 
