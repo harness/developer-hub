@@ -8,6 +8,6 @@
       "title":"Chaos experiments"
    },
   "customProps": {
-    "description": "Chaos experiments"
+    "description": "Set of chaos faults in a specific order to create a failure scenario"
   }
 }

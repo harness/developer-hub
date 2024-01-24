@@ -1,6 +1,7 @@
 ---
 title: Add a custom chaos hub
 sidebar_position: 5
+description: Introduction to chaos hub and steps to add a chaos hub to your project
 ---
 
 ## Chaos hub

@@ -1,6 +1,7 @@
 ---
 title: Flow of control in a chaos experiment
 sidebar_position: 10
+description: Flow of control in a chaos experiment
 ---
 
 ## Experiment execution

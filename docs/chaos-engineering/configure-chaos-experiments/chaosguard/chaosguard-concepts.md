@@ -1,6 +1,7 @@
 ---
 title: Concepts
 sidebar_position: 2
+description: ChaosGuard concepts and how they are enforced
 ---
 This section walks you through the concepts of ChaosGuard and how they enforce advanced security policies on a chaos-enabled platform.
 
