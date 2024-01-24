@@ -28,15 +28,15 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 ## January 2024 
 
 
-<!-- 2024-01-17 
+<!-- 2024-01-24 -->
 
-### Version TBD 
+### Version 1.81 
 
 #### Fixed issue
 
 Fixed an issue on Self-Managed Enterprise Edition platforms where approving or rejecting an exemption threw a 500 error. (STO-6958)
 
--->
+
 
 ### Version 1.80.1
 
