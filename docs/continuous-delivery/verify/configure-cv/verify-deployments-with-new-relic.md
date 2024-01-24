@@ -112,6 +112,12 @@ For example, suppose you enter the service as `todolist` and the environment as 
 
 :::
 
+:::warning
+
+The monitored service should be created at the project level in order to be able to add health sources in the next step. 
+
+:::
+
 ## Step 5: Add Health Sources
 
 This option is available only if you have configured the service and environment as fixed values.
