@@ -27,6 +27,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## January 2024 
 
+
+<!-- 2024-01-17 
+
+### Version TBD 
+
+#### Fixed issue
+
+Fixed an issue on Self-Managed Enterprise Edition platforms where approving or rejecting an exemption threw a 500 error. (STO-6958)
+
+-->
+
 ### Version 1.80.1
 
 <!-- 2024-01-17 -->
@@ -36,10 +47,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - You can now run STO scans with a [CI free](https://www.harness.io/pricing?module=ci#) license. In a CI Build step, select **Add step** and then go to **Security** and **Security Tests** in the step library. All STO steps are available. The only limits to this functionality are those imposed by the CI Free license. (STO-6824) 
 
 - The Security Tests UI displays a more helpful, accurate message when no issues match the show/hide filters. (STO-6919)
-
-#### Fixed issue
-
-Fixed an issue on Self-Managed Enterprise Edition platforms where approving or rejecting an exemption threw a 500 error. (STO-6958)
 
 
 ### January 11 runner update
