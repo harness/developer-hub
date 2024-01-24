@@ -18,7 +18,7 @@ Depending on the stage's build infrastructure, some settings might be unavailabl
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -34,7 +34,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 :::info
 
-These fields are optional when using a [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+These fields are optional when using a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure). These fields are only required if the build machine doesn't have the required binaries pre-installed.
 
 :::
 

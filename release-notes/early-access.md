@@ -149,6 +149,15 @@ No early access (beta) features are available for the Harness Continuous Error T
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
 
+### Secure connect for Harness Cloud
+
+* **Release date:** January 2024
+* **Issue number:** CI-8922
+* **Feature flag:** `CI_SECURE_TUNNEL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+[Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners.
+
 ### Delegate selectors for codebase tasks
 
 * **Release date:** November 2023

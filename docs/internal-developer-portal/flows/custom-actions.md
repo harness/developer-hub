@@ -67,9 +67,14 @@ Without the above parameter input the pipeline won't be executed. Please [take a
 
 :::
 
+Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
+
+![](./static/flow-ca-1.png)
+
 ### 2. `trigger:trigger-pipeline-with-webhook`
 
 This custom action could be used to trigger a pipeline execution based on the [webhook url](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#trigger-a-deployment-using-the-curl-command-for-a-custom-trigger) input for [custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#create-the-custom-trigger). 
+
 
 ![](./static/trigger-webhook-ca.png)
 
@@ -90,6 +95,10 @@ steps:
 In the above example API key is an optional paramenter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
 
 Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
+
+Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
+
+![](./static/flow-custom-action.png)
 
 
 ### 3. `harness:create-secret`
@@ -128,6 +137,14 @@ projectId:
     ui:field: HarnessProjectPicker
     ...
 ```
+
+### Custom Actions Usage Limitations
+
+| **Custom Action**                      | **Pipelines and Stages**    |
+|----------------------------------------|-----------------------------|
+| trigger:harness-custom-pipeline        | Supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step) | 
+| trigger:trigger-pipeline-with-webhook  | Supports all the pipelines with a custom webhook based trigger          | 
+
 
 ### Other Supported Extensions 
 

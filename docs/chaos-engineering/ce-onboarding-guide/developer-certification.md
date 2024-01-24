@@ -6,7 +6,7 @@ description: Obtain Harness developer certification
 This tutorial guides you through registering for the Harness Chaos developer exam certification and completing it.
 
 ## Prerequisites
-Before you begin, [execute the Podtato head application in sandbox](./run-experiments-in-sandbox).
+Before you begin, [execute the Podtato head application in sandbox](/docs/chaos-engineering/ce-onboarding-guide/run-experiments-in-sandbox.md).
 
 ## Steps involved in obtaining developer certification
 

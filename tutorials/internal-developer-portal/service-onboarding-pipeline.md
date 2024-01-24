@@ -8,7 +8,7 @@ sidebar_position: 1
 
 This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a Next.js application for a developer. After you create the software template, developers can choose the template on the **Create** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a hello world repository for storing code.
 
-Your users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboards the new service. Usually the pipeline fetches a _hello-world_ skeleton code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
+Your users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service. Usually the pipeline fetches a _hello-world_ skeleton code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
 
 ![](./static/service-onboarding-user-flow.png)
 
@@ -85,7 +85,7 @@ import TabItem from '@theme/TabItem';
 
    1. Generates a basic Next.js app.
 
-   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), which essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
 
    ```sh
    # Testing path
@@ -130,7 +130,7 @@ import TabItem from '@theme/TabItem';
 - `<+pipeline.variables.github_org>`
 - `<+pipeline.variables.github_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
 
 For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
@@ -188,7 +188,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 - `<+pipeline.variables.gitlab_org>`
 - `<+pipeline.variables.gitlab_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
 
 For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
@@ -206,6 +206,9 @@ Variables such as project name and GitHub repository are runtime inputs. They ar
 ### Create a software template definition in IDP
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code.
+
+<Tabs>
+<TabItem value="GitHub">
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/nextjs/template.yaml)
 
@@ -291,6 +294,96 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+</TabItem>
+<TabItem value="GitLab">
+
+[Source](https://github.com/harness-community/idp-samples/blob/main/template-gitlab.yaml)
+
+```yaml
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: react-app
+  title: Create a react app
+  description: A template to create a new react app
+  tags:
+    - nextjs
+    - react
+    - javascript
+spec:
+  owner: name@company.io
+  type: service
+  parameters:
+    - title: Next.js app details
+      required:
+        - project_name
+        - gitlab_repo
+      properties:
+        project_name:
+          title: Name of your new app
+          type: string
+          description: Unique name of the app
+        gitlab_repo:
+          title: Name of the GitLab repository
+          type: string
+          description: This will be the name of Repository on GitLab
+        isPublish:
+          title: Do you wish to publish the artifact the internal registry?
+          type: boolean
+    - title: Service Infrastructure Details
+      required:
+        - owner
+      properties:
+        cloud_provider:
+          title: Choose a cloud provider for Deployment
+          type: string
+          enum: ["GCP", "AWS"]
+          default: GCP
+        db:
+          title: Choose a Database Type for the Service
+          type: string
+          enum: ["None", "MySQL", "Postgres", "MongoDB"]
+          default: None
+        cache:
+          title: Choose a caching system for the Service
+          type: string
+          enum: ["None", "Redis"]
+          default: None
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/QE_Team/projects/Quality_Assurence/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          gitlab_repo: ${{ parameters.gitlab_repo }}
+          cloud_provider: ${{ parameters.provider }}
+          db: ${{ parameters.db }}
+          cache: ${{ parameters.cache }}
+        apikey: ${{ parameters.token }}
+
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+```
+
+</TabItem>
+</Tabs>
 
 This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts:
 
@@ -317,7 +410,7 @@ token:
   ui:field: HarnessAuthToken
 ```
 
-Also the token input is used as a paremeter under `steps` as `apikey`
+Also the token input is used as a parameter under `steps` as `apikey`
 
 ```yaml
   steps:
