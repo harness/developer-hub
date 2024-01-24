@@ -8,9 +8,9 @@ It is good practice to [specify a baseline](/docs/security-testing-orchestration
 
 #### Variant 
 
-This is usually the branch name, image tag, or another unique identifier such as a timestamp or version number. STO maintains a historical trend for each variant. STO can [auto-detect](#auto-detecting-the-target-and-variant) the variant in some cases. 
+This is usually the branch name, image tag, or another unique identifier such as a version number or timestamp.  STO can [auto-detect](#auto-detecting-the-target-and-variant) the variant in some cases. 
 
-You can see all scanned variants for a target in **Test Targets**:
+STO maintains a historical trend for each variant. You can see all scanned variants for a target in **Test Targets**:
 
 <DocImage path={require('../../static/variants-in-test-targets.png')} width="60%" height="60%" title="Click to view full size image" />
 

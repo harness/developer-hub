@@ -90,6 +90,12 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 ### Target Settings
 
+#### Type
+
+import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+
+<StoSettingScanTypeCont />
+
 
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
 
