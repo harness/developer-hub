@@ -11,7 +11,7 @@ For JFrog non-Docker registries, you can use a script in a [Run step](/docs/cont
 You need:
 
 * Access to a JFrog Artifactory instance with a Docker registry.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * A Harness [Docker connector](#docker-connector) configured to your JFrog instance.
 
 ## Kubernetes cluster build infrastructures require root access

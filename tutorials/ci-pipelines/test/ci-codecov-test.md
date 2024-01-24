@@ -25,9 +25,7 @@ In addition to a Harness account, this tutorial requires the following:
 
 - A CodeCov account with code coverage enabled on a code repo and a CodeCov Upload Token. For instructions, go to [CodeCov Quick Start](https://docs.codecov.com/docs/quick-start).
 - An understanding of test tools, scripts, and related commands.
-- A CI pipeline. If you haven't created a pipeline before, try one of the following tutorials:
-  - [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-  - [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+- A [Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 

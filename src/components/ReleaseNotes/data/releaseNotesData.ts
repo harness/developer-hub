@@ -19,7 +19,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "5min",
-        link: "/tutorials/build-code/fastest-ci",
+        link: "/docs/continuous-integration/get-started/tutorials",
       },
       {
         title: "Terraform Cloud notification triggers",

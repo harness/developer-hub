@@ -23,7 +23,7 @@ This tutorial shows you how to create a two-stage Harness CI pipeline that uses 
 
 :::info
 
-The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans. For Free plans, try the [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci).
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/tutorials).
 
 :::
 

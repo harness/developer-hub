@@ -53,8 +53,8 @@ The following video demonstrates how to set up a CI pipeline and run a build.
 
 If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:
 
-- [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-- [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [Tutorial: Build on Harness Cloud](./tutorials.md)
+- [Tutorial: Build on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
@@ -139,4 +139,4 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Try Harness CI
 
-Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
+Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](./tutorials.md).

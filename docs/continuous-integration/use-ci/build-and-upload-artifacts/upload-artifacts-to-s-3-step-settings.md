@@ -21,7 +21,7 @@ To upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io
 To upload artifacts to S3, you need:
 
 * Access to an S3 instance.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * An [AWS connector](#aws-connector), if you want to use the **Upload Artifacts to S3** step.
 

@@ -23,10 +23,7 @@ You can build and test [iOS](https://developer.apple.com/ios/) and [macOS](https
 
 The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You can also use [Fastlane](https://docs.fastlane.tools/) to build and test your iOS and macOS apps.
 
-This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
-
-- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
 <CISignupTip />
 

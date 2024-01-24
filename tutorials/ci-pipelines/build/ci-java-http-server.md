@@ -21,11 +21,7 @@ import TabItem from '@theme/TabItem';
 
 You can build and test a Java application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
-This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
-
-- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-- [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
+This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
 <CISignupTip />
 

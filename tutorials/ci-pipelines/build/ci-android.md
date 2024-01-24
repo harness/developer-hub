@@ -21,10 +21,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
-This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
-
-- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
 <CISignupTip />
 

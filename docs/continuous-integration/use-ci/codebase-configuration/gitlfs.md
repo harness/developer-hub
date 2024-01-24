@@ -16,7 +16,7 @@ To run `git lfs` commands, such as `git lfs clone`, in Harness CI, use **Run** s
 ## Git LFS requirements
 
 * You are familiar with Git LFS and you have already configured your repos for LFS.
-* You have a CI pipeline with a **Build** stage. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md) or review [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Install the Git LFS client
 

@@ -39,7 +39,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/ci-pipelines/fastest-ci",
+    link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
     title: "Onboard with Terraform Provider",

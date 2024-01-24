@@ -24,7 +24,7 @@ Review the following resources to learn about the features, components, and key 
 
 Learn about the [pipeline creation process in Harness CI](../use-ci/prep-ci-pipeline-components.md), and then create your own:
 
-* [Tutorial: Build on Harness Cloud](/tutorials/ci-pipelines/fastest-ci)
+* [Tutorial: Build on Harness Cloud](./tutorials)
 * [Tutorial: Build on a Kubernetes cluster](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Generic process: Create a Harness CI pipeline](../use-ci/prep-ci-pipeline-components.md#create-a-harness-ci-pipeline)
 

@@ -18,7 +18,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/ci-pipelines/fastest-ci",
+    link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
     title: "Build on a Kubernetes Cluster",
@@ -95,7 +95,7 @@ export const CIList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/ci-pipelines/fastest-ci",
+    link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
     title: "Build on a Kubernetes cluster",
