@@ -2,6 +2,7 @@ import { MODULES } from "../../../constants";
 import { CdData } from "./cdData";
 import { CiData } from "./ciData";
 import { FfData } from "./ffData";
+import { platformData } from "./platformData";
 
 export interface ModuleData {
   title: string;
@@ -41,6 +42,12 @@ const ModuleData: ModuleData[] = [
     description: "Allowing for String List in a Repeat Startegy",
     module: MODULES.ff,
     horizon: FfData,
+  },
+  {
+    title: "Platform",
+    description: "All about Platform",
+    module: MODULES.platform,
+    horizon: platformData,
   },
   // {
   //   title: "Cloud Cost Management",

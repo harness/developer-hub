@@ -1,5 +1,4 @@
 import { Horizon } from "./roadmapData";
-
 export const CdData: Horizon = {
   "time one": {
     description: "Description",
