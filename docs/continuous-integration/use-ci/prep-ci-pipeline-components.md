@@ -78,7 +78,7 @@ All stages have an infrastructure definition, which represents the build infrast
 :::tip Tutorials
 
 * [Build on Harness Cloud build infrastructure](../get-started/tutorials.md)
-* [Build on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+* [Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 :::
 

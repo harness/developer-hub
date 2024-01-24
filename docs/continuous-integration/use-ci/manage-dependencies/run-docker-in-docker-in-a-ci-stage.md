@@ -31,8 +31,6 @@ You can't use DinD on platforms that don't support privileged mode, such as thos
 
 You need a [pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) that uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). DinD is necessary for Kubernetes cluster build infrastructures only. For other infrastructure types, you can run Docker commands directly on the host.
 
-If you haven't created a pipeline before, try this tutorial: [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm).
-
 To demonstrate how to set up DinD in Harness CI, this topic creates a pipeline that includes a DinD Background step and a Run step that builds and pushes an image. If you want to follow this example, you can configure your **Build** stage as follows:
 
 1. In your pipeline, select the **Build** stage, and then select the **Overview** tab.

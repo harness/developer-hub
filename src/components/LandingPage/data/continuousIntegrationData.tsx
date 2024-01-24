@@ -33,7 +33,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "30 min",
-    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra",
   },
   {
     title: "Code coverage with CodeCov",
@@ -102,7 +102,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image on a Kubernetes cluster build farm.",
-    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra",
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",

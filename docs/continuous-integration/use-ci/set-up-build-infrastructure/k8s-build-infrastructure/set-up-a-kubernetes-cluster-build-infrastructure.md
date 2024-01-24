@@ -1,7 +1,6 @@
 ---
 title: Set up a Kubernetes cluster build infrastructure
 description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
-
 sidebar_position: 30
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
@@ -25,6 +24,17 @@ You can use a Kubernetes cluster build infrastructure for **Build** stages in Ha
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
 
 <details>
+<summary>Architecture diagram</summary>
+
+The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
+
+![](../static/ci-pipeline-quickstart-13.png)
+
+You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
+
+</details>
+
+<details>
 <summary>Video summary</summary>
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
@@ -33,7 +43,7 @@ Here's a short video that walks you through adding a Harness Kubernetes Cluster 
 
 </details>
 
-For a step-by-step walkthrough, try this tutorial: [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm).
+For a step-by-step guide, go to [Tutorial - Build and test on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra).
 
 ## Create a Kubernetes cluster
 

@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
-description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
-slug: /ci-pipelines/kubernetes-build-farm
-keywords: [Kubernetes, Continuous Integration, CI Tutorial]
-title: Build on a Kubernetes cluster
+title: Tutorial - Build and test on a Kubernetes cluster
+description: Learn how to create a pipeline that uses a Kubernetes cluster build infrastructure.
+sidebar_position: 11
+redirect_from:
+  - /tutorials/ci-pipelines/kubernetes-build-farm
 ---
 
 # Build and test on a Kubernetes cluster build infrastructure
@@ -17,35 +17,23 @@ title: Build on a Kubernetes cluster
   target="_self"
 />
 
-<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+<DocsTag text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-This tutorial shows you how to create a two-stage Harness CI pipeline that uses a Kubernetes cluster build infrastructure. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
+This tutorial demonstrates how you can use Harness CI to build and test on a [Kubernetes cluster build infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure). In this tutorial, you'll create a Harness CI pipeline with two stages that does the following:
+
+1. Clones a sample app code repo.
+2. Builds the app code and runs unit tests.
+3. Packages the app as a Docker image, and uploads it to a Docker Hub repo.
+4. Pulls the uploaded image into the build infrastructure as a dependency.
+5. Runs an integration test against the app.
+
+This tutorial uses publicly-available code and images. You need a Harness account, Github account, and a Docker Hub account.
 
 :::info
 
-The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/tutorials).
+The Kubernetes cluster build infrastructure option is available with Harness CI Team and Enterprise plans only. For Free plans, try the [Harness Cloud build infrastructure tutorial](/docs/continuous-integration/get-started/tutorials).
 
 :::
-
-You'll learn how to create a CI pipeline that does the following:
-
-1. Clones the code repo for an app.
-2. Uses a Kubernetes cluster build infrastructure.
-3. Builds the app code and runs unit tests.
-4. Packages the app as a Docker image, and uploads it to a Docker Hub repo.
-5. Pulls the uploaded image into the build infrastructure as a dependency.
-6. Runs an integration test against the app.
-
-<details>
-<summary>Architecture diagram</summary>
-
-The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-13.png)
-
-You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
-
-</details>
 
 ## Prerequisites
 
@@ -69,15 +57,11 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 :::
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-
-<CISignupTip />
-
 ## Prepare the codebase
 
 1. Fork the tutorial repo [harness-community/goHelloWorldServer](https://github.com/harness-community/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
 2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
-3. Make note of the token; you'll need it later in the tutorial.
+3. Store the token somewhere secure; you'll need it later in the tutorial.
 4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
 
 <details>
@@ -110,30 +94,22 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
    - **Connection Type:** Select **HTTP**.
    - **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/YOUR_ACCOUNT/goHelloWorldServer.git`.
 
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
+   ![](../static/ci-pipeline-quickstart-15.png)
 
 5. Configure the **Credentials** as follows, and then select **Continue**:
 
    - **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
    - **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
-   - **Enable API access:** Select this option and select the same personal access token secret.
+   - **Enable API access:** Enable this option, and then select the same personal access token secret.
 
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)
+   ![](../static/ci-pipeline-quickstart-16.png)
 
 6. For **Select Connectivity Mode**, select **Connect through a Harness Delegate**, and then select **Continue**.
 
-   :::info
-
-   You can choose to establish connections directly from your Harness platform or through a Delegate service running within your corporate firewall. The Harness Delegate is a local service that connects your infrastructure, collaboration, verification, and other providers with your Harness platform. For this tutorial, you'll install a Delegate in your Kubernetes cluster.
-
-   :::
-
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-17.png)
+   You can choose to establish connections directly from your Harness platform or through a delegate service running within your corporate firewall. The Harness Delegate is a local service that connects your infrastructure, collaboration, verification, and other providers with your Harness platform. For this tutorial, you'll install a delegate in your Kubernetes cluster.
 
 7. On **Delegates Setup**, select **Only use Delegates with all of the following tags**, and then select **Install new Delegate**.
 8. Select **Kubernetes Manifest** and follow the instructions given on the **New Delegate** page to install the Delegate on a pod in your Kubernetes cluster.
-
-   :::info
 
    You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
@@ -147,9 +123,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
    service/delegate-service created
    ```
 
-   :::
-
-9. In Harness, select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
+9. In Harness, select **Verify** to test the connection. It might take a few minutes to verify the delegate. Once it is verified, exit delegate creation and return to connector setup.
 10. Back in the connector's **Delegates Setup**, select your new delegate, and then select **Save and Continue**.
 11. Wait while Harness tests the connection, and then select **Finish**.
 
@@ -163,15 +137,13 @@ Pipelines are comprised of one or more stages. Each stage has one or more steps 
 
 ### Add a Build stage
 
-For most CI pipelines, Build stages do most of the heavy lifting. Build stages are where you specify the end-to-end workflow for your pipeline: the codebase to build, the build infrastructure to use, where to push the finished artifact, and any additional tasks (such as automated tests or validations).
+For most CI pipelines, Build stages do the heavy lifting. Build stages are where you specify the end-to-end workflow for your pipeline: the codebase to build, the build infrastructure to use, where to push the finished artifact, and any additional tasks, such as automated tests or validations.
 
 1. In the Pipeline Studio, select **Add Stage** and select **Build**.
 2. For the **Stage Name**, enter `Build Test and Push`.
-3. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
-
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-22.png)
-
-4. Select **Set Up Stage**. The Build stage is added to the pipeline.
+3. Under **Configure Codebase**, select **Third-party Git Provider**.
+4. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
+5. Select **Set Up Stage**. The Build stage is added to the pipeline.
 
 ### Define the build infrastructure
 
@@ -189,7 +161,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 5. In **Namespace**, enter `harness-delegate-ng`, and then select **Continue**.
 
-## Build, test, and push an image
+### Add steps to build, test, and push an image
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
@@ -237,20 +209,20 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 The tag `<+pipeline.sequenceId>` is a built-in Harness variable that represents the Build ID number, for example `9`. The pipeline uses the Build ID to tag the image that it pushes in the first stage and pulls in the second stage of this tutorial pipeline. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the dependency (as a **Background** step) in the next stage.
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-25.png)
+![](../static/ci-pipeline-quickstart-25.png)
 
 :::
 
-You can run the pipeline now if you like. Or continue the tutorial and add the integration tests before running the pipeline.
+You can run the pipeline now or continue the tutorial to add integration tests to the pipeline.
 
-## Pull the image and run integration tests
+### Add integration tests
 
-The first stage in this pipeline builds, tests, containerizes, and then pushes an image to Docker Hub. Now, you'll add a stage that pulls the image, runs it in a container (using a **Background** step), and then run integration tests on it (using a **Run** step).
+The first stage in this tutorial pipeline builds, tests, containerizes, and then pushes an image to Docker Hub. Now, you'll add a stage that pulls the image, runs it in a container (using a **Background** step), and then runs integration tests on it (using a **Run** step).
 
 1. Select **Add Stage** (in the upper portion of the Pipeline Studio), and select **Build**.
 2. Enter `Run integration test` for the **Name**, disable **Clone Codebase**, and then select **Set Up Stage**.
 
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
+   ![](../static/ci-pipeline-quickstart-26.png)
 
 3. In the **Infrastructure** tab, select **Propagate from an existing stage**, and select the first **Build** stage in your pipeline. This configures the pipeline to use the same Kubernetes cluster and namespace for both stages.
 4. Select **Continue**.
@@ -260,11 +232,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
    - **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
    - **Image:** Enter `[docker_username]/[repo_name]:<+pipeline.sequenceId>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:<+pipeline.sequenceId>`.
 
-   :::info
-
    Notice that the **Image** field uses the same variable `<+pipeline.sequenceId>` that you used in the previous stage. This tells Harness to pull the image with the same tag as the image pushed previously in the pipeline.
-
-   :::
 
 6. Select **Apply Changes** to save the step.
 7. Add a **Run** step to your `Run integration test` stage and configure it as follows:
@@ -290,11 +258,11 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 
 On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
+![](../static/ci-pipeline-quickstart-27.png)
 
 You can switch to **Console view** for a focused view of the logs.
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-28.png)
+![](../static/ci-pipeline-quickstart-28.png)
 
 For this pipeline, note the following log details:
 
@@ -313,15 +281,15 @@ For this pipeline, note the following log details:
 
 - You can find the pushed image and the associated tag in your Docker Hub repo.
 
-  ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
+  ![](../static/ci-pipeline-quickstart-29.png)
 
 ## Continue your Continuous Integration journey
 
-Congratulations! You have created a CI pipeline that builds and tests your code.
+Congratulations! You have created a CI pipeline that builds and tests code.
 
 With CI pipelines you can consistently execute your builds at any time. For example, you can try adding a commit trigger to the pipeline that listens for commits against the codebase and automatically kicks off the pipeline. All objects you create are available to reuse in your pipelines.
 
-You can also save your build pipelines as part of your source code. Everything that you do in Harness is represented by YAML; you can store it all alongside your project files. For example, here is a YAML example of the pipeline created in this tutorial.
+You can also save your build pipelines as part of your source code. Everything that you do in Harness is represented by YAML; you can store it all alongside your project files. Here is a YAML example of the pipeline created in this tutorial.
 
 <details>
 <summary>Pipeline YAML example</summary>
@@ -417,4 +385,4 @@ pipeline:
 
 </details>
 
-After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/tutorials/cd-pipelines#all-tutorials).
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/tutorials/cd-pipelines).

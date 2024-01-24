@@ -54,7 +54,7 @@ The following video demonstrates how to set up a CI pipeline and run a build.
 If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:
 
 - [Tutorial: Build on Harness Cloud](./tutorials.md)
-- [Tutorial: Build on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [Tutorial: Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
