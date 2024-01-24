@@ -104,7 +104,7 @@ In **Continuous Verification Type**, select a type that matches your [deployment
 
 In **Monitored Service**, click **Click to autocreate a monitored service**.
 
-To view your service after its created see [Monitored Service -- Continuous Delivery](docs/platform/monitored-service.md#monitored-service-within-the-continuous-delivery-cd-module)
+To learn how to view your service after its created see [Monitored Service](docs/platform/monitored-service.md).
 
 :::note
 
