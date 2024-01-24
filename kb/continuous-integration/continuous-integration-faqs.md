@@ -263,6 +263,10 @@ However, neither gsutil nor gcloud are recommended with Harness Cloud build infr
 
 Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
 
+### How do I configure OIDC with GCP WIF for Harness Cloud builds?
+
+Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?

@@ -1854,10 +1854,6 @@ No, our Dockerfiles are made public on GitHub so that you have the option to mod
 
 Currently SMP is single account only, multiple account support is yet to come.
 
-#### How can we configure OIDC with GCP WIF for Harness CI Cloud builds?
-
-Using the FF `PL_GCP_OIDC_AUTHENTICATION` you can configure the same, you can refer [here](https://developer.harness.io/tutorials/platform/configure-oidc-gcp-wif-ci-hosted), later on enable this functionality for Harness Delegate and AWS STS.
-
 #### Do we have docs for permissions references?
 
 Yes, you can refer these docs:
