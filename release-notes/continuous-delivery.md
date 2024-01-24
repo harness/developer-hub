@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-01-22:T10:00:15
+date: 2024-01-29:T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -55,7 +55,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
   - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
   - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
-  - 
+    
 #### Fixed Issues
 - UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
   - Previously, deployments would display an error when they were waiting for manual approval. 
@@ -63,7 +63,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
   - Previous Behavior: The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service.
-  - The similar expression can be used to leverage single helm chart configured in service to use helm expression.Refer [Docs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md)
+  - The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md) for more info.
 
 - Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
   - Issue occurred when using GCP and a GCP access token.
