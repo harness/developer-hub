@@ -1077,7 +1077,7 @@ Go to the [Kaniko container runtime error article](./articles/kaniko_container_r
 
 ### Can I send emails from CI pipelines?
 
-You can [use the Drone Email plugin to send emails and attachments from CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+You can [use the Drone Email plugin to send emails and attachments from CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### How do I show content on the Artifacts tab?
 
@@ -1292,11 +1292,11 @@ For information about handling secrets with new line characters or other shell-i
 
 ### Output variable length limit
 
-If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### Multi-line output variables truncated
 
-Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ## Entry point
 
@@ -1608,7 +1608,7 @@ You can use the [putHandleInterrupt API](https://apidocs.harness.io/tag/Pipeline
 
 ### Can I add notifications, such as failure notifications, to stage templates?
 
-While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
+While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
 
 ## Logs and execution history
 
