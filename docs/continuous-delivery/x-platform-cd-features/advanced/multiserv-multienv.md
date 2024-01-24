@@ -225,7 +225,141 @@ Here you can see two service deployments run serially on the same infrastructure
 
 ## Propagating multiple services
 
-By default, you cannot propagate the multiservices from one stage to a subsequent stage.
+
+You can propagate a stage configured with multi-service from previous configured stage. In the example below, If configured multi-service in stage `deployKubernetes` you will be able to reference the service configuration in stage `dev`.
+
+```yaml
+    - stage:
+        name: deployKubernetes
+        identifier: Deploy_Kubernetes
+        description: Golden Kubernetes Deployment Stage
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          execution:
+            steps:
+              - step:
+                  type: K8sDryRun
+                  name: Dry Run
+                  identifier: Dry_Run
+                  spec: {}
+                  timeout: 10m
+              - step:
+                  type: K8sApply
+                  name: Apply
+                  identifier: Apply
+                  spec:
+                    filePaths:
+                      - cdng/
+                    skipDryRun: false
+                    skipSteadyStateCheck: false
+                    skipRendering: false
+                    overrides: []
+                  timeout: 10m
+              - step:
+                  type: HarnessApproval
+                  name: Approval
+                  identifier: Approval
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - account._account_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+                  when:
+                    stageStatus: Success
+              - step:
+                  type: K8sRollingDeploy
+                  name: Rolling Deployment
+                  identifier: RRolling_Deployment
+                  spec:
+                    skipDryRun: <+input>
+                    pruningEnabled: false
+                  timeout: 10m
+              - step:
+                  type: K8sDelete
+                  name: Cleanup
+                  identifier: Cleanup
+                  spec:
+                    deleteResources:
+                      type: ReleaseName
+                      spec:
+                        deleteNamespace: false
+                  timeout: 10m
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+          services:
+            values:
+              - serviceRef: kubernetes
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          primaryArtifactRef: <+input>
+                          sources: <+input>
+            metadata:
+              parallel: false
+          environments:
+            metadata:
+              parallel: true
+            values:
+              - environmentRef: k8sdev
+                deployToAll: false
+                infrastructureDefinitions:
+                  - identifier: dev
+                    inputs:
+                      identifier: dev
+                      type: KubernetesDirect
+                      spec:
+                        namespace: <+input>
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+        when:
+          pipelineStatus: Success
+    - stage:
+        name: dev
+        identifier: dev
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          services:
+            useFromStage:
+              stage: Deploy_Kubernetes
+```
+
+In the subesequent stage you will see a Propagate from previous stage option. This will allow you to pick the previous stage's service configuration.
+
+```yaml
+    - stage:
+        name: dev
+        identifier: dev
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          services:
+            useFromStage:
+              stage: Deploy_Kubernetes
+```
 
 ## Using environment groups
 
@@ -277,4 +411,5 @@ Max concurrency changes based on the following:
 ## Limitations
 
 * Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
+* You cannot propagate multi environments between stages
 

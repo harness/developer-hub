@@ -1,6 +1,7 @@
 ---
 title: Overview
 sidebar_position: 1
+description: Introduction and a guide to view a predefined dashboard
 ---
 This section walks you through the concepts of Chaos dashboard and how you can visualize different aspects of a chaos experiment.
 
@@ -19,21 +20,25 @@ Contact your [sales representative](mailto:sales@harness.io) to check if you are
 To view a chaos dashboard, follow the steps below.
 
 ### Step 1. Navigate to Chaos Dashboards
+
 Navigate to **Chaos Dashboards**.
 
 ![chaos-dashboard](./static/overview/chaos-dashboard-intro.png)
 
 ### Step 2. Go to Dashboards
+
 Click **Go to Dashboards**.
 
 ![go-to-dashboard](./static/overview/go-to-dashboard.png)
 
 ### Step 3. Select Chaos from list of modules
+
 From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](./create-a-new-dashboard.md). Here, you can select a predefined chaos dashboards.
 
 ![select-chaos](./static/overview/select-chaos.png)
 
 ### Step 4. Predefined dashboard
+
 You will see multiple visualizations in this predefined dashboard.
 
 :::tip
@@ -51,4 +56,4 @@ You can view the data, and download the data in different formats (such as JSON,
 
 ## Next steps
 
-[Create a new dashboard](./create-a-new-dashboard.md) 
+* [Create a new dashboard](./create-a-new-dashboard.md) 

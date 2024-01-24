@@ -134,7 +134,7 @@ spec:
 
 ### Target service
 
-Name of the target service to kill on the specified VM instance. Tune it by using the `SERVICE_NAME` environment variable.
+Name of the target service to kill onxd the specified VM instance. Tune it by using the `SERVICE_NAME` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

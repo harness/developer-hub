@@ -8,6 +8,6 @@
       "title":"GameDay"
    },
   "customProps": {
-    "description": "GameDay documentation"
+    "description": "Methodology to execute chaos experiments in your application during a specific time period"
   }
 }

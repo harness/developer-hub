@@ -1,6 +1,7 @@
 ---
 title: Namespace considerations
 sidebar_position: 2
+description: Execute chaos experiments on specific namespaces
 ---
 This section discusses the steps required to run chaos experiments on specific namespaces.
 

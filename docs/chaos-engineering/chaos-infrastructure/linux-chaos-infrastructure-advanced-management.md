@@ -1,6 +1,7 @@
 ---
 title: Linux chaos infrastructure advanced management
 sidebar_position: 30
+description: Guide to advanced setup with Linux chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), and [logs](#logs) associated with the Linux chaos infrastructure.
 

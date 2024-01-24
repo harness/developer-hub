@@ -207,6 +207,9 @@ Variables such as project name and GitHub repository are runtime inputs. They ar
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code.
 
+<Tabs>
+<TabItem value="GitHub">
+
 [Source](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/nextjs/template.yaml)
 
 ```yaml
@@ -291,6 +294,96 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+</TabItem>
+<TabItem value="GitLab">
+
+[Source](https://github.com/harness-community/idp-samples/blob/main/template-gitlab.yaml)
+
+```yaml
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: react-app
+  title: Create a react app
+  description: A template to create a new react app
+  tags:
+    - nextjs
+    - react
+    - javascript
+spec:
+  owner: name@company.io
+  type: service
+  parameters:
+    - title: Next.js app details
+      required:
+        - project_name
+        - gitlab_repo
+      properties:
+        project_name:
+          title: Name of your new app
+          type: string
+          description: Unique name of the app
+        gitlab_repo:
+          title: Name of the GitLab repository
+          type: string
+          description: This will be the name of Repository on GitLab
+        isPublish:
+          title: Do you wish to publish the artifact the internal registry?
+          type: boolean
+    - title: Service Infrastructure Details
+      required:
+        - owner
+      properties:
+        cloud_provider:
+          title: Choose a cloud provider for Deployment
+          type: string
+          enum: ["GCP", "AWS"]
+          default: GCP
+        db:
+          title: Choose a Database Type for the Service
+          type: string
+          enum: ["None", "MySQL", "Postgres", "MongoDB"]
+          default: None
+        cache:
+          title: Choose a caching system for the Service
+          type: string
+          enum: ["None", "Redis"]
+          default: None
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/QE_Team/projects/Quality_Assurence/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          gitlab_repo: ${{ parameters.gitlab_repo }}
+          cloud_provider: ${{ parameters.provider }}
+          db: ${{ parameters.db }}
+          cache: ${{ parameters.cache }}
+        apikey: ${{ parameters.token }}
+
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+```
+
+</TabItem>
+</Tabs>
 
 This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts:
 
