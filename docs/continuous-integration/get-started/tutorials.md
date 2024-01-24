@@ -1,6 +1,6 @@
 ---
 title: Try Harness CI
-description: Learn about Harness CI through step-by-step tutorials, interactive labs, and videos.
+description: Explore Harness CI and the features that make it four times faster than the leading competitors.
 sidebar_position: 4
 helpdocs_topic_id: x0d77ktjw8
 helpdocs_category_id: pjovrkldfq
@@ -10,10 +10,6 @@ redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart
   - /tutorials/ci-pipelines/fastest-ci
 ---
-
-This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitors.
-
-# Get started for free with the fastest CI on the planet
 
 <CTABanner
   buttonText="Sign Up"
@@ -26,28 +22,22 @@ This tutorial helps you get started with Harness CI and explore some of the feat
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-:::info
-
-[Sign up for free to try the world's fastest CI](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Top-Banner)
-
-:::
-
-## Harness CI
-
 Harness CI is a modern Continuous Integration platform that empowers busy teams to automate their build, test, and release workflows using a powerful, cloud-native pipeline engine.
 
 <figure>
 
-![Harness CI is the world's fastest CI - 4x faster.](static/ci-tutorial-fast/cifast.png)
+![Harness CI is the world's fastest CI - 4x faster.](./static/cifast.png)
 
 <figcaption></figcaption>
 </figure>
+
+## Build faster and be more productive
 
 Developers are frustrated with the time it takes to ship code and often end up wasting their precious time waiting for the builds to complete.
 
 <figure>
 
-![An XKC comic captioned: The number one programmer excuse for legitimately slacking off, "My code's compiling."](static/ci-tutorial-fast/xkcd.png)
+![An XKC comic captioned: The number one programmer excuse for legitimately slacking off, "My code's compiling."](./static/xkcd.png)
 
 <figcaption></figcaption>
 </figure>
@@ -56,29 +46,64 @@ With Harness CI, you can build faster and be more productive. Harness CI's prici
 
 Harness CI is built on Drone. Over the last 10 years, we focused on solving developers' frustration with the time it took to ship code with existing CI tools. Harness CI's vision is to create a CI tool that is fast, simple, open, and secure.
 
+Developer productivity is a core pillar for Harness. We didn't want to build a CI tool that was fast but complex to use. You can get started quickly with any language in Harness CI, with out-of-the-box starter templates and code-first development. You can connect to any Source Code Management (SCM) system, build any apps for any language or platform, and host it anywhere.
+
+![CI Getting Started](./static/gettingstarted.gif)
+
+Harness CI has great [features](./overview), like plugin support, that help you build faster and be more productive. Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) or [create your own](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) and run them on a container or build's host machine.
+
+:::info
+
+[Sign up for free to try the world's fastest CI.](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Get-Started-Free)
+
+:::
+
 ### Build pipelines four times faster than GitHub Actions
 
 Harness CI is four times faster due to optimized defaults with hosted builds, so you don't have to set up and manage infrastructure or optimize caching and other technologies to improve build times.
 
-Cache Intelligence dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more.
+[Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more.
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
 
-In the following demo video, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
+In the following demo video, Harness goes head-to-head with GitHub Actions. [Sign up for free](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Get-Started-Free) and follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
 
 <DocVideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
 
-### Get started fast
+### Build and test Apache Kafka four times faster on Harness CI
 
-Developer productivity is a core pillar for Harness. We didn't want to build a CI tool that was fast but complex to use. You can get started quickly with any language in Harness CI, with out-of-the-box starter templates and code-first development. You can connect to any Source Code Management (SCM) system, build any apps for any language or platform, and host it anywhere.
+You can build even faster with Harness CI. Learn how you can build and test Apache Kafka four times faster on Harness CI:
 
-![CI Getting Started](static/ci-tutorial-fast/gettingstarted.gif)
+- The data is in: [Harness CI is up to 4X faster than other solutions](https://harness.io/blog/fastest-ci-tool).
+- Try it for yourself: [Sign up for free](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Get-Started-Free) and follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results for yourself.
 
-### Create and share open source plugins
+<figure>
 
-Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins), or [create your own](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) and run it on a container or the host virtual machine.
+![Performance comparisons for Harness, GitHub Actions, and CI Vendor 2.](./static/harness_ci_stats.png)
 
-## Create a pipeline for your favorite language
+<figcaption></figcaption>
+</figure>
+
+Harness CI gives you speed benefits at a much lower cost. We compared the cost of running a single build for Apache Kafka, RocketMQ, and Zookeeper on Harness CI, GitHub Actions, and another CI provider:
+
+- GitHub Actions cost $0.008 per build minute.
+- CI Vendor 2 cost $0.0120 per build minute.
+- Harness CI cost $0.008 per build minute, competitively priced relative to GitHub Actions and priced lower than CI Vendor 2.
+
+With the advantage of being four times faster, your builds will take less time with Harness CI. Combined with the competitive pricing of $0.008 per build minute, your total cost could be 1/4th the cost of the other CI competitors. [Learn more about our test methodology in our fastest CI blog post.](https://harness.io/blog/fastest-ci-tool)
+
+<figure>
+
+![HarnessCI Cost and Speed Performance Chart](./static/costspeedbenefits.png)
+
+<figcaption></figcaption>
+</figure>
+
+## Try Harness CI
+
+This tutorial helps you get started, for free, with the fastest CI on the planet. Create a Harness CI pipeline and explore some of the features that make Harness CI four times faster than the leading competitors.
+
+### Create a pipeline for your favorite language
 
 With Harness CI, you can build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, C# (.NET Core), and more. You can use VMs or containers for Linux, Windows, and Mac operating systems.
 
@@ -231,7 +256,7 @@ steps:
 </TabItem>
 </Tabs>
 
-## Run your pipeline
+### Run your pipeline
 
 1. In the **Pipeline Studio**, select **Run**.
 2. In the **Build Type** field, select **Git Branch**.
@@ -241,36 +266,3 @@ steps:
 You can watch the build progression and find build logs on the [Builds and Build details pages](/docs/continuous-integration/use-ci/viewing-builds).
 
 Congratulations on building your first pipeline!
-
-## Build and test Apache Kafka four times faster on Harness CI
-
-You can build even faster with Harness CI - Learn how you can build and test Apache Kafka four times faster on Harness CI:
-
-- Read the performance data here: [https://harness.io/blog/fastest-ci-tool](https://harness.io/blog/fastest-ci-tool)
-- Follow the instructions for [this sample](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself.
-
-<figure>
-
-![Performance comparisons for Harness, GitHub Actions, and CI Vendor 2.](static/ci-tutorial-fast/harness_ci_stats.png)
-
-<figcaption></figcaption>
-</figure>
-
-Harness CI gives you speed benefits at a much lower cost. We compared the cost of running a single build for Apache Kafka, RocketMQ, and Zookeeper.
-
-- GitHub Actions costs $0.008 per build minute.
-- CI Vendor 2 costs $0.0120 per build minute.
-- Harness CI is competitively priced, at $0.008 per build minute, relative to GitHub Actions, and priced lower than CI Vendor 2.
-
-With the advantage of being four times faster, your builds will take less time. Combined with the competitive pricing of $0.008 per build minute, your total cost could be 1/4th the cost of the other CI competitors. Learn more about our test methodology [here](https://harness.io/blog/fastest-ci-tool).
-
-<figure>
-
-![HarnessCI Cost and Speed Performance Chart](static/ci-tutorial-fast/costspeedbenefits.png)
-
-<figcaption></figcaption>
-</figure>
-
-## Get started for free
-
-[Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Get-Started-Free) for a free Harness CI account and start running your pipelines faster on Harness CI today.
