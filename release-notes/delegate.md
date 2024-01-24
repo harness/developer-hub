@@ -39,6 +39,21 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2024
 
+### Version 24.01.82109
+
+#### Hotfix
+
+- Application logs were printed in TAS deployment execution logs. (CDS-89172)
+
+   Harness added a new environment variable `DISABLE_CF_APP_LOG_STREAMING` to enhance control over this behavior. Setting this variable to `true` will redact all application logs, providing users with more flexibility in managing log visibility. 
+
+<!---
+### Harness version 1.20.9, Harness Delegate version 24.01.82108
+
+There are no new Harness Delegate items included in this release.
+
+--->
+
 ### Harness version 1.17.8, Harness Delegate version 23.12.82000
 
 #### Fixed issues
@@ -101,6 +116,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact. Updating existing green services is beneficial because new containers come up before old ones go down. For more information, go to [Update green services](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services). (CDS-82763)
 
    Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
+
+   This feature is behind the feature flag `CDS_ECS_BG_VALIDATION`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
 
 ###### Fixed issues
 
