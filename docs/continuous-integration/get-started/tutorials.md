@@ -70,7 +70,7 @@ In the following demo video, Harness goes head-to-head with GitHub Actions. [Sig
 
 <DocVideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
 
-### Build and test Apache Kafka four times faster on Harness CI
+### Build and test Apache Kafka four times faster
 
 You can build even faster with Harness CI. Learn how you can build and test Apache Kafka four times faster on Harness CI:
 
@@ -103,7 +103,7 @@ With the advantage of being four times faster, your builds will take less time w
 
 This tutorial helps you get started, for free, with the fastest CI on the planet. Create a Harness CI pipeline and explore some of the features that make Harness CI four times faster than the leading competitors.
 
-### Create a pipeline for your favorite language
+### Create a pipeline
 
 With Harness CI, you can build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, C# (.NET Core), and more. You can use VMs or containers for Linux, Windows, and Mac operating systems.
 
