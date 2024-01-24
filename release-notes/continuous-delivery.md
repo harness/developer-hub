@@ -49,6 +49,52 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2024
 
+### Version 1.22.0
+
+#### New features and enhancements
+- Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
+  - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
+  - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+#### Fixed Issues
+- UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
+  - Previously, deployments would display an error when they were waiting for manual approval. 
+  - A conditional was updated to handle the null check for the approval message, fixing the issue.
+
+- Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
+  - Previous Behavior:The expression ``<+manifestConfig.primaryManifestId>`` expression was used to resolve for the case of multiple helm charts configured in service.
+  - The similar expression can be used to leverage single helm chart configured in service to use helm expression.Refer [Docs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md)
+
+- Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
+  - Issue occurred when using GCP and a GCP access token.
+  - It occurred when the access token expiration overlapped with steady state check (watch) API calls.
+  - The issue is fixed now. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation.
+
+- K8s Async Steps - Invalid task type exception has been thrown when task parameter is not provided (CDS-87708)
+  - Invalid task type and Null Pointer Exceptions were thrown instead of marking the Step as Skipped.
+  - The step will now be correctly marked as Skipped, fixing the issue.
+
+- Github release trigger not working as expected because UI didn't show the Conditions (CDS-87647, ZD-55832)
+  - There were inconsistencies in webhook trigger payload conditions in YAML and Visual views with the event type.
+  - This has been fixed. Visual and YAML views will show consistent behavior between them.
+
+- Support use of ‘#’ for branch names (CDS-87468, ZD-55625)
+  - Previously, certain special characters were not supported by GET calls.
+  - From now on branches that have special characters such as '&' and '#' will be supported by GET pipeline calls for Remote entities.
+
+- ServiceNow approval conditions dropdown gives invalid values (CDS-86809)
+  - Previously, an approval conditions dropdown menu was auto-populating with an invalid [object Object] value or other invalid values.
+  - The issue is fixed now.
+
+- Remove application details from NewRelic if it is empty (CDS-88190)
+  - 
 ### Version 1.21.5
 
 #### New features and enhancements
