@@ -80,7 +80,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.7.0
 
- - This version updates the JavaScript SDK to the latest version. This will now make your experience using the React Native much better. (FFM-10488)
+ - This version updates the JavaScript SDK to the latest version. This will now make your experience using with React Native much better. (FFM-10488)
 
 # Previous releases
 
