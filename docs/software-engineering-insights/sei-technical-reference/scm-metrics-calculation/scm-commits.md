@@ -5,7 +5,7 @@ sidebar_label: SCM Commits
 sidebar_position: 30
 ---
 
-This topic provides a guide on how are SCM commits calculated on SEI.
+This topic provides a guide on how SCM commits are fetched from various SCM providers on SEI.
 
 SEI facilitates the retrieval of commit data in two ways, each catering to different aspects of version control and collaborative development.
 
