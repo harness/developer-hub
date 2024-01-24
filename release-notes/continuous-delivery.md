@@ -55,13 +55,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
   - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
   - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+  - 
 #### Fixed Issues
 - UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
   - Previously, deployments would display an error when they were waiting for manual approval. 
   - A conditional was updated to handle the null check for the approval message, fixing the issue.
 
 - Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
-  - Previous Behavior:The expression ``<+manifestConfig.primaryManifestId>`` expression was used to resolve for the case of multiple helm charts configured in service.
+  - Previous Behavior: The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service.
   - The similar expression can be used to leverage single helm chart configured in service to use helm expression.Refer [Docs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md)
 
 - Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
