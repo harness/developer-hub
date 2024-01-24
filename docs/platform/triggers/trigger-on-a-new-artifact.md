@@ -400,6 +400,12 @@ To configure multi region for the artifact, do the following:
 
 If your pipeline uses [input sets](../pipelines/input-sets.md), you can select the input set to use when the trigger executes the pipeline.
 
+#### Customize trigger input configuration using override YAML
+
+To use an input set for both trigger and manual runs,you can easily achieve this by overriding input parameters in trigger ``inputYAML`` configuration. This provides the flexibility to modify a specific parameter within the associated ``Input Set``.
+
+For more details, go to [Customize trigger input configuration using override YAML](/docs/platform/triggers/customize_trigger_input_configuration_using_override_yaml.md)
+
 ### Enable or disable trigger
 
 You can enable or disable triggers using the enabled toggle:
