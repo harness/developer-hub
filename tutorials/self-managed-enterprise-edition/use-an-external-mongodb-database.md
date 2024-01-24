@@ -97,6 +97,10 @@ platform:
       enabled: false
 ```
 
+## TLS support
+
+TLS is supported with MongoDB Atlas using the `mongodb+srv` protocol. No additional change is required in the `override.yaml` file to enable TLS for MongoDB Atlas.
+
 ## FAQs
 
 ### How do I resolve an out of sync issue?
