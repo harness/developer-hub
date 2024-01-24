@@ -2544,3 +2544,31 @@ If you face this issue on an account that was registered using your work mail ID
 #### Does harness AIDA support APIs for developers to create custom AI/ML solutions?
 
 No! AIDA does not offer Rest APIs to be used by Harness Users.
+
+#### How to Extend the Timeout Duration for a Custom Secret Manager?
+
+To increase the timeout duration in a custom secret manager, adjust the settings in the connector's details step. This timeout setting, measured in seconds, determines how long the system will wait to fetch secrets from the custom provider. If fetching the secret exceeds this duration, the process is interrupted and results in failure. The default timeout value is set to 20 seconds. To avoid such interruptions, you can modify this value to a higher number as per your requirements.
+
+#### Can secrets access be scoped by environments?
+
+Currently, the functionality to restrict access to secrets based on individual environments is not available. However, a potential alternative is to structure your account by dividing environments across different organizational projects. This method won't directly scope secrets to specific environments, but it can help in managing access by associating secrets with the relevant organizational context, thus maintaining a level of separation and control.
+
+#### How can CCM Admin roles be removed from users who were directly assigned these rRoles?
+
+In the past, as part of our product strategy, we granted all users the CCM Admin role by default. This policy has since been changed. If customers wish to revoke these role assignments, they will need to identify the affected users, retrieve their role assignments via API, and then proceed to bulk delete these specific role assignments.
+
+#### Where are the settings for an individual user email notifications?
+
+Currently, we don’t support individual user e-mail notifications.
+
+#### How can we export users from Harness?
+
+Currently, we do not support a direct functionality for exporting all users. To export users from Harness, you can utilize our API method getUsers.
+
+#### How to solve the error “You are missing the following permission: Create / Edit Pipelines”?
+
+To resolve the error ```You are missing the following permission: Create / Edit Pipelines```, you need to assign the ```Write Pipelines``` permission to your user.
+
+#### How to export all AutoStopping rules?
+
+Currently, we do not support a direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, we recommend using our API method ```List AutoStopping Rules```.

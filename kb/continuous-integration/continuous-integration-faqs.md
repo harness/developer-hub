@@ -1760,6 +1760,10 @@ For pipelines, the default timeout limit is, generally, the product of the stage
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
 
+### What is the recommended procedure for dealing with a corrupted file while using Restore S3 Cache step?
+
+If a file becomes corrupted in the bucket during the restoration process, it is best practice to remove the corrupted file from the bucket. To ensure robustness in your pipeline, think about incorporating a Failure Strategy into the restore step to mitigate pipeline failures.
+
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).

@@ -225,7 +225,7 @@ Here you can see two service deployments run serially on the same infrastructure
 
 ## Propagating multiple services
 
-By default, you cannot propagate the multiservices from one stage to a subsequent stage.
+Multi-services propagation is supported from one stage to a subsequent stage.
 
 ## Using environment groups
 
