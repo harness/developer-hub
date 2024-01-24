@@ -27,8 +27,13 @@ This topic describes how to set up a Grafana Loki health source when adding a CV
 
 ## Set up continuous verification
 
-To set up CV, you need to configure a Service Reliability Management (SRM)-monitored service. A monitored service is a mapping of a Harness service to a service that is being monitored by your Application Performance Monitoring (APM) or logging tool.
+To set up CV, you will need a Harness Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.
 
+You can set up a Monitored Service in the Verify step in a CD stage.
+
+There are other ways to set up a Monitored Service. To learn more see: [Monitored Service](docs/platform/monitored-service.md)
+
+In this topic we'll set up the Monitored Service as part of the **Verify** step.
 
 ## Add a Verify step to your CD pipeline
 
