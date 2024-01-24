@@ -97,7 +97,7 @@ To build your custom delegate image, do the following:
    This copies all the certificates from the local `./my-custom-ca` directory to `/opt/harness-delegate/my-ca-bundle/` directory inside the container.
 
    :::info warning
-   Don't copy your certificates to the folder `/opt/harness-delegate/ca-bundle` folder. This folder is reserved for storing additional certificates to install the delegate.
+   Don't copy your certificates to the folder `/opt/harness-delegate/ca-bundle` folder. This folder is reserved for storing additional certificates to install the delegate. For more information, go to [Install with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/#install-with-custom-certificates ).
 
    Set the user to root before you run the `load_certificates.sh` script. Then set the user back to normal access after you run the script.
 
