@@ -39,6 +39,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2024
 
+### Version 24.01.82109
+
+#### Hotfix
+
+- Application logs were printed in TAS deployment execution logs. (CDS-89172)
+
+   Harness added a new environment variable `DISABLE_CF_APP_LOG_STREAMING` to enhance control over this behavior. Setting this variable to `true` will redact all application logs, providing users with more flexibility in managing log visibility. 
+
 <!---
 ### Harness version 1.20.9, Harness Delegate version 24.01.82108
 
