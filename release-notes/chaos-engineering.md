@@ -666,7 +666,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 #### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview.md). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
