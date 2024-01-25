@@ -55,7 +55,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
   - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
   - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
-    
+
+- Remove application details from NewRelic if it is empty (CDS-88190)
+  - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
+
+- Show accountId in Switch Account screen(CDS-88728)
+  - Enhanced the Switch Account experience to show more data i.e ``AccountId``.
 #### Fixed Issues
 - UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
   - Previously, deployments would display an error when they were waiting for manual approval. 
@@ -69,9 +74,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Issue occurred when using GCP and a GCP access token.
   - It occurred when the access token expiration overlapped with steady state check (watch) API calls.
   - The issue is fixed now. 
-
-- Remove application details from NewRelic if it is empty (CDS-88190)
-  - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
 
 - Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
   - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
