@@ -48,7 +48,8 @@ The recommended workflow is add an AWS ECR step to a Security Tests or CI Build 
 
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
 import StoSettingScanModeDataLoad from './shared/step_palette/scan/mode/_extraction.md';
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 

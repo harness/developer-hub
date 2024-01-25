@@ -63,7 +63,8 @@ The recommended workflow is add an Anchore Enterprise step to a Security Tests o
 #### Scan mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
 
 import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';

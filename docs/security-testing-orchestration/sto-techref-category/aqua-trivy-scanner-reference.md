@@ -68,7 +68,8 @@ The recommended workflow is add an AquaTrivy step to a Security Tests or CI Buil
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
 
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';

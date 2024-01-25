@@ -53,7 +53,8 @@ A Docker-in-Docker background step is not required for this workflow.
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
 import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
 
 import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';

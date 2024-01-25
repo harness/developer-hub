@@ -49,7 +49,8 @@ The recommended workflow is add a Mend step to a Security Tests or CI Build stag
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
 import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
 
 import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
@@ -78,7 +79,9 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 #### Type
 
 
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
+import StoSettingScanType from './shared/step_palette/scan/_type.md';
+
+
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
