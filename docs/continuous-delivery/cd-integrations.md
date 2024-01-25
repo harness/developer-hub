@@ -220,10 +220,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Optimize Jira Approval stage/step to only fetch relevant fields. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_JIRA_UPDATE_SELECT_FIELDS_ENABLED</td>
-        <td>Enable Jira <b>Select Fields</b> setting for Jira Update step using project and issue type. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST</td>
         <td>Enable the option to update multiple tasks in ServiceNow.</td>
     </tr>

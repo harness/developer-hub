@@ -12,7 +12,7 @@ Yes. [Harness CI offers many options for mobile app development.](https://develo
 
 ## I have a MacOS build, do I have to use homebrew as the installer?
 
-No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes p-reinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
+No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
 
 ## Build infrastructure
 
@@ -1759,6 +1759,10 @@ By default, a stage can run for a maximum of 24 hours on a Kubernetes cluster bu
 For pipelines, the default timeout limit is, generally, the product of the stage limit multiplied by the number of stages. For example, a pipeline with three stages that use a Kubernetes cluster build infrastructure could run for a maximum of 72 hours. However, you can also set an overall pipeline timeout limit in each pipeline's **Advanced Options**.
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
+
+### What is the recommended procedure for dealing with a corrupted file while using Restore S3 Cache step?
+
+If a file becomes corrupted in the bucket during the restoration process, it is best practice to remove the corrupted file from the bucket. To ensure robustness in your pipeline, think about incorporating a Failure Strategy into the restore step to mitigate pipeline failures.
 
 ## General issues with connectors, secrets, delegates, and other Platform components
 

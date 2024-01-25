@@ -12,6 +12,7 @@ const Roadmap = () => {
     { value: "cd", name: "Continuous Delivery & GitOps" },
     { value: "ci", name: "Continuous Integration" },
     { value: "ff", name: "Feature Flags" },
+    {value: "platform", name:"Platform"},
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

@@ -56,7 +56,7 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 ### Add Security Testing roles
 
-Harness includes two [RBAC roles](//docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
+Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
 
 * **Developer** role — Permissions for developer workflows: 
 

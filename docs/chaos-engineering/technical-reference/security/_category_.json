@@ -8,6 +8,6 @@
       "title":"Security"
    },
   "customProps": {
-    "description": "Harness Chaos security"
+    "description": "Security considerations and features across administrative and runtime environments"
   }
 }

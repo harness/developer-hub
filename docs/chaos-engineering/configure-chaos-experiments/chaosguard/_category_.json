@@ -8,6 +8,6 @@
       "title":"Chaosguard"
    },
   "customProps": {
-    "description": "Chaosguard"
+    "description": "An additional layer of security to guard experiments from chaos-enabled users"
   }
 }

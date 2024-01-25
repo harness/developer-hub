@@ -20,6 +20,39 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## January 2023
 
+### Version 0.20.0
+
+<!-- Jan 25, 2024 -->
+
+🐣 "Easter Came Early This Year! 🚀 In our latest update, we're egg-cited to unveil the delightful additions of **custom plugins** – features you've eagerly anticipated. Here are some of the Docs and Tutorials to help you get started. 
+
+- **Docs:** [Custom Plugins](https://developer.harness.io/docs/category/custom-plugins), [Roadmap](https://developer.harness.io/docs/internal-developer-portal/roadmap/), [Harness IDP vs Self Managed Backstage - In-depth Feature Comparison](https://developer.harness.io/docs/internal-developer-portal/roadmap/harness-vs-backstage)
+
+- **Video Tutorial:** [How to Add Custom Plugins In Harness IDP](https://youtu.be/6ab9xQY7kSE)
+
+
+#### Early access features
+
+- We have added support for [custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview), which enables users to upload their own frontend backstage plugins to Harness IDP. This feature is behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. To enable the feature, please reach out to IDP team or contact [Harness Support](mailto:support@harness.io). [IDP-771]
+
+![](./static/layout.png)
+![](./static/custom-plugin-view.png)
+
+- Added the support to push code to the existing main branch of git providers in the [Create Repo step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) under [Developer Portal Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), this stage is presently behind the feature Flag `IDP_ENABLE_STAGE`. To enable the feature, please reach out to IDP team contact [Harness Support](mailto:support@harness.io). [IDP-1944]
+
+#### New features and enhancements
+
+- Added support for Workflow Executions in Audit trails. [IDP-1989]
+- Added support for CSV Downloads in Scorecards and Checks overview pages. [IDP-1932]
+
+![](./static/export-csv-checks.png)
+
+#### Bug Fixes
+
+- Fixed deletion of env variable while adding the new env variable during config updates. [IDP-2031]
+- Fixed the incorrect redirect from the getting started page, this now won't allow users to get into IDP overview page without completion of the onboarding steps. [IDP-1993]
+- Fixed the Scaffolder Backend Caching issue, this now would allow users to execute workflow templates with all default values without any authentication failure. [IDP-2001]
+
 ### Version 0.19.0
 
 <!-- Jan 19, 2024 -->

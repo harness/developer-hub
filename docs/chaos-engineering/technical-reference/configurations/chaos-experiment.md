@@ -1,13 +1,14 @@
 ---
-title: Chaos Experiment
+title: Chaos experiment
 sidebar_position: 2
+description: Chaos experiment specification and its values
 ---
 
 Granular definition of chaos intent specified via image, library, necessary permissions, low-level chaos parameters (default values).
 
-This section describes the fields in the ChaosExperiment and the possible values that can be set against the same.
+This section describes the fields in the chaos experiment and the possible values that can be set against the same.
 
-## Component Specifications
+## Component specifications
 
 <table>
   <tr>

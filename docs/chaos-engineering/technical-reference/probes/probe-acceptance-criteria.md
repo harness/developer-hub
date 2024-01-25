@@ -1,6 +1,7 @@
 ---
 title: Probe acceptance criteria
 sidebar_position: 9
+description: Operations performed on probes
 ---
 
 ## Before you begin

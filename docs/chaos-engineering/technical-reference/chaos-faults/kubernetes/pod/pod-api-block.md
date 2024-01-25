@@ -31,7 +31,7 @@ Pod API block:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to API block. </td>
-        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> TARGET_SERVICE_PORT </td>
