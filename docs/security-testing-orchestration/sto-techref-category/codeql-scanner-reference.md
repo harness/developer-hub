@@ -74,7 +74,8 @@ The recommended workflow is to add a CodeQL step to a Security Tests or CI Build
 ### Scan Mode
 
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
 
 
 <StoSettingScanModeIngest />

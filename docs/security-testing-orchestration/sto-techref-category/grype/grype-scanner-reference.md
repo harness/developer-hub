@@ -64,9 +64,9 @@ The recommended workflow is add a Grype step to a Security Tests or CI Build sta
 #### Scan Mode
 
 
-import StoSettingScanMode from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/mode/orchestration.md';
-import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/mode/ingestion.md';
+import StoSettingScanMode from '../shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
 
 <!-- StoSettingScanMode / -->

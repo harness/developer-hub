@@ -64,9 +64,11 @@ The recommended workflow is add a BlackDuck step to a Security Tests or CI Build
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
-import StoSettingScanModeDataload from './shared/step_palette/scan/mode/extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeDataload from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
 
 <!-- 
 add Dataload support per DOC-2794 

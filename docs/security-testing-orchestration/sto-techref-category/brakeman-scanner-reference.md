@@ -47,8 +47,10 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
 
 
 <!-- StoSettingScanMode / -->

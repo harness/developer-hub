@@ -28,7 +28,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 ### Scan Mode
 
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
 
 
 <StoSettingScanModeIngest />

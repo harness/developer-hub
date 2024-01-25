@@ -37,9 +37,10 @@ To set up a scan using the scanner template, add a SecurityTests or a CI Build s
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/scan/mode/extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
 
 
 <!-- StoSettingScanMode / -->
