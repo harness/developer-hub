@@ -26,11 +26,6 @@ In the following cases, you might want to set up Relay Proxy:
 
 If you decide to use the Relay Proxy, make sure it has a good place in your network design. For your app to run, it needs to be able to contact the Relay Proxy, and the architecture differs depending on the type of app. For example, if you want to link the Relay Proxy to any client-side apps, don't put it inside a firewall.
 
-
-## How To Set Up The Relay Proxy V2
-
-<!-- Should I include set up instructions here? Not mentioned in V1 Docs but unsure if it's necessary -->
-
 ## Relay Proxy V2 Architecture 
 
 ### HA Mode
@@ -99,12 +94,16 @@ When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retr
 
 ![A diagram of the Relay Proxy V2 Architecture in Single Proxy Mode. ](./images/relay_proxy_v2_single_proxy.png)
 
-### Creating A Proxy Key
+# The Proxy Key V2
+
+<!-- Should I include set up instructions here? Not mentioned in V1 Docs but unsure if it's necessary -->
+
+## Creating A Proxy Key
 
 <!-- In order to create a Proxy Key, you'll need to update this once the UI has been implemented but for now we can do this using the /admin/proxy/keys API. -->
 
 
-#### Required Configuration
+### Required Configuration
 
 <!-- Need to add paragraph with explanation of the below -->
 
@@ -125,7 +124,29 @@ When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retr
 | `READ_REPLICA`   | `true` | Determines whether the Proxy runs as a Primasry or Read Replica. | false |
 | `AUTH_SECRET`   | `somethingSecret` | Used to sign JWT tokens that the proxy generates during /auth requests. | "" |
 
-#### Startup Sequence
+### Rotating a Proxy Key
+
+There are two ways that you can rotate your Proxy Key:
+ 1. Immediate rotation
+ 2. Buffered rotation
+
+It’s worth noting that if you use immediate rotation, the old Proxy Key will become invalid and any Proxy’s using that key will be cut off from Harness Saas and unable to receive any updates until you reconfigure it to use the new key value. For this reason you’ll probably only want to use immediate key rotation if you’re concerned that your Proxy Key has been leaked.
+
+If you just want to rotate your Proxy Key as a part of security practices then you’ll want to use the buffered rotation. With buffered rotation we allow the old key value to stay valid for a specified number of hours to give you time to reconfigure and redeploy your Proxy with the new key value. This means that there’s no down time for your Proxy where it loses connection with Harness Saas in between the time you rotate the key in the UI and redeploy your Proxy with the update key value. For example, if I set the buffer time to two hours when I rotate my key, that means my Proxy will be able to use the old key for up to two hours before it’s cut off from Harness Saas.
+
+### Key Rotation
+
+The user will be able to easily rotate the key by making request to the Admin API. 
+
+A new key will be given and the old key will be rendered invalid. All auth tokens will also be invalidated.
+
+### Monitoring the Proxy
+
+To monitor the Proxy, here is an example that users can run locally. It will bring up a Primary Proxy, Read Replica, Prometheus and Grafana using Docker. They can, then, log in to Grafana and view the Harness FF Proxy Dashboard. 
+
+You can find this resource to monitor the Proxy over in the [Harness Feature Flags Proxy Repo on GitHub](https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoring) on GitHub.
+
+### Startup Sequence
 
 <!-- Need to add paragraph with explanation of the below? -->
 
@@ -135,7 +156,7 @@ When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retr
 
 ![A diagram of the Replica Proxy V2 Startup Sequence. ](./images/replica_startup_sequence.png)
 
-#### Cached Data
+### Cached Data
 
 <!-- Need to add paragraph with explanation of the below? -->
 
@@ -183,6 +204,10 @@ When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retr
 
 <!-- Need to fix the above for accessibility -->
 
+### Inbound Endpoints
+
+This hasn’t changed from Proxy v1 so these docs still apply Inbound endpoints | Harness Developer Hub .
+
 ### Outbound Endpoints
 
 Below, you will find the endpoints requested by the Primary Relay Proxy when it communicates with Harness SaaS. Remember, 'Read Replica Proxy' only communicates with the Redis cache. 
@@ -205,7 +230,7 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the latest config associated with the Proxy Key. This request is made periodically if the stream between the Primary Proxy and Harness SaaS goes down to make sure the Proxy doesn’t get out of sync.  |
 | POST   | https://config.ff.harness.io/api/1.0/metrics/<envID> | Forwards metrics from the SDKs on to the Harness SaaS. |
 
-### Account Stream
+## Account Stream
 
 When the Proxy starts assuming that the configuration is correct, it will first attempt to authenticate with the SAAS using the Proxy key configured. If the authentication is successful, the Proxy will receive and store the `proxyAuth` token to use later to:
  - start the acc level stream,
@@ -215,13 +240,13 @@ When the Proxy starts assuming that the configuration is correct, it will first 
 
 If the Proxy key is deleted by the user, the event will be sent to the proxy with information to close the stream channel.
 
-#### Stream Reconnect
+### Stream Reconnect
 
 If the stream were to disconnect unexpectedly, it will stop itself from connecting and will resume attempting to reconnect after a period of time.
 
-##### Stream Terminations
+### Stream Terminations
 
-#### SAAS - Proxy
+### SAAS - Proxy
 
 The Proxy is configured to a specific key. Here is a breakdown of what happens when the Stream disconnects.:
 
@@ -230,7 +255,7 @@ The Proxy is configured to a specific key. Here is a breakdown of what happens w
  3. Once this happens, the proxy will attempt to clear all the assets assigned to the key in the cache to prevent `false positive` reading values by the downstream SDKs.
  4. In this case, the SDK should no longer be able to read the actual value of the asset and will go with the default value used by client.
 
-#### Proxy - SDKs
+### Proxy - SDKs
 
 The termination of the connection between the Proxy and the SDK occurs when `Environment` or the `APIKey` are deleted. If that were to happen:
 
@@ -238,53 +263,29 @@ The termination of the connection between the Proxy and the SDK occurs when `Env
  2. Similarly, the proxy will update the list of assets in the cache. This will result in either deleting the key or deleting all the assets for delete environment. This will render all existing auth tokens using deleted environment/key invalid.  All SDKs subscribed to the environment, or those using deleted APIKey will be sent “end of stream” message and should subsequently close the connection. 
 Normally they would fall back to the pooling mode but because in both cases APIKey no longer exists, SDK will not be able to authenticate using its auth token. 
 
-### Cache cleanup 
-When proxy starts, first it will attempt to fetch the proxy config from the SAAS and populate the cache with inventory of assets for each environment associated with the key - including APIKeys, Features and Segments.  Smart cleanup has been implemented to cover a scenario in which assets in cache are off sync with the current state of SAAS. This could be the case if proxy is off for period of time or it cannot establish connection with SAAS. When the connection is reestablished, or when proxy starts and the cache instance is not empty, Proxy will pull the latest config and scan the existing cache entries. It will then delete all the entries which are not in the latest config to ensure the state is matching.
+
+### Cache Cleanup 
+
+When the proxy begins, it will attempt to fetch the proxy config from the SAAS and populate the cache with inventory of assets for each environment associated with the key which incudes: 
+ - `APIKeys`,
+ - Features and, 
+ - Segments.
+
+The Smart Cleanup feature has been implemented to cover a scenario in which assets in cache are off sync with the current state of SAAS. 
+
+This could be the case if proxy is off for period of time or it cannot establish connection with SAAS. When the connection is reestablished, or when proxy starts and the cache instance is not empty, Proxy will pull the latest config and scan the existing cache entries. It will then delete all the entries which are not in the latest config to ensure the state is matching.
 
 ### Cache refresh
 
-To minimise api request between Proxy and SAAS, proxy will fetch new config when flag/segment is created or patched. When asset is deleted we will handle cache update without any additional request to the SAAS.
-
-### Key Rotation
-
-User will be able to easily rotate the key by making request to the admin api. 
-
-New key will be returned and old key will be rendered invalid. All auth tokens will also be invalidated.
+To minimise the api requests between Proxy and SAAS, Proxy will fetch a new config when the flag/segment is created or patched. When the asset is deleted, we will handle the cache update without any additional request to the SAAS.
 
 ![A diagram of the Proxy Key Rotation Structure. ](./images/proxy_key_rotation.webp)
 
 ### E2E Journey
 
-<!-- Need to add paragraph with explanation of the below? -->
+Below, you will find a diagram of the the End-to-End Journey of the Proxy Rotation. 
 
 ![A diagram of the End to End Journey. ](./images/proxy_key_rotation.webp)
-
-### Inbound Endpoints
-
-This hasn’t changed from Proxy v1 so these docs still apply Inbound endpoints | Harness Developer Hub 
-
-### Monitoring the Proxy
-
-Example that users can run locally that will bring up a Primary Proxy, Read Replica, Prometheus and Grafana using docker. They can then log in to Grafana and view the Harness FF Proxy Dashboard
-
-https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoringConnect your Github account 
-
-
-Grafana Dashboard that users can import to monitor the Proxy Harness FF Proxy | Grafana Labs 
-
-### Constraints 
-
-Currently due to the way we implement authentication token user has a had limit of 1000 environments per key
-
-### Rotating a Proxy Key
-
-There are two ways that you can rotate your Proxy Key:
- 1. Immediate rotation
- 2. Buffered rotation
-
-It’s worth noting that if you use immediate rotation, the old Proxy Key will become invalid and any Proxy’s using that key will be cut off from Harness Saas and unable to receive any updates until you reconfigure it to use the new key value. For this reason you’ll probably only want to use immediate key rotation if you’re concerned that your Proxy Key has been leaked.
-
-If you just want to rotate your Proxy Key as a part of security practices then you’ll want to use the buffered rotation. With buffered rotation we allow the old key value to stay valid for a specified number of hours to give you time to reconfigure and redeploy your Proxy with the new key value. This means that there’s no down time for your Proxy where it loses connection with Harness Saas in between the time you rotate the key in the UI and redeploy your Proxy with the update key value. For example, if I set the buffer time to two hours when I rotate my key, that means my Proxy will be able to use the old key for up to two hours before it’s cut off from Harness Saas.
 
 ## FAQs About Relay Proxy V2
 
@@ -312,23 +313,6 @@ Relay Proxy V2 was developed to fix some of the limitations that came with Relay
  -- With Proxy V2 we’ve made it possible to. configure Proxy’s to run specifically as read replicas or a Primary that communicates with Harness SaaS. This was something that isn’t available with Proxy V1 and if you want to run multiple Proxy’s in V1 they all run as Primary’s.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Why use the Relay Proxy?
 
 In the following cases, you might want to set up Relay Proxy:
@@ -338,6 +322,10 @@ In the following cases, you might want to set up Relay Proxy:
 * **High Availability / Reliability**: The feature flag service is extremely reliable. We will fail over to the failover cluster in the event of a major failure. However, in the event of a full network loss, the Relay Proxy ensures that your apps continue to run even after restarts.
 
 If you decide to use the Relay Proxy, make sure it has a good place in your network design. For your app to run, it needs to be able to contact the Relay Proxy, and the architecture differs depending on the type of app. For example, if you want to link the Relay Proxy to any client-side apps, don't put it inside a firewall.
+
+### Are there any constraints to the Relay Proxy V2?  
+
+At this current time and due to the way Harness implements the authentication tokens, users have a limit of 1000 environments per key. 
 
 ### Related Content
 
