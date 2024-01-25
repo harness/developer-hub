@@ -1,55 +1,32 @@
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
-  "time one": {
-    description: "Description",
+  "Now": {
+    description: "What is being delivered now",
     feature: [
       {
-        title: "cd title 1",
-        description: "description 1",
-      },
-      {
-        tag: ["K8s", "security"],
-        title: "cd title 2",
-        description: "description2 ",
-      },
-      {
-        title: " cd title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Now",
+        description: "Description Now",
       },
     ],
   },
-  "time two": {
-    description: "Description two",
+  "Next": {
+    description: "What is being developed next",
     feature: [
       {
-        tag: ["K8s", "security"],
-        title: "cd title 1",
-        description: "description 1",
-      },
-      {
-        title: "cd title 2",
-        description: "description2 ",
-      },
-      {
-        title: " cd title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Next",
+        description: "Description Next",
       },
     ],
   },
-  "time three": {
-    description: "Description threes",
+  "Later": {
+    description: "What is being developed later",
     feature: [
       {
-        title: "cd title 1",
-        description: "description 1",
-      },
-      {
-        title: "cd title 2",
-        description: "description2 ",
-      },
-      {
-        title: " cd title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Later",
+        description: "Description Later",
       },
     ],
   },

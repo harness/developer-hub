@@ -9,10 +9,10 @@ import Link from "@docusaurus/Link";
 const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
-    { value: "cd", name: "Continuous Delivery & GitOps" },
-    { value: "ci", name: "Continuous Integration" },
-    { value: "ff", name: "Feature Flags" },
-    {value: "platform", name:"Platform"},
+    { value: "platform", name:"Platform"},
+    { value: "cd", name: "Continuous Delivery & GitOps - Coming Soon" },
+    { value: "ci", name: "Continuous Integration - Coming Soon" },
+    { value: "ff", name: "Feature Flags - Coming Soon" },  
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
