@@ -1,14 +1,13 @@
 ---
-sidebar_position: 8
-title: iOS and macOS applications
+title: iOS/macOS
 description: Use a CI pipeline to build and test iOS and macOS applications.
-keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/ios
+sidebar_position: 40
+redirect_from:
+  - /tutorials/ci-pipelines/build/ios
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CTABanner
   buttonText="Learn More"
@@ -24,8 +23,6 @@ You can build and test [iOS](https://developer.apple.com/ios/) and [macOS](https
 The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You can also use [Fastlane](https://docs.fastlane.tools/) to build and test your iOS and macOS apps.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-
-<CISignupTip />
 
 ## Specify architecture
 

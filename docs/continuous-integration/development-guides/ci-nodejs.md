@@ -1,14 +1,13 @@
 ---
-sidebar_position: 4
-title: NodeJS application
+title: NodeJS
 description: Use a CI pipeline to build and test a NodeJS application.
-keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/nodejs
+sidebar_position: 70
+redirect_from:
+  - /tutorials/ci-pipelines/build/nodejs
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CTABanner
   buttonText="Learn More"
@@ -22,8 +21,6 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 You can build and test a [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-
-<CISignupTip />
 
 ## Install dependencies
 

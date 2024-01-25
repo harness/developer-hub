@@ -1,12 +1,12 @@
 ---
-sidebar_position: 2
-title: Go application
+title: Go
 description: Use a CI pipeline to build and test a Go application.
-keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/go
+sidebar_position: 30
+redirect_from:
+  - /tutorials/ci-pipelines/build/go
+  - /tutorials/ci-pipelines/build/
 ---
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,8 +22,6 @@ import TabItem from '@theme/TabItem';
 You can build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-
-<CISignupTip />
 
 ## Install dependencies
 

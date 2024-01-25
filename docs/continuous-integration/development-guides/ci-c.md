@@ -1,12 +1,11 @@
 ---
-sidebar_position: 3
-title: C/C++ application
+title: C/C++
 description: Use a CI pipeline to build and test C and C++ applications.
-keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/c
+sidebar_position: 20
+redirect_from:
+  - /tutorials/ci-pipelines/build/c
 ---
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,8 +21,6 @@ import TabItem from '@theme/TabItem';
 You can build and test C and C++ applications on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure. This guide uses a Linux platform, but you can also use macOS and Windows platforms with Harness.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-
-<CISignupTip />
 
 ## Install dependencies
 

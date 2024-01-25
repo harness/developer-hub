@@ -1,14 +1,13 @@
 ---
-sidebar_position: 7
-title: Android application
+title: Android
 description: Use a CI pipeline to build and test an Android application.
-keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/android
+sidebar_position: 10
+redirect_from:
+  - /tutorials/ci-pipelines/build/android
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CTABanner
   buttonText="Learn More"
@@ -22,8 +21,6 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-
-<CISignupTip />
 
 ## Specify architecture
 
