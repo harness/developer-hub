@@ -136,6 +136,8 @@ The following deprecated API endpoints are longer supported:
 
    This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
 
+  This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 ### Version 1.19.6 <!--  January 8, 2024 -->
 
 #### New features and enhancements
