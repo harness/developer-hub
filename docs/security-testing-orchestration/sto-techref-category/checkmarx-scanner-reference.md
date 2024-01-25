@@ -124,7 +124,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -139,7 +140,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 
 
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+
 
 
 <StoSettingAuthDomain />
@@ -150,7 +152,8 @@ import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+
 
 
 <StoSettingProductSSL />
@@ -160,7 +163,8 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 #### API Version
 
 
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
+import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
+
 
 
 <StoSettingApiVersion />
@@ -171,7 +175,8 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 #### Type
 
 
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
+import StoSettingAuthType from './shared/step_palette/auth/_type.md';
+
 
 
 <StoSettingAuthType />
@@ -181,7 +186,8 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 #### Access ID
 
 
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+
 
 
 <StoSettingAuthAccessID />
@@ -191,7 +197,8 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 #### Access Token
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
 
 
 <StoSettingAuthAccessToken />

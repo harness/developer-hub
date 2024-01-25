@@ -155,7 +155,8 @@ import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-regio
 
 #### Access Domain
 
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+
 
 <StoSettingAuthDomain />
 
@@ -164,7 +165,8 @@ import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.
 
 #### Access Token
 
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
 
 <StoSettingAuthAccessToken />
 
@@ -185,7 +187,8 @@ The AWS region of the image to scan.
 #### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />

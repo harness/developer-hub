@@ -121,7 +121,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -141,7 +142,8 @@ The fully-qualified URL to the scanner. The default is `https://saas.whitesource
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+
 
 
 <StoSettingProductSSL />
@@ -153,7 +155,8 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 #### API Version
 
 
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
+import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
+
 
 
 <StoSettingApiVersion />
@@ -166,7 +169,8 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 #### Type
 
 
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
+import StoSettingAuthType from './shared/step_palette/auth/_type.md';
+
 
 
 <StoSettingAuthType />

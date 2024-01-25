@@ -178,7 +178,8 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -197,7 +198,8 @@ The fully-qualified URL to the scanner API, for example `https://anchore.company
 #### Access ID
 
 
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+
 
 
 <StoSettingAuthAccessID />
@@ -207,7 +209,8 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 #### Access Token
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
 
 
 <StoSettingAuthAccessToken />

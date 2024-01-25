@@ -117,7 +117,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -133,7 +134,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 The URL of the SonarQube server. Required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
 
 
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+
 
 
 <StoSettingAuthDomain />
@@ -144,7 +146,8 @@ import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+
 
 
 <StoSettingProductSSL />
@@ -154,7 +157,8 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
 
 
 <StoSettingAuthAccessToken />

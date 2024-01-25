@@ -124,7 +124,8 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 #### Access Token (_Orchestration scans_)
 
 
-import StoSettingAuthAccessToken from '../shared/step_palette/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
+
 
 
 <StoSettingAuthAccessToken />
@@ -132,7 +133,8 @@ import StoSettingAuthAccessToken from '../shared/step_palette/_sto-ref-ui-auth-a
 x### Ingestion File
 
 
-import StoSettingIngestionFile from '../shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
