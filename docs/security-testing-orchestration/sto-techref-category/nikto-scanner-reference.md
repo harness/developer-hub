@@ -81,7 +81,8 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
+
 
 <StoSettingTargetName />
 
@@ -90,7 +91,8 @@ import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
