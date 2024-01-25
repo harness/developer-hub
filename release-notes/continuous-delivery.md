@@ -63,12 +63,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
   - Previous Behavior: The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service.
-  - The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md) for more info.
+  - The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
 
 - Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
   - Issue occurred when using GCP and a GCP access token.
   - It occurred when the access token expiration overlapped with steady state check (watch) API calls.
   - The issue is fixed now. 
+
+- Remove application details from NewRelic if it is empty (CDS-88190)
+  - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
 
 - Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
   - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
@@ -94,8 +97,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Previously, an approval conditions dropdown menu was auto-populating with an invalid [object Object] value or other invalid values.
   - The issue is fixed now.
 
-- Remove application details from NewRelic if it is empty (CDS-88190)
-  - 
 
 ### Version 1.21.5
 
