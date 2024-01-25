@@ -89,11 +89,8 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
+import StoSettingScanTypeCont     from './shared/step_palette/target/type/_app.md';
 
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
 #### Name 
