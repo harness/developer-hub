@@ -21,8 +21,8 @@ Azure instance CPU hog:
 - Verifies the autopilot functionality of cloud managed clusters. 
 - Verifies multi-tenant load issues. When the load on one container increases, the fault checks for any downtime in other containers. 
 
-###Prerequisites
-- Kubernetes >= 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes >= 1.17
 - Azure Run Command agent should be installed and running in the target Azure instance.
 - Azure disk should be in a healthy state.
 - Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -106,7 +106,7 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
             <td> Defaults to <code>true</code>. Also supports <code>false</code>. </td>
         </tr>
         <tr>
-            <td> CPU_CORE </td>
+            <td> CPU_CORES </td>
             <td> Number of CPU cores that will be subject to stress. For more information, go to <a href=""> </a></td>
             <td> Defaults to 0. For more information, go to <a href="#cpu-core"> CPU core.</a></td>
         </tr>
@@ -114,6 +114,11 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
             <td> CPU_LOAD </td>
             <td> Percentage load exerted on a single CPU core. </td>
             <td> Defaults to 100. For more information, go to <a href="#cpu-percentage"> CPU percentage.</a></td>
+        </tr>
+        <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>

@@ -13,7 +13,7 @@ Azure web app access restrict causes a split brain condition by restricting the 
 Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
 
 ### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
+- Kubernetes >= 1.17
 - Appropriate Azure access to the web applications.
 - The target Azure web application should be in the running state.
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -42,7 +42,7 @@ stringData:
 ```
 
 :::tip
-If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name. `AZURE_AUTH_LOCATION` is variable that describes path to the authetication file which uses the default value in most cases.
 :::
 
 ### Mandatory tunables
@@ -95,6 +95,11 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
             <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        </tr>
+        <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
         </tr>
         <tr> 
             <td> CHAOS_INTERVAL </td>

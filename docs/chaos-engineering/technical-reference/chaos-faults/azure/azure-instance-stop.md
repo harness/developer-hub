@@ -12,7 +12,7 @@ Azure instance stop:
 - Determines how the application handles the requests and how quickly it recovers from such failures.
 
 ### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
+- Kubernetes >= 1.17
 - Appropriate Azure access to start and stop an instance.
 - Azure instance should be in a healthy state.
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -41,7 +41,7 @@ stringData:
 ```
 
 :::tip
-If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name. `AZURE_AUTH_LOCATION` is variable that describes path to the authetication file which uses the default value in most cases.
 :::
 
 ### Mandatory tunables
@@ -85,6 +85,11 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
         <td> Time interval between two successive instance power offs (in seconds).</td>
         <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
+      <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target instances. </td>
