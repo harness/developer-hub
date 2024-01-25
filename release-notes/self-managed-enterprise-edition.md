@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-01-08T10:00
+date: 2024-01-24T10:00
 sidebar_position: 16
 ---
 
@@ -39,9 +39,9 @@ This release includes the following Harness module and component versions.
 | Access Control Service | 1.29.1 |
 | Delegate | 24.01.82004 |
 | Change Data Capture | 81905 |
-| Test Intelligence Service | release-xxx |
+| Test Intelligence Service | 2.11.6 |
 | NG UI | 0.12.1 |
-| LE NG | xxxxx |
+| LE NG | 0.80.0 |
 
 **Alternative air gap bundle download method**
 
@@ -61,6 +61,8 @@ gsutil -m cp \
 ```
 
 #### Self-Managed Enterprise Edition
+
+- You can now enable TLS for MongoDB, MinIO, PostgreSQL, and TimescaleDB external databases. For configuration details, go to the Harness Self-Managed Enterprise Edition [tutorials](tutorials/self-managed-enterprise-edition). (PL-46234)
 
 
 #### Continuous Delivery & GitOps
@@ -219,97 +221,6 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 - Creating the Terraform resource `harness_platform_file_store_file` without content crashes.	(CDS-77833)
   - Now Harness provides an empty file when content is null.
 
-- Unable to save/update/delete query in CDC - CD (CDS-87168)
-  - CV CDC Handlers - All the inserts with same _ids were failing because of an unique constraint violation, so turned shouldUpdateOnConflict to true, which would change all these inserts operations to upserts
-  - For CV, CDC Handlers - All the inserts with same _ids were failing because of a unique constraint violation. To fix this shouldUpdateOnConflict was switched to true which changes all the insert operations into update/insert operations. 
-
-- Users can create overrides in Overrides V2.0 with the following permissions (CDS-87009)
-  - Service Specific and Service & Infrastructure specific overrides - Service create/update permission
-  - Global Environment and Infrastructure-specific overrides - Environment create/update permission
-
-- When internal looping strategy fields, such as items in the repeat field, are marked as runtime, the run pipeline form does not properly prompt for an input. (CDS-86445)
-  - This issue has been resolved because the condition has been updated to validate the looping strategy runtime inputs
-
-- Blank tile on ASG traffic shifter. (CDS-86298)
-  - A blank tile appeared on the UI for the ASG Traffic Shifter. This has now been fixed. 
-
-- Unsaved Changes Doesn't Display Whitespace Changes (CDS-85964)
-  - Previously, whitespace changes weren’t displayed causing UI errors in the diff editors.
-  - Implemented whitespace difference consideration in the diff editors. 
-
-- Mismatch in Icon for Runtime in Codebase Configuration in pipeline level (CDS-85749)
-  - Previously, when you switched to expression mode, the repository field icon still indicated it was in “fixed” mode. 
-  - This has been fixed. Switching to expression mode switches it for the repository field as well.
-
-- Remove Fabric8 from Resize and Setup Kubernetes V1 step CG (CDS-85699)
-  - We have removed support to the following kubernetes v1 CG steps that have long been deprecated.
-    - Kubernetes Setup 
-    - Kubernetes Resize
-
-- Icons for conditional execution are showing up despite only selecting the default radio button which from a UX perspective causes issues (CDS-85696, ZD-54189)
-  - Removed condition icon from steps with (only) default/success condition at as Conditional Execution
-
-- The delegateSelectors executionInput() field does not show. (CDS-85678)
-Added support for delegateSelectors under the spec of step as an execution runtime field
-
-- Unable to run pipeline because of input.default(true) in conditional execution. (CDS-85629, ZD-54465)
-  - Previously, a boolean value was used as the variable, but the condition is a string. Now it is typecasted to a string so that the run pipeline form never breaks.
-
-- PCF Variable not working (CDS-85576, ZD-56054)
-  - Manifest.yml part of PCF service will be able to render expressions. 
-
-- The pipeline fails to open and redirects to the project page(CDS-85483,ZD-54380)(None)
-  - Previous Behavior:- The pipeline fails to open and redirects to the project page
-  - It was a remote pipeline and it didn’t exist in Git due to which it was redirecting to home page
-
-- Getting unsaved changes without making any changes in the pipeline(CDS-85361)(None)
-  - Previous Behavior:- Chained pipeline was having unsaved changes without making any changes. 
-  - If user navigates to the Outputs Tab of the chained pipeline, outputs: [] will not be added to the pipeline yaml, but if the user adds an outputs and deletes all of them, outputs: [] will be added to the pipeline yaml because the user performed an edit operation on the outputs section.
-
-- Artifact Input Fields Not Displayed in Pipeline Chain Stage Despite Runtime Input Definition(CDS-85099)
-  - Previous Behavior: Artifact Input Fields was not getting displayed in Pipeline Chain Stage Despite Runtime Input Definition
-  - The issue is resolved now. When service is marked as runtime in a child pipeline and then configured from the chained pipeline inputs tab, the service input fields are left as runtime. The Run Pipeline form does not properly prompt for service input. 
-
-- Runtime inputs from the dynamic provisioner was not coming (CDS-85096)
-  - Previous Behavior: There were runtime inputs in dynamic provisioner section but during runtime the field were not coming up 
-  - The issue is fixed by providing runtime field for provisioner details.\
-
-- No scroll bar option to view logs for steps inside a pipeline(CDS-85089)
-  - Previous Behavior: On the approval step having long text there was no scroll option and no approve or reject button. It only shows up when you click on [] expand. 
-  - The issue fixed now by updating CSS to provide scroll in Approval logs
-
-- In project variable page, variable name is not shown fully despite sufficient space(CDS-85034, ZD-54068)
-  - Previous Behavior: In the project variable page the variable page wasn’t showing up despite sufficient space.
-  - The issue is fixed now and variable names will occupy complete space available and not get cut off when space is available
-
-- Graceful shutdown timeout seems not to work with terraform 1.3.6(CDS-84781)
-  - Previous Behavior: After aborting terraform step the terraform process was not always stopping.
-  - The issue is resolved, if the terraform process will not stop gracefully within 30 seconds after the step was aborted, it will be forcefully deleted.
-
-- During the pipeline's waiting period for execution input, the "Execution Target Where would you like to execute the script?" field should not offer runtime input as an  option.(CDS-84710)(1.16.0)
-  - The use of 'On Delegate' field in the shell script step is deprecated. You can now leverage the execution target field to decide if the script should run on the delegate or on a target host.
-  - Execution target is made a parameter field so that they  can be marked as runtime input in template and then exposed in pipeline as an run time Input.
-
-- The base ASG cleans up when we update the ASG connector even if Region and Base ASG is an expression.(CDS-84445)
-  - Previous Behavior: The base ASG cleans up when we update the ASG connector even if Region and Base ASG is an expression.
-  - The issue is fixed now. 
-
-- Disable option of shell type bash when deployment is set as WinRM(CDS-84414)
-  - Previous behavior: When the deployment type was set as WinRM, users were still presented with the option to select the shell type as bash in the command step.
-  - The bash type option for the WinRM command step is disabled.
-
-- Visibility issue with operators under trigger conditions page(CDS-83901)
-  - Previous behavior: The drop down under operations is not showing all the options clearly.
-  - The issue is fixed now. 
-
-- Text overlap for region in configure artifact pop up for Amazon AMI source template (CDS-81535)
-  - Previous behavior: There was text overlap with a clear icon on the region field.
-
-- Customer is unable to set environment infrastructure definition (CDS-86109, ZD-54775)
-  - Previous Behavior:Infrastructure definition was not getting set to fixed value
-  - Issue is fixed  with provisioner step group template
-
-- Enhancements for applying remote manifests using k8sapply.(CDS-85884)
 
 #### Continuous Error Tracking
 
