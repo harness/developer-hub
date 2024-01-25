@@ -84,7 +84,7 @@ This example uses a **Run** step to select a version of Xcode.
                   spec:
                     shell: Sh
                     command: |-
-                      sudo xcode-select -switch /Applications/Xcode_13.4.1.app
+                      sudo xcode-select -switch /Applications/Xcode_15.1.0.app
                       xcodebuild -version
 ```
 

@@ -67,6 +67,11 @@ Without the above parameter input the pipeline won't be executed. Please [take a
 
 :::
 
+#### Output
+
+1. `Title` : Name of the Pipeline. 
+2.  `url` : Execution URL of the Pipeline eg: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
+
 Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
 
 ![](./static/flow-ca-1.png)
@@ -95,6 +100,11 @@ steps:
 In the above example API key is an optional paramenter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
 
 Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
+
+#### Output
+
+1. `Title` : Name of the Pipeline. 
+2.  `url` : Execution URL of the Pipeline eg: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
 
 Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
 
