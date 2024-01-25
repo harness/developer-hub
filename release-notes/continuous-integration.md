@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-23T10:00
+date: 2024-01-25T10:00
 sidebar_position: 10
 ---
 
