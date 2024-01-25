@@ -98,6 +98,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - ServiceNow approval conditions dropdown gives invalid values (CDS-86809)
   - Previously, an approval conditions dropdown menu was auto-populating with an invalid [object Object] value or other invalid values.
   - The issue is fixed now.
+ 
+- Unable to select a new pipeline version. (CDS-87809, ZD-55910)
+  - We found an error in the flow where a version of an in-use Template is deleted. When that happened, the referring Pipeline or Template threw an error and did not let you select an alternate version of the Template.   
+  - We'd earlier suggested editing the YAML directly to work around the issue. 
+The bug has now been fixed, and you should be able to select an alternate version of the Template from referring Pipelines/Templates now. 
 
 
 ### Version 1.21.5
