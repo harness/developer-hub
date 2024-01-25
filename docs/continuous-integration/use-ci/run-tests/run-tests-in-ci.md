@@ -4,6 +4,7 @@ description: Use Run and Run Tests steps to run tests in CI pipelines.
 sidebar_position: 10
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci
+  - /tutorials/ci-pipelines/test/
 ---
 
 You can run all types of tests in CI pipeline, including integration tests, functional tests, mutation tests, unit tests, and more.
