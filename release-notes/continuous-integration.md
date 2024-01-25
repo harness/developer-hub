@@ -51,11 +51,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### New features and enhancements
 
-When using [OIDC](/docs/continuous-integration/secure-ci/security-hardening/#oidc), the OIDC token ID is stored in the [Harness environment variable](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) `PLUGIN_OIDC_TOKEN_ID`. (CI-10852)
-<!-- (Add to env var list/OIDC/security hardening docs. See discussion on ticket. Also add 2nd proxy variable `HARNESS_HTTP/HTTPS_PROXY` for secure connect.)-->
-<!-- Harness Cloud macOS image update - latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. -->
-
-<!-- When using [OIDC], the OIDC token ID is stored in the [Harness environment variable] `PLUGIN_OIDC_TOKEN_ID`. (CI-10852) (Add to env var list/OIDC/security hardening docs. See discussion on ticket. Also add 2nd proxy variable `HARNESS_HTTP/HTTPS_PROXY` for secure connect.)-->
+* The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+* When using OIDC, Harness stores the token ID in the [Harness environment variable](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) `PLUGIN_OIDC_TOKEN_ID`, which is required for the [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc). (CI-10852)
 
 #### Fixed issues
 
@@ -64,7 +61,6 @@ When using [OIDC](/docs/continuous-integration/secure-ci/security-hardening/#oid
 * Added a missing field validation for **Repository Name** when using [Harness Code Repository](/docs/code-repository/code-supported) as the pipeline's [default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#configure-the-default-codebase). (CI-11042)
 * Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325)
 * Improved the error message that appears when there is a connectivity problem between the delegate and runner in a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure). (CI-10827)
-<!-- CI-10825 marked as "RN candidate = no" -->
 
 ### Version 1.9.4
 

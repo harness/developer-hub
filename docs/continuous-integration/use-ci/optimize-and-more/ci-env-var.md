@@ -412,7 +412,7 @@ ID of the user that started the build.
 
 * `PLATFORM` and `VERSION`: Build infrastructure platform details.
 * `HARNESS_INFRA`: Build infrastructure type.
-* `HARNESS_HTTP_PROXY`: Indicates a connector is using [Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+* `HARNESS_HTTP_PROXY`, `HARNESS_HTTPS_PROXY`: These are for [Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 <!-- `DRONE_STAGE_ARCH`: Reports `amd64` or `arm64` for VM build infrastructures only.-->
 <!-- `DRONE_STAGE_OS`: The build infrastructure's operating system, such as `linux`.-->
 <!-- `DRONE_STAGE_TYPE`: The stage build infrastructure type, such as `KUBERNETES_DIRECT` or `docker`.-->
@@ -439,6 +439,7 @@ Other environment variables might existing in your pipelines depending on the st
 * `JFROG_PASSWORD`
 * `JFROG_USERNAME`
 * `PLUGIN_ARTIFACT_FILE`: Harness uses this to show links on the [Artifacts tab](../viewing-builds.md).
+* `PLUGIN_OIDC_ID_TOKEN`: Contains the OIDC ID token needed for the [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc).
 * `PLUGIN_PIPELINE`
 * `GCP_BAZEL_CACHE_CRED_PATH`
 * `GCP_KEY`
