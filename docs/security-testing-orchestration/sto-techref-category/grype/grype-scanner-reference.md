@@ -132,7 +132,8 @@ import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-te
 #### Type  
 
 
-import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_type.md';
+
 
 
 <StoSettingImageType />
@@ -144,7 +145,8 @@ import StoSettingImageType from '/docs/security-testing-orchestration/sto-techre
 
 
 
-import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_domain.md';
+
 
 
 <StoSettingImageDomain />
@@ -155,7 +157,8 @@ import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-tech
 #### Name
 
 
-import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_name.md';
+
 
 
 <StoSettingImageName />
@@ -166,7 +169,8 @@ import StoSettingImageName from '/docs/security-testing-orchestration/sto-techre
 #### Tag
 
 
-import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_tag.md';
+
 
 
 <StoSettingImageTag />
@@ -177,7 +181,8 @@ import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref
 #### Access Id
 
 
-import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-id.md';
+
 
 
 <StoSettingImageAccessID />
@@ -188,7 +193,8 @@ import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-te
 #### Access Token 
 
 
-import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-token.md';
+
 
 
 <StoSettingImageAccessToken />

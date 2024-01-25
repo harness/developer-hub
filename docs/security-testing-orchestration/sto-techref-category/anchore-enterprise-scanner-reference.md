@@ -124,7 +124,8 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Type  (_orchestration_)
 
 
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
 
 
 <StoSettingImageType />
@@ -136,7 +137,8 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 #### Domain
 
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
 
 
 <StoSettingImageDomain />
@@ -147,21 +149,24 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 #### Name
 
 
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+
 
 
 <StoSettingImageAccessID />
@@ -169,7 +174,8 @@ import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-acc
 #### Access Token
 
 
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+
 
 
 <StoSettingImageAccessToken />

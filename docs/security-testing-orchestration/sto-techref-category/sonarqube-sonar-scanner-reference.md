@@ -186,7 +186,8 @@ A comma-separated list of paths to files with third-party libraries used by your
 
 <!-- 
 
-import StoSettingTooJavaLibraries from './shared/step_palette/_sto-ref-ui-tool-java-libraries.md';
+import StoSettingTooJavaLibraries from './shared/step_palette/tool/java/_libraries.md';
+
 
 
 <StoSettingTooJavaLibraries  />
@@ -200,7 +201,8 @@ A comma-separated list of paths to the folders with the bytecode files you want 
 
 <!--
 
-import StoSettingToolJavaBinaries from './shared/step_palette/_sto-ref-ui-tool-java-binaries.md';
+import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binaries.md';
+
 
 <StoSettingToolJavaBinaries  />
 -->

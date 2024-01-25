@@ -215,7 +215,8 @@ The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>`
 #### Project Name
 
 
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
+import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
+
 
 
 <StoSettingToolProjectName />

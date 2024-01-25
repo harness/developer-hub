@@ -237,7 +237,8 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 #### Project Name
 
 
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
+import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
+
 
 
 <StoSettingToolProjectName />
@@ -248,7 +249,8 @@ import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-pr
 #### Project Version
 
 
-import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
+import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_version.md';
+
 
 
 <a name="product-project-version"></a>

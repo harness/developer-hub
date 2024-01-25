@@ -109,7 +109,8 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Type
 
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
 
 <StoSettingImageType />
 
@@ -118,7 +119,8 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 #### Domain (_extraction_)
 
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
 
 <StoSettingImageDomain />
 
@@ -127,7 +129,8 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 
 #### Name
 
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
 
 <StoSettingImageName />
 
@@ -136,7 +139,8 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 
 #### Tag
 
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
 
 <StoSettingImageTag />
 
@@ -144,7 +148,8 @@ import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
 
 #### Region  
 
-import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
+import StoSettingImageRegion from './shared/step_palette/image/_region.md';
+
 
 <StoSettingImageRegion />
 

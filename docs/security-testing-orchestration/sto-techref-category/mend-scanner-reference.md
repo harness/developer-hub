@@ -240,7 +240,8 @@ Excluding...I don't see this field in the step palette
 #### Project Version
 
 
-import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
+import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_version.md';
+
 
 
 <a name="product-project-version"></a>

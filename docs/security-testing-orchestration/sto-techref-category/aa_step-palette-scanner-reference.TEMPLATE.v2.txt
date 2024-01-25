@@ -216,7 +216,8 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 #### Type  (_orchestration_)
 
 ```mdx-code-block
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
 ```
 
 <StoSettingImageType />
@@ -228,7 +229,8 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 
 ```mdx-code-block
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
 ```
 
 <StoSettingImageDomain />
@@ -239,7 +241,8 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 #### Name
 
 ```mdx-code-block
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
 ```
 
 <StoSettingImageName />
@@ -251,7 +254,8 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 #### Tag
 
 ```mdx-code-block
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
 ```
 
 <StoSettingImageTag />
@@ -262,7 +266,8 @@ import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
 #### Access Id
 
 ```mdx-code-block
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+
 ```
 
 <StoSettingImageAccessID />
@@ -273,7 +278,8 @@ import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-acc
 #### Access Token 
 
 ```mdx-code-block
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+
 ```
 
 <StoSettingImageAccessToken />
@@ -284,7 +290,8 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 #### Region  
 
 ```mdx-code-block
-import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
+import StoSettingImageRegion from './shared/step_palette/image/_region.md';
+
 ```
 
 <StoSettingImageRegion />
@@ -302,7 +309,8 @@ import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-regio
 #### Project Name
 
 ```mdx-code-block
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
+import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
+
 ```
 
 <StoSettingToolProjectName />
@@ -313,7 +321,8 @@ import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-pr
 #### Project Version
 
 ```mdx-code-block
-import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
+import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_version.md';
+
 ```
 
 <a name="product-project-version"></a>
@@ -326,7 +335,8 @@ import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool
 #### Include 
 
 ```mdx-code-block
-import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-include.md';
+import StoSettingToolInclude from './shared/step_palette/tool/_include.md';
+
 ```
 
 <StoSettingToolInclude />
@@ -337,7 +347,8 @@ import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-includ
 #### Exclude
 
 ```mdx-code-block
-import StoSettingToolExclude from './shared/step_palette/_sto-ref-ui-tool-exclude.md';
+import StoSettingToolExclude from './shared/step_palette/tool/_exclude.md';
+
 ```
 
 <StoSettingToolExclude />
@@ -348,7 +359,8 @@ import StoSettingToolExclude from './shared/step_palette/_sto-ref-ui-tool-exclud
 #### Context Name
 
 ```mdx-code-block
-import StoSettingToolContext from './shared/step_palette/_sto-ref-ui-tool-context.md';
+import StoSettingToolContext from './shared/step_palette/tool/_context.md';
+
 ```
 
 <StoSettingToolContext />
@@ -359,7 +371,8 @@ import StoSettingToolContext from './shared/step_palette/_sto-ref-ui-tool-contex
 #### Context Name (images) 
 
 ```mdx-code-block
-import StoSettingToolImageName from './shared/step_palette/_sto-ref-ui-tool-context-image.md';
+import StoSettingToolImageName from './shared/step_palette/tool/_context-image.md';
+
 ```
 
 <StoSettingToolImageName />
@@ -371,7 +384,8 @@ import StoSettingToolImageName from './shared/step_palette/_sto-ref-ui-tool-cont
 #### Team Name
 
 ```mdx-code-block
-import StoSettingToolProductTeamName from './shared/step_palette/_sto-ref-ui-tool-project-team.md';
+import StoSettingToolProductTeamName from './shared/step_palette/tool/project/_team.md';
+
 ```
 
 <StoSettingToolProductTeamName  />
@@ -383,7 +397,8 @@ import StoSettingToolProductTeamName from './shared/step_palette/_sto-ref-ui-too
 
 
 ```mdx-code-block
-import StoSettingToolPort from './shared/step_palette/_sto-ref-ui-tool-port.md';
+import StoSettingToolPort from './shared/step_palette/tool/_port.md';
+
 ```
 
 <StoSettingToolPort  />
@@ -394,7 +409,8 @@ import StoSettingToolPort from './shared/step_palette/_sto-ref-ui-tool-port.md';
 #### Java Libraries
 
 ```mdx-code-block
-import StoSettingTooJavaLibraries from './shared/step_palette/_sto-ref-ui-tool-java-libraries.md';
+import StoSettingTooJavaLibraries from './shared/step_palette/tool/java/_libraries.md';
+
 ```
 
 <StoSettingTooJavaLibraries  />
@@ -406,7 +422,8 @@ import StoSettingTooJavaLibraries from './shared/step_palette/_sto-ref-ui-tool-j
 
 
 ```mdx-code-block
-import StoSettingToolJavaBinaries from './shared/step_palette/_sto-ref-ui-tool-java-binaries.md';
+import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binaries.md';
+
 ```
 <StoSettingToolJavaBinaries  />
 
@@ -417,7 +434,8 @@ import StoSettingToolJavaBinaries from './shared/step_palette/_sto-ref-ui-tool-j
 
 
 ```mdx-code-block
-import StoSettingToolProductToken from './shared/step_palette/_sto-ref-ui-tool-prod-token.md';
+import StoSettingToolProductToken from './shared/step_palette/tool/product/_token.md';
+
 ```
 
 <StoSettingToolProductToken  />
@@ -428,7 +446,8 @@ import StoSettingToolProductToken from './shared/step_palette/_sto-ref-ui-tool-p
 #### Name 
 
 ```mdx-code-block
-import StoSettingToolProductAccessID from './shared/step_palette/_sto-ref-ui-tool-prod-name.md';
+import StoSettingToolProductAccessID from './shared/step_palette/tool/product/_name.md';
+
 ```
 <StoSettingToolProductAccessID  />
 
@@ -438,7 +457,8 @@ import StoSettingToolProductAccessID from './shared/step_palette/_sto-ref-ui-too
 #### Project Token
 
 ```mdx-code-block
-import toSettingToolProductToken from './shared/step_palette/_sto-ref-ui-tool-prod-token.md';
+import toSettingToolProductToken from './shared/step_palette/tool/product/_token.md';
+
 ```
 
 <StoSettingToolProductToken  />
@@ -449,7 +469,8 @@ import toSettingToolProductToken from './shared/step_palette/_sto-ref-ui-tool-pr
 #### Lookup Type
 
 ```mdx-code-block
-import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-prod-lookup-type.md';
+import StoSettingToolLookupType from './shared/step_palette/tool/product/_lookup-type.md';
+
 ```
 <StoSettingToolLookupType  />
 
