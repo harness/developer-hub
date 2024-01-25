@@ -8,7 +8,7 @@ Use [Background steps](./background-step-settings) to maintain long-running serv
 
 You can run a single instance of a service or multiple instances. For examples of these configurations, go to:
 
-* [Run a Sauce Connect Proxy service](/tutorials/ci-pipelines/test/saucelabs-proxy)
+* [Run a Sauce Connect Proxy service](./ci-saucelabs-background-step.md)
 * [Run a LocalStack service](./ci-localstack-background-step.md)
 * [Run multiple PostgreSQL instances](./multiple-postgres.md)
 * [Run Docker-in-Docker in a Kubernetes cluster build infrastructure](./run-docker-in-docker-in-a-ci-stage.md)

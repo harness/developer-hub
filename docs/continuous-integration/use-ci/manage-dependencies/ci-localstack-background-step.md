@@ -1,6 +1,6 @@
 ---
 title: Run a LocalStack service
-description: Run LocalStack as a Background step in a CI Pipeline
+description: Run LocalStack in a Background step in a Build stage.
 sidebar_position: 30
 redirect_from:
   - /tutorials/ci-pipelines/test/localstack
@@ -67,7 +67,7 @@ The health check Run step should complete successfully once the LocalStack servi
 
 ## YAML example
 
-Here's the YAML for the pipeline created in this topic. A complete Harness CI pipeline would have additional steps after the Run step that build code, run tests, push images, and so on. Some or all of these steps might interact with the LocalStack service running in the Background.
+Here's the YAML for the pipeline created in this topic. A complete Harness CI pipeline would have additional steps after the Run step that build code, run tests, push images, and so on. Some or all of these steps might interact with the LocalStack service running in the background.
 
 ```yaml
 pipeline:
@@ -83,8 +83,8 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: false ## Clone codebase is disabled.
-          runtime: ## Runs on a Linux platform on Harness Cloud build infrastructure.
+          cloneCodebase: false ## Clone codebase is disabled for this example.
+          runtime: ## This stage runs on a Linux platform on Harness Cloud build infrastructure.
             type: Cloud
             spec: {}
           platform:
