@@ -120,7 +120,7 @@ The Git Clone step uses a containerized step group. For more information, go to 
 
 
 </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 1. In your Developer Portal stage, in **Execution**, select **Add Step**.
 2. Select **Git Clone**.
@@ -130,8 +130,21 @@ The Git Clone step uses a containerized step group. For more information, go to 
 </TabItem>
 </Tabs>
 
+#### Select Git Provider
+
+Select the Git Provider as **Third-party Git Provider** in case you don't have your code in [**Harness Code Repository**](https://developer.harness.io/docs/code-repository/) 
+
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
 
 Select a connector for the source control provider hosting the code repository that you want the step to clone.
 
@@ -260,6 +273,16 @@ This step is to create the repository in your git provider which will be later u
 Select the repository type you want to create, which could be public or private.
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
+
 Select a connector for the git provider that will host the code repository.
 
 The following topics provide more information about creating code repo connectors:
@@ -279,6 +302,15 @@ Add the org, repo name, Repo Description and Default branch for the repo you wan
 
 </TabItem>
 </Tabs>
+
+#### Output
+
+Following is the output variable of this step.
+
+1. **repositoryUrl** : The URL of the repository created eg; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
+
+These output variable could be viewed under the output tab in 
+![](./static/output-createrepo.png)
 
 
 ### 4. Create Catalog
@@ -341,6 +373,14 @@ spec:
 </TabItem>
 </Tabs>
 
+#### Output
+
+Following is the output variable of this step.
+
+1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP eg; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
+
+These output variable could be viewed under the output tab in 
+![](./static/output-createcatalog.png)
 
 ### 5. Direct Push
 
@@ -369,6 +409,16 @@ This step is used to push the `service/application` created using Cookiecutter s
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
+
 Select a connector for the git provider where you want to push the code. 
 
 The following topics provide more information about creating code repo connectors:
@@ -418,6 +468,16 @@ This step is used to register the software component created in the Catalog of H
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
+
 Select a connector for the git provider where your `catalog-info.yaml` is stored. 
 
 The following topics provide more information about creating code repo connectors:
@@ -437,6 +497,13 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 
 </TabItem>
 </Tabs>
+
+Following is the output variable of this step.
+
+1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
+
+These output variable could be viewed under the output tab in 
+![](./static/register-catalog.png)
 
 
 ### 7. Slack Notify
@@ -459,12 +526,18 @@ This step is used to notify in your team's clack channel or individual developer
     token: slacksecrettestws
 ```
 
+The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `messageContent` for slack notification. 
+
+The `token` is the Slack Secret Key. 
 
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
+1. Add the **Name** of the Step
+
 ![](./static/slack-notify-step.png)
 
+The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `Message` for slack notification. 
 
 </TabItem>
 </Tabs>
@@ -492,6 +565,16 @@ This step is used to notify in your team's clack channel or individual developer
 </TabItem>
 </Tabs>
 
+#### Slack secret key
+
+The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/token-types#bot) created with the following permissions. 
+
+1. chat:write
+2. chat:write.public
+
+![](./static/slack-auth.png)
+
+Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#scopes). 
 
 ## Final Pipeline using Developer Portal Stage
 
