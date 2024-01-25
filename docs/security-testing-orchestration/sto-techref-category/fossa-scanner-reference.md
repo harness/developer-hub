@@ -116,7 +116,8 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+import StoSettingTargetWorkspace from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetWorkspace  />
