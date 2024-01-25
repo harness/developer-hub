@@ -215,17 +215,6 @@ export const CIList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "Terraform Cloud notification triggers",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description:
-      "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
-    newDoc: false,
-    type: [docType.Documentation],
-    time: '15 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
-  },
-  {
     title: "Google GAR",
     module: MODULES.ci,
     description:

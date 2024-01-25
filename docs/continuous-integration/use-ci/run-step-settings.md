@@ -115,7 +115,7 @@ To use this command, you would replace:
 
 **Run** steps are highly versatile, and you can use them to run all manner of individual commands or multi-line scripts.
 
-For example, this step is from the [Terraform notifications tutorial](/tutorials/ci-pipelines/build/tfc-notification), and it produces [output variables](#output-variables) from Terraform values. These output variables are used by another step later in the same pipeline.
+For example, this step produces [output variables](#output-variables) from Terraform value. This step is from the [Terraform notifications trigger tutorial](/docs/platform/triggers/tutorial-terraform-cloud-notification-trigger), and these output variables are used by another step later in the same pipeline.
 
 ```yaml
               - step:
