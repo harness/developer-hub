@@ -8,7 +8,7 @@ This section walks you through how to configure and add probes to a chaos experi
 
 ## Before you begin
 
-- [Probe overview](./overview.md)
+- [Probe overview](./overview)
 - [Chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/chaos-faults.md)
 
 ## Prerequisites
