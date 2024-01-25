@@ -21,6 +21,16 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## Downtime notice: Harness Cloud macOS image update
+
+Over the weekend of 28 January 2024, Harness Cloud macOS runners will be updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1.
+
+During the upgrade process, Harness Cloud builds may be unavailable for approximately 20 minutes.
+
+If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version.
+
+Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+
 ## Deprecation notice: app.harness Docker registry
 
 [Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
@@ -40,6 +50,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 <!-- Jan 29, 2024 -->
 
 <!-- New features and enhancements -->
+
+<!-- Harness Cloud macOS image update - latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. -->
 
 <!-- When using [OIDC], the OIDC token ID is stored in the [Harness environment variable] `PLUGIN_OIDC_TOKEN_ID`. (CI-10852) (Add to env var list/OIDC/security hardening docs. See discussion on ticket. Also add 2nd proxy variable `HARNESS_HTTP/HTTPS_PROXY` for secure connect.)-->
 
