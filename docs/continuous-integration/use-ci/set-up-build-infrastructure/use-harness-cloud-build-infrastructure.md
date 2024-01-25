@@ -146,7 +146,7 @@ pipeline:
 If a [Harness Cloud image](#platforms-and-image-specifications) has multiple versions of a tool pre-installed, you can specify the version that you want to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a [Run step](../run-ci-scripts/run-step-settings.md) to select an Xcode version:
 
 ```
-sudo xcode-select -switch /Applications/Xcode_14.1.0.app
+sudo xcode-select -switch /Applications/Xcode_15.1.0.app
 ```
 
 :::warning
