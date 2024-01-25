@@ -36,20 +36,6 @@ export const FeaturedList: CardItem[] = [
     link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra",
   },
   {
-    title: "Code coverage with CodeCov",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Use a Run step to include CodeCov code coverage.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/ci-pipelines/test/codecov",
-  },
-  {
     title: "Development guides",
     module: MODULES.ci,
     description:
@@ -59,6 +45,20 @@ export const FeaturedList: CardItem[] = [
     time: "30 min",
     icon: "img/icon_ci.svg",
     newDoc: false,
+  },
+  {
+    title: "Code coverage",
+    module: MODULES.ci,
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        You can add code coverage to Harness CI pipelines.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "30 min",
+    link: "/docs/continuous-integration/use-ci/run-tests/code-coverage",
   },
 ];
 
@@ -108,27 +108,6 @@ export const CIList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "Google GAR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to a Google Artifact Registry.",
-    link: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Code coverage with CodeCov",
-    module: MODULES.ci,
-    description:
-      "Use a Run step to include CodeCov code coverage.",
-    link: "/tutorials/ci-pipelines/test/codecov",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
     title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
@@ -149,13 +128,13 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg"
   },
   {
-    title: "Test a FastAPI project",
+    title: "All documentation",
     module: MODULES.ci,
     description:
-      "Use Harness CI to test a FastAPI project.",
-    link: "/tutorials/ci-pipelines/test/fastapi",
+      "Explore all Harness CI documentation.",
+    link: "/docs/continuous-integration",
     type: [docType.Documentation],
-    time: "15 min",
+    time: "90 min",
     icon: "img/icon_ci.svg",
     newDoc: false,
   },

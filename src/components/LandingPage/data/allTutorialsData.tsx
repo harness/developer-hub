@@ -57,17 +57,6 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/platform/onboard-terraform-provider",
   },
   {
-    title: "Code coverage with CodeCov",
-    module: MODULES.ci,
-    description:
-      "Use a Run step to include CodeCov code coverage.",
-    link: "/tutorials/ci-pipelines/test/codecov",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
     title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
