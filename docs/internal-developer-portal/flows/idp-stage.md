@@ -203,7 +203,7 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
     name: CookieCutter
     identifier: idpcookiecutter
     spec:
-    templateType: <+pipeline.variables.template_type>
+    templateType: public
     publicTemplateUrl: <+pipeline.variables.public_template_url>
     cookieCutterVariables:
         app_name: <+pipeline.variables.project_name>
@@ -211,14 +211,22 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
 
 
 </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 
 #### Repository Type
 
-Select the repository type in which your template is stored, which could be public or private.
+Select the repository type in which your template is stored, which could be public or private git repository. 
 
-#### Path for Template
+:::info
+
+In case it's **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
+
+In case of public templates you just need to add the public URL of the template path stored in your git provider. eg `https://github.com/devesh-harness/test-cookicutter`
+
+:::
+
+#### Path for Template 
 
 First select the type of the input it could be a [Fixed Value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values), [Runtime input](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) or [Expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)
 
@@ -233,8 +241,6 @@ In case of **Expression** provide the pipeline variable in JEXL format which tak
 Provide the input required the template in terms of key value pairs in this step. 
 
 ![](./static/key-value-cookiecutter.png)
-
-// TODO: Advanced Config
 
 
 </TabItem>
@@ -307,7 +313,7 @@ Add the org, repo name, Repo Description and Default branch for the repo you wan
 
 Following is the output variable of this step.
 
-1. **repositoryUrl** : The URL of the repository created eg; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
+1. **repositoryUrl** : The URL of the repository created eg; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
 
 These output variable could be viewed under the output tab in 
 ![](./static/output-createrepo.png)
@@ -377,7 +383,7 @@ spec:
 
 Following is the output variable of this step.
 
-1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP eg; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
+1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP eg; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
 
 These output variable could be viewed under the output tab in 
 ![](./static/output-createcatalog.png)
@@ -500,7 +506,7 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 
 Following is the output variable of this step.
 
-1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
+1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
 
 These output variable could be viewed under the output tab in 
 ![](./static/register-catalog.png)
@@ -528,7 +534,7 @@ This step is used to notify in your team's clack channel or individual developer
 
 The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `messageContent` for slack notification. 
 
-The `token` is the Slack Secret Key. 
+The `token` is the [Bot-tokens](https://api.slack.com/authentication/token-types#bot) 
 
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
