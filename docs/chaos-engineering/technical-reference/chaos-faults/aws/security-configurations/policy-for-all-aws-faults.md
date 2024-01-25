@@ -12,11 +12,10 @@ Identity-based policies are JSON permissions policy documents that control:
 
 Identity-based policies are further categorised into:
     1. **Managed policies**: A standalone identity-based policy to which you can attach multiple users, groups, and roles in your AWS account.
-    
-        Managed policy is further categorized into:
-        1. **AWS managed policy**: These policies are created and managed by AWS
 
-## Permissions required
+HCE provides a custom AWS policy for chaos that has been created based on your requirements. This policy is attached with a role and is used for authentication purposes. 
+
+## Permissions required to execute AWS faults
 
 Here is an example AWS superset policy to execute all AWS faults.
 
