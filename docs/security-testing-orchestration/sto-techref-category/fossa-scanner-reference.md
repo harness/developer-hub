@@ -116,7 +116,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_variant.md';
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 
 
