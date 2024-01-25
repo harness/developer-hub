@@ -5,7 +5,7 @@ sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
 sidebar_position: 330
 ---
 
-You can set up Qwiet scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your code repositories and ingest results from Qwiet.
 
 ## Important notes for running Qwiet scans in STO
 

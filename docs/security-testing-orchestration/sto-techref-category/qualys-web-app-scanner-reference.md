@@ -5,7 +5,7 @@ sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
 sidebar_position: 320
 ---
 
-You can ingest Qualys Web Application Scanning results into STO. Create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest scan results from Qualys Web Application Scanning results into STO.
 
 ## Important notes for running Qualys scans in STO
 

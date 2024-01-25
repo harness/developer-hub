@@ -5,7 +5,7 @@ sidebar_label: Nmap (Network Mapper) scanner reference
 sidebar_position: 270
 ---
 
-You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
+You can scan your application instances and ingest results from [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
 
 ## Important notes for running Nmap scans in STO
 
@@ -48,18 +48,18 @@ The recommended workflow is add an Nmap step to a Security Tests or CI Build sta
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -97,7 +97,7 @@ Accepted values(s):
 #### Type
 
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
 
 <a name="scan-type"></a>

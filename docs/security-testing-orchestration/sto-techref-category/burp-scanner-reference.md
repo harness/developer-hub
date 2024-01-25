@@ -33,12 +33,12 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 #### Scan Mode
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -48,7 +48,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -80,22 +80,12 @@ The following configurations are available for Orchestration scans. These are [b
 
 ### Target settings
 
-:::note
-
-Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
-
-:::
-
 ##### Type
 
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
 
 #### Name 
 
@@ -103,13 +93,10 @@ import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.
 
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
 
 <StoSettingTargetVariant  />
 

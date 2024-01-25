@@ -1,1 +1,0 @@
-* **Container Image**  Scan the layers, libraries, and packages in a container image.  

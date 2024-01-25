@@ -5,7 +5,7 @@ sidebar_label: Fortify scanner reference
 sidebar_position: 170
 ---
 
-You can ingest code repository scan results from Fortify using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest repository scan results from Fortify.
 
 ## Important notes for running Fortify scans in STO
 

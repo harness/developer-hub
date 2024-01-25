@@ -5,7 +5,7 @@ sidebar_label: Docker Content Trust (DCT) scanner reference
 sidebar_position: 150
 ---
 
-You can run Docker Content Trust (DCT) scans on your container images using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/).
 
 ## Important notes for running Docker Content Trust scans in STO
 

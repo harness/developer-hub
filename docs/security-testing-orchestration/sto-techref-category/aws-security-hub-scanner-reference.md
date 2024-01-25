@@ -43,11 +43,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
@@ -58,7 +58,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -69,12 +69,8 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
+import StoSettingScanTypeConfig  from './shared/step_palette/target/type/_config.md';
 
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-type-03-config.md';
-
-<a name="scan-type"></a>
-<StoSettingScanType />
 <StoSettingScanTypeConfig />
 
 <!-- ---------------------------------------------------------------------------- -->

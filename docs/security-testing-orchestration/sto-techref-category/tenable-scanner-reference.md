@@ -6,7 +6,7 @@ sidebar_position: 400
 ---
 
 
-You can set up Tenable scans and ingest results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your application instances and ingest results from Tenable.
 
 ## Important notes for running Tenable scans in STO
 

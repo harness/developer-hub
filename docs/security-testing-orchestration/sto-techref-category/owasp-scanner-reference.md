@@ -5,7 +5,7 @@ sidebar_label: OWASP Dependency-Check scanner reference
 sidebar_position: 290
 ---
 
-You can scan your code repositories using [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.
+You can scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.
 
 
 ## Important notes for running OWASP scans in STO
@@ -45,11 +45,11 @@ The recommended workflow is to add an OWASP step to a Security Tests or CI Build
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
@@ -59,7 +59,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 ### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -74,7 +74,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 #### Type
 
 
-import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 
 

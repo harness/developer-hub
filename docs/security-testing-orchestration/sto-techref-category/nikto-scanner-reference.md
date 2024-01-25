@@ -5,7 +5,7 @@ sidebar_label: Nikto scanner reference
 sidebar_position: 260
 ---
 
-You can scan your instances using [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
+You can scan your application instances and ingest results from [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
 
 ## Important notes for running Nikto scans in STO
 
@@ -45,18 +45,18 @@ The recommended workflow is add a Nikto step to a Security Tests or CI Build sta
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -69,7 +69,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 #### Type
 
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
 
 <a name="scan-type"></a>

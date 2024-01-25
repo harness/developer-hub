@@ -53,16 +53,16 @@ The recommended workflow is add a ZAP step to a Security Tests or CI Build stage
 #### Scan Mode
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -82,7 +82,7 @@ The following options are supported for Zap scans:
 
 #### Type
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
 <StoSettingScanTypeInst />
 

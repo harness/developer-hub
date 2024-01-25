@@ -5,7 +5,7 @@ sidebar_label: Nexus scanner reference
 sidebar_position: 250
 ---
 
-You can ingest Nexus IQ scan results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your code repositories and ingest results from Nexus IQ.
 
 ## Important notes for running Nexus scans in STO
 

@@ -5,7 +5,7 @@ sidebar_label: Reapsaw scanner reference scanner reference
 sidebar_position: 340
 ---
 
-You can ingest Reapsaw scan results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest scan results for your code repositories from Reapsaw.
 
 ## Important notes for running Reapsaw scans in STO
 

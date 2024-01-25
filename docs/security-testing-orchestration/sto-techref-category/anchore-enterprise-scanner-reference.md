@@ -54,7 +54,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Anchore Enterprise step settings in STO
 
-The recommended workflow is add a Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is add an Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Scan settings
 
@@ -64,12 +64,12 @@ The recommended workflow is add a Anchore Enterprise step to a Security Tests or
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -79,7 +79,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 #### Scan configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -89,9 +89,10 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-import StoSettingScanTypeCont     from './shared/step_palette/target/type/_app.md';
+import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
+
 
 #### Name 
 
