@@ -1,7 +1,7 @@
 ---
 title: Support bundle utility plugin
 description: This topic describes the support bundle utility plugin for Harness Self-Managed Enterprise Edition.
-sidebar_position: 5
+sidebar_position: 28
 ---
 
 import Tabs from '@theme/Tabs';
