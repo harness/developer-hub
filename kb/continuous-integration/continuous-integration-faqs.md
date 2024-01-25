@@ -1568,7 +1568,7 @@ With a Kubernetes cluster build infrastructure, use the [Volumes](https://develo
 
 ### Can I run a LocalStack service in a Background step?
 
-Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.harness.io/tutorials/ci-pipelines/test/localstack/).
+Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/ci-localstack-background-step).
 
 ### Can I configure service dependencies in Gradle builds?
 

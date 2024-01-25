@@ -139,21 +139,11 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg"
   },
   {
-    title: "Run LocalStack",
+    title: "Manage service dependencies",
     module: MODULES.ci,
     description:
-      "Run LocalStack as a Background step.",
-    link: "/tutorials/ci-pipelines/test/localstack",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run Sauce Connect Proxy",
-    module: MODULES.ci,
-    description:
-      "Run Sauce Connect Proxy as a Background step.",
-    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
+      "Run dependent services, like PostgreSQL and LocalStack, in Background steps.",
+    link: "/docs/category/manage-dependencies",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

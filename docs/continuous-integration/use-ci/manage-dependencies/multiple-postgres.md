@@ -1,9 +1,8 @@
 ---
 title: Run multiple PostgreSQL instances in Background steps
 description: Use Background steps to run multiple PostgreSQL instances.
-sidebar_position: 30
+sidebar_position: 35
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

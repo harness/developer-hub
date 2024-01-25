@@ -1,7 +1,7 @@
 ---
 title: Run health checks on background services
 description: Use step groups to run health checks on separate background services.
-sidebar_position: 40
+sidebar_position: 36
 ---
 
 
