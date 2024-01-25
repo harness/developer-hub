@@ -1,9 +1,9 @@
 ---
-sidebar_position: 4
-description: Use Harness CI to run automated tests in a FastAPI project.
-keywords: [Continuous Integration, CI Tutorial, FastAPI, Testing, Run Tests]
-title: Test a FastAPI project
-slug: /ci-pipelines/test/fastapi
+title: Tutorial - Test a FastAPI project
+description: Use Harness CI to automatically test a FastAPI project.
+sidebar_position: 70
+redirect_from:
+  - /tutorials/ci-pipelines/test/fastapi
 ---
 
 import Tabs from '@theme/Tabs';
@@ -20,13 +20,7 @@ import TabItem from '@theme/TabItem';
 
 [FastAPI](https://fastapi.tiangolo.com/) is a modern and highly performant web framework that you can use to build APIs in Python 3.7+ using standard Python type hints. In this tutorial, you'll use Harness CI to automatically run tests on your FastAPI project when changes are pushed to a specific branch of your code repository.
 
-## Prerequisites
-
-You need the following for this tutorial:
-
-- Knowledge of Python, FastAPI, Git, and GitHub.
-- [A GitHub account](https://github.com/join).
-- [A Harness account](https://app.harness.io/).
+In addition to a Harness account, this tutorial requires a GitHub account and knowledge of Python, FastAPI, Git, and GitHub.
 
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
@@ -35,16 +29,15 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ## Prepare the codebase
 
 1. Fork the [fastapi-harness-sample repository](https://github.com/harness-community/fastapi-harness-sample) into your GitHub account.
-2. In Harness, [create a project](/docs/platform/organizations-and-projects/create-an-organization#create-a-project) or select an existing project, and then go to the CI module.
-3. Select **Connectors** under **Project Setup**.
-4. Select **New Connector**, and select **GitHub** under **Code Repositories**.
-5. Configure the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) so that the connector can access your fork of the sample repo.
 
-The sample repo has a simple FastAPI project and unit tests. Notable files include:
+   The sample repo has a basic FastAPI project and unit tests. Notable files include:
 
-- `fastapi-todo-tests/requirements.txt`: Contains a list of project dependencies.
-- `fastapi-todo-tests/app/main.py`: The sample FastAPI project builds a "To Do" list. It has three API endpoints, one that creates tasks, one that deletes tasks, and one that gets the task list.
-- `fastapi-todo-tests/test_main.py`: Defines three test cases.
+   - `fastapi-todo-tests/requirements.txt`: Contains a list of project dependencies.
+   - `fastapi-todo-tests/app/main.py`: The sample FastAPI project builds a "To Do" list. It has three API endpoints, one that creates tasks, one that deletes tasks, and one that gets the task list.
+   - `fastapi-todo-tests/test_main.py`: Defines three test cases.
+
+2. In Harness, [create a project](/docs/platform/organizations-and-projects/create-an-organization#create-a-project) or select an existing project, and then select the CI module.
+3. Create a [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that can access your fork of the sample repo. GitHub connectors can connect to one repo or all repos in an account.
 
 <details>
 <summary>Optional exercise: Local set up</summary>
@@ -105,73 +98,9 @@ Optionally, you can build the project and test it locally before running tests i
 
 ## Prepare the pipeline
 
-These steps summarize pipeline creation. For more information, go to [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-
-1. In your Harness project, go to the CI module.
-2. Select **Pipelines**, and then select **Create a Pipeline**.
-3. Enter a **Name** and select **Start**.
-4. Add a **Build** (`CI`) stage.
-
-### Add the Build stage and infrastructure
-
-<Tabs>
-  <TabItem value="Visual" label="Visual" default>
-
-1. Select **Add Stage**, and select the **Build** stage.
-2. Enter a **Stage Name**, such as `Test FastAPI`.
-3. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
-4. Select **Set Up Stage**.
-5. In the **Build** stage, select the **Infrastructure** tab, and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
-
-</TabItem>
-  <TabItem value="YAML" label="YAML">
-
-In the Pipeline Studio's YAML editor, add a `CI` stage and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
-
-For example, this CI stage uses Harness Cloud build infrastructure:
-
-```yaml
-    - stage:
-        name: test
-        identifier: test
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-            ...
-```
-
-And this CI stage uses a Kubernetes cluster build infrastructure:
-
-```yaml
-    - stage:
-        name: test
-        identifier: test
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_KUBERNETES_NAMESPACE
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-          execution:
-            steps:
-            ...
-```
-
-</TabItem>
-</Tabs>
+1. Create a [Harnesss CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
+2. Add a [Build stage](../set-up-build-infrastructure/ci-stage-settings), and select the GitHub connector you created in [Prepare the codebase](#prepare-the-codebase).
+3. You can use any [build infrastructure](/docs/category/set-up-build-infrastructure). To follow along with this tutorial,use either Harness Cloud build infrastructure or a Kubernetes cluster build infrastructure.
 
 ### Install dependencies
 
@@ -195,7 +124,7 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to insta
 ```
 
 </TabItem>
-  <TabItem value="sh" label="Self-hosted">
+  <TabItem value="kubernetes" label="Kubernetes cluster">
 
 ```yaml
 - step:
@@ -218,7 +147,7 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to insta
 
 Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that runs unit tests and outputs the results in JUnit XML format.
 
-This tutorial runs basic unit tests, but you can run all types of tests (integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+This tutorial runs basic unit tests, but you can run all types of tests (such as integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
@@ -240,7 +169,7 @@ This tutorial runs basic unit tests, but you can run all types of tests (integra
 ```
 
 </TabItem>
-  <TabItem value="sh" label="Self-hosted">
+  <TabItem value="kubernetes" label="Kubernetes cluster">
 
 ```yaml
 - step:
@@ -263,43 +192,17 @@ This tutorial runs basic unit tests, but you can run all types of tests (integra
 </TabItem>
 </Tabs>
 
-To [view test reports in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), test results must be in JUnit XML format, and the `reports` specification must be included.
+To [view test reports in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), test results must be in JUnit XML format, and the `reports` specification must be included in the step settings.
 
-## Add the trigger
 
-You can run this pipeline manually as it is, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](/docs/platform/triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI repo fork.
+### Pipeline YAML examples
 
-For this tutorial, you'll create a trigger that listens for pushes to the `main` branch.
+Here are YAML examples of the pipeline created in this tutorial. One example uses Harness Cloud build infrastructure and the other uses a Kubernetes cluster build infrastructure. for this tutorial.
 
-1. In Harness, in the same pipeline, select **Triggers** in the Pipeline Studio header, and then select **Add New Trigger**.
-2. Select **GitHub** under **Webhook**.
-3. Enter a **Name**.
-4. For **Connector**, select your GitHub connector, and enter the FastAPI repo name if necessary.
-5. For **Event**, select **Push**.
-6. Select **Continue**
-7. On the **Conditions** tab, configure a **Branch Name** condition. Set the **Operator** to **Equals**, and set the **Matches Value** to `main`. The entire condition should read like `Branch Name = main`.
-8. Select **Continue**, and select **Create Trigger**.
+These pipelines include a Build stage with two Run steps. One step installs dependencies defined in `requirements.txt` and the other runs unit tests.
 
-GitHub webhooks are usually automatically created in the target repo. If automatic registration fails, you must manually copy the webhook URL and add it to your repo webhooks. For instructions on manual webhook registration, go to [Register the webhook in the Git provider](/docs/platform/triggers/triggering-pipelines#register-the-webhook-in-the-git-provider).
-
-## Run the pipeline
-
-To test the Git event trigger and run the pipeline, go to your FastAPI repo fork, make a change, and commit and push it to `main`. For this tutorial, you could commit directly to `main`, but in a real world development situation, you would want to create and merge a PR.
-
-Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. While the build runs, you can view the logs and monitor build activity on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds).
-
-After the pytest step runs, you can find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the Tests tab.
-
-## Complete YAML examples
-
-Here are complete YAML examples for this tutorial. If you copy these examples, make sure to replace the placeholders with valid values.
-
-### Pipeline YAML
-
-These pipelines include a **Build** (`CI`) stage with two **Run** steps. One step installs dependencies defined in `requirements.txt` and the other runs unit tests.
-
-<Tabs>
-  <TabItem value="Cloud" label="Harness Cloud" default>
+<details>
+<summary>Pipeline with Harness Cloud build infrastructure</summary>
 
 This example uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
@@ -357,8 +260,10 @@ pipeline:
                           - output-test.xml
 ```
 
-</TabItem>
-<TabItem value="selfhosted" label="Self-hosted">
+</details>
+
+<details>
+<summary>Pipeline with Kubernetes cluster build infrastructure</summary>
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
@@ -420,12 +325,36 @@ pipeline:
                           - output-test.xml
 ```
 
-</TabItem>
-</Tabs>
+</details>
 
-### Trigger YAML
+## Add the trigger
 
-Trigger YAML is separate from pipeline YAML. However, you can write triggers in a YAML editor just as you can for pipelines. The YAML for this tutorial's trigger is as follows:
+You can run this pipeline manually, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](/docs/platform/triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI repo fork.
+
+For this tutorial, you'll create a trigger that listens for pushes to the `main` branch.
+
+1. In Harness, in the same pipeline, select **Triggers** in the Pipeline Studio header, and then select **Add New Trigger**.
+2. Select **GitHub** under **Webhook**.
+3. Enter a **Name**.
+4. For **Connector**, select your GitHub connector, and enter the FastAPI repo name if necessary.
+5. For **Event**, select **Push**.
+6. Select **Continue**
+7. On the **Conditions** tab, configure a **Branch Name** condition. Set the **Operator** to **Equals**, and set the **Matches Value** to `main`. The entire condition should read like `Branch Name = main`.
+8. Select **Continue**, and select **Create Trigger**.
+
+GitHub webhooks are usually automatically created in the target repo. If automatic registration fails, you must manually copy the webhook URL and add it to your repo webhooks. For instructions on manual webhook registration, go to [Register the webhook in the Git provider](/docs/platform/triggers/triggering-pipelines#register-the-webhook-in-the-git-provider).
+
+### Test the trigger
+
+To test the Git event trigger and run the pipeline, go to your FastAPI repo fork, make a change, and commit and push it to `main`. For this tutorial, you could commit directly to `main`, but in a real world development situation, you would want to create and merge a PR.
+
+Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. While the build runs, you can view the logs and monitor build activity on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds).
+
+After the pytest step runs, you can find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the Tests tab.
+
+### Trigger YAML example
+
+You can write triggers in a YAML editor, just as you can for pipelines. However, trigger YAML is stored separately from pipeline YAML. Here's a YAML example of this tutorial's trigger:
 
 ```yaml
 trigger:
