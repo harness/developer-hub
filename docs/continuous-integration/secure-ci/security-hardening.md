@@ -44,7 +44,7 @@ For more information about managing secrets in Harness, go to:
 
 ## Tokens and keys
 
-Harness APIs use Harness API keys and tokens to authenticate requests. Make sure to create tokens with the appropriate permission scopes. Tokens inherit permissions from the account used to create them. For more information, go to [Manage API keys](docs/platform/automation/api/add-and-manage-api-keys).
+Harness APIs use Harness API keys and tokens to authenticate requests. Make sure to create tokens with the appropriate permission scopes. Tokens inherit permissions from the account used to create them. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 You can store tokens and keys from non-Harness providers as [secrets in Harness](#secrets). Harness provides information about required permissions for third-party tokens and keys when relevant, such as authentication credentials for [Git connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo#code-repo-connector-permissions-and-access); however, this is limited to the permissions necessary for successful integration with Harness.
 
