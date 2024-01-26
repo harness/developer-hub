@@ -26,7 +26,10 @@ The process of graceful delegate shutdown with `upgrader` is as follows:
 - When the delegate is connected, `upgrader` terminates the old pod. However, the old pod will not be terminated immediately. It will first
    - Stop accepting new tasks.
    - Wait for currently executing tasks to finish before terminating. The maximum time `upgrader` waits for tasks to finish before force-termination is 10 minutes.
+:::info
+The wait time before force-termination is configured using `terminationGracePeriodSeconds` in the Kubernetes delegate YAML. When you download the YAML from Harness, it's set to 10 minutes by default.
 
+:::
 ## Grace period
 
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
