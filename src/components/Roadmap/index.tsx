@@ -9,10 +9,10 @@ import Link from "@docusaurus/Link";
 const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
-    { value: "platform", name:"Platform"},
+    { value: "platform", name: "Platform" },
     { value: "cd", name: "Continuous Delivery & GitOps - Coming Soon" },
     { value: "ci", name: "Continuous Integration - Coming Soon" },
-    { value: "ff", name: "Feature Flags - Coming Soon" },  
+    { value: "ff", name: "Feature Flags - Coming Soon" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -21,17 +21,16 @@ const Roadmap = () => {
   const [mobileViewHorizon, setMobileViewHorizon] = useState(
     Object.entries(selectedModule.horizon)[0]
   );
-  const [selectedDropdownModule, setSelectedDropdownModule] = useState({
-    value: "cd",
-    name: "Continuous Delivery & GitOps",
-  });
+
+  const [selectedDropdownModule, setSelectedDropdownModule] = useState(
+    modules[0]
+  );
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleSwitchTab = (key: any) => {
-
     Object.entries(selectedModule.horizon).map((val) => {
       if (key === val[0]) {
         setMobileViewHorizon(val);
