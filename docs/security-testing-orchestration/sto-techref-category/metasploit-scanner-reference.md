@@ -5,7 +5,7 @@ sidebar_label: Metasploit scanner reference
 sidebar_position: 230
 ---
 
-You can run Metasploit scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your application instances and ingest results from Metasploit.
 
 ## Important notes for running Metasploit scans in STO
 
@@ -76,7 +76,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 
 <StoSettingFailOnSeverity />

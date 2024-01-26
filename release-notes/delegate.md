@@ -47,12 +47,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    Harness added a new environment variable `DISABLE_CF_APP_LOG_STREAMING` to enhance control over this behavior. Setting this variable to `true` will redact all application logs, providing users with more flexibility in managing log visibility. 
 
-<!---
+
 ### Harness version 1.20.9, Harness Delegate version 24.01.82108
 
-There are no new Harness Delegate items included in this release.
+- Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
 
---->
+   This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
 
 ### Harness version 1.17.8, Harness Delegate version 23.12.82000
 
