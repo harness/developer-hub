@@ -115,25 +115,29 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 #### Domain
 
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+
 
 <StoSettingInstanceDomain />
 
 #### Protocol
 
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 
 <StoSettingInstanceProtocol />
 
 #### Port
 
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 
 <StoSettingInstancePort />
 
 #### Path
 
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 
 <StoSettingInstancePath />
 

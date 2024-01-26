@@ -130,7 +130,8 @@ Use this setting to specify a specific scan to ingest. If this is not specified,
 #### Domain
 
 
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+
 
 <StoSettingInstanceDomain />
 
@@ -140,7 +141,8 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 #### Protocol
 
 
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 
 
 <StoSettingInstanceProtocol />
@@ -151,7 +153,8 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 #### Port
 
 
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 
 
 <StoSettingInstancePort />
@@ -162,7 +165,8 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 #### Path
 
 
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 
 
 <StoSettingInstancePath />

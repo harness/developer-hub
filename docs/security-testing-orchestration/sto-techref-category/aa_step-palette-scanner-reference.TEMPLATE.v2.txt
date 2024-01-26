@@ -486,7 +486,8 @@ import StoSettingToolLookupType from './shared/step_palette/tool/product/_lookup
 #### Domain
 
 ```mdx-code-block
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+
 ```
 <StoSettingInstanceDomain />
 
@@ -496,7 +497,8 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 #### Protocol
 
 ```mdx-code-block
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 ```
 
 <StoSettingInstanceProtocol />
@@ -507,7 +509,8 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 #### Port
 
 ```mdx-code-block
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 ```
 
 <StoSettingInstancePort />
@@ -518,7 +521,8 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 #### Path
 
 ```mdx-code-block
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 ```
 
 <StoSettingInstancePath />
