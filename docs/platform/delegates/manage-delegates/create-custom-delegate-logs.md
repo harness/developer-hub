@@ -53,15 +53,6 @@ To create a custom custom delegate log, do the following:
 
 Here is the default logging configuration for the Harness Delegate.
 
-:::info
-The following configurations added by Harness to the default Logback xml.
-
-- `io.harness.logging.ExpiringDuplicateMessageFilter`
-
-- `io.harness.logging.remote.RemoteStackdriverLogAppender`
-
-::
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
