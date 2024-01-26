@@ -23,22 +23,6 @@ Kubernetes faults disrupt the resources running on a Kubernetes cluster. They ca
 
 <FaultDetailsCard category="kubernetes" subCategory="node">
 
-### Docker service kill
-
-Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).
-
-- Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable.
-- The application node goes back to normal state and services are resumed after the chaos duration.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-This fault determines the resilience of an application when a node becomes unschedulable, i.e. NotReady state.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="node">
-
 ### Kubelet service kill
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).

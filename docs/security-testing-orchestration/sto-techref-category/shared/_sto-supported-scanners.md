@@ -52,7 +52,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
            		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a> Ingestion </li>
@@ -61,7 +61,17 @@ If you use a scanner that isn't listed in the following table, you can still ing
         	</ul>
      </td>
    </tr>
-    <tr>
+   <tr>
+        <td valign="top">Secrets</td>
+        <td valign="top">
+         	<ul>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>
+        	</ul>
+        </td>
+        <td>
+        </td>
+   </tr>
+   <tr>
         <td valign="top">DAST</td>
         <td valign="top">
          	<ul>

@@ -1,6 +1,7 @@
 ---
 title: Export chaos experiments
 sidebar_position: 50
+description: Guide to export chaos experiments for later use
 ---
 
 Chaos experiments can be exported to save them for later use. Although simply creating or running an experiment using the Chaos Studio saves it to be later accessed through the **Chaos Experiments** sidebar option, you can also download the experiment as a manifest file to your machine or save it in any chaos hub.

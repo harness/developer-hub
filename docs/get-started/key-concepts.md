@@ -12,52 +12,37 @@ redirect_from:
 
 Before you begin using Harness modules, you should be familiar with the key concepts.
 
-## Account
+## Projects
 
-A Harness account is the top-level entity under which everything is organized.
+A Harness Project contains Harness pipelines, users, and resources that share the same goal. For example, a project could represent a business unit, division, or simply a development project for an app.
 
-Within an account you have organizations, and within organizations you have projects. You can add resources at the account level, and also at the organization and project levels.
+Projects are a shared space where teams can work independently on similar technologies without relying on account or org admins for new entities.
 
-All organizations and projects in the account can use the account's resources.
+Much like account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
 
-All projects in the organization can use the org's resources.
+Project users have at least view access to all configuration and runtime data of a project and share the same assets (environments, services, infrastructure, and so on).
 
-**Why is this great?** Each team can manage its resources within its project and not have to bother account admins every time they want to add a Connector or a secret. Projects make teams independent. This is part of Harness' democratization goals for developers.
-![](./static/learn-harness-key-concepts-04.png)
-
-## Organizations and projects
+## Organizations
 
 Harness Organizations (Orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division.
 
 Within each org you can add several Harness Projects.
 
-![](./static/learn-harness-key-concepts-05.png)
+For more information, go to [Projects and Organizations](../platform/organizations-and-projects/projects-and-organizations.md).
 
-A Harness Project contains Harness pipelines, users, and resources that share the same goal. For example, a project could represent a business unit, division, or simply a development project for an app.
+## Account
 
-![](./static/learn-harness-key-concepts-06.png)
+A Harness account is the top-level entity, containing organizations and projects. Resources can be added at all levels, and are available to all lower levels. Teams can manage resources independently with projects, without relying on account admins.
 
-Think of projects as a common space for managing teams working on similar technologies. A space where the team can work independently and not need to bother account admins or even org admins when new entities like connectors, delegates, or secrets are needed.
-
-Much like account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
-
-![](./static/learn-harness-key-concepts-07.png)
-
-Project users have at least view access to all configuration and runtime data of a project and share the same assets (environments, services, infrastructure, etc).
-
-See [Projects and Organizations](../platform/organizations-and-projects/projects-and-organizations.md).
+![](./static/learn-harness-key-concepts-04.png)
 
 ## Product modules
 
 Your project can add Harness products as modules, such as Continuous Integration or Continuous Delivery.
 
-![](./static/learn-harness-key-concepts-08.png)
-
 ## Pipelines
 
 Typically, a pipeline is an end-to-end process that delivers a new version of your software. But a pipeline can be much more: a pipeline can be a cyclical process that includes integration, delivery, operations, testing, deployment, real-time changes, and monitoring.
-
-![](./static/learn-harness-key-concepts-09.png)
 
 For example, a pipeline can use the CI module to build, test, and push code, and then a CD module to deploy the artifact to your production infrastructure.
 
@@ -76,19 +61,13 @@ For more information about YAML in Harness, go to the [Harness YAML overview](..
 
 Pipeline Studio guides you in setting up and running your pipelines with ready-to-use steps.
 
-![](./static/learn-harness-key-concepts-10.png)
-
 ## Stages
 
 A stage is a subset of a pipeline that contains the logic to perform one major segment of the pipeline process. Stages are based on the different milestones of your pipeline, such as building, approving, and delivering.
 
-![](./static/learn-harness-key-concepts-11.png)
-
 Some stages, like a deploy stage, use strategies that automatically add the necessary steps.
 
-![](./static/learn-harness-key-concepts-12.png)
-
-See [Add a Stage](../platform/pipelines/add-a-stage.md).
+For more information, go to [Add a Stage](../platform/pipelines/add-a-stage.md).
 
 ## Steps and step groups
 
@@ -98,9 +77,7 @@ Steps can be run in sequential and parallel order.
 
 A step group is a collection of steps that share the same logic such as the same rollback strategy.
 
-![](./static/learn-harness-key-concepts-13.png)
-
-See [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/).
+For more information, go to [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/).
 
 ## Services
 
@@ -108,25 +85,17 @@ A service represents your microservices and other workloads logically.
 
 A service is a logical entity to be deployed, monitored, or changed independently.
 
-![](./static/learn-harness-key-concepts-14.png)
-
 ### Service instance
 
 Service instances represent the dynamic instantiation of a service you deploy via Harness.
 
 For example, for a service representing a Docker image, service instances are the number of pods running with the Docker image.
 
-![](./static/learn-harness-key-concepts-15.png)
-
 ### Service definitions
 
-When a service is added to the stage in a pipeline, you define its service definition. Service definitions represent the real artifacts, manifests, and variables of a service. They are the actual files and variable values.
+Service definitions are the actual files and variable values that represent the artifacts, manifests, and variables of a service. You can propagate and override a service by selecting its name in the subsequent stages' service settings.
 
-You can also propagate and override a service in subsequent stages by selecting its name in that stage's service settings.
-
-![](./static/learn-harness-key-concepts-16.png)
-
-See [Monitor Deployments and Services in CD Dashboards](../continuous-delivery/monitor-deployments/monitor-cd-deployments.md).
+For more information, go to [Monitor Deployments and Services in CD Dashboards](../continuous-delivery/monitor-deployments/monitor-cd-deployments.md).
 
 ## Environments
 
@@ -138,21 +107,17 @@ Infrastructure definitions represent an environment's infrastructure physically.
 
 ## Connectors
 
-Connectors contain the information necessary to integrate and work with 3rd party tools.
-
-Harness uses connectors at pipeline runtime to authenticate and perform operations with a third-party tool.
+Connectors contain the information necessary to integrate and work with 3rd party tools. Harness uses connectors at pipeline runtime to authenticate and perform operations with a third-party tool.
 
 For example, a GitHub connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy stage in a pipeline.
 
-See [Connectors How-tos](/docs/category/connectors).
+For more information, go to [Connectors](/docs/category/connectors).
 
 ## Secrets management
 
 Harness includes built-in secrets management to store your encrypted secrets, such as access keys, and use them in your Harness account. Harness integrates with all popular secrets managers.
 
-![](./static/learn-harness-key-concepts-17.png)
-
-See [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+For more information, go to [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 ## YAML and Git
 
@@ -160,45 +125,24 @@ You can sync your Harness account, orgs, and projects with your Git repo to mana
 
 Harness can respond to Git events to trigger pipelines and pass in event data.
 
-See [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
+For more information, go to [Harness Git Experience overview](/docs/platform/git-experience/git-experience-overview/).
 
 ## Deployments
 
-Deployments are the process of taking artifacts (microservices, functions, workloads, etc.) that have been developed and making them available for use in a test or production environment.
+Deployments make developed artifacts available for use in test or production. They release applications for access by users or systems, and can be manual or automated. In Harness pipelines, deployments are modeled using services, environments, and execution steps.
 
-Deployments release the application or software so that it can be accessed by users or other systems. Deployment can be done manually or automated using triggers.
-
-Deployments are modeled in the Harness pipeline using Harness services (what you will deploy), environments (where you will deploy), and execution steps (how you will deploy).
-
-See [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts) and [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms).
+For more information, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts) and [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms).
 
 ## GitOps
 
-Harness provides full GitOps functionality.
+GitOps is an approach to managing and automating deployment and management of infrastructure and applications using Git. The desired state of the apps and infrastructure is stored in a Git repo as code. Harness automation tools monitor the Git repo for changes and synchronize the actual state with the desired state.
 
-GitOps is a specific approach to managing and automating the deployment and management of infrastructure and applications using version control systems, primarily Git. 
-
-In GitOps, the desired state of the infrastructure and applications is defined and stored in a Git repository as code (usually YAML files). Harness automation tools (Agents) then continuously monitor the Git repository for changes and automatically synchronize the actual state of the infrastructure and applications with the desired state.
-
-See [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics).
+For more information, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics).
 
 ### Why are Deployments and GitOps different
 
-In Harness, Deployments refers to executed pipelines. GitOps can leverage pipelines, but you don't need a pipeline to perform GitOps. In GitOps, changes to the target infrastructure and applications are managed via Git files and Agents.
+In GitOps, changes are managed via Git files and Agents, without requiring pipelines. Deployments refer to executed pipelines in Harness.
 
 This difference is why you see **Deployments** and **GitOps** separated in the Harness UI.
 
-Deployment is a broader concept that encompasses the process of releasing software into production, while GitOps is a specific methodology that leverages Git repositories to manage and automate the deployment and configuration of infrastructure and applications.
-
-## Recap
-
-What you've seen is how Harness integrates with your resources and tools, and how you can build pipelines.
-
-Harness helps you to model any kind of software development and delivery process in minutes.
-
-It allows for flexibility while making best practices easy to follow and poor practices difficult to implement.
-
-Most importantly, it takes away the pain points of software development, delivery, verification, etc, and gives you confidence in their management and success.
-
 **What's next?** [Sign up for Harness](https://app.harness.io/auth/#/signup/) and then try a [quickstart](tutorials.md).
-

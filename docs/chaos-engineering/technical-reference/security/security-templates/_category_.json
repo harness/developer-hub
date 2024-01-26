@@ -8,6 +8,6 @@
       "title":"Security policies"
    },
   "customProps": {
-    "description": "Harness Chaos security policies"
+    "description": "HCE security policies such as PSP, Openshift SCC, and Kyverno"
   }
 }

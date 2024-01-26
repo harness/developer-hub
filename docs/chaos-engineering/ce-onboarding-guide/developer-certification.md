@@ -1,12 +1,13 @@
 ---
 sidebar_position: 3
 title: HCE Developer certification 
-description: Obtain Harness developer certification
+description: Become a Harness certified chaos engineering developer
 ---
 This tutorial guides you through registering for the Harness Chaos developer exam certification and completing it.
 
 ## Prerequisites
-Before you begin, [execute the Podtato head application in sandbox](./run-experiments-in-sandbox).
+
+Before you begin, [execute the Podtato head application in sandbox](/docs/chaos-engineering/ce-onboarding-guide/run-experiments-in-sandbox.md).
 
 ## Steps involved in obtaining developer certification
 

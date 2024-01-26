@@ -1,9 +1,10 @@
 ---
 title: Validate hypotheses using probes
 sidebar_position: 3
+description: Steps to validate a hypothesis using probes
 ---
 
-A probe explores a system's behavior when it is in a chaotic or unpredictable state. Probes validate the [declarative hypothesis](../../technical-reference/probes/overview/#declarative-hypothesis) that you set.
+A probe explores a system's behavior when it is in a chaotic or unpredictable state. Probes validate the [declarative hypothesis](/docs/chaos-engineering/technical-reference/probes/overview/#declarative-hypothesis) that you set.
 
 The hypothesis serves as a way to ensure that the experiment is well-defined and that the results can be easily understood. It also helps to ensure that the experiment is repeatable and that the results can be compared across different runs.
 

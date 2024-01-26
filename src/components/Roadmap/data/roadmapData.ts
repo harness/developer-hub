@@ -2,6 +2,7 @@ import { MODULES } from "../../../constants";
 import { CdData } from "./cdData";
 import { CiData } from "./ciData";
 import { FfData } from "./ffData";
+import { platformData } from "./platformData";
 
 export interface ModuleData {
   title: string;
@@ -24,21 +25,26 @@ export interface Horizon {
 
 const ModuleData: ModuleData[] = [
   {
+    title: "Platform",
+    description: "One that powers it all. Robust, scalable and intelligent platform that supports the development, deployment, and operation of software applications.",
+    module: MODULES.platform,
+    horizon: platformData,
+  },
+  {
     title: "Continuous Delivery & GitOps",
-    description:
-      "The Harness Continuous Delivery (CD) module strategically focuses on streamlining and optimizing the software delivery process. By automating the deployment pipeline, it aims to accelerate the release lifecycle,ensuring faster and more reliable delivery of applications. The module emphasizes efficiency through intelligent orchestration, allowing eamless integration of various tools and technologies. Harness CD strategically leverages advanced deployment strategies, such as canaries and blue-green deployments, to minimize risks and maximize the stability of software releases. Overall, the module is designed to empower organizations with a robust, agile, and scalable approach to continuous delivery.",
+    description: "World’s Most Advanced CD Platform.",
     module: MODULES.cd,
     horizon: CdData,
   },
   {
     title: "Continuous Integration",
-    description: "Allowing for String List in a Repeat Startegy",
+    description: "World’s Fastest CI Platform.",
     module: MODULES.ci,
     horizon: CiData,
   },
   {
     title: "Feature Flags",
-    description: "Allowing for String List in a Repeat Startegy",
+    description: "Smart Feature Flags. Release confidently with pipelines.",
     module: MODULES.ff,
     horizon: FfData,
   },

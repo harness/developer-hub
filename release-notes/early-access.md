@@ -37,8 +37,6 @@ You can now grant public access to Harness pipelines. New settings on the Authen
 * **Release date:** December 2023
 * **Release version:** 81820
 * **Issue number:** CDS-85267
-* **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 AIDA replaces Coveo to provide content recommendations when you enter a subject in the **Submit a ticket** form.
 
@@ -150,6 +148,15 @@ No early access (beta) features are available for the Harness Continuous Error T
 ## CI early access features
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
+
+### Secure connect for Harness Cloud
+
+* **Release date:** January 2024
+* **Issue number:** CI-8922
+* **Feature flag:** `CI_SECURE_TUNNEL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+[Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners.
 
 ### Delegate selectors for codebase tasks
 

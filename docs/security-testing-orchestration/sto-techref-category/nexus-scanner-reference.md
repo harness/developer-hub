@@ -1,11 +1,11 @@
 ---
-title: Nexus scanner reference for STO
-description: Repository scans with Nexus
+title: Nexus IQ scanner reference for STO
+description: Scan code repositories with Nexus.
 sidebar_label: Nexus scanner reference
 sidebar_position: 250
 ---
 
-You can run Nexus scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest Nexus IQ scan results using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Nexus scans in STO
 

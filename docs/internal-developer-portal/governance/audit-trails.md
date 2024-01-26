@@ -24,7 +24,7 @@ The Account Audit Trail includes the following IDP events:
 | Scorecards                    | Create, Update, Delete |
 | Checks                        | Create, Update, Delete |
 | Access Control                | Update                 |
-| Catalog Connetor              | Create, Update         |
+| Catalog Connector              | Create, Update         |
 | Oauth Config                  | Create, Update         |
 | URL Allow List                | Create, Update         |
 | Layout                        | Update                 |

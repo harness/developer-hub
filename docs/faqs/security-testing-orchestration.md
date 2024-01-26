@@ -1,6 +1,6 @@
 ---
 title: Security Testing Orchestration FAQs
-description: This article addresses some frequently asked questions about Harness security features.
+description: Frequently asked questions about Harness STO.
 sidebar_position: 5
 ---
 

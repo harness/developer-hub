@@ -104,7 +104,9 @@ All plans receive 2000 free credits every month. These credits can be consumed b
 
 Customers on paid (**Team** or **Enterprise**) plans have the option to purchase extra credits, via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
 
-For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
+Harness notifies you when you are running low on build credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
+
+Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 ### Usage limits
 
@@ -148,7 +150,7 @@ As a courtesy, Harness notifies you when you are running low on [build credits](
 
 To allow you to continually execute your builds, Harness will allow you to continue using Harness Cloud even if you do not have enough credits in your account to cover your total build execution time, but Harness will invoice you in arrears for all credits owed.
 
-:::info
+:::warning
 
 Harness reserves the right to automatically suspend your access to Harness Cloud and suspend all Harness Cloud builds if you do not promptly pay for all credits utilized by your account.
 

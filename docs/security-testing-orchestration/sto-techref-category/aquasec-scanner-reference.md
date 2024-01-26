@@ -1,6 +1,6 @@
 ---
 title: Aqua Security scanner reference for STO
-description: Image scans with Aqua Security
+description: Scan container images with Aqua Security.
 sidebar_label: Aqua Security scanner reference
 sidebar_position: 25
 ---
@@ -83,10 +83,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 

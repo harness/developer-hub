@@ -1,4 +1,4 @@
-# kill the target service of the target node
+# kill the target service on the target VM instance
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -8,13 +8,12 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: docker-service-kill
+  - name: gcp-vm-service-kill
     spec:
       components:
         env:
         # name of the target node
-        # supported 'containerd' and 'docker'
         - name: SERVICE_NAME
           value: 'containerd'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+        - name: VM_INSTANCE_NAMES
+          VALUE: 'instance-01'
