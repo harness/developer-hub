@@ -22,10 +22,10 @@ The process of graceful delegate shutdown without upgrade is as follows:
 
 The process of graceful delegate shutdown with `upgrader` is as follows:
 
-- When `upgrader` updates the delegate image, it brings up a new delegate and waits for it to become healthy.
-- When the delegate is healthy, `upgrader` terminates the old pod. The old pod doesn't terminate immediately. It will first:
+- When `upgrader` updates the delegate image, it starts a new delegate and waits for a heartbeat and healthy state.
+- When the delegate is connected, `upgrader` terminates the old pod. However, the old pod will not be terminated immediately. It will first
    - Stop accepting new tasks.
-   - Wait for currently executing tasks to finish before terminating. The maximum time `upgrader` waits for tasks to finish before forcing termination is 10 minutes.
+   - Wait for currently executing tasks to finish before terminating. The maximum time `upgrader` waits for tasks to finish before force-termination is 10 minutes.
 
 ## Grace period
 
