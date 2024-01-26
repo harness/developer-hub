@@ -4713,4 +4713,6 @@ So now when we run the pipeline, the first service will ask for the tag value an
 
 #### How to create a dashboard to identify builds that are ending with an 'timeout' in a specific task.
 
-You can create a custom dimension to achieve this case, for example : Custom Dimension : contains"(${pipeline_execution_summary_ci.error_message}, "timeout")"
+You can create a custom dimension to achieve this case, for example : Custom Dimension : 
+
+```contains"(${pipeline_execution_summary_ci.error_message}, "timeout")```
