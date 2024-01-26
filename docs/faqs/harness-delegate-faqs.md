@@ -110,7 +110,7 @@ YOUR_PATH/newdelegate.log
 
 ### Can I create custom delegate logs
 
-Yes, you can create a custom logback.xml file and mount it in your delegate container or build a custom container. For more information, go to [Create custom delegate logs](/docs/platform/delegates/manage-delegates/create-custom-delegate-logs).
+Yes, you can create a custom `logback.xml` file and mount it in your delegate container or build a custom container. For more information, go to [Create custom delegate logs](/docs/platform/delegates/manage-delegates/create-custom-delegate-logs).
 
 ## Delegate installation
 
