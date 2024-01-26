@@ -176,8 +176,6 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the configuration associated with the Proxy Key. |
 | POST   | https://config.ff.harness.io/api/1.0/proxy/auth | Opens a stream with Harness SaaS to listen for changes. |
 
-<br>
-
 | **Periodic Requests** |
 | Methods      | Link | Purpose |
 | ----------- | ----------- | ----------- |
