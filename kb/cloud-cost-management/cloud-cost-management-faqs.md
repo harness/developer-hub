@@ -190,6 +190,13 @@ The cost is allocated based on max of requests or actual use.
 
 Storage cost is also included in the total cluster cost. Total cluster cost is sum of memory cost, cpu cost and storage cost.
 
+#### Is it possible to split cost? how to split the cost to multiple teams.
+
+In cost categories you can add it to a shared bucket and then split it across the other buckets.
+
+#### Can we allow specific cloud account owner to view their own account cost only.
+
+You can set up perspectives/folders for each of those and then limit access to the folders via RBAC.
 
 ### Recommendations
 
@@ -380,6 +387,16 @@ elb-delete-unused
 
 Reader role on the subscription is minimum to be able to list resources, For actions, corresponding permissions needs to be added.
 
+#### Is it possible to get Assets Governance evaluation URL having execution_id?
+
+We can use this API: 
+
+curl 'https://app.harness.io/gateway/ccm/api/governance/status/noIGUi15TS-_XrJIPwYczQ?routingId=&accountIdentifier=' \
+  -H 'x-api-key: pat.token' \
+
+noIGUi15TS-_XrJIPwYczQ here is the evaluation ID
+
+
 
 ### Autostopping
 
@@ -503,6 +520,12 @@ We have a recommendations explore in dashboards, this is limited to savings and 
 
 It is usage start/end date and If there is both start and end, Usage dates is used.
 
+#### When looking at the BI Dashboards for AWS RDS, we get a data fails to load message on all the different widgets what could be the reason.
+
+We need to check on following points :
+
+1. If the Account has RDS spend.
+2. If the  AWS accounts respective connectors have inventory enabled to pull in these metrics.
 
 ### Anomalies
 
