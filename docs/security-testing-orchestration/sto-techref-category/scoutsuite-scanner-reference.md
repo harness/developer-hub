@@ -12,22 +12,17 @@ You can ingest configuration scan results from ScoutSuite.
 
 ### Docker-in-Docker requirements
 
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
 ### For more information
-
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
@@ -36,13 +31,14 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Security step settings for ScoutSuite scans in STO
 
-### Target and variant
+To ingest your results, add a Security step to a Build or Security Tests stage and configure it as described below.
 
+### Target and variant
 
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
-
 <StoLegacyTargetAndVariant />
+
 
 ### ScoutSuite scan settings
 
@@ -54,26 +50,20 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Configuration scan settings 
 
-
 import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-
 
 <StoLegacyConfig  />
 
 ### Ingestion file
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />
 
 
 ### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 

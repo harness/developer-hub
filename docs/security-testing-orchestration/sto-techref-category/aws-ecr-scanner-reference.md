@@ -11,49 +11,36 @@ You can scan your container images using [Amazon Elastic Container Registry (ECR
 
 ### Docker-in-Docker requirements
 
-
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
 ### Root access requirements 
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
-### For more information
 
+### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
-
 <StoMoreInfo />
+
 
 ## AWS ECR step settings for STO scans
 
-The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below.  
 
 
 ### Scan settings
 
 
-<a name="scan-mode"></a>
-
 #### Scan Mode
-
-
-
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
 
 import StoSettingScanModeDataLoad from './shared/step_palette/scan/mode/_extraction.md';
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
-
 
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeDataLoad />
@@ -61,128 +48,86 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
-
 ### Target Settings
 
-<a name="target-type"></a>
 
 #### Type
 
-
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
-### Container Image settings
 
-<!-- ============================================================================= -->
-<a name="container-type"></a>
+
+### Container Image settings
 
 #### Type  (_orchestration_)
 
-
 import StoSettingImageType from './shared/step_palette/image/_type.md';
-
-
 
 <StoSettingImageType />
 
-<!-- ============================================================================= -->
 
-
-<a name="container-domain"></a>
 
 #### Domain (_extraction_)
 
-
-
 import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
-
-
 
 <StoSettingImageDomain />
 
-<!-- ============================================================================= -->
-<a name="container-name"></a>
 
 #### Name
 
-
 import StoSettingImageName from './shared/step_palette/image/_name.md';
-
-
 
 <StoSettingImageName />
 
-<!-- ============================================================================= -->
-
-
-<a name="container-tag"></a>
 
 #### Tag
 
-
 import StoSettingImageTag from './shared/step_palette/image/_tag.md';
-
-
 
 <StoSettingImageTag />
 
 
 #### Region  
 
-
 import StoSettingImageRegion from './shared/step_palette/image/_region.md';
-
-
 
 <StoSettingImageRegion />
 
+
 ### Authentication settings
+
 
 #### Access ID (_orchestration_)
 
-
 import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
-
-
 
 <StoSettingAuthAccessID />
 
+
 #### Access Token
 
-
 import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
-
-
 
 <StoSettingAuthAccessToken />
 
@@ -194,15 +139,9 @@ The AWS region of the image to scan.
 <!-- 
 ### Ingestion settings
 
-
-<a name="ingestion-file"></a>
-
 #### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
@@ -211,36 +150,20 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
 
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
-### Settings
-
-TBD
-
--->
 
 ### Additional Configuration
 

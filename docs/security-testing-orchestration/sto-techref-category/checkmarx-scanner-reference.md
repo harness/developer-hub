@@ -37,36 +37,18 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Checkmarx step settings for STO scans
 
-The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Checkmarx scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
+The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. 
 
-
-
-
-
-
-<details>
-<summary>Scanner Template example</summary>
-
-![](./static/checkmarx-scanner-template.png)
-
-</details>
 
 ### Scan settings
 
 
-<a name="scan-mode"></a>
-
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-
 import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
-
 
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
@@ -76,9 +58,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
@@ -87,75 +67,51 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
-
 
 <StoSettingScanTypeRepo />
 
-#### Name 
 
+#### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
 #### Workspace
 
-
 import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
-
-
 
 <StoSettingTargetWorkspace  />
 
 
 ### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
 
 ### Authentication
 
-<!-- ============================================================================= -->
-<a name="auth-domain"></a>
 
 #### Domain
 
-
-
 import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
-
-
 
 <StoSettingAuthDomain />
 
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
 
 #### Enforce SSL
 
-
 import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
-
-
 
 <StoSettingProductSSL />
 
@@ -186,27 +142,20 @@ import StoSettingAuthType from './shared/step_palette/auth/_type.md';
 
 #### Access ID
 
-
 import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
-
-
 
 <StoSettingAuthAccessID />
 
 
-
 #### Access Token
-
 
 import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
-
-
 <StoSettingAuthAccessToken />
+
 
 ### Scan Tool
 
-<!-- ============================================================================= -->
 
 #### Team Name
 
@@ -215,34 +164,25 @@ The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>`
 
 #### Project Name
 
-
 import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
 
-
-
 <StoSettingToolProjectName />
-
-<!-- ============================================================================= -->
 
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
-
-
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
 #### Additional CLI flags
 
 You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `-incremental`.  
+
 
 ### Running incremental scans with Checkmarx
 
@@ -252,16 +192,12 @@ In some cases, you might want to run an incremental rather than a full scan with
 Consider carefully when to run incremental vs. full scans. See [When should I use Incremental Scans vs Full Scans in CxSAST?](https://support.checkmarx.com/s/article/When-should-I-use-an#:~:text=An%20incremental%20scan%20is%20a,interface%2C%20Cx%20plugins%20and%20CLI) in the Checkmarx documentation.
 :::
 
-<a name="fail-on-severity"></a>
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
-
 
 ### Settings
 
@@ -310,11 +246,10 @@ You can set up Checkmarx scans using a Security step, but this is a legacy funct
 
 #### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
-
 <StoLegacyTargetAndVariant />
+
 
 #### Checkmarx scan settings
 

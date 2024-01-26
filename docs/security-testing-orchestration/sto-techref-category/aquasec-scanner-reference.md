@@ -18,52 +18,40 @@ Currently, this [early access feature](/release-notes/early-access) is behind th
 
 ### Docker-in-Docker requirements
 
-<!-- -->
-
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
-### Root access requirements 
 
+### Root access requirements 
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
 
-
 <StoRootRequirements />
+
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
+
 ## Aqua Security step settings for STO scans
 
-The recommended workflow is add an Aqua Security step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add an Aqua Security step to a Security Tests or CI Build stage and then configure it as described below.
 
 
 ### Scan settings
 
-
-<a name="scan-mode"></a>
-
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
+
 
 #### Scan Configuration
 
@@ -74,164 +62,112 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 ### Target Settings
 
-<a name="target-type"></a>
-
 #### Type
 
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
 
 ### Container Image settings
 
- 
-<a name="container-type"></a>
 
 #### Type
 
 import StoSettingImageType from './shared/step_palette/image/_type.md';
 
-
 <StoSettingImageType />
 
-
-<a name="container-domain"></a>
 
 #### Domain (_extraction_)
 
 import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 
-
 <StoSettingImageDomain />
 
-
-<a name="container-name"></a>
 
 #### Name
 
 import StoSettingImageName from './shared/step_palette/image/_name.md';
 
-
 <StoSettingImageName />
 
-
-<a name="container-tag"></a>
 
 #### Tag
 
 import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
-
 <StoSettingImageTag />
 
-<a name="container-region"></a>
 
 #### Region  
 
 import StoSettingImageRegion from './shared/step_palette/image/_region.md';
-
 
 <StoSettingImageRegion />
 
 
 ### Authentication settings
 
-<a name="auth-access-domain"></a>
 
 #### Access Domain
 
 import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
-
 <StoSettingAuthDomain />
 
-
-<a name="auth-access-token"></a>
 
 #### Access Token
 
 import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
-
 <StoSettingAuthAccessToken />
-
-<!-- a name="auth-access-region"></a>
 
 #### Access Region
 
 The AWS region of the image to scan.
 
-<!-- ============================================================================= -->
-
 
 ### Ingestion settings
 
 
-<a name="ingestion-file"></a>
-
 #### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
 
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
-### Settings
-
-TBD
-
--->
 
 ### Additional Configuration
 

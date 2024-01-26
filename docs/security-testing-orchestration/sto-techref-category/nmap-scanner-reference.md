@@ -247,7 +247,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for Nmap scans in STO (*legacy*)
+## Security step settings for Nmap scans in STO (legacy)
 
 :::note
 You can set up Nmap scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Nmap step](#nmap-step-settings-for-sto) instead.

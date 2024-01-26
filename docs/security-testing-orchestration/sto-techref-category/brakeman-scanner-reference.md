@@ -13,162 +13,108 @@ You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails
 
 ### Docker-in-Docker requirements
 
-
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
 
 ### Root access requirements 
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
+
 ## Brakeman step settings for STO scans
 
+The recommended workflow is add a Brakeman step to a Security Tests or CI Build stage and then configure it as described below.
 
 ### Scan settings
 
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
-
 
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
-<!-- ============================================================================= -->
-<a name="scan-config"></a>
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
 
 ### Target settings
 
-
-<!-- ============================================================================= -->
-<a name="target-type"></a>
-
 #### Type
-
 
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
-
-
 <StoSettingScanTypeRepo />
 
-
-<!-- ============================================================================= -->
-<a name="target-name"></a>
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<!-- ============================================================================= -->
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
-<!-- ============================================================================= -->
-<a name="target-workspace"></a>
 
 #### Workspace (_repository_)
 
-
 import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
-
-
 
 <StoSettingTargetWorkspace  />
 
-
-
 ### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
 
-
-
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
-
-
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
+
 
 #### Additional CLI flags
 
-
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-
 
 <StoSettingCliFlags />
 
 For example, suppose you want to scan only a subpath rather than the full directory. You can use `--path` followed by the path: `--path some/path/to/app` 
 
 
-<a name="fail-on-severity"></a>
-
-
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 
@@ -208,9 +154,7 @@ You can set up Brakeman scans using a Security step, but this is a legacy functi
 
 #### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
 
 <StoLegacyTargetAndVariant />
 
@@ -225,9 +169,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Ingestion file
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />
 

@@ -220,7 +220,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for Prowler scans in STO (*legacy*)
+## Security step settings for Prowler scans in STO (legacy)
 
 :::note
 You can set up Prowler scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Prowler step](#prowler-step-settings-for-sto) instead.

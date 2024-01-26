@@ -19,28 +19,25 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### Root access requirements
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
+
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
 
 ## Security step settings for Reapsaw scans in STO
 
+To ingest your results, add a Security step to a Build or Security Tests stage and configure it as described below.
+
 ### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
 
 <StoLegacyTargetAndVariant />
 
@@ -54,17 +51,13 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Ingestion file
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />
 
 ### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 

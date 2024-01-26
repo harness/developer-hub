@@ -192,7 +192,7 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
-## Security step settings for OWASP scans in STO (*legacy*)
+## Security step settings for OWASP scans in STO (legacy)
 
 You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

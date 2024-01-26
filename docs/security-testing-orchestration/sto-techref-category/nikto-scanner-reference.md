@@ -216,7 +216,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-## Security step settings for Nikto scans in STO (*legacy*)
+## Security step settings for Nikto scans in STO (legacy)
 
 :::note
 You can set up Nikto scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Nikto step](#nikto-step-settings-for-sto-scans) instead.

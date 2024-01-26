@@ -62,28 +62,18 @@ The recommended workflow is add an Anchore Enterprise step to a Security Tests o
 
 #### Scan mode
 
-
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-
 import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-
-<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 
-
 #### Scan configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
@@ -99,20 +89,15 @@ import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image
 
 #### Name 
 
-
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
-
 
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
+
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
@@ -120,38 +105,23 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 ### Container Image
 
 
-<a name="container-type"></a>
-
 #### Type  (_orchestration_)
-
 
 import StoSettingImageType from './shared/step_palette/image/_type.md';
 
-
-
 <StoSettingImageType />
 
-
-
-
-<a name="container-domain"></a>
 
 #### Domain
 
 import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 
-
-
 <StoSettingImageDomain />
 
 
-<a name="container-name"></a>
-
 #### Name
 
-
 import StoSettingImageName from './shared/step_palette/image/_name.md';
-
 
 <StoSettingImageName />
 
@@ -160,7 +130,6 @@ import StoSettingImageName from './shared/step_palette/image/_name.md';
 
 import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
-
 <StoSettingImageTag />
 
 
@@ -168,34 +137,25 @@ import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
 import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
 
-
-
 <StoSettingImageAccessID />
+
 
 #### Access Token
 
-
 import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
-
-
 
 <StoSettingImageAccessToken />
 
 
 ### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
 
 ### Authentication
 
-
-<a name="auth-domain"></a>
 
 #### Domain
 
@@ -204,27 +164,17 @@ The fully-qualified URL to the scanner API, for example `https://anchore.company
 
 #### Access ID
 
-
 import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
-
-
 
 <StoSettingAuthAccessID />
 
-
-
 #### Access Token
 
-
 import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
-
-
 
 <StoSettingAuthAccessToken />
 
 ### Scan Tool
-
-
 
 #### Image Name
 
@@ -233,36 +183,24 @@ For Extraction scans, the name of the image that you want to extract from Anchor
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
-
 #### Log Level
-
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
 
 
 #### Additional CLI flags
 
 You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `--force` to reset the image analysis status to `not_analyzed`.  
 
-<a name="fail-on-severity"></a>
-
-<!-- step-palette -->
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
 
 ### Settings
 

@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
- You can run [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) scans to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+ You can run scans and ingest results from [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
  
 
 ## Important notes for running SonarQube scans in STO
