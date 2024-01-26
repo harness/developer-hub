@@ -76,7 +76,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

@@ -208,7 +208,8 @@ import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto
 #### Log Level
 
 
-import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -218,7 +219,8 @@ import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags.md';
+
 
 
 <StoSettingCliFlags />
@@ -231,7 +233,8 @@ For example, you can report vulnerabilities with known fixes only using `--only-
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
