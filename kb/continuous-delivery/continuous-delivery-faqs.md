@@ -4736,13 +4736,13 @@ To pass output variables from one stage of a pipeline to another, you should uti
 
 As per the current design, executing a pipeline directly through the Harness CLI is not possible. However, you can run the API in any CLI to execute the pipeline.
 
-#### Which variables should I use to consistently obtain <+trigger.sourceBranch> and <+trigger.targetBranch>, even if the pipeline is run manually?
+#### Which variables should I use to consistently obtain `<+trigger.sourceBranch>` and `<+trigger.targetBranch>`, even if the pipeline is run manually?
  
 You can utilize the following codebase expressions to retrieve the PR number, source branch, and target branch:
 
 - ```<+codebase.prNumber>```
 - ```<+codebase.sourceBranch>```
--```<+codebase.targetBranch>```
+- ```<+codebase.targetBranch>```
 
 #### Can I use my own release names within each namespace of my cluster, allowing for multiple matching release names across a single cluster, despite the dialogue indicating that release names must be unique across the entire cluster?
 
