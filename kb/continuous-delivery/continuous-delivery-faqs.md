@@ -4683,10 +4683,10 @@ You can use the expression ```<+pipeline.executionId>``` to get the build ID f
 #### How to delete a job after its execution is complete?
 
 You can add a shell script to check the job status before executing the Kubernetes Delete. To run kubectl commands, it's required to use the Harness Kubeconfig as an environment variable. Here’s an example script for guidance:
- ```
+```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl wait --for=condition=complete job/myjob -n <+infra.namespace>
-``
+```
 
 #### Dashboards disappeared suddenly, how to resolve?
 
