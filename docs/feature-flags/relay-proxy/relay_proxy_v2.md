@@ -1,4 +1,3 @@
----
 title: Relay Proxy V2 Overview
 description: This topic focuses on version 2 of the Relay Proxy, how to use it and common FAQs on how it's used with Harness Feature Flags (FF). 
 sidebar_position: 10
@@ -10,13 +9,13 @@ This topic describes the Harness Relay Proxy V2 and how to use it with Feature F
 If **Relay Proxy Version 1** is what you're looking for, please go to the [Relay Proxy V1](./relay-proxy.md) page.
 :::
 
-# Relay Proxy V2 Overview
+## Relay Proxy V2 Overview
 
-## What is the Relay Proxy? 
+### What is the Relay Proxy? 
 
 The Relay Proxy enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
 
-## Why use Relay Proxy V2?​
+### Why use Relay Proxy V2?​
 
 In the following cases, you might want to set up Relay Proxy:
 
@@ -26,14 +25,11 @@ In the following cases, you might want to set up Relay Proxy:
 
 If you decide to use the Relay Proxy, make sure it has a good place in your network design. For your app to run, it needs to be able to contact the Relay Proxy, and the architecture differs depending on the type of app. For example, if you want to link the Relay Proxy to any client-side apps, don't put it inside a firewall.
 
-
-## How To Set Up The Relay Proxy V2
-
 <!-- Should I include set up instructions here? Not mentioned in V1 Docs but unsure if it's necessary -->
 
-## Relay Proxy V2 Architecture 
+### Relay Proxy V2 Architecture 
 
-### HA Mode
+#### HA Mode
 
 Feature Flag's Relay Proxy resides between the SDKs and the hosted Harness Feature Flag services. Upon startup, proxy loads the necessary data from the Feature Flag services to ensure that it is completely functional even if the network connection drops temporarily. The diagram below shows the Relay Proxy V2 in HA Mode:
 
@@ -43,7 +39,7 @@ Feature Flag's Relay Proxy resides between the SDKs and the hosted Harness Featu
 
 ![A in-depth diagram of the Relay Proxy V2 Architecture in HA Mode. ](./images/relay_proxy_v2_ha_mode_indepth.png)
 
-### HA Mode Example using Docker
+#### HA Mode Example using Docker
 
 In order to run the Proxy in HA mode, you will need to follow these steps:
 
@@ -93,16 +89,46 @@ services:
       - "6379:6379"
 ```
 
-### Single Mode
+#### Single Mode
 
 When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retrieves the configuration from Harness SaaS. It, then, stores it in the cache and opens up a stream with Harness SaaS to listen for changes. Whenever there is an update in Harness SaaS, an event is sent to the Primary Proxy and when the Proxy receives this event, it reaches out to Harness SaaS to fetch the change. The diagram below shows trhe Relay Proxy V2 in Single Proxy Mode:
 
 ![A diagram of the Relay Proxy V2 Architecture in Single Proxy Mode. ](./images/relay_proxy_v2_single_proxy.png)
 
-### Creating A Proxy Key
+#### Creating A Proxy Key
 
 <!-- In order to create a Proxy Key, you'll need to update this once the UI has been implemented but for now we can do this using the /admin/proxy/keys API. -->
 
+#### Example Request
+
+<!-- Need to add paragraph with explanation of the below -->
+
+ - `organizations` is a dictionary where the key is orgIdentifiers
+ - `projects` is a dictionary where the key is projectIdentifiers
+ - environments is an array of environmentIdentifiers, this only needs to be provided if scope=selected
+
+```
+curl --location 'https://jcox.pr2.harness.io/gateway/cf/admin/proxy/keys?accountIdentifier=kQ92d_0eRFWV2-klmXS3zA' 
+--data '
+{
+  "name": "James Proxy Key",
+  "identifier": "JamesProxyKey",
+  "description": "A description",
+  "organizations": {
+      "org123": { 
+          "projects": {
+              "TestProject": { "scope": "selected", "environments": ["foo"] }
+              "AnotherProject": { "scope": "all" }
+          }
+      },
+      "org456": { 
+          "projects": {
+              "TestProject": { "scope": "selected", "environments": ["foo", "bar"] }
+          }
+      }
+  }
+}    
+```
 
 #### Required Configuration
 
@@ -278,9 +304,11 @@ Currently due to the way we implement authentication token user has a had limit 
 
 ### Rotating a Proxy Key
 
-There are two ways that you can rotate your Proxy Key:
- 1. Immediate rotation
- 2. Buffered rotation
+There are two ways that you can rotate your Proxy Key
+
+Immediate rotation
+
+Buffered rotation
 
 It’s worth noting that if you use immediate rotation, the old Proxy Key will become invalid and any Proxy’s using that key will be cut off from Harness Saas and unable to receive any updates until you reconfigure it to use the new key value. For this reason you’ll probably only want to use immediate key rotation if you’re concerned that your Proxy Key has been leaked.
 
@@ -342,4 +370,3 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 ### Related Content
 
 <!-- Adding related content about Relay Proxy V1 and V2 that may be relevant to this -->
-
