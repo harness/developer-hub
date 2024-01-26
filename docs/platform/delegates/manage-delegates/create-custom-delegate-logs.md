@@ -124,8 +124,6 @@ The following configurations added by Harness to the default Logback xml.
     <logger name="io.harness.pcf" level="${LOGGING_LEVEL_PCF:-INFO}"/>
     <logger name="io.harness.event.client.impl" level="${LOGGING_LEVEL_EVENT_CLIENT:-INFO}"/>
     <logger name="io.github.resilience4j" level="WARN"/>
-
-
     <logger name="io.kubernetes.client.informer.cache.ReflectorRunnable" level="${KUBE_WATCH_LEVEL:-OFF}"/>
     <logger name="io.fabric8.kubernetes.client.Config" level="CRITICAL"/>
     <logger name="org.yaml.snakeyaml.introspector" level="ERROR"/>
