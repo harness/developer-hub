@@ -34,7 +34,7 @@ Feature Flag's Relay Proxy resides between the SDKs and the hosted Harness Featu
 
 ![A diagram of the Relay Proxy V2 Architecture in HA Mode. ](./images/relay_proxy_ha_mode.png)
 
-</br>
+<br>
 
 ![A in-depth diagram of the Relay Proxy V2 Architecture in HA Mode. ](./images/relay_proxy_v2_ha_mode_indepth.png)
 
@@ -178,7 +178,7 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the configuration associated with the Proxy Key. |
 | POST   | https://config.ff.harness.io/api/1.0/proxy/auth | Opens a stream with Harness SaaS to listen for changes. |
 
-</br>
+<br>
 
 | **Periodic Requests** |
 | Methods      | Link | Purpose |
