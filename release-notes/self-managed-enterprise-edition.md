@@ -62,7 +62,7 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- You can now enable TLS for MongoDB, MinIO, PostgreSQL, and TimescaleDB external databases. For configuration details, go to the Harness Self-Managed Enterprise Edition [tutorials](tutorials/self-managed-enterprise-edition). (PL-46234)
+- You can now enable TLS for MongoDB, MinIO, and TimescaleDB external databases. For configuration details, go to the Harness Self-Managed Enterprise Edition [tutorials](tutorials/self-managed-enterprise-edition). (PL-46234)  
 
 
 #### Continuous Delivery & GitOps
@@ -108,6 +108,8 @@ gsutil -m cp \
 - Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
 - The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
+
+- Upgraded the yq library from version 4.35.2 to 4.40.5. (PL-42548)
 
 ### Fixed issues
 
@@ -259,13 +261,13 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - In the **Add new Encrypted Text** dialog, the **Regions** list for Google Secrets Manager integration included unsupported values.(PL-43575, ZD-55268)
 
-   This issue has been resolved and the **Regions** list has been updated with the correct GCP regions.
+  This issue has been resolved and the **Regions** list has been updated with the correct GCP regions.
 
 - The Access Management page didn't display all **Users** in the list. (PL-43038)
 
 - Execution links were not available in pipeline failure Slack notifications. (PL-42974, ZD-53195)
 
-   This issue has been resolved. Now, in Slack notifications, the "Node status" keyword, such as "failed," is a hyperlink that provides direct access to the associated node execution URL.
+  This issue has been resolved. Now, in Slack notifications, the "Node status" keyword, such as "failed," is a hyperlink that provides direct access to the associated node execution URL.
 
 - The delegate was rejecting tasks due to an issue where the CPU and memory calculation wasn't showing the latest usage value. This was caused by the dynamic request handling feature that rejects tasks if the CPU and memory usage exceeds a certain threshold. The pods weren't scaled by HPA because the CPU and memory usage within the pods was within the limit. (PL-42600, ZD-54025, ZD-54324)
 
@@ -286,6 +288,8 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 - Added RBAC checks to the delegate list API. Now, only delegates for which users have permission are shown in the list on the Delegates page. (PL-42268, ZD-52174)
 
   This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. PL-39051
 
 
 
