@@ -778,6 +778,10 @@ This error may occur if your [code repo connector](https://developer.harness.io/
 
 Also, [SCM service connection failures can occur when using self-signed certificates](#git-connector-scm-connection-errors-when-using-self-signed-certificates).
 
+#### How can I see which files I have cloned in the codebase?
+
+You can include a shell script within your CI stage right after the Clone codebase that runs the following command  ```ls -ltr```. This will return all the content cloned by the Clone codebase step.
+
 ## SCM status updates and PR checks
 
 #### Does Harness supports Pull Request status updates?
@@ -1767,7 +1771,6 @@ If a file becomes corrupted in the bucket during the restoration process, it is 
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
-
 
 
 <!-- PLEASE ORGANIZE NEW QUESTION UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
