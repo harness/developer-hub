@@ -12,38 +12,32 @@ You can scan container images using [Clair](https://github.com/quay/clair), an o
 
 ### Docker-in-Docker requirements
 
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
 ## Security step settings for Clair scans in STO
 
-### Target and variant
 
+### Target and variant
 
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
-
 <StoLegacyTargetAndVariant />
+
 
 ### Clair scan settings
 
@@ -58,25 +52,21 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Container scan settings 
 
-
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-
 
 <StoLegacyContainer />
 
+
 ### Ingestion file 
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />
 
 
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
