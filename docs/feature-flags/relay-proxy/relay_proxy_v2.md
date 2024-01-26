@@ -152,13 +152,13 @@ Below is a table demonstrating the Cached Data:
 | Key      | Type | Use Case | Example Data |
 | ----------- | ----------- | ----------- | ----------- |
 | `env-<envID>-feature-configs`   | `Key/Value`| Stores all of the `FeatureConfigs` in an environment. The Proxy returns this object to SDKs when they make a request to `/<environmentID>/feature-configs`. | <pre><code> `{ "feature": "flagOne", ... // other properties},"feature": "flagTwo",     ... // other properties }]`</code></pre> |
-| `env-<envID>-feature-configs-<identifier`   | `Key/Value`| Stores a single flag config<br>- The Proxy returns this object to SDKs when they make a request to `/<environmentID>/feature-configs/<identifier>`. | <pre><code> `{ "feature": "flagOne", ... // other properties}]`</code></pre> |
-| `env-<envID>-segments`   | `Key/Value`| Stores all of the TargetSegments in an environment<br>- The Proxy returns this object to SDKs when they make a request to `/<environmentID>/target-segments`. | <pre><code> `[{"identifier": "SegmentOne", ... // other properties},{ "identifier": "SegmentTwo", ... // other properties}]`</code></pre> |
-| `env-<envID>-segments-<identifier>`   | `Key/Value`| Stores a single TargetSegment config<br>- The Proxy returns this object to SDKs when they make a request to `/environmentID/target-segments/<identifier>`. | <pre><code>`{ "identifier": "SegmentOne", ... // other properties}`</code></pre> |
-| `auth-key-<hash>`   | `Key/Value`| Used by the Proxy authentication flow to validate SDK keys<br>- Stores the environmentID as the value so the Proxy can return the SDKs environmentID in the JWT claims. | <pre><code>`71716f30-aea0-4271-89b5-cb1c82be4567\`</code></pre> |
-| `env-<envID>-api-configs`   | `Key/Value`| Binds the `auth-key-<hash>` with the environment it belongs to. This is used so we can invalidate SDK keys<br> that have been deleted in Harness SaaS. | <pre><code>`["auth-key-5e19dff88fb63a8afb76232f8a9b0b8c72c487314e1e497a45614be3c15ea424", "auth-key-8c60733910bb449b5395b7d445cb7562fae5f6a2ec2b83d6bdceca67a115e243", "auth-key-ddd268c12db0ee71c133774239ffa424f9abada5d47d075033eb3940f678c095"]`</code></pre> |
+| `env-<envID>-feature-configs-<identifier`   | `Key/Value`| Stores a single flag config<br></br>- The Proxy returns this object to SDKs when they make a request to `/<environmentID>/feature-configs/<identifier>`. | <pre><code> `{ "feature": "flagOne", ... // other properties}]`</code></pre> |
+| `env-<envID>-segments`   | `Key/Value`| Stores all of the TargetSegments in an environment<br></br>- The Proxy returns this object to SDKs when they make a request to `/<environmentID>/target-segments`. | <pre><code> `[{"identifier": "SegmentOne", ... // other properties},{ "identifier": "SegmentTwo", ... // other properties}]`</code></pre> |
+| `env-<envID>-segments-<identifier>`   | `Key/Value`| Stores a single TargetSegment config<br></br>- The Proxy returns this object to SDKs when they make a request to `/environmentID/target-segments/<identifier>`. | <pre><code>`{ "identifier": "SegmentOne", ... // other properties}`</code></pre> |
+| `auth-key-<hash>`   | `Key/Value`| Used by the Proxy authentication flow to validate SDK keys<br></br>- Stores the environmentID as the value so the Proxy can return the SDKs environmentID in the JWT claims. | <pre><code>`71716f30-aea0-4271-89b5-cb1c82be4567\`</code></pre> |
+| `env-<envID>-api-configs`   | `Key/Value`| Binds the `auth-key-<hash>` with the environment it belongs to. This is used so we can invalidate SDK keys<br></br> that have been deleted in Harness SaaS. | <pre><code>`["auth-key-5e19dff88fb63a8afb76232f8a9b0b8c72c487314e1e497a45614be3c15ea424", "auth-key-8c60733910bb449b5395b7d445cb7562fae5f6a2ec2b83d6bdceca67a115e243", "auth-key-ddd268c12db0ee71c133774239ffa424f9abada5d47d075033eb3940f678c095"]`</code></pre> |
 | `proxy:sse_events`   | `Stream`| Used by the Primary Proxy to forward SSE events to the Read Replica Proxy. | <pre><code>`{"event":"patch","domain":"flag","identifier":"f1","version":20,"environment":"71716f30-aea0-4271-89b5-cb1c82be4567","apiKey":" "`</code></pre> |
-| `stream:sdk_metrics`   | `Stream`| Used to forward Metrics from Read Replica Proxy's to Primary Proxy.<br>- Primary proxy listens on this stream and forwards metrics data to Harness Saas. | <pre><code>`{"environment_id":"71716f30-aea0-4271-89b5-cb1c82be4567","metricsData":[{"attributes":[{"key":"featureIdentifier","value":"f1"},{"key":"featureName","value":"f1"},{"key":"variationIdentifier","value":"true"},{"key":"featureValue","value":"true"},{"key":"SDK_TYPE","value":"server"},{"key":"SDK_LANGUAGE","value":"go"},{"key":"SDK_VERSION","value":"1.0.0"},{"key":"target","value":"global"}],"count":2,"metricsType":"FFMETRICS","timestamp":1698669998778}],"targetData":[{"attributes":[],"identifier":"james","name":"james"}]}`</code></pre> |
+| `stream:sdk_metrics`   | `Stream`| Used to forward Metrics from Read Replica Proxy's to Primary Proxy.<br></br>- Primary proxy listens on this stream and forwards metrics data to Harness Saas. | <pre><code>`{"environment_id":"71716f30-aea0-4271-89b5-cb1c82be4567","metricsData":[{"attributes":[{"key":"featureIdentifier","value":"f1"},{"key":"featureName","value":"f1"},{"key":"variationIdentifier","value":"true"},{"key":"featureValue","value":"true"},{"key":"SDK_TYPE","value":"server"},{"key":"SDK_LANGUAGE","value":"go"},{"key":"SDK_VERSION","value":"1.0.0"},{"key":"target","value":"global"}],"count":2,"metricsType":"FFMETRICS","timestamp":1698669998778}],"targetData":[{"attributes":[],"identifier":"james","name":"james"}]}`</code></pre> |
 | `ffproxy_saas_stream_health`   | `Stream`| Used to store the health status of the Harness Saas through to the Primary Proxy stream. | <pre><code>`"{\"state\":\"CONNECTED\",\"since\":1700216614438}"`</code></pre> |
 
 ### Inbound Endpoints
@@ -176,6 +176,9 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the configuration associated with the Proxy Key. |
 | POST   | https://config.ff.harness.io/api/1.0/proxy/auth | Opens a stream with Harness SaaS to listen for changes. |
 
+<br>
+</br>
+
 | **Periodic Requests** |
 | Methods      | Link | Purpose |
 | ----------- | ----------- | ----------- |
@@ -184,6 +187,9 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | GET      | https://config.ff.harness.io/api/1.0/proxy/config?environment=<envID> | Retrieves the environment specific changes that happen in Harness SaaS e.g. a new environment was associated with the Proxy Key. | 
 | GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the latest config associated with the Proxy Key. This request is made periodically if the stream between the Primary Proxy and Harness SaaS goes down to make sure the Proxy doesn’t get out of sync.  |
 | POST   | https://config.ff.harness.io/api/1.0/metrics/<envID> | Forwards metrics from the SDKs on to the Harness SaaS. |
+
+<br>
+</br>
 
 ## Account Stream
 
