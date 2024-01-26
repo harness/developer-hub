@@ -4752,7 +4752,7 @@ For example, if you have 'app1' as a release name and two different namespaces l
 
 #### How can I create overrides V2 at the infrastructure, environment, and service levels using CLI/API?
 
-You can use the following API to create overrides: [Create Service Override API](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride).
+You can use the following API method to create overrides: [Create Service Override API](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride).
 
 #### when I push to create a new branch, push new code to a branch the trigger does not pick it up.
 
