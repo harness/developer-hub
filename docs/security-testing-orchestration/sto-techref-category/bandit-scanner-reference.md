@@ -42,81 +42,50 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Bandit step settings for STO scans
 
-The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Bandit scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-
-
-
-
+The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below.
 
 ### Scan Mode
 
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
-<!-- ============================================================================= -->
-<a name="scan-config"></a>
 
 ### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
 
 ### Target
 
-
-<!-- ============================================================================= -->
-<a name="target-type"></a>
-
 #### Type
 
-
-import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-
-
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
 
-<!-- ============================================================================= -->
-<a name="target-name"></a>
-
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
-<!-- ============================================================================= -->
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-<!-- ============================================================================= -->
-<a name="target-workspace"></a>
 
 #### Workspace (_repository_)
 
-
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -124,44 +93,36 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 
-
-
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
 #### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
  For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `-skip testID_1, testID_3, testID_5`
 
-<a name="fail-on-severity"></a>
 
 #### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
+
 
 <!-- >
 
@@ -172,7 +133,6 @@ You can add a `tool_args` setting to run the [bandit scanner binary](https://pyp
 commenting out...this is functionally equivalent to using Additional CLI flags
 
 -->
-
 
 ### Additional Configuration
 
@@ -193,8 +153,6 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-<!-- END step-palette-config ----------------------------------------------------------------------------- -->
-
 
 ## Security step settings for Bandit scans in STO (legacy)
 
@@ -205,14 +163,13 @@ You can set up Bandit scans using a Security step, but this is a legacy function
 
 #### Scan policy types
 
-STO supports the following policy\_type settings for Bandit:
+STO supports the following `policy_type` settings for Bandit:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
 
 #### Target and variant
-
 
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
@@ -230,11 +187,12 @@ The following settings are required for Bandit scans:
 * `repository_branch` — This tells Bandit the Git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+#### Ingestion file
 
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 
-#### Ingestion file
+
 
 <StoLegacyIngest />
 

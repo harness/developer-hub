@@ -54,7 +54,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Anchore Enterprise step settings in STO
 
-The recommended workflow is add a Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is add an Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Scan settings
 
@@ -62,25 +62,18 @@ The recommended workflow is add a Anchore Enterprise step to a Security Tests or
 
 #### Scan mode
 
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 
-
 #### Scan configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -89,27 +82,22 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
+import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image.md';
 
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
+
 
 #### Name 
 
-
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
+
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -117,75 +105,57 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 ### Container Image
 
 
-<a name="container-type"></a>
-
 #### Type  (_orchestration_)
 
-
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
-
+import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 <StoSettingImageType />
 
 
-
-
-<a name="container-domain"></a>
-
 #### Domain
 
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 
 <StoSettingImageDomain />
 
 
-<a name="container-name"></a>
-
 #### Name
 
-
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from './shared/step_palette/image/_name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
-
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
 
 <StoSettingImageAccessID />
 
+
 #### Access Token
 
-
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
-
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
 
 <StoSettingImageAccessToken />
 
 
 ### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 
 ### Authentication
 
-
-<a name="auth-domain"></a>
 
 #### Domain
 
@@ -194,25 +164,17 @@ The fully-qualified URL to the scanner API, for example `https://anchore.company
 
 #### Access ID
 
-
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
-
-
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
 
 ### Scan Tool
-
-
 
 #### Image Name
 
@@ -221,34 +183,24 @@ For Extraction scans, the name of the image that you want to extract from Anchor
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
-
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
 
 
 #### Additional CLI flags
 
 You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `--force` to reset the image analysis status to `not_analyzed`.  
 
-<a name="fail-on-severity"></a>
-
-<!-- step-palette -->
 
 #### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
+
 
 ### Settings
 
@@ -343,7 +295,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 <!-- step-palette -->
 ### Fail on Severity
 
-<!-- import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md'; -->
+<!-- import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+ -->
 
 <StoSettingFailOnSeverity />
 

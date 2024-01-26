@@ -259,6 +259,10 @@ const config = {
                 href: "/release-notes",
               },
               {
+                label: "Roadmap",
+                href: "/roadmap",
+              },
+              {
                 label: "FAQs",
                 to: "docs/faqs",
               },
@@ -270,10 +274,6 @@ const config = {
                 label: "Harness Cloud Operations",
                 to: "docs/harness-cloud-operations",
               },
-              // {
-              //   label: "Roadmap",
-              //   to: "/roadmap",
-              // },
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
@@ -450,6 +450,10 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes",
+              },
+              {
+                label: "Roadmap",
+                href: "/roadmap",
               },
               {
                 label: "Feature Requests",
