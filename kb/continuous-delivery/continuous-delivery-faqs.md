@@ -1910,7 +1910,7 @@ You can create a dashboard for the services deployed which can then be exported 
 
 The image harnessdev/sam-deploy:1.82.0-1.0.0 supports IRSA and assume role on delegate.
 
-### Does a shared path in a SAM Build Manifest show where the download happens?
+#### Does a shared path in a SAM Build Manifest show where the download happens?
 
 No, shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path.
 
@@ -4247,7 +4247,7 @@ To change the YAML file path for an existing pipeline to a non-default branch in
 - Import the YAML file from the Git repository.
 By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
 
-### Can I change a template's Git connector but keep the same version, repo, and so on?
+#### Can I change a template's Git connector but keep the same version, repo, and so on?
 
 Go to the list of templates, select **More Options** (&vellip;), and then select **Edit Git Metadata**. From there, you can change the Git connector while maintaining the other settings.
 
@@ -4675,3 +4675,42 @@ The expiration of JWT for FirstGen and NextGen is set to 24 hours and it can be 
 #### Does Harness offer any complex deployment strategies for Lambda ?
 
 No, we soon will have feature for Canary with traffic shifting but most other deployments are at hold.
+
+#### when I push to create a new branch, push new code to a branch the trigger does not pick it up.
+
+we have a Feature Flag CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM for triggers on-premises BitBucket to fire on the first push to a new branch.
+
+#### Can we use wildcard for the github repo name on the trigger of a pipeline.
+
+Providing a repo name creates a GitHub repo URL, So in this case we cannot use wildcard conditions.
+
+#### How do I create a Dashboard in NG, which shows all the CD pipelines which are executing currently, in real-time ?
+
+Youu can use the "status" field in dashboards to get the status of the deployments
+
+#### How is infra key formed for deployments.
+
+The Infrastructure key (the unique key used to restrict concurrent deployments) is now formed with the Harness account Id + org Id + project Id + service Id + environment Id + connector Id + infrastructure Id.
+
+#### What if the infra key formed in case when account Id + org Id + project Id + service Id + environment Id are same and the deployments are getting queued because of it.
+
+To make the deployment work you can :
+
+1. Add a connector in the select host field and specify the host.
+2. Change the secret identifie (create a new with same key but differen identifier)
+
+#### How can we use the Github event type `X-GitHub-Event: pull_request_review
+
+You need to create a custom trigger to use the Github event type `X-GitHub-Event: pull_request_review.
+
+#### We have a single ECR artifact that is deployed multiple times with different run arguments as different services in parallel in a deployment. When the pipeline is run each service asks to select the ECR artifact tag. They should all be set to the same tag. Is there a way to select the ECR artifact tag once and use it for all 10 of the services?
+
+For the first service we can keep the tag as runtime value, with it also declare a pipeline variable and keep it as runtime input.
+ 
+For all other service, provide the pipeline variable expression as a value for tag.
+ 
+So now when we run the pipeline, the first service will ask for the tag value and you can copy the same tag value to pipeline variable which is also a runtime input which will then be assigned to all other services.
+
+#### How to create a dashboard to identify builds that are ending with an 'timeout' in a specific task.
+
+You can create a custom dimension to achieve this case, for example : Custom Dimension : contains(${pipeline_execution_summary_ci.error_message}, "timeout")
