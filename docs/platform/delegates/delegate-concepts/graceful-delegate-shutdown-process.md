@@ -4,7 +4,11 @@ description: Read about the process of graceful delegate shutdown.
 sidebar_position: 5
 ---
 
-Harness Delegate is designed to shut down gracefully. The process of graceful delegate shutdown is as follows:
+Harness Delegate is designed to shut down gracefully.
+
+## Shutdown without upgrade
+
+The process of graceful delegate shutdown without upgrade is as follows:
 
 - The delegate receives an instruction to quit.
 - A grace period begins during which the delegate:
@@ -13,6 +17,15 @@ Harness Delegate is designed to shut down gracefully. The process of graceful de
 - The grace period ends.
 - Delegates that have not quit are force-terminated.
 - Incomplete tasks are discarded.
+
+## Shutdown with upgrade
+
+The process of graceful delegate shutdown with `upgrader` is as follows:
+
+- When `upgrader` updates the delegate image, it brings up a new delegate and waits for it to become healthy.
+- When the delegate is healthy, `upgrader` terminates the old pod. The old pod doesn't terminate immediately. It will first:
+   - Stop accepting new tasks.
+   - Wait for currently executing tasks to finish before terminating. The maximum time `upgrader` waits for tasks to finish before forcing termination is 10 minutes.
 
 ## Grace period
 
