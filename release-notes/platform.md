@@ -122,11 +122,8 @@ The following deprecated API endpoints are longer supported:
   ![](./static/mark-for-public-view.png)
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
-   
-   <!--  Add after merging https://github.com/harness/developer-hub/pull/4882
 
    For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
-   -->
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
@@ -135,6 +132,8 @@ The following deprecated API endpoints are longer supported:
 - Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
 
    This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
+
+  This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 1.19.6 <!--  January 8, 2024 -->
 
@@ -190,6 +189,10 @@ Currently, allowlist verification for delegate registration is behind the featur
 
 ### Version 1.17.8 <!--  January 2, 2024 -->
 
+#### New features and enhancements
+
+- Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
+
 #### Fixed issues
 
 - For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
@@ -237,6 +240,8 @@ Currently, allowlist verification for delegate registration is behind the featur
 - Upgraded YamlBeans to version 1.17. (PL-42905, ZD-51149, ZD-53760, ZD-53919)
 
 ###### Fixed issues
+
+- The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
 - Execution links were not available in pipeline failure Slack notifications. (PL-42974, ZD-53195)
 
