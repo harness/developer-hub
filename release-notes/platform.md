@@ -82,6 +82,24 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2024
 
+### Version 1.22.x <!--  January 29, 2024 -->
+
+#### New features and enhancements
+
+- Removing org.redisson:redisson dependency from delegate as this library is not used in delegate (PL-42485) (ZD-53588, ZD-53760)
+
+- Deletion of SCIM managed user groups was not allowed. Now it can be deleted using the delete API for user groups. (PL-39439)
+ - However deletion of SCIM managed user groups through the UI will not be supported as of now."
+
+#### Fixed issues
+
+- `K8S_WATCH` PerpetualTasks remained in the TASK_ASSIGNED state despite being assigned to non-existent delegates, now, issue is fixed by implementing a cron job to reset PerpetualTasks associated with invalid delegates, ensuring proper handling of Kubernetes events (PL-43973)
+
+- Running `terraform apply` for an existing SSO-linked User Group previously resulted in an empty user list. This issue has been addressed. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+  - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in update payload, the existing users will be replaced with the users list provided in the payload. (PL-43763)
+
+- The `platform-service` was not publishing the response count metric. This has been resolved, and the `platform-service` will now be consistently publishing the response count metrics. (PL-43123)
+
 ### Version 1.21.5 <!--  January 22, 2024 -->
 
 #### Fixed issues
