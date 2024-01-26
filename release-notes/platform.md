@@ -189,6 +189,10 @@ Currently, allowlist verification for delegate registration is behind the featur
 
 ### Version 1.17.8 <!--  January 2, 2024 -->
 
+#### New features and enhancements
+
+- Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
+
 #### Fixed issues
 
 - For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
@@ -236,6 +240,8 @@ Currently, allowlist verification for delegate registration is behind the featur
 - Upgraded YamlBeans to version 1.17. (PL-42905, ZD-51149, ZD-53760, ZD-53919)
 
 ###### Fixed issues
+
+- The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
 - Execution links were not available in pipeline failure Slack notifications. (PL-42974, ZD-53195)
 
