@@ -2596,3 +2596,4 @@ This is not configurable; once the token is revoked, the delegate will get disco
 #### What is the ETA/process for adding another admin user to our Harness account if the user with admin access gets locked?
 
 In emergencies like SAML/LDAP issues, it's recommended to have a local admin user for account access. If a functional account gets locked, Harness can grant admin permissions to an existing account user, but can't create a new admin user. It's advised to maintain at least two local admin users. In such situations, raising an urgent Harness ticket is necessary. The process, involving backend database updates and multiple approvals, typically takes a couple of hours to grant admin permissions to an existing user.
+
