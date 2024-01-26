@@ -53,7 +53,7 @@ Below is an example `docker-compose` file that you can use for running the Proxy
 version: "3.9"
 services:
   primary:
-    image: "harness/ff-proxy:v2-rc0.8"
+    image: "harness/ff-proxy:v2-rc0.4"
     environment:
       - PROXY_KEY=<proxy key>
       - REDIS_ADDRESS=redis:6379
@@ -63,7 +63,7 @@ services:
       - "7001:7000"
 
   replica-1:
-    image: "harness/ff-proxy:v2-rc0.8"
+    image: "harness/ff-proxy:v2-rc0.4"
     environment:
       - LOG_LEVEL=INFO
       - REDIS_ADDRESS=redis:6379
@@ -73,7 +73,7 @@ services:
       - "7002:7000"
       
   replica-2:
-    image: "harness/ff-proxy:v2-rc0.8"
+    image: "harness/ff-proxy:v2-rc0.4"
     environment:
       - LOG_LEVEL=INFO
       - REDIS_ADDRESS=redis:6379
@@ -87,8 +87,6 @@ services:
     ports:
       - "6379:6379"
 ```
-
-The example above uses the Docker Image Version `v2-rc0.8` but there may be more up-to-date version available. To check for the lastest RC Image, you can go to [Feature Flags Proxy Repo on Docker](https://hub.docker.com/r/harness/ff-proxy/tags).
 
 ### Single Mode
 
