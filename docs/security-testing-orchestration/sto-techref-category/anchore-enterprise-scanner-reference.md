@@ -56,7 +56,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is add an Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
 
-### Scan settings
+### Scan
 
 <a name="scan-mode"></a>
 
@@ -86,6 +86,12 @@ import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image
 
 <StoSettingScanTypeCont />
 
+
+#### Auto-detect target and variant 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect />
 
 #### Name 
 

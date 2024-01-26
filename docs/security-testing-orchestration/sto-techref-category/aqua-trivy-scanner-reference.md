@@ -46,24 +46,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Aqua Trivy step settings for STO scans
 
-The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Aqua Trivy scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
-
-
-
-
-
-<details>
-<summary>Scanner Template</summary>
-
-![](static/aqua-trivy-security-scan-step.png)
-
-</details>
+The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below.
 
 
 ### Scan settings
 
-
-<a name="scan-mode"></a>
 
 #### Scan Mode
 
@@ -75,52 +62,45 @@ import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestrati
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
-<a name="scan-config"></a>
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
 
 ### Target Settings
 
-<a name="target-type"></a>
 
 #### Type
 
-
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
+
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect />
 
 
 #### Name 
 
-
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
-
-
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
