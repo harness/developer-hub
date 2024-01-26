@@ -122,11 +122,8 @@ The following deprecated API endpoints are longer supported:
   ![](./static/mark-for-public-view.png)
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
-   
-   <!--  Add after merging https://github.com/harness/developer-hub/pull/4882
 
    For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
-   -->
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
