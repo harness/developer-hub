@@ -126,9 +126,7 @@ The following configurations added by Harness to the default Logback xml.
     <logger name="io.github.resilience4j" level="WARN"/>
 
 
-    // todo(avmohan): Temporarily added till we root cause the high frequency logging issue
     <logger name="io.kubernetes.client.informer.cache.ReflectorRunnable" level="${KUBE_WATCH_LEVEL:-OFF}"/>
-    // todo: Temporarily added till we replace fabric8 dependency
     <logger name="io.fabric8.kubernetes.client.Config" level="CRITICAL"/>
     <logger name="org.yaml.snakeyaml.introspector" level="ERROR"/>
     <root level="${LOGGING_LEVEL:-INFO}">
