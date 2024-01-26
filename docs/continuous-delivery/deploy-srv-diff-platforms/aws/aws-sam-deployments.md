@@ -63,11 +63,17 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 </details>
 
-## Use AWS IRA for Harness AWS connector credentials
+## Use AWS IRSA for Harness AWS connector credentials
 
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 <IrsaPartial name="aws-irsa" />
+
+:::warning
+
+Using AWS IRSA requires additional configuration in the AWS SAM Step Group. See [AWS SAM Step Group](docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments.md#sam-step-group) below for details.
+
+:::
 
 ## AWS SAM service
 
@@ -201,6 +207,12 @@ You need to configure the following mandatory settings:
 
 - **Kubernetes Cluster:** Add a Harness [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
 - **Namespace:** Enter the name of the cluster namespace to use.
+
+:::info
+   If you are using AWS IRSA then you will need to add your service account to the step group.
+   1. Make sure the **Namespace** of your Containerized Step Group includes the service account bound to a role with IRSA.
+   2. In **Optional Configuration** set the **Service Account Name** to the service account bound to a role with IRSA.
+:::
 
 ### Harness Docker Hub connector and image for all steps
 
