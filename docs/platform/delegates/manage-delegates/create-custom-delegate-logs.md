@@ -54,7 +54,7 @@ To create a custom custom delegate log, do the following:
 Here is the default logging configuration for the Harness Delegate.
 
 :::info
-The following configurations added by Harness to the default Logback xml.
+The following configurations were added by Harness to the default Logback XML.
 
 - `io.harness.logging.ExpiringDuplicateMessageFilter`
 
