@@ -109,7 +109,7 @@ gsutil -m cp \
 
 - The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
 
-- Upgraded the yq library from version 4.35.2 to 4.40.5. (PL-42548)
+- Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
 
 ### Fixed issues
 
@@ -289,7 +289,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
   This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. PL-39051
+- The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
 
 
