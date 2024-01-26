@@ -1,1 +1,0 @@
-The TCP port to communicate with the scanner. You can specify this to override the default port for that scanner.
