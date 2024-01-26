@@ -96,22 +96,33 @@ When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retr
 
 # The Proxy Key V2
 
+<!-- Should I include set up instructions here? Not mentioned in V1 Docs but unsure if it's necessary -->
+
 ## Creating A Proxy Key
 
-![An image of the Account Settings page within the Harness Application. ](./images/harness_account_settings_ui.png)
+<!-- In order to create a Proxy Key, you'll need to update this once the UI has been implemented but for now we can do this using the /admin/proxy/keys API. -->
 
-In order to create a Proxy Key, here are the steps you'll need to follow. 
 
- 1. On the Home Page of the Harness Application, head over to *Account Settings*.
- 2. Under *Account Settings*, an additional menu should appear. Click on *Account Resources*. 
- 3. Once loaded, click the key icon labelled as *Feature Flags Proxy*.
- 4. On the top left, Select *New Proxy Key*. Add a name and description of the key followed by *Next*.
- 5. The next page allws you to select the organisation the key belongs to. Once selected, click *Next*. 
- 6. Next, you will associate the proxy key with the Project Environments of your choosing. 
- 7. Once selected, you can select the environments and if you'd like to select specific environments within each environment (i.e. `prod` or `non-prod`), select *Specific Environments* in the dropdown menu. 
- 8. Once you are satisfied with your choices, you can go ahead and select *Generate Key and save*. 
+### Required Configuration
 
-Once the key is generated, it should automatically take you back to the *Feature Flags Proxy Keys* page in your Account Settings. 
+<!-- Need to add paragraph with explanation of the below -->
+
+**Primary Proxy**
+
+| Environment Variable      | Example | Description | Default Value |
+| ----------- | ----------- | ----------- | ----------- |
+| `PROXY_KEY`      | `b73d22cb-2deb-4f4e-90c3-2a8f82e8da5e` | - | "" |
+| `REDIS_ADDRESS`   | `localhost:6379`| The host and port of the Redis server you want your proxy to connect to. | "" |
+| `READ_REPLICA`   | `false` | Determines whether the Proxy runs as a Primasry or Read Replica. | false |
+| `AUTH_SECRET`   | `somethingSecret` | Used to sign JWT tokens that the proxy generates during /auth requests. | "" |
+
+**Replica Proxy**
+
+| Environment Variable      | Example | Description | Default Value |
+| ----------- | ----------- | ----------- | ----------- |
+| `REDIS_ADDRESS`   | `localhost:6379`| The host and port of the Redis server you want your proxy to connect to. | "" |
+| `READ_REPLICA`   | `true` | Determines whether the Proxy runs as a Primasry or Read Replica. | false |
+| `AUTH_SECRET`   | `somethingSecret` | Used to sign JWT tokens that the proxy generates during /auth requests. | "" |
 
 ### Rotating a Proxy Key
 
@@ -137,25 +148,32 @@ You can find this resource to monitor the Proxy over in the [Harness Feature Fla
 
 ### Startup Sequence
 
-Below, you will find a diagram of the Primary Proxy V2 Startup Sequence:
+<!-- Need to add paragraph with explanation of the below? -->
 
 ![A diagram of the Primary Proxy V2 Startup Sequence. ](./images/primary_startup_sequence.png)
 
-Here is a diagram of the the Replica Proxy V2 Startuo Sequence:
+<!-- Need to add paragraph with explanation of the below? -->
 
 ![A diagram of the Replica Proxy V2 Startup Sequence. ](./images/replica_startup_sequence.png)
 
 ### Cached Data
 
-Below is a table demonstrating the Cached Data:
+<!-- Need to add paragraph with explanation of the below? -->
 
 <!-- Need to fix -->
 
 | Key      | Type | Use Case | Example Data |
 | ----------- | ----------- | ----------- | ----------- |
-| `env-<envID>-feature-configs`   | `Key/Value`| Stores all of the `FeatureConfigs` in an environment. The Proxy returns this object to SDKs when they make a request to `/<environmentID>/feature-configs`. | ```[  { "feature": "flagOne", ... // other properties},"feature": "flagTwo",     ... // other properties }]```
-
-<!-- ] ``` |
+| `env-<envID>-feature-configs`   | `Key/Value`| Stores all of the `FeatureConfigs` in an environment. The Proxy returns this object to SDKs when they make a request to `/<environmentID>/feature-configs`. | `[  
+  {
+    "feature": "flagOne",
+    ... // other properties
+  },
+  {
+    "feature": "flagTwo",     
+    ... // other properties
+  }
+]` |
 | `env-<envID>-feature-configs-<identifier>`   | `Key/Value` | Stores a single flag config<br>- The Proxy returns this object to SDKs when they make a request to `/<environmentID>/feature-configs/<identifier>`. | ```{
   "feature": "flagOne",
   ... // other properties
@@ -182,7 +200,7 @@ Below is a table demonstrating the Cached Data:
 ]``` |
 | `proxy:sse_events`   | `Stream` | Used by the Primary Proxy to forward SSE events to the Read Replica Proxy. | ```{"event":"patch","domain":"flag","identifier":"f1","version":20,"environment":"71716f30-aea0-4271-89b5-cb1c82be4567","apiKey":""``` |
 | `stream:sdk_metrics`   | `Stream` | Used to forward Metrics from Read Replica Proxy's to Primary Proxy.<br>- Primary proxy listens on this stream and forwards metrics data to Harness Saas. | ```{"environment_id":"71716f30-aea0-4271-89b5-cb1c82be4567","metricsData":[{"attributes":[{"key":"featureIdentifier","value":"f1"},{"key":"featureName","value":"f1"},{"key":"variationIdentifier","value":"true"},{"key":"featureValue","value":"true"},{"key":"SDK_TYPE","value":"server"},{"key":"SDK_LANGUAGE","value":"go"},{"key":"SDK_VERSION","value":"1.0.0"},{"key":"target","value":"global"}],"count":2,"metricsType":"FFMETRICS","timestamp":1698669998778}],"targetData":[{"attributes":[],"identifier":"james","name":"james"}]}``` |
-| `ffproxy_saas_stream_health`   | `Stream` | Used to store the health status of the Harness Saas through to the Primary Proxy stream. | ```"{\"state\":\"CONNECTED\",\"since\":1700216614438}"``` | -->
+| `ffproxy_saas_stream_health`   | `Stream` | Used to store the health status of the Harness Saas through to the Primary Proxy stream. | ```"{\"state\":\"CONNECTED\",\"since\":1700216614438}"``` |
 
 <!-- Need to fix the above for accessibility -->
 
