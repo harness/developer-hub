@@ -63,51 +63,36 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 ### Target
 
 
-<!-- ============================================================================= -->
-<a name="target-type"></a>
-
 #### Type
 
-
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
-
-
 
 <StoSettingScanTypeRepo />
 
 
-<!-- ============================================================================= -->
-<a name="target-name"></a>
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect />
 
 #### Name 
 
-
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
-
 
 <StoSettingTargetName />
 
-<!-- ============================================================================= -->
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
-<!-- ============================================================================= -->
-<a name="target-workspace"></a>
 
 #### Workspace (_repository_)
 
-
 import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
-
-
 
 <StoSettingTargetWorkspace  />
 

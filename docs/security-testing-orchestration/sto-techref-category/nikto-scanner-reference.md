@@ -43,14 +43,9 @@ The recommended workflow is add a Nikto step to a Security Tests or CI Build sta
 
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
-
 
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
@@ -58,27 +53,25 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
-
 ### Target Settings
-
-<a name="target-type"></a>
 
 #### Type
 
-
 import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect />
+
 
 #### Name 
 

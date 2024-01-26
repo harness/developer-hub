@@ -57,41 +57,38 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-
-<!-- StoSettingScanMode / -->
 <StoSettingScanModeIngest />
+
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
 
 ### Target
 
-<a name="target-type"></a>
 
 #### Type
 
-
 import StoSettingScanType from './shared/step_palette/scan/_type.md';
-
-
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
+
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect />
+
+
 
 
 #### Name 

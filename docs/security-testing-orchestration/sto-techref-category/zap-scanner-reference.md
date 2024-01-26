@@ -81,6 +81,7 @@ The following options are supported for Zap scans:
 
    When Quick mode is enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
+
 ### Target settings
 
 #### Type
@@ -89,24 +90,31 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 
 <StoSettingScanTypeInst />
 
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect />
+
+
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
+
 
 #### Variant
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
-
 <StoSettingTargetVariant  />
+
 
 #### Workspace
 
 import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
-
 
 <StoSettingTargetWorkspace  />
 
