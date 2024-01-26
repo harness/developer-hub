@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0",
     "build": "export NODE_OPTIONS=--max-old-space-size=7096 && docusaurus build",

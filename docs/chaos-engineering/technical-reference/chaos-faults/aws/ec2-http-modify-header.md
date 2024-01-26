@@ -2,7 +2,6 @@
 id: ec2-http-modify-header
 title: EC2 HTTP modify header
 ---
-## Introduction
 
 EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies the headers of requests and responses of the service. 
 
@@ -12,7 +11,7 @@ EC2 HTTP modify header injects HTTP chaos which affects the request (or response
 
 EC2 HTTP modify header tests the resilience of the application to incorrect or incomplete headers.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 - The EC2 instance should be in a healthy state.
@@ -90,8 +89,8 @@ Below is an example AWS policy to execute the fault.
 - Go to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -123,8 +122,9 @@ Below is an example AWS policy to execute the fault.
             <td> Default: response. For more information, go to <a href="#modifying-the-response-headers"> header mode.</a></td>
         </tr>
     </table>
-    <h2>Optional tunables</h2>
-    <table>
+
+### Optional tunables
+  <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>

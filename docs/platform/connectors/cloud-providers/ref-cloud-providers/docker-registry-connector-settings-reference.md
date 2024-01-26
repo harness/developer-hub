@@ -88,3 +88,9 @@ If you use anonymous access for a Kubernetes deployment, make sure `imagePullSec
 ## Select connectivity mode
 
 You can connect through a Harness Delegate or the Harness Platform. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
+
+:::tip
+
+The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::

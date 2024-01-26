@@ -27,9 +27,11 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 :::
 
-## Build credits
+## Billing and build credits
 
-All plans get 2000 free build credits each month. For more information about Harness Cloud build credit consumption, go to [Subscriptions and licenses](../../get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+All plans get 2000 free build credits each month. Customers on Team and Enterprise plans can purchase additional build credits. Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+
+Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
 ## Platforms and image specifications
 
@@ -144,7 +146,7 @@ pipeline:
 If a [Harness Cloud image](#platforms-and-image-specifications) has multiple versions of a tool pre-installed, you can specify the version that you want to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a [Run step](../run-ci-scripts/run-step-settings.md) to select an Xcode version:
 
 ```
-sudo xcode-select -switch /Applications/Xcode_14.1.0.app
+sudo xcode-select -switch /Applications/Xcode_15.1.0.app
 ```
 
 :::warning
@@ -236,6 +238,10 @@ Steps running in containers can't communicate with [Background steps](../manage-
 :::
 
 </details>
+
+## Secure connect (private networking)
+
+You can use Harness Cloud build infrastructure in firewalled environments. For more information, go to [Secure connector for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 ## Troubleshoot Harness Cloud build infrastructure
 

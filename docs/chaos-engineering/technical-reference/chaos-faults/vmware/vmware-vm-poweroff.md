@@ -14,7 +14,7 @@ VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
 - VMware VM poweroff determines the resilience of an application to random power failures. 
 - It determines how efficiently an application recovers and restarts the services.
 
-:::note
+### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
 - Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -34,12 +34,11 @@ stringData:
 ```
 :::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -49,10 +48,12 @@ stringData:
         <td> For example, <code>vm-5365</code>. For more information, go to <a href="#stoppoweroff-the-vm-by-moid"> stop VM based on MOID. </a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

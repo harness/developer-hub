@@ -14,7 +14,7 @@ VMware Windows Memory hog applies stress on the Memory resources on Windows OS b
 - VMware Windows Memory hog simulates the situation of lack of Memory for processes running on the application, which degrades their performance. 
 - It verifies the autopilot functionality of services or application on the VM.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -23,7 +23,7 @@ VMware Windows Memory hog applies stress on the Memory resources on Windows OS b
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
 - Ensure installation of [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downloads/testlimit) on the target VM, a prerequisite for this experiment. Execute the fault using the built-in Administrator user to ensure permissions for memory stress testing. [Instructions to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 
 ```yaml
 apiVersion: v1
@@ -38,14 +38,12 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -65,10 +63,11 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

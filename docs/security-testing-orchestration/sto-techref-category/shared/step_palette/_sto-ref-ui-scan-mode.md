@@ -1,1 +1,1 @@
-This integration supports the following orchestration modes.
+This integration supports the following scan modes.

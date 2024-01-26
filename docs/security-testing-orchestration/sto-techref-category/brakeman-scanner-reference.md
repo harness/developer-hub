@@ -1,6 +1,6 @@
 ---
 title: Brakeman scanner reference for STO
-description: Repository scans with Brakeman
+description: Scan code repositories with Brakeman.
 sidebar_label: Brakeman scanner reference
 sidebar_position: 80
 ---
@@ -40,18 +40,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Brakeman step settings for STO scans
 
-The recommended workflow is to add an Brakeman step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Brakeman scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
-
-
-
-
-
-<details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png)
-
-</details>
 
 ### Scan settings
 
@@ -59,7 +47,7 @@ The recommended workflow is to add an Brakeman step to a Security Tests or CI Bu
 
 
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 
 
@@ -100,11 +88,9 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <!-- ============================================================================= -->
 <a name="target-variant"></a>
@@ -163,6 +149,9 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 <StoSettingCliFlags />
 
+For example, suppose you want to scan only a subpath rather than the full directory. You can use `--path` followed by the path: `--path some/path/to/app` 
+
+
 <a name="fail-on-severity"></a>
 
 
@@ -173,13 +162,13 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 <StoSettingFailOnSeverity />
 
+<!-- 
+
 ### Settings
 
-<!--
-You can add a `tool_args` setting to run the [Brakeman scanner binary](https://pypi.org/project/Brakeman/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
--->
+You can add a `tool_args` setting to run the [Brakeman scanner binary](https://brakemanscanner.org/docs/options/) with specific command-line arguments.  For example, suppose you want to scan only a subpath rather than the full directory. You can use `-path` followed by the path: `tool_args` = `--path some/path/to/app` 
 
-You can add a `tool_args` setting to run the [Brakeman scanner binary](https://brakemanscanner.org/docs/options/) with specific command-line arguments.  For example, suppose yoou want to scan only a subpath rather than the full directory. You can use `-path` followed by the path: `tool_args` = `--path some/path/to/app` 
+-->
 
 
 ### Additional Configuration
@@ -203,7 +192,9 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Brakeman scans in STO (legacy)
 
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Brakeman scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Brakeman step](#brakeman-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 

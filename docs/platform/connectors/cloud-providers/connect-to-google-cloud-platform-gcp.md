@@ -126,6 +126,12 @@ Before creating the GCP connector, you need to:
    * **Use OpenID Connect (OIDC):** This option uses OIDC authentication to access public cloud resources without secrets or credentials.
 6. Select **Save and Continue** to run the connection test. If the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
+:::tip
+
+The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
+
 ## Troubleshooting GCP connector errors
 
 If the connection test fails due to a credentials issue, use the GCP CLI or console to check the GCP service account or delegate's credentials. The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.

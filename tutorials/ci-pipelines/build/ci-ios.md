@@ -346,7 +346,7 @@ Use `xcode-select` in a **Run** step to switch between pre-installed versions of
     spec:
       shell: Sh
       command: |-
-        sudo xcode-select -switch /Applications/Xcode_13.4.1.app
+        sudo xcode-select -switch /Applications/Xcode_15.1.0.app
         xcodebuild -version
 ```
 
@@ -377,7 +377,7 @@ If your build infrastructure machines have multiple versions of Xcode installed,
     spec:
       shell: Sh
       command: |-
-        sudo xcode-select -switch /Applications/Xcode_13.4.1.app
+        sudo xcode-select -switch /Applications/Xcode_15.1.0.app
         xcodebuild -version
 ```
 

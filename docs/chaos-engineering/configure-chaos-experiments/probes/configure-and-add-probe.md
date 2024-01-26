@@ -1,6 +1,7 @@
 ---
 title: Configure and add probes
 sidebar_position: 2
+description: Configure and add probes to your chaos experiment
 ---
 
 A probe explores the behavior of a [system that is in a chaotic or unpredictable state](../../technical-reference/chaos-faults) and helps validate the [declarative hypothesis](../../technical-reference/probes/overview.md) set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and use this understanding to predict or control their behavior.

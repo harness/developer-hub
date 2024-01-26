@@ -1,6 +1,6 @@
 ---
 title: AWS Security Hub scanner reference for STO
-description: Configuration scans with AWS Image scanner
+description: Scan configurations with AWS Image scanner.
 sidebar_label: AWS Security Hub scanner reference
 sidebar_position: 50
 ---
@@ -71,16 +71,10 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 
 import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
 import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-type-03-config.md';
 
 <a name="scan-type"></a>
 <StoSettingScanType />
-<StoSettingScanTypeRepo />
-<StoSettingScanTypeCont />
-<StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
 
 <!-- ---------------------------------------------------------------------------- -->
@@ -89,11 +83,9 @@ import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-ty
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 
 <!-- ---------------------------------------------------------------------------- -->
@@ -110,49 +102,28 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 ### Ingestion File 
 
-
-
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
 
 <StoSettingIngestionFile  />
 
 ### Authentication settings
 
+You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access ID and token and access them using the format `<+secrets.getValue("project.my-secret")>`. 
+
 #### Access ID 
 
-
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-
-
-<StoSettingAuthAccessID />
-
-<!-- ---------------------------------------------------------------------------- -->
-
-<a name="auth-access-token"></a>
+The access ID for your AWS account.
 
 #### Access Token
 
+The access token for your AWS account.
 
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
-
-<StoSettingAuthAccessToken />
-
-
+<!-- 
 #### Access Region
 
+Your AWS region. 
 
-
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-
-
-<StoSettingAuthDomain />
-
-
-<!-- ---------------------------------------------------------------------------- -->
-<a name="auth-enforce-ssl"></a>
-
+-->
 
 ### Log Level, CLI flags, and Fail on Severity
 

@@ -78,7 +78,9 @@ Do the following:
 
    - `/shared/customer-artifacts` You'll use this shared folder to store the code repo so that all steps can access it.
 
-5. Expand **Overview** > **Advanced** and add the following stage variables.
+5. Go to **Overview** and add the following **Shared Path**: `/shared/scan_results`
+
+6. Expand **Overview** > **Advanced** and add the following stage variables.
 
    You'll be specifying runtime inputs for some of these variables. This enables you to specify the code repo, branch, image label, and image tag, and other variables at runtime.
 
@@ -137,13 +139,13 @@ Now you will add a step that runs a scan using the local Semgrep container image
       git --version
 
       #  clone repo, cd to local clone, check out branch
-      cd /shared/customer_artifacts
+      cd /shared/scan_results
       git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
-      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+      cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
       git checkout <+stage.variables.GITHUB_BRANCH>
 
       # run semgrep scan, save results to SARIF file
-      semgrep --sarif --config auto -o /harness/results.sarif /shared/customer_artifacts
+      semgrep --sarif --config auto -o /shared/scan_results/semgrep.sarif
 
       ```
 
@@ -185,13 +187,13 @@ Add a `Run` step to your `SecurityTests` stage and configure it as follows:
     git --version
 
     #  clone repo, cd to local clone, check out branch
-    cd /shared/customer_artifacts
+    cd /shared/scan_results
     git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
-    cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+    cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
     git checkout <+stage.variables.GITHUB_BRANCH>
 
     # run semgrep scan, save results to SARIF file
-    semgrep --sarif --config auto -o /harness/results.sarif /shared/customer_artifacts
+    semgrep --sarif --config auto -o /shared/scan_results/semgrep.sarif
 
     ```
 
@@ -215,15 +217,15 @@ Here's an example:
         git --version
 
         # clone repo into shared folder, cd to local clone, check out branch
-        cd /shared/customer_artifacts
+        cd /shared/scan_results
         git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
-        cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+        cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
         git checkout <+stage.variables.GITHUB_BRANCH>
 
         # run semgrep scan, save results to SARIF file
-        semgrep --sarif --config auto -o /harness/results.sarif /shared/customer_artifacts
+        semgrep --sarif --config auto -o /shared/scan_results/semgrep.sarif 
 
-        # cat /harness/results.sarif
+        # cat /shared/scan_results/semgrep.sarif
       envVariables:
         SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
 ```
@@ -258,7 +260,7 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 
       2. Variant = Select **Runtime Input** as the value type.
 
-   4. Ingestion File = `/harness/results.sarif`
+   4. Ingestion File = `/shared/scan_results/semgrep.sarif`
 
    <!--
 
@@ -287,7 +289,7 @@ Add a step after the `Run` step and configure it as follows:
           - `level : info`
           - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : none`
       - `ingestion : `
-        - `file : /harness/ingest/results.sarif`
+        - `file : /shared/scan_results/semgrep.sarif`
 
 Here's a YAML example:
 
@@ -308,7 +310,7 @@ Here's a YAML example:
           level: debug
         fail_on_severity: critical
       ingestion:
-        file: /harness/results.sarif
+        file: /shared/scan_results/semgrep.sarif
 ```
 
 </TabItem>
@@ -352,7 +354,7 @@ Assuming that the Semgrep scanner detected no critical vulnerabilities, the next
       docker ps
 
       # cd to the repo and build/tag the local image
-      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+      cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
       docker login \
              --username="<+stage.variables.DOCKERHUB_USERNAME>" \
              --password="<+stage.variables.DOCKERHUB_PAT>" \
@@ -391,13 +393,13 @@ Add a `Run` step and configure it as follows:
        git --version
 
        #  clone repo, cd to local clone, check out branch
-       cd /shared/customer_artifacts
+       cd /shared/scan_results
        git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
-       cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+       cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
        git checkout <+stage.variables.GITHUB_BRANCH>
 
        # run semgrep scan, save results to SARIF file
-       semgrep --sarif --config auto -o /harness/results.sarif /shared/customer_artifacts
+       semgrep --sarif --config auto -o /shared/scan_results/semgrep.sarif 
 
     ```
 
@@ -424,7 +426,7 @@ Here's an example:
 
 
         # build and tag the local image
-        cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+        cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
         docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
         docker build -t <+stage.variables.DOCKER_IMAGE_LABEL> .
         docker tag <+stage.variables.DOCKER_IMAGE_LABEL> <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
@@ -636,13 +638,13 @@ pipeline:
                       # install git, clone the code repo, and cd to the local clone
                       apk add git
                       git --version
-                      cd /shared/customer_artifacts
+                      cd /shared/scan_results
                       git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
-                      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+                      cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
 
                       git checkout <+stage.variables.GITHUB_BRANCH>
-                      semgrep --sarif --config auto -o /harness/results.sarif /shared/customer_artifacts
-                      # cat /harness/results.sarif
+                      semgrep --sarif --config auto -o /shared/scan_results/semgrep.sarif 
+                      # cat /shared/scan_results/semgrep.sarif
                     envVariables:
                       SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
                     resources:
@@ -664,7 +666,7 @@ pipeline:
                         level: info
                       fail_on_severity: critical
                     ingestion:
-                      file: /harness/results.sarif
+                      file: /shared/scan_results/semgrep.sarif
               - step:
                   type: Run
                   name: build_local_image
@@ -682,7 +684,7 @@ pipeline:
                       docker ps
 
                       # build and tag the local image
-                      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+                      cd /shared/scan_results/<+stage.variables.GITHUB_REPO>
 
                       docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
                       docker build -t <+stage.variables.DOCKER_IMAGE_LABEL> .
@@ -728,7 +730,7 @@ pipeline:
                     privileged: true
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           caching:
             enabled: false
             paths: []

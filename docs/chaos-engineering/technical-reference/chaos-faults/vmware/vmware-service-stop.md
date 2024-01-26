@@ -11,7 +11,7 @@ VMware service stop stops the target system services running on a Linux OS based
 - VMware service stop determines the resilience of an application to random halts. 
 - It determines how efficiently an application recovers and restarts the services.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos. 
@@ -32,14 +32,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -64,10 +62,12 @@ stringData:
         <td> For example, <code>nginx</code>. For more information, go to <a href="#service-name"> service name.</a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -79,22 +79,22 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

@@ -19,7 +19,7 @@ VMware network latency:
 - Simulates slow response on specific third party (or dependent) components (or services).
 - Simulates degraded data-plane of service-mesh infrastructure.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -36,14 +36,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -63,10 +61,12 @@ stringData:
         <td> It is used to run the govc command. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -121,10 +121,11 @@ stringData:
         <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-    <h3>Secret fields</h3>
-     <table>
+
+### Secret tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

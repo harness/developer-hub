@@ -12,24 +12,24 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 
 ## Use cases
 
-- Kubelet density determines how resilient an application is to unplanned scaling of Kubernetes pods.
+Kubelet density:
+- Determines the resilience of an application to unplanned scaling of Kubernetes pods.
 - It simulates pod-storm (due to autoscale) on high traffic conditions.
 - It verifies functioning of the application services from latency and availability standpoint.
 - It ensures that the topology constraints are adhered to on pod scale (node selectors, tolerations, zone distribution, affinity or anti-affinity policies). 
 - It also verifies pod creation and scheduling SLIs on the cluster nodes.
 - It also helps determine the performance of the kubelet for a specific node.
 
-:::note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The target nodes should be in the healthy state before and after injecting chaos.
-:::
 
-## Fault tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -39,22 +39,23 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
         <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node</a>.</td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+    
+### Optional tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 90s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Defaults to 90s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> POD_COUNT </td>
         <td> Total number of pods that are created during chaos. </td>
-        <td> Defaults to 50. For more information, go to <a href="#pod-count"> pod count. </a></td>
+        <td> Default: 50. For more information, go to <a href="#pod-count"> pod count. </a></td>
       </tr>
       <tr>
         <td> TARGET_NAMESPACE </td>

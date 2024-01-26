@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-15T10:00
+date: 2024-01-25T10:00
 sidebar_position: 10
 ---
 
@@ -21,7 +21,65 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## Downtime notice: Harness Cloud macOS image update
+
+Over the weekend of 28 January 2024, Harness Cloud macOS runners will be updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1.
+
+During the upgrade process, Harness Cloud builds may be unavailable for approximately 20 minutes.
+
+If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version.
+
+Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+
+## Deprecation notice: app.harness Docker registry
+
+[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
+
+You will be impacted by this deprecation if:
+
+* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to the Harness project on GCR](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images).
+* You [pull Harness images from a private registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
+
+Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+
 ## January 2024
+
+<!-- Version 1.10.x -->
+
+<!-- Jan 29, 2024 -->
+
+<!-- New features and enhancements -->
+
+<!-- Harness Cloud macOS image update - latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. -->
+
+<!-- When using [OIDC], the OIDC token ID is stored in the [Harness environment variable] `PLUGIN_OIDC_TOKEN_ID`. (CI-10852) (Add to env var list/OIDC/security hardening docs. See discussion on ticket. Also add 2nd proxy variable `HARNESS_HTTP/HTTPS_PROXY` for secure connect.)-->
+
+<!-- Fixed issues -->
+
+<!-- [PR status updates] now send correctly when using a [GitHub App in a GitHub connector] with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177) -->
+<!-- The Run Tests step now respects the Test Globs setting with [TI for Ruby]. (CI-10907, ZD-55937) -->
+<!-- Added a missing field validation for **Repository Name** when using [Harness Code Repository] as the pipeline's [default codebase]. (CI-11042) -->
+<!-- Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325) -->
+<!-- Improved the error message that appears when there is a connectivity problem between the delegate and runner in a [local runner build infrastructure]. (CI-10827) -->
+<!-- CI-10825 marked as "RN candidate = no" -->
+
+### Version 1.9.4
+
+<!-- Jan 23, 2024 -->
+
+#### New features and enhancements
+
+* Free plans require credit card validation to use [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). If you don't want to provide a credit card, you can use [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+* The [codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) `<+codebase.sourceBranch>` and `<+codebase.targetBranch>` are now always `null` for branch and tag builds. These expressions are primarily for differentiating the target and source branches for PR builds. For branch and tag builds, use `<+codebase.branch>` and `<+codebase.tag>`. (CI-10743, ZD-55284)
+
+#### Early access features
+
+[Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. (CI-8922)
+
+#### Fixed issues
+
+Added indexing to handle a `IncorrectResultSizeDataAccessException` error that rarely occurred in builds with [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) if some non-unique values were assigned. (CI-10884, ZD-55815)
 
 ### Version 1.8.2
 

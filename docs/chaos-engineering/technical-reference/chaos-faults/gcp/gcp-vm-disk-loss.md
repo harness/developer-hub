@@ -8,10 +8,12 @@ GCP VM disk loss disrupts the state of GCP persistent disk volume using the disk
 
 ## Use cases
 
-- GCP VM disk loss fault determines the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
+GCP VM disk loss fault :
+- Determines the resilience of the GKE infrastructure. 
+- Determines how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 
-:::info note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - Service account should have editor access (or owner access) to the GCP project.
 - Target disk volume should not be a boot disk of any VM instance.
 - Disk volumes with the target label should be attached to their respective instances.
@@ -35,13 +37,12 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
-:::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
+  <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -61,10 +62,10 @@ stringData:
         <td> Only one zone is provided, which indicates that all target disks should reside in the same zone. For more information, go to <a href="#detach-volumes-by-names">zones. </a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -87,6 +88,11 @@ stringData:
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
         <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

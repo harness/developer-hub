@@ -1,6 +1,6 @@
 ---
 title: Custom Ingest step reference for STO
-description: ingest JSON or SARIF data from external scanners
+description: Ingest SARIF or JSON scan results.
 sidebar_label: Custom Ingest step reference
 sidebar_position: 130
 ---
@@ -67,11 +67,9 @@ The target type of the scanned object. You can ingest data for the following tar
 
 ### Name 
 
+import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 
 <!-- ---------------------------------------------------------------------------- -->

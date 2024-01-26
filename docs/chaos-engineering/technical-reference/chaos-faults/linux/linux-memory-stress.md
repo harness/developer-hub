@@ -24,7 +24,7 @@ The mapped memory space is unmapped only after the chaos duration; the same memo
 
 <FaultPermissions />
 
-## External packages
+### External packages
 This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ## Fault tunables

@@ -1,6 +1,7 @@
 ---
 title: Openshift
 sidebar_position: 1
+description: Openshift Security Context Constraint to control permissions for pods in cluster
 ---
 This section discusses Openshift Security Context Constraint that allows administrators to control permissions for pods in a cluster.
 
