@@ -4721,7 +4721,7 @@ You can create a custom dimension to achieve this case, for example : Custom Dim
 
 While a functioning and stable delegate is imperative, it is advisable to prioritize its use. However, if there is a preference for connecting via platform, provided there is an external secrets manager in place and a streamlined process for automatic key updates within that system during rotations, integration through that avenue could be considered.
 **Note** 
-- Continuous Delivery cannot the Platform based auth for all the connectors because the deployment jobs run on the delegate. Things like GitHub are feasible, but AWS, GCP, and Azure are not really possible because the credential exchange happens on the delegate
+- Continuous Delivery cannot use the Platform based auth for all the connectors because the deployment jobs run on the delegate. Things like GitHub are feasible, but AWS, GCP, and Azure are not really possible because the credential exchange happens on the delegate
 
 #### Can we use Continous Verification inside CD module without any dependency of SRM ?
 
@@ -4770,7 +4770,7 @@ Helm template can render the manifests but Go template cannot. There are limitat
 
 #### Does Harness allow a customer to set a quota or a limit on Service Instances ?
 
-No we don’t have a mechanism to let users cap their service instance below their subscribed amount and have the system warn you.
+No, we don’t have a mechanism to let users cap their service instance below their subscribed amount and have the system warn them.
 
 #### What is the cutover strategy for canaries when the labels are immutable and the deployment pre-exists ?
 
@@ -4781,7 +4781,7 @@ Please follow below mentioned steps as a work around:
 - delete deployment `<name>-temp`
 Deletion can be done manually with `kubectl`, or as a one-off in a Harness pipeline.
 
-#### In Helm deployment with custom certificates, what's vital about DNS-compliant keys ? How should delegates be restarted after modifying the secret for changes to take effect ?
+#### In a Helm deployment with custom certificates, what is essential regarding DNS-compliant keys? ? How should delegates be restarted after modifying the secret for changes to take effect ?
 
 Please follow below suggestions:
 
