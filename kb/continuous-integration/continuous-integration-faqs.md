@@ -321,6 +321,10 @@ You can mount many types of volumes, such as empty directories, host paths, and 
 
 Use the [Node Selector](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#node-selector) setting to do this.
 
+### It is possible to make a toleration configuration at the project, org, or account level?
+
+[Tolerations in a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#tolerations) can only be set at the stage level.
+
 ### I want to use an EKS build infrastructure with an AWS connector that uses IRSA
 
 You need to set the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the Kubernetes cluster build infrastructure settings.
@@ -954,6 +958,12 @@ To do this, you can:
 
 For information about this, go to [Maven settings.xml](./articles/maven-settings-xml).
 
+### How do I publish maven artifacts to AWS CodeArtifact?
+
+Typically, this is configured within your Maven settings.xml file to publish artifacts upon build, as explained in the AWS documentation on [Use CodeArtifact with mvn](https://docs.aws.amazon.com/codeartifact/latest/ug/maven-mvn.html#publishing-artifacts).
+
+However, if you're not publishing directly via Maven, you can push directly using the AWS CLI or cURL, as explained in the AWS documentation on [Publishing with curl](https://docs.aws.amazon.com/codeartifact/latest/ug/maven-curl.html).
+
 ### How do I enable the Gradle daemon in builds?
 
 To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
@@ -1110,6 +1120,10 @@ There are a variety of potential causes for AWS connector errors due to specific
 ### Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?
 
 Yes, but there are specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+
+### Does the Upload Artifacts to GCS step support GCP connectors that inherit delegate credentials?
+
+No. Currenthly, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
 
 ### Upload Artifacts to JFrog step throws certificate signed by unknown authority
 
@@ -1280,7 +1294,7 @@ The Run step requires the **Command** and **Shell** fields. Some shell must be a
 
 ### Is a Docker image required to use the Run step on local runner build infrastructure?
 
-Yes. Container Registry and Image are always required for Run steps on a local runner build infrastructure. For more information about when Container Registry and Image are required, go to [Use Run steps - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#container-registry-and-image).
+A Docker image is required for Run steps on a local runner build infrastructure if the necessary binaries aren't available on the host machine. For more information, go to [Use Run steps - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#container-registry-and-image).
 
 ### Is it required for a Run step's image to have Docker and Docker CLI installed?
 
@@ -1424,6 +1438,10 @@ No, the workspace is destroyed when the stage ends. If you need to shared data a
 ### How do I share data and volumes between steps in a CI stage?
 
 The workspace is the current working directory for all steps in a stage. Any data stored to the workspace is available to other steps in the stage. If you need to share additional volumes, decare them as **Shared Paths**. For more information, go to [CI pipeline creation overview - Shared Paths](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [Share data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
+
+### How do I share files between CD/Custom stages and CI stages?
+
+You can use caching to [share data across stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages); save the cache at the end of one stage, and restore the cache at the beginning of the next stage. You can also use a Git clone step to clone a repo where you have stored the files you want to share. Git clones steps are available in CI and Custom stages.
 
 ### What volume is created when I add a shared path?
 
@@ -1672,6 +1690,10 @@ The step in Harness determines its status based on the exit status received from
 
 Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](./articles/parallel-step-for-logging).
 
+### How to get the build ID of a pipeline execution?
+
+You can use the expression `<+execution.steps.stepId.build.buildNumber>` in a Run step to echo the build ID for that execution.
+
 ### Builds older than 30 days aren't on the Project Overview page.
 
 The default timescale setting for the overview page is 30 days. You can change this setting.
@@ -1768,59 +1790,16 @@ For steps, you can set a custom timeout limit in each step's **Optional Configur
 
 If a file becomes corrupted in the bucket during the restoration process, it is best practice to remove the corrupted file from the bucket. To ensure robustness in your pipeline, think about incorporating a Failure Strategy into the restore step to mitigate pipeline failures.
 
-### General issues with connectors, secrets, delegates, and other Platform components
+## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
+<!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
-### It is possible to make a toleration configuration on project/org/account level?
-As per the current design you need to make the changes in all the pipelines because toleration configuration can only be made at stage level.
+<!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->
 
+<!-- Please don't use code notation in headings. It doesn't render correctly. -->
 
-### How to publish maven artifacts to AWS CodeArtifact?
-Typically it's configured within your Maven settings.xml file to publish artifacts upon build. Doc: https://docs.aws.amazon.com/codeartifact/latest/ug/maven-mvn.html#publishing-artifacts
+<!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
-### Is there any other way to publish maven artifacts to AWS CodeArtifact?
-However, if you're not publishing directly via Maven, you can always push directly using the AWS CLI, or Curl. Doc: https://docs.aws.amazon.com/codeartifact/latest/ug/maven-curl.html
-
-
-### I want to know how can we use this docker image selenium-mod in our pipelines?
-User can use the RUN step and run the required docker image. Doc: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#container-registry-and-image
-
-
-### How to fetch files from the harness file store in the run step?
-To fetch files from the Harness file store in a Run step, you can use the following example:
-
-```
-- step:
-    type: Run
-    name: Fetch Files from File Store
-    identifier: fetch_files
-    spec:
-      shell: Sh
-      command: |
-        harness file-store download-file --file-name <file_name> --destination <destination_path>
-```
-Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
-
-
-### How to copy a file into a pod in kubernetes cluster on the build stage?
-As per the current design, there is no out-of-the-box functionality for this.
-For this, you add the run step in the stage and achieve your requirement through that.
-
-
-### How to get the build ID of pipeline execution?
-You can use this expression to get the build Id. Ex: Build number: \<\+execution.steps.stepId.build.buildNumber\>
-
-### How to share files between CD/Custom to CI stages?
-1st Option: Create the 2nd stage as the CI stage only and use the Save and restore cache step to share the files between the stages.
-Doc for reference: https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/
-https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/
-
-2nd Option: You can use the Git clone step in the custom stage to clone the repo
-
-### Is the GCP connector with inherit delegate credentials supported with the Upload Artifacts to GCS step?
-No, As the current design GCP connector is not supported with the Upload Artifacts to GCS step if it's configured with inherit delegate credentials.
-
-#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
-Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
+<!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->

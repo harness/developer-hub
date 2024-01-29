@@ -4912,3 +4912,25 @@ Yes, you can re-run the old execution with the same runtime input you provided e
 
 #### The user is getting this error while adding GitOps agent: "failed to create cluster in argo: createClusterInArgo: rpc error: code = InvalidArgument desc = cannot register cluster: in- cluster has been disabled". What needs to be enabled?
 The user needs to make the required changes in the config map ( cluster.inClusterEnabled: 'true' ).
+
+#### I want to know how can we use this docker image selenium-mod in our pipelines?
+User can use the RUN step and run the required docker image. Doc: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#container-registry-and-image
+
+
+#### How to fetch files from the harness file store in the run step?
+To fetch files from the Harness file store in a Run step, you can use the following example:
+
+```
+- step:
+    type: Run
+    name: Fetch Files from File Store
+    identifier: fetch_files
+    spec:
+      shell: Sh
+      command: |
+        harness file-store download-file --file-name <file_name> --destination <destination_path>
+```
+Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
+
+#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
+Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
