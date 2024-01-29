@@ -1,39 +1,42 @@
 ---
 title: Overview
 sidebar_position: 1
-description: Declarative hypthesis to specify expected outcome of a chaos experiment
+description: Introduction to probes
 ---
 
-## Declarative hypothesis
+This section introduces you to probes, their types, why they are important, and who can use them.
 
-Declarative hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment, and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specs in the respective Chaos Engine which can be validated by the Chaos Operator.
+## What is a probe?
 
-This hypothesis serves as a way to ensure that the experiment is well-defined and that the results can be easily understood. It also helps to ensure that the experiment is repeatable and that the results can be compared across different runs.
+Probes are pluggable checks that can be defined within the chaos engine for any chaos experiment. A probe and its specification are defined in the chaos engine. The probe is triggered by a chaos runner when the chaos engine begins exection. 
 
-Declarative Hypotheses in Chaos engineering can be written in a simple, clear and concise manner, it should be **specific, measurable, achievable, relevant and time-bound (SMART)**. The steady state and declarative hypothesis set by the user should directly map with the SLOs.
+A probe explores the behavior of a system in a chaotic or unpredictable manner. It helps understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior. It also helps validate the declarative hypothesis set by the user. 
 
-## Probe
+![Probe](./static/overview/probe.png)
 
-![Probe](../static/probes/probe.png)
+### Declarative hypothesis
 
-Probes are pluggable checks that can be defined within the Chaos Engine for any Chaos Experiment. The experiment pods execute these checks based on the mode they are defined in & factor their success as necessary conditions in determining the verdict of the experiment (along with the standard in-built checks).
+Declarative hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment, and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specifications in the respective chaos engine which is validated by the chaos operator.
 
-A probe explores the behavior of a system in a chaotic or unpredictable manner and helps validate the declarative hypothesis set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
+This hypothesis is a way to ensure that the experiment is well-defined and that the results are easily understood. It helps to ensure that the experiment is repeatable and the results can be compared across different runs.
 
-A probe, with its spec defined in the Chaos Engine, is triggered by the Chaos Runner once the Chaos Engine starts executing and spawning Chaos Jobs with the probe configuration.
+Declarative hypotheses in HCE can be written in a simple, clear and concise manner, that is, it should be **specific, measurable, achievable, relevant and time-bound (SMART)**. The steady state and declarative hypothesis set by the user should directly map with the SLOs.
 
 ### Types
 
-CE facilitates four types of probes.
+HCE facilitates different types of probes.
 
-- **HTTP Probe**: To query health/downstream URIs
-- **Command Probe**: To execute any user-desired health-check function implemented as a shell command
-- **Kubernetes Probe**: To perform CRUD operations against native & custom Kubernetes resources
-- **Prometheus Probe**: To execute PromQL queries and match prometheus metrics for specific criteria
+- [**HTTP probe**](/docs/chaos-engineering/technical-reference/probes/http-probe.md): To query health/downstream URIs.
+- [**Command probe**](/docs/chaos-engineering/technical-reference/probes/cmd-probe.md): To execute any user-desired health-check function implemented as a shell command.
+- [**Kubernetes probe**](/docs/chaos-engineering/technical-reference/probes/k8s-probe.md): To perform CRUD operations against native and custom Kubernetes resources.
+- [**Prometheus probe**](/docs/chaos-engineering/technical-reference/probes/prom-probe.md): To execute PromQL queries and match prometheus metrics for specific criteria.
+- [**Datadog probe**](/docs/chaos-engineering/technical-reference/probes/datadog-probe.md): To query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results to evaluate the probe outcome.
+- [**SLO probe**](/docs/chaos-engineering/technical-reference/probes/slo-probe.md): To allow you to validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget.
 
-Each type of probe has its own advantages and disadvantages, and the choice of probe depends on the specific requirements of the experiment and the system being tested.
-
-These probes can be used in isolation or in several combinations to achieve the desired checks. While the HTTP Probe and Kubernetes Probe are fully declarative in the way they are conceived, the cmdProbe expects the user to provide a shell command to implement checks that are highly specific to the application use case. Prometheus Probe expects the user to provide a PromQL query along with Prometheus service endpoints to check for specific criteria.
+:::info note
+* Each type of probe has its own advantages and disadvantages, and the choice of probe depends on the specific requirements of the experiment and the system being tested.
+* The probes can be used in isolation or in several combinations to achieve the desired checks.
+:::
 
 ### Mode
 
@@ -60,7 +63,7 @@ By injecting known failures into the system, they can identify and fix issues be
 In general, anyone responsible for maintaining and deploying applications in a Kubernetes cluster, especially in a production environment, should consider using chaos probes to proactively identify and fix issues in their applications.
 
 
-## Why use probes?
+## Why shoud you use probes?
 
 By injecting known failures into the system, chaos probes can identify and fix issues before they occur in production. This can help ensure that the application remains available and responsive to user requests even in the event of unexpected failures.
 
@@ -149,3 +152,8 @@ probe:
       interval: 5
       retry: 1
 ```
+
+## Next steps
+
+* [Configure and add a probe](./configure-and-add-probe.md)
+* [Validate a hypothesis using probes](./validate-hypothesis-using-probes.md)

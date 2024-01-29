@@ -1,5 +1,5 @@
 ---
-title: Architecture
+title: Components of HCE
 sidebar_position: 1
 description: HCE architecture and its components
 ---
@@ -49,6 +49,19 @@ This is a NoSQL MongoDB database microservice accountable for storing users' inf
 ## Harness execution plane
 
 **Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. 
+
+The resource utilization matrix for execution plane components is summarized below. These components are installed in target cluster as a part of the Kubernetes based chaos infrastructure.
+
+:::important
+The table below is indicative of low to medium-load working conditions. As chaos activity increases, more resources will be required, and the values represented here may vary.
+:::
+
+| Deployment          | container           | CPU (Requested) | Memory (Requested) | Image                                |
+|---------------------|---------------------|-----------------|--------------------|--------------------------------------|
+| chaos-operator-ce   | chaos-operator-ce   | 125m            | 300M               | chaosnative/chaos-operator           |
+| chaos-exporter      | chaos-exporter      | 125m            | 300M               | chaosnative/chaos-exporter           |
+| subscriber          | subscriber          | 125m            | 300M               | chaosnative/harness-chaos-subscriber |
+| workflow-controller | workflow-controller | 125m            | 300M               | chaosnative/workflow-controller      |
 
 ## Chaos infrastructure
 

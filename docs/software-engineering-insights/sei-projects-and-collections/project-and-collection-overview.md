@@ -12,7 +12,7 @@ Collection hierarchies in SEI keep data organized. At the top of the hierarchy i
 
 <figure>
 
-![](./static/collections-hierarchies-diagram.png)
+![](./static/collection-heirarchy.png)
 
 <figcaption>A diagram of the relationship between projects, Collection categories, and Collections. SEI integrations feed data from your SDLC tools into the project and the corresponding Collection categories and Collections. Data is ultimately displayed on Insights, which are associated with particular Collections.</figcaption>
 </figure>

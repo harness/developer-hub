@@ -2568,3 +2568,28 @@ To resolve the error ```You are missing the following permission: Create / Edit 
 #### How to export all AutoStopping rules?
 
 Currently, we do not support a direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, we recommend using our API method ```List AutoStopping Rules```.
+
+#### Is it possible to use Vault AWS Credentials generation along with AWS Connector?
+
+Unfortunately, we don't support this feature. Though a custom secret manager can be leverage to get credentials on the fly, where you can write any logic.
+
+#### I’m not receiving an e-mail to register my TOPT token. What should I do?
+
+Please, reach out to Harness Support in order to receive manually your TOPT token. Once you receive the token will be able to register it in any authenticator app that you prefer. Additionally, if you aren’t receiving the token through e-mail, it may be a potential issue with your SMTP provider.
+
+#### How to receive a notification when the delegate’s heartbeat connectivity fails?
+
+At present, we do not support direct notifications for failures in the delegate's heartbeat connectivity. However, you can effectively monitor your delegate using Prometheus metrics, which is a functionality we do support.
+
+#### Where is the currently set session inactive timeout value located?
+
+You can find this value on the Authentication page (right below the Overview menu on the left), the field will be at the bottom of the page: ```Session Inactivity Timeout (in minutes)```.
+
+#### How can I extend the time before a delegate is disconnected from the manager when the API token is revoked?
+
+This is not configurable; once the token is revoked, the delegate will get disconnected immediately. However, you can have a delegate in the account running continuously, which can execute all tasks. This way, when you revoke tokens for other delegates for testing, there will be at least one delegate in the account available to run the task.
+
+#### What is the ETA/process for adding another admin user to our Harness account if the user with admin access gets locked?
+
+In emergencies like SAML/LDAP issues, it's recommended to have a local admin user for account access. If a functional account gets locked, Harness can grant admin permissions to an existing account user, but can't create a new admin user. It's advised to maintain at least two local admin users. In such situations, raising an urgent Harness ticket is necessary. The process, involving backend database updates and multiple approvals, typically takes a couple of hours to grant admin permissions to an existing user.
+

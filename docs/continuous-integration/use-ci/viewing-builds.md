@@ -64,11 +64,11 @@ This tab presents test results from **Run** or **Run Tests** steps. For more inf
 
 ### Other tabs
 
-The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
+The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
 ## Dashboards
 
-For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/Dashboards/dashboards-overview).
+For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/dashboards/dashboards-overview).
 
 ## Error Tracking (Run Tests step)
 

@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: January 24th 2024
+### Latest Updated: January 26th 2024
 
 ## January 2024
 
@@ -33,6 +33,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Fixed uncaught exception error that occurs if initialization fails.
 
 ### Flutter SDK
+
+#### Version 2.1.2 
+
+ - This fixes the Android application crash when using the back button and re-opening the app. (FFM-10501)
+ - We've bumped the `uuid` package to ^4.3.3.
 
 #### Version 2.1.1
 

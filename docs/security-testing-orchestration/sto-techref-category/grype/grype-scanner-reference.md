@@ -64,12 +64,13 @@ The recommended workflow is add a Grype step to a Security Tests or CI Build sta
 #### Scan Mode
 
 
-import StoSettingScanMode from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
@@ -77,7 +78,7 @@ import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-t
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -90,7 +91,7 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 #### Type
 
 
-import StoSettingScanTypeCont     from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
 
 <StoSettingScanTypeCont />
@@ -98,7 +99,7 @@ import StoSettingScanTypeCont     from '/docs/security-testing-orchestration/sto
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
@@ -107,7 +108,8 @@ import StoSettingTargetName from '../shared/step_palette/_sto-ref-ui-target_name
 #### Variant
 
 
-import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
@@ -116,7 +118,8 @@ import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-te
 ### Ingestion File
 
 
-import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -130,7 +133,8 @@ import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-te
 #### Type  
 
 
-import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_type.md';
+
 
 
 <StoSettingImageType />
@@ -142,7 +146,8 @@ import StoSettingImageType from '/docs/security-testing-orchestration/sto-techre
 
 
 
-import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_domain.md';
+
 
 
 <StoSettingImageDomain />
@@ -153,7 +158,8 @@ import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-tech
 #### Name
 
 
-import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_name.md';
+
 
 
 <StoSettingImageName />
@@ -164,7 +170,8 @@ import StoSettingImageName from '/docs/security-testing-orchestration/sto-techre
 #### Tag
 
 
-import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_tag.md';
+
 
 
 <StoSettingImageTag />
@@ -175,7 +182,8 @@ import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref
 #### Access Id
 
 
-import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-id.md';
+
 
 
 <StoSettingImageAccessID />
@@ -186,7 +194,8 @@ import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-te
 #### Access Token 
 
 
-import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-token.md';
+
 
 
 <StoSettingImageAccessToken />
@@ -199,7 +208,8 @@ import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto
 #### Log Level
 
 
-import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -209,7 +219,8 @@ import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags.md';
+
 
 
 <StoSettingCliFlags />
@@ -222,7 +233,8 @@ For example, you can report vulnerabilities with known fixes only using `--only-
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

@@ -10,69 +10,47 @@ You can scan your repositories and container images using Black Duck Hub, a comp
 
 ## Important notes for running Black Duck Hub scans in STO
 
-### Docker-in-Docker requirements
 
+### Docker-in-Docker requirements
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-
 <StoDinDRequirements />
+
 
 ### Root access requirements 
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
-### For more information
 
+### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
-
 <StoMoreInfo />
+
 
 ## Black Duck Hub step settings for STO scans
 
-The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-
-
-
-
-<!--
-<details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png)
-
-</details>
-
--->
+The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below.
 
 
 ### Scan settings
 
-
-<a name="scan-mode"></a>
-
 #### Scan Mode
 
-
-
-
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeDataload from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeDataload from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 <!-- 
 add Dataload support per DOC-2794 
 -->
 
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeDataload />   
 <StoSettingScanModeIngest />
@@ -81,185 +59,126 @@ add Dataload support per DOC-2794
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
-
 ### Target Settings
 
-<a name="target-type"></a>
 
 #### Type
 
+import StoSettingScanType from './shared/step_palette/scan/_type.md';
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-<a name="scan-type"></a>
-<StoSettingScanType />
+<!-- StoSettingScanType / -->
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
 
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-#### Workspace (_repository_)
 
+#### Workspace
 
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
-
 
 
 ### Ingestion settings
 
 
-<a name="ingestion-file"></a>
-
 #### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 ### Authentication
 
-<!-- ============================================================================= -->
-<a name="auth-domain"></a>
-
 #### Domain
 
-
-
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
 <StoSettingAuthDomain />
 
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
 
 #### Enforce SSL
 
-
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
-
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
 
 <StoSettingProductSSL />
 
-<!-- ============================================================================= -->
-<a name="auth-access-api-version"></a>
 
 #### API Version
 
-
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
-
+import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
 
 <StoSettingApiVersion />
 
-<!-- ============================================================================= -->
-<a name="auth-type"></a>
 
 #### Type
 
-
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
-
+import StoSettingAuthType from './shared/step_palette/auth/_type.md';
 
 <StoSettingAuthType />
 
-<!-- ============================================================================= -->
 
 <!-- 
 
 #### Access ID (_orchestration_)
 
-
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
 -->
 
-<!-- ============================================================================= -->
-<a name="auth-access-token"></a>
 
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
-
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
 
+
+
 ### Scan Tool
-
-<!-- ============================================================================= -->
-
 
 #### Project Name
 
-
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
-
+import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
 
 <StoSettingToolProjectName />
 
-<!-- ============================================================================= -->
-
-
 #### Project Version
 
+import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_version.md';
 
-import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
-
-
-<a name="product-project-version"></a>
 <StoSettingToolProjectVersion />
-
-
-
-<!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
 
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
 
 #### Additional CLI flags
 
@@ -270,8 +189,7 @@ For example, to [exclude some detectors from a scan](https://community.synopsys.
 
 #### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -309,9 +227,7 @@ You can set up Black Duck Hub scans using a Security step, but this is a legacy 
 
 #### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
 
 <StoLegacyTargetAndVariant />
 
@@ -334,22 +250,17 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Container image scan settings
 
-
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-
 
 <StoLegacyContainer />
 
 
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
-
 <StoLegacyRepo />
 
 #### Ingestion file
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />

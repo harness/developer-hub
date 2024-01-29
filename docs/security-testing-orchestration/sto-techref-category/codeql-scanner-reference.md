@@ -74,7 +74,8 @@ The recommended workflow is to add a CodeQL step to a Security Tests or CI Build
 ### Scan Mode
 
 
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
 
 
 <StoSettingScanModeIngest />
@@ -83,7 +84,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 ### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -95,7 +96,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 #### Type
 
 
-import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 
 
@@ -103,14 +104,16 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
+
 
 <StoSettingTargetName />
 
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
@@ -119,7 +122,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 ### Ingestion file
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -132,7 +136,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -142,7 +147,8 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 
 <StoSettingCliFlags />
@@ -153,7 +159,8 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

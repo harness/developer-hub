@@ -241,7 +241,7 @@ If step logs disappear from pipelines that are using a Kubernetes cluster build 
 For more information about configuring connectivity, go to:
 
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
-* [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+* [Allowlist Harness Domains an IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
 
 ### Logs don't load in real time
 

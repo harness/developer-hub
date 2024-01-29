@@ -1,7 +1,7 @@
 import { Horizon } from "./roadmapData";
 export const platformData: Horizon = {
-  "Q2 2024 May-July": {
-    description: "Q2 action items",
+  "Now": {
+    description: "Q2 2024, May-July 2024",
     feature: [
       {
         title: "List UI Improvements",
@@ -15,8 +15,8 @@ export const platformData: Horizon = {
       },
     ],
   },
-  "Q3 Aug-Oct": {
-    description: "Q3 action items",
+  "Next": {
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
       {
         tag: ["Pipeline", "Template"],
@@ -26,22 +26,22 @@ export const platformData: Horizon = {
       {
         tag: ["Pipeline"],
         title: "Priority Queue for Pipeline Execution",
-        description: "description2 ",
+        description: "",
       },
     ],
   },
-  "Long Term": {
-    description: "Long term action items",
+  "Later": {
+    description: "Q4 2024+, Oct+ 2024",
     feature: [
       {
         tag: ["Pipeline"],
         title: "Move Project Across Orgs",
-        description: "description 1",
+        description: "",
       },
       {
         tag: ["Pipeline","Insights"],
         title: "Pipeline Analytics",
-        description: "description2 ",
+        description: "",
       },
       {
         tag: ["Pipeline"],

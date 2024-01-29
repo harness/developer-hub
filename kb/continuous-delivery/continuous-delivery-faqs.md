@@ -1910,7 +1910,7 @@ You can create a dashboard for the services deployed which can then be exported 
 
 The image harnessdev/sam-deploy:1.82.0-1.0.0 supports IRSA and assume role on delegate.
 
-### Does a shared path in a SAM Build Manifest show where the download happens?
+#### Does a shared path in a SAM Build Manifest show where the download happens?
 
 No, shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path.
 
@@ -4243,7 +4243,7 @@ To change the YAML file path for an existing pipeline to a non-default branch in
 - Import the YAML file from the Git repository.
 By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
 
-### Can I change a template's Git connector but keep the same version, repo, and so on?
+#### Can I change a template's Git connector but keep the same version, repo, and so on?
 
 Go to the list of templates, select **More Options** (&vellip;), and then select **Edit Git Metadata**. From there, you can change the Git connector while maintaining the other settings.
 
@@ -4671,3 +4671,185 @@ The expiration of JWT for FirstGen and NextGen is set to 24 hours and it can be 
 #### Does Harness offer any complex deployment strategies for Lambda ?
 
 No, we soon will have feature for Canary with traffic shifting but most other deployments are at hold.
+
+#### when I push to create a new branch, push new code to a branch the trigger does not pick it up.
+
+we have a Feature Flag CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM for triggers on-premises BitBucket to fire on the first push to a new branch.
+
+#### Can we use wildcard for the github repo name on the trigger of a pipeline.
+
+Providing a repo name creates a GitHub repo URL, So in this case we cannot use wildcard conditions.
+
+#### How do I create a Dashboard in NG, which shows all the CD pipelines which are executing currently, in real-time ?
+
+Youu can use the "status" field in dashboards to get the status of the deployments
+
+#### How is infra key formed for deployments.
+
+The Infrastructure key (the unique key used to restrict concurrent deployments) is now formed with the Harness account Id + org Id + project Id + service Id + environment Id + connector Id + infrastructure Id.
+
+#### What if the infra key formed in case when account Id + org Id + project Id + service Id + environment Id are same and the deployments are getting queued because of it.
+
+To make the deployment work you can :
+
+1. Add a connector in the select host field and specify the host.
+2. Change the secret identifie (create a new with same key but differen identifier)
+
+#### How can we use the Github event type `X-GitHub-Event: pull_request_review
+
+You need to create a custom trigger to use the Github event type `X-GitHub-Event: pull_request_review.
+
+#### We have a single ECR artifact that is deployed multiple times with different run arguments as different services in parallel in a deployment. When the pipeline is run each service asks to select the ECR artifact tag. They should all be set to the same tag. Is there a way to select the ECR artifact tag once and use it for all 10 of the services?
+
+For the first service we can keep the tag as runtime value, with it also declare a pipeline variable and keep it as runtime input.
+ 
+For all other service, provide the pipeline variable expression as a value for tag.
+ 
+So now when we run the pipeline, the first service will ask for the tag value and you can copy the same tag value to pipeline variable which is also a runtime input which will then be assigned to all other services.
+
+#### How to create a dashboard to identify builds that are ending with an 'timeout' in a specific task.
+
+You can create a custom dimension to achieve this case, for example : Custom Dimension : 
+
+```contains"(${pipeline_execution_summary_ci.error_message}, "timeout")```
+
+#### How can one handle credentials rotation policies for AWS connectors that require access key id and secret access key without the usage of delegate ?
+
+While a functioning and stable delegate is imperative, it is advisable to prioritize its use. However, if there is a preference for connecting via platform, provided there is an external secrets manager in place and a streamlined process for automatic key updates within that system during rotations, integration through that avenue could be considered.
+**Note** 
+- Continuous Delivery cannot use the Platform based auth for all the connectors because the deployment jobs run on the delegate. Things like GitHub are feasible, but AWS, GCP, and Azure are not really possible because the credential exchange happens on the delegate
+
+#### Can we use Continous Verification inside CD module without any dependency of SRM ?
+
+Yes, one can set up a Monitored Service in the Service Reliability Management module or in the `Verify step` in a CD stage.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic/#review-cv-setup-options)
+
+#### Does Harness support the utilization of the report path to showcase test results through the container step ?
+
+Yes, Harness supports utilization of the report path for container steps and containrized group steps as well.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#report-paths)
+
+#### How can one deliver react-native based projects/mobile CD tests on Harness ?
+
+Harness does not specifically support react-native based CD options but one can always be suggested to use ShellScript steps or Container-steps to do the same.
+Please read more on [How to use Shellscript](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/) and [Container Steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step/)
+
+#### Does using organizational environments come with the same limitations observed at the organizational and account levels, particularly regarding the unavailability of the service metric page and rollback features ?
+
+The service metrics page is not available for organizational/environment-level services. However, all other features are on par with project-level/ org-level services and environments without limitations.
+Please read more on CD Service monitoring in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/)
+
+####  If the Delegate uses a KubeConfig if we are leveraging KubeCTL, where is the KubeConfig stored on the Delegate on using Terraform ?
+
+One may use the command : `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes)
+
+#### What is the recommended approach for implementing Terraform dynamic provisioning of infrastructure, specifically in relation to creating the Terraform file without the `kube_config` specification ?
+
+The recommended approach for utilizing Terraform dynamic provisioning of infrastructure involves creating the Terraform file without including the `kube_config` specification. This practice ensures a more effective implementation of Terraform for dynamic infrastructure provisioning.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes)
+
+#### Why does the trigger execution details API sometimes return a 400 error after initiating a pipeline, and what's the recommended time gap for reliable execution between these API calls ?
+
+In the existing process, we await the initiation of the actual pipeline execution. Upon selecting "run pipeline," pre-run checks are performed, followed by the creation of a plan for pipeline execution. The data is returned to trigger only after the execution plan is established. Harness is considering optimizing this process soon by transitioning the execution API flow to an asynchronous model to enhance efficiency.
+
+#### Can we connect to a Databricks cluster ?
+
+No, We do not have a native integration. If one is using terraform, they need to define the access block by following the [Terraform Docs](https://registry.terraform.io/providers/databricks/databricks/0.2.4/docs#authentication)
+Wherever the delegate is hosted it needs network access to reach out and communicate to databricks.
+
+#### What limitations in Go template rendering of manifests compared to Helm have been identified, and how has the decision been made to address this issue by running it as a Helm job ?
+
+Helm template can render the manifests but Go template cannot. There are limitations in the go template. One may run it as a helm job.
+**Note**
+- In case of Helm template and application of network policy update with usage of Blue-Green or Canary deployments, please try to run the apply step and apply the network policies before deploying
+  Please read more on Apply Step in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step/)
+
+#### Does Harness allow a customer to set a quota or a limit on Service Instances ?
+
+No, we don’t have a mechanism to let users cap their service instance below their subscribed amount and have the system warn them.
+
+#### What is the cutover strategy for canaries when the labels are immutable and the deployment pre-exists ?
+
+Please follow below mentioned steps as a work around:
+- deploy same version using Canary with name: `<name>-temp`
+- delete deployment `<name>`
+- deploy same version using Canary with name: `<name>`
+- delete deployment `<name>-temp`
+Deletion can be done manually with `kubectl`, or as a one-off in a Harness pipeline.
+
+#### In a Helm deployment with custom certificates, what is essential regarding DNS-compliant keys? ? How should delegates be restarted after modifying the secret for changes to take effect ?
+
+Please follow below suggestions:
+
+- Ensure that the secret containing custom certificates adheres strictly to DNS-compliant keys, avoiding underscores primarily. Following any modification to this secret, it is imperative to restart all delegates to seamlessly incorporate the changes.
+- Helm Installation Command:
+```sh
+helm upgrade -i nikkelma-240126-del --namespace harness-delegate-ng --create-namespace \
+  harness-delegate/harness-delegate-ng \
+  --set delegateName=nikkelma-240126-del \
+  --set accountId=_specify_account_Id_ \
+  --set delegateToken=your_Delegatetoken_= \
+  --set managerEndpoint=https://app.harness.io/gratis \
+  --set delegateDockerImage=harness/delegate:version_mentioned \
+  --set replicas=1 --set upgrader.enabled=true \
+  --set-literal destinationCaPath=_mentioned_path_to_destination \
+  --set delegateCustomCa.secretName=secret_bundle
+```
+- CA Bundle Secret Creation (Undesirable):
+```sh
+kubectl create secret generic -n harness-delegate-ng ca-bundle --from-file=custom_certs.pem=./local_cert_bundle.pem
+```
+- CA Bundle Secret Creation (Desirable, no underscore in first half of from-file flag):
+```sh
+kubectl create secret generic -n harness-delegate-ng ca-bundle --from-file=custom-certs.pem=./local_cert_bundle.pem
+```
+Please read more on Custom Certs in the following [Documentation](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+
+#### What is the purpose of Harness PR Pipelines in GitOps?
+
+Harness PR Pipelines provide first-class support for modifying GitOps Applications, especially those generated by ApplicationSets with the Git Generator. These pipelines enable users to make targeted changes to microservices in specific target environments, such as development or staging.
+
+#### How does a GitOps ApplicationSet differ from traditional GitOps Applications?
+
+An ApplicationSet acts as an Application factory, defining an application template and syncing it to multiple target environments. It uses generators, such as the Git Generator, to dynamically generate parameters and achieve application automation across various target environments.
+
+#### What functors are available for JSON?
+
+ select Used to select specific attribute values based on a path within the JSON structure.
+ object Selects objects using a JSON key.
+ list Returns a list object and allows extracting items using list methods like get.
+ format Formats the provided JSON object into a readable string format.
+
+#### What functors are available for XML?
+
+xml select Selects an XML file based on an XPath expression.
+
+#### What is the Command Step?
+
+The Command Step allows you to run commands on target hosts in SSH and WinRM deployments, as well as within deployment templates. You can use it for various tasks like:
+
+Running scripts on all target hosts.
+Downloading the deployment artifact.
+Copying the artifact or configuration files.
+
+#### How do download and copy commands differ?
+
+Download: The delegate executes commands on the target hosts to directly download the artifact. Requires access to the target and network connectivity.
+
+Copy: The delegate downloads the artifact and then copies it to the target hosts. Offers more flexibility but requires network connectivity to both the artifact server and target hosts.
+
+#### How to loop the Command Step on all target hosts?
+
+Use the "repeat" looping strategy with the expression stage.output.hosts after the Fetch Instances step for deployment templates.
+This ensures the commands run on each host retrieved via the Fetch Instances step.
+
+#### How to run the Command Step on the delegate?
+
+Use the "Run on Delegate" option in the step settings.
+This is useful for scripts that need to be run on the delegate instead of the target hosts.
+
+#### What versions of Harness Delegate are compatible? 
+The Container step requires Delegate version  1 0 780xx
+
+#### Can I set resource limits for the container? 
+Yes, you can define limits for memory and CPU in the "Set container resources" section.

@@ -34,7 +34,7 @@ The following video introduces Harness CI and walks through a basic Harness CI p
 <figcaption>Harness CI architecture diagram.</figcaption>
 </figure>
 
-The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
+The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
 
 The [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
 

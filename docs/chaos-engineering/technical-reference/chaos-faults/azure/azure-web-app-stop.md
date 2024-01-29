@@ -13,7 +13,7 @@ Azure web app stop
 - Determines the resilience based on how quickly and efficiently the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
 
 ### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
+- Kubernetes >= 1.17
 - Appropriate Azure access to start and stop the web applications.
 - The target Azure web application should be in the running state. 
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -81,6 +81,11 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance power offs (in seconds).</td>
             <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        </tr>
+        <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>

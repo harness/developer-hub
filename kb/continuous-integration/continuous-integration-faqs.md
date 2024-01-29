@@ -6,11 +6,11 @@ redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
 ---
 
-## Can I use Harness CI for mobile app development?
+### Can I use Harness CI for mobile app development?
 
 Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/development-guides/mobile-dev-with-ci)
 
-## I have a MacOS build, do I have to use homebrew as the installer?
+### I have a MacOS build, do I have to use homebrew as the installer?
 
 No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
 
@@ -616,7 +616,7 @@ Harness uses user `1000` by default. You can use a step's **Run as User** settin
 
 If your build runs as non-root (meaning you have set `runAsNonRoot: true` in your build infrastructure settings), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to all build infrastructures.
 
-### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
+#### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
 
 This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#run-as-non-root-or-a-specific-user).
 
@@ -781,6 +781,10 @@ No. [Codebase variables](https://developer.harness.io/docs/continuous-integratio
 This error may occur if your [code repo connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
 
 Also, [SCM service connection failures can occur when using self-signed certificates](#git-connector-scm-connection-errors-when-using-self-signed-certificates).
+
+### How can I see which files I have cloned in the codebase?
+
+You can add a Run step to the beginning of your Build stage that runs `ls -ltr`. This returns all content cloned by the Clone Codebase step.
 
 ## SCM status updates and PR checks
 
@@ -1658,7 +1662,7 @@ If step logs disappear from pipelines that are using a Kubernetes cluster build 
 For more information about configuring connectivity, go to:
 
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
-* [Allowlist Harness Domains and IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+* [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
 
 ### Step logs don't load in real time
 
@@ -1773,7 +1777,6 @@ If a file becomes corrupted in the bucket during the restoration process, it is 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
 
-
 <!-- PLEASE ORGANIZE NEW QUESTION UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
 <!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->
@@ -1781,3 +1784,5 @@ For troubleshooting and FAQs for Platform components that aren't specific to CI,
 <!-- Please don't use code notation in headings. It doesn't render correctly. -->
 
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
+
+<!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->

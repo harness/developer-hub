@@ -1,8 +1,21 @@
 ---
 title: Policy for all AWS faults
+description: AWS superset policy to execute all AWS faults
 ---
 
-## Permissions required
+This section describes the AWS managed policy and how you can use a superset policy to execute all AWS faults.
+
+Identity-based policies are JSON permissions policy documents that control:
+1. What actions an identity (users, groups of users, and roles) can perform;
+2. On which resources; and
+3. Under what conditions. 
+
+Identity-based policies are further categorised into:
+    1. **Managed policies**: A standalone identity-based policy to which you can attach multiple users, groups, and roles in your AWS account.
+
+HCE provides a custom AWS policy for chaos that has been created based on your requirements. This policy is attached with a role and is used for authentication purposes. 
+
+## Permissions required to execute AWS faults
 
 Here is an example AWS superset policy to execute all AWS faults.
 

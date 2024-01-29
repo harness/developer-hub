@@ -11,45 +11,39 @@ You can scan your application instances using [Burp Enterprise](https://portswig
 
 ### Root access requirements 
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
 
 ## Burp step settings for STO scans
 
+The recommended workflow is add a Burp step to a Security Tests or CI Build stage and then configure it as described below.
+
 ### Scan settings
 
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
-<a name="scan-config"></a>
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -80,36 +74,23 @@ The following configurations are available for Orchestration scans. These are [b
 
 ### Target settings
 
-:::note
-
-Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
-
-:::
-
 ##### Type
 
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -132,48 +113,33 @@ Use this setting to specify a specific scan to ingest. If this is not specified,
 
 ### Instance settings
 
-<!-- ============================================================================= -->
-<a name="instance-domain"></a>
-
 #### Domain
 
-
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
 
 <StoSettingInstanceDomain />
 
-<!-- ============================================================================= -->
-<a name="instance-protocol"></a>
 
 #### Protocol
 
-
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
-
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
 
 <StoSettingInstanceProtocol />
 
-<!-- ============================================================================= -->
-<a name="instance-port"></a>
 
 #### Port
 
-
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
-
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
 
 <StoSettingInstancePort />
 
-<!-- ============================================================================= -->
-<a name="instance-path"></a>
 
 #### Path
 
-
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
-
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 
 <StoSettingInstancePath />
+
 
 #### Username
 
@@ -189,9 +155,7 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
@@ -242,19 +206,17 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Instance scan settings
 
-
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-
 
 <StoLegacyInstance />
 
-#### Orchestration scan settings
 
+#### Orchestration scan settings
 
 import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
 
-
 <StoLegacyOrch />
+
 
 #### Dataload scan settings
 
@@ -283,6 +245,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />

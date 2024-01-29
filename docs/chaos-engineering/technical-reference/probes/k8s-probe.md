@@ -11,6 +11,10 @@ With the proliferation of custom resources and operators, especially in the case
 - **present:** Checks for the presence of kubernetes resource based on GVR and filters (field selectors or label selectors).
 - **absent:** Checks for the absence of kubernetes resource based on GVR and filters (field selectors or label selectors).
 
+:::tip
+The Kubernetes probe is fully declarative in the way they are conceived
+:::
+
 ## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
