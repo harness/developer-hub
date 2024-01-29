@@ -1737,7 +1737,9 @@ The Deployment Template will allow us to set the infrastructure and the ability 
 - **Region**: This defines the region where Harness will be deploying the CodeDeploy Application
 - **Application Name**: A name for the CodeDeploy application
 - **Deployment Group**: The deployment group contains settings and configurations used during the deployment. In Harness, you will provide the name of the Deployment Group for the application.
-- **Deployment Configuration**: A Deployment Configuration in AWS CodeDeploy is a set of rules and settings that define how a deployment will be conducted within the service. In Harness, you will provide the setting for the Deployment Configuration. The Default Setting is "CodeDeployDefault.OneAtATime". 
+- **Deployment Configuration**: A Deployment Configuration in AWS CodeDeploy is a set of rules and settings that define how a deployment will be conducted within the service. In Harness, you will provide the setting for the Deployment Configuration. The Default Setting is "CodeDeployDefault.OneAtATime".
+
+The Deployment Template will be leveraged in the **Fetch Instances Step** to set the infrastructure and instance querying to track the deployed Services.
 
 ```yaml
 template:
@@ -1831,6 +1833,179 @@ template:
 
 ```
 
+##### Fetch Instances Sample Execution
+
+```sh
+"INSTANCE_OUTPUT_PATH" has been initialized to "/opt/harness-delegate/fetchInstanceScript/47if1ntCQceymk-GLJJsUg/output.json"
+Executing command ...
+
+Instances list - [i-0b77a163d64963817]
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-0c382fdca8edfdf0c",
+                    "InstanceId": "i-0b77a163d64963817",
+                    "InstanceType": "t3.micro",
+                    "KeyName": "akhilesh-ssh",
+                    "LaunchTime": "2023-09-03T17:55:02.000Z",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "us-east-1f",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                    "PrivateIpAddress": "172.31.66.168",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                    "PublicIpAddress": "34.231.122.208",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-9757dc98",
+                    "VpcId": "vpc-c20f38b9",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2020-09-25T05:22:40.000Z",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-094601fdb87771186"
+                            }
+                        }
+                    ],
+                    "ClientToken": "A7DABC48-19E8-4F48-A493-45074E4F0B53",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::479370281431:instance-profile/CodeDeployDemo-EC2-Instance-Profile",
+                        "Id": "AIPAW7HFSAHLQBJNGQ5CG"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                                "PublicIp": "34.231.122.208"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2020-09-25T05:22:39.000Z",
+                                "AttachmentId": "eni-attach-0ae2c0b4826605455",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupName": "default",
+                                    "GroupId": "sg-afc848e7"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "16:ad:51:e6:da:fd",
+                            "NetworkInterfaceId": "eni-036688d5aca78078b",
+                            "OwnerId": "479370281431",
+                            "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                            "PrivateIpAddress": "172.31.66.168",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                                        "PublicIp": "34.231.122.208"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                                    "PrivateIpAddress": "172.31.66.168"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-9757dc98",
+                            "VpcId": "vpc-c20f38b9",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "default",
+                            "GroupId": "sg-afc848e7"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "team",
+                            "Value": "cd"
+                        },
+                        {
+                            "Key": "ttl",
+                            "Value": "-1"
+                        },
+                        {
+                            "Key": "Name",
+                            "Value": "CodeDeploy Quality Instance Do-not-Delete"
+                        },
+                        {
+                            "Key": "sample_key_2",
+                            "Value": "sample_val_2"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2020-09-25T05:22:39.000Z",
+                    "PrivateDnsNameOptions": {},
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    }
+                }
+            ],
+            "OwnerId": "479370281431",
+            "ReservationId": "r-04f2c39ad6213b31d"
+        }
+    ]
+}
+Command completed with ExitCode (0)
+Execution finished with status: SUCCESS
+```
+
 #### AWS CodeDeploy Steady State Check
 
 This step will check for a steady state and ensure the application is healthy.
@@ -1892,6 +2067,19 @@ template:
       outputVariables: []
       executionTarget: {}
 
+```
+
+##### Steady State Check Execution Logs
+
+```sh
+Executing command ...
+
+Current status for deployment id - [ d-N36KENP64 ] is InProgress ...
+Sleeping for 10s ...
+
+Current status for deployment id - [ d-N36KENP64 ] is Succeeded ...
+Reached steady state ...
+Command completed with ExitCode (0)
 ```
 
 #### AWS CodeDeploy Deploy Step
@@ -1962,6 +2150,29 @@ template:
 ```
 
 
+##### Deploy Step Execution Logs
+
+```sh
+Executing command ...
+
+********** Artifact details **********
+Bucket = codedeploy-quickstart-sample
+Key = SampleApp_Linux.zip
+Bundle Type = zip
+
+********** Starting code deploy with following configuration **********
+Application Name: [CodeDeploy_Quality_Verification_App]
+Aws Region: [us-east-1]
+Deployment Group: [quality-deployment-group]
+Deployment Configuration: [CodeDeployDefault.OneAtATime]
+
+Deployment started successfully with deployment id - [d-N36KENP64]
+Script Output: 
+deploymentId=d-N36KENP64
+Command completed with ExitCode (0)
+```
+
+
 #### AWS CodeDeploy Service Sample
 
 This is a sample service that can be configured to represent the AWS CodeDeploy Service Type. In this example, we can fetch from S3.
@@ -2001,6 +2212,36 @@ service:
           value: zip
     type: CustomDeployment
 ```
+
+
+##### Service Execution Logs
+
+```sh
+Starting service step...
+Service Name: awsCodeDeployService , Identifier: awsCodeDeployService
+Processed service &amp; environment variables
+Processing primary artifact...
+Primary artifact info: 
+type: AmazonS3 
+bucketName: codedeploy-quickstart-sample 
+filePath: SampleApp_Linux.zip 
+filePathRegex: null 
+connectorRef: awsQaSetup
+
+No config files configured in the service or in overrides. configFiles expressions will not work
+No service hooks configured in the service. hooks expressions will not work
+No manifests configured in the service or in overrides. manifest expressions will not work
+Starting delegate task to fetch details of artifact
+Delegate task id: bztoE5RoQsikdZT7tdvKhA-DEL
+Fetched details of primary artifact [status:SUCCESS]
+type: AmazonS3 
+bucketName: codedeploy-quickstart-sample 
+filePath: SampleApp_Linux.zip 
+filePathRegex: null
+Completed service step
+```
+
+
 
 
 
