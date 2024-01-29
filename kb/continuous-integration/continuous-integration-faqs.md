@@ -1768,17 +1768,59 @@ For steps, you can set a custom timeout limit in each step's **Optional Configur
 
 If a file becomes corrupted in the bucket during the restoration process, it is best practice to remove the corrupted file from the bucket. To ensure robustness in your pipeline, think about incorporating a Failure Strategy into the restore step to mitigate pipeline failures.
 
-## General issues with connectors, secrets, delegates, and other Platform components
+### General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
 
-<!-- PLEASE ORGANIZE NEW QUESTION UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
+### It is possible to make a toleration configuration on project/org/account level?
+As per the current design you need to make the changes in all the pipelines because toleration configuration can only be made at stage level.
 
-<!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->
 
-<!-- Please don't use code notation in headings. It doesn't render correctly. -->
+### How to publish maven artifacts to AWS CodeArtifact?
+Typically it's configured within your Maven settings.xml file to publish artifacts upon build. Doc: https://docs.aws.amazon.com/codeartifact/latest/ug/maven-mvn.html#publishing-artifacts
 
-<!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
+### Is there any other way to publish maven artifacts to AWS CodeArtifact?
+However, if you're not publishing directly via Maven, you can always push directly using the AWS CLI, or Curl. Doc: https://docs.aws.amazon.com/codeartifact/latest/ug/maven-curl.html
 
-<!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
+
+### I want to know how can we use this docker image selenium-mod in our pipelines?
+User can use the RUN step and run the required docker image. Doc: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#container-registry-and-image
+
+
+### How to fetch files from the harness file store in the run step?
+To fetch files from the Harness file store in a Run step, you can use the following example:
+
+```
+- step:
+    type: Run
+    name: Fetch Files from File Store
+    identifier: fetch_files
+    spec:
+      shell: Sh
+      command: |
+        harness file-store download-file --file-name <file_name> --destination <destination_path>
+```
+Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
+
+
+### How to copy a file into a pod in kubernetes cluster on the build stage?
+As per the current design, there is no out-of-the-box functionality for this.
+For this, you add the run step in the stage and achieve your requirement through that.
+
+
+### How to get the build ID of pipeline execution?
+You can use this expression to get the build Id. Ex: Build number: \<\+execution.steps.stepId.build.buildNumber\>
+
+### How to share files between CD/Custom to CI stages?
+1st Option: Create the 2nd stage as the CI stage only and use the Save and restore cache step to share the files between the stages.
+Doc for reference: https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/
+https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/
+
+2nd Option: You can use the Git clone step in the custom stage to clone the repo
+
+### Is the GCP connector with inherit delegate credentials supported with the Upload Artifacts to GCS step?
+No, As the current design GCP connector is not supported with the Upload Artifacts to GCS step if it's configured with inherit delegate credentials.
+
+#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
+Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
