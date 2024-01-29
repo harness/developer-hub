@@ -49,7 +49,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2024
 
-### Version 1.22.0
+### Version 1.22.3
 
 #### New features and enhancements
 - Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
