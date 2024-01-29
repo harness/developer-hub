@@ -4791,13 +4791,13 @@ Please follow below suggestions:
 helm upgrade -i nikkelma-240126-del --namespace harness-delegate-ng --create-namespace \
   harness-delegate/harness-delegate-ng \
   --set delegateName=nikkelma-240126-del \
-  --set accountId=6_vVHzo9Qeu9fXvj-AcbCQ \
-  --set delegateToken=ZDk2OTNhNTY5NmYyMWQyMDQwZWNkZWI5ZTNiOTJjYTQ= \
+  --set accountId=_specify_account_Id_ \
+  --set delegateToken=your_Delegatetoken_= \
   --set managerEndpoint=https://app.harness.io/gratis \
-  --set delegateDockerImage=harness/delegate:24.01.82108 \
+  --set delegateDockerImage=harness/delegate:version_mentioned \
   --set replicas=1 --set upgrader.enabled=true \
-  --set-literal destinationCaPath=/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt \
-  --set delegateCustomCa.secretName=ca-bundle
+  --set-literal destinationCaPath=_mentioned_path_to_destination \
+  --set delegateCustomCa.secretName=secret_bundle
 ```
 - CA Bundle Secret Creation (Undesirable):
 ```sh
