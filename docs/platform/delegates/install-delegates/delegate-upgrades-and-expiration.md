@@ -158,7 +158,7 @@ To disable auto-upgrade on an installed delegate image, do the following:
    kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>
    ```
 
-3. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`.   
+2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`.   
 
    ```yaml
    spec: 
@@ -263,7 +263,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     When the `upgrader` makes a request, it tries to change the image to `harness/delegate:23.04.78910`. You can take either the `harness/delegate:23.04.78910` image or the `harness/delegate:23.04.78910.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:23.04.78910`.
 
-3. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
+2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
 
     ```
    curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
