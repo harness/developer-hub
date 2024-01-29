@@ -9,6 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-concepts
+  - /tutorials/ci-pipelines/ci-overview
 ---
 
 Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
@@ -52,8 +53,8 @@ The following video demonstrates how to set up a CI pipeline and run a build.
 
 If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:
 
-- [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-- [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [Tutorial: Build on Harness Cloud](./tutorials.md)
+- [Tutorial: Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
@@ -138,4 +139,4 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Try Harness CI
 
-Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
+Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](./tutorials.md).

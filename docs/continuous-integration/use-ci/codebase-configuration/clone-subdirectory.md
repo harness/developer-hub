@@ -23,7 +23,7 @@ Disabling the built-in clone step removes access to some associated functionalit
 
 ## Add a Run step with git commands
 
-Add a [Run step](../run-ci-scripts/run-step-settings.md) containing your desired `git` commands, such as [`git sparse-checkout`](https://git-scm.com/docs/git-sparse-checkout) to clone a subdirectory instead of an entire repo.
+Add a [Run step](../run-step-settings.md) containing your desired `git` commands, such as [`git sparse-checkout`](https://git-scm.com/docs/git-sparse-checkout) to clone a subdirectory instead of an entire repo.
 
 ```yaml
               - step:

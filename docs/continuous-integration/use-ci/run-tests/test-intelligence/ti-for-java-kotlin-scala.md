@@ -252,7 +252,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 If your [build tool](#build-tool) is Bazel, and you use a Bazel container image to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
-Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the **Run Tests** step.
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-step-settings.md) prior to the **Run Tests** step.
 
 </details>
 
@@ -269,7 +269,7 @@ Select the build automation tool: [Bazel](https://bazel.build/), [Maven](https:/
 
 If your build tool is Bazel, and you use a [container image](#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
-Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the **Run Tests** step.
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-step-settings.md) prior to the **Run Tests** step.
 
 </details>
 

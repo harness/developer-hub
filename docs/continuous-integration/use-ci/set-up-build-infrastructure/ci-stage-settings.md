@@ -315,7 +315,7 @@ The **Execution** tab is where you add steps to the stage. For details about dif
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
-* [Run scripts](/docs/category/run-scripts)
+* [Run scripts](/docs/continuous-integration/use-ci/run-step-settings)
 * [Use plugins](/docs/category/use-plugins)
 * [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 

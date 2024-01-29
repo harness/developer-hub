@@ -120,10 +120,11 @@ Before creating the GCP connector, you need to:
 4. Select **Continue** to configure credentials. For more information about these options, go to the [Details settings in the GCP connector settings reference](./ref-cloud-providers/gcs-connector-settings-reference.md#details-settings).
    * **Specify credentials here:** Use a GCP service account key.
    * **Use the credentials of a specific Harness Delegate:** Allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
+   * **OIDC:** Enables OIDC authentication. For more information, go to [Use OIDC](./ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc).
 5. Select **Continue** to proceed to **Select Connectivity Mode** and select how you want Harness to connect to GCP. For more information about these options, go to the [Connectivity mode settings in the GCP connector settings reference](./ref-cloud-providers/gcs-connector-settings-reference.md#select-connectivity-mode).
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
    * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials. If you select this option, you must select if you want Harness to use any available delegate or only use delegates with specific tags.
-   * **Use OpenID Connect (OIDC):** This option uses OIDC authentication to access public cloud resources without secrets or credentials.
+   * **Connect through Harness Platform for OIDC:** This option uses OIDC authentication to access public cloud resources without secrets or credentials. For more information, go to [Use OIDC](./ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc).
 6. Select **Save and Continue** to run the connection test. If the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
 :::tip
@@ -132,9 +133,9 @@ The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/c
 
 :::
 
-## Troubleshooting GCP connector errors
+## Troubleshoot GCP connector errors
 
-If the connection test fails due to a credentials issue, use the GCP CLI or console to check the GCP service account or delegate's credentials. The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.
+If the connection test fails due to a credentials issue, use the GCP CLI or console to check the credentials of the GCP service account or delegate. The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.
 
 Due to the limited scope of the initial connection test, credentials can pass the connection test and then fail when you use the connector in a pipeline if the IAM role the connector is using doesn't have the roles and policies needed for the pipeline's operations. For example, if a pipeline has a Run step that references a GCP connector, the connector may need to have specific roles or policies to be able to execute the operations required by the Run step.
 

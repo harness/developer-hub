@@ -17,8 +17,7 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/ci-pipelines/fastest-ci",
+    link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
     title: "Build on a Kubernetes Cluster",
@@ -32,58 +31,30 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "30 min",
-    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra",
   },
   {
-    title: "Code coverage with CodeCov",
+    title: "Development guides",
+    module: MODULES.ci,
+    description:
+      "Guidance for building and testing popular languages and platforms.",
+    link: "/docs/category/development-guides",
+    type: [docType.Documentation],
+    icon: "img/icon_ci.svg",
+    newDoc: false,
+  },
+  {
+    title: "All documentation",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
       <>
-        Use a Run step to include CodeCov code coverage.
+        Explore all Harness CI documentation.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/ci-pipelines/test/codecov",
-  },
-  {
-    title: "Terraform Cloud notification triggers",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-       Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: '15 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
-  },
-  {
-    title: "Python application",
-    module: MODULES.ci,
-    description:
-      "Build and test a Python application.",
-    link: "/tutorials/ci-pipelines/build/python",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "C# (.NET Core) application",
-    module: MODULES.ci,
-    description:
-      "Build and test a C# (.NET Core) application.",
-    link: "/tutorials/ci-pipelines/build/dotnet",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
+    link: "/docs/continuous-integration",
   },
 ];
 
@@ -108,196 +79,34 @@ export const CIList: CardItem[] = [
       "Get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.",
     newDoc: false,
     type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/ci-pipelines/fastest-ci",
+    link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
     title: "Build on a Kubernetes cluster",
     module: MODULES.ci,
     description:
       "Build a Docker Image on a Kubernetes cluster build farm.",
-    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra",
     type: [docType.Documentation],
-    time: "30 min",
     icon: "img/icon_ci.svg",
   },
   {
-    title: "C/C++",
+    title: "Development guides",
     module: MODULES.ci,
     description:
-      "Build and test C and C++ applications.",
-    link: "/tutorials/ci-pipelines/build/c",
+      "Guidance for building and testing popular languages and platforms.",
+    link: "/docs/category/development-guides",
     type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: true,
-  },
-  {
-    title: "C# (.NET Core)",
-    module: MODULES.ci,
-    description:
-      "Build and test a C# (.NET Core) application.",
-    link: "/tutorials/ci-pipelines/build/dotnet",
-    type: [docType.Documentation],
-    time: "15 min",
     icon: "img/icon_ci.svg",
     newDoc: false,
   },
   {
-    title: "Go",
+    title: "All documentation",
     module: MODULES.ci,
     description:
-      "Build and test a Go application.",
-    link: "/tutorials/ci-pipelines/build/go",
+      "Explore all Harness CI documentation.",
+    link: "/docs/continuous-integration",
     type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Java",
-    module: MODULES.ci,
-    description:
-      "Build and test a Java application.",
-    link: "/tutorials/ci-pipelines/build/java",
-    icon: "img/icon_ci.svg",
-    time: "15 min",
-    type: [docType.Documentation],
-  },
-  {
-    title: "NodeJS",
-    module: MODULES.ci,
-    description:
-      "Build and test a NodeJS application.",
-    link: "/tutorials/ci-pipelines/build/nodejs",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Python",
-    module: MODULES.ci,
-    description:
-      "Build and test a Python application.",
-    link: "/tutorials/ci-pipelines/build/python",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "Ruby",
-    module: MODULES.ci,
-    description:
-      "Build and test a Ruby application.",
-    link: "/tutorials/ci-pipelines/build/ruby",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "Android",
-    module: MODULES.ci,
-    description:
-      "Build and test an Android application.",
-    link: "/tutorials/ci-pipelines/build/android",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "iOS and macOS",
-    module: MODULES.ci,
-    description:
-      "Build and test an iOS or macOS application.",
-    link: "/tutorials/ci-pipelines/build/ios",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "Microsoft Windows",
-    module: MODULES.ci,
-    description:
-      "Build and test a Microsoft Windows application.",
-    link: "/tutorials/ci-pipelines/build/windows",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "Terraform Cloud notification triggers",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description:
-      "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
-    newDoc: false,
-    type: [docType.Documentation],
-    time: '15 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
-  },
-  {
-    title: "Google GAR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/ci-pipelines/publish/google-gar",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Code coverage with CodeCov",
-    module: MODULES.ci,
-    description:
-      "Use a Run step to include CodeCov code coverage.",
-    link: "/tutorials/ci-pipelines/test/codecov",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "Publish to the Artifacts tab",
-    module: MODULES.ci,
-    description:
-      "Publish any URL to the Artifacts tab.",
-    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run LocalStack",
-    module: MODULES.ci,
-    description:
-      "Run LocalStack as a Background step.",
-    link: "/tutorials/ci-pipelines/test/localstack",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run Sauce Connect Proxy",
-    module: MODULES.ci,
-    description:
-      "Run Sauce Connect Proxy as a Background step.",
-    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Test a FastAPI project",
-    module: MODULES.ci,
-    description:
-      "Use Harness CI to test a FastAPI project.",
-    link: "/tutorials/ci-pipelines/test/fastapi",
-    type: [docType.Documentation],
-    time: "15 min",
     icon: "img/icon_ci.svg",
     newDoc: false,
   },

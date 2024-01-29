@@ -16,13 +16,14 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 
 ### Create a Harness CI pipeline
 
-1. In the **Builds** (Continuous Integration) modules, select **Pipelines**, and then select **Create a Pipeline**.
-2. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
-3. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
-4. If you want to use a [pipeline template](/docs/platform/templates/template), select **Start with Template**.
-5. Select **Start**.
+1. Log in to your Harness account. If you don't have an account yet, go to [Try Harness CI](../get-started/tutorials.md).
+2. Go to the **Builds** (Continuous Integration) module, select **Pipelines**, and then select **Create a Pipeline**.
+3. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
+4. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
+5. If you want to use a [pipeline template](/docs/platform/templates/template), select **Start with Template**.
+6. Select **Start**.
 
-You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../get-started/tutorials.md).
+You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure [pipeline settings](#pipeline-settings).
 
 :::tip
 
@@ -76,8 +77,8 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Build on Harness Cloud build infrastructure](/tutorials/ci-pipelines/fastest-ci)
-* [Build on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+* [Build on Harness Cloud build infrastructure](../get-started/tutorials.md)
+* [Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 :::
 
@@ -101,7 +102,7 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
-* [Run scripts](/docs/category/run-scripts)
+* [Run scripts](/docs/continuous-integration/use-ci/run-step-settings)
 * [Use plugins](/docs/category/use-plugins)
 * [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
