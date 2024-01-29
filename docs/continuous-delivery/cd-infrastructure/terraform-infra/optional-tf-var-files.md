@@ -9,10 +9,6 @@ In the **Optional Configuration** > **Terraform Var Files (optional)** section o
 
 In entries that connect to a remote file store, you can add multiple Terraform variable files, and you can mark those files as optional. At runtime, Harness connects to the file store and fetches the specified files. If you mark the files as optional, Harness fetches any files that are available at runtime, ignores any files that do not exist, and continues to execute the step.
 
-:::note
-The ability to mark Terraform variable files as optional files is behind the feature flag `CDS_TERRAFORM_SUPPORT_OPTIONAL_VAR_FILE_PATHS_NG`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
-:::
-
 Harness supports all [Terraform input types and values](https://www.terraform.io/docs/language/expressions/types.html).
 
 ## Harness Manager
