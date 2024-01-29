@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
+In some cases, you might be using a platform that does not have first-class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
-This tutorial will walk you through a very simple Deployment Templates using Kubernetes. Harness includes first-class Kubernetes support (see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)), but we will use it in this tutorial as it is a very simple way to review Deployment Templates features.
+This tutorial will walk you through very simple Deployment Templates using Kubernetes. Harness includes first-class Kubernetes support (see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)), but we will use it in this tutorial as it is a very simple way to review Deployment Templates features.
 
 ## Objectives
 
@@ -1723,7 +1723,21 @@ template:
 **Version**: 1.0
 **Description**: This deployment template will help users deploy services using AWS CodeDeploy.
 
+#### Pre-Requisites
+
+- The user needs to install the AWS CLI on the Delegate, users can install it via the INIT_SCRIPT. 
+
 #### Deployment Template Configuration
+
+The Deployment Template will allow us to set the infrastructure and the ability to fetch the instances deployed via AWS CodeDeploy. 
+
+##### Input Parameters 
+
+- **AWS Connector**: You will need to provide us with an AWS Connector that has access to perform CodeDeploy Deployments.
+- **Region**: This defines the region where Harness will be deploying the CodeDeploy Application
+- **Application Name**: A name for the CodeDeploy application
+- **Deployment Group**: The deployment group contains settings and configurations used during the deployment. In Harness, you will provide the name of the Deployment Group for the application.
+- **Deployment Configuration**: A Deployment Configuration in AWS CodeDeploy is a set of rules and settings that define how a deployment will be conducted within the service. In Harness, you will provide the setting for the Deployment Configuration. The Default Setting is "CodeDeployDefault.OneAtATime". 
 
 ```yaml
 template:
@@ -1769,7 +1783,7 @@ template:
           spec:
             content: |-
               #
-              # Script is expected to query Infrastructure and dump json
+              # Script is expected to query Infrastructure and dump JSON
               # in $INSTANCE_OUTPUT_PATH file path
               #
               # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
@@ -1819,14 +1833,16 @@ template:
 
 #### AWS CodeDeploy Steady State Check
 
+This step will check for a steady state and ensure the application is healthy.
+
 ```yaml
 template:
   name: CodeDeploy Steady State
   identifier: CodeDeploy_Steady_State
   versionLabel: v1
   type: Step
-  projectIdentifier: AnilTest_DONOTDELETE
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: default
+  orgIdentifier: default
   tags: {}
   icon: 
   spec:
@@ -1880,14 +1896,16 @@ template:
 
 #### AWS CodeDeploy Deploy Step
 
+This step will perform the deployment of the AWS CodeDeploy Application. The Template will use the properties you have set in the Service and Deployment Template. 
+
 ```yaml
 template:
   name: AWS CodeDeploy Step
   identifier: AWS_CodeDeploy_Step
   versionLabel: v1
   type: Step
-  projectIdentifier: AnilTest_DONOTDELETE
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: default
+  orgIdentifier: default
   tags: {}
   icon: 
   spec:
@@ -1944,7 +1962,14 @@ template:
 ```
 
 
-#### AWS Code Deploy Service Sample
+#### AWS CodeDeploy Service Sample
+
+This is a sample service that can be configured to represent the AWS CodeDeploy Service Type. In this example, we can fetch from S3.
+
+##### Service Inputs
+
+- **bundleType**: This is the type of artifact you are deploying, for default we recommend zip. 
+
 
 ```yaml
 service:
