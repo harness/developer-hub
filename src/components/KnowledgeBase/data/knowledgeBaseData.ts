@@ -3,8 +3,8 @@ import { MODULES } from "../../../constants";
 export type CardItem = {
   title: string;
   /*
-  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm |
-  MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform
+  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp |
+  MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform |
   */
   module: MODULES;
   description?: JSX.Element | string;
@@ -28,6 +28,12 @@ export const knowledgeBaseList: CardItem[] = [
   {
     title: "Mount Custom Cert in Delegate via ConfigMap",
     module: MODULES.platform,
+    date: "July 31, 2023",
+    link: "/kb/platform/articles/mount-custom-cert-with-delegate",
+  },
+  {
+    title: "Mount Custom Cert in Delegate via ConfigMap",
+    module: MODULES.idp,
     date: "July 31, 2023",
     link: "/kb/platform/articles/mount-custom-cert-with-delegate",
   },
