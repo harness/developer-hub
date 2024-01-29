@@ -59,6 +59,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Remove application details from NewRelic if it is empty (CDS-88190)
   - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
 
+- Stage Selection component is being moved to Pipeline Input tab from Configuration Tab (CDS-72890)
+   - When configuring Triggers, the Stage Selection component has been moved to Pipeline Input tab from Configuration Tab.
+
 - Show accountId in Switch Account screen(CDS-88728)
   - Enhanced the Switch Account experience to show more data i.e ``AccountId``.
 #### Fixed Issues
@@ -102,7 +105,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Unable to select a new pipeline version. (CDS-87809, ZD-55910)
   - We found an error in the flow where a version of an in-use Template is deleted. When that happened, the referring Pipeline or Template threw an error and did not let you select an alternate version of the Template.   
   - We'd earlier suggested editing the YAML directly to work around the issue. 
-The bug has now been fixed, and you should be able to select an alternate version of the Template from referring Pipelines/Templates now. 
+The bug has now been fixed, and you should be able to select an alternate version of the Template from referring Pipelines/Templates now.
 
 
 ### Version 1.21.5
