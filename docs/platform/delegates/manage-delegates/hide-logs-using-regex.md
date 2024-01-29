@@ -33,7 +33,7 @@ To hide log information based on regex, do the following:
           volumes:
             - name: "config"
               configMap:
-                name: "config-sanitize"
+                name: "<YOUR_CONFIGMAP_FILE_NAME>"
    ```
 
 4. Apply the Kubernetes YAML.
