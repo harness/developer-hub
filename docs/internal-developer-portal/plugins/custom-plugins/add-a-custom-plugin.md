@@ -10,6 +10,8 @@ This Feature is in **BETA** phase and is behind `IDP_ENABLE_CUSTOM_PLUGINS` Feat
 
 :::
 
+<DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
+
 ## Introduction
 
 In IDP we allow addition of, backstage frontend plugins, created by you as a custom plugin. Following are the step-by-step instructions to add your custom plugins in IDP.
