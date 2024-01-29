@@ -141,7 +141,7 @@ import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 
 <StoSettingInstancePath />
 
-### Ingestion settings
+### Ingestion
 
 
 <a name="ingestion-file"></a>

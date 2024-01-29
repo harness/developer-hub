@@ -149,7 +149,7 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 The AWS region of the image to scan.
 
 
-### Ingestion settings
+### Ingestion
 
 
 #### Ingestion File

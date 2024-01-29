@@ -105,7 +105,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 <StoSettingTargetWorkspace  />
 
 
-### Ingestion settings
+### Ingestion
 
 
 #### Ingestion File

@@ -176,7 +176,7 @@ import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 
 
 
-### Ingestion settings
+### Ingestion
 
 
 <a name="ingestion-file"></a>
