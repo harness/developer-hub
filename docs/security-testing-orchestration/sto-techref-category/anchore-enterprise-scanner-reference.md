@@ -264,7 +264,7 @@ To configure an Anchore Enterprise scan in a Security step, add the following to
 	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `tool_args` : `--force` to reset the image analysis status to `not_analyzed`.  
 
 
-### Container image settings (required)
+### Container image (required)
 
 * `container_type`
 	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`

@@ -84,7 +84,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 
 
-### Container Image settings
+### Container image
 
 #### Type  (_orchestration_)
 
