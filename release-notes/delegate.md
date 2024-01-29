@@ -47,6 +47,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
 
+### Version 24.01.82110
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531)
+
+   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
+
 ### Version 24.01.82109
 
 #### Hotfix
