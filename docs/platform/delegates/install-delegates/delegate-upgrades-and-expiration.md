@@ -10,7 +10,7 @@ Harness recommends that you enable automatic upgrades.
 
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
-:::info note
+:::info
 The automatic upgrade feature is enabled by default for the Kubernetes manifest and Helm installation options. However, it is disabled by default for the Terraform and Docker installation options. 
 :::
 
@@ -152,11 +152,18 @@ If you disable automatic upgrades, then you have to manually upgrade the delegat
 
 To disable auto-upgrade on an installed delegate image, do the following:
 
-1. Run the following command to suspend auto-upgrade on the installed image:  
-`kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>`
-2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`:   
-`spec:`  
---`suspend: true`
+1. Run the following command to suspend auto-upgrade on the installed image.
+
+   ```
+   kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>
+   ```
+
+3. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`.   
+
+   ```yaml
+   spec: 
+      - suspend: true
+   ```
 
 ### Configure the delegate upgrade schedule
 
@@ -212,7 +219,11 @@ To configure the delegate upgrade schedule, do the following:
    For more information on the schedule syntax, go to [Writing a CronJob spec](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#writing-a-cronjob-spec) in the Kubernetes documentation.
 
 3. Save the file.
-4. Run `kubectl apply -f harness-delegate.yaml`.
+4. Run the following.
+
+   ```
+   kubectl apply -f harness-delegate.yaml
+   ```
 
    The schedule change for CronJob will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
 
@@ -232,8 +243,10 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
-    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=\<YOUR_ACCOUNT_IDENTIFIER>' \
-    --header 'x-api-key: \<YOUR_API_KEY>'`
+   ```
+   curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=\<YOUR_ACCOUNT_IDENTIFIER>' \
+    --header 'x-api-key: \<YOUR_API_KEY>'
+   ```
 
     The following example result is returned. It returns the tag of the delegate that is released to your account. 
 
@@ -250,10 +263,12 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     When the `upgrader` makes a request, it tries to change the image to `harness/delegate:23.04.78910`. You can take either the `harness/delegate:23.04.78910` image or the `harness/delegate:23.04.78910.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:23.04.78910`.
 
-2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
+3. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
 
-    `curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
-    --header 'x-api-key: <your_api_key>'`
+    ```
+   curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
+    --header 'x-api-key: <your_api_key>'
+    ```
 
     It returns the following results:
 
@@ -289,6 +304,6 @@ Harness does not recommend the use of delegate images that are not current. Howe
 
 To update the delegate YAML, do the following:
 
-- Select to **New Delegate** > **Kubernetes** > **Kubernetes Manfiest** > **Custom**, and then follow the instructions on the screen. 
+- Select **New Delegate** > **Kubernetes** > **Kubernetes Manfiest** > **Custom**, and then follow the instructions on the screen. 
 
 For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
