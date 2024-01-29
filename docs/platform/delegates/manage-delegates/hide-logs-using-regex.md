@@ -1,0 +1,36 @@
+---
+title: Hide log information based on regex patterns
+description: This topic describes how to sensitive log information based on regex patterns.
+sidebar_position: 9
+---
+
+You can mask sensitive information from log streams using regular expressions. This will remove the information you define from logs in the Harness UI.
+
+To hide log information based on regex, do the following:
+
+1. Create a `sanitize-patterns.txt` file in your local that contains all of the regex that you want to hide in logs.
+
+   This file can contain multiple expressions. Add each regex on a new line. In the example below, we have added two expressions.
+
+   ```
+   <CreditCard>.*?</CreditCard>
+   <accountID>.*?</accountID>
+   ```
+
+2. Create the ConfigMap in the same namespace where you are installing the delegate. 
+
+   ```
+   kubectl create configmap <CONFIGMAP_NAME> --from-file sanitize-patterns.txt -n <NAMESPACE>         
+   ```
+
+3. Mount the volume under the `/opt/harness-delegate` path.
+
+   ```yaml
+               volumeMounts:
+              - name: "config"
+                mountPath: "/opt/harness"
+          volumes:
+            - name: "config"
+              configMap:
+                name: "config-sanitize"
+   ```
