@@ -19,7 +19,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 1. In the **Builds** (Continuous Integration) modules, select **Pipelines**, and then select **Create a Pipeline**.
 2. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
 3. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
-4. If you want to use a [pipeline template](/docs/platform/Templates/template), select **Start with Template**.
+4. If you want to use a [pipeline template](/docs/platform/templates/template), select **Start with Template**.
 5. Select **Start**.
 
 You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../get-started/tutorials.md).
@@ -34,12 +34,12 @@ You can also [import pipelines from Git](/docs/platform/git-experience/import-a-
 
 In addition to a [default codebase](#codebases), the following settings are configurable at the pipeline level:
 
-* [Input sets and overlays](/docs/platform/Pipelines/input-sets)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
-* [Policy Sets](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Sets](/docs/platform/governance/policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
 
 :::tip
@@ -135,7 +135,7 @@ Failure strategies are a critical pipeline design component that determine what 
 
 See also:
 
-* [Retry failed executions](/docs/platform/Pipelines/resume-pipeline-deployments)
+* [Retry failed executions](/docs/platform/pipelines/resume-pipeline-deployments)
 
 ### Environment variables
 
