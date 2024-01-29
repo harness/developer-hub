@@ -27,7 +27,7 @@ For Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift, use [Specify a
 
 ## Important notes
 
-- When using names in Harness Kubernetes stages, remember that Kubernetes service and pod names follow DNS-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
+- When using names in Harness Kubernetes stages, remember that Kubernetes service and pod names follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 
 ### Harness role permissions required
 

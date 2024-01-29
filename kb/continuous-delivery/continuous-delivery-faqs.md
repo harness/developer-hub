@@ -3324,10 +3324,6 @@ ENV details can be referred from the previous stage using output expressions of 
 For your use case to run both stages in one pod, you can refer to this doc - https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
 With this, you can configure steps in the same pod.
 
-#### How do I pass parameters for the docker run command?
-In the build and push step, we have a section called build arguments, this can be leveraged to pass build arguments.
-To run docker commands, as part of your build process, please refer to this doc - https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/
-
 #### Why am I not able to execute the pipeline, even if have "execute" permissions?
 We have different scopes under which resources are assigned, if the user running a pipeline that has account-level resources, the user needs view access to those resources as well to execute the pipeline.
 

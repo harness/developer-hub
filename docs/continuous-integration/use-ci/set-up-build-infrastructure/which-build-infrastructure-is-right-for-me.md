@@ -75,7 +75,7 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | [Cache to S3/GCS](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Multilayer caching](/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) in **Build and Push** steps | ✅ Supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
-| [Delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) | 🔸 Not applicable | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
+| [Delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) | 🔸 Not applicable | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Bring-your-own secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager) | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |

@@ -124,7 +124,7 @@ import TabItem from '@theme/TabItem';
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
-- `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+- `type:` [`Run`](/docs/continuous-integration/use-ci/run-step-settings)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`

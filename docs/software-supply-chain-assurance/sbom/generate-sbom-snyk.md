@@ -86,7 +86,7 @@ Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-t
 
 ### Get the SBOM file path
 
-The Snyk STO step creates a `JOB_ID` [output variable](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md#output-variables) that you can use to reference the SBOM file path in the **SSCA Orchestration** step.
+The Snyk STO step creates a `JOB_ID` [output variable](/docs/continuous-integration/use-ci/run-step-settings.md#output-variables) that you can use to reference the SBOM file path in the **SSCA Orchestration** step.
 
 1. Replace `STAGE_ID` and `STEP_ID` in the following [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs.md#expressions) with the stage ID and step ID for your Snyk STO step.
 

@@ -523,7 +523,7 @@ As per the current design you can not create project under the project. The proj
 
 #### How to customized build pipeline. Ex: Create a script to clone the repo from TFS?
 
-User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
+User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-step-settings) and you should be able to clone the repo.
 
 #### How the active service count will show in License subscription?
 
@@ -1853,10 +1853,6 @@ No, our Dockerfiles are made public on GitHub so that you have the option to mod
 #### Are we planning to add support for multiple account Id for SMP?
 
 Currently SMP is single account only, multiple account support is yet to come.
-
-#### How can we configure OIDC with GCP WIF for Harness CI Cloud builds?
-
-Using the FF `PL_GCP_OIDC_AUTHENTICATION` you can configure the same, you can refer [here](https://developer.harness.io/tutorials/platform/configure-oidc-gcp-wif-ci-hosted), later on enable this functionality for Harness Delegate and AWS STS.
 
 #### Do we have docs for permissions references?
 

@@ -22,7 +22,11 @@ For additional support, you can [contact Harness Support](mailto:support@harness
 
 ### CI pods appear to be evicted by Kubernetes autoscaling
 
-(imported k8s-pod-eviction-trbs.md)
+Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes. If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds.md), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
+
+```
+"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
+```
 
 ### Delegate is not able to connect to the created build farm
 
@@ -188,11 +192,11 @@ For more information about self-signed certificates, delegates, and delegate env
 
 ## Multi-line output variables truncated
 
-Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
 
 ## Output variable length limit
 
-If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
 
 ## Secrets with line breaks and shell-interpreted special characters
 
@@ -237,7 +241,7 @@ If step logs disappear from pipelines that are using a Kubernetes cluster build 
 For more information about configuring connectivity, go to:
 
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
-* [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+* [Allowlist Harness Domains an IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
 
 ### Logs don't load in real time
 
@@ -261,7 +265,7 @@ If you encounter issues with Test Intelligence when using Maven as your build to
 
 ### TI with Bazel
 
-If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
 Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
 
