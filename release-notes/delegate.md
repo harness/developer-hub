@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-01-02T10:00
+date: 2024-01-29T10:00
 sidebar_position: 4
 ---
 
@@ -39,7 +39,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2024
 
-### Harness version 1.22.x, Harness Delegate version 24.01.822xx
+### Harness version 1.22.3, Harness Delegate version 24.01.82202
 
 - The Azure endpoints were not being set according to the Azure environment selected, which caused the Azure connectors to function properly only for the Azure public cloud but not for other Azure cloud variations such as Azure Gov, Azure China, and so on. (PL-43333, ZD-54717)
 
