@@ -1,5 +1,6 @@
 ---
 title: Hide log information based on regex patterns
+sidebar_label: Hide log information using regexes
 description: This topic describes how to sensitive log information based on regex patterns.
 sidebar_position: 9
 ---
