@@ -259,7 +259,7 @@ Alternately, you can extract the values for `terraform_workspace` and `terraform
 
 ### Add the trigger
 
-For the pipeline to listen for Terraform Cloud events, you must [add a custom webhook trigger](/docs/platform/Triggers/trigger-deployments-using-custom-triggers).
+For the pipeline to listen for Terraform Cloud events, you must [add a custom webhook trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers).
 
 1. In Harness, go to your **bootstrap argocd pipeline**, and then select **Triggers** in the header.
 2. Select **Add New Trigger**, and select the **Custom** trigger type under **Webhook**.
