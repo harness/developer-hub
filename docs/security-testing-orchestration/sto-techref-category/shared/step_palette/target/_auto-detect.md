@@ -1,7 +1,7 @@
 Auto-detection is not available for ingestion scans.
 
 <details>
-<summary>How does a scan step detect the target and variant?</summary>
+<summary>How does a step detect the target and variant?</summary>
 
 The target type determines how a step detects these values:
 
