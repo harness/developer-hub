@@ -1716,3 +1716,266 @@ template:
       outputVariables: []
       delegateSelectors: <+input>
 ```
+
+### AWC CodeDeploy - Deployment Template Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy services using AWS CodeDeploy.
+
+#### Deployment Template Configuration
+
+```yaml
+template:
+  name: AWS CodeDeploy
+  identifier: AWS_CodeDeploy
+  versionLabel: v1
+  type: CustomDeployment
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    infrastructure:
+      variables:
+        - name: AWSConnector
+          type: Connector
+          value: <+input>
+          description: "Provide Your AWS Connector"
+          required: false
+        - name: region
+          type: String
+          value: us-east-1
+          description: "Region for Deployment"
+          required: false
+        - name: ApplicationName
+          type: String
+          value: ""
+          description: "Provide your existing CodeDeploy Application Name"
+          required: false
+        - name: DeploymentGroup
+          type: String
+          value: ""
+          description: "Provide your existing Deployment Group"
+          required: false
+        - name: DeploymentConfiguration
+          type: String
+          value: "CodeDeployDefault.OneAtATime"
+          description: "Default Setting for CodeDeploy"
+          required: false
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |-
+              #
+              # Script is expected to query Infrastructure and dump json
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+
+              region=<+infra.variables.region>
+              accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+              secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+              aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+              deploymentId=<+execution.steps.AWS_CodeDeploy.output.outputVariables.codeDeploymentId>
+
+              instances=$(aws deploy list-deployment-targets --deployment-id $deploymentId | jq -r .targetIds[])
+              echo -e "\nInstances list - [$instances]"
+
+              aws ec2 describe-instances --instance-ids $instances > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+      instanceAttributes:
+        - name: instancename
+          jsonPath: Instances[0].InstanceId
+          description: "The instance name"
+        - name: InstanceType
+          jsonPath: Instances[0].InstanceType
+          description: "The type of instance"
+        - name: PublicIpAddress
+          jsonPath: Instances[0].PublicIpAddress
+          description: "The IP Address for the Instance"
+        - name: OwnerId
+          jsonPath: OwnerId
+          description: "The Owner of the CodeDeploy Application"
+        - name: ReservationId
+          jsonPath: ReservationId
+          description: "The Reservation ID for the CodeDeploy Application"
+      instancesListPath: Reservations
+    execution:
+      stepTemplateRefs:
+        - CodeDeploy_Steady_State
+        - AWS_CodeDeploy_Step
+  description: |-
+    This is deployment template for AWS Code deploy for deployment group which has Compute platform as EC2/on-premises instances 
+
+    Make sure the delegate has AWS CLI installed for this template to work correctly
+
+```
+
+#### AWS CodeDeploy Steady State Check
+
+```yaml
+template:
+  name: CodeDeploy Steady State
+  identifier: CodeDeploy_Steady_State
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+            region=<+infra.variables.region>
+            accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+            secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+            aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+            deploymentId=<+execution.steps.AWS_CodeDeploy.output.outputVariables.codeDeploymentId>
+
+            while :
+            do
+                    status=$(aws deploy get-deployment --deployment-id $deploymentId |  jq -r .deploymentInfo.status)
+                    echo -e "\nCurrent status for deployment id - [ $deploymentId ] is $status ..."
+
+                    if [[ $status == "Succeeded" ]]
+                    then
+                            break
+                    fi
+
+                    if [[ $status == "Failed" ]]
+                    then
+                            break
+                    fi
+
+                    if [[ $status == "Stopped" ]]
+                    then
+                            break
+                    fi
+
+                    echo "Sleeping for 10s ..."
+                    sleep 10
+            done
+
+            echo "Reached steady state ..."
+      environmentVariables: []
+      outputVariables: []
+      executionTarget: {}
+
+```
+
+#### AWS CodeDeploy Deploy Step
+
+```yaml
+template:
+  name: AWS CodeDeploy Step
+  identifier: AWS_CodeDeploy_Step
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |+
+            #!/bin/bash
+            echo -e "\n********** Artifact details **********"
+            bucket=<+artifacts.primary.bucketName>
+            key=<+artifacts.primary.filePath>
+            bundleType=<+serviceVariables.bundleType>
+
+            echo "Bucket = $bucket"
+            echo "Key = $key"
+            echo "Bundle Type = $bundleType"
+
+            accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+            secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+            region=<+infra.variables.region>
+            applicationName=<+infra.variables.ApplicationName>
+            deploymentConfiguration=<+infra.variables.DeploymentConfiguration>
+            deploymentGroup=<+infra.variables.DeploymentGroup>
+
+            echo -e "\n********** Starting code deploy with following configuration **********"
+            echo -e "Application Name: [$applicationName]"
+            echo -e "Aws Region: [$region]"
+            echo -e "Deployment Group: [$deploymentGroup]"
+            echo -e "Deployment Configuration: [$deploymentConfiguration]"
+
+            aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+            deploymentId=$(aws deploy create-deployment \
+                --application-name $applicationName \
+                --deployment-config-name $deploymentConfiguration \
+                --deployment-group-name $deploymentGroup \
+                --description "My deployment using Deployment Template" \
+                --s3-location bucket=$bucket,bundleType=$bundleType,key=$key | jq -r .deploymentId)
+
+            echo -e "\nDeployment started successfully with deployment id - [$deploymentId]"
+
+      environmentVariables: []
+      outputVariables:
+        - name: codeDeploymentId
+          type: String
+          value: deploymentId
+      executionTarget: {}
+
+```
+
+
+#### AWS Code Deploy Service Sample
+
+```yaml
+service:
+  name: awsCodeDeployService
+  identifier: awsCodeDeployService
+  orgIdentifier: default
+  projectIdentifier: default
+  serviceDefinition:
+    spec:
+      customDeploymentRef:
+        templateRef: AWS_CodeDeploy
+        versionLabel: v1
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: awsQaSetup
+                bucketName: codedeploy-quickstart-sample
+                region: us-east-1
+                filePath: SampleApp_Linux.zip
+              identifier: a1
+              type: AmazonS3
+      variables:
+        - name: bundleType
+          type: String
+          description: ""
+          required: false
+          value: zip
+    type: CustomDeployment
+```
+
+
+
