@@ -29,7 +29,7 @@ To hide log information based on regex, do the following:
    ```yaml
                volumeMounts:
               - name: "config"
-                mountPath: "/opt/harness"
+                mountPath: "/opt/harness-delegate"
           volumes:
             - name: "config"
               configMap:
