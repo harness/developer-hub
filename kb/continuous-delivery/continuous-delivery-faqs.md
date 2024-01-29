@@ -4792,7 +4792,7 @@ helm upgrade -i nikkelma-240126-del --namespace harness-delegate-ng --create-nam
   harness-delegate/harness-delegate-ng \
   --set delegateName=nikkelma-240126-del \
   --set accountId=6_vVHzo9Qeu9fXvj-AcbCQ \
-  --set delegateToken=ZDk2OTNhNTY5NmYyMWQyMDQwZWNkZWI5ZTNiOTJjYTQ= \
+  --set delegateToken=your_Delegatetoken_= \
   --set managerEndpoint=https://app.harness.io/gratis \
   --set delegateDockerImage=harness/delegate:24.01.82108 \
   --set replicas=1 --set upgrader.enabled=true \
