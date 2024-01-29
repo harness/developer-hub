@@ -39,12 +39,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2024
 
-### Version 24.01.8220x
-
-- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531)
-
-   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
-
 ### Harness version 1.22.3, Harness Delegate version 24.01.82202
 
 - The Azure endpoints were not being set according to the Azure environment selected, which caused the Azure connectors to function properly only for the Azure public cloud but not for other Azure cloud variations such as Azure Gov, Azure China, and so on. (PL-43333, ZD-54717)
@@ -52,6 +46,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
    Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector.
 
 - [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
+
+### Version 24.01.82110
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531)
+
+   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
 
 ### Version 24.01.82109
 
