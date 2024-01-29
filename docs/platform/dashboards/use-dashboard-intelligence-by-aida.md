@@ -6,6 +6,11 @@ sidebar_position: 30
 
 Dashboard Intelligence by Harness AI Development Assistant (AIDA™) is your copilot for dashboard creation in Harness. This feature is available directly in the **Dashboard Editor** when you create or edit a dashboard. For more information on AIDA, go to [Overview of AIDA](/docs/platform/Harness-AIDA/aida-overview).
 
+:::important
+You must [enable module-specific AIDA features](/docs/platform/harness-aida/aida-overview/#enable-aida) in your Harness account to use this feature.
+
+:::
+
 This topic provides details on the current features, limitations, and best practices for dashboard engineering.
 
 :::info note
@@ -19,9 +24,6 @@ Although the documentation is written in English and assumes an English-speaking
 - [Create Dashboards](/docs/platform/dashboards/create-dashboards)
 - [Create visualizations and graphs](/docs/platform/dashboards/create-visualizations-and-graphs/)
 - [Overview of Harness AI Development Assistant (AIDA)](/docs/platform/Harness-AIDA/aida-overview)
-- [Get started with AIDA for CI](/docs/platform/harness-aida/aida-ci/#get-started-with-aida-for-ci)
-- [Optimize cloud costs using AIDA](/docs/platform/Harness-AIDA/aida-ccm)
-- [Fix security vulnerabilities using AIDA](/docs/platform/Harness-AIDA/aida-sto)
 
 ### Supported query types
 
