@@ -126,7 +126,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 
 
-### Authentication settings
+### Authentication
 
 Settings for the AWS account to use when running an orchestration scan.
 

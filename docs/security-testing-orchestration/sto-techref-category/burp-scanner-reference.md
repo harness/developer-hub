@@ -102,7 +102,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 <StoSettingTargetVariant  />
 
 
-### Authentication settings
+### Authentication
 
 #### Domain 
 

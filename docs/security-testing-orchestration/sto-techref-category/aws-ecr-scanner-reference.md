@@ -122,7 +122,7 @@ import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 <StoSettingImageRegion />
 
 
-### Authentication settings
+### Authentication
 
 
 #### Access ID (_orchestration_)
