@@ -109,3 +109,10 @@ In the case of the Kubernetes chaos, a lower blast radius is achieved through [s
 
 Every fault in the Enterprise chaos hub publishes the permissions that you need to execute the fault. You can tune your roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](../chaos-faults/aws/security-configurations/policy-for-all-aws-faults.md).
 
+
+## Next steps
+
+* [Namespace considerations](/docs/chaos-engineering/technical-reference/security/namespace-considerations.md)
+* [Openshift security policies](/docs/chaos-engineering/technical-reference/security/security-templates/openshift-scc)
+* [Pod security policy](/docs/chaos-engineering/technical-reference/security/security-templates/psp)
+* [Kyverno policy](/docs/chaos-engineering/technical-reference/security/security-templates/kyverno-policies)
