@@ -34,3 +34,5 @@ To hide log information based on regex, do the following:
               configMap:
                 name: "config-sanitize"
    ```
+
+4. Apply the Kubernetes YAML.
