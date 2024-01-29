@@ -118,7 +118,7 @@ You should create a Harness text secret with your encrypted token and reference 
 
 Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline ingests the most recent scan. 
 
-### Instance settings
+### Instance
 
 #### Domain
 

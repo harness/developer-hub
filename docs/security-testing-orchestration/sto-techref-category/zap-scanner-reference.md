@@ -119,7 +119,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 <StoSettingTargetWorkspace  />
 
 
-### Instance settings
+### Instance
 
 #### Domain
 

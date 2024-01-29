@@ -127,7 +127,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-### Instance settings
+### Instance
 
 
 <!-- ============================================================================= -->
