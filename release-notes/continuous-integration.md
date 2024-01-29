@@ -43,16 +43,21 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
+<!-- February 2024 -->
+
+<!-- Version 1.11.x -->
+
+<!-- Feb xx, 2024 -->
+
+<!-- New features and enhancements -->
+
+<!-- The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).-->
+
 ## January 2024
 
 ### Version 1.10.x
 
 <!-- Jan 29, 2024 -->
-
-#### New features and enhancements
-
-* The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-* When using OIDC, Harness stores the token ID in the [Harness environment variable](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) `PLUGIN_OIDC_TOKEN_ID`, which is required for the [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc). (CI-10852)
 
 #### Fixed issues
 

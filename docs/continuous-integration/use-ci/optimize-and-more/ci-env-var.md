@@ -439,7 +439,6 @@ Other environment variables might existing in your pipelines depending on the st
 * `JFROG_PASSWORD`
 * `JFROG_USERNAME`
 * `PLUGIN_ARTIFACT_FILE`: Harness uses this to show links on the [Artifacts tab](../viewing-builds.md).
-* `PLUGIN_OIDC_ID_TOKEN`: Contains the OIDC ID token needed for the [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc).
 * `PLUGIN_PIPELINE`
 * `GCP_BAZEL_CACHE_CRED_PATH`
 * `GCP_KEY`
