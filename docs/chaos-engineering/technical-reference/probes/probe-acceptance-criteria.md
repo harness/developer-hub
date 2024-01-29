@@ -6,10 +6,10 @@ description: Operations performed on probes
 
 ## Before you begin
 
-- [Probes overview](./overview.md)
+- [Probes overview](../../configure-chaos-experiments/probes/overview.md)
 - [Configure probes](../../configure-chaos-experiments/probes/configure-and-add-probe.md)
 
-This section discusses various operations that can be performed on [resilience probes](./overview.md).
+This section discusses various operations that can be performed on [resilience probes](../../configure-chaos-experiments/probes/overview.md).
 
 ## Create resilience probes
 

@@ -38,6 +38,10 @@ spec:
                           ####################################
 ```
 
+:::tip
+The HTTP probe is fully declarative in the way they are conceived.
+:::
+
 ## Schema
 
 Listed below is the probe schema for HTTP probe, with common properties shared across all probes and properties unique to HTTP probe.

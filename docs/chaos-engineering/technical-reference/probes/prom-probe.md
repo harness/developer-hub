@@ -34,6 +34,10 @@ spec:
                           ####################################
 ```
 
+:::tip
+The Prometheus probe expects you to provide a PromQL query along with Prometheus service endpoints to check for specific criteria.
+:::
+
 ## Schema
 
 Listed below is the probe schema for the Prometheus probe, with properties shared across all the probes and properties unique to the Prometheus probe.
