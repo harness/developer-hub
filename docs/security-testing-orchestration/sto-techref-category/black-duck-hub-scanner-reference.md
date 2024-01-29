@@ -37,7 +37,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below.
 
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -63,7 +63,7 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 <StoSettingProductConfigName />
 
-### Target Settings
+### Target
 
 
 #### Type
@@ -75,6 +75,13 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 <!-- StoSettingScanType / -->
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
+
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
 
 
 #### Name 
@@ -98,7 +105,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 <StoSettingTargetWorkspace  />
 
 
-### Ingestion settings
+### Ingestion
 
 
 #### Ingestion File

@@ -34,7 +34,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below.  
 
 
-### Scan settings
+### Scan
 
 
 #### Scan Mode
@@ -52,7 +52,7 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 <StoSettingProductConfigName />
 
-### Target Settings
+### Target
 
 
 #### Type
@@ -60,6 +60,13 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
+
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
 
 
 #### Name 
@@ -77,7 +84,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 
 
-### Container Image settings
+### Container image
 
 #### Type  (_orchestration_)
 
@@ -115,7 +122,7 @@ import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 <StoSettingImageRegion />
 
 
-### Authentication settings
+### Authentication
 
 
 #### Access ID (_orchestration_)
@@ -137,7 +144,7 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 The AWS region of the image to scan.
 
 <!-- 
-### Ingestion settings
+### Ingestion
 
 #### Ingestion File
 

@@ -59,7 +59,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-### Instance settings
+### Instance
 
 
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';

@@ -26,7 +26,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is add a Burp step to a Security Tests or CI Build stage and then configure it as described below.
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -72,13 +72,20 @@ The following configurations are available for Orchestration scans. These are [b
 -  `Audit checks all except time based detection methods`
 -  `Audit checks all except java script analysis`
 
-### Target settings
+### Target
 
 ##### Type
 
 import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
 <StoSettingScanTypeInst />
+
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
 
 
 #### Name 
@@ -95,7 +102,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 <StoSettingTargetVariant  />
 
 
-### Authentication settings
+### Authentication
 
 #### Domain 
 
@@ -111,7 +118,7 @@ You should create a Harness text secret with your encrypted token and reference 
 
 Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline ingests the most recent scan. 
 
-### Instance settings
+### Instance
 
 #### Domain
 

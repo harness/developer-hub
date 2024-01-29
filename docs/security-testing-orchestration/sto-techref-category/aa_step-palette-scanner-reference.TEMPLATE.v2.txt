@@ -477,7 +477,7 @@ import StoSettingToolLookupType from './shared/step_palette/tool/product/_lookup
 ```
 <StoSettingToolLookupType  />
 
-### Instance Settings
+### Instance
 
 
 <!-- ============================================================================= -->

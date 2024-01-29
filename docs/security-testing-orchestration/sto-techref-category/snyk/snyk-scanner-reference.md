@@ -47,7 +47,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-### Scan settings
+### Scan
 
 
 <a name="scan-mode"></a>
@@ -74,7 +74,7 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 <StoSettingProductConfigName />
 
 
-### Target settings
+### Target
 
 <a name="target-type"></a>
 
