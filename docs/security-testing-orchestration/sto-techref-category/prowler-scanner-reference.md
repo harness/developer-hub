@@ -76,7 +76,7 @@ Select the [compliance framework](https://github.com/prowler-cloud/prowler/blob/
 <!-- TBD -->
 
 
-### Target settings
+### Target
 
 <a name="target-type"></a>
 

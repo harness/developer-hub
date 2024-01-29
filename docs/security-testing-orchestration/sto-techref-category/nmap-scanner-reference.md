@@ -93,7 +93,7 @@ Accepted values(s):
 - [**Exploit**](https://nmap.org/nsedoc/categories/exploit.html)
 
 
-### Target Settings
+### Target
 
 <a name="target-type"></a>
 

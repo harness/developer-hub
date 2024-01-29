@@ -82,7 +82,7 @@ The following options are supported for Zap scans:
    When Quick mode is enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
 
-### Target settings
+### Target
 
 #### Type
 

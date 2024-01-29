@@ -74,7 +74,7 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 <StoSettingProductConfigName />
 
 
-### Target settings
+### Target
 
 <a name="target-type"></a>
 

@@ -84,7 +84,7 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 <StoSettingProductConfigName />
 
 
-### Target Settings
+### Target
 
 <a name="target-type"></a>
 

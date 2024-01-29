@@ -72,7 +72,7 @@ The following configurations are available for Orchestration scans. These are [b
 -  `Audit checks all except time based detection methods`
 -  `Audit checks all except java script analysis`
 
-### Target settings
+### Target
 
 ##### Type
 
