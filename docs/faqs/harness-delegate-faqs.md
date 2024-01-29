@@ -108,7 +108,7 @@ root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls YOUR_PATH/*
 YOUR_PATH/newdelegate.log
 ```
 
-### Can I create custom delegate logs
+### Can I customize delegate logging?
 
 Yes, you can create a custom `logback.xml` file and mount it in your delegate container or build a custom container. For more information, go to [Create custom delegate logs](/docs/platform/delegates/manage-delegates/create-custom-delegate-logs).
 

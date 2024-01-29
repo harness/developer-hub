@@ -4,11 +4,11 @@ description: This topic describes how to create custom delegate logs.
 sidebar_position: 8
 ---
 
-The delegate automatically creates a new log daily, named `delegate.log`. You can create custom delegate logs if you want to collect additional logging information.
+The delegate automatically creates a new log daily, named `delegate.log`. You can customize delegate logging if the default setup doesn't fit your needs. For example, you can customize the layout, verbosity, and destination of the messages.
 
 For more information on default delegate logs, go to [Delegate logs](/docs/platform/delegates/delegate-concepts/delegate-overview#delegate-logs).
 
-To create a custom delegate log for Kubernetes and Docker delegates, you can provide a custom `logback.xml` file to the delegate. You can accomplish this by mounting the file inside the delegate container or building it in your custom container. Then, update the delegate `JAVA_OPTS` with the logback option for the custom path to the configuration. This will enable you to customize the logging behavior of the delegate according to your specific needs.
+To create customized delegate logging for Kubernetes and Docker delegates, you can provide a custom `logback.xml` file to the delegate. You can accomplish this by mounting the file inside the delegate container or building it in your custom container. Then, update the delegate `JAVA_OPTS` with the logback option for the custom path to the configuration. This will enable you to customize the logging behavior of the delegate according to your specific needs.
 
 :::info
 You can configure Kubernetes and Docker delegates in various ways. Below is an example Kubernetes delegate configuration.
@@ -41,7 +41,7 @@ To create a custom custom delegate log, do the following:
             path: custom-logback.xml
    ```
 
-3. Update your `delegate.yaml` file with you new `JAVA_OPTS` value.
+3. Update your `delegate.yaml` file with your new `JAVA_OPTS` value.
 
    ```yaml
         - name: JAVA_OPTS
