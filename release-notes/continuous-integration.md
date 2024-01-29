@@ -23,7 +23,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## Downtime notice: Harness Cloud macOS image update
 
-Over the weekend of 28 January 2024, Harness Cloud macOS runners will be updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1.
+Over the weekend of 4 February 2024, Harness Cloud macOS runners will be updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1.
 
 During the upgrade process, Harness Cloud builds may be unavailable for approximately 20 minutes.
 

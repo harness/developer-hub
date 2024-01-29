@@ -34,6 +34,10 @@ spec:
                           ####################################
 ```
 
+:::tip
+The command probe expects you to provide a shell command to implement checks that are highly specific to the application use case.
+:::
+
 ## Schema
 
 Listed below is the probe schema for the command probe with properties shared across all the probes and properties unique to the command probe.

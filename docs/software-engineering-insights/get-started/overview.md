@@ -12,7 +12,7 @@ SEI achieves this by looking at different facets of the SDLC process where bottl
 
 * **Alignment:** SEI ensures engineering teams are aligned with business initiatives, improving resource allocation and reducing wasted efforts.
 * **Planning:** SEI maximizes the agile program output by increasing predictability, reducing scope creep, and encouraging good process habits using an automated workflow engine.
-* **Execution:** SEI benchmarks each team and organization by using an OOTB north star metric frameworks, such as DORA or SPACE, and SEI provides actionable insights into how to improve those metrics by removing bottlenecks.
+* **Execution:** SEI benchmarks each team and organization by using an out of the box north star metric frameworks, such as DORA or SPACE, and Harness SEI provides actionable insights into how to improve those metrics by removing bottlenecks.
 
 SEI also helps your teams drive continuous improvement by leveraging best practices and adopting a data-driven engineering mindset.
 

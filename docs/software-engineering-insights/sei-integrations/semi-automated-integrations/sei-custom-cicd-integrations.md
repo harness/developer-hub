@@ -12,7 +12,7 @@ Configure the webhook API call according to the following webhook specifications
 ## Webhook specification
 
 * Method: POST
-* Base URL: `https://testapi1.propelo.ai/v1/custom-cicd`
+* Base URL: `https://app.harness.io/gateway/sei/api/v1/custom-cicd`
 * Header: Requires Bearer token key authorization. The content type is ```application/json```
 * Body: Contains a data object with ```request_type``` and ```payload```.
 
@@ -40,10 +40,10 @@ Configure the webhook API call according to the following webhook specifications
 Here is an example of a request:
 
 ```bash
-curl --location 'https://testapi1.propelo.ai/v1/custom-cicd' \
+curl --location 'https://app.harness.io/gateway/sei/api/v1/custom-cicd' \
 --header 'sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"' \
 --header 'Accept: application/json, text/plain, */*' \
---header 'Referer: https://testui1.propelo.ai/' \
+--header 'Referer: https://app.harness.io/' \
 --header 'sec-ch-ua-mobile: ?0' \
 --header 'Authorization: Bearer <BEARER_TOKEN>' \
 --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
@@ -80,7 +80,7 @@ Payload is an object with required and optional fields.
 | job_full_name (string) | A human-readable identifier for the job, often the same as the pipeline name. |
 | qualified_name (string) | A qualified name for the job, typically the same as the pipeline name. |
 | instance_name (string) | The identifier for the CI/CD instance (not the UUID). |
-| instance_guid (string) | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://testapi1.propelo.ai/v1/custom-cicd`. |
+| instance_guid (string) | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://app.harness.io/gateway/sei/api/v1/custom-cicd` |
 | start_time (integer) | Job start time in epoch milliseconds. |
 | duration (integer) | Job duration in milliseconds. |
 | result (string) | The result of the job, either "success" or "failure." |
@@ -203,7 +203,7 @@ To create a mock Jenkins integration go to the Integrations under Settings and s
 To generate a UUID for the Jenkins integration you can use the Propel API. Here's an example of a cURL command:
 
 ```shell
-curl --location 'https://api.propelo.ai/v1/cicd/instances' \
+curl --location 'https://app.harness.io/gateway/sei/api/v1/cicd/instances' \
 --header 'Authorization: Bearer <BEARER_TOKEN>' \
 --header 'Content-Type: application/json' \
 --data '{

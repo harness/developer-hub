@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-01-02T10:00
+date: 2024-01-29T10:00
 sidebar_position: 4
 ---
 
@@ -39,20 +39,27 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2024
 
+### Harness version 1.22.3, Harness Delegate version 24.01.82202
+
+- The Azure endpoints were not being set according to the Azure environment selected, which caused the Azure connectors to function properly only for the Azure public cloud but not for other Azure cloud variations such as Azure Gov, Azure China, and so on. (PL-43333, ZD-54717)
+
+   Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector.
+
+- [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
+
 ### Version 24.01.82109
 
 #### Hotfix
 
 - Application logs were printed in TAS deployment execution logs. (CDS-89172)
 
-   Harness added a new environment variable `DISABLE_CF_APP_LOG_STREAMING` to enhance control over this behavior. Setting this variable to `true` will redact all application logs, providing users with more flexibility in managing log visibility. 
+   Harness added a new environment variable `DISABLE_CF_APP_LOG_STREAMING` to enhance control over this behavior. Setting this variable to `true` will redact all application logs, providing users with more flexibility in managing log visibility.
 
-<!---
 ### Harness version 1.20.9, Harness Delegate version 24.01.82108
 
-There are no new Harness Delegate items included in this release.
+- Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
 
---->
+   This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
 
 ### Harness version 1.17.8, Harness Delegate version 23.12.82000
 

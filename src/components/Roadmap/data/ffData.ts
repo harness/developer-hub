@@ -1,54 +1,33 @@
 import { Horizon } from "./roadmapData";
 
-export const FfData: Horizon = {
-  "time ff": {
-    description: "Description",
+export const FfData: Horizon =  {
+  "Now": {
+    description: "What is being delivered now",
     feature: [
       {
-        title: "ff title 1",
-        description: "description 1",
-      },
-      {
-        title: "ff title 2",
-        description: "description2 ",
-      },
-      {
-        title: " ff title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Now",
+        description: "Description Now",
       },
     ],
   },
-  "time two ff": {
-    description: "Description",
+  "Next": {
+    description: "What is being developed next",
     feature: [
       {
-        title: "ff title 1",
-        description: "description 1",
-      },
-      {
-        title: "ff title 2",
-        description: "description2 ",
-      },
-      {
-        title: " ff title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Next",
+        description: "Description Next",
       },
     ],
   },
-  "time three ff": {
-    description: "Description",
+  "Later": {
+    description: "What is being developed later",
     feature: [
       {
-        title: "ff title 1",
-        description: "description 1",
-      },
-      {
-        title: "ff title 2",
-        description: "description2 ",
-      },
-      {
-        title: " ff title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Later",
+        description: "Description Later",
       },
     ],
   },

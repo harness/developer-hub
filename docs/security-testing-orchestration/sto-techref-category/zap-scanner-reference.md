@@ -52,17 +52,20 @@ The recommended workflow is add a ZAP step to a Security Tests or CI Build stage
 
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
 
-<StoSettingScanMode />
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -82,25 +85,28 @@ The following options are supported for Zap scans:
 
 #### Type
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
 <StoSettingScanTypeInst />
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
+
 
 <StoSettingTargetName />
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 <StoSettingTargetVariant  />
 
 #### Workspace
 
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+
 
 <StoSettingTargetWorkspace  />
 
@@ -109,31 +115,36 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 #### Domain
 
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+
 
 <StoSettingInstanceDomain />
 
 #### Protocol
 
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 
 <StoSettingInstanceProtocol />
 
 #### Port
 
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 
 <StoSettingInstancePort />
 
 #### Path
 
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 
 <StoSettingInstancePath />
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 <StoSettingIngestionFile  />
 
@@ -141,20 +152,23 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 <StoSettingLogLevel />
 
 #### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 <StoSettingCliFlags />
 
 
 #### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

@@ -5,7 +5,7 @@ sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
 sidebar_position: 300
 ---
 
-You can scan container images using Prisma Cloud.
+You can scan container images and ingest results from Prisma Cloud (formerly Twistlock).
 
 ## Important notes for running Prisma Cloud scans in STO
 
@@ -47,13 +47,16 @@ The recommended workflow is add a PrismaCloud step to a Security Tests or CI Bui
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-<StoSettingScanMode />
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -62,7 +65,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -75,9 +78,11 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 #### Type
 
 
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+import StoSettingScanType from './shared/step_palette/scan/_type.md';
+
+
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
 <a name="scan-type"></a>
 <StoSettingScanType />
@@ -88,7 +93,8 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.md';
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
+
 
 <StoSettingTargetName />
 
@@ -97,7 +103,8 @@ import StoSettingTargetName from './shared/step_palette/_sto-ref-ui-target_name.
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
@@ -112,7 +119,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 #### Type 
 
 
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
 
 
 <StoSettingImageType />
@@ -124,7 +132,8 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 
 
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
 
 
 <StoSettingImageDomain />
@@ -135,7 +144,8 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 #### Name
 
 
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
 
 
 <StoSettingImageName />
@@ -146,7 +156,8 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 #### Tag
 
 
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
 
 
 <StoSettingImageTag />
@@ -157,7 +168,8 @@ import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
 #### Access Id
 
 
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+
 
 
 <StoSettingImageAccessID />
@@ -168,7 +180,8 @@ import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-acc
 #### Access Token 
 
 
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+
 
 
 <StoSettingImageAccessToken />
@@ -181,14 +194,16 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 
 #### Domain 
 
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+
 
 <StoSettingAuthDomain />
 
 #### Access ID
 
 
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+
 
 
 <StoSettingAuthAccessID />
@@ -199,7 +214,8 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 #### Access Token
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
 
 
 
@@ -213,7 +229,8 @@ For Extraction scans, the name of the image that you want to extract from Prisma
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 <StoSettingIngestionFile  />
 
@@ -225,7 +242,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -235,7 +253,8 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 <StoSettingCliFlags />
 
@@ -245,7 +264,8 @@ For example, the following argument prevents the scan from publishing results to
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
