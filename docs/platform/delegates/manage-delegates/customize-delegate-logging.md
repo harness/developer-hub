@@ -60,7 +60,7 @@ The following configurations were added by Harness to the default Logback XML.
 
 - `io.harness.logging.remote.RemoteStackdriverLogAppender`
 
-::
+:::
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
