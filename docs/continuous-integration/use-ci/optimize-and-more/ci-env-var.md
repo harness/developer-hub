@@ -11,7 +11,7 @@ This topic describes the Harness CI built-in environment variables<!--, particul
 You can reference Harness CI environment variables through:
 
 * Direct reference in shell commands, when available, such as `HARNESS_BUILD_ID`.
-* Equivalent [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+pipeline.sequenceId>` for `HARNESS_BUILD_ID`, or many of the [CI codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+* Equivalent [Harness expressions](/docs/platform/variables-and-expressions/harness-variables), such as `<+pipeline.sequenceId>` for `HARNESS_BUILD_ID`, or many of the [CI codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
 ## Variable resolution
 
@@ -27,7 +27,7 @@ Manual builds occur when you manually run a pipeline from within Harness. You ca
 
 ### Webhook triggers
 
-You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
+You can automatically [trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
 
 * **Pull request (PR) triggers:** A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. You can specify the type of [pull request events](/docs/platform/triggers/triggers-reference#event-and-actions) to track, such as close, open, update/edit, reopen, and so on.
 * **Push triggers:** A **Push Webhook Event** automatically starts a build in Harness when there is a new branch or tag push event on the pipeline's associated Git repo.

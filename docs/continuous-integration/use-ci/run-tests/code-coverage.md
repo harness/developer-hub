@@ -4,12 +4,11 @@ description: Include code coverage in your CI pipelines.
 sidebar_position: 40
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage
+  - /tutorials/ci-pipelines/test/codecov
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 You can add code coverage to a Harness CI pipeline by configuring code coverage tools in your codebase and adding code coverage commands to steps that run tests.
 
@@ -223,7 +222,99 @@ You can use code coverage services with Harness.
 
 ### CodeCov
 
-To publish code coverage results to your CodeCov dashboard, use this tutorial: [Code coverage with CodeCov in Harness CI](/tutorials/ci-pipelines/test/codecov).
+You can use a [Run step](../run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline. The Run step will run tests with code coverage, then download and run the [CodeCov Uploader](https://docs.codecov.com/docs/codecov-uploader) tool.
+
+1. Make sure you have a CodeCov account with code coverage enabled on a code repo and a CodeCov Upload Token. For instructions, go to [CodeCov Quick Start](https://docs.codecov.com/docs/quick-start).
+2. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your CodeCov Upload Token. Make note of the secret's **ID**.
+3. In your [Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), add a [Run step](../run-step-settings).
+4. Enter a **Name** for the step.
+5. Depending on your build infrastructure, you might need to specify a **Container Registry** and **Image** containing the binaries that the step needs to run your commands.
+
+   For example, you need to run `pytest`, and pytest isn't available on the build machine, you must specify a Docker connector and image, such as `pytest:latest`.
+
+   For information about when these fields are required and how to specify images, go to [Use Run steps](/docs/continuous-integration/use-ci/run-step-settings).
+
+6. Make sure the **Command** field includes all commands necessary to prepare the test environment, run tests with code coverage, and download and run the CodeCov Uploader tool, for example:
+
+   ```sh
+   echo "Run tests with code coverage"
+   uname -a
+   pip install pytest
+   pip install pytest-cov
+   pip install -r requirements.txt
+
+   pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+
+   # Download Codecov uploader and run it.
+   curl -Os https://uploader.codecov.io/latest/linux/codecov
+   chmod +x codecov
+   ./codecov -t ${CODECOV_TOKEN}
+   ```
+
+7. In **Environment Variables**, add a `CODECOV_TOKEN` environment variable and set the value to an expression referencing your CodeCov Upload token secret, such as `<+secrets.getValue("my_codecov_upload_token")>`.
+8. Add one or more **Report Paths** for your code coverage reports.
+9. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
+
+Here are examples of Run steps configured for CodeCov code coverage in the Visual and YAML editors.
+
+<Tabs>
+<TabItem value="Visual" label="Visual editor">
+
+<!-- ![](./static/run-step-with-codecov-visual.png) -->
+
+<DocImage path={require('./static/run-step-with-codecov-visual.png')} />
+
+</TabItem>
+<TabItem value="YAML" label="YAML editor" default>
+
+```yaml
+- step:
+    type: Run
+    name: Pytest code coverage
+    identifier: pytest_code_coverage
+    spec:
+      connectorRef: account.harnessImage ## Provide a Docker connector ID, if required for your build infrastructure.
+      image: python:latest ## Specify an image, if required for your build infrastructure.
+      shell: Sh
+      command: |-
+        # Prepare test environment.
+        echo "set up to run tests"
+        uname -a
+        pip install pytest
+        pip install pytest-cov
+        pip install -r requirements.txt
+
+        # Run tests with code coverage.
+        pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+
+        # Download Codecov uploader and run it. Uses CODECOV_TOKEN envVariable.
+        curl -Os https://uploader.codecov.io/latest/linux/codecov
+        chmod +x codecov
+        ./codecov -t ${CODECOV_TOKEN}
+      reports: ## Specify one or more report paths.
+        type: JUnit
+        spec:
+          paths:
+            - "**/*.xml"
+      envVariables:
+        CODECOV_TOKEN: <+secrets.getValue("my_codecov_upload_token")> ## Reference your CodeCov Upload Token secret in an environment variable.
+```
+
+</TabItem>
+</Tabs>
+
+When you run your pipeline, you can review CodeCov information in the **Run** step's logs on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
+
+```
+...
+145  info  [date] [time]    [timestamp] [`info`] Uploading...
+146  info  [date] [time]    [timestamp] [`info`] {"status":"success","resultURL":"https://codecov.io..."}
+...
+```
+
+<!-- ![](./static/build-logs-with-codecov.png) -->
+
+<DocImage path={require('./static/build-logs-with-codecov.png')} />
 
 ### Coveralls
 
@@ -238,10 +329,8 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 <details>
 <summary>Add an environment variable to a step</summary>
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 1. In Harness, edit the step that runs your tests with code coverage.
 2. Under **Environment Variables**, select **Add**.
@@ -250,10 +339,8 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 
 ![Adding the Coveralls Repo Token environment variable to a step in Harness.](./static/codecoverage_coveralls_env_var_visual.png)
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
@@ -277,10 +364,8 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
                       COVERALLS_REPO_TOKEN: <+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 </details>
 
@@ -288,17 +373,13 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
 You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 
-
 <Tabs>
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
 
-
 The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
-
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a step to upload the report artifact to cloud storage.
@@ -315,10 +396,8 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
       * `file_urls`: Provide the URL to the code coverage artifact that was uploaded in the **Upload Artifacts** step. If you uploaded multiple artifacts, you can provide a list of URLs.
       * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a step to upload the report artifact to cloud storage.
@@ -341,22 +420,16 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
                          artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
-
 </TabItem>
 </Tabs>
-
-
 
 </TabItem>
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
 
-
 The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
-
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin. Configure the **Plugin** step settings as follows:
@@ -365,19 +438,17 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
    * **Settings:** Add the following seven settings as key-value pairs.
-      * `aws_access_key_id`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
-      * `aws_secret_access_key`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
+      * `aws_access_key_id`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
+      * `aws_secret_access_key`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
       * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
       * `aws_bucket`: The target S3 bucket.
       * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-      * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+      * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
       * `target`: Optional.
    * **Image Pull Policy:** Select **If Not Present**
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
@@ -401,22 +472,18 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
                        imagePullPolicy: IfNotPresent
    ```
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/variables-and-expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
-
-
-</TabItem>
-</Tabs>
-
-
+If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
 
 </TabItem>
 </Tabs>
 
+</TabItem>
+</Tabs>
 
 :::tip
 
-Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 :::

@@ -184,7 +184,7 @@ Add this variable to all stages where you need to override the `SSH-keyscan` tim
   <TabItem value="run" label="Add a Run step">
 
 
-You can use `git` commands in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
+You can use `git` commands in [Run steps](../run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
 
 For example, this step clones a GitHub repository.
 
@@ -205,7 +205,7 @@ To use this command, you would replace:
 * `REPO_NAME` with the name of the GitHub repo to clone.
 * `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-For information about **Run** step settings, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+For information about **Run** step settings, go to [Run scripts](../run-step-settings.md).
 
 
 </TabItem>
@@ -223,7 +223,7 @@ Now that the files from both repos will be cloned into a common workspace, you c
 
 Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
 
-Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to move cloned files around the workspace before building the image.
+Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to move cloned files around the workspace before building the image.
 
 ## YAML examples
 

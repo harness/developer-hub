@@ -2,7 +2,7 @@
 title:  Use codebase connector's Git credentials in a CI Run step
 ---
 
-Harness CI supports seamless integration with version control systems through [codebase connectors](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). While most Git tasks are automated within the CI pipeline, there can be scenarios where you need to manually execute Git commands in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), such as when you need to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory) or run [use Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+Harness CI supports seamless integration with version control systems through [codebase connectors](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). While most Git tasks are automated within the CI pipeline, there can be scenarios where you need to manually execute Git commands in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings), such as when you need to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory) or run [use Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
 
 To facilitate this process, you can use a `.netrc` file to pull Git credentials from your pipeline's codebase connector and use those credentials in your Run step's commands.
 
@@ -18,7 +18,7 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
 
    Make sure to select the code repo connector with the credentials that you want to use in the Run step.
 
-2. Add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that creates a `.netrc` file with the following content:
+2. Add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) that creates a `.netrc` file with the following content:
 
    ```
      cat <<EOF > ${HOME}/.netrc

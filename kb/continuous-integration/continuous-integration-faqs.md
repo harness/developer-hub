@@ -8,11 +8,11 @@ redirect_from:
 
 ### Can I use Harness CI for mobile app development?
 
-Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/development-guides/mobile-dev-with-ci)
 
 ### I have a MacOS build, do I have to use homebrew as the installer?
 
-No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
+No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
 
 ## Build infrastructure
 
@@ -263,6 +263,10 @@ However, neither gsutil nor gcloud are recommended with Harness Cloud build infr
 
 Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
 
+### How do I configure OIDC with GCP WIF for Harness Cloud builds?
+
+Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -277,7 +281,7 @@ For requirements, recommendations, and settings for using a Kubernetes cluster b
 
 ### Can I run Docker commands on a Kubernetes cluster build infrastructure?
 
-If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
 
@@ -291,7 +295,7 @@ You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `
 
 The DinD service does not connect to the Kubernetes node daemon. It launches a new Docker daemon on the pod, and then other containers use that Docker daemon to run their commands.
 
-For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 ### Resource allocation for Kubernetes cluster build infrastructure
 
@@ -355,7 +359,7 @@ If you leave the **Priority Class** field blank, the `PriorityClass` is set to t
 
 ### Can I transfer files into my build pod?
 
-To do this, [use a script in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
+To do this, [use a script in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 
 ### How are step containers named within the build pod?
 
@@ -469,7 +473,7 @@ For more information about self-signed certificates, delegates, and delegate env
 
 If the volumes are not getting mounted to the build containers, or you see other certificate errors in your pipeline, try the following:
 
-1. Add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that prints the contents of the destination path. For example, you can include a command such as:
+1. Add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) that prints the contents of the destination path. For example, you can include a command such as:
 
    ```
    cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt
@@ -640,7 +644,7 @@ No, you can't configure a [failure strategy](https://developer.harness.io/docs/p
 
 ### Can I recursively clone a repo?
 
-Currently, the built-in clone codebase step doesn't support recursive cloning. However, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) with `git clone --recursive`. This is similar to the process you would follow to [clone a subdirectory instead of the entire repo](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
+Currently, the built-in clone codebase step doesn't support recursive cloning. However, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) with `git clone --recursive`. This is similar to the process you would follow to [clone a subdirectory instead of the entire repo](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
 If you want to recursively clone a repo in addition to your default codebase, you can [pull the Git credentials from your code repo connector to use in your Run step](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
 
@@ -947,8 +951,8 @@ To do this, you can:
    version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')
    ```
 
-2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) from the Run step.
-3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
+2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#output-variables) from the Run step.
+3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
 
 ### Where do I store Maven project settings.xml in Harness CI?
 
@@ -1011,7 +1015,7 @@ The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and
 
 Instead, you need to:
 
-1. [Run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+1. [Run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 2. Run `docker build` and `docker push` commands in a Run step.
    To run `docker build` with builtkit enabled, use something like:
 
@@ -1057,7 +1061,7 @@ The Dockerfile is assumed to be in the root folder of the codebase. You can use 
 
 In a Kubernetes cluster build infrastructure, Build and Push steps use kaniko, which doesn't support `# syntax` in the Dockerfile.
 
-If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
+If you need to parse `syntax` in your builds, you can't use the Build and Push steps. Instead, you can [use the buildah plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot/#use-the-buildah-plugin) or [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/) with buildkit enabled.
 
 ### Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?
 
@@ -1081,15 +1085,15 @@ Go to the [Kaniko container runtime error article](./articles/kaniko_container_r
 
 ### Can I send emails from CI pipelines?
 
-You can [use the Drone Email plugin to send emails and attachments from CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+You can [use the Drone Email plugin to send emails and attachments from CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### How do I show content on the Artifacts tab?
 
-You can use the [Artifact Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) to store artifact URLs and display them on the Artifacts tab.
+You can use the [Artifact Metadata Publisher plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) to store artifact URLs and display them on the Artifacts tab.
 
 ### Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?
 
-Currently, the Artifacts tab contains only links. Therefore, any content you want to make available on the Artifacts tab must be uploaded to cloud storage and then queried. You can [use the Artifacts Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) for this.
+Currently, the Artifacts tab contains only links. Therefore, any content you want to make available on the Artifacts tab must be uploaded to cloud storage and then queried. You can [use the Artifacts Metadata Publisher plugin](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) for this.
 
 You can provide one or more URLs to artifacts. For example, to reference artifacts stored in S3 buckets, you can provide the URL to the target artifact, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
 
@@ -1097,7 +1101,7 @@ In addition to the console view URL, you can reference privately-stored artifact
 
 ### Does the Upload Artifacts to S3 step compress files before uploading them?
 
-No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
+No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) to compress the artifact before uploading it.
 
 ### Can I trim the parent folder name before uploading to S3?
 
@@ -1222,7 +1226,7 @@ You can, however, Harness doesn't recommend using Test Intelligence with Rails a
 
 If your [build tool](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool) is Bazel, and you use a [container image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
-Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) prior to the **Run Tests** step.
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) prior to the **Run Tests** step.
 
 ### Gradle version not compatible with Test Intelligence.
 
@@ -1268,7 +1272,7 @@ Harness doesn't recommend using TI with Ruby projects using dynamically generate
 
 ### Does Harness CI support script execution?
 
-Yes. Go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+Yes. Go to [Run scripts](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 
 ### Running a Python shell in a Run step, the expression \<+codebase.gitUser> resolves to "None"
 
@@ -1280,7 +1284,7 @@ The Run step requires the **Command** and **Shell** fields. Some shell must be a
 
 ### Is a Docker image required to use the Run step on local runner build infrastructure?
 
-Yes. Container Registry and Image are always required for Run steps on a local runner build infrastructure. For more information about when Container Registry and Image are required, go to [Use Run steps - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#container-registry-and-image).
+Yes. Container Registry and Image are always required for Run steps on a local runner build infrastructure. For more information about when Container Registry and Image are required, go to [Use Run steps - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#container-registry-and-image).
 
 ### Is it required for a Run step's image to have Docker and Docker CLI installed?
 
@@ -1288,7 +1292,7 @@ If your step needs to execute Docker commands, then the image needs to have Dock
 
 ### When attempting to export an output variable from a Run step using a Python shell, the step fails with "no such file or directory"
 
-This can happen if you manually exit the Python script by calling `exit(0)`. When you declare an [output variable in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables), Harness runs some additional code at the end of your script to export the variable. If you exit the script manually in your Run step's command, then Harness can't run those additional lines of code.
+This can happen if you manually exit the Python script by calling `exit(0)`. When you declare an [output variable in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#output-variables), Harness runs some additional code at the end of your script to export the variable. If you exit the script manually in your Run step's command, then Harness can't run those additional lines of code.
 
 ### Secrets with line breaks and shell-interpreted special characters
 
@@ -1296,11 +1300,11 @@ For information about handling secrets with new line characters or other shell-i
 
 ### Output variable length limit
 
-If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### Multi-line output variables truncated
 
-Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ## Entry point
 
@@ -1330,7 +1334,7 @@ The commands specified in the Run step's commands override the default entry poi
 
 ### Does CI support running Docker-in-Docker images?
 
-Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 ### Can I run docker-compose from Docker-in-Docker in a Background step?
 
@@ -1384,7 +1388,7 @@ If you need a variable's value to remain distinct, either run the steps sequenti
 
 ### GitHub Action step can't connect to Docker daemon
 
-Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
 **Actions that launch DinD:** You can't use GitHub Actions that launch DinD in the same stage where DinD is already running in a Background step. If possible, run the GitHub Action in a separate stage or try to find a GitHub Action that doesn't use DinD.
 
@@ -1452,7 +1456,7 @@ Harness CI offers a variety of [caching](https://developer.harness.io/docs/conti
 There are two options to download files from an S3 bucket in Harness:
 
 * Use the [Save and Restore Cache from S3 steps](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
-* Use a custom shell script in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
+* Use a custom shell script in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 
 ### Can I use GCS for caching with Harness CI?
 
@@ -1568,7 +1572,7 @@ With a Kubernetes cluster build infrastructure, use the [Volumes](https://develo
 
 ### Can I run a LocalStack service in a Background step?
 
-Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.harness.io/tutorials/ci-pipelines/test/localstack/).
+Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/ci-localstack-background-step).
 
 ### Can I configure service dependencies in Gradle builds?
 
@@ -1612,7 +1616,7 @@ You can use the [putHandleInterrupt API](https://apidocs.harness.io/tag/Pipeline
 
 ### Can I add notifications, such as failure notifications, to stage templates?
 
-While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
+While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
 
 ## Logs and execution history
 
@@ -1658,7 +1662,7 @@ If step logs disappear from pipelines that are using a Kubernetes cluster build 
 For more information about configuring connectivity, go to:
 
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
-* [Allowlist Harness Domains and IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+* [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
 
 ### Step logs don't load in real time
 

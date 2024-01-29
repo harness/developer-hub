@@ -167,7 +167,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
-- `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+- `type:` [`Run`](/docs/continuous-integration/use-ci/run-step-settings)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
@@ -376,7 +376,7 @@ Assuming that the Semgrep scanner detected no critical vulnerabilities, the next
 
 Add a `Run` step and configure it as follows:
 
-- `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+- `type:` [`Run`](/docs/continuous-integration/use-ci/run-step-settings)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
@@ -568,7 +568,7 @@ Assuming that the Aqua Trivy scanner detected no critical vulnerabilities, you c
 
 Add a `Run` step after the Bandit scan step and configure it as follows:
 
-- `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+- `type:` [`Run`](/docs/continuous-integration/use-ci/run-step-settings)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
