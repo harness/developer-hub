@@ -5,7 +5,7 @@ description: This topic describes how to sensitive log information based on rege
 sidebar_position: 9
 ---
 
-You can mask sensitive information from log streams using regular expressions. This will remove the information you define from logs in the Harness UI.
+Harness sanitizes deployment logs and any script outputs to mask text secret values and JSON web tokens (JWTs) by default. For more information, go to [Secrets and long sanitization](docs/platform/secrets/secrets-management/secrets-and-log-sanitization). You can mask other sensitive information from log streams using regular expressions based on your needs. This will remove the information you define from logs in the Harness UI.
 
 To hide log information based on regex, do the following:
 
