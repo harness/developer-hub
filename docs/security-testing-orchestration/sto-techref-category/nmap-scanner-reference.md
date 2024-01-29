@@ -42,7 +42,7 @@ The recommended workflow is add an Nmap step to a Security Tests or CI Build sta
 
 
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 

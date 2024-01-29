@@ -31,7 +31,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## AWS Security Hub step configuration
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 

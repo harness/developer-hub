@@ -38,7 +38,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Prowler step settings for STO
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
