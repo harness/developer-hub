@@ -82,23 +82,35 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2024
 
-### Version 1.22.x <!--  January 29, 2024 -->
+### Version 1.22.3 <!--  January 29, 2024 -->
 
 #### New features and enhancements
 
-- Removing org.redisson:redisson dependency from delegate as this library is not used in delegate (PL-42485) (ZD-53588, ZD-53760)
+- Removed the unused `org.redisson:redisson` library dependency from the delegate. (PL-42485, ZD-53588, ZD-53760)
 
-- Deletion of SCIM managed user groups was not allowed. Now it can be deleted using the delete API for user groups. (PL-39439)
- - However deletion of SCIM managed user groups through the UI will not be supported as of now."
+- Deletion of SCIM-managed user groups was not allowed. (PL-39439, ZD-53340)
+   You can now delete SCIM-managed user groups via the delete API for user groups.
+   :::info
+   Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
+   :::
+   
 
 #### Fixed issues
 
-- `K8S_WATCH` PerpetualTasks remained in the TASK_ASSIGNED state despite being assigned to non-existent delegates, now, issue is fixed by implementing a cron job to reset PerpetualTasks associated with invalid delegates, ensuring proper handling of Kubernetes events (PL-43973)
+- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
 
-- Running `terraform apply` for an existing SSO-linked User Group previously resulted in an empty user list. This issue has been addressed. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
-  - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in update payload, the existing users will be replaced with the users list provided in the payload. (PL-43763)
+   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
+   
+   This item is available with Harness Platform version 1.22.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- The `platform-service` was not publishing the response count metric. This has been resolved, and the `platform-service` will now be consistently publishing the response count metrics. (PL-43123)
+- Running `terraform apply` for an existing SSO-linked user group resulted in an empty user list. (PL-43763, ZD-55505)
+
+This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+  - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
+
+- The `platform-service` was not publishing the response count metric. (PL-43123)
+
+   This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
 
 ### Version 1.21.5 <!--  January 22, 2024 -->
 
