@@ -102,7 +102,7 @@ You can specify your own default regexes for all four target types at the projec
 
 ### Specify a regex for an individual target
 
-To override the default regex for an individual target, go to **Test Targets**. Then set the value type for the target to **Regex** and enter the regex. 
+To override the default regex for an individual target, go to **Test Targets**. Then set the value type for the target to **RegEx** and enter the regex. 
 
 ![](./static/baseline-regex-individual-target.png)
 
