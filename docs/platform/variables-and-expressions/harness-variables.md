@@ -750,14 +750,14 @@ The expression \<+pipeline.execution.Url> has been deprecated.
 
 ### \<+pipeline.executionMode>
 
-The execution mode  of the pipeline. This will tell the execution mode(i.e NORMAL, POST_EXECUTION_ROLLBACK, PIPELINE_ROLLBACK) of the pipeline.
+The execution mode  of the pipeline. This will tell the execution mode(i.e `NORMAL`, `POST_EXECUTION_ROLLBACK`, `PIPELINE_ROLLBACK`) of the pipeline.
 
 **Types of Execution Mode:**
 1) Normal Execution: A execution which could either be successful or failed.
 
-1) [Post deployment Rollback[POST_EXECUTION_ROLLBACK]](../../continuous-delivery/manage-deployments/rollback-deployments.md)
+2) [Post deployment Rollback[POST_EXECUTION_ROLLBACK]](../../continuous-delivery/manage-deployments/rollback-deployments.md)
 
-2) [Rollback pipelines[PIPELINE_ROLLBACK]](../../platform/pipelines/define-a-failure-strategy-for-pipelines.md)
+3) [Rollback pipelines[PIPELINE_ROLLBACK]](../../platform/pipelines/define-a-failure-strategy-for-pipelines.md)
 
 ![](./static/execution-mode-expression.png)
 
