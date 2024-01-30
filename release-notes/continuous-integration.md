@@ -52,6 +52,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 #### New features and enhancements
 
 * The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+* To support Docker images without a shell, the [Command field in Run steps](/docs/continuous-integration/use-ci/run-step-settings/#shell-and-command) is now optional. (CI-10115, CI-10676) <!-- Need info for docs to run without shell. Command field is optional, but must provide either image or command, both can't be empty. In K8s, command takes precedence over image. -->
 * Upgraded Go to the latest version in the CI manager and CI-related plugins, such as `drone-kaniko`. (CI-10800)
 * Upgraded kaniko executor to version 1.19.2 in the [drone-kaniko plugin](https://github.com/drone/drone-kaniko/releases), which is used by CI [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact), to support Dockerignore with special characters. (CI-10908, ZD-55930)
 
@@ -65,11 +66,10 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
    ```
 
 <!-- CI-10165, CI-11031 - Additional kaniko flag support as env var field in all build and push steps. -->
-<!-- CI-10676, CI-10115 - Run step - Command optional. Can run Docker image without shell. Need info for docs to run without shell. Command field is optional, but must provide either image or command, both can't be empty. -->
 
 #### Fixed issues
 
-* Modified CSS to address an issue with flickering UI elements. (CI-11038, ZD-56510)
+Modified CSS to address flickering UI elements. (CI-11038, ZD-56510)
 <!-- Only logging added. Underlying issue not yet addressed. (CI-10975, ZD-56280, ZD-56961) -->
 <!-- Regression, rolled back code, probably hotfixed before (CI-11044, ZD-56204, ZD-56526) -->
 

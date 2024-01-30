@@ -119,7 +119,7 @@ spec:
       targetPort: ## Specify port number
 ```
 
-If the delegate is not able to connect to the created build farm with Istio MTLS STRICT mode, and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+If the delegate is unable to connect to the created build farm with Istio MTLS STRICT mode, and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
 
 ## Create a Kubernetes cluster connector and install the delegate
 
@@ -334,7 +334,7 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why are build pods being evicted?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-pods-being-evicted)
 * [AKS builds timeout](/kb/continuous-integration/continuous-integration-faqs/#aks-builds-timeout)
 * [What permissions are required to run CI builds in an OpenShift cluster?](/kb/continuous-integration/continuous-integration-faqs/#what-permissions-are-required-to-run-ci-builds-in-an-openshift-cluster)
-* [Delegate is not able to connect to the created build farm](/kb/continuous-integration/continuous-integration-faqs/#delegate-is-not-able-to-connect-to-the-created-build-farm)
+* [Delegate is unable to connect to the created build farm](/kb/continuous-integration/continuous-integration-faqs/#delegate-is-unable-to-connect-to-the-created-build-farm)
 * [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
 
 For more questions and issues related to Kubernetes delegates, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

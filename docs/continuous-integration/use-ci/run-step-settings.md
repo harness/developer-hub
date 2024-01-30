@@ -455,6 +455,12 @@ If your script produces an output variable, you must declare the output variable
                       - name: OS_VAR
 ```
 
+#### Images without a shell
+
+To support Docker images without a shell, the **Command** field is optional. In a Kubernetes cluster build infrastructure, **Command** takes precedence over **Image** if you provide both. In other build infrastructures, you must provide either **Image**, **Command**, or both.
+
+The default value of **Shell** is `Sh`, and it can't be empty. The presence of **Shell** doesn't require **Command**.
+
 ### Report Paths
 
 If relevant to the commands in your Run step, you can specify one or more paths to files that store [test results in JUnit XML format](./run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
