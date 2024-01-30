@@ -2620,3 +2620,12 @@ We would recommend full backups rather than individual Backups.
 
 #### Is there a way the user can run all the steps on one specific delegate pod?
 Yes, user can run all the steps on one specific delegate pod. Doc: https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+
+#### Unable to view shell script content used in pipeline
+If you are using a step template, you will need to navigate to the template and switch to the yaml view, and you will be able to see the content.
+
+#### Create Connector API seems to not work for orgs and failing with the error INVALID_IDENTIFIER_REF while trying to create a vault connector.
+Please check and confirm if the token used here is proper and you are using the org or account prefix before passing the secret reference.
+
+#### How do I make a pipeline step report to Slack?
+You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.

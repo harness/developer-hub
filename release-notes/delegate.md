@@ -49,7 +49,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 24.01.82110 <!--  January 29, 2024 -->
 
-- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531)
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
    For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
 
@@ -80,6 +80,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
 
    This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
+
+- Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. (CI-10789, ZD-55265)
 
 ### Harness version 1.17.8, Harness Delegate version 23.12.82000 <!--  January 2, 2024 -->
 
