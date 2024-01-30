@@ -4930,3 +4930,21 @@ Replace "filename" with the name of the file you want to fetch from the file sto
 
 #### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
+
+
+#### I want my step to be skipped if there was failure and we have marked Ignore Failure in failure strategy.
+You can have conditional execution, something like <+pipeline.stages.<<staged>>.spec.execution.steps.<<stepid>>.status> != "IGNORE_FAILED"
+
+
+#### Can we add a skip condition on env/infa used in a stage?
+No, Env/Infra deatils are not present once the stage is initilzed and gets resolved once the stage starts, so adding conditions on these will not work.
+
+
+#### Is it possible to have a single cluster using potentially matching release names? 
+Harness uses a release name for tracking releases. The release name is used to create the corresponding Harness release ConfigMap or Secret.
+So we recommend to name it unique across namespaces, so you can use matching release names in clusters if namespaces are different.
+
+#### How to use the Opsgenie plugin and integration with Harness, We want to create new alerts based on testcase health.
+We do have different built-in notification mechanisms,  slack/email/ms teams/pager duty or custom, but if you want to integrate opsgenie, you have to create a shell script and make a call to opsgenie utilizing the api exposed by opsgenie to use for alert purposes.
+
+
