@@ -81,6 +81,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
 
+- Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. (CI-10789, ZD-55265)
+
 ### Harness version 1.17.8, Harness Delegate version 23.12.82000 <!--  January 2, 2024 -->
 
 #### Fixed issues
