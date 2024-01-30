@@ -22,7 +22,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## January x, 2024, version 1.19.9
+## January 29, 2024, version 1.19.10
 
 ### New features and enhancements
 
