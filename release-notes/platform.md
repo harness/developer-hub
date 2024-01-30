@@ -89,12 +89,13 @@ The following deprecated API endpoints are longer supported:
 - Removed the unused `org.redisson:redisson` library dependency from the delegate. (PL-42485, ZD-53588, ZD-53760)
 
 - Deletion of SCIM-managed user groups was not allowed. (PL-39439, ZD-53340)
-   You can now delete SCIM-managed user groups via the delete API for user groups.
+
+  You can now delete SCIM-managed user groups via the delete API for user groups.
+
    :::info
    Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
    :::
    
-
 #### Fixed issues
 
 - `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
