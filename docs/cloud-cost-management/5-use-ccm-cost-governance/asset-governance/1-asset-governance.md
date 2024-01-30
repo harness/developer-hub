@@ -16,7 +16,7 @@ At a high level, Cloud Custodian integrates seamlessly with services, features, 
 
 
 :::info important
-Currently, Harness supports GCP, AWS and Azure cloud governance.
+Currently, Harness supports AWS, Azure and GCP cloud governance.
 :::
 
 ## Anatomy of a cloud asset governance rule
