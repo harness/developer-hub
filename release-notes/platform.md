@@ -140,7 +140,7 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
-- 
+
 #### Early access
 
 ##### Allowlist verification for delegate registration (PL-42471)
