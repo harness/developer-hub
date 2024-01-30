@@ -19,7 +19,7 @@ The Harness Platform leverages Harness AI Development Assistant (AIDA:tm:) to re
 | CE | ChaosGuard | Generate conditions for your chaos experiments with ChaosGuard. | Generally available |
 | CODE | Semantic Search | Search code repositories to provide accurate and context-aware results in Harness Code. | Development |
 | CI | [Troubleshoot CI builds](/docs/continuous-integration/troubleshoot-ci/aida) | Resolve your build failures with AIDA's RCA. | Generally available |
-| FF | Automate feature flags integration | Incorporate feature flags into your development process through tailored code generation for seamless integration. | Beta |
+| FF | Automate feature flags integration | Incorporate feature flags into your development process through tailored code generation for seamless integration. | Generally available |
 | STO | [Security remediation](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) | Leverage AIDA to quickly analyze vulnerabilities and secure applications. | Generally available |
 
 ## Enable AIDA
