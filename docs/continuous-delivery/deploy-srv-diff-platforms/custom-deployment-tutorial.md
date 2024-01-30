@@ -1884,7 +1884,7 @@ Instances list - [i-0b77a163d64963817]
                             }
                         }
                     ],
-                    "ClientToken": "A7DABC48-19E8-4F48-A493-45074E4F0B53",
+                    "ClientToken": "*******************************************",
                     "EbsOptimized": false,
                     "EnaSupport": true,
                     "Hypervisor": "xen",
