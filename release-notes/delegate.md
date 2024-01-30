@@ -49,7 +49,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 24.01.82110 <!--  January 29, 2024 -->
 
-- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531)
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
    For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
 
