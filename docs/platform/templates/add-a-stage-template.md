@@ -8,33 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Harness Template Library enables you to standardize and create templates that you can use across Harness pipelines and teams.
+The Harness Template Library enables you to standardize and create templates that you can use across Harness pipelines and teams. One type of template you can create is a stage template, which is a template of a Harness CD, CI, or approval stage that you can use in any pipeline in any project.
 
-A stage template is a Harness CD, CI, or approval stage template that you can use in any pipeline in any project.
+To demonstrate how to create, configure, and use stage templates, this topic adds a stage template to a [CD pipeline](/tutorials/cd-pipelines). You can also create stage templates for [CI Build stages](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings), [manual approval stages](../approvals/adding-harness-approval-stages.md), and [Jira approval stages](../approvals/adding-jira-approval-stages.md).
 
-This topic walks you through the steps to create a CD stage template, but the steps are the same for the other stage types.
-
-### Objectives
-
-You'll learn how to: 
-
-* Create a deploy stage template.
-* Define stage template parameters.
-* Use the deploy stage template in a pipeline.
+The stage template demonstrated in this topic uses runtime inputs. Runtime inputs are placeholders for values that you provide when you start a pipeline execution. For more information, go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
 
 ### Before you begin
 
 * Review [Templates overview](template.md).
 * Review the [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
-* This topic adds a stage template to a CD pipeline. If you are new to Harness CD, review the [CD tutorials](/tutorials/cd-pipelines).
-* You can also create CI Build stage template, as well as manual approval stage and Jira approval stage templates. For more information, go to the [CI tutorials](../../continuous-integration/get-started/tutorials.md), [Using manual Harness approval stages](../approvals/adding-harness-approval-stages.md), and [Adding Jira approval stages and steps](../approvals/adding-jira-approval-stages.md).
-* The stage template in this topic uses runtime inputs. Runtime inputs are placeholders for values that you provide when you start a pipeline execution. For more information, go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
-
-### Review: Templates
-
 * You can add templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * [Tags](../references/tags-reference.md) can be used to group templates. You can search or filter templates using these tags.
-* You can have nested templates. You can refer to a stage template from your pipeline template.
+* You can have nested templates. You can refer to a stage template in a pipeline template.
 
 ### Step 1: Create a stage template
 

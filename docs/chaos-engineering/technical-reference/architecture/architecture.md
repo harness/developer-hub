@@ -1,10 +1,11 @@
 ---
-title: Architecture
+title: Components of HCE
 sidebar_position: 1
+description: HCE architecture and its components
 ---
-This section describes the Harness Chaos Engineering (CE) architecture along with the components.
+This section describes the Harness Chaos Engineering (HCE) architecture along with the components.
 
-Below is an overview of the CE architecture.
+Below is an overview of the HCE architecture.
 
 ![Overview](./static/architecture/overview.png)
 
@@ -13,7 +14,7 @@ CE comprises two parts:
 1. **Harness control plane**
 2. **Chaos infrastructure**
 
-The diagram below gives a peek into the CE architecture.
+The diagram below gives a peek into the HCE architecture.
 ![Architecture](./static/architecture/HCE-architecture.png)
 
 ## Harness control plane
@@ -22,7 +23,7 @@ The diagram below gives a peek into the CE architecture.
 
 ### Control plane components
 
-The control plane in CE contains many components, which are described below.
+The control plane in HCE contains many components, which are described below.
 
 #### Chaos infrastructure
 
@@ -48,6 +49,19 @@ This is a NoSQL MongoDB database microservice accountable for storing users' inf
 ## Harness execution plane
 
 **Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. 
+
+The resource utilization matrix for execution plane components is summarized below. These components are installed in target cluster as a part of the Kubernetes based chaos infrastructure.
+
+:::important
+The table below is indicative of low to medium-load working conditions. As chaos activity increases, more resources will be required, and the values represented here may vary.
+:::
+
+| Deployment          | container           | CPU (Requested) | Memory (Requested) | Image                                |
+|---------------------|---------------------|-----------------|--------------------|--------------------------------------|
+| chaos-operator-ce   | chaos-operator-ce   | 125m            | 300M               | chaosnative/chaos-operator           |
+| chaos-exporter      | chaos-exporter      | 125m            | 300M               | chaosnative/chaos-exporter           |
+| subscriber          | subscriber          | 125m            | 300M               | chaosnative/harness-chaos-subscriber |
+| workflow-controller | workflow-controller | 125m            | 300M               | chaosnative/workflow-controller      |
 
 ## Chaos infrastructure
 

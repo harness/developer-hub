@@ -19,6 +19,8 @@ To monitor Deployment Frequency, you must create a [Workflow profile](../sei-pro
 
 Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
 
+![](./static/df-report.png)
+
 To add the **Deployment Frequency** widget to Insights:
 
 1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
@@ -29,14 +31,17 @@ To add the **Deployment Frequency** widget to Insights:
 
 The widget automatically detects the relevant Workflow profile based on the Collections associated with the Insight.
 
+
+![](./static/widget-place.png)
+
 ### Deployment Frequency calculation
 
 Deployment Frequency performance is ranked on the following grading scale:
 
-* Elite: More than one deployment per day.
-* High: Deployments occur anywhere from once per day to once per week.
-* Medium: Deployments occur anywhere from once per week to once per month.
-* Low: Deployment occur less than once per month.
+* **Elite:** More than one deployment per day.
+* **High:** Deployments occur anywhere from once per day to once per week.
+* **Medium:** Deployments occur anywhere from once per week to once per month.
+* **Low:** Deployment occur less than once per month.
 
 The Deployment Frequency formula depends on whether you are tracking issue management, SCM, or CI/CD. The following factors can contribute to Deployment Frequency calculations:
 
@@ -49,12 +54,16 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
 
+:::info
+SEI fetches the history for both the builds jobs and triggers jobs for each pipeline from GitLab. The list of all jobs is available in the job selection tab under Deployment Frequency when configuring the DORA profile.
+:::
+
 <details>
 <summary>Deployment Frequency calculation example</summary>
 
 Consider the following Deployment Frequency configuration:
 
-* SEI integration: Jira
+* SEI integration: `Jira`
 * Filter: Status Category Equals Done
 * Calculation parameter: Ticket resolved in Insight time range
 * Time Range selected on the dashboard: Last 3 months
@@ -77,15 +86,19 @@ Assuming there are 24 tickets in **Done** status in the last 91 days, then the D
 
 ## Lead Time for Changes
 
-Lead Time for Changes represents the amount of time it takes a commit to get into production.
+DORA calculation for Lead Time is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the profile level. 
+
+This report represents the amount of time it takes a commit to get into production.
 
 The overall lead time is the sum of the average time spent in each stage configured in the workflow. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
+![](./static/lead-time-report.png)
+
 Note that for lead time metrics you can define stages based on either of the following events:
 
-* Ticket Created: This event ensures that lead time tracking starts in issue management.
-* Commit Created: This event ensures that lead time tracking starts when the first commit is committed.
-* API Event: This This event triggers the lead time calculation based on a custom API event.
+* **Ticket Created:** This event ensures that lead time tracking starts in issue management.
+* **Commit Created:** This event ensures that lead time tracking starts when the first commit is committed.
+* **API Event:** This This event triggers the lead time calculation based on a custom API event.
 
 The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](../sei-profiles/workflow-profile.md#workflow-profiles-for-lead-time).
 
@@ -95,39 +108,56 @@ Overall lead time is the sum of the time spent in each stage in a workflow, such
 
 The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](../sei-profiles/workflow-profile.md#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
-### Development Stages in Lead Time For Changes
+### Development Stages
 
-#### Lead Time to First commit
+#### Lead Time to First Commit
 
 This metric refers to the amount of time that passes from the beginning of a development cycle (like the start of a sprint or when a feature is first planned) to the first commit in the SCM. Essentially, it measures how long it takes to start actual coding work after a task is defined.
 
 #### PR Creation Time
 
+This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
+
+<!--
+
 This metric can be defined as either:
 
 * Time from Commit to First PR Creation: This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
-* Time from Commit to Last PR Creation: This measures the time from the first commit to the creation of the last pull request that includes this commit. This could be longer, especially in cases where commits are made early but the PR is created much later after further development.
+* Time from Commit to Last PR Creation: This measures the time from the first commit to the creation of the last pull request that includes this commit. This could be longer, especially in cases where commits are made early but the PR is created much later after further development. -->
 
 #### Time to Comment
 
-Users can choose to calculate this as either:
+This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
+
+<!-- Users can choose to calculate this as either:
   
 * Time from PR Creation to First Comment: This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
 * Time from PR Creation to Last Comment: This is the time taken from the creation of the PR to the last comment made. It could indicate the overall duration of discussion or review on the PR.
+-->
 
 #### Approval Time
+
+This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
+
+<!--
 
 This metric can be defined as either:
   
 * Time from the PR Creation to the First Approval: This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
-* Time from the PR Creation to the Last Approval: This is the duration from the PR creation to the last approval it receives. In workflows requiring multiple approvals, this metric indicates the total time taken for all necessary reviews.
+* Time from the PR Creation to the Last Approval: This is the duration from the PR creation to the last approval it receives. In workflows requiring multiple approvals, this metric indicates the total time taken for all necessary reviews. -->
 
 #### Merge Time
+
+This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
+
+<!--
 
 This metric can be defined as either:
 
 * Time to Merge the First PR: This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
 * Time to Merge for the Last PR Merge: This measures the time taken to merge the last pull request. In scenarios with multiple PRs, this metric can show how long it takes to integrate all changes from various PRs into the main branch.
+
+-->
 
 :::info
 Note that for Lead Time For Changes Report you can choose to enable or disable the Development Stages based on your requirements.
@@ -212,14 +242,16 @@ To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../s
 
 The Change Failure Rate widget is now part of your Insight.
 
+![](./static/cf-rate-report.png)
+
 ### Change Failure Rate calculation and scoring
 
 Change Failure Rate performance is ranked on the following grading scale:
 
-* Elite: Failure rate under 15 percent.
-* High: Failure rate of 16 to 30 percent.
-* Medium: Failure rate of 31 to 45 percent.
-* Low: Failure rate above 45 percent.
+* **Elite:** Failure rate under 15 percent.
+* **High:** Failure rate of 16 to 30 percent.
+* **Medium:** Failure rate of 31 to 45 percent.
+* **Low:** Failure rate above 45 percent.
 
 The Change Failure Rate is calculated by dividing the number of failed deployments by the total number of deployments. The actual values included in this calculation are based on the following factors:
 
@@ -264,14 +296,10 @@ Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how l
 
 MTTR is a good metric for assessing the speed of your recovery process across several areas of technology. The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
 
+![](./static/mttr-report.png)
+
 There are several ways to present MTTR in SEI Insights, including:
 
 * **DORA Mean Time To Restore**
 * **Time To Restore Service**
 * **[Issue Resolution Time reports](./velocity-metrics-reports/issues-reports.md)**
-
-## Mean Time Between Failures (MTBF)
-
-Mean Time Between Failures (MTBF), or reliability, measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time. It is an indicator of an assets reliability, or availability, and it is useful for estimating how likely an asset is to fail and how often certain failures occur. This metric is critical for reliability engineering.
-
-There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time reports](./velocity-metrics-reports/issues-reports.md) to track MTBF.

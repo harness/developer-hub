@@ -57,11 +57,16 @@ export default function CET() {
             your applications up and running. 
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnCET)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/continuous-error-tracking">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnCET
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://www.harness.io/products/continuous-error-tracking">
                 <button className={styles.link}>Learn more</button>

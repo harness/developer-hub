@@ -8,7 +8,7 @@ This section walks you through some common pain points and their workarounds.
 
 ## Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [Linux memory stress](../../chaos-engineering/technical-reference/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](../../chaos-engineering/technical-reference/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating out of memory scenario. 
+When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating out of memory scenario. 
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 ### Workaround
@@ -87,7 +87,7 @@ $ kubectl apply -f harness-chaos-enable.yml
 
 ## Environment variable and secret usage references in source mode of command probe
 
-You can use secrets and environment variables in the [**source mode**](../../chaos-engineering/technical-reference/probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering/technical-reference/probes/cmd-probe#source-mode) of the command probe using the manifest in the following manner:
 
 ```yaml
 source:

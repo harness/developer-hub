@@ -176,6 +176,12 @@ Don't specify an API URL if you use GitLab SaaS or your GitLab self-managed plan
 
 Select whether you want Harness to connect directly to your GitLab account or repo, or if you want Harness to communicate with your GitLab account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
+:::tip
+
+The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
+
 ### Delegates Setup
 
 If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.

@@ -1,6 +1,7 @@
 ---
 title: Pod Security Policy
-sidebar_position: 2
+sidebar_position: 3
+description: Applying Pod Security Policy to pods in a cluster 
 ---
 
 This section describes pod security policy, and applying pod security policies to the pods in a cluster. 
@@ -8,13 +9,13 @@ Restrictive policies are often enforced using [pod security policies](https://ku
 
 ## Using pod security policies with CE
 
-While working in environments (clusters) that have restrictive security policies, you can inhibit the default CE experiment execution procedure. This is due to the experiment pods running the chaos injection tasks in privileged mode. This, in turn, is required due to the mounting of container runtime-specific socket files from the Kubernetes nodes to invoke runtime APIs.
+While working in environments (clusters) that have restrictive security policies, you can inhibit the default HCE experiment execution procedure. This is due to the experiment pods running the chaos injection tasks in privileged mode. This, in turn, is required due to the mounting of container runtime-specific socket files from the Kubernetes nodes to invoke runtime APIs.
 
 This is not required for all experiments (a considerable number of them use purely the K8s API). It is required for experiments that inject chaos processes into the network or process namespaces of other containers (for example, netem, stress).
 
-### Applying pod security policies to CE pods
+### Applying pod security policies to HCE pods
 
-To run the CE pods with operating characteristics described above, create a custom `PodSecurityPolicy` that allows the same: 
+To run the HCE pods with operating characteristics described above, create a custom `PodSecurityPolicy` that allows the same: 
 
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/psp-litmus.yaml yaml)
 ```yaml
@@ -82,7 +83,7 @@ readOnlyRootFilesystem: false
 ```
 
 :::tip
-This `PodSecurityPolicy` is a sample configuration which works for a majority of the use cases. It is left to the user's discretion to modify it based on their environment. For example, if the experiment doesn't need the socket file to be mounted, `allowedHostPaths` can be excluded from the PSP specification. In case of CRI-O runtime, network-chaos tests need the chaos pods to execute in privileged mode. Different PSP configurations can be used in different namespaces based on the chaos experiments installed or executed in them.
+This `PodSecurityPolicy` is a sample configuration which works for a majority of the use cases. It is left to your (user) discretion to modify it based on your environment. For example, if the experiment doesn't need the socket file to be mounted, you can exclude the `allowedHostPaths` from the PSP specification. In case of CRI-O runtime, network-chaos tests need the chaos pods to execute in privileged mode. You can use different PSP configurations in different namespaces based on the chaos experiments installed or executed in them.
 :::
 
 ### Subscribe to the created PSP
@@ -155,4 +156,4 @@ namespace: default
 ```
 
 ### Verify the results of the chaos experiment
-Execute the ChaosEngine and verify that the CE experiment pods have been created successfully.
+Execute the ChaosEngine and verify that the HCE experiment pods have been created successfully.

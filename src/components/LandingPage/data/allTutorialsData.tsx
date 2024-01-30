@@ -39,7 +39,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/ci-pipelines/fastest-ci",
+    link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
     title: "Onboard with Terraform Provider",
@@ -57,22 +57,11 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/platform/onboard-terraform-provider",
   },
   {
-    title: "Code coverage with CodeCov",
-    module: MODULES.ci,
-    description:
-      "Use a Run step to include CodeCov code coverage.",
-    link: "/tutorials/ci-pipelines/test/codecov",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
     title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
       "Publish any URL to the Artifacts tab.",
-    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    link: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

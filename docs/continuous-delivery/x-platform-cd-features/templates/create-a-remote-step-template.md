@@ -26,7 +26,6 @@ Review the following:
 
 * [Harness key concepts](/docs/get-started/key-concepts)
 * [Templates overview](/docs/platform/templates/template/)
-* [CI tutorials](/docs/continuous-integration/get-started/tutorials)
 
 ### Permissions
 

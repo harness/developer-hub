@@ -8,15 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) non-Docker registries. To upload artifacts to a JFrog Docker registry, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
+You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) non-Docker registries. To upload artifacts to a JFrog Docker registry, you can use a script in a [Run step](../run-step-settings.md).
 
 You need:
 
 * Access to a JFrog Artifactory instance with a non-Docker registry.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) and steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload. If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) and steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * A Harness [Artifactory connector](#artifactory-connector).
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, including JFrog Docker registries, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, including JFrog Docker registries, you can use a script in a [Run step](../run-step-settings.md).
 
 ## Add an Upload Artifacts to JFrog step
 
@@ -57,7 +57,7 @@ The **Target** is the target path in the JFrog Artifactory registry. This is a t
 
 **Source Path** is a path to the artifact file/folder on the local/build machine you want to upload.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
 
 ![](./static/upload-artifacts-to-jfrog-519.png)
 
@@ -155,14 +155,12 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 :::
 
-## Troubleshooting the Upload Artifacts to JFrog step
+## Troubleshoot uploading artifacts
 
-You might encounter these issues when using the **Upload Artifacts to JFrog Artifactory** step.
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
 
-### Certificate signed by unknown authority
-
-If you get a `certificate signed by unknown authority` error, make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
-
-### mkdir permission denied when running as non-root
-
-With a Kubernetes cluster build infrastructure, the **Upload Artifacts to JFrog** step must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+* [Certificate signed by unknown authority error.](/kb/continuous-integration/continuous-integration-faqs/#upload-artifacts-to-jfrog-step-throws-certificate-signed-by-unknown-authority)
+* [mkdir permission denied when running as non-root.](/kb/continuous-integration/continuous-integration-faqs/#mkdir-permission-denied-when-running-upload-artifacts-to-jfrog-as-non-root)
+* [Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?](/kb/continuous-integration/continuous-integration-faqs/#can-i-run-the-upload-artifacts-to-jfrog-artifactory-step-with-a-non-root-user)
+* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
+* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)

@@ -12,7 +12,7 @@ Locust loadgen fault simulates load generation on the target hosts for a specifi
 - Locust loadgen fault determines the resilience of an application under heavy load. 
 - It determines how quickly the target application recovers from such a failure. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.17 is required to execute this fault.
 - The target host should be accessible.
 - Kubernetes configmap that contains the `config.py` file is required. This file is used as a locustfile to generate load in the `CHAOS_NAMESPACE`. Below is a sample configmap:
@@ -33,16 +33,17 @@ data:
         def hello_world(self):
             self.client.get("")
 ```
-- If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE` environment variable in the chaos experiment with the new name.
 :::
 
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -52,52 +53,68 @@ data:
             <td> Provide the name of target host ex: <code>https://google.com</code>. For more information, go to <a href="#target-host"> target host.</a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Time taken to inject chaos into the target resource (in seconds). </td>
-            <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
+            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> USERS </td>
             <td> Peak number of concurrent Locust users causing the load. </td>
-            <td> Defaults <code>30</code>. For more information, go to <a href="#number-of-users"> number of users.</a></td>
+            <td> Default: <code>30</code>. For more information, go to <a href="#number-of-users"> number of users.</a></td>
         </tr>
         <tr>
             <td> SPAWN_RATE </td>
             <td> Number of users spawned per second.</td>
-            <td> Defaults <code>30</code>. For more information, go to <a href="#spawn-rate"> spawn rate.</a></td>
+            <td> Default: <code>30</code>. For more information, go to <a href="#spawn-rate"> spawn rate.</a></td>
         </tr>
         <tr>
             <td> REPLICA </td>
             <td> Number of helper pod replicas generating the load. </td>
-            <td> Defaults to <code>1</code>. </td>
+            <td> Default: <code>1</code>. </td>
         </tr>
         <tr>
             <td> LOAD_IMAGE </td>
             <td> Image used in helper pod that contains the chaos injection logic. </td>
-            <td> Defaults <code>chaosnative/locust-loadgen:latest</code>. For more information, go to <a href="#custom-load-image"> custom load image.</a></td>
+            <td> Default: <code>chaosnative/locust-loadgen:latest</code>. For more information, go to <a href="#custom-load-image"> custom load image.</a></td>
         </tr>
         <tr>
             <td> LOAD_TYPE </td>
             <td> Used as a suffix in the load file name. </td>
-            <td> Defaults to <code>load</code>. </td>
+            <td> Default: to <code>load</code>. </td>
+        </tr>
+        <tr>
+            <td> GRANT_TYPE </td>
+            <td> Used for OAuth 2.0 authentication process. </td>
+            <td> Supports client_credentials only. Used when client requests access to protected resources based on the client ID and client secret. </td>
+        </tr>
+        <tr>
+            <td> NODE_NAMES </td>
+            <td> Comma-separated node names subject to chaos</td>
+            <td> For example, <code>node1,node2,..</code></td>
+        </tr>
+        <tr>
+            <td> CONFIG_MAP_FILE </td>
+            <td> Path to the configuration file where you set locust logic parameters. </td>
+            <td> You can specify additional file using the `--config` flag. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Wait period before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults/#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

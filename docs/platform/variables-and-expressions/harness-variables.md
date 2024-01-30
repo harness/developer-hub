@@ -331,10 +331,18 @@ This values.yaml file will not process successfully. Remove any expressions from
 
 ### Scripts within expressions
 
-You cannot write scripts within an expression `<+...>`. For example, the following script will not work.
+You cannot write scripts in expressions. For example, the following script will not work:
 
 ```
 if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
+```
+
+Instead, feed the expression value into a variable and then call the variable in your script.
+
+```
+NAME = <+pipeline.name>
+
+if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
 
 ### Variable names across the pipeline
@@ -754,7 +762,7 @@ For CD pipelines, the Id is named execution. For CI pipelines, the Id is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
 ### \<+pipeline.startTs>
 

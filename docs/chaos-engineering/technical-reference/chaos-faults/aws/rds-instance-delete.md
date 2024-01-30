@@ -2,7 +2,6 @@
 id: rds-instance-delete
 title: RDS instance delete
 ---
-## Introduction
 
 RDS instance delete removes an instances from AWS RDS cluster. This makes the cluster unavailable for a specific duration.
 
@@ -11,7 +10,7 @@ RDS instance delete removes an instances from AWS RDS cluster. This makes the cl
 ## Use cases
 RDS instance delete determines how quickly an application can recover from an unexpected RDS cluster deletion. 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - AWS access to delete RDS instances.
 - The RDS instance must be in a healthy state.
@@ -61,8 +60,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -84,8 +83,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

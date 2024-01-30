@@ -1,8 +1,13 @@
-# Create a secret for GCP experiments
+---
+title: Creating secrets for GCP experiments
+---
 
-You must create a service account to derive the authentication secret to run experiments on GCP.
+This section describes the steps you can follow to create a secret to execute GCP chaos experiments. 
 
-To create the service account and secret:
+
+### Step 1: Create a service account
+
+Create a service account to derive the authentication secret to run experiments on GCP. To create the service account and secret:
 
 1. Set your current project. Replace &lt;project-id&gt; with your project ID:
 
@@ -15,17 +20,18 @@ To create the service account and secret:
   ```bash
   gcloud iam service-accounts create <service-account-name>
   ```
+### Step 2: Generate new JSON key file
 
-3. After the service account is created, you can generate a new JSON key file. Replace &lt;service-account-name&gt; with the name of your service account and &lt;key-file&gt; with the path where you want to save the key file:
+3. After you create a new service account, generate a new JSON key file. Replace &lt;service-account-name&gt; with the name of your service account and &lt;key-file&gt; with the path where you want to save the key file:
 
   ```bash
   gcloud iam service-accounts keys create <key-file> \
   --iam-account <service-account-name>@<project-id>.iam.gserviceaccount.com
   ```
 
-  The generated JSON key file will contain the fields you mentioned, and it looks something like this:
+The generated JSON key file will contain the fields you mentioned, and it looks something like this:
 
-  ```json
+```json
   {
       "type": "service_account",
       "project_id": "<project-id>",
@@ -38,10 +44,12 @@ To create the service account and secret:
       "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
       "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<service-account-name>%40<project-id>.iam.gserviceaccount.com"
   }
-  ```
-4. Prepare the secret YAML based on this JSON:
+```
 
-  ```yaml
+### Step 3: Prepare the secret YAML
+4. Based on the JSON key file you created earlier, prepare the secret YAML:
+
+```yaml
   apiVersion: v1
   kind: Secret
   metadata:
@@ -58,13 +66,14 @@ To create the service account and secret:
     token_uri: "<token-uri>"
     auth_provider_x509_cert_url: "<auth-provider-x509-cert-url>"
     client_x509_cert_url: "<client-x509-cert-url>"
-  ```
+```
 
-  :::warning
-  Newline (\n) characters within the private key are crucial. Avoid using double quotes to prevent their loss.
-  :::
+:::warning
+Newline (\n) characters within the private key are crucial. Avoid using double quotes to prevent their loss.
+:::
 
-5. Create the secret YAML file in the chaos infra namespace using the command:
+### Step 4: Apply the secret YAML in desired namespace
+5. Apply the secret YAML file you created earlier in the chaos infrastructure namespace using the command:
 
   ```bash
   kubectl apply -f secret.yaml -n <CHAOS-NAMESPACE>

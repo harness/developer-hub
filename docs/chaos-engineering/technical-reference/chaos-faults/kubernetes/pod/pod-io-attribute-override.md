@@ -5,7 +5,7 @@ title: Pod IO attribute override
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-Pod IO Attribute Override, modify the properties of files located within the mounted volume of the pod. 
+Pod IO attribute override modifies the properties of files located within the mounted volume of the pod. 
 This fault should be used as a sanity test for validating your application's failover capability against unexpected changes in file attributes, such as permissions, ownership, or timestamps.
 
 ![Pod IO Attribute Override](./static/images/pod-io-attribute-override.png)
@@ -20,15 +20,12 @@ Pod IO attribute override:
 
 <IOFaultsCaution />
 
-:::info note
-- Kubernetes 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
-
-  <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -46,8 +43,8 @@ Pod IO attribute override:
       </tr>
     </table>
 
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -155,7 +152,7 @@ spec:
           value: '60'
 ```
 
-### Mount Path
+### Mount path
 
 Mount path of the volume mounted to the target application. Tune it by using the `MOUNT_PATH` environment variable.
 
@@ -190,7 +187,7 @@ spec:
           value: '60'
 ```
 
-### Advanced Fault Tunables
+### Advanced fault tunables
 
 - `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.

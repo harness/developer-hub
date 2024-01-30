@@ -1,6 +1,6 @@
 ---
 title: Run Snyk scans and ingest results
-description: Use Snyk to scan repositories and container images
+description: Procedures and examples for running Snyk scans and ingesting results.
 sidebar_position: 20
 redirect_from: /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
@@ -54,7 +54,7 @@ This example uses a Snyk step in Orchestration mode to scan a repository. This i
 
 <!-- commenting out this step, doesn't look like it's necessary for orchestration scans
 
-3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`
+3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`
 
 -->
 
@@ -85,7 +85,7 @@ The scan stage in this pipeline has the following steps:
 
 2. Add a Security Tests or Build stage to your pipeline.
 
-3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`.
+3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`.
 
 4. Add a **Run** step that runs the build (if required), scans the repo, and saves the results to the shared folder:
 
@@ -100,7 +100,7 @@ The scan stage in this pipeline has the following steps:
       # scan the code repository
       snyk code test \
          --file=SubSolution.sln  \
-         --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
+         --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
       ```
 
    2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.
@@ -124,7 +124,7 @@ The scan stage in this pipeline has the following steps:
    3. Target Name = (_user-defined_)
    <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
-   5. Ingestion = **`/shared/customer_artifacts/snyk_scan_results.sarif`**
+   5. Ingestion = **`/shared/scan_results/snyk_scan_results.sarif`**
 
 6. Apply your changes, then save and run the pipeline.
 
@@ -159,7 +159,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
       ```bash
       snyk container test \
           snykgoof/big-goof-1g:100 -d \
-          --sarif-file-output=/shared/customer_artifacts/snyk_container_scan.sarif  || true
+          --sarif-file-output=/shared/scan_results/snyk_container_scan.sarif  || true
       ```
 
       Snyk maintains a set of [snykgoof](https://hub.docker.com/u/snykgoof) repositories that you can use for testing your container-image scanning workflows.
@@ -181,7 +181,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
    3. Target Name = (_user-defined_)
    <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
-   5. Ingestion = **`/shared/customer_artifacts/snyk_container_scan.sarif`**
+   5. Ingestion = **`/shared/scan_results/snyk_container_scan.sarif`**
 
 5. Apply your changes, then save and run the pipeline.
 
@@ -207,15 +207,15 @@ The scan stage in this pipeline has the following steps:
 
 2. Add a Security Tests or Build stage to your pipeline.
 
-3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`
+3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`
 
 4. Add a **Run** step that runs the build (if required), scans the repo, and saves the results to the shared folder:
 
    1. In the Run step **Command** field, add code to run the scan and save the scan results to the shared folder.
 
       ```bash
-      snyk iac test --sarif --sarif-file-output=/shared/customer_artifacts/snyk_iac.json /harness || true
-      cat /shared/customer_artifacts/snyk_iac.json
+      snyk iac test --sarif --sarif-file-output=/shared/scan_results/snyk_iac.json /harness || true
+      cat /shared/scan_results/snyk_iac.json
       ```
 
    2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.
@@ -239,7 +239,7 @@ The scan stage in this pipeline has the following steps:
    3. Target Name = (_user-defined_)
    <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
-   5. Ingestion = **`/shared/customer_artifacts/snyk_iac.sarif`**
+   5. Ingestion = **`/shared/scan_results/snyk_iac.sarif`**
 
 6. Apply your changes, then save and run the pipeline.
 
@@ -356,13 +356,13 @@ pipeline:
                       # https://docs.snyk.io/snyk-cli/commands/code-test
                       snyk code test \
                        --file=SubSolution.sln  \
-                       --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
+                       --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
 
                       # Check project for open source vulnerabilities
                       # https://docs.snyk.io/snyk-cli/commands/test
                       # snyk test \
                       #   --file=SubSolution.sln  \
-                      #   --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
+                      #   --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
 
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("sto-api-token")>
@@ -381,9 +381,9 @@ pipeline:
                       log:
                         level: info
                     ingestion:
-                      file: /shared/customer_artifacts/snyk_scan_results.sarif
+                      file: /shared/scan_results/snyk_scan_results.sarif
           sharedPaths:
-            - /shared/customer_artifacts
+            - /shared/scan_results
         variables:
   identifier: snyk_ingestion_doc_example
   name: snyk_ingestion_doc_example
@@ -420,7 +420,7 @@ pipeline:
               nodeSelector: \{}
               os: Linux
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
             - /var/run
           execution:
             steps:
@@ -449,7 +449,7 @@ pipeline:
 
                       snyk container test \
                             snykgoof/big-goof-1g:100 -d \
-                            --sarif-file-output=/shared/customer_artifacts/snyk_container_scan.sarif  || true
+                            --sarif-file-output=/shared/scan_results/snyk_container_scan.sarif  || true
                     privileged: true
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
@@ -472,7 +472,7 @@ pipeline:
                       runner_tag: develop
                     imagePullPolicy: Always
                     ingestion:
-                      file: /shared/customer_artifacts/snyk_container_scan.sarif
+                      file: /shared/scan_results/snyk_container_scan.sarif
                   failureStrategies:
                     - onFailure:
                         errors:
@@ -528,7 +528,7 @@ pipeline:
               nodeSelector: \{}
               os: Linux
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
           execution:
             steps:
               - stepGroup:
@@ -546,8 +546,8 @@ pipeline:
                           command: |
 
                             # https://docs.snyk.io/snyk-cli/commands/iac-test
-                            snyk iac test --sarif --sarif-file-output=/shared/customer_artifacts/snyk_iac.json /harness || true
-                            cat /shared/customer_artifacts/snyk_iac.json
+                            snyk iac test --sarif --sarif-file-output=/shared/scan_results/snyk_iac.json /harness || true
+                            cat /shared/scan_results/snyk_iac.json
 
                           envVariables:
                             SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
@@ -576,7 +576,7 @@ pipeline:
                       runner_tag: develop
                     imagePullPolicy: Always
                     ingestion:
-                      file: /shared/customer_artifacts/snyk_iac.json
+                      file: /shared/scan_results/snyk_iac.json
                   failureStrategies:
                     - onFailure:
                         errors:

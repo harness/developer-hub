@@ -64,11 +64,16 @@ export default function FF() {
               flag is like a powerful if statement.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnFF)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/feature-flags">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnFF
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://harness.io/products/feature-flags">
                 <button className={styles.link}>Learn more</button>

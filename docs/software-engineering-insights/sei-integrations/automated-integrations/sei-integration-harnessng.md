@@ -1,6 +1,6 @@
 ---
-title: SEI Harness integration
-description: Integrate SEI with Harness.
+title: SEI Harness CI/CD integration
+description: Integrate SEI with Harness CI and CD
 sidebar_position: 110
 sidebar_label: Harness
 ---
@@ -11,7 +11,7 @@ Use the SEI Harness integration to integrate SEI with your Harness modules.
 
 :::info
 
-The SEI Harness integration is only for Harness NextGen modules. For an explanation of the difference between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen).
+The SEI Harness integration is only for Harness NextGen CI and CD module. For an explanation of the difference between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen).
 
 :::
 
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
      For example, "Youtube, YouTubeTV." Please note that organization names are case-sensitive. You can leave this field blank to include all organizations accessible to the token user.
    * **Project**: Enter your project name. Similarly, you can use a comma-separated list if you have multiple projects.
      
-     For example, "org/project, org2/project2." Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
+     For example, "`org/project`, `org2/project2`" Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
 4. Finish configuration and **Save** the integration.
 
 

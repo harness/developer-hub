@@ -14,10 +14,10 @@ You can use the [Nexus Publish plugin](https://github.com/harness-community/dron
 You need:
 
 * Access to a Sonatype Nexus Repository Manager instance.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md). For other upload locations, you can use a script in a [Run step](../run-step-settings.md).
 
 ## Use the Nexus Publish plugin
 
@@ -40,7 +40,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
 | `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
-| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata.  `-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin` |
+| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata. Can be optional. Relevant fields vary by use case. For example, use `-CgroupID` to map group info. | `-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin` |
 
 <!-- ![A Plugin step configured for the Nexus Publisher plugin.](./static/sonatype-nexus-plugin-visual-settings.png) -->
 
@@ -96,7 +96,7 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.nexus_password>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.nexus_password>` uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables).
 
 Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords.
 
@@ -233,3 +233,10 @@ pipeline:
             type: Cloud
             spec: {}
 ```
+
+## Troubleshoot uploading artifacts
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
+
+* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
+* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)

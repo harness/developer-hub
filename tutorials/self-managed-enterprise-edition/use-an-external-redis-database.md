@@ -7,7 +7,7 @@ sidebar_position: 50
 
 Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external self-managed Redis database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration.
 
-[label](use-an-external-sm-timescaledb.md)Redis offers an enterprise on-premise solution to deploy an HA solutions that functions like a single server. You can install Redis on your preferred choice of virtual machines and provide the endpoint in your Harness Helm charts. Harness recommends this solution to install Redis in HA mode.
+Redis offers an enterprise on-premise solution to deploy an HA solutions that functions like a single server. You can install Redis on your preferred choice of virtual machines and provide the endpoint in your Harness Helm charts. Harness recommends this solution to install Redis in HA mode.
 
 This tutorial describes how to configure an external self-managed Redis database for your installation.
 

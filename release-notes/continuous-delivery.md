@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-12-12T10:00:15
+date: 2024-01-29:T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -48,6 +48,124 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 
 ## January 2024
+
+### Version 1.22.3
+
+#### New features and enhancements
+- Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
+  - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
+  - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+
+- Remove application details from NewRelic if it is empty (CDS-88190)
+  - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
+
+- Stage Selection component is being moved to Pipeline Input tab from Configuration Tab (CDS-72890)
+   - When configuring Triggers, the Stage Selection component has been moved to Pipeline Input tab from Configuration Tab.
+
+- Show accountId in Switch Account screen(CDS-88728)
+  - Enhanced the Switch Account experience to show more data i.e ``AccountId``.
+#### Fixed Issues
+- UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
+  - Previously, deployments would display an error when they were waiting for manual approval. 
+  - A conditional was updated to handle the null check for the approval message, fixing the issue.
+
+- Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
+  - Previous Behavior: The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service.
+  - The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
+
+- Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
+  - Issue occurred when using GCP and a GCP access token.
+  - It occurred when the access token expiration overlapped with steady state check (watch) API calls.
+  - The issue is fixed now. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation.
+
+- K8s Async Steps - Invalid task type exception has been thrown when task parameter is not provided (CDS-87708)
+  - Invalid task type and Null Pointer Exceptions were thrown instead of marking the Step as Skipped.
+  - The step will now be correctly marked as Skipped, fixing the issue.
+
+- Github release trigger not working as expected because UI didn't show the Conditions (CDS-87647, ZD-55832)
+  - There were inconsistencies in webhook trigger payload conditions in YAML and Visual views with the event type.
+  - This has been fixed. Visual and YAML views will show consistent behavior between them.
+
+- Support use of ‘#’ for branch names (CDS-87468, ZD-55625)
+  - Previously, certain special characters were not supported by GET calls.
+  - From now on branches that have special characters such as '&' and '#' will be supported by GET pipeline calls for Remote entities.
+
+- ServiceNow approval conditions dropdown gives invalid values (CDS-86809)
+  - Previously, an approval conditions dropdown menu was auto-populating with an invalid [object Object] value or other invalid values.
+  - The issue is fixed now.
+ 
+- Unable to select a new pipeline version. (CDS-87809, ZD-55910)
+  - We found an error in the flow where a version of an in-use Template is deleted. When that happened, the referring Pipeline or Template threw an error and did not let you select an alternate version of the Template.   
+  - We'd earlier suggested editing the YAML directly to work around the issue. 
+The bug has now been fixed, and you should be able to select an alternate version of the Template from referring Pipelines/Templates now.
+
+
+### Version 1.21.5
+
+#### New features and enhancements
+
+- Grouping and Collapsible Support for Overrides(CDS-82376)
+  - Overrides are now grouped by information in their configurations.
+  - They are now collapsible, and thusly, are easier to search through.
+
+#### Behaviour change
+
+- Delegate selectors are not getting honored for any of the plugin steps.(CDS-85489)
+  - Previous behavior: Until now, there was uncertainty in the assignment of plugin steps to delegates. If a step was set to use a specific delegate (D1), it may or may not have actually used that delegate. Consequently, the pipeline could run successfully, even if the step ended up on a different delegate (D2). After the upcoming fix, the plugin step will consistently be directed to the configured delegate (D1). However, if D1 faces challenges such as lacking capabilities, permissions, or network policy issues to run the task, the current pipeline will begin to fail.
+  - If pipelines start to fail due to delegate issues after this update, make sure your delegate selectors are set properly.
+
+#### Fixed Issues
+
+- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list(CDS-88198, ZD-56156)
+  - Previous Behavior: Making edits to more than one variable simultaneously only applied the changes to the last variable in the list.
+  - The issue only occurred in Template Studio for pipeline templates, not for stage or step group templates. The issue is fixed now.
+
+- Http step with mtls not working(CDS-87547,ZD-55531)
+  - Previously, Some customers reported an error trying to use the HTTP Step with MTLS. This was caused due to an exception during the delegate capability check for HTTP step; we will now additionally validate the delegate to fix the problem.
+
+- Pipeline was failing with delegate error(CDS-87440,ZD-55387)
+  - Expected behavior: Users can fetch JSON format in the delegate using curl command and the same should work in UI
+  - Previous Behavior: The JSON format was fetched using curl in the delegate but the same was not working in the UI.
+  - The issue is fixed now.To address intermittent capability check failures for an internal URL, the HTTP step's connectivity check timeouts have been increased from 15 seconds to 30 seconds. Users can expect improved reliability in scenarios where intermittent failures were previously encountered.
+
+- Harness bidirectional sync webhook feature not working(CDS-85694,ZD-54338)
+  - Previous behavior:- The problem involved the failure of the API when the source or target commit ID was NULL. Furthermore, unrelated PUSH webhook events from Github, triggered during create or branch operations, were incorrectly marked as errors in the UI
+  - These events are unrelated to bidirectional GitExperience processing and will now be disregarded instead of being flagged as failures.
+
+- WimRM connector changed to SSH connector when the template was added to the pipeline. (CDS-85388)
+  - Previous Behavior: If a stage template was created with a WinRM connector and then used in a pipeline, the template inputs would display the SSH connector attribute instead of WinRM connector. 
+  - This issue is fixed now. The type of connector selected will remain consistent throughout the platform.
+
+- Template Issue not being displayed in the pipeline(CDS-84490,ZD-53823,54260)
+  - Previous Issue: There was an intermittent issue of Template Inputs not being displayed in the Pipeline Editor
+  - This issue is now fixed.
+  
+### Version 1.20.9
+
+
+#### Fixed Issues
+
+- Branch selector dropdown not populating in Harness code repo: issue arises when entity is absent, resulting in 'no entity found' page. (CDS-87788)
+  - Previous behavior: When attempting to access an entity stored in the Harness code repository and encountering a "no entity found" page, the Branch selector dropdown was not populated with the branches of the Harness code repository.
+  - This issue is now resolved. The API calls are made correctly and branches are now populated.
+- Users are not able to click hyperlinks in Harness approval message. (CDS-87675, ZD-55826)
+  - Previous behavior: If the user has a message with an HTTP URL, the HTTPS URL is not a clickable URL in the message displayed in the Approval step.
+  - The issue is fixed by adding logic to render clickable links within the text. If any URLs or hyperlinks are present in the approval message they are converted to clickable links. 
+- Issues while pulling tags of images in Github Container Registry when they have ``/`` inside the artifact name. (CDS-87457)
+  - Previous behavior: While configuring the artifact source, if the name of the image contained a ``/``, then the image versions could not be pulled. This has been fixed. Image versions are now retrieved.
+  - The issue was resolved by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
+- Issue with template inputs not showing up (CDS-84490)
+  - Previously, there was an issue where template inputs were not showing up in the Pipeline Editor due to an API issue.
+  - Fixing this caused another, worse more common error where the platform would get stuck in an infinite API call loop.
+  - The template input fix has been **reverted** fixing the inifinite API call loop issue.
 
 ### Version 1.19.6
 

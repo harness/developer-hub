@@ -1,7 +1,6 @@
 ---
-title: Create and configure a codebase
+title: Configure codebase
 description: CI pipelines build and test code that is pulled from Git code repositories.
-
 sidebar_position: 10
 helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
@@ -90,7 +89,9 @@ pipeline:
 
 ## Disable Clone Codebase for specific stages
 
-After defining the default codebase in the first Build stage, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for individual stages. You might disable **Clone Codebase** if the codebase is not needed for the stage's operations, or you need to use specific `git clone` arguments (such as to [clone a subdirectory instead of an entire repo](./clone-subdirectory.md)). You can also [clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
+After defining the default codebase in the first Build stage, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for individual stages. You can also disable cloning the default codebase, if necessary.
+
+You might disable **Clone Codebase** if the codebase is not needed for the stage's operations, or you need to use specific `git clone` arguments (such as to [clone a subdirectory instead of an entire repo](./clone-subdirectory.md)). You can also [clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
 In the Visual editor, you can disable **Clone Codebase** in the stage's **Overview** tab.
 
@@ -114,14 +115,11 @@ For more information about Build stage settings, go to [CI Build stage settings]
 
 ## Edit the default codebase configuration
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
 
@@ -129,10 +127,8 @@ To edit a pipeline's default codebase configuration, select **Codebase** on the 
 
 <DocImage path={require('./static/create-and-configure-a-codebase-03.png')} />
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
 
@@ -157,10 +153,8 @@ pipeline:
             cpu: 400m
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 
@@ -197,63 +191,19 @@ Set maximum resource limits for the containers that clone the codebase at runtim
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
+### Toggle Clone Codebase
+
+If you want to disable cloning the default codebase for any stage in a pipeline, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
+
 ## Troubleshoot codebases
 
-### Improve codebase clone time
+Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for common questions and issues related to codebases, such as:
 
-If cloning your codebase takes more time than expected, try setting **Limit Memory** to `1Gi`.
-
-If codebase cloning takes longer than expected when the build is triggered by a pull request, set **Pull Request Clone Strategy** to **Source Branch** and set **Depth** to `1`.
-
-You could also use specific `git clone` arguments instead of cloning the entire default codebase or using built-in cloning strategy, as explained in [Clone a subdirectory](./clone-subdirectory.md).
-
-### The same Git commit is not used in all stages
-
-If your pipeline has multiple stages, each stage that has **Clone codebase** enabled will clone the codebase during stage initialization. If your pipeline uses the generic [Git connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) and a commit is made to the codebase after a pipeline run has started, it is possible for later stages to clone the newer commit, rather than the same commit that the pipeline started with.
-
-If you want to force all stages to use the same commit ID, even if there are changes in the repository while the pipeline is running, you must use a [code repo connector](#code-repo-connectors) for a specific SCM provider, rather than the generic Git connector.
-
-### Git fetch fails with invalid index-pack output when cloning large repos
-
-The following `git fetch` error might cause a pipeline to fail during build initialization when cloning the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md): `fetch-pack: invalid index-pack output`.
-
-This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
-
-To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
-
-```yaml
-properties:
-  ci:
-    codebase:
-      connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-      repoName: YOUR_CODE_REPO_NAME
-      build:
-        type: branch
-        spec:
-          branch: <+input>
-      sslVerify: false
-      resources:
-        limits:
-          memory: 4G ## Set the maximum memory to use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
-          cpu: "2" ## Set the maximum number of cores to use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`.
-```
-
-### Initial Git clone fails due to missing plugin
-
-This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md) or the [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
-
-If Git clone fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
-
-To resolve this issue:
-
-1. On the machine where the runner is running, stop the runner.
-2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
-3. Restart the runner.
-
-### Pipeline status updates aren't sent to PRs
+* [How do I improve codebase clone time?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-reduce-clone-codebase-time)
+* [The same Git commit is not used in all stages.](/kb/continuous-integration/continuous-integration-faqs/#the-same-git-commit-is-not-used-in-all-stages)
+* [Git fetch fails with invalid index-pack output when cloning large repos.](/kb/continuous-integration/continuous-integration-faqs/#git-fetch-fails-with-invalid-index-pack-output-when-cloning-large-repos)
+* [Clone codebase fails due to missing plugin.](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
 
 For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
-
-### Troubleshoot Git event triggers
 
 For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

@@ -39,7 +39,7 @@ You can also use this workflow if the external scanner requires additional files
 
 ## Workflow for adding custom certificates to a pipeline for STO
 
-This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/whats-supported). It also applies to STO on SaaS, as well as Harness Self-Managed Platform.
+This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#operating-systems-and-architectures-supported-by-sto). It also applies to STO on SaaS, as well as Harness Self-Managed Platform.
 
 1. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
@@ -89,7 +89,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         build: <+input>
   stages:
     - stage:
@@ -106,7 +106,7 @@ pipeline:
               name: dind
               type: Service
               spec:
-                connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                 image: docker:dind
                 privileged: true
                 entrypoint:
@@ -122,7 +122,7 @@ pipeline:
                   name: export path
                   identifier: export_path
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: alpine
                     shell: Sh
                     command: |-
@@ -136,7 +136,7 @@ pipeline:
                   name: addcerts
                   identifier: addcert
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: alpine
                     shell: Sh
                     command: |-
@@ -159,7 +159,7 @@ pipeline:
                   name: build
                   identifier: build
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: maven:3.3-alpine
                     shell: Sh
                     command: |

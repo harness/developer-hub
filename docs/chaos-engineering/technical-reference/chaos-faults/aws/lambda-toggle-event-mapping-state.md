@@ -2,7 +2,6 @@
 id: lambda-toggle-event-mapping-state
 title: Lambda toggle event mapping state
 ---
-## Introduction
 
 Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery. 
 
@@ -15,7 +14,7 @@ Lambda toggle event mapping:
 - Determines if the application has proper error handling or auto recovery actions configured.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - AWS Lambda event source mapping must be healthy and attached to the Lambda function.
 - Kubernetes secret must have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
@@ -68,8 +67,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -91,8 +90,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-2</code></td>
       </tr>
     </table>
-    <h2>Optional tunables</h2>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

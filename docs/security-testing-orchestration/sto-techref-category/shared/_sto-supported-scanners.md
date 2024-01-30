@@ -1,4 +1,8 @@
-If you use a scanner that isn't listed in the following table, you can still ingest your scan results into STO. For a full description of the workflow, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
+If you use a scanner that isn't listed in the following table, you can still ingest your scan results into STO. 
+
+- If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data). 
+
+- For other scanners, go to [Ingest results from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
 
 <table>
     <tr>
@@ -48,7 +52,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
            		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a> Ingestion </li>
@@ -57,7 +61,17 @@ If you use a scanner that isn't listed in the following table, you can still ing
         	</ul>
      </td>
    </tr>
-    <tr>
+   <tr>
+        <td valign="top">Secrets</td>
+        <td valign="top">
+         	<ul>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>
+        	</ul>
+        </td>
+        <td>
+        </td>
+   </tr>
+   <tr>
         <td valign="top">DAST</td>
         <td valign="top">
          	<ul>

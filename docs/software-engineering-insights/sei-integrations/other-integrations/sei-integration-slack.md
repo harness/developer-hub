@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Slack** integration, and select **Install**.
 4. Configure the integration. You must use OAuth authentication.
 
@@ -53,20 +53,22 @@ import TabItem from '@theme/TabItem';
 
 5. Under **OAuth Permissions**, configure the following:
 
-   * `app_mentions:read`: View messages that directly mention app in conversations that the app is in.
-   * `channels:history`: View messages and other content in public channels that app has been added to.
-   * `groups:history`: View messages and other content in private channels that app has been added to.
-   * `im:history`: View messages and other content in direct messages that app has been added to.
-   * `mpim:history`: View messages and other content in group direct messages that app has been added to.
-   * `channels:join`: Join public channels in a workspace.
-   * `chat:write`: Send messages as app.
-   * `chat:write.customize`: Customize bot name when sending message.
-   * `commands`: Add shortcuts and/or slash commands that people can use.
-   * `files:write`: Upload, edit, and delete files as app.
-   * `im:write`: Start direct messages with people.
-   * `users:read`: View people in a workspace.
-   * `users:read.email`: View email addresses of people in a workspace.
-
+| Field | Description |
+| - | - |
+| `app_mentions:read` | View messages that directly mention app in conversations that the app is in. |
+| `channels:history` | View messages and other content in public channels that app has been added to. | 
+| `channels:history` | View messages and other content in public channels that app has been added to. |
+| `groups:history` | View messages and other content in private channels that app has been added to. |
+| `im:history` | View messages and other content in direct messages that app has been added to. | 
+| `mpim:history` | View messages and other content in group direct messages that app has been added to. |
+| `channels:join` | Join public channels in a workspace. |
+| `chat:write` | Send messages as app |
+| `chat:write.customize` | Customize bot name when sending message |
+| `commands` | Add shortcuts and/or slash commands that people can use. |
+| `files:write` | Upload, edit, and delete files as app. |
+| `im:write` | Start direct messages with people. |
+| `users:read` | View people in a workspace. |
+| `users:read.email` | View email addresses of people in a workspace. |
 
 </TabItem>
 </Tabs>

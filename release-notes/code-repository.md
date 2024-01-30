@@ -2,14 +2,12 @@
 title: Code Repository release notes
 sidebar_label: Code Repository
 tags: [NextGen, "code repository"]
-date: 2024-01-04T10:00
+date: 2024-01-22T10:00
 sidebar_position: 7
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/code-repository/rss.xml" />
 
@@ -25,13 +23,17 @@ These release notes describe recent changes to Harness Code Repository.
 
 ## January 2024
 
-### Initial GA release
+<!-- 22 Jan 2024 -->
 
-<!-- Version xxxx -->
+### New features and enhancements
+
+You can include videos in PR comments.
+
+## Initial GA release
 
 <!-- 04 Jan 2024 -->
 
-#### New features and enhancements
+### New features and enhancements
 
 We are excited to announce that the [Harness Code Repository module](/docs/code-repository) is now generally available.
 

@@ -1,7 +1,6 @@
 ---
 title: Set up a Kubernetes cluster build infrastructure
 description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
-
 sidebar_position: 30
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
@@ -25,6 +24,17 @@ You can use a Kubernetes cluster build infrastructure for **Build** stages in Ha
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
 
 <details>
+<summary>Architecture diagram</summary>
+
+The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
+
+![](../static/ci-pipeline-quickstart-13.png)
+
+You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
+
+</details>
+
+<details>
 <summary>Video summary</summary>
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
@@ -33,7 +43,7 @@ Here's a short video that walks you through adding a Harness Kubernetes Cluster 
 
 </details>
 
-For a step-by-step walkthrough, try this tutorial: [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm).
+For a step-by-step guide, go to [Tutorial - Build and test on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra).
 
 ## Create a Kubernetes cluster
 
@@ -48,7 +58,7 @@ Additionally, you must install the Harness Kubernetes Delegate on the same clust
 
 ### Privileged mode is required for Docker-in-Docker
 
-If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
+If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
 
 If your Kubernetes cluster doesn't support privileged mode, you'll need to use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). Other infrastructure types allow you to run Docker commands directly on the host.
 
@@ -56,7 +66,7 @@ If your Kubernetes cluster doesn't support privileged mode, you'll need to use a
 
 We don't recommend using Harness CI with GKE Autopilot due to Docker-in-Docker limitations and potential cloud cost increases.
 
-Autopilot clusters do not allow privileged pods, which means you can't use [Docker-in-Docker](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require privileged mode.
+Autopilot clusters do not allow privileged pods, which means you can't use [Docker-in-Docker](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require privileged mode.
 
 Additionally, GKE Autopilot sets resource limits equal to resource requests for each container. This can cause your builds to allocate more resources than they need, resulting in higher cloud costs with no added benefit.
 
@@ -128,7 +138,7 @@ A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a
 
 :::tip
 
-Although you must select a specific delegate when you create the Kubernetes Cluster connector, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
+Although you must select a specific delegate when you create the Kubernetes Cluster connector, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
 Delegate selections take precedence in the following order:
 
@@ -204,7 +214,7 @@ stages:
 
 ### Service Account Name
 
-Specify a Kubernetes service account that you want step containers to use when communicating with the Kubernetes API server. Leave this field blank if you want to use the namespace's default service account. You must set this field in the following cases:
+Specify a Kubernetes service account that you want step containers to use when communicating with the Kubernetes API server. Leave this field blank if you want to use the namespace's default service account. You must set this field in any of the following cases:
 
 - Your build infrastructure runs on EKS, you have an IAM role associated with the service account, _and_ the stage has a step that uses a Harness AWS connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
 - Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
@@ -311,9 +321,20 @@ Go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-wi
 
 Go to [Configure a Kubernetes build farm to use self-signed certificates](./configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md).
 
-## Troubleshooting Kubernetes cluster build infrastructures
+## Troubleshoot Kubernetes cluster build infrastructures
 
-For troubleshooting guidance for Kubernetes cluster build infrastructures and Kubernetes delegates, go to:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including:
 
-- [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md)
-- [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)
+* [How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?](/kb/continuous-integration/continuous-integration-faqs/#how-can-you-execute-docker-commands-in-a-ci-pipeline-that-runs-on-a-kubernetes-cluster-that-lacks-a-docker-runtime)
+* [How do I configure the build pod to communicate with the Kubernetes API server?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-configure-the-build-pod-to-communicate-with-the-kubernetes-api-server)
+* [Do I have to mount a service account on the build pod?](/kb/continuous-integration/continuous-integration-faqs/#do-i-have-to-mount-a-service-account-on-the-build-pod)
+* [What types of volumes can be mounted on a CI build pod?](/kb/continuous-integration/continuous-integration-faqs/#what-types-of-volumes-can-be-mounted-on-a-ci-build-pod)
+* [How can I run the build pod on a specific node?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-run-the-build-pod-on-a-specific-node)
+* [I want to use an EKS build infrastructure with an AWS connector that uses IRSA](/kb/continuous-integration/continuous-integration-faqs/#i-want-to-use-an-eks-build-infrastructure-with-an-aws-connector-that-uses-irsa)
+* [Why are build pods being evicted?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-pods-being-evicted)
+* [AKS builds timeout](/kb/continuous-integration/continuous-integration-faqs/#aks-builds-timeout)
+* [What permissions are required to run CI builds in an OpenShift cluster?](/kb/continuous-integration/continuous-integration-faqs/#what-permissions-are-required-to-run-ci-builds-in-an-openshift-cluster)
+* [Delegate is not able to connect to the created build farm](/kb/continuous-integration/continuous-integration-faqs/#delegate-is-not-able-to-connect-to-the-created-build-farm)
+* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+
+For more questions and issues related to Kubernetes delegates, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

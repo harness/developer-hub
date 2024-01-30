@@ -13,7 +13,7 @@ You can use the **Upload Artifacts to GCS** step in your CI pipelines to upload 
 You need:
 
 * Access to a GCS instance.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * A [GCP connector](#gcp-connector).
 
@@ -57,7 +57,7 @@ The GCS destination bucket name.
 
 Path to the file or directory that you want to upload.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
 
 #### Target
 
@@ -307,3 +307,9 @@ pipeline:
 </TabItem>
 </Tabs>
 
+## Troubleshoot uploading artifacts
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
+
+* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
+* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)

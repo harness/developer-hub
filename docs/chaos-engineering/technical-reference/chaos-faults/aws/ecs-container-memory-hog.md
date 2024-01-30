@@ -20,7 +20,7 @@ When there are no limits on the memory consumption of containers, containers on 
 This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified. 
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
 - You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
@@ -114,8 +114,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-    <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
         <th> Variables </th>
         <th> Description </th>
@@ -132,8 +132,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Variables </th>
         <th> Description </th>

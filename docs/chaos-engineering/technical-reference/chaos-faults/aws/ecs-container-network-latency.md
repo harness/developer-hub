@@ -21,7 +21,7 @@ It also determines the impact of the fault on the microservice.
 The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). This fault helps improve the resilience of the services over time.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Adequate AWS access to stop and start an EC2 instance.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -114,8 +114,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
         <th> Variables </th>
         <th> Description </th>
@@ -132,8 +132,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Variables </th>
         <th> Description </th>

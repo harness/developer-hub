@@ -31,9 +31,14 @@ The Drill Down support is currently available for the SonarQube Issues Report, S
 
 ### SonarQube Issues Report
 
-This report provides a detailed analysis on the number of code issues, including Bugs, Vulnerabilities, and Code Smells. It allows users to examine issues on a per-project, per-branch, and per-pull request basis. By default, this report displays issues for all projects. The report supports drill down functionality
+This report provides a detailed analysis on the number of code issues, including Bugs, Vulnerabilities, and Code Smells. It allows users to examine issues on a per-project, per-branch, and per-pull request basis. 
 
-Users can use the open report for further detailed analysis.
+By default, this report displays issues for all projects. The report supports drill down functionality. Users can use the open report for further detailed analysis.
+
+<img
+  src={require('./static/sonar-issues-report.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
 
 :::info
 Note: Please note that there might be a count mismatch due to real-time updates in the repository, as SEI compares the data with the snapshot captured during ingestion.
@@ -43,9 +48,19 @@ Note: Please note that there might be a count mismatch due to real-time updates 
 
 The SonarQube Issues Trend Report provides a trend line that displays the number of issues per day. This report helps track changes in issue volume over time. The report initially displays issues for all projects. The report supports metric stacking & drill down.
 
+<img
+  src={require('./static/sonar-issues-trend.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
+
 ### SonarQube Metrics Report
 
 The SonarQube Metrics Report provides an overview of the overall code coverage for projects. It is designed to help users assess the quality of code coverage in their software projects. Initially, the report displays metrics for all projects. Users can apply project-specific filters at the widget and collection level to narrow down the data.
+
+<img
+  src={require('./static/sonar-metrics.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
 
 <details>
 <summary>How data is ingested from SonarQube into SEI</summary>
@@ -59,13 +74,21 @@ The SonarQube Metrics Report provides an overview of the overall code coverage f
 
 ### Code Complexity Report
 
-For the Code Complexity reports SEI provides two metrics: Cognitive Complexity and Cyclomatic Complexity to help users analyze code quality, track issue trends, and assess code coverage in their projects.&#x20;
+For the Code Complexity reports SEI provides two metrics: Cognitive Complexity and Cyclomatic Complexity to help users analyze code quality, track issue trends, and assess code coverage in their projects.
 
-Cyclomatic Complexity measures the minimum number of test cases required for full test coverage. It determines how difficult your code will be to test.
+**Cyclomatic Complexity** measures the minimum number of test cases required for full test coverage. It determines how difficult your code will be to test.
 
-Cognitive Complexity is a measure of how difficult a unit of code is to effortlessly understand. Unlike Cyclomatic Complexity, it tells you how difficult your code will be to read and understand.
+**Cognitive Complexity** is a measure of how difficult a unit of code is to effortlessly understand. Unlike Cyclomatic Complexity, it tells you how difficult your code will be to read and understand.
 
-Currently, we support the code complexity report and the code complexity trend report. For more information on this, go to [SonarQube Documentation](https://docs.sonarsource.com/sonarqube/latest/user-guide/metric-definitions/)You can use either of these two metrics or a combination of both in the code complexity trend report.
+<img
+  src={require('./static/sonar-code-complexity.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
+
+Currently, we support the code complexity report and the code complexity trend report. 
+For more information on this, go to [SonarQube Documentation](https://docs.sonarsource.com/sonarqube/latest/user-guide/metric-definitions/)
+
+You can use either of these two metrics or a combination of both in the code complexity trend report.
 
 * When using both metrics, the report will display the median of the scores.
 * When using a single metric, the report will display the minimum, maximum, median, and total values for the specific selected metric.

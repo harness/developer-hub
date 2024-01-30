@@ -12,7 +12,7 @@ VMware process kill kills the target processes that are running as a part of a L
 - VMware process kill disrupts critical processes running within the application, such as databases or message queues. 
 - The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -33,14 +33,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-  <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -65,10 +63,12 @@ stringData:
         <td> For example, <code>183,253,857</code>. For more information, go to <a href="#process-ids"> process Ids. </a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

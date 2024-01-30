@@ -16,7 +16,7 @@ You can run Windows builds in your Kubernetes build infrastructure. Windows Serv
 :::info
 
 * The following steps aren't supported on Windows platforms on Kubernetes cluster build infrastructures: **Build and Push an image to Docker Registry**, **Build and Push to ECR**, **Build and Push to GAR**, and **Build and Push to GCR**. Try using the [buildah plugin](../../build-and-upload-artifacts/build-and-push-nonroot.md) instead.
-* **Docker commands aren't supported.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
+* **Docker commands aren't supported.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 
 :::
 
@@ -52,7 +52,7 @@ COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 
 :::
 
-## Pipeline YAML example
+### Pipeline YAML example
 
 This example pipeline runs on a Windows platform on a Kubernetes cluster build infrastructure. Note the presence of `os` and `nodeSelector` in `stage.spec.infrastructure.spec`.
 
@@ -97,3 +97,21 @@ pipeline:
                     shell: Powershell  
                     command: "Write-Host \"hello world\" "
 ```
+
+## Default user for Windows builds
+
+Harness CI builds use a Lite-Engine and, for Kubernetes cluster build infrastructures, an Addon image. The Lite-Engine drives the stage workspace, and the Addon image drives additional build-related tasks required for Kubernetes cluster build infrastructures.
+
+The default user for the Windows Lite-Engine and Addon image is `ContainerAdministrator`. `ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container.
+
+Don't change the default user for these images. The default user must be `ContainerAdministrator` because specific path and tool installations require it, and Windows doesn't allow setting the path otherwise.
+
+For individual steps that run in containers, Harness uses user `1000` by default. You can use a step's **Run as User** setting to use a different user for a specific step.
+
+## Troubleshoot Windows builds on Kubernetes cluster build infrastructure
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Windows builds on Kubernetes cluster build infrastructure, including:
+
+* [Error when running Docker commands on Windows build servers](/kb/continuous-integration/continuous-integration-faqs/#error-when-running-docker-commands-on-windows-build-servers)
+* [Step continues running for a long time after the command is complete](/kb/continuous-integration/continuous-integration-faqs/#step-continues-running-for-a-long-time-after-the-command-is-complete)
+* [Is privileged mode necessary for running DinD in Harness CI?](/kb/continuous-integration/continuous-integration-faqs/#is-privileged-mode-necessary-for-running-dind-in-harness-ci)

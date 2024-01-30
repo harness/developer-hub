@@ -288,7 +288,7 @@ CircleCI _orbs_ are reusable shareable configuration packages that combine jobs,
 Harness CI has two options for reusable, pre-packaged functionality:
 
 * [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Integrations, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
-* [Create standardized step templates](/docs/platform/Templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
+* [Create standardized step templates](/docs/platform/templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
 
 ## Comparison: Specify a codebase or Docker image
 
@@ -626,7 +626,7 @@ Harness CI supports webhook triggers and scheduled triggers. The two most common
 
 CircleCI configurations are stored in the path `.CircleCI/config.yml` at the root of your source code repository on the counter.
 
-Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-Code) on Git](/docs/platform/Git-Experience/import-a-pipeline).
+Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-Code) on Git](/docs/platform/git-experience/import-a-pipeline).
 
 :::
 
@@ -635,5 +635,5 @@ Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-
 Review the following information before proceeding with migration:
 
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

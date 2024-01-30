@@ -63,7 +63,9 @@ Do the following:
 
    3. In **Repository Name**, click the value type select (tack button) and select **Runtime Input**.
 
-4. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.
+4. Go to **Overview** and add the following **Shared Path**: `/shared/scan_results`
+
+5. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
@@ -96,7 +98,7 @@ import TabItem from '@theme/TabItem';
 
    1. Name = **run_semgrep_scan**
 
-   2. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif`
+   2. Command = `semgrep /harness --sarif --config auto -o /shared/scan_results/semgrep.sarif`
 
       This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file.
 
@@ -122,7 +124,7 @@ import TabItem from '@theme/TabItem';
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
-- `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+- `type:` [`Run`](/docs/continuous-integration/use-ci/run-step-settings)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
@@ -133,7 +135,7 @@ Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
   - `image : returntocorp/semgrep`
   - `shell : Sh`
-  - `command: semgrep /harness --sarif --config auto -o /harness/results.sarif`
+  - `command: semgrep /harness --sarif --config auto -o /shared/scan_results/semgrep.sarif`
 
     This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file in the pipeline workspace.
 
@@ -158,7 +160,7 @@ Here's an example:
       connectorRef: account.harnessImage
       image: returntocorp/semgrep
       shell: Sh
-      command: semgrep /harness --sarif --config auto -o /harness/results.sarif
+      command: semgrep /harness --sarif --config auto -o /shared/scan_results/semgrep.sarif
       envVariables:
         SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>
       resources:
@@ -190,7 +192,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
       2. Variant = Select **Runtime Input** as the value type.
 
-   4. Ingestion File = `/harness/results.sarif`
+   4. Ingestion File = `/shared/scan_results/semgrep.sarif`
 
    5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
 
@@ -215,7 +217,7 @@ Add a step after the `Run` step and configure it as follows:
           - `level : info`
           - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
       - `ingestion : `
-        - `file : /harness/ingest/results.sarif`
+        - `file : /shared/scan_results/semgrep.sarif`
 
 Here's a YAML example:
 
@@ -236,7 +238,7 @@ Here's a YAML example:
           level: debug
         fail_on_severity: critical
       ingestion:
-        file: /harness/results.sarif
+        file: /shared/scan_results/semgrep.sarif
 ```
 
 </TabItem>
@@ -284,14 +286,12 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 ### YAML pipeline example
 
-Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, connectors, and access token.
 
 ```yaml
 pipeline:
-  name: semgrep-simple-scan
-  identifier: semgrepsimplescan
-  projectIdentifier: YOUR_HARNESS_PROJECT_ID
-  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -301,12 +301,6 @@ pipeline:
         type: SecurityTests
         spec:
           cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Arm64
-          runtime:
-            type: Cloud
-            spec: {}
           execution:
             steps:
               - step:
@@ -317,9 +311,14 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: returntocorp/semgrep
                     shell: Sh
-                    command: semgrep /harness --sarif --config auto -o /harness/results.sarif
+                    command: |-
+                      semgrep --version
+                      semgrep /harness --sarif --config auto -o /shared/scan_results/semgrep.sarif
                     envVariables:
-                      SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>
+                      SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_APP_TOKEN")>
+                    resources:
+                      limits:
+                        memory: 4096Mi
               - step:
                   type: Semgrep
                   name: ingest_semgrep_data
@@ -328,19 +327,39 @@ pipeline:
                     mode: ingestion
                     config: default
                     target:
-                      name: <+input>
                       type: repository
+                      name: <+input>
                       variant: <+input>
                     advanced:
                       log:
-                        level: info
-                      fail_on_severity: critical
+                        level: debug
+                      fail_on_severity: none
                     ingestion:
-                      file: /harness/results.sarif
+                      file: /shared/scan_results/semgrep.sarif
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /shared/scan_results
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
+        timeout: 10m
   properties:
     ci:
       codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         repoName: <+input>
         build: <+input>
+  identifier: semgrepsimplescan
+  name: semgrep-simple-scan
+
+
 ```

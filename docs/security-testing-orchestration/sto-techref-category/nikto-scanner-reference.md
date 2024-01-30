@@ -1,11 +1,11 @@
 ---
 title: Nikto scanner reference for STO
-description: Instance scans with Nikto
+description: Scan application instances with Nikto.
 sidebar_label: Nikto scanner reference
 sidebar_position: 260
 ---
 
-You can scan your instances using [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
+You can scan your application instances and ingest results from [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
 
 ## Important notes for running Nikto scans in STO
 
@@ -39,67 +39,59 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add a Nikto step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-
-
-
-
-### Scan settings
+### Scan
 
 #### Scan Mode
 
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
-
-### Target Settings
-
-<a name="target-type"></a>
+### Target
 
 #### Type
 
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
+
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
 
-### Instance settings
+### Instance
 
 
 <!-- ============================================================================= -->
@@ -108,7 +100,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 #### Domain
 
 
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+
 
 <StoSettingInstanceDomain />
 
@@ -118,7 +111,8 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 #### Protocol
 
 
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 
 
 <StoSettingInstanceProtocol />
@@ -129,7 +123,8 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 #### Port
 
 
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 
 
 <StoSettingInstancePort />
@@ -140,10 +135,23 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 #### Path
 
 
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 
 
 <StoSettingInstancePath />
+
+### Ingestion
+
+
+<a name="ingestion-file"></a>
+
+#### Ingestion File
+
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
+<StoSettingIngestionFile  />
 
 
 ### Log Level, CLI flags, and Fail on Severity
@@ -153,7 +161,8 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -162,17 +171,14 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI Flags
 
-You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you can customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `-Tuning x01`
+You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you might want to customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `-Tuning x01`
 
-
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-
-<StoSettingCliFlags />
 
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
@@ -203,9 +209,11 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-## Security step settings for Nikto scans in STO (*legacy*)
+## Security step settings for Nikto scans in STO (legacy)
 
-You can set up Nikto scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Nikto scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Nikto step](#nikto-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 
@@ -215,7 +223,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-#### Nexus scan settings
+#### Nikto scan settings
 
 * `product_name` = `nikto`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`

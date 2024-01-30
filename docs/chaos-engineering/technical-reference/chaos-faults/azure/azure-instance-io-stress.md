@@ -20,8 +20,8 @@ Azure instance I/O stress:
 - Checks whether or not the application functions under high I/O traffic, and large I/O blocks.
 - Checks if other services monopolize the I/O disks during stress. 
 
-:::note
-- Kubernetes >= 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes >= 1.17
 - Azure Run Command agent is installed and running in the target Azure instance.
 - Azure instance should be in a healthy state.
 - Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. to generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -48,16 +48,16 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Fault tunables
+### Mandatory tunables
 
-<h3>Mandatory fields</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -73,10 +73,10 @@ stringData:
     </tr>
 </table>
 
-<h3>Optional fields</h3>
+### Optional tunables
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -125,6 +125,11 @@ stringData:
         <td> Location that points to the volume mount path used in I/O stress.</td>
         <td> Defaults to the user HOME directory. For more information, go to <a href="#volume-mount-path"> volume mount path. </a></td>
     </tr>
+    <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>

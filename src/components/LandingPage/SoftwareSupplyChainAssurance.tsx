@@ -62,11 +62,16 @@ export default function SSCA() {
             ensure policy compliance, identify security vulnerabilities, and enable rapid responses to new threats.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnSSCA)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/software-supply-chain-assurance">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnSSCA
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://www.harness.io/products/software-supply-chain-assurance">
                 <button className={styles.link}>Learn more</button>

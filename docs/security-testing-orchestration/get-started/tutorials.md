@@ -1,6 +1,6 @@
 ---
 title: STO Tutorials
-description: Get started with STO
+description: Your first pipeline, targeted quickstarts, and build-scan-push workflows.
 sidebar_position: 30
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/sto-tutorials
@@ -17,11 +17,11 @@ The following workflows and [tutorials](/tutorials/security-tests) are available
 
 - Quickstarts:
 
-  - [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) This "quick-start" tutorial shows you how to scan your codebases using [Semgrep](https://semgrep.dev), which can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/).
+  - [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) This "quick-start" tutorial shows how to scan a codebase using [Semgrep](https://semgrep.dev), which can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/).
 
-  - [Container image scans with Aqua Trivy](/tutorials/security-tests/container-scan-aqua-trivy) This "quick-start" tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.  
+  - [Container image scans with Aqua Trivy](/tutorials/security-tests/container-scan-aqua-trivy) This "quick-start" tutorial shows how to scan a container image using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.  
 
-  - [Trigger automated scans using GitLab merge requests](/tutorials/security-tests/gitlab-ci-integration) This tutorial shows how you can set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
+  - [Trigger automated scans using GitLab merge requests](/tutorials/security-tests/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
 
 - Integrated end-to-end workflows:
 

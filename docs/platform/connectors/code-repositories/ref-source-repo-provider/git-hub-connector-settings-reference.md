@@ -201,7 +201,7 @@ Enabling API access requires configuring an API authentication method, either a 
 1. For **API Authentication**, select **Personal Access Token**.
 2. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-   If you are using **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+   With **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
 
    ![](../../static/add-a-git-hub-connector-36.png)
 
@@ -215,7 +215,6 @@ Enabling API access requires configuring an API authentication method, either a 
 ![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 </details>
-
 
 </TabItem>
   <TabItem value="ghapp" label="GitHub App">
@@ -255,6 +254,12 @@ If you select **Connect through the Harness Platform**, the Harness Manager exch
 **Connect through a Harness Delegate**, a [Harness delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 </details>
+
+:::tip
+
+The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
 
 ### Delegates Setup
 

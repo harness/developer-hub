@@ -14,7 +14,7 @@ ECS container HTTP status code:
 - Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x) on ECS task container.
 
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
@@ -98,8 +98,8 @@ Below is an example AWS policy to execute the fault.
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -129,9 +129,10 @@ Below is an example AWS policy to execute the fault.
             <td> If true, then the body is replaced by a default template for the status code. Defaults to true. </td>
         </tr>
     </table>
-    <h3>Optional tunable</h3>
-    <table>
-        <tr>
+
+### Optional tunables
+  <table>        
+    <tr>
             <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>

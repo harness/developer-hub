@@ -1,6 +1,7 @@
 ---
 title: Manage custom chaos hubs
 sidebar_position: 10
+description: Save and manage experiments in custom chaos hubs
 ---
 
 import Launch from '../shared/launch-experiment-from-hub.md'

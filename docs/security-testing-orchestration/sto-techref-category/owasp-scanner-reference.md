@@ -1,11 +1,11 @@
 ---
 title: OWASP Dependency-Check scanner reference for STO
-description: Repository scans with OWASP Dependency Check
+description: Scan code repositories with OWASP Dependency Check.
 sidebar_label: OWASP Dependency-Check scanner reference
 sidebar_position: 290
 ---
 
-You can scan your code repositories using [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.
+You can scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.
 
 
 ## Important notes for running OWASP scans in STO
@@ -38,24 +38,21 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## OWASP step configuration
 
-The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure OWASP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-
-
-
-
-
+The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
 ### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-<StoSettingScanMode />
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
@@ -64,9 +61,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 ### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -74,49 +69,37 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 ### Target
 
 
-<!-- ============================================================================= -->
-<a name="target-type"></a>
-
 #### Type
 
-
-import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-
-
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
 
-<!-- ============================================================================= -->
-<a name="target-name"></a>
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
+
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<!-- ============================================================================= -->
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-<!-- ============================================================================= -->
-<a name="target-workspace"></a>
 
 #### Workspace
 
-
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -125,7 +108,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -140,7 +124,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -150,7 +135,8 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 
 <StoSettingCliFlags />
@@ -163,7 +149,8 @@ You can use this field to run the [dependency-check](https://jeremylong.github.i
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
@@ -189,7 +176,7 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
-## Security step settings for OWASP scans in STO (*legacy*)
+## Security step settings for OWASP scans in STO (legacy)
 
 You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
@@ -211,13 +198,13 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `tool_args` — You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
 
-#### Orchestrated scan settings
+#### Orchestration scan settings
 
 
-import StoLegacyOrchestrated from './shared/legacy/_sto-ref-legacy-orchestrated.md';
+import StoLegacyOrchestration from './shared/legacy/_sto-ref-legacy-orchestrated.md';
 
 
-<StoLegacyOrchestrated />
+<StoLegacyOrchestration />
 
 #### Ingestion file
 

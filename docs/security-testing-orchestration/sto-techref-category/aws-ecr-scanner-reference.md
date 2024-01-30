@@ -1,6 +1,6 @@
 ---
 title: AWS ECR scanner reference for STO
-description: Image scans with AWS ECR
+description: Scan container images with AWS ECR.
 sidebar_label: AWS ECR scanner reference
 sidebar_position: 40
 ---
@@ -11,169 +11,130 @@ You can scan your container images using [Amazon Elastic Container Registry (ECR
 
 ### Docker-in-Docker requirements
 
-
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
 ### Root access requirements 
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
-### For more information
 
+### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
-
 <StoMoreInfo />
+
 
 ## AWS ECR step settings for STO scans
 
-The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below.  
 
 
-### Scan settings
+### Scan
 
-
-<a name="scan-mode"></a>
 
 #### Scan Mode
 
+import StoSettingScanModeDataLoad from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeDataLoad from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeDataLoad />
-<StoSettingScanModeIngest />
+<!-- StoSettingScanModeIngest / -->
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
+### Target
 
-### Target Settings
-
-<a name="target-type"></a>
 
 #### Type
 
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
+
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-### Container Image settings
 
-<!-- ============================================================================= -->
-<a name="container-type"></a>
+
+### Container image
 
 #### Type  (_orchestration_)
 
-
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
-
+import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 <StoSettingImageType />
 
-<!-- ============================================================================= -->
 
-
-<a name="container-domain"></a>
 
 #### Domain (_extraction_)
 
-
-
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 
 <StoSettingImageDomain />
 
-<!-- ============================================================================= -->
-<a name="container-name"></a>
 
 #### Name
 
-
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
-
+import StoSettingImageName from './shared/step_palette/image/_name.md';
 
 <StoSettingImageName />
 
-<!-- ============================================================================= -->
-
-
-<a name="container-tag"></a>
 
 #### Tag
 
-
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
-
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
 <StoSettingImageTag />
 
 
 #### Region  
 
-
-import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
-
+import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 
 <StoSettingImageRegion />
 
-### Authentication settings
+
+### Authentication
+
 
 #### Access ID (_orchestration_)
 
-
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
+
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
 
@@ -182,51 +143,34 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 The AWS region of the image to scan.
 
-
-### Ingestion settings
-
-
-<a name="ingestion-file"></a>
+<!-- 
+### Ingestion
 
 #### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
+
+-->
 
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
 
 
 #### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
-### Settings
-
-TBD
-
--->
 
 ### Additional Configuration
 
@@ -248,7 +192,11 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for Amazon ECR scans in STO (legacy)
+## Security step settings for AWS ECR scans in STO (legacy)
+
+:::note
+You can set up ECR scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [AWS ECR step](#aws-ecr-step-settings-for-sto-scans) instead.
+:::
 
 * `product_name` = `aws-ecr`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`
@@ -294,7 +242,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <!--
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 -->
 
