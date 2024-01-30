@@ -34,6 +34,7 @@ import Strongpass from '/tutorials/shared/strong-passwords.md'
 
 <Strongpass />
 
+<!-- 
 ## TLS support
 
 ### MinIO Google bucket
@@ -43,6 +44,7 @@ TLS is supported for GCS buckets without any additional configuration changes ov
 #### MinIO AWS S3 bucket
 
 TLS is supported for AWS S3 buckets without any additional configuration changes over the `https` protocol.
+-->
 
 ## Create an Nginx LoadBalancer VM
 

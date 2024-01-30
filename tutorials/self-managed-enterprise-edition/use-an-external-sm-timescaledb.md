@@ -533,6 +533,7 @@ To recover the former primary and add host replication, do the following.
 
    The former primary instance is now a new secondary instance.
 
+<!-- 
 ## TLS support
 
 You can enable TLS for TimescaleDB.
@@ -559,6 +560,7 @@ To enable TLS, do the following:
    ```
 
 4. Upgrade Harness with your updated `override.yaml` file.
+-->
 
 ## Upgrade TimescaleDB
 

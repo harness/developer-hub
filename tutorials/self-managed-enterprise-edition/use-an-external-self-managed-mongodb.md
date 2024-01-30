@@ -268,6 +268,8 @@ To set up a MongoDB VM, do the following:
     helm install my-release harness/harness -n <namespace> -f override.yaml
     ```
 
+<!-- 
 ## TLS support
 
 TLS is supported with MongoDB Atlas using the `mongodb+srv` protocol. No additional change is required in the `override.yaml` file to enable TLS for MongoDB Atlas.
+-->
