@@ -34,7 +34,7 @@ You can also set up an Aqua Trivy scan in a [Security step](#security-step-confi
 </details>
 
 
-### Scan settings
+### Scan
 
 
 #### Scan Mode
@@ -43,7 +43,7 @@ You can also set up an Aqua Trivy scan in a [Security step](#security-step-confi
 #### Scan Configuration
 
 
-### Target Settings
+### Target
 
 
 #### Type

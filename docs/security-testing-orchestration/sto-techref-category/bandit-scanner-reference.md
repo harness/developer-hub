@@ -44,7 +44,9 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below.
 
-### Scan Mode
+### Scan
+
+#### Scan Mode
 
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
@@ -53,7 +55,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 <StoSettingScanModeIngest />
 
 
-### Scan Configuration
+#### Scan Configuration
 
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
@@ -67,6 +69,13 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
+
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
 
 
 #### Name 

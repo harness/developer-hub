@@ -39,18 +39,13 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add a Nikto step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
-
 
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
@@ -58,27 +53,25 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
-
-### Target Settings
-
-<a name="target-type"></a>
+### Target
 
 #### Type
 
-
 import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
+
 
 #### Name 
 
@@ -98,7 +91,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-### Instance settings
+### Instance
 
 
 <!-- ============================================================================= -->
@@ -148,7 +141,7 @@ import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 
 <StoSettingInstancePath />
 
-### Ingestion settings
+### Ingestion
 
 
 <a name="ingestion-file"></a>

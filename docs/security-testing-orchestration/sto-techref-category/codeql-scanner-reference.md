@@ -71,17 +71,18 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. 
 
-### Scan Mode
+### Scan 
+
+### Scan mode
 
 
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-
 <StoSettingScanModeIngest />
 
 
-### Scan Configuration
+#### Scan configuration
 
 
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';

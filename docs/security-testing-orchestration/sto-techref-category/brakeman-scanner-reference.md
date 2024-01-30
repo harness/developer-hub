@@ -36,7 +36,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is add a Brakeman step to a Security Tests or CI Build stage and then configure it as described below.
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -56,13 +56,20 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 <StoSettingProductConfigName />
 
 
-### Target settings
+### Target
 
 #### Type
 
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
+
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
 
 
 #### Name 

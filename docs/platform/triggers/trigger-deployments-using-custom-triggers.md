@@ -353,7 +353,7 @@ The response from the cURL command will contain the status of the deployment. Fo
 
 ## Passing data in custom triggers
 
-For information on how to pass data in the cURL command for a custom trigger, go to [Passing data in Custom triggers](/docs/platform/Triggers/custom-trigger-passing-data).
+For information on how to pass data in the cURL command for a custom trigger, go to [Passing data in Custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
 
 ## Custom trigger authorization using API keys
 

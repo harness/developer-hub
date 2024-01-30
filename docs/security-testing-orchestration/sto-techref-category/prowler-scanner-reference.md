@@ -38,7 +38,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Prowler step settings for STO
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -76,7 +76,7 @@ Select the [compliance framework](https://github.com/prowler-cloud/prowler/blob/
 <!-- TBD -->
 
 
-### Target settings
+### Target
 
 <a name="target-type"></a>
 
@@ -126,7 +126,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 
 
-### Authentication settings
+### Authentication
 
 Settings for the AWS account to use when running an orchestration scan.
 

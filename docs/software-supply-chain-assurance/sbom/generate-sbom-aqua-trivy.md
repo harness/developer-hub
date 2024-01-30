@@ -26,7 +26,7 @@ Configure an STO scanner step, such as the  [Aqua Trivy STO step](/docs/security
 
 ## Get the SBOM file path
 
-The Aqua Trivy STO step creates a `JOB_ID` [output variable](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md#output-variables) that you can use to reference the SBOM file path in the **SSCA Orchestration** step.
+The Aqua Trivy STO step creates a `JOB_ID` [output variable](/docs/continuous-integration/use-ci/run-step-settings.md#output-variables) that you can use to reference the SBOM file path in the **SSCA Orchestration** step.
 
 1. Replace `STAGE_ID` and `STEP_ID` in the following [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs.md#expressions) with the stage ID and step ID for your Aqua Trivy STO step.
 

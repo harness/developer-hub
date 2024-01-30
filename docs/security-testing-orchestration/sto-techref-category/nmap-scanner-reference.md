@@ -42,7 +42,7 @@ The recommended workflow is add an Nmap step to a Security Tests or CI Build sta
 
 
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -93,7 +93,7 @@ Accepted values(s):
 - [**Exploit**](https://nmap.org/nsedoc/categories/exploit.html)
 
 
-### Target Settings
+### Target
 
 <a name="target-type"></a>
 
@@ -127,7 +127,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-### Instance settings
+### Instance
 
 
 <!-- ============================================================================= -->
@@ -177,7 +177,7 @@ import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 
 <StoSettingInstancePath />
 
-### Ingestion settings
+### Ingestion
 
 
 <a name="ingestion-file"></a>

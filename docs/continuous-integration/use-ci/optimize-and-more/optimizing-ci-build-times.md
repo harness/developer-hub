@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
@@ -72,7 +81,7 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 Expressions and runtime inputs make your pipelines more dynamic.
 
 * [Variables and expressions](/docs/category/variables-and-expressions/)
-* [Stage variables](/docs/platform/Pipelines/add-a-stage#stage-variables)
+* [Stage variables](/docs/platform/pipelines/add-a-stage#stage-variables)
 * [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs)
 * [CI environment variables reference](./ci-env-var.md)
 * [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)

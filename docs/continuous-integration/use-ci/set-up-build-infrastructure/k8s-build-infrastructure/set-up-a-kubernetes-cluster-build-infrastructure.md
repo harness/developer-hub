@@ -1,7 +1,6 @@
 ---
 title: Set up a Kubernetes cluster build infrastructure
 description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
-
 sidebar_position: 30
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
@@ -25,6 +24,17 @@ You can use a Kubernetes cluster build infrastructure for **Build** stages in Ha
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
 
 <details>
+<summary>Architecture diagram</summary>
+
+The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
+
+![](../static/ci-pipeline-quickstart-13.png)
+
+You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
+
+</details>
+
+<details>
 <summary>Video summary</summary>
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
@@ -33,7 +43,7 @@ Here's a short video that walks you through adding a Harness Kubernetes Cluster 
 
 </details>
 
-For a step-by-step walkthrough, try this tutorial: [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm).
+For a step-by-step guide, go to [Tutorial - Build and test on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra).
 
 ## Create a Kubernetes cluster
 
@@ -48,7 +58,7 @@ Additionally, you must install the Harness Kubernetes Delegate on the same clust
 
 ### Privileged mode is required for Docker-in-Docker
 
-If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
+If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
 
 If your Kubernetes cluster doesn't support privileged mode, you'll need to use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). Other infrastructure types allow you to run Docker commands directly on the host.
 
@@ -56,7 +66,7 @@ If your Kubernetes cluster doesn't support privileged mode, you'll need to use a
 
 We don't recommend using Harness CI with GKE Autopilot due to Docker-in-Docker limitations and potential cloud cost increases.
 
-Autopilot clusters do not allow privileged pods, which means you can't use [Docker-in-Docker](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require privileged mode.
+Autopilot clusters do not allow privileged pods, which means you can't use [Docker-in-Docker](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require privileged mode.
 
 Additionally, GKE Autopilot sets resource limits equal to resource requests for each container. This can cause your builds to allocate more resources than they need, resulting in higher cloud costs with no added benefit.
 
@@ -128,7 +138,7 @@ A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a
 
 :::tip
 
-Although you must select a specific delegate when you create the Kubernetes Cluster connector, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
+Although you must select a specific delegate when you create the Kubernetes Cluster connector, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
 Delegate selections take precedence in the following order:
 

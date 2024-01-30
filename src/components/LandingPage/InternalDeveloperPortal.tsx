@@ -58,7 +58,7 @@ export default function IDP() {
           <div className={styles.content}>
             <p>
               Harness IDP enables you to create new software components quickly
-              while adhering to your company’s best practices. It enables you to
+              while adhering to your company's best practices. It enables you to
               manage the software you own by presenting a developer-centric view
               of all relevant information such as service health, deployments,
               and alerts. It also enables you to explore the internal software
@@ -66,11 +66,16 @@ export default function IDP() {
               and services, all of which enable better collaboration.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnIDP)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/internal-developer-portal">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnIDP
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://www.harness.io/blog/introducing-harness-internal-developer-portal-beta-release">
                 <button className={styles.link}>Learn more</button>

@@ -56,7 +56,7 @@ The recommended workflow is add a Grype step to a Security Tests or CI Build sta
 
 -->
 
-### Scan settings
+### Scan
 
 
 <a name="scan-mode"></a>
@@ -84,7 +84,7 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 <StoSettingProductConfigName />
 
 
-### Target Settings
+### Target
 
 <a name="target-type"></a>
 

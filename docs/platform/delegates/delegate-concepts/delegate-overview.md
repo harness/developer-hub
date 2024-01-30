@@ -223,6 +223,8 @@ Delegate logs are also sent to Harness by default. These Stackdriver logs are st
 
 You can configure the delegate logging level by setting the `LOGGING_LEVEL` environment variable. Valid values are `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, and `OFF`. If an invalid value is specified, the logging level defaults to `DEBUG`. If no value is specified, the logging level defaults to `INFO`.
 
+You can also customize delegate logging if the default setup doesn't fit your needs. For example, you can customize the layout, verbosity, and destination of the messages. For more information, go to [Customize delegate logging](/docs/platform/delegates/manage-delegates/customize-delegate-logging).
+
 ### Delegate permissions
 
 You can set permissions on delegates using [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness).

@@ -102,17 +102,17 @@ export const PlatformList: CardItem[] = [
     link: "/tutorials/platform/secrets-management",
   },
   {
-    title: "Configure OIDC with GCP WIF for CI hosted builds",
+    title: "Configure OIDC with GCP WIF for Harness Cloud builds",
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: (
       <>
-        Configure OpenID Connect (OIDC) with GCP Workload Identity Federation (WIF) for the Continuous Integration hosted builds workflow (beta feature).
+        Configure OpenID Connect (OIDC) with GCP Workload Identity Federation (WIF) for builds on Harness Cloud.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/platform/configure-oidc-gcp-wif-ci-hosted",
+    link: "/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted",
   },
 ];
