@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-29T10:00
+date: 2024-01-30T10:00
 sidebar_position: 10
 ---
 
@@ -55,9 +55,9 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## January 2024
 
-### Version 1.10.x
+### Version 1.10.2
 
-<!-- Jan 29, 2024 -->
+<!-- Jan 30, 2024 -->
 
 #### Fixed issues
 
