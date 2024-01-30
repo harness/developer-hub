@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-01-29T10:00
+date: 2024-01-30T10:00
 sidebar_position: 16
 ---
 
@@ -21,6 +21,48 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## January 30, 2024, patch version 0.13.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.1](https://github.com/harness/helm-charts/releases/tag/harness-0.13.1) |
+| Air Gap Bundle | [0.13.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.1) |
+| NG Manager | 1.19.10 |
+| CI Manager | 1.6.11 |
+| Pipeline Service | 1.56.7 |
+| Platform Service | 1.8.2 |
+| Access Control Service | 1.29.2 |
+| Delegate | 24.01.82004 |
+| Change Data Capture | 81905 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.18 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- A `Project with orgIdentifier and identifier not found` error occurred during upgrade. (PL-46725)
+
+   This issue has been resolved by reducing the amount of time background jobs run during pod restart. 
 
 ## January 29, 2024, version 1.19.10
 
