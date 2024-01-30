@@ -22,6 +22,18 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
+### Allowlist verification for delegate registration
+
+* **Release date:** January 2024
+* **Release version:** 1.19.6
+* **Issue number:** PL-42471
+* **Feature flag:** `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+With this feature flag enabled, delegates with an immutable image type can register only if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR must be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
+
+Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+
 ### Grant public access to Harness pipeline executions
 
 * **Release date:** January 2024
