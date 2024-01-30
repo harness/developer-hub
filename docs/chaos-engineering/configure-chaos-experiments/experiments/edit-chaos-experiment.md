@@ -28,7 +28,13 @@ You can either update the changes to the same experiment and save it or create a
 
 ## Update old experiment manifests
 
-When you upgrade the chaos infrastructure, you also need to update the images in the experiment manifest (yaml file) corresponding to the updated chaos infrastructure. The upgraded images should match the images in the Enterprise Chaos Hub.
+When you upgrade the chaos infrastructure, you also need to update the images in the experiment manifest (yaml file) corresponding to the updated chaos infrastructure. The upgraded images should match the images in the Enterprise Chaos Hub. 
+
+### Which image version should you use?
+
+To determine the latest version of images, navigate to Enterprise Chaos Hub, and search for **chaos-go-runner**. The value associated with **chaos-go-runner** in the manifest in Enterprise Chaos Hub is the latest version. 
+
+![navigate](./static/edit-experiment/update-1.png)
 
 To update the experiment manifest, follow the steps below.
 
