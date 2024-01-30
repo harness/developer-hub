@@ -162,8 +162,30 @@ The override priority from top to bottom is:
 
 ![override priority](./static/override-priority.png)
 
+
 Overrides defined at project/organization/account levels have the following override priority:
 
 1. Project
 2. Organization
 3. Account
+## Moving overrides from Inline to Remote
+
+Similar to services, environment and infrastructure definition you can move your overrides to Git. 
+
+1. Select **Overrides**.
+2. You will have an option to select **Inline** and **Remote** under every override method.
+![](./static/overrides_gitex.png)
+3. Select your **Environment** in case of **Global Environment** override method.
+4. Select **Remote**.
+5. In **Git Connector**, select or create a Git connector to the repo for your environment.​ For more information, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
+![](./static/remote_overrides.png)
+6. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Repository**. Harness does not create the repository for you.
+7. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you. You generally want to save it to the default branch on the first save.
+8. Harness Git Experience auto-populates the **YAML Path** and store overrides in a seperate directory **overrides** under **.harness folder**.. You can change this path and the file name.
+9. Click on **Save**.
+
+Similar approach can be followed to move other Overrides method to Git.
+
+:::info note
+Currently, Git Experience support for overrides is behind the feature flag `CDS_SERVICE_OVERRIDES_2_0` . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
