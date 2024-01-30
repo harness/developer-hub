@@ -9,7 +9,7 @@ Harness sanitizes deployment logs and any script outputs to mask text secret val
 
 :::info
 
-This feature requires delegate version 24.01.82110 or higher.
+Harness Delegate version 24.01.82110 or later is required to use this feature.
 
 :::
 
