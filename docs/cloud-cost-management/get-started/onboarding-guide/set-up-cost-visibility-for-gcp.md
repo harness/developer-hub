@@ -153,6 +153,15 @@ To enable AutoStopping rules, you need to add more permissions. For more informa
    
 9. Select **Continue** in Harness.
 
+### Cloud asset governance rules
+
+## Cloud Asset Governance for GCP
+Now, Harness CCM supports CAG for GCP.
+<DocImage path={require('./static/GCP-connector-CAG.png')} width="60%" height="60%" title="Click to view full size image" />
+
+:::info important
+Regions for Asset Governance Rules for GCP are not available in drop-down menu but can be configured manually in the YAML.
+:::
 
 ### Connection Test
 
