@@ -72,10 +72,10 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 implementation 'io.harness:ff-android-client-sdk:1.2.0'
 ```
 
-### Release builds and proguard
+### Release builds and ProGuard
 For release builds, Android uses ProGuard to apply optimizations that can affect the behavior of the SDK.
 
-Please add the following rule to your ProGuard configuration to ensure proper functionality when running your Android app from a release build'
+Please add the following rule to your ProGuard configuration to ensure proper functionality when running your Android app from a release build
 
 ```
 -keep class io.harness.cfsdk.** { *; }
