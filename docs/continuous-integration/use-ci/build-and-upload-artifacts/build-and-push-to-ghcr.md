@@ -4,6 +4,8 @@ description: Use a CI pipeline to build and push an image to GitHub Container Re
 sidebar_position: 25
 ---
 
+import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+
 This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to build and push an image to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
 You need:
@@ -107,7 +109,7 @@ You can use the same expression to pull the tagged image, such as `namespace/myi
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
 
-For information about setting other kaniko runtime flags, go to [Set plugin runtime flags](#set-plugin-runtime-flags).
+For information about setting other kaniko runtime flags, go to [Environment variables](#environment-variables-plugin-runtime-flags).
 
 ### Dockerfile
 
@@ -149,6 +151,10 @@ For **Remote Cache Image**, enter the name of the remote cache registry and imag
 
 The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
 
+### Environment Variables (plugin runtime flags)
+
+<Flags />
+
 ### Run as User
 
 With Kubernetes cluster build infrastructures, you can specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
@@ -178,54 +184,6 @@ You can find the following settings on the **Advanced** tab in the step settings
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings): Set conditions to determine when/if the step should run.
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
 * [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
-
-### Set plugin runtime flags
-
-**Build and Push** steps use plugins to complete build and push operations. With Kubernetes cluster build infrastructures, these steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md), and, with other build infrastructures, these steps use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
-
-These plugins have a number of additional runtime flags that you might need for certain use cases. For information about the flags, go to the [kaniko plugin documentation](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#additional-flags) and the [drone-docker plugin documentation](https://plugins.drone.io/plugins/docker). Currently, Harness supports the following flags:
-
-* `expand-tag`: Enable semver tagging.
-* `auto-tag`: Enable auto-generated build tags.
-* `auto-tag-suffix`: Auto-generated build tag suffix.
-* `create-repository`: Creates an ECR repository.
-* `custom-labels`: Additional arbitrary key-value labels.
-* `registry-mirrors`: Docker registry mirrors.
-* `snapshot-mode`: Specify snapshot mode as `full`, `redo`, or `time`.
-* `lifecycle-policy`: Provide the path to a lifecycle policy file.
-* `repository-policy`: Provide the path to a repository policy file.
-* `artifact-file`: Harness uses this to show links to uploaded artifacts on the [Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds).
-* `no-push`: Disables pushing to the registry. Configures the Build and Push step to only build the image.
-* `verbosity`: Set the log level as `panic`, `fatal`, `error`, `warn`, `info`, `debug`, or `trace`. The default is `info`.
-* `tar-path`: Use this flag to save the image as a tarball at a specified path. Set this flag's value to the desired path.
-* `skip-tls-verify`: Set to `true` to skip TLS verification.
-* `custom_dns` (for drone-docker only): Provide your custom CNS address.
-
-To set these flags in your Build and Push steps, add [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`.
-
-For example, to set `--skip-tls-verify` for kaniko, add a stage variable named `PLUGIN_SKIP_TLS_VERIFY` and set the variable value to `true`.
-
-```yaml
-        variables:
-          - name: PLUGIN_SKIP_TLS_VERIFY
-            type: String
-            description: ""
-            required: false
-            value: "true"
-```
-
-To set `custom_dns` for drone-docker, add a stage variable named `PLUGIN_CUSTOM_DNS` and set the variable value to your custom DNS address.
-
-```yaml
-        variables:
-          - name: PLUGIN_CUSTOM_DNS
-            type: String
-            description: ""
-            required: false
-            value: "vvv.xxx.yyy.zzz"
-```
-
-Plugin runtime flags are also used to [build without pushing](./build-without-push.md).
 
 ## Troubleshoot Build and Push steps
 

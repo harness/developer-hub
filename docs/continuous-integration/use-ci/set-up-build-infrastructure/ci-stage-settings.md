@@ -64,10 +64,7 @@ These settings are for the [Harness SSCA module](/docs/software-supply-chain-ass
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For some examples, go to:
-
-* [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
-* [Set plugin runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-plugin-runtime-flags)
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For example, stage variables are inherently available to steps as environment variables.
 
 ## Infrastructure
 

@@ -1069,7 +1069,7 @@ For more information, go to:
 
 ### Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?
 
-Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#set-plugin-runtime-flags) on any Build and Push step.
+Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#environment-variables) on any Build and Push step.
 
 ### Can I run Build and Push steps as non-root? Does kaniko support non-root users?
 

@@ -433,9 +433,9 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
 
 ### Environment Variables
 
-You can inject environment variables into the step container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
+You can inject environment variables into the step container and use them in the commands executed in this step. You must input a **Name** and **Value** for each variable.
 
-You can reference environment variables in the **Command** script by name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
+You can reference environment variables by name in commands. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
 
 Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
