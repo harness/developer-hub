@@ -1717,7 +1717,7 @@ template:
       delegateSelectors: <+input>
 ```
 
-### AWC CodeDeploy - Deployment Template Sample
+### AWS CodeDeploy - Deployment Template Sample
 
 **Author**: Harness.io
 **Version**: 1.0
