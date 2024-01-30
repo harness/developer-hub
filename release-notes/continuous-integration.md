@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-25T10:00
+date: 2024-01-30T10:00
 sidebar_position: 10
 ---
 
@@ -43,26 +43,29 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
-## January 2024
+<!-- February 2024 -->
 
-<!-- Version 1.10.x -->
+<!-- Version 1.11.x -->
 
-<!-- Jan 29, 2024 -->
+<!-- Feb xx, 2024 -->
 
 <!-- New features and enhancements -->
 
-<!-- Harness Cloud macOS image update - latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. -->
+<!-- The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).-->
 
-<!-- When using [OIDC], the OIDC token ID is stored in the [Harness environment variable] `PLUGIN_OIDC_TOKEN_ID`. (CI-10852) (Add to env var list/OIDC/security hardening docs. See discussion on ticket. Also add 2nd proxy variable `HARNESS_HTTP/HTTPS_PROXY` for secure connect.)-->
+## January 2024
 
-<!-- Fixed issues -->
+### Version 1.10.2
 
-<!-- [PR status updates] now send correctly when using a [GitHub App in a GitHub connector] with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177) -->
-<!-- The Run Tests step now respects the Test Globs setting with [TI for Ruby]. (CI-10907, ZD-55937) -->
-<!-- Added a missing field validation for **Repository Name** when using [Harness Code Repository] as the pipeline's [default codebase]. (CI-11042) -->
-<!-- Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325) -->
-<!-- Improved the error message that appears when there is a connectivity problem between the delegate and runner in a [local runner build infrastructure]. (CI-10827) -->
-<!-- CI-10825 marked as "RN candidate = no" -->
+<!-- Jan 30, 2024 -->
+
+#### Fixed issues
+
+* [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
+* The Run Tests step now respects the Test Globs setting in [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby). (CI-10907, ZD-55937)
+* Added a missing field validation for **Repository Name** when using [Harness Code Repository](/docs/code-repository/code-supported) as the pipeline's [default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#configure-the-default-codebase). (CI-11042)
+* Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325)
+* Improved the error message that appears when there is a connectivity problem between the delegate and runner in a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure). (CI-10827)
 
 ### Version 1.9.4
 
