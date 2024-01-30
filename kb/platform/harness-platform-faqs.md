@@ -2593,3 +2593,39 @@ This is not configurable; once the token is revoked, the delegate will get disco
 
 In emergencies like SAML/LDAP issues, it's recommended to have a local admin user for account access. If a functional account gets locked, Harness can grant admin permissions to an existing account user, but can't create a new admin user. It's advised to maintain at least two local admin users. In such situations, raising an urgent Harness ticket is necessary. The process, involving backend database updates and multiple approvals, typically takes a couple of hours to grant admin permissions to an existing user.
 
+
+#### Is the user able to execute the pipeline through the API?
+Yes, You can execute the pipeline through this [API.](https://apidocs.harness.io/tag/Pipeline-Execution)
+
+#### Is the user can able to execute the pipeline through CLI?
+Yes, you can use the API curl or custom webhook curl in any CLI to execute the pipeline.
+
+#### Is the user can able to execute the pipeline using the Harness CLI command?
+No, Currently Harness CLI don't have any command for pipeline execution.
+
+#### How can the user remove the single disconnected delegate pod?
+The disconnected delegate pod will automatically removed after the 7 days from the disconnection.
+
+#### What do we need to backup for SMP setup? Is there an optional backup target?
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours.
+
+#### How do you perform SMP backups?
+Back up recommendation is to use the Velero tool
+
+#### If the infrastructure is lost where the harness is deployed, how should it be restored?
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore the harness namespace.
+
+#### If it is difficult to implement SMP full backups, I would like to get individual Backups.
+We would recommend full backups rather than individual Backups.
+
+#### Is there a way the user can run all the steps on one specific delegate pod?
+Yes, user can run all the steps on one specific delegate pod. Doc: https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+
+#### Unable to view shell script content used in pipeline
+If you are using a step template, you will need to navigate to the template and switch to the yaml view, and you will be able to see the content.
+
+#### Create Connector API seems to not work for orgs and failing with the error INVALID_IDENTIFIER_REF while trying to create a vault connector.
+Please check and confirm if the token used here is proper and you are using the org or account prefix before passing the secret reference.
+
+#### How do I make a pipeline step report to Slack?
+You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.

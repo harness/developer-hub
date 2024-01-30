@@ -281,7 +281,7 @@ To add self-signed certificates for delegate upgrader, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom_certs.pem=custom_certs.pem
+   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
    ```
 
 2. Run the following to set the `delegateCustomCa.secretName` variable when you install the Helm chart.
@@ -301,7 +301,7 @@ To add self-signed certificates for delegate upgrader, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom_certs.pem=custom_certs.pem
+   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
    ```
 
 2. Run the following to set the `upgraderCustomCa.secretName` variable when you install the Helm chart.

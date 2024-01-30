@@ -127,6 +127,18 @@ The following deprecated API endpoints are longer supported:
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
+- Allowlist verification for delegate registration (PL-42471)
+
+    :::info note
+    Currently, allowlist verification for delegate registration is behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+    :::
+
+   Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
+
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+
+   This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 #### Fixed issues
 
 - Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
@@ -141,7 +153,6 @@ The following deprecated API endpoints are longer supported:
 
 - Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
-<!-- pending verification from Akshay
 #### Early access
 
 ##### Allowlist verification for delegate registration (PL-42471)
@@ -159,7 +170,6 @@ Currently, allowlist verification for delegate registration is behind the featur
    The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
    Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
--->
 
 #### Fixed issues
 
