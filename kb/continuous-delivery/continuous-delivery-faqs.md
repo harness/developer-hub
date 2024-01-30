@@ -4853,3 +4853,80 @@ The Container step requires Delegate version  1 0 780xx
 
 #### Can I set resource limits for the container? 
 Yes, you can define limits for memory and CPU in the "Set container resources" section.
+
+
+#### How to trigger a pipeline on another pipeline completion?
+The user can add the shell script step with a custom webhook curl at the end of the pipeline to trigger another pipeline.
+
+#### Is it possible to change the pipeline ID after the creation?
+No, As per the current design, once a pipeline is created, its ID (entity identifier) is immutable and cannot be changed.
+
+#### How to create a single custom webhook trigger and create multiple input sets for each service and pass it the webhook curl command?
+As per the current design service runtime inputs are not configurable in the trigger.
+
+#### How can I see all currently running pipelines from all projects?
+As per the current design, the user can only able to see the all-running pipeline for specific projects not for all projects.
+
+#### Is the user can deploy the service to individual environments?
+Yes, the user can configure the environment as runtime input.
+
+#### Is the user can able to roll back the pipeline execution which is marked as success by failure strategy and there are no other previous successful executions?
+No, As per the rollback requirement, there should be a previous successful execution.
+
+#### How can I easily disable pipeline triggers?
+The user can go to the trigger page and disable the trigger with just one click on a button.
+
+#### How to recover the deleted secret in the harness?
+If the secret is deleted you can't recover it.
+
+#### Is there an option to revert the remote pipeline to inline?
+You can copy the yaml and create another inline pipeline with the same yaml and delete the older one. There is no direct way to move it back to inline.
+
+#### I have created a single pipeline for the test and dev branches. First time moving to Git I selected test branch but again I wanted to store this pipeline in the dev branch also but it's not allowing it. Is there any way?
+You can copy the same pipeline in another branch while updating the pipeline select Start a pull request to merge in another branch and merge the changes in git.
+
+#### The user would like to be able to deploy multiple artifacts in the same execution and not have to choose only one. Is that possible?
+Yes, User can configure the multi-service deployment or else you can configure the parallel stages with the same service with different artifact. Doc: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/#deploy-multiple-services-to-one-environment
+
+
+#### How to share files between CD stages?
+1st Option: You can use API to create a file in the harness file store and then refer it to another stage. https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders
+2nd Option: You can just write a file on the delegate and use the same delegate.
+
+#### Is the user can able to change the name of the pipeline while executing?
+As per the current design, it's not possible to change the name of the pipeline while executing.
+
+
+#### How to filter the pipelines or bundle the pipelines based on categories?
+As per the current design, you can filter the pipeline by using the tags.
+
+#### How to trigger the harness pipeline when we have a new file getting pushed to MS SharePoint?
+As per the current design, there's no out of box solution for this but you can configure custom triggers and provide the webhook in MS Sharepoint.
+
+#### I would like to be able to re-run a pipeline without the need to provide inputs again, A similar feature to the Rebuild option in Jenkins?
+Yes, you can re-run the old execution with the same runtime input you provided earlier.
+
+#### The user is getting this error while adding GitOps agent: "failed to create cluster in argo: createClusterInArgo: rpc error: code = InvalidArgument desc = cannot register cluster: in- cluster has been disabled". What needs to be enabled?
+The user needs to make the required changes in the config map ( cluster.inClusterEnabled: 'true' ).
+
+#### I want to know how can we use this docker image selenium-mod in our pipelines?
+User can use the RUN step and run the required docker image. Doc: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#container-registry-and-image
+
+
+#### How to fetch files from the harness file store in the run step?
+To fetch files from the Harness file store in a Run step, you can use the following example:
+
+```
+- step:
+    type: Run
+    name: Fetch Files from File Store
+    identifier: fetch_files
+    spec:
+      shell: Sh
+      command: |
+        harness file-store download-file --file-name <file_name> --destination <destination_path>
+```
+Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
+
+#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
+Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
