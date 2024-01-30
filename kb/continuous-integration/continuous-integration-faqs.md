@@ -1033,7 +1033,7 @@ Instead, you need to:
    DOCKER_BUILDKIT=1 docker build -t IMAGE_NAME:TAG .
    ```
 
-### Is there a way to use the newer version of kaniko?
+### Is there a way to use a newer or older version of kaniko?
 
 Yes, you can update the tag for the kaniko image that Harness uses, as explained in [Harness CI images - Specify the Harness CI images used in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines).
 
