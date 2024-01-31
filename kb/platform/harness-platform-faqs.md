@@ -2629,3 +2629,57 @@ Please check and confirm if the token used here is proper and you are using the 
 
 #### How do I make a pipeline step report to Slack?
 You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.
+
+#### How can I include more data in Slack notifications for a Harness pipeline?
+
+Natively, we do not support adding additional details to Slack notifications. However, you can use a shell script step with the following script as an example:
+
+```
+curl -X POST -H 'Content-type: application/json' --data '{
+  "text": "Slack notifications - Harness",
+  "attachments": [
+    {
+      "fallback": "Notification from Harness",
+      "color": "#3AA3E3",
+      "fields": [
+        {
+          "title": "Pipeline Name",
+          "value": "<+pipeline.name>",
+          "short": true
+        },
+        {
+          "title": "Triggered by",
+          "value": "<+pipeline.triggeredBy.email>",
+          "short": true
+        },
+        {
+          "title": "Environment",
+          "value": "<+pipeline.stages.deploynginx.spec.env.name>",
+          "short": true
+        },
+        {
+          "title": "Service",
+          "value": "<+pipeline.stages.deploynginx.spec.service.name>",
+          "short": true
+        }
+      ]
+    }
+  ]
+}'  https://hooks.slack.com/services/<your information>
+```
+
+#### How to block an API key used to trigger a pipeline execution per environment?
+
+You can use Harness Service Accounts to define granular roles and permissions for what users have access to. This allows you to scope the API keys to specific resources/environments and ensure there is no cross-scope access.
+
+#### Is it possible to change the company name for my Harness Account?
+
+Yes, please open a support ticket and inform the new name.
+
+#### How to install Harness delegate using Azure ACI?
+
+You can use the following repository as a sample to install it through Terraform. (Terraform Example)[https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd].
+
+#### How often does Harness upgrade the kubectl binary version within the delegate?
+
+We don’t have an exact period for when these upgrades occur, but we maintain a list of supported platforms and technologies at [https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/]. Using ```INIT_SCRIPT``, you can also customize the kubectl binary version.
