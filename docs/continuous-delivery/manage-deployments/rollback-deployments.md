@@ -64,11 +64,11 @@ For more details on creating a pipeline, go to [Create your first CD pipeline](/
 To perform Post Deployment Rollback, user must have following permissions:-
 
 1. Pipeline **Execute** permission. 
-2. User's role must have **Rollback** permission in Environment permissions. 
+2. UEnvironment **Rollback** permission.
 ![](./static/post_prod_rollabck.png)
 :::info
 
-A user will be allowed to execute rollbacks on any instance only if they possess the two specified permissions for the environment through which deployment occurred. Otherwise, they will be presented with the following message when attempting to click **Rollback***.
+A user will be allowed to execute rollbacks on any instance only if they possess these two specified permissions for the pipeline and environment through which deployment occurred. Otherwise, they will be presented with the following message when attempting to click **Rollback***.
 
 
 ![](./static/permissions_post_rollback.png)
