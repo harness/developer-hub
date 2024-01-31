@@ -14,7 +14,7 @@ For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Pro
 
 ## Prepare a pipeline
 
-To generate SLSA Provenance in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components). Additionally, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
+To generate SLSA Provenance in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components). Additionally, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
 
 ## Generate a key pair
 
@@ -39,7 +39,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 :::info
 
-* You must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
+* You must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
 * You can also add [provenance verification](./verify-slsa.md) to your pipeline.
 
 :::
@@ -48,7 +48,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 When you run a pipeline with SLSA generation enabled, Harness SSCA:
 
-* Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) in the **Build** stage.
+* Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) in the **Build** stage.
 * Generates and signs an attestation using the provided key and password.
 * Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 

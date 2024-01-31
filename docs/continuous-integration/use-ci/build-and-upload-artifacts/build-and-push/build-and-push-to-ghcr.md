@@ -1,20 +1,20 @@
 ---
-title: Build and Push to GAR
-description: Use a CI pipeline to build and push an image to GAR.
-sidebar_position: 23
+title: Build and Push to GHCR
+description: Use a CI pipeline to build and push an image to GitHub Container Registry.
+sidebar_position: 15
 redirect_from:
-  - /tutorials/ci-pipelines/publish/google-gar
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ghcr
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
 
-This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).
+This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-registry.md) to build and push an image to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
 You need:
 
-* Access to GAR and a GAR repo.
-* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* A [GCP connector](#gcp-connector).
+* Access to GHCR.
+* A [Harness CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
+* A [Docker connector](#docker-connector).
 
 ## Kubernetes cluster build infrastructures require root access
 
@@ -22,78 +22,72 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
-## Add a Build and Push to GAR step
+## Build and push to GitHub Container Registry
 
-In your pipeline's **Build** stage, add a **Build and Push to GAR** step and configure the [settings](#build-and-push-to-gar-step-settings) accordingly.
+In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings-for-ghcr) for GHCR.
 
-Here is a YAML example of a **Build and Push to GAR** step.
+Here is a YAML example of a **Build and Push an image to Docker Registry** step configured for GHCR:
 
 ```yaml
               - step:
-                  type: BuildAndPushGAR
-                  name: BuildAndPushGAR_1
-                  identifier: BuildAndPushGAR_1
+                  type: BuildAndPushDockerRegistry
+                  name: Build and push to GHCR
+                  identifier: Build_and_push_to_GHCR
                   spec:
-                    connectorRef: YOUR_GCP_CONNECTOR_ID
-                    host: LOCATION-docker.pkg.dev
-                    projectID: GOOGLE_CLOUD_CONSOLE_PROJECT_ID
-                    imageName: REPO_NAME/IMAGE_NAME
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: ghcr.io/NAMESPACE/IMAGE
                     tags:
                       - <+pipeline.sequenceId>
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to GAR** step succeeds, you can find the uploaded image on GAR.
+When you run a pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in GHCR.
 
 :::tip
 
 You can also:
 
-* [Build images without pushing](./build-without-push.md)
-* [Build multi-architecture images](./build-multi-arch.md)
+* [Build images without pushing](../build-without-push.md)
+* [Build multi-architecture images](../build-multi-arch.md)
 
 :::
 
-## Build and Push to GAR step settings
+## Build and Push to Docker step settings for GHCR
 
-The **Build and Push to GAR** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+These sections explain how to configure the **Build and Push an image to Docker Registry** step settings for GHCR. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved. Once save, the **Id** can't be changed.
 
-### GCP Connector
+### Docker Connector
 
-The Harness GCP connector to use to connect to GAR. The GCP account associated with the GCP connector needs specific roles. For more information, go to the [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+Specify a [Harness Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for GHCR.
 
-This step supports GCP connectors that use access key authentication. It doesn't support GCP connectors that inherit delegate credentials.
+To create this connector:
 
-:::tip
+1. Go to **Connectors** in your Harness project, organization, or account resources, and select **New Connector**.
+2. Select **Docker Registry** under **Artifact Repositories**.
+3. Enter a **Name** for the connector. The **Description** and **Tags** are optional.
+4. For **Provider Type**, Select **Other**.
+5. In **Docker Registry URL**, enter your GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
+6. In the **Authentication** settings, you must use **Username and Password** authentication.
+   * **Username:** Enter your GitHub username.
+   * **Password:** Select a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a [classic personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with [permission to publish, install, and delete private, internal, and public packages](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). For more information, go to [Authenticating to the Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry).
+7. Complete any other settings and save the connector. For information all Docker Registry connector settings, go to the [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
-If you are using this step with Harness Cloud build infrastructure, you can also leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your GCP connector.
+### Docker Repository
 
-:::
-
-### Host
-
-The Google Artifact Registry hostname, for example `LOCATION-docker.pkg.dev`. For more information, go to the GAR documentation on [Repository and image names](https://cloud.google.com/artifact-registry/docs/docker/names).
-
-### Project ID
-
-The [Google Cloud Console Project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). For more information, go to the GAR documentation on [Repository and image names](https://cloud.google.com/artifact-registry/docs/docker/names).
-
-### Image Name
-
-The name of the repository where you want to push the artifact and the name you want to give the image, such as `REPO_NAME/IMAGE_NAME`. For more information, go to the GAR documentation on [Repository and image names](https://cloud.google.com/artifact-registry/docs/docker/names).
-
-The target repository must be a [standard repository](https://cloud.google.com/artifact-registry/docs/repositories#mode).
+The namespace where you want to store the image and the image name, for example, `ghcr.io/NAMESPACE/IMAGE_NAME`. For more information, go to the GitHub documentation on [Pushing container images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pushing-container-images).
 
 ### Tags
 
-Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag. For more information, go to the GAR documentation on [Tagging images](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling#tag).
+Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag. For more information, go to the GitHub documentation on [Pushing container images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pushing-container-images).
 
 Add each tag separately.
+
+![](../static/build-and-push-to-docker-hub-step-settings-10.png)
 
 :::tip
 
@@ -103,11 +97,13 @@ Harness expressions are a useful way to define tags. For example, you can use th
 
 For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
-![](./static/build-and-upload-an-artifact-15.png)
+![](../static/build-and-upload-an-artifact-15.png)
 
-And this same number is applied as the tag for your image in GAR.
+And you can see where the `Build Id` is used to tag your image in the container registry:
 
-Later in the pipeline, you can use the same expression to pull the tagged image, such as `REPO_NAME/IMAGE_NAME:<+pipeline.sequenceId>`.
+![](../static/build-and-upload-an-artifact-12.png)
+
+You can use the same expression to pull the tagged image, such as `namespace/myimage:<+pipeline.sequenceId>`.
 
 :::
 
@@ -125,6 +121,16 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes that th
 
 Enter a path to a directory containing files that make up the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
+:::info Kubernetes cluster build infrastructures
+
+Kaniko, which is used by the **Build and Push** step with Kubernetes cluster build infrastructures, requires root access to build the Docker image. If you have not already enabled root access, you will receive the following error:
+
+`failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`
+
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
+
+:::
+
 ### Labels
 
 Specify [Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image.
@@ -133,7 +139,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-gcr-step-settings-23.png)
+![](../static/build-and-push-to-docker-hub-step-settings-11.png)
 
 ### Target
 
@@ -143,9 +149,9 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 Use this setting to enable remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
-For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME`.
+For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `NAMESPACE/IMAGE_NAME`.
 
-The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
+The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
 
 ### Environment Variables (plugin runtime flags)
 
@@ -157,9 +163,9 @@ With Kubernetes cluster build infrastructures, you can specify the user ID to us
 
 This step requires root access. You can use the **Run as User** setting if your build runs as non-root (`runAsNonRoot: true`), and you can run the **Build and Push** step as root. To do this, set **Run as User** to `0` to use the root user for this individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
-### Set container resources
+### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
 

@@ -1,18 +1,22 @@
 ---
-title: Build and Push to GHCR
-description: Use a CI pipeline to build and push an image to GitHub Container Registry.
-sidebar_position: 25
+title: Build and Push to JFrog Docker registries
+description: Use a CI pipeline to build and push an image to a JFrog Docker registry.
+sidebar_position: 16
+redirect_from:
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-jfrog
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
 
-This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to build and push an image to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-registry.md) to build and push an image to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) Docker registries.
+
+For JFrog non-Docker registries, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to build the artifact, and then use the [Upload Artifacts to JFrog step](../upload-artifacts/upload-artifacts-to-jfrog.md) to upload the artifact.
 
 You need:
 
-* Access to GHCR.
-* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* A [Docker connector](#docker-connector).
+* Access to a JFrog Artifactory instance with a Docker registry.
+* A [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
+* A Harness [Docker connector](#docker-connector) configured to your JFrog instance.
 
 ## Kubernetes cluster build infrastructures require root access
 
@@ -20,48 +24,48 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
-## Build and push to GitHub Container Registry
+## Build and push to JFrog Docker registries
 
-In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings-for-ghcr) for GHCR.
+In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings-for-jfrog-docker-registries) for JFrog.
 
-Here is a YAML example of a **Build and Push an image to Docker Registry** step configured for GHCR:
+Here is a YAML example of a **Build and Push an image to Docker Registry** step configured for JFrog:
 
 ```yaml
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Build and push to GHCR
-                  identifier: Build_and_push_to_GHCR
+                  name: Build and push to JFrog Docker
+                  identifier: Build_and_push_to_JFrog_Docker
                   spec:
                     connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    repo: ghcr.io/NAMESPACE/IMAGE
+                    repo: domain.jfrog.io/REPO/IMAGE
                     tags:
                       - <+pipeline.sequenceId>
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in GHCR.
+When you run a pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in JFrog.
 
 :::tip
 
 You can also:
 
-* [Build images without pushing](./build-without-push.md)
-* [Build multi-architecture images](./build-multi-arch.md)
+* [Build images without pushing](../build-without-push.md)
+* [Build multi-architecture images](../build-multi-arch.md)
 
 :::
 
-## Build and Push to Docker step settings for GHCR
+## Build and Push to Docker step settings for JFrog Docker registries
 
-These sections explain how to configure the **Build and Push an image to Docker Registry** step settings for GHCR. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+These sections explain how to configure the **Build and Push an image to Docker Registry** step settings for JFrog. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved. Once save, the **Id** can't be changed.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved. Once save, the **Id** can't be changed.
 
 ### Docker Connector
 
-Specify a [Harness Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for GHCR.
+Specify a [Harness Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for JFrog.
 
 To create this connector:
 
@@ -69,23 +73,33 @@ To create this connector:
 2. Select **Docker Registry** under **Artifact Repositories**.
 3. Enter a **Name** for the connector. The **Description** and **Tags** are optional.
 4. For **Provider Type**, Select **Other**.
-5. In **Docker Registry URL**, enter your GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
+5. In **Docker Registry URL**, enter your JFrog URL, such as `https://mycompany.jfrog.io`.
 6. In the **Authentication** settings, you must use **Username and Password** authentication.
-   * **Username:** Enter your GitHub username.
-   * **Password:** Select a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a [classic personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with [permission to publish, install, and delete private, internal, and public packages](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). For more information, go to [Authenticating to the Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry).
+   * **Username:** Enter your JFrog username.
+   * **Password:** Select or create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password corresponding with the **Username**.
 7. Complete any other settings and save the connector. For information all Docker Registry connector settings, go to the [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+
+:::tip JFrog URLs
+
+The JFrog URL format depends on your Artifactory configuration, and whether your Artifactory instance is local, virtual, remote, or behind a proxy. To get your JFrog URL, you can select your repo in your JFrog instance, select **Set Me Up**, and get the repository URL from the server name in the `docker-login` command.
+
+![](../static/artifactory-connector-settings-reference-09.png)
+
+For more information, go to the JFrog documentation on [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) and [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories).
+
+:::
 
 ### Docker Repository
 
-The namespace where you want to store the image and the image name, for example, `ghcr.io/NAMESPACE/IMAGE_NAME`. For more information, go to the GitHub documentation on [Pushing container images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pushing-container-images).
+The repo where you want to store the image and the image name, for example, `mycompany.jfrog.io/REPO_NAME/IMAGE_NAME`.
 
 ### Tags
 
-Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag. For more information, go to the GitHub documentation on [Pushing container images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pushing-container-images).
+Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
 
 Add each tag separately.
 
-![](./static/build-and-push-to-docker-hub-step-settings-10.png)
+![](../static/build-and-push-to-docker-hub-step-settings-10.png)
 
 :::tip
 
@@ -95,11 +109,11 @@ Harness expressions are a useful way to define tags. For example, you can use th
 
 For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
-![](./static/build-and-upload-an-artifact-15.png)
+![](../static/build-and-upload-an-artifact-15.png)
 
 And you can see where the `Build Id` is used to tag your image in the container registry:
 
-![](./static/build-and-upload-an-artifact-12.png)
+![](../static/build-and-upload-an-artifact-12.png)
 
 You can use the same expression to pull the tagged image, such as `namespace/myimage:<+pipeline.sequenceId>`.
 
@@ -125,7 +139,7 @@ Kaniko, which is used by the **Build and Push** step with Kubernetes cluster bui
 
 `failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
 :::
 
@@ -137,7 +151,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-docker-hub-step-settings-11.png)
+![](../static/build-and-push-to-docker-hub-step-settings-11.png)
 
 ### Target
 
@@ -161,7 +175,7 @@ With Kubernetes cluster build infrastructures, you can specify the user ID to us
 
 This step requires root access. You can use the **Run as User** setting if your build runs as non-root (`runAsNonRoot: true`), and you can run the **Build and Push** step as root. To do this, set **Run as User** to `0` to use the root user for this individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
 ### Set Container Resources
 

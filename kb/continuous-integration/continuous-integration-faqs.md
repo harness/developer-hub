@@ -1046,7 +1046,7 @@ To do this, you can:
    ```
 
 2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#output-variables) from the Run step.
-3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
+3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#build-arguments) or `docker build` commands executed in a Run step.
 
 ### Where do I store Maven project settings.xml in Harness CI?
 
@@ -1093,7 +1093,7 @@ For more information, go to:
 
 ### Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?
 
-Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#environment-variables) on any Build and Push step.
+Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags) on any Build and Push step.
 
 ### Can I run Build and Push steps as non-root? Does kaniko support non-root users?
 
@@ -1137,11 +1137,11 @@ Make sure your Docker file is configured in least- to most-often changed. Make s
 
 ### Where does the Build and Push to ECR step pull the base images specified in the Dockerfile?
 
-By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
+By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
 
 ### How can I configure the Build and Push to ECR step to pull base images from a different container registry or my internal container registry?
 
-Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting.
+Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting.
 
 ### Build and Push to ECR step fails with error building image, failed to execute command, exec format error
 

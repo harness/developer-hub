@@ -1,13 +1,14 @@
 ---
 title: Build and Push to ECR
 description: Learn how to use the Build and Push to ECR step.
-sidebar_position: 22
+sidebar_position: 13
 helpdocs_topic_id: aiqbxaef15
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /tutorials/ci-pipelines/publish/amazon-ecr
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
@@ -21,7 +22,7 @@ You need:
 * An [AWS account](https://aws.amazon.com/resources/create-account/) with an ECR repository.
 * A codebase from which you can build a Docker image.
 * Access to the AWS CLI or the AWS Management Console.
-* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* A [Harness CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 * An [AWS Cloud Provider connector](#aws-connector).
 
 ## Kubernetes cluster build infrastructures require root access
@@ -30,7 +31,7 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
 ## Add a Build and Push to ECR step
 
@@ -52,14 +53,14 @@ Here is a YAML example of a minimum **Build and Push to ECR** step.
                       - latest
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to ECR** step succeeds, you can find the uploaded image in your ECR repo.
+When you run a pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md). If the **Build and Push to ECR** step succeeds, you can find the uploaded image in your ECR repo.
 
 :::tip
 
 You can also:
 
-* [Build images without pushing](./build-without-push.md)
-* [Build multi-architecture images](./build-multi-arch.md)
+* [Build images without pushing](../build-without-push.md)
+* [Build multi-architecture images](../build-multi-arch.md)
 
 :::
 
@@ -69,7 +70,7 @@ The **Build and Push to ECR step** has the following settings. Depending on the 
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### AWS Connector
 
@@ -121,7 +122,7 @@ Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/bui
 
 Add each tag separately.
 
-![](./static/build-and-push-to-ecr-step-settings-24.png)
+![](../static/build-and-push-to-ecr-step-settings-24.png)
 
 :::tip
 
@@ -131,11 +132,11 @@ Harness expressions are a useful way to define tags. For example, you can use th
 
 For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
-![](./static/build-and-upload-an-artifact-15.png)
+![](../static/build-and-upload-an-artifact-15.png)
 
 And you can see where the `Build Id` is used to tag your image:
 
-![](./static/build-and-upload-an-artifact-12.png)
+![](../static/build-and-upload-an-artifact-12.png)
 
 Later in the pipeline, you can use the same expression to pull the tagged image, such as `myrepo/myimage:<+pipeline.sequenceId>`.
 
@@ -167,7 +168,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-ecr-step-settings-25.png)
+![](../static/build-and-push-to-ecr-step-settings-25.png)
 
 ### Target
 
@@ -191,7 +192,7 @@ With Kubernetes cluster build infrastructures, you can specify the user ID to us
 
 This step requires root access. You can use the **Run as User** setting if your build runs as non-root (`runAsNonRoot: true`), and you can run the **Build and Push** step as root. To do this, set **Run as User** to `0` to use the root user for this individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
 ### Set Container Resources
 

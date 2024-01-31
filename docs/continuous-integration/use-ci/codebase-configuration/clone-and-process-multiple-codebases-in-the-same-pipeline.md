@@ -219,9 +219,9 @@ When cloning additional codebases that use the same credentials as your default 
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 
-Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
+Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
 
 Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to move cloned files around the workspace before building the image.
 

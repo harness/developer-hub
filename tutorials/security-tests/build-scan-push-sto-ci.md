@@ -238,7 +238,7 @@ You'll now add one of these steps to build and push to your Docker Hub account.
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows:
 
-- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings)
+- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
 - `name: build_push_test_image`
 - `identifier:` A unique step ID.
 - `spec :`
@@ -392,7 +392,7 @@ Assuming that the Trivy scan detected no critical vulnerabilities, you can now b
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows:
 
-- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings)
+- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
 - `name: build_push_test_image`
 - `identifier:` A unique step ID.
 - `spec :`
