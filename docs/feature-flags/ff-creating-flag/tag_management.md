@@ -35,6 +35,9 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
   1. On the Home Page of the Harness Application, head over to *Feature Flags*.
   2. On the right hand side of the screen, you can type your tag or select the tag you wany 
 
+# Tags on Target Groups
+
+<!-- Insert step by step -->
 :::tip
 
 If you're not familiar with RBAC, check out this blog post on [User and Role Management in the Harness Software Delivery Platform](https://harness.io/blog/continuous-delivery/user-role-management/).
@@ -55,6 +58,12 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  6. On the right hand side of the page, select *By Tag*, followed by *Add Tag*.
  7. From there, you can asign any pre-existing tags to the Resource Group.
  8. The users under the assigned tags should be limited to whichever settings you have permitted for them such as permission to *Create/Edit* within Feature Flags. 
+
+# Adding Tags to Target Groups
+
+<!-- How To Here -->
+
+
 
 # Related Content
 
