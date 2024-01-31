@@ -58,3 +58,18 @@ For more details on creating a pipeline, go to [Create your first CD pipeline](/
    Once the rollback is complete, your deployed instances will return to the state they were in before the most recent deployment.
 
    ![](../x-platform-cd-features/advanced/static/rollback-deployment-3.png)
+
+## Permissions required for Post Deployment Rollback
+
+To perform Post Deployment Rollback, user must have following permissions:-
+
+1. Pipeline **Execute** permission. 
+2. User's role must have **Rollback** permission in Environment permissions. 
+![](./static/post_prod_rollabck.png)
+:::info
+
+A user will be allowed to execute rollbacks on any instance only if they possess the two specified permissions for the environment through which deployment occurred. Otherwise, they will be presented with the following message when attempting to click **Rollback***.
+
+
+![](./static/permissions_post_rollback.png)
+:::
