@@ -60,9 +60,9 @@ gsutil -m cp \
 
 ### Fixed issues
 
-- A `Project with orgIdentifier and identifier not found` error occurred during upgrade. (PL-46725)
+- If you encounter a `Project with orgIdentifier and identifier not found` after an upgrade, Harness recommends waiting for at least 2 minutes before taking any action. A background migration job will trigger 1 minute after the upgrade to populate the correct links. (PL-46725)
 
-   This issue has been resolved by reducing the amount of time background jobs run during pod restart. 
+   Previously, the job was triggered after 30 minutes, which caused issues. However, this has now been resolved by reducing the time to 1 minute. 
 
 ## January 29, 2024, version 1.19.10
 
