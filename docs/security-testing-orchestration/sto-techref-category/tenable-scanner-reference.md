@@ -1,12 +1,12 @@
 ---
 title: Tenable scanner reference for STO
-description: Instance scans with Tenable
+description: Scan application instances with Tenable.
 sidebar_label: Tenable scanner reference
 sidebar_position: 400
 ---
 
 
-You can set up Tenable scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your application instances and ingest results from Tenable.
 
 ## Important notes for running Tenable scans in STO
 
@@ -81,7 +81,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

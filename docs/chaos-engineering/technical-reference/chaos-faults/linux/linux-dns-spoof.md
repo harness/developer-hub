@@ -20,8 +20,7 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Mandatory tunables</h3>
+### Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -34,7 +33,8 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
     <td> For example, '&#123;"abc.com":"spoofabc.com"&#125;' where key is the host name to be spoofed and value is the host name to which the key is spoofed. </td>
   </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

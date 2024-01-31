@@ -1,6 +1,6 @@
 ---
-title: Build/scan/push workflows for container images in STO
-description: Workflows for building a container image, scanning it for vulnerabilities, and then pushing (or not pushing) based on the scan results. 
+title: Build/scan/push pipelines for container images in STO
+description: End-to-end pipeline examples for different use cases. 
 sidebar_position: 90
 ---
 
@@ -10,11 +10,11 @@ The following workflows provide some examples of you can set up pipelines to aut
 
 ### Build/scan/push with Docker-in-Docker
 
-This workflow is useful if you can use Docker-in-Docker and don't have a CI license. 
+This workflow is useful if you can use Docker-in-Docker and don't have a CI license. For a hands-on example of how to implement this, go to [/tutorials/security-tests/build-scan-push-sto-only](/tutorials/security-tests/build-scan-push-sto-only).
 
 1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
 
-2. Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build a local copy of the container image.
+2. Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to build a local copy of the container image.
 
 3. Add a [Security Tests step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) to scan the snapshot image and ingest the results.
 
@@ -54,7 +54,7 @@ pipeline:
                   name: DinD
                   identifier: Background
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -65,7 +65,7 @@ pipeline:
                   name: build_image
                   identifier: build_image
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: docker
                     shell: Sh
                     command: |-
@@ -169,7 +169,8 @@ pipeline:
 
 ### Build/scan/push with CI and Docker-in-Docker
 
-This workflow is useful if you can use Docker-in-Docker and have a CI license.
+This workflow is useful if you can use Docker-in-Docker and have a CI license. For a hands-on example of how to implement this, go to [Create a build-scan-push pipeline (STO and CI)](/tutorials/security-tests/build-scan-push-sto-ci).
+
 
 1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
 
@@ -202,7 +203,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         repoName: codebasealpha
         build: <+input>
   stages:
@@ -219,7 +220,7 @@ pipeline:
                   name: DinD
                   identifier: Background
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -230,7 +231,7 @@ pipeline:
                   name: build_push_to_snapshot
                   identifier: build_push_to_snapshot
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+stage.variables.SNAPSHOT_TAG>
@@ -258,7 +259,7 @@ pipeline:
                   name: build_push_to_prod
                   identifier: build_push_to_prod
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+pipeline.sequenceId>
@@ -267,7 +268,7 @@ pipeline:
               name: build_and_push_prod
               identifier: build_and_push_prod
               spec:
-                connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                 repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                 tags:
                   - <+stage.variables.SNAPSHOT_TAG>
@@ -279,8 +280,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-qa-delegate
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -327,7 +328,7 @@ This workflow is useful if you don't have a CI license and want to use [Kaniko](
 
 1. In the Security stage overview, under **Shared Paths**, add a path on the stage volume where you can share the image TAR across steps. 
 
-2. Use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build a local copy of the container image. The step should also save the TAR of the image to the shared path on the stage volume. 
+2. Use a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to build a local copy of the container image. The step should also save the TAR of the image to the shared path on the stage volume. 
 
 3. Use a Run step to run a manual scan of the local image. 
 
@@ -352,7 +353,7 @@ This workflow is useful if you have a CI license and want to use [skopeo](https:
 
 2. Use a CI [Build and Push step](/docs/category/build-and-upload-artifacts) to build and push your image with a snapshot tag such as`image:snapshot-<+pipeline.executionId>`.
 
-3. Use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) that uses skopeo to pull the image TAR to your shared path.
+3. Use a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses skopeo to pull the image TAR to your shared path.
 
 4. Use a Run step to scan the local image TAR.
 

@@ -21,11 +21,10 @@ Linux disk IO stress applies stress on the disk of the target Linux machines ove
 
 <FaultPermissions />
 
-## External packages
+### External packages
 This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
-## Fault tunables
-<h3>Optional tunables</h3>
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

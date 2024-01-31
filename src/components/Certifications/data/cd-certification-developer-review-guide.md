@@ -28,7 +28,7 @@
 | Failure Strategies  | [Define a Failure Strategy on Stages and Steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) |
 |**4. Continuous Verification** | |
 | APM/Log Based Verification  | [Verify Deployments with the Verify Step](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) |
-| Validate Deployments | [Continuous Verification](/docs/category/continuous-verification/) |
+| Validate Deployments | [Continuous Verification](/docs/category/verify-deployments) |
 | HTTP Execution Checks | [HTTP step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
 | GitOps Basics  | [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/) |

@@ -2,7 +2,6 @@
 id: ec2-memory-hog
 title: EC2 memory hog
 ---
-## Introduction
 
 EC2 memory hog disrupts the state of infrastructure resources. This fault:
 - Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
@@ -18,7 +17,7 @@ EC2 memory hog:
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
@@ -94,8 +93,8 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
+### Mandatory tunables
 
-<h3>Mandatory tunables</h3>
 <table>
     <tr>
         <th> Tunable </th>
@@ -113,7 +112,9 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
     </tr>
 </table>
-<h3>Optional tunables</h3>
+
+### Optional tunables
+
 <table>
     <tr>
         <th> Tunable </th>

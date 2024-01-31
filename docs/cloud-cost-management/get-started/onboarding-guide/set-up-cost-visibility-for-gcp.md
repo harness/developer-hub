@@ -142,7 +142,6 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 8. Select **Done**.  
     When you are done, the following screen is displayed:
   
-  ```mdx-code-block
 <img src={dataset_permissions} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
 
 

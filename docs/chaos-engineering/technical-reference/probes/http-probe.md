@@ -1,6 +1,7 @@
 ---
 title: HTTP probe
 sidebar_position: 3
+description: Features and specification of the HTTP probe
 ---
 
 The HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
@@ -36,6 +37,10 @@ spec:
                           Probes are defined here
                           ####################################
 ```
+
+:::tip
+The HTTP probe is fully declarative in the way they are conceived.
+:::
 
 ## Schema
 

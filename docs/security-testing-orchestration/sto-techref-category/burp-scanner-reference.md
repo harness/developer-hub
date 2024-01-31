@@ -1,78 +1,53 @@
 ---
 title: Burp scanner reference for STO
-description: Instance scans with Burp
+description: Scan application instances with Burp.
 sidebar_label: Burp scanner reference
 sidebar_position: 90
 ---
 
-You can scan your application instances automatically using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
-
-To set up a Burp scan:
-
-1. Create a CI Build or Security Tests stage,
-2. Add a [Burp](#burp-step-configuration) or a [Security](#security-step-settings-deprecated)
-3. Configure the step as specified in the following sections.
-
-<details>
-<summary>Burp scan configuration in Security step</summary>
-
-![](./static/burp-security-scan-step.png)
-
-</details>
+You can scan your application instances using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
 
 ## Important notes for running Burp scans in STO
 
 ### Root access requirements 
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
 
-## Burp step configuration
+## Burp step settings for STO scans
 
-<details>
-<summary>Orchestrated scan in a Burp scanner template</summary>
+The recommended workflow is add a Burp step to a Security Tests or CI Build stage and then configure it as described below.
 
-![](./static/burp-scanner-template.png)
-
-</details>
-
-### Scan settings
+### Scan
 
 #### Scan Mode
 
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
+<StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
-<a name="scan-config"></a>
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
-The following configurations are available for Orchestrated scans. These are [built-in configurations](https://portswigger.net/burp/documentation/scanner/scan-configurations/burp-scanner-built-in-configs) provided by Burp Enterprise.  
+The following configurations are available for Orchestration scans. These are [built-in configurations](https://portswigger.net/burp/documentation/scanner/scan-configurations/burp-scanner-built-in-configs) provided by Burp Enterprise.  
 -  `Default` This is the same as the `Crawl and Audit - Lightweight` built-in configuration.
 -  `Never stop Crawl due to application errors`
 -  `Never stop audit due to application errors`
@@ -97,45 +72,37 @@ The following configurations are available for Orchestrated scans. These are [bu
 -  `Audit checks all except time based detection methods`
 -  `Audit checks all except java script analysis`
 
-### Target settings
-
-:::note
-
-Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
-
-:::
+### Target
 
 ##### Type
 
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
+
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 
-### Authentication settings
+### Authentication
 
 #### Domain 
 
@@ -151,50 +118,35 @@ You should create a Harness text secret with your encrypted token and reference 
 
 Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline ingests the most recent scan. 
 
-### Instance settings
-
-<!-- ============================================================================= -->
-<a name="instance-domain"></a>
+### Instance
 
 #### Domain
 
-
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
 
 <StoSettingInstanceDomain />
 
-<!-- ============================================================================= -->
-<a name="instance-protocol"></a>
 
 #### Protocol
 
-
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
-
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
 
 <StoSettingInstanceProtocol />
 
-<!-- ============================================================================= -->
-<a name="instance-port"></a>
 
 #### Port
 
-
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
-
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
 
 <StoSettingInstancePort />
 
-<!-- ============================================================================= -->
-<a name="instance-path"></a>
 
 #### Path
 
-
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
-
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 
 <StoSettingInstancePath />
+
 
 #### Username
 
@@ -210,28 +162,19 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 ## Security step settings for Burp scans in STO (legacy)
 
-#### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
+:::note
+You can set up Burp scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Burp step](#burp-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
 
 <StoLegacyTargetAndVariant />
 
@@ -270,19 +213,17 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Instance scan settings
 
-
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-
 
 <StoLegacyInstance />
 
-#### Orchestration scan settings
 
+#### Orchestration scan settings
 
 import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
 
-
 <StoLegacyOrch />
+
 
 #### Dataload scan settings
 
@@ -311,6 +252,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />

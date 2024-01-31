@@ -18,21 +18,11 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "5min",
-      link: "/tutorials/build-code/fastest-ci",
-    },
-    {
-      title: "Terraform Cloud notification triggers",
-      module: MODULES.ci,
-      icon: "img/icon_ci.svg",
-      description: "Terraform Cloud notifications can automatically trigger CI pipelines.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "9min",
-      link: "/tutorials/ci-pipelines/build/tfc-notification",
+      link: "/docs/continuous-integration/get-started/tutorials",
     },
   ];
   */
-  
+
   // Docs
   export const docsCards: CardSections = [
     {
@@ -40,13 +30,6 @@ export const featuredTutorials: CardItem[] = [
       description:
         "",
       list: [
-        {
-          title: "CI Tutorials",
-          module: MODULES.ci,
-          description:
-            "Dive in with these hands-on tutorials.",
-          link: "/tutorials/ci-pipelines",
-        },
         {
           title: "Get started with CI",
           module: MODULES.ci,
@@ -60,6 +43,20 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Learn about creating Harness CI pipelines.",
           link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
+        },
+        {
+          title: "Development guides",
+          module: MODULES.ci,
+          description:
+            "Guides for using Harness CI for popular languages and platforms, including mobile development.",
+          link: "/docs/category/development-guides",
+        },
+        {
+          title: "Secure CI",
+          module: MODULES.ci,
+          description:
+            "Security hardening features and practices for Harness CI.",
+          link: "/docs/continuous-integration/secure-ci/security-hardening",
         },
       ],
     },
@@ -101,7 +98,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Plugins",
           module: MODULES.ci,
           description:
-            "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+            "Plugins perform predefined tasks. Use plugins to incorporate custom scripts, Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
           link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
         },
         {
@@ -151,7 +148,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Plugins",
           module: MODULES.ci,
           description:
-            "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+            "Plugins run scripts and perform predefined tasks. You can use existing plugins or write your own custom plugins.",
           link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
         },
         {

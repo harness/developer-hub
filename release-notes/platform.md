@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-01-15:T10:00:30
+date: 2024-01-22:T10:00:30
 sidebar_position: 3
 ---
 
@@ -29,19 +29,19 @@ These release notes describe recent changes to Harness Platform.
 ## Important feature change notice
 
 :::info important
-This is a notification for an upcoming feature change aimed at enhancing your experience with Harness. Here's what you need to know:
+This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
-1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. Starting **December 11, 2023**, Harness is adding a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
+1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. On **December 11, 2023**, Harness added a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
 
-2. **Continuity Assured**: There is no impact on your existing pipelines. They will remain compatible with the way secrets are referenced currently. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
+2. **Continuity Assured**: There is no impact on your existing pipelines. They remain compatible with the way secrets were referenced before this feature change. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
 
 :::
 
-#### Why is Harness making this change?
+#### Why did Harness make this change?
 
-Our current setup allows configurations where credentials from one secret manager are stored within another, resulting in complexities that can be challenging to navigate. Moreover, these configurations may introduce vulnerabilities, posing potential security risks. For example, in a recent [incident](https://status.harness.io/incidents/w2w7btby70xs), our thread pool designated for secret manager resolution was exhausted.
+Our previous setup allowed configurations where credentials from one secret manager were stored within another, resulting in complexities that could be challenging to navigate. Moreover, these configurations might introduce vulnerabilities, posing potential security risks. For example, in a recent [incident](https://status.harness.io/incidents/w2w7btby70xs), our thread pool designated for secret manager resolution was exhausted.
 
-Moving forward, we've implemented several validations, such as the disabling of self-references. Furthermore, with the introduction of the aforementioned restriction on secret managers, configurations will become simpler to comprehend and maintain. This change aims to streamline the process, enhancing clarity and reducing potential security vulnerabilities.
+Moving forward, we've implemented several validations, such as the disabling of self-references. Furthermore, with the introduction of the aforementioned restriction on secret managers, configurations is simpler to comprehend and maintain. This change aims to streamline the process, enhancing clarity and reducing potential security vulnerabilities.
 
 Below is further explanation for each type of secret manager Harness currently supports and the changes associated with it.
 
@@ -75,12 +75,54 @@ Below is further explanation for each type of secret manager Harness currently s
 
 ## Deprecation notice
 
-The following deprecated API endpoints will no longer be supported:
+The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
 ## January 2024
+
+### Version 1.22.3 <!--  January 29, 2024 -->
+
+#### New features and enhancements
+
+- Removed the unused `org.redisson:redisson` library dependency from the delegate. (PL-42485, ZD-53588, ZD-53760)
+
+- Deletion of SCIM-managed user groups was not allowed. (PL-39439, ZD-53340)
+
+  You can now delete SCIM-managed user groups via the delete API for user groups.
+
+   :::info
+   Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
+   :::
+   
+#### Fixed issues
+
+- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
+
+   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
+   
+   This item is available with Harness Platform version 1.22.3 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Running `terraform apply` for an existing SSO-linked user group resulted in an empty user list. (PL-43763, ZD-55505)
+
+   This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+     - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
+
+- The `platform-service` was not publishing the response count metric. (PL-43123)
+
+   This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
+
+### Version 1.21.5 <!--  January 22, 2024 -->
+
+#### Fixed issues
+
+- Tooltips in the left navigation were incorrectly displayed behind the stage execution details panel. Now, tooltips are visible on the Execution page. (PL-43993)
+- Fixed the ACL list roles API to correctly display `HarnessManaged`, `CreatedAt`, and `LastModifiedAt` date fields, ensuring accurate role management data in responses. (PL-43952)
+- Multi-select dropdowns would reset to the top after each selection. This issue is fixed for all multi-select dropdowns unless explicitly specified by the user. (PL-43925)
+- When editing user group data, member data was not added as expected. Now, the user group data related to the user group members is not lost when the user group is updated. (PL-43855, ZD-55944)  
+- Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
+- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connectors working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China, and so on). Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector. (PL-43333, ZD-54717)  
 
 ### Version 1.20.9 <!--  January 15, 2024 -->
 
@@ -96,7 +138,7 @@ The following deprecated API endpoints will no longer be supported:
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS FF` for your account. (PL-43772)
+- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
 
 #### Early access features
 
@@ -111,13 +153,22 @@ The following deprecated API endpoints will no longer be supported:
   ![](./static/mark-for-public-view.png)
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
-   
-   <!--  Add after merging https://github.com/harness/developer-hub/pull/4882
 
    For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
-   -->
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
+
+- Allowlist verification for delegate registration (PL-42471)
+
+    :::info note
+    Currently, allowlist verification for delegate registration is behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+    :::
+
+   Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
+
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+
+   This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### Fixed issues
 
@@ -125,13 +176,14 @@ The following deprecated API endpoints will no longer be supported:
 
    This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
 
+  This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 ### Version 1.19.6 <!--  January 8, 2024 -->
 
 #### New features and enhancements
 
 - Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
-<!-- pending verification from Akshay
 #### Early access
 
 ##### Allowlist verification for delegate registration (PL-42471)
@@ -149,7 +201,6 @@ Currently, allowlist verification for delegate registration is behind the featur
    The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
    Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
--->
 
 #### Fixed issues
 
@@ -175,9 +226,13 @@ Currently, allowlist verification for delegate registration is behind the featur
 
    Fixed race condition where a perpetual task was assigned at the same time as the delegate abruptly shutting down due to a pod restart.
 
-   This item is available with Harness Platform version 1.19.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 1.19.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 1.17.8 <!--  January 2, 2024 -->
+
+#### New features and enhancements
+
+- Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
 
 #### Fixed issues
 
@@ -226,6 +281,8 @@ Currently, allowlist verification for delegate registration is behind the featur
 - Upgraded YamlBeans to version 1.17. (PL-42905, ZD-51149, ZD-53760, ZD-53919)
 
 ###### Fixed issues
+
+- The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
 - Execution links were not available in pipeline failure Slack notifications. (PL-42974, ZD-53195)
 

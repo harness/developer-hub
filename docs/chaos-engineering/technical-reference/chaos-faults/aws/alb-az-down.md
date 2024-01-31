@@ -2,7 +2,6 @@
 id: alb-az-down
 title: ALB AZ down
 ---
-## Introduction
 ALB (Application Load Balancer) AZ (Availability Zones) down takes down the AZ on a target application load balancer for a specific duration thereby impacting the delivery. This fault restricts access to certain availability zones for a specific duration.
 
 ![ALB AZ Down](./static/images/alb-az-down.png)
@@ -13,7 +12,7 @@ ALB AZ down:
 - Detaches the AZ from the application load balancer thereby disrupting the application's performance. 
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - Appropriate AWS access to attach or detach subnet from the target ALB.
 - There needs to be a minimum of two AZs attached to the target ALB after injecting chaos; otherwise, the fault will fail to detach the given AZ.
@@ -63,8 +62,9 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -78,7 +78,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> ZONES </td>
         <td> Target zones that should be detached from the ALB. </td>
-        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#zones"> zones.</a></td>
+        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#target-zones"> zones.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -86,8 +86,10 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+    
+### Optional tunables
+
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -96,7 +98,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds). </td>
-        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Default: 30 s. For more information, go to <a href=".././common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>

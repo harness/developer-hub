@@ -14,7 +14,9 @@ description: View Kubernetes cluster information such as deployment status and p
 
 ### Application configuration YAML
 
-The plugin supports two types of application configuration.
+The plugin supports two types of application configuration, which needs to be updated by the user in the **Configurations**
+
+![](./static/app-config-k8s.png)
 
 #### Authentication using a Kubernetes service account (default)
 
@@ -55,7 +57,7 @@ In both cases, replace `<your-base-url>` with the base URL of the target cluster
 
 If you are using a service account to authenticate, ensure that a secret variable `K8S_SA_TOKEN` is set with the Kubernetes service account key.
 
-Please make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example refernce YAML.
+Please make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example reference YAML.
 
 ```YAML
 apiVersion: rbac.authorization.k8s.io/v1

@@ -12,7 +12,7 @@ Collection hierarchies in SEI keep data organized. At the top of the hierarchy i
 
 <figure>
 
-![](./static/collections-hierarchies-diagram.png)
+![](./static/collection-heirarchy.png)
 
 <figcaption>A diagram of the relationship between projects, Collection categories, and Collections. SEI integrations feed data from your SDLC tools into the project and the corresponding Collection categories and Collections. Data is ultimately displayed on Insights, which are associated with particular Collections.</figcaption>
 </figure>
@@ -24,6 +24,8 @@ Projects, Collection categories, and Collections provide a broad way of organizi
 [Projects](/docs/category/organizations-and-projects), in addition to the roles they serve elsewhere in the Harness Platform, provide an umbrella for you to organize the Collection hierarchy and access Insights associated with specific Collections.
 
 Collection categories and Collections exist under their associated project; they don't span across projects. While multiple projects can have Collection categories and Collections with the same name, these are distinct groups under their designated project.
+
+![](./static/projects.png)
 
 [Insights](../sei-insights.md) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
 

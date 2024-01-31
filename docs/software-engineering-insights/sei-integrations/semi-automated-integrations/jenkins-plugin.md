@@ -9,22 +9,18 @@ The SEI Jenkins Plugins is a tool, written in Java, which is used to send report
 
 #### **To install this plugin please follow the following steps.**
 
-* Sign-in to Jenkins and select Manage Jenkins.
-* Select “Manage Plugins”.
-* Select the “Available plugins” tab.
-* In the “Search Plugin” box, type "propelo"
-* Install the plugin called "SEI Job Reporter" by selecting it and clicking "Install without restart".
-* Once the plugin installation is complete, the status will change to “Success". If it doesn't change to "Success" a restart might be needed
+* Sign-in to **Jenkins** and select **Manage Jenkins**
+* Select **Manage Plugins**
+* Select the **Available plugins** tab.
+* In the **Search Plugin** box, type `SEI`
+* Install the plugin called **SEI Job Reporter** by selecting it and clicking **Install without restart**
+* Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success a restart might be needed.
 
 ## SEI Job Reporter Plugin
 
 The SEI Job Reporter Plugin, monitors all job runs. As soon as a job run completes it sends the info about job run and failed logs back to SEI SaaS. 
 
 It does not do any periodic push. It gathers info about job stages and steps. If a job run fails and does not have stages the plugin captures the failed job run logs, else if it has stages and no steps, the plugin captures logs for the failed steps, else if it has steps, the plugin captures logs for failed steps. It does not capture the logs for any successful job or stage or step. This plugin supports the failure triage feature.
-
-
-
-
 
 | Dependency Name                        | Direct Dependency/Indirect Dependency | Version | URL                                                                                                              |
 | - | - | - | - |

@@ -23,7 +23,7 @@ The following table lists SEI support for platforms, repos, registries, and rela
 
 :::info Note: 
 
-The integrations categorized under the **"Others"** label are now available with basic support, and we are actively working towards expanding their capabilities in the near future.
+The integrations categorized under the **Others** label are now available with basic support, and we are actively working towards expanding their capabilities in the near future.
 
 :::
 

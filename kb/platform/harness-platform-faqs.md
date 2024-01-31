@@ -523,7 +523,7 @@ As per the current design you can not create project under the project. The proj
 
 #### How to customized build pipeline. Ex: Create a script to clone the repo from TFS?
 
-User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
+User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-step-settings) and you should be able to clone the repo.
 
 #### How the active service count will show in License subscription?
 
@@ -1854,10 +1854,6 @@ No, our Dockerfiles are made public on GitHub so that you have the option to mod
 
 Currently SMP is single account only, multiple account support is yet to come.
 
-#### How can we configure OIDC with GCP WIF for Harness CI Cloud builds?
-
-Using the FF `PL_GCP_OIDC_AUTHENTICATION` you can configure the same, you can refer [here](https://developer.harness.io/tutorials/platform/configure-oidc-gcp-wif-ci-hosted), later on enable this functionality for Harness Delegate and AWS STS.
-
 #### Do we have docs for permissions references?
 
 Yes, you can refer these docs:
@@ -2465,3 +2461,171 @@ https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-har
 ####   How to signout?
 
 You can click on My profile Under bottom left and you will able to see Sign Out option coming in.
+
+#### I can see that a legacy delegate is a statefulset object, what does this mean? and what's the major difference from Deployment type?
+
+**StatefulSet:**
+- **Purpose:** StatefulSets are designed for stateful applications that require stable network identities and stable storage.
+Instances: StatefulSets maintains a sticky identity for each pod. Each pod has a unique and stable hostname, allowing for persistent storage and network identities.
+
+- **Naming:** Pods in a StatefulSet get named predictably and consistently, which is often based on an index.
+
+- **Scaling:** Scaling stateful applications may involve more complex operations due to the need for stable identities. Pods are typically created in sequential order, and scaling may involve specific considerations for data migration or coordination.
+
+**Key Difference:**
+The major difference between a Deployment and a StatefulSet lies in how they handle the identity and state of the pods:
+
+- **StatefulSet** provides stable identities: Pods in a StatefulSet have stable and predictable identities, making them suitable for applications that require persistent storage and network identifiers.
+- **Deployment** is more suitable for stateless applications: Deployments are well-suited for applications where each instance is interchangeable, and statelessness is a design principle.
+
+#### What is exit status 127 in a delegate pod?
+
+In a Kubernetes context, when you see an exit code of 127, it is typically associated with issues related to the execution of container commands within a pod. Here are some common scenarios in a Kubernetes context:
+
+**Command or Binary Not Found:**
+- The container might be trying to execute a command or binary that is not installed or not available in the container's filesystem. Ensure that the necessary commands or binaries are included in the container image.
+
+**Incorrect Path or Command Name:**
+- If there's a mistake in the path or the name of the command specified in the Kubernetes pod definition, it could result in a 127 exit code. Double-check the command configuration in your pod specification.
+
+**Permissions Issues:**
+- Ensure that the container has the necessary permissions to execute the specified command. This includes both file system permissions within the container and the user permissions under which the container is running.
+
+**Image or Container Initialization Failures:**
+- If the container fails to start or initialize properly, it might result in a 127 exit code. Check the container logs for any error messages that might indicate initialization issues.
+When debugging a pod with an exit code of 127, you can inspect the pod logs to get more details about what went wrong. Use the following command to view the logs for a specific pod:
+
+```
+kubectl logs <pod-name>
+```
+
+Replace `<pod-name>` with the actual name of your pod. Examining the logs can provide insights into the specific command or process that failed and help you diagnose and resolve the issue.
+
+#### Where are the settings for individual user email notifications?
+
+The notifications on Harness are configured on the User Group to which the user is attached. All the notification preferences are displayed there:
+- https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#edit-notification-preferences
+
+#### Why I'm experiencing issues when creating a secret with the same name that was deleted recently?
+First, when you tried to delete a resource in Harness, we soft-deleted it so you were not able to re-use the same identifier. Now this is not happening anymore, but in case you still experiencing issues, you can either keep the same name but change only the identifier or enable the Force Delete so you can delete the resource with no existent references issues on the process:
+
+- https://developer.harness.io/docs/platform/references/entity-deletion-reference/#force-delete
+
+#### What's the harness variable replacement for a service name?
+
+For this scenario, you can use the following variable: `<+service.name>`
+
+#### What is ingress.yaml used for?
+
+In Kubernetes, an Ingress resource is used to manage external access to services within a cluster. The Ingress resource allows you to define how external HTTP/S traffic should be directed to your services, enabling you to expose services to the external world and define routing rules.
+
+An Ingress resource is typically defined in a YAML file, often named ingress.yaml. This file specifies the configuration for routing external traffic to different services based on rules such as hostnames, paths, and backend services.
+
+By using Ingress, you can manage external access to your services more flexibly than using raw services or NodePort services. It provides a way to route traffic based on various criteria and allows you to handle SSL termination and other features. Keep in mind that the actual implementation of Ingress may vary depending on the Kubernetes cluster, as different cluster providers may have different Ingress controllers.
+
+#### How can I easily disable pipeline triggers?
+
+On the triggers page, you'll see a toggle icon on the right side under Enabled, you just need to toggle it off and the trigger will be disabled.
+
+#### What is my webhook identifier to trigger pipelines?
+
+When you name an entity, Harness automatically generates its identifier. You can edit the Identifier when you are creating the entity, but not after the entity is saved. If you rename the entity, the Identifier remains the same. The generated Identifier is based on the entity name and meets the identifier naming restrictions. If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of -1, -2, etc.
+
+#### How do I verify my account?
+
+Harness has identified an increase in the unauthorized usage of the free pipeline minutes Harness makes available on Harness Cloud. To combat such unauthorized usage, Harness requires that you use your work email, not your personal email, to register your account.
+ 
+If you face this issue on an account that was registered using your work mail ID, please reach out to our support team and share the execution URL where you got this error so we can review it further.
+
+#### Does harness AIDA support APIs for developers to create custom AI/ML solutions?
+
+No! AIDA does not offer Rest APIs to be used by Harness Users.
+
+#### How to Extend the Timeout Duration for a Custom Secret Manager?
+
+To increase the timeout duration in a custom secret manager, adjust the settings in the connector's details step. This timeout setting, measured in seconds, determines how long the system will wait to fetch secrets from the custom provider. If fetching the secret exceeds this duration, the process is interrupted and results in failure. The default timeout value is set to 20 seconds. To avoid such interruptions, you can modify this value to a higher number as per your requirements.
+
+#### Can secrets access be scoped by environments?
+
+Currently, the functionality to restrict access to secrets based on individual environments is not available. However, a potential alternative is to structure your account by dividing environments across different organizational projects. This method won't directly scope secrets to specific environments, but it can help in managing access by associating secrets with the relevant organizational context, thus maintaining a level of separation and control.
+
+#### How can CCM Admin roles be removed from users who were directly assigned these rRoles?
+
+In the past, as part of our product strategy, we granted all users the CCM Admin role by default. This policy has since been changed. If customers wish to revoke these role assignments, they will need to identify the affected users, retrieve their role assignments via API, and then proceed to bulk delete these specific role assignments.
+
+#### Where are the settings for an individual user email notifications?
+
+Currently, we don’t support individual user e-mail notifications.
+
+#### How can we export users from Harness?
+
+Currently, we do not support a direct functionality for exporting all users. To export users from Harness, you can utilize our API method getUsers.
+
+#### How to solve the error “You are missing the following permission: Create / Edit Pipelines”?
+
+To resolve the error ```You are missing the following permission: Create / Edit Pipelines```, you need to assign the ```Write Pipelines``` permission to your user.
+
+#### How to export all AutoStopping rules?
+
+Currently, we do not support a direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, we recommend using our API method ```List AutoStopping Rules```.
+
+#### Is it possible to use Vault AWS Credentials generation along with AWS Connector?
+
+Unfortunately, we don't support this feature. Though a custom secret manager can be leverage to get credentials on the fly, where you can write any logic.
+
+#### I’m not receiving an e-mail to register my TOPT token. What should I do?
+
+Please, reach out to Harness Support in order to receive manually your TOPT token. Once you receive the token will be able to register it in any authenticator app that you prefer. Additionally, if you aren’t receiving the token through e-mail, it may be a potential issue with your SMTP provider.
+
+#### How to receive a notification when the delegate’s heartbeat connectivity fails?
+
+At present, we do not support direct notifications for failures in the delegate's heartbeat connectivity. However, you can effectively monitor your delegate using Prometheus metrics, which is a functionality we do support.
+
+#### Where is the currently set session inactive timeout value located?
+
+You can find this value on the Authentication page (right below the Overview menu on the left), the field will be at the bottom of the page: ```Session Inactivity Timeout (in minutes)```.
+
+#### How can I extend the time before a delegate is disconnected from the manager when the API token is revoked?
+
+This is not configurable; once the token is revoked, the delegate will get disconnected immediately. However, you can have a delegate in the account running continuously, which can execute all tasks. This way, when you revoke tokens for other delegates for testing, there will be at least one delegate in the account available to run the task.
+
+#### What is the ETA/process for adding another admin user to our Harness account if the user with admin access gets locked?
+
+In emergencies like SAML/LDAP issues, it's recommended to have a local admin user for account access. If a functional account gets locked, Harness can grant admin permissions to an existing account user, but can't create a new admin user. It's advised to maintain at least two local admin users. In such situations, raising an urgent Harness ticket is necessary. The process, involving backend database updates and multiple approvals, typically takes a couple of hours to grant admin permissions to an existing user.
+
+
+#### Is the user able to execute the pipeline through the API?
+Yes, You can execute the pipeline through this [API.](https://apidocs.harness.io/tag/Pipeline-Execution)
+
+#### Is the user can able to execute the pipeline through CLI?
+Yes, you can use the API curl or custom webhook curl in any CLI to execute the pipeline.
+
+#### Is the user can able to execute the pipeline using the Harness CLI command?
+No, Currently Harness CLI don't have any command for pipeline execution.
+
+#### How can the user remove the single disconnected delegate pod?
+The disconnected delegate pod will automatically removed after the 7 days from the disconnection.
+
+#### What do we need to backup for SMP setup? Is there an optional backup target?
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours.
+
+#### How do you perform SMP backups?
+Back up recommendation is to use the Velero tool
+
+#### If the infrastructure is lost where the harness is deployed, how should it be restored?
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore the harness namespace.
+
+#### If it is difficult to implement SMP full backups, I would like to get individual Backups.
+We would recommend full backups rather than individual Backups.
+
+#### Is there a way the user can run all the steps on one specific delegate pod?
+Yes, user can run all the steps on one specific delegate pod. Doc: https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+
+#### Unable to view shell script content used in pipeline
+If you are using a step template, you will need to navigate to the template and switch to the yaml view, and you will be able to see the content.
+
+#### Create Connector API seems to not work for orgs and failing with the error INVALID_IDENTIFIER_REF while trying to create a vault connector.
+Please check and confirm if the token used here is proper and you are using the org or account prefix before passing the secret reference.
+
+#### How do I make a pipeline step report to Slack?
+You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.

@@ -1,11 +1,11 @@
 ---
 title: Fortify scanner reference for STO
-description: Repository scans with Fortify
+description: Ingest Fortify scan results into your pipelines.
 sidebar_label: Fortify scanner reference
 sidebar_position: 170
 ---
 
-You can run Fortify scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest repository scan results from Fortify.
 
 ## Important notes for running Fortify scans in STO
 
@@ -58,7 +58,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

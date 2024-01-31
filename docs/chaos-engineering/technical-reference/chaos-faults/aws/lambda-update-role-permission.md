@@ -2,7 +2,6 @@
 id: lambda-update-role-permission
 title: Lambda update role permission
 ---
-## Introduction
 Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
 
 
@@ -14,7 +13,7 @@ Lambda updated role permission:
 - Updates the role attached to a Lambda function.
 - Determines the performance of the running Lambda application when it does not have enough permissions.
 
-## Prerequisites
+### Prerequisites
 - Kubernetes >= 1.17
 - The Lambda function must be up and running.
 - Kubernetes secret must have the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -57,7 +56,6 @@ Below is an example AWS policy to execute the fault when `ROLE_ARN` environment 
 }
 ```
 
-
 Below is an example AWS policy to execute the fault when `POLICY_ARN` environment variable is set.
 
 ```json
@@ -86,8 +84,8 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
 - Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
-   <h3>Mandatory tunables</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -114,8 +112,9 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
         <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
-    <h3>Optional tunables</h3>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>

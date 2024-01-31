@@ -14,7 +14,7 @@ VMware Windows Blackhole Chaos simulates a network blackhole scenario on Windows
 - VMware Windows Blackhole Chaos simulates the situation of network isolation for processes running on the application, which degrades their performance.
 - It also helps verify the application's ability to handle network failures and its failover mechanisms. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -22,7 +22,7 @@ VMware Windows Blackhole Chaos simulates a network blackhole scenario on Windows
 - Ensure the firewall is active and permissions to modify its rules are granted. Consider using the built-in Administrator user. [Learn how to enable it in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- VM credentials can be passed as secrets or as a chaos engine environment variable.
 
 ```yaml
 apiVersion: v1
@@ -37,14 +37,10 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-:::
-
-## Fault tunables
-
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -64,10 +60,11 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

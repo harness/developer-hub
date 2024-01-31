@@ -1,6 +1,6 @@
 ---
 title: Anchore Enterprise scanner reference for STO
-description: Container scans with Anchore Enterprise
+description: Scan container images with Anchore Enterprise.
 sidebar_label: Anchore Enterprise scanner reference
 sidebar_position: 20
 ---
@@ -11,7 +11,7 @@ You can scan your repositories and other components used in your code with [Anch
 
 ### All data ingestion methods are supported
 
-You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [`orchestratedScan` pipeline example](#anchore-enterprise-orchestration-example) and a [`dataLoad` pipeline example](#anchore-enterprise-dataload-example) below.
+You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [Orchestration pipeline example](#anchore-enterprise-orchestration-example) below.
 
 ### Scans in air-gapped environments are supported
 
@@ -30,9 +30,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoDinDRequirements />
 
 :::note
-You might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. 
-
-In the pipeline examples below, the Docker-in-Docker step has resource limits of 2048Mi and 1000m. 
+For Orchestrated and Extraction scans, you might want to increase the resource limits for your Docker-in-Docker background step. This can speed up your scan times, especially for large scans. For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines).
 :::
 
 
@@ -52,36 +50,30 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-<!-- step-palette 
+<!-- step-palette -->
 
-## Anchore Enterprise step configuration
+## Anchore Enterprise step settings in STO
 
-The recommended workflow is add a Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is add an Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
 
-### Scan settings
+### Scan
 
 <a name="scan-mode"></a>
 
-#### Scan Mode
+#### Scan mode
 
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 
-#### Scan Configuration
+#### Scan configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -90,113 +82,80 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
+import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image.md';
 
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
+
+
+<!-- #### Detect target and variant 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
 
-<StoSettingProductID />
-
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-#### Workspace
-
-
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
-
-<StoSettingTargetWorkspace  />
 
 ### Container Image
 
 
-<a name="container-type"></a>
-
 #### Type  (_orchestration_)
 
-
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
-
+import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 <StoSettingImageType />
 
 
+#### Domain
 
-
-<a name="container-domain"></a>
-
-#### Domain (_extraction_)
-
-
-
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 
 <StoSettingImageDomain />
 
 
-<a name="container-name"></a>
-
 #### Name
 
-
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
-
+import StoSettingImageName from './shared/step_palette/image/_name.md';
 
 <StoSettingImageName />
 
 
-
-
-<a name="container-tag"></a>
-
 #### Tag
 
-
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
-
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
-
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
 
 <StoSettingImageAccessID />
 
+
 #### Access Token
 
-
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
-
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
 
 <StoSettingImageAccessToken />
 
 
 ### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
@@ -204,38 +163,24 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 ### Authentication
 
 
-<a name="auth-domain"></a>
-
 #### Domain
 
 The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`.
 
 
-
-<StoSettingAuthDomain />
-
-
 #### Access ID
 
-
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
-
-
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
 
 ### Scan Tool
-
-
 
 #### Image Name
 
@@ -244,28 +189,21 @@ For Extraction scans, the name of the image that you want to extract from Anchor
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
-
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
 #### Additional CLI flags
 
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
+You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `--force` to reset the image analysis status to `not_analyzed`.  
 
-<a name="fail-on-severity"></a>
 
 #### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -273,7 +211,6 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 ### Settings
 
 You can use this field to provide environment variables to be used during the execution of the step. 
-
 
 
 ### Additional Configuration
@@ -299,21 +236,13 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step settings for Anchore Enterprise scans in STO
+## Security step settings for Anchore Enterprise scans in STO (legacy)
 
-<!-- step-palette -->
 :::note
-You need to use a Security step to set up an Anchore Enterprise integration. An Anchore Enterprise scanner template is under development and will be available soon. 
+You can set up Anchore Enterprise scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Anchore Enterprise step](#anchore-enterprise-step-settings-in-sto) instead.
 :::
 
-/step-palette -->
-
-To set up your Anchore Enterprise integration with a Security step, do the following: 
-
-1. Create a CI Build or Security Tests stage
-2. Add a Security step.
-3. Add the following `setting:value` pairs to the Security step.
-
+To configure an Anchore Enterprise scan in a Security step, add the following to **Settings**: 
 
 * `product_name` : `anchore`
 * [`scan_type`](#scanner-categories) : `containerImage`
@@ -332,10 +261,10 @@ To set up your Anchore Enterprise integration with a Security step, do the follo
 
 * [`fail_on_severity`](#fail-on-severity)
 + `tool_args`
-	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`. 
+	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `tool_args` : `--force` to reset the image analysis status to `not_analyzed`.  
 
 
-### Container image settings (required)
+### Container image (required)
 
 * `container_type`
 	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`
@@ -372,8 +301,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 <!-- step-palette -->
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+<!-- import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+ -->
 
 <StoSettingFailOnSeverity />
 
@@ -384,97 +313,95 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 This example uses a Security step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
 
 1. A Background step that runs Docker-in-Docker. This is [required](#docker-in-docker-requirements) to scan container images.
-2. A Security step that does the following:
+2. An Anchore step that does the following:
 
    1. Extracts the `owasp/nettacker:latest` image from Anchore Enterprise.
    2. Logs in to the Anchore Enterprise API based on the `product_domain`, `product_access_id`, `product_access_token` settings.
-   3. Launches an orchestrated scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
+   3. Launches an orchestration scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
    4. Deduplicates and normalizes the scan data and ingests it into STO.
 
+Note that in this example, the resource limits for the Docker-in-Docker step are increased to ensure that [the step has enough memory to store the scanned image](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines#increase-memorycpu-for-the-docker-in-docker-background-step).
+
 <details>
-<summary>Anchore Enterprise dataload ingestion pipeline example</summary>
+<summary>Anchore Enterprise orchestration pipeline example</summary>
 
 ```yaml
 
 pipeline:
-  allowStageExecutions: false
-  projectIdentifier: STO
+  name: anchore step palette
+  identifier: anchore_step_palette
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   stages:
     - stage:
-        name: build
-        identifier: build
+        name: anchore
+        identifier: anchore
         type: SecurityTests
         spec:
           cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              containerSecurityContext:
-                privileged: true
-              os: Linux
-          sharedPaths:
-            - /var/run
-            - /shared/customer_artifacts
           execution:
             steps:
               - step:
                   type: Background
-                  name: Background_1
-                  identifier: Background_1
+                  name: docker_dind
+                  identifier: docker_dind
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
+                    command: dockerd
                     privileged: true
-                    entrypoint:
-                      - dockerd
                     resources:
                       limits:
                         memory: 2048Mi
-                        cpu: 1000m  
+                        cpu: 1000m
               - step:
-                  type: Security
-                  name: Security_1
-                  identifier: Security_1
+                  type: Anchore
+                  name: Anchore_1
+                  identifier: Anchore_1
                   spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: owasp/nettacker
+                      type: container
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                      args:
+                        cli: "--force"
                     privileged: true
-                    settings:
-                      policy_type: orchestratedScan
-                      scan_type: container
-                      product_name: anchore
-                      product_config_name: default
-                      container_domain: docker.io
-                      container_project: owasp/nettacker
-                      container_tag: latest
-                      product_domain: https://anchore.qa.harness.io/api
-                      container_type: docker_v2
-                      product_access_id: aubrey.klaft@harness.io
-                      product_access_token: <+secrets.getValue("anchoretoken")>
-                      LOG_LEVEL: debug
-                    imagePullPolicy: Always
+                    image:
+                      type: docker_v2
+                      name: owasp/nettacker
+                      tag: latest
+                    auth:
+                      access_token: <+secrets.getValue("YOUR_ACCESS_TOKEN_SECRET")>
+                      access_id: <+secrets.getValue("YOUR_ACCESS_ID_SECRET")>
+                      domain: YOUR_DOMAIN_URL
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
           caching:
             enabled: false
             paths: []
           slsa_provenance:
             enabled: false
-        variables:
-          - name: runner_tag
-            type: String
-            value: dev
-  identifier: anchore_scan
-  name: anchore scan
-
-
 
 ```
 
 </details>
+
+<!-- hiding this example, since it uses the old-style Security step rather than the scanner template 
 
 ## Anchore Enterprise dataLoad example
 
@@ -489,9 +416,6 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
    4. Deduplicates and normalizes the scan data and ingests it into STO. 
 
 Note that in this example, the resource limages for the Security step are increased to ensure that the container used to run the scan has enough memory and CPU.
-
-<details>
-<summary>Anchore Enterprise dataload ingestion pipeline example</summary>
 
 ```yaml
 
@@ -512,7 +436,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -521,7 +445,7 @@ pipeline:
               os: Linux
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts
+            - /shared/scan_results
           execution:
             steps:
               - step:
@@ -529,7 +453,7 @@ pipeline:
                   name: Background_1
                   identifier: Background_1
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -572,9 +496,6 @@ pipeline:
             type: String
             value: dev
 
-
-
 ```
-
-</details>
+-->
 

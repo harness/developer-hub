@@ -31,7 +31,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **3.0.0**. 
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-erlang-server-sdk/releases)
 
 ## Requirements
 

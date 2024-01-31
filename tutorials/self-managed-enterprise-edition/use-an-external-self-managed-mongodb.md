@@ -115,9 +115,9 @@ To set up a MongoDB VM, do the following:
 
 10. Verify that MongoDB started successfully.
 
-   ```
-   systemctl status mongod
-   ```
+    ```
+    systemctl status mongod
+    ```
 
 11. Stop the MongoDB instance.
 

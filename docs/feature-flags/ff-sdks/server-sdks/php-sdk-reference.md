@@ -34,7 +34,7 @@ Make sure you've read and understood:
 
 ## Version
 
-The current version of this SDK is **0.1.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-php-server-sdk/releases)
 
 ## Requirements
 

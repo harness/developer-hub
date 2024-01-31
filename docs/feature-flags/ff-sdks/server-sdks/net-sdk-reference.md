@@ -35,7 +35,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.4.0**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-dotnet-server-sdk/releases)
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 

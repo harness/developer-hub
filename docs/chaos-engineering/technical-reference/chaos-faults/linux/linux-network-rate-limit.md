@@ -20,8 +20,7 @@ Linux network rate limit:
 
 <FaultPermissions />
 
-## Fault tunables
-<h3>Mandatory fields</h3>
+## Mandatory tunables
 <table>
   <tr>
     <th> Tunable </th>
@@ -35,7 +34,7 @@ Linux network rate limit:
   </tr>
 </table>
 
-<h3>Optional fields</h3>
+### Optional tunables
 <table>
   <tr>
     <th> Tunable </th>

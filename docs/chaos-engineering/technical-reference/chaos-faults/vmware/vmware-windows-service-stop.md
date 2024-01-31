@@ -14,7 +14,7 @@ VMware Windows Service Stop simulates a service stop scenario on Windows OS base
 - VMware Windows Service Stop simulates the situation of service stop for services running on the application, which degrades their performance. 
 - It also helps verify the application's ability to handle service failures and its failover mechanisms. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -36,14 +36,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -68,10 +66,12 @@ stringData:
         <td> For example, <code>service1,service2</code>. For more information, go to <a href="#service-names"> service names. </a> </td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>

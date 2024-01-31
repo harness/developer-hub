@@ -1,10 +1,10 @@
 ---
 title: Set up target baselines in STO
-description: It is good practice to specify a baseline for every target. You can specify static baselines, using plain text, or dynamic baselines using regular expressions. 
+description: You need to specify the root branch, tag, or version for every target. 
 sidebar_position: 10
 ---
 
-It is good practice to specify a baseline for every target. The baseline represents the root variant, such as the `main` branch or the `latest` tag. In some cases, you might want to use the name of the latest official release as the baseline. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
+You need to specify a baseline for every target. The baseline represents the root variant, such as the `main` branch or the `latest` tag. In some cases, you might want to use the name of the latest official release as the baseline. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
 
 To view all targets in your account, and specify baselines for your targets, go to **Security Tests** (left menu) and then **Test Targets**.
 
@@ -16,7 +16,7 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 </figure>
 
-## Specify STO target baselines using regular expressions
+## Specify dynamic baselines using regular expressions
 
 <!-- 
 
@@ -95,16 +95,9 @@ The following table shows a few simple examples of expressions for specific use 
         <td>release-20230420<br /> release-20230427 <br /> release-20230504 <br /> release-20230511 <br />  </td>
         <td valign="top"><code>release\-\d+</code></td>
         <td valign="top">
-            <ul>
-                 <li> <code><b>release\-</b></code> start with <code>release</code>, dash </li>
-                <li>                    
-                    <code>
-                        <b>
-                            \d+\.\d+\
-                        </b>
-                    </code>
-                     follow with one or more digits                
-                 </li>
+            <ul> 
+                <li> Start with <code>release</code>, dash </li>
+                <li> Follow with one or more digits   </li>
             </ul>
         </td>
     </tr>
@@ -113,15 +106,8 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>code\-v\d+\.\d*</code></td>
         <td valign="top">
             <ul>
-                <li><code><b>code\-v</b></code> start with <code>code</code>, dash, <code>v</code> </li>
-                <li>
-                        <code>  
-                            <b>
-                                \d+\.\d+\
-                            </b>
-                        </code>
-                        follow with one or more digits, dot, one or more digits
-                </li>
+                <li>Start with <code>code</code>, dash, <code>v</code> </li>
+                <li>Follow with one or more digits, dot, one or more digits</li>
             </ul>
         </td>
     </tr>
@@ -130,8 +116,8 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>\d*\.\d*\.\d*\-linux-amd64</code></td>
         <td valign="top">
             <ul>
-                <li><code><b>\d+\.\d+\.\d+</b></code> start with one or more digits, dot, one or more digits, dot, one or more digits </li>
-                <li><code><b>\-linux-amd64</b></code> follow with hyphen, <code>linux-amd64</code> </li>
+                <li>Start with one or more digits, dot, one or more digits, dot, one or more digits</li>
+                <li>Follow with hyphen, <code>linux-amd64</code> </li>
             </ul>
         </td>
     </tr>
@@ -150,7 +136,7 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top">
             <ul>
                  <li>
-                    <code><b>\d\d\d\d-\d\d\-\d\d</b></code> four digits, dash, two digits, dash, two digits 
+                    Four digits, dash, two digits, dash, two digits 
                 </li>
             </ul>
         </td>

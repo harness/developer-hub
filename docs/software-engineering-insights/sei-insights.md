@@ -6,27 +6,28 @@ sidebar_position: 21
 
 Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI. With a variety of out-of-the-box widgets, you can create Insights that show the data you care about most and help you understand your engineering team's effectiveness and efficiency.
 
-This topic explains how to create and view Insights. For information about configuring specific widgets and the metrics that are presented on widgets, go to [Metrics and reports](/docs/category/metrics-and-reports).
+This topic explains how to create and view Insights. For information about configuring specific reports and the metrics that are presented on widgets, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
 ## View Insights
 
 The primary way to access Insights is through the **Project** tab.
 
 1. Log in to the Harness Platform and go to the SEI module.
-2. Select the **Project** tab on the navigation menu, and select a **Project**.
+2. Select the **Project** tab on the navigation menu, and select a **Collection Category**.
 3. Select a **Collection**.
 
-<!-- image .gitbook/assets/Collection and Dashboard selection page.pn - Collection and dashboard selection page -->
+![](./static/select-collection.png)
 
-4. Select **Insights**. The Collection's default Insight appears.
+4. Select the **Insight** from the available list.
 
-   Select **All Dashboards** to view other Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
+![](./static/select-insighhts.png)
+
+   Select **Manage Insights** to view all the Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
 
    To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](./sei-projects-and-collections/manage-collections.md).
 
    If integration monitoring is enabled, you can view the integration status in the Insights header.
 
-<!-- image .gitbook/assets/Dashboard view.png - example of viewing a dashboard -->
 
 ### Explore data
 
@@ -50,18 +51,26 @@ If a widget or report uses a specific time range, changing the Insight time has 
 
 Some widgets allow you to drill down into data. For example, you can select a segment of a bar on a bar chart to examine the data for that segment.
 
+![](./static/drilldown.png)
+
 ### Access Insights from the Insights list
 
 1. While viewing an Insight, select **All Insights** in the header, and then select **Manage Insights** to go to the **Insights** list.
 2. Select the Insight you want to view from the **Insights** list.
-3. Select a Collection category.
-4. Select a Collection. Upon selecting a Collection, the Insight you selected from the **Insights** list opens.
+
+![](./static/manage-insights.png)
+
+3. Select a **Collection category**.
+4. Select a **Collection**. Upon selecting a Collection, the Insight you selected from the **Insights** list opens.
 
 ## Create Insights
 
 1. Go to any Insight. For instructions, go to [View Insights](#view-insights).
 2. In the header, select **All Insights**, and then select **Manage Insights**.
 3. Select **New Insight**.
+
+![](./static/create-insight.png)
+
 4. Enter a **Name** for the Insight.
 5. Under **Parameters**, you can modify the following settings:
 
@@ -76,11 +85,11 @@ Some widgets allow you to drill down into data. For example, you can select a se
 
 7. Select **Create** to save the Insight metadata. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations).
 
-### Add widgets
+### Add reports
 
-Widgets (also known as *reports*) are the parts of your Insights that contain data. Widgets can present a single statistic or they can present charts, graphs, and tables that compare or combine multiple statistics.
+Reports (also known as *widgets*) are the parts of your Insights that contain data. Reports can present a single statistic or they can present charts, graphs, and tables that compare or combine multiple statistics.
 
-To add widgets to Insights:
+To add reports to Insights:
 
 1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
 2. Select **Settings**, and then select **Add Widget**.
@@ -89,20 +98,20 @@ To add widgets to Insights:
 5. Select **Next: Place Widget** and arrange the widget on the Insight.
 6. Select **Save Layout**.
 
-:::info Where does the data in widgets come from?
+![](./static/sample-report.png)
 
-Widgets get data from [integrations](/docs/category/integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
-You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
+:::info Where does the data in reports come from?
+
+Reports get data from [integrations](/docs/category/integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
+
+You can also configure individual metrics and reports to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
 :::
 
 ### Manage Insights associations
 
-There are two ways to manage the Collections associated with Insights:
-
-* When viewing Insights, select the **Settings** icon, and then select **Collections**.
-* From the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](./sei-projects-and-collections/manage-collections.md#manage-insights-associations).
+You can manage the Collections associated with Insights from the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](./sei-projects-and-collections/manage-collections.md#manage-insights-associations).
 
 ### Change the color scheme
 
@@ -147,11 +156,15 @@ Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Resear
 If you want to create a DORA Metrics Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics.md).
+2. Add reports for [DORA metrics](./sei-metrics-and-reports/dora-metrics.md).
 
 ### Dev Insights
 
-Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration. For more information about SCM metrics and reports, go to [velocity metrics](./sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics.md) and [SCM reports](./sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md).
+Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration. 
+
+For more information about SCM metrics and reports, go to [velocity metrics](./sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics.md) and [SCM reports](./sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md).
+
+![](./static/dev-insights.png)
 
 ### Business Alignment
 

@@ -108,12 +108,12 @@ export const certifications: CardItem[] = [
     type: certType.administrator,
     description:
       "STO Administrator focuses on configuring and managing security testing processes within the Harness platform.",
-    version: "Harness STO Free/Team Plans",
+    version: "Harness STO Enterprise Plans",
     link: "/certifications/sto?lvl=administrator",
     // numberOfCerts: 1,
   },
   {
-    title: "Cloud Cost Management  - Administrator (BETA Coming Soon)",
+    title: "Cloud Cost Management  - Administrator (BETA)",
     module: MODULES.ccm,
     type: certType.administrator,
     description:
@@ -123,7 +123,7 @@ export const certifications: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Chaos Engineering  - Developer (BETA)",
+    title: "Chaos Engineering  - Developer",
     module: MODULES.ce,
     type: certType.developer,
     description:

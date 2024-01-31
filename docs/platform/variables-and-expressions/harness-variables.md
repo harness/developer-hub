@@ -746,6 +746,32 @@ https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs
 The expression \<+pipeline.execution.Url> has been deprecated.
 :::
 
+
+
+### \<+pipeline.executionMode>
+
+The execution mode  of the pipeline. This will tell the execution mode(i.e `NORMAL`, `POST_EXECUTION_ROLLBACK`, `PIPELINE_ROLLBACK`) of the pipeline.
+
+**Types of Execution Mode:**
+1) Normal Execution: A execution which could either be successful or failed.
+
+2) [Post deployment Rollback[POST_EXECUTION_ROLLBACK]](../../continuous-delivery/manage-deployments/rollback-deployments.md)
+
+3) [Rollback pipelines[PIPELINE_ROLLBACK]](../../platform/pipelines/define-a-failure-strategy-for-pipelines.md)
+
+![](./static/execution-mode-expression.png)
+
+We can use the expression `<+pipeline.executionMode>` under conditional execution. Conditional execution is to ensure that a step only runs when a Post Execution Rollback has been triggered.
+
+![](./static/execution-mode-conditional-execution.png)
+
+For example:
+
+**Output:**
+
+![](./static/execution-mode-execution-output.png)
+
+
 ### \<+pipeline.name>
 
 The name of the current pipeline.
@@ -762,7 +788,7 @@ For CD pipelines, the Id is named execution. For CI pipelines, the Id is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
 ### \<+pipeline.startTs>
 

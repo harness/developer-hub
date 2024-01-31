@@ -1,56 +1,33 @@
 import { Horizon } from "./roadmapData";
 
-export const CiData: Horizon = {
-  "time one ci": {
-    description: "Description",
+export const CiData: Horizon =  {
+  "Now": {
+    description: "What is being delivered now",
     feature: [
       {
-        tag: ["K8s", "security"],
-        title: "ci title 1",
-        description: "description 1",
-      },
-      {
-        title: "ci title 2",
-        description: "description2 ",
-      },
-      {
-        tag: ["K8s", "security"],
-        title: " ci title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Now",
+        description: "Description Now",
       },
     ],
   },
-  "time two ci": {
-    description: "Description",
+  "Next": {
+    description: "What is being developed next",
     feature: [
       {
-        title: "ci title 1",
-        description: "description 1",
-      },
-      {
-        title: "ci title 2",
-        description: "description2 ",
-      },
-      {
-        title: " ci title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Next",
+        description: "Description Next",
       },
     ],
   },
-  "time three ci": {
-    description: "Description",
+  "Later": {
+    description: "What is being developed later",
     feature: [
       {
-        title: "ci title 1",
-        description: "description 1",
-      },
-      {
-        title: "ci title 2",
-        description: "description2 ",
-      },
-      {
-        title: " ci title 3",
-        description: "description 3",
+        tag: ["K8s", "Security"],
+        title: "Feature Later",
+        description: "Description Later",
       },
     ],
   },
