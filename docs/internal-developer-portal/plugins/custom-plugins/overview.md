@@ -7,6 +7,14 @@ sidebar_position: 1
 
 The Custom Plugins feature in IDP will allow users to plug their own private Backstage plugins into the Harness IDP and use them along with the curated plugins available for everyone. The development and ownership of these plugins is dependent on the users. 
 
+:::warning
+
+This feature is **not available in production environment yet**, meanwhile take a look at the demo of custom plugins to get an overview of it.
+
+<DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
+
+:::
+
 :::info
 
 At present we only support the **Frontend Plugins** allowing you to create your own UI components, and use the **Backstage proxy** and **Delegates**, to connect to your internal systems and show meaningful data on the IDP UI.

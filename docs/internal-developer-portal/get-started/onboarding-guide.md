@@ -131,7 +131,11 @@ More instructions on [using github app in github connector](https://developer.ha
 </TabItem>
 </Tabs>
 
+:::info
 
+The scope is tied to URL format `https://gitprovider.com/org-name` so it is mandatory for all the git providers to provide the URL till at least org name. Further it can be scoped down to repository or project level as well. 
+
+:::
 
 
 ## Create and Register Entities
