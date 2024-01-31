@@ -102,7 +102,6 @@ There are two ways Harness collects logs:
              - app.kubernetes.io/name=<SERVICE_NAME>
    ```
 
-
 ### Collect Helm release value data
 
 The support bundle utility plugin allows you to collect Helm release data and values. For more information, go to [Helm](https://troubleshoot.sh/docs/collect/helm/) in the Troubleshoot.sh documentation.
@@ -164,27 +163,6 @@ To download the support bundle manifest and prepare it for use, do the following
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <your-namespace> <your-release-name> <module-name>
    ```
-#### Services
-
-The `support-bundle.yaml` file includes the following services.
-
-- access-control
-- change-data-capture
-- debezium-service
-- gateway
-- manager
-- log-service
-- migrator
-- ng-custom-dashboards
-- ng-dashboard-aggregator
-- ng-manager
-- pipeline-service
-- platform-service
-- policy-mgmt
-- scm
-- service-discovery-manager
-- template-service
-
 
 #### Example manifest
 
