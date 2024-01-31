@@ -80,9 +80,27 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## January 2024
+## February 2024
+
+### Version 1.23.x <!--  February xx, 2024 -->
+
+#### New features and enhancements
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
+
+   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
+
+   This item requires Harness Delegate version 24.01.82110 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- The `waitForInitContainers` lacked a versioned tag, and its pull policy was not configurable. This led to the usage of a bugged image that wasn't re-downloaded due to the same image digest and reliance on the cached image. (PL-46444)
+
+   This has been resolved by making `waitForInitContainers` configurable at both global and service levels, with service-level settings taking precedence. Additionally, configuration options for the image, resources, and security have been introduced through overrides.
 
 ### Version 1.22.3 <!--  January 29, 2024 -->
+
+## January 2024
 
 #### New features and enhancements
 
