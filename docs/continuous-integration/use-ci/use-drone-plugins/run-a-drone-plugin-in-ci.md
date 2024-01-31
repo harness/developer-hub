@@ -165,7 +165,7 @@ An example of the **Plugin** step configuration is provided below; however, your
                       artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
-For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-and-upload-artifacts).
+For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-push-upload).
 
 </details>
 

@@ -128,7 +128,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "Build and upload artifacts in CI pipelines.",
-          link: "/docs/category/build-and-upload-artifacts",
+          link: "/docs/category/build-push-upload",
         },
         {
           title: "Run tests",

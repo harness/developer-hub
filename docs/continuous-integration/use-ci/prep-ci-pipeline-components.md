@@ -98,7 +98,7 @@ If you need to shared data across stages, use [caching](/docs/continuous-integra
 
 A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on. Go to the following documentation for details about how you can use various CI steps in your pipelines:
 
-* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Build and upload artifacts](/docs/category/build-push-upload)
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)

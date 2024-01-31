@@ -324,6 +324,6 @@ pipeline:
 Now that you have created a pipeline that builds and tests a C or C++ app, you could:
 
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+- Add steps to [build and upload artifacts](/docs/category/build-push-upload).
 - Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 - Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

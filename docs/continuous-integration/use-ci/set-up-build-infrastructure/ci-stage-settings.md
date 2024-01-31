@@ -308,7 +308,7 @@ The following **Platform** settings are available:
 
 The **Execution** tab is where you add steps to the stage. For details about different step types, go to:
 
-* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Build and upload artifacts](/docs/category/build-push-upload)
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
