@@ -123,7 +123,7 @@ There are several annotations supported by the Kubernetes plugin, and you can us
 
 ### Adding the entity annotation
 
-In order for Backstage to detect that an entity has Kubernetes components, the following annotation should be added to the entity's `catalog-info.yaml`:
+In order for IDP to detect that an entity has Kubernetes components, the following annotation should be added to the entity's `catalog-info.yaml`:
 
 ```YAML
 annotations:
