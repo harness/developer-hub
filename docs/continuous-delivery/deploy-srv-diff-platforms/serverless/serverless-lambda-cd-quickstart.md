@@ -1,7 +1,7 @@
 ---
 title: Serverless.com framework for AWS Lambda
 description: Deploy a Serverless Lambda application to AWS Lambda using Harness.
-sidebar_position: 900
+sidebar_position: 1
 helpdocs_topic_id: 5fnx4hgwsa
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -284,6 +284,10 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
    - In **Advanced**, you can see **Serverless Config File Path**. Use this setting when your Serverless manifest isn't named `serverless.yml|.yaml|.js|.json`. This option is the same as the `--config` option in `serverless deploy`. See [AWS - deploy](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy) from Serverless.
 
 You can see the serverless.yaml manifest in Harness.
+
+:::info
+You can also use AWS S3 or Harness Local FileStore as your manifest provider. For information on how to configure those see [Manifest Providers for Serverless Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-providers-for-serverless-lambda.md)
+:::
 
 ![](./static/serverless-lambda-cd-quickstart-112.png)
 
