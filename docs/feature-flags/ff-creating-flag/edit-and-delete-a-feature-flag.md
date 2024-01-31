@@ -54,12 +54,7 @@ To view a list of potentially stale flags:
 
    ![The top of the Feature Flags page, with the filter Potentially Stale Flags highlighted](./static/potentially-stale-flag-filter.png)
 
-
 ## Archive and restore flags
-
-:::info note
-This feature is currently behind the feature flag `FFM_7921_ARCHIVING_FEATURE_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 To remove a flag from Harness you must archive it first. This gives you the option of restoring the flag within 30 days. After 30 days, an archived flag is permanently deleted. You can [check for stale flags](#check-for-stale-flags) to identify which flags you might want to archive.
 

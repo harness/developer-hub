@@ -4930,3 +4930,228 @@ Replace "filename" with the name of the file you want to fetch from the file sto
 
 #### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
+
+#### Is there a way to prevent editing the input set during the rerun of pipelines?
+
+No, currently, there is no way to prevent a user from editing an input set.
+
+#### Is it possible for me to specify an artifact source based on the environment? 
+
+You can create overrides for manifest, config file, variable, and values.yaml.
+For artifact overrides, I would suggest creating a variable override. You can define the artifact as an expression and use the variable expression.
+Create separate variables for prod and non-prod and override the values based on the env.
+
+#### I have a terraform apply step inside a stage with matrix or loop, I want to know if that means the underlying repo will be cloned every time the step runs for each matrix/loop item?
+
+Yes, the underlying repo will be cloned for each run of the step in looping.
+
+#### How do I configure autoscaling for ECS manifests?
+
+To configure autoscaling for ECS manifests, you need to set up Scalable Targets. You can follow the instructions provided in the ECS Deployment Tutorial to learn how to configure autoscaling using Scalable Targets.
+
+#### What is a Scalable Target and how does it relate to autoscaling in ECS?
+
+Scalable Targets are configurations that define the resources you want to scale, such as Amazon ECS services. In the context of autoscaling ECS manifests, Scalable Targets help you manage the scaling policies for your ECS services.
+
+#### Can I monitor CloudWatch Alarms for ECS autoscaling issues?
+
+Currently, we do not have a direct method to retrieve CloudWatch Alarms data. While Continuous Verification supports fetching CloudWatch Logs and Metrics, alarms are not included. For more information on how to configure Continuous Verification, you can refer to the documentation.
+
+#### Is there any inbuilt variable to get the stage execution ID -
+
+Currently, no we do not have an inbuilt variable to get stage execution ID.
+You can use the below script to get the execution ID of stage -
+
+```
+url="<+stage.executionUrl>"
+
+stage_value=$(echo "$url" | grep -oP 'stage=([^&]+)' | awk -F'=' '{print $2}')
+
+echo "The last stage value is: $stage_value"
+
+```
+
+#### How can I reduce the number of AWS calls during deployment to mitigate issues?
+
+You can optimize your deployment process by reducing the number of AWS calls. Refer to the AWS Connector Settings Reference for information on AWS backoff strategies. Implementing these strategies can help in managing AWS calls and potentially improve the execution of your deployment scripts.
+
+#### How to stick the pipeline to fetch files always from the helm3-based delegate?
+
+One way would be to add a "helm 3" tag to your helm 3 delegates and modify the helm connector to use delegates that have a helm 3 tag.
+
+#### Pipeline Abort Notification
+
+You need to go to the Notify Section in the pipeline and select the pipeline end notification type even for abort pipeline notifications. You can choose the type of notification slack, email etc. 
+
+#### Can Terragrunt steps be used independently?
+
+The Terragrunt steps can be used independently or you can connect them by using the same Provisioner Identifier in all of the steps
+Here's how to use all the steps together:
+
+Terragrunt Plan step:
+Add the Terragrunt Plan step and define the Terragrunt script for it to use.
+Select Apply in Command.
+Enter a Provisioner Identifier.
+Terragrunt Apply step:
+Select Inherit from Plan in Configuration Type.
+Reference the Terragrunt Plan step using the same Provisioner Identifier.
+Terragrunt Destroy step:
+Select Inherit from Apply or Inherit from Plan in Configuration Type.
+Reference the Terragrunt Apply or Plan step using the same Provisioner Identifier.
+Terragrunt Rollback step:
+Reference the Terragrunt Apply or Plan step using the same Provisioner Identifier.
+
+#### How can you use CloudFormation with Harness?
+
+You can use Harness with CloudFormation in two ways:
+Dynamic infrastructure provisioning: you can provision the target infrastructure for a deployment as part of the stage's Environment settings, and then deploy to that provisioned infrastructure in the same stage.
+Ad hoc provisioning: provision any resources other than the target infrastructure for the deployment.
+
+#### Remote stage template and the pipeline exist in the same Git repo
+
+In order to use the Template in your Pipeline if your remote stage template and pipeline are both present in the same Git repository, make sure your pipeline and template are both present in the same branch.
+
+#### When you create a Git connector to the repo for your project
+
+Make sure the connector must use the Enable API access option and token. The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
+
+#### What are Execution notes in a pipeline?
+
+You can add a pipeline execute note after the execution of the pipeline. Currently this can be achive via UI as well as the API.
+https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getNotesForExecution
+
+#### Getting truncated logs in a pipeline execution.
+
+We do have a pipeline single line limit which is 25KB for a single line in logs. 
+Its documented here : https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations/
+
+#### Re-run pipeline takes too much time
+
+If you pipeline is stored in GIT and using multiple stages and templates which also are stored in git, it might take a few seconds as Harness makes APi calls and fetches inputs from git. 
+
+#### Accessing a variable in namepsace of an environment which is defined in the shell script step of the pipeline.
+
+You will need to add a custom stage and then export an output variable in order to use this output variable in the deploy stage environment variable as when the pipeline will execute it will initialize the service and environment before getting to tht shell setp. 
+
+#### Using filestore serviceVariables and service secret field
+
+The expression ```<+serviceVariables>``` with secret variables in service is not supported in fileStore. 
+
+#### Switching from First Gen to Next Gen and vice versa users get User not authorised error
+
+As First Gen and Next Gen Users are separated, hence the users needs to be added in both First Gen and Next Gen in order to access both. 
+If user is added in First Gen and not in Next Gen he will get the above error and vice versa.
+
+#### Fetch and update a Harness secret
+
+You can always leverage Harness API to uopdate your existing Secrets. 
+Api Doc : https://apidocs.harness.io/tag/Account-Secret#operation/delete-account-scoped-secret
+
+#### Custom logo for template not showing up during pipeline execution
+
+This is the expected behaviour that while execution, in the graph we do not display icon for template similar to pipelineStudio. 
+It is same for step and stage templates as well. 
+
+#### Step group variables not accessible between steps using stepGroup expression in container step
+
+The Container Step creates its step group with the Init and Run steps during pipeline execution. The reason why the container step creates its own Step Group is, that the additional Init Step is needed to create a build pod with containers.
+
+Since the inner container step group is created, the ```<+stepGroup>``` expression in the Container Step script refers to the inner step group, not to the outer Deployment Dry Run group. Hence, we can’t use ```<+stepGroup>``` in the container step to access the outer step group steps.
+
+We need to use the following expressions to get the Deployment Dry Run group steps identifiers/names in the Container Step,
+
+Get Deployment Dry Run step identifier:
+
+```
+<+execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.identifier>
+or,
+<+pipeline.stages.Test_Policy.spec.execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.identifier>
+
+Get Deployment Dry Run step name:
+
+<+execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.name>
+or,
+<+pipeline.stages.Test_Policy.spec.execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.name>
+```
+
+#### Reconcile message on git experience pipeline but nothing to update
+
+Always check your your template yaml for extra characters which is not required as part of the pipeline yaml. 
+
+#### Masking the httpResponseBody as it contains secret
+
+Currently you can't obfuscate the httpsresponse body. 
+
+#### Environment Selection Options appearing in Custom Stages
+
+Yes you can have the environment selection in custom stage with the FF CDS_CUSTOM_STAGE_WITH_ENV_INFRA. 
+https://developer.harness.io/docs/platform/pipelines/add-a-stage/#environments-and-infrastructure-definitions-in-custom-stages
+
+#### Create WinRM Credential using terraform.
+
+You can automate creating winrm credential/secret key via our existing API as listed here https://apidocs.harness.io/tag/Account-Secret#operation/create-account-scoped-secret
+
+#### Is it possible to change the company and account name in Harness
+
+You can reach out to Harness Support as this can be done from the backend.
+
+#### Create custom Harness Pipeline variables and provide a set of value to choose from at the runtime. 
+
+Yes you can create custom Harness Pipeline variables and provide a set of value to choose from at the runtime to choose from. 
+This document should help you : https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/
+
+#### Consuming the events from audit trail
+
+In order to consume the events from audit trail, you need to use audit streaming : https://developer.harness.io/docs/platform/governance/audit-trail/audit-streaming/
+ 
+We also have API for audit events : https://developer.harness.io/docs/platform/governance/audit-trail/audit-streaming/ 
+ 
+#### Conditional service overrides or manifest overrides?
+
+You can override at environment level:
+https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files
+ 
+So you can create multiple yaml file and can use expression in yaml path to resolve correctly.
+ 
+You can also override at runtime:
+https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files#override-values-at-runtime
+
+#### How do I make a pipeline step report to Slack?
+
+For a pipeline step failure, you should be able to just set a Notification rule for the pipeline, and check the Step Failed option and add the Slack Webhook URL as per https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#slack-notifications.
+
+#### How to schedule your deployment
+
+We have Cron based trigger so that you can execute a pipeline at given time:
+https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/
+
+#### How to get string from ```<+eventPayload.repository.name>``` in trigger config
+
+Harness works with JEXL, you can use Java string methods for various tasks. For example, if you want to remove a specific prefix like "PSS.CPN.", you can use this expression: ```<+<+eventPayload.repository.name>.replace("PSS.CPN.", "")>```.
+ 
+If the repository name doesn't always start with "PSS.CPN." but the prefix is always the same length, you can try a different method, like this: ```<+<+eventPayload.repository.name>.substring(7)>```. This will skip the first seven characters of the string.
+
+#### How does Harness NG rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
+
+You can perform rollbacks manually, automatically, or use a hybrid option (triggering it automatically but requiring approval before it happens).
+Post-deployment rollback: This can be considered a manual approach, allowing you to rollback deployments that succeeded on technical criteria but that you want to roll back for other reasons. 
+Rollback as a failure strategy: This could be considered an automatic approach. Whenever something is deployed into your environment and an issue occurs during the execution, the failure strategy will trigger the rollback flow. This can be a custom flow or a pre-generated one by Harness.
+
+#### How does rollback works if there are any configuration related changes like change in env variable between earlier version and current version?
+
+This will depend on your deployment type. Let's suppose you're using Kubernetes. As mentioned in the response to the first question, we're going to revert all the manifests that were changed using a declarative approach or the standard approach (Kubernetes default).
+ 
+For example:
+Declarative approach: kubectl apply -f (prevision version of manifest) instead of kubectl rollout undo
+Standard: kubectl rollout undo
+ 
+To enable declarative rollback, configure the Harness service options. These options are defined in the service because they are tied to the service's manifests.
+
+#### What Kustomize binary versions Harness Support.
+
+Harness includes Kustomize binary versions 3.5.4 and 4.0.0. By default, Harness uses 3.5.4. 
+To use 4.0.0, you must enable the feature flag NEW_KUSTOMIZE_BINARY in your account
+
+#### What will happen to running pipeline if deployment freeze is enabled.
+
+If a pipeline is running and a freeze happens, the pipeline will continue to run until the current stage of the pipeline has executed. Once that stage executes, the freeze is implemented and no further stages will execute.
