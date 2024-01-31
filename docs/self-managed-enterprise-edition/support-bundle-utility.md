@@ -7,7 +7,7 @@ sidebar_position: 28
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition provides a support bundle utility plugin option that enables you to troubleshoot system issues more efficiently. This feature allows you to collect data from various services on your system. The tool records logs from all pods running in a Kubernetes cluster, relevant ConfigMaps (excluding secrets), HAR files for HTTP traffic, and any application-specific data dumps, if needed. All the gathered data is then compiled into a downloadable bundle that you can use for troubleshooting and customer support purposes.
+Harness Self-Managed Enterprise Edition provides a support bundle utility plugin option that enables you to troubleshoot system issues more efficiently. This feature allows you to collect data from various services on your system. The tool records logs from all pods running in a Kubernetes cluster and relevant ConfigMaps (excluding secrets). All the gathered data is then compiled into a downloadable bundle that you can use for troubleshooting and customer support purposes.
 
 ## Installation
 
@@ -15,7 +15,7 @@ Harness Self-Managed Enterprise Edition provides a support bundle utility plugin
 
 The following prerequisites are needed.
 
-- Git
+- Git (optional when using the binary)
 
 - Access to the cluster
 
@@ -25,7 +25,7 @@ The following prerequisites are needed.
 
 ### Installation options
 
-You can install the support bundle utility using Krew or by downloading the binary. For instructions to install Krew, go to [Installing](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) in the Krew documentation.
+You can install the support bundle utility using the Krew package manager or by downloading the binary. For instructions to install Krew, go to [Installing](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) in the Krew documentation.
 
 #### Install using Krew
 
@@ -102,10 +102,6 @@ There are two ways Harness collects logs:
              - app.kubernetes.io/name=<SERVICE_NAME>
    ```
 
-:::info
-Services without file logging have a maximum of 10MB logs available.
-
-:::
 
 ### Collect Helm release value data
 
@@ -161,7 +157,7 @@ To download the support bundle manifest and prepare it for use, do the following
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <YOUR_NAMESPAACE> <YOUR_RELEASE_NAME>
    ```
 
-   This will create a `support-bundle.yaml` file in the current directory. You can use this file to collect the support bundle.
+   This will create a `support-bundle.yaml` file in the current directory. You can use this file to collect the support bundle information from all of your running services.
 
 2. To download a module-specific manifest, you can use the following command.
 
