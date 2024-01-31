@@ -147,6 +147,28 @@ The tool by default redacts any password or secrets with common regex patterns.
 
 :::
 
+### Download the example manifest
+
+An example support bundle manifest is available in the [Harness Helm chart repo](https://github.com/harness/helm-charts/tree/main/support-bundle-manifests#readme).
+
+After you have [installed the utility](#installation-options), download and prepare your support bundle manifest.
+
+To download the support bundle manifest and prepare it for use, do the following:
+
+1. Run the following command.
+
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <YOUR_NAMESPAACE> <YOUR_RELEASE_NAME>
+   ```
+
+   This will create a `support-bundle.yaml` file in the current directory. You can use this file to collect the support bundle.
+
+2. To download a module-specific manifest, you can use the following command.
+
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <your-namespace> <your-release-name> <module-name>
+   ```
+
 #### Example manifest
 
 The following example manifest collects Helm values for releases and logs ConfigMap data for the `ng-manager` service.
