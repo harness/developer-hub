@@ -5,6 +5,8 @@ sidebar_position: 1
 helpdocs_topic_id: 5fnx4hgwsa
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart
 helpdocs_is_published: true
 ---
 
