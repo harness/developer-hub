@@ -86,15 +86,12 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 - [Deploy delegate on Docker](/docs/platform/Delegates/install-delegates/overview)
 
-- Install delegate minimal image without SDKs
+- [Install delegate minimal image without SDKs](/tutorials/platform/secure-delegate-default-to-minimal/)
 
 - [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
 
-
-
 </TabItem>
   <TabItem value="Notifications" label="Notifications">
-
 
 Notifications are used to alert your team of new, resurfaced, or critical events. With notifications, you can ensure your team is aware of important events that require action.
 
@@ -106,22 +103,15 @@ Harness Platform supports the following notification methods.
 - PagerDuty
 - Webhook
 
-
-
 </TabItem>
   <TabItem value="Secret management" label="Secrets Mgmt">
-
 
 import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
 
 <Secretmgmtsup />
 
-
-
 </TabItem>
-  <TabItem value="Access Control" label="Access Control">
-
-
+  <TabItem value="Access Control" label="RBAC">
 
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 
@@ -157,15 +147,12 @@ Using RBAC helps you:
 
    JIT provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
 
-
 </TabItem>
   <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed EE">
-
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
 <Smp />
-
 
 </TabItem>
 </Tabs>
