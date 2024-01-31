@@ -4930,3 +4930,51 @@ Replace "filename" with the name of the file you want to fetch from the file sto
 
 #### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
+
+#### Is there a way to prevent editing the input set during the rerun of pipelines?
+
+No, currently, there is no way to prevent a user from editing an input set.
+
+#### Is it possible for me to specify an artifact source based on the environment? 
+
+You can create overrides for manifest, config file, variable, and values.yaml.
+For artifact overrides, I would suggest creating a variable override. You can define the artifact as an expression and use the variable expression.
+Create separate variables for prod and non-prod and override the values based on the env.
+
+#### I have a terraform apply step inside a stage with matrix or loop, I want to know if that means the underlying repo will be cloned every time the step runs for each matrix/loop item?
+
+Yes, the underlying repo will be cloned for each run of the step in looping.
+
+#### How do I configure autoscaling for ECS manifests?
+
+To configure autoscaling for ECS manifests, you need to set up Scalable Targets. You can follow the instructions provided in the ECS Deployment Tutorial to learn how to configure autoscaling using Scalable Targets.
+
+#### What is a Scalable Target and how does it relate to autoscaling in ECS?
+
+Scalable Targets are configurations that define the resources you want to scale, such as Amazon ECS services. In the context of autoscaling ECS manifests, Scalable Targets help you manage the scaling policies for your ECS services.
+
+#### Can I monitor CloudWatch Alarms for ECS autoscaling issues?
+
+Currently, we do not have a direct method to retrieve CloudWatch Alarms data. While Continuous Verification supports fetching CloudWatch Logs and Metrics, alarms are not included. For more information on how to configure Continuous Verification, you can refer to the documentation.
+
+#### Is there any inbuilt variable to get the stage execution ID -
+
+Currently, no we do not have an inbuilt variable to get stage execution ID.
+You can use the below script to get the execution ID of stage -
+
+```
+url="<+stage.executionUrl>"
+
+stage_value=$(echo "$url" | grep -oP 'stage=([^&]+)' | awk -F'=' '{print $2}')
+
+echo "The last stage value is: $stage_value"
+
+```
+
+#### How can I reduce the number of AWS calls during deployment to mitigate issues?
+
+You can optimize your deployment process by reducing the number of AWS calls. Refer to the AWS Connector Settings Reference for information on AWS backoff strategies. Implementing these strategies can help in managing AWS calls and potentially improve the execution of your deployment scripts.
+
+#### How to stick the pipeline to fetch files always from the helm3-based delegate?
+
+One way would be to add a "helm 3" tag to your helm 3 delegates and modify the helm connector to use delegates that have a helm 3 tag.
