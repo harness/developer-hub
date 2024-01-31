@@ -6,7 +6,7 @@ sidebar_position: 2
 
 :::info
 
-This Feature is in **BETA** phase and not available in **production** yet also is behind `IDP_ENABLE_CUSTOM_PLUGINS` Feature Flag. Please contact the IDP product team if you would like to try out Custom Plugins.
+**Coming Soon**. This feature is **not available in production environment** yet, meanwhile take a look at the details of custom plugins to get an overview of it. 
 
 :::
 
