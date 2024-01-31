@@ -64,7 +64,7 @@ For more details on creating a pipeline, go to [Create your first CD pipeline](/
 To perform Post Deployment Rollback, user must have following permissions:-
 
 1. Pipeline **Execute** permission. 
-2. UEnvironment **Rollback** permission.
+2. Environment **Rollback** permission.
 ![](./static/post_prod_rollabck.png)
 :::info
 
