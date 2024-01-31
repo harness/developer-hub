@@ -59,7 +59,7 @@ If you are new to using Artifactory as a Docker repo, go to the JFrog documentat
 
 If you are pulling images or building/pushing images to JFrog Artifactory in Harness CI pipelines, **you can use the Artifactory connector for JFrog non-Docker registries only**.
 
-For JFrog Docker registries, you must use the Docker connector. For more information, go to [Build and push to JFrog Docker registries](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-jfrog.md) and [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog.md). This restriction also applies when pulling images from Artifactory for use in other steps, such as [CI Run steps](/docs/continuous-integration/use-ci/run-step-settings.md).
+For JFrog Docker registries, you must use the Docker connector. For more information, go to [Build and push to JFrog Docker registries](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-jfrog.md) and [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md). This restriction also applies when pulling images from Artifactory for use in other steps, such as [CI Run steps](/docs/continuous-integration/use-ci/run-step-settings.md).
 
 ## Artifactory connector settings
 

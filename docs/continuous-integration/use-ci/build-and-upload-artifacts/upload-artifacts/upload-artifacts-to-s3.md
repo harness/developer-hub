@@ -1,17 +1,17 @@
 ---
 title: Upload Artifacts to S3
 description: Upload artifacts to AWS or other S3 providers such as MinIo.
-sidebar_position: 32
+sidebar_position: 13
 helpdocs_topic_id: wdzojt3ep3
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 To upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility), you can either:
 
@@ -21,7 +21,7 @@ To upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io
 To upload artifacts to S3, you need:
 
 * Access to an S3 instance.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* A [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * An [AWS connector](#aws-connector), if you want to use the **Upload Artifacts to S3** step.
 
@@ -52,7 +52,7 @@ The **Upload Artifacts to S3** step has the following settings. Depending on the
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 #### AWS Connector
 
@@ -104,7 +104,7 @@ The name of the S3 bucket name where you want to upload the artifact.
 
 Path to the file or directory that you want to upload.
 
-If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../../run-step-settings.md) to compress the artifact before uploading it.
 
 #### Endpoint URL
 
@@ -131,19 +131,17 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to view artifacts on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to view artifacts on the **Artifacts** tab on the [Build details page](../../viewing-builds.md).
 
-Add the [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to S3** step.
-
+Add the [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to S3** step.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 Configure the **Plugin** step settings as follows:
 
@@ -154,10 +152,8 @@ Configure the **Plugin** step settings as follows:
   * `file_urls`: Provide the URL to the artifact that was uploaded in the **Upload Artifacts to S3** step, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
   * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 
@@ -179,23 +175,19 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 * `file_urls`: Provide the URL to the target artifact that was uploaded in the **Upload Artifacts to S3** step, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
 * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-
 </TabItem>
 </Tabs>
 
-
 ## Use the S3 Upload and Publish plugin
 
-You can use the [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to upload an artifact to S3 and publish the artifact URL on the [Artifacts tab](../viewing-builds.md).
+You can use the [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to upload an artifact to S3 and publish the artifact URL on the [Artifacts tab](../../viewing-builds.md).
 
 If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline. This plugin provides the same functionality as the **Upload Artifacts to S3** step combined with the **Artifact Metadata Publisher** plugin; however it may not be appropriate for use cases that require advanced configuration.
-
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-
-In your pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, and configure the settings as follows:
+In your pipeline's **Build** stage, add a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, and configure the settings as follows:
 
 * **Name:** Enter a name.
 * **Container Registry:** Select a Docker connector.
@@ -206,16 +198,14 @@ In your pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plu
    * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
    * `aws_bucket`: The target S3 bucket.
    * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-   * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
+   * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../../run-step-settings.md) to compress the artifact before uploading it.
    * `target`: Optional. Provide a path, relative to the `aws_bucket`, where you want to store the artifact. Do not include the bucket name; you specified this in `aws_bucket`. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a `target`, Harness uploads the artifact to the bucket's main directory. You might want to use expressions, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 * **Image Pull Policy:** Select **If Not Present**.
-
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-
-In your pipeline's `CI` stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
+In your pipeline's `CI` stage, add a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
 
 ```yaml
               - step:
@@ -240,22 +230,20 @@ In your pipeline's `CI` stage, add a [Plugin step](../use-drone-plugins/plugin-s
 
 For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/variables-and-expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 
-If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../../run-step-settings.md) to compress the artifact before uploading it.
 
 :::
-
 
 </TabItem>
 </Tabs>
 
-
 ## Build logs and artifact files
 
-When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
+When you run the pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md).
 
 If the build succeeds, you can find the artifact on S3.
 
-If you used the **Artifact Metadata Publisher** or **S3 Upload and Publish** plugin, you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).
+If you used the **Artifact Metadata Publisher** or **S3 Upload and Publish** plugin, you can find the artifact URL on the [Artifacts tab](../../viewing-builds.md).
 
 :::tip
 
@@ -263,25 +251,21 @@ On the **Artifacts** tab, select the step name to expand the list of artifact li
 
 If your pipeline has multiple steps that upload artifacts, use the dropdown menu on the **Artifacts** tab to switch between lists of artifacts uploaded by different steps.
 
-<!-- ![](./static/artifacts-tab-with-link.png) -->
+<!-- ![](../static/artifacts-tab-with-link.png) -->
 
-<DocImage path={require('./static/artifacts-tab-with-link.png')} />
+<DocImage path={require('../static/artifacts-tab-with-link.png')} />
 
 :::
 
 ## Pipeline YAML examples
 
-
 <Tabs>
   <TabItem value="builtinstep" label="Upload Artifacts to S3 step" default>
 
-
 The following pipeline examples [use the Upload Artifacts to S3 step](#use-the-upload-artifacts-to-s3-step) and the [Artifact Metadata Publisher plugin](#view-artifacts-on-the-artifacts-tab).
-
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-
 
 This example pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). It produces a text file, uploads the file to S3, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -345,10 +329,8 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-
 </TabItem>
   <TabItem value="k8s" label="Self-hosted">
-
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces a text file, uploads the file to S3, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -416,22 +398,16 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-
 </TabItem>
 </Tabs>
-
-
 
 </TabItem>
   <TabItem value="plugin" label="S3 Upload and Publish plugin">
 
-
 The following pipeline examples [use the S3 Upload and Publish plugin](#use-the-s3-upload-and-publish-plugin).
-
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-
 
 This example pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). It produces a text file and uses the S3 Upload and Publish plugin to uploads the file to S3 and publish the artifact URL on the **Artifacts** tab.
 
@@ -491,10 +467,8 @@ pipeline:
                     imagePullPolicy: IfNotPresent
 ```
 
-
 </TabItem>
   <TabItem value="k8s" label="Self-hosted">
-
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces a text file and uses the S3 Upload and Publish plugin to uploads the file to S3 and publish the artifact URL on the **Artifacts** tab.
 
@@ -558,11 +532,8 @@ pipeline:
                     imagePullPolicy: IfNotPresent
 ```
 
-
 </TabItem>
 </Tabs>
-
-
 
 </TabItem>
 </Tabs>

@@ -8,7 +8,7 @@ import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-fl
 
 This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to build and push an image to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) Docker registries.
 
-For JFrog non-Docker registries, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to build the artifact, and then use the [Upload Artifacts to JFrog step](./upload-artifacts-to-jfrog.md) to upload the artifact.
+For JFrog non-Docker registries, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to build the artifact, and then use the [Upload Artifacts to JFrog step](./upload-artifacts/upload-artifacts-to-jfrog.md) to upload the artifact.
 
 You need:
 

@@ -1213,31 +1213,31 @@ Yes. Go to [Trim parent folder name when uploading to S3](./articles/Trimming-pa
 
 ### Connector errors with Upload Artifacts to S3 step.
 
-There are a variety of potential causes for AWS connector errors due to specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+There are a variety of potential causes for AWS connector errors due to specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#aws-connector).
 
 ### Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?
 
-Yes, but there are specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+Yes, but there are specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#aws-connector).
 
 ### Does the Upload Artifacts to GCS step support GCP connectors that inherit delegate credentials?
 
-No. Currenthly, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
+No. Currently, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
 
 ### Upload Artifacts to JFrog step throws certificate signed by unknown authority
 
-If you get a `certificate signed by unknown authority` error with the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog), make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
+If you get a `certificate signed by unknown authority` error with the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog), make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
 
 ### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
-With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
 
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 
-These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
+These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
 ## Test reports
 

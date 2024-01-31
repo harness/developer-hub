@@ -131,10 +131,10 @@ To publish a test report to the **Artifacts** tab, you must:
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
+   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md)
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, configured as follows:
    * **Name:** Enter a name.
    * **Container Registry:** Select a Docker connector.
@@ -150,10 +150,10 @@ To publish a test report to the **Artifacts** tab, you must:
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
+   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md)
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, for example:
 
    ```yaml
