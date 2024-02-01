@@ -3,7 +3,7 @@ title: Linux chaos infrastructure advanced management
 sidebar_position: 30
 description: Guide to advanced setup with Linux chaos infrastructure
 ---
-This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), and [logs](#logs) associated with the Linux chaos infrastructure.
+This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure.
 
 ## Advanced setup
 A set of mandatory input flags is required for the installation of the chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
@@ -62,3 +62,34 @@ Logs that are generated are stored in the `/var/log/linux-chaos-infrastructure` 
 :::info
 - These files are rotated based on their age; where files older than a specific number of days are removed. By default, this value is **30 days**.
 :::
+
+## Resilience probes for Linux
+
+HCE allows you to create the below probes for Linux:
+
+1. [HTTP](/docs/chaos-engineering/technical-reference/probes/http-probe)
+2. [Command](/docs/chaos-engineering/technical-reference/probes/cmd-probe)
+3. [Datadog](/docs/chaos-engineering/technical-reference/probes/datadog-probe)
+4. Dynatrace
+
+To enable or disable a Linux probe, you can edit the manifest. During the process, if you edit the mandatory fields `type` and `runProperties.attempt`, these values will not reflect in the execution of the experiment. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe.
+
+For example,
+For a Linux experiment, if you have a probe named `abc`, with the following characteristics:
+
+```
+probe:
+  - name: abc
+    mode: SOT
+```
+
+When you enable or disable the probe, the parameters reflect as follows:
+
+```
+probe:
+  - name: abc
+    type: ""
+    runProperties:
+      attempt: 0
+    mode: SOT
+```
