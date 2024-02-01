@@ -183,13 +183,13 @@ The following pipeline example illustrates an ingestion workflow. It consists of
 * A Run step that generates a simple Coverity data file.
 * A Coverity step that ingests the XML data.
 
-![](./static/semgrep-ingest-pipeline.png)
+![](./static/coverity-ingest-pipeline.png)
 
 
 ```yaml
 pipeline:
-  name: coverity-test-dbothwell
-  identifier: coveritytestdbothwell
+  name: coverity-example
+  identifier: coverityexample
   projectIdentifier: STO
   orgIdentifier: default
   tags: {}
@@ -225,8 +225,8 @@ pipeline:
                       EOF
               - step:
                   type: Coverity
-                  name: Coverity_1
-                  identifier: Coverity_1
+                  name: ingest_coverity_data
+                  identifier: ingest_coverity_data
                   spec:
                     mode: ingestion
                     config: default
