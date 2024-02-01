@@ -149,15 +149,15 @@ Now that Okta is set up in Harness as a SAML SSO provider, you can enable and te
    2. Log in using a Harness [user account](../role-based-access-control/add-users.md) that has a corresponding email address registered in Okta. If successful, you're redirected to the Okta log in page.
    3. On the Okta log in page, enter the email address associated with the Harness user account. The Harness account and Okta account can have different passwords. If successful, you'll be returned to Harness.
 
-   :::info note
+   :::info
 
    If you get locked out of Harness due to an SSO issue, you can log into Harness through [local login](#harness-local-login).
 
    :::
 
-   import Llnote from '/docs/platform/shared/local-login-note.md'
+ import Local from '/docs/platform/shared/local-login-note.md'
 
-   <Llnote />
+   <Local />
 
 ### SAML authorization with Okta
 
@@ -795,7 +795,7 @@ To do this, in your Keycloak account, click **Realm Settings**.
    
    ![](./static/single-sign-on-saml-117.png)
 
-8. In Harness' Add SAML Provider dialog, under **Upload the Identity Provider metadata XML**, click **Upload.**
+8. In Harness' Add SAML Provider dialog, under **Upload the Identity Provider metadata XML**, click **Upload**.
 9.  Add the SAML metadata file you downloaded from your Keycloak realm settings.
 10. Select **Add Entity ID** and enter your custom Entity ID.​ The default Entity ID is `app.harness.io`. The value you enter here will override the default Entity ID.
 11. Click **Add**.  
