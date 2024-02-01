@@ -2,10 +2,6 @@
 title: Add a new software component to the catalog
 description: Learn how you can add a new software component to the IDP software catalog.
 sidebar_position: 30
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
@@ -68,7 +64,7 @@ The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
 
-## Register Multiple softwaare components together.
+## Register Multiple software components together.
 
 We can register multiple `catalog-info.yaml` in the following ways.
 
