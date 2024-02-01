@@ -8,11 +8,7 @@ sidebar_position: 10
 
 ## What is Tagging?
 
-The Tagging Feature enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
-
-## Why use the Tagging Feature?
-
-The Tagging Feature by Harness is a great way to organise and group your feature flags. You are able to create tags to, not only, categorise your flags, but also to manage permissions. 
+The Tagging Feature by Harness is a great way to organize and group your feature flags. You are able to create tags to, not only, categorize your flags, but also to manage permissions. 
 
 <!--Insert Use Case Example -->
 
@@ -33,7 +29,7 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
 # Filtering Your Flags using Tags
 
   1. On the Home Page of the Harness Application, head over to *Feature Flags*.
-  2. On the right hand side of the screen, you can type your tag or select the tag you wany 
+  2. On the right hand side of the screen, you can type your tag or select the tag you want. 
 
 # Tags on Target Groups
 
@@ -58,12 +54,6 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  6. On the right hand side of the page, select *By Tag*, followed by *Add Tag*.
  7. From there, you can asign any pre-existing tags to the Resource Group.
  8. The users under the assigned tags should be limited to whichever settings you have permitted for them such as permission to *Create/Edit* within Feature Flags. 
-
-# Adding Tags to Target Groups
-
-<!-- How To Here -->
-
-
 
 # Related Content
 
