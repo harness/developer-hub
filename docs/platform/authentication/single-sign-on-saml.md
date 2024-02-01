@@ -155,9 +155,9 @@ Now that Okta is set up in Harness as a SAML SSO provider, you can enable and te
 
    :::
 
- import Local from '/docs/platform/shared/local-login-note.md'
+import Llnote from '/docs/platform/shared/local-login-note.md'
 
-   <Local />
+<Llnote />
 
 ### SAML authorization with Okta
 
