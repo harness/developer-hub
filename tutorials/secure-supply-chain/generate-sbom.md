@@ -57,31 +57,44 @@ The SSCA steps in your Harness pipelines use the private key to sign attestation
 
 The **SSCA Orchestration** step does the following:
 
-- Generates an SBOM in the specified format.
-- Generates and signs an attestation using the provided private key and password.
-- Stores the SBOM in Harness and uploads the `.att` file to your container registry alongside the image.
+- Generates an SBOM in the chosen format for both Containers and Repositories.
+- Specifically for Containers:
+  - Generates and signs an attestation using the provided key and password.
+  - Stores the SBOM in Harness and uploads the `.att` file to your container registry to accompany the image.
 
-1. Add the **SSCA Orchestration** step to either the **Build** or **Deploy** stage.
-   - In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
-   - In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
 
 :::info
 
 SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
 
 :::
+The **SSCA Orchestration** step includes various settings for generating the SBOM for both Containers and Repositories. We will delve into the different fields that need to be configured for each option to support the generation of the SBOM.
+
+<Tabs>
+  <TabItem value="container" label="Container" default>
+
+1. Add the **SSCA Orchestration** step to either the **Build** or **Deploy** stage.
+   - In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
+   - In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
 
 2. Enter a **Name** for the step.
+
 3. For **Step Mode**, select **Generation**.
+
 4. Select the **SBOM Tool** to use to generate the SBOM, such as **Syft**.
+
 5. For **SBOM Format**, select either **SPDX** or **CycloneDX**.
-6. Select **Image** as the **Artifact Type**.
+
+6. Select **Container** as the **Artifact Type**.
+
 7. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
+:::info
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
    - For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
    - For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
 
 8. For **Image**, enter the repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
 
@@ -92,7 +105,36 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
 
 <!-- ![](./static/sbom-ssca-orch-step.png) -->
 
-<DocImage path={require('./static/sbom-ssca-orch-step.png')} />
+<DocImage path={require('./static/container_sbom.png')} />
+
+</TabItem>
+  <TabItem value="Repository" label="Repository">
+
+1. Add the **SSCA Orchestration** step to either the **Build** or **Deploy** stage.
+   - In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
+   - In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
+2. Enter a **Name** for the step.
+3. For **Step Mode**, select **Generation**.
+4. Select the **SBOM Tool** to use to generate the SBOM, such as **Syft**.
+5. For **SBOM Format**, select either **SPDX** or **CycloneDX**.
+6. Select **Repository** as the **Artifact Type**.
+
+    :::info
+    Selecting "Repository" requires setting up a process to clone your repository into the workspace. This setup can be achieved through various approaches, such as a [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/), a [Run step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/), or during the stage creation process. It's essential that the SBOM Orchestration operates on the successfully cloned repository.
+    :::
+
+7. For **Repository URL** enter the repo URL you've configured for cloning into the workspace.
+8. **Source Path** is for specifying the path within the codebase for which you aim to generate the SBOM. It enables the generation of an SBOM for particular sections of the code inside the repository. You should start the path with a '/'. For instance, if your repository URL is `https://github.com/username/repo` and you intend to generate an SBOM for a specific part of the repository found at `https://github.com/username/repo/service-core/source`, then you should input `/service-core/source` as the path.
+9. Enter the **Git Branch** of the repository for which you want to generate the SBOM.
+10. For **Workspace,** If the cloned codebase is stored in a directory other than the default `/harness`, enter the path in the format `/harness/&lt;path>`. If you have cloned into the default `/harness`, this field can be skipped.
+
+<DocImage path={require('./static/repo_sbom.png')} />
+
+<!-- ![](./static/sbom-deploy-stage.png) -->
+
+</TabItem>
+</Tabs>
+
 
 ## Create policies
 
