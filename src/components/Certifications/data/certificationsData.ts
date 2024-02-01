@@ -113,7 +113,7 @@ export const certifications: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Cloud Cost Management  - Administrator (BETA)",
+    title: "Cloud Cost Management  - Administrator",
     module: MODULES.ccm,
     type: certType.administrator,
     description:
