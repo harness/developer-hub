@@ -1,0 +1,243 @@
+---
+title: Coverity scanner reference for STO
+description: Scan code repositories with Coverity.
+sidebar_label: Coverity settings reference
+sidebar_position: 125
+---
+
+
+You can ingest scan results from [Coverity Scan](https://scan.coverity.com/), a Synopsis service that scans open-source coding projects for developers that have registered their products with Coverity Scan. 
+
+
+## Important notes for running Coverity scans in STO
+
+<!-- 
+### Docker-in-Docker requirements
+
+
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+
+
+<StoDinDRequirements />
+
+-->
+
+### Root access requirements
+
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+
+<StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+
+
+
+## Coverity step configuration
+
+The following steps outline the recommended workflow:
+
+1. Add a CI Build or an STO Security stage to your pipeline.
+
+2. Add a Run step to upload your Coverity scan results to the pipeline workspace. 
+
+3. Add a Coverity step after the Run step and then configure it as described below.
+
+
+### Scan
+
+
+<a name="scan-mode"></a>
+
+#### Scan Mode
+
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
+<StoSettingScanModeIngest />
+
+
+#### Scan Configuration
+
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+
+<StoSettingProductConfigName />
+
+
+### Target
+
+
+#### Type
+
+import StoSettingScanType from './shared/step_palette/scan/_type.md';
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+
+<StoSettingScanType />
+<StoSettingScanTypeRepo />
+
+
+<!--  #### Target and variant detection 
+
+import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+
+<StoSettingScanTypeAutodetect / -->
+
+
+
+
+#### Name 
+
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
+
+
+<StoSettingTargetName />
+
+<a name="target-variant"></a>
+
+#### Variant
+
+
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
+
+
+<StoSettingTargetVariant  />
+
+<!-- 
+#### Workspace (_repository_)
+
+
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+
+
+
+<StoSettingTargetWorkspace  />
+
+-->
+
+### Ingestion File
+
+
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
+
+<StoSettingIngestionFile  /> 
+
+<!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
+
+
+<a name="log-level"></a>
+
+### Log Level
+
+
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
+
+
+<StoSettingLogLevel />
+
+
+
+### Fail on Severity
+
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
+
+<StoSettingFailOnSeverity />
+
+
+### Additional Configuration
+
+In the **Additional Configuration** settings, you can use the following options:
+
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+
+
+### Advanced settings
+
+In the **Advanced** settings, you can use the following options:
+
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+
+## YAML pipeline example
+
+The following pipeline example illustrates an ingestion workflow. It consists of two steps:
+
+* A Run step that generates a simple Coverity data file.
+* A Coverity step that ingests the XML data.
+
+![](./static/semgrep-ingest-pipeline.png)
+
+
+```yaml
+pipeline:
+  name: coverity-test-dbothwell
+  identifier: coveritytestdbothwell
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: coverity-ingest
+        identifier: coverityingest
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: generate_coverity_results_file
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      cat <<EOF >> coverity-results.xml
+                      <?xml version='1.0' encoding='UTF-8'?><!--Document generated on Wed Jun 28 15:27:21 GMT 2023-->
+                      <cov:exportedProjectDefects xmlns:cov="http://coverity.com">
+                          <cov:mergedDefect cid="153368" type="Resource leak" impact="High" status="New" firstDetected="10/24/15" owner="Unassigned" classification="Unclassified" severity="Insignificant" action="Undecided" displayComponent="Other" category="Resource leaks" file="/webgoat-container/src/main/java/org/owasp/webgoat/session/UserDatabase.java" function="UserDatabase.getUsers" checker="RESOURCE_LEAK" occurrenceCount="1" cwe="404" externalReference="" issueKind="Various" Language="Java" LineNumber="132" Score=""/>
+                          <cov:mergedDefect cid="59180" type="Explicit null dereferenced" impact="Medium" status="New" firstDetected="09/20/14" owner="Unassigned" classification="Unclassified" severity="Insignificant" action="Undecided" displayComponent="Other" category="Null pointer dereferences" file="/webgoat-container/src/main/java/org/owasp/webgoat/session/WebgoatProperties.java" function="WebgoatProperties.main" checker="FORWARD_NULL" occurrenceCount="1" cwe="476" externalReference="" issueKind="Quality" Language="Java" LineNumber="143" Score=""/>
+                      </cov:exportedProjectDefects>
+                      EOF
+              - step:
+                  type: Coverity
+                  name: Coverity_1
+                  identifier: Coverity_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      type: repository
+                      name: coverity-test
+                      variant: test
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: coverity-results.xml
+
+```

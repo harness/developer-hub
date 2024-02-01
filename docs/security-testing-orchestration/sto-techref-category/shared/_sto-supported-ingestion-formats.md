@@ -11,6 +11,7 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Burp** — XML
 - **Checkmarx** — XML, SARIF  <!-- - **Clair** — JSON -->
 - **CodeQL** — JSON, SARIF
+- **Coverity** — XML
 - **Data Theorem** — JSON
 - **Docker Content Trust** — JSON
 - **Fortify** — JSON
