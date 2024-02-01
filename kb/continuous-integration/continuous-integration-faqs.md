@@ -407,11 +407,11 @@ Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs
 
 Use single replica delegates for tasks that require the same instance, and use a delegate selector by delegate name. The tradeoff is that you might have to compromise on your delegates' high availability.
 
-### Delegate is not able to connect to the created build farm
+### Delegate is unable to connect to the created build farm
 
 If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
 
-If the delegate is not able to connect to the created build farm with [Istio MTLS STRICT mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode), and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+If the delegate is unable to connect to the created build farm with [Istio MTLS STRICT mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode), and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
@@ -630,6 +630,72 @@ pipeline:
           type: branch
           spec:
             branch: main
+```
+
+</details>
+
+### Concatenated variable values in PowerShell scripts print to multiple lines
+
+If your PowerShell script (in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings)) echoes a stage variable that has a concatenated value that includes a [`ToString`](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.psobject.tostring) representation of a PowerShell object (such as the result of `Get-Date`), this output might unexpectedly print to multiple lines in the build logs.
+
+To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values. Expand the sections below to learn more about the cause and solution for this issue.
+
+<details>
+<summary>What causes unexpected multiline output from PowerShell scripts?</summary>
+
+For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](https://developer.harness.io//docs/platform/variables-and-expressions/runtime-inputs/#expressions) into a single expression, including the `ToString` value.
+
+```yaml
+        variables:
+          - name: DATE_FORMATTED ## This variable's value is 'ToString' output.
+            type: String
+            description: ""
+            required: false
+            value: (Get-Date).ToString("yyyy.MMdd")
+          - name: BUILD_VAR ## This variable's value concatenates the execution ID, the sequence ID, and the value of DATE_FORMATTED.
+            type: String
+            description: ""
+            required: false
+            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
+```
+
+When a PowerShell script calls the concatenated variable, such as `echo <+pipeline.stages.test.variables.BUILD_VAR>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
+
+</details>
+
+<details>
+<summary>How do I fix unexpected multiline output from PowerShell scripts?</summary>
+
+To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.
+
+For example, here are the two stage variables from the previous example without the `ToString` value in the concatenated expression.
+
+```yaml
+        variables:
+          - name: DATE_FORMATTED ## This variable is unchanged.
+            type: String
+            description: ""
+            required: false
+            value: (Get-Date).ToString("yyyy.MMdd")
+          - name: BUILD_VAR ## This variable's value concatenates only the execution ID and sequence ID. It no longer includes DATE_FORMATTED.
+            type: String
+            description: ""
+            required: false
+            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>>
+```
+
+In the `Run` step's PowerShell script, call the `ToString` value separately and then "manually concatenate" it onto the concatenated expression. For example:
+
+```yaml
+              - step:
+                  identifier: echo
+                  type: Run
+                  name: echo
+                  spec:
+                    shell: Powershell
+                    command: |- ## DATE_FORMATTED is resolved separately and then appended to BUILD_VAR.
+                      $val = <+stage.variables.DATE_FORMATTED>
+                      echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
 </details>
@@ -1057,7 +1123,7 @@ Instead, you need to:
    DOCKER_BUILDKIT=1 docker build -t IMAGE_NAME:TAG .
    ```
 
-### Is there a way to use the newer version of kaniko?
+### Is there a way to use a newer or older version of kaniko?
 
 Yes, you can update the tag for the kaniko image that Harness uses, as explained in [Harness CI images - Specify the Harness CI images used in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines).
 
@@ -1155,7 +1221,7 @@ Yes, but there are specific requirements for the [AWS connector in the Upload Ar
 
 ### Does the Upload Artifacts to GCS step support GCP connectors that inherit delegate credentials?
 
-No. Currenthly, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
+No. Currently, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
 
 ### Upload Artifacts to JFrog step throws certificate signed by unknown authority
 

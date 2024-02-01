@@ -46,7 +46,7 @@ For multilayer caching, use multiple **Restore Cache** and **Save Cache** steps 
 
 ## Remote Docker cache
 
-Remote Docker caching can dramatically improve build times by sharing data across pipelines, stages, and steps. Remote caching leverages your exising Docker registry to pull previously built layers.
+Remote Docker caching can dramatically improve build times by sharing data across pipelines, stages, and steps. Remote caching leverages your existing Docker registry to pull previously built layers.
 
 Remote caching isn't available for all build infrastructures. If available for your build infrastructure, you can enable the **Remote Cache Image** option in the following steps:
 

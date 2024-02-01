@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-30T10:00
+date: 2024-02-06T10:00
 sidebar_position: 10
 ---
 
@@ -43,15 +43,41 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
-<!-- February 2024 -->
+## February 2024
 
-<!-- Version 1.11.x -->
+<!-- Version 1.12.x -->
 
-<!-- Feb xx, 2024 -->
+<!-- Feb 12, 2024 -->
 
 <!-- New features and enhancements -->
 
-<!-- The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).-->
+<!-- [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031) -->
+
+### Version 1.11.x
+
+<!-- Feb 06, 2024 -->
+
+#### New features and enhancements
+
+* The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+* To support Docker images without a shell, the [Command field in Run steps](/docs/continuous-integration/use-ci/run-step-settings/#shell-and-command) is now optional. (CI-10115, CI-10676)
+* Upgraded Go to the latest version in the CI manager and CI-related plugins, such as `drone-kaniko`. (CI-10800)
+* Upgraded kaniko executor to version 1.19.2 in the [drone-kaniko plugin](https://github.com/drone/drone-kaniko/releases), which is used by [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact), to support Dockerignore with special characters. (CI-10908, ZD-55930)
+
+   If you encounter errors in Build and Push steps following this upgrade, you can manually [pin an old plugin version](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines), for example:
+
+   ```
+   {
+    "field": "buildAndPushDockerRegistryTag",
+    "value": "plugins/kaniko:1.8.3
+   },
+   ```
+
+#### Fixed issues
+
+Modified CSS to address flickering UI elements. (CI-11038, ZD-56510)
+<!-- Only logging added. Underlying issue not yet addressed. (CI-10975, ZD-56280, ZD-56961) -->
+<!-- Regression, rolled back code, probably hotfixed before (CI-11044, ZD-56204, ZD-56526) -->
 
 ## January 2024
 
