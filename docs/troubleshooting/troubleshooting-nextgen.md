@@ -26,6 +26,12 @@ You are logged out of your Harness Manager session automatically, forcing you to
 If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs. Typically, the solution is to clear local storage.
 :::
 
+### Harness local login
+
+import Locallogin from '/docs/platform/shared/harness-local-login.md'
+
+<Locallogin />
+
 #### Troubleshooting steps
 
 1. Log out of Harness Manager from all Chrome tabs. (Harness only supports the Chrome desktop browser.)
