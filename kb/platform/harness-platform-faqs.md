@@ -2712,4 +2712,604 @@ For more information, go to [Google cloud functions](/docs/faqs/continuous-deliv
 
 This happens due to an incorrect cron expression. Harness uses Java cron-utils to run to define, parse, and validate cron expressions. Use the below expression to generate the expressions.
 
+<<<<<<< HEAD
 https://www.javainuse.com/cron#google_vignette
+=======
+#### Do we provide customized docker images for delegate?
+
+We do not provide any customized docker images for delegates however we do have our delegate docker file in the public repo below. This can be used as a sample reference to add any utility to the image:
+```
+https://github.com/harness/delegate-dockerfile/tree/main
+```
+
+
+#### Can we use immuatable delegate image in the statefulset deployment yaml for delegates ? 
+
+We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
+
+
+#### Is there a way to enable more granular level for delegate logs?
+
+We do not have additional log level settings for delegate than what it logs by default. 
+#### How to sync ldap groups manually if linked User group is not getting synced
+
+You can Navigate to Authentication tab and go to ldap setting and try Synchronize User group option.
+
+#### While trying to link sso group, not getting the option for user group
+
+Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down
+
+#### How to capture SAML Tracer
+
+You can install SAML Tracer extension in your browser its available for all browsers. 
+With the SAML-tracer extension running one needs to do the following:
+
+1. At the login page hit "X Clear" in SAML tracer(top left) and then perform a login attempt.
+2. When the login session is captured hit "Export" and attach this export to the ticket.
+
+#### In case multiple Harness instances and setup with SAML App redirecting to a different Harness instance instead of one expected.
+
+In case you have say Sandbox and production Harness instances and you are using the Azure SAML APP which also has multiple Harness apps. 
+It is important to specify the Entity ID below the Authorisation in Harness UI while creating the SAML App integration. 
+
+#### How to inspect your certificates for delegate certificate issue. 
+
+The below commands will hep you inspect your certificates. 
+
+Inspect a certificate chain - x509 PEM file
+```
+Keytool -printcert -file /path/to/cert
+```
+
+```
+openssl x509 -text -noout -in certificate.pem
+```
+
+Inspect a truststore file
+
+```
+keytool -list -v -keystore /path/to/truststore
+```
+
+#### Delegate fails to register with handshake exceptions. 
+
+While creating a delegate it might start to register and then fail with SSLHandshakeException. 
+
+To resolve the handshake exception, do the following:
+
+Run to the command below to test the certificate chain you used to install Harness Manager.
+```
+curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
+```
+Then Install the certificate on the delegate
+
+Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting/certificate-issues#handshake-exception
+
+#### Delegate connectivity issues because of proxy IP.
+
+While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
+We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
+
+#### How to Avoid Hitting the GitHub API Rate Limit When Using Multiple Templates and Git-Stored Pipelines?
+
+To minimize GitHub calls from Harness, enabling the bi-directional git experience may significantly reduce the number of requests.
+
+#### Why am I getting an error while creating a template using a service account token generated under a project?
+
+You are likely using a token scoped to a project when creating a resource at the account level, the same applies to a project token while creating a resource at the organization level. To create resources across different levels (account/organization/project), your token must be at a higher level or at the same level as the scope.
+
+#### Why is my Terraform plugin crashing when using the Harness provider?
+
+Generally, this issue is related to a bug in our provider. Before opening a ticket, please try using the latest provider version. Run your script again to see if the problem persists. If the issue continues, please proceed to open a support ticket for further assistance.
+
+#### How should complex expressions be correctly utilized?
+
+When using a complex expression, ensure the expression is wrapped within `<+ >`. For example: `<+<+org.name>.toLowerCase()>/<+<+project.name>.toLowerCase()>>`.
+
+#### How can I retrieve a specific type of connector across multiple accounts, organizations, and projects using the API?
+
+Unfortunately, it's only possible to retrieve all connectors within a specific scope, the following attribute `includeAllConnectorsAvailableAtScope` allows you to retrieve easily all connectors above the project scope using the API Method `Fetches the list of Connectors corresponding to the request's filter criteria`.
+
+#### How can user build debug delegate image ?
+
+You can build and push from local to gcr-play or any other place you want.
+ - Copy delegate.jar from local machine (change Dockerfile-minimal in harness core)
+
+``` 
+COPY delegate.jar delegate.jar 
+```
+
+- Build image:
+```./scripts/bazel/build_bazel_delegate.sh immutable
+cd dockerization/delegate/
+docker build -t us.gcr.io/gcr-play/delegate:<give your tag> -f Dockerfile-minimal .
+docker push us.gcr.io/gcr-play/delegate:<your-tag>
+```
+
+If you want to publish this in dockerhub, then in place of gcr use your private dockerhub, do a docker login before pushing image.
+Also there is a GitHub PR trigger to publish immutable delegate from your changes: `trigger publish-delegate`
+
+#### What do we need to backup to recover quickly when Harness infrastructure is lost ?
+
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours. Back up recommendation is to use Velero tool. You can refer to mentioned doc for fuurther info [docs](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
+
+#### If the infrastructure is lost, how should it be restored?
+
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore harness namespace.
+
+#### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
+
+No, user permissions in Harness with JIT provisioning and SAML authentication do not inherit from the SAML provider. Permissions need to be explicitly configured in the Harness Account. The JIT provisioning process ensures that users are dynamically created in Harness based on SAML authentication, but their permissions within Harness need to be set up independently.
+
+####  Does Harness support permission mapping or inheritance from external systems in any Single Sign-On (SSO) model?
+
+No, Harness does not support permission mapping or inheritance from external systems, including in various Single Sign-On (SSO) models. User permissions must be explicitly configured within the Harness Account, and as of now, there is no support for permission discovery or synchronization from external systems. All permissions need to be manually configured within the Harness Account.
+
+#### How does SCIM work in Harness, and what are its limitations?
+
+SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
+
+#### Does Role-Based Access Control (RBAC) apply to Git Bi-Directional Sync in Harness?
+
+ No, RBAC settings specific to Git Bi-Directional Sync are not available. The RBAC of the entity is used, and there are no individual role bindings for fine-grained control over bi-directional sync. As of now, the options for controlling bi-directional sync are limited to enabling or disabling it.
+
+#### What is the default timeout for custom secret manager script timeout? Can the timeout be configurable?
+
+It defaults to 60 seconds. Timeout is not configurable.
+
+#### Why is kinit (from the krb5-workstation package) not included in our immutable image for non-root users, leading customers to bake it in themselves?
+
+The decision to exclude kinit from our immutable image is primarily driven by concerns related to image bloat. We maintain a specific set of binaries, including Delegate-required SDKs, in the Delegate to address the specific use cases of our Continuous Delivery (CD) customers. By excluding non-essential binaries, we aim to optimize image size and streamline the image for CD workflows. You can refer the [docs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+
+####  Can customers enable root privileges to add the kinit binary to the image?
+
+Enabling root privileges to add the kinit binary is an option, but it may pose security concerns for some customers. The exclusion of kinit in the immutable image aligns with security considerations and is designed to provide a minimal and secure image for CD use cases. If customers have specific security requirements, they may consider installing the required binaries, such as kinit from the krb5-workstation package, manually, even in an air-gapped environment.
+You can refer the [docs](https://developer.harness.io/docs/platform/delegates/install-delegates/enable-root-user-privileges-to-add-custom-binaries).
+
+#### Are metrics for the Docker Delegate published, and how can Prometheus scraping be configured?
+
+Yes, metrics for the Docker Delegate are published. To enable Prometheus scraping, you would likely need to open a port on the container and bind it to the Delegate metric port. This allows Prometheus, running separately, to scrape and collect metrics from the Docker Delegate.
+
+#### How can user only edit existing pipeline but should not be able to create any new pipeline?
+
+You can create the Roles and Resource Group like below..
+- Roles : Create/Edit,
+- RG : Select the specific pipelines within RG that the user should be able to edit.
+This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
+
+#### Why am I receiving a 400 status code error with an "unsuccessful HTTP call" message when using a Jira step in Harness?
+
+The following 400 Invalid format error typically occurs when using a Jira step in Harness:
+
+```
+"Unsuccessful HTTP call: status code = 400, \
+message = {"errorMessages": [,"errors": {"customfield_54321":"Invalid format. \
+ Expected an array of objects with either an Option ID or an existing value."}]}"
+```
+
+Often, this is related to the configuration of a custom field. In this case, the custom field `customfield_54321` is an array field, and the provided value didn't match the expected format. It can also indicate that the Jira plugin in your Jira step isn't compatible with Harness because Harness doesn't provide the data in the required format for the plugin.
+
+
+The error arises because the value being passed to Jira doesn't match the expected format. Jira expects the value to be in the format of an array of objects, and in the following example it has a String as its value:
+
+```json
+"customfield_54321": [
+    {
+        "id": "12345",
+        "value": "Test Operations"
+    }
+]
+```
+
+The error message indicates that Harness doesn't support this specific Jira plugin, leading to the formatting issue.
+
+If you encounter a similar problem with this Jira plugin or any other plugin, it is recommended to reach out to your Jira support team to explore potential solutions. They can provide the necessary guidance and support to ensure the smooth and efficient operation of your Jira instance.
+
+#### What steps can we take to prevent encountering 429 errors when utilizing DockerHub connectors in Harness?
+
+ If you are facing 429 rate limiting errors when attempting to pull Docker images from DockerHub using Harness, you can mitigate this issue by adjusting your authentication settings:
+
+1. **Authentication Method:** By default, Harness utilizes anonymous access to the Harness Docker Hub for image pulls.
+
+2. **Switch to Username and Password Authentication:** To overcome rate limiting issues, select "Username and Password" as your authentication method in your Docker connector configuration.
+
+3. **Provide Login Details:** Once you've selected "Username and Password" authentication, enter your DockerHub login credentials (username and password) in the connector settings.
+
+By configuring Harness to use your DockerHub credentials, you ensure that you have the necessary access privileges to pull images without encountering rate limiting issues.
+
+These adjustments will help you avoid 429 errors and ensure a smoother experience when working with DockerHub connectors in Harness.
+
+#### How Do Delegates Share Information Like Helm Chart Contents Within the Same Stage?
+
+The process of sharing information between delegates within the same stage in Harness follows this flow:
+
+1. **Task T1 - Downloading values.yaml File:**
+   - Harness Manager creates Task T1, instructing it to download the `values.yaml` file.
+   - Delegate1 is assigned Task T1, and it retrieves the `values.yaml` file from the designated source (e.g., Git/Remote).
+   - Delegate1 then sends the contents of the `values.yaml` file back to Harness Manager.
+
+2. **Task T2 - Downloading and Applying Manifest Files:**
+   - After receiving the `values.yaml` file content, Harness Manager creates Task T2.
+   - Task T2 includes the content of the `values.yaml` file.
+   - Delegate2 is assigned Task T2.
+
+3. **Delegate2's Actions:**
+   - Delegate2 executes the following actions:
+     - Downloads the manifest files from the specified source (e.g., Git, Remote, Helm Artifact Source).
+     - Utilizes the content of the `values.yaml` file to render the manifest files, customizing them as needed.
+     - Applies the rendered manifest files to the target cluster.
+
+**Important Note:** The output of Task T1 (values Fetch task) is the content of the `values.yaml` file. This content is then passed to Task T2, enabling Delegate2 to use it in rendering and applying the manifest files.
+
+This process ensures that delegates effectively share information and utilize it as required for the deployment process within the same stage.
+
+#### What should we put (if anything) in the "JIT Validation Key" and "JIT Validation Value" fields when JIT provisioning is enabled in SAML?
+
+This can either be left blank, as it is not required, or you can add a Key (aka saml attribute) to expect, along with the value of the attribute/key to expect, in this way you can have some users that send this defined attribute and others that do not which allows you to selectively provision users via JIT
+
+#### What is the default entityID (audience restriction) the Service Provider endpoint(ACS URL) uses when not defined?
+
+The Deafult entityID is `app.harness.io` unless otherwise specified.
+
+#### Unable to refer Custom Secret manager template stored in GIT
+
+Currently, we do not support reference of Custom Secret manager template stored in GIT, please create inline template and you will be able to refer those
+
+#### Upon successful azure saml login for prod account harness is redirecting to stage/dev account
+
+Please check if entity id is set correctly in case if you are using multiple account, as if you are using vanity url then the entity id needs to be set accordingly while setting up saml in Harness as well as on azure side
+
+#### What will be entity id in case of on-prem setup or if vanity url is used
+
+In case of above it needs to be the domain used to access harness(example : vanity.harness.io) 
+
+
+#### How can I easily disable pipeline triggers
+
+You can navigate to the trigger under pipeline and can toggle the enable button to disable the trigger on top left
+
+####  I'm not able to view the projects
+
+Please check if you have required Role and permission granted to view Projects, you can reach out to your account admin to confirm the permission granted for your account
+
+#### I want to share delegate from one project to another?
+
+In this case you can install the delegate on org level if both project are under same org, otherwise need to install delegate on Account level. As delegate installed under project has scope limited to same project
+
+####  What permission do I need to see deployments for all projects?
+
+You can create a role and add view permission for pipeline with account scope, you can find sample one as below for having execute permission similarly you can create one for just view access
+https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples
+
+####   How to signout?
+
+You can click on My profile Under bottom left and you will able to see Sign Out option coming in.
+
+#### I can see that a legacy delegate is a statefulset object, what does this mean? and what's the major difference from Deployment type?
+
+**StatefulSet:**
+- **Purpose:** StatefulSets are designed for stateful applications that require stable network identities and stable storage.
+Instances: StatefulSets maintains a sticky identity for each pod. Each pod has a unique and stable hostname, allowing for persistent storage and network identities.
+
+- **Naming:** Pods in a StatefulSet get named predictably and consistently, which is often based on an index.
+
+- **Scaling:** Scaling stateful applications may involve more complex operations due to the need for stable identities. Pods are typically created in sequential order, and scaling may involve specific considerations for data migration or coordination.
+
+**Key Difference:**
+The major difference between a Deployment and a StatefulSet lies in how they handle the identity and state of the pods:
+
+- **StatefulSet** provides stable identities: Pods in a StatefulSet have stable and predictable identities, making them suitable for applications that require persistent storage and network identifiers.
+- **Deployment** is more suitable for stateless applications: Deployments are well-suited for applications where each instance is interchangeable, and statelessness is a design principle.
+
+#### What is exit status 127 in a delegate pod?
+
+In a Kubernetes context, when you see an exit code of 127, it is typically associated with issues related to the execution of container commands within a pod. Here are some common scenarios in a Kubernetes context:
+
+**Command or Binary Not Found:**
+- The container might be trying to execute a command or binary that is not installed or not available in the container's filesystem. Ensure that the necessary commands or binaries are included in the container image.
+
+**Incorrect Path or Command Name:**
+- If there's a mistake in the path or the name of the command specified in the Kubernetes pod definition, it could result in a 127 exit code. Double-check the command configuration in your pod specification.
+
+**Permissions Issues:**
+- Ensure that the container has the necessary permissions to execute the specified command. This includes both file system permissions within the container and the user permissions under which the container is running.
+
+**Image or Container Initialization Failures:**
+- If the container fails to start or initialize properly, it might result in a 127 exit code. Check the container logs for any error messages that might indicate initialization issues.
+When debugging a pod with an exit code of 127, you can inspect the pod logs to get more details about what went wrong. Use the following command to view the logs for a specific pod:
+
+```
+kubectl logs <pod-name>
+```
+
+Replace `<pod-name>` with the actual name of your pod. Examining the logs can provide insights into the specific command or process that failed and help you diagnose and resolve the issue.
+
+#### Where are the settings for individual user email notifications?
+
+The notifications on Harness are configured on the User Group to which the user is attached. All the notification preferences are displayed there:
+- https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#edit-notification-preferences
+
+#### Why I'm experiencing issues when creating a secret with the same name that was deleted recently?
+First, when you tried to delete a resource in Harness, we soft-deleted it so you were not able to re-use the same identifier. Now this is not happening anymore, but in case you still experiencing issues, you can either keep the same name but change only the identifier or enable the Force Delete so you can delete the resource with no existent references issues on the process:
+
+- https://developer.harness.io/docs/platform/references/entity-deletion-reference/#force-delete
+
+#### What's the harness variable replacement for a service name?
+
+For this scenario, you can use the following variable: `<+service.name>`
+
+#### What is ingress.yaml used for?
+
+In Kubernetes, an Ingress resource is used to manage external access to services within a cluster. The Ingress resource allows you to define how external HTTP/S traffic should be directed to your services, enabling you to expose services to the external world and define routing rules.
+
+An Ingress resource is typically defined in a YAML file, often named ingress.yaml. This file specifies the configuration for routing external traffic to different services based on rules such as hostnames, paths, and backend services.
+
+By using Ingress, you can manage external access to your services more flexibly than using raw services or NodePort services. It provides a way to route traffic based on various criteria and allows you to handle SSL termination and other features. Keep in mind that the actual implementation of Ingress may vary depending on the Kubernetes cluster, as different cluster providers may have different Ingress controllers.
+
+#### How can I easily disable pipeline triggers?
+
+On the triggers page, you'll see a toggle icon on the right side under Enabled, you just need to toggle it off and the trigger will be disabled.
+
+#### What is my webhook identifier to trigger pipelines?
+
+When you name an entity, Harness automatically generates its identifier. You can edit the Identifier when you are creating the entity, but not after the entity is saved. If you rename the entity, the Identifier remains the same. The generated Identifier is based on the entity name and meets the identifier naming restrictions. If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of -1, -2, etc.
+
+#### How do I verify my account?
+
+Harness has identified an increase in the unauthorized usage of the free pipeline minutes Harness makes available on Harness Cloud. To combat such unauthorized usage, Harness requires that you use your work email, not your personal email, to register your account.
+ 
+If you face this issue on an account that was registered using your work mail ID, please reach out to our support team and share the execution URL where you got this error so we can review it further.
+
+#### Does harness AIDA support APIs for developers to create custom AI/ML solutions?
+
+No! AIDA does not offer Rest APIs to be used by Harness Users.
+
+#### How to Extend the Timeout Duration for a Custom Secret Manager?
+
+To increase the timeout duration in a custom secret manager, adjust the settings in the connector's details step. This timeout setting, measured in seconds, determines how long the system will wait to fetch secrets from the custom provider. If fetching the secret exceeds this duration, the process is interrupted and results in failure. The default timeout value is set to 20 seconds. To avoid such interruptions, you can modify this value to a higher number as per your requirements.
+
+#### Can secrets access be scoped by environments?
+
+Currently, the functionality to restrict access to secrets based on individual environments is not available. However, a potential alternative is to structure your account by dividing environments across different organizational projects. This method won't directly scope secrets to specific environments, but it can help in managing access by associating secrets with the relevant organizational context, thus maintaining a level of separation and control.
+
+#### How can CCM Admin roles be removed from users who were directly assigned these rRoles?
+
+In the past, as part of our product strategy, we granted all users the CCM Admin role by default. This policy has since been changed. If customers wish to revoke these role assignments, they will need to identify the affected users, retrieve their role assignments via API, and then proceed to bulk delete these specific role assignments.
+
+#### Where are the settings for an individual user email notifications?
+
+Currently, we don’t support individual user e-mail notifications.
+
+#### How can we export users from Harness?
+
+Currently, we do not support a direct functionality for exporting all users. To export users from Harness, you can utilize our API method getUsers.
+
+#### How to solve the error “You are missing the following permission: Create / Edit Pipelines”?
+
+To resolve the error ```You are missing the following permission: Create / Edit Pipelines```, you need to assign the ```Write Pipelines``` permission to your user.
+
+#### How to export all AutoStopping rules?
+
+Currently, we do not support a direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, we recommend using our API method ```List AutoStopping Rules```.
+
+#### Is it possible to use Vault AWS Credentials generation along with AWS Connector?
+
+Unfortunately, we don't support this feature. Though a custom secret manager can be leverage to get credentials on the fly, where you can write any logic.
+
+#### I’m not receiving an e-mail to register my TOPT token. What should I do?
+
+Please, reach out to Harness Support in order to receive manually your TOPT token. Once you receive the token will be able to register it in any authenticator app that you prefer. Additionally, if you aren’t receiving the token through e-mail, it may be a potential issue with your SMTP provider.
+
+#### How to receive a notification when the delegate’s heartbeat connectivity fails?
+
+At present, we do not support direct notifications for failures in the delegate's heartbeat connectivity. However, you can effectively monitor your delegate using Prometheus metrics, which is a functionality we do support.
+
+#### Where is the currently set session inactive timeout value located?
+
+You can find this value on the Authentication page (right below the Overview menu on the left), the field will be at the bottom of the page: ```Session Inactivity Timeout (in minutes)```.
+
+#### How can I extend the time before a delegate is disconnected from the manager when the API token is revoked?
+
+This is not configurable; once the token is revoked, the delegate will get disconnected immediately. However, you can have a delegate in the account running continuously, which can execute all tasks. This way, when you revoke tokens for other delegates for testing, there will be at least one delegate in the account available to run the task.
+
+#### What is the ETA/process for adding another admin user to our Harness account if the user with admin access gets locked?
+
+In emergencies like SAML/LDAP issues, it's recommended to have a local admin user for account access. If a functional account gets locked, Harness can grant admin permissions to an existing account user, but can't create a new admin user. It's advised to maintain at least two local admin users. In such situations, raising an urgent Harness ticket is necessary. The process, involving backend database updates and multiple approvals, typically takes a couple of hours to grant admin permissions to an existing user.
+
+
+#### Is the user able to execute the pipeline through the API?
+Yes, You can execute the pipeline through this [API.](https://apidocs.harness.io/tag/Pipeline-Execution)
+
+#### Is the user can able to execute the pipeline through CLI?
+Yes, you can use the API curl or custom webhook curl in any CLI to execute the pipeline.
+
+#### Is the user can able to execute the pipeline using the Harness CLI command?
+No, Currently Harness CLI don't have any command for pipeline execution.
+
+#### How can the user remove the single disconnected delegate pod?
+The disconnected delegate pod will automatically removed after the 7 days from the disconnection.
+
+#### What do we need to backup for SMP setup? Is there an optional backup target?
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours.
+
+#### How do you perform SMP backups?
+Back up recommendation is to use the Velero tool
+
+#### If the infrastructure is lost where the harness is deployed, how should it be restored?
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore the harness namespace.
+
+#### If it is difficult to implement SMP full backups, I would like to get individual Backups.
+We would recommend full backups rather than individual Backups.
+
+#### Is there a way the user can run all the steps on one specific delegate pod?
+Yes, user can run all the steps on one specific delegate pod. Doc: https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+
+#### Unable to view shell script content used in pipeline
+If you are using a step template, you will need to navigate to the template and switch to the yaml view, and you will be able to see the content.
+
+#### Create Connector API seems to not work for orgs and failing with the error INVALID_IDENTIFIER_REF while trying to create a vault connector.
+Please check and confirm if the token used here is proper and you are using the org or account prefix before passing the secret reference.
+
+#### How do I make a pipeline step report to Slack?
+You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.
+
+#### Can we add Custom Selector in the harness delegate chart for legacy delegates?
+
+For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
+
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
+
+
+#### Can a service account created at project level be assigned permissions to access account level resource ?
+
+We can not create a project level service account and provide permission for account level resources. Hence this will not have access to any account level resources.
+
+If you would like to use service account only you can create a account level service account and then give project level role bindings to it corresponding to the project as well as role binding for account level templates.
+
+#### How to run harness docker delegate in detatched mode ?
+
+Docker provides a -d flag option for running the containers in detatched mode. So when we are running the harness delegate docler run command we can add the option to get the console back and the contianer will continue to run in detatch mode. For example below is a sample delegate run command:
+
+```
+docker run  --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=xxx \
+  -e DELEGATE_TOKEN=xxx= \
+  -e DELEGATE_TAGS="" \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.11.81406 -d
+```
+
+#### Why the task_failed_total metric for delegate is not repporting data despite step failure ?
+
+The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
+
+
+#### Why do we need core_delegate_delete permission for revoking delegate token?
+
+The api call that we make for  revoking the delegate token makes the delegate which are using it not register anymore and hence delete delegate permission is required for revoking the token as well.
+
+#### Do we provide customized docker images for delegate?
+
+We do not provide any customized docker images for delegates however we do have our delegate docker file in the public repo below. This can be used as a sample reference to add any utility to the image:
+```
+https://github.com/harness/delegate-dockerfile/tree/main
+```
+
+
+#### Can we use immuatable delegate image in the statefulset deployment yaml for delegates ? 
+
+We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
+
+
+#### Is there a way to enable more granular level for delegate logs?
+
+We do not have additional log level settings for delegate than what it logs by default. 
+
+#### Can we use custom temp space to be used by delegate ?
+
+We can make use of environment variable TMPDIR on the delegate and use any directory as path to be used for temp storage.
+
+```
+- name: TMPDIR
+  value: /opt/harness-delegate/deployvol/tmp
+
+<<<<<<< HEAD
+```
+
+#### How to turn off the url logging.googleapi.com? Do I need to provide any other commands in Delegate startup?"
+Our Delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality you just need to set `STACK_DRIVER_LOGGING_ENABLED` variable to false. 
+
+Doc: https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled
+
+
+#### Why I'm experiencing errors with `core_secret_access` messages?
+This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
+
+To fix it you just need to give the expected permissions to the User's group, for example, to secrets we have the following permissions View, Create/Edit, Delete, Access.
+
+#### How can i see all available variables?
+You can rely on our [Built-In variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions. 
+
+#### How can I validate the configuration of Harness delegates?
+
+Harness delegates are primarily configured through variables, which can be adjusted during the deployment of a new delegate. There are several ways to ensure the correctness of these configurations:
+
+**Pre-Deployment Validation:** Before deploying the delegate, you can validate the variables to ensure they meet your requirements.
+
+**Describe Commands:** Execute 'Describe' commands on your cluster where the Delegate Pod is deployed. These commands provide detailed information about all configured variables for the delegate.
+
+**Configmaps Inspection:** Delegate configurations can also be stored in configmaps. By checking for delegate-related configmaps in your cluster, you can verify and review the configurations associated with the delegate.
+
+These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
+
+#### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
+
+Encountering the error message "Oops, something went wrong on our end. Please contact Harness Support." typically indicates an unexpected failure in a backend API call related to the operation you're attempting.
+
+To address this issue effectively:
+
+**Collect HAR File:** When you encounter this error, gather a HAR (HTTP Archive) file that captures the network traffic and interactions during the operation you were performing.
+
+**Open a Support Ticket:** With the HAR file in hand, promptly open a support ticket with Harness Support. Provide detailed information about the error along with the attached HAR file. This enables our support team to investigate the issue thoroughly.
+
+By following these steps, our support team can promptly review the situation, diagnose the underlying cause, and provide you with the necessary assistance to resolve the error swiftly. Your cooperation in providing the HAR file greatly facilitates our troubleshooting efforts and ensures a timely resolution to the issue at hand.
+
+#### What does 'parentIdentifier' refer to during the creation of an API key?
+
+The 'parentIdentifier' in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate 'parentIdentifier' ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
+
+#### What does "Exit code 137" mean?
+
+"Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
+
+#### How to support docker in docker for harness-delegate?
+
+To support Docker in Docker for Harness delegates, follow these steps:
+
+Check Kubernetes Cloud Provider Compatibility: Ensure that your Kubernetes Cloud Provider supports this configuration. For instance, note that Amazon EKS has ended support for Dockershim, which might affect this approach.
+
+**Set up Delegate Image:**
+
+- Utilize the INIT_SCRIPT variable or build a custom delegate image.
+- Install necessary packages in the image. Here's an example of installations:
+
+```
+microdnf install yum
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+**Update Delegate YAML:**
+- Add volume mounts to enable Docker functionality within the delegate container.
+
+```yaml
+volumes:
+  - name: docker-sock
+    hostPath:
+      path: '/var/run/docker.sock'
+  - name: docker-directory
+    hostPath:
+      path: '/var/lib/docker'
+```
+
+**Configure volume mounts in the YAML file:**
+
+```yaml
+volumeMounts:
+  - mountPath: /var/run/docker.sock
+    name: docker-sock
+    readOnly: false
+  - mountPath: '/var/lib/docker'
+    name: docker-directory
+    readOnly: false
+```
+
+By following these steps, your delegate container should be able to execute Docker commands successfully by utilizing the `docker.sock` from your node hosts. This setup allows for Docker in Docker functionality within your Harness delegate container.
+>>>>>>> 7b1e6a908 (Adding 8 FAQs to our docs)
+=======
+```
+>>>>>>> 92fa83f36 (\)

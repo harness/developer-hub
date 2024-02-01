@@ -7,7 +7,7 @@ This article addresses some frequently asked questions about Harness Continuous 
 
 #### How to use the "for" condition while using jexl condition for the trigger?
 
-Suppose that trigger payload has multiple records and you want to search for a particular string so you can make use of jexl for loop to iterate the list and match a string as below:
+Suppose that trigger payload has multiple records and you want to search for a particular string so you can make use of jexl for loop to iterate the list and match a string as below:   
 
 `for (item : <+trigger.payload.commits>) { if (item.message == "mymessage") {return true;} }; return false;`
 
