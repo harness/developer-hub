@@ -816,6 +816,6 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 
 ## Harness Local Login
 
-import Locallogin from '/docs/platform/shared/harness-local-login.md'
+import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
-<Locallogin />
+<Harnessll />

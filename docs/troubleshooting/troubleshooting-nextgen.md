@@ -39,9 +39,9 @@ You should not be logged out anymore.
 
 ### Harness local login
 
-import Locallogin from '/docs/platform/shared/harness-local-login.md'
+import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
-<Locallogin />
+<Harnessll />
 
 ## Delegate issues
 
