@@ -26,12 +26,6 @@ You are logged out of your Harness Manager session automatically, forcing you to
 If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs. Typically, the solution is to clear local storage.
 :::
 
-### Harness local login
-
-import Locallogin from '/docs/platform/shared/harness-local-login.md'
-
-<Locallogin />
-
 #### Troubleshooting steps
 
 1. Log out of Harness Manager from all Chrome tabs. (Harness only supports the Chrome desktop browser.)
@@ -44,6 +38,12 @@ You should not be logged out anymore.
 
 * Chrome [Session storage](https://developers.google.com/web/tools/chrome-devtools/storage/sessionstorage) is used by Harness Manager. If you close all the tabs running Harness Manager and then open a new tab running Harness Manager, you will likely need to log in again.
 * A Chrome session will timeout after 5 minutes, but a session timeout can also happen if the tab running Harness Manager is idle for 24 hours. However, as long as the tab is not closed, Harness Manager will continue keep polling to check if a refresh is needed for the token. For example, if you have kept the tab open for 3 days, you might still be logged in, as long as the workstation has not been turned off or entered sleep mode preventing the refresh.
+
+### Harness local login
+
+import Locallogin from '/docs/platform/shared/harness-local-login.md'
+
+<Locallogin />
 
 ## Delegate issues
 
