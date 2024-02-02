@@ -324,7 +324,7 @@ The webhook call is made as a POST request, and includes a JSON object containin
 
 If you have Harness user groups that have Slack webhooks set up in their **Notification Preferences**, you can select those groups and Harness will notify them in addition to the Email, Slack, or PagerDuty settings.
 
-Go to [send notifications using Slack](/docs/platform/Notifications/send-notifications-using-slack) for more information.
+Go to [send notifications using Slack](/docs/platform/notifications/send-notifications-using-slack) for more information.
 
 ## Enable or disable notification rules
 
