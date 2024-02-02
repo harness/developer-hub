@@ -216,7 +216,20 @@ Some important points to note:-
 
 Sample pipeline YAML with a webhook notification method, consisting of custom headers:- 
 ```yaml
-notificationMethod:
+notificationRules:
+    - name: test
+      identifier: test
+      pipelineEvents:
+        - type: AllEvents
+        - type: PipelineStart
+        - type: PipelineEnd
+        - type: PipelineSuccess
+        - type: PipelineFailed
+        - type: StageFailed
+        - type: StageSuccess
+        - type: StageStart
+        - type: StepFailed
+      notificationMethod:
         type: Webhook
         spec:
           webhookUrl: https://app.harness.io/gateway/ng/api/projects/Quality_Assurence?accountIdentifier=vpCkHKsDSxK9_KYfjCTMKA&orgIdentifier=QE_Team
