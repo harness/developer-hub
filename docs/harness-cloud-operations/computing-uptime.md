@@ -70,7 +70,7 @@ All the Pipeline and Platform SLIs are applicable here.
 
 | **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|----------------|
-| Artifacts                         | Fetch Deployable artifact Error Rate | More than 1% over 5 min rolling window |Major Outage|
+| Artifacts                         | Fetch Deployable artifact Error Rate | More than 1% over 5 min rolling window |Degraded Performance|
 | GitOps | APIs Error rate| More than 1% over 5 min rolling window |Partial Outage|
 |                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window|Degraded Performance|
 
