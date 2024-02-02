@@ -8,7 +8,7 @@ You can create a Jira issue as a step in the execution of a pipeline using the C
 
 You can add the Create Jira step to a Harness CD stage or an approval stage.
 
-You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages).
+You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages).
 
 ## Before you begin
 

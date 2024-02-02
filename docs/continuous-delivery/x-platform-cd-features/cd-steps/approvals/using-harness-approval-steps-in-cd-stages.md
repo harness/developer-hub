@@ -14,9 +14,9 @@ For example, in a [Kubernetes blue green deployment](/docs/continuous-delivery/d
 
 Other approval methods are:
 
-- [Harness Approval stages](/docs/platform/Approvals/adding-harness-approval-stages): Add Approval stages for manual intervention.
-- [Adding Jira Approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages): Add Jira Approval stages and steps.
-- [Adding ServiceNow Approval steps and stages](/docs/platform/Approvals/service-now-approvals): Add ServiceNow Approval stages and steps.
+- [Harness Approval stages](/docs/platform/approvals/adding-harness-approval-stages): Add Approval stages for manual intervention.
+- [Adding Jira Approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages): Add Jira Approval stages and steps.
+- [Adding ServiceNow Approval steps and stages](/docs/platform/approvals/service-now-approvals): Add ServiceNow Approval stages and steps.
 
 ## Visual Summary
 

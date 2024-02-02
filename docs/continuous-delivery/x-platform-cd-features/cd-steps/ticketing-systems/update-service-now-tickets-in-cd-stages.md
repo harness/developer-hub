@@ -20,7 +20,7 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 * Make sure you have the following roles:
 	+ `x_harne_harness_ap.integration_user_role​` to access templates.
 	+ `itil` for end-to-end integration with Harness platform.​​​
-* Review [add ServiceNow approval stages and steps](/docs/platform/Approvals/service-now-approvals).
+* Review [add ServiceNow approval stages and steps](/docs/platform/approvals/service-now-approvals).
 
 ### Required ServiceNow integration app for Harness templates
 

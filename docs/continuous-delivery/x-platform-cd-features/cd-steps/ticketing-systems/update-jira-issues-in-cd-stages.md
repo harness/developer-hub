@@ -8,12 +8,12 @@ This topic describes how to update a Jira issue using the Update Jira step.
 
 You can add the Update Jira step to a Harness CD stage or an Approval stage.
 
-You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages).
+You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages).
 
 ## Before you begin
 
 * [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
-* [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages)
+* [Adding Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages)
 
 ## Limitations
 
