@@ -38,8 +38,8 @@ Harness has the following process for updating STO images such as [`sto-plugin`]
 
 * On average, Harness publishes updates for STO images every other week on Wednesday or Thursday.
 * Version numbers use an `x.y.z` format with the major, minor, and hotfix or patch release number.
-* All images are supported for the latest three releases. Thus if the `latest` image is `1.2.3`, then Harness supports `1.2.3`, `1.2.2`, and `1.2.1`. 
 * You can choose to deploy the latest containers immediately upon release, or you can download and scan them before deployment.
+<!-- * All images are supported for the latest three releases. Thus if the `latest` image is `1.2.3`, then Harness supports `1.2.3`, `1.2.2`, and `1.2.1`. -->
 
 
 ## For more information
