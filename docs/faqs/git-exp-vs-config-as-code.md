@@ -87,7 +87,7 @@ There were Git sync issues with Configuration as Code while maintaining the corr
 For more information, go to:
 
 - [Pipelines](/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
-- [Input Set](/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
+- [Input Set](/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience)
 - [Templates](/docs/platform/templates/templates-best-practices#remote-template-versioning)
 - [Services](/docs/platform/git-experience/manage-services-using-git-experience.md)
 

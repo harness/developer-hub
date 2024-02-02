@@ -41,7 +41,7 @@ Now you are ready to learn advanced CD concepts through the following tutorials.
 ## Step 4. Automate onboarding for your own app 
 We recommend you either use Git Experience, Harness Terraform Provider or the Harness REST API for this step.
 
-- [Git Experience](/docs/platform/Git-Experience/git-experience-overview)
+- [Git Experience](/docs/platform/git-experience/git-experience-overview)
 - [Terraform Provider](/docs/platform/automation/terraform/harness-terraform-provider-overview)
 - [API](/docs/platform/automation/api/api-quickstart)
 
