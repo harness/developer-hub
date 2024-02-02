@@ -54,7 +54,7 @@ Add an [SSCA Orchestration step](./generate-sbom.md#add-the-ssca-orchestration-s
 
 * Set the **Step Mode** to **Ingestion**.
 * For **SBOM File Path**, enter the SBOM file path that uses the `JOB_ID` value, as explained in [Get the SBOM file path](#get-the-sbom-file-path).
-* For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where you stored the artifact associated with the SBOM, such as Docker Hub, Amazon ECR, or GCR.
+* For **Container Registry**, select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where you stored the artifact associated with the SBOM, such as Docker Hub, Amazon ECR, or GCR.
 * For **Image**, enter the repo path (in your container registry) and tag for the image associated with the SBOM, such as `my-docker-repo/my-artifact:latest`.
 * **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
 * **Password:** The [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
@@ -65,7 +65,7 @@ Add an [SSCA Orchestration step](./generate-sbom.md#add-the-ssca-orchestration-s
 
 If you're using Docker-compliant ECR or GCR repositories, you must:
 
-1. Configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+1. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
    * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
    * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
 2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.

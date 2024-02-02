@@ -231,7 +231,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
- - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
+ - [Azure](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
  - [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
  - [Git](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
  - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
