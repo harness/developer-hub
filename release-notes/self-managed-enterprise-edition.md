@@ -64,9 +64,12 @@ gsutil -m cp \
 
    Previously, the job was triggered after 30 minutes, which caused issues. However, this has now been resolved by reducing the time to 1 minute.
 
+<!-- 
 - The `/ccm/bi-dashboards` API didn't return dashboards. (CCM-15995)
 
    This issue was resolved by redirecting the Dashboards module to view BI Dashboards. The BI Dashboards are a subset of all module dashboards available under Custom Dashboards, providing a shortcut to access them. 
+
+-->
 
 ## January 29, 2024, version 1.19.10
 
