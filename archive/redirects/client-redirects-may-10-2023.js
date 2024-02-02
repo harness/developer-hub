@@ -128,7 +128,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/connectors/Cloud-providers/add-aws-connector",
+      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/connectors/cloud-providers/add-aws-connector",
       to: "/docs/category/cloudformation",
     },
 
@@ -138,7 +138,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
+      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
       to: "/docs/category/cloudformation",
     },
 
@@ -422,43 +422,43 @@ module.exports = {
     },
     {
       from: "/docs/platform/connectors/add-aws-connector",
-      to: "/docs/platform/connectors/Cloud-providers/add-aws-connector",
+      to: "/docs/platform/connectors/cloud-providers/add-aws-connector",
     },
     {
       from: "/docs/platform/connectors/add-a-microsoft-azure-connector",
-      to: "/docs/platform/connectors/Cloud-providers/add-a-microsoft-azure-connector",
+      to: "/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector",
     },
     {
       from: "/docs/platform/connectors/connect-to-google-cloud-platform-gcp",
-      to: "/docs/platform/connectors/Cloud-providers/connect-to-google-cloud-platform-gcp",
+      to: "/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp",
     },
     {
       from: "/docs/platform/connectors/add-a-kubernetes-cluster-connector",
-      to: "/docs/platform/connectors/Cloud-providers/add-a-kubernetes-cluster-connector",
+      to: "/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector",
     },
     {
       from: "/docs/platform/connectors/connect-to-a-cloud-provider",
-      to: "/docs/platform/connectors/Cloud-providers/connect-to-a-cloud-provider",
+      to: "/docs/platform/connectors/cloud-providers/connect-to-a-cloud-provider",
     },
     {
       from: "/docs/platform/connectors/ref-cloud-providers/artifactory-connector-settings-reference",
-      to: "/docs/platform/connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-cloud-providers/aws-connector-settings-reference",
-      to: "/docs/platform/connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference",
-      to: "/docs/platform/connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-cloud-providers/gcs-connector-settings-reference",
-      to: "/docs/platform/connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
-      to: "/docs/platform/connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/connect-to-jenkins",
