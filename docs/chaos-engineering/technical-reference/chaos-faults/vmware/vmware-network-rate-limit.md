@@ -1,5 +1,5 @@
 ---
-id: VMware-network-rate-limit
+id: vmware-network-rate-limit
 title: VMware network rate limit
 ---
 VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).

@@ -1,5 +1,5 @@
 ---
-id: VMware-network-loss
+id: vmware-network-loss
 title: VMware network loss
 ---
 VMware network loss injects network packet loss from the VMware VM(s) into the application (or service).

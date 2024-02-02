@@ -1,5 +1,5 @@
 ---
-id: VMware-host-reboot
+id: vmware-host-reboot
 title: VMware host reboot
 ---
 VMware host reboot reboots a VMware host that is attached to the Vcenter.
