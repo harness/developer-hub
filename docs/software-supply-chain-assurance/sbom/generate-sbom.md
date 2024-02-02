@@ -106,7 +106,7 @@ If you're using Docker-compliant ECR or GCR repositories, you must:
 * **Repository URL:** The Repository URL you've configured for cloning into the workspace.
 * **Source Path:** This field is designated for specifying the path within the codebase for which you aim to generate the SBOM. It enables the generation of an SBOM for particular sections of the code inside the repository. You should start the path with a '/'. For instance, if your repository URL is `https://github.com/username/repo` and you intend to generate an SBOM for a specific part of the repository found at `https://github.com/username/repo/service-core/source`, then you should input `/service-core/source` as the path.
 * **Git Branch:** The branch of the repository for which you want to generate the SBOM.
-* **Workspace:** If the cloned codebase is stored in a directory other than the default `/harness`, enter the path in the format `/harness/&lt;path>`. If you have cloned into the default `/harness`, this field can be skipped.
+* **Workspace:** If the cloned codebase is stored in a directory other than the default `/harness`, enter the path in the format `/harness/<path>`. If you have cloned into the default `/harness`, this field can be skipped.
 
 <DocImage path={require('../static/repo_sbom.png')} />
 
