@@ -33,7 +33,7 @@ Keys are used to sign and verify attestations.
 
 1. Use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate a public and private key pair
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
-3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
+3. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) to store the password for the private key.
 
 ### Add the SSCA Orchestration step
 
@@ -58,7 +58,7 @@ The **SSCA Orchestration** step has the following settings:
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 * **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
 * **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
-* **Password:** The [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](../static/sbom-ssca-orch-step.png) -->
 
