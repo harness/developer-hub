@@ -203,8 +203,46 @@ You can also use expressions to compose this URL. For example, `https://companyu
 
 Note that the expression must be evaluated in the context of the event. For example, stage related expressions may not be valid for pipeline start events. 
 
-The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+### Add Custom Headers
+Webhook notification method allows you to add custom headers consisting of key-value pairs that facilitates the creation of reusable custom webhook entities.
 
+Some important points to note:-
+1. You can add a headers by clicking on ``+ Add Header``.
+2. You can delete a header by clicking on delete icon.
+3. A header can either be a ``Fixed value`` or an ``Expression``.
+4.  You can test your webhook integeration by clicking on ``Test``.
+![](./static/custom_header.png)
+
+Sample pipeline YAML with a webhook notification method, consisting of custom headers:- 
+```yaml
+notificationRules:
+    - name: test
+      identifier: test
+      pipelineEvents:
+        - type: AllEvents
+        - type: PipelineStart
+        - type: PipelineEnd
+        - type: PipelineSuccess
+        - type: PipelineFailed
+        - type: StageFailed
+        - type: StageSuccess
+        - type: StageStart
+        - type: StepFailed
+      notificationMethod:
+        type: Webhook
+        spec:
+          webhookUrl: https://custom_notify_webhook_url
+          headers:
+            accept: "*/*"
+            authorization: <+pipeline.variables.Bearer_token>
+            content-type: application/json
+      enabled: true
+```
+:::info note
+Please note you should be able to include custom headers and payload only during the creation of custom webhooks.
+:::
+
+The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
 ### JSON for webhook notifications
 
 <details>
