@@ -143,7 +143,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/chaos-experiments/first-chaos-experiment-via-API",
+      link: "/tutorials/chaos-experiments/first-chaos-experiment-via-api",
     },
   ];
   /* Define the cards - end */
