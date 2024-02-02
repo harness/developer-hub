@@ -396,13 +396,13 @@ module.exports = {
     // Created by aimurphy for branch doc-1594 on June 8, 2023
 
     {
-      from: "/docs/platform/connectors/Code-Repositories/add-a-git-hub-connector",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+      from: "/docs/platform/connectors/code-repositories/add-a-git-hub-connector",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
     },
 
     {
       from: "/docs/platform/connectors/add-a-git-hub-connector",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
     },
 
     // Created by aimurphy for DOC-3231 on June 7 2023
@@ -948,39 +948,39 @@ module.exports = {
     },
     {
       from: "/docs/platform/connectors/connect-to-code-repo",
-      to: "/docs/platform/connectors/Code-Repositories/connect-to-code-repo",
+      to: "/docs/platform/connectors/code-repositories/connect-to-code-repo",
     },
     {
       from: "/docs/platform/connectors/connect-to-a-azure-repo",
-      to: "/docs/platform/connectors/Code-Repositories/connect-to-a-azure-repo",
+      to: "/docs/platform/connectors/code-repositories/connect-to-a-azure-repo",
     },
     {
       from: "/docs/platform/connectors/git-hub-app-support",
-      to: "/docs/platform/connectors/Code-Repositories/git-hub-app-support",
+      to: "/docs/platform/connectors/code-repositories/git-hub-app-support",
     },
     {
       from: "/docs/platform/connectors/ref-source-repo-provider/bitbucket-connector-settings-reference",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-source-repo-provider/git-connector-settings-reference",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-source-repo-provider/git-hub-connector-settings-reference",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-source-repo-provider/git-lab-connector-settings-reference",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
     },
     {
       from: "/docs/platform/connectors/ref-source-repo-provider/source-code-manager-settings",
-      to: "/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/source-code-manager-settings",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/source-code-manager-settings",
     },
     {
       from: "/docs/platform/connectors/connect-to-service-now",
