@@ -227,7 +227,7 @@ To add Kubernetes manifests to your service, do the following:
 </TabItem>  
   <TabItem value="Values YAML" label="Values YAML">
 
-Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in the Values YAML files.
+Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in the Values YAML files.
 
 If you are using a Values YAML file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 
@@ -3078,7 +3078,7 @@ For more information on runtime inputs and expressions, go to [Fixed values runt
 
 You can use pipeline, stage, service, environment, and Harness built-in variables in your values YAML files and service settings.
 
-See [Built-in Harness variables reference](/docs/platform/Variables-and-Expressions/harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+See [Built-in Harness variables reference](/docs/platform/variables-and-expressions/harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
 ### Propagate and override artifacts, manifests, and service variables
 

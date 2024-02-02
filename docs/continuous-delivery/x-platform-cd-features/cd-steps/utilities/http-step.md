@@ -287,7 +287,7 @@ In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
 For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/)..
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
@@ -332,7 +332,7 @@ In Request **Body**, enter the body of the HTTP payload to send to the URL.
 
 You can use a **Fixed Value**, **Runtime Input**, or **Expression**.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
@@ -369,7 +369,7 @@ Here are some examples:
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too.
 
 ### Headers
 
@@ -380,7 +380,7 @@ Headers are `key:value` pairs. For example:
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too.
 
 You can reference [Harness secrets](/docs/platform/secrets/add-use-text-secrets) in the **Value** setting too.
 

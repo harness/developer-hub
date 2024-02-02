@@ -357,11 +357,11 @@ You don't need to use `export` for the variables to use them with **Script Outpu
 
 ### Using Harness expressions in your scripts
 
-If you need quotes around the [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your script, use single quotes, like this:
+If you need quotes around the [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in your script, use single quotes, like this:
 
 `export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
-If you use [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
+If you use [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
 ### Specify input variables
 

@@ -54,7 +54,7 @@ files/
  |-service.yaml
 ```
 
-Harness evaluates the values.yaml files you add just like Helm does with its values file. Values.yaml files added to Harness don't use Helm templating, but instead use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/Variables-and-Expressions/harness-variables). This removes the need for Helm or Tiller to be installed.
+Harness evaluates the values.yaml files you add just like Helm does with its values file. Values.yaml files added to Harness don't use Helm templating, but instead use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/variables-and-expressions/harness-variables). This removes the need for Helm or Tiller to be installed.
 
 </details>
 <details>
@@ -86,7 +86,7 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 
 You can hardcode the deployment artifact in your values.yaml file just as you might in a typical Helm deployment.
 
-Or you can add a path to the artifact in Harness and use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) in your values.yaml to refer to that path.
+Or you can add a path to the artifact in Harness and use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables) in your values.yaml to refer to that path.
 
 When Harness executes the Pipeline, the Harness Delegate resolves the expression and pulls the artifact onto the target pods.
 

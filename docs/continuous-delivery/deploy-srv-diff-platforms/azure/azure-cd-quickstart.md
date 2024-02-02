@@ -81,7 +81,7 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
 
   Next, let's add the values.yaml file for the deployment.
 
-  Harness supports Go templating with a values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your `values.yaml` file. 
+  Harness supports Go templating with a values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) in your `values.yaml` file. 
 
   We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.
 

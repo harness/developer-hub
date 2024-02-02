@@ -72,7 +72,7 @@ The Terraform Apply step has the following settings.
 
 In **Name**, enter a name for the step, for example, **apply**.
 
-The name is very important. You can use the name in [expressions](/docs/platform/Variables-and-Expressions/harness-variables) to refer to settings in this step.
+The name is very important. You can use the name in [expressions](/docs/platform/variables-and-expressions/harness-variables) to refer to settings in this step.
 
 For example, if the name of the stage is **Terraform** and the name of the step is **apply**, and you want to echo its timeout setting, you would use:
 
@@ -239,7 +239,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 

@@ -22,7 +22,7 @@ This topics provides a quick overview or some options and steps when using Kuber
 
 ## Important notes on Kubernetes manifests
 
-You cannot use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in Values YAML files. Harness support Go templating, so you can use variables in Values YAML files and have the manifests reference those variables/values.
+You cannot use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in Values YAML files. Harness support Go templating, so you can use variables in Values YAML files and have the manifests reference those variables/values.
 
 ## Visual summary on using Kubernetes manifests
 
@@ -120,7 +120,7 @@ In Harness, these variables come from multiple places:
 
 At runtime, the Harness variables in the values.yaml file are replaced with the values you entered in the Stage as fixed values or as [Runtime Inputs](/docs/platform/variables-and-expressions/runtime-inputs).
 
-See [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables) and [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+See [Built-in Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables) and [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 ## Start a Kubernetes pipeline
 
@@ -196,11 +196,11 @@ You add a values file in the same way you added your manifests. You simply selec
 
 In **Manifest Details**, you enter the path to each values.yaml file.
 
-Your values YAML files can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) to reference artifacts in the **Service Definition** (`<+artifact.image>`), Stage and Service variables, and and other Harness variables.
+Your values YAML files can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) to reference artifacts in the **Service Definition** (`<+artifact.image>`), Stage and Service variables, and and other Harness variables.
 
 Your manifests reference your values YAML file using [Go templating](https://godoc.org/text/template), as described above.
 
-You cannot use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in values YAML files. See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
+You cannot use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in values YAML files. See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
 ## Using multiple Helm charts in a single Harness service
 
