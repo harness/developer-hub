@@ -119,11 +119,11 @@ Cons:
 
 ## Variables and secrets
 
-Harness supports the use of [variables](/docs/platform/variables-and-expressions/harness-variables) and [secrets](/docs/platform/secrets/Secrets-Management/reference-existing-secret-manager-secrets).
+Harness supports the use of [variables](/docs/platform/variables-and-expressions/harness-variables) and [secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 Instead of hardcoding values, use variables that can be populated dynamically based on the environment or context.
 
-[Secrets management](/docs/platform/secrets/Secrets-Management/harness-secret-manager-overview) ensures that sensitive information (like API keys) is stored securely and can be referenced in workflows without repetition.
+[Secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) ensures that sensitive information (like API keys) is stored securely and can be referenced in workflows without repetition.
 
 ## Harness Terraform Provider, API, and CLI
 
