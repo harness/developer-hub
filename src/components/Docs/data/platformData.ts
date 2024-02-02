@@ -119,7 +119,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/policy-as-code/harness-governance-quickstart",
         },
       ],
   },
