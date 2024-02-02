@@ -405,7 +405,7 @@ If your script produces an output variable, you must declare the output variable
 
 To support Docker images without a shell, the **Command** field is optional. In a Kubernetes cluster build infrastructure, **Command** takes precedence over **Image** if you provide both. In other build infrastructures, you must provide either **Image**, **Command**, or both.
 
-The default value of **Shell** is `Sh`, and it can't be empty. The presence of **Shell** doesn't require **Command**.
+If **Command** is empty or omitted, then Harness ignores **Shell**. The default value for **Shell** is `Sh`; however the presence of **Shell** doesn't require **Command**.
 
 ### Report Paths
 
