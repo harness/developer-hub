@@ -232,10 +232,10 @@ You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
  - [Azure](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
- - [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
- - [Git](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
- - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
- - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+ - [Bitbucket](/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+ - [Git](/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
+ - [GitHub](/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+ - [GitLab](/docs/platform/connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
 To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 
