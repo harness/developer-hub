@@ -671,7 +671,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/platform/governance/Policy-as-code/docs/feature-flags/harness-policy-engine",
+      from: "/docs/platform/governance/policy-as-code/docs/feature-flags/harness-policy-engine",
       to: "/docs/feature-flags/harness-policy-engine",
     },
 
@@ -990,31 +990,31 @@ module.exports = {
     },
     {
       from: "/docs/platform/Policy-as-code/harness-governance-overview",
-      to: "/docs/platform/governance/Policy-as-code/harness-governance-overview",
+      to: "/docs/platform/governance/policy-as-code/harness-governance-overview",
     },
     {
       from: "/docs/platform/Policy-as-code/add-a-governance-policy-step-to-a-connector",
-      to: "/docs/platform/governance/Policy-as-code/add-a-governance-policy-step-to-a-connector",
+      to: "/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-connector",
     },
     {
       from: "/docs/platform/Policy-as-code/add-a-governance-policy-step-to-a-pipeline",
-      to: "/docs/platform/governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline",
+      to: "/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline",
     },
     {
       from: "/docs/platform/Policy-as-code/add-a-policy-engine-step-to-a-secret",
-      to: "/docs/platform/governance/Policy-as-code/add-a-policy-engine-step-to-a-secret",
+      to: "/docs/platform/governance/policy-as-code/add-a-policy-engine-step-to-a-secret",
     },
     {
       from: "/docs/platform/Policy-as-code/disable-a-policy-set",
-      to: "/docs/platform/governance/Policy-as-code/disable-a-policy-set",
+      to: "/docs/platform/governance/policy-as-code/disable-a-policy-set",
     },
     {
       from: "/docs/platform/Policy-as-code/harness-governance-quickstart",
-      to: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
+      to: "/docs/platform/governance/policy-as-code/harness-governance-quickstart",
     },
     {
       from: "/docs/platform/Policy-as-code/using-harness-policy-engine-for-feature-flags",
-      to: "/docs/platform/governance/Policy-as-code/using-harness-policy-engine-for-feature-flags",
+      to: "/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-feature-flags",
     },
     {
       from: "/docs/platform/Audit-Trail/audit-trail",
