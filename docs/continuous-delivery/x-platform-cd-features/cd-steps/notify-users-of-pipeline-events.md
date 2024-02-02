@@ -207,7 +207,7 @@ Note that the expression must be evaluated in the context of the event. For exam
 Webhook notification method allows you to add custom headers consisting of key-value pairs that facilitates the creation of reusable custom webhook entities.
 
 Some important points to note:-
-1. You can add a headers by clicking on ``+ Add Header``.
+1. You can add a header by clicking on ``+ Add Header``.
 2. You can delete a header by clicking on delete icon.
 3. A header can either be a ``Fixed value`` or an ``Expression``.
 4.  You can test your webhook integeration by clicking on ``Test``.
@@ -239,7 +239,7 @@ notificationRules:
       enabled: true
 ```
 :::info note
-Please note you should be able to include custom headers and payload only during the creation of custom webhooks.
+Please note that you should be able to include custom headers and payload while creating custom webhook notifications channel(s) as well as while updating the existing ones.
 :::
 
 The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
