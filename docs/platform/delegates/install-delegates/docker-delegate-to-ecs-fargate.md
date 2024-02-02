@@ -28,7 +28,7 @@ Review the following information about using Harness ECS-configured Docker deleg
 
 Use these steps to deploy a delegate to an ECS cluster as an ECS service. The installed delegate connects to your AWS resources.
 
-This process requires a delegate with an immutable image type. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+This process requires a delegate with an immutable image type. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 :::info
 You can also [use a Terraform module to deploy a delegate to an ECS cluster](#deploy-a-delegate-using-terraform).
@@ -138,7 +138,7 @@ Use the following steps to create a service.
    
 ## Deploy a delegate to Amazon Fargate
 
-Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires a delegate with an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires a delegate with an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 ### Create the cluster
 

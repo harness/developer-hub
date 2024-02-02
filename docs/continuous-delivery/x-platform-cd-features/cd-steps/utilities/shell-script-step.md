@@ -297,7 +297,7 @@ You can specify where to run the script **Target Host** or **On Delegate**.
 If you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 If you select a target host, your choice of **Delegate Selector** determines which delegate connects to the target host. Therefore, if only some of the delegates have access to the target host, exercise care when specifying the delegate selector so that the correct delegate is selected.
 
-Go to [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) for more information.
+Go to [select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for more information.
 
 If you select **Target Host**, depending on the script type, enter the following:
 
@@ -605,7 +605,7 @@ For **Script Input Variables** and **Script Output Variables**, you simply selec
 
 If you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
-See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors).
+See [select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 
 If you select **Target Host**, enter the following:
 

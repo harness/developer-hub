@@ -961,7 +961,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delete a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
+For steps on deleting the Delgate, go to [Delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
 
 ## Notes
 

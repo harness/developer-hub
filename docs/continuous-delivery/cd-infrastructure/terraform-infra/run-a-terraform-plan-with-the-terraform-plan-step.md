@@ -25,7 +25,7 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -455,7 +455,7 @@ In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-del
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
-For example, if you had a Terraform Plan step with the [Id](/docs/platform/References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
+For example, if you had a Terraform Plan step with the [Id](/docs/platform/references/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
 
 
 ```bash

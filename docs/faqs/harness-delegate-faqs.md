@@ -118,7 +118,7 @@ Yes, you can remove sensitive information from logs in the Harness UI using regu
 
 ## Delegate installation
 
-For delegate installation instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 ### What types of delegates are there?
 
@@ -253,7 +253,7 @@ For Harness SaaS, you can add a self-signed certificates on the delegate host us
 
 ### Can I override the truststore of the delegate?
 
-Yes. For more information, go to [Truststore override for delegates](/docs/platform/Delegates/secure-delegates/trust-store-override-for-delegates).
+Yes. For more information, go to [Truststore override for delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates).
 
 ## Copying and downloading artifacts by using the delegate
 

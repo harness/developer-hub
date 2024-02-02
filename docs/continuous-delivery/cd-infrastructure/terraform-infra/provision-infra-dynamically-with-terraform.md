@@ -47,7 +47,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -93,7 +93,7 @@ The Terraform Plan step is where you connect Harness to your repo and add your T
 
 1. In **Name**, enter a name for the step, for example, **plan**.
 
-Harness will create an [Entity Id](/docs/platform/References/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
+Harness will create an [Entity Id](/docs/platform/references/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
@@ -276,7 +276,7 @@ You can add inline variables just like you would in a tfvar file.
 2. The **Add Inline Terraform Var File** settings appear.
 3. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
 
-This Identifier is a [Harness Identifier](/docs/platform/References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
+This Identifier is a [Harness Identifier](/docs/platform/references/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
 `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 

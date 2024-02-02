@@ -170,7 +170,7 @@ Helm chart delegates are a great way to manage delegates at scale and via automa
 
 You can parameterize much of the Helm Chart via Go Templating and pass in parameters via the values.yaml. This makes the Helm installation consistent and, depending on the team's requirements, you can pass in a values.yaml to spin up the delegate.
 
-For steps on Helm delegates, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+For steps on Helm delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 If you select to build your own delegate and include only those tools needed for Helm deployments, go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks/) to see what Kubernetes and Helm-related binaries are required.
 

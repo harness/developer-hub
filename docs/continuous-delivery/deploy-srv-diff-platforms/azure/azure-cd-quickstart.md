@@ -65,7 +65,7 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
   
 6. Select **Continue**.
 7. In **Connect to the provider**, select **Connect through a Harness Delegate**, and select **Continue**. 
-8. Select or add a Harness Delegate to your environment. For details on adding a delegate, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+8. Select or add a Harness Delegate to your environment. For details on adding a delegate, go to [Delegate installation overview](https://developer.harness.io/docs/platform/delegates/install-delegates/overview).
 9. Back in **Specify K8s Manifest Store**, select **Continue**.
 10. In **Manifest Details**, enter the following settings, test the connection, and select **Submit**.
 
@@ -343,4 +343,4 @@ Congratulations! The deployment was successful.
 
 ## Clean up the AKS deployment environment
 
-To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
+To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).

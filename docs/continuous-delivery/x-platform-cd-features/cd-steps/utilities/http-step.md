@@ -170,7 +170,7 @@ You can use fixed values, expressions, or runtime inputs for these settings. It 
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 

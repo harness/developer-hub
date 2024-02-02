@@ -63,7 +63,7 @@ Docs:
 Harness Delegate is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute CD pipeline and other tasks on your behalf, without any of your secrets leaving your network. You can install the Harness Delegate on either Docker or Kubernetes.
 
 Docs:
-[Delegate Overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
+[Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview)
 
 Tutorials:
 [Install Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate)

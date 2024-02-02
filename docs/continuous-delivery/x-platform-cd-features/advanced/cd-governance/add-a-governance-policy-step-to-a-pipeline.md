@@ -209,7 +209,7 @@ You can use the following Harness expressions to output Policy Step status in a 
 - `<+execution.steps.[policy step Id].output.policySetDetails.Example.status>`
 
 ![](./static/add-a-governance-policy-step-to-a-pipeline-06.png)
-For example, if the Policy Step [Id](/docs/platform/References/entity-identifier-reference) is `Check`, you would reference it like this:
+For example, if the Policy Step [Id](/docs/platform/references/entity-identifier-reference) is `Check`, you would reference it like this:
 
 ```
 echo "status: "<+execution.steps.Check.output.status>

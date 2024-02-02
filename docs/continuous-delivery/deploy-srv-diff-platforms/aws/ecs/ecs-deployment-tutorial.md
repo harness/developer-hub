@@ -116,7 +116,7 @@ The Harness delegate is a software service you install in your environment. It c
 
 If you're new to Harness, read [Harness Platform architecture](/docs/get-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
 
-1. Follow the steps in [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
+1. Follow the steps in [Delegate installation overview](/docs/platform/delegates/install-delegates/overview) to install a Harness delegate.
 
 2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
 
