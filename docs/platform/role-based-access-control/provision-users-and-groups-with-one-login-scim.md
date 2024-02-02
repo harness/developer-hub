@@ -58,7 +58,7 @@ For more information, go to the OneLogin documentation on [Adding apps](https://
 
 ## Enable SAML SSO with OneLogin
 
-To allow users to log in through your OneLogin SCIM integration, you must also set up [SAML SSO authentication with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
+To allow users to log in through your OneLogin SCIM integration, you must also set up [SAML SSO authentication with OneLogin](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
 
 ## Provision individual users
 
@@ -68,7 +68,7 @@ With the OneLogin SCIM integration, don't change a provisioned user's email addr
 
 :::
 
-To provision users, add them to the Harness OneLogin app. Users are automatically provisioned in Harness if [SAML SSO with OneLogin is enabled](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin).
+To provision users, add them to the Harness OneLogin app. Users are automatically provisioned in Harness if [SAML SSO with OneLogin is enabled](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin).
 
 1. In OneLogin, select **Users**.
 2. Add a user or select an existing user.
