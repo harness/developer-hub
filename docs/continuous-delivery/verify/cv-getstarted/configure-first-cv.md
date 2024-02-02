@@ -17,7 +17,7 @@ For illustration purposes, this topic uses SumoLogic as a sample health source t
 
 Make sure that you have created:
 
-- A connector for your health source in Harness. To learn how to add a connector, go to [Connect to monitoring and logging systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
+- A connector for your health source in Harness. To learn how to add a connector, go to [Connect to monitoring and logging systems](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems).
 
 - A CD deployment pipeline in Harness. To learn how to create a CD pipeline in Harness yet, go to [Create your first CD pipeline](/docs/continuous-delivery/cd-onboarding/certification/onboarding-guide#step-2-create-your-first-cd-pipeline). 
 
