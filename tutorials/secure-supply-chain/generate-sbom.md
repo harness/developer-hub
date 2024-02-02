@@ -76,7 +76,7 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
 4. Select the **SBOM Tool** to use to generate the SBOM, such as **Syft**.
 5. For **SBOM Format**, select either **SPDX** or **CycloneDX**.
 6. Select **Image** as the **Artifact Type**.
-7. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+7. For **Container Registry**, select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
@@ -138,7 +138,7 @@ SBOM Orchestration and Enforcement steps in deploy stage can only be used in the
 
 2. Enter a **Name** for the step.
 3. Select **Image** as the **Artifact Type**.
-4. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+4. For **Container Registry**, select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
