@@ -19,6 +19,8 @@ import set_up_harness_23 from './static/set-up-harness-for-sto-23.png'
 import set_up_harness_24 from './static/set-up-harness-for-sto-23_NEW.png'
 import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
 
+<!-- -->
+
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
