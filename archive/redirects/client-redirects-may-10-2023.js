@@ -366,59 +366,59 @@ module.exports = {
     },
     {
       from: "/docs/platform/Security/add-file-secrets",
-      to: "/docs/platform/Secrets/add-file-secrets",
+      to: "/docs/platform/secrets/add-file-secrets",
     },
     {
       from: "/docs/platform/Security/add-use-ssh-secrets",
-      to: "/docs/platform/Secrets/add-use-ssh-secrets",
+      to: "/docs/platform/secrets/add-use-ssh-secrets",
     },
     {
       from: "/docs/platform/Security/harness-secret-manager-overview",
-      to: "/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview",
+      to: "/docs/platform/secrets/Secrets-Management/harness-secret-manager-overview",
     },
     {
       from: "/docs/platform/Security/add-secrets-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-secrets-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-secrets-manager",
     },
     {
       from: "/docs/platform/Security/add-an-aws-kms-secrets-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-an-aws-kms-secrets-manager",
     },
     {
       from: "/docs/platform/Security/add-an-aws-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-an-aws-secret-manager",
     },
     {
       from: "/docs/platform/Security/azure-key-vault",
-      to: "/docs/platform/Secrets/Secrets-Management/azure-key-vault",
+      to: "/docs/platform/secrets/Secrets-Management/azure-key-vault",
     },
     {
       from: "/docs/platform/Security/custom-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/custom-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/custom-secret-manager",
     },
     {
       from: "/docs/platform/Security/add-google-kms-secrets-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-google-kms-secrets-manager",
     },
     {
       from: "/docs/platform/Security/add-a-google-cloud-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-a-google-cloud-secret-manager",
     },
     {
       from: "/docs/platform/Security/add-hashicorp-vault",
-      to: "/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault",
+      to: "/docs/platform/secrets/Secrets-Management/add-hashicorp-vault",
     },
     {
       from: "/docs/platform/Security/disable-harness-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/disable-harness-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/disable-harness-secret-manager",
     },
     {
       from: "/docs/platform/Security/reference-existing-secret-manager-secrets",
-      to: "/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets",
+      to: "/docs/platform/secrets/Secrets-Management/reference-existing-secret-manager-secrets",
     },
     {
       from: "/docs/platform/Security/ref-security/secrets-and-log-sanitization",
-      to: "/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization",
+      to: "/docs/platform/secrets/Secrets-Management/secrets-and-log-sanitization",
     },
     {
       from: "/docs/platform/connectors/add-aws-connector",
