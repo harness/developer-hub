@@ -72,24 +72,5 @@ HCE allows you to create the below probes for Linux:
 3. [Datadog](/docs/chaos-engineering/technical-reference/probes/datadog-probe)
 4. Dynatrace
 
-To enable or disable a Linux probe, you can edit the manifest. During the process, if you edit the mandatory fields `type` and `runProperties.attempt`, these values will not reflect in the execution of the experiment. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe.
+When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/troubleshooting/chaos-engineering/known-issues) for more information. 
 
-For example,
-For a Linux experiment, if you have a probe named `abc`, with the following characteristics:
-
-```
-probe:
-  - name: abc
-    mode: SOT
-```
-
-When you enable or disable the probe, the parameters reflect as follows:
-
-```
-probe:
-  - name: abc
-    type: ""
-    runProperties:
-      attempt: 0
-    mode: SOT
-```
