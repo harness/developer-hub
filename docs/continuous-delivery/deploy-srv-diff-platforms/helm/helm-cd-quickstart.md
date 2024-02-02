@@ -158,8 +158,8 @@ You can add a trigger to your Harness pipeline that will run the pipeline when t
 
 For details, go to:
 
-- [Trigger pipelines on new Helm chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart)
-- [Trigger pipelines on a new artifact](/docs/platform/Triggers/trigger-on-a-new-artifact)
+- [Trigger pipelines on new Helm chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart)
+- [Trigger pipelines on a new artifact](/docs/platform/triggers/trigger-on-a-new-artifact)
 - [Triggers](/docs/category/triggers)
 
 ### Optional: Helm Chart to Manage Harness Delegates
