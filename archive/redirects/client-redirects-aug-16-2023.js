@@ -441,8 +441,8 @@ module.exports = {
     // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
 
     {
-      from:"/docs/platform/Git-Experience/harness-git-experience-overview",
-      to: "/docs/platform/Git-Experience/git-experience-overview",
+      from:"/docs/platform/git-experience/harness-git-experience-overview",
+      to: "/docs/platform/git-experience/git-experience-overview",
     },
 
     // Created by roshnisarangadharan from branch fix-cd-link on May 19 2023

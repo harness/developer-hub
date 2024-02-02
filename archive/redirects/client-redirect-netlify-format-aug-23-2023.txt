@@ -82,7 +82,7 @@ https://developer.harness.io/docs/continuous-integration/use-ci/debug-mode https
 https://developer.harness.io/docs/continuous-integration/ci-quickstarts/drone-and-harness https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins
 https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/verification-results https://developer.harness.io/docs/category/understand-cv-results
 https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/auto-stopping-rules
-https://developer.harness.io/docs/platform/Git-Experience/harness-git-experience-overview https://developer.harness.io/docs/platform/Git-Experience/git-experience-overview
+https://developer.harness.io/docs/platform/git-experience/harness-git-experience-overview https://developer.harness.io/docs/platform/git-experience/git-experience-overview
 https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-concepts https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts
 https://developer.harness.io/docs/category/continuous-error-tracking https://developer.harness.io/docs/continuous-error-tracking/
 https://developer.harness.io/docs/category/error-tracking https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-overview

@@ -112,7 +112,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Configure Git Experience for pipelines and associated entities.",
-          link: "/docs/platform/Git-Experience/configure-git-experience-for-harness-entities",
+          link: "/docs/platform/git-experience/configure-git-experience-for-harness-entities",
         },
         {
           title: "Policy as Code",
