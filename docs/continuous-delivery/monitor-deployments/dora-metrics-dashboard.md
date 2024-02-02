@@ -30,7 +30,7 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Deployments**, select **Total Deployments**.
-3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
@@ -42,7 +42,7 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Reverted Deployments**, select **Mean Time to Restore**.
-3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
@@ -96,7 +96,7 @@ pipeline:
 1. Enter a name your query. For example, Change Failure Rate. 
 2. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Deployments**, select **Change Failure Rate**.
-3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
@@ -109,7 +109,7 @@ Lead Time to Production shows the median duration of deployments.
 1. Enter a name for your query. For example, Lead Time to Production. 
 2. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
 3. In **Deployments**, select **Median Duration**.
-4. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+4. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/dashboards/create-visualizations-and-graphs).
 5. Select **Run**.
 6. Select **Save** to save the query as a tile on your dashboard.
 

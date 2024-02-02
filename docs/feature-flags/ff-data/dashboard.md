@@ -139,10 +139,10 @@ To clone a dashboard:
 
 For detailed instructions for creating dashboards, go to these topics:
 
-* [Best practices for building dashboards](/docs/platform/Dashboards/dashboard-best-practices)
-* [Create dashboards](/docs/platform/Dashboards/create-dashboards)
-* [Add custom fields](/docs/platform/Dashboards/add-custom-fields)
-* [Create visualizations and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
+* [Best practices for building dashboards](/docs/platform/dashboards/dashboard-best-practices)
+* [Create dashboards](/docs/platform/dashboards/create-dashboards)
+* [Add custom fields](/docs/platform/dashboards/add-custom-fields)
+* [Create visualizations and graphs](/docs/platform/dashboards/create-visualizations-and-graphs)
 
 
 
