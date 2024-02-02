@@ -87,7 +87,7 @@ You can delete a user provisioned in Harness through SCIM in NextGen and retain 
 * **Feature flag:** `NG_TEMPLATE_GITX`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/Templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/Templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/Templates/create-a-remote-pipeline-template).
+You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/templates/create-a-remote-pipeline-template).
 
 ### Use expressions to reference secrets in Vaults
 
@@ -332,7 +332,7 @@ Review the following information for details about data privacy and terms of use
 
 **Update (November 2023):** AIDA for STO is now generally available. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
-**Update (January 2024):** Most AIDA functionalities are generally available. For more information, go to the [AIDA overview](/docs/platform/Harness-AIDA/aida-overview).
+**Update (January 2024):** Most AIDA functionalities are generally available. For more information, go to the [AIDA overview](/docs/platform/harness-aida/aida-overview).
 
 #### Google Cloud Secret Manager
 
