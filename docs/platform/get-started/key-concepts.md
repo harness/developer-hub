@@ -78,7 +78,7 @@ Docs:
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create re-usable logic for managing Harness entities like steps, stages, and pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.
 
 Docs:
-[Templates overview](/docs/platform/Templates/template)
+[Templates overview](/docs/platform/templates/template)
 
 Tutorials:
 [Pipeline templates](/tutorials/cd-pipelines/templates)

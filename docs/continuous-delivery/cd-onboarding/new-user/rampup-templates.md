@@ -12,8 +12,8 @@ This guide outlines a set of best practices to utilize Harness templates more ef
 For more information on templates, go to:
 
 - [Templates overview](/docs/platform/templates/template).
-- [Best practices and guidelines for templates](/docs/platform/Templates/templates-best-practices).
-- [Use a template](/docs/platform/Templates/use-a-template).
+- [Best practices and guidelines for templates](/docs/platform/templates/templates-best-practices).
+- [Use a template](/docs/platform/templates/use-a-template).
 
 ## Variables with templates
 

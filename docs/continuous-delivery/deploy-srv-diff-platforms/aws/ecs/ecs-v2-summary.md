@@ -346,7 +346,7 @@ Harness templates create reusable logic for Harness entities like steps, stages,
 
 You can link templates in your pipelines or share them with your teams for improved efficiency. 
 
-If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](/docs/platform/Templates/template).
+If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](/docs/platform/templates/template).
 
 ### ECS service configuration
 

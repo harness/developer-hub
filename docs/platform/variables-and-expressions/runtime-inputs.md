@@ -66,7 +66,7 @@ Runtime input is especially useful for templatizing your pipelines, because runt
 
 :::note
 
-Using runtime input for templatizing is different from the [Harness Template Library feature](/docs/platform/Templates/template).
+Using runtime input for templatizing is different from the [Harness Template Library feature](/docs/platform/templates/template).
 
 :::
 
@@ -187,7 +187,7 @@ Harness doesn't support *nested* JSON objects in runtime input. For example, thi
 
 #### Default values in templates
 
-You can specify default values in [templates](/docs/platform/Templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
+You can specify default values in [templates](/docs/platform/templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
 
 ```yaml
 pipeline:
