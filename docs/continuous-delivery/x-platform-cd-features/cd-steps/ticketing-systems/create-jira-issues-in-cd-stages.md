@@ -30,7 +30,7 @@ To add a Jira Create step, do the following:
    ![](./static/create-jira-issues-in-cd-stages-00.png)
 
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
 5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/connectors/ticketing-systems/connect-to-jira) to use.
 6. In **Jira Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
 7. In **Issue Type**, select a Jira issue type from the list of types in the Jira project you selected.

@@ -132,7 +132,7 @@ Enter a name for the Pipeline and click **Start**. Now you're ready to add a sta
 
 ## Add a Kubernetes Deploy stage
 
-For steps on adding a stage, see [Add a Stage](/docs/platform/Pipelines/add-a-stage).
+For steps on adding a stage, see [Add a Stage](/docs/platform/pipelines/add-a-stage).
 
 1. When you add a stage, select **Deploy**.
 2. Name the stage, and select what you'd like to deploy. For example, select **Service**.

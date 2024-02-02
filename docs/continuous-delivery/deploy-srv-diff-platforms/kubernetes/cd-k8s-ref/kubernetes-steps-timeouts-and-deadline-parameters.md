@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how Harness Timeout settings relate to the Kubernetes deadline parameter.
 
-Every step in a Harness Kubernetes Deploy stage includes a **Timeout** setting. This setting determines how long Harness attempts to run the step before failing the step and initiating the step or stage [Failure Strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+Every step in a Harness Kubernetes Deploy stage includes a **Timeout** setting. This setting determines how long Harness attempts to run the step before failing the step and initiating the step or stage [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
 
 When setting step **Timeout** settings, it's important to know that Kubernetes has an optional deadline parameter that specifies the number of seconds you want Kubernetes to wait for your Deployment to progress before the system reports back that the Deployment has [failed progressing](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#failed-deployment).
 

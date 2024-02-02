@@ -36,7 +36,7 @@ Capturing and exporting output in the Jenkins step can be very powerful. For exa
 
 ## Add the Jenkins step
 
-This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/Pipelines/add-a-stage).
+This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/pipelines/add-a-stage).
 
 In your CD stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
