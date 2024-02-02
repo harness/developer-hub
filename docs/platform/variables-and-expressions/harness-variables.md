@@ -627,7 +627,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 - If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing. Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
 
-- Usage of `.getClass()` in expressions is restricted and will not be evaluated.
+- Usage of `getClass()` in expressions is not supported and will not be evaluated.
 
 ## Debugging expressions
 
