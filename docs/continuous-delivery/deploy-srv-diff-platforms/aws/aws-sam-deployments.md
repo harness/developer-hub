@@ -134,7 +134,7 @@ To add your template, do the following:
    3. **Branch**/**Commit Id:** Enter the branch name or commit Id.
    4. **File/Folder Path:** Enter the path to the template from the root of the repository.
 11. Select **Submit**.
-    
+
 #### AWS S3
 8. Select the AWS S3 provider.
 9. Select or create a new Harness AWS connector to your AWS S3 provider, and then select **Continue**.
