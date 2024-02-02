@@ -97,7 +97,7 @@ https://developer.harness.io/tutorials/build-code/ci-tutorial-kubernetes-cluster
 https://developer.harness.io/tutorials/ci-pipelines/build/kubernetes-build-farm https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm
 https://developer.harness.io/tutorials/build-code/build/tfc-notification https://developer.harness.io/tutorials/ci-pipelines/tfc-notification
 https://developer.harness.io/tutorials/ci-pipelines/build/tfc-notification https://developer.harness.io/tutorials/ci-pipelines/tfc-notification
-https://developer.harness.io/docs/platform/Triggers/trigger-pipelines-using-custom-payload-conditions https://developer.harness.io/docs/platform/Triggers/triggering-pipelines
+https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions https://developer.harness.io/docs/platform/triggers/triggering-pipelines
 https://developer.harness.io/tutorials/ci-pipelines/build/signed-image https://developer.harness.io/tutorials/ci-pipelines/build/go
 https://developer.harness.io/docs/category/troubleshoot-and-optimize-ci https://developer.harness.io/docs/category/troubleshoot-ci
 https://developer.harness.io/docs/continuous-integration/troubleshoot/troubleshooting-ci https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci
