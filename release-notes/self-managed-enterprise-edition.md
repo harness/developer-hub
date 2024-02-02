@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-01-29T10:00
+date: 2024-02-04T10:00
 sidebar_position: 16
 ---
 
@@ -65,6 +65,7 @@ gsutil -m cp \
 
    This issue was resolved by redirecting the Dashboards module to view BI Dashboards. The BI Dashboards are a subset of all module dashboards available under Custom Dashboards, providing a shortcut to access them. 
 
+
 ## February 2, 2024, patch version 0.13.1
 
 This release includes the following Harness module and component versions.
@@ -106,13 +107,7 @@ gsutil -m cp \
 - If you encounter a `Project with orgIdentifier and identifier not found` after an upgrade, Harness recommends waiting for at least 2 minutes before taking any action. A background migration job will trigger 1 minute after the upgrade to populate the correct links. (PL-46725)
 
    Previously, the job was triggered after 30 minutes, which caused issues. However, this has now been resolved by reducing the time to 1 minute.
-
-<!-- 
-- The `/ccm/bi-dashboards` API didn't return dashboards. (CCM-15995)
-
-   This issue was resolved by redirecting the Dashboards module to view BI Dashboards. The BI Dashboards are a subset of all module dashboards available under Custom Dashboards, providing a shortcut to access them. 
-
--->
+   
 
 ## January 29, 2024, version 1.19.10
 
