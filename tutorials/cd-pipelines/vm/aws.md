@@ -462,5 +462,5 @@ You've just learned how to use Harness CD to copy an artifact to AWS instances.
 
 #### What's Next?
 
-- Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](/docs/platform/Triggers/triggering-pipelines).
+- Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](/docs/platform/triggers/triggering-pipelines).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.

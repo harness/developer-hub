@@ -1231,5 +1231,5 @@ You've just learned how to use Harness CD to deploy application using a Helm Cha
 
 ## Next steps
 
-- Keep learning about Harness CD. Add **Triggers** to your pipeline that'll respond to Git events. For more information, go to [Triggering pipelines](/docs/platform/Triggers/triggering-pipelines).
+- Keep learning about Harness CD. Add **Triggers** to your pipeline that'll respond to Git events. For more information, go to [Triggering pipelines](/docs/platform/triggers/triggering-pipelines).
 - Visit [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.

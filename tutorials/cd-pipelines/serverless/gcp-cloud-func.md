@@ -494,7 +494,7 @@ You've just learned how to use Harness CD to deploy a Google Cloud Function to G
 
 #### What's next?
 
-- Keep learning about Harness CD. For example, add [Triggers](/docs/platform/Triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
+- Keep learning about Harness CD. For example, add [Triggers](/docs/platform/triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 </TabItem>
