@@ -350,6 +350,79 @@ The template actions currently supports only [IDP Stage](https://developer.harne
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
 
+### Conditional Inputs in Templates
+
+1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+
+```YAML
+      dependencies:
+        technology:
+          oneOf:
+            - properties:
+                technology:
+                  enum:
+                    - java
+                java version:
+                  type: "string"
+                  enum:
+                    - java8
+                    - java11
+```
+2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+
+```YAML
+type: object
+allOf:
+- properties:
+    lorem:
+      type:
+      - string
+      - boolean
+      default: true
+- properties:
+    lorem:
+      type: boolean
+    ipsum:
+      type: string
+```
+3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
+
+```YAML
+type: object
+properties:
+  age:
+    type: integer
+    title: Age
+  items:
+    type: array
+    items:
+      type: object
+      anyOf:
+      - properties:
+          foo:
+            type: string
+      - properties:
+          bar:
+            type: string
+anyOf:
+- title: First method of identification
+  properties:
+    firstName:
+      type: string
+      title: First name
+      default: Chuck
+    lastName:
+      type: string
+      title: Last name
+- title: Second method of identification
+  properties:
+    idCode:
+      type: string
+      title: ID code
+```
+
+For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
+
 ### Register the template
 
 Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
