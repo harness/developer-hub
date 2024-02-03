@@ -10,7 +10,7 @@ Harness supports three workflows for using custom certificates. You can add your
 
 ## When to add custom certificates to a delegate for STO
 
-Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if both of the following are true:
+Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if both of the following are true:
 
 - You're using a Kubernetes or Docker delegate.
 
@@ -18,7 +18,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 
 ## Important notes for adding custom certificates to a delegate for STO
 
-- This workflow is supported for Kubernetes and Docker delegates only, and requires direct access to the delegate. If you don't meet these requirements, you can add your certs to [individual pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-pipelines) or to [custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry) instead.
+- This workflow is supported for Kubernetes and Docker delegates only, and requires direct access to the delegate. If you don't meet these requirements, you can add your certs to [individual pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/add-custom-certs/add-certs-to-pipelines) or to [custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry) instead.
 
 - You must have **root access** to perform the [workflows](#workflow-descriptions) referenced below.
 

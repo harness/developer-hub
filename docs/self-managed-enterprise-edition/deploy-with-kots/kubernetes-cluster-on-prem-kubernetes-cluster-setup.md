@@ -394,6 +394,11 @@ You can change the settings later in the KOTS admin console **Config** tab:
 
 #### gRPC and load balancer settings
 
+:::info note
+gRPC settings are not required for delegate version 23.12.81803 and later.
+
+:::
+
 In **Scheme**, if you select HTTPS, the GRPC settings appear.
 
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-19.png)

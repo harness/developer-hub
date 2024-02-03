@@ -322,7 +322,7 @@ User management permissions are available at any [scope](../../role-based-access
 
 ### Service accounts
 
-The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
+The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
 
 * View service accounts: `core_serviceaccount_view`
 * Create/edit service accounts: `core_serviceaccount_edit`
