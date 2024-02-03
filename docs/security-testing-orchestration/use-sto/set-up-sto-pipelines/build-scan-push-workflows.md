@@ -1,7 +1,8 @@
 ---
 title: Build/scan/push pipelines for container images in STO
 description: End-to-end pipeline examples for different use cases. 
-sidebar_position: 90
+sidebar_position: 40
+sidebar_label: Build/scan/push pipelines for container images
 ---
 
 You generally want to scan any container images you build and then push them to your production registry _only_ if the scan did not detect any serious vulnerabilties. 

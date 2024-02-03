@@ -2151,7 +2151,7 @@ module.exports = {
 
     {
       from: "/docs/security-testing-orchestration/use-sto/download-images-from-private-registry",
-      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/download-images-from-private-registry",
     },
 
     {

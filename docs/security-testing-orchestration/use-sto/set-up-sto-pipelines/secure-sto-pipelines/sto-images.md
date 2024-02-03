@@ -1,5 +1,5 @@
 ---
-title: Harness STO images
+title: Update your STO images
 description: How STO pulls the images it needs, and how to update images in a private registry.
 sidebar_position: 70
 ---
@@ -9,7 +9,7 @@ This topic describes how Harness updates and maintains supported STO images and 
 
 :::note Important Notes
 
-- Harness updates STO images approximately every two weeks. If you store your Harness images in a private registry, Harness strongly recommends that you update your images each month to ensure that you're using the latest supported scanner images in your pipelines. 
+- Harness updates STO images every two weeks. If you store your Harness images in a private registry, Harness strongly recommends that you update your images each month to ensure that you're using the latest supported scanner images in your pipelines. 
 - Harness images are available on Docker Hub and Google Container Registry. However, Docker is [deprecating the `app.harness` Docker registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#deprecation-notice-appharness-docker-registry) and recommends that you download images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) instead.  
 :::
 
@@ -26,20 +26,19 @@ Here are are a few examples of Harness STO images in the [Harness GCR project](h
 
 ### I don't want to pull images from a public registry
 
-If you don't want to pull images directly from the public GCR registry, you can pull Harness images from your own private registry. For more information, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+If you don't want to pull images directly from the public Harness registry, you can pull images from your own private registry. For more information, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/download-images-from-private-registry).
 
 
 ### When should I update my STO images? 
 
-Your organization has a one-month window to run security scans or other tests on new STO images before you deploy them. Approximately very two weeks, Harness publishes new versions of images required to run STO builds. 
+Your organization has a one-month window to run security scans or other tests on new STO images before you deploy them. 
 
 Harness has the following process for updating STO images such as [`sto-plugin`](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/sto-plugin) and [`veracode-agent-job-runner`](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/veracode-agent-job-runner):
 
 
-* On average, Harness publishes updates for STO images every other week on Wednesday or Thursday.
+* Harness publishes updates for STO images every two weeks.
 * Version numbers use an `x.y.z` format with the major, minor, and hotfix or patch release number.
 * You can choose to deploy the latest containers immediately upon release, or you can download and scan them before deployment.
-<!-- * All images are supported for the latest three releases. Thus if the `latest` image is `1.2.3`, then Harness supports `1.2.3`, `1.2.2`, and `1.2.1`. -->
 
 
 ## For more information

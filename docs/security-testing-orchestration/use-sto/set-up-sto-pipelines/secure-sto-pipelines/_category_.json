@@ -1,14 +1,14 @@
 {
-    "label": "Set up STO pipelines",
-    "position": 10,
+    "label": "Secure your STO pipelines",
+    "position": 20,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",   
     "link": {
         "type": "generated-index",
-        "title": "Set up STO pipelines"
+        "title": "Secure your STO pipelines"
     },
     "customProps": {
-        "ref": "doc-2894"
+        "ref": "STO-7078"
     }
 }
