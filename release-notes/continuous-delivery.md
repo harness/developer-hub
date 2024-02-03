@@ -517,6 +517,13 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+## February 2024
+
+### Version 1.21.6 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue with infrastructure definition to reconcile inconsistencies. (CDS-89314)
 #### Hotfix version 81614
 
 - Recent changes to enable Harness to evaluate delegate selector expressions at stage runtime caused pipelines to fail. (CDS-85692, ZD-54495)
