@@ -85,11 +85,16 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
 
-<!--  #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+<!-- #### Target and variant detection 
 
-<StoSettingScanTypeAutodetect / -->
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 

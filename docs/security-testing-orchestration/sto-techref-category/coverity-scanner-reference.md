@@ -84,11 +84,13 @@ import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.
 <StoSettingScanTypeRepo />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 
