@@ -73,10 +73,11 @@ The **SSCA Orchestration** step includes various settings for generating the SBO
 
 * **Password:** The [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
 
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+
 <!-- ![](../static/sbom-ssca-orch-step.png) -->
 
-<DocImage path={require('../static/container_sbom.png')} />
-
+<DocImage path={require('../static/container-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
 :::info ECR and GCR repos
 
@@ -104,11 +105,12 @@ If you're using Docker-compliant ECR or GCR repositories, you must:
     Selecting "Repository" requires setting up a process to clone your repository into the workspace. This setup can be achieved through various approaches, such as a [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/), a [Run step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/), or during the stage creation process. It's essential that the SBOM Orchestration operates on the successfully cloned repository.
     :::
 * **Repository URL:** The Repository URL you've configured for cloning into the workspace.
-* **Source Path:** This field is designated for specifying the path within the codebase for which you aim to generate the SBOM. It enables the generation of an SBOM for particular sections of the code inside the repository. You should start the path with a '/'. For instance, if your repository URL is `https://github.com/username/repo` and you intend to generate an SBOM for a specific part of the repository found at `https://github.com/username/repo/service-core/source`, then you should input `/service-core/source` as the path.
+* **Source Path:** This field is designated for specifying the path within the codebase for which you aim to generate the SBOM. It enables the generation of an SBOM for particular sections of the code inside the repository. You should start the path with a '/'. For instance, if your repository URL is `https://github.com/username/repo` and you intend to generate an SBOM for a specific part of the repository found at `https://github.com/username/repo/service-core/source`, then you should input `/service-core/source` as the path. To generate an SBOM for the entire repository, leave this field empty.
 * **Git Branch:** The branch of the repository for which you want to generate the SBOM.
 * **Workspace:** If the cloned codebase is stored in a directory other than the default `/harness`, enter the path in the format `/harness/<path>`. If you have cloned into the default `/harness`, this field can be skipped.
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
-<DocImage path={require('../static/repo_sbom.png')} />
+<DocImage path={require('../static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
 <!-- ![](./static/sbom-deploy-stage.png) -->
 

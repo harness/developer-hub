@@ -21,5 +21,5 @@ When an SBOM is generated, the SSCA module generates and signs the attestation, 
 Attestations are stored as `.att` files in the artifact repository, specified in your build or deploy stage, along with the image. You can also find the SBOM on the **Execution details** page in Harness. For more information, go to [View attestations and violations](/docs/software-supply-chain-assurance/ssca-view-results.md).
 
 :::info
-While Harness is capable of generating SBOMs for both **Container Images** and **Code Repositories**, it is important to note that SBOM attestation is currently available exclusively for Container Images.
+While Harness is capable of generating SBOMs for both **Container Images** and **Code Repositories**, it is important to note that SBOM attestation is supported only for Container Images.
 :::
