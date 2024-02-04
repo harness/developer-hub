@@ -94,15 +94,14 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- The helm-init-container images lacked a versioned tag and the pull policy for waitForInitContainers was not configurable. This led to the usage of non-stable images in some places which were not updated to the stable image because of the cached image with the same tag and image digest. (PL-46444)
+- The `helm-init-container` images lacked a versioned tag and the pull policy for `waitForInitContainers` was not configurable. This led to the usage of unstable images in some places, which were not updated to the stable image because of the cached image with the same tag and image digest. (PL-46444)
 
-   This has been resolved by adding configuration options for image, resources and security which can be controlled at global and service levels in the overrides and the versioned image of helm-init-container is now being used. The image pull policy is also set to Always as default."
+   This has been resolved by adding configuration options for image, resources, and security, which can be controlled at global and service levels in the overrides and the versioned image of `helm-init-container` is now being used. The image pull policy is also set to `Always` as the default.
 
-
+## January 2024
 
 ### Version 1.22.3 <!--  January 29, 2024 -->
 
-## January 2024
 
 #### New features and enhancements
 
