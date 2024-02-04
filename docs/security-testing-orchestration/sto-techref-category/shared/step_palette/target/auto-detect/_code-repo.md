@@ -1,0 +1,4 @@
+When scanning a code repository, the step auto-detects these values using `git`: 
+  - To detect the target, STO runs `git config --get remote.origin.url`. 
+  - To detect the variant, STO runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+

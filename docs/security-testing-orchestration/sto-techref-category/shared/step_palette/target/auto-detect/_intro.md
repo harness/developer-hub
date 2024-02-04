@@ -1,0 +1,1 @@
+Auto-detection is not available if the scan mode is Ingestion or the target type is Configuration.
