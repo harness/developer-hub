@@ -37,6 +37,15 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
+
+## February 2024
+
+### Version 24.02.82203 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
+
 ## January 2024
 
 ### Harness version 1.22.3, Harness Delegate version 24.01.82202 <!--  January 29, 2024 -->

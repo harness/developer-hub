@@ -266,3 +266,7 @@ Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/d
 ### What can a client do with client-sdk-key besides evaluating feature flags?
 
 The client SDK keys are intended only for evaluation purposes on Harness servers and do not allow users to extract data from their Harness account. This means that even if someone inspects a web application and obtains the client SDK key, they cannot access any confidential information stored in Harness.
+
+#### Can we call initialize more than once to update attributes?
+
+We do not have a option to do update without closing the sdk. So ee will need to close the SDK and re-init it in the mean time, to force the attributes to update.

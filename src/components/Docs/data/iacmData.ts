@@ -105,6 +105,12 @@ export const docsCards: CardSections = [
         link: "/docs/infra-as-code-management/workspaces/drift-detection",
       },
       {
+        title: "IaCM Overview page",
+        description: "Learn how to view insightful data on managed resources",
+        module: MODULES.iacm,
+        link: "/docs/infra-as-code-management/workspaces/reports",
+      },
+      {
         title: "Workspace Permissions and Access Control",
         module: MODULES.iacm,
         description:
