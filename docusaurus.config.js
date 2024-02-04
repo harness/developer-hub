@@ -349,6 +349,11 @@ const config = {
             position: "right",
           },
           {
+            position: 'right',
+            html: '<button class="button button--nav">Sign in</button>',
+            href: 'https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in',
+          },
+          {
             position: "right",
             // label: "Sign up",
             html: '<button class="button button--cta">Sign up</button>',

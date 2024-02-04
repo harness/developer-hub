@@ -85,7 +85,7 @@ The following table shows the applicable rates for each OS type as of August 202
 | Linux | 4 | 2 |
 | Linux | 8 | 5 |
 | Linux | 16 | 10 |
-| Linux | 32 | 20 |
+| Linux | 30 | 20 |
 | Windows | 4 | 8 |
 | macOS | 6 | 60 |
 

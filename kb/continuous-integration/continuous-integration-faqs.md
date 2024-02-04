@@ -267,6 +267,18 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
+### When we run the build in Harness cloud, which delegate will be used? Will it be using a delegate that is running in the local infra or the delegate will be used for cloud run is also hosted in Harness?
+
+When the build is running on Harness cloud,  a delegate that is hosted in Harness cloud will be used
+
+### Do I need to keep a delagate running in our local infrastructure, if Im only running the build in Harness cloud?
+
+You wouldn't need a delegate running in local infra if you are only running the build on Harness cloud
+
+### Can I run CD steps/stages in Harness cloud in the same way how we can run the CI steps/stages in Harnes cloud?
+
+Running CD steps/stages in Harness cloud is not currently supported
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -418,6 +430,18 @@ Yes, the build pod is cleaned up after stage execution, regardless of whether th
 ### How do I know if the pod cleanup task fails?
 
 To help identify pods that aren't cleaned up after a build, pod deletion logs include details such as the cluster endpoint targeted for deletion. If a pod can't be located for cleanup, then the logs include the pod identifier, namespace, and API endpoint response from the pod deletion API. You can find logs in the [Build details](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds#build-details).
+
+### How does the isto proxy config "holdApplicationUntilProxyStarts" adding a delay in the application start?
+
+When we set set ```holdApplicationUntilProxyStarts``` to ```true``` it causes the sidecar injector to inject the sidecar at the start of the pod’s container list, and configures it to block the start of all other containers until the proxy is ready
+
+### How to configure the istio proxy config "holdApplicationUntilProxyStarts" for a pod?
+
+This can be added as a pod annotation ```proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'```
+
+### Why the dind build is failing with OOM error even after increasing the memory of the run step where we run the docker build command?
+
+When we run the docker build command in a dind setup, the build will be executed on the dind container. Hence you would need to increase the memory for the dind background step to fix the OOM error during build
 
 ## Self-signed certificates
 
@@ -1090,6 +1114,10 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 ### Build and Push to Docker fails with kaniko container runtime error
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
+
+### Can I use Harness expressions in the dockerfile which is being used to perform the build?
+
+No, Harness expressions are not supported in the dockerfile
 
 ## Upload artifacts
 
