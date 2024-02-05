@@ -403,7 +403,7 @@ If your script produces an output variable, you must declare the output variable
 
 #### Images without a shell
 
-To support Docker images without a shell, the **Command** field is optional. In a Kubernetes cluster build infrastructure, **Command** takes precedence over **Image** if you provide both. In other build infrastructures, you must provide either **Image**, **Command**, or both.
+To support Docker images without a shell, the **Command** field is optional. You must provide either **Image**, **Command**, or both. If you provide only **Image**, Harness runs the image entrypoint.
 
 If **Command** is empty or omitted, then Harness ignores **Shell**. The default value for **Shell** is `Sh`; however the presence of **Shell** doesn't require **Command**.
 
