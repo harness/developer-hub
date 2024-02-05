@@ -355,18 +355,18 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
 
 ```YAML
-      dependencies:
-        technology:
-          oneOf:
-            - properties:
-                technology:
-                  enum:
-                    - java
-                java version:
-                  type: "string"
-                  enum:
-                    - java8
-                    - java11
+dependencies:
+  technology:
+    oneOf:
+      - properties:
+          technology:
+            enum:
+              - java
+          java version:
+            type: "string"
+            enum:
+              - java8
+              - java11
 ```
 2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
 

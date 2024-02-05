@@ -205,7 +205,7 @@ Variables such as project name and GitHub repository are runtime inputs. They ar
 
 ### Create a software template definition in IDP
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code.
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template.
 
 <Tabs>
 <TabItem value="GitHub">
@@ -436,6 +436,108 @@ The template actions currently supports only [custom stage](https://developer.ha
 :::
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
+
+### Conditional Inputs in Templates
+
+1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+
+```YAML
+dependencies:
+  technology:
+    oneOf:
+      - properties:
+          technology:
+            enum:
+              - java
+          java version:
+            type: "string"
+            enum:
+              - java8
+              - java11
+```
+2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+
+```YAML
+type: object
+allOf:
+- properties:
+    lorem:
+      type:
+      - string
+      - boolean
+      default: true
+- properties:
+    lorem:
+      type: boolean
+    ipsum:
+      type: string
+```
+3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
+
+```YAML
+type: object
+properties:
+  age:
+    type: integer
+    title: Age
+  items:
+    type: array
+    items:
+      type: object
+      anyOf:
+      - properties:
+          foo:
+            type: string
+      - properties:
+          bar:
+            type: string
+anyOf:
+- title: First method of identification
+  properties:
+    firstName:
+      type: string
+      title: First name
+      default: Chuck
+    lastName:
+      type: string
+      title: Last name
+- title: Second method of identification
+  properties:
+    idCode:
+      type: string
+      title: ID code
+```
+
+For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
+
+### Upload a file using template
+
+There are 3 types of file upload. 
+
+1. Single File
+2. Multiple Files
+3. Single File with Accept Attribute 
+
+```YAML
+#Example
+title: Files
+type: object
+properties:
+  file:
+    type: string
+    format: data-url
+    title: Single file
+  files:
+    type: array
+    title: Multiple files
+    items:
+      type: string
+      format: data-url
+  filesAccept:
+    type: string
+    format: data-url
+    title: Single File with Accept attribute
+```
 
 ### Register the template
 
