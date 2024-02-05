@@ -234,6 +234,10 @@ Go to:
 - [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 - [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
 
+### Notes
+
+- Please refer to [Document on deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) for limitations of approval logs. 
+
 ### See also
 
 - [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
