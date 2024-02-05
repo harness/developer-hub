@@ -17,9 +17,9 @@ const sidebars = {
       items: [
         // Set up CI Pipelines
         {
-          type: 'link',
+          type: 'doc',
+          id: 'ci-pipelines',
           label: 'Set up CI Pipelines',
-          href: '/tutorials/ci-pipelines',
         },
 
         // Set up CD Pipelines
