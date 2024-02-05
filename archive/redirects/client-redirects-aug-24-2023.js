@@ -390,13 +390,13 @@ module.exports = {
     // Created by aimurphy for branch doc-1594 on June 8, 2023
 
     {
-      from: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+      from: "/docs/platform/connectors/code-repositories/add-a-git-hub-connector",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
     },
 
     {
-      from: "/docs/platform/Connectors/add-a-git-hub-connector",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+      from: "/docs/platform/connectors/add-a-git-hub-connector",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
     },
 
     // Created by aimurphy for DOC-3231 on June 7 2023
@@ -435,8 +435,8 @@ module.exports = {
     // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
 
     {
-      from:"/docs/platform/Git-Experience/harness-git-experience-overview",
-      to: "/docs/platform/Git-Experience/git-experience-overview",
+      from:"/docs/platform/git-experience/harness-git-experience-overview",
+      to: "/docs/platform/git-experience/git-experience-overview",
     },
 
     // Created by roshnisarangadharan from branch fix-cd-link on May 19 2023
@@ -520,8 +520,8 @@ module.exports = {
     // Created by aimurphy for branch ci-4876 on May 10 2023
 
     {
-      from: "/docs/platform/Triggers/trigger-pipelines-using-custom-payload-conditions",
-      to: "/docs/platform/Triggers/triggering-pipelines",
+      from: "/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions",
+      to: "/docs/platform/triggers/triggering-pipelines",
     },
 
     // Created by aimurphy for branch ci-misc-small-items on May 3 2023
@@ -618,7 +618,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/add-aws-connector",
+      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/connectors/cloud-providers/add-aws-connector",
       to: "/docs/category/cloudformation",
     },
 
@@ -628,7 +628,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
+      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
       to: "/docs/category/cloudformation",
     },
 
@@ -671,7 +671,7 @@ module.exports = {
     },
 
     {
-      from: "/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine",
+      from: "/docs/platform/governance/policy-as-code/docs/feature-flags/harness-policy-engine",
       to: "/docs/feature-flags/harness-policy-engine",
     },
 
@@ -830,199 +830,199 @@ module.exports = {
     },
     {
       from: "/docs/platform/Security/add-file-secrets",
-      to: "/docs/platform/Secrets/add-file-secrets",
+      to: "/docs/platform/secrets/add-file-secrets",
     },
     {
       from: "/docs/platform/Security/add-use-ssh-secrets",
-      to: "/docs/platform/Secrets/add-use-ssh-secrets",
+      to: "/docs/platform/secrets/add-use-ssh-secrets",
     },
     {
       from: "/docs/platform/Security/harness-secret-manager-overview",
-      to: "/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview",
+      to: "/docs/platform/secrets/Secrets-Management/harness-secret-manager-overview",
     },
     {
       from: "/docs/platform/Security/add-secrets-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-secrets-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-secrets-manager",
     },
     {
       from: "/docs/platform/Security/add-an-aws-kms-secrets-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-an-aws-kms-secrets-manager",
     },
     {
       from: "/docs/platform/Security/add-an-aws-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-an-aws-secret-manager",
     },
     {
       from: "/docs/platform/Security/azure-key-vault",
-      to: "/docs/platform/Secrets/Secrets-Management/azure-key-vault",
+      to: "/docs/platform/secrets/Secrets-Management/azure-key-vault",
     },
     {
       from: "/docs/platform/Security/custom-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/custom-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/custom-secret-manager",
     },
     {
       from: "/docs/platform/Security/add-google-kms-secrets-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-google-kms-secrets-manager",
     },
     {
       from: "/docs/platform/Security/add-a-google-cloud-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/add-a-google-cloud-secret-manager",
     },
     {
       from: "/docs/platform/Security/add-hashicorp-vault",
-      to: "/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault",
+      to: "/docs/platform/secrets/Secrets-Management/add-hashicorp-vault",
     },
     {
       from: "/docs/platform/Security/disable-harness-secret-manager",
-      to: "/docs/platform/Secrets/Secrets-Management/disable-harness-secret-manager",
+      to: "/docs/platform/secrets/Secrets-Management/disable-harness-secret-manager",
     },
     {
       from: "/docs/platform/Security/reference-existing-secret-manager-secrets",
-      to: "/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets",
+      to: "/docs/platform/secrets/Secrets-Management/reference-existing-secret-manager-secrets",
     },
     {
       from: "/docs/platform/Security/ref-security/secrets-and-log-sanitization",
-      to: "/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization",
+      to: "/docs/platform/secrets/Secrets-Management/secrets-and-log-sanitization",
     },
     {
-      from: "/docs/platform/Connectors/add-aws-connector",
-      to: "/docs/platform/Connectors/Cloud-providers/add-aws-connector",
+      from: "/docs/platform/connectors/add-aws-connector",
+      to: "/docs/platform/connectors/cloud-providers/add-aws-connector",
     },
     {
-      from: "/docs/platform/Connectors/add-a-microsoft-azure-connector",
-      to: "/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector",
+      from: "/docs/platform/connectors/add-a-microsoft-azure-connector",
+      to: "/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-google-cloud-platform-gcp",
-      to: "/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp",
+      from: "/docs/platform/connectors/connect-to-google-cloud-platform-gcp",
+      to: "/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp",
     },
     {
-      from: "/docs/platform/Connectors/add-a-kubernetes-cluster-connector",
-      to: "/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector",
+      from: "/docs/platform/connectors/add-a-kubernetes-cluster-connector",
+      to: "/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-a-cloud-provider",
-      to: "/docs/platform/Connectors/Cloud-providers/connect-to-a-cloud-provider",
+      from: "/docs/platform/connectors/connect-to-a-cloud-provider",
+      to: "/docs/platform/connectors/cloud-providers/connect-to-a-cloud-provider",
     },
     {
-      from: "/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference",
-      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-cloud-providers/artifactory-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference",
-      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-cloud-providers/aws-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference",
-      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference",
-      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-cloud-providers/gcs-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
-      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
+      to: "/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-jenkins",
-      to: "/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins",
+      from: "/docs/platform/connectors/connect-to-jenkins",
+      to: "/docs/platform/connectors/Artifact-Repositories/connect-to-jenkins",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-an-artifact-repo",
-      to: "/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo",
+      from: "/docs/platform/connectors/connect-to-an-artifact-repo",
+      to: "/docs/platform/connectors/Artifact-Repositories/connect-to-an-artifact-repo",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector",
-      to: "/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector",
+      from: "/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector",
+      to: "/docs/platform/connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector",
     },
     {
-      from: "/docs/platform/Connectors/using-ibm-registry-to-create-a-docker-connector",
-      to: "/docs/platform/Connectors/Artifact-Repositories/using-ibm-registry-to-create-a-docker-connector",
+      from: "/docs/platform/connectors/using-ibm-registry-to-create-a-docker-connector",
+      to: "/docs/platform/connectors/Artifact-Repositories/using-ibm-registry-to-create-a-docker-connector",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-code-repo",
-      to: "/docs/platform/Connectors/Code-Repositories/connect-to-code-repo",
+      from: "/docs/platform/connectors/connect-to-code-repo",
+      to: "/docs/platform/connectors/code-repositories/connect-to-code-repo",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-a-azure-repo",
-      to: "/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo",
+      from: "/docs/platform/connectors/connect-to-a-azure-repo",
+      to: "/docs/platform/connectors/code-repositories/connect-to-a-azure-repo",
     },
     {
-      from: "/docs/platform/Connectors/git-hub-app-support",
-      to: "/docs/platform/Connectors/Code-Repositories/git-hub-app-support",
+      from: "/docs/platform/connectors/git-hub-app-support",
+      to: "/docs/platform/connectors/code-repositories/git-hub-app-support",
     },
     {
-      from: "/docs/platform/Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-source-repo-provider/bitbucket-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-source-repo-provider/git-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-source-repo-provider/git-hub-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-source-repo-provider/git-lab-connector-settings-reference",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-source-repo-provider/git-lab-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
+      from: "/docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
     },
     {
-      from: "/docs/platform/Connectors/ref-source-repo-provider/source-code-manager-settings",
-      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/source-code-manager-settings",
+      from: "/docs/platform/connectors/ref-source-repo-provider/source-code-manager-settings",
+      to: "/docs/platform/connectors/code-repositories/ref-source-repo-provider/source-code-manager-settings",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-service-now",
-      to: "/docs/platform/Connectors/Ticketing-Systems/connect-to-service-now",
+      from: "/docs/platform/connectors/connect-to-service-now",
+      to: "/docs/platform/connectors/Ticketing-Systems/connect-to-service-now",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-jira",
-      to: "/docs/platform/Connectors/Ticketing-Systems/connect-to-jira",
+      from: "/docs/platform/connectors/connect-to-jira",
+      to: "/docs/platform/connectors/Ticketing-Systems/connect-to-jira",
     },
     {
-      from: "/docs/platform/Connectors/connect-to-monitoring-and-logging-systems",
-      to: "/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems",
+      from: "/docs/platform/connectors/connect-to-monitoring-and-logging-systems",
+      to: "/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems",
     },
     {
       from: "/docs/platform/Policy-as-code/harness-governance-overview",
-      to: "/docs/platform/Governance/Policy-as-code/harness-governance-overview",
+      to: "/docs/platform/governance/policy-as-code/harness-governance-overview",
     },
     {
       from: "/docs/platform/Policy-as-code/add-a-governance-policy-step-to-a-connector",
-      to: "/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-connector",
+      to: "/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-connector",
     },
     {
       from: "/docs/platform/Policy-as-code/add-a-governance-policy-step-to-a-pipeline",
-      to: "/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline",
+      to: "/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline",
     },
     {
       from: "/docs/platform/Policy-as-code/add-a-policy-engine-step-to-a-secret",
-      to: "/docs/platform/Governance/Policy-as-code/add-a-policy-engine-step-to-a-secret",
+      to: "/docs/platform/governance/policy-as-code/add-a-policy-engine-step-to-a-secret",
     },
     {
       from: "/docs/platform/Policy-as-code/disable-a-policy-set",
-      to: "/docs/platform/Governance/Policy-as-code/disable-a-policy-set",
+      to: "/docs/platform/governance/policy-as-code/disable-a-policy-set",
     },
     {
       from: "/docs/platform/Policy-as-code/harness-governance-quickstart",
-      to: "/docs/platform/Governance/Policy-as-code/harness-governance-quickstart",
+      to: "/docs/platform/governance/policy-as-code/harness-governance-quickstart",
     },
     {
       from: "/docs/platform/Policy-as-code/using-harness-policy-engine-for-feature-flags",
-      to: "/docs/platform/Governance/Policy-as-code/using-harness-policy-engine-for-feature-flags",
+      to: "/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-feature-flags",
     },
     {
       from: "/docs/platform/Audit-Trail/audit-trail",
-      to: "/docs/platform/Governance/Audit-Trail/audit-trail",
+      to: "/docs/platform/governance/Audit-Trail/audit-trail",
     },
     {
       from: "/docs/platform/Audit-Trail/audit-streaming",
-      to: "/docs/platform/Governance/Audit-Trail/audit-streaming",
+      to: "/docs/platform/governance/Audit-Trail/audit-streaming",
     },
     {
       from: "/docs/platform/APIs/api-quickstart",

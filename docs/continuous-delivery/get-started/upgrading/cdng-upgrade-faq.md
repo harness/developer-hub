@@ -99,7 +99,7 @@ Harness Policy as Code does the following for you:
 
 ### Delegate
 
-Harness NextGen supports an improved delegate. It uses a new type of [image](/docs/platform/Delegates/delegate-concepts/delegate-image-types) and supports the following features:
+Harness NextGen supports an improved delegate. It uses a new type of [image](/docs/platform/delegates/delegate-concepts/delegate-image-types) and supports the following features:
 
 - Deploy delegate images with or without third-party client tools. We recommend you use the delegate minimal image for added security.
 - By default, the delegate is automatically updated. There is an option to disable automatic updates.
@@ -156,11 +156,11 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
 
   NextGen does support tags, but there is not a centralized management feature for them as in FirstGen.
 
-  - For details on NextGen tags, go to [Tags reference](/docs/platform/References/tags-reference).
+  - For details on NextGen tags, go to [Tags reference](/docs/platform/references/tags-reference).
 
 - **SSO providers**. NextGen supports the same SSO providers as FirstGen, but you must reconfigure the SSO provider setup in NextGen.
 
-  - For details on NextGen SSO providers, go to [Authentication overview](/docs/platform/Authentication/authentication-overview).
+  - For details on NextGen SSO providers, go to [Authentication overview](/docs/platform/authentication/authentication-overview).
 
 - **Deployment history for CD dashboards**. Harness NextGen does not retain the deployment data from FirstGen. Harness will recalculate the deployment stats and metrics by using NextGen CD deployments.
 

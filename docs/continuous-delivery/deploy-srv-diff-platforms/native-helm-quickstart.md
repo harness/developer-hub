@@ -113,7 +113,7 @@ Next, we'll add the NGINX Helm chart for the deployment.
 
 ## Add a Helm chart to a Native Helm service
 
-To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness Delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness Delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 1. In the Harness service for your Native Helm deployment, in **Manifests**, select **Add Manifest**.
 
@@ -130,10 +130,10 @@ To add a Helm chart in this example, we will add a Harness connector to the HTTP
 8. Select **Continue**.
 9. In **Delegates Setup**, select/create a delegate, and then select **Save and Continue**.
     
-    For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+    For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
     When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.  
-    If you are using Helm v2, you will need to install Helm v2 and Tiller on the delegate pod. For steps on installing software on the delegate, go to [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+    If you are using Helm v2, you will need to install Helm v2 and Tiller on the delegate pod. For steps on installing software on the delegate, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 10. In **Manifest Details**, enter the following settings can select **Submit**.
    * **Manifest Identifier**: enter **nginx**.
    * **Chart Name**: enter **nginx**.

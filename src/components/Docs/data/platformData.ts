@@ -112,14 +112,14 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Configure Git Experience for pipelines and associated entities.",
-          link: "/docs/platform/Git-Experience/configure-git-experience-for-harness-entities",
+          link: "/docs/platform/git-experience/configure-git-experience-for-harness-entities",
         },
         {
           title: "Policy as Code",
           module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/policy-as-code/harness-governance-quickstart",
         },
       ],
   },

@@ -3228,7 +3228,7 @@ This release does not include any early access features.
 
 - Harness now supports template input APIs. (CDS-55694)
 
-  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](/docs/platform/Templates/create-pipeline-template).
+  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](/docs/platform/templates/create-pipeline-template).
 
   Here is a sample template:
 
@@ -4382,7 +4382,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
   A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran.
 
-  A failure strategy is also required for the **Deploy** stage in [stage templates](/docs/platform/Templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+  A failure strategy is also required for the **Deploy** stage in [stage templates](/docs/platform/templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
 
   No action required by users.
 

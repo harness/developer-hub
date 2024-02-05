@@ -31,7 +31,7 @@
 | Set up and manage credentials, user and group permissions, and more | [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) |
 | Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **8. Policy-Based Governance and Compliance** ||
-| Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart) |
+| Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart) |
 | Enforce governance within pipelines and understand templates for Harness CI | [Manage access control for asset governance rules](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov/) |
 | Familiarize with account audit trails and their respective use cases | [View audit trail](https://developer.harness.io/docs/platform/governance/audit-trail/) |
 | **9. Enterprise Features and Dashboards** ||

@@ -102,9 +102,9 @@ Connectors require different permissions depending on your build environment and
 
 :::info
 
-For SSCA, you must use [Docker Registry connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for Docker-compliant container registries, such as Docker Hub, Docker-compliant Amazon ECR, or Docker-compliant GCR.
+For SSCA, you must use [Docker Registry connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for Docker-compliant container registries, such as Docker Hub, Docker-compliant Amazon ECR, or Docker-compliant GCR.
 
-If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
 * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
 * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)

@@ -17,7 +17,7 @@ For illustration purposes, this topic uses SumoLogic as a sample health source t
 
 Make sure that you have created:
 
-- A connector for your health source in Harness. To learn how to add a connector, go to [Connect to monitoring and logging systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
+- A connector for your health source in Harness. To learn how to add a connector, go to [Connect to monitoring and logging systems](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems).
 
 - A CD deployment pipeline in Harness. To learn how to create a CD pipeline in Harness yet, go to [Create your first CD pipeline](/docs/continuous-delivery/cd-onboarding/certification/onboarding-guide#step-2-create-your-first-cd-pipeline). 
 
@@ -72,7 +72,7 @@ On the Verify settings page, do the following:
    
 2. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 15 minutes, Harness analyzes the first 15 minutes of your health source data.
    
-3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference the primary artifact. To learn about artifact expression, go to [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables).
+3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference the primary artifact. To learn about artifact expression, go to [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 
 ## Create a monitored service

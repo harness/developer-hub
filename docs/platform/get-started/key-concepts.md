@@ -48,7 +48,7 @@ Docs: [Connectors](/docs/category/connectors)
 - [Source Code Repositories](/docs/category/code-repositories)
 - [Artifact Repositories](/docs/category/artifact-repositories)
 - [Cloud Providers](/docs/category/cloud-providers)
-- [Monitoring & Logging Systems](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+- [Monitoring & Logging Systems](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems)
 - [Ticketing Systems](/docs/category/ticketing-systems-1)
 - [Secret Managers](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 
@@ -63,7 +63,7 @@ Docs:
 Harness Delegate is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute CD pipeline and other tasks on your behalf, without any of your secrets leaving your network. You can install the Harness Delegate on either Docker or Kubernetes.
 
 Docs:
-[Delegate Overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
+[Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview)
 
 Tutorials:
 [Install Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate)
@@ -72,13 +72,13 @@ Tutorials:
 Adding governance guardrails with Open Policy Agent (OPA) based policies is easy. Edit one of the policy-as-code samples or writer your own.
 
 Docs:
-[Policy as Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+[Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Templates
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create re-usable logic for managing Harness entities like steps, stages, and pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.
 
 Docs:
-[Templates overview](/docs/platform/Templates/template)
+[Templates overview](/docs/platform/templates/template)
 
 Tutorials:
 [Pipeline templates](/tutorials/cd-pipelines/templates)
