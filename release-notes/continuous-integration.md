@@ -43,6 +43,11 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031)
 
+#### Fixed issues
+
+* Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. (CI-10636, ZD-54688)
+* Removed excessive, unnecessary health check messages in logs. (CI-11102)
+
 ### Version 1.11.x
 
 <!-- Feb 03, 2024 -->
