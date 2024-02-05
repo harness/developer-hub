@@ -34,6 +34,28 @@ Conditions describe a set of constraints that are applied to an execution contex
 
 This creates a blank canvas, and you can define the constraints for the condition using a YAML manifest or using the visual editor. 
 
+### Add conditions using visual editor
+
+1. To add conditions using a visual editor, navigate to the **visual** tab of condition you created earlier. 
+
+![condition](./static/configure-chaosguard/condition-create.png)
+
+	1. **WHAT** clause describes the attribute (in this case, chaos fault) on which you can apply the condition. This field takes a regex-like pattern, that is, the * symbol, to indicate all characters preceding or succeeding a particular string. In this case, the condition takes all faults that begin with "pod-," such as "pod-delete", "pod-memory-hog" and so on. You can have more than one clause to block different kinds of faults.
+
+	![what](./static/configure-chaosguard/condition-what.png)
+
+	2. **WHERE** clause describes the name of the Kubernetes infrastructure where you can apply the condition. 
+
+	![where](./static/configure-chaosguard/condition-where.png)
+
+	3. **WHICH** clause describes the namespace and the app label in which you can apply the condition. The * here indicates that the condition takes all faults that begin with a particular string (similar to the **WHAT** clause). You can have more than one namespace and app label associated with a condition.
+
+	![which](./static/configure-chaosguard/condition-which.png)
+
+	4. **USING** clause describes the service account under which you apply the condition. You can have more than one service account configured for a condition.
+
+	![using](./static/configure-chaosguard/condition-using.png)
+
 ## Configuring rules
 
 Rules consist of one or more **conditions** that are evaluated as a first step in the experiment run. To configure a rule,
