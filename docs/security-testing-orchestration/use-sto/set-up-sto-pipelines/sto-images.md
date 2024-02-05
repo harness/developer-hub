@@ -10,7 +10,7 @@ This topic describes how Harness updates and maintains supported STO images and 
 :::note Important Notes
 
 - Harness updates STO images every two weeks. If you store your Harness images in a private registry, Harness strongly recommends that you update your images each month to ensure that you're using the latest supported scanner images in your pipelines. 
-- Harness images are available on Docker Hub and Google Container Registry. However, Docker is [deprecating the `app.harness` Docker registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#deprecation-notice-appharness-docker-registry) and recommends that you download images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) instead.  
+- Harness images are available on Docker Hub and Google Container Registry. However, Harness is [deprecating the `app.harness` Docker registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#deprecation-notice-appharness-docker-registry) and recommends that you download images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) instead.  
 :::
 
 ### Harness STO images list
