@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-01-29:T10:00:30
+date: 2024-02-05:T10:00:30
 sidebar_position: 3
 ---
 
@@ -80,9 +80,28 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## February 2024
+
+### Version 1.23.5 <!--  February 05, 2024 -->
+
+#### New features and enhancements
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
+
+   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
+
+   This item requires Harness Delegate version 24.01.82110 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- The `helm-init-container` images lacked a versioned tag and the pull policy for `waitForInitContainers` was not configurable. This led to the usage of unstable images in some places, which were not updated to the stable image because of the cached image with the same tag and image digest. (PL-46444)
+
+   This has been resolved by adding configuration options for image, resources, and security, which can be controlled at global and service levels in the overrides and the versioned image of `helm-init-container` is now being used. The image pull policy is also set to `Always` as the default.
+
 ## January 2024
 
 ### Version 1.22.3 <!--  January 29, 2024 -->
+
 
 #### New features and enhancements
 
