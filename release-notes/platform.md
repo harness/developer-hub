@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-01-29:T10:00:30
+date: 2024-02-05:T10:00:30
 sidebar_position: 3
 ---
 
@@ -80,9 +80,28 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## February 2024
+
+### Version 1.23.5 <!--  February 05, 2024 -->
+
+#### New features and enhancements
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
+
+   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
+
+   This item requires Harness Delegate version 24.01.82110 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- The `helm-init-container` images lacked a versioned tag and the pull policy for `waitForInitContainers` was not configurable. This led to the usage of unstable images in some places, which were not updated to the stable image because of the cached image with the same tag and image digest. (PL-46444)
+
+   This has been resolved by adding configuration options for image, resources, and security, which can be controlled at global and service levels in the overrides and the versioned image of `helm-init-container` is now being used. The image pull policy is also set to `Always` as the default.
+
 ## January 2024
 
 ### Version 1.22.3 <!--  January 29, 2024 -->
+
 
 #### New features and enhancements
 
@@ -154,7 +173,7 @@ The following deprecated API endpoints are longer supported:
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
 
-   For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
+   For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/allow-public-access-to-executions).
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
@@ -166,7 +185,7 @@ The following deprecated API endpoints are longer supported:
 
    Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
-   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
 
    This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -200,7 +219,7 @@ Currently, allowlist verification for delegate registration is behind the featur
 
    The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
-   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
 
 #### Fixed issues
 
@@ -1705,7 +1724,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -2367,9 +2386,9 @@ Delegate version: 22.10.77021
 
   [Create a Remote Step Template](/docs/platform/templates/create-a-remote-step-template/)
 
-  [Create a Remote Stage Template](/docs/platform/Templates/create-a-remote-stage-template)
+  [Create a Remote Stage Template](/docs/platform/templates/create-a-remote-stage-template)
 
-  [Create a Remote Pipeline Template](/docs/platform/Templates/create-a-remote-pipeline-template)
+  [Create a Remote Pipeline Template](/docs/platform/templates/create-a-remote-pipeline-template)
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
@@ -2547,7 +2566,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
   This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
+See [Add a Custom Secret Manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
 
 ###### Fixed issues
 

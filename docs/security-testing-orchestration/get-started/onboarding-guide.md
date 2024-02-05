@@ -19,6 +19,8 @@ import set_up_harness_23 from './static/set-up-harness-for-sto-23.png'
 import set_up_harness_24 from './static/set-up-harness-for-sto-23_NEW.png'
 import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
 
+<!-- -->
+
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
@@ -231,11 +233,11 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
- - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
- - [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
- - [Git](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
- - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
- - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+ - [Azure](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
+ - [Bitbucket](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+ - [Git](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
+ - [GitHub](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+ - [GitLab](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
 To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 

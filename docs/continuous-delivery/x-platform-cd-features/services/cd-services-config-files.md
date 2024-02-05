@@ -168,7 +168,7 @@ Currently, this feature is behind the feature flag `CDS_NG_CONFIG_FILE_EXPRESSIO
 
 :::
 
-Plain text config files support the following [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables):
+Plain text config files support the following [Harness variables](/docs/platform/variables-and-expressions/harness-variables):
 
 - Pipeline variables
 - Service variables

@@ -144,7 +144,7 @@ You can create notification rules to send notifications about the events on your
 
 You can notify your User Group members using Slack as one of the notification channels. You can add your User Group to a Notification Strategy and receive alert info in Slack.
 
-For more information, go to [Send Notifications using Slack](/docs/platform/Notifications/send-notifications-using-slack).
+For more information, go to [Send Notifications using Slack](/docs/platform/notifications/send-notifications-using-slack).
 
 ### Email notification
 
@@ -164,7 +164,7 @@ Harness notifies your User Groups of events in pipelines and general alerts.
 
 You can integrate your Harness User Group with Microsoft Teams and receive notifications in Teams channels.
 
-For more information, go to [Send Notifications using Microsoft Teams](/docs/platform/Notifications/send-notifications-to-microsoft-teams).
+For more information, go to [Send Notifications using Microsoft Teams](/docs/platform/notifications/send-notifications-to-microsoft-teams).
 
 ## View a pipeline using YAML
 

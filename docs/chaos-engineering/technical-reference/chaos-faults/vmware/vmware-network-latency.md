@@ -1,5 +1,5 @@
 ---
-id: VMware-network-latency
+id: vmware-network-latency
 title: VMware network latency
 ---
 VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).

@@ -93,7 +93,7 @@ The Command step can be added to SSH, WinRM, and deployment template deployment 
 1. In the stage **Execution**, select **Add Step**.
 2. Select **Command**.
 3. In **Name**, enter a name for the command.
-4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
 5. In **Run the following commands**, select **Add Command**.
 
    ![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-08.png)

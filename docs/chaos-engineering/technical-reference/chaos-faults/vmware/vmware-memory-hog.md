@@ -1,5 +1,5 @@
 ---
-id: VMware-memory-hog
+id: vmware-memory-hog
 title: VMware memory hog
 ---
 

@@ -197,7 +197,7 @@ To configure RBAC in Harness, you must:
 2. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) and, optionally, apply [ABAC](./attribute-based-access-control.md).
 3. [Create user groups](/docs/platform/role-based-access-control/add-user-groups), [create service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account), and [add users](/docs/platform/role-based-access-control/add-users).
 4. [Assign roles and resource groups](#role-binding) to users, user groups, and service accounts.
-5. If you have not already done so, [configure authentication](/docs/platform/Authentication/authentication-overview).
+5. If you have not already done so, [configure authentication](/docs/platform/authentication/authentication-overview).
 
 :::tip Automated provisioning
 

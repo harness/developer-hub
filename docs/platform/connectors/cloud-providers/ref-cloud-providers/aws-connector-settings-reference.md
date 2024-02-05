@@ -631,7 +631,7 @@ users:
 
 </details>
 
-5. You have [installed a Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) with an [immutable image type](/docs/platform/Delegates/delegate-concepts/delegate-image-types) and installed the `aws-iam-authenticator` on the delegate. To add `aws-iam-authenticator` to the delegate:
+5. You have [installed a Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) with an [immutable image type](/docs/platform/delegates/delegate-concepts/delegate-image-types) and installed the `aws-iam-authenticator` on the delegate. To add `aws-iam-authenticator` to the delegate:
    1. Open the `delegate.yaml` file in a text editor.
    2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
    3. Replace `value: ""` with the following script to install `aws-iam-authenticator`.

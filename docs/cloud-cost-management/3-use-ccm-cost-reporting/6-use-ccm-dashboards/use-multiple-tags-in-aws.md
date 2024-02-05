@@ -11,7 +11,7 @@ helpdocs_is_published: true
 Multiple tags in AWS dashboards can be used to filter and visualize data based on unique Tags and their values. This can be used to drill down the data for specific key values. If you filter `AWS: Multiple Tags - Key 1` with the environment or application, then `Dimension Value 1` will contain the values for that specific Tag. For example, the cost of `XYZ` application in the `ABC` cost center in the `QA` environment only.
 
 :::note
-For information on core Dashboard functionality, see [Create Dashboards](/docs/platform/Dashboards/create-dashboards).
+For information on core Dashboard functionality, see [Create Dashboards](/docs/platform/dashboards/create-dashboards).
 :::
 This topic explains how to use Multiple Tags in AWS Dashboards.
 
@@ -42,14 +42,14 @@ Once you have set up cost visibility for the [AWS](../../get-started/onboarding-
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](/docs/platform/Dashboards/create-dashboards)
-* [Create Visualizations and Graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
+* [Create Dashboards](/docs/platform/dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](/docs/platform/Dashboards/use-dashboard-actions)
-* [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data)
-* [Create Conditional Alerts](/docs/platform/Dashboards/create-conditional-alerts)
-* [Schedule and Share Dashboards](/docs/platform/Dashboards/share-dashboards)
+* [Use Dashboard Actions](/docs/platform/dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/dashboards/share-dashboards)
 
 

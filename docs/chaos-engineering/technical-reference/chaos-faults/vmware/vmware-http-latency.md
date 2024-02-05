@@ -1,5 +1,5 @@
 ---
-id: VMware-http-latency
+id: vmware-http-latency
 title: VMware HTTP latency
 ---
 VMware HTTP latency injects HTTP response latency into the service of a specific port.

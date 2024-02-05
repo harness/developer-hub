@@ -82,9 +82,9 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 <Delimagetypes />
 
-- [Deploy delegate on Kubernetes](/docs/platform/Delegates/install-delegates/overview)
+- [Deploy delegate on Kubernetes](/docs/platform/delegates/install-delegates/overview)
 
-- [Deploy delegate on Docker](/docs/platform/Delegates/install-delegates/overview)
+- [Deploy delegate on Docker](/docs/platform/delegates/install-delegates/overview)
 
 - [Install delegate minimal image without SDKs](/tutorials/platform/secure-delegate-default-to-minimal/)
 

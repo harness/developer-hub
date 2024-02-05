@@ -227,7 +227,7 @@ To add Kubernetes manifests to your service, do the following:
 </TabItem>  
   <TabItem value="Values YAML" label="Values YAML">
 
-Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in the Values YAML files.
+Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in the Values YAML files.
 
 If you are using a Values YAML file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 
@@ -249,7 +249,7 @@ To add a Values YAML file, do the following:
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/Delegates/install-delegates/overview).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/overview).
 
 9. Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
@@ -3078,7 +3078,7 @@ For more information on runtime inputs and expressions, go to [Fixed values runt
 
 You can use pipeline, stage, service, environment, and Harness built-in variables in your values YAML files and service settings.
 
-See [Built-in Harness variables reference](/docs/platform/Variables-and-Expressions/harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+See [Built-in Harness variables reference](/docs/platform/variables-and-expressions/harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
 ### Propagate and override artifacts, manifests, and service variables
 
