@@ -13,7 +13,7 @@ This topic describes how Harness updates and maintains supported STO images and 
 - Harness images are available on Docker Hub and Google Container Registry. However, Harness is [deprecating the `app.harness` Docker registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#deprecation-notice-appharness-docker-registry) and recommends that you download images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) instead.  
 :::
 
-### Harness STO images list
+## Harness STO images list
 
 When a Harness pipeline runs, each stage begins with an *initialize* step. During initialization, the pipeline prepares the build infrastructure and pulls the images required to run the steps.
 
@@ -24,12 +24,12 @@ Here are are a few examples of Harness STO images in the [Harness GCR project](h
 * [`gitleaks-job-runner`](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/gitleaks-job-runner): Run Gitleaks orchestration scans. 
 * [`owasp-dependency-check-job-runner`](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/owasp-dependency-check-job-runner): Run OWASP Dependency-Check orchestration scans. 
 
-### I don't want to pull images from a public registry
+## I don't want to pull images from a public registry
 
-If you don't want to pull images directly from the public Harness registry, you can pull images from your own private registry. For more information, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/download-images-from-private-registry).
+If you don't want to pull images directly from the public Harness registry, you can pull images from your own private registry. For more information, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 
-### When should I update my STO images? 
+## When should I update my STO images? 
 
 Your organization has a one-month window to run security scans or other tests on new STO images before you deploy them. 
 
