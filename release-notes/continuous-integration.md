@@ -38,6 +38,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 ### Version 1.12.x
 
 <!-- Feb 13, 2024 -->
+<!-- CI mgr version, delegate version, and dates -->
 
 #### New features and enhancements
 
@@ -45,7 +46,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### Fixed issues
 
-* Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. (CI-10636, ZD-54688)
+* Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. This change requires Harness Delegate version 24.02.82300 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10636, ZD-54688)
 * Removed excessive, unnecessary health check messages in logs. (CI-11102)
 
 ### Version 1.11.x
@@ -116,8 +117,7 @@ To help identify pods that aren't cleaned up after a build, pod deletion logs no
 #### Fixed issues
 
 * Fixed a `NullPointerException` error that occurred if you provided no `args` when configuring [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby). (CI-10847, ZD-55658)
-* Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. (CI-10789, ZD-55265)
-   - This item requires Harness Delegate version 24.01.82108 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+* Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. This change requires Harness Delegate version 24.01.82108 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10789, ZD-55265)
 
 ### Version 1.6.3
 
