@@ -1,7 +1,7 @@
 ---
-title: Configure STO to download images from a private registry
-description: Store your scanner images in a private registry. Useful for air-gapped environments.
-sidebar_position: 40
+title: Store your STO images in a private registry
+description: Useful for air-gapped environments.
+sidebar_position: 10
 sidebar_label: Store images in a private registry
 ---
 

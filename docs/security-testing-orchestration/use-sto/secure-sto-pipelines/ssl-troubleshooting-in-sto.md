@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot SSL in STO
 description: Troubleshoot certificate issues when running STO scans.
-sidebar_position: 60
+sidebar_position: 40
 ---
 
 If you're having issues [running STO scans with custom

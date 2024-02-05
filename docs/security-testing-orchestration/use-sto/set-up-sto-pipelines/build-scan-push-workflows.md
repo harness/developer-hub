@@ -1,7 +1,7 @@
 ---
 title: Build/scan/push pipelines for container images in STO
 description: End-to-end pipeline examples for different use cases. 
-sidebar_position: 40
+sidebar_position: 50
 sidebar_label: Build/scan/push pipelines for container images
 ---
 

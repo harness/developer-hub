@@ -10,13 +10,13 @@ You can set up Harness STO to communicate with your scan tools using custom (sel
 
 Harness supports the following setups for running scans with custom certificates: 
 
-- [Add your custom certificates to the delegate.](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/add-custom-certs/add-certs-to-delegate.md) This workflow is recommended if both of the following are true:
+- [Add your custom certificates to the delegate.](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate.md) This workflow is recommended if both of the following are true:
 
   - You're using a Kubernetes or Docker delegate.
 
   - You can configure the delegate directly.
   
-- [Add your custom certificates to individual pipelines.](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/add-custom-certs/add-certs-to-pipelines.md) This workflow is recommended if either of the following are true:
+- [Add your custom certificates to individual pipelines.](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-pipelines.md) This workflow is recommended if either of the following are true:
 
   - You're using any delegate type other than Kubernetes or Docker, such as a Harness Cloud delegate.
 
@@ -24,4 +24,4 @@ Harness supports the following setups for running scans with custom certificates
 
   You can also use this workflow if the external scanner requires additional files, such as auth script or license files, to run scans.
 
-- [Add your certificates to your local scanner images.](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/secure-sto-pipelines/download-images-from-private-registry) This is an option if you're using a private image registry to store and download your scanner images. 
+- [Add your certificates to your local scanner images.](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/store-images-in-private-registryfrom-private-registry) This is an option if you're using a private image registry to store and download your scanner images. 

@@ -1,7 +1,7 @@
 ---
 title: Update your STO images
 description: How STO pulls the images it needs, and how to update images in a private registry.
-sidebar_position: 70
+sidebar_position: 20
 ---
 
 
