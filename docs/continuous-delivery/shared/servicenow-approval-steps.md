@@ -121,7 +121,7 @@ After an approval is granted, [\<+approval>](/docs/platform/variables-and-expres
 
 ### Notes
 
-- Please refer to [Document on deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) for limitations of approval logs. 
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations).
 
 ## See also
 
