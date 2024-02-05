@@ -91,12 +91,13 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 <StoSettingScanTypeInst />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
-
+<StoSettingScanTypeAutodetectApp/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 #### Name 
 
