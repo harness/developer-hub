@@ -46,6 +46,11 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> VM_NAME </td>
+        <td> Name of the target VM(s).</td>
+        <td> Multiple comma-separated names can be provided. For example, <code>vm-1,vm-2</code>.</td>
+      </tr>
+      <tr>
         <td> VM_USER_NAME </td>
         <td> Username of the target VM(s).</td>
         <td> Multiple usernames can be provided as comma-separated values (when there are multiple VMs subject to chaos). It also helps run the govc command. </td>
@@ -104,6 +109,11 @@ stringData:
         <td> UPSTREAM_SERVER </td>
         <td> Custom upstream server to which the intercepted DNS requests will be forwarded. </td>
         <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 
