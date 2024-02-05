@@ -10,7 +10,7 @@ Harness supports three workflows for using custom certificates. You can add your
 
 ## When to add custom certificates to a pipeline for STO
 
-Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if either of the following are true:
+Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if either of the following are true:
 
 - You're using any delegate type other than Kubernetes or Docker, such as a Harness Cloud delegate.
 
