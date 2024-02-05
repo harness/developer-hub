@@ -11,8 +11,14 @@ export interface ModuleData {
   horizon: Horizon;
 }
 
+export type tag = {
+  color?: string;
+  textColor?: string;
+  value: string;
+};
+
 export type Feature = {
-  tag?: string[];
+  tag?: tag[];
   title: string;
   description: string;
 };
@@ -26,7 +32,8 @@ export interface Horizon {
 const ModuleData: ModuleData[] = [
   {
     title: "Platform",
-    description: "One that powers it all. Robust, scalable and intelligent platform that supports the development, deployment, and operation of software applications.",
+    description:
+      "One that powers it all. Robust, scalable and intelligent platform that supports the development, deployment, and operation of software applications.",
     module: MODULES.platform,
     horizon: platformData,
   },
