@@ -126,7 +126,7 @@ stages:
                       - "11"
                       - "10"
                       - "9"
-                  maxConcurrency: 2
+                    maxConcurrency: 2
       tags: {}
       strategy:
         matrix:
@@ -140,7 +140,7 @@ stages:
           exclude:
             - service: svc1
               environment: env1
-        maxConcurrency: 2
+          maxConcurrency: 2
 ```
 
 </details>
