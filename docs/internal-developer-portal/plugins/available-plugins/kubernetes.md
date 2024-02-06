@@ -154,64 +154,7 @@ You can write your own custom label selector query that Backstage will use to lo
 
 ### Kubernetes is not showing up on Service Entities
 
-This can be debugged by checking whether your Kubernetes cluster are connected to Backstage as follows:
-
-```sh
-curl --location --request POST '{{backstage-backend-url}}:{{backstage-backend-port}}/api/kubernetes/services/:service-entity-name' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "entity": {
-        "metadata": {
-            "name": <service-entity-name>
-        }
-    }
-}
-'
-```
-
-
-The curl response should have resources from Kubernetes:
-
-```sh
-# curl response
-{
-  "items": [
-    {
-      "cluster": {
-        "name": <cluster-name>
-      },
-      "resources": [
-        {
-          "type": "services",
-          "resources": [
-            {
-              "metadata": {
-                "creationTimestamp": "2022-03-13T13:52:46.000Z",
-                "labels": {
-                  "app": <k8s-app-name>,
-                  "backstage": <selector>,
-                  "backstage.io/kubernetes-id": <service-entity-name>
-                },
-                "name": <k8s-app-name>,
-                "namespace": <namespace>
-              },
-              ....
-            }
-          ]
-        },
-        ....
-        {
-          "type": "pods",
-          "resources": [
-            ,,,,
-          ]
-        }
-      ],
-      "errors": []
-    }
-  ]
-}
-```
+This can be debugged by checking if the Service Account token has appropriate permissions or not. 
 
 The Kubernetes tab will not show anything when the catalog info annotation does not match the related Kubernetes resource. We recommend you add the following labels to your resources and use the label selector annotation as follows:
 
