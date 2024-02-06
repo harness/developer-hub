@@ -2630,14 +2630,67 @@ Please check and confirm if the token used here is proper and you are using the 
 #### How do I make a pipeline step report to Slack?
 You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.
 
+#### How can I include more data in Slack notifications for a Harness pipeline?
+
+Natively, we do not support adding additional details to Slack notifications. However, you can use a shell script step with the following script as an example:
+
+```
+curl -X POST -H 'Content-type: application/json' --data '{
+  "text": "Slack notifications - Harness",
+  "attachments": [
+    {
+      "fallback": "Notification from Harness",
+      "color": "#3AA3E3",
+      "fields": [
+        {
+          "title": "Pipeline Name",
+          "value": "<+pipeline.name>",
+          "short": true
+        },
+        {
+          "title": "Triggered by",
+          "value": "<+pipeline.triggeredBy.email>",
+          "short": true
+        },
+        {
+          "title": "Environment",
+          "value": "<+pipeline.stages.deploynginx.spec.env.name>",
+          "short": true
+        },
+        {
+          "title": "Service",
+          "value": "<+pipeline.stages.deploynginx.spec.service.name>",
+          "short": true
+        }
+      ]
+    }
+  ]
+}'  https://hooks.slack.com/services/<your information>
+```
+
+#### How to block an API key used to trigger a pipeline execution per environment?
+
+You can use Harness Service Accounts to define granular roles and permissions for what users have access to. This allows you to scope the API keys to specific resources/environments and ensure there is no cross-scope access.
+
+#### Is it possible to change the company name for my Harness Account?
+
+Yes, please open a support ticket and inform the new name.
+
+#### How to install Harness delegate using Azure ACI?
+
+You can use the following repository as a sample to install it through Terraform. (Terraform Example)[https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd].
+
+#### How often does Harness upgrade the kubectl binary version within the delegate?
+
+We don’t have an exact period for when these upgrades occur, but we maintain a list of supported platforms and technologies at [https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/]. Using ```INIT_SCRIPT```, you can also customize the kubectl binary version.
+
 #### Can we add Custom Selector in the harness delegate chart for legacy delegates?
 
 For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
 
 https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
 
-
-#### Can a service account created at project level be assigned permissions to access account level resource ?
+#### Can a service account created at project level be assigned permissions to access account level resource?
 
 We can not create a project level service account and provide permission for account level resources. Hence this will not have access to any account level resources.
 
@@ -2663,7 +2716,6 @@ docker run  --cpus=1 --memory=2g \
 
 The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
 
-
 #### Why do we need core_delegate_delete permission for revoking delegate token?
 
 The api call that we make for  revoking the delegate token makes the delegate which are using it not register anymore and hence delete delegate permission is required for revoking the token as well.
@@ -2675,11 +2727,9 @@ We do not provide any customized docker images for delegates however we do have 
 https://github.com/harness/delegate-dockerfile/tree/main
 ```
 
-
 #### Can we use immuatable delegate image in the statefulset deployment yaml for delegates ? 
 
 We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
-
 
 #### Is there a way to enable more granular level for delegate logs?
 
