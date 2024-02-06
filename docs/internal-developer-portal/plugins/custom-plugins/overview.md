@@ -9,7 +9,7 @@ The Custom Plugins feature in IDP will allow users to plug their own private Bac
 
 :::warning
 
-This feature is **not available in production environment yet**, meanwhile take a look at the demo of custom plugins to get an overview of it.
+This feature is **not available in production environment yet**, meanwhile take a look at the demo of custom plugins to get an overview of it. In case you want to try out this feature please reach out to the IDP team.
 
 <DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
 
