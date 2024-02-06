@@ -9,6 +9,15 @@ import TabItem from '@theme/TabItem';
 
 You can run builds on Harness-hosted machines or your own infrastructure.
 
+This table provides a high-level comparison of the Harness CI build infrastructure options. For more details, read more about each build infrastructure below. To compare supported platforms and features, go to [Supported operating systems and architectures](#supported-operating-systems-and-architectures) and the [Feature compatibility matrix](#feature-compatibility-matrix).
+
+| Build infrastructure | Best for | Ease of setup | Scalable | Build on | Plans | Other considerations |
+| - | - | - | - | - | - | - |
+| [Harness Cloud](#harness-hosted-builds-harness-cloud) | Getting started fast and minimizing maintenance | ✅ Easy | ✅ Yes | Harness-hosted, modifiable VMs  | All | [Requires build credits](./use-harness-cloud-build-infrastructure.md#billing-and-build-credits) |
+| [Self-hosted local runner](#local-runners) | Building custom apps with specific build machine requirements | 🔸&nbsp;Moderate | ❌ No | Your local machine | All | Limited to host machine resources/capacity |
+| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | Building on Kubernetes clusters | 🔸&nbsp;Moderate | ✅ Yes | Your Kubernetes cluster | Paid | [Built-in Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access), [Docker-in-Docker requires privileged mode](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker), and macOS platforms aren't supported |
+| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | Managing your own VM pool | ❌&nbsp;Difficult | ✅ Yes | Your Cloud provider's VMs | Paid | More support/flexibility for Docker commands and Windows builds when compared to Kubernetes cluster build infrastructure |
+
 ## Harness-hosted builds (Harness Cloud)
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
@@ -23,6 +32,7 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 * Highly scalable.
 * Quick and easy configuration. Start building in seconds.
 * Linux, Windows, and macOS platforms with modifiable images.
+* Usually  first to receive new feature developments.
 
 :::
 
@@ -50,7 +60,7 @@ Executing builds in a Kubernetes cluster is useful when you want to run ephemera
 
 When running builds in a Kubernetes cluster, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
-If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are some configuration requirements. For example, macOS [platforms](#supported-operating-systems-and-architectures) are not supported, the built-in [Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access) and [privileged mode is required for Docker-in-Docker](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker).
+If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are some configuration requirements. For example, the built-in [Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access) and [privileged mode is required for Docker-in-Docker](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker).
 
 To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
@@ -87,7 +97,7 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | [Cache to S3/GCS](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Multilayer caching](/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) in **Build and Push** steps | ✅ Supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) in Build and Push steps | ✅ Supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
 | [Delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) | 🔸 Not applicable | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Bring-your-own secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager) | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
@@ -98,12 +108,3 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | [Bitrise Integrations](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#bitrise-integrations) | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
 | [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-
-## Pros and cons comparison
-
-| Build infrastructure | Pros | Cons | Best for |
-| - | - | - | - |
-| [Harness Cloud](#harness-hosted-builds-harness-cloud) | <ul><li>Harness-hosted infrastructure. No need to manage your own build machines.</li><li>Highly scalable.</li><li>Quick and easy configuration.</li><li>Linux, Windows, and macOS platforms with modifiable images.</li><li>Available to all CI plan tiers.</li><li>Usually first to receive new feature developments.</li></ul> | <ul><li>Not recommended for highly-customized build environments. While you can [modify Harness Cloud runner images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#specify-versions), these runner modifications are temporary, and Harness can update the [runner images](./use-harness-cloud-build-infrastructure.md#platforms-and-image-specifications) at any time. <b>If you need a highly-specific build machine configuration, consider using your own [self-hosted local runner](#local-runners) with a static configuration that you manage.</b></li><li>Requires credit card validation for Free plans. If you don't want to provide a credit card, you can use the [self-hosted local runner build infrastructure](#local-runners).</li><li>Requires build credits. All accounts get 2000 free monthly build credits, with the option to purchase more credits.</li></ul> | Getting started fast. Minimizing maintenance. |
-| [Self-hosted local runner](#local-runners) | <ul><li>Build on your local machine.</li><li>High degree of stability and control over the build machine configuration.</li><li>Available to all CI plan tiers.</li><li>Supports Linux, Windows, and macOS platforms.</li></ul> | <ul><li>Not scalable.</li><li>Limited to the resources/capacity constraints of the host machine.</li></ul> | Building custom apps that have specific build machine requirements.|
-| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | <ul><li>Easy to configure and manage if you're familiar with Kubernetes.</li><li>Scalable.</li></ul> | <ul><li>Built-in Build and Push steps required root access.</li><li>Docker-in-Docker requires privileged mode.</li><li>macOS platforms not supported.</li></ul> | <ul><li>Users who want to bring their own Kubernetes cluster build environment.</li><li>Users that run builds extremely frequently and don't want to be constrained by Harness Cloud build credits.</li></ul> |
-| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | <ul><li>Scalable.</li><li>Supports Linux, Windows, and macOS platforms.</li><li>When compared to the Kubernetes cluster build infrastructure option: More support/flexibility for running Docker commands, native support for Windows builds.</li></ul> | Most difficult to configure and manage. | Users who want to manage their own VM pool and have more control over the VM specs. |
