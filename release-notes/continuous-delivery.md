@@ -244,7 +244,9 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   - Now we are closing the log stream consistently SSH executions.
 - Unable to enter matrix details in stage template. (CDS-85375)
   - When editing the looping strategy setting in a stage template, the strategy editor disappeared arbitrarily. It should only get hidden when the entire strategy YAML is removed.
-  - This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
+- This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
+Unable to save/update/delete query in CDC - CD. For CV CDC Handlers, all inserts with the same _ids were failing due to a unique constraint violation. shouldUpdateOnConflict was set to true to change these inserts to upserts. (CDS-87168)
+- Users can create overrides in Overrides V2.0 with specific permissions. Service Specific and Service & Infrastructure specific overrides require Service create/update permission, while Global Environment and Infrastructure-specific overrides need Environment create/update permission.(CDS-87009)
 
 ## December 2023
 
@@ -288,7 +290,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   - Now Harness provides an empty file when content is null.
 - Changes in input set fixed value for Environment caused Save button to be disabled. (CDS-74710)
   - Now, in the input set, an `Unsaved changes` link appears when users make changes.
-
+- Graceful shutdown timeout not working with terraform 1.3.6. Terraform process forcefully deleted if not stopped within 30 seconds after step abortion. (CDS-84781)
 ### Version 1.16.6
 
 #### Fixed issues
@@ -307,7 +309,34 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 - Deployment failing with Terraform error on infra provisioners. (CDS-85684) Terraform tasks working directory was created based on account, org, project, and provisioner identifier.
   - This combination might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on same delegate.
   - With this change every Terraform step execution will run in a unique working directory.
-- Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865) There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+- Console logs missing from CloudFormation steps. There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.(CDS-84962, ZD-53810, ZD-53865)
+- When internal looping strategy fields marked as runtime, the run pipeline form did not prompt for input. Condition updated to validate looping strategy runtime inputs. (CDS-86445)
+- Blank tile on ASG traffic shifter. Blank tile on the UI for the ASG Traffic Shifter fixed. (CDS-86298)
+- Customer unable to set environment infrastructure definition. Infrastructure definition now set with provisioner step group template. (CDS-86109, ZD-54775)
+- Unsaved Changes Doesn't Display Whitespace Changes. Whitespace difference consideration implemented in diff editors. (CDS-85964)
+- Mismatch in Icon for Runtime in Codebase Configuration in pipeline level. Switching to expression mode updates the repository field icon accordingly. (CDS-85749
+- Icons for conditional execution showing up despite selecting the default radio button. Condition icon removed from steps with only default/success condition. (CDS-85696, ZD-54189)
+- The delegateSelectors executionInput() field does not show. Added support for delegateSelectors under the spec of the step as an execution runtime field. (CDS-85678)
+- Unable to run pipeline because of input.default(true) in conditional execution. Typecast boolean value to a string for proper run pipeline form functioning. (CDS-85629, ZD-54465)
+-  PCF Variable not working. Manifest.yml part of PCF service now able to render expressions. (CDS-85576, ZD-56054)
+-  The pipeline fails to open and redirects to the project page. It was a remote pipeline that didn’t exist in Git, causing redirection to the home page. (CDS-85483, ZD-54380)
+- Getting unsaved changes without making any changes in the pipeline. Outputs: [] will not be added to the pipeline yaml if no changes are made in the Outputs Tab of the chained pipeline. (CDS-85361)
+- Artifact Input Fields Not Displayed in Pipeline Chain Stage Despite Runtime Input Definition. Service input fields now properly displayed in the Run Pipeline form. (CDS-85099)
+- No scroll bar option to view logs for steps inside a pipeline. CSS updated to provide scroll in Approval logs. (CDS-85089)
+- Visibility issue with variable names in project variable page. Variable names now occupy complete space available. (CDS-85034, ZD-54068)
+- During the pipeline's waiting period for execution input, the "Execution Target Where would you like to execute the script?" field should not offer runtime input as an option. The use of 'On Delegate' field in the shell script step is deprecated. You can now leverage the execution target field to decide if the script should run on the delegate or on a target host. Execution target is made a parameter field so that it can be marked as runtime input in template and then exposed in pipeline as a runtime Input. (CDS-84710)
+- The base ASG cleans up when updating the ASG connector even if Region and Base ASG are expressions. Issue fixed; base ASG no longer cleans up unnecessarily. (CDS-84445)
+- Disable option of shell type bash when deployment is set as WinRM. Bash type option disabled for WinRM command step. (CDS-84414)
+- Visibility issue with operators under trigger conditions page. Dropdown under operations now shows all options clearly. (CDS-83901)
+- Text overlap for region in configure artifact pop up for Amazon AMI source template. Text no longer overlaps with the clear icon, and custom regions input disabled in the service field. (CDS-80877)
+
+#### New features and enhancements
+- Filter support for Overrides v2. Users will be able to filter overrides on the basis of Environments, services & Infrastructures. (CDS-81535)
+- Allow to delete service from the actual service window. Service delete option now available on the Service details page. Previously, Users could only delete service from Service List Page. (CDS-78792)
+- Enhancements for applying remote manifests using k8sapply. (CDS-85884)
+
+#### Behavior change
+- Remove Fabric8 from Resize and Setup Kubernetes V1 step CG. Support removed for deprecated Kubernetes Setup and Resize steps. (CDS-85699)
 
 ### Version 81820
 
@@ -386,7 +415,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   To receive this fix, upgrade your delegate to the latest delegate version.
 
   This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
+- Runtime inputs from the dynamic provisioner were not coming. Provided runtime field for provisioner details. (CDS-85096)
 ### Version 81709
 
 #### New features and enhancements
