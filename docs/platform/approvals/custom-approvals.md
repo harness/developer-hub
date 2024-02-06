@@ -336,6 +336,10 @@ Harness assumes that you trust your Harness users to add safe scripts to your Cu
 
 Please ensure that users adding scripts, as well as executing deployments that run the scripts, are trusted.
 
+### Notes
+
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations).
+
 ## See also
 
 * [Add a Custom Stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
