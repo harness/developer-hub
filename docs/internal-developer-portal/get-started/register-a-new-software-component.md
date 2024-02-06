@@ -2,10 +2,6 @@
 title: Add a new software component to the catalog
 description: Learn how you can add a new software component to the IDP software catalog.
 sidebar_position: 30
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
@@ -68,8 +64,43 @@ The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
 
+## Register Multiple software components together.
+
+We can register multiple `catalog-info.yaml` in the following ways.
+
+1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below and it will register all the components. 
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: example-all
+  description: A collection of all Backstage example entities, except users, groups, and templates
+spec:
+  targets:
+    - ./all-apis.yaml
+    - ./all-components.yaml
+```
+
+2. If the `catalog -info.yaml` is scattered across repos and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**. 
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: food-delivery
+  description: A collection of all example entities, except users, groups, and templates
+spec:
+  targets:
+    - https://github.com/account-name/location-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/member-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/delivery-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
+```
+
 ## Failed to register 
 
-If after registering an entity your're unable to find the same in your catalog. Please check in the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab wait for few mins it will get registered and if it's under the **Failed** tab try re-registering the entitiy. 
+If after registering an entity your're unable to find the same in your catalog. Please check in the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab wait for few mins it will get registered and if it's under the **Failed** tab try re-registering the entity. 
 
 ![](./static/devtools.png)

@@ -20,7 +20,7 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 * Make sure you have the following roles:
 	+ `x_harne_harness_ap.integration_user_role​` to access templates.
 	+ `itil` for end-to-end integration with Harness platform.​​​
-* Review [add ServiceNow approval stages and steps](/docs/platform/Approvals/service-now-approvals).
+* Review [add ServiceNow approval stages and steps](/docs/platform/approvals/service-now-approvals).
 
 ### Required ServiceNow integration app for Harness templates
 
@@ -40,7 +40,7 @@ The timezone settings govern the display value of the settings not their actu
 1. In a Harness CD or Approval stage, in **Execution**, select **Add Step**.
 2. Select **ServiceNow Update**. The ServiceNow Update settings appear.
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 

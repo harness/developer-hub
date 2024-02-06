@@ -34,9 +34,9 @@ Harness supports gated and no-gate CD by default. You can use several approval s
 
 For information on approval stages and steps, go to:
 
-- [Using manual harness approval stages](/docs/platform/Approvals/adding-harness-approval-stages)
-- [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages)
-- [Adding ServiceNow approval steps and stages](/docs/platform/Approvals/service-now-approvals)
+- [Using manual harness approval stages](/docs/platform/approvals/adding-harness-approval-stages)
+- [Adding Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages)
+- [Adding ServiceNow approval steps and stages](/docs/platform/approvals/service-now-approvals)
 
 ## Rolling deployment
 

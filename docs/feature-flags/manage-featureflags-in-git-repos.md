@@ -136,7 +136,7 @@ You can turn the synchronization between the Harness Platform and Git on or off.
 
 To turn on synchronization between the Harness Platform and Git: 
 
-1. Ensure that Git Experience has been [enabled](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) for your project.
+1. Ensure that Git Experience has been [enabled](/docs/platform/git-experience/configure-git-experience-for-harness-entities) for your project.
 
 1. Select **Feature Flags**.
 

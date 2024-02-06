@@ -1,5 +1,5 @@
 ---
-id: VMware-process-kill
+id: vmware-process-kill
 title: VMware process kill
 ---
 

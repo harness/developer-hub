@@ -1,5 +1,5 @@
 ---
-id: VMware-http-modify-response
+id: vmware-http-modify-response
 title: VMware HTTP modify response
 ---
 VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).  

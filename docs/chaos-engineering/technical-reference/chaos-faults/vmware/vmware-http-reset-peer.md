@@ -1,5 +1,5 @@
 ---
-id: VMware-http-reset-peer
+id: vmware-http-reset-peer
 title: VMware HTTP reset peer
 ---
 

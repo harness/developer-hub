@@ -1,7 +1,8 @@
 ---
 title: Set up target baselines in STO
 description: You need to specify the root branch, tag, or version for every target. 
-sidebar_position: 10
+sidebar_label: Set up target baselines
+sidebar_position: 40
 ---
 
 You need to specify a baseline for every target. The baseline represents the root variant, such as the `main` branch or the `latest` tag. In some cases, you might want to use the name of the latest official release as the baseline. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 

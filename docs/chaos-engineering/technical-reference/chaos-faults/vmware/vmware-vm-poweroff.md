@@ -1,5 +1,5 @@
 ---
-id: VMware-vm-power-off
+id: vmware-vm-power-off
 title: VMware VM power off
 ---
 

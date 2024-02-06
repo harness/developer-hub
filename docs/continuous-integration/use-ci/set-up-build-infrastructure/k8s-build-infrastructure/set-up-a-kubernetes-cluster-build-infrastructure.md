@@ -119,7 +119,17 @@ spec:
       targetPort: ## Specify port number
 ```
 
-If the delegate is unable to connect to the created build farm with Istio MTLS STRICT mode, and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+#### Istio ProxyConfig
+
+If the delegate is unable to connect to the created build farm with Istio MTLS STRICT mode, and you see that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`.
+
+This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready. to do this, it injects the sidecar at the start of the pod's container list and configures it to block all other containers from starting until the proxy is ready.
+
+You can add the Istio ProxyConfig as a pod annotation, for example:
+
+```
+proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+```
 
 ## Create a Kubernetes cluster connector and install the delegate
 

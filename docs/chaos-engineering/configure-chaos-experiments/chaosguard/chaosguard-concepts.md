@@ -14,13 +14,15 @@ This section walks you through the concepts of ChaosGuard and how they enforce a
 ChaosGuard consists of two elements: **Conditon** and **Rule**. 
 
 ### 1. Condition
-It is an execution plane construct, and is static in nature, i.e. it is often pre-defined (typically configured by the admin personas) and can be stored offline (such as in a conditions library or repository).
+It is an execution plane construct, and is static in nature, i.e. it is often pre-defined (typically configured by the admin personas) and you can store it offline (such as in a conditions library or repository).
 
 The default structure of a condition is to block or deny a fault or set of faults on a given **execution context** associated with a cluster (or namespace), the service(s), and the service account used for the injection process.  
 
 The example below describes the condition as **usergroups doctest and appqa to be blocked from executing network faults**. 
 
 ![condition](./static/chaosguard-concepts/chaos-studio-condition.png)
+
+You can use both **'EQUAL'** and **'NOT EQUAL TO'** operators in conditions. You can also use wildcards within the condition entities, which offers flexibility and control in defining conditions.
 
 :::tip 
 The service account refers to the Kubernetes or Openshift service account. This account is backed by a role (or ClusterRole) and is associated with a native or third-party security policy or admission controller within the cluster, such as PodSecurityPolicy (PSP), SecurityContextConstraint (SCC), Kyverno, OPA Gatekeeper, etc.

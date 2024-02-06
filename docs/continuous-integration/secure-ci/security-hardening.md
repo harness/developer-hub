@@ -54,7 +54,7 @@ For information about creating keys/tokens for a specific provider or tool, refe
 
 For network security and private networking, Harness offers features such as:
 
-* [IP allowlists](/docs/platform/Security/add-manage-ip-allowlist)
+* [IP allowlists](/docs/platform/security/add-manage-ip-allowlist)
 * [Secure connect for Harness Cloud](./secure-connect)
 * [OIDC](#oidc)
 

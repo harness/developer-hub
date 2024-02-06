@@ -41,7 +41,7 @@ Azure deployments are done using an CD stage with the deployment type **Azure We
 
 ![](static/azure-web-apps-tutorial-156.png)
 
-For more info on stages, got to [Add a Stage](/docs/platform/Pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+For more info on stages, got to [Add a Stage](/docs/platform/pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 ## Azure Web Apps services
 

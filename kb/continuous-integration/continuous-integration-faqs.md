@@ -267,17 +267,13 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
-### When we run the build in Harness cloud, which delegate will be used? Will it be using a delegate that is running in the local infra or the delegate will be used for cloud run is also hosted in Harness?
+### When I run a build on Harness cloud, which delegate is used? Do I need to install a delegate to use Harness Cloud?
 
-When the build is running on Harness cloud,  a delegate that is hosted in Harness cloud will be used
+Harness Cloud builds use a delegate hosted in the Harness Cloud runner. You don't need to install a delegate in your local infrastructure to use Harness Cloud.
 
-### Do I need to keep a delagate running in our local infrastructure, if Im only running the build in Harness cloud?
+### Can I use Harness Cloud run CD steps/stages?
 
-You wouldn't need a delegate running in local infra if you are only running the build on Harness cloud
-
-### Can I run CD steps/stages in Harness cloud in the same way how we can run the CI steps/stages in Harnes cloud?
-
-Running CD steps/stages in Harness cloud is not currently supported
+No. Currently, you can't use Harness Cloud build infrastructure to run CD steps or stages. Currently, Harness Cloud is specific to Harness CI.
 
 ## Kubernetes clusters
 
@@ -430,18 +426,6 @@ Yes, the build pod is cleaned up after stage execution, regardless of whether th
 ### How do I know if the pod cleanup task fails?
 
 To help identify pods that aren't cleaned up after a build, pod deletion logs include details such as the cluster endpoint targeted for deletion. If a pod can't be located for cleanup, then the logs include the pod identifier, namespace, and API endpoint response from the pod deletion API. You can find logs in the [Build details](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds#build-details).
-
-### How does the isto proxy config "holdApplicationUntilProxyStarts" adding a delay in the application start?
-
-When we set set ```holdApplicationUntilProxyStarts``` to ```true``` it causes the sidecar injector to inject the sidecar at the start of the pod’s container list, and configures it to block the start of all other containers until the proxy is ready
-
-### How to configure the istio proxy config "holdApplicationUntilProxyStarts" for a pod?
-
-This can be added as a pod annotation ```proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'```
-
-### Why the dind build is failing with OOM error even after increasing the memory of the run step where we run the docker build command?
-
-When we run the docker build command in a dind setup, the build will be executed on the dind container. Hence you would need to increase the memory for the dind background step to fix the OOM error during build
 
 ## Self-signed certificates
 
@@ -666,7 +650,7 @@ When a PowerShell script calls the concatenated variable, such as `echo <+pipeli
 <details>
 <summary>How do I fix unexpected multiline output from PowerShell scripts?</summary>
 
-**To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.**
+To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.
 
 For example, here are the two stage variables from the previous example without the `ToString` value in the concatenated expression.
 
@@ -1157,6 +1141,10 @@ Go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster)
 
 The Dockerfile is assumed to be in the root folder of the codebase. You can use the **Dockerfile** setting in a Build and Push step to specify a different path to your Dockerfile.
 
+### Can I use Harness expressions in my Dockerfile?
+
+No. [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) aren't supported in Dockerfiles.
+
 ### Why isn't the Build and Push step parsing the syntax in my Dockerfile?
 
 In a Kubernetes cluster build infrastructure, Build and Push steps use kaniko, which doesn't support `# syntax` in the Dockerfile.
@@ -1180,10 +1168,6 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 ### Build and Push to Docker fails with kaniko container runtime error
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
-
-### Can I use Harness expressions in the dockerfile which is being used to perform the build?
-
-No, Harness expressions are not supported in the dockerfile
 
 ## Upload artifacts
 
@@ -1467,6 +1451,10 @@ Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-ca
 This typically indicates that the DinD Background step doesn't have sufficient resources. Try modifying the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
 
 You can also [add a parallel Run step to monitor and help debug the Background step](./articles/parallel-step-for-logging). For example, in this case it would help to use the Run step to monitor resource consumption by the Background step.
+
+### My DinD build fails with an Out Of Memory error, but I increased the memory and CPU limit on the Run step that runs my docker build command
+
+If you run [Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage), and your `docker build` commands fail due to OOM errors, you need to increase the memory and CPU limit for the Background step. While the `docker build` command can be in a Run step or a Build and Push step, the build executes on the DinD container, which is the Background step running DinD. Therefore, you need to increase the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#set-container-resources).
 
 ## Plugins and integrations
 

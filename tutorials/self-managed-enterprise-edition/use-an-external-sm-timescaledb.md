@@ -59,7 +59,7 @@ In the event of controller node failure, a standby node can be promoted as the n
 
 For more information, go to [Streaming replication](https://www.postgresql.org/docs/current/warm-standby.html#STREAMING-REPLICATION) and [Write-ahead logging](https://www.postgresql.org/docs/current/wal-intro.html) in the PostgreSQL documentation.
 
-### High availability
+## High availability
 
 To create a highly-available setup, there will be a DNS record that always points to the primary node of your TimescaleDB replication setup. You can use service discovery with a third-party tool (etcd/Consul/Zookeeper) to track your current primary node's IP address and health status.
 
@@ -532,6 +532,35 @@ To recover the former primary and add host replication, do the following.
    ```
 
    The former primary instance is now a new secondary instance.
+
+<!-- 
+## TLS support
+
+You can enable TLS for TimescaleDB.
+
+To enable TLS, do the following:
+
+1. Save the ca certificate in the `server_ca.cer` file.
+
+2. Run the following command to create the secret in Kubernetes. 
+
+   ```
+   kubectl create secret generic timescale-client-tls --from-file ca.crt=server-ca.cer -n <YOUR_NAMESPACE>
+   ```
+
+3. Make the following changes to your `override.yaml` file.
+
+   ```yaml
+   global:
+     database:
+       timescaledb:
+         sslEnabled: true
+         certName: "timescale-client-tls"
+         certKey: "ca.crt"
+   ```
+
+4. Upgrade Harness with your updated `override.yaml` file.
+-->
 
 ## Upgrade TimescaleDB
 

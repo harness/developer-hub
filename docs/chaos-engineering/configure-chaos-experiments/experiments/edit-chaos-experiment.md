@@ -6,7 +6,7 @@ description: Guide to edit and update chaos expriments
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes two actions:
+You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes three actions:
 1. Editing an experiment
 2. Update old experiment manifests
 3. Bulk updating cron schedules

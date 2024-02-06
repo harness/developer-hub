@@ -1,5 +1,5 @@
 ---
-id: VMware-io-stress
+id: vmware-io-stress
 title: VMware IO stress
 redirect_from:
   - /docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress

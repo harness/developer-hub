@@ -1,5 +1,5 @@
 ---
-id: VMware-disk-loss
+id: vmware-disk-loss
 title: VMware disk loss
 ---
 
