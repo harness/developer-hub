@@ -284,7 +284,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 ## Delegate expiration policy
 
-Delegates expire six months (24 weeks) from when the delegate image is released in Docker Hub. Delegates do not stop working after expiration. They are backward-compatible but may face issues if the backend has moved too far ahead and the delegate is no longer forward-compatible. For more information about delegate releases, go to the [Delegate release notes](/release-notes/delegate).
+Delegates expire after 6 months (24 weeks) from the release of the delegate image on Docker Hub. Delegates do not stop working after expiration. They are backward-compatible but may face issues if the backend has moved too far ahead and the delegate is no longer forward-compatible. For more information about delegate releases, go to the [Delegate release notes](/release-notes/delegate).
 
 :::info important
 If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. You must update the delegate every six months.
