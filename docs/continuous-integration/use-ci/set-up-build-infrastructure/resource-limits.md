@@ -37,6 +37,8 @@ For an individual step, you can use the **Set Container Resources** settings to 
 
 To increase default resource limits across the board, you can contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_INCREASE_DEFAULT_RESOURCES`. This feature flag increases maximum CPU to 1000m and maximum memory to 3000Mi.
 
+To restrict add on (lite engine) resources, you can contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_CONSERVATIVE_K8_RESOURCE_LIMITS`. This feature flag sets lite engine resource limits to the default minimum (100m CPU and 100Mi memory).
+
 ## Resource request logic and calculations
 
 Limit and request values are based on steps being parallel or sequential. Parallel steps sum the resources for each parallel step, and sequential steps take the maximum resources needed amongst the sequential steps.
