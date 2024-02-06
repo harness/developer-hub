@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-30T10:00
+date: 2024-02-06T10:00
 sidebar_position: 10
 ---
 
@@ -21,13 +21,13 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## Downtime notice: Harness Cloud macOS image update
+## Harness Cloud macOS image update
 
-Over the weekend of 4 February 2024, Harness Cloud macOS runners will be updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1.
+Over the weekend of 4 February 2024, Harness Cloud macOS runners were updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1.
 
 During the upgrade process, Harness Cloud builds may be unavailable for approximately 20 minutes.
 
-If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version.
+This version of Sonoma is not compatible with earlier Xcode versions. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version.
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
@@ -43,15 +43,41 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
-<!-- February 2024 -->
+## February 2024
 
-<!-- Version 1.11.x -->
+<!-- Version 1.12.x -->
 
-<!-- Feb xx, 2024 -->
+<!-- Feb 12, 2024 -->
 
 <!-- New features and enhancements -->
 
-<!-- The Harness Cloud macOS image has been updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).-->
+<!-- [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031) -->
+
+### Version 1.11.4
+
+<!-- Feb 06, 2024 -->
+
+#### New features and enhancements
+
+* The Harness Cloud macOS image was updated to the latest version of macOS Sonoma, which includes an Xcode upgrade to 15.2 (default) and 15.1. This version of Sonoma is not compatible with earlier Xcode versions. If your pipelines rely on a specific Xcode version, you must update your pipelines accordingly for the new version. For complete image specifications and information about specifying Xcode versions, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+* To support Docker images without a shell, the [Command field in Run steps](/docs/continuous-integration/use-ci/run-step-settings/#shell-and-command) is now optional. (CI-10115, CI-10676)
+* Upgraded Go to the latest version in the CI manager and CI-related plugins, such as `drone-kaniko`. (CI-10800)
+* Upgraded kaniko executor to version 1.19.2 in the [drone-kaniko plugin](https://github.com/drone/drone-kaniko/releases), which is used by [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact), to support Dockerignore with special characters. (CI-10908, ZD-55930)
+
+   If you encounter errors in Build and Push steps following this upgrade, you can manually [pin an old plugin version](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines), for example:
+
+   ```
+   {
+    "field": "buildAndPushDockerRegistryTag",
+    "value": "plugins/kaniko:1.8.3
+   },
+   ```
+
+#### Fixed issues
+
+Modified CSS to address flickering UI elements. (CI-11038, ZD-56510)
+<!-- Only logging added. Underlying issue not yet addressed. (CI-10975, ZD-56280, ZD-56961) -->
+<!-- Regression, rolled back code, probably hotfixed before (CI-11044, ZD-56204, ZD-56526) -->
 
 ## January 2024
 
@@ -232,13 +258,20 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 - To address potential performance issues, resource consumption logs are now disabled for the `ci-addon` service, and the communication retry internal between the Lite Engine and the `ci-addon` service is now nine seconds. <!-- additional hotfix change behind FF CI_EXTRA_ADDON_RESOURCE --> (CI-10042, ZD-52559)
 - Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
 
-## October 2023
+## Previous releases
 
-### Version 6404
+### Jan-Oct 2023 releases
+
+<details>
+<summary>Jan-Oct 2023 releases</summary>
+
+#### October 2023
+
+##### Version 6404
 
 <!-- October 30, 2023 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 - The Harness AI Development Assistant (AIDA:tm:) for CI is now generally available. AIDA for CI provides error analysis and remediation for failed pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 - When you [configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. (CI-9707)
@@ -249,7 +282,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 - The individual log line limit is now 25KB. Log lines longer than 25BK are truncated. (CI-9927, ZD-52005, ZD-52079, ZD-52134, ZD-52356)
 - Upgraded built-in steps to support Windows 2022. (CI-9755)
 
-#### Fixed issues
+###### Fixed issues
 
 - Addressed a NPE issue related to node plan creation. (CI-9890, ZD-51607)
 - Fixed an issue where a [clone depth](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) of `0` wasn't respected in stages that use a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). (CI-8711)
@@ -257,24 +290,24 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 - Revised the error message that is shown when a pipeline fails due to lack of eligible delegates. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9743)
 - Optimized delegate logging related to the CI task handler to consume less space. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9771)
 
-### Version 6304
+##### Version 6304
 
 <!-- October 24, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 - To address issues with long cache times, [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now uses Zstd archive format. (CI-9815, ZD-51474)
 - Long test and class names on the [Tests tab](/docs/continuous-integration/use-ci/viewing-builds#tests-tab) no longer push the **Copy** icon out of the visible area. (CI-9500)
 
-### Version 6203
+##### Version 6203
 
 <!-- October 18, 2023 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed an issue where Background step logs weren't correctly called for steps running in parallel. (CI-9801)
 - Corrected the rendering of the **Stack Trace** field when inspecting failed tests from the [Tests tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). (CI-9765, ZD-51231)
@@ -284,26 +317,19 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
 - Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9835, ZD-51754, ZD-51758, ZD-51763)
 - When a [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) encounters a cert error, the error message shown in the Harness UI is now more informative. This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-8509)
 
-### Version 6100
+##### Version 6100
 
 <!-- October 09, 2023 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 When you [enable Test Intelligence for Scala or Kotlin](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala), the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed an issue with identifiers assigned to steps in [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) that occurred if your account was configured to use **Matrix Labels by Name** _and_ the pipeline contained nested matrix strategies. This issue produced a Null Pointer Exception error. (CI-9680)
 - In Kubernetes cluster build infrastructures, non-existent or unresolvable secrets are now handled in the same way as they are in VM and Harness Cloud build infrastructures. (CI-9677, ZD-50868, ZD-50901)
 <!-- CI-9747: Not for RN. CI-9688: In Hotfix 5802. -->
-
-## Previous releases
-
-### Jan-Sept 2023 releases
-
-<details>
-<summary>Jan-Sept 2023 releases</summary>
 
 #### September 2023
 
