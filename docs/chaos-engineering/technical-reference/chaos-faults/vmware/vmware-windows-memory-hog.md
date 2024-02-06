@@ -100,6 +100,11 @@ stringData:
       <td>Determines if you wish to run the default health check which is present inside the fault. </td>
       <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
+      <tr>
+      <td>PATH_OF_TESTLIMIT</td>
+      <td>Path of “testlimit” binary (location of its download)</td>
+      <td> </a></td>
+      </tr>
     </table>
 
 ### Memory consumption
