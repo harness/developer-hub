@@ -2,10 +2,12 @@
 title: Troubleshoot SSL in STO
 description: Troubleshoot certificate issues when running STO scans.
 sidebar_position: 60
+redirect_from:
+- /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto
 ---
 
 If you're having issues [running STO scans with custom
-SSL certificates](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto), try the following:
+SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto), try the following:
 
 - Run your pipeline in Debug mode and check for log messages such as **`unable to get local issuer certificate`**.
 
