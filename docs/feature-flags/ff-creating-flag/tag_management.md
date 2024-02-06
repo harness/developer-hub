@@ -10,15 +10,17 @@ sidebar_position: 10
 
 The Tagging Feature by Harness is a great way to organize and group your feature flags. You are able to create tags to, not only, categorize your flags, but also to manage permissions. 
 
-<!--Insert Use Case Example -->
+This feature is incredibly exciting for our users as they can now create a resource group based on tags, environments or both when needed. Further to this, when creating a resource group using Tagging, you can further define permissions for users and for user groups.
 
-## Creating A Tag
+## Using Tagging In Feature Flags
+
+### Creating A Tag
 
 There are two methods to creating a tag in Feature Flag. You can do this by either creating a new Feature Flag or by editing an existing one. Here are the steps you need to follow:
 
-<!-- Insert image of Harness Application page. -->
+![An image of the tagging Management page within Harness. ](./static/creating-a-tag-in-ff.png)
 
-# Creating a Tag With A New Feature Flag
+### Creating a Tag With A New Feature Flag
 
  1. On the Home Page of the Harness Application, head over to *Feature Flags*.
  2. Under the *Feature Flags* tab, click on *New Feature Flag*. 
@@ -26,12 +28,12 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
  4. Press *Next* and go on to save your Flag. 
  5. Once saved, you should see the tags under your new Feature Flag. 
 
-# Filtering Your Flags using Tags
+### Filtering Your Flags using Tags
 
   1. On the Home Page of the Harness Application, head over to *Feature Flags*.
   2. On the right hand side of the screen, you can type your tag or select the tag you want. 
 
-# Tags on Target Groups
+### Tags on Target Groups
 
 <!-- Insert step by step -->
 :::tip
@@ -40,7 +42,7 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 
 :::
 
-# Adding RBAC to Tags
+### Adding RBAC to Tags
 
 <!-- Need to check for missing steps or misordered steps. -->
 
@@ -54,6 +56,8 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  6. On the right hand side of the page, select *By Tag*, followed by *Add Tag*.
  7. From there, you can asign any pre-existing tags to the Resource Group.
  8. The users under the assigned tags should be limited to whichever settings you have permitted for them such as permission to *Create/Edit* within Feature Flags. 
+
+### Managing Permissions Using Tagging
 
 # Related Content
 
