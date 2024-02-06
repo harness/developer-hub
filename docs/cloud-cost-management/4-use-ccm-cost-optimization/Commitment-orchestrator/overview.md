@@ -66,10 +66,12 @@ Commitment Orchestrator can be found on our dashboard under Cloud Costs. Commitm
 ### Step 1 : Setting up the master account 
 
 You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. You can either select an existing connector for your master account or create one. 
+<DocImage path={require('./static/Step1.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 ### Step 2: Exclude Instance types 
 Commitment Orchestrator provides you with an option to choose the instances you would like to exclude when orchestrating instances for Compute Usage.
+<DocImage path={require('./static/Step2.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 ### Step 3: Coverage Percentage and SP/RI split
@@ -77,12 +79,14 @@ Coverage Percentage: The Coverage percentage is the percentage that you want to 
 
 SP/RI split: Out of the totally compute spend, you have the option to split it between Convertible Reserved Instances and Compute Savings Plan 
 
+<DocImage path={require('./static/Step3.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ### Step 4: Review
 After all the set-up steps, you can review and finalise your inputs.
-
+<DocImage path={require('./static/Step4.png')} width="50%" height="50%" title="Click to view full size image" />
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
+<DocImage path={require('./static/Dashboard_CO.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ## Steps to configure:
 
