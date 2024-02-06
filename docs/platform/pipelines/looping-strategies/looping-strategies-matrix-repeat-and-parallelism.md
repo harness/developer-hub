@@ -328,6 +328,84 @@ repeat:
 
 For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
+#### Use a custom label for repeat stages and steps
+You can use the keyword `nodeName` when specifying your repeat items to define your stage and step naming convention. Expressions are supported, so you can customize the name as required. For example:
+
+##### Customizing Stage name:
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: custom_1
+        identifier: custom_1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          repeat:
+            items:
+              - host1
+              - host2
+              - host3
+            nodeName: repeat_<+repeat.item>
+```
+![](./static/looping_name_example_1.png)
+
+##### Customizing step name:
+
+```yaml
+tags: {}
+  stages:
+    - stage:
+        name: custom_stage_2
+        identifier: custom_stage_2
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello_world
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items:
+                        - host1
+                        - host2
+                        - host3
+                      nodeName: step_<+repeat.item>
+
+```
+![](./static/looping_name_example_2.png)
+
 ## Looping strategies as runtime input
 
 You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
