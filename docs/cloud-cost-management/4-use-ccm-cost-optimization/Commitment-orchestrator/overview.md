@@ -129,4 +129,43 @@ In its Beta phase, the Commitment Orchestrator provides:
 
 | **Persona** | **Scenario** | **Value Added** |
 | --- | --- | --- |
-|  | The purchase engine analyzes  the on-demand spend and then purchases the RIs/SPs basis the target coverage.| |
+| Cloud Financial Manager/ Cloud Architect | A Cloud Financial Manager aims to maximize cost savings for the organization's AWS commitments and Cloud Architects are responsible for designing and overseeing the organization's cloud infrastructure with varying workloads | Cost optimization and Automated Purchase Management : Commitment Orchestrator assists the manager in optimizing commitment utilization, preventing overcommitment or underutilization, and ensuring maximum ROI on cloud expenditures. The Purchase Engine of Commitment Orchestrator, automated by Cloud Architects, streamlines the analysis of on-demand spend and purchases Reserved Instances or Savings Plans based on target coverage, ensuring efficient resource allocation.
+| Cloud Administrators |Cloud Administrators handle day-to-day cloud operations, including managing Convertible Reserved Instances. | Convertible RI Management: The Utilization Engine of Commitment Orchestrator, managed by Cloud Administrators, identifies underutilized Convertible RIs and performs conversions to increase utilization, optimizing resource usage and cost efficiency.| 
+| IT Managers | IT Managers need detailed insights into commitments, utilization, and savings across multiple accounts and regions.| Visibility and Reporting: Commitment Orchestrator provides visibility into account breakdowns, savings, and utilization, supporting IT Managers in making informed decisions about cloud commitments and expenditures |
+| Organizations with multiple AWS accounts | Organizations with multiple AWS accounts seek flexibility in commitment management due to the ability to support multiple master accounts and set separate coverage for each of them. | Staggered Purchase to Prevent Overcommitment: Commitment Orchestrator's daily staggered purchases, orchestrated by administrators in multi-account structures, prevent overcommitments, ensuring financial flexibility and optimal resource allocation.|
+
+## FAQs
+1. Which cloud providers are supported at the moment?
+
+--> Currently, we support AWS Compute Saving Plans and Convertible RIs.
+
+2. Is Audit trails support available?
+
+--> In Beta version of CO, Audit trails are not supported but in upcoming GA release, it will be supported.
+
+3. How many Saving Plan purchases happen in a month?
+
+--> Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+
+4. How many RI purchases happen in a month?
+
+--> It's a daily staggered and recurring purchase, and hence, can happen multiple times.
+
+5. How many exchanges happen in a month?
+
+--> Number of exchanges depends on the requirement of the user.
+
+6. Where can I see the history of all the actions taken?
+
+--> In the visibility section, you can see all the actions under the logs
+
+7. Is RBAC supported?
+
+--> Yes, as part of Beta there are two permissions : view(Visibility) and edit (Setup)
+8. Can orchestration be setup on any account?
+
+--> No, only master account with correct permission listed above will be allowed and at a time only one account can be set up.
+
+
+
+
