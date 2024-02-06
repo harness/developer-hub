@@ -32,6 +32,8 @@ A list of all registered custom actions can be found under
 
 ### 1. `trigger:harness-custom-pipeline`
 
+This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the pipeline url, and then trigger the pipeline based in the inputset obtained from the user. 
+
 ```YAML
 ## Example
 steps:
@@ -97,7 +99,7 @@ steps:
 
 ```
 
-In the above example API key is an optional paramenter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
+In the above example API key is an optional parameter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
 
 Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
 

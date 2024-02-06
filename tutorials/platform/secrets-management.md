@@ -60,7 +60,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use AWS KMS to manage secrets
 
@@ -138,7 +138,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use GCP KMS to manage secrets
 
@@ -206,7 +206,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ### Use Hashicorp to manage secrets
 
@@ -264,7 +264,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use AWS KMS to manage secrets
 
@@ -328,7 +328,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use GCP KMS to manage secrets
 

@@ -52,6 +52,25 @@ We support the folowing `regex operators` as Operators for all the Data Points.
 
 ![](./static/regex-operators.png)
 
+### Support for `catalog-info.yaml` metadata as inputs.
+
+Users can now use the entities `annotation` and `harnessData` from `catalog-info.yaml` as input variable(JEXL format) in Scorecard Checks. eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
+
+```YAML
+...
+metadata:
+  name: idp-module
+  harnessData:
+    name: idp-module-prod
+    path: idp
+    priority: P0,P1
+  annotations:
+    jira/project-key: IDP
+...
+```
+
+![](./static/metadata-name-scorecards.png)
+
 
 ## GitHub
 

@@ -23,7 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  //onBrokenAnchors: "ignore", #DS 3.1+
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
@@ -347,6 +347,11 @@ const config = {
             // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
+          },
+          {
+            position: 'right',
+            html: '<button class="button button--nav">Sign in</button>',
+            href: 'https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in',
           },
           {
             position: "right",

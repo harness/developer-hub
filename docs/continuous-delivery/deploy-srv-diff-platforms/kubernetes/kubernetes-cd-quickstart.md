@@ -239,7 +239,7 @@ Next, try using Harness [Continuous Integration](/docs/continuous-integration/ge
 
 ## Clean up the deployment
 
-For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
+For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
 
 ## Next steps
 

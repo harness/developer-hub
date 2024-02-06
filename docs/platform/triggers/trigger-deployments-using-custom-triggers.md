@@ -135,7 +135,7 @@ The following section describe each link and what you can do with them.
 
 **apiUrl** can be used to track deployment status programmatically, such as using a REST call.
 
-For more information, go to [Get Deployment Status using REST](#get-deployment-status-using-rest) below.
+For more information, go to [Get Deployment Status using REST](#get-deployment-status-using-rest-for-a-custom-trigger) below.
 
 
 ### uiUrl parameter in a custom trigger

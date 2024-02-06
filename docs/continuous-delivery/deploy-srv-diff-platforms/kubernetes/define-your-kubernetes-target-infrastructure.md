@@ -35,7 +35,7 @@ The following Harness role is required:
 
 - **Environments**: `View/Create`, `Edit`, `Access`, `Delete`.
 
-For more information on roles, go to [Add and manage roles](/docs/platform/Role-Based-Access-Control/add-manage-roles).
+For more information on roles, go to [Add and manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 
 ## Pre-existing and dynamically provisioned infrastructure
 

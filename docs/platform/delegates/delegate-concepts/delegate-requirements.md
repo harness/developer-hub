@@ -67,10 +67,15 @@ All network connections from your local network to Harness SaaS are outbound-onl
 	+ Collaboration providers
 	+ SSH access to target physical and virtual servers
 
+
 ### gRPC limitations
 
-If you do not enable gRPC connections, the following limitations apply:
+:::info note
+gRPC connections are not required for delegate version 23.12.81803 and later.
 
+:::
+
+If you do not enable gRPC connections, the following limitation applies:
 
 * [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events. 
 
@@ -84,5 +89,3 @@ For steps on adding certificates or other software to the delegate, go to [Commo
 Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate. For more information, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
-
-

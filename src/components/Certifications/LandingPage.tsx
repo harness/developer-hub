@@ -249,15 +249,19 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Administrator STO Badge"
                   />
-                </div>
-                {/* <h5>Coming Soon</h5> */}
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
                     alt="Administrator CCM Badge"
                   />
                 </div>
+                {/* <h5>Coming Soon</h5> 
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                    alt="Administrator CCM Badge"
+                  /> 
+                </div> */}
               </div>
             </div>
 

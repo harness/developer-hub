@@ -1,0 +1,1 @@
+Auto-detection is not available if the **Scan Mode** is Ingestion.
