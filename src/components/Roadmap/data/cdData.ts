@@ -69,7 +69,7 @@ export const CdData: Horizon = {
         description: "Users can now initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
       },
       {
-        tag: [],
+        tag: [{value: "GitOps"}],
         title: "GitOps Advanced RBAC",
         description: "Extending GitOps RBAC to handle more granular permissions.",
       },
@@ -124,7 +124,7 @@ export const CdData: Horizon = {
         description: "Users can use verify step for Serverless deployments with the ability to validate the Cloudwatch alarms.",
       },
       {
-        tag: [],
+        tag: [{value: "GitOps"}],
         title: "External Secret Operator in GitOps",
         description: "Harness will support GitOps Deployments to pull secrets from an external secret manager.",
       },
