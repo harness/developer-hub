@@ -52,13 +52,14 @@ You can add other specifications too (example, `imagePullPolicy`). You can refer
 
 ![Step 3](./static/cmd-probe-usage/confirm-5.png)
 
-## Validation
+## Validation in inline mode
 
-When the probe in **inline mode** is used in a chaos experiment, you can see that the probe failed. This is because the actual value is an empty value but the expected value is different. The resultant value is empty because no environment variable was specified in the experiment that could be associated with a user name. 
+When the probe in **inline mode** is used in a chaos experiment, you can see that the probe failed. This is because the actual value is an empty value but the expected value is different. The experiment doesn't specify any environment variable that could associate with a user name, so the resultant value is empty. 
 
 ![validation inline](./static/cmd-probe-usage/val-inline.png)
 
+## Validation in source mode
 
-When the probe in **source mode** is used in a chaos experiment, you can see that the probe passed because the expected value and the actual value match. The probe was executed on the specific (ubuntu, in this case) image which you created for this probe. You specified the environment mounted with the specific name in the image. This image specifications provided in the **Source** mode matched the expected value. 
+When you use the probe in **source mode** in a chaos experiment, you can see that the probe passed because the expected value and the actual value match. You executed the probe on the specific (Ubuntu, in this case) image that you created for this probe. You specified the environment mounted with the specific name in the image, and this image specifications you provided in the **Source** mode matched the expected value.
 
 ![validation source](./static/cmd-probe-usage/val-source.png)
