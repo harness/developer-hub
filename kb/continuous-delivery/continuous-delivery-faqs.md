@@ -5118,12 +5118,12 @@ https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/
 
 #### How do I make a pipeline step report to Slack?
 
-For a pipeline step failure, you should be able to just set a Notification rule for the pipeline, and check the Step Failed option and add the Slack Webhook URL as per https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#slack-notifications.
+For a pipeline step failure, you should be able to just set a Notification rule for the pipeline, and check the Step Failed option and add the Slack Webhook URL as per the [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#slack-notifications.
 
 #### How to schedule your deployment
 
 We have Cron based trigger so that you can execute a pipeline at given time:
-https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/)
 
 #### How to get string from ```<+eventPayload.repository.name>``` in trigger config
 
@@ -5334,4 +5334,50 @@ For any helm deployment it first tries to check if there is any existing helm re
 
 #### Do we have a way of adding certificate at project/org level to be consumed by gitops agent ?
 
-We do not have a way to add certificates at different scope for project/org/account level for gitops agent. This is an agent side configuration and need to be done at the agent itself reference doc link https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates
+We do not have a way to add certificates at different scope for project/org/account level for gitops agent. This is an agent side configuration and need to be done at the agent itself reference doc [link](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates)
+
+#### Can one implement a system that enables customers to define quotas or limits for Service Instances ?
+
+No, we don’t have a mechanism to let users cap their service instance below their subscribed amount and have the system warn you. But, one can always bake an OPA policy step that triggers a warning in their pipelines if their quota is reached.
+Please read more on OPA policy step in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/)
+
+#### How can one migrate a service to a higher scope (if available at projeect level) ?
+
+Currently, there's no built-in way to move or upgrade services to higher levels. When sharing a service, it needs to have a scope at either the organizational or account level. Fortunately, you can always use the terraform provider to recreate those services at a higher level.
+Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/)
+
+#### How can one use AWS CodeDeploy Template support at Harness ?
+
+The AWS CodeDeploy Deployment Template will allow us to set the infrastructure and the ability to fetch the instances deployed via AWS CodeDeploy.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#aws-codedeploy---deployment-template-sample)
+
+#### Is there any known limitations with Harness CI/CD that we need to be aware of as it relates to being FedRamp ready in SMP ?
+
+There should be no operational challenges encountered while utilizing Harness SMP within current FedRAMP environment.
+
+#### Is it possible to query pipelines based on tags and require that pipelines contain multiple specified tags using an **AND** condition, instead of the default **OR** condition ?
+
+We currently don't have a specific matching setting, and our support for tags operates exclusively with an OR operation. We recognize the necessity to update the documentation accordingly.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/tags/apply-filters-using-tags/#tags_search_logic)
+
+#### Is there any internal or external documentation available for building and deploying updates for an Azure SQL Server database ?
+
+No, We do not have a prescribed way to do this it would need to be their own scripts.
+
+#### How can a stage be skipped when asserting a CD built-in variable with multi-service/multi-env ?
+
+In a multi-service, multi-environment scenario, an approach to bypass the staging process involves using the `<+matrix.identifier>` to skip based on the infrastructure identifier. It seems the intention is to skip specific infrastructures in a multi-service configuration, based on their configuration.
+
+#### Is there a way we can add the pipeline execution notes from the execution step like using a variable or anything apart from adding them manually from the UI ?
+
+No, we cannot add the pipeline execution notes from the execution step using a variable.
+
+#### How can we configure the `Error: Invalid yaml passed. Error due to - The incoming YAML document exceeds the limit: 3145728 code points` ?
+
+Only solution around this is error is to improve the pipeline within the boundary limit of Yaml size.
+Please read more on this in the [FastXML Documentation](https://github.com/FasterXML/jackson-dataformats-text/tree/2.15/yaml#maximum-input-yaml-document-size-3-mb)
+
+#### Can a shell script step's output variable be used to determine the failure strategy of the same or subsequent steps in a conditional execution scenario, such as setting a failure strategy based on specific conditions like a DNS name check ?
+
+Unfortunately, utilizing the output variable of a shell script step to determine the failure strategy for the same or subsequent steps is not feasible. When a shell script step concludes with a non-zero exit status, the output variable remains unset, precluding its use in subsequent steps or for defining the failure strategy. In such scenarios, reliance on the non-zero exit status is necessary to trigger the failure strategy.
+Please read more on Failure Strategy in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/)
