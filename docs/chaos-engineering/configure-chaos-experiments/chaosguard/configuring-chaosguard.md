@@ -3,6 +3,8 @@ title: Configuration
 sidebar_position: 3
 description: Steps to configure ChaosGuard and enable it
 ---
+import Descriptions from './shared/field-descriptions.md'
+
 This section walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.
 
 ## Before you begin
@@ -98,3 +100,9 @@ Below is a snap that shows a failed evaluation of some (or all) rules in a chaos
 The image below shows the two different states of a rule (enable and disable).
 
 ![chaosguard-rules](./static/configure-chaosguard/chaosguard-rules.png)
+
+
+## Description of fields used
+
+<Descriptions />
+
