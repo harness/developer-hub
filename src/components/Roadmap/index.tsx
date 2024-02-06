@@ -10,7 +10,7 @@ const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
     { value: "platform", name: "Platform" },
-    { value: "cd", name: "Continuous Delivery & GitOps - Coming Soon" },
+    { value: "cd", name: "Continuous Delivery & GitOps" },
     { value: "ci", name: "Continuous Integration - Coming Soon" },
     { value: "ff", name: "Feature Flags - Coming Soon" },
   ];
