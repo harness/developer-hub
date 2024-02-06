@@ -90,7 +90,8 @@ To install a Kubernetes delegate with custom certificates, do the following:
    kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
    ```
 
-   Note that you can install multiple certificates by adding additional `--from-file` arguments. For example 
+   :::info note
+   You can install multiple certificates by adding additional `--from-file` arguments. For example:
 
    ```
    kubectl create secret -n harness-delegate-ng generic mycerts \
@@ -98,6 +99,7 @@ To install a Kubernetes delegate with custom certificates, do the following:
      --from-file custom-certs2.pem=site2cert.pem \
      --from-file custom-certs3.pem=site3cert.pem    
    ```
+   :::
 
 2. Modify the `harness-delegate.yaml` file to include a volume mount. Mount the secret to the `/opt/harness-delegate/ca-bundle/` directory.
 
@@ -293,7 +295,8 @@ To add self-signed certificates for delegate upgrader, do the following:
    kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
    ```
 
-   Note that you can install multiple certificates by adding additional `--from-file` arguments. For example 
+   :::info note
+   You can install multiple certificates by adding additional `--from-file` arguments. For example:
 
    ```
    kubectl create secret -n harness-delegate-ng generic mycerts \
@@ -301,6 +304,7 @@ To add self-signed certificates for delegate upgrader, do the following:
      --from-file custom-certs2.pem=site2cert.pem \
      --from-file custom-certs3.pem=site3cert.pem    
    ```
+   :::
 
 2. Run the following to set the `delegateCustomCa.secretName` variable when you install the Helm chart.
 
