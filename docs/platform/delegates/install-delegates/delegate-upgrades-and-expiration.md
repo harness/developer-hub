@@ -284,9 +284,9 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 ## Delegate expiration policy
 
-Delegates expire after six months. Delegate expiration does not mean the delegate stops working. You may experience issues because the backend has moved too far ahead, and the delegate is no longer backward compatible. 
+Delegates expire six months (24 weeks) from the 6 months from when the delegate image is released in Docker Hub. Delegates do not stop working after expiration. They are backward-compatible but may face issues if the backend has moved too far ahead and the delegate is no longer forward-compatible. For more information about delegate releases, go to the [Delegate release notes](/release-notes/delegate).
 
-:::info note
+:::info important
 If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. You must update the delegate every six months.
 :::
 
@@ -304,6 +304,6 @@ Harness does not recommend the use of delegate images that are not current. Howe
 
 To update the delegate YAML, do the following:
 
-- Select **New Delegate** > **Kubernetes** > **Kubernetes Manfiest** > **Custom**, and then follow the instructions on the screen. 
+- Select **New Delegate** > **Kubernetes** > **Kubernetes Manifest** > **Custom**, and then follow the instructions on the screen. 
 
 For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
