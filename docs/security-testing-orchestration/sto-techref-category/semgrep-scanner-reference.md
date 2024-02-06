@@ -50,48 +50,43 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below.
 
 
-### Scan settings
+### Scan
 
 
 <a name="scan-mode"></a>
 
 #### Scan Mode
 
-
 import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-
-<!-- StoSettingScanMode / -->
 <StoSettingScanModeIngest />
+
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
 
 ### Target
 
-<a name="target-type"></a>
 
 #### Type
 
-
-import StoSettingScanType from './shared/step_palette/scan/_type.md';
-
-
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
-
-<a name="scan-type"></a>
-<StoSettingScanType />
 <StoSettingScanTypeRepo />
+
+
+<!-- #### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -175,7 +170,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## YAML pipeline example
 

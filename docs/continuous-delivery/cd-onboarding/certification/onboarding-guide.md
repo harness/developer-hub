@@ -36,18 +36,18 @@ Now you are ready to learn advanced CD concepts through the following tutorials.
 - [Approvals](/tutorials/cd-pipelines/approvals)
 - [Continuous Verification](/tutorials/cd-pipelines/continuous-verification/)
 - [Infrastructure Provisioning as part of CD pipeline](/tutorials/cd-pipelines/infra-provisioning/)
-- [Variables & Expressions](/docs/platform/Variables-and-Expressions/harness-variables)
+- [Variables & Expressions](/docs/platform/variables-and-expressions/harness-variables)
 
 ## Step 4. Automate onboarding for your own app 
 We recommend you either use Git Experience, Harness Terraform Provider or the Harness REST API for this step.
 
-- [Git Experience](/docs/platform/Git-Experience/git-experience-overview)
+- [Git Experience](/docs/platform/git-experience/git-experience-overview)
 - [Terraform Provider](/docs/platform/automation/terraform/harness-terraform-provider-overview)
 - [API](/docs/platform/automation/api/api-quickstart)
 
 ## Step 5. Add governance guardrails 
 
-- [Policy-as-Code](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+- [Policy-as-Code](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Step 6. Become a Harness Certified Expert
 

@@ -6,9 +6,11 @@ sidebar_position: 2
 
 :::info
 
-This Feature is in **BETA** phase and is behind `IDP_ENABLE_CUSTOM_PLUGINS` Feature Flag. Please contact the IDP product team if you would like to try out Custom Plugins.
+**Coming Soon**. This feature is **not available in production environment** yet, meanwhile take a look at the details of custom plugins to get an overview of it. In case you want to try out this feature please reach out to the IDP team.
 
 :::
+
+<DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
 
 ## Introduction
 
@@ -44,7 +46,7 @@ eg,. `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`, `ht
 </TabItem>
 <TabItem value="Upload Zip file">
 
-4. You can as well pack your backstage frontend plugins using `[yarn pack](https://classic.yarnpkg.com/lang/en/docs/cli/pack/#toc-yarn-pack)` and upload the resulting `package.tgz` file
+4. You can as well pack your backstage frontend plugins using **[yarn pack](https://classic.yarnpkg.com/lang/en/docs/cli/pack/#toc-yarn-pack)** and upload the resulting `package.tgz` file
 
 :::warning
 
@@ -54,7 +56,7 @@ Only files packaged using `yarn pack` is to be used while uploading the zip file
 
 ![](./static/upload-zip.png)
 
-<details>
+<details open>
 <summary>How to create and pack your front end Plugin</summary>
     
 1. Install backstage following this [documentation](https://backstage.io/docs/getting-started/#create-your-backstage-app) 
@@ -90,7 +92,7 @@ new-plugin/
 
 6. Follow the steps mentioned [here](https://backstage.io/docs/plugins/plugin-development) to build on top of it. 
 7. Once you have the plugin ready, run `yarn tsc` at the root of the backstage app.
-8. Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated.
+8. **Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated, this file could be used to upload your plugin into IDP.** 
 </details>
 
 </TabItem>

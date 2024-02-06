@@ -38,8 +38,8 @@ Harness IDP requires some secrets to be set for plugins and external integration
 
 :::
 
-## Template Actions to Trigger Harness Pipeline 
+## Template Actions to Trigger Harness Pipeline
 
-- Currently only single stage Harness Pipeline is supported. 
-
-- The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+- Currently only single stage Harness Pipeline is supported.
+- The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) CI stage with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+- All input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).

@@ -71,17 +71,18 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. 
 
-### Scan Mode
+### Scan 
+
+### Scan mode
 
 
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-
 <StoSettingScanModeIngest />
 
 
-### Scan Configuration
+#### Scan configuration
 
 
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
@@ -186,7 +187,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->

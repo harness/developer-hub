@@ -46,24 +46,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Aqua Trivy step settings for STO scans
 
-The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Aqua Trivy scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
+The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below.
 
 
+### Scan
 
-
-
-<details>
-<summary>Scanner Template</summary>
-
-![](static/aqua-trivy-security-scan-step.png)
-
-</details>
-
-
-### Scan settings
-
-
-<a name="scan-mode"></a>
 
 #### Scan Mode
 
@@ -75,56 +62,51 @@ import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestrati
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
-<a name="scan-config"></a>
 
 #### Scan Configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
 
-### Target Settings
+### Target
 
-<a name="target-type"></a>
 
 #### Type
 
-
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
+
+
+<!-- #### Detect target and variant 
+
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
 
-
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
-
-
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
-### Container Image settings
+### Container image
 
 
 #### Type
@@ -196,7 +178,7 @@ import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 
 
 
-### Ingestion settings
+### Ingestion
 
 
 <a name="ingestion-file"></a>
@@ -271,7 +253,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 

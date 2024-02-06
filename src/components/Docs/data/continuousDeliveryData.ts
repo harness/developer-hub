@@ -64,7 +64,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/get-started/integrating-CD-other-modules",
+              link: "/docs/continuous-delivery/get-started/integrating-cd-other-modules",
             },
             {
               title: "Server based licensing and usage",

@@ -27,7 +27,7 @@ For Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift, use [Specify a
 
 ## Important notes
 
-- When using names in Harness Kubernetes stages, remember that Kubernetes service and pod names follow DNS-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
+- When using names in Harness Kubernetes stages, remember that Kubernetes service and pod names follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 
 ### Harness role permissions required
 
@@ -35,7 +35,7 @@ The following Harness role is required:
 
 - **Environments**: `View/Create`, `Edit`, `Access`, `Delete`.
 
-For more information on roles, go to [Add and manage roles](/docs/platform/Role-Based-Access-Control/add-manage-roles).
+For more information on roles, go to [Add and manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 
 ## Pre-existing and dynamically provisioned infrastructure
 

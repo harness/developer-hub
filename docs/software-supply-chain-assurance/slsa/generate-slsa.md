@@ -22,7 +22,7 @@ Keys are used to sign and verify provenance.
 
 1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
-3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
+3. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) to store the password for the private key.
 
 ## Enable SLSA Provenance generation
 
@@ -31,7 +31,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 1. In your Harness pipeline, select the **Build** stage, and then select the **Overview** tab.
 2. Under **SLSA Provenance**, enable **Generate SLSA Provenance**.
 3. For **Private Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key file to use to sign the attestation.
-4. For **Password**, select the [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+4. For **Password**, select the [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/slsa-build-stage-settings.png) -->
 

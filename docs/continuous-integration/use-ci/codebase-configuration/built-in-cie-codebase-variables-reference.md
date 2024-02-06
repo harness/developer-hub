@@ -51,7 +51,7 @@ If you build both manually and through triggers, consider using expressions that
 
 ### Webhook triggers
 
-You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
+You can automatically [trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
 
 Values in the webhook payload are mapped to the build's codebase variables. The variables that get resolved are based on the event type and the payload contents.
 
@@ -80,7 +80,7 @@ Some codebase variables aren't resolved in these scenarios:
 
 You can use [Harness' expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
 
-For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
+For example, you can add a [Run step](../run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 
 
 <Tabs>

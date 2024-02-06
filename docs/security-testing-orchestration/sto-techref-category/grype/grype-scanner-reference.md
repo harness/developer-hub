@@ -56,7 +56,7 @@ The recommended workflow is add a Grype step to a Security Tests or CI Build sta
 
 -->
 
-### Scan settings
+### Scan
 
 
 <a name="scan-mode"></a>
@@ -84,7 +84,7 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 <StoSettingProductConfigName />
 
 
-### Target Settings
+### Target
 
 <a name="target-type"></a>
 
@@ -263,7 +263,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
  
 ## Security step settings for Grype scans in STO (legacy)

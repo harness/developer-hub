@@ -1,5 +1,5 @@
 ---
-title: Secure CI
+title: Security hardening for Harness CI
 description: Best practices and features to help you build securely with Harness CI.
 sidebar_position: 10
 ---
@@ -20,7 +20,7 @@ Failed CI pipelines don't inherently block PR merges. Harness can [send pipeline
 
 With Harness CI, you can use the [Harness Software Supply Chain Assurance (SSCA) module](/docs/software-supply-chain-assurance) to generate, manage, store, and enforce SBOM and SLSA Provenance.
 
-You can also [run scripts in Run steps](../use-ci/run-ci-scripts/run-step-settings) to generate SBOM and SLSA Provenance, and then [upload those artifacts](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts).
+You can also [run scripts in Run steps](../use-ci/run-step-settings) to generate SBOM and SLSA Provenance, and then [upload those artifacts](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts).
 
 ## Secrets
 
@@ -30,7 +30,7 @@ Store tokens, passwords, and other sensitive data as [secrets](/docs/category/se
 APP_STORE_PASSWORD=<+secrets.getValue("my_app_store_password_secret")>
 ```
 
-When you use secrets and variables in your CI pipelines, it is important to understand how those secrets appear in build logs. For example, secrets in [Run step output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables) are exposed in logs. For information about secrets masking and sanitization, go to:
+When you use secrets and variables in your CI pipelines, it is important to understand how those secrets appear in build logs. For example, secrets in [Run step output variables](/docs/continuous-integration/use-ci/run-step-settings/#output-variables) are exposed in logs. For information about secrets masking and sanitization, go to:
 
 * [Secrets in output, secrets sanitization](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs)
 * [Line breaks and shell-interpreted characters](/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
@@ -54,7 +54,7 @@ For information about creating keys/tokens for a specific provider or tool, refe
 
 For network security and private networking, Harness offers features such as:
 
-* [IP allowlists](/docs/platform/Security/add-manage-ip-allowlist)
+* [IP allowlists](/docs/platform/security/add-manage-ip-allowlist)
 * [Secure connect for Harness Cloud](./secure-connect)
 * [OIDC](#oidc)
 
@@ -62,7 +62,42 @@ For network security and private networking, Harness offers features such as:
 
 You can use OpenID Connect (OIDC) with Harness CI.
 
-With Harness Cloud, you can leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp). GCP connectors are used for functionality such as the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar). You can also [Configure OIDC with GCP WIF for builds on Harness Cloud](/tutorials/platform/configure-oidc-gcp-wif-ci-hosted).
+With Harness Cloud, you can leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp). You can then use OIDC-enabled GCP connectors in GCP-related steps, such as the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar). You can also [Configure OIDC with GCP WIF for builds on Harness Cloud](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
+<!-- Update and add to GCP connector settings reference/main GCP connector topic/GCP WIF topic
+CI-10656, CI-10852
+Not all step types support GCP connectors. However, you might need to perform operations with OIDC in steps that don't support GCP connectors. For example, if you use a Run step to pull artifacts from GAR with OIDC, you need the OIDC token in the Run step to successfully pull the artifact. In these cases, you can use the [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) if you have used an OIDC-enabled GCP connector elsewhere in the pipeline(?). This plugin uses the environment variable `PLUGIN_OIDC_ID_TOKEN` and then generates an access token and outputs it in the environment variable `GCLOUD_ACCESS_TOKEN`. Then, use that environment variable in subsequent pipeline steps to control Google Cloud Services through the gcloud CLI or API using cURL.
+
+For example:
+
+```
+              ## Plugin step uses the GCP OIDC plugin to get an OIDC token.
+              - step:
+                  type: Plugin
+                  name: GCP_OIDC
+                  identifier: gcpoidc
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/drone-gcp-oidc:latest
+                    settings:
+                      service_account_name: service_account_name
+                      service_account_email: service account email
+                      project_number: project-number
+                      pool_id: workload identity pool id
+                      provider_id: workload identity provider id
+                      create_credentials_file: true/ false
+              ## Run step uses the GLOUD_ACCESS_TOKEN environment variable to complete GCS operations with OIDC.
+              - step:
+                  type: Run
+                  identifier: list_zones
+                  name: List Compute Engine Zone
+                  spec:
+                    shell: Sh
+                    command: |-
+                      curl -H "Authorization: Bearer <+steps.STEP_ID.output.outputVariables.GCLOUD_ACCESS_TOKEN>" \
+                      "https://compute.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances"
+```
+-->
 
 OIDC is also available in other areas of Harness, such as in the [platform-agnostic Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#openid-connect), and in other Harness modules.
 

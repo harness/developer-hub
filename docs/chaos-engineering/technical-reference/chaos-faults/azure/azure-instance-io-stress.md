@@ -21,7 +21,7 @@ Azure instance I/O stress:
 - Checks if other services monopolize the I/O disks during stress. 
 
 ### Prerequisites
-- Kubernetes >= 1.17 is required to execute this fault.
+- Kubernetes >= 1.17
 - Azure Run Command agent is installed and running in the target Azure instance.
 - Azure instance should be in a healthy state.
 - Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. to generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -125,6 +125,11 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
         <td> Location that points to the volume mount path used in I/O stress.</td>
         <td> Defaults to the user HOME directory. For more information, go to <a href="#volume-mount-path"> volume mount path. </a></td>
     </tr>
+    <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>

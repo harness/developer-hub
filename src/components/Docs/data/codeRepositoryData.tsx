@@ -18,17 +18,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "5min",
-        link: "/tutorials/build-code/fastest-ci",
-      },
-      {
-        title: "Terraform Cloud notification triggers",
-        module: MODULES.ci,
-        icon: "img/icon_ci.svg",
-        description: "Terraform Cloud notifications can automatically trigger CI pipelines.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "9min",
-        link: "/tutorials/ci-pipelines/build/tfc-notification",
+        link: "/docs/continuous-integration/get-started/tutorials",
       },
     ];
     */

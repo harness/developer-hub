@@ -34,7 +34,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below.  
 
 
-### Scan settings
+### Scan
 
 
 #### Scan Mode
@@ -52,7 +52,7 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 <StoSettingProductConfigName />
 
-### Target Settings
+### Target
 
 
 #### Type
@@ -60,6 +60,15 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
+
+
+<!-- #### Detect target and variant 
+
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -77,7 +86,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 
 
-### Container Image settings
+### Container image
 
 #### Type  (_orchestration_)
 
@@ -115,7 +124,7 @@ import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 <StoSettingImageRegion />
 
 
-### Authentication settings
+### Authentication
 
 
 #### Access ID (_orchestration_)
@@ -137,7 +146,7 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 The AWS region of the image to scan.
 
 <!-- 
-### Ingestion settings
+### Ingestion
 
 #### Ingestion File
 
@@ -182,7 +191,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 ## Security step settings for AWS ECR scans in STO (legacy)

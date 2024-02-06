@@ -345,6 +345,7 @@ h2 {
 }
 
 .button--cta,
+.button--nav,
 .button--primary {
   background-color: var(--primary-7);
   border-color: var(--primary-7);
@@ -355,9 +356,17 @@ h2 {
 }
 
 .button--cta:hover,
+.button--nav:hover,
 .button--primary:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
+}
+
+.button--nav {
+  background-color: var(--white);
+  border: 1px solid var(--primary-7);
+  color: var(--primary-7);
+  margin-right: -0.75rem;
 }
 
 .button--primary {

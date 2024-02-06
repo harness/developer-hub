@@ -5,6 +5,12 @@ description: Execute chaos experiments on specific namespaces
 ---
 This section discusses the steps required to run chaos experiments on specific namespaces.
 
+Kubernetes clusters are vast, multi-layered, and customizable. A simple misconfiguration or vulnerability introduced by libraries poses a threat to the Kubernetes environment. These threats can allow users with malicious intent to gather information about your environment without being detected, gain backdoors to your application, or escalate privileges to steal secrets.
+
+You can allow your chaos experiments to run in specific namespaces, thereby limiting the exposure of all the services (including business-critical and potentially sensitive workflows) of your application.
+
+If your application fails, the above-mentioned technique also helps pin-point the exact cluster, namespace, and services in your Kubernetes environment that failed.
+
 ### Step 1. Install CE in cluster mode
 
 - Install CE in cluster mode with the given installation manifest. 

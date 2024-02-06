@@ -16,7 +16,7 @@ Files can be stored in the following locations.
 ## Important notes on config files
 
 - Files must be 1MB or less.
-- Only JSON, YAML, and text files are supported.
+- All text files are supported (JSON, txt, XML, etc.) .
 - You cannot use Harness variables in an encrypted text config file.
 - You cannot reference other config files within a config file.
 - Config files cannot be binaries. 
@@ -168,7 +168,7 @@ Currently, this feature is behind the feature flag `CDS_NG_CONFIG_FILE_EXPRESSIO
 
 :::
 
-Plain text config files support the following [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables):
+Plain text config files support the following [Harness variables](/docs/platform/variables-and-expressions/harness-variables):
 
 - Pipeline variables
 - Service variables

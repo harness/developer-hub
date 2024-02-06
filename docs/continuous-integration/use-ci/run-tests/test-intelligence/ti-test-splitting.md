@@ -81,7 +81,7 @@ Class timing uses test times from previous runs to determine how to split the te
 
 ### Differentiate report names
 
-Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
+Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/variables-and-expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
 
 ```yaml
                        reports:

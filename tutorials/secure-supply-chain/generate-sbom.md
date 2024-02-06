@@ -2,7 +2,7 @@
 sidebar_position: 1
 description: Use SSCA module steps to generate SBOM and enforce policies in Harness pipelines.
 keywords: [SSCA]
-title: Generate SBOM and enforce policies
+title: Generate SBOM and enforce policies for containers
 slug: /secure-supply-chain/generate-sbom
 ---
 
@@ -49,7 +49,7 @@ Keys are used to sign and verify attestations.
 
 1. Use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate a public and private key pair
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
-3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
+3. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) to store the password for the private key.
 
 The SSCA steps in your Harness pipelines use the private key to sign attestations and the public key to verify the authenticity of the attestations.
 
@@ -76,7 +76,7 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
 4. Select the **SBOM Tool** to use to generate the SBOM, such as **Syft**.
 5. For **SBOM Format**, select either **SPDX** or **CycloneDX**.
 6. Select **Image** as the **Artifact Type**.
-7. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+7. For **Container Registry**, select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
@@ -88,7 +88,7 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
    For Docker-compliant ECR or GRC repositories, provide the full URI for the image, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
 
 9. For **Private Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
-10. For **Password**, select the [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+10. For **Password**, select the [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/sbom-ssca-orch-step.png) -->
 
@@ -138,7 +138,7 @@ SBOM Orchestration and Enforcement steps in deploy stage can only be used in the
 
 2. Enter a **Name** for the step.
 3. Select **Image** as the **Artifact Type**.
-4. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+4. For **Container Registry**, select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where your artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 

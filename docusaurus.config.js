@@ -23,7 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  //onBrokenAnchors: "ignore", #DS 3.1+
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
@@ -349,6 +349,11 @@ const config = {
             position: "right",
           },
           {
+            position: 'right',
+            html: '<button class="button button--nav">Sign in</button>',
+            href: 'https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in',
+          },
+          {
             position: "right",
             // label: "Sign up",
             html: '<button class="button button--cta">Sign up</button>',
@@ -659,7 +664,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/feedback-plugin"),
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
-    path.join(__dirname, "/plugins/scarf-plugin"),
+    //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
 };
 

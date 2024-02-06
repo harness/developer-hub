@@ -44,7 +44,9 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below.
 
-### Scan Mode
+### Scan
+
+#### Scan Mode
 
 import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
@@ -53,7 +55,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 <StoSettingScanModeIngest />
 
 
-### Scan Configuration
+#### Scan Configuration
 
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
@@ -67,6 +69,15 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
+
+
+<!-- #### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -151,7 +162,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 ## Security step settings for Bandit scans in STO (legacy)

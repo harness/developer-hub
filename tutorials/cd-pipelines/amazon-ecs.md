@@ -303,4 +303,4 @@ Head to the Public IP e.g 52.15.55.133 and you will see a welcome message.
 
 ![Welcome](static/first-ecs/welcome.png)
 
-Congratulations on your ECS deployment! This was a vanilla deployment to ECS. Harness has the ability to orchestrate confidence building steps. We used a pre-packaged image but [Harness CI](/tutorials/ci-pipelines/build/nodejs) can execute a Docker Build for you and create a custom image which you can then deploy with similar into Amazon ECS.
+Congratulations on your ECS deployment! This was a vanilla deployment to ECS. Harness has the ability to orchestrate confidence building steps. We used a pre-packaged image, but [Harness CI](/docs/continuous-integration/get-started/overview) can execute a Docker Build for you and create a custom image which you can then deploy with similar into Amazon ECS.

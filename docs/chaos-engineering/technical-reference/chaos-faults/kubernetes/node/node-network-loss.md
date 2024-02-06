@@ -79,7 +79,6 @@ Node network loss:
         </tr>
     </tbody>
 </table>
-                                                                                      |
 
 ### Network packet loss
 

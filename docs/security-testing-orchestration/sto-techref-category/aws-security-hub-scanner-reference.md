@@ -31,7 +31,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## AWS Security Hub step configuration
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -49,7 +49,7 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 <StoSettingProductConfigName />
 
 
-### Target settings
+### Target
 
 #### Type
 
@@ -79,7 +79,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Authentication settings
+### Authentication
 
 You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access ID and token and access them using the format `<+secrets.getValue("project.my-secret")>`. 
 

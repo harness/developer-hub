@@ -3,15 +3,15 @@
 | Topic | Material |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------|
 | **1. Introduction to Harness and Key Concepts** ||
-| Understand continuous integration fundamentals, including critical stages or steps | [Harness CI](/tutorials/ci-pipelines/fastest-ci/#harness-ci) |
+| Understand continuous integration fundamentals, including critical stages or steps | [Harness CI](/docs/continuous-integration/get-started/key-concepts) |
 |Grasp the core concepts: "Pipeline, Stages, Step Groups, Steps" and Harness hierarchy "Account, Organizations, Projects" | [Key Concepts](/docs/get-started/key-concepts/) |
 | Familiarize with Harness Manager and the role of Harness Delegate for CI capability | [CI key concepts](/docs/continuous-integration/get-started/key-concepts) |
 | **2. Harness Build Infrastructure and Configuration** ||
 | Explore Harness Cloud supported platforms, OS, and build infrastructures | [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) |
-| Dive into CI Build Infrastructures and their diverse options | [Harness CI](/tutorials/ci-pipelines/fastest-ci/#harness-ci) |
+| Dive into CI Build Infrastructures and their diverse options | [Harness CI](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) |
 | Understand Ephemeral Environments and the specific requirements for a K8s Build environment | [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/) |
 | **3. Artifact Management and Connectivity** ||
-| Grasp Artifacts and Packages spanning from jar to container image, helm, and more | [Artifacts Tab](/tutorials/ci-pipelines/publish/artifacts-tab/) |
+| Grasp Artifacts and Packages spanning from jar to container image, helm, and more | [Artifacts Tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) |
 | Describe and configure Artifact Repositories like cont registry, object store, jfrog, nexus, etc | [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) |
 | Delve into Harness Connectors: configuration of Git, DockerHub, and more | [Connectors](/docs/category/connectors) |
 | **4. Harness CI Pipelines and Advanced Features** ||
@@ -31,7 +31,7 @@
 | Set up and manage credentials, user and group permissions, and more | [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) |
 | Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **8. Policy-Based Governance and Compliance** ||
-| Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart) |
+| Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart) |
 | Enforce governance within pipelines and understand templates for Harness CI | [Manage access control for asset governance rules](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov/) |
 | Familiarize with account audit trails and their respective use cases | [View audit trail](https://developer.harness.io/docs/platform/governance/audit-trail/) |
 | **9. Enterprise Features and Dashboards** ||

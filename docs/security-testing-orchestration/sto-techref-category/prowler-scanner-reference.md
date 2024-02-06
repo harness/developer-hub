@@ -38,7 +38,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Prowler step settings for STO
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
@@ -76,7 +76,7 @@ Select the [compliance framework](https://github.com/prowler-cloud/prowler/blob/
 <!-- TBD -->
 
 
-### Target settings
+### Target
 
 <a name="target-type"></a>
 
@@ -126,7 +126,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 
 
-### Authentication settings
+### Authentication
 
 Settings for the AWS account to use when running an orchestration scan.
 
@@ -217,7 +217,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 ## Security step settings for Prowler scans in STO (legacy)

@@ -112,7 +112,7 @@ For Python, use pytest or unittest. You can also [use pytest to run unittest](ht
 <details>
 <summary>Pytest in a Run step</summary>
 
-This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md).
+This example runs pytest in a [Run step](../run-step-settings.md).
 
 ```yaml
               - step:

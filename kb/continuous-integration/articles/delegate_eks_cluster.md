@@ -44,7 +44,7 @@ exit status 1
        os: Linux
    ```
 
-2. Before your **Build and Push to ECR** step, add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that runs the following command:
+2. Before your **Build and Push to ECR** step, add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) that runs the following command:
 
    ```
    aws ecr get-login-password --region <aws_region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com
