@@ -5,78 +5,66 @@ import CertCard from "./CertCard";
 const Carousel = ({ certs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentDotIndex, setCurrentDotIndex] = useState(0);
-  const [flag, setFlag] = useState(false);
 
-  const handleDotClick = (index, dotindex) => {
+  const handleDotClick = (index, dotIndex) => {
     setCurrentIndex(index);
-    setCurrentDotIndex(dotindex);
-    setFlag(true);
+    setCurrentDotIndex(dotIndex);
   };
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setFlag(false);
-    }, 500);
 
-    return () => {
-      // This cleanup function will clear the timeout if the component unmounts
-      clearTimeout(timeoutId);
-    };
-  }, [flag]);
-
-  useEffect(() => {
-    setCurrentDotIndex(currentIndex / 2);
-  }, [currentIndex]);
+  console.log({ currentDotIndex });
+  console.log({ currentIndex });
 
   const handleNext = () => {
-    if (currentIndex == certs.length - 1) {
+    if (currentDotIndex >= Math.ceil(certs.length / 2) - 1) {
+      setCurrentDotIndex(0);
       setCurrentIndex(0);
-    } else {
-      setCurrentIndex(currentIndex + 2);
+      return;
     }
-
-    setFlag(true);
+    setCurrentIndex((currentIndex + 2) % certs.length);
+    setCurrentDotIndex(currentDotIndex + 1);
   };
+
   const handlePrev = () => {
-    if (currentIndex == 0) {
-      setCurrentIndex(certs.length - 1);
-    } else {
-      setCurrentIndex(currentIndex - 2);
+    if (currentDotIndex === 0) {
+      setCurrentDotIndex(Math.ceil(certs.length / 2) - 1);
+      setCurrentIndex(Math.ceil(certs.length / 2) - 1);
+      return;
     }
-    setFlag(true);
+    setCurrentIndex((currentIndex - 2) % certs.length);
+    setCurrentDotIndex(currentDotIndex - 1);
   };
-  return (
-    <>
-      <div className={styles.carousel}>
-        <div
-          className={styles.twoCards}
-          style={{
-            transform: flag ? `translateX(110%)` : `translateX(0%)`,
-          }}
-        >
-          {certs.slice(currentIndex, currentIndex + 2).map((cert) => (
-            <CertCard thumb={true} key={cert.title} {...cert} />
-          ))}
-        </div>
 
-        <div className={styles.indicator}>
-          <i onClick={handlePrev} className=" fa-solid fa-chevron-left"></i>
-          {Array(Math.ceil(certs.length / 2))
-            .fill("item")
-            .map((_, index) => (
-              <div
-                key={index}
-                className={`${styles.dot}   ${
-                  currentDotIndex === index ? styles.active : ""
-                }`}
-                onClick={() => {
-                  handleDotClick(index * 2, index);
-                }}
-              ></div>
-            ))}
-          <i onClick={handleNext} className="fa-solid fa-chevron-right"></i>
-        </div>
+  return (
+    <div className={styles.carousel}>
+      <div
+        className={styles.twoCards}
+        style={{
+          transform: `translateX(${-currentDotIndex * 102.5}%)`,
+        }}
+      >
+        {certs.map((cert) => (
+          <CertCard thumb={true} key={cert.title} {...cert} />
+        ))}
       </div>
-    </>
+
+      <div className={styles.indicator}>
+        <i onClick={handlePrev} className="fa-solid fa-chevron-left"></i>
+        {Array(Math.ceil(certs.length / 2))
+          .fill("item")
+          .map((_, index) => (
+            <div
+              key={index}
+              className={`${styles.dot}   ${
+                currentDotIndex === index ? styles.active : ""
+              }`}
+              onClick={() => {
+                handleDotClick(index * 2, index);
+              }}
+            ></div>
+          ))}
+        <i onClick={handleNext} className="fa-solid fa-chevron-right"></i>
+      </div>
+    </div>
   );
 };
 

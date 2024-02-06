@@ -1,14 +1,17 @@
 .carousel {
+  // background-color: tan;
   overflow: hidden;
-  width: 100%;
+  padding: 8px;
+  width: 630px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   .twoCards {
+    width: 615px;
     display: flex;
-    gap: 2.5%;
-    justify-content: center;
+    gap: 15px;
+    justify-content: space-between;
     align-items: center;
     transition: transform 0.5s ease;
   }
