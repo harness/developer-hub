@@ -45,7 +45,7 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> VM_NAMES </td>
+        <td> VM_NAME </td>
         <td> Comma-separated names of the target VMs.</td>
         <td> For example, <code> vm-1,vm-2</code>. </td>
       </tr>
@@ -128,6 +128,11 @@ stringData:
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

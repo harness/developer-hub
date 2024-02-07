@@ -49,8 +49,8 @@ stringData:
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the target VM. </td>
-        <td> For example, <code>win-vm-1</code> </td>
+        <td> Name of the target VM(s).</td>
+        <td> Multiple comma-separated names can be provided. For example, <code>vm-1,vm-2</code>.</td>
       </tr>
       <tr>
           <td> VM_USER_NAME </td>
@@ -107,6 +107,11 @@ stringData:
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
         <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 
