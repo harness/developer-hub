@@ -2,10 +2,6 @@
 title: IDP Stage
 description: Overview of IDP stage and the steps associated with it
 sidebar_position: 2
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 
@@ -577,6 +573,8 @@ The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/t
 
 1. chat:write
 2. chat:write.public
+3. users:read.email
+4. users:read
 
 ![](./static/slack-auth.png)
 
