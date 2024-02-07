@@ -168,7 +168,7 @@ For example,
 
 :::important
 
-Multiple conditions with same Field are not allowed. Such usecases can be solved using `in`, `not in` operators or **JEXL Expression**.
+Multiple conditions with the same Field are not allowed. Such use cases can be solved using `in`, `not in` operators, or **JEXL Expression**.
 
 :::   
 
