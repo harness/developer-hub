@@ -28,7 +28,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s3.md), [upload arti
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 4. In the **Image** field, enter `harnesscommunity/publish-nexus-repository:1.1.1`.
-5. Under **Optional Configuration**, add **Settings** to configure the Nexus Publisher plugin's properties, as described in the following table.
+5. Under **Optional Configuration**, add **Settings** to configure the Nexus Publisher plugin's properties as described in the following table.
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
@@ -47,7 +47,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s3.md), [upload arti
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-The following YAML example describes a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
+The following YAML example describes a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) in a `CI` stage that uploads an artifact to Sonatype Nexus.
 
 ```yaml
               - step:
@@ -74,7 +74,7 @@ The following YAML example describes a [Plugin step](../../use-drone-plugins/plu
 *  `identifier:` Specify a unique step ID.
 *  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 *  `image: harnesscommunity/publish-nexus-repository:1.1.1`
-*  `settings:` Configure the Nexus Publisher plugin's properties, as described in the following table.
+*  `settings:` Configure the Nexus Publisher plugin's properties as described in the following table.
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
