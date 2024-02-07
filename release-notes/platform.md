@@ -86,7 +86,29 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- Users can now enable file logging for supported services through override in On-prem installations. (PL-44211)
+
+   To override the On-prem installations use the following:
+
+   ```
+
+   global:
+       fileLogging:
+           enabled: true
+           logFilename: /opt/harness/logs/pod.log #provide log filename
+           maxFileSize: 50MB #max single file size, for log archiving
+           maxBackupFileCount: 10 #max count of files
+           totalFileSizeCap: 1GB
+
+   ```
+
 #### Fixed issues
+
+- Users were unable to change the authentication mechanism of a secret manager from a non-password based to a password based mechanism due to a bug in the secret manager create and update API. (PL-46657)
+
+   This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password based mechanism in this release.
+
+
 
 ### Version 1.23.5 <!--  February 05, 2024 -->
 
