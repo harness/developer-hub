@@ -106,7 +106,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Users were unable to change the authentication mechanism of a secret manager from a non-password based to a password based mechanism due to a bug in the secret manager create and update API. (PL-46657)
+- Users were unable to change the authentication mechanism of a secret manager from a non-password based to a password based mechanism due to a bug in the secret manager update API. (PL-46657)
 
    This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password based mechanism in this release.
 
