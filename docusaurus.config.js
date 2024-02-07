@@ -326,32 +326,30 @@ const config = {
             ],
           },
           {
-            position: "right",
-            to: "kb",
             label: "Knowledge Base",
-          },
-          {
             position: "right",
-            to: "community",
-            label: "Community",
+            type: "dropdown",
+            to: "kb",
+            items: [
+              {
+                to: "kb",
+                label: "Knowledge Base",
+              },
+              {
+                to: "community",
+                label: "Community",
+              },
+            ],
           },
-          //{
-          //  position: "right",
-          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
-          //  label: "Join Slack",
-          //},
+
           {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
           },
           {
-            position: 'right',
+            position: "right",
             html: '<button class="button button--nav">Sign in</button>',
-            href: 'https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in',
+            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
             position: "right",
