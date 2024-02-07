@@ -48,6 +48,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 * Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. This change requires Harness Delegate version 24.02.82300 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10636, ZD-54688)
 * Removed excessive, unnecessary health check messages in logs. (CI-11102)
+* Added validations to address a runtime error that could occur in the Build and Push to ACR step. (CI-10793, ZD-55412)
 
 ### Version 1.11.4
 
