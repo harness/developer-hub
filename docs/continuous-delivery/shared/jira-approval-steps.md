@@ -194,18 +194,18 @@ The **Approval Criteria** in the step determines if the Pipeline or stage is app
 
 Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
 
-In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria. Four supported operators are `=`, `!=`, `in` and `not in`. 
+In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria. Four supported operators are `=`, `!=`, `in`, and `not in`. 
 For example, 
-- condition for `Status` field to be in `Approved`, `Done` or `Published` can be specified as:
+- The condition for the `Status` field to be in `Approved`, `Done`, or `Published` can be specified as:
    ![](./static/adding-jira-approval-stages-15.png)
-- condition for `Status` field to not be in either `Blocked`, `Invalid` or `To Do` can be specified as:
+- The condition for the `Status` field to not be in either `Blocked`, `Invalid`, or `To Do` can be specified as:
    ![](./static/adding-jira-approval-stages-16.png)
-- condition for `Status` field to be in `Approved`, `Done` or `Published` without `Issue Type` can be specified as:
+- The condition for the `Status` field to be in `Approved`, `Done`, or `Published` without `Issue Type` can be specified as:
    ![](./static/adding-jira-approval-stages-17.png)   
 
 :::important
 
-Multiple conditions with same Jira Field are not allowed. Such usecases can be solved using `in`, `not in` operators or **JEXL Expression**.
+Multiple conditions with the same Jira field are not allowed. Such use cases can be solved using `in`, `not in` operators, or **JEXL Expression**.
 
 :::   
 
