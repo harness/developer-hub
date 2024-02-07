@@ -86,19 +86,19 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Users can now enable file logging for supported services through override in On-prem installations. (PL-44211)
+- Users can now enable file logging for supported services through override in On-prem installations.
 
-   To override the On-prem installations use the following:
+   To enable file logging add the following to your override in the global section:
 
    ```
 
    global:
-       fileLogging:
-           enabled: true
-           logFilename: /opt/harness/logs/pod.log #provide log filename
-           maxFileSize: 50MB #max single file size, for log archiving
-           maxBackupFileCount: 10 #max count of files
-           totalFileSizeCap: 1GB
+   fileLogging:
+   enabled: true
+   logFilename: /opt/harness/logs/pod.log #provide log filename
+   maxFileSize: 50MB #max single file size, for log archiving
+   maxBackupFileCount: 10 #max count of files
+   totalFileSizeCap: 1GB
 
    ```
 
