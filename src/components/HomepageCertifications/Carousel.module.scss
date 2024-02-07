@@ -38,9 +38,50 @@
   }
 }
 
-@media screen and (max-width: 512px) {
-  .twoCards {
+.carouselMobile {
+  display: none;
+  overflow: hidden;
+  padding: 8px;
+  width: 320px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  .cards {
+    width: 310px;
     display: flex;
-    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s ease;
+  }
+  .indicator {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    i {
+      color: white;
+    }
+    i:hover {
+      transform: scale(1.2);
+    }
+    .dot {
+      background-color: #333;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+    }
+    .active {
+      background-color: var(--primary-1);
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .carousel {
+    display: none;
+  }
+  .carouselMobile {
+    display: flex;
   }
 }

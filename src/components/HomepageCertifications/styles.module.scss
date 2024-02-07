@@ -19,9 +19,11 @@
       display: flex;
       .left {
         flex-basis: 48%;
+        margin: auto;
       }
       .right {
         flex-basis: 52%;
+        margin: auto;
       }
     }
     h2 {
@@ -38,7 +40,8 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 28px;
-      min-height: 168px;
+      // min-height: 168px;
+      padding-bottom: 20px;
       width: 88%;
     }
     .badges {
@@ -130,12 +133,25 @@
 @media screen and (max-width: 996px) {
   .homepageCertifications {
     .inner {
+      padding: 40px;
       .dualColumn {
         flex-direction: column;
         .left {
+          text-align: center;
+
+          h2 {
+            // width: 100%;
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+          }
           .desc {
-            min-height: unset;
-            padding-bottom: 2em;
+            width: 100%;
+            margin: auto;
+          }
+          .badges {
+            justify-content: center;
+            align-items: center;
           }
         }
         .right {
@@ -146,10 +162,9 @@
   }
 }
 
-@media screen and (max-width: 512px) {
+@media screen and (max-width: 512) {
   .homepageCertifications {
     .inner {
-      padding-top: 40px;
       background-position: top;
       .dualColumn {
         .left {
