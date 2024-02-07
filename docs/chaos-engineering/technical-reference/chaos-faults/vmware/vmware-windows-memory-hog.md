@@ -103,7 +103,7 @@ stringData:
       <tr>
       <td>PATH_OF_TESTLIMIT</td>
       <td>Path of “testlimit” binary (location of its download)</td>
-      <td> </a></td>
+      <td> </td>
       </tr>
     </table>
 
