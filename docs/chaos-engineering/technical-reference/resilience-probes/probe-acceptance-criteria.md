@@ -1,25 +1,24 @@
 ---
 title: Probe acceptance criteria
-sidebar_position: 9
+sidebar_position: 3
 description: Operations performed on probes
 ---
 
+This section describes the various operations that can be performed on resilience probes.
+
 ## Before you begin
 
+- [Introduction](/docs/chaos-engineering/technical-reference/resilience-probes/introduction.md)
 - [Probes overview](../../configure-chaos-experiments/probes/overview.md)
-- [Configure probes](../../configure-chaos-experiments/probes/configure-and-add-probe.md)
+- [Use probes](/docs/chaos-engineering/technical-reference/resilience-probes/use-probe.md)
 
 This section discusses various operations that can be performed on [resilience probes](../../configure-chaos-experiments/probes/overview.md).
 
 ## Create resilience probes
+You can [create a probe](/docs/chaos-engineering/technical-reference/resilience-probes/use-probe#create-a-resilience-probe) from within an experiment or from the **Resilience Probes** tab.
 
-### Step 1: Navigate to Resilience Probes
-Navigate to **Resilience Probes** and click **New Probe**.
 
-![navigate](./static/probe-acceptance/navigate.png)
-
-### Step 2: Select the infrastructure and type
-HCE allows you to create probes for two infrastructures, namely, Kubernetes and Linux. The type of probes allowed on each of these infrastructures is listed below.
+* HCE allows you to create probes for two infrastructures, namely, Kubernetes and Linux. The type of probes allowed on each of these infrastructures is listed below.
 
 | Kubernetes | Linux     |
 |------------|-----------|
@@ -31,26 +30,19 @@ HCE allows you to create probes for two infrastructures, namely, Kubernetes and 
 | Prometheus |           |
 | Kubernetes |           |
 
-![select](./static/probe-acceptance/select-type.png)
+* Based on the type of probe you select, enter the values to set up the probe.
 
-### Step 3: Enter relevant parameters
+	**You can:**
+	- Use any number of probes within a chaos experiment.
+	- Use the same probes for two faults within the same chaos experiment.
+	- Use Kubernetes-based probes for Kubernetes experiments.
+	- Use Linux-based probes for Linux experiments.
 
-Based on the type of probe you select, enter the values to set up the probe.
-
-**You can:**
-- Use any number of probes within a chaos experiment.
-- Use the same probes for two faults within the same chaos experiment.
-- Use Kubernetes-based probes for Kubernetes experiments.
-- Use Linux-based probes for Linux experiments.
-
-**You can't:**
-- Repeat the same probe multiple times in the same fault in the same experiment.
-
-## Known limitations
-Command probes in the **Source** mode is only available for Linux on the self-managed platform (SMP).
+	**You can't:**
+	- Repeat the same probe multiple times in the same fault in the same experiment.
 
 ## Update resilience probes
-You can update (or edit) a probe from within an experiment or from the **Resilience Probes** tab.
+You can [update (or edit) a probe](/docs/chaos-engineering/technical-reference/resilience-probes/use-probe#edit-a-resilience-probe) from within an experiment or from the **Resilience Probes** tab.
 
 :::tip
 Resilience probe names act as unique identifiers for a probe, which means you can't edit them. If you manually add the name of a probe in the manifest, this same name should be entered in the annotation as ID. 
@@ -65,30 +57,8 @@ Here, `probe-name` is the name of your probe.
 
 If you use the user interface, this step is not required.
 
-### Step 1: Navigate to Chaos experiment
-* Choose the experiment whose resilience probe/s you wish to update. Navigate to the **Experiment builder** section of the experiment.
-
-![choose-experiment](./static/probe-acceptance/choose-experiment.png)
-
-### Step 2: Select Probes
-* Select **Probes** and click the three-dot menu next to the actual probe, and click **Edit probe**.
-
-![edit-probe](./static/probe-acceptance/edit-probe.png)
-
-### Step 3: Edit the probe
-
-* When you click on **Edit probe**, the page navigates to the probe settings. You can't edit the name, but you can edit the **Description** and **Tags**.
-
-![edit-probe1](./static/probe-acceptance/edit-1.png)
-
-* Click **Configure properties** which takes you to the next page. You can edit the fields in this page. After updating the values, click **Configure details**.
-![edit-probe2](./static/probe-acceptance/edit-2.png)
-
-* This will take you to the next page where you can edit some more details, and click **Setup probe**.
-![edit-probe3](./static/probe-acceptance/edit-3.png)
-
-* Click **Confirm** to apply your changes to the resilience probes.
-![edit-probe4](./static/probe-acceptance/edit-4.png)
+## Known limitations
+Command probes in the **Source** mode is only available for Linux on the self-managed platform (SMP).
 
 ## Resilience probes status matrix
 Probe status is the single source of truth when executing a chaos experiment. The probe status in a chaos experiment can be in 4 different states.
@@ -130,7 +100,7 @@ Resilience probes are supported by the following features:
 - HCE doesn't provide image registry support at the moment for default probes.
 
 ## Legacy probes support (Backward compatibility)
-Users can still use legacy probes.
+Users can still use [legacy probes](/docs/chaos-engineering/technical-reference/probes/cmd-probe).
 
 ## Audit integration
 
