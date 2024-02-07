@@ -86,7 +86,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Users can now enable file logging for supported services through override in On-prem installations.
+- Users can now enable file logging for supported services through override in On-prem installations. (PL-44211)
 
    To enable file logging add the following to your override in the global section:
 
