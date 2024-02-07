@@ -345,7 +345,6 @@ h2 {
 }
 
 .button--cta,
-.button--nav,
 .button--primary {
   background-color: var(--primary-7);
   border-color: var(--primary-7);
@@ -355,18 +354,24 @@ h2 {
   color: var(--white);
 }
 
-.button--cta:hover,
-.button--nav:hover,
-.button--primary:hover {
-  background-color: var(--primary-5);
-  border-color: var(--primary-5);
-}
-
 .button--nav {
   background-color: var(--white);
   border: 1px solid var(--primary-7);
   color: var(--primary-7);
   margin-right: -0.75rem;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.button--nav:hover {
+  background-color: var(--primary-5);
+  border-color: var(--primary-5);
+}
+.button--cta:hover,
+.button--primary:hover {
+  background-color: var(--primary-5);
+  border-color: var(--primary-5);
 }
 
 .button--primary {
@@ -625,6 +630,7 @@ ul ol {
 
 .navbar__logo {
   margin-bottom: 10px;
+  width: 250px;
 }
 
 figcaption {
@@ -688,6 +694,12 @@ figure p {
 }
 
 @media screen and (max-width: 1199px) {
+  .button {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   /* for tablet */
   .navbar__item img[alt="BETA"] {
     display: none;
