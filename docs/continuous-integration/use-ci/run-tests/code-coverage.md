@@ -220,9 +220,15 @@ Use these steps to install code coverage tools when you run Ruby tests in **Run*
 
 You can use code coverage services with Harness.
 
+### Codacy
+
+You can use the [Codacy Drone plugin](https://github.com/drone-plugins/drone-codacy) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to upload Golang coverage reports to Codacy.
+
+For other languages, go to the Codacy documentation on [uploading coverage data to Codacy](https://docs.codacy.com/coverage-reporter/#uploading-coverage).
+
 ### CodeCov
 
-You can use a [Run step](../run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline. The Run step will run tests with code coverage, then download and run the [CodeCov Uploader](https://docs.codecov.com/docs/codecov-uploader) tool.
+You can use a [Run step](../run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline. The Run step contains a script that runs tests with code coverage, then downloads and runs the [CodeCov Uploader](https://docs.codecov.com/docs/codecov-uploader) tool.
 
 1. Make sure you have a CodeCov account with code coverage enabled on a code repo and a CodeCov Upload Token. For instructions, go to [CodeCov Quick Start](https://docs.codecov.com/docs/quick-start).
 2. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your CodeCov Upload Token. Make note of the secret's **ID**.
@@ -316,6 +322,8 @@ When you run your pipeline, you can review CodeCov information in the **Run** st
 
 <DocImage path={require('./static/build-logs-with-codecov.png')} />
 
+Alternately, you can run your tests with code coverage in a Run step and then upload the results to CodeCov by running the [CodeCov Drone plugin](https://plugins.drone.io/plugins/codecov) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).
+
 ### Coveralls
 
 To integrate Coveralls in your Harness CI pipelines, follow the Coveralls documentation to [Integrate Coveralls with your codebase](https://docs.coveralls.io/index#integrate-coveralls-with-your-codebase). Note the following:
@@ -368,6 +376,8 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 </Tabs>
 
 </details>
+
+You can also upload coverage reports to Coveralls by using the [Coveralls Drone plugin](https://plugins.drone.io/plugins/coveralls) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
 ## View code coverage reports on the Artifacts tab
 
