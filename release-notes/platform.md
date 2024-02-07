@@ -102,13 +102,19 @@ The following deprecated API endpoints are longer supported:
 
    ```
 
+- Support added for encrypted assertions in the SAML response. (PL-43353)
+
 #### Fixed issues
 
 - Users were unable to change the authentication mechanism of a secret manager from a non-password based to a password based mechanism due to a bug in the secret manager create and update API. (PL-46657)
 
    This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password based mechanism in this release.
 
+- Git connectors worked intermittently and failed with a `Please provide valid git repository url Provided repo url is invalid. Invalid request: Couldn't connect to given repo` error message. (PL-43598, ZD-55236)
 
+   This issue has been resolved. Now, if there are multiple connectors whose secrets are stored in a secret manager connector, when you update the connector's secret, Harness updates the PPTs of all the linked connectors, along with the secret manager connector.
+
+   This item is available with Harness Platform version 1.24.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 1.23.5 <!--  February 05, 2024 -->
 
