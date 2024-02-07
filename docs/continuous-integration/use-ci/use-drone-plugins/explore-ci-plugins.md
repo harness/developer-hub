@@ -62,21 +62,21 @@ Harness officially supports the following plugins.
 | Codecov | [Upload test coverage results to Codecov](../run-tests/code-coverage.md#codecov) | [drone-codecov](https://github.com/robertstettner/drone-codecov) | robertstettner/drone-codecov |
 | Coveralls | [Upload coverage reports to Coveralls](../run-tests/code-coverage.md#coveralls) | [drone-coveralls](https://github.com/lizheming/drone-coveralls) | lizheming/drone-coveralls |
 | Crowdin | Submit translation files to Crowdin | [drone-crowdin](https://github.com/JonasFranzDEV/drone-crowdin) | jonasfranz/crowdin |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Datadog | Send events and metrics to Datadog | [drone-datadog](https://github.com/masci/drone-datadog) | masci/drone-datadog |
+| DCO | Enforce Developer Certificate of Origin | [drone-plugin-dco](https://git.madhouse-project.org/algernon/drone-plugin-dco) | algernon/drone-plugin-dco |
+| Deta | Deploy your build to [deta.sh](https://deta.sh) | [drone-deta](https://github.com/lizheming/drone-deta) | lizheming/drone-deta |
+| Diagnostics | Use CLI network tools (`dig`, `pin`, `traceroute`) to diagnose issues in a build (This plugin doesn't accept any properties.) | [drone-diagnostics](https://github.com/drone-plugins/drone-diagnostics) | plugins/drone-diagnostics |
+| DingTalk | Send a message through DingTalk group robot | [drone-dingtalk-message](https://github.com/lddsb/drone-dingtalk-message) | lddsb/drone-dingtalk-message |
+| Discord | Post build status messages to a Discord channel | [drone-discord](https://github.com/appleboy/drone-discord) | appleboy/drone-discord |
+| Docker | [Build and push images to Docker registries](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/docker |
+| Doumark | Automatically sync [Douban](https://douban.com) movie/book/music marked data | [drone-doumark](https://github.com/lizheming/drone-doumark) | lizheming/drone-doumark |
+| Download | Download archives required for your builds, and integrate a secure way to inject basic authentication credentials checked by md5 or sha256 checksums (For example usage go to [Use Drone plugins](../use-drone-plugins/run-a-drone-plugin-in-ci.md).) | [drone-download](https://github.com/drone-plugins/drone-download) | plugins/download |
+| Downstream Build | Trigger builds for a list of downstream repositories | [drone-downstream](https://github.com/drone-plugins/drone-downstream) | plugins/downstream |
+| Dron8s | Use dynamic Server Side Apply to achieve `kubectl apply -f multi-configs.yaml` parity for CI/CD pipelines | [drone8s](https://github.com/bh90210/dron8s) | bh90210/dron8s |
+| Email | [Send emails from CI pipelines, such as artifact attachments or build results](../build-and-upload-artifacts/drone-email-plugin.md) | [drone-email](https://github.com/drillster/drone-email) | drillster/drone-email |
+| Facebook | Post build status messages to a Facebook account | [drone-facebook](https://github.com/appleboy/drone-facebook) | appleboy/drone-facebook |
+| Fandogh | Deliver Docker images to Fandogh PaaS | [fandogh-drone](https://github.com/amirbagh75/fandogh-drone) | amirbagh75/fandogh-drone |
+| FPT(S) | Publish artifacts over FTP(S) | [drone-ftps](https://github.com/christophschlosser/drone-ftps) | cschlosser/drone-ftps |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
