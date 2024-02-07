@@ -115,7 +115,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds)  </td>
-        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engneering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
