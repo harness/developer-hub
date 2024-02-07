@@ -64,9 +64,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Javascript SDK
 
+#### Version 1.23.0
+
+ - We've added defensive code around the `BTOA` usage. (FFM-10499)
+
 #### Version 1.22.0
 
-- When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
+ - When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
 
 ### Node.js SDK
 
@@ -135,7 +139,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.0.3
 
-The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
+ - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
 We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
 
