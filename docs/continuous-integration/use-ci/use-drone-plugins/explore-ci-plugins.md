@@ -42,7 +42,7 @@ Harness officially supports the following plugins.
 | AWS Lambda | Deploy a serverless function to AWS Lambda from a zip file located in an S3 bucket (This plugin doesn't create or upload the zip file.) | [drone-lambda-plugin](https://github.com/omerxx/drone-lambda-plugin) | omerxx/drone-lambda-plugin |
 | AWS RDS Snapper | Clean up a specific RDS instance's snapshots, keep a specified number of copies, and create new snapshots | [rds-snapper](https://github.com/honestbee/devops-tools/tree/master/rds-snapper) | [honestbee/rds-snapper](http://quay.io/honestbee/rds-snapper) |
 | AWS S3 | [Upload artifacts to S3 or S3-compatible buckets](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md) | [drone-s3](https://github.com/drone-plugins/drone-s3) | plugins/s3 |
-| AWS S3 Cache | Cache files and directories to S3 storage to preserve them between builds | [drone-s3-cache](https://github.com/drone-plugins/drone-s3-cache) | plugins/s3-cache |
+| AWS S3 Cache | Cache files and directories to S3 storage to preserve them between builds (You can also use the built-in [Save and Restore Cache from S3 steps](../caching-ci-data/saving-cache.md).) | [drone-s3-cache](https://github.com/drone-plugins/drone-s3-cache) | plugins/s3-cache |
 | AWS S3 Sync | Synchronize files and build artifacts to your S3 bucket | [drone-s3-sync](https://github.com/drone-plugins/drone-s3-sync) | plugins/s3-sync |
 | AWS S3 Upload and Publish | [Upload artifacts to S3 and publish the artifact URL on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#use-the-s3-upload-and-publish-plugin) | [drone-s3-upload-publish](https://github.com/harness-community/drone-s3-upload-publish) | harnesscommunity/drone-s3-upload-publish |
 | Azure Container Registry | [Build and push images to ACR](../build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/acr |
@@ -77,30 +77,30 @@ Harness officially supports the following plugins.
 | Facebook | Post build status messages to a Facebook account | [drone-facebook](https://github.com/appleboy/drone-facebook) | appleboy/drone-facebook |
 | Fandogh | Deliver Docker images to Fandogh PaaS | [fandogh-drone](https://github.com/amirbagh75/fandogh-drone) | amirbagh75/fandogh-drone |
 | FPT(S) | Publish artifacts over FTP(S) | [drone-ftps](https://github.com/christophschlosser/drone-ftps) | cschlosser/drone-ftps |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Google Artifact Registry | [Build and push to GAR](../build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/gar |
+| Google Chat | Post build status messages to your organization's Google Chat | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
+| Google Cloud Functions | Deploy, list, and delete Google Cloud Functions | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |
+| Google Cloud Storage | [Upload artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md) | [drone-plugins/drone-gcs](https://github.com/drone-plugins/drone-gcs) or [wyattjoh/drone-gcs](https://github.com/wyattjoh/drone-gcs) | plugins/gcs or wyattjoh/drone-gcs |
+| Google Cloud Storage Cache | Preserve files and directories between builds (You can also use the built-in [Save and Restore Cache from GCS steps](../caching-ci-data/save-cache-in-gcs.md).) | [drone-gcs-cache](https://github.com/hvalle/drone-gcs-cache) | homerovalle/drone-gcs-cache |
+| Google Cloud Auth | Create and configure a Google Cloud auth configuration file to use with gcloud CLI (Only GAR is supported. The plugin also configures Docker configuration (`~/.docker/config.json`) to push and pull container images from GAR.) | [drone-google-cloud-auth](https://github.com/kameshsampath/drone-google-cloud-auth) | kameshsampath/drone-gcloud-auth |
+| Google Cloud Run | Build and maintain managed Google Cloud Run services | [drone-gcloud-run](https://github.com/kameshsampath/drone-gcloud-run) | kameshsampath/drone-gcloud-run |
+| Google Container Registry | [Build and push to GCR](../build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/gcr |
+| Git | [Clone a git repository](../codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) (This plugin is the basis for the image used to clone a pipeline's [default codebase](../codebase-configuration/create-and-configure-a-codebase.md)) | [drone-git](https://github.com/drone/drone-git) | drone/drone-git |
+| Gitea Comment | Update the build status on a Gitea Pull Request | [gitea-comment](https://github.com/DefinitelyADev/gitea-comment) | tsakidev/giteacomment |
+| Gitea Release | Publish files and artifacts to Gitea Release | [drone-gitea-release](https://github.com/drone-plugins/drone-gitea-release) | plugins/gitea-release |
+| Gitee Pulls | Update comments, labels, and tests in Gitee PRs | [drone-plugin-gitee-pulls](https://github.com/kit101/drone-plugin-gitee-pulls) | kit101z/drone-plugin-gitee-pulls |
 | GitHub Actions | [Run a GitHub Action](./run-a-git-hub-action-in-cie.md) | [github-actions](https://github.com/drone-plugins/github-actions) | plugins/github-actions |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| GitHub Changelog Generator | Create a changelog file based on GitHub tags that you can then upload to a desired location via other plugins or pipeline steps | [drone-github-changelog-generator](https://github.com/naorlivne/drone-github-changelog-generator) | naorlivne/drone-github-changelog-generator |
+| Github Comment | Update the build status on a GitHub Pull Request (This can be an alternative or addition to [Harness CI's built-in SCM status updates](../codebase-configuration/scm-status-checks.md).) | [drone-github-comment](https://github.com/gradeup/drone-github-comment) | codehimanshu/gitdrone |
+| GitHub Pages | Publish static websites to GitHub | [drone-gh-pages](https://github.com/drone-plugins/drone-gh-pages) | plugins/gh-pages |
+| GitHub Release | Publish files and artifacts to GitHub Release | [drone-github-release](https://github.com/drone-plugins/drone-github-release) | plugins/github-release |
+| GitHub Search Downstream | Trigger builds for a list of downstream repositories fetched from a Github repository search | [drone-github-search-downstream](https://github.com/gboddin/drone-github-search-downstream) | gboo/github-search-downstream |
+| GitLab-CI | Trigger GitLab CI jobs | [drone-gitlab-ci](https://github.com/appleboy/drone-gitlab-ci) | appleboy/drone-gitlab-ci |
+| Gitleaks | Detect hard-coded secrets and sensitive data in your source code files | [drone-gitleaks](https://github.com/drone/drone-gitleaks) | plugins/gitleaks |
+| Git Push | Deploy an application via `git push` (You must supply a private SSH key or use the same credentials as the cloned repo to being able to push changes.) | [drone-git-push](https://github.com/appleboy/drone-git-push) | appleboy/drone-git-push |
+| GPG Sign | Sign your artifacts and build results with [GnuPG](https://www.gnupg.org/) | [drone-gpgsign](https://github.com/drone-plugins/drone-gpgsign) | plugins/gpgsign |
+| Grafana Annotation | Create an annotation in [Grafana](https://grafana.com) | [drone-grafana-annotation](https://github.com/fdeschenes/drone-grafana-annotation) | fdeschenes/drone-grafana-annotation |
+| GTalk | Post build status messages to your Google account | [drone-gtalk](https://github.com/appleboy/drone-gtalk) | appleboy/drone-gtalk |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
@@ -219,3 +219,7 @@ The [Harness Security Testing Orchestration module](/docs/security-testing-orche
 For information about SonarScanner plugin settings, go to the [Drone SonarScanner plugin documentation](https://plugins.drone.io/plugins/sonar-node-plugin).
 
 For information about the Plugin step settings, go to the [Plugin step settings documentation](./plugin-step-settings-reference.md).
+
+### Other integrations
+
+There are plugins available to integrate with a myriad of third party tools. For some highlights, browse the list of [Harness-supported plugins](#harness-supported-plugins).

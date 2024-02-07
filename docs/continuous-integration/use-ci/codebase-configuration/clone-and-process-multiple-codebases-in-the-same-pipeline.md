@@ -13,10 +13,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** or **Run** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
+In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
 
 * Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
+* Clone codebases without using the built-in clone codebase function.
 
 :::info Large file storage
 
@@ -371,3 +372,6 @@ This example also uses [stage variables](../set-up-build-infrastructure/ci-stage
 </TabItem>
 </Tabs>
 
+## Use a Plugin step
+
+As an alternative to the **Git Clone** and **Run** steps, you can clone a codebase by running the [Git Drone plugin](https://plugins.drone.io/plugins/git) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).
