@@ -8,6 +8,7 @@ import { CeData } from "./ceData";
 import { SrmData } from "./srmData";
 import { IdpData } from "./idpData";
 import { SeiData } from "./seiData";
+import { IacmData } from "./IacmData";
 import { platformData } from "./platformData";
 
 export interface ModuleData {
@@ -96,6 +97,12 @@ const ModuleData: ModuleData[] = [
     description: "Discover SDLC bottlenecks, assess team productivity, and improve developer experience guided by data and insights.",
     module: MODULES.sei,
     horizon: SeiData,
+  },
+  {
+    title: "Infrastructure as Code Management",
+    description: "Covering all your Infrastructure as Code Management needs.",
+    module: MODULES.iacm,
+    horizon: IacmData,
   },
  
 ];
