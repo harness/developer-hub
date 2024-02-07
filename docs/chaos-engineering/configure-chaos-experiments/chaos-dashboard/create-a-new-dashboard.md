@@ -4,6 +4,8 @@ sidebar_position: 2
 description: Guide to create a new dashboard and visualize entities of a chaos experiment
 ---
 
+import Descriptions from './shared/field-descriptions.md'
+
 This section will guide you through creating a new chaos dashboard, and creating custom visualizations for various entities of a chaos experiment.
 
 ## Before you begin
@@ -59,6 +61,10 @@ If you wish to save your visualization, click **Save**. Otherwise, you can **Can
 :::info note
 You can find the definitions for many of the fields [here](../../get-started/key-concepts).
 :::
+
+## Description of fields used
+
+<Descriptions />
 
 ## Next steps
 

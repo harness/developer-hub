@@ -3,6 +3,7 @@ title: Configuration
 sidebar_position: 3
 description: Steps to configure ChaosGuard and enable it
 ---
+
 This section walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.
 
 ## Before you begin
