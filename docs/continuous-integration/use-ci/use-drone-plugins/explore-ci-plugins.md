@@ -76,7 +76,8 @@ Harness officially supports the following plugins.
 | Email | [Send emails from CI pipelines, such as artifact attachments or build results](../build-and-upload-artifacts/drone-email-plugin.md) | [drone-email](https://github.com/drillster/drone-email) | drillster/drone-email |
 | Facebook | Post build status messages to a Facebook account | [drone-facebook](https://github.com/appleboy/drone-facebook) | appleboy/drone-facebook |
 | Fandogh | Deliver Docker images to Fandogh PaaS | [fandogh-drone](https://github.com/amirbagh75/fandogh-drone) | amirbagh75/fandogh-drone |
-| FPT(S) | Publish artifacts over FTP(S) | [drone-ftps](https://github.com/christophschlosser/drone-ftps) | cschlosser/drone-ftps |
+| Fossa | Run the `analyze` command per the generic CI documentation for FOSSA | [drone-plugin-fossa](https://github.com/rancherlabs/drone-plugin-fossa) | rancher/drone-fossa |
+| FTP(S) | Publish artifacts over FTP(S) | [drone-ftps](https://github.com/christophschlosser/drone-ftps) | cschlosser/drone-ftps |
 | Google Artifact Registry | [Build and push to GAR](../build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/gar |
 | Google Chat | Post build status messages to your organization's Google Chat | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
 | Google Cloud Functions | Deploy, list, and delete Google Cloud Functions | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |
@@ -101,6 +102,23 @@ Harness officially supports the following plugins.
 | GPG Sign | Sign your artifacts and build results with [GnuPG](https://www.gnupg.org/) | [drone-gpgsign](https://github.com/drone-plugins/drone-gpgsign) | plugins/gpgsign |
 | Grafana Annotation | Create an annotation in [Grafana](https://grafana.com) | [drone-grafana-annotation](https://github.com/fdeschenes/drone-grafana-annotation) | fdeschenes/drone-grafana-annotation |
 | GTalk | Post build status messages to your Google account | [drone-gtalk](https://github.com/appleboy/drone-gtalk) | appleboy/drone-gtalk |
+| Helm | Run Kubernetes Helm | [drone-helm](https://github.com/ipedrazas/drone-helm) | ipedrazas/drone-helm |
+| Helm3 | Interface with Helm3 | [drone-helm3](https://github.com/pelotech/drone-helm3) | pelotech/drone-helm3 |
+| Heroku | Build and push images to Heroku container registry | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/heroku |
+| Hugo | Generate static web page files that you can then publish | [drone-hugo](https://github.com/drone-plugins/drone-hugo) | plugins/hugo |
+| InstantAccess(即时达) | Post build status messages to an InstantAccess account | [drone-instant-access](https://github.com/erguotou520/drone-instant-access) | erguotou/drone-instant-access |
+| IRC | Send notifications to an IRC channel | [drone-irc](https://github.com/drone-plugins/drone-irc) | plugins/irc |
+| Java Maven | Build Java applications using the Apache Maven build tool | [drone-java-maven-plugin](https://github.com/kameshsampath/drone-java-maven-plugin) | kameshsampath/drone-java-maven-plugin |
+| Jenkins | Trigger Jenkins jobs | [drone-jenkins](https://github.com/appleboy/drone-jenkins) | appleboy/drone-jenkins |
+| Jira | [Integrate with Jira](./ci-jira-int-plugin.md) | [drone-jira](https://github.com/drone/drone-jira) | plugins/jira |
+| Kaniko (Docker, ACR, ECR, GCR) | [Build and push images to container registries](../build-and-upload-artifacts/build-and-upload-an-artifact.md) | [drone-kaniko](https://github.com/drone/drone-kaniko) | plugins/kaniko, plugins/kaniko-acr, plugins/kaniko-ecr, plugins/kaniko-gcr |
+| Kubernetes Deployments (drone-kube) | Does the equivalent of `kubectl apply -f deployment.yaml` | [drone-kube](https://github.com/vallard/drone-kube) | vallard/drone-kube |
+| Kubernetes Deployments (drone-kubernetes) | Upgrade a Kubernetes deployment with a newer version of an image | [drone-kubernetes](https://plugins.drone.io/plugins/kubernetes) | [honestbee/drone-kubernetes](http://quay.io/honestbee/drone-kubernetes) |
+| Kubernetes Deployments (drone-plugin-kube) | Update Kubernetes deployments from templates and configMaps from files | [drone-plugin-kube](https://github.com/danielgormly/drone-plugin-kube) | danielgormly/drone-plugin-kube |
+| Kubernetes Resources and Configmaps | Create and update all Kubernetes resources and creating/updating configmaps from config files | [drone-k8s-plugin](https://github.com/zc2638/drone-k8s-plugin) | zc2638/drone-k8s-plugin |
+| Kubevious | Detect and prevent errors (typos, misconfigurations, conflicts, inconsistencies) and violations of best practices for Kubernetes applications and clusters | [cli](https://github.com/kubevious/cli) | kubevious/cli |
+| Line | Post build status messages to a Line channel | [drone-line](https://github.com/appleboy/drone-line) | appleboy/drone-line |
+| Load and Store | Build and push images to a Docker registry (This is useful when you can't use the [built-in Build and Push to Docker step](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md), such as when building Docker images with nix, which produces a Docker image archive) | [drone-load-and-store](https://github.com/allgreed/drone-load-and-store) | allgreed/drone-load-and-store |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
@@ -114,26 +132,7 @@ Harness officially supports the following plugins.
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Mercurial | Clone a Mercurial repository | [drone-hg](https://github.com/drone-plugins/drone-hg) | plugins/hg |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
