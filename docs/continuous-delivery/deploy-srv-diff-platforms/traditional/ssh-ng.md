@@ -148,6 +148,46 @@ Let's look at an example of setting up an Infrastructure Definition for a pre-ex
    
    ![](static/ssh-ng-174.png)
 
+#### Targetting Specific Hosts for Deployment
+
+Users can specify in the SSH Infrastructure Definition to allow users to pass in specific Host IPs to perform deployment. When your Deployment Stage deploys an SSH Service or WinRM using an Infrastructure Definition of Deployment Type Secure Shell (SSH) or Windows Remote Management (WinRM), you can select target hosts that were not selected in the Stage's Infrastructure Definition. Harness will present a dropdown in the Pipeline Run form with the queried list of host names.
+
+##### Demo Video
+
+<DocVideo src="https://www.loom.com/share/934229d83f9d44b6ab4dd83ba1abf607?sid=c05c8a9d-5f27-40cb-a654-c7ece7a0d74e" />
+
+
+```yaml
+infrastructureDefinition:
+  name: aws-ssh-infra
+  identifier: awssshinfra
+  orgIdentifier: default
+  projectIdentifier: alexctest
+  environmentRef: qasetup
+  deploymentType: Ssh
+  type: SshWinRmAws
+  spec:
+    credentialsRef: qasetupcredentials
+    connectorRef: qasetupconnector
+    region: us-east-1
+    awsInstanceFilter:
+      vpcs:
+        - vpc-c20f38b9
+      tags:
+        type: ssh
+    hostConnectionType: PublicIP
+    instanceType: Aws
+    targetedHosts: <+input> ## This will be provided at runtime. 
+  allowSimultaneousDeployments: false
+```
+
+**Limitation**
+- `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+- Only supported with AWS & Azure infrastructure, target to specific hosts already uses the same permissions as before, no new API call required.
+
+ 
+
+
 #### Create the PDC connector for the hosts
 
 1. In **Infrastructure Definition**, for **Connector**, select **Select Connector** to create the Connector for the PDC.
@@ -630,8 +670,9 @@ For Microsoft Azure or AWS:
 * `<+instance.host.privateIp>`
 * `<+instance.host.publicIp>`
 
+ - For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 
-`instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
-For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
+
+
 
