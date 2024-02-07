@@ -583,7 +583,7 @@ Harness doesn't allow this in the same ASG.
 
 ### How can you control on-demand or spot provisioning within ASG group / target?
 
-We supported spotinst ASG in FG and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+We supported spotinst ASG in FirstGen and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
 
 ### Can I pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
 
@@ -1189,18 +1189,19 @@ and then try to delete the pipeline from Harness UI. This option is force delete
 
 Sometimes, you might encounter errors while executing pipelines. These errors could be due to issues with the network or the delegate's connection to the Vault where the secret is created. The first step is to verify that the delegates are operational and that the connectors used in the pipelines are connected properly. If the connectivity test fails, log in to the delegate and attempt to reach the connector URL from there.
 
-### Can old email be changed in user account
+### Can I update an email address in a user account?
 
-If the Users are provisioned via SCIM then you can just update the email in the SSO provider end and they will get updated in Harness.
-If the users were added manually you will need to remove them and add the new emails.
+If users are provisioned via SCIM, then you can update the email in the SSO provider end and they will get updated in Harness.
+
+If the users were added manually, you must remove them and add the new emails.
 
 ### Problems enabling mTLS - Error [IOException: Unexpected response code for CONNECT: 403]
 
 When mTLS has been enabled for your delegates, you might see the 403 errors, this could be due to the proxy not resolving harness domain app.harness.io from the delegate.
 
-### I'm trying to confirm is that if I create a role at an account level with Administrator privileges. Then apply this to a particular resource group that only has scope for a specific Harness Organization, won't this just provide admin access to this organization?
+### I am trying to confirm whether creating a role with Administrator privileges at an account level and applying it to a resource group with scope for a specific Harness organization will grant admin access only to that organization. Is my understanding correct?
 
-The advised way to achieve your use case is to create user with minimal access at account level then add the same user at required organization level with the admin access so that you can control user RBAC at org level scope.
+To achieve your use case, it is recommended that you create a user with limited access at the account level. Then, add the same user to the organization level where you require admin access. This way, you can have control over user RBAC at the organization level scope.
 
 ### Changes identity provider to OKTA from some other provider
 
@@ -1273,7 +1274,7 @@ As Harness Delegates are managed by customers in their own infrastructure, Harne
 
 Harness can't control the delegates on your infrastructure.
 
-In Harness's architecture, the delegates in your infrastructure connect to Harness Manager. For more information, go to [Harness Platform components](/docs/getting-started/harness-platform-architecture/#harness-platform-components).
+In Harness's architecture, the delegates in your infrastructure connect to Harness Manager. For more information, go to [Harness Platform components](/docs/get-started/harness-platform-architecture/#harness-platform-components).
 
 Hence you will need to stop the delegate service in your infrastructure.
 
@@ -1389,9 +1390,9 @@ value: "-Xms64M -Xmx8192M"
 
 You can refer these docs [here](https://apidocs.harness.io/tag/Project-Role-Assignments#operation/get-project-scoped-role-assignments).
 
-### Do we have RBAC permission on Audit Trail like we have in CG?
+### Are there RBAC permissions on Audit Trail in NextGen like there are in FirstGen?
 
-This feature is not in NG as of now, but we do have viewer permissions in place.
+This feature is not currently in NextGen, but we do have viewer permissions in place.
 
 ### What is advisable to retain your current configuration during the Harness installation process?
 
@@ -1440,21 +1441,21 @@ Having one less delegate instance during a task with a long `terminationGracePer
 
 You can make use of workflow/pipeline grapnel api for execution and failureDetails field will give you desired information.
 
-### We have enabled NG but after login we are still getting redirected to CG
+### Why am I redirected after login to FirstGen when I enabled NextGen?
 
-Make sure you have set the Default Experience as NG under Account overview page
+Make sure you have set the Default Experience as NextGen on the Account overview page.
 
-### Does Harness CG/NG saml setting is shared
+### Is the Harness FirstGen/NextGen SAML setting shared?
 
-Yes if you have configured SAML on CG same will be used for login to NG
+Yes, if you have configured SAML on FirstGen, the same setting is used for login to NextGen.
 
-### How to migrate user from CG to NG
+### How do I migrate a user from FirstGen to NextGen?
 
-Users needs to be migrated automatically once NG is enabled
+Users are migrated automatically once NextGen is enabled.
 
-### How can be add admin in newly enabled NG account
+### How can I add an admin in a newly-enabled NextGen account?
 
-Users from CG Administrators group should be automatically assigned as admin role in NG, they can change and create/update other role etc in NG
+Users from your FirstGen Administrators group are automatically assigned as admin role in NextGen. You can then create/update other roles in NextGen.
 
 ### what is the role of "PROXY_HOST" in proxy.config?
 
@@ -1464,7 +1465,7 @@ This is the host address of your proxy, which you want to configure
 
 Yes that’s correct any outbound connection made via delegate through Harness will use that proxy
 
-### Is it possible that one can manage org level entities at account level?
+### Can you manage org level entities at the account level?
 
 This is a use case of user-group inheritance,
 
@@ -1501,7 +1502,7 @@ You can set auto upgrade to true in the helm command and control the upgrade and
 
 ### Can I use a "bindSecret" in Harness LDAP settings to avoid using an inline password, as suggested in the API documentation?
 
-No, you cannot use a "bindSecret" in Harness LDAP settings to avoid using an inline password in NG LDAP. Currently, NG LDAP only allows for the use of an "INLINE" password. The appearance of "bindSecret" in the API documentation is due to a shared bean between CG and NG, and in CG, support for secret references is available. However, NG LDAP still requires an inline password, and this limitation should be considered when configuring LDAP settings in your environment.
+No, you cannot use a "bindSecret" in Harness LDAP settings to avoid using an inline password in NG LDAP. Currently, NG LDAP only allows for the use of an "INLINE" password. The appearance of "bindSecret" in the API documentation is due to a shared bean between FirstGen and NextGen, and in FirstGen, support for secret references is available. However, NG LDAP still requires an inline password, and this limitation should be considered when configuring LDAP settings in your environment.
 
 ### Can we create a delegate token with the name using which it was previously created and then deleted ?
 
@@ -1563,7 +1564,7 @@ API Endpoints labeled as beta have been tested by our teams and are generally sa
 
 Yes, you can scale the Delegate StatefulSet. For more details, please refer to our autoscale documentation using replicas.
 
-### Why the delegate image is based on UBI instead of Ubuntu?
+### Why is the delegate image based on UBI instead of Ubuntu?
 
 1. Security: UBI is considered a more secure option compared to Ubuntu in today's landscape. It benefits from Red Hat's rigorous security practices and is designed to be more resilient against vulnerabilities.
 2. Compatibility: When you are running workloads on OpenShift, using UBI-based images is often the preferred choice. In some scenarios, Red Hat may even mandate the use of UBI-based images. This ensures compatibility and support within the OpenShift environment.
@@ -1741,7 +1742,7 @@ A delegate at one time can be connected to only manager instance. Hence the same
 
 ### How can we do migration of GCP / AWS KMS secrets from FirstGen to NextGen?
 
-To migrate encrypted records from an old KMS (FG) to a new one (NG), fetch the Data Encryption Key (DEK) from the old KMS, decrypt the data, re-encrypt it with the new KMS, update the records, and ensure security and compliance. Connectivity between NG and the old KMS is essential.
+To migrate encrypted records from an old KMS (FirstGen) to a new one (NG), fetch the Data Encryption Key (DEK) from the old KMS, decrypt the data, re-encrypt it with the new KMS, update the records, and ensure security and compliance. Connectivity between NG and the old KMS is essential.
 
 ### Is way to find the enabled feature flag and available one in UI?
 
@@ -2066,9 +2067,9 @@ The task types are internal tasks for various tasks a pipeline generates. for ex
 
 ### Do these build_source tasks use the delegate task quota? Sometimes their number is really huge.
 
-Build source tasks do use the quota. these are tasks for artifact collections. they are only present in FG and next gen these tasks are never fired.
+Build source tasks do use the quota. these are tasks for artifact collections. they are only present in FirstGen and next gen these tasks are never fired.
 
-### How does the system differentiate between delegate name and tag ?
+### How does the system differentiate between delegate name and tag?
 
 A delegate name is a unique identifier for a registered delegate in Harness Manager, while delegate tags are descriptors that are added to the delegate before the registration process. All delegates with the tag are selected when a tag is common for two or more delegates.
 
@@ -2145,7 +2146,7 @@ We have only one API for access check either if you perform Authorization using 
 - [documentation 1](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList)
 - For API tokens categories: Service Account v/s Personal access tokens, please refer to understand it. [documentation 2](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
 
-### In CG custom secrets decrypt, Do we have retry logic? Do we cache the secret value?
+### In FirstGen custom secrets decrypt, is there retry logic? Does Harness cache the secret value?
 
 - We execute three retries to fetch a secret.
 - We don’t cache the secret value for security reasons.
