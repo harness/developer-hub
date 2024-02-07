@@ -11,8 +11,14 @@ const Roadmap = () => {
   const modules = [
     { value: "platform", name: "Platform" },
     { value: "cd", name: "Continuous Delivery & GitOps" },
-    { value: "ci", name: "Continuous Integration - Coming Soon" },
-    { value: "ff", name: "Feature Flags - Coming Soon" },
+    { value: "ci", name: "Continuous Integration" },
+    { value: "ff", name: "Feature Flags" },
+    { value: "ccm", name: "Cloud Cost Management" },
+    { value: "sto", name: "Security Testing Orchestration" },
+    { value: "ce", name: "Chaos Engineering" },
+    { value: "srm", name: "Service Reliability Management" },
+    { value: "idp", name: "Internal Developer Portal" },
+    { value: "sei", name: "Software Engineering Insights" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
