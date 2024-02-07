@@ -159,11 +159,11 @@ Custom Approval steps must have at least one **Approval Criteria**. You can also
 
 Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
-In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system.  Four supported operators are `=`, `!=`, `in` and `not in`. 
+In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system. The supported operators are `=`, `!=`, `in`, and `not in`. 
 For example, 
-- condition for script output `field` to be in `Option1`, `Option2` or `Option3` can be specified as:
+- The condition for the script output `field` to be in `Option1`, `Option2`, or `Option3` can be specified as:
    ![](./static/custom-approvals-10.png)
-- condition for script output `field` to not be in either `Option1`, `Option2` or `Option3` can be specified as:
+- The condition for the script output `field` to not be in either `Option1`, `Option2`, or `Option3` can be specified as:
    ![](./static/custom-approvals-11.png)
 
 :::important
