@@ -83,7 +83,7 @@ stringData:
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engneering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
