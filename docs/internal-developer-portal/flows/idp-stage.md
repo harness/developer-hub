@@ -510,6 +510,12 @@ These output variable could be viewed under the output tab in
 
 ### 7. Slack Notify
 
+:::warning
+
+There has been some recent upgrades to this step and this is dependent on the NGUI service release, which has a different release cadence than that of IDP, until then this feature wouldn't functions as desired. We expect the dependent service releases to happen in the following week. 
+
+:::
+
 This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
 
