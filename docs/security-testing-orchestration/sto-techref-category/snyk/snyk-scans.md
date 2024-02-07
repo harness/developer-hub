@@ -193,7 +193,7 @@ Support for Snyk scans of IaC repositories is a beta feature. For more informati
 
 :::
 
-The following example uses [`snyk iac test`](https://docs.snyk.io/snyk-cli/commands/iac-test) to scan a an IaC code repository.
+The following example uses [`snyk iac test`](https://docs.snyk.io/snyk-cli/commands/iac-test) to scan an IaC code repository.
 
 The scan stage in this pipeline has the following steps:
 
