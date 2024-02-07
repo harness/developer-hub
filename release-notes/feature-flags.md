@@ -15,7 +15,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: January 26th 2024
+### Latest Updated: February 6th 2024
+
+## February 2024
+
+### Android SDK
+
+#### Version 1.2.5
+
+ - We've updated the `README` with instructions on how to add a ProGuard rule for Release builds. (FFM-10499)
+ - Now doesn't throw the `RejectedExecutionException` inside the `runRescheduleThreadWrapEx()`.
 
 ## January 2024
 
