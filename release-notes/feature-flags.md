@@ -31,6 +31,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
 
+### React SDK
+
+#### Version 1.8.1
+
+ - The `useFeatureFlagsClient` Hook and the `withFeatureFlagsClient` HOC have successfully been imported as part of the 1.8.1 Release. (FFM-10591)
+
 ## January 2024
 
 ### Apex SDK
