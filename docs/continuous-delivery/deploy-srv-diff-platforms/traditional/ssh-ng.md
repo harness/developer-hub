@@ -150,7 +150,7 @@ Let's look at an example of setting up an Infrastructure Definition for a pre-ex
 
 #### Targetting Specific Hosts for Deployment
 
-Users can specify in the SSH Infrastructure Definition to allow users to pass in specific Host IPs to perform deployment. When your Deployment Stage deploys an SSH Service or WinRM using an Infrastructure Definition of Deployment Type Secure Shell (SSH) or Windows Remote Management (WinRM), you can select target hosts that were not selected in the Stage's Infrastructure Definition. Harness will present a dropdown in the Pipeline Run form with the queried list of host names.
+Users can pass in specific Host IPs to perform deployment in the SSH Infrastructure Definition. When your deployment stage deploys an Secure Shell (SSH) Service or Windows Remote Management (WinRM) using an Infrastructure Definition of deployment type SSH or WinRM, you can select target hosts that were not selected in the Stage's Infrastructure Definition. Harness will present a dropdown in the Pipeline Run form with the queried list of host names.
 
 ##### Demo Video
 
