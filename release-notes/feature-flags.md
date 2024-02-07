@@ -28,6 +28,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Android SDK
 
+#### Version 1.2.4
+
+ - Fixed the null pointer when calling the `initialize()` function. (FFM-10499)
+
 #### Version 1.2.3
 
  - Fixed uncaught exception error that occurs if initialization fails.
