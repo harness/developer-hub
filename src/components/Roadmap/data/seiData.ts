@@ -31,4 +31,9 @@ export const SeiData: Horizon = {
       },
     ],
   },
+  Released: {
+    description: "What has been released",
+    feature: [
+    ],
+  },
 };

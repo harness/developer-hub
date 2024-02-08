@@ -53,4 +53,9 @@ export const platformData: Horizon = {
       },
     ],
   },
+  Released: {
+    description: "What has been released",
+    feature: [
+    ],
+  },
 };
