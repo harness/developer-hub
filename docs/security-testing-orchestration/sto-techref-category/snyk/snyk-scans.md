@@ -104,8 +104,7 @@ The scan stage in this pipeline has the following steps:
 
       # snyk Snyk Open Source scan
       # https://docs.snyk.io/snyk-cli/commands/test
-      snyk  \
-         --file=SubSolution.sln  \
+      snyk  --file=SubSolution.sln  test \
          --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
       snyk monitor --all-projects | true
       ```
