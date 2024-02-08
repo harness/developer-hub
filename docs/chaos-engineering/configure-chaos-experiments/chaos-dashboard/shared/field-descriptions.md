@@ -1,10 +1,4 @@
----
-title: Descriptions of Chaosguard fields
-sidebar_position: 1
-description: Describes various fields used to visualize data in Chaosguard
----
-
-This section provides detailed description of various fields used to plot and analyze data in [Chaosguard](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard).
+Described below are descriptions of various fields used to plot and analyze data in [Chaosguard](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard).
 
 1. **Chaos experiment runs**
 
@@ -70,4 +64,8 @@ This section provides detailed description of various fields used to plot and an
 
 	* **Connector scope**: Scope of the chaoshub connector, which can be **project**, **organization** or Account** scope. 
 
-	* **Is Default (Yes / No)**: Whether the chaos hub used is a default hub or a custom hub. 
+	* **Is Default (Yes / No)**: Whether the chaos hub used is a default hub or a custom hub.
+
+:::tip
+The fields **accountId**, **orgId**, and **projectId** are common to all descriptors. As the name suggests, the fields mentioned earlier provide a unique identifier for account, organisation, and project, respectively.
+:::
