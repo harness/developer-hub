@@ -86,11 +86,11 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Users can now enable file logging for supported services through override in On-prem installations. (PL-44211)
+- You can now enable file logging for supported services through override in Harness Self-Managed Enterprise Edition (On-prem) installations. (PL-44211)
 
-   To enable file logging add the following to your override in the global section:
+   To enable file logging, add the following to your override in the global section:
 
-   ```
+   ```yaml
 
    global:
    fileLogging:
@@ -102,13 +102,13 @@ The following deprecated API endpoints are longer supported:
 
    ```
 
-- Support added for encrypted assertions in the SAML response. (PL-43353)
+- Added support for encrypted assertions in the SAML response. (PL-43353)
 
 #### Fixed issues
 
-- Users were unable to change the authentication mechanism of a secret manager from a non-password based to a password based mechanism due to a bug in the secret manager update API. (PL-46657)
+- The authentication mechanism of a secret manager couldn't be changed from a non-password-based to a password-based mechanism due to a bug in the secret manager update API. (PL-46657)
 
-   This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password based mechanism in this release.
+   This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password-based mechanism.
 
 - Git connectors worked intermittently and failed with a `Please provide valid git repository url Provided repo url is invalid. Invalid request: Couldn't connect to given repo` error message. (PL-43598, ZD-55236)
 
