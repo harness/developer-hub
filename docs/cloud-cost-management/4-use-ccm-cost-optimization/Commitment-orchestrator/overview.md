@@ -9,13 +9,23 @@ helpdocs_is_published: true
 ---
 
 # Introduction to Commitment Orchestrator
-In recent years, organizations leveraging cloud services have witnessed a concerning trend - the steady rise in cloud costs. As businesses increasingly migrate their operations to the cloud, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of the cloud bills..
+In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
+
+This rise in cloud costs reflects the growing scale of business operations in the cloud environment, as many organizations transition from on-premises infrastructure to cloud-based solutions or ramp up their existing cloud utilization. It signifies the expanding scope and investment in cloud services.
 
 To help bring down the cloud costs, providers often offer special discounted rates against on-demand costs to the customers. These commitments are mostly in form of **RI (Reserved Instances)** or **SPs(Savings Plan)**. 
 
-Reserved Instances are a pricing model offered by cloud service providers that allows customers to reserve and commit to a specific amount of computing capacity in advance for a term of one or three years. This commitment comes with a significant discount compared to on-demand pricing, making it a cost-effective option for workloads with predictable and sustained usage.
+1. **Reserved Instances**: Reserved Instances are a pricing model offered by cloud service providers that allows customers to reserve and commit to a specific amount of computing capacity in advance for a term of one or three years. This commitment comes with a significant discount compared to on-demand pricing, making it a cost-effective option for workloads with predictable and sustained usage.
 
-However, it's essential for organizations to carefully analyze their usage patterns before making commitments to ensure they choose the most suitable Reserved Instances for their needs.
+2. **Savings Plans**: Savings Plans are a flexible pricing model introduced by cloud service providers that offer customers significant discounts on their usage in exchange for committing to a consistent amount of usage, measured in dollars per hour, for a one- or three-year term. Unlike Reserved Instances, Savings Plans offer more flexibility in terms of instance type, region, and operating system, making them suitable for workloads with variable usage patterns.
+
+Here's how Savings Plans are referred to by major cloud providers:
+
+Amazon Web Services (AWS): In the context of AWS, Savings Plans are known as Savings Plans.
+Microsoft Azure: Azure refers to its equivalent of Savings Plans as Azure Reserved VM Instances (RIs) or Azure Reserved Capacity.
+Google Cloud Platform (GCP): GCP's counterpart to Savings Plans is called Committed Use Discounts (CUDs) or Committed Use Contracts (CUCs).
+
+It's essential for organizations to carefully analyze their usage patterns before making commitments to ensure they choose the most suitable Reserved Instances for their needs.
 
 Commitments in the cloud, such as Reserved Instances (RIs) or other long-term contracts, can pose challenges in various situations if not managed correctly.
 
@@ -26,14 +36,14 @@ Some commitments, such as rigid long-term contracts, may lack flexibility to ada
 Overcommitting resources may result in underutilization, leading to inefficient use of commitments and potentially higher overall costs due to unnecessary commitment plans.
 Overhead in management of commitments: While managing commitments, there's always overhead in understanding the context of the need of purchase and to identify what to purchase next among the multiple options for commitments, It requires continuous manual effort and is a lot more human error prone in case of wrong predictions.
 
-At Harness, we are committed to bring in the power of **AI and ML** to manage the commitments. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of Commitment Orchestrator, we focus on managing your commitments for optimal performance and mitigating the problems associated with automated management of commitments.
+At Harness, we are committed to bring in the power of **AI and ML** to manage the commitments. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of Commitment Orchestrator, we focus on managing your commitments for optimal performance and mitigating the problems associated with manual management of commitments.
 
 ## What is over commitment and under commitment?
-In the context of cloud spend or cloud bills breakdown,, over-commitment and under-commitment typically refer to the utilization of resources compared to the commitments made through mechanisms like Reserved Instances (RIs) or Savings Plan (SPs). 
+In the context of cloud spend or cloud bills breakdown,, over-commitment and under-commitment typically refer to the utilization of resources compared to the commitments made through discount plans like Reserved Instances (RIs) or Savings Plan (SPs). 
 
 ### Over-Commitment:
 Over-commitment occurs when an organization has reserved more resources (such as instances or capacity) or bought extra Savings Plans to cover their compute spend than it actually needs or utilizes.
-For example, an organization may have purchased a significant number of Reserved Instances based on an initial estimation of their workload. If the actual usage turns out to be lower than expected, the organization is considered to be over-committed.
+For example, an organization may have purchased a significant number of Reserved Instances based on an initial estimation of their workload. If the actual usage turns out to be lower than expected, the resources deployed are considered to be over-committed, leading to wastage and underutilization.
 
 While over-commitment may provide some level of capacity assurance, it can result in underutilized resources, leading to higher costs than necessary. The committed resources are paid for upfront or over the term, regardless of whether they are fully utilized.
 
@@ -58,11 +68,11 @@ Commitment Orchestrator does all of this with the help of its 2 engines: **Utili
 
 | **Utilisation engine** | **Purchase engine** |
 | --- | --- |
-| The utilization engine leverages machine learning (ML) and intelligent analysis of existing usage patterns to optimize resource utilization and increase the efficiency of underutilized Reserved Instances (RIs). It breaks RIs into the smallest units and assembles them to meet target instance types. By intelligently analyzing these patterns, the engine identifies opportunities for optimization that can lead to significant cost savings for the business. | The purchase engine analyzes  the on-demand spend and then purchases the RIs/SPs basis the target coverage.|
+| The utilization engine leverages machine learning (ML) and intelligent analysis of existing usage patterns to optimize resource utilization and increase the efficiency of underutilized Reserved Instances (RIs) or Savings Plan.. It breaks RIs into the smallest units and assembles them to meet target instance types. By intelligently analyzing these patterns, the engine identifies opportunities for optimization that can lead to significant cost savings for the business. | The purchase engine analyzes  the on-demand spend and then purchases the RIs/SPs basis the target coverage.|
 
 
 ## Getting Started
-Commitment Orchestrator can be found on our dashboard under Cloud Costs. Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
+Commitment Orchestrator can be found on our dashboard under [Cloud Costs module](https://app.harness.io/). Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
 ### Step 1 : Setting up the master account 
 
 You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. You can either select an existing connector for your master account or create one. 
@@ -73,11 +83,14 @@ You need to select the master account with the right permissions to be added via
 Commitment Orchestrator provides you with an option to choose the instances you would like to exclude when orchestrating instances for Compute Usage.
 <DocImage path={require('./static/Step2.png')} width="50%" height="50%" title="Click to view full size image" />
 
+:::important note 
+The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
+:::
 
 ### Step 3: Coverage Percentage and SP/RI split
-Coverage Percentage: The Coverage percentage is the percentage that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand.
+Coverage Percentage: The Coverage percentage is the percentage of your compute spend that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand.
 
-SP/RI split: Out of the totally compute spend, you have the option to split it between Convertible Reserved Instances and Compute Savings Plan 
+SP/RI split: Out of the totally compute spend, you have the option to split it between Convertible Reserved Instances and Compute Savings Plan. Out of total coverage, the system automatically calculates the maximum guardrail for purchasing the Savings Plans given the past compute spend data to ensure limiting any over purchase of saving plans. You can reduce the percentage by increasing share of Reserved Instances. However, you can't increase the coverage via Savings Plan beyond the max limit.
 
 <DocImage path={require('./static/Step3.png')} width="50%" height="50%" title="Click to view full size image" />
 
