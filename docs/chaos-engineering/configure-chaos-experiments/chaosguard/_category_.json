@@ -1,11 +1,11 @@
 {
   "position": 7,
-  "label": "Chaosguard ",
+  "label": "ChaosGuard",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Chaosguard"
+      "title":"ChaosGuard"
    },
   "customProps": {
     "description": "An additional layer of security to guard experiments from chaos-enabled users"

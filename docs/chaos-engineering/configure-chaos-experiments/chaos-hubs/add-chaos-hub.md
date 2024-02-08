@@ -1,22 +1,22 @@
 ---
-title: Add a custom chaos hub
+title: Add a custom ChaosHub
 sidebar_position: 5
-description: Introduction to chaos hub and steps to add a chaos hub to your project
+description: Introduction to ChaosHub and steps to add a ChaosHub to your project
 ---
 
-## Chaos hub
+## Chaoshub
 
-This section introduces you to chaos hub, and how you can add a chaos hub to your project.
+This section introduces you to ChaosHub, and how you can add a ChaosHub to your project.
 
-A chaos hub is a collection of experiment templates and faults that you can use to create and launch chaos experiments. 
-Experiments are templates to create new chaos experiments, which contain a collection of chaos faults and certain custom actions ordered in a specific sequence. Faults refer to the failures injected as part of an experiment. Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the Chaos Hub from the UI.
+A ChaosHub is a collection of experiment templates and faults that you can use to create and launch chaos experiments. 
+Experiments are templates to create new chaos experiments, which contain a collection of chaos faults and certain custom actions ordered in a specific sequence. Faults refer to the failures injected as part of an experiment. Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the ChaosHub from the UI.
 
-Chaos hub is a collection of manifests and charts that represents the experiments and faults which exist as a part of the hub.
-You can add Chaos Hub using a Git service provider such as GitHub, where Chaos Hub exists as a repository. This allows native version control and management of the faults and experiment artifacts.
+ChaosHub is a collection of manifests and charts that represents the experiments and faults which exist as a part of the hub.
+You can add ChaosHub using a Git service provider such as GitHub, where ChaosHub exists as a repository. This allows native version control and management of the faults and experiment artifacts.
 
-HCE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add your own custom chaos hubs to maintain and share private experiments and faults within your organization.
+HCE provides a default **Enterprise ChaosHub** that includes a wide array of templates and faults out of the box. You can also add your own custom ChaosHubs to maintain and share private experiments and faults within your organization.
 
-There are several reasons for adding a custom chaos hub. A custom hub lets you:
+There are several reasons for adding a custom ChaosHub. A custom hub lets you:
 
 * Add custom experiments suited to specific needs in your organization.
 
@@ -26,11 +26,11 @@ There are several reasons for adding a custom chaos hub. A custom hub lets you:
 
 * Provide secure access to your custom experiments.
 
-This topic shows how to add and connect a custom chaos hub. 
+This topic shows how to add and connect a custom ChaosHub. 
 
-## Prerequisites to adding a custom chaos hub
+## Prerequisites to adding a custom ChaosHub
 
-1. Be sure you have a Git repository for your custom chaos hub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
+1. Be sure you have a Git repository for your custom ChaosHub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
 
 	![Private Hub](./static/add-chaos-hub/private-hub.png)
 
@@ -39,9 +39,9 @@ This topic shows how to add and connect a custom chaos hub.
 	![GitHub New personal access token (classic) screen](./static/add-chaos-hub/github-access-token.png)
 
 
-## Add a custom chaos hub
+## Add a custom ChaosHub
 
-To add a custom chaos hub:
+To add a custom ChaosHub:
 
 1. In your Harness project, navigate to the **Chaos > ChaosHubs**, and then select **+ New ChaosHub**.
 
@@ -67,15 +67,15 @@ To add a custom chaos hub:
 
 	1. In the Details screen, for **URL Type**, select **Repository**. 
 
-		You can select **Account** instead if you want to create an account-scoped GitHub connector. This may be used for connecting multiple Chaos Hubs from a single GitHub account. 
+		You can select **Account** instead if you want to create an account-scoped GitHub connector. This may be used for connecting multiple ChaosHubs from a single GitHub account. 
 
 	1. For **Connection Type**, select **HTTP**. 
 
-	1. In **GitHub Repository URL**, enter the URL of your custom chaos hub repository.
+	1. In **GitHub Repository URL**, enter the URL of your custom ChaosHub repository.
 
 		If you selected **Account** for **URL Type**, fill out these fields instead:
 
-		* In **GitHub Account URL**, enter the account URL for your custom chaos hub repository.  
+		* In **GitHub Account URL**, enter the account URL for your custom ChaosHub repository.  
 
 		* In **Test Repository**, enter any repository name from your GitHub account to validate the connection.
 
@@ -122,15 +122,15 @@ To add a custom chaos hub:
 
 	![Git Connection](./static/add-chaos-hub/git-connection.png)
 
-1. In **Hub Repository Branch**, enter the repository branch in which the Chaos Hub files exist. 
+1. In **Hub Repository Branch**, enter the repository branch in which the ChaosHub files exist. 
 1. Select **Connect Hub**, and then select **Finish**.
 
-	Your new custom chaos hub appears in the **ChaosHubs** page.
+	Your new custom ChaosHub appears in the **ChaosHubs** page.
 
 :::info note
-To share your custom chaos hub with another Harness project, add the hub to the other project, using the same procedure above.
+To share your custom ChaosHub with another Harness project, add the hub to the other project, using the same procedure above.
 :::
 
 ## Next steps
 
-Now you can add and launch experiments in your custom chaos hub, or add YAML fault and experiment definitions directly in your chaos hub GitHub repo, and then sync it with Harness. Head to [Manage custom chaos hubs](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/manage-hub) for details.
+Now you can add and launch experiments in your custom ChaosHub, or add YAML fault and experiment definitions directly in your ChaosHub GitHub repo, and then sync it with Harness. Head to [Manage custom ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/manage-hub) for details.

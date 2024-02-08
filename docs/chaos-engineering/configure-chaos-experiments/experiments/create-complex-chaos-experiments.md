@@ -1,5 +1,5 @@
 ---
-title: Serial and parallel faults
+title: Execute serial and parallel faults
 sidebar_position: 30
 description: Guide to execute serial and parallel chaos  
 ---
