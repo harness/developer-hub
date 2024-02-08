@@ -59,6 +59,20 @@ These actions can be applied to the failure strategy as primary action and timeo
 
 It is important to note that failure strategies can be applied at different levels such as step, step group, stage, and pipeline. However, adding a failure strategy at a higher level does not automatically apply the same action to all levels. For instance, if you set an **Abort** failure strategy at the pipeline level, it does not mean that the entire pipeline will be aborted immediately if any step fails. Instead, the failing step will be aborted. On the other hand, if you set an **Ignore Failure** strategy at the stage level of the same pipeline, the **Ignore Failure** strategy will be applied to all steps in that stage because it is more specific than the pipeline's **Abort** failure strategy.
 
+```mermaid
+graph LR
+  style A fill:#5E80B2,stroke:#34495E,stroke-width:2px,stroke-dasharray: 5, 5;
+  style B fill:#8CC4E1,stroke:#34495E,stroke-width:2px;
+  style C fill:#8CC4E1,stroke:#34495E,stroke-width:2px;
+  style D fill:#5E80B2,stroke:#34495E,stroke-width:2px,stroke-dasharray: 5, 5;
+  style E fill:#8CC4E1,stroke:#34495E,stroke-width:2px;
+
+  A[Pipeline] -->|Abort| B[Step]
+  A -->|Abort| C[Step Group]
+  A -->|Ignore| D[Stage]
+  D -->|Ignore| E[Step]
+```
+
 | **Action** | **Step** | **Step Group** | **Stage** | **Pipeline** |
 | :--- | :--- | :--- | :--- | :--- |
 | **Manual Intervention** | A Harness user can perform a manual intervention when the error type occurs. There are several options to select from: <li> **Mark as Success**</li><li>**Ignore Failure**</li><li>**Retry**</li><li>**Abort**</li><li>**Rollback Stage**</li>Harness pauses the pipeline execution when waiting for manual intervention. The pipeline execution state appears as **Paused**. | Same as step. | Same as step, but applies to all steps. | Same as step, but applies to all steps.
