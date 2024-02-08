@@ -157,5 +157,3 @@ export const CiData: Horizon = {
     ],
   },
 };
-
-};
