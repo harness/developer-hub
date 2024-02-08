@@ -15,7 +15,7 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for patch release 0.13.3
+:::danger important upgrade instructions for patch release 0.13.3 and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
@@ -25,8 +25,8 @@ If you are currently on version 0.13.0, 0.13.1, or 0.13.2, you must follow the a
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
-1. Set `global.database.minio.mergeLogs` to `true`.
-2. Perform your Helm upgrade.
+1. Set `global.database.minio.mergeLogs` to `true` in your override file.
+2. Perform your Harness upgrade.
 
 **All other customers**
 
@@ -34,8 +34,8 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 1. Exec into your MinIO pod.
 2. Copy the files from `/bitnami/minio/data` to `/data/backup directory`.
-3. Perform a `helm` upgrade.
-4. Exec into your MinIO pod.
+3. Perform your Harness upgrade.
+4. Exec into your MinIO pod after the upgrade has successfully completed.
 5. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
   
    ```
