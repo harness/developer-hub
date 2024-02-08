@@ -38,32 +38,17 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
 
 ![An image of a Feature Flag in the Harness Application. ](./static/feature_flag.png)
 
-
   1. On the Home Page of the Harness Application, head over to *Feature Flags*.
   2. Under the *Feature Flags* section, you should see a list of your existing flags. 
   3. Select a flag that has a tag that you want to edit by clicking the three dots at the end of the flag and selecting *Edit*. This includes flags that don't have any assigned tags.
   4. On the next page, select the three dots located next to the name of your flag followed by *Edit* in the small dropdown menu that appears. 
   5. You can, then, edit the tags or remove them or create a new one within the Tags box. 
 
-
-<!-- Insert step by step -->
 :::tip
 
 If you're not familiar with RBAC, check out this blog post on [User and Role Management in the Harness Software Delivery Platform](https://harness.io/blog/continuous-delivery/user-role-management/).
 
 :::
-
-<!-- 
-
-### Tags on Target Groups
-
-:::
-
- 1. On the Home Page of the Harness Application, head over to *Feature Flags*.
- 2. Select *Targets*. On the top of the page, select *Target Groups*. 
- 3. You should see a list of your existing Target Groups in our chosen environment otherwise do follow the steps to create a Target Group. 
- 4. 
--->
 
 ### Adding RBAC to Tags
 
@@ -80,7 +65,15 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
 
 <!-- ### Managing Permissions Using Tagging -->
 
-<!-- ### Best Practices -->
+<!-- 
+below to be edited in second draft
+
+You can manage permissions of  
+
+ 1. On the Home Page of the Harness Application, head over to *Feature Flags*.
+ 2. Under the *Feature Flags* tab, scroll down and click on the *Project Setup* dropdown menu. Click *Access Control*. 
+--> 
+<!-- ### Best Practices to be added in second draft -->
 
 # Related Content
 
