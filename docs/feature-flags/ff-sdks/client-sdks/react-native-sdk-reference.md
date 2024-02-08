@@ -10,6 +10,18 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
+# Deprecation Notice
+This React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained.
+We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK,
+please refer to the [React SDK Documentation](/docs/feature-flags/ff-sdks/client-sdks/react-client.md).
+
 
 This topic describes how to use the Harness Feature Flags SDK for your React Native application. 
 
@@ -17,14 +29,14 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Before You Begin
 
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
+* [Feature Flags Overview](../../get-started/overview)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.0.2.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-react-native-client-sdk/releases)
 
 ## Prerequisites
 
@@ -96,8 +108,8 @@ const apiKey = "YOUR_API_KEY";
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -236,7 +248,7 @@ let jsonEvaluation = await client.jsonVariation("demo_json_evaluation", {});
 
 ### Register the event listener
 
-Use `client.registerEventsListener` to register a listener for different events that might be triggered by SDK.
+Use `client.registerListener` to register a listener for different events that might be triggered by SDK.
 
 The possible events and their responses are outlined in the following table:
 
@@ -264,14 +276,16 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-When SDK is not needed, for example, when the app is not running, you can shut down the SDK. This can avoid potential memory leaks.
+<Closeclient />
 
+To close the SDK client, call this method:
 
 ```
 client.destroy()
 ```
+
 ## Additional options
 
 ### Use the Harness Relay Proxy
@@ -319,7 +333,7 @@ jsonVariation(evalutionId: string, defaultValue: any)
 ```
 
 ```
-registerEventsListener(listener: (type: string, flags: any) => void)
+registerListener(listener: (type: string, flags: any) => void)
 ```
 
 ```

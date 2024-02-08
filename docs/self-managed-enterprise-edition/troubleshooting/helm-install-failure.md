@@ -1,6 +1,7 @@
 ---
-title: Helm installation failures
-description: Troubleshoot installation failures in Harness Self-Management Enterprise Edition.
+title: Helm installation failure
+description: Troubleshoot installation failures in the on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 55
 ---
 
 This topic provides solutions for installation problems related to Helm.
@@ -31,4 +32,3 @@ global:
       httpNodePort: 32501
       httpsNodePort: 32506
  ```
-

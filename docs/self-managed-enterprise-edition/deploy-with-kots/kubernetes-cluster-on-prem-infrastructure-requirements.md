@@ -1,22 +1,29 @@
 ---
 title: KOTS installation requirements
-description: Requirements for using KOTS installation for Harness Self-Managed Enterprise Edition.
-# sidebar_position: 10
+description: Requirements for using KOTS installation for the on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 1
 helpdocs_topic_id: d5lptkp5ow
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
+
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method will be in maintenance mode after May 31, 2023. 
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**. 
 
 Maintenance mode means the following:
 
 - No new features will be added.
 - Security and bug fixes will continue to be made. 
 
+:::
+
+:::info important
+
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTS.
 :::
 
 Installation of Harness Self-Managed Enterprise Edition in an existing Kubernetes cluster requires the following infrastructure.
@@ -143,8 +150,14 @@ The installation of Harness Self-Managed Enterprise Edition requires a load bala
 After Harness Self-Managed Enterprise Edition is installed, the load balancer is used to access the Harness Manager UI with a web browser.
 
 For information on how to create the load balancer, go to [Install Self-Managed Enterprise Edition with KOTS](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
+ |
 
 ### gRPC and load balancer settings
+
+:::info note
+gRPC settings are not required for delegate version 23.12.81803 and later.
+
+:::
 
 The configuration of gRPC depends on load balancer support for HTTP2.
 

@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for GCP
+title: GCP
 description: This topic describes how to create an AutoStopping Rule for GCP.
 # sidebar_position: 4
 helpdocs_topic_id: 4brkwfy8yt
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules for GCP
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. 
 
 This topic describes how to create AutoStopping Rules for GCP.
@@ -16,7 +16,7 @@ This topic describes how to create AutoStopping Rules for GCP.
 
 * [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md)
 * [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Prerequisites
 To create an AutoStopping rule using an AutoStopping proxy load balancer: 
@@ -66,7 +66,6 @@ You can add multiple instances to a single Rule. However, all the VMs should be 
 3. Select the instances that you want to manage using the AutoStopping rules. You can use the search option to search the instances.
    
 
-   
 ![](./static/create-auto-stopping-rules-for-gcp-19.png)
 
 4. Click **Add Selected** to select the instances.
@@ -110,6 +109,9 @@ In certain scenarios, you would not want your resources to go down or up. For ex
 The fixed schedule takes precedence over the defined AutoStopping Rule.
 :::
 
+:::note
+Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+:::
 
 To create a fixed schedule for your rule, do the following:
 
@@ -126,10 +128,10 @@ To create a fixed schedule for your rule, do the following:
 	  If you don't specify an end time, the schedule continues to run until you manually update the settings or remove the schedule.
 6. Select the checbox **Never ends** if you do not want to set end time for your schedule.
 7. You can also set a recurring schedule for the rule. If you want to set a recurring schedule, in **Uptime/Downtime in the selected period**, in **Repeats**, select the repeat frequency.
-	3. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
-	4. Select **Everyday**, to set the schedule for all seven days of the week.
-	5. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
-	6. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
+	1. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
+	2. Select **Everyday**, to set the schedule for all seven days of the week.
+	3. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
+	4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
 	  
 	**Example 1**:  
 	In the following example, resources are up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
@@ -162,7 +164,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
-3. Specify all the TCP ports your application is listening. Ensure these ports are open.
+3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
 4. Click **Next**.
    
 ### Set up access for HTTP/HTTPS workload

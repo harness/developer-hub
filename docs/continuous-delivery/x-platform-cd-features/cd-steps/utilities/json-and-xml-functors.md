@@ -37,7 +37,7 @@ Here is the JSON array that we want to select a value from:
 }
 ```
 
-You can find this example at <https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json>.
+You can find this example at [https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json](https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json).
 
 To select the value `0.0.253-feature_NC-6595.8d268cd~nc1.6312a66`, you would use `select()` to specify the path to the value, like this:
 
@@ -83,7 +83,7 @@ Here is the JSON we will query:
 ```json
 {"item":"value1","level1":{"level2":"value2"}}
 ```
-You can find this example at <https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/object.json>.
+You can find this example at [https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/object.json](https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/object.json).
 
 Here is the query using the `object()` method to select `value1`:
 
@@ -155,7 +155,7 @@ Here is the JSON we will query:
   ]  
 }
 ```
-You can find this example at <https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.json>.
+You can find this example at [https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.json](https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.json).
 
 Here is the query using the `list()` method to select `pages` from the 3rd book:
 
@@ -183,7 +183,7 @@ When this HTTP step is executed, in its **Output** tab, you can see the HTTP res
 
 We add an HTTP step to obtain the `httpResponseBody` and then reference that in a subsequent Shell Script step.
 
-We are using the example at <https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json>.
+We are using the example at [https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json](https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json).
 
 If we simply rendered the `httpResponseBody`, we would get:
 
@@ -264,7 +264,7 @@ Here is the contents of the XML file we will query:
 </bookstore>
 ```
 
-We are using the example at <https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.xml>.
+We are using the example at [https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.xml](https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.xml).
 
 Here is the query using the `xml.select()` method to select the title from the first book:
 

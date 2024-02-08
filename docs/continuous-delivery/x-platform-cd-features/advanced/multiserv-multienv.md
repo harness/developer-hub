@@ -4,17 +4,18 @@ description: Deploy multiple services to multiple environments.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag, `MULTI_SERVICE_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic describes how to use multiple services and multiple environments in a deployment.
 
 Often, you will deploy one service to one Environment in a CD stage. In some cases, you might want to use multiple services and environments in the same stage.
 
-For example, let's say you host 1 infrastructure per customer and want to deploy your service to all customer infrastructures in the same pipeline. Instead of creating separate stages for each service and infrastructure combination, you can just deploy a single service to all infrastructures in the same stage.
+For example, let's say you host one infrastructure per customer and want to deploy your service to all customer infrastructures in the same pipeline. Instead of creating separate stages for each service and infrastructure combination, you can just deploy a single service to all infrastructures in the same stage. 
+
+:::note
+
+This functionality is also supported for GitOps clusters by configuring multiple clusters per environment.
+
+:::
 
 Another example would be when you have multiple QA environments and what to deploy to all of them together.
 
@@ -126,6 +127,83 @@ You can see the two service deployments running in parallel on both infrastructu
 
 The service deployments are grouped by Infrastructure. The first two services are running in parallel on one infrastructure and the second two services are running on the other infrastructure.
 
+## Deploy services to infrastructures using filtered list
+
+You can deploy services to infrastructures in an environment or environment group using filtered list.
+
+Make sure that you have added tags when creating your environment in the **Configuration** tab.
+
+![tag environments](./static/tag-environments.png)
+
+:::note
+
+Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. In your CD stage, select **Service**.
+2. In **Select Services**, select the services you want to deploy.
+3. Select **Continue**.
+4. In the **Environments** tab, enable **Deploy to multiple Environments or Infrastructures**.
+5. Select **Environment** or **Environment Group**.  
+   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
+6. In **Infrastructures**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+7. In **FILTERS ON ENTITIES**, select **Infrastructure**.
+8. In **Type**, select: 
+   * **All** to deploy the selected services to all infrastructures within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
+        
+     Select **Any** to deploy the selected services to infrastructures that have any of these tags. 
+     
+     Select **All** to deploy the selected services to infrastructures having all these tags. 
+
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
+
+   ![](./static/deploy-to-infra-filter.png)
+9. Select **Continue**, select an execution strategy, and complete the execution steps.
+10. Select **Save**.
+11. Select **Run**, and then **Run Pipeline**.
+    
+    You can see the infrastructures with the selected tags displayed in the target environment.
+
+## Deploy services to GitOps clusters using filtered list
+
+You can deploy services to the GitOps clusters in an environment using filtered list.
+
+Make sure that you have added tags when creating your environment in the **Configuration** tab.
+
+:::note
+
+Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. In your pipeline, create a **Deploy** stage with the **GitOps** option enabled.
+2. In your CD stage, select **Service**.
+3. In **Select Services**, select the services you want to deploy.
+4. Select **Continue**.
+5. In the **Environments** tab, enable **Deploy to multiple Environments or Clusters**.
+6. Select **Environment** or **Environment Group**.  
+   You can select one or more environments (or an environment group), and then one or more infrastructures in each environment.
+7. In **Clusters**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+8. In **FILTERS ON ENTITIES**, select **Clusters**.
+9. In **Type**, select: 
+   * **All** to deploy the selected services to all clusters within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected services to the clusters with these tags. 
+        
+     Select **Any** to deploy the selected services to clusters that have any of these tags. 
+     
+     Select **All** to deploy the selected services to clusters having all these tags. 
+
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
+
+   ![](./static/deploy-to-clusters-filter.png)
+10. Select **Continue**, select an execution strategy, and complete the execution steps.
+11. Select **Save**.
+12. Select **Run**, and then **Run Pipeline**.
+    
+    You can see the clusters with the selected tags displayed in the target environment.
+
 ## Deploying in parallel or serial
 
 You can deploy services to environments and infrastructures in parallel or serial, with the following options:
@@ -144,6 +222,144 @@ You can see two service deployments running in parallel on the same infrastructu
 Here you can see two service deployments run serially on the same infrastructure:
 
 ![](./static/multiserv-multienv-24.png)
+
+## Propagating multiple services
+
+
+You can propagate a stage configured with multi-service from previous configured stage. In the example below, If configured multi-service in stage `deployKubernetes` you will be able to reference the service configuration in stage `dev`.
+
+```yaml
+    - stage:
+        name: deployKubernetes
+        identifier: Deploy_Kubernetes
+        description: Golden Kubernetes Deployment Stage
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          execution:
+            steps:
+              - step:
+                  type: K8sDryRun
+                  name: Dry Run
+                  identifier: Dry_Run
+                  spec: {}
+                  timeout: 10m
+              - step:
+                  type: K8sApply
+                  name: Apply
+                  identifier: Apply
+                  spec:
+                    filePaths:
+                      - cdng/
+                    skipDryRun: false
+                    skipSteadyStateCheck: false
+                    skipRendering: false
+                    overrides: []
+                  timeout: 10m
+              - step:
+                  type: HarnessApproval
+                  name: Approval
+                  identifier: Approval
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - account._account_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+                  when:
+                    stageStatus: Success
+              - step:
+                  type: K8sRollingDeploy
+                  name: Rolling Deployment
+                  identifier: RRolling_Deployment
+                  spec:
+                    skipDryRun: <+input>
+                    pruningEnabled: false
+                  timeout: 10m
+              - step:
+                  type: K8sDelete
+                  name: Cleanup
+                  identifier: Cleanup
+                  spec:
+                    deleteResources:
+                      type: ReleaseName
+                      spec:
+                        deleteNamespace: false
+                  timeout: 10m
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+          services:
+            values:
+              - serviceRef: kubernetes
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          primaryArtifactRef: <+input>
+                          sources: <+input>
+            metadata:
+              parallel: false
+          environments:
+            metadata:
+              parallel: true
+            values:
+              - environmentRef: k8sdev
+                deployToAll: false
+                infrastructureDefinitions:
+                  - identifier: dev
+                    inputs:
+                      identifier: dev
+                      type: KubernetesDirect
+                      spec:
+                        namespace: <+input>
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+        when:
+          pipelineStatus: Success
+    - stage:
+        name: dev
+        identifier: dev
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          services:
+            useFromStage:
+              stage: Deploy_Kubernetes
+```
+
+In the subesequent stage you will see a Propagate from previous stage option. This will allow you to pick the previous stage's service configuration.
+
+```yaml
+    - stage:
+        name: dev
+        identifier: dev
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          services:
+            useFromStage:
+              stage: Deploy_Kubernetes
+```
 
 ## Using environment groups
 
@@ -166,14 +382,6 @@ The console view can also help view multiple deployments clearly:
 
 ![](./static/multiserv-multienv-27.png)
 
-## Propagating multiple services in stages
-
-Service propagation is not supported when using multiple services in a single stage (this is called a multiple service deployment).
-
-When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
-
-For details on propagating services in stages, go to [propagate CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
-
 ## Rollback with multiple services and environments
 
 With a multi service to multi infrastructure stage, every combination of service and infrastructure is treated as a separate deployment.
@@ -188,7 +396,7 @@ Triggers are applied at the pipeline level. If you have a trigger that runs a pi
 
 The trigger runs the entire pipeline, not just the service with the manifest or artifact that initiated the trigger.
 
-## Max concurreny
+## Max concurrency
 
 When you view a multi service or environment deployment, you can see **Max Concurrency**:
 
@@ -199,4 +407,9 @@ Max concurrency changes based on the following:
 * If you select **Deploy services in parallel**, Max concurrency is equal to the number of services.
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
+
+## Limitations
+
+* Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
+* You cannot propagate multi environments between stages
 

@@ -2,14 +2,10 @@
 sidebar_position: 50
 description: Deploy a Harness Delegate that uses Workload Identity to access Google Cloud Services
 keywords: [Google,delegate,Terraform,GKE,workload identity]
+title: Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity
 ---
 
-# Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 **Workload Identity** allows a Kubernetes service account in your GKE cluster to act as a Google IAM Service account. Pods that use the configured KSA automatically authenticate as the IAM service account when accessing Google Cloud APIs.
 
@@ -96,7 +92,7 @@ export GOOGLE_CLOUD_PROJECT="the google cloud project to use"
 export KUBECONFIG="$DEMO_HOME/.kube/config"
 ```
 
-You can find more information about gcloud cli configurations at <https://cloud.google.com/sdk/docs/configurations>.
+You can find more information about gcloud cli configurations at [https://cloud.google.com/sdk/docs/configurations](https://cloud.google.com/sdk/docs/configurations).
 
 As you may need to override a few Terraform variables that you don't want to check in to VCS, add them to a file called `.local.tfvars` and set the following environment variable to be picked up by Terraform runs:
 
@@ -151,11 +147,11 @@ The following section deploys a Harness Delegate onto the GKE cluster.
 
     ![account details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/eom3g1bo25v0rc1iehjl.png)
 
-    - Use the **Harness Cluster Hosting Account** from the account details to find the matching endpoint URL. For example, for `prod-2` it is <https://app.harness.io/gratis> and set that as the value for `harness_manager_endpoint`.
+    - Use the **Harness Cluster Hosting Account** from the account details to find the matching endpoint URL. For example, for `prod-2` it is [https://app.harness.io/gratis](https://app.harness.io/gratis) and set that as the value for `harness_manager_endpoint`.
 
     :::tip
 
-    You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from <https://developer.harness.io/tutorials/platform/install-delegate/>
+    You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from \</tutorials/platform/install-delegate/>
 
     :::
 
@@ -278,4 +274,4 @@ task destroy
 
 By using Workload Identity Delegate we have simplified and secured our CI pipelines, which can now use any Google API services by configuring the GSA with the correct roles and permissions. The CI SaaS platform no longer needs to store or update the Google API credentials.
 
-Having deployed Workload Identity Delegate, you can also do [keyless signing](https://docs.sigstore.dev/cosign/sign/#keyless-signing) of your container images using Google Application Credentials using [cosign](https://sigstore.dev).
+Having deployed Workload Identity Delegate, you can also do [keyless signing](https://docs.sigstore.dev/cosign/overview/#keyless-signing-of-a-container) of your container images using Google Application Credentials using [cosign](https://sigstore.dev).

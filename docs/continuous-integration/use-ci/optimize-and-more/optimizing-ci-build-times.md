@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
@@ -20,7 +29,7 @@ For information about service dependencies, caches, and shared volumes, go to:
 
 ## Optimize test times
 
-For information about optimizing test times, go to [Run tests in CI pipelines](../set-up-test-intelligence/run-tests-in-ci.md).
+For information about optimizing test times, go to [Run tests in CI pipelines](../run-tests/run-tests-in-ci.md).
 
 ## Optimize Docker images
 
@@ -47,7 +56,7 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 
 * Sort multi-line arguments in your Dockerfile alphabetically. This makes it easier to update and avoid duplicate packages.
 * Review [Docker's best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
-* [Enable Docker layer caching.](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching)
+* Enable [Docker layer caching](../caching-ci-data/docker-layer-caching.md) or use a [remote Docker cache](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#remote-docker-cache).
 
 </details>
 
@@ -61,7 +70,7 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 
 ### Looping strategies
 
-[Looping strategies](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
+[Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
 
 * You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
@@ -72,11 +81,13 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 Expressions and runtime inputs make your pipelines more dynamic.
 
 * [Variables and expressions](/docs/category/variables-and-expressions/)
-* [Fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/)
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Built-in CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
-* [Secrets management](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview)
-* [Input sets and overlays](/docs/platform/pipelines/input-sets/)
+* [Stage variables](/docs/platform/pipelines/add-a-stage#stage-variables)
+* [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs)
+* [CI environment variables reference](./ci-env-var.md)
+* [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [Secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
 ### Templates
 
@@ -95,12 +106,13 @@ Use these strategies to automate and manage build sequences.
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
-* [Bring-your-own Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager)
-* [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
-* [Send notifications](/docs/category/notifications-1)
+* [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
+* [Send notifications](/docs/category/notifications)
+* [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
 
 ## Increase step resources
 
 Check your infrastructure monitoring tools for potential bottlenecks during the time windows when your builds are running. Increasing memory or CPU capacity in your Build steps might help speed up your builds.
 
-You can also [enforce pipeline concurrency limits](/docs/platform/settings/pipeline-settings/).
+You can also [enforce pipeline concurrency limits](docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings.md).

@@ -1,10 +1,10 @@
 ---
-title: Create an AutoStopping proxy for GCP
+title: GCP AutoStopping proxy 
 description: This topic describes how to create an AutoStopping proxy for GCP.
 # sidebar_position: 2
 ---
 
-
+# Create an AutoStopping proxy for GCP
 
 AutoStopping is a solution that is well-suited for use with native load-balancing options like AWS ALB. However, there are certain use cases, such as SSH/RDP/RDS connections, that cannot be addressed by native load balancer integrations for AutoStopping.
 
@@ -48,7 +48,7 @@ Ensure that the file uploaded in the Secret value field is not encrypted or enco
 ![](./static/gcp-secret-version.png)
 
 15. **TLS Private Key Secret Version**: Create another secret for private key and enter the resource ID in this field.
-16. **API Key**: Enter a valid NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+16. **API Key**: Enter a valid NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/api/api-quickstart) for more information.
 
 17. Enable **Allocate Static IP** if you need to assign an elastic IP address to make the VM publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
 18. Click **Save Load Balancer**.

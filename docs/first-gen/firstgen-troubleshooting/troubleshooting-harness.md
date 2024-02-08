@@ -533,7 +533,7 @@ Deployment rate limit reached. Some deployments may not be allowed. Please conta
 Harness applies an hourly and daily deployment limit to each account to prevent configuration errors or external triggers from initiating too many undesired deployments. If you are notified that you have reached a limit, it is possible that undesired deployments are occurring. Please determine if a Trigger or other mechanism is initiating undesired deployments. If you continue to experience issues, contact [Harness Support](mailto:support@harness.io).
 
 :::note 
-* The daily limit is 100 deployments every 24 hours. The hourly limit is 40 deployments and is designed to detect any atypical upsurge of deployments.
+* The daily limit is 400 deployments every 24 hours. The hourly limit is 160 deployments and is designed to detect any atypical upsurge of deployments.
 * You can only use 40% of the daily deployment limit in a single hour.
 :::
 
@@ -889,7 +889,7 @@ Likely, there is an incompatible Helm client or Tiller. The Helm client needs to
 
 In some cases, the first Helm deployment goes to the upgrade path even though the Helm version is working fine.
 
-This is the result of a Helm issue: <https://github.com/helm/helm/issues/4169>.
+This is the result of a Helm issue: [https://github.com/helm/helm/issues/4169](https://github.com/helm/helm/issues/4169).
 
 The issue happens between Helm client versions 2.8.2 to 2.9.1. To fix this, upgrade the Helm client to the version after 2.9.1.
 
@@ -897,7 +897,7 @@ The issue happens between Helm client versions 2.8.2 to 2.9.1. To fix this, upgr
 
 A Helm install/upgrade can fail because Tiller is deployed in a namespace other than `kube-system`.
 
-To fix this, pass the`--tiller-namespace <NAMESPACE>`as command flag in the Workflow **Helm Deploy** step.
+To fix this, pass the`--tiller-namespace \<NAMESPACE>`as command flag in the Workflow **Helm Deploy** step.
 
 ![](./static/troubleshooting-harness-19.png)
 
@@ -937,7 +937,7 @@ For more information, search the Web for `use same port and use host header name
 
 The following problems can occur when developing and deploying to Kubernetes.
 
-#### Invalid Kubernetes resource name ${k8s.canaryWorkload}. Should be in format Kind/Name
+#### Invalid Kubernetes resource name $\{k8s.canaryWorkload}. Should be in format Kind/Name
 
 The deployed Kubernetes object must reach steady state for Harness to be able to resolve the `${k8s.canaryWorkload}` expression.
 
@@ -1036,7 +1036,7 @@ The following error message can appear if a property, such as the security setti
 ```
 ConstructorException: Cannot create property=spec for JavaBean=class V1StatefulSet
 ```
-Ensure that your YAML specification is formed correctly. There are online validation tools such as [kubeyaml.com](https://kubeyaml.com/).
+Use a validation tool to ensure that your YAML specification is formed correctly. 
 
 For steps on how to add a security context for a pod or container, see [Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
 

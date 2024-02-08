@@ -1,0 +1,22 @@
+# Set task role resource for the target task
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: aws-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: resource-access-restrict
+    spec:
+      components:
+        env:
+        - name: RULE_TYPE
+          value: 'inbound'
+        - name: SECURITY_GROUP_IDS
+          value: 'sg-390240912830921,sg-89834791828231'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

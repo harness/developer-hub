@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 :::
 
 By default, all Harness User Group members have full permissions on all Applications.

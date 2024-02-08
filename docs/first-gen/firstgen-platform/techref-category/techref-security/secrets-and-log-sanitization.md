@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).
 :::
 
 Harness sanitizes deployment logs and any script outputs to mask text secret values.

@@ -1,348 +1,87 @@
 ---
-title: Build and push an artifact
-description: Add a Build and Push step to build and push an artifact to a repo.
+title: Build and push artifacts and images
+description: There are many ways you can use Harness CI to upload artifacts.
 sidebar_position: 10
 helpdocs_topic_id: 8l31vtr4hi
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /tutorials/ci-pipelines/publish/ci-artifacts-overview
+  - /tutorials/ci-pipelines/publish/
 ---
 
-Add a **Build and Push** step to your CI pipeline to build your codebase and then push the artifact to a repo. The following repos are supported:
+You can use Harness CI to upload artifacts, such as Docker images or test results. [Build and Push steps](#build-and-push) build your codebase and then push the resulting artifact to a container registry or cloud storage repo. [Upload Artifact steps](#upload-artifacts) upload any artifact.
 
-* [Docker](#add-the-build-and-push-step)
-* [Azure Container Registry (ACR)](./build-and-push-to-acr.md)
-* [Google Container Registry (GCR)](./build-and-push-to-gcr.md)
-* [Amazon Elastic Container Registry (ECR)](/tutorials/ci-pipelines/publish/amazon-ecr)
-* [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
+## Build and Push
 
-:::info
+**Build and Push** steps build your codebase and then push the artifact to a repo. You can:
 
-For language-specific tutorials, go to the [CI Build tutorials](/tutorials/ci-pipelines/build/).
+- [Build and push to Docker Hub or a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+- [Build and push to Azure Container Registry (ACR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr.md)
+- [Build and push to Amazon Elastic Container Registry (ECR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
+- [Build and push to Google Artifact Registry (GAR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md)
+- [Build and push to Google Container Registry (GCR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
+- [Build and push to GitHub Container Registry (GHCR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ghcr.md)
+- [Build and push to a JFrog Artifactory Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-jfrog.md)
 
-For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
-
-:::
-
-This topic describes a simple one-step build workflow that does not include testing. It builds the code in a build farm, and then pushes it to a repo.
-
-<details>
-<summary>Video summary</summary>
-
-For a visual summary of the process described in this topic, watch the following video:
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" />
-
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/v3A4kF1Upqo/hqdefault.jpg"><iframe width="200" height="150" src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div -->
-
-</details>
-
-## Before you begin
-
-You should have an understanding of the following:
-
-* Harness' [key concepts](/docs/getting-started/learn-harness-key-concepts.md).
-* How to [set up build infrastructure](/docs/category/set-up-build-infrastructure).
-* How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
-  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm).
-  * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
-* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
-
-## Add the Build and Push step
-
-1. Go to **Pipelines** and create a new pipeline or edit an existing pipeline.
-1. Configure the pipeline's codebase, if you have not already done so. For details, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+For other non-Docker upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to build and upload the artifact.
 
 :::tip
 
-The codebase configuration specifies the repo to use for this pipeline. When you run the pipeline, you specify the specific branch or commit to use for that build.
+You can also:
+
+- [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
+- [Build multi-architecture images](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-multi-arch.md)
 
 :::
 
-2. If your pipeline doesn't already have a **Build** stage, select **Add Stage**, and then select **Build**.
-3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
-4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select a **Build and Push** step from the Step Library.
-
-For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:
-
-* Docker: [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
-* Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
-* Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md)
-* Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings.md)
-* Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps).
-
-6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
-
-## Run the pipeline
-
-Select **Run Pipeline** to run your pipeline. Depending on your pipeline's codebase configuration, you may need to select a Git branch or tag to use for the build.
-
-![](./static/build-and-upload-an-artifact-13.png)
-
-While the build runs, you can monitor the **Build and Push** step logs. For example, these are the logs for a step that pushed to a Docker repo:
-
-```
-/kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=cretzman/ciquickstart:13
-Retrieving image manifest alpine:3.12
-Retrieving image alpine:3.12
-Retrieving image manifest alpine:3.12
-Retrieving image alpine:3.12
-Built cross stage deps: map[]
-Retrieving image manifest alpine:3.12
-Retrieving image alpine:3.12
-Retrieving image manifest alpine:3.12
-Retrieving image alpine:3.12
-Executing 0 build triggers
-Unpacking rootfs as cmd ADD go-sample-app /bin/ requires it.
-LABEL maintainer="John Doe <john.doe@example.com>"
-Applying label maintainer=John Doe <john.doe@example.com>
-Using files from context: [/step-exec/workspace/go-sample-app]
-ADD go-sample-app /bin/
-Taking snapshot of files...
-ENTRYPOINT ["/bin/go-sample-app"]
-```
-
-If the build succeeds, you can find the pushed image in your image repo:
-
-![](./static/build-and-upload-an-artifact-14.png)
-
-The build is also listed in your Harness project's **Builds**.
-
-## Useful techniques
-
-Here are some interesting ways you can use or enhance **Build and Push** steps.
-
 <details>
-<summary>Use Harness expressions for tags</summary>
+<summary>Video: Add a Build and Push step</summary>
 
-When you push an image to a repo, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
+The following video demonstrates how to add a **Build and Push** step to a Harness CI pipeline.
 
-There are several ways to tag images, but Harness expressions can be useful.
-
-![](./static/build-and-upload-an-artifact-10.png)
-
-For example, `<+pipeline.sequenceId>` is a built-in Harness expression that represents the **Build Id** number, for example `9`.
-
-After the pipeline runs, you can see the `Build Id` in the output.
-
-![](./static/build-and-upload-an-artifact-15.png)
-
-The ID also appears as an image tag in your target image repo:
-
-![](./static/build-and-upload-an-artifact-12.png)
-
-The `Build Id` tags an image that you pushed in an earlier stage of your pipeline. You can use the `Build Id` to pull the same image in later stages of the same pipeline. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
-
-For example, you can use the `<+pipeline.sequenceId>` expression as a variable tag to reference images in future pipeline stages by using syntax such as: `harnessdev/ciquickstart:<+pipeline.sequenceId>`.
-
-As a more specific example, if you have a [Background step](../../ci-technical-reference/background-step-settings.md) in a later stage in your pipeline, you can use the `<+pipeline.sequenceId>` variable to identify the image without needing to call on a fixed value.
-
-![](./static/build-and-upload-an-artifact-11.png)
+<DocVideo src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" />
 
 </details>
 
-<details>
-<summary>Build a Docker image without pushing</summary>
+### Kubernetes cluster build infrastructures require root access
 
-You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
+With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
 
-1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Click **Add Variable** and enter the following:
-	1. Name: **PLUGIN\_NO\_PUSH**
-	2. Type: **String**
-	3. Value: **true**
-4. Save and run the pipeline.
+If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
-</details>
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md).
 
-<details>
-<summary>Build multi-architecture images</summary>
+## Upload Artifacts
 
-To use a CI pipeline to build multi-architecture images, create a stage for each architecture.
+**Upload Artifact** steps upload artifacts. These steps _don't_ include build commands. You can:
 
-The following YAML example describes a mulit-architecture pipeline. For a guided experience, try the [Rust application CI tutorial](/tutorials/ci-pipelines/build/rust).
+- [Upload artifacts to JFrog Artifactory non-Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+- [Upload artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+- [Upload artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+- [Upload artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
 
-```yaml
-pipeline:
-  allowStageExecutions: true
-  projectIdentifier: my-project
-  orgIdentifier: default
-  tags:
-    CI: ""
-  properties:
-    ci:
-      codebase:
-        connectorRef: CI_GitHub
-        repoName: Automation.git
-        build: <+input>
-  stages:
-    - stage:
-        name: K8
-        identifier: upload
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: K8Linux
-              namespace: <+input>
-              runAsUser: ""
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              containerSecurityContext:
-                runAsUser: ""
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: CreateDockerFile
-                  identifier: CreateDockerFile
-                  spec:
-                    connectorRef: CI_DockerHub
-                    image: alpine:latest
-                    command: |-
-                      touch harnessDockerfileui
-                      cat > harnessDockerfileui <<- EOM
-                      FROM alpine:latest AS dev-env
-                      ARG foo
-                      RUN echo "$foo bar"
-                      ENTRYPOINT ["pwd"]
+For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to upload the artifact. You can also [send artifacts by email](./drone-email-plugin).
 
-                      FROM alpine:latest AS release-env
-                      ARG hello
-                      RUN echo "$hello world"
-                      ENTRYPOINT ["ls"]
-                      EOM
-                      cat harnessDockerfileui
-                    resources:
-                      limits:
-                        memory: 100M
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: DockerPushStep
-                  identifier: DockerPushStep
-                  spec:
-                    connectorRef: my-dockerhub
-                    repo: my-repo/ciquickstart
-                    tags:
-                      - "1.0"
-                    dockerfile: harnessDockerfileui
-                    target: dev-env
-                    resources:
-                      limits:
-                        memory: 100M
-        variables: []
-    - stage:
-        name: K8s Linux arm
-        identifier: CI_Golden_ARM
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: k8sarm
-              namespace: ci-gold-arm-delegate
-              automountServiceAccountToken: true
-              tolerations:
-                - effect: NoSchedule
-                  key: kubernetes.io/arch
-                  operator: Equal
-                  value: arm64
-              nodeSelector:
-                kubernetes.io/arch: arm64
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: CreateDockerFile
-                  identifier: CreateDockerFile
-                  spec:
-                    connectorRef: CI_DockerHub
-                    image: alpine:latest
-                    command: |-
-                      touch harnessDockerfileui
-                      cat > harnessDockerfileui <<- EOM
-                      FROM alpine:latest AS dev-env
-                      ARG foo
-                      RUN echo "$foo bar"
-                      ENTRYPOINT ["pwd"]
+:::tip Artifacts tab
 
-                      FROM alpine:latest AS release-env
-                      ARG hello
-                      RUN echo "$hello world"
-                      ENTRYPOINT ["ls"]
-                      EOM
-                      cat harnessDockerfileui
-                    resources:
-                      limits:
-                        memory: 100M
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: DockerPushStep
-                  identifier: DockerPushStep
-                  spec:
-                    connectorRef: my-dockerhub
-                    repo: my-repo/ciquickstart
-                    tags:
-                      - "1.0"
-                    dockerfile: harnessDockerfileui
-                    target: dev-env
-                    resources:
-                      limits:
-                        memory: 100M
-        variables: []
-  variables: []
-  identifier: CI_MultiArch
-  name: CI_MultiArch
-```
+Regardless of how you upload artifacts, you can [publish any URL to the Artifacts tab](./artifacts-tab).
 
-</details>
+:::
 
-## YAML example
+## Troubleshoot building and pushing artifacts and images
 
-Here's a YAML example for a CI pipeline that has a **Build** stage with a **Build and Push** step:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images or uploading artifacts, such as:
 
-```yaml
-pipeline:
-  name: CI Quickstart
-  identifier: CI_Quickstart
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.CI_Quickstart
-        repoName: goHelloWorldServer
-        build: <+input>
-  stages:
-    - stage:
-        name: Build Test and Push
-        identifier: Build_Test_and_Push
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: Build and push image to DockerHub
-                  identifier: Build_and_push_image_to_DockerHub
-                  spec:
-                    connectorRef: account.Docker_Quickstart
-                    repo: cretzman/ciquickstart
-                    tags:
-                      - <+pipeline.sequenceId>
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.cidelegate
-              namespace: harness-delegate-uat
-          serviceDependencies: []
-  projectIdentifier: CI_Quickstart
-  orgIdentifier: default
-```
+* [What drives the Build and Push steps? What is kaniko?](/kb/continuous-integration/continuous-integration-faqs/#what-drives-the-build-and-push-steps-what-is-kaniko)
+* [Does a kaniko build use images cached locally on the node? Can I enable caching for kaniko?](/kb/continuous-integration/continuous-integration-faqs/#does-a-kaniko-build-use-images-cached-locally-on-the-node-can-i-enable-caching-for-kaniko)
+* [Can I run Build and Push steps as root if my build infrastructure runs as non-root? What if my security policy doesn't allow running as root?](/kb/continuous-integration/continuous-integration-faqs/#can-i-run-build-and-push-steps-as-root-if-my-build-infrastructure-runs-as-non-root)
+* [Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?](/kb/continuous-integration/continuous-integration-faqs/#can-i-set-kaniko-and-drone-docker-runtime-flags-such-as-skip-tls-verify-or-custom-dns)
+* [Is remote caching supported in Build and Push steps?](/kb/continuous-integration/continuous-integration-faqs/#is-remote-caching-supported-in-build-and-push-steps)
+* [Build and Push to ECR step fails with error building image, failed to execute command, exec format error.](/kb/continuous-integration/continuous-integration-faqs/#build-and-push-to-ecr-step-fails-with-error-building-image-failed-to-execute-command-exec-format-error)
+* [Where does the Build and Push to ECR step pull the base images specified in the Dockerfile?](/kb/continuous-integration/continuous-integration-faqs/#where-does-the-build-and-push-to-ecr-step-pull-the-base-images-specified-in-the-dockerfile)
+* [Can I send artifacts by email?](/kb/continuous-integration/continuous-integration-faqs/#can-i-send-emails-from-ci-pipelines)
+* [Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?](/kb/continuous-integration/continuous-integration-faqs/#can-i-run-the-upload-artifacts-to-jfrog-artifactory-step-with-a-non-root-user)
+* [How do I show content on the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-show-content-on-the-artifacts-tab)
+* [Does the Upload Artifacts to S3 step compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)

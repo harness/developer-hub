@@ -101,7 +101,7 @@ If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resou
 
 For resources in a Helm chart, provide the path and name of the file from the root folder of the repo.
 
-For example, the following Service uses a remote manifest that points to a Helm chart at **https://github.com/helm/charts.git/stable/chartsmuseum**. In the chart's **templates** folder, there is a **deployment.yaml** file. In **File Path**, you reference **templates/deployment.yaml**.
+For example, the following Service uses a remote manifest that points to a Helm chart at `github.com/helm/charts.git/stable/chartsmuseum`. In the chart's **templates** folder, there is a **deployment.yaml** file. In **File Path**, you reference **templates/deployment.yaml**.
 
 ![](./static/delete-kubernetes-resources-118.png)
 
@@ -131,7 +131,7 @@ If you select two Selectors, a Delegate must have both Selectors to be selected.
 
 You can use expressions for Harness built-in variables or Account Default variables in **Delegate Selectors**. When the variable expression is resolved at deployment runtime, it must match an existing Delegate Selector.  
   
-For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting.### Example 1: Deleting ${k8s.canaryWorkload}
+For example, if you have a Delegate Selector **prod** and the Workflow is using an Environment also named **prod**, the Delegate Selector can be `${env.name}`. This is very useful when you match Delegate Selectors to Application component names such as Environments, Services, etc. It's also a way to template the Delegate Selector setting.### Example 1: Deleting $\{k8s.canaryWorkload}
 
 Here is an example of the log from a Delete command:
 

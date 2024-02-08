@@ -1,5 +1,5 @@
 ---
-title: Optimize AWS ECS costs with recommendations
+title: AWS ECS recommendations
 description: Optimize AWS ECS costs with recommendations
 # sidebar_position: 2
 helpdocs_topic_id: 7xxejpvs9w
@@ -7,6 +7,8 @@ helpdocs_category_id: viib5j7fek
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Optimize AWS ECS costs with recommendations
 
 One of the most impactful ways to reduce spend on AWS ECS infrastructure is to make sure your ECS clusters are optimally sized for the services and tasks they run. Harness Cloud Cost Management (CCM) provides recommendations for your ECS clusters to show you resource optimization opportunities to potentially reduce your monthly spend.
 
@@ -28,7 +30,7 @@ Using recommendations without proper assessment could result in unexpected chang
 To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
 
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
-See [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+See [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 
 ## How are recommendations computed?
 
@@ -40,7 +42,7 @@ The implementation uses a histogram method to compute the recommendations.
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the **Tune recommendations** option.
 
-When you enable [Cost Visibility](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for your ECS cluster, Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
+When you enable [Cost Visibility](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) for your ECS cluster, Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 

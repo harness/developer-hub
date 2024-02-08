@@ -1,7 +1,7 @@
 ---
 title: Continuous Verification (CV)
 description: Get an overview of Harness CV.
-sidebar_position: 1
+sidebar_position: 20
 helpdocs_topic_id: 3xhqq9xllp
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -21,9 +21,9 @@ If you are already familiar with setting up Harness CV and the verification step
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 * [Learn about Kubernetes deployments](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
-* [Refer to the supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md#continuous-verification)
+* [Refer to the supported platforms and technologies](../../get-started/supported-platforms-and-technologies.md#continuous-verification)
 
 
 ## Deployment strategies for CV
@@ -56,13 +56,20 @@ Harness uses the data points within this duration for analysis. For instance, if
 
 ### Artifact tag
 
-Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](/docs/platform/variables-and-expressions/harness-variables/#artifact).
 
 
 ### Fail on no analysis. 
    
 You can configure the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
+The Verify step also includes a metric-level option to fail the Verify step when the analysis of a given custom metric is not possible because there is no data for the custom metric on either the test nodes or the control nodes.
+
+To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
+
+:::note
+The metric-level option is behind the feature flag `CV_UI_DISPLAY_FAIL_IF_ANY_CUSTOM_METRIC_IN_NO_ANALYSIS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ### Health source
 

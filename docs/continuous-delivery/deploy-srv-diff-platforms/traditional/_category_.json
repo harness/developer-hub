@@ -6,6 +6,6 @@
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "Traditional deployments"
+      "title": "Traditional deployments to Linux and Windows VMs/bare-metal servers"
   }
 }

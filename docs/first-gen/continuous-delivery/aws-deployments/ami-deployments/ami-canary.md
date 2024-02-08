@@ -233,7 +233,7 @@ For details about this step's **Rollback all phases at once** option, see the c
 
 ![](./static/ami-canary-169.png)
 
-The Rollback step's default presence here is unlike the default for other Harness Canary Workflows, such as [Kubernetes Canary](docs/first-gen/continuous-delivery/kubernetes-deployments/create-a-kubernetes-canary-deployment.md). If an AMI Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment. This will delete its newly created instances, conserving AWS resources and costs.
+The Rollback step's default presence here is unlike the default for other Harness Canary Workflows, such as [Kubernetes Canary](/docs/first-gen/continuous-delivery/kubernetes-deployments/create-a-kubernetes-canary-deployment.md). If an AMI Canary phase fails to deploy, its Rollback step will roll back the whole Workflow to its state prior to this deployment. This will delete its newly created instances, conserving AWS resources and costs.
 
 ![](./static/ami-canary-170.png)
 

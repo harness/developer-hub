@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/getting-started/supported-platforms-and-technologies.md).Harness integrates with the following HashiCorp offerings:
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/get-started/supported-platforms-and-technologies.md).Harness integrates with the following HashiCorp offerings:
 
 ### HashiCorp Terraform
 

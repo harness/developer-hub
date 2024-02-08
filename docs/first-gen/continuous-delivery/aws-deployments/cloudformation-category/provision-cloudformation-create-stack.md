@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).This topic describes how to provision infrastructure using the Workflow CloudFormation Create Stack step.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).This topic describes how to provision infrastructure using the Workflow CloudFormation Create Stack step.
 
 Once you have [created a CloudFormation Infrastructure Provisioner](add-cloud-formation-templates.md) and [added it to a Harness Infrastructure Definition](map-cloud-formation-infrastructure.md), you add that Infrastructure Definition to a Workflow.
 

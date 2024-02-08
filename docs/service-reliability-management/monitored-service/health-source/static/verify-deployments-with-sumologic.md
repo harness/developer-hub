@@ -6,14 +6,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-:::note
-Currently, this feature is behind the feature flag `SRM_SUMO`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
@@ -86,7 +82,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](/docs/platform/variables-and-expressions/harness-variables/#artifact).
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
 
@@ -154,8 +150,8 @@ To add a health source:
    In the **Query** box, enter your metric query and then select **Run Query**.  
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
-   <details>
-   <summary><b>Sample query for memory usage</b></summary>
+<details>
+<summary><b>Sample query for memory usage</b></summary>
 
    Query: `metric=memory`
 
@@ -166,7 +162,7 @@ To add a health source:
    ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
 
-   </details>
+</details>
 
 #### Assign services
 
@@ -263,14 +259,14 @@ To set fail-fast thresholds for CV, follow these steps:
 2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
 
 <details>
-   <summary><b>Sample log query</b></summary>
+<summary><b>Sample log query</b></summary>
 
    Query: `_sourcename = "Http Input"`
 
    ![Query - Logs](./static/cv-sumologic-select-log-query-chart-records.png)
 
 
-   </details>
+</details>
 
 
 </TabItem>

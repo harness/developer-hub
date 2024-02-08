@@ -18,7 +18,7 @@ Harness FirstGen is the Harness version that's been around for years, covering a
 
 Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
 
-For more information, go to [Harness FirstGen vs Harness NextGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md).
+For more information, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
 
 ## What's happening to the FirstGen CD product?
 
@@ -36,12 +36,15 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
   - Harness will no longer publish new versions of the Self Hosted Harness Platform (SMP) for Harness FirstGen.
   - Only Harness NextGen versions will be released in our SMP releases. 
 
-
 - 1/1/2024. End of support for FirstGen CD.
   - Harness Support will no longer accept support requests for FirstGen CD.
   - Security fixes will still be addressed.
   - Product defects will not be addressed.
-
+ 
+- 1/31/2024. End of support for Delegate-Legacy.
+  - Harness Support will no longer accept support requests for Delegate-Legacy in both Harness FirstGen and Harness NextGen (including Self Hosted Harness Platform (SMP))
+  - Security fixes will still be addressed.
+  - Product defects will not be addressed. 
 
 - 4/1/2024. FirstGen SaaS product shutdown.
   - Harness delegates will no longer register with Harness SaaS.
@@ -115,14 +118,7 @@ To upgrade to NextGen, select the **Launch Harness Next Generation** button in t
 
 To go back to FirstGen, select the **Launch First Generation** button in the Harness NextGen UI.
 
-The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as NextGen is `TRUE`. 
-
-The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as FirstGen is:
-
-* `TRUE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is disabled.  
-* `FALSE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is enabled.
-
-For new FirstGen and NextGen user accounts, this value is set to `FALSE` by default.
+The default `allowCrossGenerationAccess` value for existing CD accounts in Harness is `TRUE`, but it is set to `FALSE` for non-CD accounts. For all new FirstGen and NextGen user accounts, this value is set to `FALSE` by default.
 
 When you change the `allowCrossGenerationAccess` setting value in FirstGen or NextGen, a FirstGen or NextGen audit is generated respectively.
 

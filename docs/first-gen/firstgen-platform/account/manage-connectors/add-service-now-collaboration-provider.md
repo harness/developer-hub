@@ -7,9 +7,9 @@ helpdocs_category_id: ll7h8ktlwe
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import image_1 from './static/add-service-now-collaboration-provider-26.png'
-```
+
 
 You can use ServiceNow tickets to track/audit the progress of Harness deployments (and Pipelines), and to approve or reject Pipeline stages or Workflows.
 
@@ -38,9 +38,9 @@ Start adding a Collaboration Provider to Harness as follows:
 
 4. Click **Add Collaboration Provider**. This opens the default Collaboration Provider settings, which you will configure in the following steps.
 
-```mdx-code-block
+
 <img src={image_1} height="300" width="500" />
-```
+
 
 ## Step 2: Type
 

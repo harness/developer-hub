@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).
 
 Harness supports Helm 2 and Helm v3. This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
@@ -53,7 +53,7 @@ Sound fun? Let's get started.
 
 This is a simple guide that covers the basics of deploying Docker images to Kubernetes using Helm. It does not cover the following:
 
-* **Ingress Rules** - Harness supports Ingress Rules for Kubernetes deployments. You can learn how to use Ingress Rules in [Ingress Rules](../kubernetes-deployments/set-up-kubernetes-ingress-rules.md). For a Harness deployment using Helm, you can add Ingress rules in a Helm chart file (**kind: Ingress**) and Harness will use those during deployment. For information about Ingress rules and Helm, see [Secure Kubernetes Services With Ingress, TLS And LetsEncrypt](https://docs.bitnami.com/kubernetes/how-to/secure-kubernetes-services-with-ingress-tls-letsencrypt/) from Bitnami.
+* **Ingress Rules** - Harness supports Ingress Rules for Kubernetes deployments. You can learn how to use Ingress Rules in [Ingress Rules](../kubernetes-deployments/set-up-kubernetes-ingress-rules.md). For a Harness deployment using Helm, you can add Ingress rules in a Helm chart file (**kind: Ingress**) and Harness will use those during deployment. For information about Ingress rules and Helm, see [Secure Kubernetes Services With Ingress, TLS And LetsEncrypt](https://docs.bitnami.com/tutorials/secure-kubernetes-services-with-ingress-tls-letsencrypt/) from Bitnami.
 
 #### What Harness Needs Before You Begin
 

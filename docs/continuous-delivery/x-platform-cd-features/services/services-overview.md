@@ -22,10 +22,7 @@ For more information, go to [create services](/docs/continuous-delivery/x-platfo
 
 ## Services RBAC
 
-Review these key RBAC uses cases for services.
-
-* [Harness Role-Based Access Control overview](/docs/platform/role-based-access-control/rbac-in-harness/)
-* [Harness Role-Based Access Control quickstart](/docs/platform/role-based-access-control/set-up-rbac-pipelines/).
+Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for examples of RBAC use cases for services.
 
 ## Access permission to deploy to a service
 
@@ -52,3 +49,9 @@ If you want to restrict a user or user group to deploy to a specific environment
 3. Assign the role and resource group to the user or user group.
 
 ![](./static/services-and-environments-overview-22.png)
+
+
+## Deleting a Service in Harness
+
+For information on deleting services in Harness, go to **Deleting a Service in Harness** in [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/).
+

@@ -69,7 +69,7 @@ echo "buildNumber: " ${Jenkins.buildNumber}
 echo "description: " ${Jenkins.description}
 ```
 
-The `${Jenkins.description}` parameter requires [Descriptor Setter](https://wiki.jenkins.io/display/JENKINS/Description+Setter+Plugin) plugin in Jenkins.When you deploy the Workflow, the Shell Script command will output all the parameters (`${Jenkins.description}` is not shown):
+The `${Jenkins.description}` parameter requires [Descriptor Setter](https://plugins.jenkins.io/description-setter/) plugin in Jenkins.When you deploy the Workflow, the Shell Script command will output all the parameters (`${Jenkins.description}` is not shown):
 
 ![](./static/3-build-workflow-03.png)
 

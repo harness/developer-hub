@@ -2,55 +2,42 @@
 id: lambda-update-function-timeout
 title: Lambda update function timeout
 ---
-
-Lambda update function timeout causes timeout of a Lambda function to be updated to a specified value for a certain duration.
-- It checks the performance of the application (or service) running with a new timeout.
-- It also helps determine a safe overall timeout value for the function.
+Lambda update function timeout causes a timeout of a Lambda function, thereby updating the timeout to a specific value for a certain duration. Timeout errors interrupt the flow of the given function.
+Hitting a timeout is a frequent scenario with Lambda functions. This can break the service and impact the delivery. Such scenarios can occur despite the availability aids provided by AWS. 
 
 
 ![Lambda Update Function Timeout](./static/images/lambda-update-function-timeout.png)
 
 
-## Usage
+## Use cases
+Lambda update function timeout:
+- Checks the performance of the application (or service) running with a new timeout.
+- Determines a safe overall timeout value for the function.
 
-<details>
-<summary>View fault usage</summary>
-<div>
-Hitting a timeout is a very common and frequent scenario we find with lambda functions that can break the service and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides or we determine.
-Getting timeout errors interrupts the flow of the given function. So this category of chaos fault helps you to build the immunity of the application undergoing any such scenarios.
-</div>
-</details>
-
-## Prerequisites
-
+### Prerequisites
 - Kubernetes >= 1.17
 - Access to operate AWS Lambda service.
-- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
+- Lambda function must be up and running.
+- Kubernetes secret must have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -70,34 +57,29 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::info note
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+:::
 
-## Default validations
-
-The Lambda function should be up and running.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
-    <table>
+### Mandatory tunables
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target lambda function. It support single function name.</td>
+        <td> Function name of the target Lambda function. It support single function name.</td>
         <td> For example, <code>test-function</code> </td>
       </tr>
       <tr>
         <td> FUNCTION_TIMEOUT </td>
-        <td> Provide the value of function timeout in seconds.</td>
-        <td> The minimum value is 1s and maximum upto 15mins that is 900s </td>
+        <td> Value of function timeout in seconds.</td>
+        <td> Minimum value: 1 s and maximum: 900 s (15 minutes). For more information, go to <a href="#timeout-value"> timeout value.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -105,47 +87,42 @@ The Lambda function should be up and running.
         <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion in seconds </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30 </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a> </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Timeout value
 
-It can update the lambda function timeout value to a newer value by using `FUNCTION_TIMEOUT` environment variable as shown below.
+Updates the Lambda function timeout value to a different value. Tune it by using `FUNCTION_TIMEOUT` environment variable.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/lambda-update-function-timeout/function-timeout.yaml yaml)
 ```yaml

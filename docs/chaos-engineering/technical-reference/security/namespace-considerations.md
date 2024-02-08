@@ -1,16 +1,23 @@
 ---
 title: Namespace considerations
 sidebar_position: 2
+description: Execute chaos experiments on specific namespaces
 ---
-To run chaos experiments on specific namespaces, follow the below mentioned steps.
+This section discusses the steps required to run chaos experiments on specific namespaces.
 
-1. Install HCE in cluster mode
+Kubernetes clusters are vast, multi-layered, and customizable. A simple misconfiguration or vulnerability introduced by libraries poses a threat to the Kubernetes environment. These threats can allow users with malicious intent to gather information about your environment without being detected, gain backdoors to your application, or escalate privileges to steal secrets.
 
-- Install HCE in cluster mode with the given installation manifest. 
+You can allow your chaos experiments to run in specific namespaces, thereby limiting the exposure of all the services (including business-critical and potentially sensitive workflows) of your application.
+
+If your application fails, the above-mentioned technique also helps pin-point the exact cluster, namespace, and services in your Kubernetes environment that failed.
+
+### Step 1. Install CE in cluster mode
+
+- Install CE in cluster mode with the given installation manifest. 
 - Restrict `litmus-admin` service account to certain target namespaces.
 
-2. Delete `litmus-admin` ClusterRole and ClusterRoleBinding
-- Once HCE is up and running in cluster mode, delete the `litmus-admin` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
+### Step 2. Delete `litmus-admin` ClusterRole and ClusterRoleBinding
+- Once CE is up and running in cluster mode, delete the `litmus-admin` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
 
 ```bash
 $> kubectl delete clusterrole litmus-admin
@@ -28,7 +35,7 @@ $> kubectl delete clusterrolebinding litmus-admin
 clusterrolebinding.rbac.authorization.k8s.io "litmus-admin" deleted
 ```
 
-3. Create Role and RoleBinding in all target namespaces
+### Step 3. Create Role and RoleBinding in all target namespaces
 
 This allows specific namespaces for chaos operations. Create Role and RoleBinding in these specific namespaces (say `namespaceA` and `namespaceB`). 
 
@@ -183,7 +190,7 @@ subjects:
 ```
 
 :::info
-The rolebinding subjects point to the `litmus-admin` service account only (in HCE namespace). 
+The rolebinding subjects point to the `litmus-admin` service account only (in CE namespace). 
 :::
 
 #### Create the roles
@@ -202,11 +209,11 @@ $> kubectl apply -f role-2.yaml
 ```role.rbac.authorization.k8s.io/namespaceB-chaos created```
 ```rolebinding.rbac.authorization.k8s.io/namespaceB-chaos created```
 
-4. Create Role and RoleBinding in all target namespaces
+### Step 4. Create Role and RoleBinding in all target namespaces
 
 Create a Role and RoleBinding in the chaos namespace as well. This will be used by chaos runner pod to launch experiment. 
 
-5. Verify the chaos execution on different namespaces
+### Step 5. Verify the chaos execution on different namespaces
 
 Run an experiment, say pod-delete in both the namespaces to verify if these namespaces have the permission to run experiments.
 
@@ -234,5 +241,4 @@ time="2022-11-14T06:47:51Z" level=info msg="[Status]: Checking whether applicati
 time="2022-11-14T06:50:53Z" level=error msg="Application status check failed, err: Unable to find the pods with matching labels, err: pods is forbidden: User \"system:serviceaccount:litmus:litmus-admin\" cannot list resource \"pods\" in API group \"\" in the namespace \"test\""
 ```
 
-
-You have successfully restricted HCE to run chaos on certain namespaces instead of all namespaces.
+You have successfully restricted CE to run chaos on certain namespaces instead of all namespaces.

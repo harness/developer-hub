@@ -1,7 +1,8 @@
 ---
-title: Aqua Trivy scanner reference
-description: Image scans with Aqua Trivy
+title: Aqua Trivy scanner reference for STO
+description: Scan container images with  Aqua Trivy.
 sidebar_position: 30
+sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -14,105 +15,180 @@ You can scan your container images using [Aqua Trivy](https://github.com/aquasec
 STO supports container scans only with Aqua Trivy.
 :::
 
-## Before you begin
+## Important notes for running Aqua Trivy scans in STO
 
-```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
-```
-
-<StoCreateDinD />
+### Docker-in-Docker requirements
 
 
-## Aqua Trivy step configuration
 
-The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Aqua Trivy scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
-
-<StoScannerStepNotes />
-
-<details>
-    <summary>Step Palette</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
 
-### Scan settings
+<StoDinDRequirements />
 
 
-<a name="scan-mode"></a>
+### Root access requirements 
+
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+
+<StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+
+## Aqua Trivy step settings for STO scans
+
+The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below.
+
+
+### Scan
+
 
 #### Scan Mode
 
-```mdx-code-block
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
 
-<StoSettingScanMode />
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
-<a name="scan-config"></a>
 
 #### Scan Configuration
 
-```mdx-code-block
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
 
-### Target Settings
+### Target
 
-<a name="target-type"></a>
 
 #### Type
 
-```mdx-code-block
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-```
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
+
+<!-- #### Detect target and variant 
+
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
+
 
 #### Name 
 
-```mdx-code-block
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-<StoSettingProductID />
+<StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-```mdx-code-block
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
+### Container image
 
-### Ingestion settings
+
+#### Type
+
+
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
+
+
+<StoSettingImageType />
+
+#### Domain
+
+
+
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
+
+
+<StoSettingImageDomain />
+
+#### Name
+
+
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
+
+
+<StoSettingImageName />
+
+
+#### Tag
+
+
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
+
+
+<StoSettingImageTag />
+
+#### Access ID
+
+
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+
+
+
+<StoSettingImageAccessID />
+
+#### Access Token
+
+
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+
+
+
+<StoSettingImageAccessToken />
+
+
+#### Region  
+
+
+import StoSettingImageRegion from './shared/step_palette/image/_region.md';
+
+
+
+<StoSettingImageRegion />
+
+
+
+
+### Ingestion
 
 
 <a name="ingestion-file"></a>
 
 #### Ingestion File
 
-```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
 
 <StoSettingIngestionFile  />
 
@@ -123,9 +199,10 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
+
 
 <StoSettingLogLevel />
 
@@ -133,57 +210,59 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 <StoSettingCliFlags />
+
+For example, you can customize the security issues to detect using the `scanners` argument. To scan vulnerabilities only, add `--scanners vuln` to this field.
 
 <a name="fail-on-severity"></a>
 
 
 #### Fail on Severity
 
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
+
 <StoSettingFailOnSeverity />
 
+<!-- 
 ### Settings
 
-You can add a `tool_args` setting to run the trivy image scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners ("vuln")`. 
+You can add a `tool_args` setting to run the scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners vuln`. 
 
+-->
 
 ### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 
-## Security step configuration (_deprecated_)
- 
- <details><summary>Set up an Aqua Trivy scan in a Security step</summary>
- 
- You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
+## Security step settings for Aqua Trivy scans in STO (legacy)
 
-#### Important Notes
+:::note
+You can set up Aqua Trivy scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Aqua Trivy step](#aqua-trivy-step-settings-for-sto-scans) instead.
+:::
 
-* STO supports container scans only with Aqua Trivy.
 
 #### Scan types
 
@@ -192,18 +271,28 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
-#### Required settings
+#### Target and variant
+
+
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+
+
+<StoLegacyTargetAndVariant />
+
+#### Aqua Trivy scan settings
 
 * `product_name` = `aqua-trivy`
-* `scan_type` = `containerImage`, `ingestionOnly`
-* `product_config_name` — Specify one of the following:
+* `policy_type` = `containerImage`, `ingestionOnly`
+* `product_config_name` 
 	+ `aqua-trivy` — Run the Trivy image scanner with default settings.
-	+ `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode.
+	<!-- + `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode. -->
 * `container_domain` — The image registry domain, for example `docker.io`
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+#### Container scan settings
 
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
@@ -217,21 +306,78 @@ The following settings are also required, depending on the container type:
 	- `container_access_id`: Username
 	- `container_access_token`: Password/Token
 
-```mdx-code-block
+#### Ingestion file 
+
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 
-</details>
+
+## YAML pipeline example
+
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project and organization.
+
+```yaml
+pipeline:
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: false
+          sharedPaths:
+            - /var/run
+            - /shared/scan_results
+          execution:
+            steps:
+              - step:
+                  type: AquaTrivy
+                  name: AquaTrivy_1
+                  identifier: AquaTrivy_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      name: redhat/ubi8-minimal
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                      args:
+                        cli: "--scanners vuln"
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: redhat/ubi8-minimal
+                      domain: docker.io
+                      tag: latest
+                    sbom:
+                      format: spdx-json
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
+        description: ""
+  identifier: trivyorchestration
+  name: trivy-orchestration
 
 
 
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
 ```
 
-<StoSettingYAMLexample />
+
+

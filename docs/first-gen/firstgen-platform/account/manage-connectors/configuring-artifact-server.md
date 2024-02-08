@@ -7,10 +7,10 @@ helpdocs_category_id: ll7h8ktlwe
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import image_1 from './static/configuring-artifact-server-00.png'
 import image_2 from './static/configuring-artifact-server-01.png'
-```
+
 
 Harness integrates with many different types of repositories and artifact providers. We call these Artifact Servers, and they help Harness you pull your artifacts during deployments.
 
@@ -34,9 +34,9 @@ Harness has a limit of a 1GB file upload. However, Harness directly streams from
 
 For artifacts larger than 1GB, use the **Metadata Only** option in the Harness Service **Artifact Source** settings.
 
-```mdx-code-block
+
 <img src={image_1} height="100" width="300" />
-```
+
 
 
 ## Review: Add AWS S3 and Google Cloud Storage Artifact Servers
@@ -47,9 +47,9 @@ You simply add them as Cloud Providers, and then when you are adding an artifact
 
 Here is what the Artifact Source list looks like in a Harness service when AWS S3 and Google Cloud Storage have been as added as Cloud Providers:
 
-```mdx-code-block
+
 <img src={image_2} height="150" width="250" />
-```
+
 
 For information on how to add AWS and GCP as Cloud Providers, see [Add Cloud Providers](cloud-providers.md).
 

@@ -2,8 +2,8 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants"
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 
@@ -15,18 +15,18 @@ import { MODULES } from "../../../constants"
         "",
       list: [
         {
-          title: "Introduction to Chaos engineering",
+          title: "Build resilient applications with chaos engineering",
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/get-started/introduction-to-chaos-module",
+          link: "/docs/chaos-engineering/get-started/overview",
         },
         {
-          title: "Terminologies",
+          title: "Terminology",
           module: MODULES.ce,
           description:
-            "Familiarize with chaos engineering terminologies.",
-          link: "/docs/chaos-engineering/get-started/terminologies",
+            "Familiarize yourself with chaos engineering terminology.",
+          link: "/docs/chaos-engineering/get-started/key-concepts",
         },
   ],
 },
@@ -38,21 +38,21 @@ import { MODULES } from "../../../constants"
           title: "AWS faults",
           module: MODULES.ce,
           description:
-            "Execute AWS chaos faults",
+            "Execute AWS chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/",
         },
         {
           title: "Kubernetes faults",
           module: MODULES.ce,
           description:
-            "Execute Kubernetes chaos faults ",
+            "Execute Kubernetes chaos faults. ",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/",
         },
         {
           title: "Azure faults",
           module: MODULES.ce,
           description:
-            "Execute Azure chaos faults",
+            "Execute Azure chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/",
         },
         {
@@ -66,22 +66,50 @@ import { MODULES } from "../../../constants"
           title: "VMware faults",
           module: MODULES.ce,
           description:
-            "Execute VMware chaos faults",
+            "Execute VMware chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/",
+        },
+        {
+          title: "Windows faults",
+          module: MODULES.ce,
+          description:
+            "Execute Windows chaos faults.",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/windows/",
         },
         {
           title: "Load faults",
           module: MODULES.ce,
           description:
-            "Execute load chaos faults",
+            "Execute load chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/load/",
         },
         {
           title: "Kube-resilience faults",
           module: MODULES.ce,
           description:
-            "Execute kube-resilience chaos faults",
+            "Execute kube-resilience chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/",
+        },
+        {
+          title: "Security chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute security chaos faults.",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/",
+        },
+        {
+          title: "SSH faults",
+          module: MODULES.ce,
+          description:
+            "Execute SSH chaos faults.",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/ssh/",
+        },
+        {
+          title: "Linux chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute Linux chaos faults.",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/linux/",
         },
 ];
 
@@ -95,7 +123,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+      link: "/tutorials/chaos-experiments/first-chaos-engineering",
     },
     {
       title: "Running chaos experiments in GitLab pipelines",
@@ -105,7 +133,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "15min",
-      link: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
+      link: "/tutorials/chaos-experiments/chaos-experiments-on-gitlab",
     },
     {
       title: "Run your first chaos experiment on a Kubernetes cluster using API",
@@ -115,7 +143,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+      link: "/tutorials/chaos-experiments/first-chaos-experiment-via-api",
     },
   ];
   /* Define the cards - end */

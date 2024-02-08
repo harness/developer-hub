@@ -184,6 +184,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "ECS task scale",
+    description:
+      "ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "Lambda delete event source mapping",
     description:
       "Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration.",
@@ -260,7 +267,6 @@ export const experiments: ExperimentDetails[] = [
     tags: [],
     category: "aws",
   },
-
   {
     name: "ECS Invalid Container image",
     description:
@@ -329,6 +335,41 @@ export const experiments: ExperimentDetails[] = [
     name: "ECS Container HTTP Status code",
     description:
       "ECS Container HTTP Status code induces chaos to modify the status code from the HTTP response from the target ECS container",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS Fargate Memory hog",
+    description:
+      "ECS Fargate Memory Hog induces chaos to hog the memory utilisation of an ECS task from the specified service",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS Fargate CPU hog",
+    description:
+      "ECS Fargate CPU Hog induces chaos to stress the CPU usage of an ECS task from the specified service",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "ECS Container Volume detach",
+    description:
+      "ECS Container Volume Detach induces chaos to detach the volumes from ECS container for specified service and chaos duration",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "NLB AZ down",
+    description:
+      "NLB AZ Down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "Resource Access restrict",
+    description:
+      "Resource Access Restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",
     tags: [],
     category: "aws",
   },

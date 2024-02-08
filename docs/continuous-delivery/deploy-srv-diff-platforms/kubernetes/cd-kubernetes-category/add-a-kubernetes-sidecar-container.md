@@ -46,10 +46,10 @@ Once your artifact is added, you can see the Id in **Artifacts**. For example, t
 3. Select an artifact repository type. In this example, we'll use Docker Registry.
 4. Select **Docker Registry**, and click **Continue**.
    The **Docker Registry** settings appear.
-5. Select a [Docker Registry Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
+5. Select a [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
 6. Click **Continue**.
 7. In **Sidecar Identifier**, give a name to identify this artifact. As mentioned earlier, this is the name you will use to refer to this artifact in your manifest using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
-8. In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/References/runtime-inputs) (`<+input>`) or Harness variable expression.
+8. In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) or Harness variable expression.
 9. In **Tag**, add the Docker tag of the image you want to deploy. If you leave this as `<+input>` you are prompted for the tag at runtime. Harness pulls the available tags, and you simply select one.
 10. Click **Save**.
 

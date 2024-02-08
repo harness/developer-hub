@@ -1,0 +1,25 @@
+# it overrides the file attributes
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-io-attribute-override
+      spec:
+        components:
+          env:
+            # file attributes
+            - name: ATTRIBUTES
+              value: '{"perm": 72}'
+            - name: MOUNT_PATH
+              value: '/etc/config'
+            - name: TOTAL_CHAOS_DURATION
+              value: '60'

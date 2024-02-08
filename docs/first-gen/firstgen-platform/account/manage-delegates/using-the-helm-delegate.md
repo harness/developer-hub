@@ -7,12 +7,12 @@ helpdocs_category_id: gyd73rp7np
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import image_1 from './static/using-the-helm-delegate-45.png'
 import image_2 from './static/using-the-helm-delegate-50.png'
 import image_3 from './static/using-the-helm-delegate-51.png'
 import image_4 from './static/using-the-helm-delegate-52.png'
-```
+
 
 The Helm Delegate can be installed on your Kubernetes cluster using the Harness Helm Delegate YAML file and Helm chart, located in the Harness Helm Delegate repo at:
 
@@ -79,9 +79,9 @@ Add user to the file, save, and re-run the installation:
 ```
 Different Kubernetes platforms might require different roles for Helm to deploy to the cluster. For example, the Kubernetes Engine Cluster Admin role is required for the service account on Google Kubernetes Engine that will run the commands to install the Helm Delegate.
 
-```mdx-code-block
+
 <img src={image_1} height="200" width="400" />
-```
+
 
 GKE clusters also have security settings that might need to be applied. For example, the [Access Scope](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) might need to be set to **Allow full access to all Cloud APIs** for some clusters.
 
@@ -182,16 +182,16 @@ To install the Helm Delegate using Rancher, do the following:
 7. Log into your Rancher account.
 8. Click **Apps**.
 
-    ```mdx-code-block
+    
     <img src={image_2} height="200" width="400" />
-    ```
+    
 
 9. Click Launch.
 10. In **Search**, enter **Harness**. The **Harness Delegate** app appears.
 
-    ```mdx-code-block
+    
     <img src={image_3} height="300" width="500" />
-    ```
+    
 
 11. Click **View Details**. Next, you will use the Helm Values YAML file you downloaded to fill out the fields in the Harness Delegate app in Rancher.
 12. Open the Helm Values YAML you downloaded in a text editor. It will look something like this:
@@ -224,9 +224,9 @@ In **Rancher**, use the Helm Values YAML file to enter the following:
 1. in **Name**, enter a name for the Delegate App.
 2. In **Namespace**, enter the Kubernetes namespace in the target cluster where you want the Delegate installed. To see the **Namespace** field, you might need to change to the Project in Rancher:
 
-    ```mdx-code-block
+    
     <img src={image_4} height="300" width="500" />
-    ```
+    
 
 3. In **Account ID**, enter the value used for `accountId`.
 4. In **Account Secret**, enter the value used for `delegateToken`.

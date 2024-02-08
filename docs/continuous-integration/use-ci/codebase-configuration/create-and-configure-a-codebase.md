@@ -1,7 +1,6 @@
 ---
-title: Create and configure a codebase
+title: Configure codebase
 description: CI pipelines build and test code that is pulled from Git code repositories.
-
 sidebar_position: 10
 helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
@@ -9,52 +8,155 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-CI pipelines build and test code that is pulled from a Git code repositories. When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This topic explains how to configure codebase settings for CI pipelines.
+CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This can be referred to as the *default codebase* for the build. This topic explains how to configure codebase settings for CI pipelines and Build stages.
 
-This topic assumes you have an understanding of [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
 
 ## Code repo connectors
 
-Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
+Harness uses code repo connectors to connect to third-party Git providers, such as Bitbucket, GitHub, GitLab, and others. You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).
 
-* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
-* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub:
-  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
-  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
-* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
+
+* Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
-  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
-The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
+The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
 
-## Configure a pipeline's default codebase
+If you prefer to use the YAML editor, you can [create connectors in YAML](../../../platform/connectors/create-a-connector-using-yaml.md).
 
-When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored.
+## Configure the default codebase
+
+When you add a **Build** stage to a CI pipeline, you specify where your build code is stored. This becomes the pipeline's *default codebase*.
 
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
-4. For **Connector**, select or create a [code repo connector](#code-repo-connectors).
-5. If **Repository Name** is not automatically populated, you can specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
-6. Select **Set Up Stage**.
+4. Configure your codebase connection.
+   * To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
+   * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](#code-repo-connectors), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
+5. Select **Set Up Stage**.
+
+If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages). You can also [clone multiple repositories in a stage](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
 ![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
 
-The first codebase declared in a pipeline becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration).
+<details>
+<summary>YAML example: Default codebase configuration</summary>
 
-Once a default codebase is established, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for those stages, but you can't change the connector or repo. Usually, you disable **Clone Codebase** only if the codebase is not needed for the stage's operations. However, you can also [use a Git Clone step to clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_GIT_REPO
+        build: <+input>
+```
+
+</details>
+
+<details>
+<summary>YAML example: Harness Code Repository codebase configuration</summary>
+
+This configuration is for repositories in the [Harness Code Repository module](/docs/code-repository).
+
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: YOUR_HARNESS_CODE_REPO_NAME
+        build: <+input>
+```
+
+</details>
+
+## Disable Clone Codebase for specific stages
+
+After defining the default codebase in the first Build stage, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for individual stages. You can also disable cloning the default codebase, if necessary.
+
+You might disable **Clone Codebase** if the codebase is not needed for the stage's operations, or you need to use specific `git clone` arguments (such as to [clone a subdirectory instead of an entire repo](./clone-subdirectory.md)). You can also [clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
+
+In the Visual editor, you can disable **Clone Codebase** in the stage's **Overview** tab.
+
+<!-- ![](./static/disable-clone-codebase-visual.png) -->
+
+<DocImage path={require('./static/disable-clone-codebase-visual.png')} />
+
+In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
+
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+```
+
+For more information about Build stage settings, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Edit the default codebase configuration
 
-To manage a pipeline's default codebase configuration, select **Codebase** on the right side panel while viewing the pipeline in the Pipeline Studio.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-![Configuring pipeline codebase settings.](./static/create-and-configure-a-codebase-03.png)
+<Tabs>
+  <TabItem value="Visual" label="Visual">
 
-In addition to changing the **Connector** or **Repository Name**, you can manage the following advanced settings.
+To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
+
+<!-- ![A pipeline's codebase settings as shown in the Pipeline Studio's Visual editor.](./static/create-and-configure-a-codebase-03.png) -->
+
+<DocImage path={require('./static/create-and-configure-a-codebase-03.png')} />
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
+
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: tutorial_test
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        build: <+input>
+        depth: 0
+        sslVerify: true
+        prCloneStrategy: MergeCommit
+        resources:
+          limits:
+            memory: 500Mi
+            cpu: 400m
+```
+
+</TabItem>
+</Tabs>
+
+In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 
 ### Depth
 
@@ -86,42 +188,22 @@ If this is set to **Source Branch**, the pipeline builds the artifact from the l
 
 Set maximum resource limits for the containers that clone the codebase at runtime:
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-## Improve codebase clone time
+### Toggle Clone Codebase
 
-If cloning your codebase takes more time than expected, try setting **Limit Memory** to `1Gi`.
+If you want to disable cloning the default codebase for any stage in a pipeline, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
 
-If codebase cloning takes longer than expected when the build is triggered by a pull request, set **Pull Request Clone Strategy** to **Source Branch** and set **Depth** to `1`.
+## Troubleshoot codebases
 
-## YAML example
+Go to the [Harness CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for common questions and issues related to codebases, such as:
 
-Here's an example of codebase configuration in YAML.
+* [How do I improve codebase clone time?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-reduce-clone-codebase-time)
+* [The same Git commit is not used in all stages.](/kb/continuous-integration/continuous-integration-faqs/#the-same-git-commit-is-not-used-in-all-stages)
+* [Git fetch fails with invalid index-pack output when cloning large repos.](/kb/continuous-integration/continuous-integration-faqs/#git-fetch-fails-with-invalid-index-pack-output-when-cloning-large-repos)
+* [Clone codebase fails due to missing plugin.](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
 
-```yaml
-pipeline:
-  name: tutorial example
-  identifier: tutorial_example
-  projectIdentifier: tutorial_test
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.docsexample
-        build: <+input>
-        depth: 0
-        sslVerify: true
-        prCloneStrategy: MergeCommit
-        resources:
-          limits:
-            memory: 500Mi
-            cpu: 400m
-```
+For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
 
-## See also
-
-* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
-* [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
-* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

@@ -37,19 +37,4 @@ export const SRMList: CardItem[] = [
     time: "15min",
     link: "/tutorials/service-reliability/slo-prometheus",
   },
-  {
-    title: "Java Error Tracking",
-    module: MODULES.srm,
-    icon: "img/icon_srm.svg",
-    description: (
-      <>
-        Finding and fixing caught, uncaught, and swallowed Java exceptions.
-        Learn the process and find the right tooling.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Interactive, docType.Video],
-    time: "10min",
-    link: "/tutorials/service-reliability/java-error-tracking",
-  },
 ];

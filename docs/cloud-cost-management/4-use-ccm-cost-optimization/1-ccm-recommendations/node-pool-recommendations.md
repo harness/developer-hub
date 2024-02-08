@@ -1,5 +1,5 @@
 ---
-title: Optimize Kubernetes costs with node pool recommendations
+title: Node pool recommendations
 description: Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters. This topic describes how CCM computes node pool recommendations and how you can use them to potentially reduce monthly costs.
 # sidebar_position: 2
 helpdocs_topic_id: x75xp0xime
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Optimize Kubernetes costs with node pool recommendations
 One of the most impactful ways to reduce spend on Kubernetes infrastructure is to make sure your clusters are optimally sized for the workloads and node pools they run. Harness CCM recommends optimal compute resources for your workloads and node pools to help you reduce costs and improve performance.
 
 Recommendations are produced by analyzing your historical utilization metrics. CCM recommends you choose the optimal resource configuration based on your utilization data and requests metrics for pods.
@@ -21,9 +22,14 @@ Before using recommendations in your cluster environment, ensure that you evalua
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 :::
 
+
+:::important note
+Recommendations will not be generated for nodepools with multiple instance families. This applies to both native-managed clusters and clusters that are managed by third-party tools like spot.io.
+:::
+
 ## Before You begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
 * [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 ## Prerequisites
@@ -34,9 +40,9 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 
 |  **Cloud provider**| **Labels** |
 | --- | --- |
-| Amazon Web Services (AWS) |<ul><li>`eks.amazonaws.com/nodegroup​`</li> <li>`alpha.eksctl.io/nodegroup-name​`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
-| Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
-| Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li>`kops.k8s.io/instancegroup`</li></ul>|
+| Amazon Web Services (AWS) |<ul><li>`eks.amazonaws.com/nodegroup​`</li> <li>`alpha.eksctl.io/nodegroup-name​`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li><li>`nodegroup​`</li></ul>|
+| Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `nodegroup​`</li><li>`kops.k8s.io/instancegroup`</li></ul>|
+| Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li> `nodegroup​`</li><li>`kops.k8s.io/instancegroup`</li></ul>|
 
 ## How are node pool recommendations computed?
 
@@ -162,5 +168,5 @@ Capturing your changes in the URL enables you to share your tuned recommendation
 
 ### Next steps
 
-* [Optimize Kubernetes Costs with Workload Recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/workload-recommendations.md)
+* [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/workload-recommendations)
 

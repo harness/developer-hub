@@ -31,15 +31,12 @@ After creating an environment, you can define all its settings.
 * **Infrastructure Definitions:** represent one or more environment infrastructures.
   * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
   * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
-* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/harness-git-ops-basics).
+* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics).
 * **Referenced by:** displays the list of pipelines using the infrastructure definitions in the environment. 
 
 ## Environments RBAC
 
-Review these key RBAC uses cases for environments.
-
-* [Harness Role-Based Access Control overview](/docs/platform/role-based-access-control/rbac-in-harness/)
-* [Harness Role-Based Access Control quickstart](/docs/platform/role-based-access-control/set-up-rbac-pipelines/).
+Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for examples of RBAC use cases for environments.
 
 ## Access permission to deploy to an environment
 

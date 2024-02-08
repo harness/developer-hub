@@ -1,184 +1,232 @@
 ---
-title: Run GitHub Actions in CI pipelines
+title: Use the GitHub Actions Drone plugin
 description: Run GitHub Actions in your Harness CI pipelines.
 
-sidebar_position: 30
+sidebar_position: 80
 helpdocs_topic_id: 7kb90dkxw0
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
 
-This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin** step, go to [GitHub Action plugin step settings](../../ci-technical-reference/plugin-steps/ci-github-action-step.md).
+This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
-With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/github-actions](https://github.com/drone-plugins/github-actions), and then replicate the GitHub Action settings. When your pipeline runs, the Github Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
-
-## Prerequisites
-
-These steps assume you have a CI pipeline with a **Build** stage that is connected to your codebase and has defined build infrastructure.
-
-If you've never created a CI pipeline before, [get started with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci) or try the [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md).
-
-<details>
-<summary>Add Build stage and connect codebase</summary>
-
-Make sure you have a CI pipeline with a **Build** stage that is connected to your codebase.
-
-To add a **Build** stage to an existing pipeline:
-1. Go to the pipeline you want to edit.
-2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
-3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-
-To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md).
-
-</details>
-
-<details>
-<summary>Define build infrastructure</summary>
-
-1. In the Pipeline Studio, select the **Build** stage, and then select the **Infrastructure** tab.
-2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
-
-For more information about stage configuration, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
-
-:::tip
-
-You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md) for **Platform** settings.
-
-:::
-
-</details>
+For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action step](./ci-github-action-step.md).
 
 ## Add the Plugin step
 
-1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
-2. Select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
-3. Enter a **Name** and optional **Description**.
-4. For **Container Registry**, select a container registry connector that has DockerHub access.
-5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
-6. Expand the **Optional Configuration**, and select **Privileged**.
-   The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? -->
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
-:::tip
+1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
+2. Enter a **Name** and optional **Description**.
+3. For **Container Registry**, select a container registry connector that has Docker Hub access.
+4. In **Image**, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
+5. Under **Optional Configuration**, enable **Privileged**.
 
-For more information about Plugin step settings, go to the [Plugin step settings reference](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
+   **Privileged** is required because the GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI, which requires DinD (Docker-in-Docker) to run images. <!--If you're using local runner or VM build infra, do you need privileged? -->
 
-:::
+### Define Action variables and attributes
 
-## Define variables and attributes
-
-Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
+Use **Settings** to specify the GitHub Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
 | Key | Description | Value format | Value example |
 | - | - | - | - |
 | `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
-| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{"path: pom.xml", "destination: cie-demo-pipeline/github-action", "credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>"}` |
-| `env` | Optional. Specify a map of environment variables to pass to the Action. | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
+| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
+| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required to use [Private Action repos](#private-action-repos), run [Duplicate Actions](#duplicate-actions), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
 
 :::tip
 
-You can use variable expressions in your values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use variable expressions for these values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables).
 
 :::
+
+
+<Tabs>
+  <TabItem value="Visual" label="Visual editor example">
+
 
 ![A configured Plugin step with Settings variables.](./static/run-a-git-hub-action-in-cie-03.png)
 
-### Private Action repos
 
-If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` **Settings**. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
+</TabItem>
+  <TabItem value="YAML" label="YAML example" default>
 
-* Key: `env`
-* Value: `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`
-
-If you have multiple environment variables, add the `GITHUB_TOKEN` variable to the existing `env` map.
-
-:::tip
-
-You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness Secret.
-
-:::
-
-Here's an example of the YAML for a `Plugin` step using a private Action repo:
 
 ```yaml
-- step:
-   type: Plugin
-   name: private action
-   identifier: private_action
-   spec:
-     connectorRef: dockerhub
-     image: plugins/github-actions
-     privileged: true
-     settings:
-       uses: myorg/private-action-step@v1
-       with:
-         path: pom.xml
-     envVariables:
-       GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+              - step:
+                 identifier: gcsuploader
+                 name: gcsuploader
+                 type: Plugin
+                 spec:
+                   connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                   image: plugins/github-actions
+                   privileged: true
+                   settings:
+                     uses: google-github-actions/upload-cloud-storage@main # Specify the GitHub Action you want to use.
+                     with: # Specify Action settings
+                       path: pom.xml
+                       destination: cie-demo-pipeline/github-action
+                       credentials: <+stage.variables.GCP_SECRET_KEY_BASE64> ## This example uses a stage variable to store a secret.
 ```
 
-## Test your pipeline
 
-1. Select **Apply Changes** to save the step settings, and then select **Save** to save the pipeline.
-2. Select **Run** to test the pipeline.
+</TabItem>
+</Tabs>
 
-You can observe the GitHub Action in the build's logs.
 
-![](./static/run-a-github-action-in-cie-532.png)
+### Private Action repos
+
+If you want to use an Action that is in a private repository, you must add a `GITHUB_TOKEN` environment variable to the **Plugin** step's `settings.env`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
+
+* Key: `GItHUB_TOKEN`
+* Value: `<+secrets.getValue("YOUR_TOKEN_SECRET")>`
+
+Here's an example of the YAML for a `Plugin` step using an Action in a private repo:
+
+```yaml
+              - step:
+                 type: Plugin
+                 name: private action
+                 identifier: private_action
+                 spec:
+                   connectorRef: dockerhub
+                   image: plugins/github-actions
+                   privileged: true
+                   settings:
+                     uses: myorg/private-action-step@v1
+                     with:
+                       path: pom.xml
+                     env:
+                       GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+```
+
+### Duplicate Actions
+
+If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable.
+
+The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each instance of the Action. If you have separate steps running in parallel, you can assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to repeat one step multiple times, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
+
+In this example, two parallel `Plugin` steps run the same GitHub Action. Each step has a unique value for `XDG_CACHE_HOME`.
+
+```yaml
+              - parallel
+                  - step:
+                     identifier: gcsuploader
+                     name: gcsuploader
+                     type: Plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: plugins/github-actions
+                       privileged: true
+                       settings:
+                         uses: google-github-actions/upload-cloud-storage@main
+                         with:
+                           path: pom.xml
+                           destination: cie-demo-pipeline/github-action
+                           credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+                         env:
+                           XDG_CACHE_HOME: /home/ubuntu/.cache1
+                  - step:
+                     identifier: gcsuploader
+                     name: gcsuploader
+                     type: Plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: plugins/github-actions
+                       privileged: true
+                       settings:
+                         uses: google-github-actions/upload-cloud-storage@main
+                         with:
+                           path: pom.xml
+                           destination: cie-demo-pipeline/github-action
+                           credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+                         env:
+                           XDG_CACHE_HOME: /home/ubuntu/.cache2
+```
 
 ## Pipeline YAML example
 
-The following YAML example includes a `Plugin` step that uses the Google `upload-cloud-storage` GitHub Action. The comments indicate values you must modify to use this code in your own Harness account.
+This YAML example uses a `Plugin` step to run the Google `upload-cloud-storage` GitHub Action. It uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) to store a token secret required by the Action. If you copy this example, you need to modify the placeholder values, image, and other settings according to your needs. You'll also need to create your own secret and stage variable.
 
 ```yaml
-pipeline:  
-    name: gcp-upload-github-action # Configure your Pipeline name  
-    identifier: gcpuploadgithubaction # Configure your Pipeline identifier  
-    projectIdentifier: Demo_CI_pipelines # Configure your Project identifier  
-    orgIdentifier: default # Configure your Organization  
-    tags: {}  
-    stages:  
-        - stage:  
-              identifier: gcp_upload_success_gha # Configure your Stage identifier  
-              name: stage 1  
-              type: CI  
-              variables:   
-                  - name: GCP_SECRET_KEY_BASE64 # Configure your Secret Key Name  
-                    type: Secret  
-                    value: gcpbase64secret # Configure your Secret Key Value  
-              spec:  
-                  execution:  
-                      steps:  
-                          - step:  
-                                identifier: gcsuploader # Configure your step identifier name  
-                                name: step one # Configure your step name  
-                                type: Plugin  
-                                spec:  
-                                    connectorRef: dockerhub  
-                                    image: plugins/github-actions  
-                                    privileged: true  
-                                    settings: # Configure your plugins Settings configuration  
-                                        uses: google-github-actions/upload-cloud-storage@main  
-                                        with:  
-                                            path: pom.xml  
-                                            destination: cie-demo-pipeline/github-action  
-                                            credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>  
-                  infrastructure: # Configure your Infrastructure Settings  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef: buildfarm  
-                          namespace: cie-demo-pipeline  
-    properties:  
-        ci:  
-            codebase: # Configure your Codebase  
-                connectorRef: githubautouser  
-                repoName: springboot  
-                build:  
-                    type: branch  
-                    spec:  
-                        branch: ci-autouser
+pipeline:
+  name: default
+  identifier: default
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    image: plugins/github-actions
+                    privileged: true
+                    settings:
+                      uses: google-github-actions/upload-cloud-storage@main ## Specify the Action to use.
+                      with: ## Specify Action settings
+                        path: pom.xml
+                        destination: cie-demo-pipeline/github-action
+                        credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+          infrastructure: ## Specify your build infrastructure
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+        variables: ## This stage variable references a Harness secret.
+          - name: GCP_SECRET_KEY_BASE64
+            type: Secret
+            description: ""
+            required: false
+            value: YOUR_SECRET
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO
+        build: <+input>
 ```
+
+:::tip
+
+For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
+
+:::
+
+## Action logs
+
+When you run the pipeline, you can observe the GitHub Action plugin logs in the build's logs.
+
+<!-- ![](./static/run-a-github-action-in-cie-532.png) -->
+
+<DocImage path={require('./static/run-a-github-action-in-cie-532.png')} />
+
+## Troubleshooting GitHub Actions in Harness CI
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
+
+* [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
+* [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
+* [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)

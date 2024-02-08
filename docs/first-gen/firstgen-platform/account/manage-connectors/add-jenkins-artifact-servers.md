@@ -12,14 +12,15 @@ Connect your Jenkins artifact servers with Harness.
 
 In this topic:
 
-* [Before You Begin](#before-you-begin)
-* [Limitations](#limitations)
-* [Review: Jenkins Permissions](#review-jenkins-permissions)
-* [Step 1: Select Jenkins Artifact Server](#step-1-select-jenkins-artifact-server)
-* [Step 2: Display Name](#step-2-display-name)
-* [Step 3: Jenkins URL](#step-3-jenkins-url)
-* [Option: Use this URL for Job Execution](#option-use-this-url-for-job-execution)
-* [Step 4: Authentication Mechanism](#step-4-authentication-mechanism)
+- [Before You Begin](#before-you-begin)
+- [Limitations](#limitations)
+- [Review: Jenkins Permissions](#review-jenkins-permissions)
+  - [Okta or Two-Factor Authentication](#okta-or-two-factor-authentication)
+- [Step 1: Select Jenkins Artifact Server](#step-1-select-jenkins-artifact-server)
+- [Step 2: Display Name](#step-2-display-name)
+- [Step 3: Jenkins URL](#step-3-jenkins-url)
+- [Option: Use this URL for Job Execution](#option-use-this-url-for-job-execution)
+- [Step 4: Authentication Mechanism](#step-4-authentication-mechanism)
 
 ## Before You Begin
 
@@ -37,7 +38,7 @@ Make sure the user account for this connection has the following required permis
 * Overall: Read.
 * Job: Build (if you plan to trigger a build as part of your workflow)
 
-For token-based authentication, go to **http://Jenkins-IP-address/jobs/me/configure** to check and change your API access token. The token is added as part of the HTTP header.
+For token-based authentication, go to `http://JENKINS_IP_ADDRESS/jobs/me/configure` to check and change your API access token. The token is added as part of the HTTP header.
 
 See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
 
@@ -89,7 +90,7 @@ Enter the credentials to authenticate with the server.
 * **Select Encrypted Password/Token** — Select/create a Harness Encrypted Text secret using the Jenkins API token or password in the Password field.
 * **Bearer Token (HTTP Header)** — Select/create a Harness Encrypted Text secret using the OpenShift OAuth Access Token in **Select Encrypted Bearer Token(HTTP Header)**.
 
-The **Bearer Token (HTTP Header)** option is only for Jenkins servers hosted/embedded in an OpenShift cluster and using this authentication method.For more information, see [Authentication](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/authentication.html) from OpenShift. For token-based authentication, go to **http://Jenkins-IP-address/jobs/me/configure** to check and change your API access token. The token is added as part of the HTTP header.
+The **Bearer Token (HTTP Header)** option is only for Jenkins servers hosted/embedded in an OpenShift cluster and using this authentication method.For more information, see [Authentication](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/authentication.html) from OpenShift. For token-based authentication, go to `http://JENKINS_IP_ADDRESS/jobs/me/configure` to check and change your API access token. The token is added as part of the HTTP header.
 
 For secrets and other sensitive settings, select or create a new [Harness Encrypted Text secret](../../security/secrets-management/use-encrypted-text-secrets.md).
 

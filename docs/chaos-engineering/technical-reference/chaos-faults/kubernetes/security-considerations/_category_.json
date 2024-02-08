@@ -1,0 +1,13 @@
+{
+  "position": 5,
+  "label": "Security Considerations",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Security Considerations"
+   },
+  "customProps": {
+    "description": "Required container permissions for faults"
+  }
+}

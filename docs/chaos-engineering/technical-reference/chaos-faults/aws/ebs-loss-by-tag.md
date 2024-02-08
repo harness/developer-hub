@@ -2,50 +2,39 @@
 id: ebs-loss-by-tag
 title: EBS loss by tag
 ---
-EBS loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
-- In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
-- It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+
+EBS (Elastic Block Store) loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.
 
 
 ![EBS Loss By Tag](./static/images/ebs-loss-by-tag.png)
 
+## Use cases
+EBS loss by tag tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-## Usage
+### Prerequisites
+- Kubernetes >= 1.17
+- EBS volume is attached to the instance.
+- Appropriate AWS access to attach or detach an EBS volume for the instance. 
+- The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
 
-<details>
-<summary>View fault usage</summary>
-<div>
-It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
-</div>
-</details>
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+:::
 
-## Prerequisites
-- Kubernetes > 1.16.
-- Adequate AWS access to attach or detach an EBS volume for the instance. 
-- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -75,82 +64,71 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Default validations
+### Mandatory tunables
 
-EBS volume is attached to the instance.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
-    <table>
+   <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> EBS_VOLUME_TAG </td>
-        <td> Provide the common tag for target volumes. It'll be in form of <code>key:value</code> (Ex: 'team:devops')</td>
+        <td> Common tag for target volumes. It is in the format <code>key:value</code> (for example, 'team:devops'). For more information, go to <a href="#target-single-volume"> target single volume.</a></td>
         <td> </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name for the target volumes</td>
+        <td> Region name for the target volumes</td>
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
-    <table>
+
+### Optional tunables
+  <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
        <tr>
         <td> VOLUME_AFFECTED_PERC </td>
-        <td> The Percentage of total EBS volumes to target </td>
-        <td> Defaults to 0 (corresponds to 1 volume), provide numeric value only </td>
+        <td> Percentage of total EBS volumes to target </td>
+        <td> Default: 0 (corresponds to 1 volume), provide numeric value only. For more information, go to <a href="#target-percent-of-volumes"> target percentage of volumes.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Time duration for chaos insertion (sec) </td>
+        <td> Default: 30 s . For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The time duration between the attachment and detachment of the volumes (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple volumes</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple volumes</td>
+        <td> Default value: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target single volume
 
-It will detach a random single EBS volume with the given `EBS_VOLUME_TAG` tag and `REGION` region.
+Random EBS volume that is detached from the node, based on the given `EBS_VOLUME_TAG` tag and `REGION` region.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/ebs-volume-tag.yaml yaml)
 ```yaml
@@ -179,9 +157,9 @@ spec:
 
 ### Target percent of volumes
 
-It will detach the `VOLUME_AFFECTED_PERC` percentage of EBS volumes with the given `EBS_VOLUME_TAG` tag and `REGION` region.
+Percentage of EBS volumes that are detached from the node, based on `EBS_VOLUME_TAG` tag and `REGION` region. Tune it by using the `VOLUME_AFFECTED_PERC` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/volume-affected-percentage.yaml yaml)
 ```yaml

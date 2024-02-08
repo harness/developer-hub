@@ -36,7 +36,7 @@ This article addresses some frequently asked questions about Harness Cloud Cost 
     + [How long do I need to wait before data appears for GCP? Why?](#how-long-do-i-need-to-wait-before-data-appears-for-gcp-why)
     + [How often is data processed overall in CCM?](#how-often-is-data-processed-overall-in-ccm)
     + [Why can’t I see my data in the past 2 hours?](#why-cant-i-see-my-data-in-the-past-2-hours)
-    + [Why is my cluster data showing events last collected since <x days/hours> ago?](#why-is-my-cluster-data-showing-events-last-collected-since-x-dayshours-ago)
+    + [Why is my cluster data showing events last collected since \<x days/hours> ago?](#why-is-my-cluster-data-showing-events-last-collected-since-x-dayshours-ago)
 - [Efficiency Score](#efficiency-score)
     + [Is the efficiency score configurable? Why not?](#is-the-efficiency-score-configurable-why-not)
     + [Does the efficiency score take into account overall cloud costs? How is it computed?](#does-the-efficiency-score-take-into-account-overall-cloud-costs-how-is-it-computed)
@@ -190,7 +190,7 @@ GCP billing data is synced once every 24 hours. You will see up to 24 hours dela
 
 Kubernetes events are collected continuously. The jobs to convert these events to cost data run every hour with 1-hour latency.
 
-##### Why is my cluster data showing events last collected since <x days/hours> ago?
+##### Why is my cluster data showing events last collected since \<x days/hours> ago?
 
 Delegates running in Kubernetes clusters are regularly sending us cluster events as they happen. This message indicates the last time an event is received from the cluster. This is useful for health information. An event in the last 20 minutes indicates a healthy state.
 
@@ -330,7 +330,7 @@ CE supports:
 * On-prem Kubernetes clusters with custom pricing (manual input) and
 * Rancher with custom pricing
 
-See [CE Coverage](../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md#ccm-coverage) and [Supported Kubernetes Management Platform](../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
+See [CE Coverage](../../cloud-cost-management/get-started/overview.md#ccm-coverage) and [Supported Kubernetes Management Platform](../../get-started/supported-platforms-and-technologies.md#cloud-cost-management).
 
 ##### Can I manually enter cost data or upload a rate card?
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).This topic describes how to set up a Harness Infrastructure Provisioner for CloudFormation.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).This topic describes how to set up a Harness Infrastructure Provisioner for CloudFormation.
 
 Once the Harness Infrastructure Provisioner is set up, you can use it to define a deployment target in a Harness Infrastructure Definition.
 
@@ -89,7 +89,7 @@ If you select **Git Repository**, do the following:
 3. In **Branch/Commit ID**, enter the branch or commit ID for the remote repo.
 4. In **File Path**, enter the repo file and folder path.  
   
-For example, if the full path to your script is **http://github.com/johnsmith/harness/branch1/scripts/foo.yaml**, and you selected **Branch** and entered **branch1**, in **File Path** you can enter **scripts/foo.yaml** or even **./scripts/foo.yaml**.  
+For example, if the full path to your script is `http://github.com/johnsmith/harness/branch1/scripts/foo.yaml`, and you selected **Branch** and entered **branch1**, in **File Path** you can enter **scripts/foo.yaml** or even **./scripts/foo.yaml**.  
   
 Using the same example, if you selected **Specific Commit ID** and enter a commit ID, in **File Path** you can enter **scripts/foo.yaml** or even **./scripts/foo.yaml**.
 

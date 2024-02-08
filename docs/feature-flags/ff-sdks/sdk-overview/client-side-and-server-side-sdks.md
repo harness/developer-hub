@@ -7,9 +7,9 @@ helpdocs_category_id: eyzngtupao
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import sdk_arch from './static/1-client-side-and-server-side-sdks-00.png'
-```
+
 
 Harness Feature Flags provides several SDKs in different languages to help you access feature flags from your applications. The SDKs are divided into two main categories, regardless of the programming language:
 
@@ -18,10 +18,19 @@ Harness Feature Flags provides several SDKs in different languages to help you a
 
 The client and server-side SDKs have different security considerations as well as some behavioral and architectural differences. This topic will help you understand the difference between Harness Feature Flag's client-side and server-side SDKs.
 
+## Introduction to Feature Flags SDKs
+
+SDKs are the libraries you add to your code to authenticate, configure, and manage feature flag usage.
+
+All of our SDKs are open-source, provided per-language, and backed by public APIs. They handle the job of authenticating with Harness, establishing the correct values for the session, handling fallback behaviors in the case of errors, and sending metrics back to Harness over time.
+
+For more information, go to the [Feature Flags overview page](https://developer.harness.io/docs/feature-flags/get-started/overview).
+
 ## SDK architecture
-```mdx-code-block
+
+
 <img src={sdk_arch} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flags module." height="500" width="500" />
-```
+
 The above diagram defines the behavior of an SDK. It covers various aspects like what happens at the beginning (initialization and authentication) followed by behavior of an SDK during normal operation.
 
 * **SDK Initialization:** SDK initialization requires only one argument, SDK key, and the optional configuration argument. There is a default configuration in the SDK and based on that configuration, an API client, a repository and an evaluator are set up.

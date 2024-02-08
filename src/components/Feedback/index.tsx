@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 // import Refiner from 'refiner-js'
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-
 import styles from "./index.module.scss";
 
 const Feedback = () => {
@@ -44,6 +43,9 @@ const Feedback = () => {
 			});
 			*/
       _refiner("showForm", "9afbf970-3859-11ed-91de-cb8481e90a69", true);
+       _refiner("addToResponse", {
+         currentUrl: window.location.href,
+       });
     } catch (error) {
       console.error(error);
     }

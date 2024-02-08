@@ -1,0 +1,14 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ssh-chaos
+    spec:
+      components:
+        env:
+        - name: CHAOS_SCRIPT_PATH
+          value: /tmp/chaos-script/chaos-script.sh

@@ -1,1 +1,12 @@
-{"label": "Cost reporting", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Cost reporting"}, "customProps": {"position": "20",}}
+{
+    "label":"Cost reporting",
+    "position": 3,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Cost reporting"
+    }
+    }
+ 

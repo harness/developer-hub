@@ -1,0 +1,18 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-windows-network-latency
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+       # Path of the Clumsy tool in the VM
+        - name: PATH_OF_CLUMSY 
+          value: 'C:\\Program Files\\Clumsy\\'

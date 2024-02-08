@@ -1,16 +1,15 @@
 ---
 title: Configure and add probes
 sidebar_position: 2
+description: Configure and add probes to your chaos experiment
 ---
-
-A probe explores the behavior of a [system that is in a chaotic or unpredictable state](../../technical-reference/chaos-faults) and helps validate the [declarative hypothesis](../../technical-reference/probes/overview.md) set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and use this understanding to predict or control their behavior.
 
 This section walks you through how to configure and add probes to a chaos experiment.
 
 ## Before you begin
 
-- [Probe Overview](/docs/chaos-engineering/technical-reference/probes/overview.md)
-- [Chaos Faults](/docs/chaos-engineering/technical-reference/chaos-faults/chaos-faults.md)
+- [Probe overview](./overview)
+- [Chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/chaos-faults.md)
 
 ## Prerequisites
 
@@ -117,3 +116,7 @@ spec:
                              initialDelaySeconds: 3
                              stopOnFailure: false
 ```
+
+## Next steps
+
+* [Validate a hypothesis using probes](./validate-hypothesis-using-probes.md)

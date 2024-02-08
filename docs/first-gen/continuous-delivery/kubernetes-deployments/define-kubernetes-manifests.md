@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 Harness provides a simple and flexible way to use Kubernetes manifests. You can add new files or upload existing manifests. You can work on your manifest inline, using the Go templating and Expression Builder features of Harness, or simply link to remote manifests in a Git repo.
 
@@ -88,6 +88,14 @@ You can use your Git repo for the configuration files in **Manifests** and Har
 * **Files in a packaged archive** — In some cases, your manifests, templates, etc are in a packaged archive and you simply wish to extract then and use then at runtime. You can use a packaged archive with the **Custom Remote Manifests** setting in a Harness Kubernetes Service. See [Add Packaged Kubernetes Manifests](deploy-kubernetes-manifests-packaged-with-artifacts.md).
 
 Remote files can also use Go templating.
+
+### Option: Bind tasks to the delegate
+
+:::info note
+Currently, this feature is behind the feature flag `BIND_FETCH_FILES_TASK_TO_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+To ensure the Kubernetes in-cluster delegate is always automatically assigned to perform tasks related to the Kubernetes deployment, for example fetching remote manifests or `values.yaml` files, you can bind the tasks to the delegate.
 
 ### Option: Deploy Helm Charts
 

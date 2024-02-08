@@ -1,7 +1,6 @@
 ---
 title: Set up a Microsoft Azure VM build infrastructure
 description: Set up a CI build infrastructure in Microsoft Azure.
-
 sidebar_position: 20
 helpdocs_topic_id: rhs0wi4l0q
 helpdocs_category_id: rg8mrhqm95
@@ -9,294 +8,300 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 :::note
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 :::
 
-This topic describes how to set up a CI build infrastructure in Microsoft Azure. You will create a VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
+This topic describes how to set up a CI build infrastructure in Microsoft Azure. To do this, you will create a VM and install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests. The delegate and runner VM can be inside or outside Azure; however, the instructions on this page assume you will create the VM in Azure.
 
-For information on using Kubernetes as a build farm, see [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+This is one of several CI build infrastructure options. For example, you can also [set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/Delegates/install-delegates/overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a CI build farm. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM.
 
 ![](../static/define-a-ci-build-infrastructure-in-azure-16.png)
 
-## Requirements
+## Prepare the Azure VM
 
-* VM requirements:
-	+ For the Delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
-	+ Harness recommends the [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-bionic?tab=overview) image and a [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22) image. For additional details, go to [Azure](https://docs.drone.io/runner/vm/drivers/azure/) in the Drone docs.
-	+ The VM must allow ingress access on ports 22 and 9079. Open port 3389 as well if you want to run Windows builds and be able to RDP into your build VMs.
-* Azure requirements:
-	+ You need permissions to create Azure Applications and VMs.
-	+ An Azure Application that has the Owner role assigned to your VM. To assign a role to your VM, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines). Then select your VM and go to **Access Control (IAM)**.
-	+ The Azure Application must be a Contributor on the subscription.
-* To enable the runner to create new VMs, you need to specify the Application ID (`client_id`), `client_secret`, `subscription_id`, and Directory ID (`tenant_id`).
-	+ `client_id`: To find the client ID, go to [App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) and then select your app.
-	+ `tenant_id`: to find the tenant ID, go to [App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) and then select your app.
-	+ `client_secret`: To create a client secret, go to your app and click **Certificates and Secrets**.
-	+ `subscription_id`: To find the subscription ID, go to the [Virtual Machines page](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your delegate VM.
+These are the requirements to configure an Azure VM application, Entra ID app registration, and Azure VM. This VM is the primary VM where you will host your Harness Delegate and runner. You must have access to Azure and permission to create Azure applications, register applications in Entra ID, and create Azure VMs.
 
-## Step 1: Set Up the Delegate VM
+1. In Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and create a VM to host your Harness Delegate and runner. Select a machine type with 4 vCPU and 16 GiB memory or more. Harness recommends the following machine images:
 
-1. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and then launch the VM instance where the Harness Delegate will be installed.
-2. [Install Docker](https://docs.docker.com/desktop/vm-vdi/) on the VM.
-3. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM. You must have [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher installed.
-4. Create a `/runner` folder on your VM and `cd` into it:
+   * [Ubuntu 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview)
+   * [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22)
+
+2. Create a resource group for your VM.
+3. Configure the VM to allow ingress on the following:
+
+   * Port 22 for Linux for SSH login.
+   * Port 3389 if you want to run Windows builds and be able to RDP into your build VMs.
+   <!-- Port 9079 not required? -->
+
+4. Install Docker and Docker Compose on the VM.
+
+   1. To install Docker on Windows, you must enable [Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) or [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) on your Azure VM.
+   2. Follow the Microsoft documentation to [prep Windows for containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce).
+   3. Install [Docker](https://docs.docker.com/desktop/vm-vdi/) and [Docker Compose](https://docs.docker.com/compose/install/) on the VM.
+
+5. [Create a VM application](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to?tabs=portal#create-the-vm-application), and assign your VM app to the **Contributor** role for your Azure subscription.
+
+   For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+
+6. Go to [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/) and [register your VM application](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
+7. Assign your Azure VM to the **Owner** role for your VM application.
+
+   1. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and select your Azure VM.
+   2. Select **Access control (IAM)**, and select **Add role assignment**.
+   3. On the **Role** tab, select the **Owner** role, and then select **Next**.
+   4. On the **Members** tab, select **User, group, or service principal**, select **Select members**, and then select the VM app that you registered in Entra ID.
+   5. Select **Next**, and then select **Review + assign**.
+
+   For more information, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+
+## Configure the Drone pool on the Azure VM
+
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run a pipeline. A pool is a group of instantiated VM that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool.
+
+1. Create a `/runner` folder on your delegate VM and `cd` into it:
 
    ```
    mkdir /runner
    cd /runner
    ```
 
-## Step 2: Configure the Drone Pool
+2. In the `/runner` folder, create a `pool.yml` file.
+3. Modify `pool.yml` as described in the [pool.yml examples](#poolyml-examples) and the [Pool settings reference](#pool-settings-reference).
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to run CI Pipelines.
+### pool.yml examples
 
-1. In the `/runner` folder, create a new `pool.yml` file.
-2. Set up the file as shown in the following examples. For information about specific settings, go to the [Pool Settings Reference](#pool-settings-reference). You can also learn more in the Drone documentation about [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Azure](https://docs.drone.io/runner/vm/drivers/azure/).
 
-<details>
-<summary>Example: pool.yml for Ubuntu 18.04</summary>
+<Tabs>
+  <TabItem value="ubuntu" label="Ubuntu 18.04 pool.yml" default>
+
 
 ```yaml
-version: "1"  
-instances:  
-  - name: ubuntu-azure-pool  
-    default: true  
-    type: azure  
-    pool: 1      
-    limit: 4     
-    platform:  
-      os: linux  
-      arch: amd64  
-    spec:  
-      account:  
-        client_id: XXXXXXXXXXXXXXXXXXXX  
-        client_secret: XXXXXXXXXXXXXXXXXXXX  
-        subscription_id: XXXXXXXXXXXXXXXXXXXX  
-        tenant_id: XXXXXXXXXXXXXXXXXXXX  
-      location: eastus2  
-      size : Standard_F2s  
-      tags:  
-        tagName: tag  
-      image:  
-        username: azureuser  
-        password: XXXXXXXXXXXXXXXXXXXX  
-        publisher: Canonical  
-        offer: UbuntuServer  
-        sku: 18.04-LTS  
+version: "1"
+instances:
+  - name: ubuntu-azure-pool
+    default: true
+    type: azure
+    pool: 1
+    limit: 4
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        client_id: XXXXXX ## Required for the runner to be able to create new VMs.
+        client_secret: XXXXX ## Required for the runner to be able to create new VMs.
+        subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
+        tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
+      location: eastus2 ## To minimize latency, use the same region as your Azure VM.
+      size : Standard_F2s
+      tags:
+        tagName: tag
+      image: ## Azure VM image specs to use for build VMs.
+        username: azureuser
+        password: XXXXXXX
+        publisher: Canonical
+        offer: UbuntuServer
+        sku: 18.04-LTS
         version: latest
 ```
 
-</details>
 
-<details>
-<summary>Example: pool.yml for Windows Server 2019</summary>
+</TabItem>
+  <TabItem value="windows" label="Windows Server 2019 pool.yml">
+
 
 ```yaml
-version: "1"  
-instances:  
-- name: ubuntu-azure  
-  default: true  
-  type: azure  
-  platform:  
-    os: windows  
-  spec:  
-    account:  
-      client_id: XXXXXXX  
-      client_secret: XXXXXXX  
-      subscription_id: XXXXXXX  
-      tenant_id: XXXXXXX  
-    location: eastus2  
-    size: Standard_F2s  
-    tags:  
-      tagName: tag  
-    image:  
-      username: XXXXXXX  
-      password: XXXXXXX  
-      publisher: MicrosoftWindowsServer  
-      offer: WindowsServer  
-      sku: 2019-Datacenter-with-Containers  
+version: "1"
+instances:
+- name: ubuntu-azure
+  default: true
+  type: azure
+  platform:
+    os: windows
+  spec:
+    account:
+      client_id: XXXXXX ## Required for the runner to be able to create new VMs.
+      client_secret: XXXXX ## Required for the runner to be able to create new VMs.
+      subscription_id: XXXXXX ## Required for the runner to be able to create new VMs.
+      tenant_id: XXXXXX ## Required for the runner to be able to create new VMs.
+    location: eastus2 ## To minimize latency, use the same region as your Azure VM.
+    size: Standard_F2s
+    tags:
+      tagName: tag
+    image: ## Azure VM image specs to use for build VMs.
+      username: XXXXXXX
+      password: XXXXXXX
+      publisher: MicrosoftWindowsServer
+      offer: WindowsServer
+      sku: 2019-Datacenter-with-Containers
       version: latest
 ```
 
-</details>
 
-Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
+</TabItem>
+</Tabs>
 
-## Step 3: Configure the docker-compose.yaml file
 
-1. In your Harness account, organization, or project, select **Delegates** under **Project Setup**.
-2. Click **New Delegate** and select **Switch back to old delegate install experience**.
-3. Select **Docker** and then select **Continue**.
-4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
-5. Select **Download YAML file** to download the `docker-compose.yaml` file to your local machine.
+### Pool settings reference
 
-Next, you'll add the Runner spec to the new Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
+You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Azure drivers](https://docs.drone.io/runner/vm/drivers/azure/).
 
-1. Copy your local `docker-compose.yaml` file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
-2. Open `docker-compose.yaml` in a text editor.
-3. Append the following to the end of the `docker-compose.yaml` file:
+:::info
 
-   ```yaml
-   drone-runner-aws:  
-       restart: unless-stopped  
-       image: drone/drone-runner-aws:latest  
-       volumes:  
-         - /runner:/runner  
-       entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-       working_dir: /runner  
-       ports:  
-         - "3000:3000"
-   ```
+The `account` settings (`client_id`, `client_secret`, `subscription_id`, and `tenant_id`) are required to allow the runner to create new VMs.
 
-4. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
+:::
 
-   ```yaml
-   network_mode: "host"
-   ```
+| Setting | Type | Example | Description |
+| ------- | ---- | ------- | ----------- |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
+| `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
+| `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
+| `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
+| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your VM application's client ID from the Entra ID app registration. To find the client ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Application (client) ID** on the **Overview** page.</li><li>`client_secret`: To create a client secret, go to your app in Entra ID, and then select **Certificates and Secrets**.</li><li>`subscription_id`: The Azure subscription ID where your VM application is a Contributor.</li><li>`tenant_id`: Your Entra directory ID. To find the tenant ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Directory (tenant) ID** on the **Overview** page.</li></ul></li><li>`image`: The image type to use for the build VM. You can use your own custom-created image or use one from the [Azure VM image list](https://az-vm-image.info/).</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
 
-5. Save `docker-compose.yaml`.
+## Start the runner
 
-<details>
-<summary>Example: docker-compose.yaml with Runner spec</summary>
+[SSH into your Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-ssh?tabs=azurecli) and run the following command to start the runner:
 
-```yaml
-version: "3.7"  
-services:  
-  harness-ng-delegate:  
-    restart: unless-stopped  
-    network_mode: "host"  
-    deploy:  
-      resources:  
-        limits:  
-          cpus: "0.5"  
-          memory: 2048M  
-    image: harness/delegate:latest  
-    environment:  
-      - ACCOUNT_ID=XXXXXXXXXXXXXXXX  
-      - ACCOUNT_SECRET=XXXXXXXXXXXXXXXX  
-      - MANAGER_HOST_AND_PORT=https://app.harness.io  
-      - WATCHER_STORAGE_URL=https://app.harness.io/public/qa/premium/watchers  
-      - WATCHER_CHECK_LOCATION=current.version  
-      - REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds  
-      - DELEGATE_STORAGE_URL=https://app.harness.io  
-      - DELEGATE_CHECK_LOCATION=delegateqa.txt  
-      - USE_CDN=true  
-      - CDN_URL=https://app.harness.io  
-      - DEPLOY_MODE=KUBERNETES  
-      - DELEGATE_NAME=qwerty  
-      - NEXT_GEN=true  
-      - DELEGATE_DESCRIPTION=  
-      - DELEGATE_TYPE=DOCKER  
-      - DELEGATE_TAGS=  
-      - DELEGATE_TASK_LIMIT=50  
-      - DELEGATE_ORG_IDENTIFIER=  
-      - DELEGATE_PROJECT_IDENTIFIER=  
-      - PROXY_MANAGER=true  
-      - VERSION_CHECK_DISABLED=false  
-      - INIT_SCRIPT=echo "Docker delegate init script executed."  
-  drone-runner-aws:  
-    restart: unless-stopped  
-    image: drone/drone-runner-aws:latest  
-    volumes:  
-      - /runner:/runner  
-    entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-    working_dir: /runner  
-    ports:  
-      - "3000:3000"
+```
+docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
-</details>
+This command mounts the volume to the Docker container providing access to `pool.yml` to authenticate with Azure. It also exposes port 3000 and passes arguments to the container.
 
-For more information on Harness Docker Delegate environment variables, go to the [Harness Docker Delegate environment variables reference](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
+If using an Ubuntu machine image, you might need to modify the command to use sudo and specify the runner directory path, for example:
 
-## Step 4: Install the Delegate and Runner
+```
+sudo docker run -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
 
-1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and `cd` to `/runner`.
-2. Confirm that the folder has both setup files, for example:
+:::info What does the runner do?
+
+When a build starts, the delegate receives a request for VMs on which to run the build. The delegate forwards the request to the runner, which then allocates VMs from the warm pool (specified by `pool` in `pool.yml`) and, if necessary, spins up additional VMs (up to the `limit` specified in `pool.yml`).
+
+The runner includes lite engine, and the lite engine process triggers VM startup through a cloud init script. This script downloads and installs Scoop package manager, Git, the Drone plugin, and lite engine on the build VMs. The plugin and lite engine are downloaded from GitHub releases. Scoop is downloaded from `get.scoop.sh`.
+
+Firewall restrictions can prevent the script from downloading these dependencies. Make sure your images don't have firewall or anti-malware restrictions that are interfering with downloading the dependencies.
+
+:::
+
+
+## Install the delegate
+
+Install a Harness Docker Delegate on your Azure VM.
+
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
+
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and paste it in a text editor.
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
 
    ```
-   $ ls -a
-   . .. docker-compose.yml pool.yml
+   sudo docker run --cpus=1 --memory=2g --network host
    ```
 
-3. Run the following command to install the Delegate and Runner:
+7. [SSH into your Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-ssh?tabs=azurecli) and run the delegate install command.
 
-   ```
-   $ docker-compose -f docker-compose.yml up -d
-   ```
+:::tip
 
-4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
 
-   ```
-   $ docker ps
-   $ docker logs <delegate-container-id>
-   $ docker logs <runner-container-id>
-   ```
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
 
-5. In the Harness UI, verify that the Delegate appears in the Delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
+:::
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+## Verify connectivity
+
+1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
+
+	 ```
+	 $ docker ps
+	 $ docker logs DELEGATE_CONTAINER_ID
+	 $ docker logs RUNNER_CONTAINER_ID
+	 ```
+
+2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
    ![](../static/define-a-ci-build-infrastructure-in-azure-17.png)
 
-The Delegate and Runner are now installed, registered, and connected.
+The delegate and runner are now installed, registered, and connected.
 
-## Step 5: Select pipeline build infrastructure
+## Specify build infrastructure
 
-1. In your CI pipeline's **Build** stage, select the **Infrastructure** tab, and then select **VMs**.
-2. In the **Pool ID**, enter the pool `name` from your [pool.yml](#step-2-configure-the-drone-pool).
+Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build infrastructure.
 
-   ![](../static/define-a-ci-build-infrastructure-in-azure-18.png)
 
-3. Save your pipeline.
+<Tabs>
+  <TabItem value="Visual" label="Visual">
 
-This pipeline's **Build** stage now uses your GCP VMs for its build infrastructure.
 
-## Pool Settings Reference
+1. In Harness, go to the CI pipeline that you want to use the Azure VM build infrastructure.
+2. Select the **Build** stage, and then select the **Infrastructure** tab.
+3. Select **VMs**.
+4. Enter the **Pool Name** from your [pool.yml](#configure-the-drone-pool-on-the-azure-vm).
+5. Save the pipeline.
 
-See also [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Azure](https://docs.drone.io/runner/vm/drivers/azure/) in the Drone docs.
+<!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-| **Subfield** | **Description** |
-| -- | -- |
-| `name` (String) | Unique identifier of the pool. You reference the pool name in the Harness Platform when setting up the stage's build infrastructure. |
-| `pool` (Integer) | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the Runner. |
-| `limit` (Integer) | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the Runner. |
-| `platform` | Configure the details of your VM platform. |
-| `spec` | Configure the settings of your build VMs: <ul><li>`account`: The azure account settings that the runner needs to create new VMs.</li><li>`client_id`: To find the client ID, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`tenant_id`: To find the tenant ID, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`client_secret`: To create a client secret, go to your app and click **Certificates and Secrets**.</li><li>`subscription_id`: To find the subscription ID, go to the [Virtual Machines page](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your delegate VM.</li><li>`image`: The Azure region for the build VMs.</li><li>`location`: The Azure region for the build VMs. To reduce latency, Harness recommends you use the same region as the Delegate.</li><li>`size`: The Azure VM size.</li><li>`tag`: An optional tag to identify build VMs.</li></ul> |
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
-## Troubleshooting
 
-If you have problems running the delegate, runner, or VMs, you can collect debug and trace information in your container logs.
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
 
-1. Create a `.env` file with the following options in your `/runner` folder:
 
-   ```
-   DRONE_DEBUG=true
-   DRONE_TRACE=true
-   ```
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: POOL_NAME_FROM_POOL_YML
+                os: Linux
+          execution:
+            steps:
+            ...
+```
 
-2. Shut down the delegate and runner: `docker-compose down`
-3. In your `docker-compose.yml` file, update the `drone-runner-aws: entrypoint` to include the `.env` file:
 
-   ```yaml
-       drone-runner-aws:
-       restart: unless-stopped
-       image: drone/drone-runner-aws:1.0.0-rc.9
-       volumes:
-         - /runner:/runner
-         - /home/jsmith/.config/gcloud/:/key
-       entrypoint: ["/bin/drone-runner-aws", "delegate", "--envfile", ".env", "--pool", "pool.yml"]
-       working_dir: /runner
-       ports:
-         - "3000:3000"
-   ```
+</TabItem>
+</Tabs>
 
-4. Restart the delegate and runner: `docker-compose up`
+## Troubleshoot self-hosted VM build infrastructure
 
-## See also
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
 
-* [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
-* [Troubleshoot Continuous Integration](../../../troubleshoot/troubleshooting-ci.md)
-
+* [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
+* [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
+* [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
+* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
+* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

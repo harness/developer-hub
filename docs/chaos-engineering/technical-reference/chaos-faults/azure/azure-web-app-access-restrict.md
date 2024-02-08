@@ -12,8 +12,8 @@ Azure web app access restrict causes a split brain condition by restricting the 
 
 Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
 
-:::note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes >= 1.17
 - Appropriate Azure access to the web applications.
 - The target Azure web application should be in the running state.
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -40,75 +40,81 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name. `AZURE_AUTH_LOCATION` is variable that describes path to the authetication file which uses the default value in most cases.
 :::
 
-## Fault tunables
-
-  <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
             <td> Name of Athe zure web app services to target.</td>
-            <td> Comma-separated names of the web applications. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#web-app-access-restrict-by-name"> restrict by name.</a></td>
+            <td> Comma-separated names of the web applications. For more information, go to <a href="#web-app-access-restrict-by-name"> restrict by name.</a></td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
             <td> The name of the resource group for the target web app</td>
-            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#web-app-access-restrict-by-name"> resource group field in the YAML file.</a></td>
+            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="#web-app-access-restrict-by-name"> resource group field in the YAML file.</a></td>
         </tr> 
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+  <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> RULE_NAME </td>
             <td> Rule name that is added as a part of the chaos injection. </td>
-            <td> If this is not provided, the fault uses the default name, i.e. <code>litmus-experiment-rule</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-with-custom-rule-name"> restrict with custom rule. </a></td>
+            <td> If this is not provided, the fault uses the default name, i.e. <code>litmus-experiment-rule</code>. For more information, go to <a href="#access-restrict-with-custom-rule-name"> restrict with custom rule. </a></td>
         </tr>
         <tr>
             <td> IP_ADDRESS_BLOCK </td>
             <td> IP address (or CIDR range) for the rule. </td>
-            <td>  Defaults to <code>0.0.0.0/0</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-for-a-certain-cidr-range"> restrict for a CIDR range. </a></td>
+            <td>  Defaults to <code>0.0.0.0/0</code>. For more information, go to <a href="#access-restrict-for-a-certain-cidr-range"> restrict for a CIDR range. </a></td>
         </tr>
         <tr>
             <td> ACTION </td>
             <td> Action you wish to perfrom with the rule. </td>
-            <td> Defaults to <code>deny</code>. Also supports <code>allow</code> action. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-with-action"> restrict with action. </a></td>
+            <td> Defaults to <code>deny</code>. Also supports <code>allow</code> action. For more information, go to <a href="#access-restrict-with-action"> restrict with action. </a></td>
         </tr>
         <tr>
             <td> PRIORITY </td>
             <td> Priority of the rule, wherein lower the number, higher is the priority and vice-versa. </td>
-            <td> Defaults to 300. For more information, refer <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-with-priority"> restrict with priority.</a></td>
+            <td> Defaults to 300. For more information, refer <a href="#access-restrict-with-priority"> restrict with priority.</a></td>
         </tr>
         <tr> 
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        </tr>
+        <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
         </tr>
         <tr> 
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance power offs (in seconds).</td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

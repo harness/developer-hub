@@ -1,7 +1,7 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Continuous Delivery & GitOps Docs
+title: Continuous Delivery & GitOps Documentation
 # id: continuous-delivery
 ---
 

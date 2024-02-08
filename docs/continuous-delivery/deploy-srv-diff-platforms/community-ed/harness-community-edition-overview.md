@@ -1,14 +1,10 @@
 ---
-title: Harness CD Community Edition Overview
+title: Harness CD Community Edition overview
 description: Try Harness CD Community Edition (CE) on your laptop or any VM.
 sidebar_position: 1
 ---
 
-This topic describes Harness CD Community Edition (CE).
-
-Harness CD Community Edition is a lightweight version of Harness that you can download and run on your laptop or any VM.
-
-Harness CD Community Edition is intended to get devs started with Harness quickly without having to sign up for a Harness SaaS account.
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). Follow the instructions below if you are still using the Harness CD CE.
 
 :::note
 
@@ -30,7 +26,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 * You can also use Harness CD features such as automated rolling, canary and blue green deployments, automated infrastructure provisioning, integrated approvals and notifications, full YAML-based development, and Harness Git Experience.
 * In the near future, Amazon Web Services (AWS) (Elastic Container Service (ECS), Auto Scale Groups (ASG), CloudFormation, Lambda, etc), Microsoft Azure (Virtual Machine Scale Sets (VMSS), WebApps, Azure Kubernetes Service (AKS), Azure Container Registry (ACR), Azure Resource Manager (ARM), Blueprint), .NET, Google Cloud Build, VM, Tanzu Application Services (TAS), Serverless, and traditional (Tomcat, etc) deployments will be supported.  
 
-For the full list of the currently supported integrations, see **Continuous Delivery (CD)** in [supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies).
+For the full list of the currently supported integrations, see **Continuous Delivery (CD)** in [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Can I upgrade to a paid plan from Harness CD Community Edition?
 
@@ -109,5 +105,5 @@ Harness uses this information for sales, support, product updates, security upda
 
 The use of this information is governed by our [Privacy Policy](https://harness.io/privacy).
 
-If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, see our [Privacy Policy](https://harness.io/privacy).
+If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, see our [Privacy Policy](https://harness.io/privacy).
 

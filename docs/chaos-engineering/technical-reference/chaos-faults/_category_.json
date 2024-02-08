@@ -1,9 +1,9 @@
 {
-  "position": 1,
+  "position": 2,
   "label": "Chaos faults",
   "collapsible": "true",
   "collapsed": "true",
   "customProps": {
-    "description": "Chaos faults documentation"
+    "description": "Dive deep into Kubernetes, AWS, Azure and other chaos faults"
   }
 }

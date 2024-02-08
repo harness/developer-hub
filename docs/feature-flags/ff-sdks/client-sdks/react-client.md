@@ -9,6 +9,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
 
 This topic describes how to use the Harness Feature Flags SDK for your React Client application. 
 
@@ -16,14 +23,14 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Before you begin
 
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
+* [Feature Flags Overview](../../get-started/overview)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.1.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-react-client-sdk/releases)
 
 ## Prerequisites
 
@@ -77,8 +84,8 @@ apiKey="YOUR_API_KEY"
 
 <details>
 <summary>What is a target?</summary> 
-Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -154,8 +161,6 @@ options={{ // OPTIONAL: advanced options
         baseUrl: 'https://url-to-access-flags.com',
         eventUrl: 'https://url-for-events.com',
         streamEnabled: true,
-        allAttributesPrivate: false,
-        privateAttributeNames: ['customAttribute'],
         debug: true
       }}
 ```
@@ -185,7 +190,7 @@ function MyComponent() {
   return <p>My flag value is: {myFlagValue}</p>
 }
 ```
-:::note
+:::info note
 If the flag can’t be found, undefined is returned unless you passed in a different default value.
 :::
 
@@ -231,6 +236,41 @@ When you receive a response showing the current status of your feature flag, go 
 
 <Sixty />
 
+## Close the SDK client
+
+<Closeclient />
+
+
+
+## Mock the SDK when testing with Jest
+
+When testing your React application with Jest, you may want to mock the SDK to avoid making network requests. You can do this by using the `TestWrapper` component included in the SDK. This component accepts a listing of flags and their values, and mocks the SDK to return those values. 
+
+:::info note
+To use the `TestWrapper` component, you must import it from the `dist/cjs/test-utils` directory (not from the main SDK package), as shown in the example below.
+:::
+
+### Example
+
+In the example below, we use Testing Library to render the component `<MyComponent />` that internally uses the `useFeatureFlag` hook.
+
+```
+import { render, screen } from '@testing-library/react'
+import { TestWrapper } from '@harnessio/ff-react-client-sdk/dist/cjs/test-utils'
+
+// ...
+
+test('it should render the flag value', () => {
+  render(
+    <TestWrapper flags={{ flag1: 'value1', flag2: 'value2' }}>
+      <MyComponent />
+    </TestWrapper>
+  )
+
+  expect(screen.getByText('value1')).toBeInTheDocument()
+})
+```
+
 ## Additional options
 
 ### Use async mode
@@ -265,7 +305,7 @@ function MyComponent({ flags, loading }) {
 }
 const MyComponentWithFlags = withFeatureFlags(MyComponent)
 ```
-:::caution
+:::warning
 When using async mode, the default value is returned until the flags are retrieved. If you use the `useFeatureFlag` or `useFeatureFlags` hooks, the default value is undefined unless you change it when evaluating the flag. If you are using `withFeatureFlags`, you will receive an empty object. 
 :::
 

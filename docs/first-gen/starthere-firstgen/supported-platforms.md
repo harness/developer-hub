@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../getting-started/supported-platforms-and-technologies.md).This topic lists Harness support for platforms, methodologies, and related technologies.
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/supported-platforms-and-technologies.md).This topic lists Harness support for platforms, methodologies, and related technologies.
 
 ### Deployments
 
@@ -233,14 +233,20 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <td valign="top">
         <p> Deployment Types Fargate, EC2:</p>
         <ul>
-          <li>Canary</li>
-          <li>Blue/Green:<ul>
+          <li>
+          Canary
+          </li>
+          <li>
+          Blue/Green:
+            <ul>
               <li>Using ALB/NLB and Target Group</li>
               <li>Using Route 53 DNS</li>
             </ul>
           </li>
-          <li>Rolling:<ul>
-              <li> >Caveat: It&#39;s created as a Basic Workflow</li>
+          <li>
+          Multi-Service:
+            <ul>
+              <li> >Caveat: It is created as a Basic Workflow</li>
             </ul>
           </li>
         </ul>
@@ -250,7 +256,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
         <ul>
           <li> Canary: Canary Analysis - Realtime Load</li>
           <li> Blue/Green: Previous Analysis - Synthetic Load</li>
-          <li> Rolling: Previous Analysis - Synthetic Load</li>
+          <li> Multi-Service: Previous Analysis - Synthetic Load</li>
         </ul>
         <p> Deployment Type - Fargate:</p>
         <p>Same strategy support as EC2.</p>
@@ -624,7 +630,7 @@ The following table lists Harness support for metrics platforms (APMs).
 
 #### Logging Platforms
 
-Most logging platforms are also supported. See [Verification](https://developer.harness.io/docs/category/continuous-verification).
+Most logging platforms are also supported. See [Verification](/docs/category/continuous-verification).
 
 
 
@@ -661,7 +667,7 @@ The following table lists Harness support for SSO protocols and tools.
 |  SSO Type |  SSO Providers |  Authentication Supported |  Authorization (Group Linking) Supported |  SCIM Provisioning |
 | --- | --- | --- | --- | --- |
 | [SAML](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md) |  Okta |  Yes |  Yes |  Yes |
-|  |  Azure Active Directory |  Yes |  Yes |  Yes |
+|  |  Microsoft Entra ID |  Yes |  Yes |  Yes |
 |  |  Google |  Yes |  No | No |
 |  |  Others |  Yes |  Yes | No |
 |  |  OneLogin |  Yes |  Yes |  Yes |
@@ -746,7 +752,7 @@ To support customization, Harness provides a Harness Delegate image that does no
 
 Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../../platform/2_Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../../platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 ### Browsers
 

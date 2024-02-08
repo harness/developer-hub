@@ -10,6 +10,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
 This topic describes how to use the Harness Feature Flags Android SDK for your Android application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-android-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Android SDK GitHub Repository.](https://github.com/harness/ff-android-client-sdk)
@@ -20,14 +27,16 @@ The SDK caches your Feature Flags. If the cache can't be accessed, the `default
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.0.18.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-android-client-sdk/releases)
+
+To use this version of the SDK, you also need to use Android API level 21 or higher.
 
 ## Requirements
 
@@ -35,15 +44,15 @@ To use this SDK, make sure you:
 
 * Installed [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds) or the [Android SDK](https://github.com/harness/ff-android-client-sdk/blob/main/docs/dev_environment.md) for CLI only
 * Installed [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) or newer
-* Installed [Gradle 7.4.1](https://gradle.org/releases/) or newer
-* Use Android API level 19 or higher.
+* Installed [Gradle 8.3](https://gradle.org/releases/) or newer
+* Use Android API level 21 or higher.
 
 Then ensure you:
 
 * Create an Android application to use with the SDK, or [clone our sample application](https://github.com/harness/ff-android-client-sdk) to use.
 * Download the SDK from our [GitHub Repository](https://github.com/harness/ff-android-client-sdk).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create a Client SDK key and make a copy of it](docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+* [Create a Client SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 
 ## Install the SDK
 
@@ -60,8 +69,19 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 
 
 ```
-implementation 'io.harness:ff-android-client-sdk:1.0.18'
+implementation 'io.harness:ff-android-client-sdk:1.2.0'
 ```
+
+### Release builds and ProGuard
+For release builds, Android uses ProGuard to apply optimizations that can affect the behavior of the SDK.
+
+Please add the following rule to your ProGuard configuration to ensure proper functionality when running your Android app from a release build
+
+```
+-keep class io.harness.cfsdk.** { *; }
+```
+
+
 ## Initialize the SDK
 
 To initialize the Android SDK, you need to:
@@ -75,8 +95,8 @@ To initialize the Android SDK, you need to:
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -135,7 +155,7 @@ You can configure the following features of the SDK:
 | --- | --- | --- | --- |
 | **Name** | **Configuration Option** | **Description** | **Default** |
 | baseUrl | `baseUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventsUrl | `eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
+| eventUrl | `eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
 | pollInterval | `pollingInterval(60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
 | enableStream | `enableStream(true)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | enableAnalytics | `enableAnalytics(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics. | `true` |
@@ -158,7 +178,7 @@ For example:
 
 To initialize the SDK, you must pass in the following:
 
-* `YOUR_API_KEY` - The client SDK key you created when [creating the Feature Flag](docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+* `YOUR_API_KEY` - The client SDK key you created when [creating the Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 * Any configuration options you want to use.
 * The Target you want to evaluate.
 
@@ -185,7 +205,7 @@ There are different methods for the different Variation types and for each metho
 * Identifier of the Flag you want to evaluate
 * The default Variation
 
-:::note
+:::info note
 The Flag is evaluated against the Target you pass in when initializing the SDK.
 :::
 
@@ -273,35 +293,47 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To avoid potential memory leaks, when you no longer need the SDK, you should close it. For example, when the app is closed, also close the SDK.
+<Closeclient />
 
 To close the SDK, call this method:
 
+```
+CfClient.getInstance().close()
+```
 
-```
-CfClient.getInstance().destroy()
-```
 ## Additional options
 
 ### Configure your logger
 
-We use Android Log for this SDK.
-
-For details on how to use Android Log, go to the [official guide](https://source.android.com/devices/tech/debug/understanding-logging#log-standards). The SDK uses the simple class names as tags. You can enable log levels for each of them using the following tags:
-
-* `CfClient` - Main client logs
-* `AnalyticsManager` - Analytics logs
-* `SSEListener` - SEE stream logs
-* `DefaultApi` - HTTP request logs
-
-You can enable these tags using the following command:
-
+We use SLF4J for this SDK, you can configure any compatible logger. For example you can include `logback` via Gradle:
 
 ```
-adb shell setprop log.tag.<tag_name> VERBOSE
+implementation 'com.github.tony19:logback-android:3.0.0'
 ```
+
+Using the following code you can configure it to write to `logcat`:
+
+```
+    companion object {
+        init {
+            BasicLogcatConfigurator.configureDefaultContext() // enable SDK logging to logcat
+            val lc = LoggerFactory.getILoggerFactory() as LoggerContext
+            val logger: Logger = lc.getLogger("<PKGNAME>")
+            logger.level = ALL
+        }
+    }
+```
+
+Change `<PKGNAME>` above to one of the following
+
+-* `io.harness.cfsdk.CfClient` - Main client logs
+-* `io.harness.cfsdk.cloud.analytics` - Analytics logs
+-* `io.harness.cfsdk.cloud.sse.EventSource` - SEE stream logs
+
+Or any other valid package name within the SDK.
+
 ### Use the SDK for unit tests
 
 To be able to use the SDK in unit tests, you must set the SDKs logging to `testModeOn`, which turns on the system output logging strategy.
@@ -366,7 +398,7 @@ public void initialize(
 * `public JSONObject jsonVariation(String evaluationId, JSONObject defaultValue)`
 * `public void registerEventsListener(EventsListener listener)`
 * `public void unregisterEventsListener(EventsListener observer)`
-* `public void destroy()`
+* `public void close()`
 
 ## Sample code for an Android application
 
@@ -424,3 +456,33 @@ class MainActivity : AppCompatActivity() {
     }  
 }
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                                               |
+|----------|:--------------------------------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                                      |
+| **1001** | Failed to initialize due to authentication error                                                              |
+| **1002** | Failed to initialize due to a missing or empty API key                                                        |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish |
+| **2000** | Successfully authenticated                                                                                    |
+| **2001** | Authentication failed with a non-recoverable error                                                            |
+| **2002** | Authentication failed and is retrying                                                                         |
+| **2003** | Authentication failed and max retries have been exceeded                                                      |
+| **3000** | SDK closing                                                                                                   |
+| **3001** | SDK closed successfully                                                                                       |
+| **4000** | Polling service started                                                                                       |
+| **4001** | Polling service stopped                                                                                       |
+| **5000** | Streaming service started                                                                                     |
+| **5001** | Streaming service stopped                                                                                     |
+| **5002** | Streaming event received                                                                                      |
+| **5003** | Streaming disconnected and is retrying to connect                                                             |
+| **5004** | Streaming stopped                                                                                             |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                          |
+| **6000** | Evaluation was successful                                                                                     |
+| **6001** | Evaluation failed and the default value was returned                                                          |
+| **7000** | Metrics service has started                                                                                   |
+| **7001** | Metrics service has stopped                                                                                   |
+| **7002** | Metrics posting failed                                                                                        |
+| **7003** | Metrics posting success                                                                                       |

@@ -1,37 +1,43 @@
 ---
-title: Prisma Cloud (formerly Twistlock) scanner reference
-description: Repository and container image scans with Prisma Cloud
-sidebar_position: 210
+title: Prisma Cloud (formerly Twistlock) scanner reference for STO
+description: Scan container images with Prisma Cloud.
+sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
+sidebar_position: 300
 ---
 
-You can scan container images using Prisma Cloud.
+You can scan container images and ingest results from Prisma Cloud (formerly Twistlock).
 
-## Before you begin
-
-```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
-```
-
-<StoCreateDinD />
+## Important notes for running Prisma Cloud scans in STO
 
 
-## PrismaCloud step configuration
-
-The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+### Docker-in-Docker requirements
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-<StoScannerStepNotes />
 
-<details>
-    <summary>Step Palette</summary>
+<StoDinDRequirements />
 
-![](static/step-palette-00.png) 
+### Root access requirements
 
-</details>
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+
+<StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+## Prisma Cloud step settings for STO
+
+The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
+
 
 ### Scan
 
@@ -40,14 +46,17 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 #### Scan Mode
 
-```mdx-code-block
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
 
-<StoSettingScanMode />
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
+
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -55,57 +64,51 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 #### Scan Configuration
 
-```mdx-code-block
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+
 
 <StoSettingProductConfigName />
 
 
 ### Target
 
-<a name="target-type"></a>
 
 #### Type
 
-```mdx-code-block
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-```
-<a name="scan-type"></a>
+import StoSettingScanType from './shared/step_palette/scan/_type.md';
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+
+
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
+
+<!-- #### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
+
 
 #### Name 
 
-```mdx-code-block
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-<StoSettingProductID />
-
-<a name="target-variant"></a>
+<StoSettingTargetName />
 
 #### Variant
 
-```mdx-code-block
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-
-### Ingestion File
-
-```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
-
-<StoSettingIngestionFile  />
 
 ### Container Image 
 
@@ -115,9 +118,10 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Type 
 
-```mdx-code-block
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
-```
+
+import StoSettingImageType from './shared/step_palette/image/_type.md';
+
+
 
 <StoSettingImageType />
 
@@ -127,9 +131,10 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 #### Domain 
 
 
-```mdx-code-block
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-```
+
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+
+
 
 <StoSettingImageDomain />
 
@@ -138,9 +143,10 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 
 #### Name
 
-```mdx-code-block
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
-```
+
+import StoSettingImageName from './shared/step_palette/image/_name.md';
+
+
 
 <StoSettingImageName />
 
@@ -149,9 +155,10 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 
 #### Tag
 
-```mdx-code-block
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
-```
+
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+
+
 
 <StoSettingImageTag />
 
@@ -160,9 +167,10 @@ import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
 
 #### Access Id
 
-```mdx-code-block
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
-```
+
+import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+
+
 
 <StoSettingImageAccessID />
 
@@ -171,9 +179,10 @@ import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-acc
 
 #### Access Token 
 
-```mdx-code-block
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
-```
+
+import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+
+
 
 <StoSettingImageAccessToken />
 
@@ -183,57 +192,19 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 <!-- ============================================================================= -->
 <a name="auth-domain"></a>
 
-#### Domain (_extraction_)
+#### Domain 
 
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
-```mdx-code-block
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-```
 
 <StoSettingAuthDomain />
 
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
-
-#### Enforce SSL
-
-```mdx-code-block
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
-```
-
-<StoSettingProductSSL />
-
-<!-- ============================================================================= -->
-<a name="auth-access-api-version"></a>
-
-#### API Version
-
-```mdx-code-block
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
-```
-
-<StoSettingApiVersion />
-
-<!-- ============================================================================= -->
-<a name="auth-type"></a>
-
-#### Type
-
-```mdx-code-block
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
-```
-
-<StoSettingAuthType />
-
-<!-- ============================================================================= -->
-
-<a name="auth-access-id"></a>
-
 #### Access ID
 
-```mdx-code-block
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
+
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+
+
 
 <StoSettingAuthAccessID />
 
@@ -242,9 +213,10 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 #### Access Token
 
-```mdx-code-block
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
+
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+
+
 
 
 <StoSettingAuthAccessToken />
@@ -255,15 +227,24 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 For Extraction scans, the name of the image that you want to extract from Prisma Cloud. 
 
+### Ingestion File
+
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
+<StoSettingIngestionFile  />
+
+
 ### Log Level, CLI flags, and Fail on Severity
 
 <a name="log-level"></a>
 
 #### Log Level
 
-```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
+
 
 <StoSettingLogLevel />
 
@@ -271,64 +252,70 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 <StoSettingCliFlags />
+
+For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`.
 
 
 #### Fail on Severity
 
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
+
 <StoSettingFailOnSeverity />
 
-
+<!-- 
 ### Settings
 
-You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` = `--publish FALSE`.
+You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` : `--publish FALSE`.
+
+-->
 
 ### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 
-## Security step configuration (_deprecated_)
- 
+## Security step settings for Prisma Cloud scans in STO (legacy)
+
+:::note
+You can set up Prisma Cloud scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Prisma Cloud step](#prisma-cloud-scan-settings) instead.
+:::
+
+#### Target and variant
 
 
-<details><summary>Set up a Prisma Cloud scan in a Security step</summary>
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
-You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
+<StoLegacyTargetAndVariant />
 
-<StoSecurityStepConfig />
-
+#### Prisma Cloud scan settings
 
 * `product_name` = `twistlock`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `containerImage`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan`, `dataLoad`, or `ingestionOnly`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `containerImage`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) :  `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
 	+ `product_image_name`
 	+ `product_domain`
@@ -339,24 +326,18 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-```mdx-code-block
+#### Container image scan settings
+
+
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
+
 
 <StoLegacyContainer />
 
-```mdx-code-block
+#### Ingestion file
+
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
-
-</details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

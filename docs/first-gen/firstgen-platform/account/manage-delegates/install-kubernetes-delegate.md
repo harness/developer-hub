@@ -80,9 +80,11 @@ A Delegate Profile is mandatory. The **Primary** Profile is the default and cont
     If you are not using your terminal to connect to your cluster, just copy the **harness-delegate.yaml** file to the cluster and run the command.
 
 7. Run this command to verify that the Delegate pod was created:
-    ```
-    kubectl get pods -n harness-delegate
-    ```
+    
+	```
+  kubectl get pods -n harness-delegate
+  ```
+
 It will take a moment for the Delegate to appear in **Harness Delegates** page.
 
 The **Delegates** page provides a list of installed Delegates. The information displayed includes:

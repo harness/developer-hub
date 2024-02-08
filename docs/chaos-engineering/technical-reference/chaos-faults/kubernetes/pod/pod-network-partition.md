@@ -2,6 +2,7 @@
 id: pod-network-partition
 title: Pod network partition
 ---
+
 Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.
 
 ![Pod Network Partition](./static/images/pod-network-partition.png)
@@ -10,15 +11,13 @@ Pod network partition is a Kubernetes pod-level fault that blocks 100 percent in
 
 Pod network partition tests the application's resilience to lossy or flaky network.
 
-:::note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16 
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
+### Optional tunables
 
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -28,6 +27,11 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
         <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
+      </tr>
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> POLICY_TYPES </td>
@@ -58,7 +62,12 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
         <td> If not provided, this fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#destination-ips-and-destination-hosts">destination hosts</a></td>
-      </tr>   
+      </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr> 
       <tr>   
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>

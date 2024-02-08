@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).Harness Kubernetes Service **Config Variables**, **Config Files**, and **values.yaml** settings can be overwritten by Harness Environments **Service Configuration Overrides**.
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).Harness Kubernetes Service **Config Variables**, **Config Files**, and **values.yaml** settings can be overwritten by Harness Environments **Service Configuration Overrides**.
 
 This enables you to have a Service keep its settings but change them when the Service is deployed to the Environment.
 

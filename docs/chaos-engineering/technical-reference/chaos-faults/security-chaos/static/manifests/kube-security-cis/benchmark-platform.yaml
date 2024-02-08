@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cis-bench
+  namespace: litmus
+data:
+  config.yaml: |
+    Benchmark: gke-1.2.0

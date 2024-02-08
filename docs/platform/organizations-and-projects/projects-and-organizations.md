@@ -1,5 +1,5 @@
 ---
-title: Organizations and Projects Overview
+title: Organizations and projects overview
 description: This topic explains Organizations and Projects in Harness. In this topic --  Before you begin. Visual Summary. What is an Organization?. What is a Project?. What is a Product Module?. Resources Across S…
 sidebar_position: 10
 helpdocs_topic_id: 7fibxie636
@@ -12,11 +12,11 @@ This topic explains Organizations and Projects in Harness.
 
 ### Before you begin
 
-* [Harness Role-Based Access Management Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 
 ### Visual Summary
 
-Harness enables you to manage access control at the following [scopes](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope):
+Harness enables you to manage access control at the following [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
 
 * Account
 * Organization

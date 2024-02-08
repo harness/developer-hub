@@ -15,15 +15,12 @@ Pod DNS spoof:
 - Determines how quickly an application can resolve the host names and recover from the failure. 
 - Simulates custom responses from a spoofed upstream service.
 
-:::note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
-## Fault tunables
-
-  <h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description  </th>
@@ -33,6 +30,11 @@ Pod DNS spoof:
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to DNS spoof. </td>
         <td> None. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+      </tr>
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -65,16 +67,20 @@ Pod DNS spoof:
         <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a> </td>
       </tr>
       <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 
-
 ### Spoof map
 
-Map of the target host names. For example, <code>'{"abc.com":"spoofabc.com"}'</code> where the key is the host name to be spoofed and the value is the host name to which the key is spoofed or redirected. Tune it by using the `SPOOF_MAP` environment variable.
+Map of the target host names. For example, <code>'\{"abc.com":"spoofabc.com"}'</code> where the key is the host name to be spoofed and the value is the host name to which the key is spoofed or redirected. Tune it by using the `SPOOF_MAP` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

@@ -1,5 +1,5 @@
 ---
-title: Pipeline Resource Constraints
+title: Pipeline resource constraints
 description: This topic describes how to prevent multiple Pipelines or Stages from requesting the same deployment environment resources at the same time.
 sidebar_position: 5
 helpdocs_topic_id: jrzwrdpvm2

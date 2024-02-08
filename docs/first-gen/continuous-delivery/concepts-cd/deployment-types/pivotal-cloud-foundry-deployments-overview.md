@@ -12,7 +12,7 @@ This topic describes the concept of a Harness Tanzu Application Service (TAS, fo
 
 Pivotal Cloud Foundry (PCF) was purchased by VMWare and renamed to Tanzu Application Service (TAS). For a quick tutorial, see the [Tanzu Application Service Quickstart](../../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md).
 
-For detailed instructions on using TAS in Harness, see the [Tanzu Application Service How-tos](docs/category/iis-net-deployments).
+For detailed instructions on using TAS in Harness, see the [Tanzu Application Service How-tos](/docs/category/iis-net-deployments).
 
 ### Before You Begin
 
@@ -54,5 +54,5 @@ The following list describes the major steps of a Harness TAS deployment:
 Read the following topics to build on what you've learned:
 
 * [Tanzu Application Service (TAS) Quickstart](../../../first-gen-quickstarts/pivotal-cloud-foundry-quickstart.md)
-* [TAS How-tos](docs/category/iis-net-deployments)
+* [TAS How-tos](/docs/category/iis-net-deployments)
 

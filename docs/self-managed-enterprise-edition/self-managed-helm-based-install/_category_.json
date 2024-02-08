@@ -1,6 +1,6 @@
 {
     "label":"Helm installation",
-    "position": 20,
+    "position": 15,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",

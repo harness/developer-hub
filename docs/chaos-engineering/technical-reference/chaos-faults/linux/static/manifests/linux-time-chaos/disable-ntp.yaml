@@ -1,0 +1,10 @@
+# disable the ntp server
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-time-chaos
+  labels:
+    name: time-chaos
+spec:
+  timeChaos/inputs:
+    disableNTP: 'true'

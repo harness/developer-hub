@@ -2,11 +2,11 @@
 title: Common AWS fault tunables
 sidebar_position: 1
 ---
-This section describes AWS-specific fault tunables.
+This section describes the common AWS-specific fault tunables.
 
-### Managed nodegroup
+### Managed node group
 
-Specifies whether AWS EC2 instances are a part of the managed nodeGroups. If instances belong to the managed nodeGroups, set `MANAGED_NODEGROUP` environment variable to `enable`, else set it to `disable`. The default value is `disabled`.
+Specifies whether the AWS EC2 instances are a part of the managed node groups. If the instances belong to the managed node groups, set the `MANAGED_NODEGROUP` environment variable to `enable`, otherwise set it to `disable`. The default value is `disabled`.
 
 The following YAML snippet illustrates the use of this environment variable:
 

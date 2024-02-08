@@ -10,21 +10,21 @@ helpdocs_is_published: true
 
 The following Kubernetes-specific Harness variables are available as expressions you can use in your Workflows.
 
-### ${k8s.primaryServiceName}
+### $\{k8s.primaryServiceName}
 
 `${k8s.primaryServiceName}` - The service in your Harness Service **Manifests** section that uses the `annotations: harness.io/primary-service: "true"` annotation. See [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md).
 
 Boolean annotation values must use quotes (`"true"|"false"`).
 
-### ${k8s.stageServiceName}
+### $\{k8s.stageServiceName}
 
 `${k8s.stageServiceName}` - The service in your Harness Service **Manifests** section uses the `annotations: harness.io/stage-service: "true"` annotation. See [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md).
 
-### ${k8s.canaryWorkload}
+### $\{k8s.canaryWorkload}
 
 `${k8s.canaryWorkload}` - The Kubernetes workload set up in the Canary Workflow. Workflows only deploy one workload per deployment. Workloads include the Deployment, StatefulSet, DaemonSet, and DeploymentConfig objects.
 
-### ${k8s.virtualServiceName}
+### $\{k8s.virtualServiceName}
 
 `${k8s.virtualServiceName}` - The name in the [Virtual Service](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/) manifest deployed by the Workflow. This is the manifest in the Service **Manifests** section that uses `kind: VirtualService` for Istio. See [Set Up Kubernetes Traffic Splitting](set-up-kubernetes-traffic-splitting.md).
 
@@ -58,7 +58,7 @@ http:
       subset: "stable"  
     weight: 50
 ```
-### ${infra.kubernetes.namespace}
+### $\{infra.kubernetes.namespace}
 
 `${infra.kubernetes.namespace}` - The Harness variable `${infra.kubernetes.namespace}` refers to the namespace entered in the Harness Environment Infrastructure Definition settings **Namespace** field:
 

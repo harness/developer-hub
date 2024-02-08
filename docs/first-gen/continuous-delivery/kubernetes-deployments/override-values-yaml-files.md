@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).You can override the inline or remote values.yaml file(s) used in a Harness Kubernetes Service.
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).You can override the inline or remote values.yaml file(s) used in a Harness Kubernetes Service.
 
 You can override values.yaml at the Harness Service and Environment levels, and also use Workflow variables to replace values.yaml file names or values at deployment runtime.
 

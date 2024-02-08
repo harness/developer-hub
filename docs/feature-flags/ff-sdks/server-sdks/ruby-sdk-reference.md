@@ -10,6 +10,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpyes from '../shared/note-smp-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpyes />
+
 
 This topic describes how to use the Harness Feature Flags Ruby SDK for your Java application.
 
@@ -19,14 +26,14 @@ For getting started quickly, you can use our [sample code from the Ruby SDK REA
 
 You should read and understand the following:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.1.0**.
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-ruby-server-sdk/releases)
 
 ## Requirements
 
@@ -106,8 +113,8 @@ client.init(key, config)
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -200,14 +207,18 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client:
 
-```
-client.close
-```
+* Assuming you have initialized an SDK client instance named `client`, call the following function:
+
+    ```
+    client.close()
+    ```
+
 ## Additional options
 
 ### Use the Relay Proxy
@@ -348,3 +359,29 @@ clients.each do |name, client|
 end  
 
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                          |
+|----------|:-----------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                 |
+| **1001** | Failed to initialize due to authentication error                                         |
+| **1002** | Failed to initialize due to a missing or empty API key                                   |
+| **2000** | Successfully authenticated                                                               |
+| **2001** | Authentication failed with a non recoverable error                                       |
+| **2002** | Authentication failed and is retrying                                                    |
+| **2003** | Authentication failed and max retries have been exceeded                                 |
+| **4000** | Polling service started                                                                  |
+| **4001** | Polling service stopped                                                                  |
+| **5000** | Streaming service started                                                                |
+| **5001** | Streaming service stopped                                                                |
+| **5002** | Streaming event received                                                                 |
+| **5003** | Streaming disconnected and is retrying to connect                                        |
+| **5004** | Streaming stopped                                                                        |
+| **6000** | Evaluation was successfully                                                              |
+| **6001** | Evaluation failed and the default value was returned                                     |
+| **7000** | Metrics service has started                                                              |
+| **7001** | Metrics service has stopped                                                              |
+| **7002** | Metrics posting failed                                                                   |
+| **7003** | Metrics posting success                                                                  |

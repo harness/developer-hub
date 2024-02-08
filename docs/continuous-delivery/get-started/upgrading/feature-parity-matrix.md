@@ -11,7 +11,7 @@ Download the <ins>[FirstGen and NextGen feature parity matrix PDF](./static/Firs
 
 :::note
 
-For more information, go to [Upgrading CD](https://developer.harness.io/docs/category/upgrading-cd) and the [migrator tool](https://github.com/harness/migrator).
+For more information, go to [Upgrading CD](/docs/category/upgrading-cd) and the [migrator tool](https://github.com/harness/migrator).
 
 :::
 

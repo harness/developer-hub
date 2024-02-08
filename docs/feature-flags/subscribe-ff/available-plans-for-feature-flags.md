@@ -35,6 +35,6 @@ Below is an overview of the features of each plan. For a full list of all featur
 |  |  | Custom dashboards and Business Intelligence |
 
 
-:::note
+:::info note
  Standard Support is coverage from 8am to 5pm PST. Premier Support is 24x7.
 :::

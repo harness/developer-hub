@@ -108,7 +108,7 @@ Set how long the deployment process should wait before executing the verificatio
 
 This section explains how to use the **Guide From Example** option next to the **Expression for Host/Container name** field, but the same information applies to when the **Guide From Example** option is next any other field, such as a **Message** field.In the New Relic verification step's settings, you can see the **Guide From Example** option next to the **Expression for Host/Container name** field. This option lets you select the host(s), pod(s), or container(s) for Harness to use when performing verification.
 
-You select the host, pod, or container in **Guide From Example**, and an expression is added to the **Expression for Host/Container name** field. The default expression is **${instance.host.hostName}**.
+You select the host, pod, or container in **Guide From Example**, and an expression is added to the **Expression for Host/Container name** field. The default expression is **$\{instance.host.hostName}**.
 
 ![](./static/4-verify-deployments-with-new-relic-07.png)
 
@@ -143,7 +143,7 @@ To use **Guide From Example** for a host or container name expression, do the fo
 
   ![](./static/4-verify-deployments-with-new-relic-13.png)
   
-6. Locate the host/pod/container to use, and click the **label** to select the expression. For example, if you clicked the **hostName** label, the expression **${host.hostName}** is added to the **Expression for Host/Container name** field. Click back in the main dialog to close the **Guide From Example**.
+6. Locate the host/pod/container to use, and click the **label** to select the expression. For example, if you clicked the **hostName** label, the expression **$\{host.hostName}** is added to the **Expression for Host/Container name** field. Click back in the main dialog to close the **Guide From Example**.
 7. At the bottom of the New Relic dialog, click **TEST**.
 
    ![](./static/4-verify-deployments-with-new-relic-14.png)

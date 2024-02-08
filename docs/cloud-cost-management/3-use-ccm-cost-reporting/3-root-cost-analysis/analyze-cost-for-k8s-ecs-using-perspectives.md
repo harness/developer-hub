@@ -23,7 +23,7 @@ Harness Cloud Cost Management (CCM) allows you to view your cloud costs at a gla
 
 ### Before You Begin
 
-* [Set up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
 
 ### Step: Analyze Kubernetes Cost
 

@@ -1,9 +1,9 @@
 ---
-title: Custom incident change source
-description: Configure a custom change source to monitor incidents.
-sidebar_position: 20
+title: Configure a custom incident change source
+sidebar_label: Custom incident
+description: Configure a custom incident change source to monitor incidents.
+sidebar_position: 40
 ---
-
 
 With Harness' custom incident change source feature, you can easily integrate a monitored service with any incident monitoring tool that supports webhook URLs or cURL commands. 
 

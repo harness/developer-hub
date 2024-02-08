@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for RDS
+title: RDS
 description: This topic describes how to create AutoStopping Rules for Amazon Relational Database Service (RDS).
 # sidebar_position: 7
 helpdocs_topic_id: ryk2e3ujpn
@@ -7,15 +7,15 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
-AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. For more information, see [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md).
+# Create AutoStopping Rules for RDS
+AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. For more information, see [AutoStopping Rules Overview](../1-auto-stopping-rules.md).
 
 This topic describes how to create AutoStopping Rules for Amazon Relational Database Service (RDS).
 
 
 ## Prerequisites
 
-* Read the following topics in [Set up Cloud Cost Management for AWS](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md): 
+* Read the following topics in [Set up Cloud Cost Management for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md): 
 
 	* Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
 	* Permissions to create a cross-account role. See AWS Access Permissions.

@@ -10,6 +10,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
 This topic describes how to use the Harness Feature Flags SDK for your Flutter application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-flutter-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Flutter SDK GitHub Repository.](https://github.com/harness/ff-flutter-client-sdk)
@@ -18,48 +25,84 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 You should read and understand the following:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.0.10.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-flutter-client-sdk/releases)
 
-## Requirements
+## Flutter and Dart requirements
 
-To use this SDK, make sure you:
+To use version 2 and greater of this SDK, make sure you:
 
 * Install the [Flutter SDK, version 2.10.4 or higher](https://docs.flutter.dev/get-started/install).
+* Use Dart SDK 2.12 and later.
+
+To use version 1 and earlier versions of this SDK, make sure you:
+
+* Install the [Flutter SDK, version 2.10.4](https://docs.flutter.dev/get-started/install).
+* Use Dart SDK 2.7 to 2.10
+
+## General requirements
+
 * (For iOS apps) Install [Xcode](https://docs.flutter.dev/get-started/install/macos#install-xcode).
 * (For Android apps) Install [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds), or install the Android SDK for Command-Line Interface (CLI) only.
-
-:::note
-To check if you have installed the prerequisites, run the `flutter doctor` command. 
-:::
-
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
 * Create a Flutter application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-flutter-client-sdk).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
 * [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 
-## Install the SDK
+:::info note
+To check if you have installed the prerequisites, run the `flutter doctor` command. 
+:::
 
-To install the SDK, add the Feature Flag Flutter SDK dependency into the `pubspec.yaml` file, for example:
+## Install the SDK for Flutter Web
 
+To install the SDK, you must add the dependency, import the required packages, and then embed the JavaScript SDK.
+
+### Add the dependency
+
+Begin by adding the Feature Flag Flutter SDK dependency to your pubspec.yaml file:
 
 ```
-ff_flutter_client_sdk: ^1.0.8
+ff_flutter_client_sdk: ^2.1.0
 ```
-Then import the following packages into your project:
 
+### Import required packages
+
+Once you've added the dependency, import the necessary packages into your Dart files:
 
 ```
 import 'package:ff_flutter_client_sdk/CfClient.dart';  
 import 'package:ff_flutter_client_sdk/CfConfiguration.dart';  
 import 'package:ff_flutter_client_sdk/CfTarget.dart';
 ```
+
+### Embed the JavaScript SDK
+
+Be sure that you have added the dependency and imported the required packages before you begin this step. 
+
+1. Embed our JavaScript SDK by adding the following script tag to the `<head>` section of your web page:
+```html
+  <script src="https://sdk.ff.harness.io/1.19.2/sdk.client-iife.js"></script>
+```
+
+This installs the Feature Flags JavaScript SDK and makes it available to your application. Please ensure you regularly upgrade the
+JavaScript SDK version to get the latest updates. For the newest JavaScript SDK updates, monitor:
+
+* [JavaScript SDK GitHub Repo](https://github.com/harness/ff-javascript-client-sdk/releases)
+* [official Feature Flags Releases Page](https://developer.harness.io/release-notes/feature-flags)
+
+## Release mode for Android applications
+In release mode, Flutter applies optimizations that can affect the behavior of native Android code, including code used by our Flutter Android plugin.
+
+Please add the following rule to your ProGuard configuration to ensure proper functionality when running your Android app in release mode
+
+`-keep class io.harness.cfsdk.** { *; }`
+
 ## Initialize the SDK
 
 To initialize the Flutter SDK, you need to:
@@ -73,8 +116,8 @@ To initialize the Flutter SDK, you need to:
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -269,11 +312,11 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To avoid potential memory leaks, when you no longer need the SDK, you should close it. For example, when the app is closed, also close the SDK.
+<Closeclient />
 
-To close the SDK, call this method:
+To close the SDK client, call this method:
 
 
 ```

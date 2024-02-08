@@ -8,6 +8,6 @@
       "title":"Probes"
    },
   "customProps": {
-    "description": "Probes documentation"
+    "description": "Reusable pluggable checks that can be used with any chaos experiment"
   }
 }

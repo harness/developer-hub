@@ -23,7 +23,7 @@ Import Sets are a useful tool for migrating data into ServiceNow, or for regular
 
 :::note
 
-For more information on ServiceNow import sets, go to [Import Set - POST /now/import/{stagingTableName}](https://docs.servicenow.com/bundle/quebec-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html#import-POST) and [import sets key concepts](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/concept/c_ImportSetsKeyConcepts.html) from ServiceNow.
+For more information on ServiceNow import sets, go to [Import Set - POST /now/import/\{stagingTableName}](https://docs.servicenow.com/bundle/quebec-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html#import-POST) and [import sets key concepts](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/concept/c_ImportSetsKeyConcepts.html) from ServiceNow.
 
 :::
 
@@ -43,8 +43,8 @@ You can add a ServiceNow Import Set step anywhere in CD, approval, or custom sta
 
 1. In a Harness CD, approval, or custom stage, in **Execution**, click **Add Step**, and then select **ServiceNow Import Set**.
 2. Enter a name for the step.
-3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
-4. In **ServiceNow Connector**, select or create the [Harness ServiceNow connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-service-now) to use.
+3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+4. In **ServiceNow Connector**, select or create the [Harness ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 
 ## Select the stage table
 
@@ -65,7 +65,7 @@ For example, to initiate a transformation using the `sys_import_state_comment` f
 
 You can also use Harness runtime inputs, variable expressions, and Harness secrets in the JSON of **JSON Body**. 
 
-For example, you could create a stage variable named `importset` and then reference it in **JSON Body** as {"u_example":"<+stage.variables.importset>"}.
+For example, you could create a stage variable named `importset` and then reference it in **JSON Body** as \{"u_example":"\<+stage.variables.importset>"}.
 
 For details on the table requirements and naming, go to [import sets](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/reference/import-sets-landing-page.html) from ServiceNow.
 
@@ -75,10 +75,11 @@ For details on creating a transform map, go to [create a transform map](https://
 
 In **Advanced**, you can use the following options:
 
-* [Delegate selector](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional execution](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Review transform map outcomes
 
@@ -104,7 +105,7 @@ To reference these results as expressions in other pipeline steps, click the cop
 <+pipeline.stages.stage1.spec.execution.steps.step1.output.transformMapOutcomes[1].status>
 ```
 
-You can echo them in a subsequent step, such as a [Shell Script step](../../executions/cd-general-steps/using-shell-scripts.md).
+You can echo them in a subsequent step, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
 ## Important notes
 

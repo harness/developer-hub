@@ -7,19 +7,19 @@ description: Create experiments in Harness and run them as Gitlab pipelines
 This tutorial explains how you can create chaos experiments using Harness Chaos Engineering (HCE) and run them in GitLab pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from. 
 
 ## Before you begin
-Check out the [first chaos experiment](https://developer.harness.io/tutorials/chaos-experiments/first-chaos-engineering) that will guide you through creating a new experiment in HCE. This will provide a solid foundation for your understanding of creating experiments in HCE. 
+Check out the [first chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering) that will guide you through creating a new experiment in HCE. This will provide a solid foundation for your understanding of creating experiments in HCE. 
 
 Below are the steps to run chaos experiments in GitLab pipelines.
 
 ## Create a chaos experiment
 
-Create a [chaos experiment](https://developer.harness.io/tutorials/chaos-experiments/first-chaos-engineering) in the Harness Chaos Module. Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitLab.
+Create a [chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering) in the Harness Chaos Module. Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitLab.
 
 ![chaos experiment with ID and resilience score](static/gitlab/chaos-experiments-with-id.png)
 
 ## Create a launch script
 
-HCE APIs are used to invoke or launch a chaos experiment from the pipeline. To simplify creating an API call with the required secure parameters and data, a [CLI tool](https://storage.googleapis.com/hce-api/hce-api-linux-amd64) is provided. Use this tool to create an appropriate API command to include in the pipeline script.
+HCE APIs are used to invoke or launch a chaos experiment from the pipeline. To simplify creating an API call with the required secure parameters and data, a CLI tool is provided. Use this tool to create an appropriate API command to include in the pipeline script.
 
 Below is a sample launch script.
 ```
@@ -27,11 +27,11 @@ Below is a sample launch script.
 
 set -e
 
-curl -sL https://storage.googleapis.com/hce-api/hce-api-linux-amd64 -o hce-api-saas
+curl -sL https://app.harness.io/public/shared/tools/chaos/hce-cli/0.0.1/hce-cli-0.0.1-linux-amd64 -o hce-cli
 
-chmod +x hce-api-saas
+chmod +x hce-cli
 
-output=$(./hce-api-saas generate --api launch-experiment --account-id=${ACCOUNT_ID} \
+output=$(./hce-cli generate --api launch-experiment --account-id=${ACCOUNT_ID} \
 --project-id ${PROJECT_ID} --workflow-id ${WORKFLOW_ID} \
 --api-key ${API_KEY} --file-name hce-api.sh | jq -r '.data.runChaosExperiment.notifyID')
 
@@ -84,11 +84,11 @@ Retrieve the resilience score using the Harness Chaos API and take appropriate a
 
 set -e 
 
-curl -sL https://storage.googleapis.com/hce-api/hce-api-linux-amd64 -o hce-api-saas
+curl -sL https://app.harness.io/public/shared/tools/chaos/hce-cli/0.0.1/hce-cli-0.0.1-linux-amd64 -o hce-cli
 
-chmod +x hce-api-saas
+chmod +x hce-cli
 
-resiliencyScore=$(./hce-api-saas generate --api validate-resilience-score  --account-id=${ACCOUNT_ID} \
+resiliencyScore=$(./hce-cli generate --api validate-resilience-score  --account-id=${ACCOUNT_ID} \
 --project-id ${PROJECT_ID} --notifyID=$1  \
 --api-key ${API_KEY} --file-name hce-api.sh)
 

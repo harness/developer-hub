@@ -1,0 +1,11 @@
+{
+   "label":"Get started with SRM",
+   "position": 20,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Get started with Harness Service Reliability Management (SRM)"
+   }
+   }

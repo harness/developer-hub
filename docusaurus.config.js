@@ -1,12 +1,18 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-// const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const { themes } = require("prism-react-renderer");
+const darkCodeTheme = themes.dracula;
 const path = require("path");
-const clientRedirects = require("./client-redirects");
 
 const BASE_URL = process.env.BASE_URL || "/";
+
+function hideIndexFromSidebarItems(items) {
+  const result = items.filter((item) => {
+    return !(item.type === "doc" && item.id === "index");
+  });
+  return result;
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -17,6 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
@@ -43,21 +50,33 @@ const config = {
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          path: "docs",
-          sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
-          // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-          exclude: ["**/shared/**", "**/static/**"],
-          routeBasePath: "docs", //CHANGE HERE
+        // docs: {
+        //   path: "docs",
+        //   sidebarPath: require.resolve("./sidebars.js"),
+        //   editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        //   // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+        //   exclude: ["**/shared/**", "**/static/**"],
+        //   routeBasePath: "docs", //CHANGE HERE
+        // },
+        docs: false,
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infra-as-code-management",
+            "/docs/infra-as-code-management/**",
+          ],
+          // filename: 'sitemap.xml',
         },
-
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
-        gtag: {
-          trackingID: "G-46758J5H8P",
-          anonymizeIP: false,
+        // gtag: { // use GTM instead
+        //   trackingID: 'G-46758J5H8P',
+        //   anonymizeIP: false,
+        // },
+        googleTagManager: {
+          containerId: "GTM-MJB7HPB",
         },
       }),
     ],
@@ -67,6 +86,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: "og:image",
+          content: "https://developer.harness.io/img/hdh-social-card.png",
+        },
+      ],
       navbar: {
         title: "Harness Developer Hub",
         logo: {
@@ -115,13 +140,13 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Manage Service Reliability",
-                to: "tutorials/service-reliability",
+                label: "Orchestrate Security Tests",
+                to: "tutorials/security-tests",
               },
               {
                 // type: "doc",
-                label: "Orchestrate Security Tests",
-                to: "tutorials/security-tests",
+                label: "Secure Supply Chain",
+                to: "tutorials/secure-supply-chain",
               },
               {
                 // type: "doc",
@@ -130,8 +155,28 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Service Reliability",
+                to: "tutorials/service-reliability",
+              },
+              {
+                // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
+              },
+              {
+                // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
+              },
+              {
+                // type: "doc",
+                label: "Administer Harness Self-Managed EE",
+                to: "tutorials/self-managed-enterprise-edition",
               },
             ],
           },
@@ -143,7 +188,11 @@ const config = {
             items: [
               {
                 label: "Get Started",
-                to: "docs/getting-started",
+                to: "docs/get-started",
+              },
+              {
+                label: "Code Repository",
+                to: "docs/code-repository",
               },
               {
                 label: "Continuous Integration",
@@ -154,6 +203,10 @@ const config = {
                 to: "docs/continuous-delivery",
               },
               {
+                label: "Infrastructure as Code Management",
+                to: "docs/infrastructure-as-code-management",
+              },
+              {
                 label: "Feature Flags",
                 to: "docs/feature-flags",
               },
@@ -162,19 +215,35 @@ const config = {
                 to: "docs/cloud-cost-management",
               },
               {
-                label: "Service Reliability Management",
-                to: "docs/service-reliability-management",
-              },
-              {
                 label: "Security Testing Orchestration",
                 to: "docs/security-testing-orchestration",
+              },
+              {
+                label: "Software Supply Chain Assurance",
+                to: "docs/software-supply-chain-assurance",
               },
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
               },
               {
-                label: "Harness Platform",
+                label: "Service Reliability Management",
+                to: "docs/service-reliability-management",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
+                label: "Software Engineering Insights",
+                to: "docs/software-engineering-insights",
+              },
+              {
+                label: "Platform",
                 to: "docs/platform",
               },
               {
@@ -182,20 +251,28 @@ const config = {
                 to: "docs/self-managed-enterprise-edition",
               },
               {
-                label: "Harness FirstGen",
+                label: "FirstGen",
                 to: "docs/first-gen",
               },
               {
                 label: "Release Notes",
-                href: "/release-notes/whats-new",
+                href: "/release-notes",
+              },
+              {
+                label: "Roadmap",
+                href: "/roadmap",
               },
               {
                 label: "FAQs",
-                to: "docs/frequently-asked-questions",
+                to: "docs/faqs",
               },
               {
                 label: "Troubleshooting",
                 to: "docs/troubleshooting",
+              },
+              {
+                label: "Harness Cloud Operations",
+                to: "docs/harness-cloud-operations",
               },
               {
                 label: "API Reference",
@@ -214,46 +291,71 @@ const config = {
                 to: "certifications",
               },
               {
+                label: "Continuous Integration",
+                to: "certifications/continuous-integration",
+              },
+              {
                 label: "Continuous Delivery & GitOps",
                 to: "certifications/continuous-delivery",
               },
               {
-                label: "Continuous Integration",
-                to: "certifications/continuous-integration",
+                label: "Feature Flags",
+                to: "certifications/feature-flags",
+              },
+              {
+                label: "Cloud Cost Management",
+                to: "certifications/cloud-cost-management",
+              },
+              {
+                label: "Security Testing Orchestration",
+                to: "certifications/sto",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "certifications/chaos-engineering",
+              },
+              {
+                label: "Instructions",
+                to: "certifications/instructions",
+              },
+
+              {
+                label: "FAQs",
+                to: "certifications/faqs",
               },
             ],
           },
           {
-            position: "right",
-            to: "kb",
             label: "Knowledge Base",
-          },
-          {
             position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
-            label: "Join Slack",
+            type: "dropdown",
+            to: "kb",
+            items: [
+              {
+                to: "kb",
+                label: "Knowledge Base",
+              },
+              {
+                to: "community",
+                label: "Community",
+              },
+            ],
           },
+
           {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
           },
           {
             position: "right",
-            // label: "Sign up",
+            html: '<button class="button button--nav">Sign in</button>',
+            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
+          },
+          {
+            position: "right",
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
-          /**
-          {
-            href: "https://github.com/harness/developer-hub",
-            label: "Developer Hub GitHub",
-            position: "right",
-          },
-          */
         ],
       },
       footer: {
@@ -267,12 +369,20 @@ const config = {
                 to: "https://harness.io/products/platform",
               },
               {
+                label: "Code Repository",
+                to: "https://www.harness.io/products/code-repository",
+              },
+              {
                 label: "Continuous Integration",
                 to: "https://harness.io/products/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
                 to: "https://harness.io/products/continuous-delivery",
+              },
+              {
+                label: "Infrastructure as Code Management",
+                to: "https://www.harness.io/products/infrastructure-as-code-management",
               },
               {
                 label: "Feature Flags",
@@ -283,16 +393,32 @@ const config = {
                 to: "https://harness.io/products/cloud-cost",
               },
               {
-                label: "Service Reliability Management",
-                to: "https://harness.io/products/service-reliability-management",
-              },
-              {
                 label: "Security Testing Orchestration",
                 to: "https://harness.io/products/security-testing-orchestration",
               },
               {
+                label: "Software Supply Chain Assurance",
+                to: "https://www.harness.io/products/software-supply-chain-assurance",
+              },
+              {
                 label: "Chaos Engineering",
                 to: "https://harness.io/products/chaos-engineering",
+              },
+              {
+                label: "Service Reliability Management",
+                to: "https://harness.io/products/service-reliability-management",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "https://www.harness.io/products/continuous-error-tracking",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "https://www.harness.io/products/internal-developer-portal",
+              },
+              {
+                label: "Software Engineering Insights",
+                to: "https://www.harness.io/products/software-engineering-insights",
               },
             ],
           },
@@ -305,23 +431,15 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
               },
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
               },
               {
-                label: "Forum",
-                to: "https://community.harness.io",
-              },
-              {
-                label: "University",
-                to: "https://university.harness.io",
-              },
-              {
                 label: "Open Source",
-                to: "https://harness-community.github.io/",
+                to: "https://www.harness.io/open-source",
               },
               {
                 label: "YouTube",
@@ -333,7 +451,15 @@ const config = {
               },
               {
                 label: "Release Notes",
-                href: "/release-notes/whats-new",
+                href: "/release-notes",
+              },
+              {
+                label: "Roadmap",
+                href: "/roadmap",
+              },
+              {
+                label: "Feature Requests",
+                to: "https://ideas.harness.io",
               },
             ],
           },
@@ -369,6 +495,11 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
         respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
       /*
       announcementBar: {
@@ -413,64 +544,46 @@ const config = {
           "^/docs/category/terragrunt.*",
           "^/docs/category/traditional-deployments-ssh.*",
           "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/continuous-verification.*",
           "^/docs/category/model-your-cd-pipeline.*",
           "^/docs/category/harness-git-based-how-tos.*",
         ],
       },
-      hotjar: {
-        siteId: 3194971,
-      },
-      oneTrust: {
-        dataDomainScript: "59633b83-e34c-443c-a807-63232ce145e5",
-      },
       utmCookie: {
         prefix: "utm_",
       },
-      munity: {
-        clientId: "b866f690584d8345",
-      },
-
       rss: {
         rssPath: "release-notes/rss.xml",
         rssTitle: "Harness Release Notes",
         copyright: "Harness Inc.",
         rssDescription: "Harness Release Notes",
       },
+      redirectExport: {
+        destPath: "_redirects",
+      },
     }),
   plugins: [
     [
-      "@docusaurus/plugin-client-redirects",
-      /* externalizing the redirects
+      path.resolve(__dirname, "./plugins/docs-rss-plugin"),
       {
-        redirects: [
-          {
-            from: "/release-notes",
-            to: "/release-notes/whats-new",
-          },
-          {
-            from: "/docs",
-            to: "/docs/category/documentation",
-          },
-        ],
-      },
-      */
-      clientRedirects,
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
+        id: "release-notes",
+        path: "release-notes",
+        routeBasePath: "release-notes",
         exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        sidebarPath: require.resolve("./sidebars-release-notes.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const sidebarItems = await defaultSidebarItemsGenerator(args);
+          const sidebarItemsWithoutIndex =
+            hideIndexFromSidebarItems(sidebarItems);
+          return sidebarItemsWithoutIndex;
+        },
       },
     ],
+    // redirect plugin start
     [
-      "@docusaurus/plugin-content-docs",
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+
       {
         id: "certifications",
         path: "certifications",
@@ -482,7 +595,32 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-docs",
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-community.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+      {
+        id: "tutorials",
+        path: "tutorials",
+        routeBasePath: "tutorials",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
         id: "kb",
         path: "kb",
@@ -493,22 +631,37 @@ const config = {
         // ... other options
       },
     ],
+
     [
-      path.resolve(__dirname, "./plugins/docs-rss-plugin"),
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
-        id: "release-notes",
-        path: "release-notes",
-        routeBasePath: "release-notes",
+        id: "docs1",
+        path: "docs",
+        sidebarPath: require.resolve("./sidebars.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-release-notes.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        routeBasePath: "docs", //CHANGE HERE
       },
     ],
+    [
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+      {
+        id: "roadmap",
+        path: "roadmap",
+        sidebarPath: false,
+        editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+        exclude: ["**/shared/**", "**/static/**"],
+        routeBasePath: "roadmap", //CHANGE HERE
+      },
+    ],
+
     "docusaurus-plugin-sass",
-    path.join(__dirname, "/plugins/hotjar-plugin"),
-    path.join(__dirname, "/plugins/onetrust-plugin"),
     path.join(__dirname, "/plugins/utmcookie-plugin"),
-    path.join(__dirname, "/plugins/munity-plugin"),
+    path.join(__dirname, "/plugins/feedback-plugin"),
+    path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
+    //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
 };
 

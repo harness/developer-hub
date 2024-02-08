@@ -25,43 +25,51 @@ Pod delete:
   - Forced deletion of pods as a result of eviction.
   - Leader-election in complex applications.
 
-:::note
-- Kubernetes > 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes > 1.16
 - The application pods are in the running state before and after chaos injection.
-:::
 
-## Fault tunables
-<h3>Optional tunables</h3>
-    <table>
+### Optional tunables
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
+        <td> TARGET_CONTAINER </td>
+        <td> Name of the container subject to pod deletion. </td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+      </tr>
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds).</td>
-        <td> Default: 15 s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
+        <td> Default: 15 s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive pod failures (in seconds). </td>
-        <td> Default: 5 s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval</a></td>
+        <td> Default: 5 s. For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval</a></td>
       </tr>
       <tr>
         <td> RANDOMNESS </td>
         <td> Introduces randomness into pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> Default: false. Supports true and false. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#random-interval">random interval</a> </td>
+        <td> Default: false. Supports true and false. For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete#random-interval">random interval</a> </td>
       </tr>
       <tr>
         <td> FORCE </td>
         <td> Application pod deletion mode. <code>false</code> indicates graceful deletion with the default termination period of 30s, and <code>true</code> indicates an immediate forceful deletion with 0s grace period.</td>
-        <td> Default: <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#force-delete">force delete</a> </td>
+        <td> Default: <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, go to <a href= "#force-delete">force delete</a> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to chaos. </td>
-        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a> </td>
+        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a> </td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>

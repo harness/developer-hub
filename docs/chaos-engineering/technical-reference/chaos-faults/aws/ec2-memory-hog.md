@@ -17,29 +17,30 @@ EC2 memory hog:
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
 
-:::note
-- Kubernetes >= 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
-- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -88,21 +89,22 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
 
-## Fault tunables
+### Mandatory tunables
 
-<h3>Mandatory fields</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
     <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> EC2 instance ID.</a></td>
     </tr>
     <tr>
         <td> REGION </td>
@@ -110,22 +112,24 @@ Here is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
     </tr>
 </table>
-<h3>Optional fields</h3>
+
+### Optional tunables
+
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Defaults to 60s. </td>
+        <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -140,27 +144,27 @@ Here is an example AWS policy to execute the fault.
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
-        <td> Defaults to 500MB. </td>
+        <td> Default: 500MB. For more information, go to <a href="#memory-consumption-in-megabytes"> memory consumption in megabytes.</a></td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
-        <td> Defaults to 0. </td>
+        <td> Default: 0. For more information, go to <a href="#memory-consumption-by-percentage"> memory consumption in percentage.</a></td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of workers used to run the stress process. </td>
-        <td> Defaults to 1. </td>
+        <td> Default: 1. For more information, go to <a href="#multiple-workers"> workers.</a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial and parallel. </td>
+        <td> Defaults to parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
     </tr>
 </table>
 
@@ -169,7 +173,7 @@ Here is an example AWS policy to execute the fault.
 
 It specifies the amount of memory to be utilized (in megabytes) on the EC2 instance. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
 
-Use the following example to tune memory consumption in MB:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/memory-bytes.yaml yaml)
 ```yaml
@@ -200,7 +204,7 @@ spec:
 
 It specifies the amount of memory (in percentage) to be utilized on the EC2 instance. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
 
-Use the following example to tune memory consumption in percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/memory-percentage.yaml yaml)
 ```yaml
@@ -231,7 +235,7 @@ spec:
 
 It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune multiple EC2 instances:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
@@ -260,7 +264,7 @@ spec:
 
 It specifies the CPU threads that need to be run to increase the file system utilization. This increases the amount of file system consumed. Tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune multiple workers:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-workers.yaml yaml)
 ```yaml

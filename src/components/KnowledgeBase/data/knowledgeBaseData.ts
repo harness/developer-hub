@@ -3,8 +3,8 @@ import { MODULES } from "../../../constants";
 export type CardItem = {
   title: string;
   /*
-  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm |
-  MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform
+  MODULES.ci | MODULES.cd | MODULES.ff | MODULES.ccm | MODULES.idp |
+  MODULES.sto | MODULES.srm | MODULES.ce | MODULES.platform |
   */
   module: MODULES;
   description?: JSX.Element | string;
@@ -14,39 +14,21 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
-    title: "Continuous Verification - Machine Learning Usage",
+    title: "Using a String List in Repeat Strategy",
     module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-ml",
+    date: "Oct 19, 2023",
+    link: "/kb/continuous-delivery/articles/repeat-strategy",
   },
   {
-    title: "Continuous Verification - Results",
-    module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-results",
+    title: "Send Dashboard Reports to Slack Channel",
+    module: MODULES.ccm,
+    date: "Sept 08, 2023",
+    link: "/kb/cloud-cost-management/articles/slack-email-alert",
   },
   {
-    title: "Continuous Verification - Templates",
-    module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-templates",
-  },
-  {
-    title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",
+    title: "Mount Custom Cert in Delegate via ConfigMap",
     module: MODULES.platform,
-    date: "April 06, 2023",
-    link: "/kb/platform/delegate_installation_gke_error",
-  },
-  {
-    title: "Build and Push to ECR Permission Troubleshooting",
-    module: MODULES.ci,
-    date: "March 30, 2023",
-    link: "/kb/continuous-integration/delegate_eks_cluster",
-  },
-  {
-    title: "Why Am I Getting “Kaniko Container Runtime Error”",
-    module: MODULES.ci,
-    date: "March 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
+    date: "July 31, 2023",
+    link: "/kb/platform/articles/mount-custom-cert-with-delegate",
   },
 ];

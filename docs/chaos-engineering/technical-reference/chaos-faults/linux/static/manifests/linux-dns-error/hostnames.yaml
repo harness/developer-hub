@@ -1,0 +1,10 @@
+# target host names
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-dns-error
+  labels:
+    name: dns-error
+spec:
+  dnsChaos/inputs:
+    hostNames: 'litmuschaos.io,google.com'

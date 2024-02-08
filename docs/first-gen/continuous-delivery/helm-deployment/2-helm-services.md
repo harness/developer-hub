@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a Docker image and Helm chart for a Kubernetes deployment.
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a Docker image and Helm chart for a Kubernetes deployment.
 
 Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 
@@ -151,7 +151,7 @@ These options are provided for backwards-compatibility and it is preferable that
 | Chart reference. | `helm install stable/nginx` | **Chart Name:** stable/nginx |
 | Path to a packaged chart.In this method, the chart file is located on the same pod as the Harness Delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles). | `helm install ./nginx-1.2.3.tgz` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
 | Path to an unpacked chart directory.In this method, the chart file is located on the same pod as the Harness delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles). | `helm install ./nginx` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
-| Absolute URL. | `helm install https://example.com/charts/nginx-1.2.3.tgz` | **Chart Name:** https://example.com/charts/nginx-1.2.3.tgz |
+| Absolute URL. | `helm install https://example.com/charts/nginx-1.2.3.tgz` | **Chart Name:** `https://example.com/charts/nginx-1.2.3.tgz` |
 
 For Helm, that's it. You don't have to do any further configuration to the service. Harness will use the chart you specified to configure the Kubernetes cluster.
 
@@ -208,9 +208,9 @@ In the **Values YAML Override** section, you can enter the YAML for your values.
 
 The **Values YAML** dialog has the following placeholders that save you from having to enter in some variables:
 
-* **${NAMESPACE}** - Replaced with the Kubernetes namespace, such as **default**. You will specify the namespace of the cluster in the **Namespace** setting when adding the Harness Environment infrastructure details later, and the placeholder will be replaced with that namespace.
-* **${DOCKER\_IMAGE\_NAME}** - Replaced with the Docker image name.
-* **${DOCKER\_IMAGE\_TAG}** - Replaced with the Docker image tag.
+* **$\{NAMESPACE}** - Replaced with the Kubernetes namespace, such as **default**. You will specify the namespace of the cluster in the **Namespace** setting when adding the Harness Environment infrastructure details later, and the placeholder will be replaced with that namespace.
+* **$\{DOCKER\_IMAGE\_NAME}** - Replaced with the Docker image name.
+* **$\{DOCKER\_IMAGE\_TAG}** - Replaced with the Docker image tag.
 
 For information about how values from different source are compiled at runtime, see [Helm Values Priority](4-helm-workflows.md#helm-values-priority).
 

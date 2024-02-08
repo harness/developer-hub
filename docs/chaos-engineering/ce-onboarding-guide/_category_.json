@@ -1,0 +1,13 @@
+{
+  "position": 3,
+  "label": "CE onboarding guide",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"CE onboarding guide"
+   },
+  "customProps": {
+    "description": "CE onboarding guide"
+  }
+}

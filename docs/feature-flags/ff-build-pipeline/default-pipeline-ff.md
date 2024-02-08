@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
+:::info note
  This feature is available to use only by Project Admins.
 :::
 
@@ -44,11 +44,11 @@ To add a default Pipeline: 
 * In **Environment**, add the environment you want to use.
 * In **Select Flag**, click the pin icon and change to **Runtime input**.
 
-![A screenshot of the Pipeline with the Flag Configuration panel open.](./static/2-default-pipeline-ff-00.png)
+	![A screenshot of the Pipeline with the Flag Configuration panel open.](./static/2-default-pipeline-ff-00.png)
 
 5. Click **Apply Changes**. After you have added the Flag Step, you can then add any other Pipeline stages or steps you want to include in your Pipeline, for example, a Jira approval stage.
 
-:::note
+:::info note
  Currently, you can’t include build or deploy stages.
 :::
 

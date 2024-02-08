@@ -25,7 +25,7 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -81,6 +81,26 @@ For example, if the name of the stage is **Terraform** and the name of the step 
 
 In **Timeout**, enter how long Harness should wait to complete the Terraform Plan step before failing the step.
 
+### Run on Remote Workspace
+
+Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
+
+When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
+
+Also, the remote backend is supported only when the **Configuration Type** is **Inline**.
+
+```
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
 ### Command
 
 In **Command**, select **Apply or Destroy**.
@@ -114,7 +134,7 @@ For this reason, it's important that all your Project members know the Provision
 
 Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
@@ -125,6 +145,10 @@ When the `terraform plan` command runs on the Harness Delegate, the Delegate e
 When the plan is applied, the Harness Manager passes the encrypted data to the Delegate.
 
 The Delegate decrypts the encrypted plan and applies it using the `terraform apply` command.
+
+#### Limitations
+
+The Terraform plan size must not exceed the secret size limit for secrets in your default Harness secret manager. For example, the AWS secrets manager has a limitation of 64KB. Other supported secrets managers support larger file sizes, typically, 256KB.
 
 ### Configuration File Repository
 
@@ -140,7 +164,7 @@ Click the provider where your files are hosted.
 
 ![](./static/provision-infra-dynamically-with-terraform-02.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -162,7 +186,7 @@ The following sections cover common Terraform Plan step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### AWS S3
 
@@ -186,6 +210,12 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
@@ -220,7 +250,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -228,85 +258,45 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## Terraform Var Files
+## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
 
-The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
-
-You can use inline or remote var files.
-
-Harness supports all [Terraform input types and values](https://www.terraform.io/docs/language/expressions/types.html).
-
-### Inline Variables
-
-You can add inline variables just like you would in a tfvar file.
-
-Click **Add Terraform Var File**, and then click **Add Inline**.
-
-The **Add Inline Terraform Var File** settings appear.
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
-
-For example, if the **Identifier** is **myvars** you could refer to its content like this:
-
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
-
-Provide the input variables and values for your Terraform script. Harness follows the same format as Terraform.
-
-For example, if your Terraform script has the following:
+:::note
+This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 
-```json
-variable "region" {  
-  type = string  
-}
+You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targetted for infrastructure provisioning.
+
+When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
+
+```YAML
+- step:
+    type: TerraformApply
+    name: Apply
+    identifier: Apply
+    spec:
+      provisionerIdentifier: provision
+      configuration:
+        type: Inline
+        spec:
+          workspace: <+input>
+          configFiles: {}
+          providerCredential:
+            type: Aws
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              roleArn: <+input>
+    timeout: 10m
 ```
 
-In **Add Inline Terraform Var File**, you could enter:
+#### Terraform variable files
 
-
-```bash
-region = "asia-east1-a"
-```
-
-#### Inline Variable Secrets
-
-If you are entering secrets (for credentials, etc.), use Harness secret references in the value of the variable:
-
-
-```bash
-secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
-```
-See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
-
-### Remote Variables
-
-You can connect Harness to remote variable files.
-
-Click **Add Terraform Var File**, and then click **Add Remote**.
-
-Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
-
-Click **Continue**. The **Var File Details** settings appear.
-
-![](./static/run-a-terraform-plan-with-the-terraform-plan-step-14.png)
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
-
-For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
-
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
-
-In **Branch**, enter the name of the branch.
-
-In **File Paths**, add one or more file paths from the root of the repo to the variable file.
-
-Click **Submit**. The remote file(s) are added.
+You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 #### AWS S3
 
@@ -325,13 +315,7 @@ The **Backend Configuration** section contains the [remote state](https://www.te
 
 You can use an inline or remote state file.
 
-### Using a Remote State File
-
-:::note
-
-Currently, remote state file support is behind the feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
+### Using a remote Backend Config File
 
 1. In Backend Configuration, select **Remote**.
 2. Click **Specify Backend Config File**
@@ -349,7 +333,7 @@ Currently, remote state file support is behind the feature flag `TERRAFORM_REMOT
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 #### AWS S3
 
@@ -414,15 +398,33 @@ For example, if your config.tf file has the following backend:
 
 
 ```json
-terraform {  
-  backend "gcs" {  
-    bucket  = "tf-state-prod"  
-    prefix  = "terraform/state"  
-  }  
+terraform {
+  backend "gcs" {
+    bucket  = "tf-state-prod"
+    prefix  = "terraform/state"
+    }
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
+
+Example:
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 ## Targets
 
@@ -443,17 +445,17 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ## Export JSON representation of Terraform Plan
 
 Enable this setting to use a JSON representation of the Terraform plan that is implemented in a Terraform Plan step.
 
-In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step, you can reference the Terraform plan using this expression format:
+In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, you can reference the Terraform plan using this expression format:
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
-For example, if you had a Terraform Plan step with the [Id](/docs/platform/References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
+For example, if you had a Terraform Plan step with the [Id](/docs/platform/references/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
 
 
 ```bash
@@ -470,6 +472,10 @@ For example, if the Terraform Plan step with the Id `TfPlan` is in the **Executi
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
 
+:::note
+When the `Run on Remote Workspace` option is selected, you will not be able to export the JSON representation of terraform plan.
+:::
+
 ### Scope of Expression
 
 JSON representation of the Terraform plan is available only between the Terraform Plan step and subsequent Terraform Apply step. The expression will fail to resolve if used after the Terraform Apply step.
@@ -480,7 +486,7 @@ The JSON of the Terraform Plan step is not available after Rollback.
 
 ## Export Human Readable representation of Terraform Plan
 
-Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
 Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for the **humanReadableFilePath** output.
 
@@ -495,7 +501,7 @@ For example, if the Terraform Plan stage and step Ids are `tf` then you would ge
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
 
-Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
+Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and Harness will resolve them to the human-readable paths and JSON.
 
 For example, here is a script using the variables:
 
@@ -512,23 +518,97 @@ Terraform has compared your real infrastructure against your configuration
 and found no differences, so no changes are needed.
 ```
 
+## Skip state storage
+
+The following feature requires a minimum Harness delegate version of 812xx.
+
+While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
+
+If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
+
+That state file is downloaded in the Terraform working directory for subsequent executions, and the updated state is uploaded after execution ends.
+
+This method allows the maintaining of the state of the infrastructure even if there is no Terraform backend configured.
+
+This is more for testing purposes. For production environments, Harness advises you configure a backend in your Terraform config files. For information, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With the **Skip state storage** option enabled, Harness allows you to skip the local state upload and download operations mentioned above.
+
+This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
+
+
+
+## Command line options
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+
+![](./static/run-a-terraform-plan-with-the-terraform-plan-step-16.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
+
 ## Option: Terraform Plan detailed-exitcode
 
 You can use the standard `terraform plan` command option [detailed-exitcode](https://www.terraform.io/cli/commands/plan#other-options) with the Harness Terraform Plan step.
 
-If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step, Harness will return a detailed exit code:
+If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, Harness will return a detailed exit code:
 
 * `0`: succeeded with empty diff (no changes)
 * `1`: error
-* `2`: succeeded with non-empty diff (changes present)
+* `2`: succeeded with non-empty diff (changes present)|
+
+Exit codes are available as Terraform Plan step outputs that can be accessed using expressions with the following format:
+
+```
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.plan.detailedExitCode>
+```
+
+For example:
+
+```
+<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.detailedExitCode>
+```
+
+## Working directory cleanup
+Each Terraform step runs in a specific working directory on the delegate.
+
+The Terraform working directory is located at `/opt/harness-delegate/./terraform-working-dir/`.
+
+To that directory path, Harness adds additional directories that are named after the organization, account, project, and provisionerId (from the step) such that the final working directory is `/opt/harness-delegate/./terraform-working-dir/org-name/account-name/project-name/provisionerId/`.
+
+In this final working directory, Harness stores the Terraform configuration and all fetched files such as var-files and backend-config.
+
+Once the Terraform step execution is complete, Harness cleans up the main working directory `/opt/harness-delegate/./terraform-working-dir/`.
+
+If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
 
 ## Option: Advanced Settings
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+## Troubleshooting Terraform execution on a Docker delegate managed by ECS
+
+When using a Docker delegate with ECS, you might encounter the following error : `NoCredentialProviders: no valid providers in chain`.
+
+When your Docker delegate is managed by ECS, and is set to assume an IAM role for components such as the delegate and Terraform settings from Terraform configs, please ensure that the delegate has the permissions to assume the role.
+
+If your Docker delegate is set to use a proxy, ensure that the proxy instance also has permissions to assume the role. Also, try to set the proxy environment variable for the Terraform steps:
+
+In case your delegate is set to use a proxy, make sure that proxy also has permissions to assume the role, and also try to set environment variables for the Terraform steps:
+
+- `HTTP_PROXY=http://proxy.example.com:8080`
+- `HTTPS_PROXY=http://proxy.example.com:8080`
+
+If your ECS delegate is set with this environment variable: **AWS_CONTAINER_CREDENTIALS_RELATIVE_URI** and you intend to use AWS ECS container credentials, ensure your delegate has access to all of the required AWS services that need to provide credentials, such as STS, Metadata Service, etc.
+
 
 ## See Also
 

@@ -1,6 +1,6 @@
 {
    "label":"Migrate to Harness CI",
-   "position": 20,
+   "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",

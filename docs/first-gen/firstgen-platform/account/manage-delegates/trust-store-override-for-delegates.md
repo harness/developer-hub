@@ -7,9 +7,9 @@ helpdocs_category_id: gyd73rp7np
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import image_1 from './static/trust-store-override-for-delegates-00.png'
-```
+
 
 Harness Delegates perform most Harness tasks. Delegates make outbound TLS/SSL connections to the Harness SaaS platform to obtain these task assignments. The TLS/SSL connection from the Delegate to Harness requires a trusted certificate.
 
@@ -41,9 +41,9 @@ In this topic:
 
 TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certificate from the DigiCert Global Root CA:
 
-```mdx-code-block
+
 <img src={image_1} height="200" width="400" />
-```
+
 
 
 For Delegates to communicate with Harness, this root CA certificate needs to be installed in the Delegate's truststore.

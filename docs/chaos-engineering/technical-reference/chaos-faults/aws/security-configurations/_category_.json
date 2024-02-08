@@ -1,6 +1,6 @@
 {
-  "position": 3,
-  "label": "Security Configurations",
+  "position": 4,
+  "label": "Security configurations",
   "collapsible": true,
   "collapsed": true,
   "link":{
@@ -8,6 +8,6 @@
       "title":"Security configurations"
    },
   "customProps": {
-    "description": "Security Configurations"
+    "description": "Security configurations"
   }
 }

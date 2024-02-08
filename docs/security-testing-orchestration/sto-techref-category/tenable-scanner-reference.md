@@ -1,22 +1,50 @@
 ---
-title: Tenable scanner reference
-description: Instance scans with Tenable
-sidebar_position: 310
+title: Tenable scanner reference for STO
+description: Scan application instances with Tenable.
+sidebar_label: Tenable scanner reference
+sidebar_position: 400
 ---
 
 
-### Security step settings
+You can scan your application instances and ingest results from Tenable.
 
-You can set up Tenable scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+## Important notes for running Tenable scans in STO
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+### Docker-in-Docker requirements
 
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
 
-<StoSecurityStepConfig />
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+
+<StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+## Security step settings for Tenable scans in STO
+
+### Target and variant
+
+
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+
+
+<StoLegacyTargetAndVariant />
+
+### Tenable settings
 
 * `product_name` = `tenableio`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
@@ -33,24 +61,29 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `legacy-web-application-scan`  — Use legacy nessus scan inside tenableIO
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-```mdx-code-block
+### Instance scan settings
+
+
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-```
+
 
 <StoLegacyInstance />
 
-```mdx-code-block
+### Ingestion file
+
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 
 
-#### Fail on Severity
+### Fail on Severity
 
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
+
 <StoSettingFailOnSeverity />
 
 

@@ -1,0 +1,11 @@
+# file system amount to be utilized
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-disk-io-stress
+  labels:
+    name: disk-io-stress
+spec:
+  stressChaos/inputs:
+    workers: 3
+    fileSystemUtilisation: 50g

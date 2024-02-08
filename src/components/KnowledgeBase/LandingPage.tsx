@@ -17,7 +17,7 @@ export default function KnowledgeBase() {
   return (
     <div className={styles.knowledgeBase}>
       <div className={styles.title}>
-        <h2>Articles</h2>
+        <h2>Selected Articles</h2>
       </div>
       <ul className={styles.kbList}>
         {knowledgeBaseList.map((kb) => (

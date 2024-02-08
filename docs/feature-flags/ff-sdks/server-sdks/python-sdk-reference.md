@@ -10,8 +10,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
 
-This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
+import Closeclient from '../shared/close-sdk-client.md'
+
+<Smpno />
+
+This topic describes how to use the Harness Feature Flags Python SDK for your Python application.
 
 For getting started quickly, you can use our [sample code from the Python SDK README](https://github.com/harness/ff-python-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Python SDK GitHub Repository.](https://github.com/harness/ff-python-server-sdk)
 
@@ -19,14 +24,14 @@ For getting started quickly, you can use our [sample code from the Python SDK R
 
 You should read and understand the following:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.1.10.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-python-server-sdk/releases)
 
 ## Requirements
 
@@ -35,7 +40,7 @@ To use this SDK, make sure you:  
 * Install [Python 3.7](https://www.python.org/downloads/) or newer
 * Install [pip](https://packaging.python.org/en/latest/tutorials/installing-packages/#id12)
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-python-server-sdk)
-* Create a Java application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-python-server-sdk).
+* Create a Python application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-python-server-sdk).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
 * [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
@@ -55,6 +60,25 @@ To initialize the Python SDK, you need to:
 2. Add a Target that you want to Evaluate against a Feature Flag.
 3. (Optional) Configure the SDK options. For more details on what features you can configure for this SDK, go to [Configure the SDK](python-sdk-reference.md#configure-the-sdk).
 
+:::info note
+If the SDK fails to authenticate with the Feature Flags service and cannot initialise, the SDK will operate in a "limited" mode and will only serve the default values you provide in variation calls.
+:::
+
+### Block initialization
+
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately,
+allowing your application to continue its startup process without waiting for the client to be fully initialized. If you evaluate a flag before the client has finished initializing, 
+the default variation you provided can be returned as the evaluation result, because the SDK has not finished caching your remote Flag configuration stored in Harness.
+
+You can choose to wait for the client to finish initializing before continuing. To achieve this, you can call the `wait_for_initialzation` method, which blocks until the client is fully initialized. Example usage:
+
+```python
+client = CfClient(api_key)
+# Block the thread until all flag configuration has been loaded into the cache.
+client.wait_for_initialization()
+result = client.bool_variation('identifier_of_your_bool_flag', target, False)
+```
+
 ### Add the Server SDK Key
 
 To connect to the correct Environment that you set up on the Harness Platform, you need to add the Server SDK Key from that Environment. Input the Server SDK Key into the `api_key` parameter. For example:
@@ -72,8 +96,8 @@ cf = CfClient(api_key);
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -128,14 +152,16 @@ You can configure the following features of the SDK:
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| **Name** | **Example** | **Description** | **Default Value** |
-| baseUrl | `with_base_url("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | `with_events_url("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `Config(pull_interval=60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
-| streamEnabled | `with_stream_enabled(True)` | Set to ``True`` to enable streaming mode.Set to `False` to disable streaming mode. | `True` |
-| analyticsEnabled | `with_analytics_enabled(True)` | Set to `True` to enable analytics.Set to `False` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `True` |
+|                  |                                                           |                                                                                                                                          |                                        |
+|------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| **Name**         | **Example**                                               | **Description**                                                                                                                          | **Default Value**                      |
+| **baseUrl**          | `with_base_url("https://config.ff.harness.io/api/1.0")`   | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
+| **eventUrl**         | `with_events_url("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
+| **pollInterval**     | `Config(pull_interval=60)`                                | The interval **in seconds** that we poll for changes when you are using stream mode.                                                     | `60` (seconds)                         |
+| **streamEnabled**    | `with_stream_enabled(True)`                               | Set to ``True`` to enable streaming mode. Set to `False` to disable streaming mode.                                                       | `True`                                 |
+| **analyticsEnabled** | `with_analytics_enabled(True)`                            | Set to `True` to enable analytics. Set to `False` to disable analytics. <br />**Note**: When enabled, analytics data is posted every 60 seconds. | `True`                                 |
+| **maxAuthRetries**   | with_max_auth_retries(10)                                 | The number of retry attempts to make if client authentication fails on a retryable HTTP error                                            | 10                                     |
+
 
 For example:
 
@@ -175,11 +201,11 @@ result = cf.bool_variation("identifier_of_your_bool_flag", target, False);
 ```
 result = client.string_variation('identifier_of_your_string_flag', target, "")
 ```
-### Evaluate a number Variation
+### Evaluate a number Variation 
 
-
+We recommend using the newer `int_or_float_variation` method, which replaces `int_variation` and `number_variation` . 
 ```
-result = client.number_variation('identifier_of_your_number_flag', target, -1)
+result = client.int_or_float_variation('identifier_of_your_number_flag', target, -1)
 ```
 ### Evaluate a JSON Variation
 
@@ -187,20 +213,57 @@ result = client.number_variation('identifier_of_your_number_flag', target, -1)
 ```
 client.json_variation('identifier_of_your_json_flag', target, {})
 ```
+
+:::note
+
+If you evaluate a feature flag when initialization fails, the default variation you provided is returned as the evaluation result.
+
+:::
+
+## Check the type of a flag
+If you would like to know the type of a flag at any point, you can use the method `get_flag_type`
+
+This is helpful if you don't know the types of flags up front, or if you would like to create a type agnostic wrapper. 
+
+Note, this feature is specific to the Python SDK at present, and we have no current plans of rolling it out to other SDK languages. 
+```
+# Get the flag type
+flag_type = client.get_flag_type(flag_identifier)
+log.info("Flag '%s' is of type '%s'", flag_identifier, flag_type)
+```
+
+Flag types are defined as followed:
+
+```
+class FeatureFlagType(str, Enum):
+    BOOLEAN = "boolean"
+    INT_OR_FLOAT = "int"
+    STRING = "string"
+    JSON = "json"
+    FLAG_NOT_FOUND = "flag_not_found"
+```
+
+For a full example, see the [Python SDK GitHub repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/get_flag_type_example/get_flag_type.py)
+
+
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK Client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client:
 
-```
-client.close()
-```
+* Assuming you have initialized an SDK client instance named `client`, call the following function:
+
+    ```
+    client.close()
+    ```
+
 ## Additional options
 
 ### Configure your logger
@@ -259,13 +322,55 @@ def main():
                       with_base_url("https://config.ff.harness.io/api/1.0"),  
                       with_events_url("https://events.ff.harness.io/api/1.0"))  
   
-    target = Target(identifier='harness')  
+    target = Target(identifier='HT_1', name="Harness_Target_1", attributes={"location": "emea"})
   
     while True:  
-        result = client.bool_variation('your_flag_identifier', target, False)  
+        result = client.bool_variation('harnessappdemodarkmode', target, False)  
         log.debug("Result %s", result)  
         time.sleep(10)  
   
 if __name__ == "__main__":  
     main()
 ```
+
+## Troubleshooting 
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                          |
+|----------|:-----------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                 |
+| **1001** | Failed to initialize due to authentication error                                         |
+| **1002** | Failed to initialize due to a missing or empty API key                                   |
+| **1003** | `wait_for_initialzation` was called and the SDK is waiting for initialzation to complete |
+| **2000** | Successfully authenticated                                                               |
+| **2001** | Authentication failed with a non recoverable error                                       |
+| **2002** | Authentication failed and is retrying                                                    |
+| **2003** | Authentication failed and max retries have been exceeded                                 |
+| **3000** | SDK Closing                                                                              |
+| **3001** | SDK closed successfully                                                                  |
+| **4000** | Polling service started                                                                  |
+| **4001** | Polling service stopped                                                                  |
+| **4002** | Poller has fetched flags and groups from backend successfully                            |
+| **5000** | Streaming service started                                                                |
+| **5001** | Streaming service stopped                                                                |
+| **5002** | Streaming event received                                                                 |
+| **5003** | Streaming disconnected and is retrying to connect                                        |
+| **5004** | Streaming stopped                                                                        |
+| **5005** | Stream is still retrying to connect after 4 attempts                                     |
+| **6000** | Evaluation was successfully                                                              |
+| **6001** | Evaluation failed and the default value was returned                                     |
+| **7000** | Metrics service has started                                                              |
+| **7001** | Metrics service has stopped                                                              |
+| **7002** | Metrics posting failed                                                                   |
+| **7003** | Metrics posting success                                                                  |
+| **7004** | Metrics max target size exceeded                                                         |
+| **7005** | Metrics batch targets sending success                                                    |
+| **7006** | Metrics batch targets sending failed                                                     |
+| **8005** | Fetching flag by identifier request failed and is retrying                               |
+| **8006** | Fetching group by identifier request failed and is retrying                              |
+| **8007** | Fetching all flags request failed and is retrying                                        |
+| **8008** | Fetching all groups request failed and is retrying                                       |
+| **8009** | Fetching flag by identifier request failed                                               |
+| **8010** | Fetching group by identifier request failed                                              |
+| **8011** | Fetching all flags request failed                                                        |
+| **8012** | Fetching all groups request failed                                                       |

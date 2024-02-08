@@ -1,7 +1,6 @@
 ---
 title: Set up an AWS VM build infrastructure
-description: Set up a CI build infrastructure using AWS VMs
-
+description: Set up a CI build infrastructure using AWS VMs.
 sidebar_position: 10
 helpdocs_topic_id: z56wmnris8
 helpdocs_category_id: rg8mrhqm95
@@ -9,128 +8,90 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 :::note
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 :::
 
-This topic describes how to set up and use AWS VMs as build infrastructures for running builds and tests in a CI Stage. You will create an Ubuntu VM and install a Delegate on it. This Delegate will create new VMs dynamically in response to CI build requests. You can also configure the Delegate to hibernate AWS Linux and Windows VMs when they aren't needed.
+This topic describes how to use AWS VMs as Harness CI build infrastructure. To do this, you will create an Ubuntu VM and install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests. You can also configure the runner to hibernate AWS Linux and Windows VMs when they aren't needed.
 
-For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+This is one of several CI build infrastructure options. For example, you can also [set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/overview.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a CI build farm using AWS VMs. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM.
 
 ![](../static/set-up-an-aws-vm-build-infrastructure-12.png)
 
-## Before you begin
+:::info
 
-This topic assumes you're familiar with the following:
+This is an advanced configuration. Before beginning, you should be familiar with:
 
-* [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
-* [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
-* [CI Build stage settings](../ci-stage-settings.md)
-* [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
-* Drone VM Runner
-  * [Drone documentation - VM Runner overview](https://docs.drone.io/runner/vm/overview/)
-  * [GitHub repository - Drone Runner AWS](https://github.com/drone-runners/drone-runner-aws)
+* Using the AWS EC2 console and interacting with AWS VMs.
+* [Harness key concepts](../../../../get-started/key-concepts.md)
+* [CI pipeline creation](../../prep-ci-pipeline-components.md)
+* [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
+* Drone VM Runners and pools:
+  * [Drone documentation - VM runner overview](https://docs.drone.io/runner/vm/overview/)
+  * [Drone documentation - Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/)
+  * [Drone documentation - Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
+  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
-## Alternate workflow: Use Terraform
+:::
 
-If you have Terraform and Go installed on your EC2, you set up your build infrastructure as described in the Harness GitHub repo [cie-vm-delegate](https://github.com/harness/cie-vm-delegate).
+## Prepare the AWS EC2 instance
 
-## Prerequisites
+These are the requirements to configure the AWS EC2 instance. This instance is the primary VM where you will host your Harness Delegate and runner.
 
-* AWS EC2 configuration:
-	+ For the Delegate VM, use an Ubuntu t2.large (or higher) AMI.
-	+ Build VMs can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher).
-	+ Authentication requirements:
-		- You can use an access key and access secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) for configuration of the Runner.  
-		For Windows instances, you need to add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret [IAM](https://console.aws.amazon.com/iamv2/home#/users).
-		- You can also use IAM profiles instead of access and secret keys.  
-		You need to run the Delegate VM with an IAM role that has CRUD permissions on EC2. This role will provide the Runner with temporary security credentials to create VMs and manage the build pool.
-	+ Set up VPC firewall rules for the build instances on EC2.
-		- For information on creating a Security Group, see [Authorize inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) in the AWS docs.
-		- You also need to allow ingress access to ports 22 and 9079. Open port 3389 as well if you want to run Windows builds and be able to RDP into your build VMs.
-		- Once completed, you'll have a Security Group ID, which is needed for the configuration of the Runner.
+### Configure authentication for the EC2 instance
 
-## Step 1: Set up the Delegate VM
+The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) with an access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)). You can use an access key and secret without an IAM role, but this is not recommended for security reasons.
 
-1. Log into the [EC2 Console](https://console.aws.amazon.com/ec2/) and launch the VM instance where the Harness Delegate will be installed.
-2. [Install Docker](https://docs.docker.com/engine/install/ubuntu/) on the instance.
-3. [Install Docker Compose](https://docs.docker.com/compose/install/) on your instance. You must have [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher installed.
-4. If you are using an IAM role, attach the role to the VM. See [Attach an IAM Role to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) in the AWS docs.
-5. Create a `/runner` folder on your VM and `cd` into it:
+1. Create or select an IAM role for the primary VM instance. This IAM role must have CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool. For details, go to the Amazon documentation on [AmazonEC2FullAccess Managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2FullAccess.html).
+2. If you plan to run Windows builds, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host. For example, you must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
+3. If you haven't done so already, create an access key and secret for the IAM role.
 
-```
-mkdir /runner  
-cd /runner
-```
+### Launch the EC2 instance
 
-## Step 2: Configure the Drone pool on the AWS VM
+1. In the [AWS EC2 Console](https://console.aws.amazon.com/ec2/), launch a VM instance that will host your Harness Delegate and runner. This instance must use an Ubuntu AMI that is `t2.large` or greater.
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VM that are immediately available to run CI pipelines. To avoid unnecessary costs, you can configure AWS Linux and Windows VMs to hibernate when not in use.
+   Although the primary VM must be Ubuntu, the build VMs (in your VM pool) can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher). All machine images must have Docker installed.
 
-1. In the `/runner` folder, create a new `pool.yml` file.
-2. Set up the file as described in the following example. Note the following:
-   * To avoid latency issues, set up your build pool in the same Availability Zone as the Delegate VM.
-   * Search for AMIs in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI Ids differ depending on the Availability Zone.
-   * For more information about specific settings, go to the [Pool settings reference](#pool-settings-reference). You can also learn more in the Drone documentation for [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Amazon Runner](https://docs.drone.io/runner/vm/drivers/amazon/).
+2. Attach a key pair to your EC2 instance. Create a key pair if you don't already have one.
+3. You don't need to enable **Allow HTTP/HTTPS traffic**.
 
-<details>
-<summary>Example: pool.yml</summary>
+### Configure ports and security group settings
 
-The following `pool.yml` example defines an Ubuntu pool and a Windows pool.
+1. Create a Security Group in the EC2 console. You need the Security Group ID to configure the runner. For information on creating Security Groups, go to the AWS documentation on [authorizing inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html).
+2. In the Security Group's **Inbound Rules**, allow ingress on port 9079. This is required for security groups within the VPC.
+3. In the EC2 console, go to your EC2 VM instance's **Inbound Rules**, and allow ingress on port 22.
+4. If you want to run Windows builds and be able to RDP into your build VMs, you must also allow ingress on port 3389.
+5. Set up VPC firewall rules for the build instances on EC2.
 
-```yaml
-version: "1"  
-instances:  
-  - name: ubuntu-test-pool-july-five  
-    default: true  
-    type: amazon  
-    pool: 1      
-    limit: 4     
-    platform:  
-      os: linux  
-      arch: amd64  
-    spec:  
-      account:  
-        region: us-east-2  
-        availability_zone: us-east-2c  
-        access_key_id: XXXXXXXXXXXXXXXXX  
-        access_key_secret: XXXXXXXXXXXXXXXXXXX
-        key_pair_name: XXXXX
-      ami: ami-051197ce9cbb023ea  
-      size: t2.nano
-      iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
-      network:  
-        security_groups:  
-        - sg-XXXXXXXXXXX  
-  - name: windows-test-pool-july-six  
-    default: true  
-    type: amazon  
-    pool: 1  
-    limit: 4  
-    platform:  
-      os: windows  
-    spec:  
-      account:  
-        region: us-east-2  
-        availability_zone: us-east-2c  
-        access_key_id: XXXXXXXXXXXXXXXXXXXXXX  
-        access_key_secret: XXXXXXXXXXXXXXXXXXXXXX
-        key_pair_name: XXXXX
-      ami: ami-088d5094c0da312c0  
-      size: t3.large  
-      hibernate: true  
-      network:  
-        security_groups:  
-        - sg-XXXXXXXXXXXXXX  
-```
+### Install Docker and attach IAM role
 
-</details>
+1. [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html).
+2. [Install Docker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker).
+3. [Install Docker Compose](https://docs.docker.com/compose/install/).
+4. Attach the IAM role to the EC2 VM. For instructions, go to the AWS documentation on [attaching an IAM role to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role).
 
-Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
+## Configure the Drone pool on the AWS VM
 
-## Step 3: Configure the docker-compose.yaml file
+<!-- I don't think this is possible anymore because of the new delegate install UI.
+
+:::tip Option: Use Terraform
+
+If you have Terraform and Go installed on your EC2 environment, you can use the [cie-vm-delegate script](https://github.com/harness/cie-vm-delegate). Follow the setup instructions described in the script's README.-->
+
+<!-- Might need these steps - I think the Terraform workflow still uses docker-compose:
+
+When you reach the step to download the delegate YAML, follow these steps to get the docker-compose.yaml file:
 
 1. In your Harness account, organization, or project, select **Delegates** under **Project Setup**.
 2. Click **New Delegate** and select **Switch back to old delegate install experience**.
@@ -138,11 +99,9 @@ Later in this workflow, you'll reference the pool identifier in the Harness Mana
 4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
 5. Select **Download YAML file** to download the `docker-compose.yaml` file to your local machine.
 
-Next, you'll add the Runner spec to the Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
+You may need to add the runner spec to the delegate definition:
 
-6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the AWS VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
-7. Open `docker-compose.yaml` in a text editor.
-8. Append the following to the end of the `docker-compose.yaml` file:
+1. Append the following to the end of the `docker-compose.yaml` file:
 
    ```yaml
    drone-runner-aws:  
@@ -150,304 +109,281 @@ Next, you'll add the Runner spec to the Delegate definition. The Harness Delegat
        image: drone/drone-runner-aws
        network_mode: "host" 
        volumes:  
-        - ./runner:/runner  
+        - /runner:/runner  
        entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
        working_dir: /runner
    ```
 
-9. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
+2. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
 
    ```yaml
    network_mode: "host"
    ```
 
-10. Save `docker-compose.yaml`.
+The Harness Delegate and runner run on the same VM. The runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
-<details>
-   <summary>Example: docker-compose.yaml with Runner spec</summary>
+:::
+-->
+
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool. To avoid unnecessary costs, you can configure `pool.yml` to hibernate VMs when not in use.
+
+1. Create a `/runner` folder on your delegate VM and `cd` into it:
+
+   ```
+   mkdir /runner
+   cd /runner
+   ```
+
+2. In the `/runner` folder, create a `pool.yml` file.
+3. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference).
+
+### Example pool.yml
+
+The following `pool.yml` example defines both an Ubuntu pool and a Windows pool.
 
 ```yaml
-version: "3.7"  
-services:  
-  harness-ng-delegate:  
-    restart: unless-stopped  
-    network_mode: "host"  
-    deploy:  
-      resources:  
-        limits:  
-          cpus: "0.5"  
-          memory: 2048M  
-    image: harness/delegate:latest  
-    environment:  
-      - ACCOUNT_ID=XXXXXXXXXXXXXXXX  
-      - DELEGATE_TOKEN=XXXXXXXXXXXXXXXX  
-      - MANAGER_HOST_AND_PORT=https://app.harness.io  
-      - WATCHER_STORAGE_URL=https://app.harness.io/public/qa/premium/watchers  
-      - WATCHER_CHECK_LOCATION=current.version  
-      - REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds  
-      - DELEGATE_STORAGE_URL=https://app.harness.io  
-      - DELEGATE_CHECK_LOCATION=delegateqa.txt  
-      - USE_CDN=true  
-      - CDN_URL=https://app.harness.io  
-      - DEPLOY_MODE=KUBERNETES  
-      - DELEGATE_NAME=qwerty  
-      - NEXT_GEN=true  
-      - DELEGATE_DESCRIPTION=  
-      - DELEGATE_TYPE=DOCKER  
-      - DELEGATE_TAGS=  
-      - DELEGATE_TASK_LIMIT=50  
-      - DELEGATE_ORG_IDENTIFIER=  
-      - DELEGATE_PROJECT_IDENTIFIER=  
-      - PROXY_MANAGER=true  
-      - VERSION_CHECK_DISABLED=false  
-      - INIT_SCRIPT=echo "Docker delegate init script executed."  
-  drone-runner-aws:  
-    restart: unless-stopped  
-    image: drone/drone-runner-aws:1.0.0-rc.38
-    network_mode: "host"
-    volumes:  
-      - .:/runner  
-    entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-    working_dir: /runner
+version: "1"
+instances:
+  - name: ubuntu-ci-pool ## The settings nested below this define the Ubuntu pool.
+    default: true
+    type: amazon
+    pool: 1
+    limit: 4
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        region: us-east-2 ## To minimize latency, use the same region as the delegate VM.
+        availability_zone: us-east-2c ## To minimize latency, use the same availability zone as the delegate VM.
+        access_key_id: XXXXXXXXXXXXXXXXX
+        access_key_secret: XXXXXXXXXXXXXXXXXXX
+        key_pair_name: XXXXX
+      ami: ami-051197ce9cbb023ea
+      size: t2.nano
+      iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
+      network:
+        security_groups:
+        - sg-XXXXXXXXXXX
+  - name: windows-ci-pool ## The settings nested below this define the Windows pool.
+    default: true
+    type: amazon
+    pool: 1
+    limit: 4
+    platform:
+      os: windows
+    spec:
+      account:
+        region: us-east-2 ## To minimize latency, use the same region as the delegate VM.
+        availability_zone: us-east-2c ## To minimize latency, use the same availability zone as the delegate VM.
+        access_key_id: XXXXXXXXXXXXXXXXXXXXXX
+        access_key_secret: XXXXXXXXXXXXXXXXXXXXXX
+        key_pair_name: XXXXX
+      ami: ami-088d5094c0da312c0
+      size: t3.large
+      hibernate: true
+      network:
+        security_groups:
+        - sg-XXXXXXXXXXXXXX
 ```
 
-</details>
+### Pool settings reference
 
-For more information on Harness Docker Delegate environment variables, go to the [Harness Docker Delegate environment variables reference](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
+You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/).
 
-## Step 4: Install the Delegate and Runner
+| Setting | Type | Example | Description |
+| ------- | ---- | ------- | ----------- |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
+| `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
+| `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
+| `platform` | Key-value pairs, strings | Go to [platform example](#platform-example). | Specify VM platform operating system (`os: linux` or `os: windows`). `arch` and `variant` are optional. `os_name: amazon-linux` is required for AL2 AMIs. The default configuration is `os: linux` and `arch: amd64`. |
+| `spec` | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml) and the examples in the following rows. | Configure settings for the build VMs and AWS instance. Contains a series of individual and mapped settings, including `account`, `tags`, `ami`, `size`, `hibernate`, `iam_profile_arn`, `network`, and `disk`. Details about these settings are provided below. |
+| `account` | Key-value pairs, strings | Go to [account example](#account-example). | AWS account configuration, including region and access key authentication.<br/><ul><li>`region`: AWS region. To minimize latency, use the same region as the delegate VM.</li><li>`availability_zone`: AWS region availability zone. To minimize latency, use the same availability zone as the delegate VM.</li><li>`access_key_id`: The AWS access key for authentication. If using an IAM role, this is the access key associated with the IAM role.</li><li>`access_key_secret`: The secret associated with the specified `access_key_id`.</li><li>`key_pair_name`: The key pair name specified when you set up the EC2 instance. Don't include `.pem`. </li></ul> |
+| `tags` | Key-vale pairs, strings | Go to [tags example](#tags-example). | Optional tags to apply to the instance. |
+| `ami` | String | `ami: ami-092f63f22143765a3` | The AMI ID. You can use the same AMI as your EC2 instance or [search for AMIs](https://cloud-images.ubuntu.com/locator/ec2/) in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI IDs differ by Availability Zone. |
+| `size` | String | `size: t3.large` | The AMI size, such as `t2.nano`, `t2.micro`, `m4.large`, and so on. Make sure the size is large enough to handle your builds. |
+| `hibernate` | Boolean | `hibernate: true` | When set to `true` (which is the default), VMs hibernate after startup. When `false`, VMs are always in a running state. This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information, go to the AWS documentation on [hibernating on-demand Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
+| `iam_profile_arn` | String | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX` | If using IAM roles, this is the instance profile ARN of the IAM role to apply to the build instances. |
+| `network` | Key-value pairs, various | Go to [network example](#network-example). | AWS network information, including security groups and user data. For more information on these attributes, go to the AWS documentation on [creating security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group).<br/><ul><li>`security_groups`: List of security group IDs as strings.</li><li>`vpc`: If using VPC, this is the VPC ID as an integer.</li><li>`vpc_security_groups`: If using VPC, this is a list of VPC security group IDs as strings.</li><li>`private_ip`: Boolean.</li><li>`subnet_id`: The subnet ID as a string.</li><li>`user_data` and `user_data_path`: You can use these to define user data to apply to the instance and a path to a user data script. For more information, go to the Drone documentation on [cloud-init](https://docs.drone.io/runner/vm/configuration/cloud-init/).</li></ul> |
+| `disk` | Key-value pairs, various | `disk:`<br/>`  size: 16`<br/>`  type: io1`<br/>`  iops: iops` | Optional AWS block information.<br/><ul><li>`size`: Integer, size in GB.</li><li>`type`: `gp2`, `io1`, or `standard`.</li><li>`iops`: If `type: io1`, then `iops: iops`.</li></ul> |
 
-1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and `cd` to `/runner`.
-2. Confirm that the folder has both setup files, for example:
-
-   ```
-   $ ls -a
-   . .. docker-compose.yml pool.yml
-   ```
-
-3. Run the following command to install the Delegate and Runner:
-
-   ```
-   $ docker-compose -f docker-compose.yml up -d
-   ```
-
-4. Verify that both containers are running correctly. For example, wait a few minutes for both processes to start, and then run the following commands:
-
-   ```
-   $ docker ps
-   $ docker logs <delegate-container-id>
-   $ docker logs <runner-container-id>
-   ```
-
-5. In the Harness UI, verify that the Delegate appears in the Delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
-
-   ![](../static/set-up-an-aws-vm-build-infrastructure-13.png)
-
-The Delegate and Runner are now installed, registered, and connected.
-
-## Step 5: Select pipeline build infrastructure
-
-1. In your CI pipeline's **Build** stage, select the **Infrastructure** tab, and then select **AWS VMs**.
-
-   ![](../static/set-up-an-aws-vm-build-infrastructure-14.png)
-
-2. In **Pool ID**, enter the pool `name` from your [pool.yml](#step-2-configure-the-drone-pool-on-the-aws-vm).
-
-   ![](../static/set-up-an-aws-vm-build-infrastructure-15.png)
-
-3. Save your pipeline.
-
-This pipeline's **Build** stage now uses your AWS VMS for its build infrastructure.
-
-## Pool settings reference
-
-You can configure the following settings in your `pool.yml` file.
-
-| **Subfield** | **Type** | **Example** | **Description** |
-| - | - | - | - |
-| `name` | String | `name: windows_pool` | Unique identifier of the pool. You'll reference this pool name in the Harness Manager later when setting up the CI build infrastructure. |
-| `pool` | Integer | `pool: 1` | Pool size number. Denotes the number of cached VMs in ready state to be used by the Runner. |
-| `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of VMs that can be present at any instance to be used by the Runner. |
-| `hibernate` | Boolean | `hibernate: true` | When set to `true` (the default), VMs hibernate after startup. When `false`, VMs are always in a running state.This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information go to the AWS documentation: [Hibernate your On-Demand Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
-| `iam_profile_arn` | String | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX` | Instance profile ARN of the IAM role to apply to the build instances. |
-| `platform` | Mapping, string | Go to [Platform example](#platform-example) | Configure the details of your VM platform. By default, the platform is set to Linux OS and AMD64 architecture. |
-| `instance` | Mapping, string or integer | Go to [Instance example](#instance-example) | Configure the settings of your AWS instance. `disk` contains AWS block information, and `network` contains AWS network information. For more information on these attributes, go to the AWS documentation: [Create a security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group). |
-
-### Platform example
-
-***os (String)***
-    `platform: os: windows`
-
-***arch (String)***
-    `platform: arch:`
-
-***variant (String)***
-     `platform: variant:`
-
-***version (String)***
-    `platform: version:`
-
-***os_name (String)***
+#### platform example
 
 ```yaml
     instance:
       platform:
         os: linux
         arch: amd64
+        version:
         os_name: amazon-linux
 ```
 
-### Instance Example
-
-***ami (String)***
-
-```
-    instance:
-      ami: ami-092f63f22143765a3
-```
-
-***tags (String)***
-
-```
-    instance:
-      tags: 285
-```
-
-***type (String)***
-
-```
-    instance:
-      type: t2.micro
-```
-
-***disk***
-
-* `size` (Integer)
-
-```
-        disk:
-          size:
-```
-
-* `type` (String)
-
-```
-        disk:
-          type:
-```
-
-* `iops` (String)
-
-```
-        disk:
-          iops:
-```
-
-***Network***
-
-* `vpc` (Integer)
-
-```
-        network:
-          vpc:
-```
-
-* `vpc_security_groups` ([ ] String)
-
-```
-        network:
-          vpc_security_groups:
-          - sg-0ad8xxxx511b0
-```
-
-* `security_groups` ([ ] String)
-
-```
-          network:
-            security_groups:
-              - sg-06dcxxxx9811b0
-```
-
-* `subnet_id` (String)
-
-```
-        network:
-          subnet_id: subnet-0ab15xxxx07b53
-```
-
-* `private_ip` (Boolean)
-
-```
-        network:
-          private_ip:
-```
-
-## Runner settings reference
-
-You can set the following Runner options in your `docker-compose.yml` file. These can be useful for advanced use cases such as troubleshooting the Runner.
-
-<details>
-<summary>Example: docker-compose.yml with Drone Environment Settings</summary>
+#### account example
 
 ```yaml
-version: "3.7"  
-services:  
-  harness-ng-delegate:  
-    restart: unless-stopped  
-    network_mode: "host"  
-    deploy:  
-      resources:  
-        limits:  
-          cpus: "0.5"  
-          memory: 2048M  
-    image: harness/delegate:latest  
-    environment:  
-      - MANAGER_HOST_AND_PORT=https://app.harness.io  
-      - WATCHER_STORAGE_URL=https://app.harness.io/public/qa/premium/watchers  
-      - WATCHER_CHECK_LOCATION=current.version  
-      - REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds  
-      - DELEGATE_STORAGE_URL=https://app.harness.io  
-      - DELEGATE_CHECK_LOCATION=delegateqa.txt  
-      - USE_CDN=true  
-      - CDN_URL=https://app.harness.io  
-      - DEPLOY_MODE=KUBERNETES  
-      - DELEGATE_NAME=qwerty  
-      - NEXT_GEN=true  
-      - DELEGATE_DESCRIPTION=  
-      - DELEGATE_TYPE=DOCKER  
-      - DELEGATE_TAGS=  
-      - DELEGATE_TASK_LIMIT=50  
-      - DELEGATE_ORG_IDENTIFIER=  
-      - DELEGATE_PROJECT_IDENTIFIER=  
-      - PROXY_MANAGER=true  
-      - VERSION_CHECK_DISABLED=false  
-      - INIT_SCRIPT=echo "Docker delegate init script executed."  
-  drone-runner-aws:  
-    restart: unless-stopped  
-    image: drone/drone-runner-aws:1.0.0-rc.38
-    network_mode: "host" 
-    volumes:  
-      - .:/runner  
-    entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-    working_dir: /runner  
-    environment:
-      - DRONE_REUSE_POOL=false  
-      - DRONE_LITE_ENGINE_PATH=https://github.com/harness/lite-engine/releases/download/v0.5.2
-      - DRONE_DEBUG=true  
-      - DRONE_TRACE=true  
+      account:
+        region: us-east-2
+        availability_zone: us-east-2c
+        access_key_id: XXXXX
+        access_key_secret: XXXXX
+        key_pair_name: XXXXX
 ```
 
-</details>
+#### tags example
 
-Configure the following fields in the **.env** file to allow Runner to access and launch your AWS VM.
+```yaml
+      tags:
+        owner: USER
+        ttl: '-1'
+```
 
-| **Field** | **Type** | **Description** | **Example** |
-| - | - | - | - |
-| `DRONE_REUSE_POOL` | Boolean | Reuse existing EC2 instances on restart of the Runner. | `false` |
-| `DRONE_LITE_ENGINE_PATH` | String | This variable contains the release information for the Lite Engine. The Lite Engine is a binary that is injected into the VMs with which the Runner interacts. It is responsible for coordinating the execution of the steps. | `https://github.com/harness/lite-engine/releases/download/v0.0.1.12` |
-| `DRONE_DEBUG` | Boolean | Optional. Enables debug-level logging. | `true` |
-| `DRONE_TRACE` | Boolean | Optional. Enables trace-level logging. | `true` |
+#### network example
 
-## Troubleshooting
+```yaml
+      network:
+        private_ip: true
+        subnet_id: subnet-XXXXXXXXXX
+        security_groups:
+          - sg-XXXXXXXXXXXXXX
+        user_data: |
+          ...
+```
 
-When you run the pipeline, if VM creation in the Runner fails with the error `no default VPC`, then set `subnet_id` in `pool.yml`.
+## Start the runner
+
+[SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following command to start the runner:
+
+```
+docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
+
+This command mounts the volume to the Docker runner container and provides access to `pool.yml`, which is used to authenticate with AWS and pass the spec for the pool VMs to the container. It also exposes port 3000.
+
+You might need to modify the command to use sudo and specify the runner directory path, for example:
+
+```
+sudo docker run -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
+
+:::info What does the runner do?
+
+When a build starts, the delegate receives a request for VMs on which to run the build. The delegate forwards the request to the runner, which then allocates VMs from the warm pool (specified by `pool` in `pool.yml`) and, if necessary, spins up additional VMs (up to the `limit` specified in `pool.yml`).
+
+The runner includes lite engine, and the lite engine process triggers VM startup through a cloud init script. This script downloads and installs Scoop package manager, Git, the Drone plugin, and lite engine on the build VMs. The plugin and lite engine are downloaded from GitHub releases. Scoop is downloaded from `get.scoop.sh`.
+
+Firewall restrictions can prevent the script from downloading these dependencies. Make sure your images don't have firewall or anti-malware restrictions that are interfering with downloading the dependencies. For more information, go to [Troubleshooting](#troubleshooting).
+
+:::
+
+## Install the delegate
+
+Install a Harness Docker Delegate on your AWS EC2 instance.
+
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
+
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and paste it in a text editor.
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
+
+   ```
+   sudo docker run --cpus=1 --memory=2g --network host
+   ```
+
+7. [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the delegate install command.
+
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
+
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
+
+:::
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+## Verify connectivity
+
+1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
+
+	 ```
+	 docker ps
+	 docker logs DELEGATE_CONTAINER_ID
+	 docker logs RUNNER_CONTAINER_ID
+	 ```
+
+2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
+
+   ![](../static/set-up-an-aws-vm-build-infrastructure-13.png)
+
+The delegate and runner are now installed, registered, and connected.
+
+## Specify build infrastructure
+
+Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build infrastructure.
+
+
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+
+
+1. In Harness, go to the CI pipeline that you want to use the AWS VM build infrastructure.
+2. Select the **Build** stage, and then select the **Infrastructure** tab.
+3. Select **VMs**.
+4. Enter the **Pool Name** from your [pool.yml](#configure-the-drone-pool-on-the-aws-vm).
+5. Save the pipeline.
+
+<!-- ![](../static/ci-stage-settings-vm-infra.png) -->
+
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
+
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: POOL_NAME_FROM_POOL_YML
+                os: Linux
+          execution:
+            steps:
+            ...
+```
+
+
+</TabItem>
+</Tabs>
+
+
+## Troubleshoot AWS VM build infrastructure
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
+
+* [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
+* [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
+* [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
+* [Use internal or custom AMIs](/kb/continuous-integration/continuous-integration-faqs/#use-internal-or-custom-amis-with-self-hosted-aws-vm-build-infrastructure)
+* [Where can I find self-hosted VM lite engine and cloud init output logs?](/kb/continuous-integration/continuous-integration-faqs/#where-can-i-find-logs-for-self-hosted-aws-vm-lite-engine-and-cloud-init-output)
+* [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
+* [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
+* [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
+* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
+* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

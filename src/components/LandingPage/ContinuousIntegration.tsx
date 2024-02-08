@@ -20,7 +20,8 @@ export default function CI() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Set up CI pipelines to automate builds, tests & publishing of artifacts</h3>
+        <h3>Set up CI pipelines to automate building, testing, & publishing of artifacts</h3>
+
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -69,14 +70,19 @@ export default function CI() {
               analyze the root causes.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnCI)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/continuous-integration">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnCI
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://harness.io/products/continuous-integration">
-                <button className={styles.link}>Learn more</button>
+                <button className={styles.link}>Learn More</button>
               </Link>
             </div>
           </div>
@@ -86,18 +92,8 @@ export default function CI() {
         </div>
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
+        <h3 id="featured-documentation">Featured Documentation</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
-      </div>
-      <div className={styles.subSection}>
-        {/*
-        <h3>
-          Drone Tutorials
-        </h3>
-        <TutorialCard FeatureList={DroneList} />
-        */}
-        <h3 id="all-tutorials">All CI Tutorials</h3>
-        <TutorialCard FeatureList={CIList} />
       </div>
     </div>
     // </Layout>

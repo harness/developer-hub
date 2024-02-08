@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import image_1 from './static/use-custom-helm-binaries-on-harness-delegates-33.png'
-```
+
 
 Harness Delegate includes Helm 3 by default. You can optionally specify the use of a custom binary from the [helm](https://github.com/helm/helm/releases) repository. This is useful when your Harness deployment uses a chart that is incompatible with the default Helm version.
 
@@ -26,12 +26,9 @@ For Helm binary versions with feature flags requirements, contact [Harness Suppo
 
 ### Helm Binary v3.5 to v3.7
 
-The use of Helm binaries version 3.5 or later requires the following feature flags to be enabled on your Harness account:
+The use of Helm binaries version 3.5 or later requires the following feature flag to be enabled on your Harness account:
 
-* `DISABLE_HELM_REPO_YAML_CACHE`
 * `BYPASS_HELM_FETCH`
-
-This is required because of changes to Helm CLI in Helm version 3.5. The process that the`helm repo add` command uses to invoke the`helm repo update` command changed.
 
 ### Helm v3.8.0 Binary
 
@@ -69,7 +66,7 @@ Example Delegate Profile script:
 ```
 curl -O https://get.helm.sh/helm-v3.2.3-linux-amd64.tar.gz  
 tar -xvf helm-v3.2.3-linux-amd64.tar.gz  
-path=`echo $PATH | awk -F':' '{ print $1}'`  
+path=`echo $PATH | awk -F':' '\{ print $1}'`  
 echo $path  
 mv linux-amd64/helm $path
 ```
@@ -87,9 +84,9 @@ If you are adding a new Delegate, you select the profile when you download the D
 
 If you apply the profile to an existing Delegate, you simply select the it in the Delegate's **Profile** setting:
 
-```mdx-code-block
+
 <img src={image_1} height="300" width="500" />
-```
+
 
 
 
@@ -173,7 +170,7 @@ For Helm 3:
 `./stop`  
 `./start`
 
-For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](/docs/category/get-started) documentation.
+For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](/docs/first-gen/first-gen-quickstarts/aws-ami-deployments) documentation.
 
 ### Helm
 

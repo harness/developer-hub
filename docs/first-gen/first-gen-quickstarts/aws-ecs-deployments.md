@@ -55,10 +55,10 @@ The Delegate cluster does not need to be in the same VPC as the target cluster.
 **Need a Cluster?** If you do not have an AWS account, you can use an  [AWS Free Tier account](https://aws.amazon.com/free/) and create an ECS cluster by following the steps in  [ECS Getting Started](https://console.aws.amazon.com/ecs/home?region=us-east-1#/getStarted) from Amazon. If you do have an AWS account and you want to evaluate Harness with ECS, you can simply create a new ECS cluster in your AWS account.
 :::
 
-#### Policy JSON Example 
+#### Policy JSON Example
 
 <details>
-	<summary>Policy JSON</summary>	
+<summary>Policy JSON</summary>	
 
  ```
  {  
@@ -281,7 +281,7 @@ Harness integrates with many different types of repositories and providers. For 
 4. Click Test, and then click the **SUBMIT** button.
 
 :::note
-If the test fails, it is possible that the Harness Delegate you installed cannot connect to https://registry.hub.docker.com/v2/. Ensure that the ECS cluster instance where the Delegate is installed can connect to that address.We don't need any other connectors for this tutorial. 
+If the test fails, it is possible that the Harness Delegate you installed cannot connect to `https://registry.hub.docker.com/v2/`. Ensure that the ECS cluster instance where the Delegate is installed can connect to that address.We don't need any other connectors for this tutorial. 
 :::
 
 Next, we'll add the Docker image artifact and Kubernetes manifests.
@@ -299,7 +299,7 @@ The Harness Application represents a logical group of the ECS setup and release 
 
    ![](./static/aws-ecs-deployments-113.png)
 	 
-   We won't cover all of the Application entities in this tutorial. We assume you've read  [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+   We won't cover all of the Application entities in this tutorial. We assume you've read  [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 
    To add your specs, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your ECS specs.
 

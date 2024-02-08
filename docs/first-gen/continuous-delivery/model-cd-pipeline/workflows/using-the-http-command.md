@@ -55,7 +55,7 @@ Enter the message body (if any) of the HTTP message. |
 
 ####  Assertion
 
-The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **${httpResponseCode}==200**.
+The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **$\{httpResponseCode}==200**.
 
 To see the available expressions, simply enter `${` in the Assertions field. The HTTP expressions are described in the [HTTP](../../../firstgen-platform/techref-category/variables/variables.md#http) section of [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
   

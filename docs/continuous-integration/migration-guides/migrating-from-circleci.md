@@ -14,10 +14,10 @@ Harness CI and CircleCI are both cloud-native CI products that help developers b
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, which make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) is a proprietary technology that speeds up test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and it can help you identify gaps in your test plan. TI also identifies negative trends and provides actionable insights to improve quality. It's possible to reduce build cycle times by up to 90 percent without compromising application quality. This functionality is not built into CircleCI.
+* Harness [Test Intelligence (TI)](../use-ci/run-tests/test-intelligence/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
-Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
+Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
 
 * Role-Based Access Control (RBAC) helps you control user and group access to Harness resources according to users' roles. Using RBAC increases security and improves efficiency.
 * Harness Policy as Code is a centralized policy management and rules service that leverages the Open Policy Agent (OPA) to meet compliance requirements across software delivery and enforce governance policies.
@@ -27,15 +27,15 @@ Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platf
 
 Both Harness CI and CircleCI use pipelines to organize workflows. CircleCI organizes steps and commands into _jobs_, and each pipeline has one or more jobs. Similarly, Harness CI organizes steps, which contain commands, into _stages_, and each each pipeline has one or more stages. The following truncated examples provide a simple comparison of pipeline structure in CircleCI and Harness CI.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -45,10 +45,10 @@ jobs:
       - run: "execute-script-for-job1"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harnessci" label="Harness CI" default>
-```
+
 
 ```yaml
 stages:
@@ -58,10 +58,12 @@ stages:
                   type: Run
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
+
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 When creating pipelines, CircleCI supports pipeline configuration as code only. In contrast, the Harness CI Pipeline Studio provides both a visual editor and a YAML code editor.
 
@@ -69,22 +71,20 @@ When creating pipelines, CircleCI supports pipeline configuration as code only. 
 * The Harness visual editor provides a guided experience that enables anyone to easily build, debug, and run pipelines.
 * You can switch back and forth between editors.
 
-For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
-
 <details>
 <summary>Complete pipeline comparison</summary>
 
 Here are YAML examples of complete pipelines in CircleCI and Harness CI.
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 version: 2.1
@@ -129,7 +129,7 @@ jobs:
       - checkout
       - run:
           shell: bash
-          command: echo "matrix vaule << parameters.matrix-var >> "
+          command: echo "matrix value << parameters.matrix-var >> "
           name: step1
 
 workflows:
@@ -137,7 +137,7 @@ workflows:
     jobs:
       - job1
       - job2 :
-          context: smaple-contex
+          context: sample-context
           requires:
             - job1
       - job3:
@@ -148,16 +148,16 @@ workflows:
               matrix-var: ["python", "java"]
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="harness" label="Harness" default>
-```
+
 
 ```yaml
 pipeline:
-  name: testpipeline
-  identifier: testpipeline
-  projectIdentifier: NgLabs
+  name: default
+  identifier: default
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   stages:
@@ -170,11 +170,23 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Background
+                  name: Postgres-Dependency-Service
+                  identifier: PostgresDependencyService
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: postgres:10.8
+                    shell: Sh
+                    envVariables:
+                      POSTGRES_USER: postgres
+                      POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
+                      POSTGRES_DB: postgres
+              - step:
                   type: Run
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -184,17 +196,6 @@ pipeline:
           runtime:
             type: Cloud
             spec: {}
-          serviceDependencies:
-            - identifier: PostgressDependecyService
-              name: Postgress-Dependecy-Service
-              type: Service
-              spec:
-                connectorRef: account.harnessImage
-                image: postgres:10.8
-                envVariables:
-                  POSTGRES_USER: postgres
-                  POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
-                  POSTGRES_DB: postgres
     - stage:
         name: Stage2
         identifier: Stage2
@@ -208,7 +209,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: |-
@@ -253,8 +254,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: gitforronak
-        repoName: test
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
         build: <+input>
   variables:
     - name: pipelinevar1
@@ -263,12 +264,22 @@ pipeline:
       value: someval
 ```
 
-```mdx-code-block
+
   </TabItem2>
 </Tabs2>
-```
+
 
 </details>
+
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
 
 ## Comparison: CircleCI orbs and Harness plugins
 
@@ -277,24 +288,38 @@ CircleCI _orbs_ are reusable shareable configuration packages that combine jobs,
 Harness CI has two options for reusable, pre-packaged functionality:
 
 * [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Integrations, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
-* [Create standardized step templates](/docs/platform/Templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
+* [Create standardized step templates](/docs/platform/templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
 
-## Comparison: Specify a Docker image to use for a job
+## Comparison: Specify a codebase or Docker image
 
-To clone a codebase in CircleCI, you use a _checkout_ step to check out source code to the configured path. In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). In Harness CI, codebases have two components, both of which you can edit:
+To clone a codebase in CircleCI, you use a _checkout_ step to check out source code to the configured path. In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). In Harness CI, [codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
 * The codebase _connector_, which specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
+
+When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
 
 :::info What are connectors?
 
 Harness integrates with many different types of repositories and providers. A connection from Harness to other platforms is called a [connector](/docs/category/connectors). Connectors can connect to source control providers, cloud providers, container registries, and more.
 
-For example, in the [Complete pipeline comparison](#complete-pipeline-comparison), the `connectorRef` in the Harness YAML example references to a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+In addition to codebase configuration, you can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
+
+For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+
+```yaml
+              - step:
+                  type: Run
+                  name: step1
+                  identifier: step1
+                  spec:
+                    connectorRef: my-docker-hub-connector
+                    image: openjdk:17.0-jdk
+                    shell: Bash
+                    command: echo "this runs on openjdk"
+```
 
 :::
-
-When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
 
 ## Comparison: Define a multi-stage build pipeline
 
@@ -309,15 +334,15 @@ In Harness CI, stages are executed in order of occurrence in the YAML config. St
 
 Here are YAML examples of multi-stage build pipelines in CircleCI and Harness CI.
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs3>
   <TabItem3 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -372,10 +397,10 @@ workflows:
           - job3
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="harness" label="Harness" default>
-```
+
 
 ```yaml
   stages:
@@ -393,10 +418,10 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: ronakpatildocker
+                        connectorRef: account.harnessImage
                         image: node:13.0.0
                         shell: Bash
-                        command: echo "Downlaod file in parallel with stage 2 "
+                        command: echo "Download file in parallel with stage 2 "
         - stage:
             name: Stage2
             identifier: stage2
@@ -410,7 +435,7 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: ronakpatildocker
+                        connectorRef: account.harnessImage
                         image: node:13.0.0
                         shell: Bash
                         command: echo "step1"
@@ -427,7 +452,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage3 . stage 3 requires stage 1 and 2 "
@@ -444,39 +469,38 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage4 . stage 4 requires stage 3"
 ```
 
-```mdx-code-block
+
   </TabItem3>
 </Tabs3>
-```
+
 
 </details>
 
 ## Comparison: Environment variables
 
-In CircleCI, you use the web app to set project-level environment variables, and then reference them in the pipeline. You can use _Context_ to use environment variables across multiple projects.
+In CircleCI, you use the web app to define project-level environment variables, and then you can reference them in a pipeline. You can use _Context_ to use environment variables across multiple projects.
 
-In Harness CI, you can add variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
-  - Account-level variable reference: `<+variable.account.[var_id]>`
-  - Organization-level variable reference: `<+variable.org.[var_id]>`
-  - Project-level variable reference: `<+variable.[var_id]>`
+In Harness CI, you can define variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
 
-To learn more about variables for accounts, projects, and organizations, go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
+- Account-level variable reference: `<+variable.account.[var_id]>`
+- Organization-level variable reference: `<+variable.org.[var_id]>`
+- Project-level variable reference: `<+variable.[var_id]>`
 
-```mdx-code-block
+
 import Tabs4 from '@theme/Tabs';
 import TabItem4 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs4>
   <TabItem4 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -485,10 +509,10 @@ jobs:
       - run: echo $MY_ENV_VAR
 ```
 
-```mdx-code-block
+
   </TabItem4>
   <TabItem4 value="harness" label="Harness" default>
-```
+
 
 ```yaml
  - stage:
@@ -505,10 +529,15 @@ jobs:
                     command: echo "project var: " <+variable.proj_var>
 ```
 
-```mdx-code-block
-  </TabItem4>
+In addition to project, organization, and account variables, you can use built-in variables or define custom variables within individual pipelines, stages, and steps. To learn more about defining and fetching variables in Harness, go to:
+
+* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
+
+
+</TabItem4>
 </Tabs4>
-```
+
 
 ## Comparison: Matrix jobs
 
@@ -516,17 +545,17 @@ In CircleCI, matrix jobs are achieved by using parameters and then referencing t
 
 In Harness, matrix looping strategies are one of several looping execution strategies. With matrix looping strategies, your pipelines can execute the same set of tasks multiple times for several different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
 
-To learn about the looping strategies available in Harness, go to [Looping Strategies Overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
+To learn about the looping strategies available in Harness, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
-```mdx-code-block
+
 import Tabs5 from '@theme/Tabs';
 import TabItem5 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs5>
   <TabItem5 value="circleci" label="CircleCI">
-```
+
 
 ```yaml
 jobs:
@@ -549,10 +578,10 @@ workflows:
               os: [node,ubuntu ,python]
 ```
 
-```mdx-code-block
+
   </TabItem5>
   <TabItem5 value="harness" label="Harness" default>
-```
+
 
 ```yaml
   stages:
@@ -582,10 +611,10 @@ workflows:
           maxConcurrency: 3
 ```
 
-```mdx-code-block
+
   </TabItem5>
 </Tabs5>
-```
+
 
 ## Comparison: Triggers
 
@@ -597,7 +626,7 @@ Harness CI supports webhook triggers and scheduled triggers. The two most common
 
 CircleCI configurations are stored in the path `.CircleCI/config.yml` at the root of your source code repository on the counter.
 
-Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-Code) on Git](/docs/platform/Git-Experience/import-a-pipeline).
+Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-Code) on Git](/docs/platform/git-experience/import-a-pipeline).
 
 :::
 
@@ -606,5 +635,5 @@ Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-
 Review the following information before proceeding with migration:
 
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

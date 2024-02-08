@@ -1,0 +1,14 @@
+{
+    "label":"Advanced configurations",
+    "position": 40,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Advanced configurations"
+    },
+    "customProps":{
+       "helpdocs_category_id":""
+    }
+ }

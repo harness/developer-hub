@@ -60,7 +60,7 @@ In the templates folder, there is a folder named **jobs** and a **job.yaml** man
 
 Jobs do not require any changes to the way you specify the target cluster in Harness.
 
-For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
+For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
 ## Add the Job to the execution using the Apply step
 
@@ -200,9 +200,9 @@ To view Job output after the Apply step, you can use a simple script in a Shell 
 ```
 echo  
   
-pods=$(kubectl get pods -n <+infra.kubernetes.namespace> --selector=job-name=my-job --output=jsonpath='{.items[*].metadata.name}')  
+pods=$(kubectl get pods -n <+infra.namespace> --selector=job-name=my-job --output=jsonpath='{.items[*].metadata.name}')  
   
-kubectl logs -n <+infra.kubernetes.namespace> $pods  
+kubectl logs -n <+infra.namespace> $pods  
   
 echo
 ```

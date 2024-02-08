@@ -2,12 +2,6 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
 {
-    name: "Docker service kill",
-    description: "Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
-    tags: [ "node"],
-    category: "kubernetes",
-  },
-  {
     name: "Kubelet service kill",
     description:"Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
     tags: ["node"],
@@ -46,6 +40,18 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Node taint",
     description:"Node taint taints (contaminates) the node by applying the desired effect. ",
+    tags: ["node"],
+    category: "kubernetes",
+  },
+  {
+    name: "Node network loss",
+    description: "Node network loss introduces packet loss in the Kubernetes node.",
+    tags: ["node"],
+    category: "kubernetes",
+  },
+  {
+    name: "Node network latency",
+    description: "Node network latency introduces network latency to the Kubernetes node.",
     tags: ["node"],
     category: "kubernetes",
   },
@@ -173,6 +179,66 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Pod network partition",
     description:"Pod network partition blocks 100% ingress and egress traffic of the target application by creating network policy.",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO latency",
+    description:"Pod IO latency, delays the system calls of files located within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO error",
+    description:"Pod IO error, returns an error on the system calls of files located within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO attribute override",
+    description:"Pod IO attribute override, modify the properties of files located within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Time Chaos",
+    description:"Time Chaos introduces controlled time offsets to disrupt the system time of the target pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API latency",
+    description:"Pod API latency injects api request and response latency by starting proxy server and redirecting the traffic through it",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API modify body",
+    description:"Pod API modify body, modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API modify header",
+    description:"Pod API modify header, overrides the header values of API requests and responses with the user-provided values for the given keys",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API status code",
+    description:"Pod API status code, change the API response status code and optionally api response body through path filtering",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod network rate limit",
+    description:"Pod network rate limit fault generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API block",
+    description:"Pod API block, blocks the api requests for ingress and egress traffic through path filtering",
     tags: ["pod"],
     category: "kubernetes",
   },

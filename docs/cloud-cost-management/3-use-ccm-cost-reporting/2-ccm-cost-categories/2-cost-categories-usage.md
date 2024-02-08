@@ -9,10 +9,6 @@ helpdocs_is_published: true
 ---
 
 
-```mdx-code-block
-import dashboards_cc from './static/cost-categories-dashboards.png'
-```
-
 You can use cost categories in both perspectives and dashboards. When you create or modify a cost category, the changes are immediately reflected in perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
 
 ## Use cost categories in perspectives
@@ -38,15 +34,15 @@ Consider the following scenario with two cost categories:
 | CC1 | <ul><li>CB1 - AWS1 - $10, AWS7 - $20</li><li>CB2- AWS2 - $20</li></ul> | <ul><li>SB1 - AWS3 - $30</li><li>SB2 - AWS4 - $40</li> </ul>|
 | CC2 | <ul><li>CB3 - AWS1 - $10</li><li>CB4- AWS2 - $20</li></ul>| <ul><li>SB3 - AWS5 - $30</li><li>SB4 - AWS6 - $40</li> </ul>|
 
-If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
+If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
 
 |Name | Total Cost|
 | --- | --- |
 | CB1 | $30 + shared cost (SB1 and SB2) |
 | CB2 | $20 + shared cost (SB1 and SB2) |
-| Unattributed | The sum of all the other cost |
+| Unattributed | The sum of all the other costs |
 
-If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
+If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
 
 | Name|Total Cost |
 | --- | --- |
@@ -69,7 +65,7 @@ You can use Group By and filters together. For example, your filter could select
 
 ![](./static/use-ccm-cost-categories-08.png)
 
-:::caution
+:::warning
 When including multiple cost categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with overlapping rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple cost category filter in a Perspective. However, if you must add a multiple cost category filter, avoid overlapping shared cost buckets between cost categories to prevent any potential errors.
 :::
 
@@ -96,11 +92,11 @@ Consider the following scenario where the Perspective rule has two cost categori
 
 ## Use cost categories in dashboards
 
-You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md).
+You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/dashboards/create-dashboards.md).
 
-**Cost Categories** is available in the Unified explore on the Dashboards page. 
+**Cost Categories** is available in the **Unified** explore on the **Dashboards** page. 
 
-  <img src={dashboards_cc} alt="A screenshot to show the unified explore." height="400" width="500" />
+  <DocImage path={require('./static/cost-categories-dashboards.png')} width="40%" height="40%" title="Click to view full size image" />
 
 
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.
@@ -118,6 +114,55 @@ In AWS, you cannot use cost categories as a dimension in custom dashboards if yo
 - Net Amortised Cost 
 
 :::
+
+## Behaviour
+
+Below is the table where we have outlined the contrasting behavior of cost categories in Perspective and Dashboard.
+
+<table width="900" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="300"><b></b></td>
+        <td width="600"><b>Perspective</b></td>
+        <td width="600"><b>Looker/Dashboard</b></td>
+    </tr>
+    <tr>
+        <td>Using and Grouping Cost Category</td>
+        <td>We can utilize cost categories as rules to create perspectives. Additionally, we can perform groupBy operations on any cost category to view the costs associated with each cost bucket.</td>
+        <td>Users have the ability to select the columns on which they want to perform groupBy operations. This allows them to view the costs associated with each cost bucket for a specific cost category.</td>
+    </tr>
+    <tr>
+        <td>Filtering Cost Category</td>
+        <td>Users have the capability to apply filters on cost categories and specific cost buckets they want to see. These filters can be applied either in the rules section or in the filter panel.</td>
+        <td>Users have the flexibility to apply filters on any columns supported in the BigQuery table. This allows them to filter cost categories or cost buckets based on their specific criteria.</td>
+    </tr>
+    <tr>
+        <td>Shared Cost</td>
+        <td>If a shared bucket is specified in the cost category used in rules or groupBy, the cost of the shared bucket will be divided and allocated among the respective cost buckets based on the sharing strategy.</td>
+        <td><font color="red">Not Supported.</font></td>
+    </tr>
+    <tr>
+        <td>Nested Cost Category</td>
+        <td><font color="green">Supported.</font></td>
+        <td><font color="green">Supported.</font></td>
+    </tr>
+    <tr>
+        <td>Cluster Data</td>
+        <td><font color="green">Supported.</font> Users have the capability to create cost categories with cluster rules. These cost categories can be used in cluster perspectives.</td>
+        <td><font color="red">Not Supported.</font> Currently, we are updating the cost category exclusively for the cloud provider data only.</td>
+    </tr>
+    <tr>
+        <td>
+            Behaviour 
+        </td>
+        <td>
+            If there is an update in the cost category rule, we will utilize the updated rules to display the cost accordingly, even for past data.
+        </td>
+        <td>
+        cWe keep track of cost category changes on a monthly basis and update data accordingly for that month.
+        <br></br><b>Caveat:</b> For GCP data, we update the data for last 3 days only.
+        </td>
+    </tr>
+</table>
 
 ## See Also
 

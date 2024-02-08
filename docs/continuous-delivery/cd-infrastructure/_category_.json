@@ -1,6 +1,6 @@
 {
     "label": "Provision infrastructure",
-    "position": "300",
+    "position": "4",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

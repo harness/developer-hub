@@ -1,0 +1,16 @@
+# scale the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-scale
+    spec:
+      components:
+        env:
+        - name: REPLICAS
+          value: '5'

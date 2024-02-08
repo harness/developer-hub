@@ -10,6 +10,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpyes from '../shared/note-smp-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpyes />
+
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
 
@@ -19,14 +26,14 @@ For getting started quickly, you can use our [sample code from the Java SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.2.2.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-java-server-sdk/releases)
 
 ## Requirements
 
@@ -54,7 +61,7 @@ Add the following dependency in your project's pom.xml file:
 <dependency>  
     <groupId>io.harness</groupId>  
     <artifactId>ff-java-server-sdk</artifactId>  
-    <version>1.1.10</version>  
+    <version>1.3.1</version>
 </dependency>
 ```
 If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.
@@ -63,7 +70,7 @@ If you are using the Harness Java sample application from the [Java SDK GitHub 
 
 
 ```
-implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.1.10'
+implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.3.1'
 ```
 ## Initialize the SDK
 
@@ -88,8 +95,8 @@ String apiKey = System.getProperty("FF_API_KEY", "<default api key>");
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -100,7 +107,7 @@ To add a Target, build it and pass in arguments for the following:
 | --- | --- | --- | --- |
 | **Parameter** | **Description** | **Required?** | **Example** |
 | `identifier` | Unique ID for the TargetRead **Regex requirements for Target names and identifiers** below for accepted characters. | Required | `.identifier("HT_1")` |
-| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.name("Harness_Target_1")` |
+| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional<br />**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.name("Harness_Target_1")` |
 | `attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `.attributes(new HashMap<String, Object>())` |
 
 <details>
@@ -150,9 +157,9 @@ You can configure the following features of the SDK through the `baseConfig`:
 |  |  |  |  |
 | --- | --- | --- | --- |
 | **Name** | **Example** | **Description** | **Default Value** |
-| baseUrl | `HarnessConfig.configUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
+| configUrl | `HarnessConfig.configUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
 | eventUrl | `HarnessConfig.eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `BaseConfig.pollIntervalInSeconds(60))` | The interval **in seconds** that we poll for changes when you are not using stream mode. | `60` (seconds) |
+| pollIntervalInSeconds | `BaseConfig.pollIntervalInSeconds(60))` | The interval **in seconds** that we poll for changes when you are not using stream mode. | `60` (seconds) |
 | streamEnabled | `BaseConfig.streamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `BaseConfig.analyticsEnabled(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 | frequency | `BaseConfig.frequency(60))` | The interval **in seconds** of how often to send metrics data.  | `60` |
@@ -219,20 +226,19 @@ boolean result = cfClient.boolVariation("sample_boolean_flag", target, false);
 
 
 ```
-boolean result = cfClient.numberVariation("sample_number_flag", target, 0);
+double result = cfClient.numberVariation("sample_number_flag", target, 0);
 ```
 ### Evaluate a string Variation
 
 
 ```
-boolean result = cfClient.stringVariation("sample_string_flag", target, "");
+String result = cfClient.stringVariation("sample_string_flag", target, "");
 ```
-### Evaluate a multivariate Variation
+### Evaluate a json Variation
 
 
 ```
-double number = cfClient.numberVariation(COUNT_FEATURE_KEY, parentTarget, 1);  
-      String color = cfClient.stringVariation(COLOR_FEATURE_KEY, target, "black");
+JsonObject result = cfClient.jsonVariation("sample_json_flag", target, new JsonObject());
 ```
 ## Test your app is connected to Harness
 
@@ -240,14 +246,18 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client: 
 
-```
-cfClient.close();
-```
+* Call the following function>
+
+  ```
+  cfClient.close();
+  ```
+  
 ## Additional options
 
 ### Develop on your local environment
@@ -551,3 +561,62 @@ public class GettingStarted {
     }  
 }
 ```
+
+## Known issues
+
+### Error when importing the SDK JAR file
+
+If you're using the Java server SDK version 1.2.2 or earlier, you may see the following error when importing the SDK JAR file:
+
+`Missing artifact com.github.heremaps:oksse:jar:0.9.0`
+
+If you get this error, then add the Maven repository `https://jitpack.io` to your build system as follows:
+
+**If using Gradle:** 
+
+```
+repositories {
+  maven {
+    url 'https://jitpack.io'
+  }
+}
+```
+
+**If using Maven:**
+
+```
+<repository>
+  <url>https://jitpack.io</url>
+  ...
+</repository>
+```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                          |
+|----------|:-----------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                 |
+| **1001** | Failed to initialize due to authentication error                                         |
+| **1002** | Failed to initialize due to a missing or empty API key                                   |
+| **1003** | `wait_for_initialization` was called and the SDK is waiting for initialization to finish |
+| **2000** | Successfully authenticated                                                               |
+| **2001** | Authentication failed with a non-recoverable error                                       |
+| **2002** | Authentication failed and is retrying                                                    |
+| **2003** | Authentication failed and max retries have been exceeded                                 |
+| **3000** | SDK closing                                                                              |
+| **3001** | SDK closed successfully                                                                  |
+| **4000** | Polling service started                                                                  |
+| **4001** | Polling service stopped                                                                  |
+| **5000** | Streaming service started                                                                |
+| **5001** | Streaming service stopped                                                                |
+| **5002** | Streaming event received                                                                 |
+| **5003** | Streaming disconnected and is retrying to connect                                        |
+| **5004** | Streaming stopped                                                                        |
+| **5005** | Stream is still retrying to connect after 4 attempts                                     |
+| **6000** | Evaluation was successful                                                              |
+| **6001** | Evaluation failed and the default value was returned                                     |
+| **7000** | Metrics service has started                                                              |
+| **7001** | Metrics service has stopped                                                              |
+| **7002** | Metrics posting failed                                                                   |
+| **7003** | Metrics posting success                                                                  |

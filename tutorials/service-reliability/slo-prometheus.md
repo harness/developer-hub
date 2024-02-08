@@ -5,9 +5,9 @@ description: Introducing SLOs and how to measure and manage your SLOs leveraging
 
 # Manage SLOs using Prometheus metrics
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 ## Background on Service Level Objectives
 
@@ -46,7 +46,7 @@ helm upgrade --install prometheus prometheus-community/prometheus \
 --namespace prometheus --create-namespace
 ```
 
-Once installed, there are a few ways to access your Prometheus Web UI. It is not recommended with workloads of substance to expose this to the public. For this example, can expose via [NodePort](https://kubernetes.io/tutorials/concepts/services-networking/service/).
+Once installed, there are a few ways to access your Prometheus Web UI. It is not recommended with workloads of substance to expose this to the public. For this example, can expose via [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 ```
 kubectl expose deployment -n prometheus prometheus-server --type=NodePort --name=prometheus-service
@@ -95,7 +95,7 @@ With the application installed, now you can explore some metrics with Prometheus
 
 ## Prometheus Metrics
 
-Prometheus groups metrics in several ways. There are [four metric primitive types](https://prometheus.io/tutorials/concepts/metric_types/) that Prometheus supports. Querying these metrics are handled by Prometheus’s query language, or [PromQL](https://prometheus.io/tutorials/prometheus/latest/querying/basics/).
+Prometheus groups metrics in several ways. There are [four metric primitive types](https://prometheus.io/docs/concepts/metric_types/) that Prometheus supports. Querying these metrics are handled by Prometheus’s query language, or [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 If this is your first time delving into Prometheus or just want to find out more about what your applications are sending in, this [Prometheus Blog](https://promlabs.com/blog/2020/12/17/promql-queries-for-exploring-your-metrics) is a good resource to explore your metrics when the metric names are unknown. Below is a PromQL query to list all available metrics in your Prometheus instance.
 
@@ -107,7 +107,7 @@ Running that query, will notice all four metric types are being written by the e
 
 ![PromQL](static/first-slo-tutorial/promql.png)
 
-The _test_gauge0_ metric is a good metric to take a look at. A [Gauge](https://prometheus.io/tutorials/concepts/metric_types/#gauge) in Prometheus is a metric that represents a singular numerical value. How the sample application is designed will increase and decrease the gauge counter over time, which if this was a real life gauge could represent something like memory pressure or response time.
+The _test_gauge0_ metric is a good metric to take a look at. A [Gauge](https://prometheus.io/docs/concepts/metric_types/#gauge) in Prometheus is a metric that represents a singular numerical value. How the sample application is designed will increase and decrease the gauge counter over time, which if this was a real life gauge could represent something like memory pressure or response time.
 
 ![Gauge](static/first-slo-tutorial/gauge.png)
 
@@ -143,7 +143,7 @@ Click Save. Can also name this journey that a user or system will be taking on b
 
 ![My SLO](static/first-slo-tutorial/my_slo.png)
 
-Click Continue. Now you are ready to wire in the Service Level Indicator [SLI] that feed into this SLO. Since the test_summary0_sum{} metric has a consistent upward trend, this can be used to simulate a latency metric. Now you are ready to configure wiring in Prometheus to Harness.
+Click Continue. Now you are ready to wire in the Service Level Indicator [SLI] that feed into this SLO. Since the test_summary0_sum\{} metric has a consistent upward trend, this can be used to simulate a latency metric. Now you are ready to configure wiring in Prometheus to Harness.
 
 Configure SLI queries -> + New Health Source
 
@@ -188,14 +188,14 @@ When configuring the SLI, can set this to a Threshold based metric. The Objectiv
 Metric for valid requests: Prometheus Metric [was connected during the connecting step].
 
 - Objective Value: 0.60
-- SLI value is good if: <=
+- SLI value is good if: \<=
 - Consider missing data: Bad
 
 ![SLI Config](static/first-slo-tutorial/sli_config.png)
 
 ### Set SLO Target
 
-Click Continue to set up the SLO Target [based on the SLI] and [Error Budget](https://www.atlassian.com/incident-management/kpis/error-budget) [amount of time system can fail] Policy. A goal we can set is that 50% of requests need to be <= to our Objective Value e.g this is our SLI. Since we are setting 50% of the target, we are also stating that 50% of the week if we set a rolling 7 day period can be included in our Error Budget which is indicated by Harness.
+Click Continue to set up the SLO Target [based on the SLI] and [Error Budget](https://www.atlassian.com/incident-management/kpis/error-budget) [amount of time system can fail] Policy. A goal we can set is that 50% of requests need to be \<= to our Objective Value e.g this is our SLI. Since we are setting 50% of the target, we are also stating that 50% of the week if we set a rolling 7 day period can be included in our Error Budget which is indicated by Harness.
 
 ![SLO Target](static/first-slo-tutorial/slo_target.png)
 

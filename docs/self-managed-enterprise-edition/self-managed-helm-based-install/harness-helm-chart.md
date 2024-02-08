@@ -1,7 +1,8 @@
 ---
 title: Helm installation requirements and included components
-description: Requirements for using Helm installation for Harness Self-Managed Enterprise Edition.
-# sidebar_position: 10
+sidebar_label: Requirements and included components
+description: Requirements for using Helm installation for the on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 1
 helpdocs_topic_id: nsx1d4z86l
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
@@ -17,39 +18,29 @@ Harness recommends Helm package manager for the installation and deployment of S
 
 The Harness Helm chart packages the core modules and components that are required to operate Harness at scale.
 
-For instructions on installing Self-Managed Enterprise Edition using Helm, see [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
+For instructions on installing Self-Managed Enterprise Edition using Helm, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
 
 ## Requirements
 
 The following infrastructure is required to install Self-Managed Enterprise Edition using Helm.
 
-:::note
+:::info note
 
 Support each node with 8 cores vCPU and a minimum of 32 GB memory.
 
 :::
 
-### Production environment
+### Production environment deployment infrastructure
 
-The production environment requires the following resources.
+import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
 
-| **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| :-- | :-: | :-: | :-: | :-: |
-| Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |
-| CI | 2 | 2 | 12 | 0 |
-| STO | 4 | 3 | 7 | 0 |
-| FF | 3 | 3 | 6 | 0 |
+<Infra />
 
-### Development environment
+### Development environment deployment infrastructure
 
-The development environment requires the following resources.
+import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
 
-| **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| :-- | :-: | :-: | :-: | :-: |
-| Platform (including CD, GitOps, OPA) | 22 | 23.9 | 60.6 | 550 |
-| CI | 1 | 1 | 6 | 0 |
-| STO | 2 | 1.5 | 3.5 | 0 |
-| FF | 3 | 3 | 6 | 0 |
+<Infra2 />
 
 ## Included components
 
@@ -90,12 +81,13 @@ The following components are included in addition to the Harness Platform compon
 | **Ci-manager** | Continuous Integration |
 | **Sto-core** | Enables the creation and management of Harness Security Testing Orchestration |
 | **Sto-manager** | Provides core services for Harness Security Testing Orchestration |
-
+| **Et-service** | Provides core services for Continuous Error Tracking (CET) |
+| **Et-collector** | Collects Continuous Error Tracking (CET) Agent data for processing |
+| **Et-receiver** | Scalable service responsible for processing data for Continous Error Tracking (CET) |
 
 **Table 3. Optional dependencies**
 
 | **Dependency** | **Description** |
 | :-- | :-- |
-| **Ingress Controller** | [Istio](https://istio.io/latest/about/service-mesh/) is an open-source service mesh that supports the Kubernetes Ingress Controller. |
-| **Istio** | Supported by default. |
-
+| **Istio** | [Istio](https://istio.io/latest/about/service-mesh/) is an open-source service mesh. |
+| **Ingress Controller** | Supported by default. |

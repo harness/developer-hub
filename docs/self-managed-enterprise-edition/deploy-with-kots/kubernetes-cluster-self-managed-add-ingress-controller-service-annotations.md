@@ -1,7 +1,7 @@
 ---
 title: Add ingress controller annotations
-description: Learn how to annotate the Ingress controller to customize its behavior.
-# sidebar_position: 30
+description: Learn how to annotate the Ingress controller to customize its behavior for on-prem installations.
+sidebar_position: 3
 helpdocs_topic_id: zbqas64zn8
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false
@@ -10,13 +10,18 @@ helpdocs_is_published: true
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method will be in maintenance mode after May 31, 2023. 
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**. 
 
 Maintenance mode means the following:
 
 - No new features will be added.
 - Security and bug fixes will continue to be made. 
 
+:::
+
+:::info important
+
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTS.
 :::
 
 You can customize the behavior of the Nginx Ingress controller with annotations. This topic explains how to use the KOTS admin tool to configure the Ingress controller with annotations.

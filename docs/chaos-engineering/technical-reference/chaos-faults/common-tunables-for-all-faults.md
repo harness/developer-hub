@@ -5,9 +5,9 @@ Fault tunables common to all the faults are provided at `.spec.experiment[*].spe
 
 ### Duration of the chaos
 
-It defines the total duration of the chaos injection (in seconds). Tune it by using the `TOTAL_CHAOS_DURATION` environment variable.
+Total duration of the chaos injection (in seconds). Tune it by using the `TOTAL_CHAOS_DURATION` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifest/common/chaos-duration.yaml yaml)
 ```yaml
@@ -36,9 +36,9 @@ spec:
 
 ### Chaos interval
 
-It specifies the delay between each chaos iteration. Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. 
+The delay between each chaos iteration. Multiple iterations of chaos are tuned by setting the `CHAOS_INTERVAL` environment variable. 
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifest/common/chaos-interval.yaml yaml)
 ```yaml
@@ -70,9 +70,9 @@ spec:
 
 ### Ramp time
 
-It specifies the period to wait before and after injecting chaos. It is in units of seconds. Tune it by using the `RAMP_TIME` environment variable.
+Period to wait before and after injecting chaos. It is in units of seconds. Tune it by using the `RAMP_TIME` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifest/common/ramp-time.yaml yaml)
 ```yaml
@@ -101,12 +101,12 @@ spec:
 
 ### Sequence of chaos execution
 
-It specifies the sequence of the chaos execution for multiple targets. Its default value is **parallel**. Tune it by using the `SEQUENCE` environment variable. It supports the following modes:
+The sequence of the chaos execution for multiple targets. Its default value is **parallel**. Tune it by using the `SEQUENCE` environment variable. It supports the following modes:
 
 - `parallel`: The chaos is injected in all the targets at once.
 - `serial`: The chaos is injected in all the targets one by one.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifest/common/sequence.yaml yaml)
 ```yaml
@@ -136,9 +136,9 @@ spec:
 
 ### Instance ID
 
-It specifies a user-defined string that holds metadata or information about the current run or instance of chaos. For example, `04-05-2020-9-00`. This string is appended as a suffix in the chaosresult CR name. Tune it by using the `INSTANCE_ID` environment variable.
+A user-defined string that holds metadata or information about the current run or instance of chaos. For example, `04-05-2020-9-00`. This string is appended as a suffix in the chaosresult CR name. Tune it by using the `INSTANCE_ID` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifest/common/instance-id.yaml yaml)
 ```yaml
@@ -167,10 +167,10 @@ spec:
 
 ### Image used by the helper pod
 
-It specifies the image used to launch the helper pod, if applicable. Tune it by using the `LIB_IMAGE` environment variable.
+The image used to launch the helper pod, if applicable. Tune it by using the `LIB_IMAGE` environment variable.
 It is supported by **container-kill**, **network-faults**, **stress-faults**, **dns-faults**, **disk-fill**, **kubelet-service-kill**, **docker-service-kill**, and **node-restart** faults.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifest/common/lib-image.yaml yaml)
 ```yaml
@@ -196,5 +196,35 @@ spec:
         env:
         # name of the lib image
         - name: LIB_IMAGE
-          value: 'litmuschaos/go-runner:latest'
+          value: 'chaosnative/chaos-go-runner:main-latest'
+```
+
+### Default health check
+
+Determines if you wish to run the default health check which is present inside the fault. Its default value is 'true'. Tune it by using the `DEFAULT_HEALTH_CHECK` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifest/common/default-health-check.yaml yaml)
+```yaml
+## application status check as tunable
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      components:
+        env:
+        - name: DEFAULT_HEALTH_CHECK
+          value: 'false'
 ```

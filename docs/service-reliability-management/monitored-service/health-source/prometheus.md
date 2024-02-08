@@ -1,12 +1,21 @@
 ---
-title: Prometheus
+title: Configure Prometheus as health source
+sidebar_label: Prometheus
 description: Add Prometheus health source to a monitored service.
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.
 
 This topic describes how to set up Prometheus as a health source in a monitored service.
+
+:::important
+- Prometheus queries must include filters (enclosed in curly braces) to specify the nodes or data points you want to sample.
+
+- Prometheus queries must produce a single value (scalar). To learn more about Prometheus queries, go to [QUERYING PROMETHEUS](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+
+- The Prometheus connector and health source provided by Harness are compatible with Mimir, Cortex, Thanos, Coralogix, and VictoriaMetrics platforms.
+:::
 
 
 ## Prerequisites
@@ -56,12 +65,6 @@ To add Prometheus as a health source:
 You can add multiple health sources.
 
 #### **Add Amazon Managed Service for Prometheus as health source**
-
-:::note
-
-Currently, this feature is behind the feature flag `SRM_ENABLE_HEALTHSOURCE_AWS_PROMETHEUS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Harness now supports Amazon Managed Service for Prometheus as health source. To select Amazon Managed Service for Prometheus as health source:
 

@@ -1,7 +1,8 @@
 ---
-title: New Relic
+title: Configure New Relic as health source
+sidebar_label: New Relic
 description: Add New Relic health source to a monitored service.
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.
@@ -36,12 +37,12 @@ To add New Relic as a health source:
     ![](./static/verify-deployments-with-new-relic-06.png)
 
 5. Click **Apply Selected**. The Connector is added to the Health Source.
-6. In **Select Feature**, select the NewRelic feature to be used.
+6. In the **Select Feature** field, the **Full Stack Observability: APM** is selected by default.
     
     ![](./static/verify-deployments-with-new-relic-07.png)
     
 7. Click **Next**. The **Customize Health Source** settings appear.
-    The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment. In Applications & Tiers, enter the following details:
+    The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment.
 8.  In **Find a New Relic application** type the name of an application.
 9.  In **Find a New Relic tier** type a tier name from which you want usage metrics, code exceptions, error conditions, or exit calls.
 10. In **Metric Packs** select the metrics you want Harness to use.

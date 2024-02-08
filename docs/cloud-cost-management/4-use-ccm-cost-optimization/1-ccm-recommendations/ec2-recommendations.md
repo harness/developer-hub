@@ -1,10 +1,10 @@
 ---
-title: Optimize AWS EC2 costs with recommendations
+title: AWS EC2 recommendations
 description: Optimize the utilization of your EC2 instances using Harness CCM recommendations.
 # sidebar_position: 2
 ---
 
-
+# Optimize AWS EC2 costs with recommendations
 An effective way to reduce AWS EC2 instance costs is to optimize VM utilization. This involves resizing instances based on active tasks and decommissioning unused instances.
 
 Harness helps you reduce costs with recommendations.
@@ -24,7 +24,7 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before you begin
 
 
-* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 * To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
 * Go to [Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
@@ -57,71 +57,47 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 ## Enable EC2 recommendations
 
+You must add the required permissions and enable EC2 recommendations in AWS.
+Go to [Enable EC2 recommendations](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#enable-ec2-recommendations) for the tasks to be performed on your AWS console.
 
+After completing the aforementioned tasks, you need to perform the following steps in Harness:
 
-:::note
-If you are an existing customer, you need to:
-* Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
-* In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
-:::
-
-
-
-Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
-
-1. On your AWS console, go to the **Cost Explorer** service.
-
-  ![](./static/ec2-recom-aws-screen-1.png)
-  
-
-2. Click **Preferences** on the left pane.
-3. Enable the following recommendations:
- * Receive Amazon EC2 resource recommendations 
- * Recommendations for linked accounts
-  
-    ![](./static/ec2-recom-aws-screen-2.png)
-
-
-
-4. Verify that you have enabled these recommendations correctly. 
-
-  Open AWS CloudShell and run the following command: 
-
-```
-  aws ce get-rightsizing-recommendation --service AmazonEC2
-```
- 
- If the recommendations are not enabled, the following error message is displayed:
-
-     
-  "An error occurred (AccessDeniedException) when calling the GetRightsizingRecommendation operation: Rightsizing EC2 recommendation is an opt-in only feature. You can enable this feature from the PAYER account’s Cost Explorer Preferences page. Normally it may take up to 24 hours in order to generate your rightsizing recommendations."
-
-5. You must install the Amazon CloudWatch agent on your EC2 instance to enable memory metrics.
-
-You need to perform the following steps in Harness:
-
-
-1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 
  
 2. Add the required **Cost Explorer** permissions to the CCM template:
 
     ![](./static/ec2-create-cross-account-role.png)
 
-  
-
 ### View your EC2 recommendations
-
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.
 3. Click the filter icon.
-4. In the **Resource Type** dropdown list, select **EC2_INSTANCE**.
+4. In the **Recommendation Type** dropdown list, select **EC2_INSTANCE**.
 5. Click **Apply**. 
 
   All the AWS accounts with EC2 instances are displayed. 
 
-6. Click the row to view the recommendations for that account.  The CPU and Memory utilization graph shows the current utilization data. Go to [View and apply recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/home-recommendations) to learn how to apply these recommendations.
+6. Click the row to view the recommendations for that account.  The CPU and Memory utilization graph shows the current utilization data. Go to [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations) to learn how to apply these recommendations.
+
+### CPU and Memory Metrics
+To enable CPU metrics, CloudWatch has to be enabled for the AWS account.
+
+To enable Memory metrics cloud watch agent has to be installed on every EC2 instance. You can use the external metrics ingestion feature in AWS to configure the AWS Compute Optimizer to ingest EC2 memory utilization metrics from Datadog, among other observability products like Datadog, Dynatrace, Instana, and New Relic [1](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html).
+In this case, EC2 recommendation will be generated by taking account of Memory metrics as well along with CPU metrics.
+
+:::note
+#### Ingesting Memory Metrics with Datadog Integration
+
+If we ingest Memory metrics using Datadog integration, generation of EC2 Recommendations do consider Datadog metrics; however, the memory utilization data is not displayed on the EC2 Recommendation page.
+
+The CPU and Memory metrics data we retrieve is sourced from CloudWatch, and in this specific case, the metrics originate from an external source, Datadog.
+
+These Datadog metrics are directly integrated with AWS Compute Optimizer and are utilized in generating the recommendations.
+
+As per the AWS Compute Optimizer API documentation, they do not offer support for retrieving these utilization metrics. Consequently, Memory metrics will not be shown in the recommendations.
+:::
 
 
 ### Tune the EC2 recommendations

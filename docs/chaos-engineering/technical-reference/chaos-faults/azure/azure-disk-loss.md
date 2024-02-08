@@ -13,7 +13,7 @@ Azure disk loss:
 - Determines the resilience of an application to unexpected disk detachment. 
 - Determines how quickly the Azure instance recovers from such failures. 
 
-:::note
+### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate Azure access to detach and attach a disk.
 - Azure disk should be connected to an instance.
@@ -40,60 +40,67 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+
+:::tip
+If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+`AZURE_AUTH_LOCATION` is variable that describes path to the authetication file which uses the default value in most cases.
 :::
 
-## Fault tunables
-
-   <h3>Mandatory fields</h3>
-    <table>
+### Mandatory tunables
+  <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> VIRTUAL_DISK_NAMES </td>
             <td> Name of the virtual disks to target.</td>
-            <td> Provide comma-separated names for multiple disks. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-by-name"> detach virtual disks by name.</a></td>
+            <td> Provide comma-separated names for multiple disks. For more information, go to <a href="#detach-virtual-disks-by-name"> detach virtual disks by name.</a></td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
             <td> Name of the resource group for the target disk(s). </td>
-            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-by-name"> resource group field in the YAML file. </a></td>
+            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="#detach-virtual-disks-by-name"> resource group field in the YAML file. </a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> SCALE_SET </td>
             <td> Checks if the disk is connected to scale set instance.</td>
-            <td> Defaults to disable. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-attached-to-scale-set-instances-by-name"> scale set instances.</a></td>
+            <td> Defaults to disable. Also supports <code>enable</code>. For more information, go to <a href="#detach-virtual-disks-attached-to-scale-set-instances-by-name"> scale set instances.</a></td>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods.</td>
-            <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+            <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
+        <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engneering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        </tr>        
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

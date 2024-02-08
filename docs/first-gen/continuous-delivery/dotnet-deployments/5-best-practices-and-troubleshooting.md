@@ -58,7 +58,7 @@ You receive this error when deploying your workflow.
 
 #### Port Conflicts
 
-Do not target the same port as another website. In the Harness **Service**, in **Variables**, ensure **${SitePort}** points to a port that isn't in use. In the following example, the port was changed to **8080** to avoid the error:
+Do not target the same port as another website. In the Harness **Service**, in **Variables**, ensure **$\{SitePort}** points to a port that isn't in use. In the following example, the port was changed to **8080** to avoid the error:
 
 ![](./static/5-best-practices-and-troubleshooting-30.png)
 

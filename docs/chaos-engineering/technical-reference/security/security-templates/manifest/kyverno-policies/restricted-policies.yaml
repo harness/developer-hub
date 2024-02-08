@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: deny-privilege-escalation
+  name: disallow-privilege-escalation
   annotations:
     policies.kyverno.io/category: Pod Security Standards (Restricted)
     policies.kyverno.io/severity: medium
@@ -14,7 +14,7 @@ spec:
   background: true
   validationFailureAction: enforce
   rules:
-  - name: deny-privilege-escalation
+  - name: disallow-privilege-escalation
     match:
       resources:
         kinds:

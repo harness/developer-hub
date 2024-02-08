@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).Harness lets you use AWS CloudFormation to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by [CloudFormation](https://aws.amazon.com/cloudformation/).
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).Harness lets you use AWS CloudFormation to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by [CloudFormation](https://aws.amazon.com/cloudformation/).
 
 In this topic:
 

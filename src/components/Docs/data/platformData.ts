@@ -2,14 +2,15 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 // Featured Tutorials
 export const featuredTutorials: CardItem[] = [
     {
       title: "Onboard with Terraform Provider",
-      module: "pl",
+      module: MODULES.platform,
       /*icon: "img/icon_harness.svg",*/
       description: "Automate resource onboarding using Terraform Provider.",
       newDoc: true,
@@ -19,7 +20,7 @@ export const featuredTutorials: CardItem[] = [
     },
     {
       title: "Install delegate",
-      module: "pl",
+      module: MODULES.platform,
       icon: "",
       description: "Install a delegate",
       newDoc: true,
@@ -32,48 +33,62 @@ export const featuredTutorials: CardItem[] = [
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Documentation topics",
+      name: "Get started",
       description:
         "",
       list: [
         {
-          title: "Get started with platform",
-          module: "pl",
+          title: "Onboarding guide",
+          module: MODULES.platform,
           description:
-            "Learn the basic concepts of Harness Platform.",
-          link: "/docs/category/platform-concepts",
+            "A self-service onboarding guide for Harness Platform.",
+          link: "/docs/platform/get-started/onboarding-guide",
+        },
+        {
+          title: "Key concepts",
+          module: MODULES.platform,
+          description:
+            "Key concepts of the Harness Platform.",
+          link: "/docs/platform/get-started/key-concepts",
+        },
+        {
+          title: "Harness AIDA",
+          module: MODULES.platform,
+          description:
+            "Learn about how AIDA improves your experience on the Harness platform.",
+          link: "/docs/category/harness-aida",
         },
         {
           title: "Delegates",
-          module: "pl",
+          module: MODULES.platform,
           description:
-            "Explore how to setup and manage delegates.",
+            "Explore how to set up and manage delegates.",
           link: "/docs/category/delegates",
         },
         {
           title: "Access control",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "Create and manage roles and resource groups, and set up role-based access control.",
           link: "/docs/category/access-control-1",
         },
         {
           title: "Secrets management",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "Create, store, and access secrets using the secrets managers.",
           link: "/docs/category/secrets",
         },
         {
           title: "API",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "Access and manage Harness account and resources with APIs.",
-          link: "/docs/category/apis",
+          link: "/docs/category/api",
         },
         {
           title: "Terraform Provider",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "Automate infrastucture using Terraform Provider.",
           link: "/docs/category/terraform-provider",
@@ -86,25 +101,25 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "User provisioning using Azure AD (SCIM)",
-          module: "pl",
+          title: "User provisioning using Microsoft Entra ID (SCIM)",
+          module: MODULES.platform,
           description:
-            "Provision users and groups in Harness using Azure AD (SCIM).",
-          link: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+            "Provision users and groups in Harness using Microsoft Entra ID (SCIM).",
+          link: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
         },
         {
           title: "Git Experience",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "Configure Git Experience for pipelines and associated entities.",
-          link: "/docs/platform/Git-Experience/configure-git-experience-for-harness-entities",
+          link: "/docs/platform/git-experience/configure-git-experience-for-harness-entities",
         },
         {
           title: "Policy as Code",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/Governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/policy-as-code/harness-governance-quickstart",
         },
       ],
   },
@@ -114,23 +129,23 @@ export const featuredTutorials: CardItem[] = [
     list: [
       {
         title: "Permissions reference",
-        module: "pl",
+        module: MODULES.platform,
         description: "",
-        link: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
+        link: "/docs/platform/role-based-access-control/permissions-reference",
       },
       {
         title: "Reference secrets in secrets managers",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "",
-          link: "/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets",
+          link: "/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets",
       },
       {
         title: "Git Experience vs Config as Code",
-          module: "pl",
+          module: MODULES.platform,
           description:
             "",
-          link: "/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code",
+          link: "/docs/faqs/git-exp-vs-config-as-code",
       },
     ],
   }

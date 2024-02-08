@@ -1,7 +1,7 @@
 ---
 title: Step and stage failure strategy references
 description: This topic provides failure strategy settings and permissions for the pipeline steps and stages
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 This topic describes the failure strategy settings for pipeline steps and stages.

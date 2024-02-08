@@ -1,6 +1,6 @@
 {
     "label":"KOTS installation",
-    "position": 30,
+    "position": 20,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",

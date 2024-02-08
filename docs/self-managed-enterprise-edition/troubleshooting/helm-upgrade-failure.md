@@ -1,6 +1,7 @@
 ---
 title: Helm upgrade failure
-description: Troubleshoot a Helm upgrade failure in Harness Self-Management Enterprise Edition.
+description: Troubleshoot a Helm upgrade failure in the on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 60
 ---
 
 This topic provides solutions for upgrade problems related to Helm.
@@ -9,7 +10,10 @@ This topic provides solutions for upgrade problems related to Helm.
 
 Password failure happens when the current credentials are not used to authenticate. To avoid this problem, make sure you keep your old credentials after installation; they may be required to access data in persistent volume claims. You may encounter the following error.
 
-Note: This error should not surface in charts 0.2.93 or newer.
+:::info note
+This error should not surface in charts 0.2.93 or newer.
+:::
+
    ```
    UPGRADE FAILED: execution error at (harness-demo/charts/harness/charts/platform/charts/minio/templates/NOTES.txt:91:4): 
    PASSWORDS ERROR: You must provide your current passwords when upgrading the release.
@@ -21,7 +25,9 @@ Note: This error should not surface in charts 0.2.93 or newer.
 
 #### Set the root password
 
-Specify the `auth.rootPassword` value. This field must not be empty. 
+Specify the `auth.rootPassword` value. This field must not be empty.
+
+To set the root password, do the following:
 
 1. Use the following command to get the current value:
 
@@ -43,7 +49,9 @@ Specify the `auth.rootPassword` value. This field must not be empty.
    
 #### Update the oldvalues.yaml file
 
-If you've already set the `auth.rootPassword` value one time, you can update and remove the oldvalues.yaml file.
+If you've already set the `auth.rootPassword` value one time, you can update and remove the `oldvalues.yaml` file.
+
+To update and remove the file, do the following:
 
 1. Use the following command to retrieve the file:
 
@@ -51,7 +59,7 @@ If you've already set the `auth.rootPassword` value one time, you can update and
    helm get values <chartname> -n <namespace> > oldvalues.yaml
    ```
 
-2. Edit the oldvalues.yaml file to include the new values. The file should include the encrypted MinIO password.
+2. Edit the `oldvalues.yaml` file to include the new values. The file should include the encrypted MinIO password.
 
 3. Upgrade the file:
 
@@ -59,6 +67,4 @@ If you've already set the `auth.rootPassword` value one time, you can update and
    helm upgrade <chartname> <chartsource> -n <namespace> -f oldvalues.yaml
    ```
 
-4. Delete the oldvalues.yaml file.
-
-
+4. Delete the `oldvalues.yaml` file.

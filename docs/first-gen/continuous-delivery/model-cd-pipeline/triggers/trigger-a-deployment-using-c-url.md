@@ -157,9 +157,9 @@ Workflow example:
    "requestId":"wmuS6c2pQBaiX38eOcN5fg",  
    "status":"RUNNING",  
    "error":null,  
-   "uiUrl":"https://qa.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/env/emINy3NOS-ONA1iTqf7wyQ/executions/wmuS6c2pQBaiX38eOcN5fg/details",  
-   "uiSetupUrl":"https://qa.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/workflows/X8rbeQ2oTDWkCyza3DR3Hg/details",  
-   "apiUrl":"https://qa.harness.io/api/external/v1/executions/wmuS6c2pQBaiX38eOcN5fg/status?accountId=xxxxx&appId=jL7IEwaKTPmfTlAVWIlHKQ",  
+   "uiUrl":"https://app.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/env/emINy3NOS-ONA1iTqf7wyQ/executions/wmuS6c2pQBaiX38eOcN5fg/details",  
+   "uiSetupUrl":"https://app.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/workflows/X8rbeQ2oTDWkCyza3DR3Hg/details",  
+   "apiUrl":"https://app.harness.io/api/external/v1/executions/wmuS6c2pQBaiX38eOcN5fg/status?accountId=xxxxx&appId=jL7IEwaKTPmfTlAVWIlHKQ",  
    "message":null  
 }
 ```
@@ -171,9 +171,9 @@ Pipeline example:
    "requestId":"KmbgijMHQ76qyoRhtW-oBA",  
    "status":"RUNNING",  
    "error":null,  
-   "uiUrl":"https://qa.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/pipeline-execution/KmbgijMHQ76qyoRhtW-oBA/workflow-execution/undefined/details",  
-   "uiSetupUrl":"https://qa.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/pipelines/oMD0__89TpWAUQiru0jSpw/edit",  
-   "apiUrl":"https://qa.harness.io/api/external/v1/executions/KmbgijMHQ76qyoRhtW-oBA/status?accountId=xxxxx&appId=jL7IEwaKTPmfTlAVWIlHKQ",  
+   "uiUrl":"https://app.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/pipeline-execution/KmbgijMHQ76qyoRhtW-oBA/workflow-execution/undefined/details",  
+   "uiSetupUrl":"https://app.harness.io/#/account/xxxxx/app/jL7IEwaKTPmfTlAVWIlHKQ/pipelines/oMD0__89TpWAUQiru0jSpw/edit",  
+   "apiUrl":"https://app.harness.io/api/external/v1/executions/KmbgijMHQ76qyoRhtW-oBA/status?accountId=xxxxx&appId=jL7IEwaKTPmfTlAVWIlHKQ",  
    "message":null  
 }
 ```

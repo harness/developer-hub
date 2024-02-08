@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../frequently-asked-questions/harness-faqs/harness-security-faqs.md).This article addresses some frequently asked questions about Harness security features.
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../faqs/harness-security-faqs.md).This article addresses some frequently asked questions about Harness security features.
 
 <!-- TOC start -->
 - [Before You Begin](#before-you-begin)
@@ -127,7 +127,7 @@ See:
 * [Single Sign-On (SSO) with SAML](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md)
 * [Provision Users and Groups with OneLogin (SCIM)](../firstgen-platform/security/access-management-howtos/provision-users-with-one-login.md)
 * [Provisioning Users with Okta (SCIM)](../firstgen-platform/security/access-management-howtos/scim-okta.md)
-* [Provision Azure AD Users and Groups (SCIM)](../firstgen-platform/security/access-management-howtos/provision-azure-ad-users-and-groups-scim.md)
+* [Provision Microsoft Entra ID Users and Groups (SCIM)](../firstgen-platform/security/access-management-howtos/provision-azure-ad-users-and-groups-scim.md)
 
 #### Are there best practices for setting up Harness users?
 
@@ -195,7 +195,6 @@ You can use your own secrets manager with Harness. Harness integrates with all o
 * [Add an AWS KMS Secrets Manager](../firstgen-platform/security/secrets-management/add-an-aws-kms-secrets-manager.md)
 * [Add an Azure Key Vault Secrets](../firstgen-platform/security/secrets-management/azure-key-vault.md)
 * [Add a HashiCorp Vault Secrets Manager](../firstgen-platform/security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md)
-* [Add a CyberArk Secrets Manager](../firstgen-platform/security/secrets-management/add-a-cyber-ark-secrets-manager.md)
 
 You can configure and make use of other Secrets Managers using the Custom Secrets Manager: [Add and Use a Custom Secrets Manager](../firstgen-platform/security/secrets-management/add-and-use-a-custom-secrets-manager.md).
 

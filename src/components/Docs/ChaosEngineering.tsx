@@ -18,7 +18,7 @@ export default function CD() {
             <h1>Chaos Engineering Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/run-chaos-experiments">
+            <Link href="/tutorials/chaos-experiments">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
@@ -37,9 +37,10 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> helps perform experiments on software to build 
-              confidence in the system's capability to withstand turbulent and unexpected conditions. 
-              It helps identify weaknesses and misconfiguration in the services, thereby building and validating resilience. 
+              <a href="/docs/chaos-engineering/get-started/overview">Harness Chaos Engineering (CE)</a> provides the end-to-end tooling required to achieve Continuous Resilience in your
+              Software Delivery Life Cycle. Using Harness CE, your developers, QA teams, and SREs inject chaos experiments in a controlled fashion, either to assert resilience against pre-determined faults or to find weaknesses
+
+              against them. Harness CE helps to achieve faster incident response and recovery times, increases overall service resilience, optimizes costs, and results in an improved customer experience.
             </p>
           </div>
         </div>

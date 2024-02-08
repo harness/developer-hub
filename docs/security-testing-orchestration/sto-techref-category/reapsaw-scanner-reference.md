@@ -1,22 +1,47 @@
 ---
-title: Reapsaw scanner reference
-description: Repository scans with Qwiet
-sidebar_position: 260
+title: Reapsaw scanner reference for STO
+description: Scan code repositories with Reapsaw.
+sidebar_label: Reapsaw scanner reference scanner reference
+sidebar_position: 340
 ---
 
+You can ingest scan results for your code repositories from Reapsaw.
 
-### Security step settings
+## Important notes for running Reapsaw scans in STO
 
-You can set up Reapsaw scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+### Docker-in-Docker requirements
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-<StoSecurityStepConfig />
 
+<StoDinDRequirements />
+
+### Root access requirements
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+<StoRootRequirements />
+
+
+### For more information
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+<StoMoreInfo />
+
+
+## Security step settings for Reapsaw scans in STO
+
+To ingest your results, add a Security step to a Build or Security Tests stage and configure it as described below.
+
+### Target and variant
+
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+
+<StoLegacyTargetAndVariant />
+
+### Reapsaw scan settings
 
 * `product_name` = `reapsaw`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
@@ -24,23 +49,16 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name` = `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
+### Ingestion file
 
-<StoLegacyRepo />
-
-```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
 
 <StoLegacyIngest />
 
-#### Fail on Severity
+### Fail on Severity
 
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 <StoSettingFailOnSeverity />
 
 

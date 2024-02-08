@@ -2,8 +2,8 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants"
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 // Featured Tutorials
@@ -16,16 +16,6 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "8min",
-      link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-    },
-    {
-      title: "Deploy a Helm Chart using CD Community Edition",
-      module: MODULES.cd,
-      icon: "img/icon_cd.svg",
-      description: "Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "10min",
       link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
   ];
@@ -42,7 +32,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "This topic covers CD Pipeline basics to get you ready to start building Pipelines easily.",
-          link: "/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics",
+          link: "/docs/continuous-delivery/get-started/key-concepts",
         },
         {
           title: "CD pipeline modeling overview",
@@ -56,7 +46,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "This topic describes Harness Continuous Delivery (CD) services and environments.",
-          link: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
+          link: "/docs/continuous-delivery/get-started/services-and-environments-overview",
         },
       ],
     },
@@ -124,7 +114,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "This topic describes the basic concepts of Harness GitOps.",
-          link: "/docs/continuous-delivery/cd-gitops/harness-git-ops-basics",
+          link: "/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics",
         },
       ],
     },

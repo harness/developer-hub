@@ -1,0 +1,14 @@
+{
+    "label": "Get started with STO",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Get started with Harness STO"
+    },
+    "customProps": {
+        "helpdocs_category_id": "8nywcs2sa7"
+    }
+}

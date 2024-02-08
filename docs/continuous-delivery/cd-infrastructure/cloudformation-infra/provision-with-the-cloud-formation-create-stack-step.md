@@ -1,5 +1,5 @@
 ---
-title: Provision with the CloudFormation Create Stack Step
+title: Provision with the CloudFormation Create Stack step
 description: Provision using the CloudFormation Create Stack step.
 sidebar_position: 3
 helpdocs_topic_id: pq58d0llyx
@@ -34,13 +34,13 @@ The **Create Stack** step is where you connect Harness to your templates and pro
 
 In **Name**, enter a name for the step, for example, **C****reate EC2 Instance**.
 
-Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
+Harness will create an [Entity Id](/docs/platform/references/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
 
-See [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md).
 
 ### Timeout
 
-In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Provisioner Identifier
 
@@ -64,7 +64,7 @@ For this reason, it's important that all your Project members know the Provision
 
 ### AWS Connector
 
-Add or select the Harness [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
+Add or select the Harness [AWS Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
 
 The credentials required for provisioning depend on what you are provisioning.
 
@@ -91,7 +91,7 @@ For example, if you wanted to give full access to create and manage EKS clusters
  }
 ```
 
-Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference). See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
+Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/). See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
 
 ### Region
 
@@ -102,7 +102,7 @@ Select the region for the resources you are provisioning.
 You can add your template in the following ways:
 
 * **Inline:** just enter the template in **Template File**. You can use CloudFormation-compliant JSON or YAML.
-* **AWS S3:** enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting are used for authentication. Ensure that the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+* **AWS S3:** enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting are used for authentication. Ensure that the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/).
 * **Remote:** select a Git repo where you template is located. You'll add or select a Harness Git Connector for the repo. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206).
 
 #### Expression and Secret Support in Templates
@@ -111,8 +111,8 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -157,7 +157,7 @@ In **Cloud Formation Parameter Files**, click **Add**.
 
 In **Parameter File Connector**, select your Git platform, and the select or add a Git Connector. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
 
-For AWS S3, see [Add an AWS Connector](docs/platform/Connectors/Cloud-providers/add-aws-connector).
+For AWS S3, see [Add an AWS Connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 In **Parameter File Details**, enter the following:
 
@@ -176,8 +176,8 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Option: CloudFormation Parameters Overrides
 
@@ -189,7 +189,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Option: Role ARN
 
@@ -235,7 +235,9 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

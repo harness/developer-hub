@@ -10,6 +10,14 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
+
 This topic describes how to use the Harness Feature Flags SDK for your Xamarin application. You can use the Xamarin SDK for Android and iOS.
 
 For getting started quickly, you can [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the  [Xamarin Client Sample GitHub Repository](https://github.com/harness/ff-xamarin-client-sample).
@@ -18,15 +26,14 @@ For getting started quickly, you can [clone](https://docs.github.com/en/reposit
 
 Make sure you read and understand the following:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current Android version of this SDK is **0.5.4.**
-The current iOS version of this SDK is **0.5.1.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-xamarin-client-sdk/releases)
 
 ## Prerequisites
 
@@ -166,6 +173,10 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
+## Close the SDK client
+
+<Closeclient />
+
 ## Xamarin for iOS
 
 The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
@@ -173,7 +184,6 @@ The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
 ### Install the SDK
 
 Install the SDK package in your application, for example:
-
 
 ```
 Install-Package ff-ios-xamarin-client-sdk -Version 0.5.1

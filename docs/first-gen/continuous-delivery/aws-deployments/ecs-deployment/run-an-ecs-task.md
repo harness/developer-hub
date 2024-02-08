@@ -53,7 +53,8 @@ Triggering ECS run task arn:aws:ecs:us-east-1:1234567891011:task-definition/ngin
 Task => arn:aws:ecs:us-east-1:1234567891011:task/Q-FUNCTIONAL-TESTS-DO-NOT-DELETE/e04a7c7428414a69abf5bf2f801a12ce succeeded  
 Skipping the steady state check as expected.
 ```
-if you are new to ECS task scheduling and running tasks manually, review the following topics from AWS:
+
+If you are new to ECS task scheduling and running tasks manually, review the following topics from AWS:
 
 * [Scheduling Amazon ECS tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 * [Running tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_run_task.html)

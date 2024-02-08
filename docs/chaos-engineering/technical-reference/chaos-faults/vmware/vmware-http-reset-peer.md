@@ -1,5 +1,5 @@
 ---
-id: VMware-http-reset-peer
+id: vmware-http-reset-peer
 title: VMware HTTP reset peer
 ---
 
@@ -17,7 +17,7 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 - It simulates premature connection loss, such as firewall issues, between microservices by verifying connection timeouts.
 - It simulates connection resets due to resource limitations on the server side, such as running out of memory, killing processes, or overloading the server due to high amounts of traffic.
 
-:::note
+### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
 - Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
@@ -35,14 +35,12 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
 
-## Fault tunables
+### Mandatory tunables
 
-   <h3>Mandatory fields</h3>
-    <table>
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -64,40 +62,42 @@ stringData:
         <tr>
             <td> RESET_TIMEOUT  </td>
             <td> It specifies the duration after which the connect is reset. </td>
-            <td> Defaults to 0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#reset-timeout"> reset timeout.</a></td>
+            <td> Defaults to 0. For more information, go to <a href="#reset-timeout"> reset timeout.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Service port to target </td>
-            <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#target-service-port"> target service port.</a></td>
+            <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
-    <table>
+
+### Optional tunables
+
+   <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -107,18 +107,23 @@ stringData:
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens for requests.</td>
-            <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#proxy-port"> proxy port.</a></td>
+            <td> Defaults to 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests that are affected. </td>
-            <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#toxicity"> toxicity.</a></td>
+            <td> Defaults to 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to eth0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#network-interface"> network interface.</a></td>
+          <td> Defaults to eth0. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
+        <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
     </table>
 
 

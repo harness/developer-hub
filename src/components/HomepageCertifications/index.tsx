@@ -1,17 +1,24 @@
-import React from "react";
-import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 
 import { getCertBadges } from "../Certifications/LandingPage";
-import CertCard from "../Certifications/CertCard";
 import { certifications } from "./data/certificationsData";
+import Carousel from "./Carousel";
 
 // harness-platform.svg | secret-mgmt.svg
 export default function HomepageCertifications(): JSX.Element {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const certBadges = getCertBadges(baseUrl);
+  const [certs, setCerts] = useState(certifications);
+  useEffect(() => {
+    if (certifications.length % 2 !== 0) {
+      const updatedCerts = [...certs, certs[0]];
+      setCerts(updatedCerts);
+    }
+  }, []);
+
   return (
     <section className={styles.homepageCertifications}>
       <div className={styles.inner}>
@@ -27,27 +34,13 @@ export default function HomepageCertifications(): JSX.Element {
               <div className={styles.badges}>
                 {certBadges.map((badge) => (
                   <Link to={badge.url} key={badge.img}>
-                    <img
-                      src={badge.img}
-                      alt={badge.alt}
-                      // className={badge.type === tab ? styles.active : ""}
-                    />
+                    <img src={badge.img} alt={badge.alt} />
                   </Link>
                 ))}
               </div>
             </div>
             <div className={styles.right}>
-              <div className={styles.cards}>
-                {certifications.map((cert) => (
-                  <CertCard {...cert} thumb={true} key={cert.title} />
-                ))}
-              </div>
-              <div className={styles.links}>
-                <Link to="/certifications">
-                  See all certifications{" "}
-                  <i className="fa-solid fa-arrow-right"></i>
-                </Link>
-              </div>
+              <Carousel certs={certs} />
             </div>
           </div>
         </div>

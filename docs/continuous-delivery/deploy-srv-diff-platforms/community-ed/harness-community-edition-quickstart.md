@@ -3,6 +3,7 @@ title: Harness Community Edition deployments
 description: This topic walks you through deploying setting up Harness CD Community Edition locally and creating and deploying a CD pipeline.
 sidebar_position: 2
 ---
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). Follow the instructions below if you are still using the Harness CD CE.
 
 This quickstart shows you how to set up Harness CD Community Edition locally and create a CD pipeline that deploys a public NGINX image to a local cluster.
 
@@ -33,7 +34,7 @@ You'll learn how to:
   	  - Minikube needs 4GB and 4 CPUs: `minikube start --memory 4g --cpus 4`.
 	+ Kubernetes cluster.
   	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. Don't have a cluster? Go to [Notes](#notes) below.
-	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
+	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 
@@ -54,7 +55,7 @@ Harness takes care of the rest.
 Harness CD Community Edition has two main components:
 
 * **Harness Manager:** the Harness Manager is where your CD configurations are stored and your pipelines are managed.
-  * After you install Harness, you sign up in the Manager at <http://localhost/#/signup>.
+  * After you install Harness, you sign up in the Manager at `http://localhost/#/signup`.
   * Pipelines are triggered manually in the Harness Manager or automatically in response to Git events, schedules, new artifacts, and so on.
 * **Harness Delegate:** the Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, etc. 
   * You can install a Delegate inline when setting up connections to your resources or separately as needed. This guide will walk you through setting up a Harness Delegate inline.
@@ -223,7 +224,6 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
                                       skipDryRun: false  
                                   timeout: 10m  
                         rollbackSteps: []  
-                    serviceDependencies: []  
                 tags: {}  
                 failureStrategies:  
                     - onFailure:  
@@ -233,11 +233,14 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
                               type: StageRollback
   ```
 1. In Pipeline Studio, select **YAML**.
+   
   ![](./static/harness-community-edition-quickstart-134.png)
+
 2. Select **Edit YAML**.
 3. Replace the YAML contents with the YAML you copied above.
 4. Select **Save**.
 5. Select **Visual**. The new pipeline is created.
+   
   ![](./static/harness-community-edition-quickstart-135.png)
 
   Let's quickly review some key pipeline concepts:
@@ -288,19 +291,21 @@ This Delegate will perform all operations at runtime.
 9. In **Personal Access Token**, select **Create or Select a Secret**.
 10. Select **New Secret Text**.
 11. In **Secret Name**, enter the name **github-pat**.
-12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>.
+12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens).
   For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
   Ensure you PAT has the **repo** scope selected:
+
   ![](./static/repoScope.png)
-1. Select **Save**, and then select **Continue**.
-2. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then **Continue**.
-3. In **Delegates Setup**, select **Install a New Delegate**.
-4. Select **Kubernetes**, and then select **Continue**.
-5. Enter a name **quickstart** for the Delegate, select the **Laptop** size, and then select **Continue**.
-6. Select **Download YAML file**.
+
+13. Select **Save**, and then select **Continue**.
+14. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then **Continue**.
+15. In **Delegates Setup**, select **Install a New Delegate**.
+16. Select **Kubernetes**, and then select **Continue**.
+17. Enter a name **quickstart** for the Delegate, select the **Laptop** size, and then select **Continue**.
+18. Select **Download YAML file**.
   The YAML file for the Kubernetes Delegate will download to your computer. 
 
-7. Open a terminal and navigate to where the Delegate file is located.If you're using a remote Kubernetes cluster, go to [notes](#notes) below.
+19. Open a terminal and navigate to where the Delegate file is located.If you're using a remote Kubernetes cluster, go to [notes](#notes) below.
 
     On a terminal, run this command:
 
@@ -309,13 +314,13 @@ This Delegate will perform all operations at runtime.
     ```
 
     This installs the Delegate into the default cluster that comes with Docker Desktop Kubernetes. It can take a few minutes for the Delegate pod to run.
-8. Run `kubectl get pods -n harness-delegate-ng` to verify that it is **Ready: 1/1** and **Status: Running**.
-1. Back in Harness, select **Continue**.
-2. Once the Delegate registers, select **Done**.
-3. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then select the tag for your new Delegate (**quickstart**).
-4. Select **Save and Continue**.
-5. The **Connection Test** should prove successful. If not, review your credentials.
-6. Select **Finish**.
+20. Run `kubectl get pods -n harness-delegate-ng` to verify that it is **Ready: 1/1** and **Status: Running**.
+21. Back in Harness, select **Continue**.
+22. Once the Delegate registers, select **Done**.
+23. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then select the tag for your new Delegate (**quickstart**).
+24. Select **Save and Continue**.
+25. The **Connection Test** should prove successful. If not, review your credentials.
+26. Select **Finish**.
 
 #### Repository name
 
@@ -333,7 +338,7 @@ Here you'll create a connection to the target cluster for this CD stage.
 1. Select the **Connector** dropdown menu, and then select **New Connector**.
 2. In **Name**, enter **localK8s**, and then select **Continue**.
 3. In **Details**, select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
-   + If you are running a local Delegate but using a target cluster that does not have a Delegate installed in it, select **Specify master URL and credentials**, and then go to [notes](#notes) below.
+   + If you are running a local Delegate but using a target cluster that does not have a Delegate installed in it, select **Specify master URL and credentials**, and then go to [Notes](#notes) below.
 4. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then enter and select **quickstart**. The Delegate you added earlier is selected.
 5. Select **Save and Continue**.
 6. In **Connection Test**, select **Finish**.
@@ -432,7 +437,7 @@ Try some other tutorials to learn more about Harness CD:
 * [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 * [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
-* [Harness YAML quickstart](/docs/platform/Pipelines/harness-yaml-quickstart)
+* [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart)
 
 ## Notes
 
@@ -461,21 +466,21 @@ This is a temporary change. In the next release of Harness CD Community Edition,
 
 You have a few Kubernetes cluster options.
 
-<details> 
+<details>
 <summary>Docker Compose Kubernetes</summary>
 
 When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. This is recommended.
 
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>Free-tier account Kubernetes cluster on AWS, GCP, Azure</summary>
 
 The popular cloud providers offer free-tier accounts that include their Kubernetes services. You can create a cluster in these accounts.
 
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>Use one of your company's Kubernetes clusters</summary>
 
 If your company uses Kubernetes, they likely have dev or QA accounts on a cloud platform. If you have access to those environments, you can add a cluster there.
@@ -565,7 +570,7 @@ If you are using a remote Kubernetes cluster, you must log into it before you ca
 
 How you connect to the remote cluster depends on the provider. Typically, you will need to install the provider's CLI locally and then use the CLI to connect to the cluster and run the kubectl command to install the Harness Delegate. See the following:
 
-<details> 
+<details>
 <summary>Azure AKS</summary>
 
 See the Azure doc [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough) for a good overview.
@@ -601,9 +606,9 @@ Next, you simply run the command to install the Delegate:
 ```
 kubectl apply -f harness-delegate.yaml
 ```
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>AWS EKS</summary>
 
 See the AWS doc [Connecting a cluster](https://docs.aws.amazon.com/eks/latest/userguide/connecting-cluster.html) for a good overview.
@@ -613,9 +618,9 @@ Once you're connected, you simply run the command to install the Delegate:
 ```
 kubectl apply -f harness-delegate.yaml
 ```
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>GCP GKE</summary>
 
 See the GCP doc [Install kubectl and configure cluster access](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for a good overview.

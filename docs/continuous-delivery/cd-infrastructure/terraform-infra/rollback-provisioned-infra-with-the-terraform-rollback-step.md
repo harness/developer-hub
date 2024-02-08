@@ -20,7 +20,7 @@ This topic describes how to roll back your provisioned infrastructure and resour
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -34,7 +34,7 @@ terraform --version
 
 ## Review: Terraform Rollback
 
-When rollback happens, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state.
+When rollback is performed, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state using config files or the Terraform configuration from the latest successful deployment with a matching  **Provisioner Identifier**.
 
 Harness won't increment the serial in the state, but perform a hard rollback to the exact version of the state provided.
 
@@ -47,6 +47,10 @@ If you've made these settings expressions, Harness uses the values it obtains at
 Let's say you deployed two modules successfully already: module1 and module2. Next, you try to deploy module3, but deployment failed. Harness will roll back to the successful state of module1 and module2.
 
 However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 weren't in the previous Terraform state, so the rollback excludes them.
+
+Rollback is not possible if you run the Terraform Apply step with the **Skip state storage** option enabled and no Terraform backed is configured in your Terraform files.
+Using the Rollback step in such a scenario would be an incorrect setup and might cause an unexpected result.
+
 
 ## Step 1: Add the Terraform Rollback Step
 
@@ -73,6 +77,24 @@ In **Provisioner Identifier**, enter the same Provisioner Identifier you used in
 Click **Apply Changes**.
 
 The Terraform Rollback step is added to the **Rollback** steps.
+
+## Command line options
+
+:::note
+
+Currently, the command line options feature is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+
+![](./static/rollback-provisioned-infra-with-the-terraform-rollback-step-19.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
+
 
 ## See Also
 

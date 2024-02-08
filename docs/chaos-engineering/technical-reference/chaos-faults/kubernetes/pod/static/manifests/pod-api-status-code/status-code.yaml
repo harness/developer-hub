@@ -1,0 +1,26 @@
+## modified status code for the http response
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-status-code
+      spec:
+        components:
+          env:
+            # modified status code for the http response
+            - name: STATUS_CODE
+              value: "500"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            - name: PATH_FILTER
+              value: '/status'

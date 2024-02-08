@@ -2,8 +2,8 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants"
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 // Featured Tutorials
@@ -16,7 +16,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+      link: "/tutorials/chaos-experiments/first-chaos-engineering",
     },
     {
       title: "Running chaos experiments in GitLab pipelines",
@@ -26,7 +26,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "15min",
-      link: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
+      link: "/tutorials/chaos-experiments/chaos-experiments-on-gitlab",
     },
     {
       title: "Run your first chaos experiment on a Kubernetes cluster using API",
@@ -36,7 +36,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+      link: "/tutorials/chaos-experiments/first-chaos-experiment-via-api",
     },
   ];
   
@@ -83,6 +83,20 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/",
         },
         {
+          title: "Windows faults",
+          module: MODULES.ce,
+          description:
+            "Execute Windows chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/windows/",
+        },
+        {
+          title: "SSH faults",
+          module: MODULES.ce,
+          description:
+            "Execute SSH chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/ssh/",
+        },
+        {
           title: "Load faults",
           module: MODULES.ce,
           description:
@@ -112,20 +126,20 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/get-started/introduction-to-chaos-module",
+          link: "/docs/chaos-engineering/get-started/overview",
         },
       ],
     },
 
     {
-      name: "Terminologies",
+      name: "Key concepts",
       list: [
         {
-          title: "Familiarize with chaos engineering terminologies",
+          title: "Familiarize with chaos engineering concepts",
           module: MODULES.ce,
           description:
-            "Familiarize with chaos engineering terminologies.",
-          link: "/docs/chaos-engineering/get-started/terminologies",
+            "Familiarize with chaos engineering concepts.",
+          link: "/docs/chaos-engineering/get-started/key-concepts",
         },
       ],
     }, 

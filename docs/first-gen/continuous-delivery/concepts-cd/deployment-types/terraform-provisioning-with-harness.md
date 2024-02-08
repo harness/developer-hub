@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-tos).Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform  [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-tos).Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform  [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
 
 Looking for How-tos? See [Terraform How-tos](../../terraform-category/terrform-provisioner.md).
 

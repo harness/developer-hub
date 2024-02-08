@@ -1,1 +1,12 @@
-{"label": "Cost optimization", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Cost optimization"}, "customProps": {"position": "20", "helpdocs_category_id": "iul2qmg1yk"}}
+{
+    "label":"Cost optimization",
+    "position": 4,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Cost optimization"
+    }
+    }
+ 

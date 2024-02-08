@@ -1,0 +1,15 @@
+{
+    "label": "Git Experience",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "17",
+
+    "link": {
+        "type": "generated-index",
+        "title": "Git Experience"
+    },
+    "customProps": {
+        "helpdocs_category_id": "rv2jo2hoiy"
+    }
+}

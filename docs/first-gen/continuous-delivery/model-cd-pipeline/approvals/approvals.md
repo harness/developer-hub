@@ -40,13 +40,13 @@ Currently, **Rollback Provisioners after Phases** is behind the feature flag `RO
 
 ### Add an Approval Step in a Pipeline
 
-In your Pipeline, in **Pipeline Stages**, click **+**. The following settings appear.
-
-![](./static/approvals-09.png)
+In your Pipeline, in **Pipeline Stages**, click **+**.
 
 Select **Approval Step**.
 
 Select **Harness UI** in the **Ticketing System**.
+
+In **Description**, enter a useful description. You can use Harness variable expressions to give more information to the approvals audience.
 
 Select one or more **User Group(s)** to notify for the approval requests.
 
@@ -66,7 +66,7 @@ Ensure that the User Groups you select have **Action:** **read**, **Permission T
 
 ![](./static/approvals-12.png)
 
-Enter the time duration that Harness should wait for the approval or rejection before killing the deployment process. You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+Enter the time duration that Harness should wait for the approval or rejection before killing the deployment process. You can use `w`  for week, `d`  for day, `h`  for hour, `m`  for minutes, `s`  for seconds and `ms` for milliseconds. For example, 1d for one day.
 
 The maximum is 3w 3d 20h 30m.Select **Execute in Parallel with Previous Step** checkbox to execute the steps in parallel.
 
@@ -84,7 +84,7 @@ For example, if you add `info` in **Publish Variable Name**, and you have an Inp
 
 Do not use reserved words in **Publish Variable Name**, such as `var`. See [Variable Expression Limitations and Restrictions](../../../firstgen-platform/techref-category/variables/variable-expression-name-restrictions.md).Select **Auto-Reject previous deployments paused in this stage on approval** to reject previous deployments of this Pipeline with the same Services before this approval stage. This will prohibit older Pipelines from being approved and older builds from being deployed in the Environment.
 
-Currently, Auto-Reject previous deployments is behind the Feature Flag `AUTO_REJECT_PREVIOUS_APPROVALS`. Contact Harness Support to enable the feature.Click **Submit**.
+Click **Submit**.
 
 Deploy the Pipeline. When you deploy your Pipeline, the **Approval Stage** notifies the selected User Group(s), via their configured [notification settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md#notification-settings-for-user-groups) to approve or reject the deployment.
 

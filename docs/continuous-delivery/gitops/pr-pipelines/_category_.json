@@ -1,0 +1,11 @@
+{
+  "label": "PR pipelines",
+  "position": "500",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "PR pipelines"
+  }
+}

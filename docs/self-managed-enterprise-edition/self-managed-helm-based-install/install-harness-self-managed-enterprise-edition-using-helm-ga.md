@@ -1,40 +1,53 @@
 ---
 title: Install using Helm
-description: Learn how to use Helm to install Harness Self-Managed Enterprise Edition. 
-# sidebar_position: 20
+description: Learn how to use Helm to install on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 3
 helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
 ---
 
-This document explains how to use Helm to install, upgrade or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
+<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
+
+This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
 
 Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
+:::info note
+You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+:::
+
+## Role requirements
+
+The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+
 ## Download the Harness Helm chart
 
-To download Harness Helm chart for the installation of Self-Managed Enterprise Edition, go to [the Harness Helm chart repo on GitHub](https://github.com/harness/helm-charts).
+To download the Harness Helm chart for the installation of Self-Managed Enterprise Edition, go to the [Harness Helm chart repo](https://github.com/harness/helm-charts/releases).
 
-Harness Helm chart is available for demonstration and production environments.
+Harness Helm charts are available for demonstration and production environments.
 
 ## Update the override.yaml file
 
-Depending on your target environment, you'll need to update the override.yaml file to specify a load balancer or to specify the Harness modules to be deployed.
+Helm chart values, default value definitions, and field descriptions are available in the [Harness Helm chart repo](https://github.com/harness/helm-charts#values).
+
+Depending on your target environment, you'll need to update the `override.yaml` file to specify a load balancer or to specify the Harness modules to be deployed.
 
 ### Add a load balancer
 
 Use the following procedure to add a load balancer.
 
-**To add the URL for a load balancer**
+To add the URL for a load balancer, do the following:
 
-1. In the values.yaml file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
+1. In the `values.yaml` file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
 
    ```
-   global:  
-    # -- Harness Application URL  
-    loadbalancerURL: http://<load-balancer-IP-address>  
-    host_name: "<load-balancer-IP-address>"
+   global:
+    # -- Harness Application URL
+    loadbalancerURL: http://<load-balancer-IP-address>
    ```
 
 2. Set the `host_name` field to the IP address of the load balancer.
@@ -43,23 +56,27 @@ Use the following procedure to add a load balancer.
 
 ### Deploy Harness modules
 
-Harness Helm chart includes Harness Platform components. You can add modules by editing the override.yaml file.
+Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
 
 <!-- PR-1002 -->
-The Platform component and below module is enabled by default:
+The Platform component and the module below is enabled by default:
 
 * Harness Continuous Deployment (CD) - Next Generation
 
-The below Harness modules can be enabled or disabled conditionally: 
+The Harness modules below can be enabled or disabled conditionally:
 
+* Harness Chaos Engineering (CE)
+* Harness Cloud Cost Management (CCM)
 * Harness Continuous Integration (CI)
 * Harness Security Testing Orchestration (STO)
 * Harness Service Reliability Management (SRM)
 * Harness Feature Flags (FF)
+* Harness Continuous Error Tracking (CET)
+* (**Beta**) Harness Software Supply Chain Assurance (SSCA)
 
 <!-- PR-1002 -->
 
-You can conditionally disable or enable the CI and STO modules by specifying a boolean value in the `enabled` field of the YAML:
+You can conditionally disable or enable the modules by specifying a boolean value in the `enabled` field of the YAML:
 
 #### Deploy the CI module
 
@@ -95,9 +112,42 @@ sto:
 enabled: true
 ```
 
+#### Deploy the CCM module
+
+```
+ccm:
+# -- Enable to deploy Cloud Cost Management (CCM) to your cluster
+enabled: true
+```
+
+#### Deploy the CE module
+
+```
+chaos:
+# -- Enable to deploy Chaos Engineering (CE) to your cluster
+enabled: true
+```
+
+#### Deploy the CET module
+
+```
+cet:
+# -- Enable to deploy CET to your cluster
+enabled: true
+```
+
+#### Deploy the SSCA module
+
+```
+ssca:
+# -- Enable to deploy SSCA to your cluster
+enabled: true
+```
+
+
 ### Add a Harness license
 
-Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Please contact Harness Support to procure the license and add it to the override.yaml file.
+Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
 ```
   license:
     # -- Insert CG License String to enable CG license
@@ -108,28 +158,28 @@ Harness Self-Managed Enterprise Edition needs a license to be provisioned for th
 
 ## Install the Helm chart
 
-To use the charts, you must install Helm. To get started with Helm, see the [Helm documentation](https://helm.sh/docs/). After you install Helm, follow the instructions below.
+To use the charts, you must install Helm. To get started with Helm, go to the [Helm documentation](https://helm.sh/docs/). After you install Helm, follow the instructions below.
 
-**To install the Helm chart**
+To install the Helm chart, do the following:
 
 1. Add the repository.
 
-   ``` 
-   $ helm repo add harness https://harness.github.io/helm-charts
+   ```
+   helm repo add harness https://harness.github.io/helm-charts
    ```
 
-2. Create a namespace for your installation.  
+2. Create a namespace for your installation.
 
    ```
-   $ kubectl create namespace <namespace>
+   kubectl create namespace <namespace>
    ```
 
-3. Modify the override.yaml file with your environment settings.
+3. Modify the `override.yaml` file with your environment settings.
 
-4. Install the Helm chart.  
+4. Install the Helm chart.
 
    ```
-   $ helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml
    ```
 
 ## Verify the installation
@@ -140,98 +190,40 @@ After the installation completes, the services that were installed are enumerate
 
 The services that appear depend on the modules that were installed.
 
-**To verify installation**
+To verify installation, do the following:
 
 1. Review the list of services.
-2. In your browser, type the following instruction: 
+2. In your browser, type the following instruction:
 
-   ``` 
+   ```
    http://localhost/auth/#/signup
    ```
 
    If the installation was successful, the Harness **Sign up** page appears.
 
-<!-- PR-1000 -->
-## Required images for air-gapped environments
-
-If your cluster is in an air-gapped environment, your deployment requires the following images:
-
-- docker.io/harness/gitops-service-signed:v0.62.4
-- docker.io/harness/learning-engine-onprem-signed:66700
-- docker.io/bitnami/minio:2022.8.22-debian-11-r0
-- docker.io/bitnami/mongodb:4.4.15
-- docker.io/bitnami/postgresql:14.4.0-debian-11-r9
-- docker.io/harness/accesscontrol-service-signed:78001
-- docker.io/harness/batch-processing-signed:78605-000
-- docker.io/harness/cdcdata-signed:78426
-- docker.io/harness/ce-anomaly-detection-signed:12
-- docker.io/harness/ce-cloud-info-signed:0.22.0
-- docker.io/harness/ce-nextgen-signed:78700-000
-- docker.io/harness/ci-manager-signed:2804
-- docker.io/harness/ci-scm-signed:release-114-ubi
-- docker.io/harness/cv-nextgen-signed:78426
-- docker.io/harness/dashboard-service-signed:v1.53.0.0
-- docker.io/harness/delegate-proxy-signed:78312
-- docker.io/harness/error-tracking-signed:5.14.2
-- docker.io/harness/et-collector-signed:5.14.0
-- docker.io/harness/event-service-signed:77317
-- docker.io/harness/ff-pushpin-signed:1.0.3
-- docker.io/harness/ff-pushpin-worker-signed:1.945.0
-- docker.io/harness/ff-server-signed:1.945.0
-- docker.io/harness/gateway-signed:2000149
-- docker.io/harness/helm-init-container:latest
-- docker.io/harness/le-nextgen-signed:67500
-- docker.io/harness/looker-signed:23.2.31
-- docker.io/harness/manager-signed:78426
-- docker.io/harness/mysql:enterprise-server-8.0.32
-- docker.io/harness/ng-ce-ui:0.26.3
-- docker.io/harness/policy-mgmt:v1.49.0
-- docker.io/harness/stocore-signed:v1.31.3
-- docker.io/harness/stomanager-signed:79001-000
-- docker.io/harness/telescopes-signed:10100
-- docker.io/harness/ti-service-signed:release-149
-- docker.io/harness/ui-signed:78400
-- docker.io/harness/verification-service-signed:78426
-- docker.io/ubuntu:20.04
-- docker.io/harness/template-service-signed:78426
-- docker.io/harness/ff-postgres-migration-signed:1.945.0
-- docker.io/harness/ff-timescale-migration-signed:1.945.0
-- docker.io/harness/helm-init-container:latest
-- docker.io/harness/log-service-signed:release-18
-- docker.io/harness/nextgenui-signed:0.339.19
-- docker.io/harness/ng-auth-ui-signed:1.3.3
-- docker.io/harness/ng-manager-signed:78426
-- docker.io/harness/pipeline-service-signed:1.21.13
-- docker.io/harness/platform-service-signed:78202
-- docker.io/harness/redis:6.2.7-alpine
-- docker.io/harness/ti-service-signed:release-149
-- docker.io/timescale/timescaledb-ha:pg13-ts2.9-oss-latest
-- docker.io/harness/ci-addon:1.16.4
-- docker.io/harness/gitops-agent:v0.42.0
-- docker.io/haproxy:2.0.25-alpine
-- docker.io/redis:6.2.6-alpine
-- docker.io/harness/delegate:latest
-- docker.io/harness/upgrader:latest
-- docker.io/harness/delegate:23.03.78312
-- docker.io/harness/ci-lite-engine:1.16.4
-- docker.io/bewithaman/s3:latest
-- docker.io/harness/sto-plugin:latest
-- docker.io/harness/upgrader:latest
-- docker.io/curlimages/curl:latest
-
 ## Helm chart values
 
 For details about the chart values, explanations of the default values, and descriptions of the fields, go to [https://github.com/harness/helm-charts#values](https://github.com/harness/helm-charts#values).
 
-
 <!-- PR-1000 -->
+
+## Use self-signed certificates with Helm-based installations
+
+There are additional steps for self-signed certificates:
+
+1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
 
 ## Next steps
 
-After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md). 
+After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md).
 
 To get started with the modules, review the following topics:
 
-* For Harness Continuous Integration, go to [CI pipeline concepts](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
-* For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
-* For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
+* For Harness Continuous Integration, go to the [CI key concepts](../../continuous-integration/get-started/key-concepts.md).
+* For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
+* For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).
+* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition/).
+* For Harness Continuous Error Tracking, go to the [CET tutorials](/tutorials/error-tracking/).

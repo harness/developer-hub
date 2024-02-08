@@ -59,7 +59,7 @@ This menu provides the following options:
 
 * Click **Delete** to delete the Tag key from Harness. (This also frees up its name for reuse.) You will see the confirmation message box below.![](./static/manage-tags-12.png)
 
-:::caution
+:::warning
 There is no automatic undo. To restore a removed Tag key, you will need to manually re-enter it, along with any Allowed Values.
 :::
 

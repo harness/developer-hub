@@ -22,9 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# *.lock, leave yarn.lock
+yarn.lock
 *-lock.json
 .env
 
 # VS Code
 **/.vscode/
+.idea/

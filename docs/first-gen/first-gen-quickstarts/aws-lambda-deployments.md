@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart.md).This quickstart shows you how to deploy a Node.js function to your AWS Lambda service using a Basic Deployment strategy in Harness.
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart.mdws you how to deploy a Node.js function to your AWS Lambda service using a Basic Deployment strategy in Harness.
 
 ### Objectives
 
@@ -73,7 +73,7 @@ Once you have the prerequisites set up, the tutorial should only take about 10 m
 		}
 		```
   
-	You can download the zip file here: <https://lambda-tutorial-harness.s3.amazonaws.com/function.zip>.  
+	You can download the zip file here: `https://lambda-tutorial-harness.s3.amazonaws.com/function.zip`.
 	If you want to create the file yourself, in a code editor, create the file **index.js** and paste in the above code. Zip the file and name the zip file function.zip.  
 	Upload the function.zip file to a bucket in your AWS S3. In our example, we named the bucket **lambda-harness-tutorial**.
 
@@ -295,7 +295,7 @@ The next time you run the Workflow, manually or as the result of a  [Trigger](.
 
 	The AWS Lambda step in the Workflow applies the alias just like you would using the AWS Lambda console.
 
-	By default, Harness names the alias with the name of the Environment by using the built-in Harness variable **${env.name}**. You can replace this with whatever alias you want, or use other built-in Harness variables by entering **$** and seeing what variables are available.
+	By default, Harness names the alias with the name of the Environment by using the built-in Harness variable **$\{env.name}**. You can replace this with whatever alias you want, or use other built-in Harness variables by entering **$** and seeing what variables are available.
 
 	You can set the tags for your Lambda functions in the **AWS Lambda** step and, once deployed, you can see the tags in the AWS Lambda console.
 

@@ -48,7 +48,7 @@ This topic assumes that you have a Harness Project set up. Go to [create organiz
 
 ## Add a deploy stage
 
-For steps on adding a stage, go to [add a stage](/docs/platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, go to [add a stage](/docs/platform/pipelines/add-a-stage.md).
 
 1. Click **Add Stage** and select **Deploy**.
 2. Name the stage, and select what you’d like to deploy. For example, select **Service**.
@@ -121,7 +121,7 @@ Manifests can use hardcoded values or a value YAML file and templating. Harness 
 Use the following manifests to copy into your blank manifest files in file store and save them. Then, customize them for your environment, and apply them to your pipelines.
 
 <details>
-   <summary>values.yaml</summary>
+<summary>values.yaml</summary>
 
 ```yaml
 name: example  
@@ -156,7 +156,7 @@ env:
 </details>
 
 <details>
-   <summary>deployment.yaml</summary>
+<summary>deployment.yaml</summary>
 
 ```yaml
 {{- if .Values.env.config}}  
@@ -228,7 +228,7 @@ spec:
 </details>
 
 <details>
-   <summary>service.yaml</summary>
+<summary>service.yaml</summary>
 
 ```yaml
 apiVersion: v1  
@@ -247,7 +247,7 @@ spec:
 </details>
 
 <details>
-   <summary>namespace.yaml</summary>
+<summary>namespace.yaml</summary>
 
 ```yaml
 {{- if .Values.createNamespace}}  

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).You can link remote Helm charts in a Helm Repository to your Harness Kubernetes Service, such as AWS S3, Google Cloud Storage (GCS), or a chart repo such as Bitnami.
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).You can link remote Helm charts in a Helm Repository to your Harness Kubernetes Service, such as AWS S3, Google Cloud Storage (GCS), or a chart repo such as Bitnami.
 
 You can also use Helm charts in a Git repo. For more information, see [Link Resource Files or Helm Charts in Git Repos](link-resource-files-or-helm-charts-in-git-repos.md).
 

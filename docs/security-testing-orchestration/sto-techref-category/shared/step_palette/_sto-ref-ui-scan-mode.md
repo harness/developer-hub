@@ -1,1 +1,0 @@
-The orchestration mode to use for the scan. The following list includes the UI and YAML values for the supported options. 

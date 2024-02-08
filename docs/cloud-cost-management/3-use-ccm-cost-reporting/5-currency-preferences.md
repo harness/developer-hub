@@ -32,10 +32,10 @@ CCM allows you to choose from the following list of currencies and displays the 
 
 You must integrate your cloud accounts with Harness CCM. For more information, refer to the following topics:
 
-* [Set up cost visibility for AWS](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* [Set up cost visibility for Azure](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
-* [Set up cost visibility for GCP](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
-* [Set up cost visibility for Kubernetes](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set up cost visibility for AWS](../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+* [Set up cost visibility for Azure](../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
+* [Set up cost visibility for GCP](../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
+* [Set up cost visibility for Kubernetes](../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
 
 
 ## Set up your preferred currency 
@@ -50,7 +50,7 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 
 
 
-:::caution
+:::warning
 Once configured, you cannot change the currency settings. It takes up to 24 hours for data to be shown in your preferred currency. Historical data is also converted and displayed in the preferred currency.
 :::
 

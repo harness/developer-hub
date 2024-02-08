@@ -98,7 +98,7 @@ Select the entity that this stage should deploy.
 
 ## Add service details
 
-1. In **Select Service**, select an existing Service that you want to deploy from the Specify Service drop-down list or create a new one. You can also use [fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/).
+1. In **Select Service**, select an existing Service that you want to deploy from the Specify Service drop-down list or create a new one. You can also use [fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 2. Select **Continue**.
 3. In **Specify Environment**, select an existing environment or add a new one.
 4. In **Specify Infrastructure**, select an existing infrastructure or add a new one. Select **Continue.**  

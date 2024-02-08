@@ -8,16 +8,12 @@ This topic describes how to update a Jira issue using the Update Jira step.
 
 You can add the Update Jira step to a Harness CD stage or an Approval stage.
 
-You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages).
+You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages).
 
 ## Before you begin
 
-* [Connect to Jira](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
-* [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages)
-
-## Visual Summary
-
-The following video shows you how to use the Jira Create, Jira Update, and Jira Approval steps:
+* [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
+* [Adding Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages)
 
 ## Limitations
 
@@ -28,59 +24,65 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 1. In a Harness CD or Approval stage, in **Execution**, select **Add Step**.
 2. Select **Jira Update**. The Jira Update step appears.
 
-![](./static/update-jira-issues-in-cd-stages-14.png)
+   ![](./static/update-jira-issues-in-cd-stages-14.png)
 
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
-5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira) to use.
-6. In **Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
-7. In **Issue Type**, select a Jira issue type from the list of types in the Jira project you selected.
+4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
+5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/connectors/ticketing-systems/connect-to-jira) to use.
+6. In **Issue Key**, enter the Jira issue key of the issue you want to update.
+7. Select **Apply Changes**.
+8. Select **Save**.
 
 ## Use an expression in Issue Key
 
-In **Issue Key**, you can use an expression to reference the Key ID from another Jira Create or Jira Update step.
+In **Issue Key**, you can use an expression or runtime input to reference the Key ID from another Jira Create or Jira Update step.
 
-The Jira Create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
+Here are some important considerations when using an expression in **Issue Key:**
 
-First, identify the step where you want to get the ID from. In this example, we'll use a Jira Create step.
+- The Jira Create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
+- Harness uses the **Jira Project** and **Issue Type** you select in **Add Jira Fields** to fetch the list of fields. If you use a runtime input or expression for **Issue Key** and the Jira Project and Issue Type you selected does not correspond with the issue key resolved at runtime, your pipeline could fail to execute successfully. 
 
-You'll have to close the Jira Update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the pipeline, select **Execution History**.
+To use an expression in **Issue Key**, do the following:
 
-Select a successful execution, and click the Jira Create step in the execution.
+1. Identify the step where you want to get the ID from. In this example, we'll use a Jira Create step.
 
-Select the **Output** tab, locate the **Key** setting, and select the copy button.
+   You'll have to close the Jira Update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the pipeline, select **Execution History**.
 
-![](./static/update-jira-issues-in-cd-stages-15.png)
+2. Select a successful execution, and click the Jira Create step in the execution.
 
-The expression will look something like this:
+3. Select the **Output** tab, locate the **Key** setting, and select the copy button.
 
-`<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
+   ![](./static/update-jira-issues-in-cd-stages-15.png)
 
-Now you have the expression that references the key ID from this step.
+   The expression will look something like this:
 
-Go back to your Jira Update step. You can just select **Edit Pipeline**.
+   `<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
 
-In **Issue Key**, select **Expression**.
+   Now you have the expression that references the key ID from this step.
 
-![](./static/update-jira-issues-in-cd-stages-16.png)
+4. Go back to your Jira Update step. You can just select **Edit Pipeline**.
 
-**Issue Key**, paste in the expression you copied from the previous Jira Create step.
+5. In **Issue Key**, select **Expression**.
 
-Now this Jira Update step will update the issue created by the Jira Create step.
+   ![](./static/update-jira-issues-in-cd-stages-16.png)
 
-Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.
+6. In **Issue Key**, paste in the expression you copied from the previous Jira Create step.
 
-### Optional configuration
+   Now this Jira Update step will update the issue created by the Jira Create step.
+
+   Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.
+
+## Optional configuration
 
 In **Optional Configuration**: 
-* In **Status**, enter the status type (Issue Action) to update the issue with (In Progress, Done, etc). Harness will automatically update the issue with this status.
-* In **Transition Name**, enter the name of the transition to move the issues into (for example, `Transition to`, `PR Testing`, `Ready for Test`).
+- * In **Status**, enter the status type (Issue Action) to update the issue with (In Progress, Done, etc). Harness will automatically update the issue with this status.
+- * In **Transition Name**, enter the name of the transition to move the issues into (for example, `Transition to`, `PR Testing`, `Ready for Test`).
 
 ![](static/status-and-transition.png)
 
 If the issue is not part of a Jira workflow and does not have transition options, then the step will fail. For more information, go to [statuses and transitions](https://support.atlassian.com/jira-cloud-administration/docs/work-with-issue-workflows/#Workingwithworkflows-steps) from Atlasssian.
 
-### Add Issue fields
+## Add Issue fields
 
 You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
@@ -88,7 +90,7 @@ In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
 ![](static/add-jira-fields.png)
 
-### Jira Date field support
+## Jira Date field support
 
 Among the custom fields Harness supports are Baseline End Date and Start Date Time. If your Jira project uses these fields, they are available in Fields:
 
@@ -115,7 +117,7 @@ For date and time fields:
 
 The number 1 is used as an example. You can add whatever number you need.
 
-### Update Issue Type field support
+## Update Issue Type field support
 
 Harness supports updating the Jira Issue Type. 
 
@@ -126,7 +128,7 @@ Harness supports updating the Jira Issue Type.
    
 3. Select a new issue type to modify the Issue Type of the selected Jira issue, and select **Apply Changes**. 
 
-  ![](static/update-issue-type.png)
+   ![](static/update-issue-type.png)
 
 The issue type for the selected Jira Issue is now updated with the issue type you selected.
 
@@ -134,8 +136,11 @@ The issue type for the selected Jira Issue is now updated with the issue type yo
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Apply and test
 
@@ -155,4 +160,27 @@ In a new browser tab, paste the URL and press enter.
 
 The updated issue appears in Jira.
 
+
+## Parent issue support
+
+Harness supports parent links (the `issuelink` field in Jira). 
+
+This support enables you to do the following:
+
+* The Jira Create step can now be used to create issues with existing issues as their parent.
+* The Jira Update step can be used to update the parent of a specific issue.
+* A sub-task can be created using the Jira Create step.
+* A ticket parent can be provided by simply typing the parent issue key in **Parent** setting, such as `TJI-47890`. 
+
+To use parent links, do the following:
+
+1. In the Jira Create or Update step, select **Optional Configuration**.
+2. Select **Fields**. 
+3. In **Add Jira Fields**, select **Parent**, and select **Add**.
+   
+   ![picture 1](static/cab823f2e376787040c80df674c55ea77863f3bca861a50d50052f7014893adf.png)  
+
+4. In the **Value** for **Parent**, add the parent issue key.
+   
+   ![picture 2](static/c459f24248f46e308d03f01250b477480e555e8407bbfd1c6aa811a5054d0ef4.png)  
 

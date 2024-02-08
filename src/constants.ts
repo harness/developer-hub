@@ -1,14 +1,28 @@
+import gs from "./components/Docs/GetStarted";
+
+
 export enum MODULES {
-    ci = 'ci',
-    cd = 'cd',
-    ccm = 'ccm',
-    ff = 'ff',
-    sto = 'sto',
-    srm = 'srm',
-    ce = 'ce',
-    platform= 'platform'
+  gs = 'gs',
+  ci = 'ci',
+  cd = 'cd',
+  ccm = 'ccm',
+  ff = 'ff',
+  sto = 'sto',
+  srm = 'srm',
+  ce = 'ce',
+  sei = 'sei',
+  cet = 'cet',
+  ssca = 'ssca',
+  idp = 'idp',
+  iacm = 'iacm',
+  code = 'code',
+  platform = 'platform',
+  cv = 'cv',
+  smp = "smp"
 }
+
 export const MODULE_DISPLAY_NAME = {
+    [MODULES.gs]: 'Getting Started',
     [MODULES.ci]: 'Continuous Integration',
     [MODULES.cd]: 'Continuous Delivery',
     [MODULES.ccm]: 'Cloud Cost Management',
@@ -16,5 +30,32 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.sto]: 'Security Testing Orchestration',
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',
-    [MODULES.platform]: 'Harness Platform'
+    [MODULES.sei]: 'Software Engineering Insights',
+    [MODULES.cet]: 'Continuous Error Tracking',
+    [MODULES.ssca]: 'Software Supply Chain Assurance',
+    [MODULES.idp]: 'Internal Developer Portal',
+    [MODULES.iacm]: 'Infrastructure as Code Management',
+    [MODULES.code]: 'Code Repository',
+    [MODULES.platform]: 'Harness Platform',
+    [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
+    [MODULES.cv]: 'Continuous Verification',
+}
+
+export const MODULE_ICON = {
+    [MODULES.ci]: 'img/icon_ci.svg',
+    [MODULES.cd]: 'img/icon_cd.svg',
+    [MODULES.ccm]: 'img/icon_ccm.svg',
+    [MODULES.ff]: 'img/icon_ff.svg',
+    [MODULES.sto]: 'img/icon_sto.svg',
+    [MODULES.srm]: 'img/icon_srm.svg',
+    [MODULES.ce]: 'img/icon_ce.svg',
+    [MODULES.sei]: 'img/icon_sei.svg',
+    [MODULES.cet]: 'img/icon_cet.svg',
+    [MODULES.ssca]: 'img/icon_ssca.svg',
+    [MODULES.idp]: 'img/icon_idp.svg',
+    [MODULES.iacm]: 'img/icon_iacm.svg',
+    [MODULES.code]: 'img/icon_code.svg',
+    [MODULES.platform]: 'img/icon_harness.svg',
+    [MODULES.smp]: 'img/icon_harness.svg',
+    [MODULES.cv]: 'img/icon_cv.svg',
 }

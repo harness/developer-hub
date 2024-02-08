@@ -1,6 +1,7 @@
 ---
 title: License issues
-description: Troubleshoot license issues in Harness Self-Managed Enterprise Edition.
+description: Troubleshoot license issues in the on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 70
 ---
 
 License issues can happen even after you have applied the license via a Helm values file. Use the following processes to identify and troubleshoot license issues.

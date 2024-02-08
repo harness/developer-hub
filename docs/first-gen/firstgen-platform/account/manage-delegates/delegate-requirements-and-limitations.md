@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/2_Delegates/delegate-concepts/delegate-requirements.md).
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/delegates/delegate-concepts/delegate-requirements.md).
 :::
 
 This topic lists the limitations and requirements of the Harness Delegate.
@@ -60,8 +60,8 @@ The following network requirements are for connectivity between the Harness Dele
 All network connections from your local network to Harness SaaS are outbound-only.* HTTPS port 443 outbound from the Delegate to Harness.
 :::
 
-* HTTP/2 for gRPC (gRPC Remote Procedure Calls)
-* Delegate requirements: The Delegate will need API/SSH/HTTP access to the providers you add to Harness, such as:
+- HTTP/2 for gRPC (gRPC Remote Procedure Calls). This is not required for delegate version 23.12.81803 and later.
+- Delegate requirements: The delegate needs API/SSH/HTTP access to the providers you add to Harness, such as:
 	+ Cloud Providers.
 	+ Verification Providers.
 	+ Artifact Servers (repos).
@@ -73,13 +73,18 @@ For more information, see [Supported Platforms and Technologies](../../../starth
 
 ### gRPC Limitations
 
+:::info note
+gRPC is not required for delegate version 23.12.81803 and later.
+
+:::
+
 If you do not enable gRPC connections, the following limitations apply:
 
-* [Cloud Cost Management](../../../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md) will not collect events.
-* If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
+* [Cloud Cost Management](../../../../cloud-cost-management/get-started/overview.md) will not collect events.
+* If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
 
 :::note
-Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.
+Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.
 :::
 
 ## Permissions and Ports

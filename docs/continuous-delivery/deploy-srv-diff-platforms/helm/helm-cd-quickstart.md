@@ -1,219 +1,245 @@
 ---
-title: Helm chart deployments
-description: This topic shows you how to deploy a Docker image to your Kubernetes cluster using Helm charts in Harness.
+title: Helm deployments overview
+description: High-level view of Harness Helm deployments and Harness' options for users to perform Helm Deployments.
 sidebar_position: 1
 ---
 
-This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) in Harness.
+Harness supports Helm deployments as part of its Kubernetes swimlane. You can deploy Helm charts and subcharts to your target infrastructure using all of the common chart and artifact repositories and cloud platforms.
 
-All you'll need is a small target cluster to run the Harness Delegate and receive the deployed image.
+This topic summarizes Helm support in Harness and provides links to Helm-related topics.
 
-This quickstart should only take about 15 minutes.
+For a quick tutorial, go to [Deploy using Helm Chart](/tutorials/cd-pipelines/kubernetes/helm-chart).
 
-## Objectives
+Learn [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts) before you review Helm deployment basics below.
 
-You'll learn how to:
+<details>
+<summary>Visual summary</summary>
 
-* Install and launch a Harness Kubernetes Delegate in your target cluster.
-* Set up a Helm Pipeline.
-* Run the new Helm Pipeline and deploy a Docker image to your target cluster.
-
-## Before you begin
-
-We're going to be pulling a Helm chart for NGINX from the Bitnami repo at `https://charts.bitnami.com/bitnami`. You don't need any credentials for pulling the public chart.
-
-You will need a target Kubernetes cluster where you will deploy NGINX:
-
-Set up your Kubernetes clusterYou'll need a target Kubernetes cluster for Harness. Ensure your cluster meets the following requirements:
-
-* **Number of nodes:** 3.
-* **Machine type:** 4vCPU
-* **Memory:** 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.
-* **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
-* A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
-For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
-
-## Visual summary
-
-Here's a quick walkthrough of creating a Helm deployment Pipeline in Harness:
+Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm charts and multiple values YAML files in the same repo as the chart, or in separate repos.
 
 <!-- Video:
 https://www.youtube.com/watch?v=Wvr52UKDOJQ-->
-<docvideo src="https://www.youtube.com/watch?v=Wvr52UKDOJQ" />
+<DocVideo src="https://www.youtube.com/watch?v=Wvr52UKDOJQ" />
 
-## Create the Deploy stage
+</details>
 
-Pipelines are collections of stages. For this quickstart, we'll create a new Pipeline and add a single stage.
+## Helm pipeline summary
+
+A Helm pipeline uses a Harness **Deploy** stage to deploy your Helm chart and artifact to your target cluster according to your steps.
+
+Let's quickly review the main components of a Harness Helm pipeline.
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+For a detailed explanation of Helm deployments, go to [Deploy Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
 
 :::
 
-1. In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
-2. Enter the name **Helm Quickstart** and click **Start**.
-   Your Pipeline appears.
+<table>
+	<tbody>
+		<tr>
+			<th></th>
+			<th>Pipeline component</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>What you want to deploy</td>
+			<td>Service</td>
+			<td>
+            <ul>
+               <li>The Helm chart and artifacts for your app.</li>
+               <li>Harness connectors for your repositories.</li>
+            </ul>
+         </td>
+		</tr>
+		<tr>
+			<td>Where you want to deploy</td>
+			<td>Environment</td>
+			<td>
+            <ul>
+               <li>The target cluster for your deployment.</li>
+            </ul>
+         </td>
+		</tr>
+		<tr>
+			<td>How you want to deploy</td>
+			<td>Execution steps</td>
+			<td>
+            <ul>
+               <li>A <b>Deploy</b> stage includes the deployment strategy and steps.</li>
+               <li>Pick a strategy and Harness automatically adds the required steps.</li>
+               <li>Add custom steps to perform other tasks.</li>
+            </ul>
+         </td>
+		</tr>
+	</tbody>
+</table>
 
-3. Click **Add Stage** and select **Deploy**.
-4. Enter the name **Deploy Service**, make sure **Service** is selected, and then click **Set Up Stage**.
-   The new stage settings appear.
-5. In **About the** **Service**, click **New Service**.
-   :::note
+## Deploying Helm charts managed by Harness
 
-   Let's take a moment and review Harness Services and Service Definitions (which are explained below). Harness Services represent your microservices/apps logically. You can add the same Service to as many stages are you need. Service Definitions represent your artifacts, manifests, and variables physically. They are the actual files and variable values.  
-   
-   By separating Services and Service Definitions, you can propagate the same Service across stages while changing the artifacts, manifests, and variables with each stage.
+Here's a summary of the process:
 
-   :::
-6. Give the Service the name **nginx** and click **Save**. 
-   Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
-7. In **Deployment Type**, click **Kubernetes**.
+1. Harness fetches the manifests from your Helm repository onto the Harness delegate.
+2. Harness unzips the chart and runs a `helm template` over the Kubernetes resources packaged in the Helm chart.
+3. On the same Harness delegate, or a delegate that has access to the target Kubernetes Cluster, Harness will proceed to deploy using the `kubectl apply -f <+kubernetes.resource.yml>`.
+4. After the deployment, Harness will manage and track the deployed Helm chart via the **Release Name**.
 
-Next, we'll add the NGINX Helm chart for the deployment.
+## Harness managed Helm charts deep dive
 
-## Add the Helm chart and delegate
+Harness' approach is great for users who are not fully invested into Helm and are not using its advanced features like Helm hooks, subcharts, and Helm dependencies. These users can focus on Helm packaging the Kubernetes resources for you and publishing it to a target source.
 
-You can add a Harness Delegate inline when you configure the first setting that needs it. For example, when we add a Helm chart, we will add a Harness Connector to the HTTP server hosting the chart. This Connector uses a Delegate to verify credentials and pull charts, so we'll install the Delegate, too.
+Harness fetch the Helm chart and deploy it via `kubectl apply -f`. This approach gives you granular control on the Kubernetes resources and how they are applied. You can specify which files you wish to skip for deployment, and prioritize which are created before the deployment, etc.
 
-1. In **Manifests**, click **Add Manifest**. The manifest types appear.
-2. Click **Helm Chart**, and then click **Continue**.
-3. In **Specify Helm Chart Store**, click **HTTP Helm**.
-   We're going to be pulling a Helm chart for NGINX from the Bitnami repo at `https://charts.bitnami.com/bitnami`. You don't need any credentials for pulling the public chart.
-4. Click **New HTTP Helm Repo Connector**.
-5. In the **HTTP Helm Repo Connector**, in **Name**, enter **helm-chart-repo**, and click **Continue**.
-6. In **Helm Repository URL**, enter `https://charts.bitnami.com/bitnami`.
-7. In **Authentication**, select **Anonymous**.
-8. Click **Continue**.
-9. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
-   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your target cluster. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
+With more control over the Helm packaged Kubernetes resources, Harness has the luxury of orchestrating a canary deployment and blue green deployment and tracking the resources accordingly through Harness.
 
-   Expand the section below to learn more about installing delegates.
+Harness appends canary labels to a canary deployed service. Harness identifies the primary and stage services' Kubernetes objects deployed and manages the labels and selectors so the correct resources receive traffic.
 
-   <details>
-   <summary>Install a new delegate</summary>
+This approach gives Harness further control to version your ConfigMaps and Secrets along with your deployed resources so you get the correct versions with your deployed resources.
 
-    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
-    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
-    3. In **Install your Delegate**, select **Kubernetes Manifest**.
-    4. Enter a delegate name.
-        - Delegate names must be unique within a namespace and should be unique in your cluster. 
-        - A valid name includes only lowercase letters and does not start or end with a number. 
-        - The dash character (“-”) can be used as a separator between letters.
-    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+In the event of rollback, because Harness tracks and can control how the files are released, Harness can initiate a rollback based on a ConfigMap version Harness maintains that captures the state of your last successfully deployed service.
 
-    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
+### Pros
 
-    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+- Harness can orchestrate the Helm chart to be deployed in a Canary and Blue Green strategy.
+- Helm is now focused to package your resources, not deploy your resources. How you deploy and roll out your resources is now sequenced and managed by Harness.
+- Versioning: Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets.
+- Rollback: In the event of deployment failure, Harness Kubernetes deployments will roll back to the last successful version via the versioned ConfigMap generated by Harness.
 
-    | **Value** | **Description** |
-    | :-- | :-- |
-    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
-    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
-    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
-    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+### Cons
 
-    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
+- Helm Hooks are not supported. You will need to split those Helm hooks into jobs.
 
-    | **Harness cluster location** | **Harness Manager endpoint** |
-    | :-- | :-- |
-    | SaaS prod-1 | https://app.harness.io |
-    | SaaS prod-2 | https://app.harness.io/gratis |
-    | SaaS prod-3 | https://app3.harness.io |
+### Configuration in Harness for this option
 
-    7. Install the delegate by running the following command:
+1. Create a Harness service in your Harness project.
+2. Configure the Kubernetes Deployment Type for the service.
+3. Navigate to **Manifest Source** in your service and configure Git, OCI Helm, or HTTP Helm.
+4. Ensure the Infrastructure Definition is configured as the Kubernetes Deployment Type.
 
-    `kubectl apply -f harness-delegate.yaml`
+## Deploying Helm Charts managed by Helm
 
-    The successful output looks like this.
-    
-    ```
-    namespace/harness-delegate-ng unchanged
-    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
-    secret/cd-doc-delegate-account-token created
-    deployment.apps/cd-doc-delegate created
-    service/delegate-service configured
-    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
-    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
-    serviceaccount/upgrader-cronjob-sa unchanged
-    secret/cd-doc-delegate-upgrader-token created
-    configmap/cd-doc-delegate-upgrader-config created
-    cronjob.batch/cd-doc-delegate-upgrader-job created
-    ```
+In this approach:
 
-   1. Select **Verify** to make sure that the delegate is installed properly.
-   
-   </details>
+1. Harness fetches the manifests from your Helm repository on to the Harness delegate.
+2. Harness unzips the chart, runs a `helm template` over the Kubernetes resources packaged in the Helm Chart.
+3. On the same Harness delegate, or a delegate that has access to the target Kubernetes cluster, Harness will proceed to deploy using the `helm install {YOUR_HELM_CHART}` or a `helm upgrade {YOUR HELM CHART}`.
+4. After the deployment, Harness, using the Helm client, will query the deployed instances for tracking.
 
-10. Back in **Set Up Delegates**, you can select the new Delegate.
-   In the list of Delegates, you can see your new Delegate and its tags.
-11. Select the **Connect using Delegates with the following Tags** option.
-12. Enter the tag of the new delegate and click **Save and Continue**.
-   When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.
-13. Click **Continue**.
-14. In **Manifest Details**, enter the following settings can click **Submit**.
-   * **Manifest Identifier**: enter **nginx**.
-   * **Helm Chart Name**: enter **nginx**.
-   * **Helm Chart Version**: leave this empty.
-   * **Helm Version**: select **Version 3**.
+### Harness Helm charts managed by Helm
 
-The Helm chart is added to the Service Definition.
+This approach is great when you are first moving to Harness. This requires minimal changes to your Helm package and deploy process. Harness will just take your existing Helm chart and deploy it to the target Kubernetes cluster you specify for deployment.
 
-Next, we can target your Kubernetes cluster for deployment.
+The more complex Helm charts with hooks, subcharts, and dependency charts are easier to deploy with this approach because you do not need to break down your chart and sequence out the dependency charts first before deploying the main Helm chart.
 
-## Define your target cluster
+This approach also works well with the commodity Helm charts because you do not need to make any tweaks to the open source chart, just supply a values.yaml and Harness will perform the Helm fetch and Helm install.
 
-1. In **Infrastructure**, in **Environment**, click **New Environment**.
-2. In **Name**, enter **quickstart**, and click **Save**.
-3. In **Infrastructure Definition**, select the **Kubernetes**.
-4. In **Cluster Details**, click **Select Connector**. We'll create a new Kubernetes Connector to your target platform. We'll use the same Delegate you installed earlier.
-5. Click **New Connector**.
-6. Enter a name for the Connector and click **Continue**.
-7. In **Details**, select **Use the credentials of a specific Harness Delegate**, and then click **Continue**.
-8. In **Set Up Delegates**, select the Delegate you added earlier by entering one of its Tags.
-9.  Click **Save and Continue**. The Connector is tested. Click **Finish**.
-10. Select the new Connector and click **Apply Selector**.
-11. In **Namespace**, enter **default** or the namespace you want to use in the target cluster.
-12. In **Release Name**, enter **quickstart**.
-13. Click **Next**. The deployment strategy options appear.
+### Pros
 
-## Add a Rollout Deployment step
+- Rollback: Harness does not perform rollback. Instead, Harness uses Helm's native rollback functionality. This is great for quickly adopting based of your existing setup.
+- Harness will honor the user's pre and post install hooks configured in the Helm chart.
 
-We're going to use a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md), so click **Rolling**, and click **Apply**.
+### Cons
 
-The **Rollout Deployment** step is added to **Execution**.
+- Versioning: Native Helm does not version deployments.
+- No progressive deployment support, no blue green or canary deployment types are supported (coming soon).
 
-That's it. Now you're ready to deploy.
+### Harness steps
 
-## Deploy and review
+1. Create a Harness service in your Harness project.
+2. Configure a **Native Helm Deployment Type** for the service.
+3. Navigate to **Manifest Source** in your service and configure Git, OCI Helm, or HTTP Helm.
+4. The Harness **Infrastructure Definition** will also be a **Native Helm Deployment**.
 
-1. Click **Save** to save your Pipeline.
-2. Click **Run**.
-3. Click **Run Pipeline**.
-   
-   Harness verifies the connections and then runs the Pipeline.
+## What is Supported in Both Approaches?
 
-   Toggle **Console View** to watch the deployment with more detailed logging.
+### Optional: Trigger pipelines on new Helm chart published or on a new artifact image defined within the Helm chart.
 
-4. Click the **Rollout Deployment** step and expand **Wait for Steady State**.
+You can add a trigger to your Harness pipeline that will run the pipeline when the Helm chart or artifact version changes or is published to a repository.
 
+For details, go to:
 
-You can see `Status : quickstart-nginx deployment "quickstart-nginx" successfully rolled out.`
+- [Trigger pipelines on new Helm chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart)
+- [Trigger pipelines on a new artifact](/docs/platform/triggers/trigger-on-a-new-artifact)
+- [Triggers](/docs/category/triggers)
 
-Congratulations! The deployment was successful.
+### Optional: Helm Chart to Manage Harness Delegates
 
-In your Project's Deployments, you can see the deployment listed.
+Harness includes a Helm-based Harness delegate but you can use any delegate type for Helm deployments.
 
-If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](#before_you_begin) or the cluster's network settings do not allow the Delegate to connect to the chart or image repos.
+Helm chart delegates are a great way to manage delegates at scale and via automation. The chart remains the same and you simply need to swap out the values.yaml for delegate installation.
 
-In this quickstart, you learned how to:
+You can parameterize much of the Helm Chart via Go Templating and pass in parameters via the values.yaml. This makes the Helm installation consistent and, depending on the team's requirements, you can pass in a values.yaml to spin up the delegate.
 
-* Install and launch a Harness Kubernetes Delegate in your target cluster.
-* Set up a Helm Pipeline.
-* Run the new Helm Pipeline and deploy a Docker image to your target cluster.
+For steps on Helm delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
-## Next steps
+If you select to build your own delegate and include only those tools needed for Helm deployments, go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks/) to see what Kubernetes and Helm-related binaries are required.
 
-* See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
-* [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
+### Supported integrations with Helm
 
+For details on supported Helm versions, tooling, limitations, and repositories, go to [Supported CD features and integrations](/docs/continuous-delivery/cd-integrations).
+
+## General Helm Deployment FAQ
+
+### How can we deploy a specific resource in a helm chart as part of Harness managed Helm rolling deployment?
+
+If it is a Helm deployment managed by Harness, you can use an Apply Step.
+
+You can take a specific file from the manifest and execute it separately from the normal deployment (before or after). To prevent the file from being included in the main part of the deployment, you include `# harness.io/skip-file-for-deploy` at the top of the file.
+
+### How do I run a Helm uninstall after a successful deployment?
+
+To run Helm uninstall manually after a successful deployment, you can leverage the Shell Script step and run the `helm uninstall release-name` command from the delegate onto the cluster. To run the shell script onto the required cluster, you need to specify the Kubernetes cluster credentials for the delegate.
+
+For this use case, within the shell script, you can simply reference credentials as `${HARNESS_KUBE_CONFIG_PATH}`:
+
+`export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test`
+
+With this method, even when running the shell script on the delegate host, it can refer to the credentials of the Kubernetes cloud provider used inside the infrastructure definition associated with the workflow.
+
+### Can I override some values in the Helm chart during the deployment of a service in Kubernetes?
+
+Yes, you can override values in the Helm chart during the service deployment in Kubernetes.
+
+### How can I use values files to override Helm chart values during deployment?
+
+You can define your input values in separate files, known as values files. These files can be stored and optionally tracked in Git. Harness allows you to specify these values files in the Harness service definition used during the deployment.
+
+### What is the advantage of using values files over the '--set' option for Helm chart overrides?
+
+Using values files provides a more organized and maintainable way to manage overrides in Helm charts. It is considered a best practice, and it allows you to easily track and version your input values for deployments.
+
+### Does Harness have cache layer for the Helm chart repo index during deployment steps?
+
+Harness uses a caching mechanism to create a cache folder (based on the Harness connector Id) and store the repositories.yaml file.
+
+### How can we access the Helm repo name from the Helm connector?
+
+Harness does not have a direct variable exposed for reading the repo name from the connector. The connector variable is only available in a Harness custom deployment template.
+
+For normal usage Harness can make an API call to get the connector details and get the repo name from the "helmRepoUrl" attribute.
+
+### Can I use Helm charts from public repositories like Helm Hub with Harness?
+
+Yes, you can use Helm charts from public Helm repositories like Helm Hub. Harness allows you to specify the Helm repository URL and chart version when configuring your deployment.
+
+### Is it possible to use Helm hooks in Harness Helm deployments?
+
+Yes, you can use Helm hooks in Helm deployments managed by Helm. This is available via the **Native Helm** service type.
+
+Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
+
+### What are deployment failed because the release name was invalid errors?
+
+The "invalid release name" error is due to the length of the release name exceeding the maximum limit of 53 characters.
+
+This limitation is imposed by [Helm](https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call).
+
+To resolve this issue, please ensure that your release name falls within the 53 character range.
+
+You can achieve this by using the following expression in **Release Name** to shorten the release name: `<+<+INFRA_KEY>.substring(0,7)>`.
+
+### Troubleshoot 401 Not Authorized issue with Helm connector
+
+First, ensure the credentials that you have passed to the Helm HTTP or OCI Connector are still valid.
+
+You can also `exec` into your Harness delegate and run the `helm repo add` command on the delegate to manually fetch the repo to see if the delegate can pull it.

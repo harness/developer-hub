@@ -12,7 +12,7 @@ The following options help you control how deployments use your resources.
 
 ### Barriers
 
-Barriers synchronize stages/[step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) of a pipeline that are executed in parallel. Barriers ensure that one stage/step group does not proceed until another stage/step group has reached a specific point.
+Barriers synchronize stages/[step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) of a pipeline that are executed in parallel. Barriers ensure that one stage/step group does not proceed until another stage/step group has reached a specific point.
 
 See [Synchronize parallel stages and step groups using Barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers).
 
@@ -30,7 +30,7 @@ Resource Constraints are added to every Stage by default, but it can be disabled
 
 For more information, go to [pipeline Resource Constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints).
 
-The automatic **Resource Constraints** setting does not apply to [Custom stages](/docs/platform/pipelines/add-a-custom-stage/). **Resource Constraints** apply to a combination of service + infrastructure, and Custom stages have no services or infrastructures. You can use Barriers and Queue steps in any stage types.
+The automatic **Resource Constraints** setting does not apply to [Custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage). **Resource Constraints** apply to a combination of service + infrastructure, and Custom stages have no services or infrastructures. You can use Barriers and Queue steps in any stage types.
 
 ### Queue steps
 

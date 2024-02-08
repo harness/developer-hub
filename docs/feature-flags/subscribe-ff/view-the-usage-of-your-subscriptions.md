@@ -14,9 +14,9 @@ When you subscribe to a Harness module, you select a number of licenses for deve
 2. Click **Account Settings**, then **Subscriptions**.
 3. Select the module you want to view the usage details for by clicking its tile.
 4. Under **Activity & Usage**, you can view the number of:
-* Developers in the last 30 days
-* MAUs for the current month
-* Current Feature Flags in your account
+	* Developers in the last 30 days
+	* MAUs for the current month
+	* Current Feature Flags in your account
 
-![A screenshot of the Activity and Usage section of the Subscription Overview.](./static/5-view-the-usage-of-your-subscriptions-08.png)*Figure 1: Activity & Usage on the Subscriptions page*
+	![A screenshot of the Activity and Usage section of the Subscription Overview.](./static/5-view-the-usage-of-your-subscriptions-08.png)
 

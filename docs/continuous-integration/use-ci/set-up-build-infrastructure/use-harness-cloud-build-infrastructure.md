@@ -4,165 +4,74 @@ description: You can use Harness-hosted build infrastructure for your Harness CI
 sidebar_position: 20
 ---
 
-With Harness Cloud you can run builds in isolation on Harness-hosted VMs that are preconfigured with the tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-This topic describes how to use Harness-hosted build infrastructure for your Harness CI pipelines, as well as information about machine specifications, special considerations, and additional configuration required for certain use cases.
+With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
-For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](./which-build-infrastructure-is-right-for-me.md)
+Harness Cloud provides the following advantages:
 
-## Requirements
+* Free monthly credits for up to 2,000 build minutes.
+* Starter pipelines for different programming languages.
+* Blazing fast builds on Linux, macOS, and Windows.
+* Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
 
-* You must use Harness Secret Manager to store connector credentials and other secrets.
-* All connectors must connect through the Harness Platform, not the delegate.
-* AWS connectors can't use IRSA or AssumeRole.
-* GCP and Azure connectors can't inherit credentials from the delegate.
+For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](./which-build-infrastructure-is-right-for-me.md).
+
+:::info What happens when pipelines run on Harness Cloud?
+
+When a build runs on Harness Cloud, Harness runs each CI stage in a new, ephemeral VM.
+
+![Example pipeline on Harness Cloud](./static/hosted-builds-on-virtual-machines-quickstart-11.png)
+
+The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically shuts down.
+
+:::
+
+## Billing and build credits
+
+All plans get 2000 free build credits each month. Customers on Team and Enterprise plans can purchase additional build credits. Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+
+Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
 ## Platforms and image specifications
 
-Harness Cloud offers the following operating systems and architectures:
+Harness Cloud offers Linux, macOS, and Windows platforms. To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
 
-* Linux: amd64 and arm64
-* macOS: arm64 (M1)
-* Windows: amd64
-
-:::tip
-
-To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
-
-:::
-
-Refer to the following image specification README files for more information about image components and preinstalled software.
+Review the following image specifications for information about image components and preinstalled software.
 
 * [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
 * [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
-* [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
-* [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
+* [macOS arm64 (M1) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md)
+* [Windows Server 2022 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
 
-You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run as separate Docker images.
+**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
-:::caution
+## Requirements for connectors and secrets
 
-Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
-
-:::
-
-### Specify versions
-
-If there are multiple versions of a tool installed on an image, you can specify the version to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
-
-```
-sudo xcode-select -switch /Applications/Xcode_14.1.0.app
-```
-
-However, Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
-
-### Lock versions or install additional tools
-
-If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../../ci-technical-reference/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
-
-<details>
-<summary>Example: Install Java 17</summary>
-
-In the following YAML example, an [Action step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
-
-```yaml
-            steps:
-              - step:
-                  identifier: install_java
-                  name: intall java version 17
-                  type: Action
-                  spec:
-                    uses: actions/setup-java@v3
-                    with:
-                      distribution: 'zulu' # See 'Supported distributions' for available options
-                      java-version: '17'
-              - step:
-                  identifier: java_ver_check
-                  name: java version check
-                  type: Run
-                  spec:
-                    shell: Bash
-                    command: |
-                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $JAVA_VER == 17 ]]; then
-                        echo successfully installed $JAVA_VER
-                      else
-                        exit 1
-                      fi
-```
-
-:::tip
-
-You can also use the [Bitrise plugin step](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
-
-:::
-        
-</details>
-
-<details>
-<summary>Example: Pull a Docker image</summary>
-
-The following YAML example demonstrates how a **Run** step can use a Docker image (specified in `conectorRef` and `image`) to leverage tools available on that image that aren't available on the host image:
-
-```yaml
-    - stage:
-        name: Print welcome message
-        identifier: welcome_message
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform: // Platform properties describe the target machine required by this stage.
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud // This build runs on Harness-provided infrastructure.
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Welcome
-                  identifier: Welcome
-                  spec:
-                    connectorRef: my_dockerhub // Specify a Docker connector to pull an image from Docker.
-                    image: alpine // If no image is specified, the step runs on the host machine.
-                    shell: Sh
-                    command: Echo "Welcome to Harness CI"
-```
-
-:::caution
-
-Steps running in containers can't communicate with [Background steps](../../ci-technical-reference/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
-
-:::
-
-</details>
+* You must use the built-in Harness Secret Manager to store connector credentials and other secrets.
+* All connectors must connect through the Harness Platform, not a delegate.
+* AWS connectors can't use IRSA or AssumeRole.
+* GCP and Azure connectors can't use authentication that inherits credentials from the delegate.
 
 ## Use Harness Cloud
 
-You can start using Harness Cloud in minutes.
+You can configure your pipelines to use Harness Cloud in minutes.
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual editor" default>
-```
 
 1. Go to the pipeline where you want to use Harness Cloud build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **Harness Cloud** and the desired **Platform**.
 4. Save and run your pipeline.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="YAML" label="YAML editor">
-```
 
-To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage: spec:`. For example:
+To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
 ```yaml
           platform:
@@ -179,7 +88,7 @@ To enable Harness Cloud build infrastructure in your pipeline YAML, specify the 
 <details>
 <summary>Pipeline YAML example</summary>
 
-The following YAML example illustrates a basic CI pipeline that uses Harness Cloud build infrastructure:
+The following YAML example describes a basic CI pipeline that uses Harness Cloud build infrastructure:
 
 ```yaml
 pipeline:
@@ -219,17 +128,129 @@ pipeline:
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
+
+### Harness Cloud best practices
+
+* Don't hardcode system environment variables. Instead, use references like `$HOME` or `$USER`.
+* Don't hardcode the number of processors/threads. Instead, use commands like `nproc` to specify threads/jobs in your build and test commands.
+* Don't use tools that only run on a specific cloud environment, such as `gcloud`. Harness Cloud sources its build VMs from a variety of cloud providers. It is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses during any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
+* Know the [requirements for connectors and secrets](#requirements-for-connectors-and-secrets).
+* Know that Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
+* Know that you can add steps to your pipeline to [specify versions of tools](#specify-versions) and [lock versions, set up environments, or install additional tools](#lock-versions-or-install-additional-tools).
+* Run `apt-get update` before [installing additional software](#lock-versions-or-install-additional-tools) that might not be in the image's packages list.
+
+### Specify versions
+
+If a [Harness Cloud image](#platforms-and-image-specifications) has multiple versions of a tool pre-installed, you can specify the version that you want to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a [Run step](../run-step-settings.md) to select an Xcode version:
+
+```
+sudo xcode-select -switch /Applications/Xcode_15.1.0.app
+```
+
+:::warning
+
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
+
+:::
+
+### Lock versions or install additional tools
+
+If your build requires a specific version of a tool or you need to use a version/tool that isn't pre-installed on the [Harness Cloud image](#platforms-and-image-specifications), you must add a step (such as a [Run step](../run-step-settings.md) or [Plugin step](../use-drone-plugins/explore-ci-plugins.md)) to install the version/tool directly on the build machine or run a Docker image that has the required version/tool.
+
+When installing additional tools, run `apt-get update` before installing new software that might not be in the packages list.
+
+<details>
+<summary>Example: Use an Action step to setup Java</summary>
+
+In the following YAML example, an [Action step](../use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install a Java version, and then the **Run** step confirms the Java version.
+
+```yaml
+            steps:
+              - step:
+                  identifier: install_java
+                  name: intall java version 17
+                  type: Action
+                  spec:
+                    uses: actions/setup-java@v3
+                    with:
+                      distribution: 'temurin'
+                      java-version: '16'
+              - step:
+                  identifier: java_ver_check
+                  name: java version check
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+                      if [[ $JAVA_VER == 16 ]]; then
+                        echo successfully installed $JAVA_VER
+                      else
+                        exit 1
+                      fi
+```
+
+:::tip
+
+You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+
+:::
+
+</details>
+
+<details>
+<summary>Example: Use a Docker image</summary>
+
+The following YAML example demonstrates how a **Run** step can use a Docker image to leverage tools that are available on the image without having to install them on the build machine.
+
+```yaml
+    - stage:
+        name: Print welcome message
+        identifier: welcome_message
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform: ## Platform properties describe the target machine required by this stage.
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud ## This build runs on Harness-provided infrastructure.
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Welcome
+                  identifier: Welcome
+                  spec:
+                    connectorRef: my_docker_hub  ## Specify a Docker connector to pull an image from Docker.
+                    image: alpine ## If no image is specified, the step runs on the host machine.
+                    shell: Sh
+                    command: Echo "Welcome to Harness CI"
 ```
 
 :::info
 
-Add steps to your pipeline to specify versions of tools, set up environments, or install additional tools. For image specifications and instructions on specifying versions, locking versions, and installing additional tools, go to the [Platforms and image specifications](#platforms-and-image-specifications) section, above.
-
-Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions to **Lock versions or install additional tools** in [Platforms and image specifications](#platforms-and-image-specifications) to prevent your pipeline from failing when the image changes.
+Steps running in containers can't communicate with [Background steps](../manage-dependencies/background-step-settings.md) running on Harness Cloud build infrastructure because they don't have a common host.
 
 :::
 
-<!-- whitelist removed - DOC-2875 -->
+</details>
+
+## Secure connect (private networking)
+
+You can use Harness Cloud build infrastructure in firewalled environments. For more information, go to [Secure connector for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+## Troubleshoot Harness Cloud build infrastructure
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness Cloud build infrastructure, including:
+
+* [Account verification error with Harness Cloud on Free plan.](/kb/continuous-integration/continuous-integration-faqs/#account-verification-error-with-harness-cloud-on-free-plan)
+* [Can't use STO steps with Harness Cloud macOS runners.](/kb/continuous-integration/continuous-integration-faqs/#cant-use-sto-steps-with-harness-cloud-macos-runners)
+* [Is Harness Cloud compatible with tools like gsutil or gcloud?](/kb/continuous-integration/continuous-integration-faqs/#does-gsutil-work-with-harness-cloud)
+* [Connector or delegate errors when using Harness Cloud.](/kb/continuous-integration/continuous-integration-faqs/#connector-errors-with-harness-cloud-build-infrastructure)
+* [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs/#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
+* [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
+* [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)

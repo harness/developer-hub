@@ -1,6 +1,6 @@
 {
     "label": "Get data on your flags",
-    "position": 40,
+    "position": 120,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

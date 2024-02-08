@@ -2,6 +2,7 @@
 id: pod-memory-hog
 title: Pod memory hog
 ---
+
 Pod memory hog is a Kubernetes pod-level chaos fault that consumes excessive memory resources on the application container. Since this fault stresses the target container, the primary process within the container may consume the available system memory on the node. 
 - Memory usage within containers is subject to various constraints in Kubernetes. 
 - When specification mentions the resource limits, exceeding these limits results in termination of the container due to OOM kill. 
@@ -18,16 +19,13 @@ Pod memory hog exec:
 - Verifies application restarts on OOM (out of memory) kills. 
 - Tests how the overall application stack behaves when such a situation occurs.
 
-:::note
-- Kubernetes> 1.16 is required to execute this fault.
+### Prerequisites
+- Kubernetes> 1.16 
 - The application pods should be in the running state before and after injecting chaos.
-:::
 
+### Optional tunables
 
-## Fault tunables
-
-  <h3>Optional tunables</h3>
-    <table>
+   <table>
       <tr>
         <th> Tunable </th>
         <th> Description </th>
@@ -57,7 +55,12 @@ Pod memory hog exec:
         <td> TARGET_CONTAINER </td>
         <td> Name of the target container.</td>
         <td> If this value is not provided, the fault selects the first container of the target pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container"> target specific container</a></td>
-      </tr>   
+      </tr>  
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr> 
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
@@ -77,6 +80,11 @@ Pod memory hog exec:
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+      </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

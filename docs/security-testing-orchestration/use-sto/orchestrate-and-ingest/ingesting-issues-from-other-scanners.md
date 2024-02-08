@@ -1,42 +1,44 @@
 ---
-title: Ingest Results from Custom or Unsupported Scanners
-description: You can ingest custom Issues from any scanning tool. This topic describes how to ingest data from scan tools that currently have no integration in STO.
-sidebar_position: 40
+title: Ingest scan results from unsupported scanners into Harness STO
+description: Ingest results from scanners that don't support SARIF.
+sidebar_label: Ingest from unsupported scanners
+sidebar_position: 100
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can ingest custom Issues from any scanning tool. This topic describes how to ingest data from scan tools that currently have no integration in STO.
+You can ingest custom issues from any scanning tool. STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF.
 
-By ingesting your custom Issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
+### Important notes for importing data from unsupported scanners into STO
 
-###  Requirements
+- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported) and click **Harness STO scanner support** to expand.
 
-* You have a valid STO license and access to the Harness platform.
-* You have a JSON file of the issues you want to ingest. The data file must match the [JSON format](#json-data-format-reference) specified below.
+- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools. If your scanner supports this format, publish your results to SARIF. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
-### Required Steps
+- For STO to ingest your scan results, the ingestion file must match the [JSON format](#json-data-format-reference) specified below.
 
-1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
- 
-   ![](../static/ingesting-issues-from-other-scanners-00.png)
+### Required steps to ingest data from unsupported scanners into STO
+
+1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** > **Shared Paths** in the visual editor, or add it to the YAML like this:  
+  
+   ```yaml
+         - stage:
+         spec:
+            sharedPaths:
+               - /shared/scan_results
+   ```
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
-You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
-1. Add a Security step and configure the scanner to ingest the results of the scan. These settings are required:
-	1. `policy_type` = `ingestionOnly`
-	2. `scan_type` — The type the scanned object: `container`, `repository`, `instance`, or `configuration`
-	3. `product_name` = `external`
-	4. `product_config_name` = `default`
-	5. `manual_upload_filename` — The filename of your issues data file.
-	6. `customer_artifacts_path` — The shared folder for the issues data file.
+  You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
+
+3. Add a **Custom Ingest** step and configure the scanner to ingest the results of the scan. For information about how to configure this step, go to [Custom Ingest settings reference](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference.md).
+
 
 ###  JSON data format reference
 
 The following example illustrates the required format for your data:
-
 
 ```yaml
 {  
@@ -45,11 +47,11 @@ The following example illustrates the required format for your data:
          "issueName",  
          "fileName"  
       ],  
-      "author":"Jane Doe"  
+      "subproduct":"MyCustomScanner"  
    },  
    "issues":[  
       {  
-         "scanTool":"MySastTool",  
+         "subproduct":"MyCustomScanTool",  
          "issueName":"Cross Site Scripting",  
          "issueDescription":"Lorem ipsum...",  
          "fileName":"homepage-jobs.php",  
@@ -68,9 +70,19 @@ The following example illustrates the required format for your data:
 }
 ```
 
-The basic schema includes a `“meta”` section, which requires a `“key”` — this is the name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+The basic schema includes a `“meta”` section, which requires the following: 
 
-The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. The full JSON takes the form:
+* `“key”`
+
+   The name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+   
+   The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. 
+
+* `“subproduct”` 
+
+   The scan tool name to apply to the overall issue. 
+   
+The full JSON takes the form:
 
 
 ```json
@@ -84,19 +96,17 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 ```
 
 
-#### **Required fields**
+#### Required fields for Harness STO JSON schema
 
 |  |  |  |
 | --- | --- | --- |
 | **Name** | **Format** | **Description** |
 | `issueName` | String | Name of vulnerability, license issue, compliance issue, etc. |
 | `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. |
-| `scanTool` | String | The name of the scanning tool (e.g. “SonarQube”) |
+| `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. |
 | `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
 
-#### **Recommended fields**
-
-
+#### Recommended fields for Harness STO JSON schema
 
 |  |  |  |
 | --- | --- | --- |
@@ -118,7 +128,7 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | `tags` | String | Logical metadata tags, which can be leveraged to describe asset owners, teams, business units, etc. |
 | `url` | String | Recommended to assist in triaging errors (if present). |
 
-#### **Optional fields**
+#### Optional fields for Harness STO JSON schema
 
 |  |  |  |
 | --- | --- | --- |
@@ -135,7 +145,7 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | `referenceIdentifiers` | Array | An array of Vulnerability identifiers, such as `cve`, `cwe`, etc. Here's an example. Note that the `type` value must be lowercase. &#13; `“referenceIdentifiers”: [     {“type” : “cve”,“id” : “79”},     {"type" : "cwe", "id" : "83"}]`  |
 
 
-##### Custom fields
+##### Custom fields for Harness STO JSON schema
 
 You can add custom fields to an issue. The only restriction is that you cannot use any of the [reserved keywords](#reserved-keywords) listed above. To include raw, unrefined data, add the prefix "`_raw`" to the field name. For example, you can add the following "`_raw`" fields to an issue:
 
@@ -162,7 +172,7 @@ The custom fields will get grouped together at the end of the issue details like
 
 ![](../static/ingesting-issues-from-other-scanners-01.png)
 
-#### Reserved Keywords
+#### Reserved keywords for Harness STO JSON schema
 
 The following keywords are reserved and cannot be used in your JSON file:
 
@@ -185,3 +195,97 @@ The following keywords are reserved and cannot be used in your JSON file:
 * `target`
 * `targetId`
 
+## Pipeline example for ingesting data from an unsupported schema into STO
+
+The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security Tests stage with two steps:
+
+1. A Run step that generates a JSON data file `/shared/scan_results/example.json` in the format described above.
+
+2. A Custom Ingest step that ingests and normalizes the data from `/shared/scan_results/example.json`. 
+
+![](../static/custom-json-ingest-pipeline-example.png)
+
+```yaml
+pipeline:
+  projectIdentifier: myProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom-scan-stage
+        identifier: customscanstage
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: generate-scan-data
+                  identifier: Run_1
+                  spec:
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    image: alpine:latest
+                    shell: Sh
+                    command: |-
+                      cat <<EOF >> /shared/scan_results/example.json
+                      {  
+                         "meta":{  
+                            "key":[  
+                               "issueName",  
+                               "fileName"  
+                            ],  
+                            "subproduct":"MyCustomScanner"  
+                         },  
+                         "issues":[  
+                            {  
+                               "subproduct":"MyCustomScanTool",  
+                               "issueName":"Cross Site Scripting",  
+                               "issueDescription":"Lorem ipsum...",  
+                               "fileName":"homepage-jobs.php",  
+                               "remediationSteps":"Fix me fast.",  
+                               "risk":"high",  
+                               "severity":8,  
+                               "status":"open",  
+                               "referenceIdentifiers":[  
+                                  {  
+                                     "type":"cwe",  
+                                     "id":"79"  
+                                  }  
+                               ]  
+                            }  
+                         ]  
+                      }
+                      EOF
+                      ls /shared/scan_results
+                      cat /shared/scan_results/example.json
+              - step:
+                  type: CustomIngest
+                  name: ingest-scan-data
+                  identifier: CustomIngest_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: external-scanner-test
+                      type: repository
+                      variant: main
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: /shared/scan_results/example.json
+          sharedPaths:
+            - /shared/scan_results
+          caching:
+            enabled: false
+            paths: []
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  identifier: custom_ingestion_JSON_test
+  name: custom ingestion JSON test
+```

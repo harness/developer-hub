@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).The following troubleshooting information should help you diagnose common problems:
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).The following troubleshooting information should help you diagnose common problems:
 
 * [Failed to Find the Previous Helm Release Version](5-helm-troubleshooting.md#failed-to-find-the-previous-helm-release-version)
 * [Helm Install/Upgrade Failed](5-helm-troubleshooting.md#helm-install-upgrade-failed)
@@ -37,7 +37,7 @@ To fix this, upgrade Tiller:
 
 In some cases, the first Helm deployment goes to the upgrade path even though the Helm version is working fine.
 
-This is the result of a Helm issue: <https://github.com/helm/helm/issues/4169>.
+This is the result of a Helm issue: [https://github.com/helm/helm/issues/4169](https://github.com/helm/helm/issues/4169).
 
 The issue happens between Helm client versions 2.8.2 to 2.9.1. To fix this, upgrade the Helm client to the version after 2.9.1.
 
@@ -45,7 +45,7 @@ The issue happens between Helm client versions 2.8.2 to 2.9.1. To fix this, upgr
 
 A Helm install/upgrade can fail because Tiller is deployed in a namespace other than `kube-system`.
 
-To fix this, pass the`--tiller-namespace <NAMESPACE>`as command flag in the Workflow **Helm Deploy** step.
+To fix this, pass the`--tiller-namespace \<NAMESPACE>`as command flag in the Workflow **Helm Deploy** step.
 
 ![](./static/5-helm-troubleshooting-01.png)
 

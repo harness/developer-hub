@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/3_Authentication/1-authentication-overview.md).Administrators can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/authentication/authentication-overview.md).Administrators can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 
 * Enabling specific SSO (single sign-on) mechanisms and providers.
 * Enforcing password policies (strength, expiration, and lockout).
@@ -59,7 +59,7 @@ The **Allow login using Harness username/password** slider enables Harness' defa
 Select **Enforce password strength** to open the dialog shown below. This offers a field where you can specify and enforce minimum password length, and independent controls to require Harness passwords to include at least one uppercase letter, lowercase letter, numeral, and/or non-alphanumeric character.
 
 ![](./static/authentication-settings-216.png)
-If you enforce **Have at least 1 special character**, each password must include one (or more) of the following characters: `~!@#$%^&amp;*_-+=`|\(){}[]:;&quot;'&lt;&gt;,.?/`
+If you enforce **Have at least 1 special character**, each password must include one (or more) of the following characters: `~!@#$%^&amp;*_-+=`|\()\{}[]:;&quot;'&lt;&gt;,.?/`
 
 <!-- `~!@#$%^&*_-+=`|\(){}[]:;"'<>,.?/` -->
 

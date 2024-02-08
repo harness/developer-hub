@@ -1,11 +1,11 @@
 {
-  "position": 1,
-  "label": "Get started",
+  "position": 2,
+  "label": "Get started with CE",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Get started"
+      "title":"Get started with Harness Chaos Engineering (HCE)"
    },
   "customProps": {
     "description": "Overview of Harness Chaos Engineering"

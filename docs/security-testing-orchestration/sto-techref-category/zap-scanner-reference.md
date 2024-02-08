@@ -1,32 +1,50 @@
 ---
-title: Zed Attack Proxy (ZAP) Scanner Reference
-description: App instance scans using ​Zed Attack Proxy (ZAP)
-sidebar_position: 400
+title: Zed Attack Proxy (ZAP) scanner reference for STO
+description: Scan application instances with ​Zed Attack Proxy (ZAP).
+sidebar_label: Zed Attack Proxy (ZAP) scanner reference
+sidebar_position: 430
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Zed Attack Proxy (ZAP)](https://www.zaproxy.org/getting-started/) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
+[Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-## Zap step configuration
+For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap) tutorial.
 
-The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+## Important notes for running ZAP scans in STO
+
+ If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
+
+  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+### Docker-in-Docker requirements
 
-<details>
-    <summary>Step Palette</summary>
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-![](static/step-palette-00.png) 
+<StoDinDRequirements />
 
-</details>
+### Root access requirements
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+<StoRootRequirements />
+
+### For more information
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+<StoMoreInfo />
+
+## ZAP step settings for STO scans
+
+The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Scan
 
@@ -34,179 +52,160 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 #### Scan Mode
 
-```mdx-code-block
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
 
-<StoSettingScanMode />
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
-
 #### Scan Configuration
 
-```mdx-code-block
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
 The following options are supported for Zap scans:
-*  **Default** 
-*  **Standard**  — `scanMode` = `active`, `scanType` = `atandard`
-*  **Attack**  —  `scanMode` = `active`, `scanType` = `attack`
-*  **Quick**  —  `scanMode` = `active`, `scanType` = `standard`, `quickMode` = `true`
+
+-  **Default** 
+
+-  **Standard** `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`standard`](https://www.zaproxy.org/docs/desktop/start/features/modes/)
+
+-  **Attack**  `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`attack`](https://www.zaproxy.org/docs/desktop/start/features/modes/)
+
+-  **Quick**  `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`standard`](https://www.zaproxy.org/docs/desktop/start/features/modes/),  `quickMode` = `true` 
+
+   When Quick mode is enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
+
 
 ### Target
 
 #### Type
 
-```mdx-code-block
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-```
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
 <StoSettingScanTypeInst />
 
 
+<!-- #### Target and variant detection 
+
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectApp/>
+<StoSettingScanTypeAutodetectNote/       -->
+
 #### Name 
 
-```mdx-code-block
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-<StoSettingProductID />
+<StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-```mdx-code-block
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
+
 #### Workspace
 
-```mdx-code-block
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
 
-### Ingestion File
-
-```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
-
-<StoSettingIngestionFile  />
-
-### Instance 
-
-
-<!-- ============================================================================= -->
-<a name="instance-domain"></a>
+### Instance
 
 #### Domain
 
-```mdx-code-block
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
-```
-<StoSettingInstanceDomain />
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
 
-<!-- ============================================================================= -->
-<a name="instance-protocol"></a>
+
+<StoSettingInstanceDomain />
 
 #### Protocol
 
-```mdx-code-block
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
-```
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 
 <StoSettingInstanceProtocol />
 
-<!-- ============================================================================= -->
-<a name="instance-port"></a>
-
 #### Port
 
-```mdx-code-block
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
-```
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 
 <StoSettingInstancePort />
 
-<!-- ============================================================================= -->
-<a name="instance-path"></a>
-
 #### Path
 
-```mdx-code-block
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
-```
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 
 <StoSettingInstancePath />
 
-### Log Level, CLI flags, and Fail on Severity
+### Ingestion File
 
-<a name="log-level"></a>
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
+<StoSettingIngestionFile  />
+
+### Log Level, CLI flags, and Fail on Severity
 
 #### Log Level
 
-```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
-
 #### Additional CLI flags
 
-```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 
 <StoSettingCliFlags />
-
-<a name="fail-on-severity"></a>
 
 
 #### Fail on Severity
 
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
+
+<StoSettingFailOnSeverity />
 
 ### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 #### Advanced settings
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
-## Security step configuration (_deprecated_)
+## Security step settings for ZAP scans in STO (legacy)
 
-<details><summary>Set up a ZAP scan in a Security step</summary>
+:::note
+You can set up Zap scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Zap step](#zap-step-settings-for-sto-scans) instead.
+:::
 
 #### Scan policy types
 
@@ -215,7 +214,15 @@ STO supports the following scan policy types for ZAP:
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is easier to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
-#### Required Settings
+#### Target and variant
+
+
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+
+
+<StoLegacyTargetAndVariant />
+
+#### ZAP scan settings
 
 * `product_name` = `zap`
 * `scan_type` = `instance`
@@ -230,25 +237,15 @@ STO supports the following scan policy types for ZAP:
 * `instance_type` = `website`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Optional Settings
+#### Optional settings for ZAP scans
 
 * `instance_path` — Specify if the app URL includes a path beyond the domain. If you want to scan `https://app.my-domain.com/myModule/myApp`, the instance path is `myModule/myApp`.
 * `instance_port` — Specify if the site is accessed using a non-default port.
 
-#### Ingestion settings
+#### Ingestion
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
-
-</details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

@@ -1,5 +1,5 @@
 {
-  "position": 3,
+  "position": 6,
   "label": "Security",
   "collapsible": true,
   "collapsed": true,
@@ -8,6 +8,6 @@
       "title":"Security"
    },
   "customProps": {
-    "description": "Harness Chaos Security"
+    "description": "Security considerations and features across administrative and runtime environments"
   }
 }

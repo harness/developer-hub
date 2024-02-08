@@ -1,0 +1,15 @@
+{
+    "label": "Settings",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "25",
+
+    "link": {
+        "type": "generated-index",
+        "title": "Settings"
+    },
+    "customProps": {
+        "helpdocs_category_id": "fe0577j8ie"
+    }
+}

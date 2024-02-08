@@ -10,6 +10,12 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
 
 This topic describes how to use the Harness Feature Flags PHP SDK for your PHP application.
 
@@ -21,14 +27,14 @@ Important: Although the PHP SDK is a Server SDK, you must use a Client SDK Key t
 
 Make sure you've read and understood:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **0.1.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-php-server-sdk/releases)
 
 ## Requirements
 
@@ -41,7 +47,7 @@ To use this SDK, make sure you:  
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-php-server-sdk)
 * Create a PHP application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-php-server-sample).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -74,8 +80,8 @@ $SDK_KEY = getenv("SDK_KEY") ?: "";
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -187,6 +193,10 @@ $result = $client->evaluate($FLAG_NAME, false);
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
 
 ## Sample Code for a PHP Application
 

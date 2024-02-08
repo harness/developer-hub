@@ -10,9 +10,497 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
+Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
+For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
 
 Release notes are displayed with the most recent release first.
+
+## January 8, 2024, version 81720
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 81720 |
+| Delegate | 81604 |
+| Watcher | 80505 |
+| Verification Service | 81708 |
+| UI | 81701 |
+| Learning Engine | 67903 | 
+| Gateway | 1.15.0 |
+
+### Fixed issues
+
+- Audit trails were missing for deleted SCIM user groups. Added audits for Delete user group from SCIM to resolve the issue. (PL-38401)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
+
+## November 30, 2023, version 81310
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 81310 |
+| Delegate | 81010 |
+| Watcher | 80505 |
+| Verification Service | 81308 |
+| UI | 81300 |
+| Learning Engine | 67903 |
+
+### New features and enhancements
+
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
+
+### Fixed issues
+
+- The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009)
+
+  This issue has been fixed.
+
+- Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
+
+- Fixed an issue related to the decryption of secrets with curly braces in their value. (PL-41943, ZD-52075)
+
+## November 1, 2023, version 80909
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 80909 |
+| Delegate | 80810 |
+| Watcher | 80505 |
+| Verification Service | 80909 |
+| UI | 80900 |
+| Learning Engine | 67903 | 
+| Gateway | 11402 |
+
+### New features and enhancements
+
+This release does not include new features and enhancements.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+- Fixed the delegate task *acquire call* retry flow in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the *acquire call* retry flow. Tasks timed out because the delegate couldn't acquire the data. To fix this issue, the 'taskData' field in Harness Manager is now populated. (PL-40646)
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
+
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an appropriate message. Instead, it showed the following message and prompted you to refresh your browser page to continue: “Something went wrong... This error has been reported and we are looking into it with high priority.” (PL-40957, ZD-49757)
+
+  This issue has been fixed. The Harness UI now shows you a more appropriate message in the Change Log dialog.
+
+- The **Secrets** dropdown list on the Services page didn't include all available secrets. The list now includes all secrets, up to the maximum of 1000. (PL-41308, ZD-50687)
+
+- A few pages about environment and service were missing access checks, allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+
+  This issue has been resolved, and the desired access check has been applied.
+
+- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running the Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
+
+- Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
+
+- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+
+- Fixed a dashboard issue where a custom widget did not display monthly data that was more than 8 months old. With this fix, the custom widget will now display monthly data correctly. (CDS-79523, ZD-50750)
+
+- Perpetual tasks in Delegate version 80505 threw Kryo issues because of the addition of a new field in instances. This can be seen if instances are not getting updated for older releases. (CDS-79911)
+
+  This issue is now fixed.
+
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## July 31, 2023, patch release for version 79819
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79819 |
+| Watcher | 78424 |
+| Verification Service | 79819 |
+| UI | 79800 |
+| Learning Engine | 67903 | 
+| Gateway | 11201 |
+
+### What's new
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+- Enhanced the application handling mechanism when the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+
+- You can now skip steady state checks for native Helm deployments. This helps avoid Harness running unnecessary checks for resources where this is not required. This option is available in Helm Deployment and Helm Rollback steps. This feature requires delegate version 1.0.797xx or higher. (CDS-70124)
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+
+   Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+
+   The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off.
+
+   This issue is fixed.
+
+- Fixed an issue where the Google Cloud Build (GCB) triggers were throwing an invalid credentials error intermittently. (CDS-70560, ZD-40187)
+
+   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+
+- Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
+
+  This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
+
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) and [connect timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+
+  The environment variables for these timeouts are:
+
+  - Read timeout: `K8S_API_CLIENT_READ_TIMEOUT`
+  - Connect timeout: `K8S_API_CLIENT_CONNECT_TIMEOUT`
+
+- The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
+
+   This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
+
+### July 12, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.2](https://github.com/harness/helm-charts/releases/tag/harness-0.7.2) |
+| Air Gap Bundle | [0.7.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.2) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade. Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition. (CDB-981) (CDS-74271)
+
+   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. If your installation includes custom dashboards, you can now view CD data, including:
+
+   - Total amount of deployed applications
+   - Total number of deployments
+   - Total number of production versus non-production deployments and the percentage of each
+   - Percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
+   - Change failure rate/reason for failed deployments
+  
+  To enable custom dashboards, you must:
+  
+  1. Run the commands below to update your Harness database.
+  2. Add settings to your `override.yaml` file.
+  
+     Update your Harness database with the following commands.
+
+      ```
+      db.elasticsearchPendingBulkMigrations.remove({})
+      db.searchEntitiesIndexState.insertMany([{
+         "_id" : "software.wings.search.entities.workflow.WorkflowSearchEntity",
+         "indexName" : "workflows_0.2_1688472585962",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.pipeline.PipelineSearchEntity",
+         "indexName" : "pipelines_0.2_1688472585989",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.environment.EnvironmentSearchEntity",
+         "indexName" : "environments_0.2_1688472585980",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.service.ServiceSearchEntity",
+         "indexName" : "services_0.2_1688472585992",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.application.ApplicationSearchEntity",
+         "indexName" : "applications_0.2_1688472585986",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.deployment.DeploymentSearchEntity",
+         "indexName" : "deployments_0.1_1688472585984",
+         "recreateIndex" : false,
+         "syncVersion" : "0.1"
+     }])
+     ```
+   
+      Add the following entries to your `override.yaml` file.
+   
+      ```yaml
+       platform:
+         harness-manager:
+            additionalConfigs:
+              SEARCH_ENABLED: 'true'
+            featureFlags:
+              ADDITIONAL: "CUSTOM_DASHBOARD_V2,TIME_SCALE_CG_SYNC" #add additional feature flags comma-separated.
+     ```
+
+### July 7, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.1](https://github.com/harness/helm-charts/releases/tag/harness-0.7.1) |
+| Air Gap Bundle | [0.7.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.1) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+- Custom dashboard support is added for Continuous Delivery & GitOps and Service Reliability Management data models. (SMP-1585) 
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+This release does not include any fixed issues.
+
+### June 30, 2023, version 79421
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79421 |
+| Watcher | 78424 |
+| Verification Service | 79421 |
+| UI | 79401 |
+| Learning Engine | 67903 | 
+| Gateway | 11002 |
+
+#### What's new
+
+#### Harness Delegate
+
+- The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
+  
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continues polling on accounts for which feature flags are enabled.
+
+- Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
+
+- The ASG Rollback auto-scaling step failed with an exception. (CDS-68533, ZD-43354)
+  
+  Fixed this issue by adding a back-off strategy support for ASG deployments.
+
+#### Harness Delegate
+
+- Secret decryption failures were not included in logs. (PL-31517)
+
+   A code enhancement to return runtime errors from secret managers during decryption fixed this issue.
+
+#### Harness Platform
+
+-  No members appear in user group list even after the user has been added via SCIM. This issue is fixed. (PL-32482)
+
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
+
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+   
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+### June 14, 2023, version 79230
+
+Delegate: 78924
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79230 |
+| Delegate | 78924 |
+| Watcher | 78424 |
+| Verification Service | 79230 |
+| UI | 79202 |
+| Learning Engine | 67708 | 
+| Gateway | 10701 |
+
+#### What's new
+
+#### Harness Delegate
+
+- Removed the `DELEGATE_IMAGE_TAG` version override when delegates with the immutable image type are enabled. (PL-37852, DEL-6202)
+
+- Updated legacy delegate images `kubectl` version to 1.25.8. (PL-38281, DEL-6087)
+
+#### Early access
+#### Continuous Delivery & GitOps
+
+- Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
+
+	This change is behind the feature flag `PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`.
+	
+	Pipelines were waiting on resource constraints although no other deployment was running with the same service and infrastructure definition combination. 
+	
+	Resource Constraints were scoped too broadly, so users' pipelines went into a wait state.
+	
+	This was because of other pipelines in other projects with the same infrastructure configuration. 
+	
+	This has now been changed by scoping resource constraints to the project.
+
+#### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
+  
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response.
+	
+	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
+
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+
+#### Harness Delegate
+
+- Shell delegates did not upgrade automatically. Delegate URLs were not included in installation scripts. (PL-38304, DEL-6276)
+
+   This issue is fixed with a code enhancement.
+
+- Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
+
+### April 26, 2023, version 78926
+
+Delegate: 78904
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78926 |
+| Delegate | 78904 |
+| Watcher | 78424 |
+| Verification Service | 78926 |
+| UI | 78901 |
+| Learning Engine | 67708 | 
+| Gateway | 2000185 |
+
+#### What's new
+#### Harness Platform
+- Upgrades have been made to the following libraries:
+
+  - The Spring Data MongoDB package has been upgraded to version 3.4.7.
+  - Spring Data Commons has been upgraded to version 2.77.
+  - The MongoDB Java Driver has been upgraded to version 4.6.1. (PL-30730)
+- The API keys will now be encrypted with Harness Global Secrets Manager. (PL-30970)
+#### Delegate
+- Harness Delegate task collections were migrated to a new database. (DEL-5831) 
+
+  This migration is controlled through a configuration flag. For a period of time after the migration, any newly created tasks will have an ID with a **- DEL** suffix.
+- Users can override the delegate image for their account using an endpoint. (DEL-6024)
+
+  Use the following endpoint: 
+
+  - /version-override/delegate-tag
+
+  Pass the arguments in query param:
+
+  - 1- accountIdentifier : String
+
+  - 2- delegate image tag : String
+
+  Optional arguments:
+
+  - 1- validTillNextRelease : Boolean
+
+  - 2- validForDays : int
+
+  Use an api-key with account edit permission in the API header.
+#### Fixed issues
+#### Continuous Delivery & GitOps
+- When manually triggering the workflow, there is an issue preventing the selection and retrieval of GCS artifacts. (CDS-53074)
+
+  A code enhancement has fixed this issue.
+#### Harness Platform
+- When a secret is used to create a Prometheus connector, the setup usage is not displayed. (PL-30755)
+  
+  A code enhancement has fixed this issue.
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+#### Delegate
+- Upgraded org.codehaus.groovy:groovy to 3.0.15 to fix a vulnerability. (DEL-6015)
+- API output includes a new field called **Disconnected**, which determines if a delegate is connected. (DEL-5995)
+
+  The **Disconnected** field is set to **true** if no heartbeat communications occur between the delegate and the Harness Manager for five minutes. 
 
 ### March 14, 2023, version 78426
 
@@ -30,7 +518,7 @@ This release includes the following module and component versions.
 | Learning Engine | 66700 | 
 | Gateway | 2000149 |
 
-#### New features and enhancements
+#### What's new
 
 - The **kotsadmin minor version** is upgraded from 1.88.0 to 1.95.0. (SMP-835)
 
@@ -58,11 +546,11 @@ This release includes the following module and component versions.
 
   1. Get the current featureCompatibiltyVersion. It should be 4.2 if it is using mongo 4.2:
 
-          db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
+          db.adminCommand( \{ getParameter: 1, featureCompatibilityVersion: 1 } )
 
   2. If the current version isn't 4.2, execute into Primary and run:
 
-          db.adminCommand( { setFeatureCompatibilityVersion: "4.2" } )
+          db.adminCommand( \{ setFeatureCompatibilityVersion: "4.2" } )
 
   3. Determine if the pods are in sync. Make sure they're in sync before you upgrade (the maximum time lag is ~2sec). 
 
@@ -74,7 +562,7 @@ This release includes the following module and component versions.
 
    5. Once you're upgraded, update the Feature Compatibility version so that it's used for future upgrades.
 
-           db.adminCommand( { setFeatureCompatibilityVersion: "4.4" } )
+           db.adminCommand( \{ setFeatureCompatibilityVersion: "4.4" } )
 
   For more information, go to [Upgrade a Replica Set to 4.4](https://www.mongodb.com/docs/manual/release-notes/4.4-upgrade-replica-set/) in the MongoDB docs.
 
@@ -156,7 +644,7 @@ This release includes the following module and component versions.
 | Learning Engine | 66700 | 
 | Gateway | 2000137 |
 
-#### New features and enhancements
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -188,7 +676,7 @@ This release introduces the following features and enhancements.
   | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
   | `io.netty:netty-transport:4.1.77.Final` |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -200,7 +688,7 @@ This release includes the following fixes.
   When the customer uses fields for Deployments Tags, the queries became extremely slow.  
   Removed a few unused indexes and added a few indexes to improve the speed of queries.
 
-- Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
+- Rollback artifact number (`$\{rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
   Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
   For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
 
@@ -246,7 +734,7 @@ kubectl kots admin-console upgrade -n <namespace>
 ```
 :::
 
-#### New features and enhancements
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -255,7 +743,7 @@ This release introduces the following features and enhancements.
 | CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
 | CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
 | CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
-| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md). |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/). |
 | DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
 | DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
 | DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
@@ -264,7 +752,7 @@ This release introduces the following features and enhancements.
 |          | Additionally, LDAP user group sync will not use a quartz job. Instead, the `cron`-based scheduler will use the user-configured `cron` expression. The default value remains set to a 15-minute interval. |
 | PL-29603 | Upgraded `org.mongodb:mongo-java-driver` to version 3.12.11 to fix vulnerabilities. |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -304,7 +792,7 @@ This release includes the following fixes.
 
 Delegate: 77021
 
-#### New features and enhancements.
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -316,7 +804,7 @@ This release introduces the following features and enhancements.
 | CDS-43911 | The user interface was changed to display the user email for approvals submitted using an API key. The information is shown in the **Approved via API by** field, in the **Details** section. |
 | DEL-4433 | Upgraded Bouncy Castle Crypto API component `org.bouncycastle:bcprov-exte-jdk15on` to version 1.70. |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -336,7 +824,7 @@ This release includes the following fixes.
 
 Delegate: 76818
 
-#### New features and enhancements.
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -348,13 +836,13 @@ This release introduces the following features and enhancements.
 | DEL-4807 | Published a new delegate that is immutable. |
 | DEL-4889 | The specification of the `delegateGroup` version was changed for the Immutable delegate. The value was changed to the minimum version of the delegate. Formerly the `delegateGroup` variable contained a list of version numbers. |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
 | **Issue** | **Description** |
 | --- | --- |
-| CDS-41129ZD-32913 | For this FF `OPTIMIZED_TF_PLAN` shell script step will not fail if for `${terraformPlan.jsonFilePath()}` expression instead the value of this expression will be null. |
+| CDS-41129ZD-32913 | For this FF `OPTIMIZED_TF_PLAN` shell script step will not fail if for `$\{terraformPlan.jsonFilePath()}` expression instead the value of this expression will be null. |
 | CDS-41232 | Introduced new fields `parent_pipeline_id` and `created_by_type` in timescaledb. |
 | CDS-41357ZD-32975 | Throw exception if the nexus artifact URL is empty. |
 | CDS-41544ZD-33364 | Workflow variables that uses secret variables and are referenced in pipelines are encrypted |
@@ -380,7 +868,7 @@ This release includes the following fixes.
 
 Delegate: 76614
 
-#### New Features and Enhancements
+#### What's new
 
 This release introduces the following features and enhancements:
 
@@ -394,11 +882,11 @@ This release introduces the following features and enhancements:
 | PL-25423 | The CyberArk utility has been removed from the Delegate JAR file. This utility was formerly imported as `org.bouncycastle.util.io.pem.PemObject` and `org.bouncycastle.util,io.pem.PemReader`. |
 | PL-26819 | Functionality that was formerly gated by the `CG_RBAC_EXCLUSION` feature flag is now globally available. The feature flag has been removed. |
 
-#### Issues Fixed in This Release
+#### Fixed issues
 
 | **Issue** | **Description** |
 | :-- | :-- |
-| CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `${terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
+| CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `$\{terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
 | CDS-41232 | The `parent_pipeline_id` and `created_by_type` fields were introduced in `timescaledb`. |
 | CDS-41357ZD-32975 | A change was made to cause an exception to be generated if the field for the nexus artifact URL is empty. |
 | CDS-41544ZD-33364 | Changed the handling of workflow variables that use secret variables and are referenced in pipelines. These variables are now encrypted. |
@@ -433,7 +921,7 @@ To update KOTS admin console:
 curl https://kots.io/install/1.78.0 | bash  
 kubectl kots admin-console upgrade -n <namespace>
 ```
-#### New Features and Enhancements
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -456,7 +944,7 @@ The discovery process checks the following locations in the order given; the fir
 
 N/A
 
-#### Issues Fixed in This Release
+#### Fixed issues
 
 * Clarified the process used to obtain the correct artifact for rollback. The process was changed to distinguish between the artifacts used when multiple workflows are deployed in succession by the same service on the same infrastructure. This corrects a problem with rolling back to the same artifact that was already deployed. (CDS-35655, ZD-29101, ZD-32440)
 * Modified code to display an error in the UI when an application resize step error occurs. (CDS-39556)
@@ -465,7 +953,7 @@ N/A
 * Added the `REMOVE_USERGROUP_CHECK` Feature Flag to allow the correction of YAML-based configuration files in the YAML editor. This resolved an issue some customers experienced when a User Group ID was found to be invalid in YAML files belonging to a pipeline. (CDS-39770, ZD 32247, CD-32379)
 * The process used to collect Helm chart manifests was changed to omit database updates during deployment. Eliminating the database update allows the collection step to succeed. (CDS-40054, ZD-32179)
 * The Feature Flag `EXTRA_LARGE_PAGE_SIZE` was introduced to increase the maximum page count from 1200 to 3000. The size restriction caused problems with the population of values in an infrastructure definition. (CDS-40271, ZD-31625)
-* The handling of Terraform Plan (TP) files has been changed. Enabling the `ANALYZE_TF_PLAN_SUMMARY` Feature Flag makes the following expressions available after the Terraform Plan step: `${terraformApply.add}`, `${terraformApply.change}`, and `${terraformApply.destroy}`. The following expressions are available after the Terraform Destroy Plan step: `${terraformDestroy.add}`, `${terraformDestroy.change}`, and `${terraformDestroy.destroy}`. If there are no changes, the plan is not uploaded to the configured Secret Manager, regardless of the checked export option in the Terraform Plan step. (CDS-40341, ZD-31827, ZD-32632)
+* The handling of Terraform Plan (TP) files has been changed. Enabling the `ANALYZE_TF_PLAN_SUMMARY` Feature Flag makes the following expressions available after the Terraform Plan step: `$\{terraformApply.add}`, `$\{terraformApply.change}`, and `$\{terraformApply.destroy}`. The following expressions are available after the Terraform Destroy Plan step: `$\{terraformDestroy.add}`, `$\{terraformDestroy.change}`, and `$\{terraformDestroy.destroy}`. If there are no changes, the plan is not uploaded to the configured Secret Manager, regardless of the checked export option in the Terraform Plan step. (CDS-40341, ZD-31827, ZD-32632)
 * Modified JavaScript to eliminate an empty enumeration error that occurred during attempts to add AMI artifact sources. The error interfered with tag creation. The proper workflow has been restored. (CDS-40416)
 * Changed how environment and service variables are resolved to ensure that expressions that resolve to null before the pipeline workflow stage are not discarded. Retaining the expression allows for the correct resolution of environment and service variables in the environment and service. (CDS-40493)
 * Changed the handling of custom webhook triggers to allow users to see the disabled artifacts in a push event. (CDS-40884)
@@ -490,7 +978,7 @@ N/A
 Before you upgrade to this release, you must run the following **timescaledb\_upgrade.sh** script against your Harness namespace to update Timescale DB.  
 :::
 
-### timescaledb\_upgrade.sh
+**timescaledb\_upgrade.sh**
 
 ```
 #!/bin/bash  
@@ -505,7 +993,7 @@ schema_ver=`kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_
   
 ###  
   
-function checkret() {  
+function checkret() \{  
         if [ $? -ne 0 ]; then  
           echo "[FAIL]" ; exit 1  
         else  
@@ -536,7 +1024,7 @@ function checkret() {
 echo "Schema version = $schema_ver"  
 echo -n "Updating schema version $schema_ver to 0 for tsdb..."  
   
-kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_URI" --quiet --eval "db.schema.update({"version": $schema_ver}, { \$set : {"timescaleDbVersion" : 0, "timescaleDBDataVersion" :0}})" &>>$log  
+kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_URI" --quiet --eval "db.schema.update(\{"version": $schema_ver}, \{ \$set : \{"timescaleDbVersion" : 0, "timescaleDBDataVersion" :0}})" &>>$log  
         checkret  
   
 echo -n "Taking dump of postgres..."  
@@ -597,7 +1085,7 @@ Any issues, please contact support@harness.io" ; exit 0
 ```
  We're pleased to present Harness Self-Managed Enterprise Edition Minor Release 76025.
 
-#### New Features and Enhancements
+#### What's new
 
 ##### Platform and Delegate
 
@@ -612,10 +1100,10 @@ Any issues, please contact support@harness.io" ; exit 0
 #### Continuous Deployment
 
 * Separated the endpoints used for monitoring from those used by agents for instance sync. This improves monitoring and problem identification (CDS-38387)
-* Changed custom deployments to eliminate polling and permit an empty artifact source script. If no script is specified, the deployment uses the provided artifact version and version information is available in the artifact variable`${artifact.*}` (CDS-34235)
+* Changed custom deployments to eliminate polling and permit an empty artifact source script. If no script is specified, the deployment uses the provided artifact version and version information is available in the artifact variable`$\{artifact.*}` (CDS-34235)
 * You can now update/create Jira issues with fields of type `user`. (CDS-28853, ZD-237529)
 
-#### Issues Fixed in This Release
+#### Fixed issues
 
 * Resolved a schema problem that caused GraphQL API to fail with "TypeError: Type SecretManagerConfig must define one or more fields." The failure occurred when schema validation was enabled (PL-26534, ZD-32450, ZD-32477, ZD-32501)
 * Application Permissions under User Groups does not load (PL-26111, ZD-32018)
@@ -670,7 +1158,7 @@ Fix: We now first apply the pattern filter to all artifacts and then limit it to
 * Added more details when Helm deploy task fails because of connectivity issues with K8s cluster (CDS-38663)
 * Customer will be able to use Terragrunt Destroy Step even with underlying terraform version > 15.0.0 (CDS-38662, ZD-31506)
 * Fixed an issue when application defaults are configured using code (CDS-38624 ZD-31467)
-* Manifest collection directory is changed from /manifest-collection-{app-manifest-id}/ to /manifest-collection/{app-manifest-id} to reduce clutter in home folder (CDS-38543, ZD-30994)
+* Manifest collection directory is changed from `/manifest-collection-{app-manifest-id}/` to `/manifest-collection/{app-manifest-id}` to reduce clutter in home folder (CDS-38543, ZD-30994)
 * While picking previous approvals to reject with auto reject previous approvals feature, only workflows waiting on same approval step is considered (CDS-38525)
 * With this FF on, a static timeout of 3min is added in git fetch operation in K8s and Native helm swimlanes in CG (CDS-38492, ZD-31294)
 * User group could have been deleted if they were part of deployment freeze which led to dangling references in freeze windows. Going forward user group can't be deleted if they are part of deployment freeze (CDS-038177)
@@ -700,7 +1188,7 @@ We're pleased to present Harness On-Premise Minor Release 75281.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -720,7 +1208,7 @@ The following new features were added to the Harness platform components:
 * Remove iterator logging and build first class support with OpenCensus.
 	+ As part of streamlining our monitoring and reducing the cost of logging, all the background jobs metrics are moved from log based metrics to OpenCensus metrics providing us better visibility into our critical paths. (DEL-3835)
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * cURL query for createFreeze window returns error message on using API key (PL-24899, ZD-29519, ZD-30296)
 * Delayed Sync with Harness UI and Github Config as Code Repository. We had some slowness in case a file was renamed in Harness -→ git. We have improved it going forward. (PL-24662, ZD-28316)
@@ -730,7 +1218,7 @@ The following new features were added to the Harness platform components:
 * delegateScopeList API call not working. Fixed the bug of listing Delegate scopes when the environment is not provided (DEL-3991, ZD-30462)
 * Added support for special characters in proxy password for delegate proxying. (DEL-3348, ZD-26493)
 * Triggers fail when optional input of type allowed values is not passed in the payload. Issue scenario: If you had an optional workflow variable with some allowed values, and the value was not provided for that workflow variable in trigger payload, and trigger executions starting failing with error: Trigger rejected because a passed workflow variable was not present in allowed values. Fix: Changed the validation to only occur when variable value is provided in trigger. (CDS-37510, ZD-30760, ZD-30769, ZD-30773, ZD-30777, ZD-30782, ZD-30797, ZD-30798, ZD-30810, ZD-30812)
-* Bamboo step is failing and Delegate is throwing Class is not registered: software.wings.delegatetasks.BambooTask$BambooExecutionResponse execption (CDS-37264, ZD-30567)
+* Bamboo step is failing and Delegate is throwing Class is not registered: software.wings.delegatetasks.BambooTask$BambooExecutionResponse exception (CDS-37264, ZD-30567)
 * SSH Step -> Download Artifact: NPE with DownloadArtifactCommandUnit.java. Gives UNKNOWN\_ERROR on the UI (CDS-37193, ZD-30299, ZD-30498, ZD-30499)
 * ArtifactMetadataEvaluator Class is not registered in QA (CDS-37055)
 * Artifactory Docker autosuggestion shows wrong value for Artifactory on-prem/server for "Docker Repository Server" (CDS-36996, ZD-30023, ZD-30402, ZD-30568, ZD-30623, ZD-30628)
@@ -763,12 +1251,12 @@ The following new features were added to the Harness platform components:
 
 We're pleased to present Harness Self-Managed Enterprise Edition Minor Release 74969.
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features and enhancements were added to Harness Self-Managed Enterprise Edition:
 
 * Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)
-	+ See [Secure Delegates with Tokens](../../platform/2_Delegates/secure-delegates/secure-delegates-with-tokens.md).
+	+ See [Secure Delegates with Tokens](../../platform/delegates/secure-delegates/secure-delegates-with-tokens.md).
 * Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag`FF APP_TELEMETRY`. (CDS-35193)
 	+ See [Publish Workflow Events](../continuous-delivery/concepts-cd/deployments-overview/publish-workflow-events-to-an-http-endpoint.md).
 	+ See [Publish Pipeline Events](../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).
@@ -777,7 +1265,7 @@ The following new features and enhancements were added to Harness Self-Managed E
 * We are reducing the heap size of Current Gen Delegate processes from 4gb to 1.5gb. We are also reducing the k8 memory requirement from 8gb to 4gb. This is behind a feature flag and will be rolled out with various accounts. (DEL-3365)
 * We now have the new application filter component that supports API-driven BE search as well as infinite scrolling. So we won't fetch all the applications at once, but instead fetch them in a batch size of 15 and relevant to the search text typed. (CDS-36365)
 
-#### Issues Fixed​
+#### Fixed issues
 
 * We have removed the Walkme integration from Harness. (PLG-988, ZD-30008)
 * When pasting the YAML definition in a Workflow, the Update failed. Reason: NullPointerException error message was thrown without any reason for the failure. (PL-24456, ZD-29097)
@@ -850,7 +1338,7 @@ Harness accounts that use [Single Sign-On (SSO) with SAML](../firstgen-platform/
 
 ![](./static/harness-on-prem-release-notes-12.png)
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -867,7 +1355,7 @@ The following new features were added to the Harness platform components:
 * When you edit a Helm Connector (except the credentials and name), previously collected Helm charts will get deleted and updated. We now show a Confirm | Cancel dialog box so you have the option to cancel the operation. (CDS-29032)
 * The Deployments page has new options for configuring rollbacks after provisioning from a manual intervention, action after retries, and normal rollback vs. rollback after provisioning. (CDS-28963)
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * Anonymous users sometimes report Refiner surveys in CG. (PLG-782)
 * Infinite scroll has been added to the User Groups list page. You can also search for your user groups in this page. A search fetches all user groups across the application. (PL-20963. ZD-18775, ZD-20187, ZD-21829, ZD-26436, ZD-28694)
@@ -922,7 +1410,7 @@ See [Select Nodes Workflow Step](../firstgen-platform/techref-category/cd-ref/w
 
 * N/A
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * N/A
 
@@ -948,17 +1436,17 @@ We're pleased to present Harness On-Premise Minor Release 73610.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
 ##### Platform
 
-* Add Azure Active Directory users that belong to more than the 150 group limit (PL-21670) via SAML.
-	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+* Add Microsoft Entra ID (formerly Active Directory) users that belong to more than the 150 group limit (PL-21670) via SAML.
+	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID (formerly Active Directory) limits the number of groups it will emit in a token to 150 for SAML assertions.
 	+ To add users that belong to more than 150 groups, you simply add the Client ID and secret for your registered app to Harness.
 	+ This feature is behind the feature flag `AZURE_SAML_150_GROUPS_SUPPORT`.
-	+ See [SAML SSO with Azure Active Directory](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
+	+ See [SAML SSO with Microsoft Entra ID (formerly Active Directory)](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
 
 ##### CD
 
@@ -968,7 +1456,7 @@ The following new features were added to the Harness platform components:
 * You can now pull Helm Charts of a specific version when needed from the manifest history by selecting **Manually pull artifact** in the Harness Service. This version can then be used in future deployments and is useful when Helm Chart collection is disabled. (CDC-16422)
 	+ [Deploy Helm Charts](../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md).
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * N/A
 
@@ -994,11 +1482,11 @@ We're pleased to present Harness On-Premise Minor Release 73406.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 * N/A
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * VMSS: `downsizeOldVMSS` appears as `downsizeOldVMSSS` (with extra s) in YAML (CDP-19407)
 	+ In Config-as-Code for Azure VMSS BG Workflow, the `downsizeOldVMSSS` field in YAML had a typo: extra s. Fixed by updating the State field name which is directly reflected in YAML files.
@@ -1036,7 +1524,7 @@ We're pleased to present Harness On-Premise Minor Release 73225.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -1062,7 +1550,7 @@ The following new features were added to the Harness platform components:
 
 * N/A
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * Pipeline failed with Workflow grayed out (CDC-15677, CDC-16042, ZD-20466)
 	+ When pipeline had many stages in parallel, pipeline execution used to intermittently fail with workflow being grayed out. We suspected the root cause of this to be a race condition between threads. We did fix it and added log lines to confirm the fix.
