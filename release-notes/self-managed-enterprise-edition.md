@@ -15,6 +15,14 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
 
+:::danger Do not upgrade
+
+We have discovered an issue with SMP releases 0.12.0, 0.13.0, 0.13.1, and 0.13.2 where you might face an issue with logs in the UI. 
+
+Please don't upgrade to these releases. We are working to publish a new patch release, and we will update this page with the patch release notes as soon as it's deployed.
+
+:::
+
 :::info About Harness Release Notes
 
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
