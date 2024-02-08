@@ -91,7 +91,7 @@ Harness officially supports the following plugins.
 | Gitea Release | Publish files and artifacts to Gitea Release | [drone-gitea-release](https://github.com/drone-plugins/drone-gitea-release) | plugins/gitea-release |
 | Gitee Pulls | Update comments, labels, and tests in Gitee PRs | [drone-plugin-gitee-pulls](https://github.com/kit101/drone-plugin-gitee-pulls) | kit101z/drone-plugin-gitee-pulls |
 | GitHub Actions | [Run a GitHub Action](./run-a-git-hub-action-in-cie.md) | [github-actions](https://github.com/drone-plugins/github-actions) | plugins/github-actions |
-| GitHub Changelog Generator | Create a changelog file based on GitHub tags that you can then upload to a desired location via other plugins or pipeline steps | [drone-github-changelog-generator](https://github.com/naorlivne/drone-github-changelog-generator) | naorlivne/drone-github-changelog-generator |
+| GitHub Changelog Generator | Create a changelog file based on GitHub tags that you can then upload to a desired location via other plugins or pipeline steps | [drone-github-changelog-generator](https://plugins.drone.io/plugins/github-changelog-generator) | naorlivne/drone-github-changelog-generator |
 | Github Comment | Update the build status on a GitHub Pull Request (This can be an alternative or addition to [Harness CI's built-in SCM status updates](../codebase-configuration/scm-status-checks.md).) | [drone-github-comment](https://github.com/gradeup/drone-github-comment) | codehimanshu/gitdrone |
 | GitHub Pages | Publish static websites to GitHub | [drone-gh-pages](https://github.com/drone-plugins/drone-gh-pages) | plugins/gh-pages |
 | GitHub Release | Publish files and artifacts to GitHub Release | [drone-github-release](https://github.com/drone-plugins/drone-github-release) | plugins/github-release |
@@ -119,25 +119,25 @@ Harness officially supports the following plugins.
 | Kubevious | Detect and prevent errors (typos, misconfigurations, conflicts, inconsistencies) and violations of best practices for Kubernetes applications and clusters | [cli](https://github.com/kubevious/cli) | kubevious/cli |
 | Line | Post build status messages to a Line channel | [drone-line](https://github.com/appleboy/drone-line) | appleboy/drone-line |
 | Load and Store | Build and push images to a Docker registry (This is useful when you can't use the [built-in Build and Push to Docker step](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md), such as when building Docker images with nix, which produces a Docker image archive) | [drone-load-and-store](https://github.com/allgreed/drone-load-and-store) | allgreed/drone-load-and-store |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Manifest | Push manifest for [multi-architecture Docker images](../build-and-upload-artifacts/build-multi-arch.md) | [drone-manifest](https://github.com/drone-plugins/drone-manifest) | plugins/manifest |
+| Marathon | Deploy apps to a Marathon server | [drone-marathon](https://github.com/expansioncap/drone-marathon) | e20co/drone-marathon |
+| Matrix | Send build success/failure messages to a Matrix room | [drone-matrix](https://github.com/drone-plugins/drone-matrix) | plugins/matrix |
+| Maven Auth | Generate `settings.xml` with server authentication for a Maven repository | [drone-mvn-auth](https://github.com/robertstettner/drone-mvn-auth) | robertstettner/drone-mvn-auth |
 | Mercurial | Clone a Mercurial repository | [drone-hg](https://github.com/drone-plugins/drone-hg) | plugins/hg |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Metronome | Deploy apps to a Metronome server | [drone-metronome](https://plugins.drone.io/plugins/metronome) | naorlivne/drone-metronome |
+| Netlify | Deploy your build to Netlify | [drone-netlify](https://github.com/lucaperret/drone-netlify) | https://github.com/lucaperret/drone-netlify |
+| Newrelic Deployment | Report/log deployments to a Newrelic dashboard | [newrelic-deployment](https://github.com/cityfurniture/newrelic-deployment) | cityfurniture/drone-newrelic-deployment |
+| Nomad | Deploy services from a Nomad template file | [drone-nomad](https://github.com/loq9/drone-nomad) | loq9/drone-nomad |
+| Now | Deploy your build to `now.sh` | [drone-now](https://github.com/lucaperret/drone-now) | lucap/drone-now |
+| NPM | Publish libraries to publish or private registries | [drone-npm](https://github.com/drone-plugins/drone-npm) | plugins/npm |
+| NPM Auth | Generate a `.npmrc` file locally to authenticate against any public/private NPM repository | [drone-npm-auth](https://github.com/robertstettner/drone-npm-auth) | robertstettner/drone-npm-auth |
+| OpenFaaS | Build and deploy functions to the OpenFaaS Gateway | [drone-openfaas](https://github.com/knovus/drone-openfaas) | knovus/drone-openfaas |
+| Packer | Build automated machine images with Packer | [drone-packer](https://github.com/appleboy/drone-packer) | appleboy/drone-packer |
+| PyPI | Publish Python pypi packages | [drone-pypi](https://github.com/drone-plugins/drone-pypi) | plugins/pypi |
+| Rancher | Deploy a Docker image to a Rancher environment | [drone-rancher](https://github.com/josmo/drone-rancher) | pelotech/drone-rancher |
+| Rancher Stack v1 | Deploy/update an entire Rancher stack (instead of a single service) to Rancher v1.6 | [drone-rancher-stack-v1](https://github.com/wayneconnolly/drone-rancher-stack-v1) | dubc/drone-rancher-stack-v1 |
+| Rocket.Chat | Send messages to a Rocket.Chat channel | [drone-rocket](https://github.com/mike1pol/drone-rocket) | mike1pol/drone-rocket |
+| Rsync | Transfer files to remote machines and then run a user-defined script | [drone-rsync](https://github.com/drillster/drone-rsync) | drillster/drone-rsync |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
