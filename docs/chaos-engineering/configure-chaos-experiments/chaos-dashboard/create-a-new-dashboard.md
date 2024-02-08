@@ -68,4 +68,4 @@ You can find the definitions for many of the fields [here](../../get-started/key
 
 ## Next steps
 
-[Best practices to build effective dashboards](../../../platform/dashboards/dashboard-best-practices) 
+* [Best practices to build effective dashboards](../../../platform/dashboards/dashboard-best-practices) 
