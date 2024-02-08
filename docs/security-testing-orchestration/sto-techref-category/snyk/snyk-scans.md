@@ -116,9 +116,12 @@ The scan stage in this pipeline has the following steps:
 
       `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`
 
+      <!-- 
       Your Run step should now look like this:
 
       ![](../static/snyk-scans-run-step-01.png)
+
+      -->
 
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
