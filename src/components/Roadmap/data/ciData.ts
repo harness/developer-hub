@@ -1,9 +1,6 @@
 import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
-import { Horizon } from "./roadmapData";
-
-export const CiData: Horizon = {
   Now: {
     description: "What is being delivered now",
     feature: [
