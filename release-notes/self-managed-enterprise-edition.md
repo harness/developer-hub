@@ -103,6 +103,48 @@ gsutil -m cp \
 
 - Fixed UI logging issues for release versions 0.12.0, 0.13.0, 0.13.1, and 0.13.2. (PL-46771, ZD-57141)
 
+## February 8, 2024, patch version 0.12.1
+
+### New features and enhancements
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.12.1](https://github.com/harness/helm-charts/releases/tag/harness-0.12.1) |
+| Air Gap Bundle | [0.12.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.12.1) |
+| NG Manager | 81720 |
+| CI Manager | 6904 |
+| Pipeline Service | 1.51.3 |
+| Platform Service | 1.4.4 |
+| Access Control Service | 1.25.3 |
+| Delegate | 23.12.81604 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.15 |
+| LE NG | 68402 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.12.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed UI logging issues for release versions 0.12.0. (PL-46771, ZD-57141)
+
 ## February 2, 2024, patch version 0.13.2
 
 This release includes the following Harness module and component versions.
@@ -276,6 +318,7 @@ gsutil -m cp \
 - The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
 
 - Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
+
 ### Early access features
 
 #### Harness Platform
@@ -471,8 +514,6 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
-
-
 
 ## January 8, 2024, version 81720
 
