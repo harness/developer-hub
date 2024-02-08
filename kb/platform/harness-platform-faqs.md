@@ -2039,9 +2039,15 @@ env:
 
 The - is not allowed character for identifier so it was removed while creating the identifier while name can have that so its allowed for name
 
-### What does the promql query "io_harness_custom_metric_task_failed{task_type="NG_VAULT_RENEW_TOKEN"} > 0" specifically check, and why is it still non-zero even after a successful token renewal?
+### What does the promql query specifically check, and why is it still non-zero even after a successful token renewal?
 
-The query checks for failed tasks related to token renewal. The non-zero value may persist as it represents the count of failed tasks, which doesn't reset after successful renewals
+The query checks for failed tasks related to token renewal.
+
+```
+io_harness_custom_metric_task_failed{task_type="NG_VAULT_RENEW_TOKEN"} > 0
+```
+
+The non-zero value may persist as it represents the count of failed tasks, which doesn't reset after successful renewals.
 
 ### What is the purpose of the liveStatus expression in Harness, and how does it differ from stageStatus?
 
