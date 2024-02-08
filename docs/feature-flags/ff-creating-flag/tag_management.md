@@ -8,11 +8,11 @@ sidebar_position: 10
 
 ## What is Tagging?
 
-The Tagging Feature by Harness is a great way to organize and group your feature flags. You are able to create tags to, not only, categorize your flags, but also to manage permissions. 
+The Tagging Feature by Harness is a great way to organize and group your feature flags. You are able to create tags and assign them to, not only, categorize your Feature Flags, but also to manage permissions. 
 
-This feature is incredibly exciting for our users as they can now create a resource group based on tags, environments or both when needed. Further to this, when creating a resource group using Tagging, you can further define permissions for users and for user groups.
+This feature is incredibly exciting for our users as they can now create a resource group based on tags, environments or both when needed. The tags can also be used to support searching and filtering through your feature flags. Further to this, when creating a resource group using Tagging, you can further define permissions for users and for user groups.
 
-## Using Tagging In Feature Flags
+## How To Use Tagging In Feature Flags
 
 ### Creating A Tag
 
@@ -24,6 +24,7 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
 
  1. On the Home Page of the Harness Application, head over to *Feature Flags*.
  2. Under the *Feature Flags* tab, click on *New Feature Flag*. 
+ 3. You may be asked to select between the type of Feature Flag you want to create which are either *Boolean* or *Multivariate*. Please select one of these choices. 
  3. Type the name of your Feature Flag and in the Tags box, type the name of your new tag and press *Enter*. 
  4. Press *Next* and go on to save your Flag. 
  5. Once saved, you should see the tags under your new Feature Flag. 
@@ -33,7 +34,17 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
   1. On the Home Page of the Harness Application, head over to *Feature Flags*.
   2. On the right hand side of the screen, you can type your tag or select the tag you want. 
 
-### Tags on Target Groups
+### Editing A Tag 
+
+![An image of a Feature Flag in the Harness Application. ](./static/feature_flag.png)
+
+
+  1. On the Home Page of the Harness Application, head over to *Feature Flags*.
+  2. Under the *Feature Flags* section, you should see a list of your existing flags. 
+  3. Select a flag that has a tag that you want to edit by clicking the three dots at the end of the flag and selecting *Edit*. This includes flags that don't have any assigned tags.
+  4. On the next page, select the three dots located next to the name of your flag followed by *Edit* in the small dropdown menu that appears. 
+  5. You can, then, edit the tags or remove them or create a new one within the Tags box. 
+
 
 <!-- Insert step by step -->
 :::tip
@@ -42,9 +53,19 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 
 :::
 
-### Adding RBAC to Tags
+<!-- 
 
-<!-- Need to check for missing steps or misordered steps. -->
+### Tags on Target Groups
+
+:::
+
+ 1. On the Home Page of the Harness Application, head over to *Feature Flags*.
+ 2. Select *Targets*. On the top of the page, select *Target Groups*. 
+ 3. You should see a list of your existing Target Groups in our chosen environment otherwise do follow the steps to create a Target Group. 
+ 4. 
+-->
+
+### Adding RBAC to Tags
 
 RBAC (Role Based Access Control) is an area lets you control who can access your resources and what actions they can perform on the resources. You can do this by assigning tags to the users within the Resource Group. Here are the steps on how to do this:
 
@@ -57,7 +78,9 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  7. From there, you can asign any pre-existing tags to the Resource Group.
  8. The users under the assigned tags should be limited to whichever settings you have permitted for them such as permission to *Create/Edit* within Feature Flags. 
 
-### Managing Permissions Using Tagging
+<!-- ### Managing Permissions Using Tagging -->
+
+<!-- ### Best Practices -->
 
 # Related Content
 
