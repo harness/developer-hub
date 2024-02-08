@@ -56,7 +56,7 @@ In the above example the the `Project Identifier` field once selected auto popul
 ![](./static/idp-proj-picker.png)
 
 - Two new plugins [Azure Devops](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/azure-devops) [IDP-2078] and [Rootly](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rootly) [IDP-1693] are available to use now! 
-- Users can now add email as an input for Slack Notify step in the IDP Stage. When used with `<+triggerBy.email>`, your service onboarding pipeline can now notify the user! [IDP-1943].
+- Users can now add email as an input for Slack Notify step in the IDP Stage. When used with `<+pipeline.triggeredBy.email>`, your service onboarding pipeline can now notify the user! [IDP-1943].
 - All IDP APIs are now available on our public API docs.[IDP-2113]
 
 
