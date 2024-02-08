@@ -1,5 +1,5 @@
 ---
-title: Introduction to ChaosHub
+title: Overview
 sidebar_position: 1
 description: Understand ChaosHub, its variants, and usage
 ---
