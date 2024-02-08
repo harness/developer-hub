@@ -41,7 +41,7 @@ export const CdData: Horizon = {
       {
         tag: [{value:"Reporting"}],
         title: "Downloadable Pipeline Reports",
-        description: "Allow users to download and schedule a detailed STO results in PDF and CSV format.",
+        description: "Allow users to download and schedule a detailed report with STO results in PDF and CSV format.",
       },
     ],
   },
@@ -51,7 +51,7 @@ export const CdData: Horizon = {
       {
         tag: [{value: "Dashboard"}],
         title: "Security Workbench",
-        description: "Centralized hub for DevSecOps tasks, offering insights into organizational security posture trends, developer productivity, and comprehensive issue and exemption management across projects.",
+        description: "Centralized hub for DevSecOps tasks, offering insights into overall organization's security posture trends, refined prioritized list of issues across pipelines, and exemption management across projects.",
       },
       {
         tag: [{value: "Remediation"},{value: "Integration"}],
