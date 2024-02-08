@@ -7,10 +7,15 @@ redirect_from: /docs/security-testing-orchestration/sto-techref-category/snyk/sn
 
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
 
-- Snyk Open Source ([orchestratedScan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md), [ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md))
-- Snyk Code ([ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md))
-- Snyk Container ([ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md))
-- Snyk infrastructure as Code — ([ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md)) is in BETA
+- Snyk Open Source
+  - [Snyk Open Source orchestration example](#sca-orchestration-example)
+  - [Snyk Open Source ingestion example](#sca-ingestion-example)
+- Snyk Code 
+  - [Snyk Code ingestion example](#sast-ingestion-example)
+- Snyk Container
+  - [Snyk Container ingestion example](#container-image-ingestion-example)
+- Snyk infrastructure as Code (currently in beta)
+  - [Snyk infrastructure as Code ingestion example](#infrastructure-as-code-iac-ingestion-example)
 
 ## Important notes for running Snyk scans in STO
 
@@ -40,7 +45,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 <!-- removed info on using snyk monitor, see https://harness.atlassian.net/browse/DOC-2718?focusedCommentId=571223 -->
 
-## SCA orchestration example
+## Snyk Open Source orchestration example
 
 This example uses a Snyk step in orchestration mode, which runs [`snyk test`](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#snyk-test) and [snyk monitor](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#snyk-monitor) and then ingests the results.
 
@@ -67,7 +72,72 @@ This example uses a Snyk step in orchestration mode, which runs [`snyk test`](ht
 
 4. Apply your changes, then save and run the pipeline.
 
-## SAST ingestion example
+
+
+## Snyk Open Source ingestion example
+
+The following example uses [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a .NET repository.
+
+The scan stage in this pipeline has the following steps:
+
+- A Run step installs the build; then it scans the image and saves the output to a shared folder.
+
+- A Snyk step then ingests the output file.
+
+![](../static/snyk-scans-pipeline-00.png)
+
+1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan.
+
+2. Add a Security Tests or Build stage to your pipeline.
+
+3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`.
+
+4. Add a **Run** step that runs the build (if required), scans the repo, and saves the results to the shared folder:
+
+   1. In the Run step **Command** field, add code to build a local image (if required) and save the scan results to the shared folder.
+
+      In this example, we want to scan a .NET repository. The [setup requirements](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline) topic says: _Build only required if no packages.config file present._ The repo does not contain this file. Enter the following code in the **Command** field:
+
+      ```bash
+      # populates the dotnet dependencies
+      dotnet restore SubSolution.sln
+
+      # snyk Snyk Open Source scan
+      # https://docs.snyk.io/snyk-cli/commands/test
+      snyk  \
+         --file=SubSolution.sln  \
+         --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
+      snyk monitor --all-projects | true
+      ```
+
+   2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.
+
+   3. In the Run step **Environment Variables** field, under **Optional Configuration**, add a variable to access your Snyk API key:
+
+      `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`
+
+      Your Run step should now look like this:
+
+      ![](../static/snyk-scans-run-step-01.png)
+
+   4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
+
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
+
+5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:
+
+   1. Scan Mode = **Ingestion**
+   2. Target Type = **Repository**
+   3. Target Name = (_user-defined_)
+   <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+   4. Variant = (_user-defined_)
+   5. Ingestion = **`/shared/scan_results/snyk_scan_results.sarif`**
+
+6. Apply your changes, then save and run the pipeline.
+
+
+
+## Snyk Code ingestion example
 
 The following example uses [`snyk code test`](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#snyk-code-test) to scan a .NET repository.
 
@@ -126,69 +196,7 @@ The scan stage in this pipeline has the following steps:
 
 6. Apply your changes, then save and run the pipeline.
 
-
-## SCA ingestion example
-
-The following example uses [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a .NET repository.
-
-The scan stage in this pipeline has the following steps:
-
-- A Run step installs the build; then it scans the image and saves the output to a shared folder.
-
-- A Snyk step then ingests the output file.
-
-![](../static/snyk-scans-pipeline-00.png)
-
-1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan.
-
-2. Add a Security Tests or Build stage to your pipeline.
-
-3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`.
-
-4. Add a **Run** step that runs the build (if required), scans the repo, and saves the results to the shared folder:
-
-   1. In the Run step **Command** field, add code to build a local image (if required) and save the scan results to the shared folder.
-
-      In this example, we want to scan a .NET repository. The [setup requirements](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline) topic says: _Build only required if no packages.config file present._ The repo does not contain this file. Enter the following code in the **Command** field:
-
-      ```bash
-      # populates the dotnet dependencies
-      dotnet restore SubSolution.sln
-
-      # scan the code repository
-      snyk test \
-         --file=SubSolution.sln  \
-         --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
-      ```
-
-   2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.
-
-   3. In the Run step **Environment Variables** field, under **Optional Configuration**, add a variable to access your Snyk API key:
-
-      `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`
-
-      Your Run step should now look like this:
-
-      ![](../static/snyk-scans-run-step-01.png)
-
-   4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
-
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
-
-5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:
-
-   1. Scan Mode = **Ingestion**
-   2. Target Type = **Repository**
-   3. Target Name = (_user-defined_)
-   <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
-   4. Variant = (_user-defined_)
-   5. Ingestion = **`/shared/scan_results/snyk_scan_results.sarif`**
-
-6. Apply your changes, then save and run the pipeline.
-
-
-
-## Snyk container image ingestion example
+## Snyk Container ingestion example
 
 This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands/container-test) to scan a container image. The scan stage consists of three steps:
 
@@ -245,7 +253,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
 5. Apply your changes, then save and run the pipeline.
 
-## Snyk Infrastructure as Code (IaC) repository ingestion example
+## Snyk Infrastructure as Code ingestion example
 
 :::note
 
@@ -305,12 +313,12 @@ The scan stage in this pipeline has the following steps:
 
 ## Snyk pipeline examples
 
-### SCA scan pipeline (orchestration)
+### Snyk Open Source scan pipeline (orchestration)
 
-The following illustrates the [SCA orchestration workflow example](#sca-orchestration-example) above for scanning a Java project.
+The following illustrates the [Snyk Open Source orchestration workflow example](#sca-orchestration-example) above for scanning a Java project.
 
 <details>
-<summary>YAML pipeline, repository scan, Orchestration mode</summary>
+<summary>YAML pipeline, Snyk Open Source scan, Orchestration mode</summary>
 
 ```yaml
 pipeline:
@@ -366,9 +374,10 @@ pipeline:
 
 </details>
 
-### SAST scan pipeline (ingestion)
 
-The following illustrates the [SAST ingestion workflow example](#sast-ingestion-example) above for building and scanning a .NET image.
+### Snyk Open Source scan pipeline (ingestion)
+
+The following illustrates the [Snyk Open Source ingestion workflow example](#sca-ingestion-example) above for building and scanning a .NET image.
 
 <details>
 <summary>YAML pipeline, repository scan, Ingestion mode</summary>
@@ -412,17 +421,99 @@ pipeline:
                       # populates the dotnet dependencies
                       dotnet restore SubSolution.sln
 
-                      # Run a SAST scan
+                      # snyk Snyk Open Source scan
+                      # https://docs.snyk.io/snyk-cli/commands/test
+                      snyk --file=SubSolution.sln test \
+                          --sarif /harness > /shared/customer_artifacts/snyk_sca.json | true
+                      snyk monitor --all-projects | true
+                    envVariables:
+                      SNYK_TOKEN: <+secrets.getValue("sto-api-token")>
+              - step:
+                  type: Snyk
+                  name: Snyk Snyk Code
+                  identifier: Snyk_SAST
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: snyk-scan-example-for-docs
+                      type: repository
+                      variant: master
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: /shared/scan_results/snyk_scan_results.sarif
+          sharedPaths:
+            - /shared/scan_results
+        variables:
+  identifier: snyk_ingestion_doc_example
+  name: snyk_ingestion_doc_example
+```
+
+</details>
+
+
+
+
+
+### Snyk Code scan pipeline (ingestion)
+
+The following illustrates the [Snyk Code ingestion workflow example](#sast-ingestion-example) above for building and scanning a .NET image.
+
+<details>
+<summary>YAML pipeline, Snyk Code scan, Ingestion mode</summary>
+
+```yaml
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: \{}
+  properties:
+    ci:
+      codebase:
+        connectorRef: CODEBASE_CONNECTOR_Subsolution
+        repoName: SubSolution
+        build: <+input>
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: \{}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Snyk_Build
+                  identifier: Snyk_Build
+                  spec:
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    image: snyk/snyk:dotnet
+                    shell: Sh
+                    command: |
+
+                      # populates the dotnet dependencies
+                      dotnet restore SubSolution.sln
+
+                      # snyk Snyk Code scan
                       # https://docs.snyk.io/snyk-cli/commands/code-test
                       snyk code test \
                        --file=SubSolution.sln  \
                        --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
 
                     envVariables:
-                      SNYK_TOKEN: <+secrets.getValue("sto-api-token")>
+                      SNYK_TOKEN: <+secrets.getValue("snyk-api-token")>
               - step:
                   type: Snyk
-                  name: Snyk SAST
+                  name: Snyk Snyk Code
                   identifier: Snyk_SAST
                   spec:
                     mode: ingestion
@@ -446,89 +537,9 @@ pipeline:
 </details>
 
 
-### SCA scan pipeline (ingestion)
+### Snyk Container scan pipeline (ingestion)
 
-The following illustrates the [SCA ingestion workflow example](#sca-ingestion-example) above for building and scanning a .NET image.
-
-<details>
-<summary>YAML pipeline, repository scan, Ingestion mode</summary>
-
-```yaml
-pipeline:
-  projectIdentifier: STO
-  orgIdentifier: default
-  tags: \{}
-  properties:
-    ci:
-      codebase:
-        connectorRef: CODEBASE_CONNECTOR_Subsolution
-        repoName: SubSolution
-        build: <+input>
-  stages:
-    - stage:
-        name: test
-        identifier: test
-        type: SecurityTests
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: \{}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Snyk_Build
-                  identifier: Snyk_Build
-                  spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
-                    image: snyk/snyk:dotnet
-                    shell: Sh
-                    command: |
-
-                      # populates the dotnet dependencies
-                      dotnet restore SubSolution.sln
-
-                      # Run an SCA scan
-                      # https://docs.snyk.io/snyk-cli/commands/test
-                      snyk test \
-                       --file=SubSolution.sln  \
-                       --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
-
-                    envVariables:
-                      SNYK_TOKEN: <+secrets.getValue("sto-api-token")>
-              - step:
-                  type: Snyk
-                  name: Snyk SAST
-                  identifier: Snyk_SAST
-                  spec:
-                    mode: ingestion
-                    config: default
-                    target:
-                      name: snyk-scan-example-for-docs
-                      type: repository
-                      variant: master
-                    advanced:
-                      log:
-                        level: info
-                    ingestion:
-                      file: /shared/scan_results/snyk_scan_results.sarif
-          sharedPaths:
-            - /shared/scan_results
-        variables:
-  identifier: snyk_ingestion_doc_example
-  name: snyk_ingestion_doc_example
-```
-
-</details>
-
-
-### Snyk container image scan (ingestion)
-
-The following illustrates the [container image ingestion workflow example](#scan-a-container-image-workflow-example) above for building and scanning a .NET image.
+The following illustrates the [container image ingestion workflow example](#container-image-scan-ingestion) above for building and scanning a .NET image.
 
 <details>
 <summary>YAML pipeline, container image scan, Ingestion mode</summary>
@@ -629,9 +640,9 @@ pipeline:
 
 </details>
 
-### Snyk IaC repository scan (ingestion)
+### Snyk Infrastructure as Code scan pipeline (ingestion)
 
-The following illustrates the [container image ingestion workflow example](#scan-a-container-image-workflow-example) for building and scanning an IaC repository.
+The following illustrates the [IAC workflow example](#infrastructure-as-code-iac-ingestion-example) for scanning an IaC repository.
 
 <details>
 <summary>YAML pipeline, IaC repository scan, Ingestion mode</summary>

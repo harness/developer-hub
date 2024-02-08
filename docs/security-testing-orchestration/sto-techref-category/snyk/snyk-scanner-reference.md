@@ -133,7 +133,7 @@ import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token
 
 <StoSettingAuthAccessToken />
 
-x### Ingestion File
+#### Ingestion File
 
 
 import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
