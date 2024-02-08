@@ -43,8 +43,8 @@ Harness officially supports the following plugins.
 | AWS RDS Snapper | Clean up a specific RDS instance's snapshots, keep a specified number of copies, and create new snapshots | [rds-snapper](https://github.com/honestbee/devops-tools/tree/master/rds-snapper) | [honestbee/rds-snapper](http://quay.io/honestbee/rds-snapper) |
 | AWS S3 | [Upload artifacts to S3 or S3-compatible buckets](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md) | [drone-s3](https://github.com/drone-plugins/drone-s3) | plugins/s3 |
 | AWS S3 Cache | Cache files and directories to S3 storage to preserve them between builds (You can also use the built-in [Save and Restore Cache from S3 steps](../caching-ci-data/saving-cache.md).) | [drone-s3-cache](https://github.com/drone-plugins/drone-s3-cache) | plugins/s3-cache |
-| AWS S3 Sync | Synchronize files and build artifacts to your S3 bucket | [drone-s3-sync](https://github.com/drone-plugins/drone-s3-sync) | plugins/s3-sync |
-| AWS S3 Upload and Publish | [Upload artifacts to S3 and publish the artifact URL on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md#use-the-s3-upload-and-publish-plugin) | [drone-s3-upload-publish](https://github.com/harness-community/drone-s3-upload-publish) | harnesscommunity/drone-s3-upload-publish |
+| AWS S3 Sync | Synchronize files and build artifacts in a source directory with a destination directory (Directories can be local or in S3) | [drone-s3-sync](https://github.com/drone-plugins/drone-s3-sync) | plugins/s3-sync |
+| AWS S3 Upload and Publish | [Upload artifacts to S3 and publish the artifact URL on the Artifacts tab](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md#use-the-s3-upload-and-publish-plugin) | [drone-s3-upload-publish](https://github.com/harness-community/drone-s3-upload-publish) | harnesscommunity/drone-s3-upload-publish |
 | Azure Container Registry | [Build and push images to ACR](../build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/acr |
 | Backblaze B2 | Upload files and build artifacts to a B2 bucket | [drone-b2](https://github.com/techknowlogick/drone-b2) | techknowlogick/drone-b2 |
 | Bluemix Cloud Foundry | Deploy files or services to Bluemix | [drone-bluemix-cloudfoundry](https://github.com/ibmclouddevops/drone-bluemix-cloudfoundry) | ibmclouddevops/drone-bluemix-cloudfoundry |
@@ -83,7 +83,7 @@ Harness officially supports the following plugins.
 | Google Artifact Registry | [Build and push to GAR](../build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/gar |
 | Google Chat | Post build status messages to your organization's Google Chat | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
 | Google Cloud Functions | Deploy, list, and delete Google Cloud Functions | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |
-| Google Cloud Storage | [Upload artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md) | [drone-plugins/drone-gcs](https://github.com/drone-plugins/drone-gcs) or [wyattjoh/drone-gcs](https://github.com/wyattjoh/drone-gcs) | plugins/gcs or wyattjoh/drone-gcs |
+| Google Cloud Storage | [Upload artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md) | [drone-plugins/drone-gcs](https://github.com/drone-plugins/drone-gcs) | plugins/gcs |
 | Google Cloud Storage Cache | Preserve files and directories between builds (You can also use the built-in [Save and Restore Cache from GCS steps](../caching-ci-data/save-cache-in-gcs.md).) | [drone-gcs-cache](https://github.com/hvalle/drone-gcs-cache) | homerovalle/drone-gcs-cache |
 | Google Cloud Auth | Create and configure a Google Cloud auth configuration file to use with gcloud CLI (Only GAR is supported. The plugin also configures Docker configuration (`~/.docker/config.json`) to push and pull container images from GAR.) | [drone-google-cloud-auth](https://github.com/kameshsampath/drone-google-cloud-auth) | kameshsampath/drone-gcloud-auth |
 | Google Cloud Run | Build and maintain managed Google Cloud Run services | [drone-gcloud-run](https://github.com/kameshsampath/drone-gcloud-run) | kameshsampath/drone-gcloud-run |
@@ -93,7 +93,6 @@ Harness officially supports the following plugins.
 | Gitea Release | Publish files and artifacts to Gitea Release | [drone-gitea-release](https://github.com/drone-plugins/drone-gitea-release) | plugins/gitea-release |
 | Gitee Pulls | Update comments, labels, and tests in Gitee PRs | [drone-plugin-gitee-pulls](https://github.com/kit101/drone-plugin-gitee-pulls) | kit101z/drone-plugin-gitee-pulls |
 | GitHub Actions | [Run a GitHub Action](./run-a-git-hub-action-in-cie.md) | [github-actions](https://github.com/drone-plugins/github-actions) | plugins/github-actions |
-| GitHub Changelog Generator | Create a changelog file based on GitHub tags that you can then upload to a desired location via other plugins or pipeline steps | [drone-github-changelog-generator](https://plugins.drone.io/plugins/github-changelog-generator) | naorlivne/drone-github-changelog-generator |
 | Github Comment | Update the build status on a GitHub Pull Request (This can be an alternative or addition to [Harness CI's built-in SCM status updates](../codebase-configuration/scm-status-checks.md).) | [drone-github-comment](https://github.com/gradeup/drone-github-comment) | codehimanshu/gitdrone |
 | GitHub Pages | Publish static websites to GitHub | [drone-gh-pages](https://github.com/drone-plugins/drone-gh-pages) | plugins/gh-pages |
 | GitHub Release | Publish files and artifacts to GitHub Release | [drone-github-release](https://github.com/drone-plugins/drone-github-release) | plugins/github-release |
@@ -115,7 +114,7 @@ Harness officially supports the following plugins.
 | Java Maven | Build Java applications using the Apache Maven build tool | [drone-java-maven-plugin](https://github.com/kameshsampath/drone-java-maven-plugin) | kameshsampath/drone-java-maven-plugin |
 | Jenkins | Trigger Jenkins jobs | [drone-jenkins](https://github.com/appleboy/drone-jenkins) | appleboy/drone-jenkins |
 | Jira | [Integrate with Jira](./ci-jira-int-plugin.md) | [drone-jira](https://github.com/drone/drone-jira) | plugins/jira |
-| Kaniko (Docker, ACR, ECR, GCR) | [Build and push images to container registries](../build-and-upload-artifacts/build-and-upload-an-artifact.md) | [drone-kaniko](https://github.com/drone/drone-kaniko) | plugins/kaniko, plugins/kaniko-acr, plugins/kaniko-ecr, plugins/kaniko-gcr |
+| Kaniko (Docker, ACR, ECR, GAR, GCR) | [Build and push images to container registries](../build-and-upload-artifacts/build-and-upload-an-artifact.md) | [drone-kaniko](https://github.com/drone/drone-kaniko) | plugins/kaniko, plugins/kaniko-acr, plugins/kaniko-ecr, plugins/kaniko-gar, plugins/kaniko-gcr |
 | Kubernetes Deployments (drone-kube) | Does the equivalent of `kubectl apply -f deployment.yaml` | [drone-kube](https://github.com/vallard/drone-kube) | vallard/drone-kube |
 | Kubernetes Deployments (drone-kubernetes) | Upgrade a Kubernetes deployment with a newer version of an image | [drone-kubernetes](https://plugins.drone.io/plugins/kubernetes) | [honestbee/drone-kubernetes](http://quay.io/honestbee/drone-kubernetes) |
 | Kubernetes Deployments (drone-plugin-kube) | Update Kubernetes deployments from templates and configMaps from files | [drone-plugin-kube](https://github.com/danielgormly/drone-plugin-kube) | danielgormly/drone-plugin-kube |
@@ -128,9 +127,9 @@ Harness officially supports the following plugins.
 | Matrix | Send build success/failure messages to a Matrix room | [drone-matrix](https://github.com/drone-plugins/drone-matrix) | plugins/matrix |
 | Maven Auth | Generate `settings.xml` with server authentication for a Maven repository | [drone-mvn-auth](https://github.com/robertstettner/drone-mvn-auth) | robertstettner/drone-mvn-auth |
 | Mercurial | Clone a Mercurial repository | [drone-hg](https://github.com/drone-plugins/drone-hg) | plugins/hg |
-| Metronome | Deploy apps to a Metronome server | [drone-metronome](https://plugins.drone.io/plugins/metronome) | naorlivne/drone-metronome |
 | Netlify | Deploy your build to Netlify | [drone-netlify](https://github.com/lucaperret/drone-netlify) | https://github.com/lucaperret/drone-netlify |
 | Newrelic Deployment | Report/log deployments to a Newrelic dashboard | [newrelic-deployment](https://github.com/cityfurniture/newrelic-deployment) | cityfurniture/drone-newrelic-deployment |
+| Nexus Publish | [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md) | [drone-nexus-publish](https://github.com/harness-community/drone-nexus-publish) | harnesscommunity/nexus-publish |
 | Nomad | Deploy services from a Nomad template file | [drone-nomad](https://github.com/loq9/drone-nomad) | loq9/drone-nomad |
 | Now | Deploy your build to `now.sh` | [drone-now](https://github.com/lucaperret/drone-now) | lucap/drone-now |
 | NPM | Publish libraries to publish or private registries | [drone-npm](https://github.com/drone-plugins/drone-npm) | plugins/npm |
@@ -159,6 +158,8 @@ Harness officially supports the following plugins.
 | Webhook | Provide outgoing webhook URLs to notify services via webhook when a build completes | [drone-webhook](https://github.com/drone-plugins/drone-webhook) | plugins/webhook |
 | WeChat | Post build status messages to a WeChat account | [lizheming/drone-wechat](https://github.com/lizheming/drone-wechat) | lizheming/drone-wechat |
 | WeChat for Work | Post build status notifications to WeChat for Work | [clem109/drone-wechat](https://github.com/clem109/drone-wechat) | clem109/drone-wechat |
+
+<!-- Plugins not documented (see confluence page for comments): GitHub Changelog Generator, Metronome-->
 
 <!-- :::tip
 
