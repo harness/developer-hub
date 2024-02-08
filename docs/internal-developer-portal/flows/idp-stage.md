@@ -586,6 +586,8 @@ The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/t
 
 Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#scopes). 
 
+1. Now create a new secret and add this as a **Secret** under the **Slack Secret Key**.
+
 ## Final Pipeline using Developer Portal Stage
 
 :::info
