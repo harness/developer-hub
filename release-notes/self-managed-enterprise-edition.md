@@ -15,7 +15,7 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for 0.13.3
+:::danger important upgrade instructions for patch release 0.13.3
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
