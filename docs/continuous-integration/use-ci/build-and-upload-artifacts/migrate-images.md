@@ -32,74 +32,194 @@ This plugin can push images to:
 
 If your authentication requirements vary from those supported by this plugin, consider running multiple Build and Push steps in parallel, running the necessary pull and push commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings), or using the [Image Migration plugin](https://github.com/harness-community/drone-docker-image-migration) as a basis to [write your own plugin](../use-drone-plugins/custom_plugins.md).
 
-## Configure the Helm Push plugin
+## Configure the Image Migration plugin
+
+To use the Image Migration plugin, [add a Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../prep-ci-pipeline-components.md). How you configure the [Plugin step settings](../use-drone-plugins/plugin-step-settings-reference.md) depends on the authentication methods involved.
 
 <Tabs>
-<TabItem value="gar" label="Upload Helm charts to GAR" default>
+<TabItem value="basic" label="Basic auth or no auth" default>
 
-To use the Helm Push plugin to upload Helm charts to GAR, [add a Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../prep-ci-pipeline-components.md). For example:
+To use the Image Migration plugin to pull from or push to registries that use basic authentication (username and password) or no authentication, you must provide the username and password/token for the authenticated registry.
+
+In this example, only the destination registry requires authentication. The source registry could be public or unauthenticated.
 
 ```yaml
               - step:
                   type: Plugin
-                  name: upload_helm_chart
-                  identifier: upload_helm_chart
+                  name: migrate_image
+                  identifier: migrate_image
                   spec:
                     connectorRef: account.harnessImage
-                    image: plugins/helm-push:ARCH_TAG
+                    image: plugins/image-migration
                     settings:
-                      registry_url: LOCATION-docker.pkg.dev
-                      registry_username: oauth2accesstoken
-                      registry_password: <+secrets.getValue("access_token")>
-                      chart_path: path/to/chart
-                      gcloud_project_id: PROJECT_ID
-                      registry_namespace: REPO_ID
+                      source: some-registry/image:latest
+                      destination: my-target-registry/image:latest
+                      username: YOUR_USERNAME
+                      password: <+secrets.getValue("registry_token")>
 ```
 
-To use the Helm Push plugin, configure the [Plugin step settings](../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+In this example, both the source and destination registries require authentication.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: migrate_image
+                  identifier: migrate_image
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/image-migration
+                    settings:
+                      source: registry-1.example.com/image:latest
+                      destination: registry-2.example.com/image:latest
+                      source_username: USERNAME_FOR_SOURCE_REGISTRY
+                      source_password: <+secrets.getValue("source_registry_token")>
+                      username: YOUR_USERNAME
+                      password: <+secrets.getValue("registry_token")>
+                      overwrite: true
+```
+
+With basic authentication, the Image Migration plugin settings are as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
 | `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
-| `image` | String | Enter `plugins/helm-push:ARCH_TAG` and replace `ARCH_TAG` with the relevant architecture tag to use. For a list of available tags, go to the [Helm Push plugin README](https://github.com/harness-community/drone-helm-chart-container-registry?tab=readme-ov-file#plugin-image). | `plugins/helm-push:linux-amd64` |
-| `registry_url` | String | Base URL for the Docker registry where the packaged chart will be published. For GAR, this must be `LOCATION-docker.pkg.dev`. Replace `LOCATION` with your GAR repository's regional or multi-regional [location](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations). | `us-east4-docker.pkg.dev` |
-| `registry_username` | String | For GAR, this must be `oauth2accesstoken` | `oauth2accesstoken` |
-| `registry_password` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your [GAR Helm access token](https://cloud.google.com/artifact-registry/docs/helm/authentication#token). | `<+secrets.getValue("docker_chart_registry_password")>` |
-| `chart_path` | String | Path to the directory containing the Helm chart to upload, relative to the pipeline workspace. The default is `/harness` (the pipeline workspace root directory). | `charts` (navigates to `/harness/charts`) |
-| `gcloud_project_id` | String | Your [Google Cloud project ID](https://cloud.google.com/artifact-registry/docs/helm/manage-charts#push) | `my-project` |
-| `registry_namespace` | String | Your [GAR repository name](https://cloud.google.com/artifact-registry/docs/helm/manage-charts#push) where you want to publish the chart. | `my-repo` |
+| `image` | String | Enter `plugins/image-migration`. You can specify an optional architecture tag. For a list of available tags, go to the [Image Migration plugin README](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image). | `plugins/image-migration:linux-amd64` |
+| `source` | String | The registry, image name, and tag of the image to copy. The format depends on the registry provider. | `registry-1.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
+| `destination` | String | The destination where the image will be copied along with the image name and tag. The format depends on the registry provider. | `registry-2.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
+| `username` | String | Your username for the destination registry. | `someuser` |
+| `password` | String | If required, provide a reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a password or access token to authenticate with the destination registry. | `<+secrets.getValue("destination_pat")>` |
+| `source_username` | String | If required, provide your username for the source registry. | `someuser2` |
+| `source_password` | String | If required, provide a reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a password or access token to authenticate with the source registry. | `<+secrets.getValue("source_pat")>` |
+| `overwrite` | Boolean | Set to `true` to overwrite the existing copy of the image in the destination registry, if present. The default is `false` (overwrite disabled). | `true` |
+| `insecure` | Boolean | Set to `true` to disable TLS. The default is `false` (TLS enabled). | `false` |
 
 </TabItem>
-<TabItem value="dh" label="Upload Helm charts to Docker Hub">
+<TabItem value="gar" label="GAR access token">
 
-To use the Helm Push plugin to upload Helm charts to Docker Hub, [add a Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../prep-ci-pipeline-components.md). For example:
+To use the Image Migration plugin to pull from or push to GAR registries, you must use [GAR access token authentication](https://cloud.google.com/artifact-registry/docs/docker/authentication#standalone-helper).
+
+In this example, the source registry is a non-GAR registry that uses basic authentication and the destination registry is a GAR registry.
 
 ```yaml
               - step:
                   type: Plugin
-                  name: upload_helm_chart
-                  identifier: upload_helm_chart
+                  name: migrate_image
+                  identifier: migrate_image
                   spec:
                     connectorRef: account.harnessImage
-                    image: plugins/helm-push:ARCH_TAG
+                    image: plugins/image-migration
                     settings:
-                      registry_url: registry.hub.docker.com
-                      registry_username: DOCKER_USERNAME
-                      registry_password: <secrets.getValue("docker_pat")>
-                      chart_path: path/to/chart
-                      registry_namespace: DOCKER_NAMESPACE
+                      source: registry-1.example.com/image:latest
+                      destination: LOCATION-docker.pkg.dev/PROJECT-ID/REPO-NAME/IMAGE-NAME:TAG
+                      source_username: USERNAME_FOR_SOURCE_REGISTRY
+                      source_password: <+secrets.getValue("source_registry_token")>
+                      username: oauth2accesstoken
+                      password: <+secrets.getValue("gar_token")>
+                      overwrite: true
 ```
-To use the Helm Push plugin, configure the [Plugin step settings](../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+
+With GAR, the Image Migration plugin settings are as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
 | `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
-| `image` | String | Enter `plugins/helm-push:ARCH_TAG` and replace `ARCH_TAG` with the relevant architecture tag to use. For a list of available tags, go to the [Helm Push plugin README](https://github.com/harness-community/drone-helm-chart-container-registry?tab=readme-ov-file#plugin-image). | `plugins/helm-push:linux-amd64` |
-| `registry_url` | String | Base URL for the Docker registry where the packaged chart will be published. For Docker Hub, this must be `registry.hub.docker.com` | `registry.hub.docker.com` |
-| `registry_username` | String | Username to access your Docker Hub registry | `hubuser` |
-| `registry_password` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a Docker Hub personal access token. | `<+secrets.getValue("docker_pat")>` |
-| `chart_path` | String | Path to the directory containing the Helm chart to upload, relative to the pipeline workspace. The default is `/harness` (the pipeline workspace root directory). | `charts` (navigates to `/harness/charts`) |
-| `registry_namespace` | String | The Docker namespace where you want to publish the Helm chart, such as your personal namespace or an org namespace. For more information, go to the Docker documentation on [Pushing a Helm chart to Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/#push-a-helm-chart). | `myorg` |
+| `image` | String | Enter `plugins/image-migration`. You can specify an optional architecture tag. For a list of available tags, go to the [Image Migration plugin README](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image). | `plugins/image-migration:linux-amd64` |
+| `source` | String | The registry, image name, and tag of the image to copy. The format depends on the registry provider. The [full image name format for GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling#tag) is `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG`. | `registry-1.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
+| `destination` | String | The destination where the image will be copied along with the image name and tag. The format depends on the registry provider. The [full image name format for GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling#tag) is `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG`. | `registry-2.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
+| `username` | String | Your username for the destination registry. If the destination registry is in GAR, this must be `oauth2accesstoken`. | `someuser` |
+| `password` | String | If required, provide a reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a password or access token to authenticate with the destination registry. For GAR, you must use a GAR access token. | `<+secrets.getValue("destination_pat")>` |
+| `source_username` | String | If required, provide your username for the source registry. If the source registry is in GAR, this must be `oauth2accesstoken`. | `someuser2` |
+| `source_password` | String | If required, provide a reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a password or access token to authenticate with the source registry. For GAR, you must use a GAR access token. | `<+secrets.getValue("source_pat")>` |
+| `overwrite` | Boolean | Set to `true` to overwrite the existing copy of the image in the destination registry, if present. The default is `false` (overwrite disabled). | `true` |
+| `insecure` | Boolean | Set to `true` to disable TLS. The default is `false` (TLS enabled). | `false` |
+
+</TabItem>
+<TabItem value="ecr" label="AWS access key and secret">
+
+To use the Image Migration plugin to copy images to or from AWS ECR registries, you must use [AWS access key and secret authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam.html). In the plugin settings, you can either provide an AWS access token for `password`, or provide `aws_access_key_id`, `aws_secret_access_key`, and `aws_region`.
+
+In this example, an image is copied between registries in the same AWS ECR account.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: migrate_image
+                  identifier: migrate_image
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/image-migration
+                    settings:
+                      source: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/image-dev:1.2.3
+                      destination: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/image-prod:1.2.3
+                      username: AWS
+                      aws_access_key_id: "012345678901"
+                      aws_secret_access_key: <+secrets.getValue("aws_secret_access_key")>
+                      aws_region: us-west-2
+                      overwrite: true
+```
+
+In this example, only the destination registry is in AWS ECR.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: migrate_image
+                  identifier: migrate_image
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/image-migration
+                    settings:
+                      source: registry-2.example.com/image:latest
+                      destination: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/image:latest
+                      username: AWS
+                      aws_access_key_id: "012345678900"
+                      aws_secret_access_key: <+secrets.getValue("aws_secret_access_key")>
+                      aws_region: us-west-2
+                      overwrite: true
+```
+
+<!-- In this example, only the source repo is AWS.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: migrate_image
+                  identifier: migrate_image
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/image-migration
+                    settings:
+                      source: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/image:latest
+                      destination: registry-2.example.com/image:latest
+                      source_username: AWS
+                      source_password: <+secrets.getValue("aws_token")>
+                      aws_region: us-west-2
+                      username: DESTINATION_USERNAME
+                      password: DESTINATION_PASSWORD
+                      overwrite: true
+```
+
+-->
+
+</details>
+
+With AWS ECR, the Image Migration plugin settings are as follows:
+
+| Keys | Type | Description | Value example |
+| - | - | - | - |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `image` | String | Enter `plugins/image-migration`. You can specify an optional architecture tag. For a list of available tags, go to the [Image Migration plugin README](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image). | `plugins/image-migration:linux-amd64` |
+| `source` | String | The registry, image name, and tag of the image to copy. The format depends on the registry provider. The format for AWS ECR is `AWS_ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`. | `registry-1.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
+| `destination` | String | The destination where the image will be copied along with the image name and tag. The format depends on the registry provider. The format for AWS ECR is `AWS_ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`. | `registry-2.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
+| `username` | String | Your username for the destination registry. If the destination registry is in ECR, this must be `AWS`. | `someuser`<br/>`AWS` |
+| `password` | String | If required, provide a reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a password or access token to authenticate with the destination registry.<br/>For AWS ECR, either provide an AWS access token in `password` or provide `aws_access_key_id`, `aws_secret_access_key`, and `aws_region`. | `<+secrets.getValue("destination_pat")>` |
+| `aws_access_key_id` | String | The AWS access key ID to generate the access token. | `"012345678900"` |
+| `aws_secret_access_key` | String | A reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the AWS secret access key to generate the access token. | `<+secrets.getValue("aws_secret_access_key")>` |
+| `aws_region` | String | The AWS region containing the ECR registry. | `us-west-2` |
+| `source_username` | String | If required, provide your username for the source registry. | `someuser2` |
+| `source_password` | String | If required, provide a reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a password or access token to authenticate with the source registry. | `<+secrets.getValue("source_pat")>` |
+| `overwrite` | Boolean | Set to `true` to overwrite the existing copy of the image in the destination registry, if present. The default is `false` (overwrite disabled). | `true` |
+| `insecure` | Boolean | Set to `true` to disable TLS. The default is `false` (TLS enabled). | `false` |
 
 </TabItem>
 </Tabs>
