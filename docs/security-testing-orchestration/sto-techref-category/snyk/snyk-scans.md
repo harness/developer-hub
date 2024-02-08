@@ -473,11 +473,11 @@ The following illustrates the [Snyk Code ingestion workflow example](#sast-inges
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
-  tags: \{}
+  tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR_Subsolution
+        connectorRef: Subsolution
         repoName: SubSolution
         build: <+input>
   stages:
@@ -487,56 +487,62 @@ pipeline:
         type: SecurityTests
         spec:
           cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: \{}
           execution:
             steps:
               - step:
                   type: Run
-                  name: Snyk_Build
-                  identifier: Snyk_Build
+                  name: Build
+                  identifier: Build
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: DockerNoAuth
                     image: snyk/snyk:dotnet
                     shell: Sh
-                    command: |
-
+                    command: |-
                       # populates the dotnet dependencies
                       dotnet restore SubSolution.sln
 
-                      # snyk Snyk Code scan
-                      # https://docs.snyk.io/snyk-cli/commands/code-test
-                      snyk code test \
-                       --file=SubSolution.sln  \
-                       --sarif-file-output=/shared/scan_results/snyk_scan_results.sarif || true
+                      # Snyk Code scan
+                      snyk code test --sarif-file-output=/shared/scan-results/snyk_scan.sarif
 
+                      cat /shared/scan-results/snyk_scan.sarif
                     envVariables:
-                      SNYK_TOKEN: <+secrets.getValue("snyk-api-token")>
+                      SNYK_TOKEN: <+secrets.getValue("snyk_partner_account")>
               - step:
                   type: Snyk
-                  name: Snyk Snyk Code
-                  identifier: Snyk_SAST
+                  name: snyke_code_ingest
+                  identifier: snyk_code_ingest
                   spec:
                     mode: ingestion
                     config: default
                     target:
-                      name: snyk-scan-example-for-docs
                       type: repository
+                      detection: manual
+                      name: dbothwell-snyk-lab-test-code
                       variant: master
                     advanced:
                       log:
-                        level: info
+                        level: debug
+                    imagePullPolicy: Always
                     ingestion:
-                      file: /shared/scan_results/snyk_scan_results.sarif
+                      file: /shared/scan-results/snyk_scan.sarif
+                  when:
+                    stageStatus: Success
           sharedPaths:
-            - /shared/scan_results
-        variables:
-  identifier: snyk_ingestion_doc_example
-  name: snyk_ingestion_doc_example
+            - /shared/scan-results/
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: your_sto-delegate_connector_id
+              namespace: your_k8s_namespace
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          slsa_provenance:
+            enabled: false
+        description: ""
+  identifier: snyk_code_test_example
+  name: snyk_code_test_example
+
 ```
 
 </details>
