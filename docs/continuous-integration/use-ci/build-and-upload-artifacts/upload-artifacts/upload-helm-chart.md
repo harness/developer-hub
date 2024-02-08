@@ -16,7 +16,7 @@ You can use the [Push Helm chart to Docker registry plugin](https://github.com/h
 
 Currently, this plugin supports uploading Helm charts to Docker Hub registries in the namespace for the account you use to login to Docker Hub only.
 
-If you need to upload to another namespace or another Docker-compliant OCI registry, you can run the necessary `helm` commands in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings). For more information, go to the [Helm documentation on using an OCI-based registry](https://helm.sh/docs/topics/registries/#using-an-oci-based-registry).
+If you need to upload to another namespace or another Docker-compliant OCI registry, you can run the necessary `helm` commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings). For more information, go to the [Helm documentation on using an OCI-based registry](https://helm.sh/docs/topics/registries/#using-an-oci-based-registry).
 
 :::
 
@@ -114,7 +114,7 @@ The following YAML example describes a [Plugin step](../../use-drone-plugins/plu
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.docker_user_name>` references a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) called `DOCKER_USER_NAME`.
+You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.docker_user_name>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) called `DOCKER_USER_NAME`.
 
 Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords.
 
