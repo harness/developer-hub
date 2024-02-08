@@ -31,7 +31,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### Enhancements
 
-- **Security Tests** now shows the original score when a Snyk security policy overrides the CVSS score for an issue. (STO-7041)
+- **Security Tests** now shows the original score when a Snyk security policy overrode the original CVSS score for an issue. (STO-7041)
 
   ![CVSS override in Security Tests](./static/sto-7041-override-in-security-tests.png)
 
