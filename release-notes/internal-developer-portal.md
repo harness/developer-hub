@@ -36,7 +36,7 @@ We are seeing a lot of excitement among our customers around Self Service Workfl
 
 ![](./static/idp-projpicker-newview.png)
 
-- Added support for a new Custom field extension **`HarnessAutoOrgPicker`**, which auto populates on project selection. So now when you select an project id as an input the ord id gets selected automatically if required as an input. [IDP-2099]
+- Added support for a new Custom field extension **`HarnessAutoOrgPicker`**, which auto populates on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input. [IDP-2099]
 
 ```YAML
 # Example template.yaml file
