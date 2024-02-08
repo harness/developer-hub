@@ -105,8 +105,6 @@ gsutil -m cp \
 
 ## February 8, 2024, patch version 0.12.1
 
-### New features and enhancements
-
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
