@@ -3,28 +3,27 @@ title: Configuration
 sidebar_position: 3
 description: Steps to configure ChaosGuard and enable it
 ---
+
 This section walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.
 
 ## Before you begin
 
-[Harness RBAC](./introduction-to-chaosguard) (role-based access control) serves as a prerequisite to understanding [Chaosguard](./chaosguard-concepts), which serves as an execution-time security evaluation. 
+[Harness RBAC](./introduction-to-chaosguard) (role-based access control) serves as a prerequisite to understanding [ChaosGuard](./chaosguard-concepts), which serves as an execution-time security evaluation. 
 
 ## Configuring conditions
-Conditions describe a set of constraints that are applied to an execution context. To configure a condition,
+Conditions describe a set of constraints that are applied to an execution context. You can use both **'EQUAL'** and **'NOT EQUAL TO'** operators in conditions. You can also use wildcards within the condition entities, which offers flexibility and control in defining conditions.
 
-1. Click **ChaosGuard** on the left-hand side of the **Chaos** homepage.
+To configure a condition,
 
-![chaosguard-page](./static/configure-chaosguard/chaosguard-page.png)
+1. Click **ChaosGuard** on the left-hand side of the **Chaos** homepage. Click **Conditions** on the top right corner of the ChaosGuard page.
 
-2. Click **Conditions** on the top right corner of the ChaosGuard page. 
+![navigate](./static/configure-chaosguard/navigate-1.png)
 
-![condition](./static/configure-chaosguard/new-condition-chaosguard.png)
-
-3. Click **New condition**.
+2. Click **New condition**.
 
 ![new-condition](./static/configure-chaosguard/new-condition.png)
 
-4. Provide a name, a description (optional), and tags (optional).
+3. Provide a name, a description (optional), and tags (optional).
 
 ![edit-condition](./static/configure-chaosguard/edit-condition.png)
 
@@ -38,23 +37,33 @@ This creates a blank canvas, and you can define the constraints for the conditio
 
 1. To add conditions using a visual editor, navigate to the **visual** tab of condition you created earlier. 
 
-![condition](./static/configure-chaosguard/condition-create.png)
+	![condition](./static/configure-chaosguard/condition-create.png)
 
-	1. **WHAT** clause describes the attribute (in this case, chaos fault) on which you can apply the condition. This field takes a regex-like pattern, that is, the * symbol, to indicate all characters preceding or succeeding a particular string. In this case, the condition takes all faults that begin with "pod-," such as "pod-delete", "pod-memory-hog" and so on. You can have more than one clause to block different kinds of faults.
+2. Add the **WHAT** clause. In this case, the condition blocks a fault that is **equal to** (or matches) pod delete.
 
 	![what](./static/configure-chaosguard/condition-what.png)
 
-	2. **WHERE** clause describes the name of the Kubernetes infrastructure where you can apply the condition. 
+3. Add the **WHERE** clause. In this case, the condition blocks an infrastructure that is **equal to** `prod-2-infra` infrastructure.
 
 	![where](./static/configure-chaosguard/condition-where.png)
 
-	3. **WHICH** clause describes the namespace and the app label in which you can apply the condition. The * here indicates that the condition takes all faults that begin with a particular string (similar to the **WHAT** clause). You can have more than one namespace and app label associated with a condition.
+4. Add the **WHICH** clause. In this case, the condition blocks the infrastructure that has `prod-2-infra` namespace and `app=chaos-exporter` app label.
 
 	![which](./static/configure-chaosguard/condition-which.png)
 
-	4. **USING** clause describes the service account under which you apply the condition. You can have more than one service account configured for a condition.
+5. Add the **USING** clause. In this case, the condition blocks the `litmus-admin` service account.
 
 	![using](./static/configure-chaosguard/condition-using.png)
+
+### Add conditions using visual editor
+
+1. You can add conditions using the YAML too.
+
+	![select](./static/configure-chaosguard/select-1.png)
+
+2. Click **YAML** and specify the relevant values corresponding to the respective names.
+
+	![yaml edit](./static/configure-chaosguard/yaml-edit.png)
 
 ## Configuring rules
 

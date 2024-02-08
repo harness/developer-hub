@@ -147,13 +147,19 @@ Enable or Disable an IDP Plugin
 Delete a Plugin
 
 
-### 7. Catalog Access Policies
+## Catalog Access Policies
 
-Permissions for managing Admin Access Control
+These policies are available apart from the above platform level RBAC, and can be used to overwrite the platform level RBAC for Catalog Entities. These are available under **Access Control** in **ADMIN** tab. 
 
 ![](./static/access-control.png)
 
+### Use cases:
 
+1. In case you want to restrict the creation and management of workflows for a specific user group, you can do so by selecting the specific user group name from the dropdown followed by the disabling the **Create** under **Software Catalog permissions for all users to Create entity**.
+
+2. Also you can restrict the control of the software components to the owners only and disable the delete permission for all users this can also be controlled through the RBAC of your git-provider, if an individual doesn't have write permission for the repository your `catalog-info.yaml` file is stored, he/she can't update or delete the entities. 
+
+![](./static/rbac-admin-usecase.png)
 
 
 

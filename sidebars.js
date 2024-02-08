@@ -324,6 +324,15 @@ const sidebars = {
             description: "Learn about recent changes to Harness products.",
           },
         },
+        // Roadmap
+        {
+          type: "link",
+          label: "Roadmap",
+          href: "/roadmap",
+          customProps: {
+            description: "Learn about upcoming/proposed changes to Harness products.",
+          },
+        },
         {
           type: "category",
           label: "FAQs",
@@ -369,7 +378,7 @@ const sidebars = {
             slug: "/harness-cloud-operations",
           },
           customProps: {
-            description: "Information on how the Harness SaaS is managed",
+            description: "Information on how the Harness SaaS is managed.",
           },
           collapsed: true,
           items: [

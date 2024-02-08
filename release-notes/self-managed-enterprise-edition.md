@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-02-04T10:00
+date: 2024-02-08T10:00
 sidebar_position: 16
 ---
 
@@ -14,6 +14,14 @@ import delete_project from './static/delete-project.png'
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 
 These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
+
+:::danger Do not upgrade
+
+We have discovered an issue with SMP releases 0.12.0, 0.13.0, 0.13.1, and 0.13.2 where you might face an issue with logs in the UI. 
+
+Please don't upgrade to these releases. We are working to publish a new patch release, and we will update this page with the patch release notes as soon as it's deployed.
+
+:::
 
 :::info About Harness Release Notes
 
