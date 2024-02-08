@@ -1513,7 +1513,7 @@ we have a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDel
 An abort could leave the system in a potentially inconsistent or 'dirty' state, it's crucial to consider rollback procedures.
 Delegate actions, such as canceling or ending running tasks, should play a central role in preventing system inconsistencies and maintaining system integrity.
 
-### How to automatically start a delegate when running as a Docker container?
+### How can I automatically start a delegate when running as a Docker container?
 
 Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts. Restart policies start linked containers in the correct order. Docker recommends that you use restart policies, and avoid using process managers to start containers.
 Including the flag `--restart` in the docker run command will configure it to always restart, unless the container is explicitly stopped, or the daemon restarts.
@@ -1687,7 +1687,7 @@ Custom delegate metrics are only available for immutable delegates, there is no 
 
 The immutable delegates look for the third party client utilities in the PATH location during startup. Hence any third party utility that is installed in delegate is expected to be either present in the default PATH location or the path to the binary added in the environment variable PATH.
 
-### How to find out which user is running the delegate?
+### How can I find out which user is running the delegate?
 
 We can exec into the pod and run the below command to find out which user is currently owning the delegate process:
 
@@ -1695,7 +1695,7 @@ We can exec into the pod and run the below command to find out which user is cur
 ps -ef | grep delegate
 ```
 
-### How to check the custom metrics currently being published by delegate?
+### How do I check the custom metrics currently being published by delegate?
 
 Delegate has a metrics api end point which we can access on the delegate host for checking the delegate metrics available. Below is the sample curl:
 
@@ -1835,7 +1835,7 @@ In service-to-service scenarios, a best practice is to transmit only the princip
 
 Yes, you can refer to these [docs](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList).
 
-### How to perform load test on k8s delegate?
+### How can I perform a load test on a Kubernetes delegate?
 
 You can implement Autoscale using replicas with the steps in this [docs](https://developer.harness.io/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). The autoscaling will be based on load not on number of tasks Or can do any kind of deployment or simply run shell scripts which uses cpu and memory.
 
@@ -1930,7 +1930,7 @@ No, there is currently a variation, with K8S delegates defaulting to root with s
 
 Users can choose not to run as root. For custom binaries, root access is not required, they can curl the binary and put it in the path.
 
-### How to hide Harness built-in roles (harness managed roles), and is it possible to hide account scope roles?
+### How can I hide Harness built-in roles (Harness managed roles), and is it possible to hide account scope roles?
 
 Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`) will hide project and org scope roles. However, there is currently no way to hide account-level roles. This decision was not implemented due to the potential restriction that once we enable FF for the account, nobody will be able to see managed roles, including account admin.
 
@@ -1942,7 +1942,7 @@ Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline 
 
 Go to the [AWS documentation on SMTP credentials](https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html) to create SMTP credentials using the SES console. Then, supply those SMTP credentials in your [Harness SMTP connector configuration](/docs/platform/notifications/add-smtp-configuration).
 
-### How to increase the concurrent pipeline execution limit
+### How can I increase the concurrent pipeline execution limit
 
 You can increase the limit unto 1000 by navigating to Account Settings --> Account Resource --> Default Settings --> Pipeline
 
@@ -1950,11 +1950,11 @@ You can increase the limit unto 1000 by navigating to Account Settings --> Accou
 
 Yes its possible and you need to ask Harness support to enable PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE and PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE. FF.
 
-### How to upgrade legacy docker delegate to use new image version
+### How do I upgrade a legacy Docker delegate to use a new image version?
 
 You can update the image tag by looking into latest tag https://hub.docker.com/r/harness/delegate/tags and can provide that while docker run command
 
-### How to check if Delegate is setup for auto Upgrade
+### How do I check to see if the delegate is set to auto upgrade?
 
 You can go to delegate page and on right side check under AUTO UPGRADE Column if its showing ON
 
@@ -2021,15 +2021,15 @@ Sometime when you try to add a Harness User from Harness UI , you get error for 
 You can open the developer tools and check the API call for the error and see the response.
 It could be possible due to user creation limit. You can either resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your license.
 
-### How to get x-api-key for making api call
+### How do I get an x-api-key for making an API call?
 
-You need to create a new token under api key , you can follow https://apidocs.harness.io/#section/Introduction/Authentication for more details
+You need to create a new token under API key. For more information, go to [Authentication](https://apidocs.harness.io/#section/Introduction/Authentication) in the API documentation.
 
-### How to check which delegate was assigned for task
+### How do I check which delegate was assigned for task
 
 You can select the step under any stage and on right side under details tab you will be able to see delegate assigned as well the delegate selection task logs will provide more details which all delegates were eligible and from where selector was originated etc
 
-### How to pass xmx and pms value for delegate to use max and min memory allocation pool
+### How do I pass xmx and pms value for delegate to use max and min memory allocation pool?
 
 env:
     - name: JAVA_OPTS
@@ -2226,15 +2226,15 @@ We can not use immutable delegate image in the statefulset deployment yaml that 
 
 We do not have additional log level settings for delegate than what it logs by default.
 
-### How to sync ldap groups manually if linked User group is not getting synced
+### How do I sync LDAP groups manually if the linked user group isn't syncing?
 
-You can Navigate to Authentication tab and go to ldap setting and try Synchronize User group option.
+You can Navigate to Authentication tab and go to LDAP setting and try Synchronize User group option.
 
 ### While trying to link sso group, not getting the option for user group
 
 Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down
 
-### How to capture SAML Tracer
+### How do I capture SAML Tracer information?
 
 You can install SAML Tracer extension in your browser its available for all browsers. 
 With the SAML-tracer extension running one needs to do the following:
@@ -2247,7 +2247,7 @@ With the SAML-tracer extension running one needs to do the following:
 In case you have say Sandbox and production Harness instances and you are using the Azure SAML APP which also has multiple Harness apps. 
 It is important to specify the Entity ID below the Authorization in Harness UI while creating the SAML App integration. 
 
-### How to inspect your certificates for delegate certificate issue. 
+### How do I inspect my certificates for delegate certificate issues? 
 
 The below commands will hep you inspect your certificates. 
 
@@ -2285,7 +2285,7 @@ Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting
 While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
 We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
 
-### How to Avoid Hitting the GitHub API Rate Limit When Using Multiple Templates and Git-Stored Pipelines?
+### How do I avoid hitting the GitHub API rate limit when using multiple templates and Git-stored pipelines?
 
 To minimize GitHub calls from Harness, enabling the bi-directional git experience may significantly reduce the number of requests.
 
@@ -2475,9 +2475,9 @@ In this case you can install the delegate on org level if both project are under
 You can create a role and add view permission for pipeline with account scope, you can find sample one as below for having execute permission similarly you can create one for just view access
 https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples
 
-###   How to signout?
+### How do I sign out of Harness?
 
-You can click on My profile Under bottom left and you will able to see Sign Out option coming in.
+Select **My profile** on the bottom left, and then select **Sign Out**.
 
 ### I can see that a legacy delegate is a statefulset object, what does this mean? and what's the major difference from Deployment type?
 
@@ -2558,7 +2558,7 @@ If you face this issue on an account that was registered using your work mail ID
 
 No! AIDA does not offer Rest APIs to be used by Harness Users.
 
-### How to Extend the Timeout Duration for a Custom Secret Manager?
+### How do I extend the timeout duration for a custom secret manager?
 
 To increase the timeout duration in a custom secret manager, adjust the settings in the connector's details step. This timeout setting, measured in seconds, determines how long the system will wait to fetch secrets from the custom provider. If fetching the secret exceeds this duration, the process is interrupted and results in failure. The default timeout value is set to 20 seconds. To avoid such interruptions, you can modify this value to a higher number as per your requirements.
 
@@ -2578,11 +2578,11 @@ Currently, we don’t support individual user e-mail notifications.
 
 Currently, we do not support a direct functionality for exporting all users. To export users from Harness, you can utilize our API method getUsers.
 
-### How to solve the error “You are missing the following permission: Create / Edit Pipelines”?
+### How do I fix the error “You are missing the following permission: Create / Edit Pipelines”?
 
 To resolve the error ```You are missing the following permission: Create / Edit Pipelines```, you need to assign the ```Write Pipelines``` permission to your user.
 
-### How to export all AutoStopping rules?
+### How can I export all AutoStopping rules?
 
 Currently, we do not support a direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, we recommend using our API method ```List AutoStopping Rules```.
 
@@ -2594,7 +2594,7 @@ Unfortunately, we don't support this feature. Though a custom secret manager can
 
 Please, reach out to Harness Support in order to receive manually your TOPT token. Once you receive the token will be able to register it in any authenticator app that you prefer. Additionally, if you aren’t receiving the token through e-mail, it may be a potential issue with your SMTP provider.
 
-### How to receive a notification when the delegate’s heartbeat connectivity fails?
+### How can I receive a notification when the delegate’s heartbeat connectivity fails?
 
 At present, we do not support direct notifications for failures in the delegate's heartbeat connectivity. However, you can effectively monitor your delegate using Prometheus metrics, which is a functionality we do support.
 
@@ -2774,7 +2774,7 @@ You can use Harness Service Accounts to define granular roles and permissions fo
 
 Yes, please open a support ticket to request the name change.
 
-### How to install Harness delegate using Azure ACI?
+### How do I install Harness delegate using Azure ACI?
 
 You can use the following repository as a sample to install it through Terraform. (Terraform Example)[https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd].
 
