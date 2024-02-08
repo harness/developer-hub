@@ -663,6 +663,7 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
+  clientModules: [path.join(__dirname, "/client_module/searchBar")],
 };
 
 module.exports = config;
