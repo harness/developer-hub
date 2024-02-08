@@ -52,3 +52,8 @@ Harness allows users to exercise fine-grained control, which is sufficient for e
 The Harness project admin persona can create a custom role by selecting the desired permissions against the chaos platform resources and binding it to a user. 
 
 ![new-user](./static/introduction-to-chaosguard/new-user-entry.png)
+
+## Next steps
+
+* [ChaosGuard concepts](./chaosguard-concepts)
+* [Configuring ChaosGuard](./configuring-chaosguard)
