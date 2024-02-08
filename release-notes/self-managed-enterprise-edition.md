@@ -141,7 +141,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-- Fixed UI logging issues for release versions 0.12.0. (PL-46771, ZD-57141)
+- Fixed UI logging issues for release version 0.12.0. (PL-46771, ZD-57141)
 
 ## February 2, 2024, patch version 0.13.2
 
