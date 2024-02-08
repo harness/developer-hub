@@ -35,7 +35,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.8.1
 
- - The `useFeatureFlagsClient` Hook and the `withFeatureFlagsClient` HOC have successfully been imported as part of the 1.8.1 Release. (FFM-10591)
+ - We've fixed an issue where the new `useFeatureFlagsClient` hook and the `withFeatureFlagsClient` HOC were not correctly exported, making it more complex to import into your application (FFM-10591)
+ 
+#### Version 1.8.0
+
+- We've added a new `useFeatureFlagsClient` hook and `withFeatureFlagsClient` HOC to allow easy access to the instance of the Javascript Client SDK which the React Client SDK uses under the hood (FFM-10522)
 
 ## January 2024
 
