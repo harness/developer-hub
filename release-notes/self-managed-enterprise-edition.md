@@ -17,7 +17,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::danger Do not upgrade
 
-We have discovered an issue with SMP release 0.12.0 and 0.13.0 where you may face an issue with logs in UI. Please don't upgrade to 0.12.0 and 0.13.0 releases, we are working on publishing a new patch release. 
+We have discovered an issue with SMP release 0.12.0 and 0.13.0 where you might face an issue with logs in the UI. Please don't upgrade to 0.12.0 and 0.13.0 releases, we are working to publish a new patch release. 
 
 :::
 
