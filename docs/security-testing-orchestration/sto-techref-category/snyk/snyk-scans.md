@@ -23,8 +23,6 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 - For an overview of recommended Snyk workflows, go to [CI/CD adoption and deployment](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/snyk-ci-cd-integration-deployment-and-strategies/ci-cd-adoption-and-deployment) in the Snyk documentation.
 
-- Snyk recommends running [`snyk monitor`](https://docs.snyk.io/snyk-cli/commands/monitor) with container images.
-
 - If you're scanning a code repository, note the following:
 
   - In some cases, you need to build a project before scanning. You can do this in a Run step in your Harness pipeline.
