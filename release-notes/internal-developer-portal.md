@@ -18,7 +18,56 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
-## January 2023
+## February 2024
+
+### Version 0.21.0
+
+<!-- Feb 8, 2024 -->
+
+We are seeing a lot of excitement among our customers around Self Service Workflows to derive value for their developers. This release is especially for you if you are using IDP workflows for user/service onboarding.
+
+- **New Docs:** [API Docs](https://apidocs.harness.io/tag/AllowList), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
+- **New Videos:** [Ignoring Developer Experience is Hurting Your Organization: DX is Critical](https://youtu.be/ka6kHPMGGpc?si=MCcVZdvP2bGCCI3h)
+
+
+#### New features and enhancements
+
+- The project picker in IDP workflows [HarnessProjectPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-extensions) now shows the org as well. There is no change in the input/output values. [IDP-2048]
+
+![](./static/idp-projpicker-newview.png)
+
+- Added support for a new Custom field extension **HarnessAutoOrgPicker**, which auto populates on project selection. So now when you select an project id as an input the ord id gets selected automatically if required as an input. [IDP-2099]
+
+```YAML
+#Example
+projectId:
+    title: Project Identifier
+    description: Harness Project Identifier
+    type: string
+    ui:field: HarnessProjectPicker
+orgId:
+    title: Org Identifier
+    description: Harness org Identifier
+    type: string
+    ui:field: HarnessAutoOrgPicker   
+```
+In the above example the the `Project Identifier` field once selected auto populates the `Org Identifier` field as shown below. 
+
+![](./static/idp-proj-picker.png)
+
+- Two new plugins [Azure Devops](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/azure-devops) [IDP-2078] and [Rootly](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rootly) [IDP-1693] are available to use now! 
+- Users can now add email as an input for Slack Notify step in the IDP Stage. When used with `<+triggerBy.email>`, your service onboarding pipeline can now notify the user! [IDP-1943].
+- All IDP APIs are now available on our public API docs.[IDP-2113]
+
+
+#### Bug Fixes
+
+- Added support for word-wrap to ensure words are not broken on screen. [IDP-1972]
+- Fixed the string input value to ignore leading slash for file path input value in scorecard checks[IDP-2084]. 
+- Enhanced error handling for steps under developer portal stage. You should now see more meaningful errors [IDP-2105, IDP-2098, IDP-2087, IDP-2086, IDP-1943].
+
+
+## January 2024
 
 ### Version 0.20.0
 
