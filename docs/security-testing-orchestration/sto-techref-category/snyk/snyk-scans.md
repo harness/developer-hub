@@ -8,14 +8,14 @@ redirect_from: /docs/security-testing-orchestration/sto-techref-category/snyk/sn
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
 
 - Snyk Open Source
-  - [Snyk Open Source orchestration example](#sca-orchestration-example)
-  - [Snyk Open Source ingestion example](#sca-ingestion-example)
+  - [Snyk Open Source orchestration example](#snyk-open-source-orchestration-example)
+  - [Snyk Open Source ingestion example](#snyk-open-source-ingestion-example)
 - Snyk Code 
-  - [Snyk Code ingestion example](#sast-ingestion-example)
+  - [Snyk Code ingestion example](#snyk-code-ingestion-example)
 - Snyk Container
-  - [Snyk Container ingestion example](#container-image-ingestion-example)
+  - [Snyk Container ingestion example](#snyk-container-ingestion-example)
 - Snyk infrastructure as Code (currently in beta)
-  - [Snyk infrastructure as Code ingestion example](#infrastructure-as-code-iac-ingestion-example)
+  - [Snyk infrastructure as Code ingestion example](#snyk-infrastructure-as-code-ingestion-example)
 
 ## Important notes for running Snyk scans in STO
 
@@ -180,9 +180,12 @@ The scan stage in this pipeline has the following steps:
 
       `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`
 
+      <!-- 
       Your Run step should now look like this:
 
       ![](../static/snyk-scans-run-step-01.png)
+
+      -->
 
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
