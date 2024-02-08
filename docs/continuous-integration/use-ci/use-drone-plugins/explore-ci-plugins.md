@@ -50,6 +50,7 @@ Harness officially supports the following plugins.
 | Bluemix Cloud Foundry | Deploy files or services to Bluemix | [drone-bluemix-cloudfoundry](https://github.com/ibmclouddevops/drone-bluemix-cloudfoundry) | ibmclouddevops/drone-bluemix-cloudfoundry |
 | Buildah | Build and push Docker images to a container registry (Primarily used to [build and push with non-root users](../build-and-upload-artifacts/build-and-push-nonroot.md).) | [drone-buildah](https://github.com/drone-plugins/drone-buildah) | plugins/buildah-acr, plugins/buildah-docker, plugins/buildah-ecr, plugins/buildah-gcr |
 | Cache | [Cache current workspace files between builds to reduce build times](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/#use-caching-to-reduce-build-time) | [drone-meltwater-cache](https://github.com/drone-plugins/drone-meltwater-cache) | plugins/cache |
+| Cache to Volume | Cache files and folders to a locally mounted volume | [drone-volume-cache](https://github.com/drillster/drone-volume-cache) | drillster/drone-volume-cache |
 | Capistrano | Deploy apps via the Capistrano Ruby Gem | [drone-capistrano](https://github.com/glaszig/drone-capistrano) | glaszig/drone-capistrano |
 | Captains Log | Organize release information in Slack | [captains-log](https://github.com/target/captains-log) | target/captains-log |
 | Chef Supermarket | Publish Chef Cookbooks to Supermarket (internal or public) | [drone-chef-supermarket](https://github.com/jmccann/drone-chef-supermarket) | jmccann/drone-chef-supermarket |
@@ -78,6 +79,7 @@ Harness officially supports the following plugins.
 | Fandogh | Deliver Docker images to Fandogh PaaS | [fandogh-drone](https://github.com/amirbagh75/fandogh-drone) | amirbagh75/fandogh-drone |
 | Fossa | Run the `analyze` command per the generic CI documentation for FOSSA | [drone-plugin-fossa](https://github.com/rancherlabs/drone-plugin-fossa) | rancher/drone-fossa |
 | FTP(S) | Publish artifacts over FTP(S) | [drone-ftps](https://github.com/christophschlosser/drone-ftps) | cschlosser/drone-ftps |
+| GCP OIDC | Generate a Google access token from your OIDC token | https://github.com/harness-community/drone-gcp-oidc | plugins/gcp-oidc |
 | Google Artifact Registry | [Build and push to GAR](../build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/gar |
 | Google Chat | Post build status messages to your organization's Google Chat | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
 | Google Cloud Functions | Deploy, list, and delete Google Cloud Functions | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |
@@ -104,8 +106,10 @@ Harness officially supports the following plugins.
 | GTalk | Post build status messages to your Google account | [drone-gtalk](https://github.com/appleboy/drone-gtalk) | appleboy/drone-gtalk |
 | Helm | Run Kubernetes Helm | [drone-helm](https://github.com/ipedrazas/drone-helm) | ipedrazas/drone-helm |
 | Helm3 | Interface with Helm3 | [drone-helm3](https://github.com/pelotech/drone-helm3) | pelotech/drone-helm3 |
+| Helm Push | [Upload Helm charts to Docker registries](../build-and-upload-artifacts/upload-artifacts/upload-helm-chart.md) | [drone-helm-chart-container-registry](https://github.com/harness-community/drone-helm-chart-container-registry) | plugins/helm-push |
 | Heroku | Build and push images to Heroku container registry | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/heroku |
 | Hugo | Generate static web page files that you can then publish | [drone-hugo](https://github.com/drone-plugins/drone-hugo) | plugins/hugo |
+| Image Migration | Migrate images from one Docker registry to another (Support GAR, ECR)  | [drone-docker-image-migration](https://github.com/harness-community/drone-docker-image-migration) | plugins/image-migration |
 | InstantAccess(即时达) | Post build status messages to an InstantAccess account | [drone-instant-access](https://github.com/erguotou520/drone-instant-access) | erguotou/drone-instant-access |
 | IRC | Send notifications to an IRC channel | [drone-irc](https://github.com/drone-plugins/drone-irc) | plugins/irc |
 | Java Maven | Build Java applications using the Apache Maven build tool | [drone-java-maven-plugin](https://github.com/kameshsampath/drone-java-maven-plugin) | kameshsampath/drone-java-maven-plugin |
@@ -138,34 +142,23 @@ Harness officially supports the following plugins.
 | Rancher Stack v1 | Deploy/update an entire Rancher stack (instead of a single service) to Rancher v1.6 | [drone-rancher-stack-v1](https://github.com/wayneconnolly/drone-rancher-stack-v1) | dubc/drone-rancher-stack-v1 |
 | Rocket.Chat | Send messages to a Rocket.Chat channel | [drone-rocket](https://github.com/mike1pol/drone-rocket) | mike1pol/drone-rocket |
 | Rsync | Transfer files to remote machines and then run a user-defined script | [drone-rsync](https://github.com/drillster/drone-rsync) | drillster/drone-rsync |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-
-Useful and popular plugins include:
-
-* **Artifact Metadata Publisher:** The [Artifact Metadata Publisher plugin](/tutorials/ci-pipelines/publish/artifacts-tab) can publish any artifact URL to the [Artifacts tab](../viewing-builds.md). For example, you can publish links to [test reports](/docs/continuous-integration/use-ci/run-tests/viewing-tests#view-reports-on-the-artifacts-tab), [code coverage reports](/docs/continuous-integration/use-ci/run-tests/code-coverage#view-code-coverage-reports-on-the-artifacts-tab), and [artifacts uploaded to cloud storage](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) to the Artifacts tab.
-* **S3 Upload and Publish:** Similar to the Artifacts Metadata Publisher plugin, the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings/#use-the-s3-upload-and-publish-plugin) handles both uploading your artifact to S3 and publishing the URL to the Artifacts tab.
-* **Email:** Use the [Drone Email plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin) to export reports, data, and other artifacts by email.
-* **Push Helm chart to Docker registry:** Use this plugin to [upload Helm charts to Docker registries](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-helm-chart-to-docker).
+| SCP | Copy files and artifacts to target host machine via SSH | [drone-scp](https://github.com/appleboy/drone-scp) | appleboy/drone-scp |
+| ServerChan (Server酱) | Post build status messages to a ServerChan account | [drone-serverchan](https://github.com/yakumioto/drone-serverchan) | yakumioto/drone-serverchan |
+| SFTP Cache | Create and restore caches of any folders | [drone-sftp-cache](https://github.com/appleboy/drone-sftp-cache) | appleboy/drone-sftp-cache |
+| Slack | Post build status messages to a Slack channel | [drone-slack](https://github.com/drone-plugins/drone-slack) | plugins/slack |
+| Slack Blame | Send a message to a Slack channel or direct message when a build completes (Requires a Slack API access token) | [drone-slack-blame](https://github.com/drone-plugins/drone-slack-blame) | plugins/slack-blame |
+| Snyk | [Scanner integration](#scanner-integrations) to use Snyk to scan container images for vulnerabilities | [drone-snyk](https://github.com/drone-plugins/drone-snyk) | plugins/drone-snyk |
+| SonarQube | [Scanner integration](#scanner-integrations) to scan your code quality and post the analysis report to your SonarQube server | [drone-sonar-plugin](https://github.com/aosapps/drone-sonar-plugin) | aosapps/drone-sonar-plugin |
+| SonarScanner | [Scanner integration](#scanner-integrations) to run code analysis with different versions of NodeJS (via nvm) and post the analysis report to your SonarQube server | [sonar-node-plugin](https://github.com/kytay/drone-plugins/tree/master/sonar-node-plugin) | kytay/sonar-node-plugin |
+| SSH | Execute commands on a remote server | [drone-ssh](https://github.com/appleboy/drone-ssh) | appleboy/drone-ssh |
+| Telegram | Post build status messages to a Telegram account | [drone-telegram](https://github.com/appleboy/drone-telegram) | appleboy/drone-telegram |
+| Terraform | Apply a Terraform infrastructure configuration | [drone-terraform](https://github.com/jmccann/drone-terraform) | jmccann/drone-terraform |
+| UPX | Package executables | [drone-upx](https://github.com/cnbattle/drone-upx) | cnbattle/drone-upx |
+| Vercel Deploy | Deploy a site to Vercel | [drone-vercel-deploy](https://github.com/kameshsampath/drone-vercel-deploy) | kameshsampath/drone-vercel-deploy |
+| WebDAV | Upload artifacts to any WebDAV server, including Nextcloud or ownCloud | [drone-webdav](https://github.com/vividboarder/drone-webdav) | vividboarder/drone-webdav |
+| Webhook | Provide outgoing webhook URLs to notify services via webhook when a build completes | [drone-webhook](https://github.com/drone-plugins/drone-webhook) | plugins/webhook |
+| WeChat | Post build status messages to a WeChat account | [lizheming/drone-wechat](https://github.com/lizheming/drone-wechat) | lizheming/drone-wechat |
+| WeChat for Work | Post build status notifications to WeChat for Work | [clem109/drone-wechat](https://github.com/clem109/drone-wechat) | clem109/drone-wechat |
 
 <!-- :::tip
 
