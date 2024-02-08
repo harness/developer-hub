@@ -1,20 +1,12 @@
 ---
 title: Add a custom ChaosHub
-sidebar_position: 5
-description: Introduction to ChaosHub and steps to add a ChaosHub to your project
+sidebar_position: 2
+description: Steps to add a ChaosHub to your project
 ---
 
-## Chaoshub
+This sections describes reasons for adding a custom ChaosHub and how to add and connect a custom ChaosHub. 
 
-This section introduces you to ChaosHub, and how you can add a ChaosHub to your project.
-
-A ChaosHub is a collection of experiment templates and faults that you can use to create and launch chaos experiments. 
-Experiments are templates to create new chaos experiments, which contain a collection of chaos faults and certain custom actions ordered in a specific sequence. Faults refer to the failures injected as part of an experiment. Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the ChaosHub from the UI.
-
-ChaosHub is a collection of manifests and charts that represents the experiments and faults which exist as a part of the hub.
-You can add ChaosHub using a Git service provider such as GitHub, where ChaosHub exists as a repository. This allows native version control and management of the faults and experiment artifacts.
-
-HCE provides a default **Enterprise ChaosHub** that includes a wide array of templates and faults out of the box. You can also add your own custom ChaosHubs to maintain and share private experiments and faults within your organization.
+## Reasons to add a custom ChaosHub
 
 There are several reasons for adding a custom ChaosHub. A custom hub lets you:
 
@@ -26,11 +18,9 @@ There are several reasons for adding a custom ChaosHub. A custom hub lets you:
 
 * Provide secure access to your custom experiments.
 
-This topic shows how to add and connect a custom ChaosHub. 
+## Prerequisites to add a custom ChaosHub
 
-## Prerequisites to adding a custom ChaosHub
-
-1. Be sure you have a Git repository for your custom ChaosHub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
+1. Enure you have a Git repository for your custom ChaosHub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
 
 	![Private Hub](./static/add-chaos-hub/private-hub.png)
 

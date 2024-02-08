@@ -1,13 +1,12 @@
 ---
 title: Manage custom chaoshub
-sidebar_position: 10
+sidebar_position: 3
 description: Save and manage experiments in custom chaoshub
 ---
 
 import Launch from '../shared/launch-experiment-from-hub.md'
 
-
-This topic shows how to save and manage experiments in your custom chaoshub(s), and how to sync your ChaosHub GitHub repo with Harness. Go to [Add a custom ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub) for setup instructions.
+This section describes how to save and manage experiments in your custom chaoshub(s), and how to sync your ChaosHub GitHub repo with Harness. Go to [Add a custom ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub) for setup instructions.
 
 ## View ChaosHubs
 

@@ -37,7 +37,7 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 4. Select how you want to build the experiment. The options, explained later, are:
 
 	* **Blank Canvas** - Lets you build the experiment from scratch, adding the specific faults you want.
-	* **Templates from Chaos Hubs** - Lets you preview and select and experiment from pre-curated experiment templates available in [Chaos Hubs](/docs/category/chaos-hubs).
+	* **Templates from ChaosHubs** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/category/chaos-hubs).
 	* **Upload YAML** - Lets you upload an experiment manifest YAML file.
 
 	These options are explained below.
@@ -72,9 +72,9 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 </TabItem>
   <TabItem value="Templates from Chaos Hubs">
 
-1. Select an experiment template from a [chaos hub](/docs/category/chaos-hubs).
+1. Select an experiment template from a [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 
-	* Select **Experiment Type** to see available chaos hubs to select templates from.
+	* Select **Experiment Type** to see available ChaosHubs to select templates from.
 	* Select a template to see a preview of the faults included.
 
 	![Fault Templates](./static/construct-and-run-custom-chaos-experiments/fault-templates.png)
@@ -99,8 +99,8 @@ Construct the chaos fault using one of the three options mentioned earlier and s
 
 	![Save experiment options](./static/construct-and-run-custom-chaos-experiments/save-experiment.png)
 
-	* Select **Save** to save the experiment to the Chaos Experiments page. You can add it to a [chaos hub](/docs/category/chaos-hubs) later.
-	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [chaos hub](/docs/category/chaos-hubs).
+	* Select **Save** to save the experiment to the Chaos Experiments page. You can add it to a [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub) later.
+	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 
 Now, you can choose to either run the experiment right away by selecting the **Run** button on the top, or create a recurring schedule to run the experiment by selecting the Schedule tab.
 
