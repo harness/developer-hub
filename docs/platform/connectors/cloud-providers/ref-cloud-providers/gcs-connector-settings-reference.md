@@ -54,7 +54,7 @@ For Google Artifact Registry, the following roles are required:
 * Artifact Registry Reader
 * Artifact Registry Writer
 
-For more information, go the GCP documentation about [Configure Roles for Artifact Registry](https://cloud.google.com/artifact-registry/docs/access-control)
+For more information, go the GCP documentation about [Configuring Roles for Artifact Registry](https://cloud.google.com/artifact-registry/docs/access-control)
 
 ### Google Cloud Operations Suite (Stackdriver) requirements
 
