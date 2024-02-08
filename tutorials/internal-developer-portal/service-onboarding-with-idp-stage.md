@@ -17,7 +17,10 @@ Before you begin this tutorial, make sure that you fulfil the following requirem
 
 - Enable Harness IDP for your account.
 - Make sure you are assigned the [IDP-Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin). 
-- Create a connector where you want to create the repository, make sure you keep the name same as used below `connectorRef: account.democonnector` where democonnector is the connector name and we are using **Github** in the following tutorial you can [change that](https://developer.harness.io/internal-developer-portal/flows/idp-stage#connector) and update the YAML below as well. 
+- Create a connector **Admin** -> **Project Settings** -> **Connectors** where you want to create the repository, make sure you keep the name same as used below `connectorRef: account.democonnector` where democonnector is the connector name and we are using **Github** in the following tutorial you can [change that](https://developer.harness.io/internal-developer-portal/flows/idp-stage#connector) and update the YAML below as well. 
+- Create a [Slack API token](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#slack-secret-key) and save it as **secret** under **project settings** in **Admin** panel. 
+
+![](./static/project-settings-secrets.png)
 
 ## Create a pipeline
 
@@ -44,6 +47,14 @@ You can also create a new project for the service onboarding pipelines. Eventual
 5. The below given YAML will create a service onbaording pipeline for you using IDP stage as [described in this docs](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps). 
 
 6. Now go to the YAML view and from line number 7 `stages:` replace it with the following YAML (make sure you have used the same stage name as described above.)
+
+:::info
+
+You need to have completed all the steps under **[Pre-Requisites](/tutorials/internal-developer-portal/service-onboarding-with-idp-stage#prerequisites)** for the below given YAML to work properly 
+
+Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of pre-requisites. 
+
+:::
 
 ```YAML
   stages:
