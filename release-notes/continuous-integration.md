@@ -42,13 +42,15 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### New features and enhancements
 
-[Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031)
+* [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031)
+* To address security vulnerabilities, Reactor-netty libraries have been updated to the latest version in [Harness CI images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci). (CI-10929, ZD-52222, ZD-55562)
 
 #### Fixed issues
 
 * Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. This change requires Harness Delegate version 24.02.82300 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10636, ZD-54688)
 * Removed excessive, unnecessary health check messages in logs. (CI-11102)
 * Added validations to address a runtime error that could occur in the Build and Push to ACR step. (CI-10793, ZD-55412)
+* Harness now automatically truncates long pipeline and stage names in [PR build status messages](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks), because status updates fail to post if the message exceeds the SCM provider's character limit for such messages. If a pipeline or stage name is truncated, the truncated portion is replaced by ellipses (`...`). (CI-11132, ZD-56864)
 
 ### Version 1.11.4
 

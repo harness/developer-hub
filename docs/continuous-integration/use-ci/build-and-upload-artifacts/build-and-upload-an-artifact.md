@@ -61,10 +61,9 @@ Upload Artifacts steps upload artifacts. These steps _don't_ include build comma
 - [Upload artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
 - [Upload artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 - [Upload artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-- [Upload Helm charts to container registries](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-helm-chart.md)
+- [Upload Helm charts to container registries](./upload-artifacts/upload-helm-chart.md)
 - [Send artifacts by email](./drone-email-plugin)
-
-For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to upload the artifact.
+- Run any upload script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) or [use plugins](../use-drone-plugins/explore-ci-plugins.md).
 
 :::tip Artifacts tab
 

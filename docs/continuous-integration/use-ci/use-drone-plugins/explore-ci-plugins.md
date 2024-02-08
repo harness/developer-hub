@@ -4,25 +4,12 @@ description: Learn how, why, and when to use plugins
 sidebar_position: 10
 ---
 
-Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language.
+Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. Plugins are also useful for integrating with third-party tools.
 
-You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
+You can [write your own plugins](./custom_plugins.md) or use pre-built plugins, such as those in the [Drone Plugins Marketplace](https://plugins.drone.io/), the [Drone Plugins GitHub org](https://github.com/drone-plugins), and the [Harness Community GitHub org](https://github.com/harness-community).
 
-To include a plugin in a CI pipeline, you use either the generic **Plugin** step or a specialized plugin step.
+To run plugins in CI pipelines, [use Plugin steps](./run-a-drone-plugin-in-ci.md).
 
-## Custom plugins
-
-You can [write your own plugins](./custom_plugins.md) and run them in your Harness CI pipelines.
-
-## Drone plugins
-
-You can [use Plugin steps to run Drone plugins](./run-a-drone-plugin-in-ci.md) in Harness CI pipelines.
-
-You can [write your own plugins](#custom-plugins) or use pre-built plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), the [Drone Plugins GitHub org](https://github.com/drone-plugins), and the [Harness Community GitHub org](https://github.com/harness-community).
-
-### Harness-supported plugins
-
-Harness-supported plugins include official Drone plugins, plugins used to drive built-in Harness CI steps, and other notable plugins developed by the Harness and Drone communities. Plugins used to drive built-in Harness CI steps can also be used on their own in **Plugin** steps.
 
 Harness officially supports the following plugins.
 
@@ -171,25 +158,25 @@ Harness CI supports `DRONE_` environment variables. For more information, go to 
 
 Through plugins and built-in steps, Harness CI integrates with other tools in your SDLC tool chain.
 
-### Bitrise integrations
+## Bitrise
 
 How you run [Bitrise integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 * With Harness Cloud build infrastructure, use the [Bitrise step](./ci-bitrise-plugin.md).
 * With other build infrastructures, you can use a [custom plugin](./custom_plugins.md).
 
-### GitHub Actions
+## GitHub Actions
 
 How you run [GitHub Actions](https://github.com/marketplace?type=actions) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 * With Harness Cloud build infrastructure, use the [GitHub Action step](./ci-github-action-step.md).
 * With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
-### Jira integrations
+## Jira
 
 If you want your CI pipelines to update Jira issues, you can use a **Plugin** step as explained in [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
 
-### Scanner integrations
+## Security scanners
 
 The [Harness Security Testing Orchestration module](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#harness-sto-scanner-support) provides first-class support for many security scanners. You can also use the [Drone SonarScanner plugin](https://plugins.drone.io/plugins/sonar-node-plugin) in a [Plugin step](./run-a-drone-plugin-in-ci.md), for example:
 
@@ -213,6 +200,11 @@ For information about SonarScanner plugin settings, go to the [Drone SonarScanne
 
 For information about the Plugin step settings, go to the [Plugin step settings documentation](./plugin-step-settings-reference.md).
 
-### Other integrations
+## Other integrations
 
 There are plugins available to integrate with a myriad of third party tools. For some highlights, browse the list of [Harness-supported plugins](#harness-supported-plugins).
+
+## Plugins used by Harness CI
+
+These plugins are used by built-in Harness CI steps.
+
