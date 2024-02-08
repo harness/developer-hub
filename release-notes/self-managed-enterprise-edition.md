@@ -15,6 +15,47 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
 
+:::danger important upgrade instructions for 0.13.3
+
+If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
+
+If you are currently on version 0.13.0, 0.13.1, or 0.13.2, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.3.
+
+**Upgrade using Helm**
+
+If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
+
+1. Set `global.database.minio.mergeLogs` to `true`.
+2. Perform your Helm upgrade.
+
+**All other customers**
+
+If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
+
+1. Exec into your MinIO pod.
+2. Copy the files from `/bitnami/minio/data` to `/data/backup directory`.
+3. Perform a `helm` upgrade.
+4. Exec into your MinIO pod.
+5. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
+  
+   ```
+    env | grep MINIO_ROOT_PASSWORD
+   ```
+
+6. Run the following commands.
+
+   ```
+   bin/mc alias set minio http://minio:9000
+        # Access Key: admin
+        # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_5>
+   ```
+
+   ``` 
+   bin/mc cp --recursive /data/backup/logs minio/logs
+   ```
+
+:::
+
 :::info About Harness Release Notes
 
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
@@ -60,7 +101,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-- TBD. (PL-46771, ZD-57141)
+- Fixed UI logging issues for release versions 0.12.0, 0.13.0, 0.13.1, and 0.13.2. (PL-46771, ZD-57141)
 
 ## February 2, 2024, patch version 0.13.2
 
