@@ -49,7 +49,7 @@ Verify the following:
    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-   - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+   - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 3. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
    - For more information on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 4. **AWS user account with required policy:** Serverless deployments require an AWS user account with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS user, do the following in AWS IAM:
@@ -422,7 +422,7 @@ Verify the following:
    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-   - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+   - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 3. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
    - For more information on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 4. **AWS S3 bucket with the artifact**, upload the [hello-world.zip](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/hello_world.zip) in a new s3 bucket, to be used as an artifact.

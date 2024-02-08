@@ -46,7 +46,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. 
 
-### Scan settings
+### Scan
 
 <a name="scan-mode"></a>
 
@@ -81,7 +81,8 @@ The following options are supported for Zap scans:
 
    When Quick mode is enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
-### Target settings
+
+### Target
 
 #### Type
 
@@ -89,29 +90,37 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 
 <StoSettingScanTypeInst />
 
+
+<!-- #### Target and variant detection 
+
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectApp/>
+<StoSettingScanTypeAutodetectNote/       -->
+
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
+
 
 #### Variant
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
-
 <StoSettingTargetVariant  />
+
 
 #### Workspace
 
 import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
-
 <StoSettingTargetWorkspace  />
 
 
-### Instance settings
+### Instance
 
 #### Domain
 
@@ -189,7 +198,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 ## Security step settings for ZAP scans in STO (legacy)
@@ -233,7 +242,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `instance_path` — Specify if the app URL includes a path beyond the domain. If you want to scan `https://app.my-domain.com/myModule/myApp`, the instance path is `myModule/myApp`.
 * `instance_port` — Specify if the site is accessed using a non-default port.
 
-#### Ingestion settings
+#### Ingestion
 
 
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

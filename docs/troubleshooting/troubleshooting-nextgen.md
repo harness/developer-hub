@@ -625,7 +625,7 @@ If you publish output variables in your Shell Script step, structure your script
 
 ## Harness policy engine
 
-The following errors might occur during the set up or use of [Harness policy engine](/docs/platform/governance/Policy-as-code/harness-governance-overview).
+The following errors might occur during the set up or use of [Harness policy engine](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
 ### Policy evaluation failed
 

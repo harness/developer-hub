@@ -116,7 +116,7 @@ The Harness delegate is a software service you install in your environment. It c
 
 If you're new to Harness, read [Harness Platform architecture](/docs/get-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
 
-1. Follow the steps in [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
+1. Follow the steps in [Delegate installation overview](/docs/platform/delegates/install-delegates/overview) to install a Harness delegate.
 
 2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
 
@@ -423,7 +423,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: <+primary.artifact.image>` and an artifact.
+The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/variables-and-expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: <+primary.artifact.image>` and an artifact.
 
 The Task Definition is added to the Service.
 
@@ -1132,7 +1132,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
+The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/variables-and-expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 

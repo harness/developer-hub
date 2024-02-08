@@ -42,28 +42,28 @@ To select a SAML provider, do the following:
 <TabItem value="Microsoft Entra ID">
    
 
-   For steps to configure, go to [SAML SSO with Microsoft Entra ID](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure).
+   For steps to configure, go to [SAML SSO with Microsoft Entra ID](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-azure).
 
 
 </TabItem>
 <TabItem value="Okta">
       
 
-   For steps to configure, go to [SAML SSO with Okta](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-okta).
+   For steps to configure, go to [SAML SSO with Okta](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta).
 
 
 </TabItem>
       <TabItem value="OneLogin">
    
 
-   For steps to configure, go to [SAML SSO with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin).
+   For steps to configure, go to [SAML SSO with OneLogin](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin).
 
 
 </TabItem>
 <TabItem value="Others">
     
 
-   For steps to configure, go to [SAML SSO with Keycloak](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-keycloak).
+   For steps to configure, go to [SAML SSO with Keycloak](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-keycloak).
 
 
 </TabItem>

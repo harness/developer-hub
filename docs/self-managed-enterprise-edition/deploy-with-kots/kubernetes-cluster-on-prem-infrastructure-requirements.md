@@ -150,8 +150,14 @@ The installation of Harness Self-Managed Enterprise Edition requires a load bala
 After Harness Self-Managed Enterprise Edition is installed, the load balancer is used to access the Harness Manager UI with a web browser.
 
 For information on how to create the load balancer, go to [Install Self-Managed Enterprise Edition with KOTS](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
+ |
 
 ### gRPC and load balancer settings
+
+:::info note
+gRPC settings are not required for delegate version 23.12.81803 and later.
+
+:::
 
 The configuration of gRPC depends on load balancer support for HTTP2.
 

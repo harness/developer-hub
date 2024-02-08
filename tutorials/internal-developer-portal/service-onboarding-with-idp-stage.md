@@ -198,7 +198,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 ### Create a software template definition in IDP
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template.
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
 [Source](https://github.com/Debanitrkl/backstage-test/blob/main/tutorial-self-service-flow-template.yaml)
 
@@ -344,11 +344,150 @@ This is a custom component we created to authenticate the call to execute the pi
 
 :::info
 
-The template actions currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+The template actions currently supports only [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 :::
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
+
+### Conditional Inputs in Templates
+
+1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+
+```YAML
+dependencies:
+  technology:
+    oneOf:
+      - properties:
+          technology:
+            enum:
+              - java
+          java version:
+            type: "string"
+            enum:
+              - java8
+              - java11
+```
+2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+
+```YAML
+type: object
+allOf:
+- properties:
+    lorem:
+      type:
+      - string
+      - boolean
+      default: true
+- properties:
+    lorem:
+      type: boolean
+    ipsum:
+      type: string
+```
+3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
+
+```YAML
+type: object
+properties:
+  age:
+    type: integer
+    title: Age
+  items:
+    type: array
+    items:
+      type: object
+      anyOf:
+      - properties:
+          foo:
+            type: string
+      - properties:
+          bar:
+            type: string
+anyOf:
+- title: First method of identification
+  properties:
+    firstName:
+      type: string
+      title: First name
+      default: Chuck
+    lastName:
+      type: string
+      title: Last name
+- title: Second method of identification
+  properties:
+    idCode:
+      type: string
+      title: ID code
+```
+
+For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
+
+### Upload a file using template
+
+There are 3 types of file upload. 
+
+1. Single File
+2. Multiple Files
+3. Single File with Accept Attribute 
+
+```YAML
+#Example
+title: Files
+type: object
+properties:
+  file:
+    type: string
+    format: data-url
+    title: Single file
+  files:
+    type: array
+    title: Multiple files
+    items:
+      type: string
+      format: data-url
+  filesAccept:
+    type: string
+    format: data-url
+    title: Single File with Accept attribute
+```
+
+### How to use arrays as Harness Pipeline inputs 
+
+Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
+
+In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
+As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
+
+```YAML
+    - title: Pass Variables Here      
+      properties:
+        exampleVar:
+          title: Select an option
+          type: array
+          items:
+            type: string
+            enum:
+              - Option1
+              - Option2
+              - Option3
+          default: 
+            - Option1
+      ui:
+        exampleVar:
+          title: Select Options
+          multi: true
+  steps:
+    - id: trigger
+      name: Call a harness pipeline, and pass the variables from above
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/*********/home/orgs/default/projects/*************/pipelines/*************/pipeline-studio/?storeType=INLINE'
+        inputset:
+          exampleVar: ${{ parameters.exampleVar.join(',') }}
+          owner: ${{ parameters.owner }}
+        apikey: ${{ parameters.token }}
+```
 
 ### Register the template
 

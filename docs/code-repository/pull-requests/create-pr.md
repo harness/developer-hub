@@ -32,3 +32,33 @@ If you decide a pull request is invalid or not ready for review, you can close i
 3. Select **Close pull request** again to confirm the closure.
 
 To reopen the PR, select **Open for review**.
+
+## Pull request templates
+
+Pull request templates encourage contributors to provide required and optional information in pull request descriptions.
+
+To create a pull request template for a Harness Code repo, create a `pull_request_template.md` file in the repo's `.harness` directory, and then add your Markdown-formatted template to `pull_request_template.md`. For example:
+
+```md
+## Change summary
+
+This PR includes changes that...
+
+## Change type
+
+- [ ] Bug fix
+- [ ] Enhancements
+- [ ] Documentation
+- [ ] Maintenance
+
+## Linked issues
+
+This PR includes changes that address the following issues/tickets:
+
+- x
+- x
+- x
+
+```
+
+When a contributor opens a PR, Harness checks for `pull_request_template.md` in the `.harness` directory and populates the PR description with the template.

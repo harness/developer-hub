@@ -23,7 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  //onBrokenAnchors: "ignore", #DS 3.1+
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
@@ -326,31 +326,33 @@ const config = {
             ],
           },
           {
-            position: "right",
-            to: "kb",
             label: "Knowledge Base",
-          },
-          {
             position: "right",
-            to: "community",
-            label: "Community",
+            type: "dropdown",
+            to: "kb",
+            items: [
+              {
+                to: "kb",
+                label: "Knowledge Base",
+              },
+              {
+                to: "community",
+                label: "Community",
+              },
+            ],
           },
-          //{
-          //  position: "right",
-          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
-          //  label: "Join Slack",
-          //},
+
           {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
           },
           {
             position: "right",
-            // label: "Sign up",
+            html: '<button class="button button--nav">Sign in</button>',
+            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
+          },
+          {
+            position: "right",
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
@@ -659,7 +661,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/feedback-plugin"),
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
-    path.join(__dirname, "/plugins/scarf-plugin"),
+    //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
 };
 

@@ -56,7 +56,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is add an Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
 
-### Scan settings
+### Scan
 
 <a name="scan-mode"></a>
 
@@ -85,6 +85,16 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
+
+
+<!-- #### Detect target and variant 
+
+
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -224,7 +234,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 <!--  /step-palette -->
 
@@ -258,7 +268,7 @@ To configure an Anchore Enterprise scan in a Security step, add the following to
 	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `tool_args` : `--force` to reset the image analysis status to `not_analyzed`.  
 
 
-### Container image settings (required)
+### Container image (required)
 
 * `container_type`
 	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`

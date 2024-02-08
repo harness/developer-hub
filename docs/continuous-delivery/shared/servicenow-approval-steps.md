@@ -119,6 +119,10 @@ For details, go to **Custom table support** in [Create ServiceNow tickets in CD 
 
 After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
 
+### Notes
+
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations).
+
 ## See also
 
 * [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)

@@ -10,6 +10,8 @@ title: Kaniko container runtime error
 * Environment:
    * Infrastructure: Kubernetes
    * OS: Linux
+* Stage: Build
+* Step: Build and Push
 
 ## Problem
 
@@ -34,7 +36,7 @@ To add a variable to the pipeline's variables list:
 
    ![](../static/kb1_img2.png)
 
-2. Locate the stage where you have the **Build and Push an Image to Docker Registry** step.
+2. Locate the stage where you have the **Build and Push** step.
 3. Next to **Stage Variables**, select **Add Variable**, and configure the variable as follows:
 
    * Type: String

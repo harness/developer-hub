@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-01-22:T10:00:15
+date: 2024-02-05:T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -47,7 +47,82 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 
+## February 2024
+
+### Version 1.23.5
+
+#### Fixed Issues
+- Issue while selecting VPC if the name is empty. VPC name is optional in the AWS console but the id is always there, but if the name is empty it is not getting selected. The issue is fixed now and instead of `vpc.name` it will get displayed as `vpc.id:vpc.name`. (CDS-89297)
+- Application logs used to get printed in TAS deployment logs, the issue is fixed by introducing a new environment variable `DISABLE_CF_APP_LOG_STREAMING` and when it’s set to true it will redact all application logs, providing users with more flexibility in managing log visibility. (CDS-89172, ZD-56849)
+- Parent pipeline has a chained pipeline stage and both the parent and child pipelines are in different organizations. While running the parent pipeline, the user group selection for the child approver user group displays parent pipeline organizations. The issue has now been fixed, and users should be able to select the correct user group(s) of the child pipeline that belong to a different or the same organization. (CDS-89001, ZD-55502)
+- When service was selected from **Projects** > **Service** > **Select Service** it used to open the configuration tab and when service was selected from **Deployments** > **Services** > **Select Service** it used to open the summary tab. The issue for this different behavior is now fixed and now via both ways, users will be taken to the service's summary tab. (CDS-88692, ZD-56528)
+- Jenkins `jobParameter` was getting added to the pipeline even if it was not a runtime input in the template. The issue is fixed now and `jobParameter` will not be added automatically. (CDS-88380, ZD-55212)
+- Wrong target groups were getting attached when multiple load balancers were used with the same load balancer name. The issue is fixed now. (CDS-88229, ZD-55701)
+- When the service is marked as runtime in a child pipeline and then configured from the chained pipeline inputs tab, the service input fields are left as runtime. The Trigger Input panel and Input-set form do not properly prompt for service input. This issue has been resolved. (CDS-87983, ZD-55917)
+- Issue with missing expressions and inconsistent suggestion placement during code scripting. The issue is fixed now in code editors like Shell Script to render a tooltip to view the complete suggestion value. (CDS-85027)
+- Improved the error messaging for the AWS SAM step when an incorrect expression or reference led to no image being found. (CDS-84058)
+- Selecting the secondary splunk query page would auto submit rather than letting you modify the second query. You will now be able to modify the second query without submitting automatically. (CDS-89153)
+
 ## January 2024
+
+### Version 1.22.3
+
+#### New features and enhancements
+- Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
+  - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
+  - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+
+- Remove application details from NewRelic if it is empty (CDS-88190)
+  - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
+
+- Stage Selection component is being moved to Pipeline Input tab from Configuration Tab (CDS-72890)
+   - When configuring Triggers, the Stage Selection component has been moved to Pipeline Input tab from Configuration Tab.
+
+- Show accountId in Switch Account screen(CDS-88728)
+  - Enhanced the Switch Account experience to show more data i.e ``AccountId``.
+#### Fixed Issues
+- UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
+  - Previously, deployments would display an error when they were waiting for manual approval. 
+  - A conditional was updated to handle the null check for the approval message, fixing the issue.
+
+- Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
+  - Previous Behavior: The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service.
+  - The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
+
+- Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
+  - Issue occurred when using GCP and a GCP access token.
+  - It occurred when the access token expiration overlapped with steady state check (watch) API calls.
+  - The issue is fixed now. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation.
+
+- K8s Async Steps - Invalid task type exception has been thrown when task parameter is not provided (CDS-87708)
+  - Invalid task type and Null Pointer Exceptions were thrown instead of marking the Step as Skipped.
+  - The step will now be correctly marked as Skipped, fixing the issue.
+
+- Github release trigger not working as expected because UI didn't show the Conditions (CDS-87647, ZD-55832)
+  - There were inconsistencies in webhook trigger payload conditions in YAML and Visual views with the event type.
+  - This has been fixed. Visual and YAML views will show consistent behavior between them.
+
+- Support use of ‘#’ for branch names (CDS-87468, ZD-55625)
+  - Previously, certain special characters were not supported by GET calls.
+  - From now on branches that have special characters such as '&' and '#' will be supported by GET pipeline calls for Remote entities.
+
+- ServiceNow approval conditions dropdown gives invalid values (CDS-86809)
+  - Previously, an approval conditions dropdown menu was auto-populating with an invalid [object Object] value or other invalid values.
+  - The issue is fixed now.
+ 
+- Unable to select a new pipeline version. (CDS-87809, ZD-55910)
+  - We found an error in the flow where a version of an in-use Template is deleted. When that happened, the referring Pipeline or Template threw an error and did not let you select an alternate version of the Template.   
+  - We'd earlier suggested editing the YAML directly to work around the issue. 
+The bug has now been fixed, and you should be able to select an alternate version of the Template from referring Pipelines/Templates now.
+
 
 ### Version 1.21.5
 
@@ -458,6 +533,13 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+## February 2024
+
+### Version 1.21.6 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue with infrastructure definition to reconcile inconsistencies. (CDS-89314)
 #### Hotfix version 81614
 
 - Recent changes to enable Harness to evaluate delegate selector expressions at stage runtime caused pipelines to fail. (CDS-85692, ZD-54495)
@@ -3153,7 +3235,7 @@ This release does not include any early access features.
 
 - Harness now supports template input APIs. (CDS-55694)
 
-  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](/docs/platform/Templates/create-pipeline-template).
+  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](/docs/platform/templates/create-pipeline-template).
 
   Here is a sample template:
 
@@ -4307,7 +4389,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
   A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran.
 
-  A failure strategy is also required for the **Deploy** stage in [stage templates](/docs/platform/Templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+  A failure strategy is also required for the **Deploy** stage in [stage templates](/docs/platform/templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
 
   No action required by users.
 

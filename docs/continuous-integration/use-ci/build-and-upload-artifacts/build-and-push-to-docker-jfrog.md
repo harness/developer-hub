@@ -6,12 +6,12 @@ sidebar_position: 26
 
 This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to build and push an image to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) Docker registries.
 
-For JFrog non-Docker registries, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to build the artifact, and then use the [Upload Artifacts to JFrog step](./upload-artifacts-to-jfrog.md) to upload the artifact.
+For JFrog non-Docker registries, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to build the artifact, and then use the [Upload Artifacts to JFrog step](./upload-artifacts-to-jfrog.md) to upload the artifact.
 
 You need:
 
 * Access to a JFrog Artifactory instance with a Docker registry.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * A Harness [Docker connector](#docker-connector) configured to your JFrog instance.
 
 ## Kubernetes cluster build infrastructures require root access

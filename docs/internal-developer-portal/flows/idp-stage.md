@@ -2,10 +2,6 @@
 title: IDP Stage
 description: Overview of IDP stage and the steps associated with it
 sidebar_position: 2
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 
@@ -62,7 +58,7 @@ This functionality is limited to the modules and settings that you have access t
 
 ## Infrastructure
 
-4. Under **Infrastructure** tab we suggest you to select **[Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud)** but you're free to choose from [Kubernetes](https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm#define-the-build-infrastructure) or [Local](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) or [VM](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures)
+4. Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-hosted VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
 
 ![](./static/infrastructure.png)
 
@@ -514,6 +510,12 @@ These output variable could be viewed under the output tab in
 
 ### 7. Slack Notify
 
+:::warning
+
+There has been some recent upgrades to this step and this is dependent on the NGUI service release, which has a different release cadence than that of IDP, until then this feature wouldn't functions as desired. We expect the dependent service releases to happen in the following week. 
+
+:::
+
 This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
 
@@ -577,6 +579,8 @@ The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/t
 
 1. chat:write
 2. chat:write.public
+3. users:read.email
+4. users:read
 
 ![](./static/slack-auth.png)
 

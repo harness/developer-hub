@@ -1,7 +1,8 @@
 ---
 title: Build/scan/push pipelines for container images in STO
 description: End-to-end pipeline examples for different use cases. 
-sidebar_position: 90
+sidebar_label: Build/scan/push pipelines for container images
+sidebar_position: 50
 ---
 
 You generally want to scan any container images you build and then push them to your production registry _only_ if the scan did not detect any serious vulnerabilties. 
@@ -14,7 +15,7 @@ This workflow is useful if you can use Docker-in-Docker and don't have a CI lice
 
 1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
 
-2. Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build a local copy of the container image.
+2. Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to build a local copy of the container image.
 
 3. Add a [Security Tests step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) to scan the snapshot image and ingest the results.
 
@@ -328,7 +329,7 @@ This workflow is useful if you don't have a CI license and want to use [Kaniko](
 
 1. In the Security stage overview, under **Shared Paths**, add a path on the stage volume where you can share the image TAR across steps. 
 
-2. Use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build a local copy of the container image. The step should also save the TAR of the image to the shared path on the stage volume. 
+2. Use a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to build a local copy of the container image. The step should also save the TAR of the image to the shared path on the stage volume. 
 
 3. Use a Run step to run a manual scan of the local image. 
 
@@ -353,7 +354,7 @@ This workflow is useful if you have a CI license and want to use [skopeo](https:
 
 2. Use a CI [Build and Push step](/docs/category/build-and-upload-artifacts) to build and push your image with a snapshot tag such as`image:snapshot-<+pipeline.executionId>`.
 
-3. Use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) that uses skopeo to pull the image TAR to your shared path.
+3. Use a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses skopeo to pull the image TAR to your shared path.
 
 4. Use a Run step to scan the local image TAR.
 

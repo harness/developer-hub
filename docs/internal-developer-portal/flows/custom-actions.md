@@ -32,6 +32,8 @@ A list of all registered custom actions can be found under
 
 ### 1. `trigger:harness-custom-pipeline`
 
+This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the pipeline url, and then trigger the pipeline based in the inputset obtained from the user. 
+
 ```YAML
 ## Example
 steps:
@@ -97,7 +99,7 @@ steps:
 
 ```
 
-In the above example API key is an optional paramenter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
+In the above example API key is an optional parameter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
 
 Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
 
@@ -152,7 +154,7 @@ projectId:
 
 | **Custom Action**                      | **Pipelines and Stages**    |
 |----------------------------------------|-----------------------------|
-| trigger:harness-custom-pipeline        | Supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step) | 
+| trigger:harness-custom-pipeline        | Supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) |
 | trigger:trigger-pipeline-with-webhook  | Supports all the pipelines with a custom webhook based trigger          | 
 
 

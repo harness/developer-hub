@@ -185,7 +185,7 @@ export default function CloudCostManagement() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Cloud Cost Management - Administrator (BETA)
+                    Cloud Cost Management - Administrator
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
@@ -198,7 +198,7 @@ export default function CloudCostManagement() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA)</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of CCM.
@@ -218,7 +218,7 @@ export default function CloudCostManagement() {
 
             {/* Admin Exam Details */}
             <div className={styles.examDetails}>
-              <h2 id="exam-details">Exam Details (BETA)</h2>
+              <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
                 <AdminCertificationExamDetails />
                 <div className={styles.btnContainer}>

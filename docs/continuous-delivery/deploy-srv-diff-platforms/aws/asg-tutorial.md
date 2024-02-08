@@ -1172,7 +1172,7 @@ Rolling Deployment Finished Successfully
   <TabItem4 value="Rolling Rollback step" label="Rolling Rollback step">
 
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
 
 During rollback of the first deployment, Harness deletes the ASG.
 
@@ -1285,7 +1285,7 @@ This is the standard Harness ASG Rolling Deploy step. For details, go to [Rollin
   <TabItem5 value="Rollback steps" label="Rollback steps">
 
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
 
 For ASG canary deployments there are two rollback steps:
 
@@ -1504,7 +1504,7 @@ In the **Advanced** settings of all step, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Notes
 

@@ -135,7 +135,7 @@ The following section describe each link and what you can do with them.
 
 **apiUrl** can be used to track deployment status programmatically, such as using a REST call.
 
-For more information, go to [Get Deployment Status using REST](#get-deployment-status-using-rest) below.
+For more information, go to [Get Deployment Status using REST](#get-deployment-status-using-rest-for-a-custom-trigger) below.
 
 
 ### uiUrl parameter in a custom trigger
@@ -353,7 +353,7 @@ The response from the cURL command will contain the status of the deployment. Fo
 
 ## Passing data in custom triggers
 
-For information on how to pass data in the cURL command for a custom trigger, go to [Passing data in Custom triggers](/docs/platform/Triggers/custom-trigger-passing-data).
+For information on how to pass data in the cURL command for a custom trigger, go to [Passing data in Custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
 
 ## Custom trigger authorization using API keys
 

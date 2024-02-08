@@ -9,11 +9,11 @@ Harness Self-Managed Enterprise Edition enables you to configure self-managed ob
 
 You can install MinIO on your preferred VMs and provide the endpoint in your Harness Helm charts. This topic describes how to set up 4 MinIO servers.
 
-### MinIO prerequisites
+## MinIO prerequisites
 
 Make sure to meet the MinIO prerequisites before you set up self-managed object storage. For prerequisites, go to [Object Storage for Linux](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#prerequisites) in the MinIO documentation.
 
-### MinIO hardware requirements
+## MinIO hardware requirements
 
 - 4 VMs
 - 4 cores per VM
@@ -22,7 +22,7 @@ Make sure to meet the MinIO prerequisites before you set up self-managed object 
 - 1GB/s minimum network bandwidth
 - Ubuntu 20.04 LTS operating system
 
-### Nginx hardware requirements
+## Nginx hardware requirements
 
 - 1 VM
 - 4 cores per VM
@@ -34,7 +34,19 @@ import Strongpass from '/tutorials/shared/strong-passwords.md'
 
 <Strongpass />
 
-### Create an Nginx LoadBalancer VM
+<!-- 
+## TLS support
+
+### MinIO Google bucket
+
+TLS is supported for GCS buckets without any additional configuration changes over the `https` protocol.
+
+#### MinIO AWS S3 bucket
+
+TLS is supported for AWS S3 buckets without any additional configuration changes over the `https` protocol.
+-->
+
+## Create an Nginx LoadBalancer VM
 
 To set up MinIO, you must first create a VM for the Nginx LoadBalancer with the above hardware requirements.
 
@@ -48,7 +60,7 @@ To create a new VM instance for the Nginx load balancer, do the following:
 
 4. Reserve an external static IP address.
 
-### Create the MinIO server VMs
+## Create the MinIO server VMs
 
 Next, you must create 4 VMs with the MinIO hardware requirements.
 
@@ -64,7 +76,7 @@ To create the MinIO server VMs, do the following:
 
 5. Attach an additional disk to the VM.
 
-### Set up the Nginx load balancer
+## Set up the Nginx load balancer
 
 Next, set up the Nginx load balancer.
 
@@ -160,7 +172,7 @@ To set up the Nginx load balancer, do the following:
    nginx sudo nginx -s reload
    ```
 
-### Set up MinIO servers
+## Set up MinIO servers
 
 Now you are ready to set up your MinIO servers.
 
@@ -274,7 +286,7 @@ To configure your MinIO servers, do the following:
 
 12. Repeat the process for your other three VMs.
    
-### Test MinIO connectivity
+## Test MinIO connectivity
 
 To test your MinIO connectivity, do the following:
 
@@ -286,7 +298,7 @@ To test your MinIO connectivity, do the following:
 
 4. Check the contents in the `/mnt/disks/disk1/` disk.
 
-### Configure your Harness environment and Helm chart
+## Configure your Harness environment and Helm chart
 
 Now you're ready to configure your Harness Self-Managed Enterprise Edition environment and Helm chart.
 

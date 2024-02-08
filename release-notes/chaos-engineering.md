@@ -24,6 +24,20 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## January 2024
 
+### Version 1.30.0
+
+#### New features and enhancements
+
+* Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
+
+* The [SSH chaos experiment](/docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
+
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
+
+#### Fixed issues
+
+* Chaos hub icons were not visible when the hub name consisted of the '/' character. This has been fixed so that a user can't create a hub with the '/' character. (CHAOS-3753)
+
 ### Version 1.29.0
 
 #### New features and enhancements

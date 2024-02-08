@@ -249,6 +249,8 @@ After an approval is granted, [\<+approval>](/docs/platform/variables-and-expres
 
 ![](./static/adding-jira-approval-stages-14.png)
 
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations). 
+
 ### See also
 
 - [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)

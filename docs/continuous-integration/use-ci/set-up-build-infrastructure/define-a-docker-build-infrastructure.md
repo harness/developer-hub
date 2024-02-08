@@ -91,7 +91,7 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::info
 
-   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
 
    :::
 
@@ -188,7 +188,7 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::info
 
-   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
 
    :::
 
@@ -322,7 +322,7 @@ Use PowerShell to run these commands.
    :::info
 
    * With Windows, volume mapping must be folder-to-folder.
-   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
 
    :::
 
@@ -394,7 +394,7 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
 
 :::tip
 
-Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
+Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
 Delegate selections take precedence in the following order:
 

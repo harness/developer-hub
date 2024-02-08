@@ -15,6 +15,7 @@
 # Knowledge Base
 /kb/ @deepanshuHarness
 /kb/continuous-integration/ @aimurphy @deepanshuHarness
+/kb/platform/ @saifeemustafaqharness @brian-f-harness
 
 # Certification
 /certifications/ @ravilach
@@ -105,13 +106,13 @@ release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
 release-notes/internal-developer-portal.md @Debanitrkl
 
 # Platform Release Notes
-release-notes/platform.md @brian-f-harness @harishkammanahalli
+release-notes/platform.md @brian-f-harness @harishkammanahalli @saifeemustafaqharness
 
 # STO Release Notes
 release-notes/security-testing-orchestration.md @douglas-j-bothwell
 
 # SMP
-release-notes/self-managed-enterprise-edition.md @brian-f-harness @harishkammanahalli
+release-notes/self-managed-enterprise-edition.md @brian-f-harness @harishkammanahalli @saifeemustafaqharness
 
 #SRM Release Notes
 release-notes/service-reliability-management.md @sunilgupta-harness
@@ -146,7 +147,7 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/hdh/ @Debanitrkl
 
 # Platform Tutorials
-/tutorials/platform/ @brian-f-harness
+/tutorials/platform/ @brian-f-harness @saifeemustafaqharness
 
 # SSCA Tutorials
 /tutorials/secure-supply-chain/ @sunilgupta-harness
@@ -155,7 +156,7 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/secure-supply-chain/ @douglas-j-bothwell
 
 # SMP Tutorials
-/tutorials/self-managed-enterprise-edition/ @brian-f-harness
+/tutorials/self-managed-enterprise-edition/ @brian-f-harness @saifeemustafaqharness
 
 # SRM Tutorials
 /tutorials/service-reliability/ @sunilgupta-harness

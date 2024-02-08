@@ -1,0 +1,11 @@
+{
+   "label":"Development guides",
+   "position": 41,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Development guides"
+   }
+}

@@ -60,7 +60,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use AWS KMS to manage secrets
 
@@ -138,7 +138,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use GCP KMS to manage secrets
 
@@ -206,7 +206,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ### Use Hashicorp to manage secrets
 
@@ -264,7 +264,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use AWS KMS to manage secrets
 
@@ -328,7 +328,7 @@ Verify that you have the following:
   - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
   - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
   - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
-  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - Check [Delegate system requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Use GCP KMS to manage secrets
 
@@ -414,4 +414,4 @@ To run the pipeline, do the following:
 
 <DocImage path={require('./static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
 
-When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization). The only exception is output variables. If an output variable value contains a secret, be aware that the secret will be visible in the build details. For more information, go to [output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables).
+When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed. For more information, go to [secrets and log-sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization). The only exception is output variables. If an output variable value contains a secret, be aware that the secret will be visible in the build details. For more information, go to [output variables](/docs/continuous-integration/use-ci/run-step-settings/#output-variables).

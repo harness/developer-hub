@@ -59,7 +59,7 @@ Harness also offers a Hosted GitOps solution. A tutorial for it will be availabl
 
 Make sure that you have met the following requirements:
 
-- You have set up a Kubernetes cluster. We recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+- You have set up a Kubernetes cluster. We recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 - You have forked the **[harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Deploy your applications using Harness GitOps
@@ -823,7 +823,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 Make sure that you have met the following requirements:
 
 - You have a GitHub Personal Access Token (PAT) with proper repository permissions. For more information, go to [Managing your personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-- You have set up a Kubernetes cluster. You can use your own Kubernetes cluster or a [K3D](https://k3d.io/v5.5.1/) (recommended) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+- You have set up a Kubernetes cluster. You can use your own Kubernetes cluster or a [K3D](https://k3d.io/v5.5.1/) (recommended) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 - You have installed [Helm CLI](https://helm.sh/docs/intro/install/).
 - You have forked the **[harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
@@ -1231,5 +1231,5 @@ You've just learned how to use Harness CD to deploy application using a Helm Cha
 
 ## Next steps
 
-- Keep learning about Harness CD. Add **Triggers** to your pipeline that'll respond to Git events. For more information, go to [Triggering pipelines](/docs/platform/Triggers/triggering-pipelines).
+- Keep learning about Harness CD. Add **Triggers** to your pipeline that'll respond to Git events. For more information, go to [Triggering pipelines](/docs/platform/triggers/triggering-pipelines).
 - Visit [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.

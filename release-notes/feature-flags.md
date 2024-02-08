@@ -10,12 +10,26 @@ sidebar_position: 11
 
 Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: January 26th 2024
+### Latest Updated: February 6th 2024
+
+## February 2024
+
+### Android SDK
+
+#### Version 1.2.5
+
+ - We've updated the `README` with instructions on how to add a ProGuard rule for Release builds. (FFM-10499)
+ - Now doesn't throw the `RejectedExecutionException` inside the `runRescheduleThreadWrapEx()`.
+
+### Flutter SDK
+
+#### Version 2.1.3
+
+ - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
 
 ## January 2024
 
@@ -27,6 +41,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - It now includes a synchronous initialization option.
 
 ### Android SDK
+
+#### Version 1.2.4
+
+ - Fixed the null pointer when calling the `initialize()` function. (FFM-10499)
 
 #### Version 1.2.3
 
@@ -64,9 +82,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Javascript SDK
 
+#### Version 1.23.0
+
+ - We've added defensive code around the `BTOA` usage. (FFM-10499)
+
 #### Version 1.22.0
 
-- When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
+ - When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
 
 ### Node.js SDK
 
@@ -135,7 +157,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.0.3
 
-The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
+ - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
 We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
 

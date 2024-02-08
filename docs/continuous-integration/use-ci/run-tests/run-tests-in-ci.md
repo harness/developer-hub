@@ -4,6 +4,7 @@ description: Use Run and Run Tests steps to run tests in CI pipelines.
 sidebar_position: 10
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci
+  - /tutorials/ci-pipelines/test/
 ---
 
 You can run all types of tests in CI pipeline, including integration tests, functional tests, mutation tests, unit tests, and more.
@@ -16,7 +17,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="run" label="Run step" default>
 
-You can run any type of test for any codebase in a [Run step](../run-ci-scripts/run-step-settings.md).
+You can run any type of test for any codebase in a [Run step](../run-step-settings.md).
 
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
@@ -36,7 +37,7 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
                           - output-test.xml
 ```
 
-For more information about configuring **Run** steps, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+For more information about configuring **Run** steps, go to [Use Run steps](../run-step-settings.md).
 
 :::tip
 

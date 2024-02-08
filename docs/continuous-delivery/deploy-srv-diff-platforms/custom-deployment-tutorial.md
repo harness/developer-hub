@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
+In some cases, you might be using a platform that does not have first-class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
-This tutorial will walk you through a very simple Deployment Templates using Kubernetes. Harness includes first-class Kubernetes support (see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)), but we will use it in this tutorial as it is a very simple way to review Deployment Templates features.
+This tutorial will walk you through very simple Deployment Templates using Kubernetes. Harness includes first-class Kubernetes support (see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)), but we will use it in this tutorial as it is a very simple way to review Deployment Templates features.
 
 ## Objectives
 
@@ -64,13 +64,13 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/delegates/install-delegates/overview).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -1716,3 +1716,532 @@ template:
       outputVariables: []
       delegateSelectors: <+input>
 ```
+
+### AWS CodeDeploy - Deployment Template Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy services using AWS CodeDeploy.
+
+#### Pre-Requisites
+
+- The user needs to install the AWS CLI on the Delegate, users can install it via the INIT_SCRIPT. 
+
+#### Deployment Template Configuration
+
+The Deployment Template will allow us to set the infrastructure and the ability to fetch the instances deployed via AWS CodeDeploy. 
+
+##### Input Parameters 
+
+- **AWS Connector**: You will need to provide us with an AWS Connector that has access to perform CodeDeploy Deployments.
+- **Region**: This defines the region where Harness will be deploying the CodeDeploy Application
+- **Application Name**: A name for the CodeDeploy application
+- **Deployment Group**: The deployment group contains settings and configurations used during the deployment. In Harness, you will provide the name of the Deployment Group for the application.
+- **Deployment Configuration**: A Deployment Configuration in AWS CodeDeploy is a set of rules and settings that define how a deployment will be conducted within the service. In Harness, you will provide the setting for the Deployment Configuration. The Default Setting is "CodeDeployDefault.OneAtATime".
+
+The Deployment Template will be leveraged in the **Fetch Instances Step** to set the infrastructure and instance querying to track the deployed Services.
+
+```yaml
+template:
+  name: AWS CodeDeploy
+  identifier: AWS_CodeDeploy
+  versionLabel: v1
+  type: CustomDeployment
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    infrastructure:
+      variables:
+        - name: AWSConnector
+          type: Connector
+          value: <+input>
+          description: "Provide Your AWS Connector"
+          required: false
+        - name: region
+          type: String
+          value: us-east-1
+          description: "Region for Deployment"
+          required: false
+        - name: ApplicationName
+          type: String
+          value: ""
+          description: "Provide your existing CodeDeploy Application Name"
+          required: false
+        - name: DeploymentGroup
+          type: String
+          value: ""
+          description: "Provide your existing Deployment Group"
+          required: false
+        - name: DeploymentConfiguration
+          type: String
+          value: "CodeDeployDefault.OneAtATime"
+          description: "Default Setting for CodeDeploy"
+          required: false
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |-
+              #
+              # Script is expected to query Infrastructure and dump JSON
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+
+              region=<+infra.variables.region>
+              accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+              secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+              aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+              deploymentId=<+execution.steps.AWS_CodeDeploy.output.outputVariables.codeDeploymentId>
+
+              instances=$(aws deploy list-deployment-targets --deployment-id $deploymentId | jq -r .targetIds[])
+              echo -e "\nInstances list - [$instances]"
+
+              aws ec2 describe-instances --instance-ids $instances > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+      instanceAttributes:
+        - name: instancename
+          jsonPath: Instances[0].InstanceId
+          description: "The instance name"
+        - name: InstanceType
+          jsonPath: Instances[0].InstanceType
+          description: "The type of instance"
+        - name: PublicIpAddress
+          jsonPath: Instances[0].PublicIpAddress
+          description: "The IP Address for the Instance"
+        - name: OwnerId
+          jsonPath: OwnerId
+          description: "The Owner of the CodeDeploy Application"
+        - name: ReservationId
+          jsonPath: ReservationId
+          description: "The Reservation ID for the CodeDeploy Application"
+      instancesListPath: Reservations
+    execution:
+      stepTemplateRefs:
+        - CodeDeploy_Steady_State
+        - AWS_CodeDeploy_Step
+  description: |-
+    This is deployment template for AWS Code deploy for deployment group which has Compute platform as EC2/on-premises instances 
+
+    Make sure the delegate has AWS CLI installed for this template to work correctly
+
+```
+
+##### Fetch Instances Sample Execution
+
+```sh
+"INSTANCE_OUTPUT_PATH" has been initialized to "/opt/harness-delegate/fetchInstanceScript/47if1ntCQceymk-GLJJsUg/output.json"
+Executing command ...
+
+Instances list - [i-0b77a163d64963817]
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-0c382fdca8edfdf0c",
+                    "InstanceId": "i-0b77a163d64963817",
+                    "InstanceType": "t3.micro",
+                    "KeyName": "akhilesh-ssh",
+                    "LaunchTime": "2023-09-03T17:55:02.000Z",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "us-east-1f",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                    "PrivateIpAddress": "172.31.66.168",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                    "PublicIpAddress": "34.231.122.208",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-9757dc98",
+                    "VpcId": "vpc-c20f38b9",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2020-09-25T05:22:40.000Z",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-094601fdb87771186"
+                            }
+                        }
+                    ],
+                    "ClientToken": "*******************************************",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::479370281431:instance-profile/CodeDeployDemo-EC2-Instance-Profile",
+                        "Id": "AIPAW7HFSAHLQBJNGQ5CG"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                                "PublicIp": "34.231.122.208"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2020-09-25T05:22:39.000Z",
+                                "AttachmentId": "eni-attach-0ae2c0b4826605455",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupName": "default",
+                                    "GroupId": "sg-afc848e7"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "16:ad:51:e6:da:fd",
+                            "NetworkInterfaceId": "eni-036688d5aca78078b",
+                            "OwnerId": "479370281431",
+                            "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                            "PrivateIpAddress": "172.31.66.168",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                                        "PublicIp": "34.231.122.208"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                                    "PrivateIpAddress": "172.31.66.168"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-9757dc98",
+                            "VpcId": "vpc-c20f38b9",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "default",
+                            "GroupId": "sg-afc848e7"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "team",
+                            "Value": "cd"
+                        },
+                        {
+                            "Key": "ttl",
+                            "Value": "-1"
+                        },
+                        {
+                            "Key": "Name",
+                            "Value": "CodeDeploy Quality Instance Do-not-Delete"
+                        },
+                        {
+                            "Key": "sample_key_2",
+                            "Value": "sample_val_2"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2020-09-25T05:22:39.000Z",
+                    "PrivateDnsNameOptions": {},
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    }
+                }
+            ],
+            "OwnerId": "479370281431",
+            "ReservationId": "r-04f2c39ad6213b31d"
+        }
+    ]
+}
+Command completed with ExitCode (0)
+Execution finished with status: SUCCESS
+```
+
+#### AWS CodeDeploy Steady State Check
+
+This step will check for a steady state and ensure the application is healthy.
+
+```yaml
+template:
+  name: CodeDeploy Steady State
+  identifier: CodeDeploy_Steady_State
+  versionLabel: v1
+  type: Step
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+            region=<+infra.variables.region>
+            accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+            secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+            aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+            deploymentId=<+execution.steps.AWS_CodeDeploy.output.outputVariables.codeDeploymentId>
+
+            while :
+            do
+                    status=$(aws deploy get-deployment --deployment-id $deploymentId |  jq -r .deploymentInfo.status)
+                    echo -e "\nCurrent status for deployment id - [ $deploymentId ] is $status ..."
+
+                    if [[ $status == "Succeeded" ]]
+                    then
+                            break
+                    fi
+
+                    if [[ $status == "Failed" ]]
+                    then
+                            break
+                    fi
+
+                    if [[ $status == "Stopped" ]]
+                    then
+                            break
+                    fi
+
+                    echo "Sleeping for 10s ..."
+                    sleep 10
+            done
+
+            echo "Reached steady state ..."
+      environmentVariables: []
+      outputVariables: []
+      executionTarget: {}
+
+```
+
+##### Steady State Check Execution Logs
+
+```sh
+Executing command ...
+
+Current status for deployment id - [ d-N36KENP64 ] is InProgress ...
+Sleeping for 10s ...
+
+Current status for deployment id - [ d-N36KENP64 ] is Succeeded ...
+Reached steady state ...
+Command completed with ExitCode (0)
+```
+
+#### AWS CodeDeploy Deploy Step
+
+This step will perform the deployment of the AWS CodeDeploy Application. The Template will use the properties you have set in the Service and Deployment Template. 
+
+```yaml
+template:
+  name: AWS CodeDeploy Step
+  identifier: AWS_CodeDeploy_Step
+  versionLabel: v1
+  type: Step
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |+
+            #!/bin/bash
+            echo -e "\n********** Artifact details **********"
+            bucket=<+artifacts.primary.bucketName>
+            key=<+artifacts.primary.filePath>
+            bundleType=<+serviceVariables.bundleType>
+
+            echo "Bucket = $bucket"
+            echo "Key = $key"
+            echo "Bundle Type = $bundleType"
+
+            accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+            secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+            region=<+infra.variables.region>
+            applicationName=<+infra.variables.ApplicationName>
+            deploymentConfiguration=<+infra.variables.DeploymentConfiguration>
+            deploymentGroup=<+infra.variables.DeploymentGroup>
+
+            echo -e "\n********** Starting code deploy with following configuration **********"
+            echo -e "Application Name: [$applicationName]"
+            echo -e "Aws Region: [$region]"
+            echo -e "Deployment Group: [$deploymentGroup]"
+            echo -e "Deployment Configuration: [$deploymentConfiguration]"
+
+            aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+            deploymentId=$(aws deploy create-deployment \
+                --application-name $applicationName \
+                --deployment-config-name $deploymentConfiguration \
+                --deployment-group-name $deploymentGroup \
+                --description "My deployment using Deployment Template" \
+                --s3-location bucket=$bucket,bundleType=$bundleType,key=$key | jq -r .deploymentId)
+
+            echo -e "\nDeployment started successfully with deployment id - [$deploymentId]"
+
+      environmentVariables: []
+      outputVariables:
+        - name: codeDeploymentId
+          type: String
+          value: deploymentId
+      executionTarget: {}
+
+```
+
+
+##### Deploy Step Execution Logs
+
+```sh
+Executing command ...
+
+********** Artifact details **********
+Bucket = codedeploy-quickstart-sample
+Key = SampleApp_Linux.zip
+Bundle Type = zip
+
+********** Starting code deploy with following configuration **********
+Application Name: [CodeDeploy_Quality_Verification_App]
+Aws Region: [us-east-1]
+Deployment Group: [quality-deployment-group]
+Deployment Configuration: [CodeDeployDefault.OneAtATime]
+
+Deployment started successfully with deployment id - [d-N36KENP64]
+Script Output: 
+deploymentId=d-N36KENP64
+Command completed with ExitCode (0)
+```
+
+
+#### AWS CodeDeploy Service Sample
+
+This is a sample service that can be configured to represent the AWS CodeDeploy Service Type. In this example, we can fetch from S3.
+
+##### Service Inputs
+
+- **bundleType**: This is the type of artifact you are deploying, for default we recommend zip. 
+
+
+```yaml
+service:
+  name: awsCodeDeployService
+  identifier: awsCodeDeployService
+  orgIdentifier: default
+  projectIdentifier: default
+  serviceDefinition:
+    spec:
+      customDeploymentRef:
+        templateRef: AWS_CodeDeploy
+        versionLabel: v1
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: awsQaSetup
+                bucketName: codedeploy-quickstart-sample
+                region: us-east-1
+                filePath: SampleApp_Linux.zip
+              identifier: a1
+              type: AmazonS3
+      variables:
+        - name: bundleType
+          type: String
+          description: ""
+          required: false
+          value: zip
+    type: CustomDeployment
+```
+
+
+##### Service Execution Logs
+
+```sh
+Starting service step...
+Service Name: awsCodeDeployService , Identifier: awsCodeDeployService
+Processed service &amp; environment variables
+Processing primary artifact...
+Primary artifact info: 
+type: AmazonS3 
+bucketName: codedeploy-quickstart-sample 
+filePath: SampleApp_Linux.zip 
+filePathRegex: null 
+connectorRef: awsQaSetup
+
+No config files configured in the service or in overrides. configFiles expressions will not work
+No service hooks configured in the service. hooks expressions will not work
+No manifests configured in the service or in overrides. manifest expressions will not work
+Starting delegate task to fetch details of artifact
+Delegate task id: bztoE5RoQsikdZT7tdvKhA-DEL
+Fetched details of primary artifact [status:SUCCESS]
+type: AmazonS3 
+bucketName: codedeploy-quickstart-sample 
+filePath: SampleApp_Linux.zip 
+filePathRegex: null
+Completed service step
+```
+
+
+
+
+
