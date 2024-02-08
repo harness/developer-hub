@@ -1,7 +1,7 @@
 import { Horizon } from "./roadmapData";
-export const CdData: Horizon = {
+export const StoData: Horizon = {
   "Now": {
-    description: "Q2 2024, May-July 2024",
+    description: "Q2 2025, May-July 2024",
     feature: [
       {
         tag: [{value: "Usability"},{value: "On-boarding"}],
@@ -26,7 +26,7 @@ export const CdData: Horizon = {
     ],
   },
   "Next": {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q3 2025, Aug-Oct 2024",
     feature: [
       {
         tag: [{value: "AIDA"},{value: "Remediation"}],
@@ -46,12 +46,12 @@ export const CdData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q4 2024+, Oct+ 2024",
+    description: "Q4 2025, Nov 2024 - Jan 2025",
     feature: [
       {
         tag: [{value: "Dashboard"}],
         title: "Security Workbench",
-        description: "Centralized hub for DevSecOps tasks, offering insights into overall organization's security posture trends, refined prioritized list of issues across pipelines, and exemption management across projects.",
+        description: "Centralized dashboard for DevSecOps, offering insights into overall organization's - security posture trends, refined prioritized list of issues, and exemption management.",
       },
       {
         tag: [{value: "Remediation"},{value: "Integration"}],
