@@ -91,14 +91,13 @@ The following deprecated API endpoints are longer supported:
    To enable file logging, add the following to your override in the global section:
 
    ```yaml
-
    global:
-   fileLogging:
-   enabled: true
-   logFilename: /opt/harness/logs/pod.log #provide log filename
-   maxFileSize: 50MB #max single file size, for log archiving
-   maxBackupFileCount: 10 #max count of files
-   totalFileSizeCap: 1GB
+       fileLogging:
+           enabled: true
+           logFilename: /opt/harness/logs/pod.log #provide log filename
+           maxFileSize: 50MB #max single file size, for log archiving
+           maxBackupFileCount: 10 #max count of files
+           totalFileSizeCap: 1GB
 
    ```
 
