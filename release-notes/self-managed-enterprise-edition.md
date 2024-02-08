@@ -21,6 +21,8 @@ If you are currently on version 0.12.0, you must follow the applicable upgrade p
 
 If you are currently on version 0.13.0, 0.13.1, or 0.13.2, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.3.
 
+You can perform your normal upgrade if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.3.
+
 **Upgrade using Helm**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
