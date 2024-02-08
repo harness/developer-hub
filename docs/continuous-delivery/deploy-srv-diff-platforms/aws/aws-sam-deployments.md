@@ -63,11 +63,47 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 </details>
 
-## Use AWS IRA for Harness AWS connector credentials
+## Use AWS IRSA for Harness AWS connector credentials
 
-import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
+The **Use IRSA** option allows you to use a service account with a specific IAM role when making authenticated requests to resources. In order for it work in this case you will need to create a service account in the namespace where the step group will be run that has the releveant IAM role with IRSA. In this case it is the step group pod that makes the relevant API calls and hence needs the IRSA service account setup. 
 
-<IrsaPartial name="aws-irsa" />
+:::info
+
+The below mentioned configuration has been tested exclusively on clusters created with eksctl, hence if you are creating cluster using some other way like terraform, cloudformation etc. there could be some unknown issues
+
+:::
+
+With this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the step group pod.
+
+1. Verify your firewall policy and make sure to whitelist all AWS endpoints for the services you're using. For more details, go to [view AWS service endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#view-service-endpoints).
+2. Modify your step group YAML, as described below.
+
+<details>
+<summary>Configure step group YAML for IRSA</summary>
+
+Setting up IRSA credentials requires a few more steps than other methods, but it is a simple process.
+
+1. Create the IAM role with the policies you want the step group to use. The policies you select depend on what AWS resources you are deploying via the step group.
+2. In the cluster namespace wherethe step group will exist, create a service account and attach the IAM role to it.
+   Here is an example of how to create a new service account in the cluster where you will install the step group pod and attach the IAM policy to it:
+
+   ```
+   eksctl create iamserviceaccount \
+       --name=cdp-admin \
+       --namespace=deploy-sam-step-group \
+       --cluster=test-eks \
+       --attach-policy-arn=<policy-arn> \
+       --approve \
+       --override-existing-serviceaccounts —region=us-east-1
+   ```
+</details>
+
+
+:::warning
+
+Using AWS IRSA requires additional configuration in the AWS SAM Step Group. See [AWS SAM Step Group](docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments.md#sam-step-group) below for details.
+
+:::
 
 ## AWS SAM service
 
@@ -201,6 +237,12 @@ You need to configure the following mandatory settings:
 
 - **Kubernetes Cluster:** Add a Harness [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
 - **Namespace:** Enter the name of the cluster namespace to use.
+
+:::info
+   If you are using AWS IRSA then you will need to add your service account to the step group.
+   1. Make sure the **Namespace** of your Containerized Step Group includes the service account bound to a role with IRSA.
+   2. In **Optional Configuration** set the **Service Account Name** to the service account bound to a role with IRSA.
+:::
 
 ### Harness Docker Hub connector and image for all steps
 
