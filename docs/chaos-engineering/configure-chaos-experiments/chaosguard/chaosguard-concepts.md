@@ -18,8 +18,6 @@ It is an execution plane construct, and is static in nature, i.e. it is often pr
 
 The default structure of a condition is to block or deny a fault or set of faults on a given **execution context** associated with a cluster (or namespace), the service(s), and the service account used for the injection process.  
 
-	![condition](./static/configure-chaosguard/condition-create.png)
-
 * **WHAT** clause describes the attribute (in this case, chaos fault) on which you can apply the condition. This field takes a regex-like pattern, that is, the * symbol, to indicate all characters preceding or succeeding a particular string.
 
 	![what](./static/configure-chaosguard/condition-what.png)

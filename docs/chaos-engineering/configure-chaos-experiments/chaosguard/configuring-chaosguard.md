@@ -39,19 +39,19 @@ This creates a blank canvas, and you can define the constraints for the conditio
 
 	![condition](./static/configure-chaosguard/condition-create.png)
 
-2. Add the **WHAT** clause. In this case, the condition takes all faults that begin with "pod-," such as "pod-delete", "pod-memory-hog" and so on.
+2. Add the **WHAT** clause. In this case, the condition blocks a fault that is **equal to** (or matches) pod delete.
 
 	![what](./static/configure-chaosguard/condition-what.png)
 
-3. Add the **WHERE** clause. 
+3. Add the **WHERE** clause. In this case, the condition blocks an infrastructure that is **equal to** `prod-2-infra` infrastructure.
 
 	![where](./static/configure-chaosguard/condition-where.png)
 
-4. Add the **WHICH** clause. The * here indicates that the condition takes all faults that begin with a particular string (similar to the **WHAT** clause).
+4. Add the **WHICH** clause. In this case, the condition blocks the infrastructure that has `prod-2-infra` namespace and `app=chaos-exporter` app label.
 
 	![which](./static/configure-chaosguard/condition-which.png)
 
-5. Add the **USING** clause.
+5. Add the **USING** clause. In this case, the condition blocks the `litmus-admin` service account.
 
 	![using](./static/configure-chaosguard/condition-using.png)
 
