@@ -1,31 +1,43 @@
 ---
-title: Upload Helm charts to container registries
-description: Use a plugin to publish Helm charts to Docker registries
-sidebar_position: 20
+title: Copy images across registries
+description: Use a plugin to copy an image from one registry to another.
+sidebar_position: 23
 sidebar_label: Upload Helm charts
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The [Helm Push plugin](https://github.com/harness-community/drone-push-helm-chart-docker-registry) streamlines the packaging and distribution of [Helm charts](https://helm.sh/docs/topics/charts/) to container registries.
+The [Image Migration plugin](https://github.com/harness-community/drone-docker-image-migration) copies an image from one registry and replicates it in another. It does this by pulling the target image from the source registry and pushing it to the destination registry.
 
-For more information about why we created this plugin, go to the Harness blog post [Push Helm Charts to Container Registries with Harness CI](https://www.harness.io/blog/helm-container-registries-harness-ci). For more information about the Helm commands used by this plugin, go to the Helm documentation on [Using an OCI-based registry](https://helm.sh/docs/topics/registries/#using-an-oci-based-registry).
-
-For general information about using plugins in CI pipelines, go to [Explore plugins](../../use-drone-plugins/explore-ci-plugins.md) and [Use Drone plugins](../../use-drone-plugins/run-a-drone-plugin-in-ci.md).
+For general information about using plugins in CI pipelines, go to [Explore plugins](../use-drone-plugins/explore-ci-plugins.md) and [Use Drone plugins](../use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
 ## Supported registries
 
-Currently, this plugin supports pushing Helm charts to Docker Hub and Google Artifact Registry.
+Currently, this plugin's functionality is limited by its supported authentication methods.
 
-If you need to upload Helm charts to another to a Docker-compliant OCI registry that is not supported by this plugin, you can run the necessary `helm` commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings) or use the [Helm Push plugin](https://github.com/harness-community/drone-push-helm-chart-docker-registry) as a basis to [write your own plugin](../../use-drone-plugins/custom_plugins.md). For more information on the `helm` commands, go to the Helm documentation on [Using an OCI-based registry](https://helm.sh/docs/topics/registries/#using-an-oci-based-registry).
+This plugin can pull images from:
+
+* Public Docker registries
+* Docker registries that don't require authentication
+* Private registries that support basic authentication (username and password)
+* Private AWS ECR registries accessed by [AWS access key and secret](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam.html)
+* GAR registries that support [GAR access token authentication](https://cloud.google.com/artifact-registry/docs/docker/authentication#standalone-helper)
+
+This plugin can push images to:
+
+* Docker registries that support basic authentication (username and password)
+* AWS ECR registries accessed by [AWS access key and secret](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam.html)
+* GAR registries that support [GAR access token authentication](https://cloud.google.com/artifact-registry/docs/docker/authentication#standalone-helper)
+
+If your authentication requirements vary from those supported by this plugin, consider running multiple Build and Push steps in parallel, running the necessary pull and push commands in a [Run step](/docs/continuous-integration/use-ci/run-step-settings), or using the [Image Migration plugin](https://github.com/harness-community/drone-docker-image-migration) as a basis to [write your own plugin](../use-drone-plugins/custom_plugins.md).
 
 ## Configure the Helm Push plugin
 
 <Tabs>
 <TabItem value="gar" label="Upload Helm charts to GAR" default>
 
-To use the Helm Push plugin to upload Helm charts to GAR, [add a Plugin step](../../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../../prep-ci-pipeline-components.md). For example:
+To use the Helm Push plugin to upload Helm charts to GAR, [add a Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../prep-ci-pipeline-components.md). For example:
 
 ```yaml
               - step:
@@ -44,7 +56,7 @@ To use the Helm Push plugin to upload Helm charts to GAR, [add a Plugin step](..
                       registry_namespace: REPO_ID
 ```
 
-To use the Helm Push plugin, configure the [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+To use the Helm Push plugin, configure the [Plugin step settings](../use-drone-plugins/plugin-step-settings-reference.md) as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
@@ -60,7 +72,7 @@ To use the Helm Push plugin, configure the [Plugin step settings](../../use-dron
 </TabItem>
 <TabItem value="dh" label="Upload Helm charts to Docker Hub">
 
-To use the Helm Push plugin to upload Helm charts to Docker Hub, [add a Plugin step](../../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../../prep-ci-pipeline-components.md). For example:
+To use the Helm Push plugin to upload Helm charts to Docker Hub, [add a Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../prep-ci-pipeline-components.md). For example:
 
 ```yaml
               - step:
@@ -77,7 +89,7 @@ To use the Helm Push plugin to upload Helm charts to Docker Hub, [add a Plugin s
                       chart_path: path/to/chart
                       registry_namespace: DOCKER_NAMESPACE
 ```
-To use the Helm Push plugin, configure the [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+To use the Helm Push plugin, configure the [Plugin step settings](../use-drone-plugins/plugin-step-settings-reference.md) as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
@@ -97,9 +109,3 @@ To use the Helm Push plugin, configure the [Plugin step settings](../../use-dron
 You can use variable expressions for plugin settings. For example, `registry_username: <+stage.variables.docker_user_name>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) called `DOCKER_USER_NAME`.
 
 :::
-
-## Build logs and artifact files
-
-When you run the pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md) and then find the Helm chart in your container registry.
-
-Optionally, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../../viewing-builds.md). This makes it easier to find artifacts associated with specific builds.

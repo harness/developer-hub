@@ -95,7 +95,7 @@ Harness officially supports the following plugins.
 | Helm Push | [Upload Helm charts to Docker registries](../build-and-upload-artifacts/upload-artifacts/upload-helm-chart.md) | [drone-helm-chart-container-registry](https://github.com/harness-community/drone-helm-chart-container-registry) | plugins/helm-push |
 | Heroku | Build and push images to Heroku container registry | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/heroku |
 | Hugo | Generate static web page files that you can then publish | [drone-hugo](https://github.com/drone-plugins/drone-hugo) | plugins/hugo |
-| Image Migration | Migrate images from one Docker registry to another (Support GAR, ECR)  | [drone-docker-image-migration](https://github.com/harness-community/drone-docker-image-migration) | plugins/image-migration |
+| Image Migration | [Migrate images from one Docker registry to another](../build-and-upload-artifacts/migrate-images.md) | [drone-docker-image-migration](https://github.com/harness-community/drone-docker-image-migration) | plugins/image-migration |
 | InstantAccess(即时达) | Post build status messages to an InstantAccess account | [drone-instant-access](https://github.com/erguotou520/drone-instant-access) | erguotou/drone-instant-access |
 | IRC | Send notifications to an IRC channel | [drone-irc](https://github.com/drone-plugins/drone-irc) | plugins/irc |
 | Java Maven | Build Java applications using the Apache Maven build tool | [drone-java-maven-plugin](https://github.com/kameshsampath/drone-java-maven-plugin) | kameshsampath/drone-java-maven-plugin |
