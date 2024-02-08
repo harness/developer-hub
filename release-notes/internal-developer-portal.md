@@ -32,24 +32,34 @@ We are seeing a lot of excitement among our customers around Self Service Workfl
 
 #### New features and enhancements
 
-- The project picker in IDP workflows [HarnessProjectPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-extensions) now shows the org as well. There is no change in the input/output values. [IDP-2048]
+- The project picker in IDP workflows [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-extensions) now shows the org as well. There is no change in the input/output values. [IDP-2048]
 
 ![](./static/idp-projpicker-newview.png)
 
-- Added support for a new Custom field extension **HarnessAutoOrgPicker**, which auto populates on project selection. So now when you select an project id as an input the ord id gets selected automatically if required as an input. [IDP-2099]
+- Added support for a new Custom field extension **`HarnessAutoOrgPicker`**, which auto populates on project selection. So now when you select an project id as an input the ord id gets selected automatically if required as an input. [IDP-2099]
 
 ```YAML
-#Example
-projectId:
-    title: Project Identifier
-    description: Harness Project Identifier
-    type: string
-    ui:field: HarnessProjectPicker
-orgId:
-    title: Org Identifier
-    description: Harness org Identifier
-    type: string
-    ui:field: HarnessAutoOrgPicker   
+# Example template.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker          
 ```
 In the above example the the `Project Identifier` field once selected auto populates the `Org Identifier` field as shown below. 
 
