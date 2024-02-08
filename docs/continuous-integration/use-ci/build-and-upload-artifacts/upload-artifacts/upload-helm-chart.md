@@ -45,7 +45,7 @@ You need:
 
 * Helm charts to upload. Charts must be stored in a location available to the pipeline workspace.
 * A Docker Hub account where you want to upload your Helm charts. <!-- When this is changed to support other namespaces, add these requirements: You need the username and password for a user or service account that has permission to upload to the target registry. Make sure the target repository/namespace for your chart exists in your registry. -->
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../../get-started/tutorials.md).
 
 ## Use the Push Helm chart to Docker registry plugin
 
@@ -54,7 +54,7 @@ The Push Helm chart to Docker registry plugin uses `helm package`, `helm registr
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-1. In your CI pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md).
+1. In your CI pipeline's **Build** stage, add a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin image, as specified in the **Image** field.
 4. In the **Image** field, enter `harnesscommunity/drone-helm-chart-docker-registry`.
@@ -72,7 +72,7 @@ The Push Helm chart to Docker registry plugin uses `helm package`, `helm registr
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-The following YAML example describes a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) in a `CI` stage that uses the Push Helm chart to Docker registry plugin.
+The following YAML example describes a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) in a `CI` stage that uses the Push Helm chart to Docker registry plugin.
 
 ```yaml
               - step:
@@ -122,7 +122,7 @@ Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive
 
 ## View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../viewing-builds.md). This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Push Helm chart to Docker registry plugin step.
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../../viewing-builds.md). This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Push Helm chart to Docker registry plugin step.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
@@ -164,12 +164,12 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 
 ## Build logs and artifact files
 
-When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
+When you run the pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md).
 
 If the Push Helm chart to Docker registry plugin step succeeds, you can find the Helm chart in your Docker registry at `hub.docker.com/DOCKER_USERNAME/CHART_NAME`. Helm charts are tagged by the `docker_version` provided in the plugin step's settings.
 
 If you used the [Artifact Metadata Publisher plugin](#view-artifacts-on-the-artifacts-tab), go to the **Artifacts** tab and select the step name to expand the list of artifact links associated with that step. If your pipeline has multiple steps that upload artifacts, use the dropdown menu on the **Artifacts** tab to switch between lists of artifacts uploaded by different steps.
 
-<!-- ![](./static/artifacts-tab-with-link.png) -->
+<!-- ![](../static/artifacts-tab-with-link.png) -->
 
-<DocImage path={require('./static/artifacts-tab-with-link.png')} />
+<DocImage path={require('../static/artifacts-tab-with-link.png')} />
