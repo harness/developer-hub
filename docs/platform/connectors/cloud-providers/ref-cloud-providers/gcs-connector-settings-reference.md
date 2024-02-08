@@ -146,7 +146,7 @@ Currently, the OIDC connectivity mode is compatible with [Harness Cloud build in
 
 :::warning
 
-Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You will not be able to deploy Google Cloud Functions with an OIDC based connector. 
+Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. 
 
 :::
 
