@@ -42,7 +42,7 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 * Storage Object Admin (`roles/storage.objectAdmin`)
 * Storage Admin (`roles/storage.admin`)
 
-For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
+For more information, go to the GCP [Artifact registry roles reference](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
 
 Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
 
