@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "What is being delivered now",
+    description: "What is being worked on now",
     feature: [
       {
         tag: [{ value: "Fast" }],
@@ -37,12 +37,12 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Simplify usage of Test Intelligence",
-        description: "Harness simplifies the configuration and utilization of Test Intelligence, making it easier for teams to speed up their builds.",
+        description: "Simplify the configuration and utilization of Test Intelligence, making it easier for teams to speed up their builds.",
       },
       {
         tag: [{ value: "Fast" }],
         title: "Simplify usage of Cache Intelligence",
-        description: "Harness simplifies the configuration and utilization of Cache Intelligence, making it easier for teams to speed up their builds.",
+        description: "Simplify the configuration and utilization of Cache Intelligence, making it easier for teams to speed up their builds.",
       },
       {
         tag: [{ value: "Integrations" }],
@@ -57,7 +57,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Integrations" }],
         title: "Plugin - Copy Docker images between registries",
-        description: "Copy images between docker registries, eliminates the need to rebuild the same image multiple times, saving time and computational resources.",
+        description: "Copy images between docker registries, eliminating the need to rebuild the same image multiple times, saving time and computational resources.",
       },
     ],
   },
@@ -97,7 +97,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Simplify usage of Build Cache",
-        description: "Harness simplifies the configuration and utilization of Build Cache, making it easier for teams to speed up their builds.",
+        description: "Simplify the configuration and utilization of Build Cache, making it easier for teams to speed up their builds.",
       },
       {
         tag: [{ value: "Fast" }],
@@ -107,7 +107,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Artifact Management" }],
         title: "Hosted Artifacts Management",
-        description: "Manage your build artifacts with ease using Hosted Artifacts Management, providing a secure, scalable solution for storing and accessing your CI/CD artifacts.",
+        description: "Manage your build artifacts with ease using hosted artifacts management, providing a secure, scalable solution for storing and accessing your CI/CD artifacts.",
       },
       {
         tag: [{ value: "Integrations" }],
