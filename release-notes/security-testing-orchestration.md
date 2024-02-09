@@ -35,7 +35,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
   ![Security override in Security Tests](./static/sto-7041-override-in-security-tests.png)
 
-  To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step:
+  To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. This behavior occurs only for Snyk scans that ran with this setting enabled, and only for issues where the score was overridden due to a Snyk policy.  
 
   <Tabs>
      <TabItem value="Visual" label="Visual" default>
