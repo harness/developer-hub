@@ -114,7 +114,11 @@ If, for example, you wanted to keep a lean root directory, you could place your 
     └── docs
         └── index.md
 ```
+:::warning
 
+ Please note `dir:../.` does not work in the above use case due to security reasons.
+
+:::
 
 </TabItem>
 <TabItem value="Docs Available in Some Other Location">
@@ -126,7 +130,7 @@ In situations where your TechDocs source content is managed and stored in a loca
 - Bitbucket: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`
 - Azure: `url:https://azurehost.com/organization/project/_git/repository`
 
-Note, just as it's possible to specify a subdirectory with the `dir:` prefix, you can also provide a path to a non-root directory inside the repository which contains the `mkdocs.yml` file and `docs/` directory.
+Note, just as it's possible to specify a subdirectory with the `dir:` prefix, you can also provide a path to a non-root directory inside the repository which contains the `mkdocs.yml` file and `docs/` directory. 
 
 e.g. `url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component`
 
