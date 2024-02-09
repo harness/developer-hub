@@ -22,17 +22,17 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Test Intelligence for all test types",
-        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers.",
+        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
       },
       {
         tag: [{ value: "Cloud" }],
         title: "Credits usage consumption by pipeline report",
-        description: "Gain insights into how credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
+        description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
       },
       {
         tag: [{ value: "Cloud" }],
         title: "Credit Card purchase of build credits",
-        description: "Supporting self-service for Harness CI Cloud credits purchase.",
+        description: "You'll be able to purchase Harness Cloud build credits on demand.",
       },
       {
         tag: [{ value: "Fast" }],
@@ -116,7 +116,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Integrations" }],
-        title: "Plugin - mount S3 bucket to a container",
+        title: "Plugin - Mount S3 bucket to a container",
         description: "Ability to mount S3 buckets to docker containers for seamless access to organization data.",
       },
     ],
@@ -136,8 +136,8 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }, { value: "GA" }],
-        title: "Cache Intelligence - cloud builds",
-        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage. Available for CI Cloud users.",
+        title: "Cache Intelligence - Harness Cloud",
+        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage. Available for Harness CI Cloud builds.",
       },
       {
         tag: [{ value: "Fast" }, { value: "Beta" }],
