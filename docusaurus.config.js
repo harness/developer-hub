@@ -318,10 +318,13 @@ const config = {
                 label: "Instructions",
                 to: "certifications/instructions",
               },
-
               {
                 label: "FAQs",
                 to: "certifications/faqs",
+              },
+              {
+                label: "Instructor Led Training",
+                to: "certifications/instructor-led-training",
               },
             ],
           },
