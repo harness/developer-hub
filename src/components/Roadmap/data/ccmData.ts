@@ -5,22 +5,22 @@ export const CcmData: Horizon = {
     description: "What is being delivered now",
     feature: [
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "FinOps Workflows ",
         description: "Automated workflow to adopt FinOps practices and CCM features at scale",
       },
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "Cluster Orchestrator",
         description: "Workload-driven intelligent node autoscaling for EKS",
       },
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "Commitment Orchestrator",
         description: "Automated purchasing and management of AWS RIs and Savings to maximize savings",
       },
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "Asset Governance for GCP",
         description: "Cost management, security and compliance policies for GCP",
       },
@@ -30,17 +30,17 @@ export const CcmData: Horizon = {
     description: "What is being developed next",
     feature: [
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "Smart Advisor",
         description: "Easy management and progress tracking for AutoStopping candidates across cloud accounts and resources",
       },
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "Universal Cost Adaptor",
         description: "Unified way to ingest cost data from any external sources",
       },
       {
-        tag: [{ value: "" }, { value: "" }],
+        tag: [],
         title: "Conversational FinOps",
         description: "Natural language prompts to query complex cloud cost analaytics and insights",
       },
