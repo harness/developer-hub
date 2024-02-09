@@ -1,7 +1,7 @@
 ---
 title: Build and push with non-root users
 description: Use the buildah plugin if you can't use the built-in Build and Push steps.
-sidebar_position: 40
+sidebar_position: 23
 ---
 
 

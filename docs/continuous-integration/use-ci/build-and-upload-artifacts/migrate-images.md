@@ -1,7 +1,7 @@
 ---
 title: Copy images across registries
 description: Use a plugin to copy an image from one registry to another.
-sidebar_position: 23
+sidebar_position: 24
 ---
 
 import Tabs from '@theme/Tabs';
