@@ -67,7 +67,7 @@ This results in no deployment even though the pipeline is successful. This issue
 - Fixed an issue where the pipeline failed to execute when remote infrastructure was used with a multi-environment deployment. (CDS-90985, ZD-57420)
 - Fixed an issue where users couldn’t switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
 - The CDK Deploy step was not handling the null output map when the provided image was not created from the Harness aws-cdk-plugin base image: https://hub.docker.com/r/harness/aws-cdk-plugin/tags. This issue has been resolved, the null output map is handled. (CDS-89569)
-- Provided new expression version (CDS-89391)
+- Provided new expression version. (CDS-89391)
 - Fixed an issue with edit file store in window. (CDS-89094)
 - The email step body used to render the field's HTML content. Now it will render raw HTML. (CDS-88842, ZD-56452)
 - Earlier, the input sets that have nested components (such as templates) hosted on GitHub were taking a long time to fetch. Now this time has been significantly reduced. (CDS-88426, ZD-56180)
