@@ -93,6 +93,55 @@ new-plugin/
 6. Follow the steps mentioned [here](https://backstage.io/docs/plugins/plugin-development) to build on top of it. 
 7. Once you have the plugin ready, run `yarn tsc` at the root of the backstage app.
 8. **Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated, this file could be used to upload your plugin into IDP.** 
+
+Make sure you have the `dist` folder generated after you do `yarn pack` without that the package can't be read by IDP when uploaded. The `yarn pack` command looks something like this.
+
+```sh
+dev % yarn build
+dev % yarn pack 
+➤ YN0036: Calling the "prepack" lifecycle script
+➤ YN0000: LICENSE
+➤ YN0000: README.md
+➤ YN0000: dist/index.d.ts
+➤ YN0000: dist/index.esm.js
+➤ YN0000: dist/index.esm.js.map
+➤ YN0000: package.json
+➤ YN0036: Calling the "postpack" lifecycle script
+➤ YN0000: Package archive generated in /Users/deba/Documents/backstage-dev-quotes/package.tgz
+➤ YN0000: Done in 2s 341ms
+```
+
+Unzip the `package.tgz` and check for the **dist** folder before you try uploading it into Harness. The unzipped folder for the above given example plugin folder structure would look something like this:
+
+```sh
+new-plugin/
+    dev/
+        index.ts
+    node_modules/
+    dist/
+        index.d.ts
+        index.esm.js
+        index.esm.js.map
+    src/
+        components/
+            ExampleComponent/
+                ExampleComponent.test.tsx
+                ExampleComponent.tsx
+                index.ts
+            ExampleFetchComponent/
+                ExampleFetchComponent.test.tsx
+                ExampleFetchComponent.tsx
+                index.ts
+        index.ts
+        plugin.test.ts
+        plugin.ts
+        routes.ts
+        setupTests.ts
+    .eslintrc.js
+    package.json
+    README.md
+```
+
 </details>
 
 </TabItem>
