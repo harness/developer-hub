@@ -273,7 +273,33 @@ You can now scan your repositories and other components used in your code with [
 * **Feature flag:** `STO_JIRA_INTEGRATION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
+STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).\
+
+## SEI early access features
+
+The following early access (beta) features are available for the Harness Software Engineering Insights module.
+
+### SEI Jira Integration Enhanced Experience
+
+* **Release date:** January 2024
+* **Issue number:** SEI-3727
+* **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App.
+
+You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
+
+### SEI GitHub Integration Enhanced Experience
+
+* **Release date:** January 2024
+* **Issue number:** SEI-3727
+* **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
+
+You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
 
 ## SRM early access features
 
