@@ -26,7 +26,7 @@ This tutorial shows you how to build and set up a minimal delegate image (*`yy.m
 
 1. Prepare your Dockerfile. For more information and instructions, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
-2. Set up Docker locally to be able to build in multiple architectures. For more information, go to [How to build x86 Docker images on an M1 Mac](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/).
+2. Set up Docker locally to be able to build in multiple architectures. For more information, go to [How to build Docker images on Apple M-series](https://www.izumanetworks.com/blog/build-docker-on-apple-m/).
 
 3. Build and push
    
