@@ -13,7 +13,7 @@ import delete_project from './static/delete-project.png'
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 
-These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
+These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
 :::danger important upgrade instructions for patch release 0.13.3 and 0.12.1
 
