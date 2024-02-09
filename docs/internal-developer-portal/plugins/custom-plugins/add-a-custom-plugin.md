@@ -111,7 +111,36 @@ dev % yarn pack
 ➤ YN0000: Done in 2s 341ms
 ```
 
-Unzip the `package.tgz` and check for the **dist** folder before you try uploading it into Harness. 
+Unzip the `package.tgz` and check for the **dist** folder before you try uploading it into Harness. The unzipped folder for the above given example plugin folder structure would look something like this:
+
+```sh
+new-plugin/
+    dev/
+        index.ts
+    node_modules/
+    dist/
+        index.d.ts
+        index.esm.js
+        index.esm.js.map
+    src/
+        components/
+            ExampleComponent/
+                ExampleComponent.test.tsx
+                ExampleComponent.tsx
+                index.ts
+            ExampleFetchComponent/
+                ExampleFetchComponent.test.tsx
+                ExampleFetchComponent.tsx
+                index.ts
+        index.ts
+        plugin.test.ts
+        plugin.ts
+        routes.ts
+        setupTests.ts
+    .eslintrc.js
+    package.json
+    README.md
+```
 
 </details>
 
