@@ -1,8 +1,9 @@
----
+<!-- hidden while plugin is still in dev -->
+<!-- ---
 title: Generate GCP access tokens from OIDC tokens
 description: Use a plugin to publish Helm charts to Docker registries
 sidebar_position: 41
----
+--- -->
 
 The [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) generates a [Google Cloud access token](https://cloud.google.com/docs/authentication/token-types#access) from your OIDC token and then stores the GCP token in the output variable `GCLOUD_ACCESS_TOKEN`. You can use this variable in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
 
