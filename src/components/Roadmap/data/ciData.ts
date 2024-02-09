@@ -17,7 +17,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Cache Intelligence - Self-hosted builds",
-        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage.  It's currently supported when running builds in Harness Cloud, and with this work we will make it avaiable for users running self-hosted builds as well.",
+        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage.  It's currently supported when running builds in Harness Cloud, and with this work we will make it available for users running self-hosted builds as well.",
       },
       {
         tag: [{ value: "Fast" }],
