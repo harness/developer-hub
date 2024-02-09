@@ -5,7 +5,7 @@ sidebar_position: 20
 redirect_from: /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
 
-This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
+This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan modes for the following Snyk products:
 
 - Snyk Open Source
   - [Snyk Open Source orchestration example](#snyk-open-source-orchestration-example)

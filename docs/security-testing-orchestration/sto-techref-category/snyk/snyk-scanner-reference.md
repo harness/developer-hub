@@ -6,7 +6,7 @@ sidebar_position: 10
 ---
 
 
-Harness STO supports the following scan types for the following Snyk products:
+Harness STO supports the following scan modes for the following Snyk products:
 - Snyk Open Source
   - [Snyk Open Source orchestration example](./snyk-scans.md#snyk-open-source-orchestration-example)
   - [Snyk Open Source ingestion example](./snyk-scans.md#snyk-open-source-ingestion-example)
