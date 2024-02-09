@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "What is being worked on now",
+    description: "What id being developed now",
     feature: [
       {
         tag: [{ value: "Fast" }],
