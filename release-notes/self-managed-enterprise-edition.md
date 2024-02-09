@@ -422,7 +422,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   This issue has been fixed. The banner now has the correct dates. 
 
 - Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865)
-  There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+  There was an issue where CloudFormation steps were not updating the console logs when there are multiple steps with a similar prefix. This issue is now fixed.
 
 - Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
 
