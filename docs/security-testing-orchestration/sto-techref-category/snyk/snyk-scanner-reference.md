@@ -7,10 +7,15 @@ sidebar_position: 10
 
 
 Harness STO supports the following scan types for the following Snyk products:
-* Snyk Open Source — `orchestratedScan` and `ingestionOnly` 
-* Snyk Code  —  `ingestionOnly` 
-* Snyk Container  — `ingestionOnly` 
-* Snyk infrastructure as Code  — `ingestionOnly` is in BETA
+- Snyk Open Source
+  - [Snyk Open Source orchestration example](./snyk-scans.md#snyk-open-source-orchestration-example)
+  - [Snyk Open Source ingestion example](./snyk-scans.md#snyk-open-source-ingestion-example)
+- Snyk Code 
+  - [Snyk Code ingestion example](snyk-scans.md#snyk-code-ingestion-example)
+- Snyk Container
+  - [Snyk Container ingestion example](./snyk-scans.md#snyk-container-ingestion-example)
+- Snyk infrastructure as Code (currently in beta)
+  - [Snyk infrastructure as Code ingestion example](./snyk-scans.md#snyk-infrastructure-as-code-ingestion-example)
 
 For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans.md).
 
