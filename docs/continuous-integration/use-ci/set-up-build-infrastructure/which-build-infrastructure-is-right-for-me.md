@@ -9,14 +9,14 @@ import TabItem from '@theme/TabItem';
 
 You can run builds on Harness-hosted machines or your own infrastructure.
 
-This table provides a high-level comparison of the Harness CI build infrastructure options. For more details, read more about each build infrastructure below. To compare supported platforms and features, go to [Supported operating systems and architectures](#supported-operating-systems-and-architectures) and the [Feature compatibility matrix](#feature-compatibility-matrix).
+The following table provides a high-level comparison of the Harness CI build infrastructure options. More details are provided in the following sections. To compare supported platforms and features, go to [Supported operating systems and architectures](#supported-operating-systems-and-architectures) and the [Feature compatibility matrix](#feature-compatibility-matrix).
 
-| Build infrastructure | Best for | Ease of setup | Scalable | Build on | Plans | Other considerations |
+| Build infrastructure | Best for | Ease of setup | Scalable | Plans | Other considerations |
 | - | - | - | - | - | - | - |
-| [Harness Cloud](#harness-hosted-builds-harness-cloud) | Getting started fast and minimizing maintenance | ✅ Easy | ✅ Yes | Harness-hosted, modifiable VMs  | All | [Requires build credits](./use-harness-cloud-build-infrastructure.md#billing-and-build-credits) |
-| [Self-hosted local runner](#local-runners) | Building custom apps with specific build machine requirements | 🔸&nbsp;Moderate | ❌ No | Your local machine | All | Limited to host machine resources/capacity |
-| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | Building on Kubernetes clusters | 🔸&nbsp;Moderate | ✅ Yes | Your Kubernetes cluster | Paid | [Built-in Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access), [Docker-in-Docker requires privileged mode](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker), and macOS platforms aren't supported |
-| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | Managing your own VM pool | ❌&nbsp;Difficult | ✅ Yes | Your Cloud provider's VMs | Paid | More support/flexibility for Docker commands and Windows builds when compared to Kubernetes cluster build infrastructure |
+| [Harness Cloud](#harness-hosted-builds-harness-cloud) (Harness-hosted builds) | Getting started fast and minimizing maintenance | ✅ Easy | ✅ Yes | All | [Requires build credits](./use-harness-cloud-build-infrastructure.md#billing-and-build-credits) |
+| [Self-hosted local runner](#local-runners) | Building custom apps with specific build machine requirements | 🔸&nbsp;Moderate | ❌ No | All | Limited to host machine resources/capacity |
+| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | Building on Kubernetes clusters | 🔸&nbsp;Moderate | ✅ Yes | Paid | [Built-in Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access), [Docker-in-Docker requires privileged mode](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker), and macOS platforms aren't supported |
+| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | Managing your own VM pool | ❌&nbsp;Difficult | ✅ Yes | Paid | More support/flexibility for Docker commands and Windows builds when compared to Kubernetes cluster build infrastructure |
 
 ## Harness-hosted builds (Harness Cloud)
 
