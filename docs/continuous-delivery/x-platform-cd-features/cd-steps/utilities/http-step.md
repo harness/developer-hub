@@ -163,10 +163,10 @@ This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact 
 
 You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
 
-1. In **Optional Configuration**, in **Certificate**, enter the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
-2. In **Certificate Key**, enter the public key.
+1. In **Optional Configuration**, in **Certificate**, select the secret for the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+2. In **Certificate Key**, select the secret for the public key.
 
-You can use fixed values, expressions, or runtime inputs for these settings. It is good practice to use Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) for these values.
+You can use fixed values, expressions, or runtime inputs for these settings. For more information, go to Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/).
 
 ## Delegate proxy
 

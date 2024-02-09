@@ -37,7 +37,7 @@ CPU hog:
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engneering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> CPU_LOAD </td>

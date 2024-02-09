@@ -18,6 +18,7 @@ export const certifications: CardItem[] = [
     link: "/certifications/continuous-integration",
     numberOfCerts: 3,
   },
+
   {
     title: "Feature Flags Certifications",
     module: MODULES.ff,
@@ -50,12 +51,4 @@ export const certifications: CardItem[] = [
     link: "/certifications/chaos-engineering",
     numberOfCerts: 1,
   },
-
-  // {
-  //   title: "Chaos Engineering Certifications",
-  //   module: MODULES.ce,
-  //   description: "Comming Soon",
-  //   link: "/certifications/chao-engineering",
-  //   numberOfCerts: 3,
-  // },
 ];

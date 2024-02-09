@@ -31,4 +31,9 @@ export const FfData: Horizon = {
       },
     ],
   },
+  Released: {
+    description: "What has been released",
+    feature: [
+    ],
+  },
 };
