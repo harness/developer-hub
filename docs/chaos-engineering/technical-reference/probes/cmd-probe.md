@@ -140,13 +140,6 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>Annotations to be added to the source probe pod </td>
   </tr>
   <tr>
-   <td>annotations </td>
-   <td>Annotations for the source probe pod </td>
-   <td>Optional </td>
-   <td><code>type: string</code> </td>
-   <td>Annotations to be added to the source probe pod </td>
-  </tr>
-  <tr>
    <td>command</td>
    <td>Command to be executed using the source probe image </td>
    <td>Optional </td>
@@ -173,13 +166,6 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>Optional </td>
    <td><code>type: string</code> </td>
    <td>Key-Value label(s) of the node(s) to be used for deploying the source probe pod </td>
-  </tr>
-  <tr>
-   <td>volume </td>
-   <td>Volumes to be mounted to the source probe pod </td>
-   <td>Optional </td>
-   <td>N/A </td>
-   <td>Depending on the type of the volume, additional properties need to be provided </td>
   </tr>
   <tr>
    <td>volumes </td>

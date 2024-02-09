@@ -31,4 +31,9 @@ export const IdpData: Horizon = {
       },
     ],
   },
+  Released: {
+    description: "What has been released",
+    feature: [
+    ],
+  },
 };

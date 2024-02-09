@@ -31,4 +31,9 @@ export const CiData: Horizon = {
       },
     ],
   },
+  Released: {
+    description: "What has been released",
+    feature: [
+    ],
+  },
 };

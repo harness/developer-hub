@@ -10,7 +10,7 @@ export const platformData: Horizon = {
         tag: [{ value: "UI" }],
       },
       {
-        tag: [{ value: "" }],
+        tag: [],
         title: "Pipeline Data Retention",
         description:
           "Extended Data Retention, Data Archiving and Compliance capabilites ",
@@ -51,6 +51,11 @@ export const platformData: Horizon = {
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
       },
+    ],
+  },
+  Released: {
+    description: "What has been released",
+    feature: [
     ],
   },
 };

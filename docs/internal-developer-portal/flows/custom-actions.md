@@ -125,30 +125,80 @@ This is where Custom Field Extensions come in.
 
 ### Harness Specific Custom Extensions
 
-1. `HarnessOrgPicker`
+1. `HarnessOrgPicker` : Fetches all the org id dynamically. 
 
 ```YAML
 #Example
-...
-orgId:
-    title: Org Identifier
-    type: string
-    ui:field: HarnessOrgPicker
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+            title: Org Identifier
+            type: string
+            ui:field: HarnessOrgPicker
     ...
 ```
 
-2. `HarnessProjectPicker`
+2. `HarnessProjectPicker` : Fetches all the project id dynamically. 
 
 ```YAML
-#Example
-...
-projectId:
-    title: Project Identifier
-    description: Harness Project Identifier
-    type: string
-    ui:field: HarnessProjectPicker
-    ...
+# Example template.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
 ```
+
+3. `HarnessAutoOrgPicker` : It auto populates org id on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input.
+
+```YAML
+# Example template.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker          
+
+```
+
 
 ### Custom Actions Usage Limitations
 
