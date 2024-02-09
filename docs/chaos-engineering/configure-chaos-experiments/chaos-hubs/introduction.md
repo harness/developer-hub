@@ -12,7 +12,7 @@ Both experiments and faults are stored as manifests in an appropriate directory 
 
 You can add ChaosHub using a Git service provider such as GitHub, where ChaosHub exists as a repository. This allows native version control and management of the faults and experiment artefacts.
 
-HCE provides a default **Enterprise ChaosHub** that includes a wide array of templates and faults out of the box. You can also [add your own custom ChaosHubs](./add-chaos-hub) to maintain and share private scenarios and faults within your organization.
+HCE provides a default **Enterprise ChaosHub** that includes a wide array of experiments and faults out of the box. You can also [add your own custom ChaosHubs](./add-chaos-hub) to maintain and share private scenarios and faults within your organization.
 
 ### Enteprise ChaosHub
 It is a ChaosHub with additional security and teaming features for better collaboration around chaos scenarios. It is a private GitHub repository that you can access using a special key.

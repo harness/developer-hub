@@ -23,7 +23,7 @@ Chaos infrastructures represent the individual components of a deployment enviro
 #### 5. Environment 
 A Harness environment represents your deployment environment such as Dev, QA, Staging, Production, etc. Each Environment may contain multiple Chaos Infrastructures. It helps isolate the various environments that your engineering, product owners, QA, and automation teams use under a single Harness project. This allows for better segregation of mission-critical infrastructures with several attached dependencies from dev and staging infrastructures for their safety.
 
-#### 6. Chaos centre 
+#### 6. Chaos Studio 
 Chaos Studio is used for the creation of new chaos experiments using varied chaos faults and templates from the ChaosHub, probes, and custom action steps. New experiments can be created using the guided UI or using the experiment manifest represented by the workflow CR.
 
 #### 7. Resilience score

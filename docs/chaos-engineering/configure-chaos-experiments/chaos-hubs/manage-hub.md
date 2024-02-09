@@ -1,7 +1,7 @@
 ---
-title: Manage custom chaoshub
+title: Manage custom ChaosHub
 sidebar_position: 3
-description: Save and manage experiments in custom chaoshub
+description: Save and manage experiments in custom ChaosHub
 ---
 
 import Launch from '../shared/launch-experiment-from-hub.md'
@@ -10,13 +10,13 @@ This section describes how to save and manage experiments in your custom chaoshu
 
 ## View ChaosHubs
 
-The experiments you see in various ChaosHub are actually templates from which you can launch the experiments after specifying some details. 
+The experiments you see in various ChaosHubs are actually templates from which you can launch the experiments after specifying some details. 
 
 To view the default and custom ChaosHub:
 
 1. In Harness, navigate to **Chaos > ChaosHubs**.
 
-	This page lists the default Enterprise ChaosHub, and any custom ChaosHub.
+	This page lists the default Enterprise ChaosHub, and any custom ChaosHubs.
 
 	![ChaosHubs page with default and custom hubs highlighted](./static/manage-hub/custom-default-chaoshubs.png)
 

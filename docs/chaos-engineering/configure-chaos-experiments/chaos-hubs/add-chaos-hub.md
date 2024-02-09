@@ -1,10 +1,10 @@
 ---
 title: Add a custom ChaosHub
 sidebar_position: 2
-description: Steps to add a ChaosHub to your project
+description: Steps to add a custom ChaosHub to your project
 ---
 
-This sections describes reasons for adding a custom ChaosHub and how to add and connect a custom ChaosHub. 
+This section describes the reasons for adding a custom ChaosHub and how to add and connect a custom ChaosHub. 
 
 ## Reasons to add a custom ChaosHub
 
@@ -20,7 +20,7 @@ There are several reasons for adding a custom ChaosHub. A custom hub lets you:
 
 ## Prerequisites to add a custom ChaosHub
 
-1. Enure you have a Git repository for your custom ChaosHub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
+1. Ensure you have a Git repository for your custom ChaosHub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
 
 	![Private Hub](./static/add-chaos-hub/private-hub.png)
 
