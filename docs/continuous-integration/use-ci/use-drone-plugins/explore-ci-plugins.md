@@ -66,7 +66,7 @@ Harness officially supports the following plugins.
 | Fandogh | Deliver Docker images to Fandogh PaaS | [fandogh-drone](https://github.com/amirbagh75/fandogh-drone) | amirbagh75/fandogh-drone |
 | Fossa | Run the `analyze` command per the generic CI documentation for FOSSA | [drone-plugin-fossa](https://github.com/rancherlabs/drone-plugin-fossa) | rancher/drone-fossa |
 | FTP(S) | Publish artifacts over FTP(S) | [drone-ftps](https://github.com/christophschlosser/drone-ftps) | cschlosser/drone-ftps |
-| GCP OIDC | Generate a Google access token from your OIDC token | https://github.com/harness-community/drone-gcp-oidc | plugins/gcp-oidc |
+| GCP OIDC | [Generate a Google access token from your OIDC token](../../secure-ci/gcp-oidc-token-plugin.md) | https://github.com/harness-community/drone-gcp-oidc | plugins/gcp-oidc |
 | Google Artifact Registry | [Build and push to GAR](../build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/gar |
 | Google Chat | Post build status messages to your organization's Google Chat | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
 | Google Cloud Functions | Deploy, list, and delete Google Cloud Functions | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |

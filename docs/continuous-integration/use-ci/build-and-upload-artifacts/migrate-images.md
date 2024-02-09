@@ -2,7 +2,6 @@
 title: Copy images across registries
 description: Use a plugin to copy an image from one registry to another.
 sidebar_position: 23
-sidebar_label: Upload Helm charts
 ---
 
 import Tabs from '@theme/Tabs';
@@ -200,8 +199,6 @@ In this example, only the destination registry is in AWS ECR.
 ```
 
 -->
-
-</details>
 
 With AWS ECR, the Image Migration plugin settings are as follows:
 
