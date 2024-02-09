@@ -5380,3 +5380,33 @@ Please read more on this in the [FastXML Documentation](https://github.com/Faste
 
 Unfortunately, utilizing the output variable of a shell script step to determine the failure strategy for the same or subsequent steps is not feasible. When a shell script step concludes with a non-zero exit status, the output variable remains unset, precluding its use in subsequent steps or for defining the failure strategy. In such scenarios, reliance on the non-zero exit status is necessary to trigger the failure strategy.
 Please read more on Failure Strategy in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/)
+
+#### What is the Queue step in Harness?
+The Queue step is used to control the access order to the resources during deployment and prevent multiple pipelines from requesting the same resources at the same time.
+
+#### What Jira Date fields are supported by Harness?
+The harness supports the Baseline End Date and Start Date Time fields.
+
+#### How does the Queue step help control resource usage during deployment?
+The Queue step prevents collision and queue deployments, ensuring that the first pipeline completes before the second pipeline can continue, thus controlling resource access.
+
+#### What is the purpose of the Resource Key in the Queue step?
+The Resource Key is used to enter a unique key, which is the same key added to the Queue steps in other pipelines.
+
+#### What is the purpose of the issue link field in Jira?
+The issue link field in Jira is used to support parent links, enabling the Jira Create step to create issues with existing issues as their parent.
+
+#### What is the purpose of the Acquire Resource Lock step in Harness?
+The Acquire Resource Lock step places a resource lock on the infrastructure and queues the Workflows in the FIFO (First In, First Out) order.
+
+#### What is the purpose of the Harness Jira connector?
+The Harness Jira connector allows you to create and update Jira issues, and to use Jira issues in Approval steps.
+
+#### When should Queue steps be added to a pipeline?
+Queue steps should be added whenever the resource you want to protect is used, for example, before the Terraform Apply step in pipeline A and before the deployment step in pipeline B.
+
+#### Can you update Jira issues using Harness?
+Yes, you can update Jira issues and add Jira approval stages and steps using Harness.
+
+#### What does the Resource Key support the different types of values?
+The Resource Key supports Fixed Values, Runtime Inputs, and Expression

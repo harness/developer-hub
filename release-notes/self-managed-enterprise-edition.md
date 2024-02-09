@@ -13,13 +13,48 @@ import delete_project from './static/delete-project.png'
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 
-These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
+These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger Do not upgrade
+:::danger important upgrade instructions for patch release 0.13.3 and 0.12.1
 
-We have discovered an issue with SMP releases 0.12.0, 0.13.0, 0.13.1, and 0.13.2 where you might face an issue with logs in the UI. 
+If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
-Please don't upgrade to these releases. We are working to publish a new patch release, and we will update this page with the patch release notes as soon as it's deployed.
+If you are currently on version 0.13.0, 0.13.1, or 0.13.2, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.3.
+
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.3.
+
+**Upgrade using Helm**
+
+If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
+
+1. Set `global.database.minio.mergeLogs` to `true` in your override file.
+2. Perform your Harness upgrade.
+
+**All other customers**
+
+If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
+
+1. Exec into your MinIO pod.
+2. Copy the files from `/bitnami/minio/data` to `/data/backup directory`.
+3. Perform your Harness upgrade.
+4. Exec into your MinIO pod after the upgrade has successfully completed.
+5. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
+  
+   ```
+    env | grep MINIO_ROOT_PASSWORD
+   ```
+
+6. Run the following commands.
+
+   ```
+   bin/mc alias set minio http://minio:9000
+        # Access Key: admin
+        # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_5>
+   ```
+
+   ``` 
+   bin/mc cp --recursive /data/backup/logs minio/logs
+   ```
 
 :::
 
@@ -30,6 +65,85 @@ Please don't upgrade to these releases. We are working to publish a new patch re
 
 :::
 
+## February 8, 2024, patch version 0.13.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.3](https://github.com/harness/helm-charts/releases/tag/harness-0.13.3) |
+| Air Gap Bundle | [0.13.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.3) |
+| NG Manager | 1.19.11 |
+| CI Manager | 1.6.11 |
+| Pipeline Service | 1.56.7 |
+| Platform Service | 1.8.2 |
+| Access Control Service | 1.29.2 |
+| Delegate | 24.01.82004 |
+| Change Data Capture | 1.1.2 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.18 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed UI logging issues for release versions 0.12.0, 0.13.0, 0.13.1, and 0.13.2. (PL-46771, ZD-57141)
+
+## February 8, 2024, patch version 0.12.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.12.1](https://github.com/harness/helm-charts/releases/tag/harness-0.12.1) |
+| Air Gap Bundle | [0.12.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.12.1) |
+| NG Manager | 81720 |
+| CI Manager | 6904 |
+| Pipeline Service | 1.51.3 |
+| Platform Service | 1.4.4 |
+| Access Control Service | 1.25.3 |
+| Delegate | 23.12.81604 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.15 |
+| LE NG | 68402 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.12.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed UI logging issues for release version 0.12.0. (PL-46771, ZD-57141)
 
 ## February 2, 2024, patch version 0.13.2
 
@@ -72,7 +186,6 @@ gsutil -m cp \
 - The `/ccm/bi-dashboards` API didn't return dashboards. (CCM-15995)
 
    This issue was resolved by redirecting the Dashboards module to view BI Dashboards. The BI Dashboards are a subset of all module dashboards available under Custom Dashboards, providing a shortcut to access them. 
-
 
 ## February 2, 2024, patch version 0.13.1
 
@@ -205,6 +318,7 @@ gsutil -m cp \
 - The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
 
 - Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
+
 ### Early access features
 
 #### Harness Platform
@@ -308,7 +422,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   This issue has been fixed. The banner now has the correct dates. 
 
 - Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865)
-  There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+  There was an issue where CloudFormation steps were not updating the console logs when there are multiple steps with a similar prefix. This issue is now fixed.
 
 - Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
 
@@ -400,8 +514,6 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
-
-
 
 ## January 8, 2024, version 81720
 
