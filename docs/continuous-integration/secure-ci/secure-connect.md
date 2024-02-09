@@ -12,7 +12,14 @@ Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECUR
 
 To use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) in firewalled environments, such as a corporate network, you can create a secure connect tunnel between the Harness Cloud network and your private network. This allows you to use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and on-premises code repositories. Secure connect is a faster alternative to allowlisting IPs.
 
-To configure secure connect:
+<figure>
+
+![](./static/secure-connect-arch.png)
+
+<figcaption>Secure Connect architecture diagram</figcaption>
+</figure>
+
+## Configure secure connect
 
 1. Run the Docker client in your firewalled environment. Where you run the client depends on what assets need to securely connect to Harness and your environment's network configuration.
 
@@ -38,7 +45,7 @@ To configure secure connect:
 
 Once enabled, traffic related to the configured connector is tunneled through the FRPC.
 
-:::tip
+## Secure connect environment variables
 
 When you enable secure connect, Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
 
@@ -49,5 +56,3 @@ curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
 ```
 
 Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure connect tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
-
-:::
