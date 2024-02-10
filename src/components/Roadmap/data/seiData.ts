@@ -48,7 +48,7 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "Enhanced Insights" }],
         title: "Enhanced Executive Dashboard",
-        description: "PProvide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience.",
+        description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience.",
       },
       {
         tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],
