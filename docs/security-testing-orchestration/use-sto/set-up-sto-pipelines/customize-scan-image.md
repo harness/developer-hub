@@ -289,7 +289,7 @@ This example pipeline has three steps.
 
   - `owasp_scan_with_binaries` uses the [custom OWASP image](#extend-the-base-image-with-yarn-and-pnpm) that includes the binaries required to scan Yarn and PNPM repositories.
 
-- `owasp_ingest_results` uses the [OWASP Dependency-Check step](`/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference`) to ingest the scan results that `owasp_scan_with_binaries` published to the shared folder.
+- `owasp_ingest_results` uses the [OWASP Dependency-Check step](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference) to ingest the scan results that `owasp_scan_with_binaries` published to the shared folder.
 
     <DocImage path={require('./static/owasp-with-yarn-and-npm-example-pipeline.png')}  title="Example pipeline with out-of-the-box OWASP orchestration step (fails) and Run step with custom OWASP image (succeeds)" /> 
 
