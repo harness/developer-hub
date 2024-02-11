@@ -1,7 +1,7 @@
 ---
-title: Extend your scan images
-description: How to extend your base scan images. 
-sidebar_label: Customize your scan images
+title: Customize your scanner images
+description: Add files and packages to your base scanner images. 
+sidebar_label: Customize your scanner images
 sidebar_position: 10
 ---
 
