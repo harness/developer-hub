@@ -285,7 +285,7 @@ This example pipeline has three steps.
 
 - `owasp_scan_oob` and `owasp_scan_with_binaries` run in parallel:
 
-  - `owasp_scan_oob` uses the [OWASP Dependency-Check step](`/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference`) out-of-the box in orchestration mode. The step fails when trying to scan a repository with Yarn or PNPM because it doesn't have the required binaries. The failure strategy is set to Ignore so it doesn't stop the pipeline.
+  - `owasp_scan_oob` uses the [OWASP Dependency-Check step](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference) out-of-the box in orchestration mode. The step fails when trying to scan a repository with Yarn or PNPM because it doesn't have the required binaries. The failure strategy is set to Ignore so it doesn't stop the pipeline.
 
   - `owasp_scan_with_binaries` uses the [custom OWASP image](#extend-the-base-image-with-yarn-and-pnpm) that includes the binaries required to scan Yarn and PNPM repositories.
 
