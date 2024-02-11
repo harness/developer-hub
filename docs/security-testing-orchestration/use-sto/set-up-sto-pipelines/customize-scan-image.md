@@ -1,7 +1,7 @@
 ---
-title: Customize your scanner images
+title: Customize your STO images
 description: Add files and packages to your base scanner images. 
-sidebar_label: Customize your scanner images
+sidebar_label: Customize your STO images
 sidebar_position: 10
 ---
 

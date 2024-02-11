@@ -2,7 +2,7 @@
 title: Store STO images in a private registry
 description: Store your scanner images in a private registry. Useful for air-gapped environments.
 sidebar_label: Store images in a private registry
-sidebar_position: 10
+sidebar_position: 30
 ---
 
 Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
