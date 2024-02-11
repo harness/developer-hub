@@ -16,7 +16,9 @@ Harness maintains a [set of scan images](https://console.cloud.google.com/gcr/im
 
 - Harness supports the CI and STO images in the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). You can extend these images to support your own uses cases, but custom images are not supported by Harness. 
 
-- Harness recommends that you add the only the package and files required for your specific use case, and that you thoroughly test and scan your custom images for vulnerabilities and other issues before you deploy them in your production environment.   
+- Harness recommends that you add the only the packages and files required for your specific use case, and that you thoroughly test and scan your custom images for vulnerabilities and other issues before you deploy them in your production environment.   
+
+- Harness [updates its public CI and STO images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images) every two weeks. It is good practice to rebuild your custom images every month to use the most recent base images. 
 
 ## Workflow description
 
@@ -45,7 +47,7 @@ The first step is to create a Dockerfile that adds these packages to the OWASP b
 
 ``` 
 # STEP 1 
-# Specify the STO scanner image where you want to add your certificates
+# Specify the base STO scanner image
 # For a list of all images in the Harness Container Registry, run the following:
 #     curl -X  GET https://app.harness.io/registry/_catalog
 
@@ -102,14 +104,14 @@ Once you're satisfied with the customized image, you can push it to your image r
 
 ### Add a shared folder to the pipeline stage
 
-Now you're ready to set up your pipeline. First, you add a shared path for the scan results. This is a standard good practice for [ingestion workflows](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-open-source-ingestion-example). 
+Now you're ready to set up your pipeline. First, you add a shared path to the stage for the scan results. This is a standard good practice for [ingestion workflows](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-open-source-ingestion-example). 
 
 <Tabs>
     <TabItem value="Visual" label="Visual" default>
 
-    1. In your Harness pipeline, go to the stage where you want to run the scan and select **Overview**.
+    1. In your Harness pipeline, go to the stage where you want to run the scan.
 
-    2. Add a shared path such as `/shared/scan_results`.
+    2. Select **Overview** and then add a shared path such as `/shared/scan_results`.
 
         <DocImage path={require('./static/custom-image-shared-path.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
@@ -117,7 +119,7 @@ Now you're ready to set up your pipeline. First, you add a shared path for the s
 
     <TabItem value="YAML" label="YAML">
 
-    Add a shared path for the stage as shown in the following YAML.
+     Go to the stage where you want to run the scan. Then add a shared path as shown in the following YAML.
 
     ``` yaml
     - stage:
@@ -143,9 +145,7 @@ Now add a Run step that pulls your custom image, runs the `dependency-check` bin
 <Tabs>
     <TabItem value="Visual" label="Visual" default>
 
-    Add a **Run** that pulls your custom image, runs the `dependency-check` binary on the specified target, and saves the scan results to the shared folder you created.
-
-    Configure the step as follows:
+    Add a **Run** step and configure it as follows:
  
        1. **Optional Configuration** > **Container Registry**: A connector to the registry where you stored your custom OWASP image. 
 
@@ -169,22 +169,22 @@ Now add a Run step that pulls your custom image, runs the `dependency-check` bin
                 yarn --version
                 pnpm --version 
                 /app/dependency-check/bin/dependency-check.sh \
-                   --scan /harness \
-                   --format JSON  \ 
-                   --out /shared/scan_results/owasp.json \
                    --yarn /root/.yarn/bin/yarn \
                    --pnpm /usr/local/bin/pnpm \
+                   --scan /harness \
+                   --format JSON  \ 
+                   --out /shared/scan_results/owasp.json 
+
           ```
 
+          
           <DocImage path={require('./static/custom-image-run-step.png')} width="50%" height="50%" title="Add Run step for custom image" /> 
 
     </TabItem>
 
     <TabItem value="YAML" label="YAML">
 
-    Add a `Run` step that pulls your custom image, runs the `dependency-check` binary on the specified target, and saves the scan results to the shared folder you created.
-
-    Configure the step as follows:
+    Add a `Run` step and configure it as follows:
  
        1. `connectorRef:` A connector to the registry where you stored your custom OWASP image. 
 
@@ -222,12 +222,6 @@ Now add a Run step that pulls your custom image, runs the `dependency-check` bin
                     --prettyPrint \
                     --format JSON  \
                     --out /shared/scan_results/output.json 
-                    # --project owasp_scan_with_yarn_and_pnpm
-                    # --disableNodeAudit \     
-                    # --enableExperimental \
-                    # --noupdate\
-                # echo "SCAN RESULTS FILE ============================"
-                # cat /shared/scan_results/output.json
             imagePullPolicy: Always
 
         ```
@@ -285,7 +279,7 @@ This example pipeline has three steps.
 
 - `owasp_scan_oob` and `owasp_scan_with_binaries` run in parallel:
 
-  - `owasp_scan_oob` uses the [OWASP Dependency-Check step](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference) out-of-the box in orchestration mode. The step fails when trying to scan a repository with Yarn or PNPM because it doesn't have the required binaries. The failure strategy is set to Ignore so it doesn't stop the pipeline.
+  - `owasp_scan_oob` uses the [OWASP Dependency-Check step](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference) out-of-the box in orchestration mode. The step fails when trying to scan a repository with Yarn or PNPM because it doesn't have the required binaries. This step has a failure strategy to ignore all errors so it doesn't stop the pipeline.
 
   - `owasp_scan_with_binaries` uses the [custom OWASP image](#extend-the-base-image-with-yarn-and-pnpm) that includes the binaries required to scan Yarn and PNPM repositories.
 
@@ -353,7 +347,7 @@ pipeline:
                       identifier: Run_1
                       spec:
                         connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR_ID
-                        image: YOUR_IMAGE_REGISTRY_NAME/owaspandnpmandyarn:latest
+                        image: YOUR_IMAGE_REGISTRY_NAME/YOUR_IMAGE_NAME:YOUR_IMAGE_TAG
                         shell: Sh
                         command: |-
                           yarn --version
