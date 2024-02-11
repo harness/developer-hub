@@ -364,7 +364,7 @@ You can use the keyword `nodeName` when specifying your repeat items to define y
               - host1
               - host2
               - host3
-            nodeName: repeat_<+repeat.item>
+            nodeName: TestDeploy_<+repeat.item>
 ```
 ![](./static/looping_name_example_1.png)
 
@@ -401,7 +401,8 @@ tags: {}
                         - host1
                         - host2
                         - host3
-                      nodeName: step_<+repeat.item>
+                      nodeName: Test_Deploy_step_<+repeat.item>
+
 
 ```
 ![](./static/looping_name_example_2.png)
