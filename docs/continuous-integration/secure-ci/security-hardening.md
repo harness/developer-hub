@@ -6,7 +6,7 @@ sidebar_position: 10
 
 Harness offers features that help you build securely with Harness CI. Combine these features with known industry best practices.
 
-The information is targeted at Harness CI. It is not a comprehensive explanation of all security features and capabilities throughout all Harness products.
+The information is targeted at Harness CI. It is not a comprehensive explanation of all security features and capabilities throughout all Harness products, such as [Harness STO](/docs/security-testing-orchestration).
 
 ## Access control
 
