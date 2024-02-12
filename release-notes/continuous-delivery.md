@@ -62,7 +62,7 @@ So when another deployment happens and we apply the same old deployments manifes
 This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
 
 #### Fixed Issues
-- The Input Set Page breaks while editing the input set when the service input fields have been updated. Now the page will render with the input set yaml. (CDS-91095, ZD-57487)
+- The Input Set Page breaks while editing the input set when the service input fields have been updated. Now the page will render with the input set YAML. (CDS-91095, ZD-57487)
 - Fixed an issue where a Targeted Hosts field was not populated in the case of execution input.  (CDS-91071)
 - Fixed an issue where the pipeline failed to execute when remote infrastructure was used with a multi-environment deployment. (CDS-90985, ZD-57420)
 - Fixed an issue where users couldn’t switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
