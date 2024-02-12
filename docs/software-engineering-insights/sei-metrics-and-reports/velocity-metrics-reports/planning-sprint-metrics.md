@@ -92,6 +92,10 @@ You can use the **Sprint Report** field to limit data to a selected _sprint stre
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of sprint metrics, like [commit done points](#commit-done-points), [creep points](#creep-points), or [commit points](#commit-points).
 
+By using the Sprint Metrics Trend report, you can visually represent how the respective sprint metric has evolved throughout various sprint cycles. For example, if there were inconsistency in commit points and commit done points, this might indicate that initial planning needs refinement. On the other hand, consistent growth in creep points would suggest that scope control may be lacking and should be addressed through improved estimation techniques or stricter adherence to defined user stories.
+
+This data-driven approach enables the team to make informed decisions about areas requiring improvement for sprint cycles. Ultimately, the goal is not only to deliver high-quality products on schedule but also to establish a culture of constant improvement based on objective insights.
+
 <img
   src={require('./static/sprint-metrics-trend.png').default}
   alt="Example banner" height="50%" width="100%" border="1"

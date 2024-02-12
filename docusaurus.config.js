@@ -165,6 +165,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Developer Insights",
+                to: "tutorials/software-engineering-insights",
+              },
+              {
+                // type: "doc",
                 label: "Manage Developer Portal",
                 to: "tutorials/internal-developer-portal",
               },

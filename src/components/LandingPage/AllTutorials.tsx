@@ -16,6 +16,7 @@ import { PlatformList } from "./data/platformData";
 import { CETList } from "./data/continuousErrorTrackingData";
 import { IDPList } from "./data/internalDeveloperPortalData";
 import { SMPList } from "./data/smpData";
+import { SEIList } from "./data/softwareEngineeringInsightsData";
 import styles from "./styles.module.scss";
 import cardStyles from "./TutorialCard.module.scss";
 
@@ -117,6 +118,13 @@ export default function AllTutorials() {
           <h3>Manage Developer Portal</h3>
         </div>
         <TutorialCard FeatureList={IDPList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_sei.svg`} />
+          <h3>Manage Software Engineering Insights</h3>
+        </div>
+        <TutorialCard FeatureList={SEIList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
