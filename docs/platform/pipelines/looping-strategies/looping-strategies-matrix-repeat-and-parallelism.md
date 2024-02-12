@@ -267,7 +267,10 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-
+:::info note
+1. When you use nodeName, the final name of the stages will be ``OriginalStageName_nodeName``, i.e the original stage name will be there.
+2. If evaluated value of nodeName is same in multiple stages, it will automatically append ``OriginalStageName_nodeName_1``, ``OriginalStageName_nodeName_2`` to the matrix. 
+:::
 ### Matrix examples and best practices
 
 - [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
@@ -406,6 +409,11 @@ tags: {}
 
 ```
 ![](./static/looping_name_example_2.png)
+
+:::info note
+1. When you use nodeName, the final name of the stages will be ``OriginalStageName_nodeName``, i.e the original stage name will be there.
+2. If evaluated value of nodeName is same in multiple stages, it will automatically append ``OriginalStageName_nodeName_1``, ``OriginalStageName_nodeName_2`` to the repeats. 
+:::
 
 ## Looping strategies as runtime input
 
