@@ -170,6 +170,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Engineering Insights",
+                to: "tutorials/software-engineering-insights",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
