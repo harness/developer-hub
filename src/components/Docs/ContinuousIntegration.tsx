@@ -37,15 +37,15 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CI helps you build faster and be more productive. Build and test 
-              your code, and get abird's-eye view of all your builds — successful, failed, aborted, 
-              and expired — and the percentage of successful builds for individual codebases. 
-              You can easily see where your builds failed and drill down into specific builds to 
-              troubleshoot and analyze the root causes.
+              Harness CI helps you build faster and be more productive.
+              Build and test your code, manage dependencies, upload artifacts,
+              and monitor build outcomes, all within the Harness Platform.
+              Leverage unique features, like AIDA, Test Intelligence, and Cache Intelligence,
+              and integrate third party tools, custom scripts, and other Harness modules.
             </p>
-          </div>
-          <div>
+            <div>
             <img src={`${baseUrl}img/ci.svg`} />
+            </div>
           </div>
         </div>
       </div>
