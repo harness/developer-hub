@@ -538,6 +538,42 @@ pipeline:
 </TabItem>
 </Tabs>
 
+## Download Artifacts from S3
+
+You can use the [S3 Drone plugin](https://github.com/drone-plugins/drone-s3) to download artifacts from S3. This is the same plugin image that Harness CI uses to run the **Upload Artifacts to S3** step. To do this,[add a Plugin step](../../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../../prep-ci-pipeline-components.md). For example:
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: download
+                  identifier: download
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR
+                    image: plugins/s3
+                    settings:
+                      access_key: <+secrets.getValue("awsaccesskeyid")>
+                      secret_key: <+secrets.getValue("awssecretaccesskey")>
+                      region: YOUR_BUCKET_REGION
+                      bucket: YOUR_BUCKET_NAME
+                      source: path/to/directory/to/download
+                      target: download/destination
+                      download: "true"
+```
+
+Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+
+| Keys | Type | Description | Value example |
+| - | - | - | - |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `image` | String | Enter `plugins/s3`. | `plugins/s3` |
+| `access_key` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your AWS access key ID. | `<+secrets.getValue("awsaccesskeyid")>` |
+| `secret_key` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your AWS secret access key. | `<+secrets.getValue("awssecretaccesskey")>` |
+| `region` | String | The S3 bucket region | `us-east-2` |
+| `bucket` | String | The S3 bucket name. | `my-cool-bucket` |
+| `source` | String | The path to the directory to download from your S3 bucket. | `path/to/artifact/directory` |
+| `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
+| `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
+
 ## Troubleshoot uploading artifacts
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:

@@ -71,6 +71,17 @@ Regardless of how you upload artifacts, you can [publish any artifact URL to the
 
 :::
 
+### Download artifacts
+
+Regardless of how you upload artifacts, you can use Run steps and Plugin steps to download artifacts into your pipeline workspace.
+
+For example:
+
+* [Download artifacts from GCS](./upload-artifacts/upload-artifacts-to-gcs-step-settings.md#download-artifacts-from-gcs)
+* [Download artifacts from S3](./upload-artifacts/upload-artifacts-to-s3.md#download-artifacts-from-s3)
+* [Use the Download plugin](../use-drone-plugins/run-a-drone-plugin-in-ci.md)
+* [Run any script in a Run step](../run-step-settings.md)
+
 ## Troubleshoot building and pushing artifacts and images
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images or uploading artifacts, such as:

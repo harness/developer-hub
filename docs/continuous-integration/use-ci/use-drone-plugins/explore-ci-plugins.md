@@ -290,8 +290,8 @@ These plugins are used by built-in Harness CI steps. You don't need to run them 
 
 | Kaniko (Docker, ACR, ECR, GAR, GCR) | [Build and push images to container registries](../build-and-upload-artifacts/build-and-upload-an-artifact.md) | [drone-kaniko](https://github.com/drone/drone-kaniko) | plugins/kaniko, plugins/kaniko-acr, plugins/kaniko-ecr, plugins/kaniko-gar, plugins/kaniko-gcr |
 
-| AWS S3 | Harness uses this in the [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md). | [drone-s3](https://github.com/drone-plugins/drone-s3) | plugins/s3 |
+| AWS S3 | Harness uses this in the [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md). You can also use it to [download artifacts from S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md#download-artifacts-from-s3). | [drone-s3](https://github.com/drone-plugins/drone-s3) | plugins/s3 |
 
-| Google Cloud Storage | Harness uses this in the [Upload artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md). | [drone-plugins/drone-gcs](https://github.com/drone-plugins/drone-gcs) | plugins/gcs |
+| Google Cloud Storage | Harness uses this in the [Upload artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md). You can also use it to [download artifacts from GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md#download-artifacts-from-gcs). | [drone-plugins/drone-gcs](https://github.com/drone-plugins/drone-gcs) | plugins/gcs |
 
 | GitHub Actions | Harness uses this for the built-in [GitHub Actions Plugin step](./ci-github-action-step.md). | [github-actions](https://github.com/drone-plugins/github-actions) | plugins/github-actions |

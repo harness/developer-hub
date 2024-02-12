@@ -297,6 +297,36 @@ pipeline:
 </TabItem>
 </Tabs>
 
+## Download Artifacts from GCS
+
+You can use the [GCS Drone plugin](https://github.com/drone-plugins/drone-gcs) to download artifacts from GCS. This is the same plugin image that Harness CI uses to run the **Upload Artifacts to GCS** step. To do this,[add a Plugin step](../../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../../prep-ci-pipeline-components.md). For example:
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: download
+                  identifier: download
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR
+                    image: plugins/gcs
+                    settings:
+                      token: <+secrets.getValue("gcpserviceaccounttoken")>
+                      source: YOUR_BUCKET_NAME/DIRECTORY
+                      target: path/to/download/destination
+                      download: "true"
+```
+
+Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+
+| Keys | Type | Description | Value example |
+| - | - | - | - |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `image` | String | Enter `plugins/gcs`. | `plugins/gcs` |
+| `token` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a GCP service account token to connect and authenticate to GCS. | `<+secrets.getValue("gcpserviceaccounttoken")>` |
+| `source` | String | The directory to download from your GCS bucket, specified as `BUCKET_NAME/DIRECTORY`. | `my_cool_bucket/artifacts` |
+| `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
+| `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
+
 ## Troubleshoot uploading artifacts
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
