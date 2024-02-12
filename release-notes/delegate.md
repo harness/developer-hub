@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-01-29T10:00
+date: 2024-02-12T10:00
 sidebar_position: 4
 ---
 
@@ -40,6 +40,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## February 2024
 
+### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
+
+#### Fixed issues
+
+- Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. (CI-10636, ZD-54688)
+
 ### Version 24.02.82203 <!--  February 2, 2024 -->
 
 #### Hotfix
@@ -50,6 +56,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Harness version 1.22.3, Harness Delegate version 24.01.82202 <!--  January 29, 2024 -->
 
+#### Fixed issues
+
 - The Azure endpoints were not being set according to the Azure environment selected, which caused the Azure connectors to function properly only for the Azure public cloud but not for other Azure cloud variations such as Azure Gov, Azure China, and so on. (PL-43333, ZD-54717)
 
    Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector.
@@ -57,6 +65,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
 
 ### Version 24.01.82110 <!--  January 29, 2024 -->
+
+#### Hotfix
 
 - You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
