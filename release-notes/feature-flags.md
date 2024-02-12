@@ -31,6 +31,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
 
+### iOS SDK
+
+#### Version 1.2.0
+
+ - Resolved an issue where the `AnalyticsManager` class was causing crashes. For context, this class uses a dictionary and does not sanitize the thread when reading/writing which was causing crashes due to race conditions.
+
 ### .NET SDK
 
 #### Version 1.4.3
