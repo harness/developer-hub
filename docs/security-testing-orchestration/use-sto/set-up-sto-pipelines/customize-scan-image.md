@@ -8,7 +8,7 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness maintains a [set of scan images](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness?tab=vulnz) for popular tools such as Semgrep, OWASP, SonarQube, Snyk, and Veracode. Harness seeks to  keep these images as small and as lightweight as possible, and to minimize the number of vulnerabilities in each image. This means that you might want to extend an image with additional layers to scan a specific type of target. You can easily add packages such as Node, Ruby, and Maven to a scanner image and then run the image in STO. 
+Harness maintains a [set of public scanner images](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness?tab=vulnz) for popular tools such as Semgrep, OWASP, SonarQube, Snyk, and Veracode. Harness seeks to  keep these images as small and as lightweight as possible, and to minimize the number of vulnerabilities in each image. This means that you might want to extend an image with additional layers to scan a specific type of target. You can easily add packages such as Node, Ruby, and Maven to a scanner image and then run the custom container in STO. 
 
 ### Important notes
 
@@ -16,7 +16,7 @@ Harness maintains a [set of scan images](https://console.cloud.google.com/gcr/im
 
 - Harness supports the CI and STO images in the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). You can extend these images to support your own uses cases, but custom images are not supported by Harness. 
 
-- Harness recommends that you add the only the packages and files required for your specific use case, and that you thoroughly test and scan your custom images for vulnerabilities and other issues before you deploy them in your production environment.   
+- Harness recommends that you add only the packages and files required for your specific use case, and that you thoroughly test and scan your custom images for vulnerabilities and other issues before you deploy them in your production environment.   
 
 - Harness [updates its public CI and STO images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images) every two weeks. It is good practice to rebuild your custom images every month to use the most recent base images. 
 
