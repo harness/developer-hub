@@ -4,7 +4,7 @@ description: Manage SSCA Roles and Permissions with RBAC.
 sidebar_position: 80
 ---
 
-# Manage SSCA Roles and Permissions with RBAC
+# Manage SSCA Access Control
 
 Harness's RBAC system enables you to precisely manage the user access to specific features or resources and the scope of actions they are permitted to perform. To delve deeper into the specifics of RBAC within Harness, refer to the documentation on [Role-based Access Control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
 
