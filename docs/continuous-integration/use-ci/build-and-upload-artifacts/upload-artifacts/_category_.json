@@ -1,11 +1,11 @@
 {
-   "label":"Upload and download artifacts",
+   "label":"Upload/download artifacts",
    "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Upload and download artifacts"
+      "title":"Upload/download artifacts"
    }
 }

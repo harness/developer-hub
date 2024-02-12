@@ -53,6 +53,10 @@ If your build runs as non-root (`runAsNonRoot: true`), and you want to run the B
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md).
 
+### Pull images
+
+You can pull and run images in your pipelines by declaring them in your steps' Image setting. For example, you could pull and run an image in a [Background step](../manage-dependencies/background-step-settings.md) or [Run step](../run-step-settings.md).
+
 ## Upload artifacts
 
 Upload Artifacts steps upload artifacts. These steps _don't_ include build commands. You can:
@@ -73,7 +77,7 @@ Regardless of how you upload artifacts, you can [publish any artifact URL to the
 
 ### Download artifacts
 
-Regardless of how you upload artifacts, you can use Run steps and Plugin steps to download artifacts into your pipeline workspace.
+You can use Run steps and Plugin steps to download artifacts into your pipeline workspace.
 
 For example:
 
@@ -81,6 +85,8 @@ For example:
 * [Download artifacts from S3](./upload-artifacts/upload-artifacts-to-s3.md#download-artifacts-from-s3)
 * [Use the Download plugin](../use-drone-plugins/run-a-drone-plugin-in-ci.md)
 * [Run any script in a Run step](../run-step-settings.md)
+* [Manage dependencies](/docs/category/manage-dependencies)
+* [Caching and data sharing](/docs/category/share-and-cache-ci-data)
 
 ## Troubleshoot building and pushing artifacts and images
 

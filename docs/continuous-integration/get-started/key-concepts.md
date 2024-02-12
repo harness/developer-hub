@@ -92,7 +92,7 @@ Caching expedites job execution by reusing data from expensive fetch operations 
 
 ### Artifact repos
 
-Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can [push your artifacts](/docs/category/build-push-upload). Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
+Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can [push your artifacts](/docs/category/build-push-upload-download). Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
 
 ### Services
 

@@ -1,12 +1,12 @@
 {
-   "label":"Build, push, upload",
+   "label":"Build, push, upload, download",
    "position": 50,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Build, push, upload"
+      "title":"Build, push, upload, download"
    },
    "customProps":{
       "helpdocs_category_id":"mi8eo3qwxm"

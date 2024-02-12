@@ -210,7 +210,7 @@ At this point, you might want to run a scan and view the detected issues.
 
 ## Build and push a test image
 
-Harness CI includes a set of [**Build and Push** steps](/docs/category/build-push-upload) that take a code repo with a Dockerfile, build a container image, and push it to an artifact repository.
+Harness CI includes a set of [**Build and Push** steps](/docs/category/build-push-upload-download) that take a code repo with a Dockerfile, build a container image, and push it to an artifact repository.
 
 You'll now add one of these steps to build and push to your Docker Hub account.
 
