@@ -111,6 +111,23 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Select **Done**.
 
+### Using helm template to install chaos infrastructure
+
+HCE provides helm support to install chaos infrastructure, in addition to installing with the help of a manifest (as explained earlier). 
+
+To use helm to install or upgrade a chaos infrastructure,
+
+1. Download the helm repository. This repository contains all the chaos resources required for chaos infrastructure management. The repository also contains resources necessary for namespace and scope installations.
+2. A link to the helm repository is shared with you, which you can use to install and manage the infrastructure.
+
+  Based on the scope of installation, you have to execute the commands.
+
+  1. If you wish to install the infrastructure in **namespace** scope, you will get a helm command to install the CRDs. You have to apply this command separately before installing or upgrading the infrastructure. 
+  2. If you wish to install the infrastructure in **cluster** scope, apply the `helm upgrade` command to install the CRDs and other infrastructure components.
+
+:::tip
+If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such infrastructure.
+:::
 
 </TabItem>
   <TabItem value="Linux">
