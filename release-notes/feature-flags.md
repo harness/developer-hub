@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: February 6th 2024
+### Latest Updated: February 12th 2024
 
 ## February 2024
 
@@ -30,6 +30,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 2.1.3
 
  - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
+
+### .NET SDK
+
+#### Version 1.4.3
+
+ - Doesn't make network requests from the Evaluation thread. (FFM-10645)
+ - The cache buffer size is configurable. 
+ - We have fixed an issue where the `Disabling metrics` acion would not disable metrics in all scenarios. 
 
 ### React SDK
 
