@@ -37,6 +37,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - Resolved an issue where the `AnalyticsManager` class was causing crashes. For context, this class uses a dictionary and does not sanitize the thread when reading/writing which was causing crashes due to race conditions.
 
+### .NET SDK
+
+#### Version 1.4.3
+
+ - Doesn't make network requests from the Evaluation thread. (FFM-10645)
+ - The cache buffer size is configurable. 
+ - We have fixed an issue where the `Disabling metrics` acion would not disable metrics in all scenarios. 
+
 ### React SDK
 
 #### Version 1.8.1
