@@ -6,6 +6,8 @@ import {
 import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
+export const featuredTutorials: CardItem[] = []
+/* Uncomment if you want to show the Featured Tutorials section
 // Featured Tutorials
 export const featuredTutorials: CardItem[] = [
     {
@@ -19,7 +21,8 @@ export const featuredTutorials: CardItem[] = [
       link: "/tutorials/feature-flags/typescript-react",
     },
   ];
-  
+  */
+
   // Docs
   export const docsCards: CardSections = [
     {

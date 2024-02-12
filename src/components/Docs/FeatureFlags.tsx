@@ -18,11 +18,11 @@ export default function FF() {
             <h1>Feature Flags Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/feature-flags">
+            <Link href="/kb/feature-flags">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/feature-flags">
@@ -37,8 +37,14 @@ export default function FF() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Feature Flags let you change your software's functionality without deploying new code. It does this by letting you hide code or behavior without having to ship new versions of the software.
+            Harness Feature Flags (FF) is a feature management solution that
+            lets you change your software's functionality without deploying new code.
+            It does this by letting you hide code or behavior without having to
+            ship new versions of the software. A feature flag is like a powerful <i>If</i> statement.
             </p>
+            <div>
+            <img src={`${baseUrl}img/ff.svg`} />
+            </div>
           </div>
         </div>
       </div>

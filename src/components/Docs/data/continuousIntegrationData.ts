@@ -7,7 +7,7 @@ import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 export const featuredTutorials: CardItem[] = []
-/* Uncomment if you want to show the Featured Tutorials section -->
+/* Uncomment if you want to show the Featured Tutorials section
 // Featured Tutorials
 export const featuredTutorials: CardItem[] = [
     {
