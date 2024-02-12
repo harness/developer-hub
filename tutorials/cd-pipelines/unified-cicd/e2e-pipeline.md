@@ -102,7 +102,7 @@ Enter your Docker Hub username when prompted and press **Enter**.
 
 Click **Run** and then **Run Pipeline** to start the pipeline execution. A successful pipeline execution will produce a new image with the **latest** tag under the **harness-gitops-workshop** repository on your docker image registry.
 
-The OWASP scan step used within the CI stage is part of the [Harness Security Testing Orchestration (STO)](https://www.harness.io/products/security-testing-orchestration) module. This step enables you to scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) for detecting publicly disclosed vulnerabilities present within a project’s dependencies. For this example, `fail_on_severity` is initially set to none, but you have the flexibility to adjust it to any severity threshold, such as critical or high.
+The OWASP scan step used within the CI stage is part of the [Harness Security Testing Orchestration (STO)](https://www.harness.io/products/security-testing-orchestration) module. This step enables you to scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) for detecting publicly disclosed vulnerabilities present within a project’s dependencies. For this example, `fail_on_severity` is initially set to none, but you have the flexibility to adjust it to any severity threshold, such as critical or high. If any vulnerabilities of severity, for instance, critical, are found during the OWASP scan, the pipeline execution can be immediately terminated, and the findings reported via a notification.
 
 ## Create the ApplicationSet
 
