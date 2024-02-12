@@ -33,7 +33,7 @@ Also note that the above metrics are available only if your delegate version is 
 :::
 
 :::info note
-Metrics with # above include the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
+Metrics with # above the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
 
 :::
 
