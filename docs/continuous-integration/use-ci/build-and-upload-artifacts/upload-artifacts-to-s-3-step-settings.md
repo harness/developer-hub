@@ -558,14 +558,44 @@ pipeline:
                     imagePullPolicy: IfNotPresent
 ```
 
-
 </TabItem>
 </Tabs>
 
 
-
 </TabItem>
 </Tabs>
+
+## Download Artifacts from S3
+
+The default image for uploading can also be used to **Download Artifacts from S3**. To achieve this, add a **Plugin** step to your pipeline's **Build** stage and use `plugins/s3` as **Image** in the step with the following settings:
+
+* **AWS Credentials**: Provide `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to connect and authenticate to AWS.
+* **Region**: The region where the S3 bucket is deployed.
+* **Bucket**: The name of the AWS S3 bucket.
+* **Source**: The directory which is to be downloaded from the bucket.
+* **Target**: The destination path where the source directory is to be downloaded.
+      
+To download from S3, make sure that the `download` setting is applied and is set to `true`. 
+
+Here is a YAML example of a minimum **Download Artifacts from S3** step.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: download
+                  identifier: download
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR
+                    image: plugins/s3
+                    settings:
+                      access_key: <+secrets.getValue("awsaccesskeyid")>
+                      secret_key: <+secrets.getValue("awssecretaccesskey")>
+                      region: YOUR_BUCKET_REGION
+                      bucket: YOUR_BUCKET_NAME
+                      download: "true"
+                      source: directory/to/be/downloaded
+                      target: dowmload/destination
+```
 
 ## Troubleshoot uploading artifacts
 

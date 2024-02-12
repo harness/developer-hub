@@ -307,6 +307,33 @@ pipeline:
 </TabItem>
 </Tabs>
 
+## Download Artifacts from GCS
+
+The default image for uploading can also be used to **Download Artifacts from GCS**. To achieve this, add a **Plugin** step to your pipeline's **Build** stage and use `plugins/gcs` as **Image** in the step with the following settings:
+
+* **GCS Credentials**: Provide GCS service account token to connect and authenticate to Google Cloud Storage.
+* **Source**: The directory which is to be downloaded from the bucket. Should be provided in the form, `BUCKET_NAME/DIRECTORY`.
+* **Target**: The destination path where the source directory is to be downloaded.
+      
+To download from GCS, make sure that the `download` setting is applied and is set to `true`. 
+
+Here is a YAML example of a minimum **Download Artifacts from GCS** step.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: download
+                  identifier: download
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR
+                    image: plugins/gcs
+                    settings:
+                      token: <+secrets.getValue("gcpserviceaccountkey")>
+                      source: YOUR_BUCKET_NAME/DIRECTORY
+                      target: dowmload/destination
+                      download: "true"
+```
+
 ## Troubleshoot uploading artifacts
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
