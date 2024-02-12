@@ -88,7 +88,7 @@ The following deprecated API endpoints are longer supported:
 
 - You can now enable file logging for supported services through override in Harness Self-Managed Enterprise Edition (On-prem) installations. (PL-44211)
 
-   To enable file logging, add the following to your `override.yaml` file in the global section:
+   To enable file logging, add the following to your `override.yaml` file in the `global` section:
 
    ```yaml
    global:
