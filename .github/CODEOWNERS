@@ -128,9 +128,6 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 # Chaos Tutorials
 /tutorials/chaos-experiments/ @neelanjan00 @SmritiSatya
 
-# CI Tutorials
-/tutorials/ci-pipelines/ @jimsheldon @aimurphy
-
 # CCM Tutorials
 /tutorials/cloud-costs/ @rdsoze
 

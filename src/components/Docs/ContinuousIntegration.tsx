@@ -15,14 +15,14 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ci.svg`} />
-            <h1>Continuous Integration Documentation</h1>
+            <h1>Continuous Integration</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb/continuous-integration">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/continuous-integration">
@@ -37,9 +37,15 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how you can build faster and be more productive with Harness
-              CI.
+              Harness CI helps you build faster and be more productive. Build and test 
+              your code, and get abird's-eye view of all your builds — successful, failed, aborted, 
+              and expired — and the percentage of successful builds for individual codebases. 
+              You can easily see where your builds failed and drill down into specific builds to 
+              troubleshoot and analyze the root causes.
             </p>
+          </div>
+          <div>
+            <img src={`${baseUrl}img/ci.svg`} />
           </div>
         </div>
       </div>

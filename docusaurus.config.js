@@ -117,13 +117,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Set up CI Pipelines",
-                to: "tutorials/ci-pipelines",
-                // docId: "ci-pipelines",
-                // activeBasePath: "to",
-              },
-              {
-                // type: "doc",
                 label: "Set up CD Pipelines",
                 to: "tutorials/cd-pipelines",
               },

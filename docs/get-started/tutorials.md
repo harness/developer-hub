@@ -12,8 +12,6 @@ redirect_from:
 
 **New to Harness?** Tutorials will quickly take you from novice to advanced. Select what you want to do from the list below to see the available tutorials.
 
-- [Set up CI pipelines](/tutorials/ci-pipelines/).
-
 - [Set up CD pipelines](/tutorials/cd-pipelines/).
 
 - [Manage feature flags](/tutorials/feature-flags/).
