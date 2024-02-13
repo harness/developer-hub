@@ -63,31 +63,11 @@ Prod 3 replica mode w/self-managed external DB is designed for organizations tha
 
 You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
 
-- MongoDB
-- PostgreSQL
-- Redis
-- TimescaleDB
-
-Tutorials are available for each installation option.
-
-### MongoDB
-
-- [Cloud-based tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database)
-
-- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb)
-
-### PostgreSQL
-
-- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database)
-
-### Redis
-
-- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database)
-
-### TimescaleDB
-
-- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb)
-
+- [Cloud-based MongoDB](./external-db/use-an-external-mongodb-database)
+- [Self-managed MongoDB](./external-db/use-an-external-self-managed-mongodb)
+- [Self-managed PostgreSQL](./external-db/use-an-external-postgres-database)
+- [Self-managed Redis](./external-db/use-an-external-redis-database)
+- [Self-managed TimescaleDB](./external-db/use-an-external-sm-timescaledb)
 
 </TabItem>
   <TabItem value="Prod 3 replica mode w/external cloud-based DBs" label="Prod 3 replica mode w/external cloud-based DBs">
@@ -109,7 +89,7 @@ Disaster recovery w/warm standby is designed for organizations that:
 - Require self-managed external DBs
 - Require DR when a Kubernetes cluster or cloud region fails
 
-For more information, go to [Set up disaster recovery](/tutorials/self-managed-enterprise-edition/set-up-disaster-recovery).
+For more information, go to [Set up disaster recovery](./set-up-disaster-recovery).
 
 </TabItem>
 </Tabs>

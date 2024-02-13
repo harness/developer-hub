@@ -191,11 +191,11 @@ Can include MD files as entire files. Import the asset as a tag then
 leverage the tag.
 
 ```
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 <CISignupTip />
 ```
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 
 <CISignupTip />
 

@@ -99,7 +99,7 @@ import {
             module: MODULES.platform,
             description:
               "Harness supports multiple databases when you deploy the on-prem Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/advanced-configurations/configure-external-databases/",
+            link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases/",
           },
           {
             title: "Use external secrets for license values",

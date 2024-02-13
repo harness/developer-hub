@@ -1,15 +1,17 @@
 ---
 title: Set up disaster recovery
 description: Learn how to set up disaster recovery for Harness Self-Managed Enterprise Edition installations.
-sidebar_position: 10
+sidebar_position: 3
+redirect_from:
+  - /tutorials/self-managed-enterprise-edition/set-up-disaster-recovery
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial shows you how to set up a disaster recovery (DR) cluster with external data storage and covers best practices for DR setup in Harness Self-Managed Enterprise Edition.
+This topic explains how to set up a disaster recovery (DR) cluster with external data storage and covers best practices for DR setup in Harness Self-Managed Enterprise Edition.
 
-Harness recommends that you create a multi-node cluster spread across different availability zones of a data center for better node failure tolerance. 
+Harness recommends that you create a multi-node cluster spread across different availability zones of a data center for better node failure tolerance.
 
 ![Disaster recovery with external database](./static/smp-dr-external-db.png)
 
@@ -20,15 +22,12 @@ The following prerequisites are needed.
 Each provisioned cluster should have:
 
 - Enough resources allocated for both a primary & a DR cluster to support the installation of Harness Helm charts.
-
 - Access to persistent storage.
 
 External data storage must support:
 
 - Replication of data.
-
 - Primary database must be reachable by both the primary and a DR cluster.
-
 - SSL support between primary and secondary database nodes.
 
 ## Set up an external database
@@ -42,7 +41,7 @@ To set up an external MongoDB, do the following:
 
 2. Get the MongoDB credentials by accessing the **MongoDB Cloud → Database** Access section.
 
-3. Encode the credentials using command below. 
+3. Encode the credentials using command below.
 
    ```
    echo -n 'YOUR_MONGODB_USERNAME' | base64
@@ -73,7 +72,7 @@ To set up an external MongoDB, do the following:
 7. Add the following external MongoDB-specific changes in your override file.
 
    ```yaml
-   global:  
+   global:
      database:
        mongo:
          # -- set this to false if you want to use external mongo
@@ -283,10 +282,10 @@ To set up an external Timescale database, do the following:
 
 2. Set up VPC peering with the cloud provider.
 
-   a. Go to VPC in Timescale cloud and create a new VPC connection. Make sure the IP CIDr range doesn't conflict with the cloud-provider’s VPC range.
+   a. Go to VPC in Timescale cloud and create a new VPC connection. Make sure the IP CIDr range doesn't conflict with the cloud-provider's VPC range.
    b. Go to the cloud provider and initiate VPC peering by providing the project ID and VPC network.
 
-3. Go to Timescale Services and create a service in the same region. 
+3. Go to Timescale Services and create a service in the same region.
 
    a. Select Timescale version 14.
    b. Set other configurations as per your requirements.
@@ -382,7 +381,7 @@ After traffic to the Harness primary cluster is cut-off, you can take it down be
 2. Update the following flags in the `override.yaml` file before you upgrade the DR cluster.
 
    ```yaml
-   global:  
+   global:
          dr:
            activateCluster: true
            runConfigChecks: true

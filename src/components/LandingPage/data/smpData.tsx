@@ -13,7 +13,7 @@ export const SMPList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database",
   },
   {
     title: "Configure an external self-managed TimescaleDB",
@@ -25,7 +25,7 @@ export const SMPList: CardItem[] = [
       newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb",
   },
   {
     title: "Configure an external self-managed MongoDB",
@@ -37,7 +37,7 @@ export const SMPList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb",
    },
    {
     title: "Configure an external self-managed Redis database",
@@ -49,7 +49,7 @@ export const SMPList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-an-external-redis-database",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database",
    },
    {
     title: "Configure an external self-managed PostgreSQL database",
@@ -61,7 +61,7 @@ export const SMPList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database",
   },
   {
     title: "Configure external self-managed object storage with MinIO",
@@ -73,7 +73,7 @@ export const SMPList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-self-managed-minio-object-storage",
   },
   {
     title: "Configure external self-managed AWS ElastiCache",
@@ -85,7 +85,7 @@ export const SMPList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-aws-elasticache",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-aws-elasticache",
   },
   {
     title: "Set up disaster recovery",
@@ -97,6 +97,6 @@ export const SMPList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "20 min",
-    link: "/tutorials/self-managed-enterprise-edition/set-up-disaster-recovery",
+    link: "/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery",
   },
 ];
