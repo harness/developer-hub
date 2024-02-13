@@ -91,7 +91,7 @@ export const FFList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5min",
-    link: "/tutorials/feature-flags/best-practices",
+    link: "/docs/feature-flags/get-started/feature-flag-best-practices",
   },
   {
     title: "Using feature flags for trunk-based development",
