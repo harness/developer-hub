@@ -34,9 +34,10 @@
 
 # Added by aimurphy in Feb 2024 for Tutorial Unification
 /tutorials/ci-pipelines /docs/continuous-integration
+/tutorials/feature-flags /docs/feature-flags
 
-<!-- /tutorials /docs -->
-<!-- each top tutorial landing page -->
+# /tutorials /docs
+# each top tutorial landing page
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
 

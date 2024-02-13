@@ -1,7 +1,7 @@
 ---
 title: Best practices for managing flags
 description: Best practices when using Harness Feature Flags.
-sidebar_position: 20
+sidebar_position: 4
 helpdocs_topic_id: 2ltqamulhy
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false

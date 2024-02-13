@@ -17,7 +17,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/feature-flags/typescript-react",
+    link: "/docs/feature-flags/get-started/java-quickstart",
   },
   {
     title: "Demystifying Trunk-Based Development",
@@ -49,7 +49,7 @@ export const FFList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/feature-flags/typescript-react",
+    link: "/docs/feature-flags/get-started/java-quickstart",
   },
   {
     title: "Demystifying Trunk-Based Development",
@@ -77,7 +77,7 @@ export const FFList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "5min",
-    link: "/tutorials/feature-flags/mobile-browser-refresh",
+    link: "/docs/feature-flags/get-started/mobile-browser-refresh",
   },
   {
     title: "Feature Flags best practices",

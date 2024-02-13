@@ -1,10 +1,10 @@
 ---
-sidebar_position: 4
-description: Ensuring flags are refreshed after a mobile web browser gets brought to the foreground.
-keywords: [Mobile application testing, Feature Flags, FF Tutorial]
+title: Make flags resilient during a mobile web browser refresh
+description: Ensure flags are refreshed after a mobile web browser gets brought to the foreground.
+sidebar_position: 7
+redirect_from:
+  - /tutorials/feature-flags/mobile-browser-refresh
 ---
-
-# Making flags resilient during a mobile web browser refresh
 
 <CTABanner
   buttonText="Learn More"
@@ -15,13 +15,13 @@ keywords: [Mobile application testing, Feature Flags, FF Tutorial]
   target="_self"
 />
 
-![FF Workflow](static/ff-mobile-browser-refresh/ffworkflow.png)
+![FF Workflow](./static/ffworkflow.png)
 
 With the need to save battery life, mobile operating systems such as iOS and Android are very aggressive in saving system resources when an app is placed in the background. This means that when you switch to another app on your phone, the old app is suspended and frozen. This can cause problems if your app needs to maintain and update its internal state with a remote server - as most Feature Flag SDKs need to do.
 
 With the [Javascript SDK 1.14.0](https://github.com/harness/ff-javascript-client-sdk/releases/tag/1.14.0), a new method has been added to allow the SDK to support this special case. It's called `refreshEvaluations()` and can be used by embedded WebViews and mobile browsers to tell the SDK that it needs to update its local cache. It's typically called when the mobile OS fires a notification to indicate that the app has come to the foreground.
 
-Follow these instructions and code snippets to make your mobile app flags resilient during a mobile web browser refresh.
+Use the following instructions and code snippets to ensure your mobile apps are resilient by leveraging the `refreshEvaluations()` method. Create a free [Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf) and use these code snippets to get started.
 
 ## Integrating refreshEvaluations() WebView on mobile devices
 
@@ -31,7 +31,7 @@ The SDK provides a function on the client instance called `refreshEvaluations()`
 
 ### toForeground() JS function
 
-Once you have a client instance add a function that can be easily invoked from the device's native language
+Once you have a client instance, add a function that can be easily invoked from the device's native language.
 
 ```
  function toForeground() {
@@ -62,7 +62,7 @@ On iOS, add an observer to wait for [willEnterForegroundNotification](https://de
 
 ### Android
 
-On Android, register an [ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks) listener and override [onActivityStarted](<https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks#onActivityStarted(android.app.Activity)>) (API level 29). Then once a foreground event arrives, you can call [evaluateJavascript()](<https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)>) on the [WebView](https://developer.android.com/reference/android/webkit/WebView).
+On Android, register an [ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks) listener and override [onActivityStarted](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks#onActivityStarted(android.app.Activity)) (API level 29). Then once a foreground event arrives, you can call [evaluateJavascript()](https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)) on the [WebView](https://developer.android.com/reference/android/webkit/WebView).
 
 ```
   @Override
@@ -94,7 +94,3 @@ document.addEventListener('visibilitychange', () => {
   }
 })
 ```
-
-## Summary
-
-Ensure your mobile apps are resilient by leveraging the `refreshEvaluations()` method. Create a [Feature Flag Free Forever Account](https://app.harness.io/auth/#/signup/?module=cf) today and use these code snippets to get started.

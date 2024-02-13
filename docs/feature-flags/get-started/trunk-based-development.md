@@ -1,7 +1,7 @@
 ---
 title: Use Feature Flags for trunk-based development
 description: Get started with trunk-based development.
-sidebar_position: 6
+sidebar_position: 5
 redirect_from:
   - /tutorials/feature-flags/trunk-based
   - /tutorials/feature-flags/getting-started/trunk-based-development

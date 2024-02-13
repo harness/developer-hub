@@ -18,7 +18,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/feature-flags/typescript-react",
+      link: "/docs/feature-flags/get-started/java-quickstart",
     },
   ];
   */
@@ -35,7 +35,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ff,
           description:
             "Dive in to this tutorial to add flags to a JavaScript app.",
-          link: "/tutorials/feature-flags/typescript-react",
+          link: "/docs/feature-flags/get-started/java-quickstart",
         },
         {
           title: "Get started with Feature Flags",
