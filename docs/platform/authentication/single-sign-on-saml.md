@@ -820,12 +820,11 @@ import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
 <Harnessll />
 
-
 ## Use encrypted SAML
 
-To use encrypted SAML with Harness, download the certificate and upload to your IDP settings to support the encrypted SAML flow.
+To use encrypted SAML with Harness, you download the encryption certificate from the Harness UI and upload it to your identity provider (IdP) settings to support the encrypted SAML flow.
 
-To upload your certificate to your IDP settings, do the following:
+To download your encryption certificate and upload it to your IdP settings, do the following:
 
 1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
 2. Under **Login via SAML**, select **More Options** (&vellip;), and then select **Edit**. The **Edit SAML Provider** options open.
@@ -833,7 +832,7 @@ To upload your certificate to your IDP settings, do the following:
    ![](./static/enable-encrypted-saml.png)
 
 3. Select the **Download** link to download the encryption certificate for SAML assertions.
-4. Sign in to your identity provider (IdP).
+4. Sign in to your IdP.
 5. Edit your SAML integration.
    
    1. Enable assertion encryption.
@@ -841,3 +840,4 @@ To upload your certificate to your IDP settings, do the following:
    3. Upload the encrypted certificate file you downloaded from the Harness UI in step 3 above.
 
 When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
+
