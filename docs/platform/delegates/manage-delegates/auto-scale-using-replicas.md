@@ -114,9 +114,7 @@ To auto scale the delegate for Kubernetes versions lower than 1.23, do the follo
 
 1. In your `harness-delegate.yml` file, go to `autoscaling` parameters.
 
-2. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
-
-   To fine-tune your autoscaling, you can set the `targetCPUUtilizationPercentage` to add a new replica if CPU utilization exceeds this percentage. Below is an example of autoscaling the delegate if the CPU usage of delegates goes above 70%.
+2. Replace the `apiVersion` in the `HorizontalPodAutoscaler` section of your delegate YAML to `autoscaling/v1`.
 
    ```yaml
    ---
@@ -140,9 +138,13 @@ To auto scale the delegate for Kubernetes versions lower than 1.23, do the follo
    ---
    ```
 
-3. (Optional) Set the `targetMemoryUtilizationPercentage` to add a new replica if memory utilization exceeds this percentage.
+3. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
 
-4. Save the file, and restart your pods.
+   To fine-tune your autoscaling, you can set the `targetCPUUtilizationPercentage` to add a new replica if CPU utilization exceeds this percentage. Below is an example of autoscaling the delegate if the CPU usage of delegates goes above 70%.
+
+4. (Optional) Set the `targetMemoryUtilizationPercentage` to add a new replica if memory utilization exceeds this percentage.
+
+5. Save the file, and restart your pods.
 
    When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
 
