@@ -31,13 +31,6 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "Feature Flags tutorial",
-          module: MODULES.ff,
-          description:
-            "Dive in to this tutorial to add flags to a JavaScript app.",
-          link: "/docs/feature-flags/get-started/java-quickstart",
-        },
-        {
           title: "Get started with Feature Flags",
           module: MODULES.ff,
           description:

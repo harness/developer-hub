@@ -49,11 +49,15 @@ export default function FF() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.sectionDivider}></div>
-      <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
-        <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-      </div>
+      {featuredTutorials && featuredTutorials.length > 0 && (
+        <>
+          <div className={styles.sectionDivider}></div>
+          <div className={styles.subSection}>
+            <h3>Featured Tutorials</h3>
+            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
+          </div>
+        </>
+      )}
     </div>
     // </Layout>
   );
