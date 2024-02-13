@@ -11,7 +11,6 @@ import Overview from '/docs/platform/shared/subscription-overview.md';
 import Billing from '/docs/platform/shared/subscription-update-billing.md';
 import Invoice from '/docs/platform/shared/subscription-view-invoice.md';
 import View from '/docs/platform/shared/subscription-view-subscriptions.md';
-import License from '/docs/platform/shared/subscription-view-usage.md';
 
 <Overview />
 
