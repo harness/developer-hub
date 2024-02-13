@@ -14,8 +14,6 @@ redirect_from:
 
 - [Set up CD pipelines](/tutorials/cd-pipelines/).
 
-- [Manage feature flags](/tutorials/feature-flags/).
-
 - [Manage cloud costs](/tutorials/cloud-costs/).
 
 - [Manage service reliability](/tutorials/service-reliability/).

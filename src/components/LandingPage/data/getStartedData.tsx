@@ -10,7 +10,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description: <>Create a CI build pipeline</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/ci-pipelines",
+    link: "/docs/continuous-delivery",
   },
   {
     title: "Deploy Services",
@@ -26,7 +26,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ff.svg",
     description: <>Rollout new features progressively</>,
     type: [docType.Documentation, docType.Interactive],
-    link: "/tutorials/feature-flags",
+    link: "/docs/feature-flags",
   },
   {
     title: "Optimize Cloud Costs",

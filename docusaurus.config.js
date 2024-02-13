@@ -122,12 +122,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Manage Feature Flags",
-                to: "tutorials/feature-flags",
-                // activeBaseRegex: "/feature-flags",
-              },
-              {
-                // type: "doc",
                 label: "Manage Cloud Costs",
                 to: "tutorials/cloud-costs",
               },
