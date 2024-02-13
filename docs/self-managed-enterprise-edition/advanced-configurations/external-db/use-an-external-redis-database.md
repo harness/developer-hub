@@ -69,7 +69,7 @@ After you configure your firewall rules, you must install Redis. To install Redi
 
 ### Create your VMs
 
-import Strongpass from '/tutorials/shared/strong-passwords.md'
+import Strongpass from '/docs/self-managed-enterprise-edition/shared/strong-passwords.md'
 
 <Strongpass />
 

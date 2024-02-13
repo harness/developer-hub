@@ -32,7 +32,7 @@ Make sure to meet the MinIO prerequisites before you set up self-managed object 
 - 1GB/s minimum network bandwidth
 - Ubuntu 20.04 LTS operating system
 
-import Strongpass from '/tutorials/shared/strong-passwords.md'
+import Strongpass from '/docs/self-managed-enterprise-edition/shared/strong-passwords.md'
 
 <Strongpass />
 
@@ -191,7 +191,7 @@ To configure your MinIO servers, do the following:
 
 3. Attach the disk device name to the VM using `sudo lsblk`. For example:
 
-   ![](./static/attach-disk-device-name.png)
+   ![](../static/attach-disk-device-name.png)
 
 4. Run the following to format the disk.
 

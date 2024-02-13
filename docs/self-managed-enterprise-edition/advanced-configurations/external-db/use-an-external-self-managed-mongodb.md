@@ -46,11 +46,11 @@ Ensure the following:
 
 ## Architecture
 
-![MongoDB architecture](./static/mongodb-self-managed-architecture.png)
+![MongoDB architecture](../static/mongodb-self-managed-architecture.png)
 
 ## Set up MongoDB VMs
 
-import Strongpass from '/tutorials/shared/strong-passwords.md'
+import Strongpass from '/docs/self-managed-enterprise-edition/shared/strong-passwords.md'
 
 <Strongpass />
 

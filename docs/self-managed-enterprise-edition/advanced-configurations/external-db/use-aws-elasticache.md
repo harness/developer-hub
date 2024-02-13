@@ -1,5 +1,5 @@
 ---
-title: Use self-managed AWS ElastiCache 
+title: Use self-managed AWS ElastiCache
 sidebar_label: External self-managed AWS ElastiCache
 description: Learn how to use self-managed AWS ElastiCache.
 sidebar_position: 40
@@ -11,7 +11,7 @@ Self-Managed Enterprise Edition requires you to install a database by default. Y
 
 This tutorial describes how to configure an Amazon ElastiCache Redis database for your installation.
 
-## Hardware requirements​
+## Hardware requirements
 
 Harness recommends `cache.m7g.8xlarge` or higher nodes to ensure the following minimum requirements:
 
@@ -23,7 +23,7 @@ Harness recommends `cache.m7g.8xlarge` or higher nodes to ensure the following m
 
 - 1GB/s minimum network bandwidth
 
-## Software requirements​
+## Software requirements
 
 External database setup requires the following software:
 
@@ -51,7 +51,7 @@ You must have permissions to create an an ElastiCache instance, security groups,
 
 To set up Amazon ElastiCache for Redis, do the following:
 
-1. Complete the steps in the [Getting started with Amazon ElastiCache for Redis](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/GettingStarted.html) guide in the AWS documentation. 
+1. Complete the steps in the [Getting started with Amazon ElastiCache for Redis](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/GettingStarted.html) guide in the AWS documentation.
 
 :::info important
 Make sure you disable the cluster mode.
@@ -59,7 +59,7 @@ Make sure you disable the cluster mode.
 
 2. Create a security group to allow a connection from your Kubernetes cluster to an ElastiCache instance.
 
-## Configure your Harness environment and Helm chart​
+## Configure your Harness environment and Helm chart
 
 After you've set up ElastiCache, you're ready to configure your Harness environment.
 
@@ -82,7 +82,7 @@ To configure your Harness environment and Helm chart, do the following:
          hosts:
          - <ELASTICACHE_PRIMARY_ENDPOINT_AND_PORT>
          # keep the following 3 values empty if auth is disabled
-         secretName: "redis-user-pass" 
+         secretName: "redis-user-pass"
          userKey: "root-username"
          passwordKey: "root-password"
    ```
