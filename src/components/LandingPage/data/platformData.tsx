@@ -99,7 +99,7 @@ export const PlatformList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/platform/secrets-management",
+    link: "/docs/platform/secrets/secrets-management/add-secrets-manager",
   },
   {
     title: "Configure OIDC with GCP WIF for Harness Cloud builds",

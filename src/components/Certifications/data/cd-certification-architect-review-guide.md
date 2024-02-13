@@ -21,7 +21,7 @@
 | Implement effective observability and monitoring of Harness components| [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/) |
 | Understand and optimize feedback loops within CD pipelines | [Pipeline design guide](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/pipeline-design-guide) |
 | **6. Utilizing and Managing Secrets and Configurations in Harness**  | |
-| Efficiently manage secrets within Harness | [Use secrets managers](https://developer.harness.io/tutorials/platform/secrets-management/) |
+| Efficiently manage secrets within Harness | [Use secrets managers](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager) |
 | Ensure secure and optimal handling of configurations | [Keep your pipelines DRY](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/rampup-dry) |
 | **7. Deployment Strategies and Rollbacks in Harness**  | |
 | Implement different deployment strategies (e.g., Canary, Blue-Green) using Harness | [Blue Green deployment](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/#blue-green-deployment)|

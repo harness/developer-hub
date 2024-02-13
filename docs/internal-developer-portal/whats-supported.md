@@ -34,7 +34,7 @@ For information about what's supported for other Harness modules and the Harness
 
 :::info
 
-Harness IDP requires some secrets to be set for plugins and external integrations to work. We only support secrets stored in the [Harness secret manager](https://developer.harness.io/tutorials/platform/secrets-management/#manage-secrets-with-built-in-harness-secret-manager).
+Harness IDP requires some secrets to be set for plugins and external integrations to work. We only support secrets stored in the [Harness secret manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 :::
 
