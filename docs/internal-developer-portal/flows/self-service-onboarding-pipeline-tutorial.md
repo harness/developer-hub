@@ -180,7 +180,7 @@ Now, if you also use Harness CI/CD, you can follow the steps below to create a [
 
 While you add the Terraform Apply step make sure to add the **[Provisioner Identifier](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#provisioner-identifier)** as an [expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions) as `harness<+pipeline.executionId>`
 
-TODO: Add the config files used. 
+You could find the [config files](https://github.com/harness-community/terraform-harness-content/tree/main/modules/pipelines) to provision a pipeline. Make sure to go through the [Readme.md](https://github.com/harness-community/terraform-harness-content/tree/main/modules/pipelines#terraform-modules-for-harness-pipelines) to understand the usage and use the same in the config-files 
 
 ```YAML
 # Example
