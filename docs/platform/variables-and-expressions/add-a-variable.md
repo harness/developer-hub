@@ -35,8 +35,8 @@ Harness include many built-in variables for obtaining information like artifact 
   * You can use secrets in pipeline, stage, and service variables.
 * If you delete a variable that is referenced using [expressions](harness-variables.md) in entities like pipelines, the reference expressions are not deleted. At runtime, when the expressions are resolved, the expression will resolve as null.
 * Variables include a **Required** setting. This feature is supported for pipeline, stage, service, and environment variables. The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline.
-* Variables can be of type String, Secret or Number.
-   * If a variable is assigned a date value in the format '2002-12-14', the YAML converter adheres to the YAML convention by converting it into a datetime object. You can refer to the YAML specification for further details: YAML 1.2 Specification - 3.4.3.8. Tags.
+* Variables can be of type String, Secret, or Number.
+   * If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to [Tags](https://yaml.org/spec/1.2.2/#3212-tags) in the YAML spec document.
 
 ## Visual summary
 
