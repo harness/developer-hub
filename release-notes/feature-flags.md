@@ -50,7 +50,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We have resolved important issues which prevented evaluation metrics from growing exponentially in memory and flushed frequently, while preserving complete metrics accuracy. (FFM-10627)
  - Bumped `System.IdentityModel.Tokens.Jwt` from 6.15.0 to 6.34.0.
  - Wiremock has been upgraded. (FFM-10410)
- - `Analytics` has now been separated into `EvaluationAnalytics` and `TargetAnalytics`. (FFM-10602)
 
 ### React SDK
 
