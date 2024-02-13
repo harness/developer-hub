@@ -1,7 +1,7 @@
 ---
 title: Build and push with non-root users
 description: Use the buildah plugin if you can't use the built-in Build and Push steps.
-sidebar_position: 40
+sidebar_position: 23
 ---
 
 
@@ -125,10 +125,10 @@ Many Buildah plugin settings correspond with settings for the built-in **Build a
 
 | Destination | Buildah image | Buildah main.go | Equivalent Build and Push step |
 | ----------- | --------------------- | ------------------------------------- | ------------------------------ |
-| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Hub](./build-and-push-to-docker-hub-step-settings.md) |
-| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push-to-acr.md) |
-| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push-to-ecr-step-settings.md) |
-| GAR/GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push-to-gar.md)/[Build and Push to GCR](./build-and-push-to-gcr.md) |
+| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Registry](./build-and-push/build-and-push-to-docker-registry) |
+| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push/build-and-push-to-acr.md) |
+| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push/build-and-push-to-ecr-step-settings.md) |
+| GAR/GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push/build-and-push-to-gar.md)/[Build and Push to GCR](./build-and-push/build-and-push-to-gcr.md) |
 
 ## Stage YAML example
 

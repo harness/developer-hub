@@ -1,17 +1,20 @@
 ---
 title: Build and Push to GAR
 description: Use a CI pipeline to build and push an image to GAR.
-sidebar_position: 23
+sidebar_position: 14
 redirect_from:
   - /tutorials/ci-pipelines/publish/google-gar
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar
 ---
+
+import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
 
 This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).
 
 You need:
 
 * Access to GAR and a GAR repo.
-* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* A [Harness CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 * A [GCP connector](#gcp-connector).
 
 ## Kubernetes cluster build infrastructures require root access
@@ -20,7 +23,7 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
 ## Add a Build and Push to GAR step
 
@@ -42,14 +45,14 @@ Here is a YAML example of a **Build and Push to GAR** step.
                       - <+pipeline.sequenceId>
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to GAR** step succeeds, you can find the uploaded image on GAR.
+When you run a pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md). If the **Build and Push to GAR** step succeeds, you can find the uploaded image on GAR.
 
 :::tip
 
 You can also:
 
-* [Build images without pushing](./build-without-push.md)
-* [Build multi-architecture images](./build-multi-arch.md)
+* [Build images without pushing](../build-without-push.md)
+* [Build multi-architecture images](../build-multi-arch.md)
 
 :::
 
@@ -59,7 +62,7 @@ The **Build and Push to GAR** step has the following settings. Depending on the 
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### GCP Connector
 
@@ -101,7 +104,7 @@ Harness expressions are a useful way to define tags. For example, you can use th
 
 For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
-![](./static/build-and-upload-an-artifact-15.png)
+![](../static/build-and-upload-an-artifact-15.png)
 
 And this same number is applied as the tag for your image in GAR.
 
@@ -113,7 +116,7 @@ Later in the pipeline, you can use the same expression to pull the tagged image,
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
 
-For information about setting other kaniko runtime flags, go to [Set plugin runtime flags](#set-plugin-runtime-flags).
+For information about setting other kaniko runtime flags, go to [Environment variables](#environment-variables-plugin-runtime-flags).
 
 ### Dockerfile
 
@@ -131,7 +134,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-gcr-step-settings-23.png)
+![](../static/build-and-push-to-gcr-step-settings-23.png)
 
 ### Target
 
@@ -145,13 +148,17 @@ For **Remote Cache Image**, enter the name of the remote cache registry and imag
 
 The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
 
+### Environment Variables (plugin runtime flags)
+
+<Flags />
+
 ### Run as User
 
 With Kubernetes cluster build infrastructures, you can specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 This step requires root access. You can use the **Run as User** setting if your build runs as non-root (`runAsNonRoot: true`), and you can run the **Build and Push** step as root. To do this, set **Run as User** to `0` to use the root user for this individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
 
 ### Set container resources
 
@@ -175,54 +182,6 @@ You can find the following settings on the **Advanced** tab in the step settings
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
 * [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
-### Set plugin runtime flags
-
-**Build and Push** steps use plugins to complete build and push operations. With Kubernetes cluster build infrastructures, these steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md), and, with other build infrastructures, these steps use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
-
-These plugins have a number of additional runtime flags that you might need for certain use cases. For information about the flags, go to the [kaniko plugin documentation](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#additional-flags) and the [drone-docker plugin documentation](https://plugins.drone.io/plugins/docker). Currently, Harness supports the following flags:
-
-* `expand-tag`: Enable semver tagging.
-* `auto-tag`: Enable auto-generated build tags.
-* `auto-tag-suffix`: Auto-generated build tag suffix.
-* `create-repository`: Creates an ECR repository.
-* `custom-labels`: Additional arbitrary key-value labels.
-* `registry-mirrors`: Docker registry mirrors.
-* `snapshot-mode`: Specify snapshot mode as `full`, `redo`, or `time`.
-* `lifecycle-policy`: Provide the path to a lifecycle policy file.
-* `repository-policy`: Provide the path to a repository policy file.
-* `artifact-file`: Harness uses this to show links to uploaded artifacts on the [Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds).
-* `no-push`: Disables pushing to the registry. Configures the Build and Push step to only build the image.
-* `verbosity`: Set the log level as `panic`, `fatal`, `error`, `warn`, `info`, `debug`, or `trace`. The default is `info`.
-* `tar-path`: Use this flag to save the image as a tarball at a specified path. Set this flag's value to the desired path.
-* `skip-tls-verify`: Set to `true` to skip TLS verification.
-* `custom_dns` (for drone-docker only): Provide your custom CNS address.
-
-To set these flags in your Build and Push steps, add [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`.
-
-For example, to set `--skip-tls-verify` for kaniko, add a stage variable named `PLUGIN_SKIP_TLS_VERIFY` and set the variable value to `true`.
-
-```yaml
-        variables:
-          - name: PLUGIN_SKIP_TLS_VERIFY
-            type: String
-            description: ""
-            required: false
-            value: "true"
-```
-
-To set `custom_dns` for drone-docker, add a stage variable named `PLUGIN_CUSTOM_DNS` and set the variable value to your custom DNS address.
-
-```yaml
-        variables:
-          - name: PLUGIN_CUSTOM_DNS
-            type: String
-            description: ""
-            required: false
-            value: "vvv.xxx.yyy.zzz"
-```
-
-Plugin runtime flags are also used to [build without pushing](./build-without-push.md).
-
 ## Troubleshoot Build and Push steps
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images, such as:
@@ -235,3 +194,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Can I build without pushing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-build-without-pushing)
 * [Is remote caching supported in Build and Push steps?](/kb/continuous-integration/continuous-integration-faqs/#is-remote-caching-supported-in-build-and-push-steps)
 * [Why doesn't the Build and Push step include the content of VOLUMES from my Dockerfile in the final image?](/kb/continuous-integration/continuous-integration-faqs/#why-doesnt-the-build-and-push-step-include-the-content-of-volumes-from-my-dockerfile-in-the-final-image)
+* [Can I use a specific version of kaniko or drone-docker?](/kb/continuous-integration/continuous-integration-faqs/#is-there-a-way-to-use-a-newer-or-older-version-of-kaniko)
+* [How do I fix this kaniko container runtime error: kaniko should only be run inside of a container?](/kb/continuous-integration/articles/kaniko_container_runtime_error)

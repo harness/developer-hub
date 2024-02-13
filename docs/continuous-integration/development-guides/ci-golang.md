@@ -678,5 +678,5 @@ pipeline:
 Now that you have created a pipeline that builds and tests a Go app, you could:
 
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).

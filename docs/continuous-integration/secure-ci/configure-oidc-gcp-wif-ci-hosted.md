@@ -65,7 +65,7 @@ After configuring the OIDC connection and role, when you run a build that uses y
 
 ## Set up your pipelines to use OIDC
 
-Configure your [CI pipelines](../use-ci/prep-ci-pipeline-components) to use your OIDC-enabled GCP connector. To do this, select your OIDC-enabled GCP connector anywhere that you would normally use a GCP connector, such as in a [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md).
+Configure your [CI pipelines](../use-ci/prep-ci-pipeline-components) to use your OIDC-enabled GCP connector. To do this, select your OIDC-enabled GCP connector anywhere that you would normally use a GCP connector, such as in a [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md).
 
 For example:
 
@@ -74,7 +74,7 @@ For example:
 
    Currently, OIDC connectivity mode for GCP is supported for Harness Cloud build infrastructure only. OIDC-enabled GCP connectors only work in Build stages that use Harness Cloud build infrastructure.
 
-3. Add a [Build and Push to GAR step](../use-ci/build-and-upload-artifacts/build-and-push-to-gar.md) to the Build stage. 
+3. Add a [Build and Push to GAR step](../use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) to the Build stage. 
 
    For the step's **GCP Connector**, select your OIDC-enabled GCP connector.
 

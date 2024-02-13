@@ -1,23 +1,28 @@
 ---
 title: Upload Artifacts to GCS
 description: Add a step to upload artifacts to Google Cloud Storage.
-sidebar_position: 30
+sidebar_position: 11
 helpdocs_topic_id: 3qeqd8pls7
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 You can use the **Upload Artifacts to GCS** step in your CI pipelines to upload artifacts to Google Cloud Storage (GCS). For more information on GCS, go to the Google Cloud documentation on [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads).
 
 You need:
 
 * Access to a GCS instance.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* A [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * A [GCP connector](#gcp-connector).
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
+You can also [upload artifacts to S3](./upload-artifacts-to-s3.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
 ## Add an Upload Artifacts to GCS step
 
@@ -43,7 +48,7 @@ The **Upload Artifacts to GCS** step has the following settings. Depending on th
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 #### GCP Connector
 
@@ -57,7 +62,7 @@ The GCS destination bucket name.
 
 Path to the file or directory that you want to upload.
 
-If you want to upload a compressed file, you must use a [Run step](../run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](../../run-step-settings.md) to compress the artifact before uploading it.
 
 #### Target
 
@@ -80,21 +85,15 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ## View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to GCS** step.
-
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../../viewing-builds.md). To do this, add a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to GCS** step.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 Configure the **Plugin** step settings as follows:
 
@@ -105,10 +104,8 @@ Configure the **Plugin** step settings as follows:
   * `file_urls`: Provide a GCS URL that uses the **Bucket**, **Target**, and artifact name specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs.
   * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 
@@ -130,14 +127,12 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 * `file_urls`: Provide a GCS URL that uses the `bucket`, `target`, and artifact name specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs.
 * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-
 </TabItem>
 </Tabs>
 
-
 ## Build logs and artifact files
 
-When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the Upload Artifacts step succeeds, you can find the artifact on GCS. If you used the Artifact Metadata Publisher plugin, you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).
+When you run the pipeline, you can observe the step logs on the [build details page](../../viewing-builds.md). If the Upload Artifacts step succeeds, you can find the artifact on GCS. If you used the Artifact Metadata Publisher plugin, you can find the artifact URL on the [Artifacts tab](../../viewing-builds.md).
 
 :::tip
 
@@ -145,18 +140,16 @@ On the **Artifacts** tab, select the step name to expand the list of artifact li
 
 If your pipeline has multiple steps that upload artifacts, use the dropdown menu on the **Artifacts** tab to switch between lists of artifacts uploaded by different steps.
 
-<!-- ![](./static/artifacts-tab-with-link.png) -->
+<!-- ![](../static/artifacts-tab-with-link.png) -->
 
-<DocImage path={require('./static/artifacts-tab-with-link.png')} />
+<DocImage path={require('../static/artifacts-tab-with-link.png')} />
 
 :::
 
 ## Pipeline YAML examples
 
-
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-
 
 This example pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). It produces test reports, uploads the reports to GCS, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -227,10 +220,8 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-
 </TabItem>
   <TabItem value="k8s" label="Self-hosted">
-
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces test reports, uploads the reports to GCS, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -303,9 +294,38 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-
 </TabItem>
 </Tabs>
+
+## Download Artifacts from GCS
+
+You can use the [GCS Drone plugin](https://github.com/drone-plugins/drone-gcs) to download artifacts from GCS. This is the same plugin image that Harness CI uses to run the **Upload Artifacts to GCS** step. To do this,[add a Plugin step](../../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../../prep-ci-pipeline-components.md). For example:
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: download
+                  identifier: download
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR
+                    image: plugins/gcs
+                    settings:
+                      token: <+secrets.getValue("gcpserviceaccounttoken")>
+                      source: YOUR_BUCKET_NAME/DIRECTORY
+                      target: path/to/download/destination
+                      download: "true"
+```
+
+Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+
+| Keys | Type | Description | Value example |
+| - | - | - | - |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `image` | String | Enter `plugins/gcs`. | `plugins/gcs` |
+| `token` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a GCP service account token to connect and authenticate to GCS. | `<+secrets.getValue("gcpserviceaccounttoken")>` |
+| `source` | String | The directory to download from your GCS bucket, specified as `BUCKET_NAME/DIRECTORY`. | `my_cool_bucket/artifacts` |
+| `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
+| `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
 
 ## Troubleshoot uploading artifacts
 
