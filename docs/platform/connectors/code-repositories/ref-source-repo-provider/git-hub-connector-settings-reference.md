@@ -189,7 +189,7 @@ You can use a GitHub App to authenticate a Harness GitHub connector. To use this
 
 This setting is only available for connection types and authentication methods where it is not already enabled by default.
 
-API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
+API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases from PRs, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
 
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 

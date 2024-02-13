@@ -930,7 +930,7 @@ Because the build status updates operate through the default codebase connector,
 
 You could try modifying the permissions of the code repo connector's token so that it can't write to the repo, but this could interfere with other connector functionality.
 
-Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning the codebase.
+Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning codebases from PRs, auto-populating branch names when you manually run builds, and so on.
 
 ### Why was the PR build status not updated for an Approval stage?
 
