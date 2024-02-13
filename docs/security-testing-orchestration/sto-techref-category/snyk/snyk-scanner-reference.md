@@ -168,7 +168,7 @@ import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severi
 <StoSettingFailOnSeverity />
 
 
-### Settings+-
+### Settings
 
 You can use this field to run the Snyk scan with additional options. 
 
