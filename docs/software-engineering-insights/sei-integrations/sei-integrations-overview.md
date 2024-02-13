@@ -18,6 +18,13 @@ Please note that after adding an integration, it may take up to 24 hours for the
 
 ![](./static/integrations-overview.png)
 
+## Integration Mapping
+
+Integration mapping refers to the process of linking available or new integrations with your current project. Once you have created your project, you can start setting up and mapping integrations as an admin. To map integrations correctly ensure that you have associated the integrations with the project.
+
+1. To map integrations, go to the **Integration Mapping tab** within the SEI module.
+2. Click on **Map Integrations** and select any existing integrations or create new ones as per the requirement.
+
 ## Application-specific SEI integrations
 
 * [Azure DevOps Services](./automated-integrations/sei-integration-azure-devops)
@@ -28,10 +35,13 @@ Please note that after adding an integration, it may take up to 24 hours for the
 * [Drone CI](./automated-integrations/sei-integration-droneci)
 * [Gerrit](./other-integrations/sei-integration-gerrit)
 * [GitHub](./automated-integrations/sei-integration-github)
+* [GitHub Actions](./automated-integrations/sei-github-actions)
+* [GitHub 2.0 - BETA](./automated-integrations/sei-integration-github-easyonboarding)
 * [GitLab](./automated-integrations/sei-integration-gitlab)
 * [Harness NG](./automated-integrations/sei-integration-harnessng)
 * [Helix Core Server](./other-integrations/sei-integration-helix)
 * [Jira](./automated-integrations/sei-integration-jira)
+* [Jira 2.0 - BETA](./automated-integrations/sei-integration-jira-easyonboarding)
 * [Microsoft Teams](./other-integrations/sei-integration-ms-teams)
 * [PagerDuty](./other-integrations/sei-integration-pagerduty)
 * [PostgreSQL](./other-integrations/sei-integration-postgresql)
@@ -55,3 +65,22 @@ For information about custom CI/CD and Jenkins integrations, go to [Other SEI in
 In addition to SEI integrations, you can [import CSV files](../sei-propels-scripts/tables) and display the data in [Table reports](../sei-propels-scripts/table-reports).
 
 :::
+
+## Integration Monitoring
+
+To monitor and track the health status of an integration, you can go to the **Integration Monitoring** tab. 
+
+Here's how you can verify the integration status:
+
+1. Go to the **Integrations** tab under the **Data Settings** and select **Your Integrations**.
+
+![](./static/integrations-tab.png)
+
+2. Click on the integration for which you want to verify the status.
+3. Select the **Monitoring** tab.
+
+![](./static/integration-monitoring.png)
+
+This page allows you to monitor the integration's current status, which could be either `HEALTHY`, `UNKNOWN`, or `FAILED`. 
+
+You can also review past ingestion activities under the **Ingestion Logs** section and view their corresponding statuses. Additionally, you can find other details such as the Ingestion Task Start Time, Time to Complete the Ingestion Task and Number of Retries for the Ingestion Scan.
