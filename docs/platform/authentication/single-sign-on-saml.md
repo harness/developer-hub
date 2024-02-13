@@ -780,7 +780,7 @@ For example, `https://app.harness.io/gateway/api/users/saml-login?accountId=<you
 
 ### Set up Keycloak SAML SSO in Harness
 
-1. In your Harness Account, got to **Account SETUP** and click **Authentication**.
+1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
 2. Click **SAML Provider**. The **Add SAML Provider** settings appear.
 3. In **Name**, enter a name for your SAML provider.
 4. In **Select a SAML Provider**, click **Other**.  
@@ -819,3 +819,25 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
 <Harnessll />
+
+## Use encrypted SAML
+
+To use encrypted SAML with Harness, you download the encryption certificate from the Harness UI and upload it to your identity provider (IdP) settings to support the encrypted SAML flow.
+
+To download your encryption certificate and upload it to your IdP settings, do the following:
+
+1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
+2. Under **Login via SAML**, select **More Options** (&vellip;), and then select **Edit**. The **Edit SAML Provider** options open.
+
+   ![](./static/enable-encrypted-saml.png)
+
+3. Select the **Download** link to download the encryption certificate for SAML assertions.
+4. Sign in to your IdP.
+5. Edit your SAML integration.
+   
+   1. Enable assertion encryption.
+   2. Select your encryption algorithm.
+   3. Upload the encrypted certificate file you downloaded from the Harness UI in step 3 above.
+
+When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
+
