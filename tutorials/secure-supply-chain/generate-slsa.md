@@ -53,7 +53,9 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 <DocImage path={require('./static/slsa-build-stage-settings.png')} />
 
 :::info
-Harness SSCA currently supports SLSA Provenance generation only for Kubernetes infrastructure, and this support is limited to the [Build and Push to Docker Registry](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) step only. We are actively working on extending this support to additional Infrastructures and [Build and Push](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) steps in the near future.
+
+To generate SLSA Provenance, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) is coming soon.
+
 :::
 
 ## Create policies
