@@ -40,7 +40,7 @@ if(HarnessFeatureFlag["newamazingfeature"] == true) {
 
 Feature flags and the practice of feature flagging are also known as *feature toggle*, *release toggle*, *experiment toggle*, and in some situations, *ops toggle*. If you aren't using a formal feature flagging solution (whether built or bought), you may see feature flags represented as variables in a config file.
 
-![Diagram illustrating the concept of feature flags.](static/ff-best-practices/what-is-a-flag.png)
+![Diagram illustrating the concept of feature flags.](./static/what-is-a-flag.png)
 
 ### Benefits in production
 

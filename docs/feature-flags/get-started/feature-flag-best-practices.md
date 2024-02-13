@@ -38,7 +38,7 @@ Feature flags should be a core part of your testing process going forward, and t
 
 Similarly, being able to test a change in any given environment and collect data could always be useful, even if you're not planning on it right now. Because many feature flags encompass discrete functionality, even in cases of multiple feature toggle configurations you can easily turn off combinations of feature flags.
 
-![List of all feature flags](static/ff-best-practices/all-flags.png)
+![List of all feature flags](./static/all-flags.png)
 
 ## Plan your Feature Flags
 
@@ -158,7 +158,7 @@ The other side of this is that issues do occur, so what do you do about them? As
 
 Obviously, it would be really nice if this could be automated in any way. You might realize that you have a consistent set of steps and only a few variations over time, so it's worth thinking through, too, how you can templatize and eventually automate the process.
 
-![Example Pipeline With Governance Controls](static/ff-best-practices/example-pipeline.png)
+![Example Pipeline With Governance Controls](./static/example-pipeline.png)
 
 ## Consider trunk-based development
 

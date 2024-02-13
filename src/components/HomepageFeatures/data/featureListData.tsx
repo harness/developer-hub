@@ -10,7 +10,7 @@ export const featureList: CardItem[] = [
     description: "Automate builds, tests, and publishing of artifacts.",
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "tutorials/ci-pipelines",
+    link: "docs/continuous-delivery",
   },
   {
     title: "Set up CD Pipelines",
@@ -27,7 +27,7 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
     type: [docType.Documentation],
-    link: "tutorials/feature-flags",
+    link: "docs/feature-flags",
   },
   {
     title: "Manage Cloud Costs",
