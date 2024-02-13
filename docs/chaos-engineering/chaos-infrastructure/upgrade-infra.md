@@ -1,6 +1,6 @@
 ---
 title: Upgrade chaos infrastructure
-sidebar_position: 25
+sidebar_position: 3
 description: Guide to upgrade your chaos infrastructure
 ---
 

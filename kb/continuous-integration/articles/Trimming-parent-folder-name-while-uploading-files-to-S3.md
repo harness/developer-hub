@@ -4,7 +4,7 @@ title:  Trim parent folder name when uploading to S3
 
 ## Problem
 
-With the [Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings), the default behavior retains the parent folder name in file paths. However, there may be situations where you want to remove the parent folder name from the file path during the upload process.
+With the [Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3), the default behavior retains the parent folder name in file paths. However, there may be situations where you want to remove the parent folder name from the file path during the upload process.
 
 ## Solution
 

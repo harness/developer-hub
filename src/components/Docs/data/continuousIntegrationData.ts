@@ -124,11 +124,11 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me",
         },
         {
-          title: "Build and upload artifacts",
+          title: "Build, push, upload, and download artifacts and images",
           module: MODULES.ci,
           description:
             "Build and upload artifacts in CI pipelines.",
-          link: "/docs/category/build-and-upload-artifacts",
+          link: "/docs/category/build-push-upload-download",
         },
         {
           title: "Run tests",

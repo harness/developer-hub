@@ -51,8 +51,8 @@ Go has built-in code coverage functionality.
 
 2. Add a step to upload your code coverage report to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 3. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
@@ -81,7 +81,7 @@ Go has built-in code coverage functionality.
 
    * If you're using JaCoCo, use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3) in a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md). This plugin uploads your JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab on the [Build details page](../viewing-builds.md).
    * With other Java code coverage tools:
-      * Add an [Upload Artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md) or [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md).
+      * Add an [Upload Artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md) or [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md).
       * Use the **Artifact Metadata Publisher** plugin to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
 ### JavaScript
@@ -110,8 +110,8 @@ Go has built-in code coverage functionality.
 
 3. Add a step to upload your code coverage report to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 4. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
@@ -147,8 +147,8 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
 
 2. Add a step to upload your code coverage report to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 3. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
@@ -195,8 +195,8 @@ Use these steps to install code coverage tools when you run Python tests in **Ru
 
 3. Add a step to upload your code coverage report to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 4. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
@@ -211,8 +211,8 @@ Use these steps to install code coverage tools when you run Ruby tests in **Run*
 
 3. Add a step to upload your code coverage report to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 4. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
@@ -220,9 +220,15 @@ Use these steps to install code coverage tools when you run Ruby tests in **Run*
 
 You can use code coverage services with Harness.
 
+### Codacy
+
+You can use the [Codacy Drone plugin](https://github.com/drone-plugins/drone-codacy) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md) to upload Golang coverage reports to Codacy.
+
+For other languages, go to the Codacy documentation on [uploading coverage data to Codacy](https://docs.codacy.com/coverage-reporter/#uploading-coverage).
+
 ### CodeCov
 
-You can use a [Run step](../run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline. The Run step will run tests with code coverage, then download and run the [CodeCov Uploader](https://docs.codecov.com/docs/codecov-uploader) tool.
+You can use a [Run step](../run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline. The Run step contains a script that runs tests with code coverage, then downloads and runs the [CodeCov Uploader](https://docs.codecov.com/docs/codecov-uploader) tool.
 
 1. Make sure you have a CodeCov account with code coverage enabled on a code repo and a CodeCov Upload Token. For instructions, go to [CodeCov Quick Start](https://docs.codecov.com/docs/quick-start).
 2. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing your CodeCov Upload Token. Make note of the secret's **ID**.
@@ -316,6 +322,8 @@ When you run your pipeline, you can review CodeCov information in the **Run** st
 
 <DocImage path={require('./static/build-logs-with-codecov.png')} />
 
+Alternately, you can run your tests with code coverage in a Run step and then upload the results to CodeCov by running the [CodeCov Drone plugin](https://plugins.drone.io/plugins/codecov) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).
+
 ### Coveralls
 
 To integrate Coveralls in your Harness CI pipelines, follow the Coveralls documentation to [Integrate Coveralls with your codebase](https://docs.coveralls.io/index#integrate-coveralls-with-your-codebase). Note the following:
@@ -369,6 +377,8 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
 </details>
 
+You can also upload coverage reports to Coveralls by using the [Coveralls Drone plugin](https://plugins.drone.io/plugins/coveralls) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).
+
 ## View code coverage reports on the Artifacts tab
 
 You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
@@ -384,8 +394,8 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a step to upload the report artifact to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin. Configure the **Plugin** step settings as follows:
 
@@ -402,8 +412,8 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a step to upload the report artifact to cloud storage.
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
 
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, for example:
 

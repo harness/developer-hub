@@ -1,9 +1,15 @@
 ---
 title: Linux chaos infrastructure advanced management
-sidebar_position: 30
+sidebar_position: 2
 description: Guide to advanced setup with Linux chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure.
+
+HCE supports executing Linux faults similar to Kubernetes faults. 
+
+## Before you begin
+* [Connect to Linux infrastructure](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
+* [Disconnect from Linux infrastructure](/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure#remove-infrastructure)
 
 ## Advanced setup
 A set of mandatory input flags is required for the installation of the chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
