@@ -170,18 +170,19 @@ import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severi
 
 ### Settings+-
 
-
 You can use this field to run the Snyk scan with additional options. 
+
+
 
 ### Show original CVSS scores overridden by Snyk security policies 
 
-You can configure a Snyk step to show the original score when a Snyk Enterprise security policy overrode the CVSS score for an issue. You can see this information in **Issue Details**:   
+You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
 
-  ![Security override in Security Tests](../static/sto-7041-override-in-security-tests.png)
+![Security override in Security Tests](../static/sto-7041-override-in-security-tests.png)
 
-  This feature is supported for `snyk container` and `snyk test` scans only.
+This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
   
-  To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
+To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
 
   <Tabs>
      <TabItem value="Visual" label="Visual" default>
