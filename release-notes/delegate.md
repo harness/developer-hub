@@ -44,7 +44,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Fixed an issue in ECS Blue Green Deployments when ecs service gets deleted after first/second deployment.
+- Fixed an issue in ECS Blue Green Deployments when ecs service gets deleted after first/second deployment. 
+(CDS-91499, ZD-57892)
 
 
 ### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
