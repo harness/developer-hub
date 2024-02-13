@@ -1,6 +1,6 @@
 ---
 title: Subscriptions and licenses
-description: View and manage your Harness Platform subscriptions and licenses.
+description: View and manage your Harness subscriptions and licenses.
 sidebar_position: 3
 ---
 
@@ -57,10 +57,6 @@ You can manage your payment method and billing admins in your Harness account. G
 ### Request an invoice
 
 <Invoice />
-
-## License and build credit usage
-
-<License />
 
 ## Harness module subscription and license information
 
