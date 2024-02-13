@@ -178,7 +178,7 @@ Now, if you also use Harness CI/CD, you can follow the steps below to create a [
 
 5. [Add the Terraform Apply step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#step-1-add-the-terraform-plan-step), that could provision Harness Pipeline for the newly created service. 
 
-While you add the Terraform Apply step make sure to add the **[Provisioner Identifier](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#provisioner-identifier)** as an [expression] as `harness<+pipeline.executionId>`
+While you add the Terraform Apply step make sure to add the **[Provisioner Identifier](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#provisioner-identifier)** as an [expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions) as `harness<+pipeline.executionId>`
 
 TODO: Add the config files used. 
 
