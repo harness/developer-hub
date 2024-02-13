@@ -98,7 +98,7 @@ Similarly, being able to test a change in any given environment and collect data
 
 ### Consider trunk-based development
 
-Trunk-based development will help your teams move faster and pull complexity and risk out of your code deployment and feature release process. By having fewer long-lived branches and code paths, and more feature flags keeping changes dark even in your production environment, you will be able to merge more, deploy more, and ultimately reduce risk substantially. [Read more on trunk-based development.](/tutorials/feature-flags/trunk-based)
+Trunk-based development will help your teams move faster and pull complexity and risk out of your code deployment and feature release process. By having fewer long-lived branches and code paths, and more feature flags keeping changes dark even in your production environment, you will be able to merge more, deploy more, and ultimately reduce risk substantially. [Read more on trunk-based development.](/docs/feature-flags/get-started/trunk-based-development)
 
 ### Think about operational toggles (not just a release toggle)
 

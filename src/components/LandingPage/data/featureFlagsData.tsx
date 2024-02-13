@@ -31,7 +31,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
+    link: "/docs/feature-flags/get-started/trunk-based-development",
   },
 ];
 
@@ -63,7 +63,7 @@ export const FFList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
+    link: "/docs/feature-flags/get-started/trunk-based-development",
   },
   {
     title: "Making flags resilient during a mobile browser refresh",
@@ -105,6 +105,6 @@ export const FFList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/feature-flags/trunk-based",
+    link: "/docs/feature-flags/get-started/trunk-based-development",
   },
 ];

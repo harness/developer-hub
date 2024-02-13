@@ -9,4 +9,4 @@ redirect_from:
 Try Feature Flags with this step-by-step tutorial:
 
 * [Add Feature Flags to a JavaScript app](/tutorials/feature-flags/typescript-react)
-* [Use Feature Flags for trunk-based development](/tutorials/feature-flags/trunk-based)
+* [Use Feature Flags for trunk-based development](./trunk-based-development.md)
