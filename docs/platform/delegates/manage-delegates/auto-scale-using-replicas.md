@@ -43,11 +43,74 @@ To auto scale the delegate, do the following:
 
    When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
 
-## Configure Harness Delegate autoscaling using replicas for Kubernetes
+## Configure Harness Delegate autoscaling using replicas for Kubernetes 1.23 and later
 
-The HPA configuration setting is included in the default Kubernetes delegate YAML file. 
+The HPA configuration setting is included in the default Kubernetes delegate YAML file. Harness updated the default HPA in the Harness Delegate YAML versions 24.02.82302 and later to use `autoscaling/v2` instead of `autoscaling/v1`, which was used in earlier delegate versions.
 
-To auto scale the delegate, do the following:
+Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23 and a delegate version 24.02.82302 or later, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` section of your delegate YAML to `autoscaling/v1`. For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes versions lower than 1.23](#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes-versions-earlier-than-123).
+
+To auto scale the delegate for Kubernetes 1.23 and higher, do the following:
+
+1. In your `harness-delegate.yml` file, go to `autoscaling` parameters.
+
+2. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
+
+   To fine-tune your autoscaling, you can set the `cpu` `averageUtilization` to add a new replica if CPU and/or memory utilization exceeds this percentage. Below is an example of autoscaling the delegate if the CPU usage of delegates goes above 70% (the default YAML setting).
+
+   ```yaml
+   
+   ---
+   
+   apiVersion: autoscaling/v2
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: kubernetes-delegate-hpa
+     namespace: harness-delegate-ng
+     labels:
+         harness.io/name: kubernetes-delegate
+   spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: kubernetes-delegate
+    minReplicas: 1
+    maxReplicas: 1
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+  
+   ---
+  
+   ```
+
+3. (Optional) Set the `memory` `averageUtilization`to add a new replica if memory utilization exceeds this percentage.
+
+4. Save the file, and restart your pods.
+
+   When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
+
+## Configure Harness Delegate autoscaling using replicas for Kubernetes versions earlier than 1.23
+
+The HPA configuration setting is included in the default Kubernetes delegate YAML file.
+
+:::warning important version info
+Harness updated the default HPA in the Harness Delegate YAML to use `autoscaling/v2` instead of `autoscaling/v1` which was used in earlier delegate versions.
+
+Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version earlier than 1.23 and a delegate version 24.02.82302 or later, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` section of your delegate YAML to `autoscaling/v1`.
+
+:::
+
+To auto scale the delegate for Kubernetes versions lower than 1.23, do the following:
 
 1. In your `harness-delegate.yml` file, go to `autoscaling` parameters.
 
@@ -218,7 +281,7 @@ spec:
 
 ---
 
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
    name: kubernetes-delegate-hpa
@@ -230,9 +293,21 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: kubernetes-delegate
-  minReplicas: 2
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+  minReplicas: 1
+  maxReplicas: 1
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 70
 
 ---
 
