@@ -4,6 +4,10 @@ description: This topic describes how to route traffic in pipelines using the tr
 sidebar_position: 11
 ---
 
+For a video of demo on traffic shifting see:
+
+<DocVideo src="https://www.loom.com/share/b1cf1db3300946b9b8fe48ae85bbfc26?sid=bef8f5d9-af26-4f24-a7ad-f244ac724572" />
+
 This page is a reference sheet for the K8s Traffic Routing Step. These same configuration options can be found in the Blue/Green (B/G) Deployment Step as well as the Canary Deployment Step. 
 
 ## Traffic Routing Step Parameters
@@ -133,3 +137,13 @@ Specify your host. [Learn more about istio host field here](https://istio.io/lat
 ### Gateway
 
 Specify your Istio gateway. [Learn more about istio gateways here](https://istio.io/latest/docs/reference/config/networking/gateway/).
+
+## Advanced
+
+See the following topics for these settings:
+
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
