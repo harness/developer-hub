@@ -171,7 +171,12 @@ Please update the `connectorRef: <the_connector_name_you_created_under_prerequis
 
 ## Add the Custom Stage to Provision the Deployment Pipeline.
 
+### Pre-requisites
+
+- Fork this [repo](https://github.com/harness-community/idp-samples/tree/main) or download the [folder](https://github.com/harness-community/idp-samples/tree/main/terraform) and add it to your own git provider, to be used as **Configuration File Repository**. Also on `harness_resources.tf` file update the `org id` and in `harness.tf` update the `account_id`.
+
 Now, if you also use Harness CI/CD, you can follow the steps below to create a [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) with Terraform Apply step to provision the Harness deployment pipeline. 
+
 
 
 4. [Add a Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage), after the Developer Portal Stage.
@@ -180,7 +185,11 @@ Now, if you also use Harness CI/CD, you can follow the steps below to create a [
 
 While you add the Terraform Apply step make sure to add the **[Provisioner Identifier](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#provisioner-identifier)** as an [expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions) as `harness<+pipeline.executionId>`
 
-You could find the [config files](https://github.com/harness-community/terraform-harness-content/tree/main/modules/pipelines) to provision a pipeline. Make sure to go through the [Readme.md](https://github.com/harness-community/terraform-harness-content/tree/main/modules/pipelines#terraform-modules-for-harness-pipelines) to understand the usage and use the same in the config-files 
+You could find the [config files](https://github.com/harness-community/idp-samples/tree/main/terraform) to provision a pipeline. Now create a connector to add this config files.  
+
+We also have a Terraform Var Files, as mentioned in the below example YAML. 
+
+![](./static/tfvar.png)
 
 ```YAML
 # Example
@@ -224,6 +233,7 @@ You could find the [config files](https://github.com/harness-community/terraform
 ```
 
 ![](./static/terraform-apply.png)
+
 
 6. Now save the Pipeline. 
 
