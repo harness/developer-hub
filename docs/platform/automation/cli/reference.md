@@ -274,6 +274,22 @@ Setup Harness CD & GitOps in a few commands
        --help, -h           show help
     ```
 
+11. `harness pipeline run help`
+    ```
+    NAME:
+      harness pipeline run - Run a pipeline.
+
+    USAGE:
+      harness pipeline run [command options] [arguments...]
+
+    OPTIONS:
+      --pipeline-id value  identifier of pipeline to execute
+      --inputs-file value  path to YAML file containing pipeline inputs
+      --org-id value       provide an Organization Identifier
+      --project-id value   provide a Project Identifier
+      --help, -h           show help
+    ```
+
 <!-- 
 ## Environment
 
