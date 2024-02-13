@@ -317,7 +317,7 @@ These output variable could be viewed under the output tab in
 
 ### 4. Create Catalog
 
-This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software componenet we have created in previous step in our IDP catalog. 
+This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software component we have created in previous step in our IDP catalog. 
 
 ![](./static/create-catalog.png)
 
@@ -512,7 +512,7 @@ These output variable could be viewed under the output tab in
 
 :::warning
 
-There has been some recent upgrades to this step and this is dependent on the NGUI service release, which has a different release cadence than that of IDP, until then this feature wouldn't functions as desired. We expect the dependent service releases to happen in the following week. 
+There has been some recent upgrades to this step and this is dependent on the NG-UI service release, which has a different release cadence than that of IDP, until then this feature wouldn't functions as desired. We expect the dependent service releases to happen in the following week. 
 
 :::
 
