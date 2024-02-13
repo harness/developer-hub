@@ -74,3 +74,6 @@ HCE allows you to create the below probes for Linux:
 
 When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/troubleshooting/chaos-engineering/known-issues) for more information. 
 
+## Next steps
+
+* [Recovery steps while executing Linux chaos experiments](/docs/troubleshooting/chaos-engineering/troubleshooting#recovery-steps-while-executing-linux-chaos-experiment)

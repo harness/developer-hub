@@ -102,3 +102,13 @@ source:
   - name: volume-secret
     mountPath: /etc/volume-secret
  ```
+
+## Recovery steps while executing Linux chaos experiment
+
+LCI ensures the complete recovery of the system state in the event of failure during the experiment execution.
+
+* In the event of any error, LCI reverts the experiments before completing the execution.
+* In the event of an abrupt network disruption between the IFS and IF, the experiment is aborted and reverted.
+* In the event of an abrupt exit of the IF process, the daemon service reverts to the inconsistent system state due to the chaos and then restarts the IF process.
+* In the case of an abrupt reboot of the machine, after the reboot, the daemon service reverts any leftover inconsistent system state due to the chaos and then starts the IF process.
+* In some unlikely scenarios, if reverting an experiment leads to an error, the experiment displays an appropriate error message in the logs for your reference so that you can intervene and address it.
