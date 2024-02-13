@@ -40,7 +40,7 @@ pipeline:
           project: naidusanity
           outputs:
             - name: parentOutput
-      value: <+pipeline.stages.custom.spec.execution.steps.ShellScript_1.output.outputVariables.outputVar>
+              value: <+pipeline.stages.custom.spec.execution.steps.ShellScript_1.output.outputVariables.outputVar>
     - stage:
         name: cusom2
         identifier: cusom2
