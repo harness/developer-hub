@@ -120,16 +120,4 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
     link: "tutorials/platform",
   },
-  {
-    title: "Administer Harness Self-Managed Enterprise Edition",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Install Harness Platform on self-managed Kubernetes cluster.
-      </>
-    ),
-    type: [docType.Documentation],
-    link: "tutorials/self-managed-enterprise-edition",
-  },
 ];

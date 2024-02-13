@@ -165,11 +165,6 @@ const config = {
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
-              {
-                // type: "doc",
-                label: "Administer Harness Self-Managed EE",
-                to: "tutorials/self-managed-enterprise-edition",
-              },
             ],
           },
           {

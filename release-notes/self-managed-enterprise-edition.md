@@ -270,7 +270,7 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- You can now enable TLS for MongoDB, MinIO, and TimescaleDB cloud-based external databases. For configuration details, go to the Harness Self-Managed Enterprise Edition [tutorials](/tutorials/self-managed-enterprise-edition). (PL-46234)  
+- You can now enable TLS for MongoDB, MinIO, and TimescaleDB cloud-based external databases. For configuration details, go to [Configure external databases](/docs/self-managed-enterprise-edition/advanced-configurations/configure-external-databases). (PL-46234)
 
 
 #### Continuous Delivery & GitOps
@@ -5343,7 +5343,7 @@ This release includes the following Harness module and component versions.
 
 #### New features and enhancements
 
-- You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
+- You can now use an external database with your installation. For more information, go to [Configure external databases](/docs/self-managed-enterprise-edition/advanced-configurations/configure-external-databases). (SMP-545)
 
 #### Fixed issues
 

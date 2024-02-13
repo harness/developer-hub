@@ -35,6 +35,7 @@
 # Added by aimurphy in Feb 2024 for Tutorial Unification
 /tutorials/ci-pipelines /docs/continuous-integration
 /tutorials/feature-flags /docs/feature-flags
+/tutorials/self-managed-enterprise-edition /docs/self-managed-enterprise-edition
 
 # /tutorials /docs
 # each top tutorial landing page
