@@ -174,6 +174,29 @@ spec:
 
 3. `HarnessAutoOrgPicker` : It auto populates org id on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input.
 
+:::info
+
+For `HarnessAutoOrgPicker` to work, the Project Identifier under Properties should be named `projectId` and using the `HarnessProjectPicker`. **Here's an example YAML that won't auto populate the org name.**
+
+```
+# Example template.yaml file
+properties:
+    <ANY NAME OTHER THAN projectId>:
+        title: Project Identifier
+        description: Harness Project Identifier
+        type: string
+        ui:field: HarnessProjectPicker
+    orgId:
+        title: Org Identifier
+        description: Harness org Identifier
+        type: string
+        ui:field: HarnessAutoOrgPicker  
+```
+:::
+
+
+A working example: 
+
 ```YAML
 # Example template.yaml file
 apiVersion: scaffolder.backstage.io/v1beta3

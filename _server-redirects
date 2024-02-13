@@ -26,6 +26,9 @@
 # Added by aimurphy on Oct-25-2023 for 3809
 /release-notes/whats-new /release-notes
 
+# Added by aimurphy on Jan-31-2024 for build and upload artifact reorg on ci-rn-1-11-x branch
+/docs/category/build-and-upload-artifacts /docs/category/build-push-upload-download
+
 # Added by douglas-j-bothwell on Feb-5-2024
 /docs/category/sto-workflows /docs/category/use-sto
 

@@ -1,5 +1,5 @@
 ---
-title: Calculating resilience score
+title: Determine resilience score
 sidebar_position: 15
 description: Determine the resilience of target environment using resilience score
 ---

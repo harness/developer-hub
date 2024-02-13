@@ -1,7 +1,7 @@
 import { Horizon } from "./roadmapData";
 export const StoData: Horizon = {
   "Now": {
-    description: "Q2 2025, May-July 2024",
+    description: "What is being delivered now",
     feature: [
       {
         tag: [{ value: "Usability" }, { value: "On-boarding" }],
@@ -26,7 +26,7 @@ export const StoData: Horizon = {
     ],
   },
   "Next": {
-    description: "Q3 2025, Aug-Oct 2024",
+    description: "What is being developed next",
     feature: [
       {
         tag: [{ value: "AIDA" }, { value: "Remediation" }],
@@ -46,7 +46,7 @@ export const StoData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q4 2025, Nov 2024 - Jan 2025",
+    description: "What is being developed later",
     feature: [
       {
         tag: [{ value: "Dashboard" }],

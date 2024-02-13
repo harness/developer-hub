@@ -151,6 +151,7 @@ Do the following if you're using a generic **Security** step for you scan:
 
    2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
+<!-- 
 ## YAML example for configuring STO to download images from a private registry
 
 The following pipeline downloads its Security Scan image (bandit) and all of its CI build images from the Harness Image Registry. 
@@ -219,3 +220,5 @@ pipeline:
   name: sto_scanner_image_download_example
 
 ```
+
+-->

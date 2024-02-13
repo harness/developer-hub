@@ -49,6 +49,32 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2024
 
+### Version 1.24.7
+
+#### New Features and Enhancements
+- We've introduced a new expression that explicitly provides the trigger name used to initiate the execution. You can now utilize `<+pipeline.triggeredBy.triggerDisplayName>` to access this information. (CDS-87696)
+- We enhanced the resolution of the working directory. Now you can determine the working directory based on environment variables. This includes variables provided in shell script steps through input variables, as well as those from the host's environment variables. (CDS-87446)
+- If a feature flag is turned on for a module it will now appear in the module selector for the new navigation experience. (CDS-85185)
+
+#### Behavior Changes
+- In the blue/green stage scale down step, we used to scale down deployments, statefulsets, daemonsets, deploymentConfig and delete HPA, and PDB resources. During scale down, we updated the field `replicas` to 0. In Kubernetes, if HPA is configured it is not mandatory to define replicas. 
+So when another deployment happens and we apply the same old deployments manifest it does not update the replicas field and it remains set to 0. 
+This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
+
+#### Fixed Issues
+- The Input Set Page breaks while editing the input set when the service input fields have been updated. Now the page will render with the input set YAML. (CDS-91095, ZD-57487)
+- Fixed an issue where a Targeted Hosts field was not populated in the case of execution input.  (CDS-91071)
+- Fixed an issue where the pipeline failed to execute when remote infrastructure was used with a multi-environment deployment. (CDS-90985, ZD-57420)
+- Fixed an issue where users couldn’t switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
+- The CDK Deploy step was not handling the null output map when the provided image was not created from the Harness aws-cdk-plugin base image: https://hub.docker.com/r/harness/aws-cdk-plugin/tags. This issue has been resolved, the null output map is handled. (CDS-89569)
+- In a few places in the UI, expressions when entered, were not rendered in a consistent colour. This has now been fixed to be consistent.(CDS-89391)
+- Fixed an issue with the Edit File Store flow UI. (CDS-89094)
+- The email step body used to render the field's HTML content. Now it will render raw HTML. (CDS-88842, ZD-56452)
+- Earlier, the input sets that have nested components (such as templates) hosted on GitHub were taking a long time to fetch. Now this time has been significantly reduced. (CDS-88426, ZD-56180)
+- Initially, the Jenkins build step didn't support logs for more than 5 hours. Therefore for builds taking longer than 5 hours, console logs were not streamed and consequently not saved. Now, the support for the console logs has been extended to 1d for the Jenkins build step. However, the log length limit is 5k, meaning only the last 5k logs will be streamed and saved. (CDS-88262)
+- In Artifact Triggers, the modifications to the secret in the connector were not recognized. With this update, changes to the secret in the connector will now be detected, so that users don't have to manually disable and re-enable the trigger. (CDS-86775, ZD-55126)
+
+
 ### Version 1.23.5
 
 #### Fixed Issues
@@ -80,6 +106,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Show accountId in Switch Account screen(CDS-88728)
   - Enhanced the Switch Account experience to show more data i.e ``AccountId``.
+
 #### Fixed Issues
 - UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
   - Previously, deployments would display an error when they were waiting for manual approval. 
