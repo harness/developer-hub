@@ -310,15 +310,15 @@ spec:
 
 ### HTTPS
 
-Enable the https support for both incoming and outgoing traffic via setting `HTTPS_ENABLED` field to `true`. Its usage can vary depending on whether it's applied to `ingress` or `egress` scenarios.
+Enable the HTTPS support for both incoming and outgoing traffic by setting the `HTTPS_ENABLED` field to `true`. Its usage varies depending on whether it's applied to `ingress` or `egress` scenarios.
 
 #### Ingress
 
-It's necessary to set this parameter if the HTTPS URL of the target application includes a port, formatted as `https://<hostname>:port`. However, if the HTTPS URL is in the format `https://<hostname>` without a port, this setting is unnecessary.
+Set this parameter if the HTTPS URL of the target application includes a port, formatted as `https://<hostname>:port`. However, if the HTTPS URL is in the format `https://<hostname>` without a port, this setting is not required.
 
 #### Egress
 
-For outbound traffic, setting `HTTPS_ENABLED` to `true` is vital to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application.
+For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application.
 
 * If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there's no need to provide `CUSTOM_CERTIFICATES`. However, if the root certificate directory and file name differ from `/etc/ssl/certs` and `ca-certificates.crt` respectively, set the root certificate directory path using the `HTTPS_ROOT_CERT_PATH` ENV variable and the file name using the `HTTPS_ROOT_CERT_FILE_NAME` ENV variable.
 * If the HTTP client in the target application isn't configured to reload certificates with each API call, you must provide the `CUSTOM_CERTIFICATES` ENV variable to the chaos experiment and no need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` ENV. The same custom certificates should be loaded into the target application. You can generate custom certificates using the following commands:
