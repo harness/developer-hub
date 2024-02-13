@@ -400,7 +400,7 @@ You can require that all custom triggers in this Harness account use API key tok
 1. In your Harness account, select **Account Settings**.
 2. Select **Account Resources**.
 3. Select **Default Settings**.
-4. In **General**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
+4. In **Pipeline**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
 
 Now all custom triggers in this account must use an API key token or an authorization error is thrown when the cURL command is run.
 
@@ -412,7 +412,7 @@ Now all custom triggers in this account must use an API key token or an authoriz
 
 When the **Allow Overrides** box is selected at the account level, Harness users will be able to select a different value for this setting at project level. 
 
-In a project, in **Default Settings** > **General**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
+In a project, in **Default Settings** > **Pipeline**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
 
 If **Allow Overrides** is unchecked, then the value of the setting is propagated to all projects in the account.
 

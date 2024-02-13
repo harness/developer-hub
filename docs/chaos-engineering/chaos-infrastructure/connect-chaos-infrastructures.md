@@ -1,6 +1,6 @@
 ---
 title: Connect chaos infrastructures
-sidebar_position: 10
+sidebar_position: 1
 description: Guide to connect to Kubernetes and Linux chaos infrastructure
 ---
 

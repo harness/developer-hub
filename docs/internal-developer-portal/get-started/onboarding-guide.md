@@ -102,6 +102,8 @@ Create a secret with token and configure in the Personal Access token field. [Re
 
 ![](./static/bitbucket-connector.png)
 
+For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
+
 :::
 4. After the connection test runs, select Finish to save the connector.
 

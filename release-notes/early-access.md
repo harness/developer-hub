@@ -257,28 +257,6 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 No early access (beta) features are available for Harness Code Repository. -->
 
-## STO early access features
-
-The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
-
-### Aqua Security integration
-
-* **Release date:** November 2023
-* **Issue number:** STO-6382
-* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
-
-### STO Jira integration
-
-* **Release date:** March 2023
-* **Issue number:** STO-5467
-* **Feature flag:** `STO_JIRA_INTEGRATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).\
-
 ## SEI early access features
 
 The following early access (beta) features are available for the Harness Software Engineering Insights module.
@@ -304,6 +282,28 @@ You will also experience an enhanced user interface when configuring the integra
 Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
 
 You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
+
+## STO early access features
+
+The following early access (beta) features are available for the Harness Security Testing Orchestration module.
+
+### Aqua Security integration
+
+* **Release date:** November 2023
+* **Issue number:** STO-6382
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+
+### STO Jira integration
+
+* **Release date:** March 2023
+* **Issue number:** STO-5467
+* **Feature flag:** `STO_JIRA_INTEGRATION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
 
 ## SRM early access features
 

@@ -33,14 +33,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - **Security Tests** now shows the original score when a Snyk security policy overrode the CVSS score for an issue. (STO-7041)
 
-  ![Security override in Security Tests](./static/sto-7041-override-in-security-tests.png)
+  ![Security override in Security Tests](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-override-in-security-tests.png)
 
   To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. This behavior occurs only for Snyk scans that ran with this setting enabled, and only for issues where the score was overridden due to a Snyk policy.  
 
   <Tabs>
      <TabItem value="Visual" label="Visual" default>
 
-     ![Add ingest_tool_severity to Snyk step](./static/sto-7041-add-setting-in-visual-editor.png)
+     ![Add ingest_tool_severity to Snyk step](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-add-setting-in-visual-editor.png)
 
     </TabItem>
   
@@ -56,13 +56,10 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     </TabItem>
     </Tabs>
 
-<!-- 
 
 - The SonarQube integration includes better support for orchestrated branch scanning with SonarQube Enterprise. (STO-6840)
   - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the step.
   - With this enhancement, the orchestration step always downloads results for the branch specified in the step.
-
--->
 
 - Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
 
