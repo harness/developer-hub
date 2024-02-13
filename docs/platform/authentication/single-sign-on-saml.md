@@ -833,3 +833,9 @@ For the Harness production cluster prod-3, the local login URL is `https://app3.
 :::info note
 You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 :::
+
+## Encrypted SAML
+
+To use encryptes SAML with Harness, please download the certificate and upload to your IDP settings to support the encrypted SAML flow.
+
+
