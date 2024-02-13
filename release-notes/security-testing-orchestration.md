@@ -31,11 +31,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### Enhancements
 
-- **Security Tests** now shows the original score when a Snyk security policy overrode the CVSS score for an issue. (STO-7041)
+- You can now configure a Snyk step to show the original score when a Snyk Enterprise security policy overrode the CVSS score for an issue. You can see this information in **Issue Details**.  (STO-7041)
 
   ![Security override in Security Tests](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-override-in-security-tests.png)
 
-  To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. This behavior occurs only for Snyk scans that ran with this setting enabled, and only for issues where the score was overridden due to a Snyk policy.  
+  This feature is supported for `snyk container` and `snyk test` scans only. 
+  
+  To enable this feature, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step ingests and processes the relevant data for issues with overridden severities.   
 
   <Tabs>
      <TabItem value="Visual" label="Visual" default>
