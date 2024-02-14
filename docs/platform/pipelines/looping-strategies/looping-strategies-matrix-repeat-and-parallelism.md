@@ -269,7 +269,7 @@ matrix:
 ```
 :::info note
 1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, the original stage name.
-2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_1``, ``OriginalStageName_nodeName_2`` to the matrix.
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the matrix.
 :::
 ### Matrix examples and best practices
 
@@ -409,10 +409,13 @@ tags: {}
 
 ```
 ![](./static/looping_name_example_2.png)
+:::info 
+When creating a CI pipeline where both stage and step uses looping strategy and you want to use expressions inside nodeName in step then you have to use ``Test_Deploy_step_<+step.item>`` instead of ``Test_Deploy_step_<+repeat.item>``.
+:::
 
 :::info note
 1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, and the original stage name will be there.
-2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_1``, ``OriginalStageName_nodeName_2`` to the repeats. 
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the repeats. 
 :::
 
 ## Looping strategies as runtime input
