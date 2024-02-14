@@ -179,12 +179,6 @@ The user will be able to easily rotate the key by making request to the Admin AP
 
 A new key will be given and the old key will be rendered invalid. All auth tokens will also be invalidated.
 
-### Monitoring the Proxy
-
-To monitor the Proxy, here is an example that users can run locally. It will bring up a Primary Proxy, Read Replica, Prometheus and Grafana using Docker. They can, then, log in to Grafana and view the Harness FF Proxy Dashboard. 
-
-You can find this resource to monitor the Proxy over in the [Harness Feature Flags Proxy Repo on GitHub](https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoring) on GitHub.
-
 ### Startup Sequence
 
 Below, you will find a diagram of the Primary Proxy V2 Startup Sequence:
@@ -240,6 +234,63 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 
 <br>
 </br>
+
+
+## Monitoring the Proxy
+
+The proxy uses Prometheus for recording metrics that can be used to understand how the proxy is behaving and performing. You can view and scrape these metrics by hitting the proxy's /metrics endpoint. For example, if you're running the proxy locally on port 7000, you can view the metrics it exposes by making the following request:
+
+`$ curl localhost:7000/metrics`
+
+### Examples
+
+There's an example [grafana dashboard](https://grafana.com/grafana/dashboards/20091-harness-ff-proxy/) built using the Prometheus metrics the Proxy exposes that you can import into your grafana instance.
+
+There's also a [getting started example](https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoring) that runs the Proxy in HA mode with Prometheus and Grafana setup.
+
+### Example Prometheus Configuration
+
+Below is an example prometheus configuration that can be used to scrape metrics from the proxy.
+
+```
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['localhost:7000']
+```
+
+### Metrics Exposed
+
+Here is a breakdown of all the prometheus metrics exposed by the Proxy.
+
+| **Name**                                                    | **Type**  | **Labels**                                                                                                                                                                                        | **Description**                                                                                              |
+|-------------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| ff_proxy_http_requests_total                                | counter   | code: The HTTP response code<br></br>envID: The environmentID<br></br>method: The HTTP method used for the request<br></br>url: The requests URL                                                     | Records the number of requests to an endpoint                                                                |
+| ff_proxy_http_requests_duration                             | histogram | envID: The environmentID<br></br>url: The requests URL                                                                                                                                             | Records the request duration for an endpoint                                                                 |
+| ff_http_requests_content_length_histogram                   | histogram | envID: The environmentID<br></br>url: The requests URL                                                                                                                                             | Records the value of the Content-Length header for an HTTP request                                           |
+| ff_proxy_metrics_forwarded                                  | counter   | envID: The environmentID<br></br>error: Indicates if an error occurred during forwarding                                                                                                           | Tracks the number of metrics forwarded from the proxy to SaaS Feature Flags                                  |
+| ff_proxy_sdk_usage                                          | counter   | envID: The environment ID<br></br>sdk_language: The programming language of the SDK<br></br>sdk_type: The type of the SDK (e.g., server, client, mobile)<br></br>sdk_version: The version of the SDK | Tracks what SDKs are using the FF proxy                                                                      |
+| ff_proxy_to_client_service_requests                         | counter   | url: The URL the request is being made to<br></br>envID: The environmentID<br></br>code: The status code returned by Harness Saas                                                                  | Tracks what requests the Primary Proxy makes to Harness Saas                                                 |
+| ff_proxy_to_ff_client_service_requests_duration             | histogram | url: The URL the request is being made to<br></br>envID: The environmentID                                                                                                                         | Tracks the request duration for http requests made from the Proxy to Harness Saas                            |
+| ff_proxy_saas_to_primary_sse_consumer_messages_received     | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that the Primary Proxy has recevied from Harness Saas                        |
+| ff_proxy_primary_to_replica_sse_producer_messages_published | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that have been forwarded from the Primary Proxy to Replica Proxy's           |
+| ff_proxy_primary_metrics_stream_consumer_messages_received  | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of metrics requests the Primary has received from Replica Proxy's                          |
+| ff_proxy_replica_sse_consumer_messages_received             | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that Replicas have received from the Primary Proxy                           |
+| ff_proxy_replica_to_sdk_sse_producer_messages_published     | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that Replicas have forwarded on to SDKs                                      |
+| ff_proxy_replica_metrics_stream_producer_messages_published | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of metrics requests that have been forwarded from Replicas to the Primary                  |
+| ff_proxy_redis_cache_write_count                            | counter   | error: Indicates whether an error occurred during the write operation<br></br>key: The cache key                                                                                               | Tracks how many writes are made to the cache                                                                 |
+| ff_proxy_redis_cache_remove_count                           | counter   | key: The cache key                                                                                                                                                                            | Tracks how many deletes are made to the cache                                                                |
+| ff_proxy_redis_cache_delete_duration                        | histogram | N/A                                                                                                                                                                                               | Tracks how long delete operations to the cache take                                                          |
+| ff_proxy_redis_cache_write_duration                         | histogram | N/A                                                                                                                                                                                               | Tracks how long write operations to the cache take                                                           |
+| ff_proxy_memoize_cache_hit                                  | counter   | N/A                                                                                                                                                                                               | Tracks the number of hits on lookups in the Proxy's memoize cache.                                           |
+| ff_proxy_memoize_cache_miss                                 | counter   | N/A                                                                                                                                                                                               | Tracks the number of misses on lookups in the Proxy's memoize cache.                                         |
+| ff_proxy_memoize_cache_write_marshal                        | counter   | N/A                                                                                                                                                                                               | Tracks the number of writes to the memoize cache                                                             |
+| ff_proxy_memoize_cache_hit_with_unmarshal                   | counter   | N/A                                                                                                                                                                                               | Tracks the number of hits in the memoize cache where we had to perform an unmarshal over returning raw bytes |
 
 ## Account Stream
 
