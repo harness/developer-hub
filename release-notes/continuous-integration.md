@@ -43,7 +43,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 * The error message text for the `no eligible delegates present` error now includes additional potential causes. (CI-10933, ZD-55977)
 * Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. (CI-10938)
-* When configuring a build stage, a tooltip is now shown when you haven't selected a build infrastructure option. Previously, this tooltip appeared only after you selected a build infrastructure option. (CI-11233) <!-- test in prod and make sure something actually populates -->
+* Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
 * In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. If you want change this behavior, for example to limit it to directories at the root level or at a certain path, you can use the Test Globs setting to override the default test globs pattern. (CI-11272, ZD-57661)
 
 #### Fixed issues
@@ -51,7 +51,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 * Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. (CI-11220, ZD-57421)
 * Fixed an issue where the YAML for build stage [input sets](/docs/platform/pipelines/input-sets) could have an invalid default value for [codebase advanced settings](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#edit-the-default-codebase-configuration). (CI-11291)
 * (CI-11126)?
-* (CI-11200, ZD-57367)
+* (CI-11200, ZD-57267)
 * Addressed a security vulnerability in some CI APIs. (CI-11244, ZD-57445)
 * Applied optimizations to address caching errors. (CI-11173, ZD-57173)
 
