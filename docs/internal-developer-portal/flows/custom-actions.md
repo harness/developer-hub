@@ -32,6 +32,8 @@ A list of all registered custom actions can be found under
 
 ### 1. `trigger:harness-custom-pipeline`
 
+This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the pipeline url, and then trigger the pipeline based in the inputset obtained from the user. 
+
 ```YAML
 ## Example
 steps:
@@ -97,7 +99,7 @@ steps:
 
 ```
 
-In the above example API key is an optional paramenter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
+In the above example API key is an optional parameter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
 
 Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
 
@@ -123,30 +125,103 @@ This is where Custom Field Extensions come in.
 
 ### Harness Specific Custom Extensions
 
-1. `HarnessOrgPicker`
+1. `HarnessOrgPicker` : Fetches all the org id dynamically. 
 
 ```YAML
 #Example
-...
-orgId:
-    title: Org Identifier
-    type: string
-    ui:field: HarnessOrgPicker
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+            title: Org Identifier
+            type: string
+            ui:field: HarnessOrgPicker
     ...
 ```
 
-2. `HarnessProjectPicker`
+2. `HarnessProjectPicker` : Fetches all the project id dynamically. 
 
 ```YAML
-#Example
-...
-projectId:
-    title: Project Identifier
-    description: Harness Project Identifier
-    type: string
-    ui:field: HarnessProjectPicker
-    ...
+# Example template.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
 ```
+
+3. `HarnessAutoOrgPicker` : It auto populates org id on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input.
+
+:::info
+
+For `HarnessAutoOrgPicker` to work, the Project Identifier under Properties should be named `projectId` and using the `HarnessProjectPicker`. **Here's an example YAML that won't auto populate the org name.**
+
+```
+# Example template.yaml file
+properties:
+    <ANY NAME OTHER THAN projectId>:
+        title: Project Identifier
+        description: Harness Project Identifier
+        type: string
+        ui:field: HarnessProjectPicker
+    orgId:
+        title: Org Identifier
+        description: Harness org Identifier
+        type: string
+        ui:field: HarnessAutoOrgPicker  
+```
+:::
+
+
+A working example: 
+
+```YAML
+# Example template.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker          
+
+```
+
 
 ### Custom Actions Usage Limitations
 

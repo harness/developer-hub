@@ -84,12 +84,6 @@ Enter your Docker Hub username and press **Enter**.
 
 ## Build the CI stage
 
-<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
-
-:::info
-The 'Run Owasp Tests' step is a placeholder and does not actually run an OWASP scan. This is because this step is part of the Harness STO module, which is not available on free plans.
-:::
-
 Next, let's create the Continuous Integration (CI) pipeline that will do the following:
 
 - Clone the repository
@@ -107,6 +101,8 @@ harness pipeline --file cipipeline.yaml apply
 Enter your Docker Hub username when prompted and press **Enter**.
 
 Click **Run** and then **Run Pipeline** to start the pipeline execution. A successful pipeline execution will produce a new image with the **latest** tag under the **harness-gitops-workshop** repository on your docker image registry.
+
+The OWASP scan step used within the CI stage is part of the [Harness Security Testing Orchestration (STO)](https://www.harness.io/products/security-testing-orchestration) module. This step enables you to scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) for detecting publicly disclosed vulnerabilities present within a project’s dependencies. For this example, `fail_on_severity` is initially set to none, but you have the flexibility to adjust it to any severity threshold, such as critical or high. If any vulnerabilities of severity, for instance, critical, are found during the OWASP scan, the pipeline execution can be immediately terminated, and the findings reported via a notification.
 
 ## Create the ApplicationSet
 
@@ -260,6 +256,7 @@ Navigate back to **GitOps > Applications**. Repeat the previous step to sync you
 
 Harness Pipelines define steps needed to built, test and deploy your application. You described your deployment using the GitOps entities you set up previously. You will now create a pipeline that performs the following steps:
 
+- Runs an OWASP security scan to identify publicly disclosed vulnerabilities
 - Compiles the **podinfo** source code
 - Builds an publishes the updated app to Docker Hub
 - Creates and merges GitHub Pull Request of any configuration changes to the dev environment

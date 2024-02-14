@@ -47,4 +47,4 @@ New Medium: 1
 See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
 ```
 
-For more information about pipeline variables and other variables, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+For more information about pipeline variables and other variables, go to [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables).

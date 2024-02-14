@@ -1,7 +1,7 @@
 ---
 title: Optimize STO pipelines
 description: Make your STO pipelines faster, more efficient, and more versatile.
-sidebar_position: 20
+sidebar_position: 40
 ---
 
 If your STO scans are running slowly, try the following.

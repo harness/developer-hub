@@ -259,7 +259,7 @@ If you used an existing Argo CD Project, you will see the existing Argo CD Proje
 
 ![](./static/install-a-harness-git-ops-agent-94.png)
 
-See [Entity Identifier Reference](/docs/platform/References/entity-identifier-reference).
+See [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
 
 ### Mapping existing Argo CD projects to Harness projects for BYOA
 

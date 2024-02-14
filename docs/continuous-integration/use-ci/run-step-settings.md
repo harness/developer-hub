@@ -315,60 +315,6 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 :::
 
-#### Troubleshooting: Concatenated variable values print to multiple lines
-
-If your PowerShell script echoes a stage variable that has a concatenated values that includes a [`ToString`](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.psobject.tostring) representation of a Powershell object (such as the result of `Get-Date`), this output might unexpectedly print to multiple lines in the build logs.
-
-For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) into a single expression, including the `ToString` value.
-
-```yaml
-        variables:
-          - name: DATE_FORMATTED ## This variable's value is 'ToString' output.
-            type: String
-            description: ""
-            required: false
-            value: (Get-Date).ToString("yyyy.MMdd")
-          - name: BUILD_VAR ## This variable's value concatenates the execution ID, the sequence ID, and the value of DATE_FORMATTED.
-            type: String
-            description: ""
-            required: false
-            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
-```
-
-When a PowerShell script calls the concatenated variable, such as `echo <+pipeline.stages.test.variables.BUILD_VAR>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
-
-**To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.**
-
-For example, here are the same two stage variables without the `ToString` value in the concatenated expression.
-
-```yaml
-        variables:
-          - name: DATE_FORMATTED ## This variable is unchanged.
-            type: String
-            description: ""
-            required: false
-            value: (Get-Date).ToString("yyyy.MMdd")
-          - name: BUILD_VAR ## This variable's value concatenates only the execution ID and sequence ID. It no longer includes DATE_FORMATTED.
-            type: String
-            description: ""
-            required: false
-            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>>
-```
-
-In the `Run` step's PowerShell script, call the `ToString` value separately and then "manually concatenate" it onto the concatenated expression. For example:
-
-```yaml
-              - step:
-                  identifier: echo
-                  type: Run
-                  name: echo
-                  spec:
-                    shell: Powershell
-                    command: |- ## DATE_FORMATTED is resolved separately and then appended to BUILD_VAR.
-                      $val = <+stage.variables.DATE_FORMATTED>
-                      echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
-```
-
 </TabItem>
   <TabItem value="pwsh" label="Pwsh (PowerShell Core)">
 
@@ -455,6 +401,12 @@ If your script produces an output variable, you must declare the output variable
                       - name: OS_VAR
 ```
 
+#### Images without a shell
+
+To support Docker images without a shell, the **Command** field is optional. You must provide either **Image**, **Command**, or both. If you provide only **Image**, Harness runs the image entrypoint.
+
+If **Command** is empty or omitted, then Harness ignores **Shell**. The default value for **Shell** is `Sh`; however the presence of **Shell** doesn't require **Command**.
+
 ### Report Paths
 
 If relevant to the commands in your Run step, you can specify one or more paths to files that store [test results in JUnit XML format](./run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
@@ -481,9 +433,9 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
 
 ### Environment Variables
 
-You can inject environment variables into the step container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
+You can inject environment variables into the step container and use them in the commands executed in this step. You must input a **Name** and **Value** for each variable.
 
-You can reference environment variables in the **Command** script by name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
+You can reference environment variables by name in commands. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
 
 Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
@@ -573,3 +525,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [How do I run the default entry point of the image used in the Run step?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-run-the-default-entry-point-of-the-image-used-in-the-run-step)
 * [Does CI support running Docker-in-Docker images?](/kb/continuous-integration/continuous-integration-faqs/#does-ci-support-running-docker-in-docker-images)
 * [Can't connect to Docker daemon with Docker-in-Docker Background step.](/kb/continuous-integration/continuous-integration-faqs/#cant-connect-to-docker-daemon)
+* [Concatenated variable values in PowerShell scripts print to multiple lines](/kb/continuous-integration/continuous-integration-faqs/#concatenated-variable-values-in-powershell-scripts-print-to-multiple-lines)

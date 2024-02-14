@@ -3,7 +3,7 @@ title: Concepts
 sidebar_position: 2
 description: ChaosGuard concepts and how they are enforced
 ---
-This section walks you through the concepts of ChaosGuard and how they enforce advanced security policies on a chaos-enabled platform.
+This section walks you through the concepts of [ChaosGuard](./introduction-to-chaosguard) and how they enforce advanced security policies on a chaos-enabled platform.
 
 ## Before you begin
 
@@ -14,13 +14,25 @@ This section walks you through the concepts of ChaosGuard and how they enforce a
 ChaosGuard consists of two elements: **Conditon** and **Rule**. 
 
 ### 1. Condition
-It is an execution plane construct, and is static in nature, i.e. it is often pre-defined (typically configured by the admin personas) and can be stored offline (such as in a conditions library or repository).
+It is an execution plane construct, and is static in nature, i.e. it is often pre-defined (typically configured by the admin personas) and you can store it offline (such as in a conditions library or repository).
 
 The default structure of a condition is to block or deny a fault or set of faults on a given **execution context** associated with a cluster (or namespace), the service(s), and the service account used for the injection process.  
 
-The example below describes the condition as **usergroups doctest and appqa to be blocked from executing network faults**. 
+* **WHAT** clause describes the attribute (in this case, chaos fault) on which you can apply the condition. This field takes a regex-like pattern, that is, the * symbol, to indicate all characters preceding or succeeding a particular string.
 
-![condition](./static/chaosguard-concepts/chaos-studio-condition.png)
+	![what](./static/configure-chaosguard/condition-what.png)
+
+* **WHERE** clause describes the name of the Kubernetes infrastructure where you can apply the condition. 
+
+	![where](./static/configure-chaosguard/condition-where.png)
+
+* **WHICH** clause describes the namespace and the app label in which you can apply the condition. You can have more than one namespace and app label associated with a condition.
+
+	![which](./static/configure-chaosguard/condition-which.png)
+
+* **USING** clause describes the service account under which you apply the condition. You can have more than one service account configured for a condition.
+
+	![using](./static/configure-chaosguard/condition-using.png)
 
 :::tip 
 The service account refers to the Kubernetes or Openshift service account. This account is backed by a role (or ClusterRole) and is associated with a native or third-party security policy or admission controller within the cluster, such as PodSecurityPolicy (PSP), SecurityContextConstraint (SCC), Kyverno, OPA Gatekeeper, etc.
@@ -45,3 +57,5 @@ The security evaluation step iterates over every active (or enabled) rule for ev
 
 ![flow-chart](./static/chaosguard-concepts/flow-chart-chaosguard.png)
 
+## Next steps
+* [Configuring ChaosGuard](./configuring-chaosguard)

@@ -23,6 +23,51 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## February 2024
+
+<!-- 2024-02-07 -->
+
+### Version 1.83.1 
+
+#### Enhancements
+
+- You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
+
+  ![Security override in Security Tests](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-override-in-security-tests.png)
+
+  This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override. 
+  
+  To enable this feature, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step ingests and processes the relevant data for issues with overridden severities.   
+
+  <Tabs>
+     <TabItem value="Visual" label="Visual" default>
+
+     ![Add ingest_tool_severity to Snyk step](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-add-setting-in-visual-editor.png)
+
+    </TabItem>
+  
+    <TabItem value="YAML" label="YAML">
+      ``` yaml
+      - step:
+          type: Snyk
+          spec:
+            settings:
+              ingest_tool_severity: "true"
+      ```
+
+    </TabItem>
+    </Tabs>
+
+
+- The SonarQube integration includes better support for orchestrated branch scanning with SonarQube Enterprise. (STO-6840)
+  - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the step.
+  - With this enhancement, the orchestration step always downloads results for the branch specified in the step.
+
+- Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
+
+#### Fixed issue
+
+- Fixed a UI issue where the Exemptions page would show the incorrect severity for an issue if that severity was overridden after the original scan. (STO-7069)
 
 
 ## January 2024 

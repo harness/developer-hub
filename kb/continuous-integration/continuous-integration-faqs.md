@@ -267,17 +267,13 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
-### When we run the build in Harness cloud, which delegate will be used? Will it be using a delegate that is running in the local infra or the delegate will be used for cloud run is also hosted in Harness?
+### When I run a build on Harness cloud, which delegate is used? Do I need to install a delegate to use Harness Cloud?
 
-When the build is running on Harness cloud,  a delegate that is hosted in Harness cloud will be used
+Harness Cloud builds use a delegate hosted in the Harness Cloud runner. You don't need to install a delegate in your local infrastructure to use Harness Cloud.
 
-### Do I need to keep a delagate running in our local infrastructure, if Im only running the build in Harness cloud?
+### Can I use Harness Cloud run CD steps/stages?
 
-You wouldn't need a delegate running in local infra if you are only running the build on Harness cloud
-
-### Can I run CD steps/stages in Harness cloud in the same way how we can run the CI steps/stages in Harnes cloud?
-
-Running CD steps/stages in Harness cloud is not currently supported
+No. Currently, you can't use Harness Cloud build infrastructure to run CD steps or stages. Currently, Harness Cloud is specific to Harness CI.
 
 ## Kubernetes clusters
 
@@ -407,11 +403,11 @@ Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs
 
 Use single replica delegates for tasks that require the same instance, and use a delegate selector by delegate name. The tradeoff is that you might have to compromise on your delegates' high availability.
 
-### Delegate is not able to connect to the created build farm
+### Delegate is unable to connect to the created build farm
 
 If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
 
-If the delegate is not able to connect to the created build farm with [Istio MTLS STRICT mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode), and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
+If the delegate is unable to connect to the created build farm with [Istio MTLS STRICT mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode), and you are seeing that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`. This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready.
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
@@ -430,18 +426,6 @@ Yes, the build pod is cleaned up after stage execution, regardless of whether th
 ### How do I know if the pod cleanup task fails?
 
 To help identify pods that aren't cleaned up after a build, pod deletion logs include details such as the cluster endpoint targeted for deletion. If a pod can't be located for cleanup, then the logs include the pod identifier, namespace, and API endpoint response from the pod deletion API. You can find logs in the [Build details](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds#build-details).
-
-### How does the isto proxy config "holdApplicationUntilProxyStarts" adding a delay in the application start?
-
-When we set set ```holdApplicationUntilProxyStarts``` to ```true``` it causes the sidecar injector to inject the sidecar at the start of the pod’s container list, and configures it to block the start of all other containers until the proxy is ready
-
-### How to configure the istio proxy config "holdApplicationUntilProxyStarts" for a pod?
-
-This can be added as a pod annotation ```proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'```
-
-### Why the dind build is failing with OOM error even after increasing the memory of the run step where we run the docker build command?
-
-When we run the docker build command in a dind setup, the build will be executed on the dind container. Hence you would need to increase the memory for the dind background step to fix the OOM error during build
 
 ## Self-signed certificates
 
@@ -630,6 +614,72 @@ pipeline:
           type: branch
           spec:
             branch: main
+```
+
+</details>
+
+### Concatenated variable values in PowerShell scripts print to multiple lines
+
+If your PowerShell script (in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings)) echoes a stage variable that has a concatenated value that includes a [`ToString`](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.psobject.tostring) representation of a PowerShell object (such as the result of `Get-Date`), this output might unexpectedly print to multiple lines in the build logs.
+
+To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values. Expand the sections below to learn more about the cause and solution for this issue.
+
+<details>
+<summary>What causes unexpected multiline output from PowerShell scripts?</summary>
+
+For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](https://developer.harness.io//docs/platform/variables-and-expressions/runtime-inputs/#expressions) into a single expression, including the `ToString` value.
+
+```yaml
+        variables:
+          - name: DATE_FORMATTED ## This variable's value is 'ToString' output.
+            type: String
+            description: ""
+            required: false
+            value: (Get-Date).ToString("yyyy.MMdd")
+          - name: BUILD_VAR ## This variable's value concatenates the execution ID, the sequence ID, and the value of DATE_FORMATTED.
+            type: String
+            description: ""
+            required: false
+            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
+```
+
+When a PowerShell script calls the concatenated variable, such as `echo <+pipeline.stages.test.variables.BUILD_VAR>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
+
+</details>
+
+<details>
+<summary>How do I fix unexpected multiline output from PowerShell scripts?</summary>
+
+To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.
+
+For example, here are the two stage variables from the previous example without the `ToString` value in the concatenated expression.
+
+```yaml
+        variables:
+          - name: DATE_FORMATTED ## This variable is unchanged.
+            type: String
+            description: ""
+            required: false
+            value: (Get-Date).ToString("yyyy.MMdd")
+          - name: BUILD_VAR ## This variable's value concatenates only the execution ID and sequence ID. It no longer includes DATE_FORMATTED.
+            type: String
+            description: ""
+            required: false
+            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>>
+```
+
+In the `Run` step's PowerShell script, call the `ToString` value separately and then "manually concatenate" it onto the concatenated expression. For example:
+
+```yaml
+              - step:
+                  identifier: echo
+                  type: Run
+                  name: echo
+                  spec:
+                    shell: Powershell
+                    command: |- ## DATE_FORMATTED is resolved separately and then appended to BUILD_VAR.
+                      $val = <+stage.variables.DATE_FORMATTED>
+                      echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
 </details>
@@ -980,7 +1030,7 @@ To do this, you can:
    ```
 
 2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#output-variables) from the Run step.
-3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
+3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#build-arguments) or `docker build` commands executed in a Run step.
 
 ### Where do I store Maven project settings.xml in Harness CI?
 
@@ -1027,7 +1077,7 @@ For more information, go to:
 
 ### Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?
 
-Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#set-plugin-runtime-flags) on any Build and Push step.
+Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags) on any Build and Push step.
 
 ### Can I run Build and Push steps as non-root? Does kaniko support non-root users?
 
@@ -1057,7 +1107,7 @@ Instead, you need to:
    DOCKER_BUILDKIT=1 docker build -t IMAGE_NAME:TAG .
    ```
 
-### Is there a way to use the newer version of kaniko?
+### Is there a way to use a newer or older version of kaniko?
 
 Yes, you can update the tag for the kaniko image that Harness uses, as explained in [Harness CI images - Specify the Harness CI images used in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines).
 
@@ -1071,11 +1121,11 @@ Make sure your Docker file is configured in least- to most-often changed. Make s
 
 ### Where does the Build and Push to ECR step pull the base images specified in the Dockerfile?
 
-By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
+By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
 
 ### How can I configure the Build and Push to ECR step to pull base images from a different container registry or my internal container registry?
 
-Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting.
+Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings#base-image-connector) setting.
 
 ### Build and Push to ECR step fails with error building image, failed to execute command, exec format error
 
@@ -1090,6 +1140,10 @@ Go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster)
 ### Where does the Build and Push step expect the Dockerfile to be?
 
 The Dockerfile is assumed to be in the root folder of the codebase. You can use the **Dockerfile** setting in a Build and Push step to specify a different path to your Dockerfile.
+
+### Can I use Harness expressions in my Dockerfile?
+
+No. [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) aren't supported in Dockerfiles.
 
 ### Why isn't the Build and Push step parsing the syntax in my Dockerfile?
 
@@ -1114,10 +1168,6 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 ### Build and Push to Docker fails with kaniko container runtime error
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
-
-### Can I use Harness expressions in the dockerfile which is being used to perform the build?
-
-No, Harness expressions are not supported in the dockerfile
 
 ## Upload artifacts
 
@@ -1147,31 +1197,31 @@ Yes. Go to [Trim parent folder name when uploading to S3](./articles/Trimming-pa
 
 ### Connector errors with Upload Artifacts to S3 step.
 
-There are a variety of potential causes for AWS connector errors due to specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+There are a variety of potential causes for AWS connector errors due to specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#aws-connector).
 
 ### Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?
 
-Yes, but there are specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+Yes, but there are specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#aws-connector).
 
 ### Does the Upload Artifacts to GCS step support GCP connectors that inherit delegate credentials?
 
-No. Currenthly, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
+No. Currently, the [Upload Artifacts to GCS step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings) doesn't support GCP connectors that inherit delegate credentials.
 
 ### Upload Artifacts to JFrog step throws certificate signed by unknown authority
 
-If you get a `certificate signed by unknown authority` error with the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog), make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
+If you get a `certificate signed by unknown authority` error with the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog), make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
 
 ### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
 
 ### mkdir permission denied when running Upload Artifacts to JFrog as non-root
 
-With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
 
 ### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 
-These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
+These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
 ## Test reports
 
@@ -1401,6 +1451,10 @@ Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-ca
 This typically indicates that the DinD Background step doesn't have sufficient resources. Try modifying the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
 
 You can also [add a parallel Run step to monitor and help debug the Background step](./articles/parallel-step-for-logging). For example, in this case it would help to use the Run step to monitor resource consumption by the Background step.
+
+### My DinD build fails with an Out Of Memory error, but I increased the memory and CPU limit on the Run step that runs my docker build command
+
+If you run [Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage), and your `docker build` commands fail due to OOM errors, you need to increase the memory and CPU limit for the Background step. While the `docker build` command can be in a Run step or a Build and Push step, the build executes on the DinD container, which is the Background step running DinD. Therefore, you need to increase the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#set-container-resources).
 
 ## Plugins and integrations
 

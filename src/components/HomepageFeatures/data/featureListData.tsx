@@ -95,6 +95,19 @@ export const featureList: CardItem[] = [
     link: "tutorials/internal-developer-portal",
   },
   {
+    title: "Measure Developer Efficiency",
+    module: MODULES.sei,
+    icon: "img/icon_sei.svg",
+    description: (
+      <>
+        Make data-driven decisions that improve engineering productivity, efficiency, 
+        alignment, planning, and execution.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: "tutorials/software-engineering-insights",
+  },
+  {
     title: "Administer Harness Platform",
     module: MODULES.platform,
     icon: "img/logo.svg",

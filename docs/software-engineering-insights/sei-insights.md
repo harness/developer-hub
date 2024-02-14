@@ -10,17 +10,18 @@ This topic explains how to create and view Insights. For information about confi
 
 ## View Insights
 
-The primary way to access Insights is through the **Project** tab.
+The primary way to access Insights is through the **Insights** tab.
 
 1. Log in to the Harness Platform and go to the SEI module.
-2. Select the **Project** tab on the navigation menu, and select a **Collection Category**.
-3. Select a **Collection**.
+2. Go the **Project** scope and select your project.
+3. Select the **Insights** tab on the navigation menu, and select a **Collection Category**.
+4. Select a **Collection**.
 
-![](./static/select-collection.png)
+![](./static/select-collection-category.png)
 
 4. Select the **Insight** from the available list.
 
-![](./static/select-insighhts.png)
+![](./static/select-insight.png)
 
    Select **Manage Insights** to view all the Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
 

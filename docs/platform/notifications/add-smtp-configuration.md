@@ -64,7 +64,7 @@ Click **Continue**.
 
 ### Step 4: Delegate Setup
 
-In **Delegates Setup**, use [**Selectors**](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
+In **Delegates Setup**, use [**Selectors**](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
 
 ![](./static/smtp-delegate.png)
 

@@ -12,8 +12,8 @@ This guide outlines a set of best practices to utilize Harness templates more ef
 For more information on templates, go to:
 
 - [Templates overview](/docs/platform/templates/template).
-- [Best practices and guidelines for templates](/docs/platform/Templates/templates-best-practices).
-- [Use a template](/docs/platform/Templates/use-a-template).
+- [Best practices and guidelines for templates](/docs/platform/templates/templates-best-practices).
+- [Use a template](/docs/platform/templates/use-a-template).
 
 ## Variables with templates
 
@@ -224,7 +224,7 @@ For details on advanced settings, go to:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings).
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview).
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
 ## Versioning
 

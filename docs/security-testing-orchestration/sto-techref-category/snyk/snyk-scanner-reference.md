@@ -5,16 +5,29 @@ sidebar_label: Snyk scanner reference
 sidebar_position: 10
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Harness STO supports the following scan types for the following Snyk products:
-* Snyk Open Source — Orchestration and Ingestion 
-* Snyk Code — Ingestion 
-* Snyk Container — Ingestion 
-* Snyk infrastructure as Code — Ingestion is in BETA
 
-For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans.md).
+Harness STO supports the following scan modes for the following Snyk products:
+- Snyk Open Source
+  - [Snyk Open Source — orchestration mode](./snyk-scans.md#snyk-open-source-orchestration-example)
+  - [Snyk Open Source — ingestion mode](./snyk-scans.md#snyk-open-source-ingestion-example)
+- Snyk Code 
+  - [Snyk Code — ingestion mode](snyk-scans.md#snyk-code-ingestion-example)
+- Snyk Container
+  - [Snyk Container — ingestion mode](./snyk-scans.md#snyk-container-ingestion-example)
+- Snyk infrastructure as Code (currently in beta)
+  - [Snyk infrastructure as Code — ingestion mode](./snyk-scans.md#snyk-infrastructure-as-code-ingestion-example)
+
 
 ## Important notes for running Snyk scans in STO
+
+<!--
+
+You can configure the Snyk step to [show the original CVSS score](#show-the-original-cvss-score-when-snyk-overrode-it) when a Snyk security policy overrode the score for an issue. 
+
+-->
 
 
 ### Docker-in-Docker requirements
@@ -126,45 +139,69 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 #### Access Token (_Orchestration scans_)
 
-
 import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
-
-
 
 <StoSettingAuthAccessToken />
 
-x### Ingestion File
 
+### Ingestion File
 
 import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
-
-
 <StoSettingIngestionFile  />
 
-### Log Level, CLI flags, and Fail on Severity
+### Additional CLI flags
 
-<a name="log-level"></a>
+You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with specific command-line arguments.   
 
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
-
-
 
 <StoSettingLogLevel />
 
 
-
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
 
+
+### Settings
+
+You can use this field to run the Snyk scan with additional options. 
+
+
+
+### Show original CVSS scores overridden by Snyk security policies 
+
+You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
+
+![Security override in Security Tests](../static/sto-7041-override-in-security-tests.png)
+
+This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
+  
+To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
+
+  <Tabs>
+     <TabItem value="Visual" label="Visual" default>
+
+     ![Add ingest_tool_severity to Snyk step](../static/sto-7041-add-setting-in-visual-editor.png)
+
+    </TabItem>
+  
+    <TabItem value="YAML" label="YAML">
+      ``` yaml
+      - step:
+          type: Snyk
+          spec:
+            settings:
+              ingest_tool_severity: "true"
+      ```
+
+    </TabItem>
+    </Tabs>
 
 
 ### Additional Configuration
@@ -184,7 +221,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 

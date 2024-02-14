@@ -201,6 +201,10 @@
         border-color: var(--mod-ccm-200);
       }
 
+      &.code:hover {
+        border-color: var(--mod-code-200);
+      }
+
       &.ff:hover {
         border-color: var(--mod-ff-200);
       }

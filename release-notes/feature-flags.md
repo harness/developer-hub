@@ -10,12 +10,57 @@ sidebar_position: 11
 
 Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: January 26th 2024
+### Latest Updated: February 13th 2024
+
+## February 2024
+
+### Android SDK
+
+#### Version 1.2.5
+
+ - We've updated the `README` with instructions on how to add a ProGuard rule for Release builds. (FFM-10499)
+ - Now doesn't throw the `RejectedExecutionException` inside the `runRescheduleThreadWrapEx()`.
+
+### Flutter SDK
+
+#### Version 2.1.3
+
+ - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
+
+### iOS SDK
+
+#### Version 1.2.0
+
+ - Resolved an issue where the `AnalyticsManager` class was causing crashes. For context, this class uses a dictionary and does not sanitize the thread when reading/writing which was causing crashes due to race conditions.
+
+### .NET SDK
+
+#### Version 1.4.3
+
+ - Doesn't make network requests from the Evaluation thread. (FFM-10645)
+ - The cache buffer size is configurable. 
+ - We have fixed an issue where the `Disabling metrics` acion would not disable metrics in all scenarios. 
+
+#### Version 1.4.2
+
+ - We have resolved important issues which prevented evaluation metrics from growing exponentially in memory and flushed frequently, while preserving complete metrics accuracy. (FFM-10627)
+ - Bumped `System.IdentityModel.Tokens.Jwt` from 6.15.0 to 6.34.0.
+ - Wiremock has been upgraded. (FFM-10410)
+ - `Analytics` has now been separated into `EvaluationAnalytics` and `TargetAnalytics`. (FFM-10602)
+
+### React SDK
+
+#### Version 1.8.1
+
+ - We've fixed an issue where the new `useFeatureFlagsClient` hook and the `withFeatureFlagsClient` HOC were not correctly exported, making it more complex to import into your application (FFM-10591)
+ 
+#### Version 1.8.0
+
+- We've added a new `useFeatureFlagsClient` hook and `withFeatureFlagsClient` HOC to allow easy access to the instance of the Javascript Client SDK which the React Client SDK uses under the hood (FFM-10522)
 
 ## January 2024
 
@@ -27,6 +72,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - It now includes a synchronous initialization option.
 
 ### Android SDK
+
+#### Version 1.2.4
+
+ - Fixed the null pointer when calling the `initialize()` function. (FFM-10499)
 
 #### Version 1.2.3
 
@@ -64,9 +113,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Javascript SDK
 
+#### Version 1.23.0
+
+ - We've added defensive code around the `BTOA` usage. (FFM-10499)
+
 #### Version 1.22.0
 
-- When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
+ - When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
 
 ### Node.js SDK
 
@@ -135,7 +188,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.0.3
 
-The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
+ - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
 We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
 

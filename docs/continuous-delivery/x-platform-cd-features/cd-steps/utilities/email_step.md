@@ -15,7 +15,7 @@ The Email step has the following features:
 - Send emails during pipeline executions.
 - You can use the Harness SMTP Server included with your Harness account.
 - Use your own SMTP server by adding it to Harness. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
-- You can use this step as a [step template](/docs/platform/Templates/run-step-template-quickstart) or as part of a [stage template](/docs/platform/Templates/add-a-stage-template).
+- You can use this step as a [step template](/docs/platform/templates/run-step-template-quickstart) or as part of a [stage template](/docs/platform/templates/add-a-stage-template).
 - You can manage this step's configuration via [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
 - You can send emails to Harness users and users outside of Harness using the SMTP server in your Harness
 
@@ -101,7 +101,7 @@ In **Advanced**, you can use the following options:
 - [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 - [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 - [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-- [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+- [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Options
 

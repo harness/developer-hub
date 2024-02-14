@@ -2,10 +2,6 @@
 title: IDP Stage
 description: Overview of IDP stage and the steps associated with it
 sidebar_position: 2
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 
@@ -321,7 +317,7 @@ These output variable could be viewed under the output tab in
 
 ### 4. Create Catalog
 
-This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software componenet we have created in previous step in our IDP catalog. 
+This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software component we have created in previous step in our IDP catalog. 
 
 ![](./static/create-catalog.png)
 
@@ -514,6 +510,12 @@ These output variable could be viewed under the output tab in
 
 ### 7. Slack Notify
 
+:::warning
+
+There has been some recent upgrades to this step and this is dependent on the NG-UI service release, which has a different release cadence than that of IDP, until then this feature wouldn't functions as desired. We expect the dependent service releases to happen in the following week. 
+
+:::
+
 This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
 
@@ -577,10 +579,14 @@ The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/t
 
 1. chat:write
 2. chat:write.public
+3. users:read.email
+4. users:read
 
 ![](./static/slack-auth.png)
 
 Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#scopes). 
+
+1. Now create a new secret and add this as a **Secret** under the **Slack Secret Key**.
 
 ## Final Pipeline using Developer Portal Stage
 

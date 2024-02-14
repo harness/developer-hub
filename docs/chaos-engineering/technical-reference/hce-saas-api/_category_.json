@@ -1,0 +1,13 @@
+{
+  "position": 3,
+  "label": "HCE SAAS API",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"HCE SAAS API"
+   },
+  "customProps": {
+    "description": "Simplify executing complex API commands"
+  }
+}
