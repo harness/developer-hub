@@ -133,7 +133,7 @@ Here's an example of the results of a download command:
 
 :::note
 
-Since download artifact will prepare the script to be run on host instance using `curl` in case of `Bash` and `Invoke-WebRequest` for `PowerShell`, it is recomended that the configured artifact file path contain no spaces. 
+Downloading artifact prepares the script to run on host instances using `curl`. In case of `Bash` and `Invoke-WebRequest` for `PowerShell`, the configured artifact file path must not contain any spaces. 
 
 :::
 
