@@ -670,6 +670,23 @@ For Microsoft Azure or AWS:
 * `<+instance.host.privateIp>`
 * `<+instance.host.publicIp>`
 
+### Rollback
+Harness will restore back the state of deployment to previous pipeline successfull stage execution based on `serivce`, `enviroment` and `infrastucture` details.
+Harness will keep a record on the artifact version that was successfully deployed during previous successfull executions - This would mean that if the rollback step contains Copy Artifact command unit, Harness will copy the last successfull version of the artifact (Deployed via Harness) to remote host.
+
+#### First time deployment
+In case if first pipeline execution fails (regardless of stage) - Harness will skip the rollback since there is no record of any successfull pipeline execution.
+
+#### N+1 time deployment
+In case of stage failures in subsequent executions ((Assume the service, environment, infrastructure didn't changed in corresponding stage)) - Harness will initiate the rollback to the previous successfull pipeline with stage execution. Previous pipeline execution needs not to be successfull for all stages, it will match the successfull stage regardless of the pipeline execution status.
+
+:::note
+
+* If any of the `service`, `environemnt`, `infrastructure` details were changed in stage, Harness won't consider any previous successfull pipeline executions for rollback, this is treated as completely different deployment.
+* In case of multiple stages referencing same `service`, `environment` and `infrastructure` details, Harness will rollback the deployemnt to last successfull pipeline with stage execution that shared same `service`, `environment` and `infrastructure`.
+
+:::
+
  - For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 
 
