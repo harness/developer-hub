@@ -53,8 +53,8 @@ container:
 ```
 
 :::info note
-* If you use a public image or provide the `imagePullSecret` while using a private registry, the Argo workflow controller (v3.4.x) finds the entry-point for litmus-checker.
-* If you use an image from an internal registry without providing `imagePullSecret`, the workflow facilitates a default command which you can use.
+* If you use a public image or provide the `imagePullSecret` while using a private registry, the Argo workflow controller (v3.4.x) finds the entry point for litmus-checker.
+* If you use an image from an internal registry without providing `imagePullSecret`, the workflow facilitates a default command that you can use to determine the entry point of litmus-checker.
 :::
 
 </TabItem>
