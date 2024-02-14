@@ -6,6 +6,8 @@ sidebar_position: 3
 
 ## when Condition vs Conditional Execution
 It is important to understand the difference between using ``when`` condition and conditional execution in the pipeline while using looping strategy. 
+
+
 **Let's consider an example of a pipeline using conditional execution while using matrix in a stage:-**
 ```yaml
 pipeline:
