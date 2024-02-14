@@ -1,7 +1,7 @@
 ---
 title: Example Kubernetes manifests using Go templating
 description: Use Go templating and variables in Kubernetes manifests.
-sidebar_position: 7
+sidebar_position: 9
 helpdocs_topic_id: qvlmr4plcp
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
