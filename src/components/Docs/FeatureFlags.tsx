@@ -15,7 +15,7 @@ export default function FF() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ff.svg`} />
-            <h1>Feature Flags Documentation</h1>
+            <h1>Feature Flags</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb/feature-flags">

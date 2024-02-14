@@ -15,7 +15,7 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_sei.svg`} />
-            <h1>Software Engineering Insights Documentation</h1>
+            <h1>Software Engineering Insights</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/release-notes/software-engineering-insights">

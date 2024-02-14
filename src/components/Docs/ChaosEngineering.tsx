@@ -15,7 +15,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ce.svg`} />
-            <h1>Chaos Engineering Documentation</h1>
+            <h1>Chaos Engineering</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/chaos-experiments">

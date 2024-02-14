@@ -15,11 +15,11 @@ import {
           "",
         list: [
           {
-            title: "CET tutorials",
+            title: "What's supported",
             module: MODULES.cet,
             description:
-              "Dive in with these hands-on tutorials.",
-            link: "/tutorials/error-tracking",
+              "Supported platforms and technologies",
+            link: "/docs/continuous-error-tracking/whats-supported",
           },
           {
             title: "Overview",

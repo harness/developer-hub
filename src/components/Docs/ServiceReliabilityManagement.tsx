@@ -15,7 +15,7 @@ export default function SRM() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_srm.svg`} />
-            <h1>Service Reliability Management Documentation</h1>
+            <h1>Service Reliability Management</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/service-reliability">

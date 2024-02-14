@@ -72,16 +72,6 @@ export const featureList: CardItem[] = [
     link: "tutorials/secure-supply-chain",
   },
   {
-    title: "Track Errors in Code",
-    module: MODULES.cet,
-    icon: "img/icon_cet.svg",
-    description: (
-      <>Find & fix issues in minutes with deep visibility into code.</>
-    ),
-    type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "tutorials/error-tracking",
-  },
-  {
     title: "Improve Developer Productivity",
     module: MODULES.idp,
     icon: "img/icon_idp.svg",

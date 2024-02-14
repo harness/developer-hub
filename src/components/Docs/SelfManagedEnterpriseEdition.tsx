@@ -15,7 +15,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_harness.svg`} />
-            <h1>Self-Managed Enterprise Edition Documentation</h1>
+            <h1>Self-Managed Enterprise Edition</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb">

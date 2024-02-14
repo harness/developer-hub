@@ -15,7 +15,7 @@ export default function SSCA() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ssca.svg`} />
-            <h1>Software Supply Chain Assurance Documentation</h1>
+            <h1>Software Supply Chain Assurance</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/secure-supply-chain">

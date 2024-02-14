@@ -15,11 +15,11 @@ export default function PL() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_harness.svg`} />
-            <h1>Platform Documentation</h1>
+            <h1>Harness Platform</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb/platform">
-              <button className={styles.btn}>  
+              <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Knowledge Base

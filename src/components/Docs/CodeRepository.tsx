@@ -15,7 +15,7 @@ export default function Code() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_code.svg`} />
-            <h1>Code Repository Documentation</h1>
+            <h1>Code Repository</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials">

@@ -147,11 +147,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Track Errors",
-                to: "tutorials/error-tracking",
-              },
-              {
-                // type: "doc",
                 label: "Manage Developer Portal",
                 to: "tutorials/internal-developer-portal",
               },
@@ -159,11 +154,6 @@ const config = {
                 // type: "doc",
                 label: "Manage Engineering Insights",
                 to: "tutorials/software-engineering-insights",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Platform",
-                to: "tutorials/platform",
               },
             ],
           },
