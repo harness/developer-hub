@@ -12,6 +12,6 @@ In addition to the reference documentation, there are a variety of tutorials ava
 
 - [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
 
-- [Build and set up a delegate with a minimal image type](/tutorials/platform/secure-delegate-default-to-minimal)
+- [Build and set up a delegate with a minimal image type](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 - [Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity](/tutorials/platform/gke-workload-identity)

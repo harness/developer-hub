@@ -59,20 +59,6 @@ export const PlatformList: CardItem[] = [
     link: "/tutorials/platform/gke-workload-identity",
   },
   {
-    title: "Move from default delegate to minimal delegate",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Secure the Harness Delegate upgrading the default image to the minimal image.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/platform/secure-delegate-default-to-minimal",
-  },
-  {
     title: "Manage secrets",
     module: MODULES.platform,
     icon: "img/logo.svg",
