@@ -334,7 +334,7 @@ For more information, go to [Run a step on multiple target instances](/docs/cont
 #### Use a custom label for repeat stages and steps
 You can use the keyword `nodeName` when specifying your repeat items to define your stage and step naming convention. Expressions are supported, so you can customize the name as required. For example:
 
-##### Customizing Stage name:
+##### Customize the stage name:
 ```yaml
   tags: {}
   stages:
@@ -371,7 +371,7 @@ You can use the keyword `nodeName` when specifying your repeat items to define y
 ```
 ![](./static/looping_name_example_1.png)
 
-##### Customizing step name:
+##### Customize the step name:
 
 ```yaml
 tags: {}
