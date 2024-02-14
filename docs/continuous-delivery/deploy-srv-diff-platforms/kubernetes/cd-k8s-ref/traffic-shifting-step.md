@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Traffic Shifting Step
-description: This topic describes how to route traffic in pipelines using the traffic shifting step.
+title: Kubernetes Traffic Routing Step
+description: This topic describes how to route traffic in pipelines using the traffic routing step.
 sidebar_position: 11
 ---
 
