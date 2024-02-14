@@ -97,13 +97,14 @@ The following deprecated API endpoints are longer supported:
 
    The code has been updated to provide accurate error messages and the current status code when the provided identifiers are incorrect or absent, enhancing clarity and user guidance.
 
+- Delegates were restarting in the middle of execution, disrupting ongoing tasks. (PL-46793)
+
+   Implemented a fix to wait for the task response to complete before marking it as expired or failed during the delegate's unregistering process, preventing premature restarts.
+
 - The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595) (ZD-57053)
    
    The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
 
-- Delegates were restarting in the middle of execution, disrupting ongoing tasks. (PL-46793)
-
-   Implemented a fix to wait for the task response to complete before marking it as expired or failed during the delegate's unregistering process, preventing premature restarts.
 
 
 ### Version 1.24.7 <!--  February 12, 2024 -->
