@@ -4,15 +4,23 @@ In your Harness account, go to **Account Settings** to view which Harness module
 
 <DocImage path={require('/docs/platform/get-started/static/pl-account-overview.png')} />
 
-Based on your environment, you will see the new subscription page or the legacy page.
+#### Developer 360 Subscriptions page
 
-#### New page
+If you purchased your module with a Developer 360 subscription, the Subscriptions page displays the the developer license count (**Developers**), as well as the consumption entitlement, which is **Services** for CD.
+
+:::info
+
+Fields vary by module, based on the licensing unit of the module.
+
+:::
 
 <!-- ![](/docs/platform/get-started/static/subscriptions-new.png) -->
 
 <DocImage path={require('/docs/platform/get-started/static/subscriptions-new.png')} />
 
-#### Legacy page
+#### Non-Developer 360 Subscriptions page
+
+If you didn't purchase your module with a Developer 360 subscription, this page displays the **License Count** for your module-specific license, which is **CD Services** or **CD Service Instances** for CD.
 
 <!-- ![](/docs/platform/get-started/static/subscriptions-legacy.png) -->
 
