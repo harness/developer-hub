@@ -60,12 +60,13 @@
           list-style: none;
           padding: 8px 16px;
           margin: 0;
-          color: var(--gray-700);
+          color: var(--ifm-color-content);
           font-weight: 600;
           cursor: pointer;
           border-radius: 8px 8px 0 0;
           &:hover {
             background-color: var(--gray-50);
+            color: var(--ifm-color-content-invert);
           }
           &.active {
             font-weight: 700;
@@ -234,7 +235,7 @@
         font-weight: 500;
         font-size: 24px;
         line-height: 32px;
-        color: #0b0b0d;
+        color: var(--ifm-color-content);
         &:hover {
           color: var(--primary);
         }
@@ -245,7 +246,7 @@
         line-height: 28px;
         /* or 175% */
         /* Light/Text/Primary */
-        color: #0b0b0d;
+        color: var(--ifm-color-content);
       }
       margin-top: 32px;
       .availableCertsBox {
