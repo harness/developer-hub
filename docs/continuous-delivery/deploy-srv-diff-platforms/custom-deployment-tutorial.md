@@ -2247,7 +2247,7 @@ Completed service step
 **Version**: 1.0
 **Description**: This deployment template will help users deploy services using AWS VMSS.
 
-#### Azure VMS Deployment Template
+#### Azure VMSS Deployment Template
 
 ```yaml
 template:
