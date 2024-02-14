@@ -1,13 +1,14 @@
 ---
-sidebar_position: 1
+title: Create a Sprint metrics Insight
 description: Learn how to create an Sprint metrics Insights on Harness SEI.
+sidebar_position: 2
+redirect_from:
+  - /tutorials/software-engineering-insights/sprint-metrics-insight
 ---
-
-# Create a Sprint metrics Insight
 
 Effective sprint planning and delivery are crucial for Agile teams to meet project goals and deliver value to stakeholders. Sprint metrics play a pivotal role in assessing and improving the team's performance.
 
-In this tutorial, we will explore how sprint metrics can help address common business problems and enhance the overall sprint planning and delivery process.
+In this tutorial, we will explore how sprint metrics can help address common business problems and enhance the overall sprint planning and delivery process. You'll learn how to create an Insight (i.e. Dashboard) with the most frequently used Sprint metrics report configurations to measure your team's contribution and activity across various sprint cycles.
 
 ## Sprint Metrics Overview
 
@@ -18,47 +19,47 @@ It allows you to look at what was planned to do (committed), what was actually c
 ## Prerequisites
 
 * Ensure that Harness SEI is enabled for your Account.
-* Complete setting up your [Projects and Collection](../../docs/software-engineering-insights/get-started/sei-onboarding-guide)
+* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
 * Setup and configure the Integrations for your Issue Management tool.
 
 ## Set up your project, integration and collection
 
-Begin by creating a project and collection. 
+Begin by creating a project and collection.
 
 1. In the sidebar of the Harness application, select the **SEI module** from the module selection.
-2. Select **Projects** and choose an existing project or create a new one. For information about creating a project, go to [Create organizations and projects](../../docs/platform/organizations-and-projects/projects-and-organizations).
+2. Select **Projects** and choose an existing project or create a new one. For information about creating a project, go to [Create organizations and projects](/docs/platform/organizations-and-projects/projects-and-organizations).
 
 :::info
-Note: A user can create multiple projects and can essentially be part of multiple projects.
+A user can create multiple projects and be part of multiple projects.
 :::
 
 Once your project is created, you can set up and map integrations as an admin and set up the collection hierarchy.
 
 ## Integration Mapping
 
-**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](../../docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
+**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
-1. Go to the **Integration Mapping** tab within the SEI module. 
-2. Click **Map Integrations** and select existing integrations or create new ones as needed. 
-3. Ensure you associate the integrations with your current project. 
-4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](../../docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) (Issue Management Tool).
+1. Go to the **Integration Mapping** tab within the SEI module.
+2. Click **Map Integrations** and select existing integrations or create new ones as needed.
+3. Ensure you associate the integrations with your current project.
+4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) (Issue Management Tool).
 
 :::info
-Note: You can also use [Azure DevOps integration](../../docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
+You can also use [Azure DevOps integration](../../docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
 :::
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new Jira integration, go to [Jira integration](../../docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira).
-* To create a new Azure DevOps integration, go to [Azure DevOps integration](../../docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops).
+* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira).
+* To create a new Azure DevOps integration, go to [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops).
 
 ## Create the Insight
 
-1. Select the **Collection** under which you want to associate the **Sprint Insight**. If you already have **Insights** in your project: 
-   1. Select any Insight. For instructions, go to [View Insights](../../docs/software-engineering-insights/sei-insights).
+1. Select the **Collection** under which you want to associate the **Sprint Insight**. If you already have **Insights** in your project:
+   1. Select any Insight. For instructions, go to [View Insights](/docs/software-engineering-insights/insights/sei-insights).
    2. In the header, select **All Insights**, and then select **Manage Insights**.
    3. Select **New Insight**.
-2. If you don’t have any Insight under the collection click on the **Associate Insight to this Collection** button.
+2. If you don't have any Insight under the collection click on the **Associate Insight to this Collection** button.
 
 ### Insight settings
 
@@ -74,17 +75,13 @@ Use these sprint metric reports to analyze sprint and planning metrics allowing 
 
 Engineering managers usually use these three key sprint metrics to get a holistic picture of the sprint productiviy:
 
-1. [Commit Points](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#commit-points) (The number of story points you plan to complete during the sprint)
-2. [Commit Done Points](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
-3. [Creep Points](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
+1. [Commit Points](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#commit-points) (The number of story points you plan to complete during the sprint)
+2. [Commit Done Points](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
+3. [Creep Points](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of these metrics to help engineering managers understand how the respective sprint metrics has evolved throughout various sprint cycles.
 
-<img
-  src={require('./static/sprint-trend.png').default}
-  alt="Example banner" height="100%" width="100%" border="1"
-/>
-<br/><br/>
+![](./static/sprint-trend.png)
 
 To add the **Sprint Metrics Trend Report** widget to Insights:
 
@@ -101,7 +98,7 @@ To add the **Sprint Metrics Trend Report** widget to Insights:
    3. **Issue Management System:** Select the integration for your Issue Management System.
 9. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-For more information,go to [Sprint Metric Trend Report](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).
+For more information,go to [Sprint Metric Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).
 
 ### Issue Hygiene Report
 
@@ -111,10 +108,7 @@ But what happens when there are issues with the issues? That's where the hygiene
 
 You can use this report to measure and track the hygiene score for the previous sprint or the active sprints.
 
-<img
-  src={require('./static/active-sprint-hygiene.png').default}
-  alt="Example banner" height="100%" width="100%" border="1"
-/>
+![](./static/active-sprint-hygiene.png)
 
 To add the **Issue Hygiene Report** widget to Insights:
 
@@ -125,19 +119,14 @@ To add the **Issue Hygiene Report** widget to Insights:
 5. Under the **Weights** tab define the number that should be contributed for all the Issue Hygiene categories on a scale of 1-100.
 6. On the **Settings** tab, customize the report configuration:
    1. **Hide Score:** You can enable / disable the field to hide the overall Hygiene score on the report.
-   2. **Issue Management System:** Select the integration for your Issue Management System. 
+   2. **Issue Management System:** Select the integration for your Issue Management System.
 7. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
 ### Issues Report
 
 The Issues Report is used to examine metrics related to issues in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
 
-<img
-  src={require('./static/issues-report.png').default}
-  alt="Example banner" height="100%" width="100%" border="1"
-/>
-
-<br/><br/>
+![](./static/issues-report.png)
 
 To add the **Issues Report** widget to Insights:
 
@@ -146,7 +135,7 @@ To add the **Issues Report** widget to Insights:
 3. Select attributes that you want to use to filter the data, and then select filter values and operators. Depending on the selected attribute, you can select one or more filter values, select values to exclude, or use pattern matching rather than strict values. If you add multiple filters, they are inherently combined by `AND` operators.
    1. **Dependency Analysis:** Use this option to include dependent or linked issues in the data.
    2. **Status:** Select specific issue statuses to include in the data
-   3. **Projects:** Select specific projects to include in the data 
+   3. **Projects:** Select specific projects to include in the data
 4. Choose which sprints to consider for the calculation i.e. **Includes active sprints only** or **Filter by last sprint**. Note that you can choose specific sprints for the calculation
 5. Select a metric to use for the Y-axis. You can select either `Number of Tickets` or `Sum of Story Points`.
 6. Configure the settings under the **Aggregation** tab:
@@ -160,18 +149,13 @@ To add the **Issues Report** widget to Insights:
    5. Select the date format.
 8. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-To configure the widget for various other use cases, go to [Issues Report Use Cases](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
+To configure the widget for various other use cases, go to [Issues Report Use Cases](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
 
 ### Issue Resolution Time Report
 
 The Issue Resolution Time Report is a customizable bar graph that displays the number of tickets that were closed and the average time it took to close them based on their creation time.
 
-<img
-  src={require('./static/issue-resolution-time-report.png').default}
-  alt="Example banner" height="100%" width="100%" border="1"
-/>
-
-<br/><br/>
+![](./static/issue-resolution-time-report.png)
 
 To add the **Issue Resolution Time Report** widget to Insights:
 
@@ -182,20 +166,15 @@ To add the **Issue Resolution Time Report** widget to Insights:
 5. On the **Settings** tab, you can select the **Issue Management System** to use for this report. Available options are based on your configured SEI integrations. You can also select how you want to sort X-axis data, such as ascending or descending, and choose the maximum number of unique values to show on the X-axis.
 6. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-To configure the widget for various other use cases, go to [Issue Resolution Time Report Use Cases](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
+To configure the widget for various other use cases, go to [Issue Resolution Time Report Use Cases](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
 
-### Sprint Metrics Single Stat​
+### Sprint Metrics Single Stat
 
 The **Sprint Metrics Single Stat** widget presents a single sprint metric averaged over the selected time interval.
 
 For example, the Sprint Metrics Single Stat widget can help you use historical metrics for sprint prediction and performance assessment.
 
-<img
-  src={require('./static/sprint-single-stat.png').default}
-  alt="Example banner" height="120%" width="100%" border="1"
-/>
-
-<br/><br/>
+![](./static/sprint-single-stat.png)
 
 To add the **Sprint Metrics Single Stat Report** widget to Insights:
 
@@ -210,16 +189,9 @@ To add the **Sprint Metrics Single Stat Report** widget to Insights:
 * **Issue Management System:** Select the issue management system from which to pull data for the widget. Available systems depend on your configured integrations.
 * Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-### Other sprint metrics reports​
+### Other sprint metrics reports
 
-* [Sprit Metrics Percentage Trend Report](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#sprint-metrics-percentage-trend-report)
-* [Sprint Impact of Unestimated Tickets Report](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
-* [Sprint Goal Report](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
-* [Sprint Distribution Retrospective Report](../../docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
-
-## Conclusion
-
-In this tutorial, we have covered how to create an Insight (i.e. Dashboard) with the most frequently used Sprint metrics report configurations to measure your team's contribution and activity across various sprint cycles.
-
-For more detailed information and support, refer to the [Harness SEI documentation](https://developer.harness.io/docs/software-engineering-insights) and [community forums](https://developer.harness.io/community/index).
-
+* [Sprit Metrics Percentage Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#sprint-metrics-percentage-trend-report)
+* [Sprint Impact of Unestimated Tickets Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
+* [Sprint Goal Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
+* [Sprint Distribution Retrospective Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)

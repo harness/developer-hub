@@ -23,7 +23,7 @@ To start using SEI, configure the following:
 * [Collections](../sei-projects-and-collections/project-and-collection-overview.md)
 * [Integrations](../sei-integrations/sei-integrations-overview.md)
 * [Profiles](/docs/category/profiles)
-* [Insights](../sei-insights.md)
+* [Insights](../insights/sei-insights.md)
 * [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip

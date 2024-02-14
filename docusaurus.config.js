@@ -145,11 +145,6 @@ const config = {
                 label: "Manage Developer Portal",
                 to: "tutorials/internal-developer-portal",
               },
-              {
-                // type: "doc",
-                label: "Manage Engineering Insights",
-                to: "tutorials/software-engineering-insights",
-              },
             ],
           },
           {

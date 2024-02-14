@@ -27,9 +27,9 @@ Collection categories and Collections exist under their associated project; they
 
 ![](./static/projects.png)
 
-[Insights](../sei-insights.md) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
+[Insights](../insights/sei-insights.md) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
 
-On your [Insights](../sei-insights.md), widgets derive data from [integrations](/docs/category/integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/integrations) defined in the associated project.
+On your [Insights](../insights/sei-insights.md), widgets derive data from [integrations](/docs/category/integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/integrations) defined in the associated project.
 
 While you can create projects from within the SEI module, projects are part of the Harness Platform and can be associated with multiple modules. For information about configuring Harness projects, go to the Harness Platform documentation on [Organizations and Projects](/docs/category/organizations-and-projects).
 

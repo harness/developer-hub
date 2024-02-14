@@ -36,9 +36,7 @@ Review the following resources to learn about the features, components, and key 
 
 ## Create your first Harness SEI Insight
 
-Learn about the [insight creation process in Harness SEI](../sei-insights.md), and then create your own:
-
-* [Tutorial: Create an Sprint Metrics Insights on Harness SEI](../sei-insights.md)
+Learn about and create [Insights in Harness SEI](../insights/sei-insights.md).
 
 ## Propelo and Harness
 

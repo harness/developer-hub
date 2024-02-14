@@ -12,7 +12,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/software-engineering-insights/sprint-metrics-insight",
+    link: "/docs/software-engineering-insights/insights/sprint-metrics-insight",
   },
   {
     title: "How to create a DORA metrics Insight?",
@@ -22,7 +22,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/software-engineering-insights/dora-insight",
+    link: "/docs/software-engineering-insights/insights/dora-insight",
   },
   {
     title: "How to create a Developer metrics Insight?",
@@ -32,7 +32,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/software-engineering-insights/developer-insight",
+    link: "/docs/software-engineering-insights/insights/developer-insight",
   },
 ];
 
@@ -45,7 +45,7 @@ export const SEIList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/software-engineering-insights/sprint-metrics-insight",
+    link: "/docs/software-engineering-insights/insights/sprint-metrics-insight",
   },
   {
     title: "How to create a Trellis Scores Insight?",
@@ -55,7 +55,7 @@ export const SEIList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/software-engineering-insights/trellis-insight",
+    link: "/docs/software-engineering-insights/insights/trellis-insight",
   },
   {
     title: "How to create a Developer metrics Insight?",
@@ -65,7 +65,7 @@ export const SEIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/software-engineering-insights/developer-insight",
+    link: "/docs/software-engineering-insights/insights/developer-insight",
   },
   {
     title: "How to create a DORA metrics Insight?",
@@ -75,6 +75,6 @@ export const SEIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/software-engineering-insights/dora-insight",
+    link: "/docs/software-engineering-insights/insights/dora-insight",
   },
 ];

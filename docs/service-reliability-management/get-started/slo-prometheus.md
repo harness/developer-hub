@@ -26,7 +26,7 @@ The Harness Service Reliability Management module supports SLO Management. If yo
 
 This example uses [Prometheus](https://prometheus.io/), an open source monitoring solution, to intercept metrics from an example application. The Open Observability Group has an [example application](https://github.com/open-o11y/prometheus-sample-app) that can be deployed to Kubernetes that writes to Prometheus metrics.
 
-![Tutorial architecture](static/first-slo-tutorial/slo_overview.png)
+![Tutorial architecture](./static/first-slo-tutorial/slo_overview.png)
 
 ### Install Prometheus
 
@@ -51,11 +51,11 @@ With a NodePort, you access the Service deployed on the cluster via your browser
 
 To find your Kubernetes node's public (external) IP, run `kubectl get nodes -o wide`.
 
-![External IP](static/first-slo-tutorial/external_ip.png)
+![External IP](./static/first-slo-tutorial/external_ip.png)
 
 Then grab the NodePort by running `kubectl get svc -n prometheus`.
 
-![NodePort](static/first-slo-tutorial/node_port.png)
+![NodePort](./static/first-slo-tutorial/node_port.png)
 
 In this case, the `node_ip:nodeport` combo is `http://35.223.10.37:31796`.
 
@@ -63,7 +63,7 @@ In this case, the `node_ip:nodeport` combo is `http://35.223.10.37:31796`.
 If you are using a cloud rendition of Kubernetes e.g. EKS/GKE/AKS, by default your firewall might not allow for TCP traffic over NodePort range. Can open up specifically for each NodePort or give a range to cover all NodePorts; TCP ports 30000-32768.
 :::
 
-![Prom UI](static/first-slo-tutorial/prom_ui.png)
+![Prom UI](./static/first-slo-tutorial/prom_ui.png)
 
 Now you are ready to deploy an application that writes to Prometheus.
 
@@ -75,7 +75,7 @@ Following the [Open Observability Group's Sample Application](https://github.com
 Kubectl apply -f https://raw.githubusercontent.com/harness-apps/developer-hub-apps/main/applications/prometheus-sample-app/prometheus-sample-app-k8s-deployment.yaml
 ```
 
-![Sample Deploy](static/first-slo-tutorial/sample_deploy.png)
+![Sample Deploy](./static/first-slo-tutorial/sample_deploy.png)
 
 With the application installed, now you can explore some metrics with Prometheus then wire those metrics to Harness.
 
@@ -91,11 +91,11 @@ group by(__name__) ({__name__!=""})
 
 Running that query, you'll notice all four metric types are being written by the example application.
 
-![PromQL](static/first-slo-tutorial/promql.png)
+![PromQL](./static/first-slo-tutorial/promql.png)
 
 The `test_gauge0` metric is a good metric to take a look at. A [Gauge](https://prometheus.io/docs/concepts/metric_types/#gauge) in Prometheus is a metric that represents a singular numerical value. How the sample application is designed will increase and decrease the gauge counter over time, which if this was a real life gauge could represent something like memory pressure or response time.
 
-![Gauge](static/first-slo-tutorial/gauge.png)
+![Gauge](./static/first-slo-tutorial/gauge.png)
 
 With this metric, you are now able to start to manage this metric with Harness SRM.
 
@@ -115,11 +115,11 @@ Select **Create SLO**, enter a name for the SLO, such as `myslo`.
 
 Create a service to monitor. Name the service `my-slo-app`, set the environment to `kubenetes`, and then select **Save**.
 
-![Monitored Service](static/first-slo-tutorial/monitored_service.png)
+![Monitored Service](./static/first-slo-tutorial/monitored_service.png)
 
 When creating an SLO you can also create a journey that a user or system will be taking. You can create a User Journey called `myjourney`, and then select **Continue**.
 
-![My SLO](static/first-slo-tutorial/my_slo.png)
+![My SLO](./static/first-slo-tutorial/my_slo.png)
 
 ### Configure SLI
 
@@ -127,25 +127,25 @@ Now you are ready to wire in the Service Level Indicator [SLI] from Prometheus t
 
 Under **Configure SLI queries**, set the **SLI Type** to **Latency**, and then select **New Health Source**.
 
-![Latency](static/first-slo-tutorial/latency.png)
+![Latency](./static/first-slo-tutorial/latency.png)
 
 Add a Prometheus Health Source, and name it `myprominstance`.
 
-![My Prom](static/first-slo-tutorial/myprom.png)
+![My Prom](./static/first-slo-tutorial/myprom.png)
 
 Create a Prometheus Connector named `kubernetesprom`.
 
 In the connector's Credentials, enter the NodePort address or the address corresponding to how you exposed Prometheus's 9090 port.
 
-![Prom Connector](static/first-slo-tutorial/prom_connector.png)
+![Prom Connector](./static/first-slo-tutorial/prom_connector.png)
 
 In the connector's Delegates Setup, select a Harness Delegate to connect from Harness to your Prometheus instance. You can select any available Harness Delegate.
 
-![Select Connector](static/first-slo-tutorial/select_connector.png)
+![Select Connector](./static/first-slo-tutorial/select_connector.png)
 
 Select **Save** and wait while the connection test runs. Harness uses this connector to pull data from Prometheus Query as a Health Source.
 
-![Kubernetes Connector](static/first-slo-tutorial/k8s_prom.png)
+![Kubernetes Connector](./static/first-slo-tutorial/k8s_prom.png)
 
 After adding the connector to the Health Source, select **Next**. Using the query builder, the metric you want to focus on is `test_gauge0` and you want to filter it on the `app` field with the example app label, `prometheus-sample-app`. You can duplicate the filter on Environment and Service, since this is the only metric tracked in this example.
 
@@ -153,15 +153,15 @@ After adding the connector to the Health Source, select **Next**. Using the quer
 - **Environment Filter:** `app:prometheus-sample-app`
 - **Service Filter:** `app:prometheus-sample-app`
 
-![Metric Mapping](static/first-slo-tutorial/metric_mapping.png)
+![Metric Mapping](./static/first-slo-tutorial/metric_mapping.png)
 
 In the Assign section, select **SLI**.
 
-![Select SLI](static/first-slo-tutorial/select_sli.png)
+![Select SLI](./static/first-slo-tutorial/select_sli.png)
 
 Select **Save** and select the metrics powering the SLI. Taking a closer look at the sample Gauge in Prometheus, a sample of `0.60` seems to be a good midpoint on this metric's fluctuations. For this example, assume that this Gauge represents response time, and that a lower score is better.
 
-![Test Gauge](static/first-slo-tutorial/test_gauge.png)
+![Test Gauge](./static/first-slo-tutorial/test_gauge.png)
 
 When configuring the SLI, you can configure this as a **Threshold-based metric**. The **Objective Value** of what we are measuring is that a *good* score is *less than or equal to 0.60*. If data is missing in our Gauge, we can mark this as *bad*.
 
@@ -170,18 +170,18 @@ When configuring the SLI, you can configure this as a **Threshold-based metric**
 - SLI value is good if: `<=`
 - Consider missing data: `Bad`
 
-![SLI Config](static/first-slo-tutorial/sli_config.png)
+![SLI Config](./static/first-slo-tutorial/sli_config.png)
 
 ### Set SLO target
 
 Finally, set up the SLO Target (based on the SLI) and [Error Budget](https://www.atlassian.com/incident-management/kpis/error-budget) (amount of time system can fail) Policy. For example, you can set a goal (or SLI) that 50% of requests need to be less than or equal to our Objective Value. Since we are setting 50% of the target, we are also stating that 50% of the week, if we set a rolling 7 day period, can be included in our Error Budget, which is indicated by Harness.
 
-![SLO Target](static/first-slo-tutorial/slo_target.png)
+![SLO Target](./static/first-slo-tutorial/slo_target.png)
 
 Now you have the ability to actively monitor and manage your SLOs. SLOs can be renegotiated much easier with Harness without having to calculate them.
 
-![SLO Status](static/first-slo-tutorial/slo_status.png)
+![SLO Status](./static/first-slo-tutorial/slo_status.png)
 
 If this SLO is too aggressive or too lenient, Harness can provide the actual service data to help make that determination. In this example, we set the SLO target at 50%, which is not a very good SLO. Changing the SLO target to be more aggressive, for example 99%, can be changed directly in the Harness SRM interface.
 
-![SLO Status](static/first-slo-tutorial/change_slo.png)
+![SLO Status](./static/first-slo-tutorial/change_slo.png)

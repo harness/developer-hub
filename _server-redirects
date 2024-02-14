@@ -39,6 +39,7 @@
 /tutorials/platform /docs/platform
 /tutorials/error-tracking /docs/continuous-error-tracking
 /tutorials/service-reliability /docs/service-reliability-management
+/tutorials/software-engineering-insights /docs/software-engineering-insights
 
 # /tutorials /docs
 # each top tutorial landing page

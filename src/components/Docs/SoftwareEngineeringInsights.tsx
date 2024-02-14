@@ -30,8 +30,15 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
+              Harness Software Engineering Insights (SEI) enables engineering leaders to make data-driven
+              decisions that improve engineering productivity, efficiency, alignment, planning, and execution.
+              It provides actionable insights into software delivery and workflows across teams, processes, and
+              systems to improve software quality, enhance developer experience, and accelerate time to value.
               Learn how you can use data-led insights to remove bottlenecks and improve productivity.
             </p>
+            <div>
+            <img src={`${baseUrl}img/sei.svg`} />
+            </div>
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@ import {
             module: MODULES.sei,
             description:
               "Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI.",
-            link: "/docs/software-engineering-insights/sei-insights",
+            link: "/docs/software-engineering-insights/insights/sei-insights",
           },
           {
             title: "Metrics and reports",
