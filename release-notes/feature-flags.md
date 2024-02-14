@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: February 12th 2024
+### Latest Updated: February 13th 2024
 
 ## February 2024
 
@@ -44,6 +44,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Doesn't make network requests from the Evaluation thread. (FFM-10645)
  - The cache buffer size is configurable. 
  - We have fixed an issue where the `Disabling metrics` acion would not disable metrics in all scenarios. 
+
+#### Version 1.4.2
+
+ - We have resolved important issues which prevented evaluation metrics from growing exponentially in memory and flushed frequently, while preserving complete metrics accuracy. (FFM-10627)
+ - Bumped `System.IdentityModel.Tokens.Jwt` from 6.15.0 to 6.34.0.
+ - Wiremock has been upgraded. (FFM-10410)
+ - `Analytics` has now been separated into `EvaluationAnalytics` and `TargetAnalytics`. (FFM-10602)
 
 ### React SDK
 
