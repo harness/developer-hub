@@ -52,7 +52,7 @@ You can automate the onboarding of users from external sources along with their 
 
 ## Step 4: Install delegate 
 
-- [Install delegate on Kubernetes or Docker](/tutorials/platform/install-delegate)
+- [Install delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)
 - [Build and set up a delegate with a minimal image type](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 - [Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity](/tutorials/platform/gke-workload-identity)
 

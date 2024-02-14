@@ -12,7 +12,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/platform/install-delegate",
+    link: "/docs/platform/delegates/install-delegates/install-delegate",
   },
 ];
 
@@ -27,7 +27,7 @@ export const PlatformList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/platform/install-delegate",
+    link: "/docs/platform/delegates/install-delegates/install-delegate",
   },
   {
     title: "Customize the Delegate to Run Your Favorite Third-Party Tools",

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 In addition to the reference documentation, there are a variety of tutorials available.
 
-- [Install Harness Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate)
+- [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)
 
 - [Customize delegate to install third-party tools](/tutorials/platform/customize-delegate)
 

@@ -15,7 +15,7 @@ description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
   target="_self"
 />
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
 
 :::info
 
@@ -95,7 +95,7 @@ There are a few Harness entities that will need to be created in Harness. The ne
 
 ### Install a Delegate
 
-If you do not have a Delegate installed, follow [these steps](../platform/install-delegate) to get one installed either in Docker or Kubernetes.
+If you do not have a Delegate installed, follow the steps below to get one installed either in Docker or Kubernetes.
 
 <details>
 <summary>Install Delegate</summary>

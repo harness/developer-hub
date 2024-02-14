@@ -1,20 +1,16 @@
 ---
-sidebar_position: 7
-description: Install Harness Delegate on Kubernetes or Docker
 title: Install Harness Delegate on Kubernetes or Docker
+description: Install Harness Delegate on Kubernetes or Docker
+sidebar_position: 2
+redirect_from:
+  - /tutorials/platform/install-delegate
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-
 import delete_project from './static/delete-project.png'
 
-
-## What is Harness Delegate?
-
-[Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
+The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
 
 You can install the Harness Delegate on either Docker or Kubernetes.
 
@@ -22,11 +18,15 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 
-## Install Harness Delegate
+## Install the default Harness Delegate
 
 ### Create a new delegate token
 
-Log in to the Harness Platform and go to **Account Settings -> Account Resources -> Delegates**. Select the **Tokens** tab. Select **+New Token**, and enter a token name, for example `firstdeltoken`. Select **Apply**. Harness Platform generates a new token for you. Select **Copy** to copy and store the token in a temporary file. You will provide this token as an input parameter in the next installation step. The delegate will use this token to authenticate with the Harness Platform.
+1. Log in to the Harness Platform and go to **Account Settings -> Account Resources -> Delegates**.
+2. Select the **Tokens** tab.
+3. Select **+New Token** and enter a token name, for example `firstdeltoken`.
+4. Select **Apply**. Harness Platform generates a new token for you.
+5. Select **Copy** to copy and store the token in a temporary file. You will provide this token as an input parameter in the next installation step. The delegate will use this token to authenticate with the Harness Platform.
 
 ### Get your Harness account ID
 
@@ -39,7 +39,6 @@ https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 `6_vVHzo9Qeu9fXvj-AcQCb` is the `accountId`. 
 
 Now you are ready to install the delegate on either Docker or Kubernetes. 
-
 
 <Tabs>
 <TabItem value="Kubernetes">
@@ -70,10 +69,8 @@ kubectl get pods -A
 
 Now that you have access to a Kubernetes cluster, you can install the delegate using any of the options below.
 
-
 <Tabs>
 <TabItem value="Helm Chart">
-
 
 ### Install the Helm chart
 
@@ -101,7 +98,7 @@ To install the delegate, do the following:
 2. Under **Project Setup**, select **Delegates**.
 3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
-   ![](./static/install-delegate/install-a-k8s-delegate-helm.png)
+   ![](./static/install-a-k8s-delegate-helm.png)
 
 4. Under **Select where you want to install your Delegate**, select **Kubernetes**.   
 
@@ -136,10 +133,8 @@ For more information on requirements for air-gapped environments, go to [Install
 
 7. Run the command.
 
-
 </TabItem>
 <TabItem value="Terraform Helm Provider">
-
 
 ### Create main.tf file
 
@@ -180,7 +175,6 @@ Now replace the variables in the file with your Harness account ID and delegate 
 | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
 | SaaS prod-3  	 		| `https://app3.harness.io`        				|
 
-
 ### Run Terraform init, plan, and apply
 
 Initialize Terraform. This downloads the Terraform Helm provider to your machine.
@@ -213,11 +207,8 @@ helm_release.delegate: Creation complete after 1m0s [id=firstk8sdel]
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-
-
 </TabItem>
 <TabItem value="Kubernetes Manifest">
-
 
 ### Download a Kubernetes manifest template
 
@@ -237,23 +228,19 @@ Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Mana
 | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
 | SaaS prod-3  	 		| `https://app3.harness.io`        				|
 
-
 ### Apply the Kubernetes manifest
 
 ```
 kubectl apply -f harness-delegate.yaml
 ```
 
-
 </TabItem>
 </Tabs>
-
-
 
 </TabItem>
 <TabItem value="Docker">
 
-<h3> Prerequisite </h3>
+### Prerequisites
 
 Ensure that you have the Docker runtime installed on your host. If not, use one of the following options to install Docker:
 
@@ -307,13 +294,10 @@ For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation 
 | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
 | SaaS prod-3  	 		| `https://app3.harness.io`        				|
 
-
-If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
-
+If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate).
 
 </TabItem>
 </Tabs>
-
 
 ## Deploy using a custom role
 
@@ -358,13 +342,16 @@ To deploy using a custom cluster role, do the following:
 Select **Continue**. After the health checks pass, your delegate is available for you to use. Select **Done** and verify your new delegate is listed.
 
 ### Helm chart & Terraform Helm provider
-![Delegate Available](static/install-delegate/helm_available.png)
+
+![Delegate Available](./static/helm_available.png)
 
 ### Kubernetes manifest
-![Delegate Available](static/install-delegate/k8smanifest_available.png)
+
+![Delegate Available](./static/k8smanifest_available.png)
 
 ### Docker
-![Delegate Available](static/install-delegate/docker_available.png)
+
+![Delegate Available](./static/docker_available.png)
 
 You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
 
@@ -380,21 +367,19 @@ Harness asks for feedback after the troubleshooting steps. You are asked, **Did 
 
 If the steps did not resolve the problem, select **No**, and use the form to describe the issue. You'll also find links to Harness Support and to [Delegate docs](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-
 <Tabs>
 <TabItem value="Helm Chart">
-
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
 
 1. Verify that Helm is correctly installed:
 
    Check for Helm:
-   
+
    ```
    helm
    ```
-   
+
    And then check for the installed version of Helm:
 
    ```
@@ -402,7 +387,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    ```
 
    If you receive the message `Error: rendered manifests contain a resource that already exists...`, delete the existing namespace, and retry the Helm upgrade command to deploy the delegate.
-   
+
    For further instructions on troubleshooting your Helm installation, go to [Helm troubleshooting guide](https://helm.sh/docs/faq/troubleshooting/).
 
 2. Check the status of the delegate on your cluster:
@@ -425,21 +410,17 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
-
-
 </TabItem>
 <TabItem value="Terraform Helm Provider">
 
-
 Use the following steps to troubleshoot your installation of the delegate using Terraform.
-
 
 1. Verify that Terraform is correctly installed:
 
    ```
    terraform -version
    ```
-   
+
    For further instructions on troubleshooting your installation of Terraform, go to the [Terraform troubleshooting guide](https://developer.hashicorp.com/terraform/enterprise/vcs/troubleshooting).
 
 2. Check the status of the delegate on your cluster:
@@ -462,10 +443,8 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
-
 </TabItem>
 <TabItem value="Kubernetes Manifest">
-
 
 Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
 
@@ -489,11 +468,8 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
-
-
 </TabItem>
 <TabItem value="Docker">
-
 
 Use the following steps to troubleshoot your installation of the delegate using Docker:
 
@@ -502,25 +478,25 @@ Use the following steps to troubleshoot your installation of the delegate using 
    ```
    docker container ls -a
    ```
-   
+
 2. If the pod is not running, check the delegate logs:
 
    ```
    docker container logs <delegatename> -f
    ```
-   
+
 3. Restart the delegate container. To stop the container:
 
    ```
    docker container stop <delegatename>
    ```
-   
+
    To start the container:
-   
+
    ```
    docker container start <delegatename>
    ```
-   
+
 4. Make sure the container has sufficient CPU and memory resources. If not, remove the older containers:
 
    ```
@@ -529,4 +505,3 @@ Use the following steps to troubleshoot your installation of the delegate using 
 
 </TabItem>
 </Tabs>
-

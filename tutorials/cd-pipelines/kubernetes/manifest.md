@@ -687,7 +687,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
        ```
 
    - Verify that the delegate is installed successfully and can connect to the Harness Manager.
-   - You can also follow the [Install Harness delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
+   - You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
 
 #### Secrets
 
@@ -906,7 +906,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
 

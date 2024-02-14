@@ -109,7 +109,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
 
 <details>
 <summary>Install a delegate using the terminal</summary>

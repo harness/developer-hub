@@ -14,7 +14,7 @@ description: This guide will walk through how start to optimize your Kubernetes 
   target="_self"
 />
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
 
 ## Background on Cloud Costs
 
@@ -38,7 +38,7 @@ If you have not already, make sure to sign up for a [Harness CCM Account](https:
 
 ### Install Delegate
 
-You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
+You will also need to wire in a Kubernetes Delegate if you have not done so already.
 
 <details>
 <summary>Install Delegate</summary>

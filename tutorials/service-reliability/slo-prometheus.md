@@ -6,7 +6,7 @@ description: Introducing SLOs and how to measure and manage your SLOs leveraging
 # Manage SLOs using Prometheus metrics
 
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
 
 
 ## Background on Service Level Objectives
@@ -119,7 +119,7 @@ Configure your service metrics/telemetry as SLOs to Harness SRM has a few Harnes
 
 ### Install Delegate
 
-You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
+You will also need to wire in a Kubernetes Delegate if you have not done so already.
 
 <details>
 <summary>Install Delegate</summary>

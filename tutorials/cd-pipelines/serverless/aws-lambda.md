@@ -570,7 +570,7 @@ docker run --cpus=1 --memory=2g \
 
 :::note
 
-You can also follow the [Install Harness Delegate on Kubernetes](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
 

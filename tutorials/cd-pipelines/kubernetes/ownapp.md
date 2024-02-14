@@ -602,7 +602,7 @@ Verify the following:
       ```
 
   - Verify that the delegate is installed successfully and can connect to the Harness Manager.
-  - You can also follow the [Install Harness delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
+  - You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
 
 :::warning
 
@@ -742,7 +742,7 @@ Verify that you have the following:
       ```
 
   - Verify that the delegate is installed successfully and can connect to the Harness Manager.
-  - You can also follow the [Install Harness delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
+  - You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
 
 :::warning
 
