@@ -92,6 +92,7 @@ The following table describes how this setting applies to each plan.
   </tbody>
 </table>
 
+
 ## Parallelism
 
 ### Parallelism Limit
@@ -125,7 +126,15 @@ The following table shows the value of this setting on each plan.
   </tbody>
 </table>
 
+## Resolved YAML size limit 
 
+Compiled YAML cannot exceed the Harness limit of **3MB**. 
+
+Here are some important points to note:
+- Compiled YAML refers to the final YAML file generated with all templates resolved.
+- To see the compiled YAML of your pipeline, go to the ``Execution History`` of your pipeline, click on the three dots **(⋮)** for the specific pipeline, and choose ``View Compiled YAML`` as shown in the image below.
+![](./static/compiled_yaml.png)
+- Even if your pipeline YAML size is only a few kilobytes, using a template with a larger size will contribute to the overall size, calculated as Pipeline YAML size + Template size. Exceeding this limit may lead to an [error message](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#the-incoming-yaml-document-exceeds-the-limit-3145728-code-points).
 
 ## Pipeline Execution Time Limits 
 
@@ -216,3 +225,4 @@ The following table lists the limits for each plan. You can only edit all of the
     </tr>
   </tbody>
 </table>
+

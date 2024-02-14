@@ -70,7 +70,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Create and manage roles and resource groups, and set up role-based access control.",
-          link: "/docs/category/access-control-1",
+          link: "/docs/category/access-control-2",
         },
         {
           title: "Secrets management",

@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-02-04T10:00
+date: 2024-02-08T10:00
 sidebar_position: 16
 ---
 
@@ -13,13 +13,48 @@ import delete_project from './static/delete-project.png'
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 
-These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
+These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger Do not upgrade
+:::danger important upgrade instructions for patch release 0.13.4 and 0.12.1
 
-We have discovered an issue with SMP releases 0.12.0, 0.13.0, 0.13.1, and 0.13.2 where you might face an issue with logs in the UI. 
+If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
-Please don't upgrade to these releases. We are working to publish a new patch release, and we will update this page with the patch release notes as soon as it's deployed.
+If you are currently on version 0.13.0, 0.13.1, 0.13.2, or 0.13.3, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.4.
+
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.4.
+
+**Upgrade using Helm**
+
+If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
+
+1. Set `global.database.minio.mergeLogs` to `true` in your override file.
+2. Perform your Harness upgrade.
+
+**All other customers**
+
+If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
+
+1. Exec into your MinIO pod.
+2. Copy the files from `/bitnami/minio/data` to `/data/backup directory`.
+3. Perform your Harness upgrade.
+4. Exec into your MinIO pod after the upgrade has successfully completed.
+5. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
+  
+   ```
+    env | grep MINIO_ROOT_PASSWORD
+   ```
+
+6. Run the following commands.
+
+   ```
+   bin/mc alias set minio http://minio:9000
+        # Access Key: admin
+        # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_5>
+   ```
+
+   ``` 
+   bin/mc cp --recursive /data/backup/logs minio/logs
+   ```
 
 :::
 
@@ -30,6 +65,125 @@ Please don't upgrade to these releases. We are working to publish a new patch re
 
 :::
 
+## February 13, 2024, patch version 0.13.4
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.4](https://github.com/harness/helm-charts/releases/tag/harness-0.13.4) |
+| Air Gap Bundle | [0.13.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.4) |
+| NG Manager | 1.19.12 |
+| CI Manager | 1.6.11 |
+| Pipeline Service | 1.56.7 |
+| Platform Service | 1.8.2 |
+| Access Control Service | 1.29.2 |
+| Delegate | 24.01.82004 |
+| Change Data Capture | 1.1.2 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.18 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed a license validation issue that caused ng-manager errors. (PL-46455)
+
+## February 8, 2024, patch version 0.13.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.3](https://github.com/harness/helm-charts/releases/tag/harness-0.13.3) |
+| Air Gap Bundle | [0.13.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.3) |
+| NG Manager | 1.19.11 |
+| CI Manager | 1.6.11 |
+| Pipeline Service | 1.56.7 |
+| Platform Service | 1.8.2 |
+| Access Control Service | 1.29.2 |
+| Delegate | 24.01.82004 |
+| Change Data Capture | 1.1.2 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.18 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed UI logging issues for release versions 0.12.0, 0.13.0, 0.13.1, and 0.13.2. (PL-46771, ZD-57141)
+
+## February 8, 2024, patch version 0.12.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.12.1](https://github.com/harness/helm-charts/releases/tag/harness-0.12.1) |
+| Air Gap Bundle | [0.12.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.12.1) |
+| NG Manager | 81720 |
+| CI Manager | 6904 |
+| Pipeline Service | 1.51.3 |
+| Platform Service | 1.4.4 |
+| Access Control Service | 1.25.3 |
+| Delegate | 23.12.81604 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.15 |
+| LE NG | 68402 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.12.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.12.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed UI logging issues for release version 0.12.0. (PL-46771, ZD-57141)
 
 ## February 2, 2024, patch version 0.13.2
 
@@ -72,7 +226,6 @@ gsutil -m cp \
 - The `/ccm/bi-dashboards` API didn't return dashboards. (CCM-15995)
 
    This issue was resolved by redirecting the Dashboards module to view BI Dashboards. The BI Dashboards are a subset of all module dashboards available under Custom Dashboards, providing a shortcut to access them. 
-
 
 ## February 2, 2024, patch version 0.13.1
 
@@ -205,6 +358,7 @@ gsutil -m cp \
 - The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
 
 - Upgraded the `yq` library from version 4.35.2 to 4.40.5. (PL-42548)
+
 ### Early access features
 
 #### Harness Platform
@@ -308,7 +462,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   This issue has been fixed. The banner now has the correct dates. 
 
 - Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865)
-  There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+  There was an issue where CloudFormation steps were not updating the console logs when there are multiple steps with a similar prefix. This issue is now fixed.
 
 - Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
 
@@ -343,7 +497,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - If you configured an optional step setting (such as **Limit Memory**, **Limit CPU**, or **Timeout**) to accept runtime input (`<+input>`), and then provided no value for that setting at runtime, the pipeline could fail due to invalid `null` input. This has been fixed, and the effected settings can how handle empty (`null`) runtime input. (CI-10514, ZD-54217)
 
-- Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#use-the-s3-upload-and-publish-plugin). (CI-10258, ZD-53311)
+- Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#use-the-s3-upload-and-publish-plugin). (CI-10258, ZD-53311)
 
 - Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
 
@@ -400,8 +554,6 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
-
-
 
 ## January 8, 2024, version 81720
 
@@ -1107,7 +1259,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 ###### Build and Push to GAR (CI-9926)
 
-This release includes a new [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) offering first-class support for build and pushing artifacts to Google Artifact Registry (GAR). Previously, you could use Run steps to build and push to GAR. This new step combines the build and push steps into one streamlined step.
+This release includes a new [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar) offering first-class support for build and pushing artifacts to Google Artifact Registry (GAR). Previously, you could use Run steps to build and push to GAR. This new step combines the build and push steps into one streamlined step.
 
 If using this step with Harness Cloud build infrastructure, you can also leverage the new [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your GCP connector.
 
@@ -1682,7 +1834,7 @@ gsutil -m cp \
 
 - Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
-- You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
+- You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
 
 - [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to generate the initial call graph and for subsequent pipeline runs. (CI-8932)
 
@@ -3683,7 +3835,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`. (CI-8302, ZD-45441)
 
-- Fixed an issue where Artifactory connector credentials weren't correctly passed to [Upload Artifacts to JFrog Artifactory steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) in nested [step groups](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups). (CI-8351, ZD-45611)
+- Fixed an issue where Artifactory connector credentials weren't correctly passed to [Upload Artifacts to JFrog Artifactory steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog) in nested [step groups](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups). (CI-8351, ZD-45611)
 
 ##### Feature Flags
 
@@ -4316,9 +4468,9 @@ gsutil -m cp \
 
 - [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now supports caching subdirectory builds. (CI-7853)
 
-- Fixed an issue where passing an empty runtime input value for the **Dockerfile** setting in a [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) step didn't resolve properly. (CI-7912, ZD-43490)
+- Fixed an issue where passing an empty runtime input value for the **Dockerfile** setting in a [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) step didn't resolve properly. (CI-7912, ZD-43490)
 
-- Fixed an issue where running multiple [Build and Push to Docker steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) in [parallel](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) could result in multiple copies of the same image being pushed to the Docker repository. While the image names were different, the underlying image was the same. (CI-8039)
+- Fixed an issue where running multiple [Build and Push to Docker steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) in [parallel](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) could result in multiple copies of the same image being pushed to the Docker repository. While the image names were different, the underlying image was the same. (CI-8039)
 
 - Previously, in situations where a build pod wasn't created, an error occurred when the cleanup event couldn't find details of a pod to cleanup. Now, handling has been added to avoid this error. (CI-8065)
 
@@ -4758,7 +4910,7 @@ This release includes the following Harness module and component versions.
 
 - Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/use-ci/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
 
-- The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence/#add-the-run-tests-step), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+- The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence/#add-the-run-tests-step), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
 
 - The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets) for [Git event triggers](/docs/platform/triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
 
@@ -5687,7 +5839,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 #### Continuous Integration
 
 - Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/). (CI-6969, CI-7300)
-- The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings/#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
+- The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings/#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
 - Builds no longer fail if steps in different step groups have the same `identifier`. Additionally, to prevent steps in step groups from producing artifacts with identical artifact IDs, when steps in step groups produce artifacts, the resulting artifact IDs now use a unique identifier that reflects the step's presence in a step group. (CI-7115)
 - When configuring [local build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), it was not possible to select the Windows operating system. This issue has been resolved and the Windows OS is available again. (CI-7111, ZD-40311)
 - An `unsupported image` warning banner incorrectly appeared for builds that did not use Kubernetes build infrastructure. (CI-7098, ZD-40428)

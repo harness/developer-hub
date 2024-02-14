@@ -170,6 +170,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Engineering Insights",
+                to: "tutorials/software-engineering-insights",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -663,6 +668,7 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
+  clientModules: [path.join(__dirname, "/client_module/searchBar")],
 };
 
 module.exports = config;

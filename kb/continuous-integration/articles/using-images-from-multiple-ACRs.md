@@ -9,7 +9,7 @@ When deploying applications using Harness, you specify the image repository and 
 
 ## Problem
 
-Harness supports [pushing and pulling images from ACR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr). If you have multiple ACRs, you might need to pull images from different ACRs in the same pipeline.
+Harness supports [pushing and pulling images from ACR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr). If you have multiple ACRs, you might need to pull images from different ACRs in the same pipeline.
 
 ## Solution
 
@@ -31,8 +31,8 @@ To pull images, use your connectors in **Run** steps or other steps where you ne
 
 To push your own images to multiple ACRs, you can create one or more Azure or Docker connectors for your ACRs.
 
-* **Azure connector:** To use the [Build and Push to ACR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr), you must use a [Microsoft Azure cloud provider connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
-* **Docker connector:** If your ACRs are Docker V2 compliant and you want to use the [Build and Push to Docker step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings), you must use a [Docker connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) with the **Provider type** as **Other**.
+* **Azure connector:** To use the [Build and Push to ACR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr), you must use a [Microsoft Azure cloud provider connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
+* **Docker connector:** If your ACRs are Docker V2 compliant and you want to use the [Build and Push to Docker step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry), you must use a [Docker connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) with the **Provider type** as **Other**.
 
 If your ACRs are under the same app registration or Azure subscription, then you can use one connector. If you need to push images to ACRs in multiple app registrations or subscriptions, you need to create a separate connector for each app/subscription. For more information, go to [Add a Microsoft Azure connector - Configure credentials](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/#configure-credentials).
 

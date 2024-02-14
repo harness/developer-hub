@@ -25,6 +25,32 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## January 2024
 
+### Version 202401.2
+
+#### New features and enhancements
+
+* Added the support for partial match functionality to the Code Area filter at the widget-level and collection-level settings. Now, you can apply the filter and select repositories using the `Starts With` and `Contains` conditions. (SEI-4812) (SEI-4873)
+* Added exclude support for the code area filter to all widgets. (SEI-4943)
+* Improved tooltip messaging for the configuration settings on the Code Area filter. (SEI-5006)
+* In the Lead Time in Stages report, the filter name `'RELEASE DATE IN'` has been renamed to `'Jira Release Date In'` (SEI-4947) (SEI-5156).
+
+#### Early access features
+
+* The release includes a new user onboarding flow for the Jira and GitHub integration, focused on simplifying and streamlining the user journey (SEI-3727). The following support has been added as part of this change:
+  * Added support for configuring the Jira Cloud integration using the new Jira Connect App.
+  * Added support for configuring the GitHub Cloud integration using the new GitHub App.
+  * Improved the user experience for configuring the Jira integration on Cloud and Jira Data Centers.
+  * Enhanced the user experience for configuring the GitHub integration on Cloud and Enterprise.
+  
+  
+  The new experience for the Jira integration is accessible behind the Feature Flag `<SEI_EASY_ONBOARDING_JIRA>`, and the new experience for the GitHub integration is available behind the Feature Flag `<SEI_EASY_ONBOARDING_GITHUB>`. Please contact Harness Support to enable this feature.
+
+#### Fixed issues
+
+* The bug in the Trellis score by Collections report, where the scorecard hyperlink for the collection was broken, has now been fixed. (SEI-5019)
+* There was an existing issue where the report was showing as not being supported when more than one Trend Report was added to the Insight. This has been resolved. Now, you can add multiple trend reports to the Insight (SEI-5128)
+* In the Jira integration settings there was a bug where users were unable to save custom hygiene fields. This has been fixed now. (SEI-5152)
+
 ### Version 202401.1
 
 #### New features and enhancements

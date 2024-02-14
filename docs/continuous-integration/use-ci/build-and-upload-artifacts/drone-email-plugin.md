@@ -1,7 +1,7 @@
 ---
 title: Export artifacts by email
 description: Use the Drone Email plugin to export reports and other artifacts by email.
-sidebar_position: 49
+sidebar_position: 32
 redirect_from:
   - /docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin
 ---
