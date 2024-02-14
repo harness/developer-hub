@@ -20,7 +20,7 @@ Fields vary by module, based on the licensing unit of the module.
 
 #### Non-Developer 360 Subscriptions page
 
-If you didn't purchase your module with a Developer 360 subscription, this page displays the **License Count** for your module-specific license, which is **CD Services** or **CD Service Instances** for CD.
+If you didn't purchase your module with a Developer 360 subscription, the Subscriptions page displays the **License Count** for your module-specific license, which is **CD Services** or **CD Service Instances** for CD.
 
 <!-- ![](/docs/platform/get-started/static/subscriptions-legacy.png) -->
 
