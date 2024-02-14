@@ -86,6 +86,10 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
+
+
+
 
 #### Fixed issues
 
@@ -97,7 +101,9 @@ The following deprecated API endpoints are longer supported:
    
    The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
 
+- Delegates were restarting in the middle of execution, disrupting ongoing tasks. (PL-46793)
 
+   Implemented a fix to wait for the task response to complete before marking it as expired or failed during the delegate's unregistering process, preventing premature restarts.
 
 
 ### Version 1.24.7 <!--  February 12, 2024 -->
