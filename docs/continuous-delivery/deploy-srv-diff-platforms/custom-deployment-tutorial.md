@@ -2245,7 +2245,7 @@ Completed service step
 
 **Author**: Harness.io
 **Version**: 1.0
-**Description**: This deployment template will help users deploy services using AWS VMSS.
+**Description**: This deployment template will help users deploy services using Azure VMSS.
 
 #### Azure VMSS Deployment Template
 
