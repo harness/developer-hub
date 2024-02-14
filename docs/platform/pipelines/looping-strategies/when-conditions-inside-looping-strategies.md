@@ -135,3 +135,14 @@ pipeline:
 In this example, the pipeline name doesn't match as ``feat1``, therefore it will skip running the looping strategy (in this case ``matrix``), and move forward to run the rest of the pipeline.
 ![](./static/looping_condition_when_skipped.png)
 
+Let's consider an example where we want to skip the looping strategy stage when the list to iterate is empty. 
+
+Suppose you have a chained pipeline with an output variables that provides a list of deployed services and number of services deployed. In another stage, there is a matrix that takes this variable as input and produces a list of deployed services.
+```yaml
+strategy:
+          when: <+pipeline.stages.get_deployed_services.spec.execution.steps.get_deployed_services.output.outputVariables.number_of_services> > 0
+          matrix:
+            service: <+json.list("services", <+pipeline.stages.get_deployed_services.spec.execution.steps.get_deployed_services.output.outputVariables.deployed_services>)>
+            maxConcurrency: 4
+```
+In this example, you can see if number of deployed services if less than 0 then you can skip the stage and move forward. 
