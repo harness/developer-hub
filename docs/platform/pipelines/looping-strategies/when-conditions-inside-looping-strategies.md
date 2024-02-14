@@ -13,9 +13,9 @@ Some scenarios where you might want to use the ``when`` condition in your pipeli
 2. When you prefer not to execute the looping strategy at all.
 3. When you want to bypass matrix/repeat/parallelism if it's empty.
 
-Let's cover a few examples and a scenario explaining the usage of ``when`` condition:
+### Let's cover a few examples and a scenario explaining the usage of ``when`` condition:
 
-For example, you have matrix with 10 elements in your pipeline and you want to run a particular ith element after it satisfies a particular condition:
+#### Let's consider an example where you have matrix with 10 elements in your pipeline and you want to run a particular ith element after it satisfies a particular condition:
 ```yaml
 pipeline:
   name: looping_strategy_when
@@ -81,7 +81,7 @@ Here, after the first ``when: <<+pipeline.name> == "looping_strategy_when"`` con
 To summarize, the above YAML will first check if the pipeline name matches ``looping_strategy_when``, and if it does, for example, if the status is ``Success``, it will run the second element of the matrix.
 ![](./static/looping_strategy_when.png)
 
-Let's consider an example where it will skip to run looping strategy:-
+#### Let's consider an example where it will skip to run looping strategy:-
 ```yaml
 pipeline:
   name: looping_strategy_when
@@ -135,7 +135,7 @@ pipeline:
 In this example, the pipeline name doesn't match as ``feat1``, therefore it will skip running the looping strategy (in this case ``matrix``), and move forward to run the rest of the pipeline.
 ![](./static/looping_condition_when_skipped.png)
 
-Let's consider an example where we want to skip the looping strategy stage when the list to iterate is empty. 
+#### Let's consider an example where we want to skip the looping strategy stage when the list to iterate is empty. 
 
 Suppose you have a chained pipeline with an output variables that provides a list of deployed services and number of services deployed. In another stage, there is a matrix that takes this variable as input and produces a list of deployed services.
 ```yaml
