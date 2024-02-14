@@ -30,20 +30,6 @@ export const PlatformList: CardItem[] = [
     link: "/docs/platform/delegates/install-delegates/install-delegate",
   },
   {
-    title: "Install Harness Delegate on GKE with Workload Identity",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Deploy Harness Delegate onto Workload Identity-enabled GKE.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/platform/gke-workload-identity",
-  },
-  {
     title: "Manage secrets",
     module: MODULES.platform,
     icon: "img/logo.svg",

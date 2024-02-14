@@ -1,9 +1,11 @@
 ---
-sidebar_position: 50
+title: Install Harness Delegate on Google Kubernetes Engine (GKE) with Workload Identity
 description: Deploy a Harness Delegate that uses Workload Identity to access Google Cloud Services
-keywords: [Google,delegate,Terraform,GKE,workload identity]
-title: Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity
+sidebar_position: 6
+redirect_from:
+  - /tutorials/platform/gke-workload-identity
 ---
+
 
 
 
@@ -209,17 +211,8 @@ Having deployed the Harness Delegate, you can now build a CI pipeline that will 
 The sources already have a [build stage](https://github.com/harness-apps/workload-identity-gke-demo/blob/main/.harness/ko_gar_build_push_1.yaml) template that can be used to create the CI pipeline.
 
 1. Navigate to your Harness Account, **Account Overview** --> **Organizations**, and then select **default** organization.
-
-    ![default org select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j07f38navg5c3udfjwan.png)
-
 2. From the Organization overview page select **Templates**,
-
-    ![templates select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2nii2f5wqwsr8lkvo5l1.png)
-
 3. Select **New Template**, and then select the **Import From Git** option,
-
-    ![import from git](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/me4lm1hzsqhuygwoid4t.png)
-
 4. Fill the wizard with values as shown:
 
     ![import from git details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iff39t3r5tmaxr1fcrem.png)
@@ -230,14 +223,9 @@ The sources already have a [build stage](https://github.com/harness-apps/workloa
 
     :::
 
-    ![import template successful](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0grrjx3t1mq74xje7tg0.png)
-
 ### Create a pipeline
 
 1. Navigate to **Builds** --> **Pipelines**, and then select **Create Pipeline**.
-
-    ![create pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r5cyqbs2xb43l9uzyt2f.png)
-
 2. Select **Add Stage**, and then select **Use template**. Select the **ko_gar_build_push** template that we imported earlier, and then select **Use template** to complete the import.
 
 3. Enter details about the stage:
@@ -255,8 +243,6 @@ The sources already have a [build stage](https://github.com/harness-apps/workloa
     :::
 
 5. Select **Run** to run the pipeline to see the image being built and pushed to GAR:
-
-    ![Run Pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kbidxfctui4b3zmmoyuv.png)
 
     A successful run would have pushed the image into GAR. In this example it's `asia-south1-docker.pkg.dev/pratyakshika/demos/lingua-greeter:latest`
 

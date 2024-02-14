@@ -2,6 +2,9 @@
 title: Onboarding guide
 description: A self-service onboarding guide for Harness Platform
 sidebar_position: 1
+redirect_from:
+  - /docs/platform/get-started/tutorials
+  - /docs/get-started/tutorials
 ---
 
 Harness Platform is purpose built to help developers and DevOps teams deliver software with the highest velocity, quality, security, reliability, resilience as well as lowest cost possible while remaining inside the governance guardrails necessary for meeting organizational goals. 
@@ -54,7 +57,7 @@ You can automate the onboarding of users from external sources along with their 
 
 - [Install delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)
 - [Build and set up a delegate with a minimal image type](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
-- [Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity](/tutorials/platform/gke-workload-identity)
+- [Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity](/docs/platform/delegates/install-delegates/gke-workload-identity)
 
 ## Step 5: Automate setup of shared resources 
 Account-level resources such as secrets, delegates & connectors are shared with all organizations and projects in the account. We recommend you either use the Harness Terraform Provider or the Harness REST API for this step.

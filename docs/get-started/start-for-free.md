@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/getting-started/start-for-free
+  - /docs/get-started/tutorials
 ---
 
 Harness offers a free tier of the Harness Software Delivery Platform to help you on your software delivery journey. 
@@ -16,7 +17,5 @@ Harness offers a free tier of the Harness Software Delivery Platform to help you
 
 After you have signed up for an account, go to the following topics to learn more about how to get started:
 
-* [Harness Platform architecture](harness-platform-architecture.md)
-* [Key concepts](key-concepts.md)
-* [Tutorials and quickstart guides](tutorials.md)
-
+* [Harness Platform architecture](./harness-platform-architecture.md)
+* [Key concepts](./key-concepts.md)
