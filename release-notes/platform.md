@@ -105,7 +105,9 @@ The following deprecated API endpoints are longer supported:
    
    The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
 
+- API keys created using the harness_platform_apikey Terraform provider were expiring even when no expiration date was set. (PL-43308)
 
+   You can now view the API key expiration date at the top of the API Key table on the user profile page. Additionally, for API key’s tokens where the expiration was intended to be set as No Expiration, you can see the default expiration date, clarifying the token's validity period.
 
 ### Version 1.24.7 <!--  February 12, 2024 -->
 
