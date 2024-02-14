@@ -13,7 +13,7 @@ Some scenarios where you might want to use the ``when`` condition in your pipeli
 2. When you prefer not to execute the looping strategy at all.
 3. When you want to bypass matrix/repeat/parallelism if it's empty.
 
-Let's cover few examples and scenerio explaining the usage of ``when`` condition:-
+Let's cover a few examples and a scenario explaining the usage of ``when`` condition:
 
 For example, you have matrix with 10 elements in your pipeline and you want to run a particular ith element after it satisfies a particular condition:
 ```yaml
@@ -66,8 +66,8 @@ pipeline:
           condition: <+strategy.iteration> == 2
   allowStageExecutions: true
 ```
-Let's discuss how this YAML is going to get evaluated and what will be the expected output:-
-1. First, it will check whether ``when: <+pipeline.name> == "looping_strategy_when"`` is true, if it's true then only it will move forward to run the looping strategy else it will get skipped. 
+Let's discuss how this YAML will get evaluated and what the expected output will be:
+1. First, it will check whether ``when: <+pipeline.name> == "looping_strategy_when"`` is true. If it's true, then it will move forward to run the looping strategy, otherwise it will be skipped. 
 ![](./static/looping_stretegy_when_conditions.png)
 2. Second, if you have a stage-level conditional execution as provided in the above example:
 ```yaml
