@@ -42,21 +42,6 @@ export const FeaturedList: CardItem[] = [
     link: "/docs/continuous-integration/get-started/tutorials",
   },
   {
-    title: "Onboard with Terraform Provider",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Automate lifecycle management of orgs, projects, services, environments,
-        connectors and pipelines using the Harness Terraform Provider.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/onboard-terraform-provider",
-  },
-  {
     title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:

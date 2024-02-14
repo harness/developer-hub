@@ -10,7 +10,7 @@ In addition to the reference documentation, there are a variety of tutorials ava
 
 - [Customize delegate to install third-party tools](/tutorials/platform/customize-delegate)
 
-- [Onboard with Terraform Provider](/tutorials/platform/onboard-terraform-provider)
+- [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
 
 - [Build and set up a delegate with a minimal image type](/tutorials/platform/secure-delegate-default-to-minimal)
 

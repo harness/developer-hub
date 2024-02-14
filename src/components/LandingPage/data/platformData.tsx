@@ -45,21 +45,6 @@ export const PlatformList: CardItem[] = [
     link: "/tutorials/platform/customize-delegate",
   },
   {
-    title: "Onboard with Terraform",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Automate lifecycle management of orgs, projects, services, environments,
-        connectors, and pipelines using the Harness Terraform Provider.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/onboard-terraform-provider",
-  },
-  {
     title: "Install Harness Delegate on GKE with Workload Identity",
     module: MODULES.platform,
     icon: "img/logo.svg",

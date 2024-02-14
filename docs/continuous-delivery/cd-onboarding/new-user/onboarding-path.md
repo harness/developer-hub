@@ -1397,7 +1397,7 @@ template:
 
 The Harness Terraform Provider enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using this Provider. Currently the following Harness resources can be managed via the Provider.
 
-For more information, go to [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider).
+For more information, go to [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider).
 
 <details>
 <summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>

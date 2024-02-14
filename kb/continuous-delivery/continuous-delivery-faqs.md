@@ -5343,7 +5343,7 @@ Please read more on OPA policy step in the following [Documentation](https://dev
 #### How can one migrate a service to a higher scope (if available at projeect level) ?
 
 Currently, there's no built-in way to move or upgrade services to higher levels. When sharing a service, it needs to have a scope at either the organizational or account level. Fortunately, you can always use the terraform provider to recreate those services at a higher level.
-Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/)
+Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/docs/platform/automation/terraform/onboard-terraform-provider)
 
 #### How can one use AWS CodeDeploy Template support at Harness ?
 
