@@ -13,7 +13,7 @@ For example, an SEI GitHub integration authenticates through a GitHub account to
 To integrate a tool with SEI, you can use either an application-specific SEI integration the generic SEI integration.
 
 :::info
-Please note that after adding an integration, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
+Please note that after adding an integration and for each subsequent data sync, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
 :::
 
 ![](./static/integrations-overview.png)

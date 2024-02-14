@@ -15,13 +15,13 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for patch release 0.13.3 and 0.12.1
+:::danger important upgrade instructions for patch release 0.13.4 and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
-If you are currently on version 0.13.0, 0.13.1, or 0.13.2, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.3.
+If you are currently on version 0.13.0, 0.13.1, 0.13.2, or 0.13.3, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.4.
 
-You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.3.
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.4.
 
 **Upgrade using Helm**
 
@@ -64,6 +64,46 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## February 13, 2024, patch version 0.13.4
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.4](https://github.com/harness/helm-charts/releases/tag/harness-0.13.4) |
+| Air Gap Bundle | [0.13.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.4) |
+| NG Manager | 1.19.12 |
+| CI Manager | 1.6.11 |
+| Pipeline Service | 1.56.7 |
+| Platform Service | 1.8.2 |
+| Access Control Service | 1.29.2 |
+| Delegate | 24.01.82004 |
+| Change Data Capture | 1.1.2 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.18 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed a license validation issue that caused ng-manager errors. (PL-46455)
 
 ## February 8, 2024, patch version 0.13.3
 
