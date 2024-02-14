@@ -140,11 +140,6 @@ const config = {
                 label: "Run Chaos Experiments",
                 to: "tutorials/chaos-experiments",
               },
-              {
-                // type: "doc",
-                label: "Manage Developer Portal",
-                to: "tutorials/internal-developer-portal",
-              },
             ],
           },
           {

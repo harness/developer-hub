@@ -196,7 +196,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 - **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [Supported OPA Policies in IDP](/docs/internal-developer-portal/scorecards/opa-implementation), [New IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
 
-- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/tutorials/internal-developer-portal/opa-scorecards)
+- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/docs/internal-developer-portal/scorecards/opa-implementation)
 
 #### Early access features
 
@@ -278,15 +278,15 @@ Since last release, we have released some interesting docs and video tutorials t
 
 <!-- Nov 7, 2023 -->
 
-[Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here’s a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what’s happening in this year's edition of the event. Here’s some of the content updates.
+[Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here's a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what's happening in this year's edition of the event. Here's some of the content updates:
 
-- **Himanshu’s(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
-- **Docs:** [Updated Onboarding Guide](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](https://developer.harness.io/docs/internal-developer-portal/public-api) 
-- **Tutorial:** [How to add Links in Software Components](https://developer.harness.io/tutorials/internal-developer-portal/add-links-in-components) 
+- **Himanshu's(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
+- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](/docs/internal-developer-portal/public-api)
+- **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/software-catalog)
 
 #### New features and enhancements
 
-- We've introduced more explicit error messages when removing secrets to ensure users are fully aware and cautious of this action. [IDP-1520] 
+- We've introduced more explicit error messages when removing secrets to ensure users are fully aware and cautious of this action. [IDP-1520]
 - Backstage, powering the IDP platform has been upgraded to v1.17, take a look at the [release notes](https://backstage.io/docs/releases/v1.17.0) to find out the updates in this version.[IDP-1179]
 
 #### Fixed Issues
