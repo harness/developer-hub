@@ -6,22 +6,6 @@ import {
   import { MODULES } from "@site/src/constants"
   
   /* Define the cards - start */
-  export const featuredTutorials: CardItem[] = []
-  /* Uncomment if you want to show the Featured Tutorials section -->
-  // Featured Tutorials
-  export const featuredTutorials: CardItem[] = [
-      {
-        title: "tutorial title",
-        module: MODULES.sei,
-        icon: "img/icon_sei.svg",
-        description: "tutorial description",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "5min",
-        link: "/tutorials/sei/tutorial-slug",
-      },
-    ];
-    */
 
     // Docs
     export const docsCards: CardSections = [

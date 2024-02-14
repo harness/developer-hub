@@ -6,22 +6,6 @@ import {
 import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
-export const featuredTutorials: CardItem[] = []
-/* Uncomment if you want to show the Featured Tutorials section
-// Featured Tutorials
-export const featuredTutorials: CardItem[] = [
-    {
-      title: "Add Feature Flags to a JavaScript app",
-      module: MODULES.ff,
-      icon: "img/icon_ff.svg",
-      description: "Add Feature Flags to a JavaScript application.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "10min",
-      link: "/docs/feature-flags/get-started/java-quickstart",
-    },
-  ];
-  */
 
   // Docs
   export const docsCards: CardSections = [

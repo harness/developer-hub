@@ -6,7 +6,6 @@ import {
   import { MODULES } from "@site/src/constants"
   
 /* Define the cards - start */
-// Featured Tutorials
     
     // Docs
     export const docsCards: CardSections = [
@@ -83,21 +82,5 @@ import {
       },
       
   ];
-
- /* Uncomment if you want to show the Featured Tutorials section -->
-  // Featured Tutorials
-export const featuredTutorials: CardItem[] = [
-  {
-    title: "Find and fix Java exceptions",
-    module: MODULES.cet,
-    icon: "img/icon_cet.svg",
-    description: "Learn about types of Java exceptions and how to fix them.",
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/service-reliability/slo-prometheus",
-  },
-];
-*/
 
     /* Define the cards - end */
