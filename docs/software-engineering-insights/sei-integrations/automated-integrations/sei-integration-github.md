@@ -34,10 +34,6 @@ If you can't use OAuth, you must create a GitHub PAT to configure the SEI GitHub
 
    ![The admin:org scope selections for a GitHub personal access token.](../static/github-token-scope2.png)
 
-   * The `admin:org_hook` scope is required to track issue cycle time (for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports)). If you don't want to track issue cycle time, you don't need to select this permission.
-
-   ![The admin:org_hook scope selections for a GitHub personal access token.](../static/github-token-scope3.png)
-
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 4. If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 
