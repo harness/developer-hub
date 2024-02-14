@@ -2241,7 +2241,85 @@ filePathRegex: null
 Completed service step
 ```
 
+### Azure VMSS - Deployment Template Sample
 
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy services using AWS VMSS.
+
+#### Azure VMSS Deployment Template
+
+```yaml
+template:
+  name: VMSS Setup
+  identifier: VMSS_Setup
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+
+            applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+            tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+            secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+            subscription=<+infra.variables.Subscription>
+            resourceGroup=<+infra.variables.ResourceGroup>
+
+            echo "******* Infra Details *******"
+            echo -e "Application ID = $applicationId"
+            echo -e "Tenant ID = $tenantId"
+            echo -e "Secret ID = $secretKey"
+            echo -e "Subscription = $subscription"
+            echo -e "Resource Group = $resourceGroup"
+            echo -e ""
+
+            imageGallery=<+serviceVariables.imageGallery>
+            imageDefinition=<+serviceVariables.imageDefinition>
+            imageVersion=<+serviceVariables.imageVersion>
+            instanceCount=<+serviceVariables.instanceCount>
+            vmssName=<+serviceVariables.vmssName>
+            username=<+serviceVariables.vmUserName>
+            vmPwd=<+serviceVariables.vmPwd>
+
+            echo "******* Service Details *******"
+            echo -e "Image Gallery = $imageGallery"
+            echo -e "Image Definition = $imageDefinition"
+            echo -e "Image Version = $imageVersion"
+            echo -e "Instance Count = $instanceCount"
+            echo -e "VMSS Name = $vmssName"
+            echo -e "VM Username = $username"
+            echo -e "VM Password = $vmPwd"
+            echo -e ""
+
+            az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+            az account set --subscription $subscription
+
+            echo -e "Sending request to create VMSS - [$vmssName] ..."
+
+            az vmss create \
+            --resource-group $resourceGroup \
+            --name $vmssName \
+            --instance-count $instanceCount \
+            --admin-username $username \
+            --admin-password $vmPwd \
+            --no-wait \
+            --image "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Compute/galleries/$imageGallery/images/$imageDefinition/versions/$imageVersion"
+      environmentVariables: []
+      outputVariables: []
+
+```
 
 
 
