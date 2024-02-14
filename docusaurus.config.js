@@ -142,11 +142,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Manage Service Reliability",
-                to: "tutorials/service-reliability",
-              },
-              {
-                // type: "doc",
                 label: "Manage Developer Portal",
                 to: "tutorials/internal-developer-portal",
               },

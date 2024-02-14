@@ -18,11 +18,11 @@ export default function SRM() {
             <h1>Service Reliability Management</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/service-reliability">
+            <Link href="/kb/service-reliability-management">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/service-reliability-management">
@@ -37,8 +37,14 @@ export default function SRM() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Service Reliability Management (SRM) helps your engineering and DevOps teams to balance feature velocity and bug fixes along with the stability and reliability needs in a production environment.
+            Harness Service Reliability Management (SRM) helps engineering and DevOps teams
+            balance feature velocity and bug fixes with the stability and reliability
+            needs of a production environment. You can monitor SLOs, track error budget burndown,
+            and identify change impact.
             </p>
+            <div>
+            <img src={`${baseUrl}img/srm.svg`} />
+            </div>
           </div>
         </div>
       </div>

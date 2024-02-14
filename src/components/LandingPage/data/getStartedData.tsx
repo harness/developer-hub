@@ -37,14 +37,6 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/cloud-costs",
   },
   {
-    title: "Manage SLOs",
-    module: MODULES.srm,
-    icon: "img/icon_srm.svg",
-    description: <>Create SLOs. track error budgets, govern pipelines</>,
-    type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/service-reliability",
-  },
-  {
     title: "Orchestrate Security Testings",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",

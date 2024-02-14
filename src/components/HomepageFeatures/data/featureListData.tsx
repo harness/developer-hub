@@ -38,14 +38,6 @@ export const featureList: CardItem[] = [
     link: "tutorials/cloud-costs",
   },
   {
-    title: "Manage Service Reliability",
-    module: MODULES.srm,
-    icon: "img/icon_srm.svg",
-    description: <>Monitor SLOs, track error budgets, and analyze impact of changes.</>,
-    type: [docType.Documentation],
-    link: "tutorials/service-reliability",
-  },
-  {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",

@@ -38,6 +38,7 @@
 /tutorials/self-managed-enterprise-edition /docs/self-managed-enterprise-edition
 /tutorials/platform /docs/platform
 /tutorials/error-tracking /docs/continuous-error-tracking
+/tutorials/service-reliability /docs/service-reliability-management
 
 # /tutorials /docs
 # each top tutorial landing page

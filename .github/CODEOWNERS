@@ -53,7 +53,7 @@
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya
 
 # Platform Docs
-/docs/platform/ @brian-f-harness @harishkammanahalli
+/docs/platform/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
 
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl
@@ -125,35 +125,5 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 # CD Tutorials
 /tutorials/cd-pipelines/ @ravilach @Ompragash @nicholaslotz @dewan-ahmed
 
-# Chaos Tutorials
-/tutorials/chaos-experiments/ @neelanjan00 @SmritiSatya
-
-# CCM Tutorials
-/tutorials/cloud-costs/ @rdsoze
-
-# CET Tutorials
-/tutorials/error-tracking/ @M-Tsur
-
-# FF Tutorials
-/tutorials/feature-flags/ @HarnessTheChaos @jenniferopal
-
 # HDH Tutorials
 /tutorials/hdh/ @ravilach
-
-# IDP Tutorials
-/tutorials/hdh/ @Debanitrkl
-
-# Platform Tutorials
-/tutorials/platform/ @brian-f-harness @saifeemustafaqharness
-
-# SSCA Tutorials
-/tutorials/secure-supply-chain/ @sunilgupta-harness
-
-# STO Tutorials
-/tutorials/secure-supply-chain/ @douglas-j-bothwell
-
-# SMP Tutorials
-/tutorials/self-managed-enterprise-edition/ @brian-f-harness @saifeemustafaqharness
-
-# SRM Tutorials
-/tutorials/service-reliability/ @sunilgupta-harness

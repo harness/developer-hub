@@ -15,11 +15,11 @@ import { MODULES } from "@site/src/constants"
         "",
       list: [
         {
-          title: "SRM tutorials",
+          title: "Overview",
           module: MODULES.srm,
           description:
-            "Dive in with these hands-on tutorials.",
-          link: "/tutorials/service-reliability",
+            "Key features and functionality of SRM.",
+          link: "/docs/service-reliability-management/get-started/overview",
         },
         {
           title: "Key concepts",

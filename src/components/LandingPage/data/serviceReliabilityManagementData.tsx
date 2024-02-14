@@ -17,7 +17,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/service-reliability/slo-prometheus",
+    link: "/docs/service-reliability-management/get-started/slo-prometheus",
   },
 ];
 
@@ -35,6 +35,6 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/service-reliability/slo-prometheus",
+    link: "/docs/service-reliability-management/get-started/slo-prometheus",
   },
 ];
