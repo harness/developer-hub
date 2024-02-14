@@ -43,6 +43,7 @@ To use this version of the SDK, you also need to use Android API level 21 or hig
 To use this SDK, make sure you:
 
 * Installed [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds) or the [Android SDK](https://github.com/harness/ff-android-client-sdk/blob/main/docs/dev_environment.md) for CLI only
+* If building the SDK you will require at least Android Studio Hedgehog 2023.1.1
 * Installed [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) or newer
 * Installed [Gradle 8.3](https://gradle.org/releases/) or newer
 * Use Android API level 21 or higher.
@@ -69,7 +70,7 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 
 
 ```
-implementation 'io.harness:ff-android-client-sdk:1.2.0'
+implementation 'io.harness:ff-android-client-sdk:2.0.0'
 ```
 
 ### Release builds and ProGuard
@@ -193,6 +194,7 @@ val sdkConfiguration = CfConfiguration.builder()
 val target = Target().identifier("target")  
   
 CfClient.getInstance().initialize(context, "YOUR_API_KEY", sdkConfiguration, target)
+CfClient.getInstance().waitForInitialization()
 ```
 ## Evaluate a Flag
 
@@ -334,52 +336,10 @@ Change `<PKGNAME>` above to one of the following
 
 Or any other valid package name within the SDK.
 
-### Use the SDK for unit tests
-
-To be able to use the SDK in unit tests, you must set the SDKs logging to `testModeOn`, which turns on the system output logging strategy.
-
-
-```
-CfLog.testModeOn()
-```
-Alternatively, to use the Android [log class](https://developer.android.com/reference/android/util/Log) use:
-
-
-```
-CfLog.runtimeModeOn()
-```
-Standard Android logging is the default logging strategy, so turning on runtime mode is not required.
 
 #### Use our public API methods
 
 Our public API exposes the following methods that you can use:
-
-
-```
-public void initialize(  
-  
-            final Context context,  
-            final String apiKey,  
-            final CfConfiguration configuration,  
-            final Target target,  
-            final AuthCallback authCallback  
-  
-) throws IllegalStateException  
-
-```
-
-```
-public void initialize(  
-  
-        final Context context,  
-        final String apiKey,  
-        final CfConfiguration configuration,  
-        final Target target,  
-        final CloudCache cloudCache  
-  
-) throws IllegalStateException  
-
-```
 
 ```
 public void initialize(  
@@ -398,6 +358,7 @@ public void initialize(
 * `public JSONObject jsonVariation(String evaluationId, JSONObject defaultValue)`
 * `public void registerEventsListener(EventsListener listener)`
 * `public void unregisterEventsListener(EventsListener observer)`
+* `public void refreshEvaluations()`
 * `public void close()`
 
 ## Sample code for an Android application
@@ -406,54 +367,57 @@ Here is a sample code for using Harness Feature Flag SDKs with the Android appli
 
 
 ```
-package com.example.ffsdktryout  
-import androidx.appcompat.app.AppCompatActivity  
-import android.os.Bundle  
-import io.harness.cfsdk.*  
-import io.harness.cfsdk.cloud.model.Target  
-import io.harness.cfsdk.logging.CfLog  
-import io.harness.cfsdk.CfClient  
-import io.harness.cfsdk.cloud.oksse.model.StatusEvent  
-import io.harness.cfsdk.cloud.core.model.Evaluation  
-import io.harness.cfsdk.cloud.events.EvaluationListener  
-import io.harness.cfsdk.cloud.oksse.EventsListener  
-class MainActivity : AppCompatActivity() {  
-    private val logTag = MainActivity::class.simpleName  
-    private var eventsListener = EventsListener { event ->  
-        if (event.eventType == StatusEvent.EVENT_TYPE.EVALUATION_CHANGE) {  
-            // Do something  
-        } else if (event.eventType == StatusEvent.EVENT_TYPE.EVALUATION_RELOAD) {  
-            // Do something else  
-        }  
-    }  
-    private val evaluationListener: EvaluationListener = EvaluationListener {  
-        // Do something  
-    }  
-    override fun onCreate(savedInstanceState: Bundle?) {  
-        super.onCreate(savedInstanceState)  
-        setContentView(R.layout.activity_main)  
-        val target = Target().identifier("YOUT_TARGET_IDENTIFIER").name("YOUR_TARGET_NAME")  
-        val remoteConfiguration = CfConfiguration.builder()  
-            .enableStream(true)  
-            .build()  
-        io.harness.cfsdk.CfClient.getInstance()  
-            .initialize(  
-                this,  
-                "YOUR_API_KEY",  
-                remoteConfiguration,  
-                target  
-            ) { _, result ->  
-                if (result.isSuccess) {  
-                    val registerEventsOk = CfClient.getInstance().registerEventsListener(eventsListener)  
-                    var registerEvaluationsOk = CfClient.getInstance().registerEvaluationListener(  
-                        "YOUR_EVALUATION_IDENTIFIER",  
-                        evaluationListener  
-                    )  
-                } else {  
-                    CfLog.OUT.e(logTag, "Init. error")  
-                }  
-            }  
-    }  
+package io.harness.cfsdk.gettingstarted
+
+import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
+import ch.qos.logback.classic.android.BasicLogcatConfigurator
+import io.harness.cfsdk.*
+import io.harness.cfsdk.cloud.model.Target
+import io.harness.cfsdk.cloud.sse.StatusEvent
+
+
+class MainActivity : AppCompatActivity() {
+
+    private var flagName: String = BuildConfig.FF_FLAG_NAME.ifEmpty { "harnessappdemodarkmode" }
+
+    // The SDK API Key to use for authentication.  Configure it when installing the app by setting FF_API_KEY
+    // e.g. FF_API_KEY='my key' ./gradlew installDebug
+    private val apiKey: String = BuildConfig.FF_API_KEY
+
+        val client = CfClient()
+        client.use {
+            client.initialize(this, apiKey, sdkConfiguration, target)
+            client.waitForInitialization()
+            Log.i("SDKInit", "Successfully initialized client")
+
+            // Get initial value of flag and display it
+            var flagValue: Boolean = client.boolVariation(flagName, false)
+            printMessage("$flagName : $flagValue")
+
+            // Setup Listener to handle different events emitted by the SDK
+            client.registerEventsListener { event ->
+                when (event.eventType) {
+                    // Setup Listener to handle flag change events.  This fires when a flag is modified.
+                    StatusEvent.EVENT_TYPE.EVALUATION_CHANGE -> {
+                        Log.i("SDKEvent", "received ${event.eventType} event for flag")
+                        event.extractEvaluationPayload()
+                        flagValue = client.boolVariation(flagName, false)
+                        printMessage("$flagName : $flagValue")
+                    }
+                    else -> Log.i("SDKEvent", "Got ${event.eventType.name}")
+                }
+            }
+        }
+    }
+
+    // printMessage uses the UI Thread to update the text on the display
+    private fun printMessage(msg : String) {
+        val tv1: TextView = findViewById(R.id.textView1)
+        runOnUiThread { tv1.text = msg }
+    }
 }
 ```
 
