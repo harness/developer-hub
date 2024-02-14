@@ -8,7 +8,7 @@ In addition to the reference documentation, there are a variety of tutorials ava
 
 - [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)
 
-- [Customize delegate to install third-party tools](/tutorials/platform/customize-delegate)
+- [Customize delegate to install third-party tools](/docs/platform/delegates/install-delegates/overview#install-minimal-delegate-with-3rd-party-custom-binaries)
 
 - [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
 

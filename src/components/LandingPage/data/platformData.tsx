@@ -30,21 +30,6 @@ export const PlatformList: CardItem[] = [
     link: "/docs/platform/delegates/install-delegates/install-delegate",
   },
   {
-    title: "Customize the Delegate to Run Your Favorite Third-Party Tools",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Customize the delegate to run any of your favorite tools Such as Helm,
-        Terraform, AWS CLI, etc.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/platform/customize-delegate",
-  },
-  {
     title: "Install Harness Delegate on GKE with Workload Identity",
     module: MODULES.platform,
     icon: "img/logo.svg",
