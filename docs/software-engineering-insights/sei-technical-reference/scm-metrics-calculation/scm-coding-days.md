@@ -20,7 +20,7 @@ The Coding Days metric is measured across 4 types of reports on SEI.
 
 ### Trellis Raw Stats report
 
-In the Raw Stats report the Coding Days metric displays the count of unique days on which a developer has committed code changes. To configure this report on your Insight, go to [Trellis Insight: Tutorial](../../sei-metrics-and-reports/trellis-score.md)
+In the Raw Stats report the Coding Days metric displays the count of unique days on which a developer has committed code changes. To configure this report on your Insight, go to [Trellis Insight: Tutorial](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score)
 
 ```bash
 Calculation: Number of days in the selected time range with at least one commit.
@@ -28,7 +28,7 @@ Calculation: Number of days in the selected time range with at least one commit.
 
 ### Trellis Developer report
 
-In the Trellis Developer report the Coding Days metric displays the average number of coding days per week that a developer has worked on during the selected time period. To configure this report on your Insight, go to [Trellis Insight: Tutorial](../../sei-metrics-and-reports/trellis-score.md)
+In the Trellis Developer report the Coding Days metric displays the average number of coding days per week that a developer has worked on during the selected time period. To configure this report on your Insight, go to [Trellis Insight: Tutorial](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score)
 
 ```bash
 Calculation: Raw coding days divided by the total number of weeks in the selected time range.

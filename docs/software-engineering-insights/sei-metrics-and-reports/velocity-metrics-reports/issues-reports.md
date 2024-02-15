@@ -107,13 +107,13 @@ Issue resolution time reports help you understand how long tickets remain open, 
 * **Issue Resolution Time Trend Report:** Monitor changes over time in issue resolution time.
 * **Issue Resolution Time Single Stat:** A [single stat widget](#issue-single-stats) showing the number of issues marked as resolved in a given time period.
 * **Issue Time Across Stages:** Analyze cycle time by status. Cycle time is the elapsed time for an iteration of the issue workflow, from open to close.
-* **[Issue Lead Time by Stage Report](./lead-time-reports.md)**
-* **[Issue Lead Time By Type Report](./lead-time-reports.md)**
+* **[Issue Lead Time by Stage Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)**
+* **[Issue Lead Time By Type Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)**
 * **[Jira Releases Report](#configure-the-jira-releases-report):** Analyze your team's release pattern by understanding the average time elapsed between issue creation and release.
 
 :::tip Use Issue Resolution Time to monitor MTTR and MTBF
 
-Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](../dora-metrics.md). You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. To do this, configure the filters and settings for these widgets so that they only track issues related to failure recovery.
+Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics). You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. To do this, configure the filters and settings for these widgets so that they only track issues related to failure recovery.
 
 :::
 
@@ -202,7 +202,7 @@ This configuration produces a bar graph showing a historical record of the avera
 <!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
 1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
-2. On the **Filters** tab, add filters to demonstrate [MTTR](../dora-metrics.md#mean-time-to-restore-mttr) or [Lead Time For Changes](../dora-metrics.md#lead-time-for-changes) trends:
+2. On the **Filters** tab, add filters to demonstrate [MTTR](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#mean-time-to-restore-mttr) or [Lead Time For Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes) trends:
 
    * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
@@ -246,7 +246,7 @@ The benefits of the **Jira Releases Report** include:
 
 To get the most benefit from this report, the following best practices are recommended:
 
-* Practice good Jira [hygiene](../hygiene-metrics.md), especially when changing issue statuses. Selecting the incorrect status, having an unclear status workflow, or having too many similar statuses can result in poor or inaccurate lead time measurements.
+* Practice good Jira [hygiene](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics), especially when changing issue statuses. Selecting the incorrect status, having an unclear status workflow, or having too many similar statuses can result in poor or inaccurate lead time measurements.
 * Whenever possible, map issues to a single version, rather than multiple versions.
 * Make sure all **Done** issues are eventually moved to the **Resolved** status (Ideally, moved to completion from the development and testing perspective).
 * Perform releases only after all linked issues are in the **Resolved** status.
@@ -259,7 +259,7 @@ You can select any attributes, such as priority, status, labels, components, or 
 
 :::tip
 
-Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](./lead-time-reports.md)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
+Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
 
 :::
 
@@ -351,7 +351,7 @@ If you want to observe hops for tickets that have been open for a long time, set
 
 ## Issue hygiene reports
 
-For information about issue hygiene reports, go to [Hygiene reports](../hygiene-metrics.md).
+For information about issue hygiene reports, go to [Hygiene reports](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics).
 
 ## Issue single stats
 
@@ -376,5 +376,5 @@ You might want to set the time range to **Use Insight time**, which allows the u
 ## Other issues reports
 
 * **Issue Hotspots Report:** Determine code hotspots most often result in issues being created in your issue management system. This can help you identify code areas that need better test coverage.
-* **Issue Progress Report:** Analyze progress on [effort investment categories](../alignment-metrics-reports/effort-investment-metrics.md).
-* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](./scm-reports.md).
+* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
+* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).

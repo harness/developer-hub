@@ -5410,3 +5410,68 @@ Yes, you can update Jira issues and add Jira approval stages and steps using Har
 
 #### What does the Resource Key support the different types of values?
 The Resource Key supports Fixed Values, Runtime Inputs, and Expression
+
+#### Does Harness support connector for SMB in NextGen, which earlier was availble in CurrentGen ?
+
+No, Harness does not support SMB connector in NextGen. We recommend you to use Custom Artifact Source.
+Please read more on Custom Artifact in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-a-custom-artifact-source-for-cd/)
+
+#### Does Harness provide APIs to force reconcile pipelines ?
+
+No, Harness does not have a public API for force reconcile, but these APIs are soon to be provided. 
+Please read more on Reconciler APIs in the [API Documentation](https://apidocs.harness.io/tag/Reconciler)
+
+#### Can we see the commit associated with the manifest harness pulls for a k8s deploy step ?
+
+To fetch manifest commit id in service one can use the expression `<+manifest.MANIFEST_ID.commitId>`. One can also go through delegate logs for morew suitable requests.
+Please read more on manifest commit Id in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#manifestmanifest_idcommitid)
+
+#### Does Harness support Triggers in GitX ?
+
+No, Harness does not support Triggers for GitX.
+Please read more on triggers in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/trigger/)
+
+#### How to diagnose instances where pipeline fails to initiate due to trigger issues ?
+
+If a pipeline doesn't start in response to an incoming event, do the following:
+
+- Check the execution history (select Execution History in the top right of the Pipeline Studio).
+- Verify that the runtime inputs are correct.
+- Check the payloads sent from the Git provider and compare the relevant fields with your trigger conditions. For example, in GitHub you can view the full payload of each event sent from a specific webhook.
+
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers)
+
+#### Where can we notice upcoming Features or changes for Continuous Delivery at Harness ?
+
+Harness has published Public Facing Product Roadmap for Harness CD for new upcoming plans around Continuous Delivery.
+Please find the Release in this [Documentation](https://developer.harness.io/roadmap/#cd)
+
+#### Is there a method to execute `K8sBlueGreenStageScaleDown` across various stages within the deployment ? 
+
+Yes, Harness supports execution of `K8sBlueGreenStageScaleDown` step in one stage with deployment in other.
+Please find a suitable example in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment/#add-the-execution-steps)
+
+#### What permissions are required to restrict access to creating or editing OPA policies ?
+
+To control the ability to create or edit OPA policies, consider utilizing the `core_governancePolicy_edit` policy. For a comprehensive list of permissions, please refer to the provided [Documentation](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference#governance-policies).
+
+####  Is there a variable available to indicate the Helm v2 path for installation on the delegate ?
+
+Below following could be the required solution for the same :
+
+- One needs to install path via the INIT_SCRIPT field
+```yaml
+name: INIT_SCRIPT
+          value: ""
+```
+
+- After the installation of the binary, export it to PATH
+- Unlike FirstGen, variables are now not present for Helm2 and Helm3 for immutable delegates
+**Note : One can’t have the same delegate using v2 and v3 for Helm**
+
+Please read more on helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#helm-2-in-native-helm)
+
+#### How are GCP Cloud Run services billed ?
+
+They are facilitated through Deployment Templates. Consequently, deploying a service to a specific environment, such as "infra1," incurs billing for one service.
+
