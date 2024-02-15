@@ -14,7 +14,7 @@ Before starting, ensure you have:
 
 * An active Harness IDP account, at present IDP is enabled on request. [Submit this form to enable IDP in your Harness account.](https://www.harness.io/demo/internal-developer-portal)
 * A [Harness Git connector](/docs/category/code-repo-connectors) with API access enabled.
-* A [registered software component](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog) for which you want to track migrations.
+* A [registered software component](/docs/internal-developer-portal/get-started/register-a-new-software-component) for which you want to track migrations.
 * If your `catalog-info.yaml` isn't stored at the root of your source code repo, make sure the `backstage.io/source-location` annotation appropriately points to the correct source code location.
    To check this, go to **Catalog**, select the relevant **Software Component**, select **More Options** (&vellip;), select **Inspect Entity**, and then select **Raw YAML**.
 

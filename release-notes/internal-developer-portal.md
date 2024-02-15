@@ -304,7 +304,7 @@ Post-Limited GA, we've taken your genius tips and mixed them into the Internal D
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i) 
-- **Tutorial:** [How to register Software Components in Catalog](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog)
+- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component)
 - **Docs:** [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources) 
 
 #### New features and enhancements

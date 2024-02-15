@@ -42,6 +42,8 @@ spec:
   system: project-x
 ```
 
+## Register software components in the catalog
+
 For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
 
 ## Software ecosystem modelling
