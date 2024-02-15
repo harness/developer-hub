@@ -103,6 +103,8 @@ The following deprecated API endpoints are longer supported:
 
 - Added support for encrypted assertions in the SAML response. (PL-43353)
 
+- Added support for selecting environment in manual credentials option while creating an Azure key vault connector
+
 #### Fixed issues
 
 - The authentication mechanism of a secret manager couldn't be changed from a non-password-based to a password-based mechanism due to a bug in the secret manager update API. (PL-46657)
@@ -114,6 +116,8 @@ The following deprecated API endpoints are longer supported:
    This issue has been resolved. Now, if there are multiple connectors whose secrets are stored in a secret manager connector, when you update the connector's secret, Harness updates the PPTs of all the linked connectors, along with the secret manager connector.
 
    This item is available with Harness Platform version 1.24.7 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
 
 ### Version 1.23.5 <!--  February 05, 2024 -->
 
