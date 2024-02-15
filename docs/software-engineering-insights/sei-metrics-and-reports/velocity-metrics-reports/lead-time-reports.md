@@ -174,9 +174,9 @@ Lead time is based on the stages configured in the [Workflow profile](#workflow-
 
 When configuring the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) for this report, make sure you only track issues in issue management. To do this:
 
-* Make sure the **Start Event** is **Ticket Created**.
-* Disable the development (SCM) stages.
-* Make sure the workflow only includes issue management stages.
+* Make sure to select the checkbox for Measure Lead Time only using the Jira Statuses
+* This will automatically remove the development (SCM) stages.
+* You can customize the workflow and add more custom stages to accurately calculate the value for your Lead Time metric.
 
 This report requires that you set the **Issues Resolved In** filter, because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
 
@@ -232,8 +232,6 @@ When configuring the [Workflow profile](/docs/software-engineering-insights/sei-
 * Configure stages for issue management and other tools you want to track, such as SCM and CI/CD.
 * Stages flow sequentially from one tool to the next, such as *`Development in Progress`* in Jira followed by your SCM development stages (first commit and PR creation-to-merge time).
 * Stages *do not* overlap. Meaning, the same event *is not* tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
-
-This report requires that you set the **Issues Resolved In** filter, because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
 
 You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the widget/Insight, and they persist even if you change [collections associated with Insights](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
 
