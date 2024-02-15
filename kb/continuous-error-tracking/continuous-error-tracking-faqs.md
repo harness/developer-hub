@@ -1011,7 +1011,7 @@ This link will provide the latest version of the CET agent.
 
 
 
-#### I want to update my CET agent f system.  How can I upgrade using this specific CET agent for my system?
+#### I want to update my CET agent for my Graviton system.  How can I upgrade using this specific CET agent for my system?
 
 One can download the Graviton version of the CET agent using the following link:
 https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz
