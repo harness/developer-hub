@@ -110,23 +110,27 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    <td>Flag to hold the criteria for the http get request</td>
    <td>Mandatory</td>
    <td><code>==, !=, oneOf</code></td>
-   <td>The <code>criteria</code> contains criteria to match the HTTP GET request's response code or body with the expected responseCode or responseBody, which need to be fulfill as part of httpProbe run.</td>
+   <td>The <code>criteria</code> contains criteria to match the HTTP GET request's response code or body with the expected `responseCode` or `responseBody`, as a part of `httpProbe` run.</td>
   </tr>
   <tr>
    <td>responseCode</td>
    <td>Flag to hold the expected response code for the GET request</td>
    <td>Mandatory </td>
    <td>HTTP_RESPONSE_CODE </td>
-   <td>The <code>responseCode</code> contains the expected response code for the HTTP GET request as part of httpProbe run. It is mutually exclusive with the responseBody field. </td>
+   <td>The <code>responseCode</code> contains the expected response code for the HTTP GET request as part of `httpProbe` run. It is mutually exclusive with the `responseBody` field. </td>
   </tr>
   <tr>
    <td>responseBody</td>
    <td>Flag to hold the expected response body for the GET request</td>
    <td>Mandatory</td>
    <td>string</td>
-   <td>The <code>responseBody</code> contains the expected response body for the HTTP GET request as part of httpProbe run. It is mutually exclusive with the responseCode field.</td>
+   <td>The <code>responseBody</code> contains the expected response body for the HTTP GET request as part of `httpProbe` run. It is mutually exclusive with the `responseCode` field.</td>
   </tr>
 </table>
+
+:::tip
+The fields `criteria` and `responseBody` is mutually exclusive with `criteria` and `responseCode`. This means `criteria` field is accompanied by either `responseBody` or `responseCode`.
+:::
 
 #### POST method properties
 
@@ -143,7 +147,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    <td>Flag to hold the criteria for the http post request</td>
    <td>Mandatory</td>
    <td><code>==, !=, oneOf</code></td>
-   <td>The <code>criteria</code> contains criteria to match the HTTP POST request's response code with the expected responseCode, which need to be fulfill as part of httpProbe run.</td>
+   <td>The <code>criteria</code> contains criteria to match the HTTP POST request's response code with the expected `responseCode`, as a part of `httpProbe` run.</td>
   </tr>
   <tr>
    <td>responseCode</td>
