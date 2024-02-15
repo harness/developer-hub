@@ -86,6 +86,52 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+:::danger Important default delegate YAML update
+
+Harness has updated the default HPA in the Harness Delegate YAML to use autoscaling/v2 instead of autoscaling/v1 which was used in earlier delegate versions.
+
+With this update, the delegate default scaling metrics are now 70% of CPU and 70% of memory utilization.
+
+---  
+
+apiVersion: autoscaling/v2  
+kind: HorizontalPodAutoscaler  
+metadata:  
+  name: kubernetes-delegate-hpa  
+  namespace: harness-delegate-ng  
+  labels:  
+      harness.io/name: kubernetes-delegate  
+spec:  
+ scaleTargetRef:  
+   apiVersion: apps/v1  
+   kind: Deployment  
+   name: kubernetes-delegate  
+ minReplicas: 1  
+ maxReplicas: 1  
+ metrics:  
+ - type: Resource  
+   resource:  
+     name: cpu  
+     target:  
+       type: Utilization  
+       averageUtilization: 70  
+ - type: Resource  
+   resource:  
+     name: memory  
+     target:  
+       type: Utilization  
+       averageUtilization: 70  
+
+
+---  
+Since autoscaling/v2 has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23, you must manually change the apiVersion in the HorizontalPodAutoscaler of your delegate YAML to autoscaling/v1.
+
+For more information, go to Configure Harness Delegate autoscaling using replicas for Kubernetes.
+
+This update only affects new delegate installations. Your existing, running delegates are not affected. (PL-43686)
+
+:::
+
 - Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
 
 - Enhanced the `override-delegate-tag` API documentation to include details on `validForDays` and `validTillNextRelease` parameters. Additionally, the default value for `validForDays` has been updated to 180 days, extending from the previous 30 days. This update can be found [here](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag). (PL-46879)
