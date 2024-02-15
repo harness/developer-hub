@@ -263,6 +263,15 @@ The following early access (beta) features are available for the Harness Softwar
 
 ### SEI Jira Integration Enhanced Experience
 
+* **Release date:** February 2024
+* **Issue number:** SEI-5188
+* **Feature flag:** `SHOULD_ENABLE_REAUTH`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new re-authorization flow for the Jira and GitHub Integrations. The feature is related to SEI-3727.
+
+### SEI Jira Integration Enhanced Experience
+
 * **Release date:** January 2024
 * **Issue number:** SEI-3727
 * **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
