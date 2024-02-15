@@ -43,7 +43,22 @@ The GitHub App facilitates a seamless connection to GitHub with minimal user int
 
 ![](../static/github-app.png)
 
-To set up the integration using the GitHub App:
+The following permissions are required to configure the **Harness SEI Github App** integration:
+
+* **Read access to administration, code, commit statuses, issues, metadata, and pull requests:** This allows the app to view and access information about your repositories, including code, commits, issues, and metadata.
+* **Read access to email addresses:** This allows the app to view the email addresses of users who have authorized the app.
+
+<img
+  src={require('../static/github-app-permissions.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
+
+:::info
+It is important to note that these permissions are requested by the Harness SEI Github App.
+This means that the app will request these permissions from GitHub on its behalf, and not on behalf of the user who is installing the app.
+:::
+
+To set up the integration using the **GitHub App**:
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **GitHub integration**, and select **Install**.
