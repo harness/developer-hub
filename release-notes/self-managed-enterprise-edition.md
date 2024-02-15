@@ -117,6 +117,16 @@ gsutil -m cp \
     When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
     :::
 
+- Removed the unused `org.redisson:redisson` library dependency from the delegate. (PL-42485, ZD-53588, ZD-53760)
+
+- Deletion of SCIM-managed user groups was not allowed. (PL-39439, ZD-53340)
+
+  You can now delete SCIM-managed user groups via the delete API for user groups.
+
+   :::info
+   Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
+   :::
+
 ### Early access features
 
 ### Fixed issues
@@ -145,6 +155,19 @@ gsutil -m cp \
      - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
 
 - Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
+
+- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connectors working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China, and so on). Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector. (PL-43333, ZD-54717)
+
+- Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
+
+   This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
+
+  This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The `platform-service` was not publishing the response count metric. (PL-43123)
+
+   This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
+
 
 
 ## February 13, 2024, patch version 0.13.4
