@@ -344,7 +344,7 @@ probe:
 
 ### HTTP GET request (validate response code)
 
-The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (<, >, <=, >=, ==, !=, oneof, between). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (`<`, `>`, `<=`, `>=`, `==`, `!=`, `oneof`, `between`). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
 
 Use the following example to tune this:
 
@@ -386,7 +386,7 @@ spec:
 
 ### HTTP GET request (validate response body)
 
-The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response body against specified criteria (<, >, <=, >=, ==, !=, oneof, between). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response body against specified criteria (`contains`, `equal`, `notEqual`, `matches`, `notMatches`, `oneof`). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
 
 Use the following example to tune this:
 
@@ -522,7 +522,7 @@ spec:
 
 For complex POST requests with multi-line bodies, the 'bodyPath' attribute comes into play. It allows you to specify the path to a file containing the required body content. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `httpProbe/inputs.method.post.body` field.
 
-Please note that it is mutually exclusive with the 'body' field. If 'body' is specified, it will be used for the POST request; otherwise, 'bodyPath' will be used.
+Please note that it is mutually exclusive with the `body` field. If `body` is specified, it will be used for the POST request; otherwise, `bodyPath` will be used.
 
 Use the following example to tune this:
 
