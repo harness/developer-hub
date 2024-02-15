@@ -103,7 +103,7 @@ The following deprecated API endpoints are longer supported:
 
 - Added support for encrypted assertions in the SAML response. (PL-43353)
 
-- Added support for selecting environment in manual credentials option while creating an Azure key vault connector (PL-46485)
+- Added support for selecting the environment in the manual credentials option while creating an Azure key vault connector. (PL-46485)
 
 #### Fixed issues
 
@@ -117,9 +117,9 @@ The following deprecated API endpoints are longer supported:
 
    This item is available with Harness Platform version 1.24.7 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492) (ZD-56741)
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)
 
-   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronisation.
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronization.
 
 ### Version 1.23.5 <!--  February 05, 2024 -->
 
