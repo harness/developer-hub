@@ -33,7 +33,7 @@ This option is disabled for deployment types that do not support containerized s
 - You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.
 - Currently, containerized step groups are supported in the following deployment types:
   - [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
-  - [Serverless.com framework for AWS Lambda deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart#before-you-begin)
+  - [Serverless.com framework for AWS Lambda deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#before-you-begin)
 
 
 ## Add a containerized step group
