@@ -14,7 +14,7 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 
 <!-- See it in action: Demo video -->
 
-**To get started, check out the tutorial to [create your first service onboarding pipeline](/tutorials/internal-developer-portal/service-onboarding-pipeline).**
+**To get started, check out the tutorial to [create your first service onboarding pipeline](./service-onboarding-pipeline).**
 
 ## How to write IDP Templates
 
@@ -793,7 +793,7 @@ Harness IDP ships the following Harness related built-in actions along with [som
 - `harness:create-secret`
 - `harness:delete-secret`
 
-Learn more about how to use them in the [service onboarding tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input).
+Learn more about how to use them in the [service onboarding tutorial](./using-secret-as-an-input).
 
 ## Available UI pickers
 

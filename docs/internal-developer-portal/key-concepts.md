@@ -29,7 +29,7 @@ A [software catalog](/docs/internal-developer-portal/catalog/software-catalog) i
 
 ## Service Onboarding
 
-[Service Onboarding](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-pipeline) provides self-service workflows that developers use for their platform/DevOps needs, powered by Harness pipelines.
+[Service Onboarding](./flows/service-onboarding-pipelines) provides self-service workflows that developers use for their platform/DevOps needs, powered by Harness pipelines.
 
 ## TechDocs
 

@@ -12,7 +12,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    link: "/docs/internal-developer-portal/flows/service-onboarding-pipeline",
   },
   {
     title: "How to use a short-lived secret to trigger a service onboarding pipeline?",
@@ -23,7 +23,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "7min",
-    link: "/tutorials/internal-developer-portal/using-secret-as-an-input",
+    link: "/docs/internal-developer-portal/flows/using-secret-as-an-input",
   },
 ];
 
@@ -36,7 +36,7 @@ export const IDPList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    link: "/docs/internal-developer-portal/flows/service-onboarding-pipeline",
   },
   {
     title: "Using short-lived secrets as inputs to service onboarding",
@@ -46,6 +46,6 @@ export const IDPList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/internal-developer-portal/using-secret-as-an-input",
+    link: "/docs/internal-developer-portal/flows/using-secret-as-an-input",
   },
 ];
