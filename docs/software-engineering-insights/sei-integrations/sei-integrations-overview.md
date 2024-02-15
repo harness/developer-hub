@@ -27,7 +27,7 @@ Integration mapping refers to the process of linking available or new integratio
 
 ## Application-specific SEI integrations
 
-* [Azure DevOps Services](./automated-integrations/sei-integration-azure-devops)
+* [Azure DevOps Services](./automated-integrations/sei-integration-azure-devops.md)
 * [Bitbucket](./automated-integrations/sei-integration-bitbucket)
 * [Checkmarx SAST](./other-integrations/sei-integration-checkmarx)
 * [Circle CI](./automated-integrations/sei-integration-circleci)
