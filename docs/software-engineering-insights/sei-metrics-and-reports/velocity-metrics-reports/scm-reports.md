@@ -12,7 +12,7 @@ SCM reports help you analyze activity in your SCM tools, including:
 * Review collaboration.
 * Most active repositories and files.
 
-Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](../../sei-integrations/sei-integrations-overview.md).
+Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
 ## SCM code activity reports
 
@@ -30,7 +30,7 @@ Use SCM code activity reports to analyze direct coding activity in your SCM tool
 
 :::info Trellis Scores
 
-Some code velocity metrics contribute to [Trellis Scores](../trellis-score.md):
+Some code velocity metrics contribute to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score):
 
 * Coding days are part of the **Speed** factor.
 * Number of commits per month is part of the **Volume** factor.
@@ -40,7 +40,7 @@ Some code velocity metrics contribute to [Trellis Scores](../trellis-score.md):
 
 ### SCM Committers Report
 
-With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](../../sei-projects-and-collections/manage-collections.md):
+With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections):
 
 * The number of PRs they have worked on.
 * The number of commits they've made.
@@ -60,7 +60,7 @@ This information helps you with:
 * **SCM Change Volume to CI/CD Jobs Single Stat:** Report a single stat related to the frequency or volume of deployed code changes.
 * **Code Volume Vs. Deployment Report**
 
-For more information about CI/CD job reports, go to [CI/CD job reports](./ci-cd-reports.md).
+For more information about CI/CD job reports, go to [CI/CD job reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports).
 
 ## SCM issues reports
 
@@ -88,7 +88,7 @@ Use the **SCM Issues Resolution Time Report** to analyze the overall time taken 
 
 The **SCM Issues Time Across Stages Report** analyzes cycle time for SCM issues. You can configure this widget by project, repository, or other parameters to help you identify the Kanban state where issues spend the most time.
 
-Only GitHub is supported, and your [GitHub SEI integration](../../sei-integrations/automated-integrations/sei-integration-github.md) must have the appropriate configuration to ingest issue cycle time data.
+Only GitHub is supported, and your [GitHub SEI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github) must have the appropriate configuration to ingest issue cycle time data.
 
 ## SCM PR reports
 
@@ -191,7 +191,7 @@ To add the **SCM PR Lead Time by Stage Report** to Insights:
 
 Several SCM PR reports include lead time. Lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue lifetime for SCM issues. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](../../sei-profiles/workflow-profile.md). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the pull request, then the *time to comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the pull request, then the *time to comment* is zero.
 
 The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based Workflow profile, which has four stages: PR creation time, time to comment, approval time, and merge time.
 
