@@ -118,7 +118,6 @@ If you created a personal access token and allowed the admin:org\_hook permissio
 If you use GitHub App, SEI creates an organization webhook instead.
 :::
 
-
 ## Connect with GitHub Enterprise
 
 To connect with the **GitHub Enterprise**, you can use the **Ingestion Satellite** to integrate with on-premises GitHub Enterprise instances. The configuration process for the integration is similar to setting up the integration in the cloud but instead uses the satellite to communicate with the GitHub server.
@@ -151,7 +150,7 @@ To set up the integration for the GitHub Enterprise:
 
 ![](../static/github-enterprise-success.png)
 
-Once you have downloaded the `satellite.yml` file update it following the instructions [here](../../sei-ingestion-satellite/run-the-satellite-container).
+Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container).
 
 :::info
 Please note that after adding an integration, it **may take up to 24 hours for the data to be fully reflected on SEI.** This means that any widgets you configure on Insights using this integration **may not display data until the synchronization is completed.**
@@ -179,4 +178,4 @@ integrations:
       fetch_commit_files: true
 ```
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](../../sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)

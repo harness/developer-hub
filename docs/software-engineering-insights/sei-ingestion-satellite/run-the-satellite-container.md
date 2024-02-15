@@ -268,6 +268,6 @@ data: ## This section comes from satellite.yml. If you copy and paste this secti
 
 :::tip
 
-In addition to Ingestion Satellites and other [integrations](../sei-integrations/sei-integrations-overview.md), you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
+In addition to Ingestion Satellites and other [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview), you can [import CSV files](/docs/software-engineering-insights/sei-propels-scripts/tables) and display the data in [Table reports](/docs/software-engineering-insights/sei-propels-scripts/table-reports).
 
 :::

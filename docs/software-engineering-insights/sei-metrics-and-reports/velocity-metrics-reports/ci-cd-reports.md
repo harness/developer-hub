@@ -11,7 +11,7 @@ Use CI/CD job reports to analyze metrics and trends related to CI/CD job runs. T
 * **Adoption rates:** Gain a deeper understanding of the adoption rate of CI/CD practices across different teams or departments, which helps identify areas of success and potential improvement.
 * **Pipeline performance analysis:** By tracking job counts over time, you can analyze a pipeline's performance. Changes in the job count, such as an increase in queued jobs or a decrease in completed jobs, can provide insights into the pipeline's efficiency, resource utilization, or potential issues affecting its execution.
 
-These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](../../sei-integrations/sei-integrations-overview.md).
+These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
 ## Job count reports
 
@@ -67,7 +67,7 @@ Use the CI/CD job configuration change reports to understand how often job confi
 
 ## SCM to CI/CD jobs reports
 
-For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](./scm-reports.md).
+For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 ## Configure CI/CD job reports
 
