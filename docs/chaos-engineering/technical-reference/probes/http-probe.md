@@ -109,7 +109,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    <td>criteria</td>
    <td>Flag to hold the criteria for the http get request</td>
    <td>Mandatory</td>
-   <td><code>==, !=, oneOf</code></td>
+   <td> `>=`, `<=`, `==`, `!=`, `<`, `>`, `oneOf`, `between`</td>
    <td>The <code>criteria</code> contains criteria to match the HTTP GET request's response code or body with the expected `responseCode` or `responseBody`, as a part of `httpProbe` run.</td>
   </tr>
   <tr>
@@ -146,7 +146,7 @@ The fields `criteria` and `responseBody` is mutually exclusive with `criteria` a
    <td>criteria</td>
    <td>Flag to hold the criteria for the http post request</td>
    <td>Mandatory</td>
-   <td><code>==, !=, oneOf</code></td>
+   <td> `>=`, `<=`, `==`, `!=`, `<`, `>`, `oneOf`, `between`</td>
    <td>The <code>criteria</code> contains criteria to match the HTTP POST request's response code with the expected `responseCode`, as a part of `httpProbe` run.</td>
   </tr>
   <tr>
@@ -331,7 +331,7 @@ probe:
         insecureSkipVerify: true
       method:
         get:
-          criteria: == # supports == & != and oneof operations
+          criteria: == # <, >, <=, >=, ==, !=, oneof, between operations
           responseCode: "200"
     mode: "Continuous"
     runProperties:
@@ -344,7 +344,7 @@ probe:
 
 ### HTTP GET request (validate response code)
 
-The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (==, !=, oneOf). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (<, >, <=, >=, ==, !=, oneof, between). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
 
 Use the following example to tune this:
 
@@ -373,8 +373,8 @@ spec:
             # call http get method and verify the response code
             get: 
               # criteria which should be matched
-              criteria: == # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: == # <, >, <=, >=, ==, !=, oneof, between
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
@@ -386,7 +386,7 @@ spec:
 
 ### HTTP GET request (validate response body)
 
-The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response body against specified criteria (equals, notEquals, oneOf, contains). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+The HTTP GET method involves sending an HTTP GET request to the provided URL and then assessing the response body against specified criteria (<, >, <=, >=, ==, !=, oneof, between). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
 
 Use the following example to tune this:
 
@@ -416,7 +416,7 @@ spec:
             get: 
               # criteria which should be matched
               criteria: contains
-              # exepected response body for the http request, which should follow the specified criteria
+              # expected response body for the http request, which should follow the specified criteria
               responseBody: "hello world"
         mode: "Continuous"
         runProperties:
@@ -461,8 +461,8 @@ spec:
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
-              criteria: "==" # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: "==" # <, >, >=, <=, ==, !=, oneof, between
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
@@ -508,7 +508,7 @@ spec:
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
               criteria: contains
-              # exepected response body for the http request, which should follow the specified criteria
+              # expected response body for the http request, which should follow the specified criteria
               responseBody: "ok"
         mode: "Continuous"
         runProperties:
@@ -556,8 +556,8 @@ spec:
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
-              criteria: "==" # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: "==" # <, >, >=, <=, ==, !=, oneof, between
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
@@ -609,8 +609,8 @@ spec:
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
-              criteria: "==" # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: "==" # ==, !=, >, <, >=, <=, between, oneof
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
@@ -660,8 +660,8 @@ spec:
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
-              criteria: "==" # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: "==" # ==, !=, <, >, <=, >=, between, oneof
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
@@ -716,8 +716,8 @@ spec:
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
-              criteria: "==" # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: "==" # ==, !=, <, >, <=, >=, between, oneof
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
@@ -764,8 +764,8 @@ spec:
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched
-              criteria: "==" # ==, !=, oneof
-              # exepected response code for the http request, which should follow the specified criteria
+              criteria: "==" # <, >, <=, >=, ==, !=, oneof, between
+              # expected response code for the http request, which should follow the specified criteria
               responseCode: "200"
         mode: "Continuous"
         runProperties:
