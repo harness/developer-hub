@@ -1,6 +1,7 @@
 ---
-title: Image registry 
+title: Image registry
 sidebar_position: 10
+description: A repository that hosts container images used by chaos experiments
 ---
 
 
@@ -14,63 +15,36 @@ Image registry is a repository that hosts container images which are used by cha
 
 Follow the steps mentioned below to use default or custom values of image registry in your chaos experiment. 
 
-
 <Tabs>
-  <TabItem value="Default values">
-
-## Default image registry 
-
-### Step 1: Navigate to Image Registry
-To use a default image, go to **Image Registry** on the left-hand side, and select **Use default values**. 
-
-![select-default](./static/image-registry/select-default.png)
-
-### Step 2: Save the default values
-Click **Save** to save your changes. 
-
-![select-save](./static/image-registry/click-save.png)
-
-In your chaos experiment manifest, the above default setting will be reflected as shown below.
-```yaml
-container:
-  name: ""
-  image: docker.io/chaosnative/k8s:1.23.0
-  command:
-    - sh
-    - "-c"
-  args:
-    - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
-```
-
-
-</TabItem>
-  <TabItem value="Custom values">
+ <TabItem value="Custom values">
 
 ## Custom image registry
 ### Step 1: Navigate to Image Registry
 
-To use a custom image, go to **Image Registry** on the left-hand side, and select **Use custom values**.
+* To use a custom image, go to **Image Registry** on the left-hand side, and select **Use custom values**.
 
-![select-custom](./static/image-registry/select-custom.png)
+  ![select-custom](./static/image-registry/select-custom.png)
 
 ### Step 2: Specify parameters
-Specify parameters for the custom values, such as **Custom image registry server**, **Custom image registry account**, and **Registry type**.
+* Specify parameters for the custom values, such as **Custom image registry server**, **Custom image registry account**, and **Registry type**.
 
-![public-registry](./static/image-registry/public-registry.png)
+  ![public-registry](./static/image-registry/public-registry.png)
 
-You can choose between **Public** or **Private** in the **Registry type**. When you select **Private** registry type, add the **secret name**.
+* You can choose between **Public** or **Private** in the **Registry type**. When you select **Private** registry type, add the **secret name**.
 
-![private-registry](./static/image-registry/private-registry.png)
+  ![private-registry](./static/image-registry/private-registry.png)
 
 ### Step 3: Save the custom values
-Click **Save** to save your changes.
+* Click **Save** to save your changes.
 
 In your chaos experiment manifest, the above custom setting will be reflected as shown below.
 
 ```yaml
 container:
   name: ""
-  image: test-registry/harness.io/k8s:main-latest
+  image: docker.io/chaosnative/k8s:1.30.0
+  imagePullSecrets:
+   - name: defreg
   command:
     - sh
     - "-c"
@@ -78,6 +52,32 @@ container:
     - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
 
+:::info note
+* If you use a public image or provide the `imagePullSecret` while using a private registry, the Argo workflow controller (v3.4.x) finds the entry point for litmus-checker.
+* If you use an image from an internal registry without providing `imagePullSecret`, the workflow facilitates a default command that you can use to determine the entry point of litmus-checker.
+:::
+
+</TabItem>
+ <TabItem value="Default values">
+
+## Default image registry 
+
+### Step 1: Navigate to Image Registry
+* To use a default image, select **Use default values**, and click **Save** to save your changes. 
+
+  ![select-save](./static/image-registry/click-save.png)
+
+In your chaos experiment manifest, the above default setting is reflected as shown below.
+```yaml
+container:
+  name: ""
+  image: docker.io/chaosnative/k8s:1.30.0
+  command:
+    - sh
+    - "-c"
+  args:
+    - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
+```
 
 </TabItem>
 </Tabs>

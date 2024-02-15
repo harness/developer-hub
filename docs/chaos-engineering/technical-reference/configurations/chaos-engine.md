@@ -1,15 +1,16 @@
 ---
-title: Chaos Engine
+title: Chaos engine
 sidebar_position: 1
+description: Chaos engine specification and its values
 ---
 
 Bind an instance of a given app with one or more chaos experiments, define run characteristics, override chaos defaults, define steady-state hypothesis, reconciled by Litmus Chaos Operator.
 
-This section describes the fields in the ChaosEngine spec and the possible values that can be set against the same.
+This section describes the fields in the Chaos engine spec and the possible values that can be set against the same.
 
 ## State Specifications
 
-It is a user-defined flag to trigger chaos. Setting it to active ensures the successful execution of chaos. Patching it with stop aborts ongoing experiments. It has a corresponding flag in the chaosengine status field, called engineStatus which is updated by the controller based on the actual state of the ChaosEngine. It can be tuned via engineState field. It supports active and stop values.
+It is a user-defined flag to trigger chaos. Setting it to active ensures the successful execution of chaos. Patching it with stop aborts ongoing experiments. It has a corresponding flag in the chaos engine status field, called engineStatus which is updated by the controller based on the actual state of the chaos engine. You can tune it using the engineState field. It supports active and stop values.
 
 <table>
   <tr>
@@ -18,7 +19,7 @@ It is a user-defined flag to trigger chaos. Setting it to active ensures the suc
   </tr>
   <tr>
     <th>Description</th>
-    <td>Flag to control the state of the chaosengine</td>
+    <td>Flag to control the state of the chaos engine</td>
   </tr>
   <tr>
     <th>Type</th>
@@ -34,7 +35,7 @@ It is a user-defined flag to trigger chaos. Setting it to active ensures the suc
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The <code>engineState</code> in the spec is a user defined flag to trigger chaos. Setting it to <code>active</code> ensures successful execution of chaos. Patching it with <code>stop</code> aborts ongoing experiments. It has a corresponding flag in the chaosengine status field, called <code>engineStatus</code> which is updated by the controller based on actual state of the ChaosEngine.</td>
+    <td>The <code>engineState</code> in the spec is a user defined flag to trigger chaos. Setting it to <code>active</code> ensures successful execution of chaos. Patching it with <code>stop</code> aborts ongoing experiments. It has a corresponding flag in the chaos engine status field, called <code>engineStatus</code> which is updated by the controller based on actual state of the chaos engine.</td>
   </tr>
 </table>
 

@@ -1,12 +1,12 @@
 ---
 title: Semgrep scanner reference for STO
-description: Repository scans with Semgrep
+description: Scan code repositories with Semgrep.
 sidebar_label: Semgrep settings reference
 sidebar_position: 360
 ---
 
 
-You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
+You can ingest scan results from [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
 - [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep)
@@ -50,16 +50,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below.
 
 
-
-
-
-<details>
-<summary>Semgrep scanner template</summary>
-
-![](static/semgrep-step-config-example.png)
-
-</details>
-
 ### Scan
 
 
@@ -67,53 +57,52 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 #### Scan Mode
 
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
 <StoSettingScanModeIngest />
+
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
 
 ### Target
 
-<a name="target-type"></a>
 
 #### Type
 
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-
-
-<a name="scan-type"></a>
-<StoSettingScanType />
 <StoSettingScanTypeRepo />
+
+
+<!-- #### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 <a name="target-variant"></a>
 
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
@@ -122,7 +111,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+
 
 
 <StoSettingTargetWorkspace  />
@@ -132,7 +122,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  /> 
@@ -145,7 +136,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 ### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -155,7 +147,8 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
@@ -177,7 +170,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## YAML pipeline example
 
@@ -212,7 +205,7 @@ pipeline:
                     command: semgrep --sarif --config auto -o /harness/results.sarif /harness
                     envVariables:
                       SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: returntocorp/semgrep
                     resources:
                       limits:
@@ -236,8 +229,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -246,7 +239,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         build: <+input>
 
 ```

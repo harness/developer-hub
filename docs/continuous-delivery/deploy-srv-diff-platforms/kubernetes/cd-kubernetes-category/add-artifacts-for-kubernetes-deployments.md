@@ -570,7 +570,7 @@ spec:
 ```
 ## Notes
 
-* [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) may be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
+* [Harness Variables and Expressions](/docs/platform/variables-and-expressions/harness-variables) may be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
 * The Values file used in a Harness Service Definition doesn't support Helm templating, **only Go templating**. Helm templating is fully supported in the remote Helm charts you add to your Harness Service Definition. See [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 * Harness uses Go template version 0.4. If you are used to Helm templating, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.
   * You can install Go template version 0.4 locally to test your manifests.

@@ -1,13 +1,14 @@
 ---
 title: Connect chaos infrastructures
-sidebar_position: 10
+sidebar_position: 1
+description: Guide to connect to Kubernetes and Linux chaos infrastructure
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Chaos infrastructure is a service that runs in your target environment and aids Harness Chaos Engineering (CE) in accessing and injecting chaos at cloud-native scale. There are different types of chaos infrastructure based on the target environments, such as Kubernetes, Linux VMs, etc. These chaos infrastructures can be installed as a Kubernetes service, as a Linux daemon, and so on, based on their type.
+Chaos infrastructure is a service that runs in your target environment and aids Harness Chaos Engineering (HCE) in accessing and injecting chaos at cloud-native scale. There are different types of chaos infrastructure based on the target environments, such as Kubernetes, Linux VMs, etc. These chaos infrastructures can be installed as a Kubernetes service, as a Linux daemon, and so on, based on their type.
 
 All the chaos infrastructure services adhere to the principle of least privilege, where the services execute with the minimum number of required permissions.
 

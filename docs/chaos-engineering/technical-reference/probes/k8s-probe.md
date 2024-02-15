@@ -1,6 +1,7 @@
 ---
 title: Kubernetes probe
 sidebar_position: 5
+description: Features and specification of the Kubernetes probe
 ---
 
 With the proliferation of custom resources and operators, especially in the case of stateful applications, the steady state is manifested as status parameters or flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors or label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports the following CRUD operations:
@@ -9,6 +10,10 @@ With the proliferation of custom resources and operators, especially in the case
 - **delete:** Deletes matching kubernetes resource via GVR and filters (field selectors/label selectors).
 - **present:** Checks for the presence of kubernetes resource based on GVR and filters (field selectors or label selectors).
 - **absent:** Checks for the absence of kubernetes resource based on GVR and filters (field selectors or label selectors).
+
+:::tip
+The Kubernetes probe is fully declarative in the way they are conceived
+:::
 
 ## Probe definition
 

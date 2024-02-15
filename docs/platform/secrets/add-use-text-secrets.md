@@ -8,14 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-import add_text_secret from './static/add-use-text-secrets-45.png'
-import add_encrypted_text from './static/add-use-text-secrets-46.png'
-import edit_encrypted_text from './static/add-use-text-secrets-49.png'
-import create_edit_encrypted_text from './static/add-use-text-secrets-47.png'
-import secret_expiry_date from './static/azurekeyvault-select-date.png'
-
-
 You can add an encrypted text secret to a secrets manager and use the secret in Harness resources, such as pipelines, connectors, and step commands.
 
 ## Add a text secret
@@ -54,13 +46,11 @@ To create a text secret:
 
    - **Inline Secret Value**: Enter the value for the encrypted text. If your secret is managed by Azure Key Vault, you can set an expiry date in **Expires on**. The Harness Delegate version 79306 is required for this feature.
 
-      
-      <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
-      
+   ![secret expiry date in Azure Key Vault.](./static/azurekeyvault-select-date.png)
 
    - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want the **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
-      ![](../secrets/static/test-secret-reference-path.png)
+   ![](../secrets/static/test-secret-reference-path.png)
 
 7. Select **Save**.
 
@@ -90,15 +80,11 @@ All of the passwords and keys used in Harness connectors are stored as encrypted
 
 You can either [create the secret](#add-a-text-secret) first and then select it in the connector, or you can create it while configuring the connector by selecting **Create or Select a Secret**.
 
-
-<img src={create_edit_encrypted_text} alt="create_edit_encrypted_text" height="200" width="500"/>
-
+![](./static/add-use-text-secrets-47.png)
 
 You can also edit an existing secret's name, description, and tags while configuring the connector.
 
-
-<img src={edit_encrypted_text} alt="edit_encrypted_text" height="200" width="500"/>
-
+![](./static/add-use-text-secrets-49.png)
 
 ## Reference the secret by identifier
 
@@ -222,7 +208,7 @@ EOF
 
 Decoded secrets in `cat` aren't [masked in outputs](#secrets-in-outputs), because Harness no longer recognizes the contents as a secret.
 
-Here's an example of a secret decoded in a [CI Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md):
+Here's an example of a secret decoded in a [CI Run step](/docs/continuous-integration/use-ci/run-step-settings.md):
 
 ```yaml
               - step:

@@ -1,11 +1,11 @@
 ---
 title: Exemptions to override Fail on Severity thresholds for specific issues in STO
-description: You can specify exemptions (ignore rules) for specific security issues. An ignore rule allows pipeline builds to proceed even if a security scan detects an issue. 
+description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Override the Fail on Severity threshold for specific issues
 sidebar_position: 60
 ---
 
-The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
+The `fail_on_severity` setting causes a pipeline build to fail if a scanner detects one or more issues with the specified severity (Critical, High, Medium, etc.) or higher. Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
 
 :::note 
 Developers and SecOps users can request exemptions, but only SecOps users can approve them.
@@ -18,15 +18,12 @@ Here are some situations where you might want to request an exemption for a spec
 - The security risk is low and remediation would require too much effort or expense.
 - The scanner identifies this as a vulnerability but it is, in fact, a false positive.
 - You can specify a time limit for an exemption (for example, expires in 7 days). In some cases, you might want to exempt an issue so you can deploy an important release. You could request an exemption if it expires within your organization's SLA for fixing security issues.
-- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations), which can help you remediate your issues using AI.
+- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) to help you remediate your issues using AI.
 
 
 import request_exemption from '../static/request-exemption.png'
 import open_exemption_details from '../static/open-exemption-details.png'
 import baseline_not_defined from '../static/exemption-workflows-no-baseline-defined.png'
-
-
-
 
 
 ## What happens when an STO exemption gets approved

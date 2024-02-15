@@ -1,6 +1,7 @@
 ---
-title: Use CE with Continuous Delivery
+title: Use HCE with Continuous Delivery
 sidebar_position: 2
+description: Integrating HCE with CD 
 ---
 
 You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. Some benefits include:
@@ -118,7 +119,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 ## Step 3: Choose a failure strategy
 
-[A failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) specifies the actions to take if pipeline stages or steps fail due to different conditions. You can configure a failure strategy against each chaos step (experiment) in the pipeline, or through a shell script step at the end of the execution of all chaos steps. Below are examples showing these two options.
+[A failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) specifies the actions to take if pipeline stages or steps fail due to different conditions. You can configure a failure strategy against each chaos step (experiment) in the pipeline, or through a shell script step at the end of the execution of all chaos steps. Below are examples showing these two options.
 
 ### Example 1: Failure strategy for one chaos step
 
@@ -145,5 +146,5 @@ When the CD pipeline is triggered:
 
 * Based on the experiment's success or failure, you can decide whether to continue with the deployment. You can automate this by defining a [failure strategy](#step-3-choose-a-failure-strategy) in your pipeline. 
 
-	For more information, go to [Define a failure strategy on stages and steps](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps). 
+	For more information, go to [Define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps). 
 

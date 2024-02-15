@@ -14,17 +14,17 @@ We are committed to enhancing user experience and providing a more intuitive and
 
 #### When will the new navigation experience be rolled out?
 
-The rollout is planned for  . However, keep in mind that specific release dates may be subject to change, and we will communicate any updates accordingly.
+The rollout is planned for the first quarter of 2024. However, keep in mind that specific release dates may be subject to change, and we will communicate any updates accordingly.
 
 #### How will the new navigation experience benefit users?
 
 Nav 2.0 introduces several enhancements, including:
 
-Focused views per module
+- Focused views per module
 
-Productivity view for a seamless multi-module experience
+- Productivity view for a seamless multi-module experience
 
-Customizable navigation options
+- Customizable navigation options
 
 ### Transition and Training:
 
@@ -34,7 +34,8 @@ Yes, we will provide training resources such as documentation, in product video 
 
 #### Can I still access the old navigation after the rollout?
 
-Yes, the user preference settings in Account Settings is available to transition back to old Nav. We encourage users to familiarize themselves with the new interface to take advantage of the improved features and functionalities.
+Yes, the user preference settings in Account Settings is available to transition back to the legacy navigation. We encourage users to familiarize themselves with the new interface to take advantage of the improved features and functionalities.
+![](./static/image.png)
 
 #### What steps are being taken to ensure a smooth transition for users?
 

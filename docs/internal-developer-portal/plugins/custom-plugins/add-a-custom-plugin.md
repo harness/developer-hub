@@ -6,9 +6,11 @@ sidebar_position: 2
 
 :::info
 
-This Feature is in **BETA** phase and is behind `IDP_ENABLE_CUSTOM_PLUGINS` Feature Flag. Please contact the IDP product team if you would like to try out Custom Plugins.
+**Coming Soon**. This feature is **not available in production environment** yet, meanwhile take a look at the details of custom plugins to get an overview of it. In case you want to try out this feature please reach out to the IDP team.
 
 :::
+
+<DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
 
 ## Introduction
 
@@ -44,7 +46,7 @@ eg,. `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`, `ht
 </TabItem>
 <TabItem value="Upload Zip file">
 
-4. You can as well pack your backstage frontend plugins using `[yarn pack](https://classic.yarnpkg.com/lang/en/docs/cli/pack/#toc-yarn-pack)` and upload the resulting `package.tgz` file
+4. You can as well pack your backstage frontend plugins using **[yarn pack](https://classic.yarnpkg.com/lang/en/docs/cli/pack/#toc-yarn-pack)** and upload the resulting `package.tgz` file
 
 :::warning
 
@@ -54,7 +56,7 @@ Only files packaged using `yarn pack` is to be used while uploading the zip file
 
 ![](./static/upload-zip.png)
 
-<details>
+<details open>
 <summary>How to create and pack your front end Plugin</summary>
     
 1. Install backstage following this [documentation](https://backstage.io/docs/getting-started/#create-your-backstage-app) 
@@ -90,7 +92,56 @@ new-plugin/
 
 6. Follow the steps mentioned [here](https://backstage.io/docs/plugins/plugin-development) to build on top of it. 
 7. Once you have the plugin ready, run `yarn tsc` at the root of the backstage app.
-8. Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated.
+8. **Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated, this file could be used to upload your plugin into IDP.** 
+
+Make sure you have the `dist` folder generated after you do `yarn pack` without that the package can't be read by IDP when uploaded. The `yarn pack` command looks something like this.
+
+```sh
+dev % yarn build
+dev % yarn pack 
+➤ YN0036: Calling the "prepack" lifecycle script
+➤ YN0000: LICENSE
+➤ YN0000: README.md
+➤ YN0000: dist/index.d.ts
+➤ YN0000: dist/index.esm.js
+➤ YN0000: dist/index.esm.js.map
+➤ YN0000: package.json
+➤ YN0036: Calling the "postpack" lifecycle script
+➤ YN0000: Package archive generated in /Users/deba/Documents/backstage-dev-quotes/package.tgz
+➤ YN0000: Done in 2s 341ms
+```
+
+Unzip the `package.tgz` and check for the **dist** folder before you try uploading it into Harness. The unzipped folder for the above given example plugin folder structure would look something like this:
+
+```sh
+new-plugin/
+    dev/
+        index.ts
+    node_modules/
+    dist/
+        index.d.ts
+        index.esm.js
+        index.esm.js.map
+    src/
+        components/
+            ExampleComponent/
+                ExampleComponent.test.tsx
+                ExampleComponent.tsx
+                index.ts
+            ExampleFetchComponent/
+                ExampleFetchComponent.test.tsx
+                ExampleFetchComponent.tsx
+                index.ts
+        index.ts
+        plugin.test.ts
+        plugin.ts
+        routes.ts
+        setupTests.ts
+    .eslintrc.js
+    package.json
+    README.md
+```
+
 </details>
 
 </TabItem>
@@ -101,11 +152,11 @@ new-plugin/
 5. Now Click Next and start adding the **Plugin Metadata**. You have to fill the following fields 
     
     - **Plugin Name** : Add a name for your Plugin
-    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` incluign `@`, eg: `@parsifal-m/plugin-dev-quotes-homepage`
-    - **Description** : Add an aptful description for your plugin, espciailly the function of the plugin.
-    - **Category** : Add an functionaly category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
+    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, eg: `@parsifal-m/plugin-dev-quotes-homepage`
+    - **Description** : Add an apt description for your plugin, especially the function of the plugin.
+    - **Category** : Add an functional category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
     - **Created By** : Add the [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups) you belong to from the dropdown. 
-    - **Plugin applies to entity** : Add the software componenets to which your plugin applies to usually it's **Service**. 
+    - **Plugin applies to entity** : Add the software components to which your plugin applies to usually it's **Service**. 
     - **Add Plugin Screenshots (optional)** : Not available yet
     - **Additional fields** : Fill it as shown in the image below. 
     ![](./static/additional-fields.png)
@@ -165,7 +216,7 @@ proxy:
 
 :::info
 
-Onve you enable the PLugin it will aprroximately take around 30 minutes for the plugin to be enabled as we rebuild the IDP image with your plugin. 
+Once you enable the PLugin it will approximately take around 30 minutes for the plugin to be enabled as we rebuild the IDP image with your plugin. 
 
 :::
 

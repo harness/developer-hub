@@ -437,7 +437,7 @@ STO supports an extensive set of external scanners for repos, images, and artifa
 
 ### Add governance policies
 
-You can use the [Harness Policy Engine](/docs/platform/governance/Policy-as-code/harness-governance-overview) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you can create a rule like the following to ensure that all pipelines include a Security stage.
+You can use the [Harness Policy Engine](/docs/platform/governance/policy-as-code/harness-governance-overview) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you can create a rule like the following to ensure that all pipelines include a Security stage.
 
 ```
 package pipeline_required

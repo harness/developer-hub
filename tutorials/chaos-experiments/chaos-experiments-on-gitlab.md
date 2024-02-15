@@ -27,11 +27,11 @@ Below is a sample launch script.
 
 set -e
 
-curl -sL https://storage.googleapis.com/hce-api/hce-api-linux-amd64 -o hce-api-saas
+curl -sL https://app.harness.io/public/shared/tools/chaos/hce-cli/0.0.1/hce-cli-0.0.1-linux-amd64 -o hce-cli
 
-chmod +x hce-api-saas
+chmod +x hce-cli
 
-output=$(./hce-api-saas generate --api launch-experiment --account-id=${ACCOUNT_ID} \
+output=$(./hce-cli generate --api launch-experiment --account-id=${ACCOUNT_ID} \
 --project-id ${PROJECT_ID} --workflow-id ${WORKFLOW_ID} \
 --api-key ${API_KEY} --file-name hce-api.sh | jq -r '.data.runChaosExperiment.notifyID')
 
@@ -84,11 +84,11 @@ Retrieve the resilience score using the Harness Chaos API and take appropriate a
 
 set -e 
 
-curl -sL https://storage.googleapis.com/hce-api/hce-api-linux-amd64 -o hce-api-saas
+curl -sL https://app.harness.io/public/shared/tools/chaos/hce-cli/0.0.1/hce-cli-0.0.1-linux-amd64 -o hce-cli
 
-chmod +x hce-api-saas
+chmod +x hce-cli
 
-resiliencyScore=$(./hce-api-saas generate --api validate-resilience-score  --account-id=${ACCOUNT_ID} \
+resiliencyScore=$(./hce-cli generate --api validate-resilience-score  --account-id=${ACCOUNT_ID} \
 --project-id ${PROJECT_ID} --notifyID=$1  \
 --api-key ${API_KEY} --file-name hce-api.sh)
 

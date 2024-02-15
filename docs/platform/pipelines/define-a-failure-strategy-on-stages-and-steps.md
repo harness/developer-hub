@@ -118,7 +118,7 @@ In **Failure Strategy**, you can see the default stage strategy:
 
 To add an additional stage failure strategy, select **Add**.
 
-In **On failure of type**, select one or more of the error types, or select **All Errors**. Go to [Error types](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types) for more information.
+In **On failure of type**, select one or more of the error types, or select **All Errors**. Go to [Error types](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types) for more information.
 
 In **Perform Action**, select **Rollback Pipeline**
 

@@ -9,14 +9,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
-
-This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your [Harness CI pipelines](../prep-ci-pipeline-components.md). You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
 <details>
 <summary>About Drone</summary>
@@ -34,10 +30,8 @@ For more information on the acquisition of Drone, go to the following blog posts
 
 To demonstrate how to add a Drone plugin to a Harness CI pipeline, these steps use the [Download plugin](https://plugins.drone.io/plugins/download) as an example. This plugin downloads an archive to the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
-
 <Tabs>
-  <TabItem value="Visual" label="Visual">
-
+<TabItem value="Visual" label="Visual">
 
 Add the **Plugin** step to the **Build** stage of your CI pipeline, and configure the settings as follows:
 
@@ -52,10 +46,8 @@ The following screenshot shows a **Plugin** step configured for the [Download pl
 
 ![](./static/run-a-drone-plugin-in-ci-00.png)
 
-
 </TabItem>
-  <TabItem value="YAML" label="YAML" default>
-
+<TabItem value="YAML" label="YAML" default>
 
 Add the `Plugin` step to your `CI` stage with the following settings:
 
@@ -68,10 +60,8 @@ Add the `Plugin` step to your `CI` stage with the following settings:
 
 The following examples show the YAML definition for a `Plugin` step configured for the [Download plugin](https://plugins.drone.io/plugins/download).
 
-
 <Tabs>
-  <TabItem value="download1" label="Download Drone tarball" default>
-
+<TabItem value="download1" label="Download Drone tarball" default>
 
 This example downloads the Drone Linux amd64 tarball. It provides a username and password for authentication to GitHub.
 
@@ -89,10 +79,8 @@ This example downloads the Drone Linux amd64 tarball. It provides a username and
                       password: `<+secrets.getValue("mygithubpersonalaccesstoken")>` ## Password for authentication to the source
 ```
 
-
 </TabItem>
-  <TabItem value="download2" label="Download AWS CLI">
-
+<TabItem value="download2" label="Download AWS CLI">
 
 This example downloads the AWS CLI for Linux and saves it to the default stage workspace directory under the name `awscli.zip`. Because the target is publicly accessible, authentication settings aren't required.
 
@@ -109,7 +97,7 @@ This example downloads the AWS CLI for Linux and saves it to the default stage w
                       destination: awscli.zip ## File name to assign the downloaded file.
 ```
 
-Expanding on this example, you could use the following commands in a subsequent [Run step](../run-ci-scripts/run-step-settings.md) to unzip and install this tool:
+Expanding on this example, you could use the following commands in a subsequent [Run step](../run-step-settings.md) to unzip and install this tool:
 
 ```
 unzip awscli.zip
@@ -118,19 +106,15 @@ sudo ./aws/install
 
 You could also [write a custom plugin](./custom_plugins.md) that downloads, unzips, and installs the AWS CLI in one step.
 
-
 </TabItem>
 </Tabs>
 
-
-
 </TabItem>
 </Tabs>
-
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables).
 
 Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 
@@ -166,7 +150,7 @@ Here are some YAML examples and additional information about specific Drone plug
 
 Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
 
-An example of the **Plugin** step configuration is provided below; however, your pipeline must also include steps to upload the file that you want to link to on the **Artifacts** tab, as demonstrated in the [Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
+An example of the **Plugin** step configuration is provided below; however, your pipeline must also include steps to upload the file that you want to link to on the **Artifacts** tab, as demonstrated in [Publish to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 ```yaml
                - step:
@@ -181,7 +165,7 @@ An example of the **Plugin** step configuration is provided below; however, your
                       artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
-For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-and-upload-artifacts).
+For more information about uploading and publishing artifacts, go to [Build and push artifacts and images](/docs/category/build-push-upload-download).
 
 </details>
 
@@ -224,10 +208,8 @@ Because Drone plugins can be used outside Harness CI, there are some differences
 
 The following examples compare the YAML structure for a step when a Drone plugin is used in a Drone pipeline and a Harness CI pipeline.
 
-
 <Tabs>
-  <TabItem value="drone" label="Drone YAML" default>
-
+<TabItem value="drone" label="Drone YAML" default>
 
 ```yaml
 steps:
@@ -237,10 +219,8 @@ steps:
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-
 </TabItem>
-  <TabItem value="harness" label="Harness YAML">
-
+<TabItem value="harness" label="Harness YAML">
 
 ```yaml
             steps:
@@ -255,19 +235,15 @@ steps:
                       source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ### Listed and nested settings
 
 To convert list-formatted settings from Drone Plugin YAML to Harness CI YAML, merge them with comma separation.
 
-
 <Tabs>
-  <TabItem value="drone" label="Drone YAML" default>
-
+<TabItem value="drone" label="Drone YAML" default>
 
 ```yaml
 Settings:
@@ -277,20 +253,16 @@ Settings:
 	- '1.0'
 ```
 
-
 </TabItem>
-  <TabItem value="ci" label="Harness YAML">
-
+<TabItem value="ci" label="Harness YAML">
 
 ```yaml
 settings:
   tags: latest,1.0.1,1.0
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 For nested settings, maintain key-value pair definitions, as shown in the following Harness CI YAML example:
 
@@ -317,10 +289,8 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-
 <Tabs>
-  <TabItem value="drone" label="Drone YAML" default>
-
+<TabItem value="drone" label="Drone YAML" default>
 
 ```yaml
 steps:
@@ -334,10 +304,8 @@ steps:
 		source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-
 </TabItem>
-  <TabItem value="ci" label="Harness YAML">
-
+<TabItem value="ci" label="Harness YAML">
 
 ```yaml
   - step:
@@ -354,7 +322,5 @@ steps:
 			source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-
 </TabItem>
 </Tabs>
-

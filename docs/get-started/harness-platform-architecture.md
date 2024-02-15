@@ -23,6 +23,7 @@ The Harness Platform is a self-service CI/CD platform that enables end-to-end so
 - Continuous Error Tracking
 - Software Engineering Insights
 - Code Repository
+- Internal Developer Portal
 
 The following video introduces some of the Harness modules.
 

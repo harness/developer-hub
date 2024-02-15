@@ -14,7 +14,7 @@ For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Pro
 
 ## Prepare a pipeline
 
-To generate SLSA Provenance in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components). Additionally, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
+To generate SLSA Provenance in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components). Additionally, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
 
 ## Generate a key pair
 
@@ -22,7 +22,7 @@ Keys are used to sign and verify provenance.
 
 1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
-3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
+3. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) to store the password for the private key.
 
 ## Enable SLSA Provenance generation
 
@@ -31,7 +31,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 1. In your Harness pipeline, select the **Build** stage, and then select the **Overview** tab.
 2. Under **SLSA Provenance**, enable **Generate SLSA Provenance**.
 3. For **Private Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key file to use to sign the attestation.
-4. For **Password**, select the [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+4. For **Password**, select the [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/slsa-build-stage-settings.png) -->
 
@@ -39,7 +39,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 :::info
 
-* You must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
+* You must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md) is coming soon.
 * You can also add [provenance verification](./verify-slsa.md) to your pipeline.
 
 :::
@@ -48,7 +48,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 When you run a pipeline with SLSA generation enabled, Harness SSCA:
 
-* Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) in the **Build** stage.
+* Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md) in the **Build** stage.
 * Generates and signs an attestation using the provided key and password.
 * Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 

@@ -30,7 +30,7 @@ Linux network duplication:
   <tr>
     <td> networkInterfaces </td>
     <td> Comma-separated values of target network interfaces. </td>
-    <td> For example, <code>eth0,ens192</code> </td>
+    <td> For example, <code>eth0,ens192</code>. </td>
   </tr>
 </table>
 

@@ -10,11 +10,12 @@ Artifact View in SSCA provides a centralized interface for tracking the usage of
 
 The landing page displays a list of all artifacts, including their versions, associated SBOM, deployment environments, and detected policy violations. This list view offers a snapshot of each artifact's current state in the software supply chain.
 
+Artifacts originating from container images are organized under the **Container** tab, while artifacts associated with code repositories are similarly displayed within the **Repository** tab.
+
 <DocImage path={require('./static/artifact-landing-page.png')} />
 
 ### Filters
 
-DocImage
 Filters on the landing page allow users to quickly find specific artifacts based on various criteria such as component name and version, license, deployment status, and policy violations. These filters enhance the efficiency of tracking and managing artifacts.
 
 ## Artifact Details Page
@@ -32,4 +33,3 @@ This tab provides detailed information about the components that make up the art
 The Artifact Deployment Tab shows where and how the artifact is currently deployed across different environments. Deployment View also provides with the information about the pipeline that used to deploy the artifact and any policy violations that we detected during the enforcement step
 
 <DocImage path={require('./static/artifact-deployment-view.png')} />
-DocImageDocImage

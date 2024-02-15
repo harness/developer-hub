@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-01-16T10:00:15
+date: 2024-02-05:T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -47,8 +47,150 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 
+## February 2024
+
+### Version 1.24.7
+
+#### New Features and Enhancements
+- We've introduced a new expression that explicitly provides the trigger name used to initiate the execution. You can now utilize `<+pipeline.triggeredBy.triggerDisplayName>` to access this information. (CDS-87696)
+- We enhanced the resolution of the working directory. Now you can determine the working directory based on environment variables. This includes variables provided in shell script steps through input variables, as well as those from the host's environment variables. (CDS-87446)
+- If a feature flag is turned on for a module it will now appear in the module selector for the new navigation experience. (CDS-85185)
+
+#### Behavior Changes
+- In the blue/green stage scale down step, we used to scale down deployments, statefulsets, daemonsets, deploymentConfig and delete HPA, and PDB resources. During scale down, we updated the field `replicas` to 0. In Kubernetes, if HPA is configured it is not mandatory to define replicas. 
+So when another deployment happens and we apply the same old deployments manifest it does not update the replicas field and it remains set to 0. 
+This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
+
+#### Fixed Issues
+- The Input Set Page breaks while editing the input set when the service input fields have been updated. Now the page will render with the input set YAML. (CDS-91095, ZD-57487)
+- Fixed an issue where a Targeted Hosts field was not populated in the case of execution input.  (CDS-91071)
+- Fixed an issue where the pipeline failed to execute when remote infrastructure was used with a multi-environment deployment. (CDS-90985, ZD-57420)
+- Fixed an issue where users couldn’t switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
+- The CDK Deploy step was not handling the null output map when the provided image was not created from the Harness aws-cdk-plugin base image: https://hub.docker.com/r/harness/aws-cdk-plugin/tags. This issue has been resolved, the null output map is handled. (CDS-89569)
+- In a few places in the UI, expressions when entered, were not rendered in a consistent colour. This has now been fixed to be consistent.(CDS-89391)
+- Fixed an issue with the Edit File Store flow UI. (CDS-89094)
+- The email step body used to render the field's HTML content. Now it will render raw HTML. (CDS-88842, ZD-56452)
+- Earlier, the input sets that have nested components (such as templates) hosted on GitHub were taking a long time to fetch. Now this time has been significantly reduced. (CDS-88426, ZD-56180)
+- Initially, the Jenkins build step didn't support logs for more than 5 hours. Therefore for builds taking longer than 5 hours, console logs were not streamed and consequently not saved. Now, the support for the console logs has been extended to 1d for the Jenkins build step. However, the log length limit is 5k, meaning only the last 5k logs will be streamed and saved. (CDS-88262)
+- In Artifact Triggers, the modifications to the secret in the connector were not recognized. With this update, changes to the secret in the connector will now be detected, so that users don't have to manually disable and re-enable the trigger. (CDS-86775, ZD-55126)
+
+
+### Version 1.23.5
+
+#### Fixed Issues
+- Issue while selecting VPC if the name is empty. VPC name is optional in the AWS console but the id is always there, but if the name is empty it is not getting selected. The issue is fixed now and instead of `vpc.name` it will get displayed as `vpc.id:vpc.name`. (CDS-89297)
+- Application logs used to get printed in TAS deployment logs, the issue is fixed by introducing a new environment variable `DISABLE_CF_APP_LOG_STREAMING` and when it’s set to true it will redact all application logs, providing users with more flexibility in managing log visibility. (CDS-89172, ZD-56849)
+- Parent pipeline has a chained pipeline stage and both the parent and child pipelines are in different organizations. While running the parent pipeline, the user group selection for the child approver user group displays parent pipeline organizations. The issue has now been fixed, and users should be able to select the correct user group(s) of the child pipeline that belong to a different or the same organization. (CDS-89001, ZD-55502)
+- When service was selected from **Projects** > **Service** > **Select Service** it used to open the configuration tab and when service was selected from **Deployments** > **Services** > **Select Service** it used to open the summary tab. The issue for this different behavior is now fixed and now via both ways, users will be taken to the service's summary tab. (CDS-88692, ZD-56528)
+- Jenkins `jobParameter` was getting added to the pipeline even if it was not a runtime input in the template. The issue is fixed now and `jobParameter` will not be added automatically. (CDS-88380, ZD-55212)
+- Wrong target groups were getting attached when multiple load balancers were used with the same load balancer name. The issue is fixed now. (CDS-88229, ZD-55701)
+- When the service is marked as runtime in a child pipeline and then configured from the chained pipeline inputs tab, the service input fields are left as runtime. The Trigger Input panel and Input-set form do not properly prompt for service input. This issue has been resolved. (CDS-87983, ZD-55917)
+- Issue with missing expressions and inconsistent suggestion placement during code scripting. The issue is fixed now in code editors like Shell Script to render a tooltip to view the complete suggestion value. (CDS-85027)
+- Improved the error messaging for the AWS SAM step when an incorrect expression or reference led to no image being found. (CDS-84058)
+- Selecting the secondary splunk query page would auto submit rather than letting you modify the second query. You will now be able to modify the second query without submitting automatically. (CDS-89153)
+
 ## January 2024
 
+### Version 1.22.3
+
+#### New features and enhancements
+- Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
+  - Previously, A trigger with an empty pipelineIdentifier will never work, but we still saved it in the DB.
+  - A validation enhancement has been implemented, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+
+- Remove application details from NewRelic if it is empty (CDS-88190)
+  - When user is configuring NewRelic health sources, if Performance metric pack is unchecked, ``Application details`` will not be available. In this case, from frontend applicationId details are removed in the service request which will be sent during create/update.
+
+- Stage Selection component is being moved to Pipeline Input tab from Configuration Tab (CDS-72890)
+   - When configuring Triggers, the Stage Selection component has been moved to Pipeline Input tab from Configuration Tab.
+
+- Show accountId in Switch Account screen(CDS-88728)
+  - Enhanced the Switch Account experience to show more data i.e ``AccountId``.
+
+#### Fixed Issues
+- UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
+  - Previously, deployments would display an error when they were waiting for manual approval. 
+  - A conditional was updated to handle the null check for the approval message, fixing the issue.
+
+- Add support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
+  - Previous Behavior: The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service.
+  - The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
+
+- Receiving Unauthorized errors in between steady state checks, intermittently (CDS-88446, ZD-56104)
+  - Issue occurred when using GCP and a GCP access token.
+  - It occurred when the access token expiration overlapped with steady state check (watch) API calls.
+  - The issue is fixed now. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation. 
+
+- Only ten Harness Delegate connections to application servers are successful. (CDS-88377, ZD-56296)
+  - On the back end, delegates can only perform connectivity tests for up to 10 hosts per batch.
+  - Implemented a UI restriction to align with this backend limitation.
+
+- K8s Async Steps - Invalid task type exception has been thrown when task parameter is not provided (CDS-87708)
+  - Invalid task type and Null Pointer Exceptions were thrown instead of marking the Step as Skipped.
+  - The step will now be correctly marked as Skipped, fixing the issue.
+
+- Github release trigger not working as expected because UI didn't show the Conditions (CDS-87647, ZD-55832)
+  - There were inconsistencies in webhook trigger payload conditions in YAML and Visual views with the event type.
+  - This has been fixed. Visual and YAML views will show consistent behavior between them.
+
+- Support use of ‘#’ for branch names (CDS-87468, ZD-55625)
+  - Previously, certain special characters were not supported by GET calls.
+  - From now on branches that have special characters such as '&' and '#' will be supported by GET pipeline calls for Remote entities.
+
+- ServiceNow approval conditions dropdown gives invalid values (CDS-86809)
+  - Previously, an approval conditions dropdown menu was auto-populating with an invalid [object Object] value or other invalid values.
+  - The issue is fixed now.
+ 
+- Unable to select a new pipeline version. (CDS-87809, ZD-55910)
+  - We found an error in the flow where a version of an in-use Template is deleted. When that happened, the referring Pipeline or Template threw an error and did not let you select an alternate version of the Template.   
+  - We'd earlier suggested editing the YAML directly to work around the issue. 
+The bug has now been fixed, and you should be able to select an alternate version of the Template from referring Pipelines/Templates now.
+
+
+### Version 1.21.5
+
+#### New features and enhancements
+
+- Grouping and Collapsible Support for Overrides(CDS-82376)
+  - Overrides are now grouped by information in their configurations.
+  - They are now collapsible, and thusly, are easier to search through.
+
+#### Behaviour change
+
+- Delegate selectors are not getting honored for any of the plugin steps.(CDS-85489)
+  - Previous behavior: Until now, there was uncertainty in the assignment of plugin steps to delegates. If a step was set to use a specific delegate (D1), it may or may not have actually used that delegate. Consequently, the pipeline could run successfully, even if the step ended up on a different delegate (D2). After the upcoming fix, the plugin step will consistently be directed to the configured delegate (D1). However, if D1 faces challenges such as lacking capabilities, permissions, or network policy issues to run the task, the current pipeline will begin to fail.
+  - If pipelines start to fail due to delegate issues after this update, make sure your delegate selectors are set properly.
+
+#### Fixed Issues
+
+- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list(CDS-88198, ZD-56156)
+  - Previous Behavior: Making edits to more than one variable simultaneously only applied the changes to the last variable in the list.
+  - The issue only occurred in Template Studio for pipeline templates, not for stage or step group templates. The issue is fixed now.
+
+- Http step with mtls not working(CDS-87547,ZD-55531)
+  - Previously, Some customers reported an error trying to use the HTTP Step with MTLS. This was caused due to an exception during the delegate capability check for HTTP step; we will now additionally validate the delegate to fix the problem.
+
+- Pipeline was failing with delegate error(CDS-87440,ZD-55387)
+  - Expected behavior: Users can fetch JSON format in the delegate using curl command and the same should work in UI
+  - Previous Behavior: The JSON format was fetched using curl in the delegate but the same was not working in the UI.
+  - The issue is fixed now.To address intermittent capability check failures for an internal URL, the HTTP step's connectivity check timeouts have been increased from 15 seconds to 30 seconds. Users can expect improved reliability in scenarios where intermittent failures were previously encountered.
+
+- Harness bidirectional sync webhook feature not working(CDS-85694,ZD-54338)
+  - Previous behavior:- The problem involved the failure of the API when the source or target commit ID was NULL. Furthermore, unrelated PUSH webhook events from Github, triggered during create or branch operations, were incorrectly marked as errors in the UI
+  - These events are unrelated to bidirectional GitExperience processing and will now be disregarded instead of being flagged as failures.
+
+- WimRM connector changed to SSH connector when the template was added to the pipeline. (CDS-85388)
+  - Previous Behavior: If a stage template was created with a WinRM connector and then used in a pipeline, the template inputs would display the SSH connector attribute instead of WinRM connector. 
+  - This issue is fixed now. The type of connector selected will remain consistent throughout the platform.
+
+- Template Issue not being displayed in the pipeline(CDS-84490,ZD-53823,54260)
+  - Previous Issue: There was an intermittent issue of Template Inputs not being displayed in the Pipeline Editor
+  - This issue is now fixed.
+  
 ### Version 1.20.9
 
 
@@ -418,6 +560,13 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+## February 2024
+
+### Version 1.21.6 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue with infrastructure definition to reconcile inconsistencies. (CDS-89314)
 #### Hotfix version 81614
 
 - Recent changes to enable Harness to evaluate delegate selector expressions at stage runtime caused pipelines to fail. (CDS-85692, ZD-54495)
@@ -3113,7 +3262,7 @@ This release does not include any early access features.
 
 - Harness now supports template input APIs. (CDS-55694)
 
-  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](/docs/platform/Templates/create-pipeline-template).
+  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](/docs/platform/templates/create-pipeline-template).
 
   Here is a sample template:
 
@@ -4267,7 +4416,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
   A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran.
 
-  A failure strategy is also required for the **Deploy** stage in [stage templates](/docs/platform/Templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
+  A failure strategy is also required for the **Deploy** stage in [stage templates](/docs/platform/templates/add-a-stage-template). With this release, all Deploy stages, including in stage templates, without failure strategies are considered invalid.
 
   No action required by users.
 

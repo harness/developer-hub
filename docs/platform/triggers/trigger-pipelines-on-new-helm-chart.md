@@ -157,7 +157,9 @@ And these records are also in the Trigger details:
 
 You can test the Trigger by pushing a new chart version to your Helm Chart registry.
 
-You can use Harness CI to build and push to your registry. For examples, go to the [CI tutorials](../../continuous-integration/get-started/tutorials.md). Here's a simple curl example using a Nexus repo that works as a Helm chart HTTP server.
+You can use [Harness CI](/docs/continuous-integration/get-started/overview) to build and push to your registry.
+
+Here's a simple curl example using a Nexus repo that works as a Helm chart HTTP server.
 
 Add repo:
 

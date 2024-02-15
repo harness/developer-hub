@@ -94,6 +94,17 @@ import TabItem from '@theme/TabItem';
 1. Select **Bitbucket** under **Create or Select a Connector**.
 2. Click on the dropdown under **Bitbucket Connector** and select **+New Connector**. 
 3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
+
+:::info 
+
+Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data. 
+Create a secret with token and configure in the Personal Access token field. [Reference for creating token](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+
+![](./static/bitbucket-connector.png)
+
+For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
+
+:::
 4. After the connection test runs, select Finish to save the connector.
 
 
@@ -122,7 +133,11 @@ More instructions on [using github app in github connector](https://developer.ha
 </TabItem>
 </Tabs>
 
+:::info
 
+The scope is tied to URL format `https://gitprovider.com/org-name` so it is mandatory for all the git providers to provide the URL till at least org name. Further it can be scoped down to repository or project level as well. 
+
+:::
 
 
 ## Create and Register Entities

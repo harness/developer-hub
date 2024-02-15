@@ -8,6 +8,6 @@
       "title":"Configurations"
    },
   "customProps": {
-    "description": "Chaos Custom Resources reference"
+    "description": "Custom resources, such as chaos engine and chaos experiment specification"
   }
 }

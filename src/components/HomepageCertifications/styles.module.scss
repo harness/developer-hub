@@ -19,28 +19,11 @@
       display: flex;
       .left {
         flex-basis: 48%;
+        margin: auto;
       }
       .right {
         flex-basis: 52%;
-        // .cards {
-        //   display: flex;
-        //   gap: 2.5%;
-        // }
-        // .links {
-        //   padding: 28px 12px 0;
-        //   color: var(--white);
-        //   display: flex;
-        //   font-weight: 600;
-        //   font-size: 16px;
-        //   line-height: 24px;
-        //   justify-content: flex-end;
-        //   a {
-        //     color: var(--white);
-        //     &:hover {
-        //       color: var(--primary-6);
-        //     }
-        //   }
-        // }
+        margin: auto;
       }
     }
     h2 {
@@ -57,102 +40,14 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 28px;
-      min-height: 168px;
+      // min-height: 168px;
+      padding-bottom: 20px;
       width: 88%;
     }
     .badges {
       display: flex;
       gap: 18px;
     }
-    /*
-    .certCard{
-      border-radius: 8px;
-      // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
-      box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
-      padding: 32px 32px 56px 32px;
-      // margin: 0 2.75% 30px 0;
-      width: 31.5%;
-      // width: 440px;
-      font-family: 'Inter';
-      border: 2px solid transparent;
-      position: relative;
-      &:hover {
-          text-decoration: none;
-      }
-      .moduleLine{
-          display: flex;
-          justify-content: space-between;
-          span {
-              color: var(--gray-700);
-          }
-          h6{
-              font-weight: 500;
-              font-size: 12px;
-              line-height: 13px;
-              letter-spacing: 4px;
-              text-transform: uppercase;
-              color: #6B6D85;
-              display: flex;
-              align-items: center;
-              img{
-                  width: 24px;
-                  margin-right: 8px;
-              }
-          }
-      }
-      h4{
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 32px;
-          color: #0B0B0D;
-          &:hover {
-              color: var(--primary);
-          }
-      }
-      p{
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 28px;
-          color: #0B0B0D;
-      }
-      .productVersion {
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 13px;
-          color: #6B6D85;
-          position: absolute;
-          bottom: 32px;
-      }
-    }
-
-    .certCard:hover {
-        border: 2px solid var(--primary);
-    }
-    .cd:hover{
-        border-color: var(--mod-cd-200);
-    }
-    .ci:hover{
-        border-color: var(--mod-ci-200);
-    }
-    .ff:hover{
-        border-color: var(--mod-ff-200);
-    }
-    .ccm:hover{
-        border-color: var(--mod-ccm-200);
-    }
-    .srm:hover{
-        border-color: var(--mod-srm-200);
-    }
-    .sto:hover{
-        border-color: var(--mod-sto-200);
-    }
-    .ce:hover{
-        border-color: var(--mod-ce-200);
-    }
-    .platform:hover{
-        border-color: var(--primary);
-    }
-    */
 
     ul.platformList {
       display: flex;
@@ -238,12 +133,25 @@
 @media screen and (max-width: 996px) {
   .homepageCertifications {
     .inner {
+      padding: 40px;
       .dualColumn {
         flex-direction: column;
         .left {
+          text-align: center;
+
+          h2 {
+            // width: 100%;
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+          }
           .desc {
-            min-height: unset;
-            padding-bottom: 2em;
+            width: 100%;
+            margin: auto;
+          }
+          .badges {
+            justify-content: center;
+            align-items: center;
           }
         }
         .right {
@@ -254,10 +162,14 @@
   }
 }
 
-@media screen and (max-width: 512px) {
+@media screen and (max-width: 512) {
   .homepageCertifications {
     .inner {
+      background-position: top;
       .dualColumn {
+        .left {
+          width: 100%;
+        }
         .right {
           margin-top: 0;
           .cards {

@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 :::info important
 
-Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023.
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
 :::
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
@@ -20,7 +20,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
 * [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
 * [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
-* [Custom Dashboards](/docs/platform/Dashboards/cdb-whats-supported)
+* [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 * [Feature Flags](/docs/feature-flags/ff-supported-platforms)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)

@@ -88,7 +88,7 @@ Do the following:
 
    3. For **Repository Name**, click the type selector ("tack" button on the right) and then select **Runtime Expression**.
 
-4. Expand **Overview** > **Advanced** and add the following stage variables.
+5. Expand **Overview** > **Advanced** and add the following stage variables.
 
    You'll be specifying runtime inputs for some of these variables. This enables you to specify the code repo, branch, image label, and image tag, and other variables at runtime.
 
@@ -104,7 +104,7 @@ Do the following:
 
    - `DOCKER_IMAGE_TAG` — Select **String** and **Runtime Input**.
 
-5. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
+6. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
@@ -210,7 +210,7 @@ At this point, you might want to run a scan and view the detected issues.
 
 ## Build and push a test image
 
-Harness CI includes a set of [**Build and Push** steps](/docs/category/build-and-upload-artifacts) that take a code repo with a Dockerfile, build a container image, and push it to an artifact repository.
+Harness CI includes a set of [**Build and Push** steps](/docs/category/build-push-upload-download) that take a code repo with a Dockerfile, build a container image, and push it to an artifact repository.
 
 You'll now add one of these steps to build and push to your Docker Hub account.
 
@@ -238,7 +238,7 @@ You'll now add one of these steps to build and push to your Docker Hub account.
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows:
 
-- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings)
+- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
 - `name: build_push_test_image`
 - `identifier:` A unique step ID.
 - `spec :`
@@ -392,7 +392,7 @@ Assuming that the Trivy scan detected no critical vulnerabilities, you can now b
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows:
 
-- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings)
+- `type:` [`BuildAndPushDockerRegistry`](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
 - `name: build_push_test_image`
 - `identifier:` A unique step ID.
 - `spec :`

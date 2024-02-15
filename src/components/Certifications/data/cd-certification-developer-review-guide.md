@@ -22,13 +22,13 @@
 | Git Trigger  | [Triggers](/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/) |
 | API Triggers  | [Get started with Harness APIs](/docs/platform/automation/api/api-quickstart) |
-| Policy as Code  | [Policy as Code Overview](/docs/platform/governance/Policy-as-code/harness-governance-overview/) |
+| Policy as Code  | [Policy as Code Overview](/docs/platform/governance/policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](/docs/category/approvals/) |
 | Failure Strategies  | [Define a Failure Strategy on Stages and Steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) |
 |**4. Continuous Verification** | |
 | APM/Log Based Verification  | [Verify Deployments with the Verify Step](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) |
-| Validate Deployments | [Continuous Verification](/docs/category/continuous-verification/) |
+| Validate Deployments | [Continuous Verification](/docs/category/verify-deployments) |
 | HTTP Execution Checks | [HTTP step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
 | GitOps Basics  | [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/) |

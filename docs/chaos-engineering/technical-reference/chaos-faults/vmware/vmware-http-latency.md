@@ -1,5 +1,5 @@
 ---
-id: VMware-http-latency
+id: vmware-http-latency
 title: VMware HTTP latency
 ---
 VMware HTTP latency injects HTTP response latency into the service of a specific port.
@@ -114,6 +114,11 @@ stringData:
           <td> Network interface used for the proxy. </td>
           <td> Defaults to eth0. For more information, go to <a href="#network-interface"> network interface. </a></td>
         </tr>
+        <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
     </table>
 
 

@@ -18,7 +18,136 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
-## January 2023
+## February 2024
+
+### Version 0.21.0
+
+<!-- Feb 8, 2024 -->
+
+We are seeing a lot of excitement among our customers around Self Service Workflows to derive value for their developers. This release is especially for you if you are using IDP workflows for user/service onboarding.
+
+- **New Docs:** [API Docs](https://apidocs.harness.io/tag/AllowList), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
+- **New Videos:** [Ignoring Developer Experience is Hurting Your Organization: DX is Critical](https://youtu.be/ka6kHPMGGpc?si=MCcVZdvP2bGCCI3h)
+
+
+#### New features and enhancements
+
+- The project picker in IDP workflows [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-extensions) now shows the org as well. There is no change in the input/output values. [IDP-2048]
+
+![](./static/idp-projpicker-newview.png)
+
+- Added support for a new Custom field extension **`HarnessAutoOrgPicker`**, which auto populates on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input. [IDP-2099]
+
+```YAML
+# Example template.yaml file
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         projectId:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker          
+```
+In the above example the the `Project Identifier` field once selected auto populates the `Org Identifier` field as shown below. 
+
+![](./static/idp-proj-picker.png)
+
+- Two new plugins [Azure Devops](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/azure-devops) [IDP-2078] and [Rootly](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rootly) [IDP-1693] are available to use now! 
+- Users can now add email as an input for Slack Notify step in the IDP Stage. When used with `<+pipeline.triggeredBy.email>`, your service onboarding pipeline can now notify the user! [IDP-1943].
+- All IDP APIs are now available on our public API docs.[IDP-2113]
+
+
+#### Bug Fixes
+
+- Added support for word-wrap to ensure words are not broken on screen. [IDP-1972]
+- Fixed the string input value to ignore leading slash for file path input value in scorecard checks[IDP-2084]. 
+- Enhanced error handling for steps under developer portal stage. You should now see more meaningful errors [IDP-2105, IDP-2098, IDP-2087, IDP-2086, IDP-1943].
+
+
+## January 2024
+
+### Version 0.20.0
+
+<!-- Jan 25, 2024 -->
+
+🐣 "Easter Came Early This Year! 🚀 In our latest update, we're egg-cited to unveil the delightful additions of **custom plugins** – features you've eagerly anticipated. Here are some of the Docs and Tutorials to help you get started. 
+
+- **Docs:** [Custom Plugins](https://developer.harness.io/docs/category/custom-plugins), [Roadmap](https://developer.harness.io/docs/internal-developer-portal/roadmap/), [Harness IDP vs Self Managed Backstage - In-depth Feature Comparison](https://developer.harness.io/docs/internal-developer-portal/roadmap/harness-vs-backstage)
+
+- **Video Tutorial:** [How to Add Custom Plugins In Harness IDP](https://youtu.be/6ab9xQY7kSE)
+
+
+#### Early access features
+
+- We have added support for [custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview), which enables users to upload their own frontend backstage plugins to Harness IDP. This feature is behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. To enable the feature, please reach out to IDP team or contact [Harness Support](mailto:support@harness.io). [IDP-771]
+
+![](./static/layout.png)
+![](./static/custom-plugin-view.png)
+
+- Added the support to push code to the existing main branch of git providers in the [Create Repo step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) under [Developer Portal Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage), this stage is presently behind the feature Flag `IDP_ENABLE_STAGE`. To enable the feature, please reach out to IDP team contact [Harness Support](mailto:support@harness.io). [IDP-1944]
+
+#### New features and enhancements
+
+- Added support for Workflow Executions in Audit trails. [IDP-1989]
+- Added support for CSV Downloads in Scorecards and Checks overview pages. [IDP-1932]
+
+![](./static/export-csv-checks.png)
+
+#### Bug Fixes
+
+- Fixed deletion of env variable while adding the new env variable during config updates. [IDP-2031]
+- Fixed the incorrect redirect from the getting started page, this now won't allow users to get into IDP overview page without completion of the onboarding steps. [IDP-1993]
+- Fixed the Scaffolder Backend Caching issue, this now would allow users to execute workflow templates with all default values without any authentication failure. [IDP-2001]
+
+### Version 0.19.0
+
+<!-- Jan 19, 2024 -->
+
+🎁 In our latest release, we've added improvements to scorecards✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for.
+
+- **Docs:** [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage)
+
+
+#### New features and enhancements
+
+- Added support for [Audit Trails](https://developer.harness.io/docs/internal-developer-portal/governance/audit-trails). [IDP-1280]
+- Added support for a new plugin [Rafay Kubernetes Operations Platform](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes). [IDP-1979]
+- Added support for connector types in Git based steps under IDP stage, which will allow users to toggle between public and private repositories. [IDP-1982]
+- Added support for entities `annotation` and `harnessData` from `catalog-info.yaml` to be added as variable(JEXL format) input in Scorecard Checks. eg., `<+metadata.harnessData.branch>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`. [IDP-1964]
+
+```YAML
+...
+metadata:
+  name: idp-module
+  harnessData:
+    branch: develop
+    path: idp
+    priority: P0,P1
+  annotations:
+    jira/project-key: IDP
+...
+```
+
+#### Bug Fixes
+
+- Fixed the issue with side Nav items display, when user switches from old to new Nav using "New Navigation Design (Beta)" toggle. [IDP-1964]
+- Fixed the issue with scaffolder task missing "created by" with adding a migration that will correct the data eventually. [IDP-1961]
+- Fixed the issue with Backstage Permissions Sync Job Bug. [IDP-1980]
+
 
 ### Version 0.18.0
 
@@ -43,7 +172,7 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 ![](./static/idp-roles.png)
 
-- Added support for persistent platform favourites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
+- Added support for persistent platform favorites, which allows users to star their most visited pages and also it gives information on the recently visited pages. 
 
 - Enhanced the custom project picker to increase the hard limit of 50. 
 
@@ -79,7 +208,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog) to register software components in IDP catalog.[IDP-1438]
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
 
-This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases until those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
 
 #### New features and enhancements
 

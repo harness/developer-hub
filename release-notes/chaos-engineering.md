@@ -24,6 +24,34 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## January 2024
 
+### Version 1.30.0
+
+#### New features and enhancements
+
+* Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
+
+* The [SSH chaos experiment](/docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
+
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
+
+#### Fixed issues
+
+* Chaos hub icons were not visible when the hub name consisted of the '/' character. This has been fixed so that a user can't create a hub with the '/' character. (CHAOS-3753)
+
+### Version 1.29.0
+
+#### New features and enhancements
+
+* Improves the error messages and logs returned to the client in the API to save chaos experiments. (CHAOS-3607)
+
+#### Fixed issues
+
+* Linux chaos infrastructure (LCI) installer wasn't executing the script with sudo privileges, which resulted in *Failed to install linux-chaos-infrastructure* error. This issue is now resolved. (CHAOS-3724)
+
+* Deselecting the **Show active infra** displayed the inactive infrastructures only, whereas it should display all the infrastructures. This issue is now resolved. (CHAOS-3717)
+
+* LCI process would get killed due to a lack of memory (OOM) when a high amount of memory was specified during a memory stress fault. This issue is now resolved so that the likeliness of OOM kills during limited memory availability is reduced. (CHAOS-3469)
+
 ### Version 1.28.1
 
 #### New features and enhancements
@@ -652,7 +680,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 #### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/experiments/dashboards). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 

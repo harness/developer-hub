@@ -21,7 +21,7 @@ You can also use **Re-run in Debug Mode** to troubleshoot local builds.
 Debug mode is available if the following conditions are met:
 
 * You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-* The build fails at a [Run step](../use-ci/run-ci-scripts/run-step-settings.md) with a Bash, Shell, Python, or PowerShell Core (`pwsh`) script in a **Build** (`CI`) stage.
+* The build fails at a [Run step](../use-ci/run-step-settings.md) with a Bash, Shell, Python, or PowerShell Core (`pwsh`) script in a **Build** (`CI`) stage.
 * The build runs on a Linux-based OS on any [build infrastructure](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) (Harness Cloud, a self-hosted VM, a Kubernetes cluster, or a local runner).
 
 Debug mode is never available for a pipeline's first build. You must run the pipeline at least once before you can run the build in debug mode.
@@ -105,6 +105,6 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 
 :::tip
 
-You can force a build to fail if you need to troubleshoot pipelines that appear to build successfully but still need remote troubleshooting. To do this, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) with the command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
+You can force a build to fail if you need to troubleshoot pipelines that appear to build successfully but still need remote troubleshooting. To do this, add a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) with the command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
 
 :::

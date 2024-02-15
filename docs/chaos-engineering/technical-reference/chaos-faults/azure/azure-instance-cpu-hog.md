@@ -21,8 +21,8 @@ Azure instance CPU hog:
 - Verifies the autopilot functionality of cloud managed clusters. 
 - Verifies multi-tenant load issues. When the load on one container increases, the fault checks for any downtime in other containers. 
 
-###Prerequisites
-- Kubernetes >= 1.17 is required to execute this fault.
+### Prerequisites
+- Kubernetes >= 1.17
 - Azure Run Command agent should be installed and running in the target Azure instance.
 - Azure disk should be in a healthy state.
 - Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
@@ -83,12 +83,12 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive container kills (in seconds).</td>
-            <td> Defaults to 60s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
           <td> AZURE_AUTH_LOCATION </td>
@@ -106,7 +106,7 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
             <td> Defaults to <code>true</code>. Also supports <code>false</code>. </td>
         </tr>
         <tr>
-            <td> CPU_CORE </td>
+            <td> CPU_CORES </td>
             <td> Number of CPU cores that will be subject to stress. For more information, go to <a href=""> </a></td>
             <td> Defaults to 0. For more information, go to <a href="#cpu-core"> CPU core.</a></td>
         </tr>
@@ -116,6 +116,11 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
             <td> Defaults to 100. For more information, go to <a href="#cpu-percentage"> CPU percentage.</a></td>
         </tr>
         <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        </tr>
+        <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods.</td>
             <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
@@ -123,7 +128,7 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

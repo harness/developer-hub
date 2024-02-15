@@ -1,104 +1,106 @@
 ---
 title: Create and run chaos experiments
 sidebar_position: 20
+description: Guide to create and execute chaos experiments
 ---
 
-import Launch from '../shared/launch-experiment-from-hub.md'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 
-import Analyze from '/docs/chaos-engineering/configure-chaos-experiments/experiments/shared/analyze-chaos-experiment.md'
+Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and you can construct them using the Chaos Studio user interface with no programmatic intervention.
 
-Harness Chaos Engineering (CE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications. At the same time, the chaos experiments are declarative and can be constructed using the Chaos Studio user interface with no programmatic intervention.
+A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
-A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. The parameters associated with these faults can be tuned to impart the desired chaos behavior.
-
-For more information, go to [Flow of control in a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution).
+For more information, go to [flow of control in a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution).
 
 ## Construct a chaos experiment
 
 To add a chaos experiment:
 
-1. In Harness, navigate to **Chaos > Chaos Experiments**. 
+1. In Harness, navigate to **Chaos > Chaos Experiments**. Select **+ New Experiment**.
 
 	![Chaos Experiments page](./static/construct-and-run-custom-chaos-experiments/chaos-experiments.png)
 
-1. Select **+ New Experiment**.
-
-	Chaos Studio is displayed.
+2. 	In the **Experiment Overview**, enter the experiment **Name** and optional **Description** and **Tags**. In **Select a Chaos Infrastructure**, select the infrastructure where the target resources reside, and then click **Next**.
 
 	![Experiment Overview](./static/construct-and-run-custom-chaos-experiments/experiment-overview.png)
 
-1. In the **Experiment Overview**, enter the experiment **Name** and optional **Description** and **Tags**.
+:::tip
+For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures).
+:::
 
-1. In **Select a Chaos Infrastructure**, select the infrastructure where the target resources reside, and then click **Next**.
-
-	This takes you to the Experiment Builder tab, where you can choose how to start building your experiment.
+3. This takes you to the **Experiment Builder** tab, where you can choose how to start building your experiment.
 
 	![Experiment Builder](./static/construct-and-run-custom-chaos-experiments/experiment-builder.png)
 
-	For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures).
+4. Select how you want to build the experiment. The options, explained later, are:
 
-1. Select how you want to build the experiment. The options, explained later, are:
-
-	* [**Blank Canvas**](#if-you-select-blank-canvas) - Lets you build the experiment from scratch, adding the specific faults you want.
-	* [**Templates from Chaos Hubs**](#if-you-select-templates-from-chaos-hubs) - Lets you preview and select and experiment from pre-curated experiment templates available in [Chaos Hubs](/docs/category/chaos-hubs).
-	* [**Upload YAML**](#if-you-select-upload-yaml) - Lets you upload an experiment manifest YAML file.
+	* **Blank Canvas** - Lets you build the experiment from scratch, adding the specific faults you want.
+	* **Templates from ChaosHubs** - Lets you preview and select and experiment from pre-curated experiment templates available in [ChaosHubs](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/introduction.md).
+	* **Upload YAML** - Lets you upload an experiment manifest YAML file.
 
 	These options are explained below.
 
-	#### If you select Blank Canvas:
+<Tabs>
+  <TabItem value="Blank Canvas">
 
-	The Experiment Builder tab is displayed.
+1. The **Experiment Builder** tab is displayed. Click **Add** to add a fault to the experiment
 
-	![Experiment Builder tab with Add button](./static/construct-and-run-custom-chaos-experiments/experiment-builder-add.png)
+![Experiment Builder tab with Add button](./static/construct-and-run-custom-chaos-experiments/experiment-builder-add.png)
 
-	1. Select **Add**, then select each fault you want to add to the experiment individually.
+2. Select the fault you want to add to the experiment individually.
 
-		![Select Faults](./static/construct-and-run-custom-chaos-experiments/select-faults.png)
+![Select Faults](./static/construct-and-run-custom-chaos-experiments/select-faults.png)
 
-		For each fault you select, you'll tune the fault's properties next.
+3. For each fault you select, tune the fault's properties. Properties will be different for different faults. 
 
-		![Tune Fault](./static/construct-and-run-custom-chaos-experiments/tune-fault.png)
-
-	1. To tune each fault:
+	* To tune each fault:
 
 		* **Specify the target application (only for pod-level Kubernetes faults):** This lets the application's corresponding pods be targeted.
 
+		![target app](./static/construct-and-run-custom-chaos-experiments/target-app.png)
+
 		* **Tune fault parameters:** Every fault has a set of common parameters, such as the chaos duration, ramp time, etc., and a set of unique parameters that may be customised as needed.
 
-		* **Add chaos probes:** (Optional) On the **Probes** tab, you can add chaos [probes](/docs/category/probes-1) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
+		* **Add chaos probes:** (Optional) On the **Probes** tab, you can add chaos [probes](/docs/chaos-engineering/configure-chaos-experiments/probes/overview) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
 
 		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score) of the experiment.
 
-	1. To add a fault that runs in parallel to another fault, point your mouse below an existing fault, and then select **Add**.
+		![Tune Fault](./static/construct-and-run-custom-chaos-experiments/tune-fault.png)
 
-		![Complex Faults Experiment](./static/construct-and-run-custom-chaos-experiments/complex-faults-experiment.png)
+</TabItem>
+  <TabItem value="Templates from Chaos Hubs">
 
-		In Experiment Builder, faults that are stacked vertically run in parallel, and faults or groups of parallel faults run in sequence from left to right.
+1. Select an experiment template from a [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 
-	#### If you select Templates from Chaos Hubs:
+	* Select **Experiment Type** to see available ChaosHubs to select templates from.
+	* Select a template to see a preview of the faults included.
 
-	1. Select an experiment template from a [chaos hub](/docs/category/chaos-hubs).
+	![Fault Templates](./static/construct-and-run-custom-chaos-experiments/fault-templates.png)
 
-		* Select **Experiment Type** to see available chaos hubs to select templates from.
-		* Select a template to see a preview of the faults included.
+:::info note		
+You can edit the template to add more faults or update the existing faults.
+:::
 
-		![Fault Templates](./static/construct-and-run-custom-chaos-experiments/fault-templates.png)
+</TabItem>
+  <TabItem value="Upload YAML">
 
-		You can edit the template to add more faults or update the existing faults.
+1. Upload an experiment manifest YAML file to create the experiment.
 
-	#### If you select Upload YAML:
+:::info note
+You can edit the experiment to update the existing faults or add more of them.
+:::
 
-	1. Upload an experiment manifest YAML file to create the experiment.
+</TabItem>
+</Tabs>
 
-		You can edit the experiment to update the existing faults or add more of them.
-
-1. Save the experiment.
+Construct the chaos fault using one of the three options mentioned earlier and save the experiment. 
 
 	![Save experiment options](./static/construct-and-run-custom-chaos-experiments/save-experiment.png)
 
-	* Select **Save** to save the experiment to the Chaos Experiments page. You can add it to a [chaos hub](/docs/category/chaos-hubs) later.
-	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [chaos hub](/docs/category/chaos-hubs).
+	* Select **Save** to save the experiment to the Chaos Experiments page. You can add it to a [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub) later.
+	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 
 Now, you can choose to either run the experiment right away by selecting the **Run** button on the top, or create a recurring schedule to run the experiment by selecting the Schedule tab.
 
@@ -153,11 +155,3 @@ Specifies the group ID to be used for starting all the processes in the experime
 - Allows privileged access or restricted access for experiment pods
 
 	![runAsGroup](./static/construct-and-run-custom-chaos-experiments/run-as-group.png)
-
-## Launch an experiment from a chaos hub
-
-<Launch />
-
-## Analyze chaos experiments
-
-<Analyze />

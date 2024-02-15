@@ -8,6 +8,6 @@
       "title":"Chaos dashboard"
    },
   "customProps": {
-    "description": "Chaos dashboard"
+    "description": "Visualize various aspects of a chaos experiment"
   }
 }

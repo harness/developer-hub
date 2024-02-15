@@ -1,1 +1,0 @@
-* **Orchestration** A fully-orchestrated scan. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.

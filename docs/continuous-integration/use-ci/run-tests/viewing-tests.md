@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
+Your CI pipelines can run tests in [Run steps](../run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
 
 ## Publish reports to the Tests tab
 
@@ -44,7 +44,7 @@ If you used a **Run** step, the **Tests** tab contains information about the tot
 
 If you ran tests in multiple steps/stages, or parallel steps/stages, use the **Step/Stage** dropdown menu to switch between reports from different steps or stages.
 
-![](../run-ci-scripts/static/run-a-script-in-a-ci-stage-529.png)
+![](./static/run-a-script-in-a-ci-stage-529.png)
 
 ### Results from Run Tests steps (Test Intelligence)
 
@@ -120,7 +120,7 @@ For more information about how and when TI selects tests, go to [Enable Test Int
 
 ## View reports on the Artifacts tab
 
-For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 
 <Tabs>
@@ -131,10 +131,10 @@ To publish a test report to the **Artifacts** tab, you must:
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
+   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md)
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, configured as follows:
    * **Name:** Enter a name.
    * **Container Registry:** Select a Docker connector.
@@ -150,10 +150,10 @@ To publish a test report to the **Artifacts** tab, you must:
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
+   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md)
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, for example:
 
    ```yaml

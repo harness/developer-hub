@@ -6,7 +6,7 @@ sidebar_position: 2
 
 This topic explains how to configure the Prometheus monitoring tool for metrics collection and the Grafana analytics tool for metrics display.
 
-Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types). 
+Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
 
 The delegate is instrumented for the collection of the following delegate agent metrics.
 
@@ -33,7 +33,7 @@ Also note that the above metrics are available only if your delegate version is 
 :::
 
 :::info note
-Metrics with # above include the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
+Metrics with # above the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
 
 :::
 
@@ -310,7 +310,7 @@ spec:
 You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with DYNAMIC_REQUEST_HANDLING set to `true` in your delegate YAML. 
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. 
 :::
 
 To configure the delegate resource threshold, make the following changes to the delegate YAML file:

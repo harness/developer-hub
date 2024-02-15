@@ -108,9 +108,17 @@ root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls YOUR_PATH/*
 YOUR_PATH/newdelegate.log
 ```
 
+### Can I customize delegate logging?
+
+Yes, you can create a custom `logback.xml` file and mount it in your delegate container or build a custom container. For more information, go to [Customize delegate logging](/docs/platform/delegates/manage-delegates/customize-delegate-logging).
+
+### Can I remove sensitive information from logs?
+
+Yes, you can remove sensitive information from logs in the Harness UI using regular expressions. For more information, go to [Hide log information based on regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex).
+
 ## Delegate installation
 
-For delegate installation instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 ### What types of delegates are there?
 
@@ -245,7 +253,7 @@ For Harness SaaS, you can add a self-signed certificates on the delegate host us
 
 ### Can I override the truststore of the delegate?
 
-Yes. For more information, go to [Truststore override for delegates](/docs/platform/Delegates/secure-delegates/trust-store-override-for-delegates).
+Yes. For more information, go to [Truststore override for delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates).
 
 ## Copying and downloading artifacts by using the delegate
 

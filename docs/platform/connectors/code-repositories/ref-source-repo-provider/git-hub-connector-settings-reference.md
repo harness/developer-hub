@@ -255,6 +255,12 @@ If you select **Connect through the Harness Platform**, the Harness Manager exch
 
 </details>
 
+:::tip
+
+The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
+
 ### Delegates Setup
 
 If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.

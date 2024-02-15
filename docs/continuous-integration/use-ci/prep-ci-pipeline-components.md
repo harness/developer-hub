@@ -16,13 +16,14 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 
 ### Create a Harness CI pipeline
 
-1. In the **Builds** (Continuous Integration) modules, select **Pipelines**, and then select **Create a Pipeline**.
-2. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
-3. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
-4. If you want to use a [pipeline template](/docs/platform/Templates/template), select **Start with Template**.
-5. Select **Start**.
+1. Log in to your Harness account. If you don't have an account yet, go to [Try Harness CI](../get-started/tutorials.md).
+2. Go to the **Builds** (Continuous Integration) module, select **Pipelines**, and then select **Create a Pipeline**.
+3. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
+4. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
+5. If you want to use a [pipeline template](/docs/platform/templates/template), select **Start with Template**.
+6. Select **Start**.
 
-You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../get-started/tutorials.md).
+You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure [pipeline settings](#pipeline-settings).
 
 :::tip
 
@@ -34,12 +35,12 @@ You can also [import pipelines from Git](/docs/platform/git-experience/import-a-
 
 In addition to a [default codebase](#codebases), the following settings are configurable at the pipeline level:
 
-* [Input sets and overlays](/docs/platform/Pipelines/input-sets)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
-* [Policy Sets](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Sets](/docs/platform/governance/policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
 
 :::tip
@@ -76,8 +77,8 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Build on Harness Cloud build infrastructure](/tutorials/ci-pipelines/fastest-ci)
-* [Build on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+* [Build on Harness Cloud build infrastructure](../get-started/tutorials.md)
+* [Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 :::
 
@@ -97,11 +98,11 @@ If you need to shared data across stages, use [caching](/docs/continuous-integra
 
 A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on. Go to the following documentation for details about how you can use various CI steps in your pipelines:
 
-* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Build and push images or upload and download artifacts](/docs/category/build-push-upload-download)
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
-* [Run scripts](/docs/category/run-scripts)
+* [Run scripts](/docs/continuous-integration/use-ci/run-step-settings)
 * [Use plugins](/docs/category/use-plugins)
 * [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
@@ -135,7 +136,7 @@ Failure strategies are a critical pipeline design component that determine what 
 
 See also:
 
-* [Retry failed executions](/docs/platform/Pipelines/resume-pipeline-deployments)
+* [Retry failed executions](/docs/platform/pipelines/resume-pipeline-deployments)
 
 ### Environment variables
 

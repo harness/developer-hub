@@ -19,17 +19,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "5min",
-        link: "/tutorials/build-code/fastest-ci",
-      },
-      {
-        title: "Terraform Cloud notification triggers",
-        module: MODULES.ci,
-        icon: "img/icon_ci.svg",
-        description: "Terraform Cloud notifications can automatically trigger CI pipelines.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "9min",
-        link: "/tutorials/ci-pipelines/build/tfc-notification",
+        link: "/docs/continuous-integration/get-started/tutorials",
       },
     ];
     */
@@ -41,6 +31,20 @@ import {
         description:
           "",
         list: [
+          {
+            title: "What's supported",
+            module: MODULES.platform,
+            description:
+              "Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition.",
+            link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
+          },
+          {
+            title: "Onboarding guide",
+            module: MODULES.platform,
+            description:
+              "Learn how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.",
+            link: "/docs/self-managed-enterprise-edition/get-started/onboarding-guide",
+          },
           {
             title: "Install using Helm",
             module: MODULES.platform,
@@ -54,13 +58,6 @@ import {
             description:
               "Learn how to use Helm to install in an air-gapped environment.",
             link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment",
-          },
-          {
-            title: "Overview",
-            module: MODULES.platform,
-            description:
-              "Learn the differences between Harness SaaS and self-managed products.",
-            link: "/docs/self-managed-enterprise-edition/get-started/onboarding-guide",
           },
         ],
       },
@@ -82,6 +79,41 @@ import {
             description:
               "Learn how to back up and restore Harness Self-Managed Enterprise Edition.",
             link: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+          },
+        ],
+      },
+      {
+        name: "Advanced configurations",
+        description:
+          "",
+        list: [
+          {
+            title: "Reference architectures",
+            module: MODULES.platform,
+            description:
+              "Review Harness Self-Managed Enterprise Edition reference architectures.",
+            link: "/docs/self-managed-enterprise-edition/advanced-configurations/reference-architecture/",
+          },
+          {
+            title: "Configure external databases",
+            module: MODULES.platform,
+            description:
+              "Harness supports multiple databases when you deploy the on-prem Harness Self-Managed Enterprise Edition.",
+            link: "/docs/self-managed-enterprise-edition/advanced-configurations/configure-external-databases/",
+          },
+          {
+            title: "Use external secrets for license values",
+            module: MODULES.platform,
+            description:
+              "Learn how to use Kubernetes-based external secrets for Harness license values.",
+            link: "/docs/self-managed-enterprise-edition/advanced-configurations/use-external-secrets-for-license-values",
+          },
+          {
+            title: "Increase Persistent Volume (PV) size for StatefulSets",
+            module: MODULES.platform,
+            description:
+              "Learn how to increase the PV size for StatefulSets in your Kubernetes cluster during a Helm upgrade.",
+            link: "/docs/self-managed-enterprise-edition/advanced-configurations/increase-pv-size-statefulsets",
           },
         ],
       },

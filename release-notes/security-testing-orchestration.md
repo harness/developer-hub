@@ -23,9 +23,65 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## February 2024
+
+<!-- 2024-02-07 -->
+
+### Version 1.83.1 
+
+#### Enhancements
+
+- You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
+
+  ![Security override in Security Tests](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-override-in-security-tests.png)
+
+  This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override. 
+  
+  To enable this feature, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step ingests and processes the relevant data for issues with overridden severities.   
+
+  <Tabs>
+     <TabItem value="Visual" label="Visual" default>
+
+     ![Add ingest_tool_severity to Snyk step](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-add-setting-in-visual-editor.png)
+
+    </TabItem>
+  
+    <TabItem value="YAML" label="YAML">
+      ``` yaml
+      - step:
+          type: Snyk
+          spec:
+            settings:
+              ingest_tool_severity: "true"
+      ```
+
+    </TabItem>
+    </Tabs>
+
+
+- The SonarQube integration includes better support for orchestrated branch scanning with SonarQube Enterprise. (STO-6840)
+  - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the step.
+  - With this enhancement, the orchestration step always downloads results for the branch specified in the step.
+
+- Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
+
+#### Fixed issue
+
+- Fixed a UI issue where the Exemptions page would show the incorrect severity for an issue if that severity was overridden after the original scan. (STO-7069)
 
 
 ## January 2024 
+
+
+<!-- 2024-01-24 -->
+
+### Version 1.81 
+
+#### Fixed issue
+
+Fixed an issue on Self-Managed Enterprise Edition platforms where approving or rejecting an exemption threw a 500 error. (STO-6958)
+
+
 
 ### Version 1.80.1
 
@@ -36,10 +92,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - You can now run STO scans with a [CI free](https://www.harness.io/pricing?module=ci#) license. In a CI Build step, select **Add step** and then go to **Security** and **Security Tests** in the step library. All STO steps are available. The only limits to this functionality are those imposed by the CI Free license. (STO-6824) 
 
 - The Security Tests UI displays a more helpful, accurate message when no issues match the show/hide filters. (STO-6919)
-
-#### Fixed issue
-
-Fixed an issue on Self-Managed Enterprise Edition platforms where approving or rejecting an exemption threw a 500 error. (STO-6958)
 
 
 ### January 11 runner update
@@ -711,10 +763,10 @@ The following security steps are now generally available:
   Note the following:
 
   - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
-  - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
+  - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image in a Kubernetes build infrastructure. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).   
   - These steps are currently available in Security stages only. 
   - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-  - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
+
 
 
 <details>

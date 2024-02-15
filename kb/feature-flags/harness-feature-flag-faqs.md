@@ -224,11 +224,11 @@ If you find that your use case requires enhanced rule capabilities beyond what i
 
 </details>
 
-## Does the relay proxy offer both Polling and Streaming options for communication?
+### Does the relay proxy offer both Polling and Streaming options for communication?
 
 Yes, the Relay Proxy provides configuration choices for both Streaming and Polling communication methods.
 
-## What is an appropriate or optimal way to add a hard refresh for mobile browsers?
+### What is an appropriate or optimal way to add a hard refresh for mobile browsers?
 
 The latest version of the FF SDK has a `refreshEvaluations` function that you can call to manually refresh evaluations on demand. For more information, go to the [mobile device support documentation in the FF SDK GitHub repository](https://github.com/harness/ff-javascript-client-sdk/blob/HEAD/mobile_device_support.md).
 
@@ -242,3 +242,31 @@ document.addEventListener('visibilitychange', (event) => {
   cf.refreshEvaluations();
 });
 ```
+
+### How do you include a target using custom data?
+
+To include a target, initialize the JavaScript SDK with your target's details and desired attributes. For example:
+
+```
+const cf = initialize('api_key', {
+  identifier: 'Harness',
+  attributes: {
+    lastUpdated: Date(),
+    host: location.href
+  }
+});
+```
+
+This setup allows you to use ``lastUpdated`` and ``host`` in creating group rules.
+
+### Is it secure to store the client-sdk-key in session storage?
+
+Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks/#sdk-types) for more information.
+
+### What can a client do with client-sdk-key besides evaluating feature flags?
+
+The client SDK keys are intended only for evaluation purposes on Harness servers and do not allow users to extract data from their Harness account. This means that even if someone inspects a web application and obtains the client SDK key, they cannot access any confidential information stored in Harness.
+
+#### Can we call initialize more than once to update attributes?
+
+We do not have a option to do update without closing the sdk. So ee will need to close the SDK and re-init it in the mean time, to force the attributes to update.

@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps it back to the app.
 
-<!-- ![CF App Route Unmap](./static/images/cf-app-route-unmap.png) -->
+![CF App Route Unmap](./static/images/cf-app-route-unmap.png)
 
 ## Use cases
 CF app route unmap:
@@ -24,8 +24,8 @@ CF app route unmap:
   </tr>
   <tr>
     <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. </td>
+    <td> Deployment platform used for Cloud Foundry with respect to where the infrastructure is hosted. </td>
+    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform.</a></td>
   </tr>
   <tr>
     <td> organization </td>
@@ -44,8 +44,8 @@ CF app route unmap:
   </tr>
   <tr>
     <td> host </td>
-    <td> Host name of the route to be un-mapped. </td>
-    <td> For example, <code>v1</code>. </td>
+    <td> Host name of the route to be unmapped. </td>
+    <td> For example, <code>v1</code>. For more information, go to <a href="#host"> host.</a></td>
   </tr>
 </table>
 
@@ -59,7 +59,7 @@ CF app route unmap:
   <tr>
     <td> path </td>
     <td> Path of the route to be un-mapped. </td>
-    <td> For example, <code>/cart</code>. </td>
+    <td> For example, <code>/cart</code>. For more information, go to <a href="#path"> path.</a></td>
   </tr>
   <tr>
     <td> port </td>
@@ -69,27 +69,22 @@ CF app route unmap:
   <tr>
     <td> faultInjectorPort </td>
     <td> Local server port used by the fault-injector utility. </td>
-    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. </td>
+    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. For more information, go to <a href="#fault-injector-port"> fault injector port.</a></td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration.</a> </td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>
     <td> Skip SSL validation while invoking CF APIs. </td>
-    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. </td>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. For more information, go to <a href="#skip-ssl-validation"> skip SSL validation.</a></td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s </td>
+    <td> Default: 0s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a> </td>
   </tr>
 </table>
 
@@ -99,7 +94,7 @@ CF app route unmap:
 
 ### Host
 The `host` input variable determines the host of the route which is un-mapped.
-- For example, for a route `http://example-app.shared-domain.example.com`, the host is `example-app`.
+For example, for a route `http://example-app.shared-domain.example.com`, the host is `example-app`.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -124,7 +119,7 @@ spec:
 
 ### Path
 The `path` input variable determines the path of the route which is un-mapped.
-- For example, for a route `http://example-app.shared-domain.example.com/abc`, the path is `/abc`.
+For example, for a route `http://example-app.shared-domain.example.com/abc`, the path is `/abc`.
 
 The following YAML snippet illustrates the use of this input variable:
 

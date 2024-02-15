@@ -23,7 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  //onBrokenAnchors: "ignore", #DS 3.1+
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
@@ -170,6 +170,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Engineering Insights",
+                to: "tutorials/software-engineering-insights",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -259,6 +264,10 @@ const config = {
                 href: "/release-notes",
               },
               {
+                label: "Roadmap",
+                href: "/roadmap",
+              },
+              {
                 label: "FAQs",
                 to: "docs/faqs",
               },
@@ -270,10 +279,6 @@ const config = {
                 label: "Harness Cloud Operations",
                 to: "docs/harness-cloud-operations",
               },
-              // {
-              //   label: "Roadmap",
-              //   to: "/roadmap",
-              // },
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
@@ -326,31 +331,33 @@ const config = {
             ],
           },
           {
-            position: "right",
-            to: "kb",
             label: "Knowledge Base",
-          },
-          {
             position: "right",
-            to: "community",
-            label: "Community",
+            type: "dropdown",
+            to: "kb",
+            items: [
+              {
+                to: "kb",
+                label: "Knowledge Base",
+              },
+              {
+                to: "community",
+                label: "Community",
+              },
+            ],
           },
-          //{
-          //  position: "right",
-          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
-          //  label: "Join Slack",
-          //},
+
           {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
           },
           {
             position: "right",
-            // label: "Sign up",
+            html: '<button class="button button--nav">Sign in</button>',
+            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
+          },
+          {
+            position: "right",
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
@@ -450,6 +457,10 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes",
+              },
+              {
+                label: "Roadmap",
+                href: "/roadmap",
               },
               {
                 label: "Feature Requests",
@@ -655,8 +666,9 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/feedback-plugin"),
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
-    path.join(__dirname, "/plugins/scarf-plugin"),
+    //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
+  clientModules: [path.join(__dirname, "/client_module/searchBar")],
 };
 
 module.exports = config;

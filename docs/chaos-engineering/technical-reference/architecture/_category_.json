@@ -8,6 +8,6 @@
       "title":"Architecture"
    },
   "customProps": {
-    "description": "Harness Chaos Engineering Architecture"
+    "description": "Architecture and components of HCE"
   }
 }

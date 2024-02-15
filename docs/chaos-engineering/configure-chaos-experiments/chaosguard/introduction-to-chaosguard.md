@@ -1,12 +1,13 @@
 ---
 title: Introduction to ChaosGuard™
 sidebar_position: 1
+description: An additional level of security to guard chaos experiments from chaos-enabled users
 ---
 
 This section introduces you through ChaosGuard and describes how Harness provides RBAC (role-based access control) to users or user groups to access the **chaos resources** at different levels using **ChaosGuard**.
 
 :::note
-This feature is currently behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+This feature is currently behind `CHAOS_SECURITY_GOVERNANCE` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 ## What is ChaosGuard?
@@ -16,7 +17,7 @@ ChaosGuard, as the name suggests, is an additional level of security that guards
 Advanced environments require deeper governance policies, and this level of security aims to minimise the blast radius (or disruption) and mitigate potential security threats from **chaos-enabled** users with malicious intent. This way, users with permissions to execute chaos experiments will be subjected to further levels of security policy enforcement.
 
 The different levels of security policy enforcement include (but are not limited to):
-1. Regulating access to chaos infrastructure (i.e., namespaces and clusters) within the environment,
+1. Regulating access to chaos infrastructure (i.e., namespace and clusters) within the environment,
 2. Controlling the types of faults that can be used within these infrastructures, 
 3. Freezing runtime permissions accorded for experiment execution within the target infrastructure.
 
@@ -51,3 +52,8 @@ Harness allows users to exercise fine-grained control, which is sufficient for e
 The Harness project admin persona can create a custom role by selecting the desired permissions against the chaos platform resources and binding it to a user. 
 
 ![new-user](./static/introduction-to-chaosguard/new-user-entry.png)
+
+## Next steps
+
+* [ChaosGuard concepts](./chaosguard-concepts)
+* [Configuring ChaosGuard](./configuring-chaosguard)

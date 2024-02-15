@@ -1,14 +1,15 @@
 ---
 title: Probe acceptance criteria
 sidebar_position: 9
+description: Operations performed on probes
 ---
 
 ## Before you begin
 
-- [Probes overview](./overview)
-- [Configure probes](../../configure-chaos-experiments/probes/configure-and-add-probe)
+- [Probes overview](../../configure-chaos-experiments/probes/overview.md)
+- [Configure probes](../../configure-chaos-experiments/probes/configure-and-add-probe.md)
 
-This section discusses various operations that can be performed on [resilience probes](./overview).
+This section discusses various operations that can be performed on [resilience probes](../../configure-chaos-experiments/probes/overview.md).
 
 ## Create resilience probes
 

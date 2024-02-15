@@ -1,11 +1,11 @@
 ---
 title: Mend (formerly Whitesource) scanner reference for STO
-description: Container and repository scans with Mend
+description: Scan code repositories and container images with Mend.
 sidebar_label: Mend scanner reference
 sidebar_position: 220
 ---
 
-You can scan container images and repositories using [Mend](https://www.mend.io). 
+You can scan code repositories and container images using [Mend](https://www.mend.io). 
 
 
 ## Important notes for running Mend scans in STO
@@ -49,13 +49,16 @@ The recommended workflow is add a Mend step to a Security Tests or CI Build stag
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-<StoSettingScanMode />
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -63,7 +66,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -71,36 +74,39 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 ### Target
 
-<a name="target-type"></a>
 
 #### Type
 
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-
-<a name="scan-type"></a>
-<StoSettingScanType />
+<!-- StoSettingScanType / -->
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
 
 
+<!-- #### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
+
+
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
+<StoSettingTargetName />
 
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
@@ -108,7 +114,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+
 
 
 <StoSettingTargetWorkspace  />
@@ -118,7 +125,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -138,7 +146,8 @@ The fully-qualified URL to the scanner. The default is `https://saas.whitesource
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+
 
 
 <StoSettingProductSSL />
@@ -150,7 +159,8 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 #### API Version
 
 
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
+import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
+
 
 
 <StoSettingApiVersion />
@@ -163,7 +173,8 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 #### Type
 
 
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
+import StoSettingAuthType from './shared/step_palette/auth/_type.md';
+
 
 
 <StoSettingAuthType />
@@ -233,7 +244,8 @@ Excluding...I don't see this field in the step palette
 #### Project Version
 
 
-import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
+import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_version.md';
+
 
 
 <a name="product-project-version"></a>
@@ -251,29 +263,39 @@ import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
 
 #### Additional CLI flags
 
-You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `log.files.path /tmp/sto_scan_logs`.
+Use this field to run the Mend scanner with specific command-line arguments.
 
-<!-- TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
+<!-- 
+
+You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. 
+
+
+For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `log.files.path /tmp/sto_scan_logs`.
+
+TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
 
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
+<!-- 
 ### Settings
 
 You can add a `tool_args` setting to run the scanner with additional arguments. For example, you can pipe your scan output to a file like this: `tool-args > /tmp/sto_scan_logs/scan-session-output.LATEST.txt`.
 
-<!-- TBD Don't know if this is a good example, or even if it works...I'm assuming the Settings field in the step palette is intended more for non-scanner-specific command-line arguments. -->
+TBD Don't know if this is a good example, or even if it works...I'm assuming the Settings field in the step palette is intended more for non-scanner-specific command-line arguments. -->
 
 
 ### Additional Configuration
@@ -293,11 +315,13 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Security step settings for Mend scans in STO (legacy)
 
-You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Mend scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Mend step](#mend-step-settings-for-sto-scans) instead.
+:::
 
 #### Target and variant
 

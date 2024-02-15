@@ -113,6 +113,7 @@ CCM offers the following features:
 | **Cost Visibility** (Required)| This feature is available by default. Make sure you have set up the GCP Billing Export. Provides the following capabilities:<ul><li>Insights into GCP costs by projects, products, etc.</li><li>Root cost analysis using cost perspectives </li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
 | **GCP Inventory Management** (Optional)| This feature provides visibility into your GCE VMs and unused disks and snapshots. The insights provided by inventory management can be used by Finance teams to understand resource utilization across the board.|
 | **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see **Create AutoStopping Rules for GCP**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
+| **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li> Asset Management (Instance, Disk, SQL-instance, Image) </li><li>Automated Actions</li></ul>     
 
 
 Make your selection and select **Continue**.
@@ -141,7 +142,6 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 8. Select **Done**.  
     When you are done, the following screen is displayed:
   
-  ```mdx-code-block
 <img src={dataset_permissions} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
 
 
@@ -152,6 +152,15 @@ To enable AutoStopping rules, you need to add more permissions. For more informa
    
 9. Select **Continue** in Harness.
 
+### Cloud asset governance rules
+
+## Cloud Asset Governance for GCP
+Now, Harness CCM supports CAG for GCP.
+<DocImage path={require('./static/GCP-connector-CAG.png')} width="60%" height="60%" title="Click to view full size image" />
+
+:::info important
+Regions for Asset Governance Rules for GCP are not available in drop-down menu but can be configured manually in the YAML.
+:::
 
 ### Connection Test
 

@@ -17,7 +17,7 @@ This topic covers how to add and configure New Relic as a Health Source for the 
 
 ## Before You Begin
 
-* [Add New Relic as a Verification Provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-new-relic)
+* [Add New Relic as a Verification Provider](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#add-new-relic)
 
 :::info note
 New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. Your Service/Application also needs to be instrumented as a [New Relic APM Application](https://docs.newrelic.com/introduction-apm). 
@@ -25,11 +25,11 @@ New Relic supports multiple APIs. The Harness Connector leverages the New Relic 
 
 ## Review: CV Setup Options
 
-To use the Verify step, you will need a Harness Service Reliability Management Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.
+To use the Verify step, you will need a Harness Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.
 
-You can set up a Monitored Service in the Service Reliability Management module or in the Verify step in a CD stage. The process is the same.
+You can set up a Monitored Service in the Verify step in a CD stage.
 
-No matter where you set up the Monitored Service, once it's set up, it's available to both Service Reliability Management and CD modules.
+There are other ways to set up a Monitored Service. To learn more see: [Monitored Service](docs/platform/monitored-service.md)
 
 In this topic we'll set up the Monitored Service as part of the **Verify** step.
 
@@ -103,6 +103,8 @@ In **Continuous Verification Type**, select a type that matches your [deployment
 ## Step 4: Create a Monitored Service
 
 In **Monitored Service**, click **Click to autocreate a monitored service**.
+
+To learn how to view your service after its created see [Monitored Service](docs/platform/monitored-service.md).
 
 :::note
 

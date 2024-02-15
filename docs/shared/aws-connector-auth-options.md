@@ -1,5 +1,11 @@
 The **Use IRSA** option allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. This option is also necessary if the delegate uses IRSA on an EKS cluster with OIDC Provider.
 
+:::info
+
+The below mentioned configuration has been tested exclusively on clusters created with eksctl, hence if you are creating cluster using some other way like terraform, cloudformation etc. there could be some unknown issue
+
+:::
+
 By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account. Instead, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
 
 1. Verify your firewall policy and make sure to whitelist all AWS endpoints for the services you're using. For more details, go to [view AWS service endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#view-service-endpoints).

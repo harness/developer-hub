@@ -1,6 +1,6 @@
 ---
 title: Veracode scanner reference for STO
-description: Repository scans with Veracode
+description: Scan code repositories with Veracode.
 sidebar_label: Veracode scanner reference
 sidebar_position: 410
 helpdocs_topic_id: cy0deg32w9
@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Veracode is a popular tool for scanning code repos for security issues and vulnerabilities. Veracode performs dynamic (automated penetration test) and static (automated code review) code analysis and finds security vulnerabilities that include malicious code as well as the absence of functionality that can lead to security breaches.
+Veracode is a popular tool for scanning code repositories for security issues and vulnerabilities. Veracode performs dynamic (automated penetration test) and static (automated code review) code analysis and finds security vulnerabilities that include malicious code as well as the absence of functionality that can lead to security breaches.
 
 
 ## Important notes for running Veracode scans in STO 
@@ -46,6 +46,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 ## Required Settings for Veracode scans in STO
+
+To set up a Veracode scan, add a Security step to your pipeline and add the following settings:
 
 * `product_name` = `veracode`
 * `scan_type` = `repository`
@@ -87,7 +89,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
@@ -95,7 +98,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 The following pipeline example illustrates a dataLoad workflow to ingest data from Veracode. It consists of two steps: 
 
-1. A Background step that runs Docker-in-Docker service (required if you're using a Security step to configure your integration). 
+1. A Background step that runs a Docker-in-Docker service (required if you're using a Security step to configure your integration). 
 
 2. A Security step that specifies the information needed to ingest the scan results from the Veracode server.
 
@@ -106,8 +109,8 @@ The following pipeline example illustrates a dataLoad workflow to ingest data fr
 
 pipeline:
   allowStageExecutions: false
-  projectIdentifier: STO
-  orgIdentifier: default
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
   tags: {}
   stages:
     - stage:
@@ -119,8 +122,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -133,7 +136,7 @@ pipeline:
                   name: dind-bg-step
                   identifier: dindbgstep
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
                     entrypoint:
@@ -147,18 +150,18 @@ pipeline:
                     settings:
                       policy_type: dataLoad
                       scan_type: repository
-                      repository_project: VERACODE_REPOSITORY_PROJECT
-                      repository_branch: VERACODE_REPOSITORY_BRANCH
+                      repository_project: YOUR_VERACODE_REPOSITORY_PROJECT
+                      repository_branch: YOUR_VERACODE_REPOSITORY_BRANCH
                       product_name: veracode
                       product_config_name: veracode-agent
-                      product_access_token: <+secrets.getValue("my_veracode_token")>
-                      product_access_id: <+secrets.getValue("my_veracode_id")>
-                      product_app_id: VERACODE_PRODUCT_APP_ID
+                      product_access_token: <+secrets.getValue("YOUR_VERACODE_TOKEN_SECRET")>
+                      product_access_id: <+secrets.getValue("YOUR_VERACODE_ID")>
+                      product_app_id: YOUR_VERACODE_PRODUCT_APP_ID
                       product_auth_type: apiKey
                     imagePullPolicy: Always
         variables: []
-  identifier: Veracodedataloadtest
-  name: Veracode-dataload-test
+  identifier: Veracodedataloadexample
+  name: Veracode-dataload-example
 
 
 

@@ -309,7 +309,7 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](/docs/platform/variables-and-expressions/harness-variables) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
@@ -961,7 +961,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delete a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
+For steps on deleting the Delgate, go to [Delete a delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
 
 ## Notes
 
@@ -996,7 +996,7 @@ plugins:
 See:
 
 - [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-- [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables)
+- [Built-in Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables)
 - [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
 ### Supported stores for Serverless Lambda YAML files

@@ -1,6 +1,6 @@
 ---
 title: Onboarding guide
-description: This topic describes the process for setting up an STO pipeline.
+description: Set up your permissions, infrastructure, delegate, and connectors.
 sidebar_position: 20
 helpdocs_topic_id: rlbw5luj4h
 helpdocs_category_id: 8nywcs2sa7
@@ -19,10 +19,12 @@ import set_up_harness_23 from './static/set-up-harness-for-sto-23.png'
 import set_up_harness_24 from './static/set-up-harness-for-sto-23_NEW.png'
 import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
 
+<!-- -->
+
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
-The entire setup workflow should take about 30 minutes.
+The entire setup should take about 30 minutes.
 
 ## STO Requirements 
 
@@ -56,17 +58,17 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 ### Add Security Testing roles
 
-Harness includes two RBAC roles specifically for STO users:
+Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
 
-* **Developer** role — Permissions needed for developer workflows: 
+* **Developer** role — Permissions for developer workflows: 
 
   - Configure and run scans
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
   - View scan results and troubleshoot detected issues
   - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
-  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if specific issues are detected
+  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, )
    
-* **SecOps** role — Permissions needed for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
+* **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
 These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
@@ -75,7 +77,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 :::
 
 <details>
-<summary>Assign Security Testing Roles: Default Workflow</summary>
+<summary>Assign Security Testing roles: default workflow</summary>
 
 
 1. Select **Account Settings** (left menu) > **Access Control**.
@@ -89,7 +91,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 ### Set up a build infrastructure for STO
 
-You need a Harness build infrastructure to run scans in STO. First, review the supported build infrastructures in [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported). Then select the infrastructure you want to use: 
+You need a Harness build infrastructure to run scans in STO. First, review [Operating systems and architectures supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-operating-systems-and-architectures). Then select the infrastructure you want to use: 
 
 - [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) 
 
@@ -183,7 +185,7 @@ Harness includes a built-in Secrets Manager that enables you to store encrypted 
 In this step, you'll create a secret for your GitHub and DockerHub access tokens. Then you'll use the secret when you set up the connector to your GitHub repo.
 
 <details>
-<summary>Create a Secret for your GitHub access token: Default Workflow</summary>
+<summary>Create a Secret for your GitHub access token: default workflow</summary>
 
 1. In your Github account, a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has the following scopes:
 	* repo
@@ -231,11 +233,11 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
- - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
- - [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
- - [Git](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
- - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
- - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+ - [Azure](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
+ - [Bitbucket](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+ - [Git](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
+ - [GitHub](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+ - [GitLab](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
 To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 

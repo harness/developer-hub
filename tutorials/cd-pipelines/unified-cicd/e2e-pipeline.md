@@ -48,7 +48,14 @@ In order to interact with your code repository (GitHub) and image registry (Dock
 
 In this section, you'll create two [secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) and two connectors for GitHub and Docker Hub. But before that, you'll need to create two personal access tokens (PAT) for GitHub and Docker Hub. Check out [the GitHub docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and [the Docker Hub Docs](https://docs.docker.com/security/for-developers/access-tokens/) on how to create personal access tokens. For GitHub, you need to ensure that the token has read/write access to the content, pull requests (PRs), and webhooks for your forked repository.
 
-Once you're authenticated using the Harness CLI, navigate to the **cli-manifests** directory. Let's create two secrets - one for GitHub PAT and another for Docker Hub PAT. Be sure to replace the placeholder values (GITHUB_PAT and DOCKERHUB_PAT) with the actual secret values. 
+Once you're authenticated using the Harness CLI, clone your *forked* GitHub repo, replacing GITHUB_USERNAME with your actual GitHub user. Navigate to the **cli-manifests** directory. 
+
+```shell
+git clone https://github.com/GITHUB_USERNAME/harness-gitops-workshop
+cd harness-gitops-workshop/cli-manifests
+```
+
+Let's next create two secrets - one for GitHub PAT and another for Docker Hub PAT. Be sure to replace the placeholder values (GITHUB_PAT and DOCKERHUB_PAT) with the actual secret values. 
 
 ```shell
 harness secret apply --token GITHUB_PAT --secret-name "github_pat"
@@ -67,21 +74,15 @@ harness connector --file github-connector.yaml apply
 
 Enter your GitHub username and press **Enter**.
 
-In the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **DOCKER_USERNAME**.
-
 Run the following to create a Docker Hub Connector:
 
 ```shell
 harness connector --file docker-connector.yaml apply
 ```
 
+Enter your Docker Hub username and press **Enter**.
+
 ## Build the CI stage
-
-<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
-
-:::info
-The 'Run Owasp Tests' step is a placeholder and does not actually run an OWASP scan. This is because this step is part of the Harness STO module, which is not available on free plans.
-:::
 
 Next, let's create the Continuous Integration (CI) pipeline that will do the following:
 
@@ -97,7 +98,11 @@ Execute the following command to create the `cicd-gitops-pipeline` with the CI s
 harness pipeline --file cipipeline.yaml apply
 ```
 
+Enter your Docker Hub username when prompted and press **Enter**.
+
 Click **Run** and then **Run Pipeline** to start the pipeline execution. A successful pipeline execution will produce a new image with the **latest** tag under the **harness-gitops-workshop** repository on your docker image registry.
+
+The OWASP scan step used within the CI stage is part of the [Harness Security Testing Orchestration (STO)](https://www.harness.io/products/security-testing-orchestration) module. This step enables you to scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) for detecting publicly disclosed vulnerabilities present within a project’s dependencies. For this example, `fail_on_severity` is initially set to none, but you have the flexibility to adjust it to any severity threshold, such as critical or high. If any vulnerabilities of severity, for instance, critical, are found during the OWASP scan, the pipeline execution can be immediately terminated, and the findings reported via a notification.
 
 ## Create the ApplicationSet
 
@@ -112,14 +117,20 @@ kubectl cluster-info
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness, and performs all the GitOps tasks you request in Harness.
 
 1. Select **Deployments**, and then select **GitOps**.
-2. Select **Settings**, and then select **GitOps Agents**.
-3. Select **New GitOps Agent**.
-4. For this workshop, you'll create a new GitOps agent. When prompted with **Do you have any existing Argo CD instances?**, choose **No**, and then select **Start** to install the Harness GitOps Agent.
-   5.In **GitOps Operator**, select **Argo** to use Argo CD as the GitOps reconciler. Harness also offers Flux as the GitOps reconciler.
-5. In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
-6. Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
 
-Download the Harness GitOps Agent script using either the YAML or Helm Chart options. The YAML option provides a manifest file, and the Helm Chart option offers a Helm chart file. Both can be downloaded and used to install the GitOps agent on your Kubernetes cluster. The third step includes the command to run this installation.
+2. Select **Settings**, and then select **GitOps Agents**.
+
+3. Select **New GitOps Agent**.
+
+4. For this workshop, you'll create a new GitOps agent. When prompted with **Do you have any existing Argo CD instances?**, choose **No**, and then select **Start** to install the Harness GitOps Agent.
+
+5. In **GitOps Operator**, select **Argo** to use Argo CD as the GitOps reconciler. Harness also offers Flux as the GitOps reconciler.
+
+6. In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
+
+7. Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
+
+Download the Harness GitOps Agent script using either the YAML or Helm Chart options. The YAML option provides a manifest file, and the Helm Chart option offers a Helm chart file. Both can be downloaded and used to install the GitOps agent on your Kubernetes cluster. The third step includes the command to run this installation. Run that command against your cluster.
 
 8. Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
@@ -206,7 +217,7 @@ spec:
     metadata:
       name: '{{cluster.namespace}}-podinfo'
     spec:
-      project: YOUR_ARGO_PROJECT_ID
+      project: ARGO_PROJECT_ID
       source:
         repoURL: https://github.com/GITHUB_USERNAME/harness-gitops-workshop.git
         targetRevision: HEAD
@@ -219,24 +230,25 @@ spec:
         - CreateNamespace=true
 ```
 
-The [Git file generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files) is a subtype of the Git generator. The Git file generator generates parameters using the contents of JSON/YAML files found within a specified repository. `template.spec.project` refers to the Argo CD project ID that is mapped to your Harness project. Navigate to **GitOps --> Settings --> GitOps: Agents** to find the project ID. Update the project in your **GitHub forked repo** with the ID you see there.
+The [Git file generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files) is a subtype of the Git generator. The Git file generator generates parameters using the contents of JSON/YAML files found within a specified repository. `template.spec.project` refers to the Argo CD project ID that is mapped to your Harness project. 
+
+Navigate to **GitOps > Settings > GitOps: Agents** to find the project ID. Update the project in **git-generator-files.yaml** in your **GitHub forked repo** with the ID you see there.
 
 ![Argo Project ID](../static/e2e/argo-project-id.png)
 
-Be sure to replace **GITHUB_USERNAME** in:
+Also replace **GITHUB_USERNAME** in git-generator-files.yaml with your actual GitHub user.
 
-- The configs/git-generator-files-discovery/git-generator-files.yaml in **your GitHub repo fork**
-- The cli-manifests/gitops-app.yaml **on your local machine**
-
-Create a Harness GitOps Repository by executing the following command:
+Create a Harness GitOps Application by executing the following command:
 
 ```bash
 harness gitops-application --file gitops-app.yaml apply --agent-identifier $AGENT_NAME
 ```
 
-The ApplicationSet CRD should create two Argo CD applications - one in the `dev` namespace and the other in the `prod` namespace.
+Enter your GitHub user when prompted, then type **Enter**.
 
-Under **GitOps: Applications**, click on **gitops-application** and click **Sync**. You should see all three GitOps application in sync and healthy:
+Under **GitOps: Applications**, click on **gitops-application** and click **Sync**, then **Synchronize**. The ApplicationSet CRD should create two Argo CD applications - one in the `dev` namespace and the other in the `prod` namespace.
+
+Navigate back to **GitOps > Applications**. Repeat the previous step to sync your dev and prod apps. All applications should now be synced and healthy.
 
 ![Three GitOps Applications Created](../static/e2e/3%20apps%20created.png)
 
@@ -244,6 +256,7 @@ Under **GitOps: Applications**, click on **gitops-application** and click **Sync
 
 Harness Pipelines define steps needed to built, test and deploy your application. You described your deployment using the GitOps entities you set up previously. You will now create a pipeline that performs the following steps:
 
+- Runs an OWASP security scan to identify publicly disclosed vulnerabilities
 - Compiles the **podinfo** source code
 - Builds an publishes the updated app to Docker Hub
 - Creates and merges GitHub Pull Request of any configuration changes to the dev environment
@@ -265,7 +278,7 @@ export HARNESS_ACCOUNT_ID=YOUR_HARNESS_ACCOUNT_ID
 export DELEGATE_TOKEN=YOUR_HARNESS_DELEGATE_TOKEN
 ```
 
-Run the following command to install the delegate in your cluster (the same cluster in which you have the agent installed).
+Run the following commands to install the delegate in your cluster (the same cluster in which you have the agent installed).
 
 ```
 helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
@@ -292,7 +305,7 @@ harness service --file service.yaml apply
 
 After applying the manifests, navigate to the **Environments** tab. Click on **dev** environment, then **GitOps Clusters**, and then **+ Select Cluster(s)**. Map your **gitops_cluster** to this environment. Do the same for the **prod** environment.
 
-Run the following command to update pipeline with CD stages.
+Run the following command to update pipeline with CD stages. Enter your Docker and GitHub usernames when prompted.
 
 ```bash
 harness pipeline --file prpipeline.yaml apply

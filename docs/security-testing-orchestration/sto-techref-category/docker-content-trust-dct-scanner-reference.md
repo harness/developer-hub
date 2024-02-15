@@ -1,11 +1,11 @@
 ---
 title: Docker Content Trust (DCT) scanner reference for STO
-description: Image scans with Docker Content Trust
+description: Scan container images with Docker Content Trust.
 sidebar_label: Docker Content Trust (DCT) scanner reference
 sidebar_position: 150
 ---
 
-You can run Docker Content Trust (DCT) scans on your container images using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/).
 
 ## Important notes for running Docker Content Trust scans in STO
 
@@ -71,7 +71,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

@@ -13,10 +13,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** or **Run** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
+In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
 
 * Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
+* Clone codebases without using the built-in clone codebase function.
 
 :::info Large file storage
 
@@ -184,7 +185,7 @@ Add this variable to all stages where you need to override the `SSH-keyscan` tim
   <TabItem value="run" label="Add a Run step">
 
 
-You can use `git` commands in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
+You can use `git` commands in [Run steps](../run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
 
 For example, this step clones a GitHub repository.
 
@@ -205,7 +206,7 @@ To use this command, you would replace:
 * `REPO_NAME` with the name of the GitHub repo to clone.
 * `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-For information about **Run** step settings, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+For information about **Run** step settings, go to [Run scripts](../run-step-settings.md).
 
 
 </TabItem>
@@ -219,11 +220,11 @@ When cloning additional codebases that use the same credentials as your default 
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 
-Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
+Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
 
-Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to move cloned files around the workspace before building the image.
+Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to move cloned files around the workspace before building the image.
 
 ## YAML examples
 
@@ -371,3 +372,6 @@ This example also uses [stage variables](../set-up-build-infrastructure/ci-stage
 </TabItem>
 </Tabs>
 
+## Use a Plugin step
+
+As an alternative to the **Git Clone** and **Run** steps, you can clone a codebase by running the [Git Drone plugin](https://plugins.drone.io/plugins/git) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).

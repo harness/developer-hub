@@ -1,7 +1,7 @@
 ---
 title: Optimize STO pipelines
-description: You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
-sidebar_position: 20
+description: Make your STO pipelines faster, more efficient, and more versatile.
+sidebar_position: 40
 ---
 
 If your STO scans are running slowly, try the following.
@@ -26,7 +26,7 @@ If your scanner requires a Docker-in-Docker background step, you might need to i
 
 The DinD step needs enough memory to store all of the images to be scanned in the current stage. Thus if all your scanned images have a total size of 2GB, the DinD step requires _at least_ 2GB of memory.
 
-Increasing the CPU will enable the DinD to pull images from the registry faster, which will also speed up your scans. 
+Increasing the CPU will enable the DinD to pull images from the registry more quickly, which will also speed up your scans. 
 
 ### Run multiple scans of the same target in parallel
 

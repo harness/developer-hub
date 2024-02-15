@@ -130,7 +130,7 @@ EOF
 
 Decoded secrets in `cat` aren't [masked in outputs](#secrets-in-outputs), because Harness no longer recognizes the contents as a secret.
 
-Here's an example of a secret decoded in a [CI Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md):
+Here's an example of a secret decoded in a [CI Run step](/docs/continuous-integration/use-ci/run-step-settings.md):
 
 ```yaml
               - step:

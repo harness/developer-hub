@@ -1,6 +1,7 @@
 ---
 title: OpenShift chaos infrastructure
-sidebar_position: 40
+sidebar_position: 4
+description: Guide to connect to Kubernetes and Linux chaos infrastructure
 ---
 
 You can install [chaos infrastructure](./connect-chaos-infrastructures) in your target environment as a Kubernetes service, Linux daemon, and so on. This section walks you through steps to install chaos infrastructure on an Openshift cluster.

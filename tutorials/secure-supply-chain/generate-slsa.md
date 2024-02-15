@@ -29,7 +29,7 @@ Keys are used to sign and verify provenance.
 
 1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
-3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
+3. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) to store the password for the private key.
 
 When your pipeline runs, the private key is used to sign the SLSA Provenance, and the public key is used to verify the provenance.
 
@@ -37,7 +37,7 @@ When your pipeline runs, the private key is used to sign the SLSA Provenance, an
 
 When you run a pipeline with SLSA generation enabled, Harness SSCA:
 
-- Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) in the **Build** stage.
+- Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) in the **Build** stage.
 - Generates and signs an attestation using the provided key and password.
 - Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 
@@ -46,7 +46,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 1. In your Harness pipeline, select the **Build** stage, and then select the **Overview** tab.
 2. Under **SLSA Provenance**, enable **Generate SLSA Provenance**.
 3. For **Private Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key file to use to sign the attestation.
-4. For **Password**, select the [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+4. For **Password**, select the [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/slsa-build-stage-settings.png) -->
 
@@ -54,13 +54,13 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 :::info
 
-To generate SLSA Provenance, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) is coming soon.
+To generate SLSA Provenance, you must use the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) to build and push your image. Support for other [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) is coming soon.
 
 :::
 
 ## Create policies
 
-You must create a set of OPA policies that you want Harness SSCA to use for SLSA Provenance verification. You can create a dedicated SLSA Provenance verification policy set or use existing policy sets that you've already created. For more information about creating policies in Harness, go to the [Harness Policy As Code overview](/docs/platform/Governance/Policy-as-code/harness-governance-overview).
+You must create a set of OPA policies that you want Harness SSCA to use for SLSA Provenance verification. You can create a dedicated SLSA Provenance verification policy set or use existing policy sets that you've already created. For more information about creating policies in Harness, go to the [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
 :::info
 
@@ -69,7 +69,7 @@ OPA polices used for SLSA Provenance verification are different from [SSCA polic
 :::
 
 1. In your Harness Project, under **Project Setup**, go to **Policies**. You can also create policies at the Account and Org scopes.
-2. Select **Policies**, and then [create policies](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart#create-the-policy) for the individual rules that you want to enforce.
+2. Select **Policies**, and then [create policies](/docs/platform/governance/policy-as-code/harness-governance-quickstart#create-the-policy) for the individual rules that you want to enforce.
 
    You can select from the policy library or write your own policies. This tutorial enforces the following policies:
 
@@ -89,9 +89,9 @@ OPA polices used for SLSA Provenance verification are different from [SSCA polic
    }
    ```
 
-   For more examples, go to [Policy samples](/docs/platform/Governance/Policy-as-code/sample-policy-use-case).
+   For more examples, go to [Policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case).
 
-3. [Create policy sets](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart#step-3-create-a-policy-set) to group related policies. You must have at least one policy set.
+3. [Create policy sets](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-3-create-a-policy-set) to group related policies. You must have at least one policy set.
 
 ## Verify provenance
 
@@ -104,7 +104,7 @@ The **SLSA Verification** step does the following:
 
 1. Add the **SLSA Verification** step to your **Deploy** stage. This is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 2. Enter a **Name** for the step.
-3. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+3. For **Container Registry**, select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 

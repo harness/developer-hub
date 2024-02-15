@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-12-12T10:00
+date: 2024-01-18T10:00
 sidebar_position: 2
 ---
 
@@ -22,50 +22,35 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
-### AIDA support automatically available
+### Allowlist verification for delegate registration
 
-* **Release date:** October 2023
-* **Release version:** 81008
-* **Issue number:** PL-41700
-* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+* **Release date:** January 2024
+* **Release version:** 1.19.6
+* **Issue number:** PL-42471
+* **Feature flag:** `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-AIDA is now always available without requiring you to enable the feature in **Settings**.
+With this feature flag enabled, delegates with an immutable image type can register only if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR must be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
-### AIDA:tm: replaces Coveo for support case deflection
+Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
+
+### Grant public access to Harness pipeline executions
+
+* **Release date:** January 2024
+* **Release version:** 1.20.9
+* **Issue number:** PL-43499
+* **Feature flag:** `PL_ALLOW_TO_SET_PUBLIC_ACCESS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now grant public access to Harness pipelines. New settings on the Authentication page and in pipeline **Advanced Options** allow you to grant public access to pipeline executions.
+
+### AIDA:tm: recommends docs when creating support tickets
 
 * **Release date:** December 2023
 * **Release version:** 81820
 * **Issue number:** CDS-85267
-* **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form. 
-
-### Harness AI Development Assistant (AIDA:tm:)
-
-* **Release date:** June 2023
-* **Feature flag:** Yes
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
-
-Following are some key benefits of Harness AIDA:
-
-- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
-
-- Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule. For more information, go to [Asset governance with AIDA](/docs/category/harness-aida-for-asset-governance).
-
-- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation. For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
-
-Review the following information for details about data privacy and terms of use:
-
-- [AIDA Terms](https://www.harness.io/legal/aida-terms)
-- [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
-
-**Update (October 2023):** AIDA for CI is now generally available. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
-
-**Update (November 2023):** AIDA for STO is now generally available. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+AIDA replaces Coveo to provide content recommendations when you enter a subject in the **Submit a ticket** form.
 
 ### SCIM user provisioning enhancements
 
@@ -102,7 +87,7 @@ You can delete a user provisioned in Harness through SCIM in NextGen and retain 
 * **Feature flag:** `NG_TEMPLATE_GITX`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/Templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/Templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/Templates/create-a-remote-pipeline-template).
+You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/templates/create-a-remote-pipeline-template).
 
 ### Use expressions to reference secrets in Vaults
 
@@ -136,7 +121,11 @@ The following early access (beta) features are available for the Harness Delegat
 * **Feature flag:** `DELEGATE_TASK_CAPACITY_CHECK`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. When this feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
+Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. 
+
+Delegate task capacity is only supported for CD tasks executed as child processes of a delegate (for example, it does not work for CI builds or CD Container step tasks that spin up new pods).
+
+You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. When this feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
 ### Capture delegate agent metrics for delegates shipped on immutable image types
 
@@ -160,33 +149,13 @@ No early access (beta) features are available for the Harness Chaos Engineering 
 
 ## CCM early access features
 
-The following early access (beta) features are available for the Harness Cloud Cost Management module.
-
-### Propagate force cool down
-
-* **Release date:** June 2023
-* **Release version:** 79701
-* **Issue number:** CCM-12338
-* **Feature flag:** Yes
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now propagate force cool down from primary rule to dependent rules. Without this feature flag enabled, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
+For information about early access (beta) features for Harness Cloud Cost Management, go to [CCM feature flags](/docs/cloud-cost-management/whats-supported#ccm-feature-flags) and the [CCM release notes](./cloud-cost-management).
 
 ## Continuous Delivery & GitOps early access features
 
-### Update the green services in an ECS Blue Green deployment
+<!-- NOTE: CD Early access features are listed on a table in the CD docs. Please update them there, it is less maintenance to maintain one list. -->
 
-* **Release date:** December 2023
-* **Release version:** 81820
-* **Issue number:** CDS-82763
-* **Feature flag:** `CDS_ECS_BG_VALIDATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact. Updating existing green services is beneficial because new containers come up before old ones go down. For more information, go to [Update green services](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services).
-
-Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
-
-This item requires Harness Delegate version 23.11.81820. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+For information about early access (beta) features for Harness Continuous Delivery and GitOps, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags) and the [CD and GitOps release notes](./continuous-delivery).
 
 <!-- ## CET early access features
 
@@ -195,6 +164,15 @@ No early access (beta) features are available for the Harness Continuous Error T
 ## CI early access features
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
+
+### Secure connect for Harness Cloud
+
+* **Release date:** January 2024
+* **Issue number:** CI-8922
+* **Feature flag:** `CI_SECURE_TUNNEL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+[Secure connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners.
 
 ### Delegate selectors for codebase tasks
 
@@ -244,7 +222,7 @@ With this feature flag enabled, output variables from steps are automatically av
 
 In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
 
-For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
+For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-step-settings#output-variables).
 
 ### Remote debugging
 
@@ -279,9 +257,35 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 No early access (beta) features are available for Harness Code Repository. -->
 
+## SEI early access features
+
+The following early access (beta) features are available for the Harness Software Engineering Insights module.
+
+### SEI Jira Integration Enhanced Experience
+
+* **Release date:** January 2024
+* **Issue number:** SEI-3727
+* **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App.
+
+You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
+
+### SEI GitHub Integration Enhanced Experience
+
+* **Release date:** January 2024
+* **Issue number:** SEI-3727
+* **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
+
+You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
+
 ## STO early access features
 
-The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
+The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
 ### Aqua Security integration
 
@@ -323,6 +327,42 @@ No early access (beta) features are available for the Harness Software Supply Ch
 These features were released as early access (beta) features, and they have since been promoted to GA. This list is not exhaustive.
 
 ### Platform features promoted to GA
+
+#### AIDA support automatically available
+
+* **GA date:** Late 2023
+* **Early access release date:** October 2023
+* **Early access release version:** 81008
+* **Issue number:** PL-41700
+* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+
+AIDA's support chat feature is now always available without requiring you to enable the feature in **Settings**.
+
+#### Harness AI Development Assistant (AIDA:tm:)
+
+* **GA date:** Late 2023
+* **Early access release date:** June 2023
+
+The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
+
+Following are some key benefits of Harness AIDA:
+
+- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
+
+- Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule. For more information, go to [Asset governance with AIDA](/docs/category/harness-aida-for-asset-governance).
+
+- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation. For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+
+Review the following information for details about data privacy and terms of use:
+
+- [AIDA Terms](https://www.harness.io/legal/aida-terms)
+- [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
+
+**Update (October 2023):** AIDA for CI is now generally available. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
+
+**Update (November 2023):** AIDA for STO is now generally available. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+
+**Update (January 2024):** Most AIDA functionalities are generally available. For more information, go to the [AIDA overview](/docs/platform/harness-aida/aida-overview).
 
 #### Google Cloud Secret Manager
 
@@ -370,6 +410,10 @@ You can onboard any secret manager with Harness and reference their secrets in H
 * **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
 
 You can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
+
+### CCM features promoted to GA
+
+For information about early access (beta) features for Harness Cloud Cost Management, go to [CCM feature flags](/docs/cloud-cost-management/whats-supported#ccm-feature-flags) and the [CCM release notes](./cloud-cost-management).
 
 ### CD & GitOps features promoted to GA
 
@@ -530,8 +574,7 @@ import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-
 This feature includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
 
 - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.
-- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.
+- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image in a Kubernetes build infrastructure. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
 - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-- For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
 
 ![STO step palette](static/sto-step-palette.png)

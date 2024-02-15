@@ -1,24 +1,43 @@
 ---
-title: Run chaos experiments with serial and parallel faults
+title: Execute serial and parallel faults
 sidebar_position: 30
+description: Guide to execute serial and parallel chaos  
 ---
+import Launch from '../shared/launch-experiment-from-hub.md'
 
 import Analyze from '/docs/chaos-engineering/configure-chaos-experiments/experiments/shared/analyze-chaos-experiment.md'
 
-Complex chaos experiments can be used for validating the resiliency of the entire application stack as part of a single experiment only.
+This section describes adding and executing serial and parallel faults within a single chaos experiment, analyzing chaos experiments and launching an experiment from chaos hub. 
 
-- Harness Chaos Engineering scales efficiently in a cloud-native manner to execute these experiments, which often have multiple faults running in parallel at any given time.
+You can add multiple faults in a single chaos experiment to validate the resiliency of the entire application stack.
 
-- While creating complex chaos experiments, one must consider the overall impact on the application when a number of parallel faults are executing due to lack of resources, since it can affect the user experience in production environments.
+- HCE scales efficiently in a cloud-native manner to execute these experiments, which can have multiple faults running in serial and/or parallel at any given time.
 
-To add a fault in parallel to another fault, select the `+` icon below the already added fault; the icon will only appear upon hovering the cursor below the already added fault. Similarly, to add a fault in serial to another fault, select the `+` icon to the right of the already added fault. This way, you may add as many faults as necessary.
+- While creating these chaos experiments, you must consider the overall impact on the application. Your experience in production environments may differ due to lack of resources when a number of parallel faults are being executed.
+
+## Add serial and parallel faults
+
+1. To add a fault that runs in parallel to another fault, point your mouse below an existing fault, and then select **Add**. You can follow the same process to add a serial fault.
+
+![Complex Faults Experiment](./static/create-complex-chaos-experiments/add-parallel.png)
 
 :::note
 For Linux, experiments with a parallel fault are currently not supported.
 :::
+
+The image below shows a single experiment that consists of serial and parallel faults. 
+* Faults **A**, **B**, and **C** are parallel faults, that is, they begin execution at the same time. 
+* Faults **A**, **B**, **C** and faults **D** and **E** are serial, that is, the former completes execution, and the latter begins execution. 
+* Similarly, faults **H** and **I** are serial faults, where **H** completes execution, and **I** begins.
+
 
 ![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)
 
 ## Analyze chaos experiments
 
 <Analyze />
+
+## Launch an experiment from a chaos hub
+
+<Launch />
+

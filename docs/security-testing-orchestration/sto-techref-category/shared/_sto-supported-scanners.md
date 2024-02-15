@@ -14,11 +14,12 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <td valign="top">SAST</td>
         <td valign="top">
          	<ul>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype (filesystem scans)</a>  Orchestration, Ingestion </li>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
-         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference">CodeQL</a> Ingestion </li>
+         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/coverity-scanner-reference">Coverity</a> Ingestion </li> 
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>       		
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference">Semgrep Code(<i>open-source option</i>) </a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
         	</ul>
@@ -33,11 +34,13 @@ If you use a scanner that isn't listed in the following table, you can still ing
                   <li>Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans</li>
                 </ul>
               </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-scanner-reference">Fortify Static Code Analyzer</a> Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-scanner-reference">Fossa</a> Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Code</a>  Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Code</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Extraction, Ingestion</li>
         	</ul>
@@ -52,7 +55,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
            		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a> Ingestion </li>
@@ -61,7 +64,22 @@ If you use a scanner that isn't listed in the following table, you can still ing
         	</ul>
      </td>
    </tr>
-    <tr>
+          <tr>
+        <td valign="top">Secrets</td>
+        <td valign="top">
+          <ul>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy (_Containers_)</a> Orchestration, Ingestion  </li>            
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks (_SAST_)</a>  Orchestration, Ingestion </li>
+          </ul>
+        </td>
+        <td valign="top">
+         	<ul>                      
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (_DAST_)</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode (_SAST/SCA_) </a> Orchestration, Extraction, Ingestion </li>
+          </ul>
+     </td>
+   </tr>
+   <tr>
         <td valign="top">DAST</td>
         <td valign="top">
          	<ul>
@@ -72,20 +90,20 @@ If you use a scanner that isn't listed in the following table, you can still ing
         </td>
         <td valign="top">
         	<ul>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference">Burp Enterprise</a> Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a> Extraction, Ingestion</li> 
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference">Burp Enterprise</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/metasploit-scanner-reference">Metasploit Pro</a> Orchestration, Ingestion </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference">Prowler</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/qualys-web-app-scanner-reference">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus vulnerability scan</a> Orchestration, Extraction, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus web app scan</a> Orchestration, Extraction, Ingestion </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus vulnerability scan</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus web app scan</a> Orchestration, Ingestion </li>
         	</ul>
      </td>
    </tr>
     <tr>
-        <td valign="top">Containers</td>
+        <td valign="top">Container Images</td>
         <td valign="top">
          	<ul>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
@@ -96,14 +114,30 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <td valign="top">
         	<ul>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference">Anchore Enterprise</a> Orchestration, Extraction, Ingestion </li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference">Aqua Security</a> Orchestration, Ingestion </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference">AWS ECR</a> Extraction </li>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT)</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a>  Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Extraction, Ingestion  </li>
         	</ul>
      </td>
    </tr>
-   </table>
+       <tr>
+        <td valign="top">Configurations</td>
+        <td valign="top">
+          <ul>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/scoutsuite-scanner-reference">ScoutSuite</a> Orchestration, Extraction, Ingestion</li>
+          </ul>
+        </td>
+        <td valign="top">
+        	<ul>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a>  Extraction </li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference">Prowler</a> Orchestration, Ingestion</li>
+        	</ul>
+     </td>
+   </tr>
+</table>

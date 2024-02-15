@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-<DocsTag  backgroundColor= "#ff8ac1" text="Paid product"  textColor="#ca136c"  />
+<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of May 31, 2023.
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**.
 
 Maintenance mode means the following:
 
@@ -23,8 +23,7 @@ Maintenance mode means the following:
 
 :::info important
 
-Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023.
-
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
 :::
 
 This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://docs.replicated.com/reference/kots-cli-getting-started) for installation.
@@ -394,6 +393,11 @@ You can change the settings later in the KOTS admin console **Config** tab:
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-18.png)
 
 #### gRPC and load balancer settings
+
+:::info note
+gRPC settings are not required for delegate version 23.12.81803 and later.
+
+:::
 
 In **Scheme**, if you select HTTPS, the GRPC settings appear.
 

@@ -22,15 +22,11 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default, which is o
 
 ## Share data across stages
 
-You can use the following caching methods to share data across stages:
+How you share data across stages depends on the type of data you need to share. You can:
 
-* [Harness Cache Intelligence](./cache-intelligence.md)
-* [Save and Restore Caches from S3 buckets](saving-cache.md)
-* [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
-
-You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
-
-If you need to maintain a long-running service for the duration of a stage, use a [Background step](../manage-dependencies/background-step-settings.md).
+* [Use caching.](#use-caching-to-reduce-build-time)
+* [Upload artifacts](../build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts) in one stage and pull them into another stage with, for example, a [Run step](../run-step-settings.md).
+* [Build and push an image](../build-and-upload-artifacts/build-and-upload-an-artifact.md#build-and-push) in one stage and pull that image in another stage. For example, you could build and push a Docker image, then pull and run it in a [Background step](../manage-dependencies/background-step-settings.md) and then use a [Run step](../run-step-settings.md) to run integration tests on the image.
 
 ## Use caching to reduce build time
 
@@ -50,15 +46,15 @@ For multilayer caching, use multiple **Restore Cache** and **Save Cache** steps 
 
 ## Remote Docker cache
 
-Remote Docker caching can dramatically improve build times by sharing data across pipelines, stages, and steps. Remote caching leverages your exising Docker registry to pull previously built layers.
+Remote Docker caching can dramatically improve build times by sharing data across pipelines, stages, and steps. Remote caching leverages your existing Docker registry to pull previously built layers.
 
 Remote caching isn't available for all build infrastructures. If available for your build infrastructure, you can enable the **Remote Cache Image** option in the following steps:
 
-* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
-* [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md)
-* [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
-* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr.md)
+* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md)
+* [Build and Push to ECR](../build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings.md)
+* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md)
+* [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md)
+* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md)
 
 :::info
 
@@ -67,6 +63,10 @@ Harness Cloud can manage the Docker layer cache backend for you, without relying
 :::
 
 For more recommendations for optimizing Docker images, go to [Optimize and enhance CI pipelines](../optimize-and-more/optimizing-ci-build-times.md).
+
+## Run dependent services
+
+If you need to maintain a long-running service for the duration of a stage, use a [Background step](../manage-dependencies/background-step-settings.md).
 
 ## Troubleshoot caching and data sharing
 

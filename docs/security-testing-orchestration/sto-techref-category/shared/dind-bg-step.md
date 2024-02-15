@@ -7,7 +7,7 @@ The following use cases require a Docker-in-Docker background step in your pipel
 The following use cases do not require Docker-in-Docker:
 - Harness Cloud AMD64 build infrastructures
 - SAST/DAST/configuration scans that use [scanner templates (not Security steps)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto)
-- [Ingestion-only workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) where the scan data has already been generated
+- [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) where the data file has already been generated
 
 <details>
 <summary>Set up a Docker-in-Docker background step</summary>
@@ -39,12 +39,8 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="Visual" label="Visual setup" default>
-```
-
 
 import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/static/set-up-harness-for-sto-25.png'
-
-
 
 <img src={set_up_harness_25} alt="Configure the background step" height="50%" width="50%" />
 
@@ -53,6 +49,8 @@ import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/
 </TabItem>
 <TabItem value="YAML" label="YAML setup" default>
 
+
+Add a Background step to your pipeline and set it up as follows:
 
 ```yaml
 - step:
