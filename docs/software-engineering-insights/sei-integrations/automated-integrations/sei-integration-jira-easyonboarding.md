@@ -36,7 +36,17 @@ The Jira Connect App facilitates a seamless connection to Jira projects with min
 
 ![](../static/jira-connect.png)
 
-To set up the integration using the Jira Connect App:
+The following permissions are required to configure the **Jira Connect App** integration:
+
+* **View email addresses of users:** This permission allows the integration to access and view the email addresses of users within the Atlassian account.
+* **Read data from the application:** This permission allows the integration to read data from the Atlassian account, such as data from Jira tickets, Jira projects etc.
+
+<img
+  src={require('../static/jira-app-permissions.png').default}
+  alt="Example banner" height="100%" width="100%" border="1"
+/>
+
+To set up the integration using the **Jira Connect App**:
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
