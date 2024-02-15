@@ -27,14 +27,18 @@ Specify your configuration type here. Currently there are two choices:
 
 Specify your service mesh provider. Harness currently supports Service Mesh Interface (SMI) and Istio. 
 
-Each provider has a different configuration options as described below. 
+Each provider will have some common configuration options and some provider specific ones. We have listed all configuration options for each provider so you should only have to look at the one relevant to you.
 
 #### Service Mesh Interface (SMI)
 
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
 
+:::note
+Currently, we only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1alpha4 resources.
+:::
+
 * **Parameters**:
-    * **Resource Name:** Name of your resource.
+    * **Resource Name:** This name will be used to generate a kubernetes name for traffic resources. Hence the name needs to be kubernetes resource name compliant. 
     * **Root Service:** Specify your root service.
 
 * **Configure Routes**: Currently, Harness supports only the `http` route type.
@@ -42,7 +46,7 @@ Before you begin, make sure you have an understanding on what SMI is and how it 
 * **Route Rules**: Route rules filter incoming requests. Here are the supported route rule types for `http` routes.
 
     * **uri**:
-        * **Match Type**: Specifies the way you want to match incoming requests to filter them.
+        * **Match Type**: One of three values (exact, prefix, regex). Used to determine how the `value` below is being matched against the incoming request.
         * **Value**: Enter the value that you want matched using the match type specified above. 
 
     * **method**:
@@ -54,13 +58,18 @@ Before you begin, make sure you have an understanding on what SMI is and how it 
             - **Value**: Specify the value you want for this key
             - **Match Type**: Specify how you want the value to match they key. 
 
-    :::note
-    **header** route rules are only available for SMI versions `v1alpha2` and later.
-    :::
-
 * **Destinations**: Specify the destinations here.
 
-    * **Host**: Specify the name of one of your destination hosts here.
+    * **Host**: Should be the name of the Kubernetes service resource.
+
+    :::note 
+    For Blue/Green deployments we recommend using the placeholder `stable` and `stage` resource names.
+
+    For Canary deployments we recommend using the placeholder `stable` and `canary` resource names.
+
+    These names will be replaced by the actual Kubernetes service resource names which were generated during the B/G or canary deployment.
+    :::
+
     * **Weight**: Specify the percentage of traffic that will reach this host. The weight should be a number from 0 - 100.
 
     :::note
@@ -72,14 +81,14 @@ Before you begin, make sure you have an understanding on what SMI is and how it 
 Before you begin, make sure you have an understanding of Istio and how it works by referring to [their website](https://istio.io/latest/about/service-mesh/).
 
 * **Parameters**:
-    * **Resource Name:** Name of your resource.
+    * **Resource Name:** This name will be used to generate a kubernetes name for traffic resources. Hence the name needs to be kubernetes resource name compliant. 
 
 * **Configure Routes**: Currently, Harness supports only the `http` route type.
 
 * **Route Rules**: Route rules filter incoming requests. Here are the supported route rule types for `http` routes.
 
     * **uri**:
-        * **Match Type**: Specifies the way you want to match incoming requests to filter them.
+        * **Match Type**: One of three values (exact, prefix, regex). Used to determine how the `value` below is being matched against the incoming request.
         * **Value**: Enter the value that you want matched using the match type specified above. 
 
     * **method**:
@@ -104,7 +113,16 @@ Before you begin, make sure you have an understanding of Istio and how it works 
   
 * **Destinations**: Specify the destinations here.
 
-    * **Host**: Specify the name of one of your destination hosts here.
+    * **Host**: Should be the name of the Kubernetes service resource.
+
+    :::note 
+    For Blue/Green deployments we recommend using the placeholder `stable` and `stage` resource names.
+
+    For Canary deployments we recommend using the placeholder `stable` and `canary` resource names.
+
+    These names will be replaced by the actual Kubernetes service resource names which were generated during the B/G or canary deployment.
+    :::
+
     * **Weight**: Specify the percentage of traffic that will reach this host. The weight should be a number from 0 - 100.
 
     :::note
