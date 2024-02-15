@@ -45,7 +45,7 @@ Once your project is created, you can set up and map integrations as an admin an
 4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) (Issue Management Tool).
 
 :::info
-You can also use [Azure DevOps integration](../../docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
+You can also use [Azure DevOps integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the Issue Management tool.
 :::
 
 You can also create new integrations and associate the integration with the current project by mapping them.
