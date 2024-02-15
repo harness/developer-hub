@@ -88,7 +88,7 @@ The following deprecated API endpoints are longer supported:
 
 - Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
 
-
+- Enhanced the `override-delegate-tag` API documentation to include details on `validForDays` and `validTillNextRelease` parameters. Additionally, the default value for `validForDays` has been updated to 180 days, extending from the previous 30 days. This update can be found [here](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag). (PL-46879)
 
 
 #### Fixed issues
@@ -108,6 +108,10 @@ The following deprecated API endpoints are longer supported:
 - API keys created using the harness_platform_apikey Terraform provider were expiring even when no expiration date was set. (PL-43308)
 
    You can now view the API key expiration date at the top of the API Key table on the user profile page. Additionally, for API key’s tokens where the expiration was intended to be set as No Expiration, you can see the default expiration date, clarifying the token's validity period.
+
+- Pipelines were failing due to errors related to the inability to acquire delegate tasks. (PL-42600) (ZD-54025) (ZD-54324)
+
+   The logic for calculating CPU and Memory usage has been improved, specifically for scenarios utilizing the dynamic task request handling feature in delegates, enhancing the reliability of task allocation and pipeline execution.
 
 ### Version 1.24.7 <!--  February 12, 2024 -->
 
