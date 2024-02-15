@@ -56,7 +56,7 @@ Options for editing Collections are only available on **Flat List** view.
 
 ### Manage Insights associations
 
-All [Insights](/docs/category/sei-insights) must be associated with at least one Collection. You can configure these associations through Collection settings or when creating or editing Insights. For information about creating and editing Insights, go to [Insights](/docs/category/sei-insights).
+All [Insights](/docs/software-engineering-insights/sei-insights) must be associated with at least one Collection. You can configure these associations through Collection settings or when creating or editing Insights. For information about creating and editing Insights, go to [Insights](/docs/software-engineering-insights/sei-insights).
 
 :::info Inheritance
 

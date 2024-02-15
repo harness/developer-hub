@@ -255,7 +255,7 @@ If you encounter any issues during the integration process, go to the Satellite 
 
 ## Add the Salesforce mapping
 
-If you also have an [SEI Salesforce integration](/docs/software-engineering-insights/other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
+If you also have an [SEI Salesforce integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **Integrations** under **Data Settings**.

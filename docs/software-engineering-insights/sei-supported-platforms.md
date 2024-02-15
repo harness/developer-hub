@@ -27,4 +27,4 @@ The integrations categorized under the **Others** label are now available with b
 
 :::
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](../../docs/platform/platform-whats-supported).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).

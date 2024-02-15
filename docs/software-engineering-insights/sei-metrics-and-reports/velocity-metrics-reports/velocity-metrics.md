@@ -26,8 +26,8 @@ There are many velocity metrics, and some overlap with other metrics categories.
 
 * [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 * [Effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics)
-* [Flow metrics](/docs/software-engineering-insights/sei-metrics-and-reports/flow-metrics)
-* [Sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning-sprint-metrics)
+* [Flow metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/flow-metrics)
+* [Sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
 
 For information about reports you can use to analyze velocity metrics, go to:
 

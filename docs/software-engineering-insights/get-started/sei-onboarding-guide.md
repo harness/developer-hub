@@ -22,7 +22,7 @@ Harness supports Single Sign-On (SSO) with SAML, LDAP (including Active Director
 Review the following resources to learn about the SSO configuration options on the Harness Platform.
 
 * [Authentication overview](/docs/platform/authentication/authentication-overview)
-* [Single Sign-On (SSO) with SAML](docs/platform/authentication/single-sign-on-saml)
+* [Single Sign-On (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml)
 * [Single Sign-On (SSO) with LDAP](/docs/platform/authentication/single-sign-on-sso-with-ldap)
 * [Single Sign-On (SSO) with OAuth](/docs/platform/authentication/single-sign-on-sso-with-oauth)
 * [Two-factor authentication](/docs/platform/authentication/two-factor-authentication)

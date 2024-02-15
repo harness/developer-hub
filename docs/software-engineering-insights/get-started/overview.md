@@ -23,7 +23,7 @@ To start using SEI, configure the following:
 * [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 * [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
 * [Profiles](/docs/category/profiles)
-* [Insights](/docs/category/sei-insights)
+* [Insights](/docs/software-engineering-insights/sei-insights)
 * [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip
@@ -36,5 +36,5 @@ Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automa
 
 * [Get started with Harness](/docs/get-started)
 * [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies)
-* [Propelo and Harness](./propelo-and-harness)
-* [Troubleshooting and FAQs](../sei-troubleshooting-faqs)
+* [Propelo and Harness](/docs/software-engineering-insights/get-started/propelo-and-harness)
+* [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-troubleshooting-faqs)
