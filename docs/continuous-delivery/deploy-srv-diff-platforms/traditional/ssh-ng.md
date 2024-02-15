@@ -672,7 +672,7 @@ For Microsoft Azure or AWS:
 
 ### Rollback
 Harness restores the state of deployment to the pipeline's previous successful stage execution based on `serivce`, `enviroment` and `infrastucture` details.
-Harness will keep a record on the artifact version that was successfully deployed during previous successfull executions - This would mean that if the rollback step contains Copy Artifact command unit, Harness will copy the last successfull version of the artifact (Deployed via Harness) to remote host.
+Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
 
 #### First time deployment
 In case if first pipeline execution fails (regardless of stage) - Harness will skip the rollback since there is no record of any successfull pipeline execution.
