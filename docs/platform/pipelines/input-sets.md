@@ -171,7 +171,7 @@ Currently, Input set access control is behind the feature flag `PIE_INPUTSET_RBA
 
 Input sets can be access-controlled, similar to pipelines and other entities. This allows you to make some input sets invisible to certain users, or not let them edit the values in the input sets. Input sets are listed along with other resources in the **Resource Group** section of the Access Control screens. For more information on setting up and managing permissions using Resource Groups, go to [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups/).
 
-To use an input set for a pipeline execution, the user must have View permissions on the input set, along with Execute permissions for the pipeline. To edit the input set,  the user must have Edit permissions for the pipeline. 
+To use an input set for a pipeline execution, the user must have View permissions on the input set, along with Execute permissions for the pipeline. To edit the input set, the user must have Edit permissions for the Input Set. 
 
 When a user creates a new input set, the Create/Edit and View permissions are added by default for the user. 
 
