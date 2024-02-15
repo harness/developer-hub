@@ -144,7 +144,7 @@ When the CD pipeline is triggered:
 
 ## Tutorial - Integrate CE with CD
 
-This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](/tutorials/chaos-experiments/first-chaos-experiment-via-api).
+This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](../configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis).
 
 <details>
 <summary>Tutorial - Integrate CE with CD</summary>
@@ -159,7 +159,7 @@ It can be observed that currently the pipeline is able to deploy the application
 
 ![Online Boutique App Cart](./static/integration-with-harness-cd/online-boutique-app-cart.png)
 
-1. Add a chaos step to this pipeline so that the chaos experiment you created in the [running chaos experiments with API tutorial](/tutorials/chaos-experiments/first-chaos-experiment-via-api), `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow you to validate the deployment against the chaos hypothesis.
+1. Add a chaos step to this pipeline so that the chaos experiment you created in the [running chaos experiments with API tutorial](../configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis), `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow you to validate the deployment against the chaos hypothesis.
 
    To add the chaos step, select the **Add Step** icon next to the **Rollout Deployment** icon for the CD deployment stage, and then select **Chaos Step**.
 
