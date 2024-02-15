@@ -14,7 +14,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/chaos-experiments/first-chaos-engineering",
+    link: "/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering",
   },
 ];
 
@@ -29,19 +29,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/chaos-experiments/first-chaos-engineering",
-  },
-  {
-    title: "Chaos experiment from a blank canvas",
-    module: MODULES.ce,
-    icon: "img/icon_ce.svg",
-    description: (
-      <>Create, run, observe and evaluate a custom chaos experiment.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "5min",
-    link: "/tutorials/chaos-experiments/chaos-experiment-from-blank-canvas",
+    link: "/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering",
   },
   {
     title: "Your first chaos experiment execution using APIs",
@@ -87,20 +75,5 @@ export const CEList: CardItem[] = [
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/chaos-experiments/chaos-experiments-on-jenkins",
-  },
-  {
-    title: "Integration with Harness CD",
-    module: MODULES.ce,
-    icon: "img/icon_ce.svg",
-    description: (
-      <>
-        Execute a chaos experiment as part of a Harness CD pipeline for
-        continuous resilience.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/chaos-experiments/integration-with-harness-cd",
   },
 ];

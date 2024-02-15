@@ -46,14 +46,6 @@ export const featureList: CardItem[] = [
     link: "tutorials/security-tests",
   },
   {
-    title: "Run Chaos Experiments",
-    module: MODULES.ce,
-    icon: "img/icon_ce.svg",
-    description: <>Ensure application and infrastructure resilience.</>,
-    type: [docType.Documentation],
-    link: "tutorials/chaos-experiments",
-  },
-  {
     title: "Improve Developer Productivity",
     module: MODULES.idp,
     icon: "img/icon_idp.svg",

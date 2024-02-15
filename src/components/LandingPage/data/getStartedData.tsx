@@ -44,12 +44,4 @@ export const FeaturedList: CardItem[] = [
     type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "/tutorials/security-tests",
   },
-  {
-    title: "Run Chaos Experiments",
-    module: MODULES.ce,
-    icon: "img/icon_ce.svg",
-    description: <>Ensure app and infrastructure resilience</>,
-    type: [docType.Documentation, docType.Interactive],
-    link: "/tutorials/chaos-experiments",
-  },
 ];

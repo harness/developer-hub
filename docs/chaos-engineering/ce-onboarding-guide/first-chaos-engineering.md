@@ -1,24 +1,25 @@
 ---
-sidebar_position: 1
-title: Your first chaos experiment run
-description: Running a chaos experiment on Kubernetes for the first time.
+title: Run your first chaos experiment
+description: Run a chaos experiment on Kubernetes for the first time.
+sidebar_position: 3
+redirect_from:
+  - /tutorials/chaos-experiments/first-chaos-engineering
 ---
-## Before you begin
-[What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
 
-## Introduction
-Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. In this tutorial, you will execute a chaos experiment on Kubernetes for the first time!
+In this tutorial, you will execute a chaos experiment on Kubernetes for the first time.
 
 The standard chaos experimentation flow involves identifying the steady state of the system/application under test, hypothesizing around the impact a particular fault or failure would cause, injecting this fault in a controlled manner (with a pre-determined and minimal blast radius), validating whether the hypothesis is proven, and taking appropriate action if it is not, that is, if a weakness is found.
 
-Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below describes the steps that you can perform to induce chaos into an application. 
+Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below describes the steps that you can perform to induce chaos into an application.
 
 ![Chaos Engineering Overview](./static/first-chaos/first-goal.png)
+
+## Induce chaos in an application
 
 To get started, create a new project or ask your administrator to add you to an existing project. Now, you can access the **Chaos** tab, where an overview of all the experiment runs can be observed.
 
 ![HCE Overview](./static/first-chaos/hce-overview.png)
-## Steps to induce chaos in an application
+
 ### Add a chaos environment
 
 Next, we will create a new environment such that the chaos infrastructures can be added as part of it. Go to **Environments** page, and choose a **New Environment**. Add environment name, and optionally a description and tags. Select the environment type, **Production** or **Non-Production**. Finally, click on **Create** to add the new environment.
@@ -47,7 +48,7 @@ It will take a while for the delegate to setup in the k8s cluster. Head to the c
 
 ### Creating a demo application and observability infrastructure
 
-Now we are all ready to target our Kubernetes resources. In this quick start document, we will be executing one of the most popular and simplest fault, **Pod Delete**. It simply deletes the pods of a deployment, statefulset, daemonset, etc. to validate the resiliency of a microservice application. 
+Now we are all ready to target our Kubernetes resources. In this quick start document, we will be executing one of the most popular and simplest fault, **Pod Delete**. It simply deletes the pods of a deployment, statefulset, daemonset, etc. to validate the resiliency of a microservice application.
 
 You can use your own application as a target, however, we will use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
@@ -61,6 +62,7 @@ Before we setup our chaos experiment, let us install the target application. Run
 We are deploying these resources in the existing `hce` namespace, since we had specified the Namespace mode of installation.
 
 Eventually, we will have all the target application and observability infrastructure pods available in the `hce` namespace:
+
 ```
 ❯ kubectl get pods -n hce
 
@@ -215,6 +217,7 @@ We can also observe that the fail step says "Probe execution result didn't met t
 ![Fail Step Result](./static/first-chaos/fail-step-result.png)
 
 ## Conclusion
-With that, we have successfully run our first chaos experiment! If you're wondering how to remediate the application so that it passes the experiment run and probe checks, it's as simple as bumping up the experiment pods to at least two, so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
+
+Congratulations on running your first chaos experiment! Want to know how to remediate the application so that it passes the experiment run and probe checks? Nump up the experiment pods to at least two so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
 
 Once you've explored this, head over to the next tutorial, where you'll learn how to [create chaos experiments from scratch](./chaos-experiment-from-blank-canvas) and execute them for the same target application.

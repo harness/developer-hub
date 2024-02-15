@@ -18,11 +18,11 @@ export default function CD() {
             <h1>Chaos Engineering</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/chaos-experiments">
+            <Link href="/kb/chaos-engineering">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/chaos-engineering">
@@ -43,9 +43,12 @@ export default function CD() {
               inject chaos experiments in a controlled fashion, either to assert 
               resilience against pre-determined faults or to find weaknesses against 
               them. Harness CE helps to achieve faster incident response and recovery 
-              times, increases overall service resilience, optimizes costs, and results 
+              times, increase overall service resilience, optimize costs, and result 
               in an improved customer experience.
             </p>
+            <div>
+            <img src={`${baseUrl}img/ce.svg`} />
+            </div>
           </div>
         </div>
       </div>

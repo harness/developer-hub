@@ -150,6 +150,4 @@ For a longer tutorial of Harness CI and CD integration, go to [End-To-End CI/CD 
 
 ## Harness Chaos Engineering
 
-The Harness Chaos Engineering (HCE) integration with Harness CD allows chaos experiments to be executed as part of a Harness CD pipeline.
-
-For a tutorial of this integration, go to [Integration with Harness CD](/tutorials/chaos-experiments/integration-with-harness-cd).
+The [Harness Chaos Engineering (HCE) integration with Harness CD](/docs/chaos-engineering/integrations/chaos-cd) allows chaos experiments to be executed as part of a Harness CD pipeline.

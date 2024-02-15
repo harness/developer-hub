@@ -42,6 +42,7 @@
 /tutorials/software-engineering-insights /docs/software-engineering-insights
 /tutorials/internal-developer-portal /docs/internal-developer-portal
 /tutorials/secure-supply-chain /docs/software-supply-chain-assurance
+/tutorials/chaos-experiments /docs/chaos-engineering
 
 # /tutorials /docs
 # each top tutorial landing page

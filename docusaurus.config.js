@@ -130,11 +130,6 @@ const config = {
                 label: "Orchestrate Security Tests",
                 to: "tutorials/security-tests",
               },
-              {
-                // type: "doc",
-                label: "Run Chaos Experiments",
-                to: "tutorials/chaos-experiments",
-              },
             ],
           },
           {

@@ -145,7 +145,7 @@ export default function CertificationsChaos() {
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/chaos-experiments">
+                    {/* <Link href="/docs/chaos-engineering">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
