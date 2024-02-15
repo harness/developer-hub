@@ -159,6 +159,19 @@ Merge Time = Pull Request Merged event - Pull Request approval event
 
 </details>
 
+### How data is correlated between the Tickets, Commits and Pull Requests?
+
+To ensure the accuracy of SEI calculations, it is necessary to maintain code hygiene throughout the development lifecycle.
+
+1. **Tickets and Pull Requests:** In order to correlate data between the ticketing system and pull request (PR) information in SEI, the PR title must include the ticket key from the ticketing system. By doing so, SEI can associate the relevant data from both systems and provide a comprehensive view of each issue's progression.
+2. **Commits and Default Branch:** SEI captures all commits made to the default branch, typically named `main` or `master`. These commits serve as the basis for calculating various metrics within SEI.
+3. **Commits and Pull Requests:** SEI collects commit data related to pull requests (PRs), irrespective of the target branch. This information is vital for measuring lead time metrics during the PR process. 
+
+To learn more about how SCM Commits are ingested on Harness SEI, go to [Technical Reference: SCM Commits](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-commits)
+
+It's important to note that certain usecases like the Lead Time calculations, offer valuable insights only after the work has been completed and merged. Consequently, when assessing these metrics in SEI, make sure to configure the Workflow Profile based on the final code changes rather than individual contributions before merging.
+
+
 ## Lead Time by Time Spent in Stages Report
 
 Use the **Lead Time by Time Spent in Stages Report** to calculate lead time for issues moving through your issue management system, such as Jira. By default, this report shows the average total lead time for all issues. You can drill down to explore data for individual issues. You can also configure this report to show the median, 90th percentile, or 95th percentile, instead of the average time.
@@ -273,3 +286,5 @@ For information about reports that track PR lead time, SCM issue lead time, and 
 ## Support lead time
 
 For information about support lead time reports, such as the **Support Response Time Report** and the **Support Response Time Trend Report**, go to [Support reports](/docs/software-engineering-insights/sei-metrics-and-reports/support-metrics).
+
+
