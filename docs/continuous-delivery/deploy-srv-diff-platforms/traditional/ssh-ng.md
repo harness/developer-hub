@@ -682,7 +682,7 @@ In case of stage failures in subsequent executions ((Assuming the service, envir
 
 :::note
 
-* If any of the `service`, `environemnt`, `infrastructure` details were changed in stage, Harness won't consider any previous successfull pipeline executions for rollback, this is treated as completely different deployment.
+* If any of the `service`, `environment`, or `infrastructure` details were changed in the stage, Harness won't consider any previous successful pipeline executions for rollback. It is treated as a completely different deployment.
 * In case of multiple stages referencing same `service`, `environment` and `infrastructure` details, Harness will rollback the deployemnt to last successfull pipeline with stage execution that shared same `service`, `environment` and `infrastructure`.
 
 :::
