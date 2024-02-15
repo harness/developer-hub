@@ -139,8 +139,14 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
   - Small - 3.3GB memory, 1CPU
   - Medium - 6.6GB memory, 2CPU
   - Large - 13.2GB memory, 4CPU
+
+::: important
+
+- We recommend using one delegate per cluster for optimal performance.
+- Please use Large size delegates for production clusters.
   
-  
+:::
+
 :::important
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
