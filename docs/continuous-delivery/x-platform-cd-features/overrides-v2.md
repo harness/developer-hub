@@ -192,5 +192,9 @@ The topic explains how to use the Remote option to store your services in your G
 Similar approach can be followed to move other Overrides method to Git.
 
 :::info note
+Oveerides also support [Biderectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
+:::
+
+:::info note
 Currently, Git Experience support for overrides is behind the feature flag `CDS_OVERRIDES_GITX` . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
