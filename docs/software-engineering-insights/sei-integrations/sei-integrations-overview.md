@@ -62,7 +62,7 @@ For information about custom CI/CD and Jenkins integrations, go to [Other SEI in
 
 :::tip
 
-In addition to SEI integrations, you can [import CSV files](../sei-propels-scripts/tables) and display the data in [Table reports](../sei-propels-scripts/table-reports).
+In addition to SEI integrations, you can [import CSV files](/docs/software-engineering-insights/sei-propels-scripts/tables) and display the data in [Table reports](/docs/software-engineering-insights/sei-propels-scripts/table-reports).
 
 :::
 
