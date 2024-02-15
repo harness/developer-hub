@@ -301,6 +301,7 @@
 
   /* here */
   --ifm-color-content-light: var(--gray-800);
+  --background-color: white;
 
   --card-border: 2px solid transparent;
   --img-border: 1px solid var(--gray-400);
@@ -308,7 +309,13 @@
   --ifm-alert-border-color: var(--primary-3);
   --ifm-tabs-color-active: var(--primary);
   --ifm-tabs-color-active-border: var(--primary);
+
+  --text-color: rgb(0, 0, 0) !important;
+
+  --hover: var(--gray-200);
 }
+
+/* darkmode css */
 iframe {
   border: var(--card-border);
 }
@@ -318,22 +325,19 @@ iframe {
 .cta-banner-tagline {
   color: #000000;
 }
-[data-theme="dark"] {
-  --black: #070707;
-  --white: #070707;
 
-  --ifm-navbar-shadow: white !important;
-  --ifm-navbar-background-color: var(--black) !important;
-  --ifm-background-color: var(--black) !important;
-  --ifm-heading-color: white !important;
-  --ifm-color-content: white !important;
-  --ifm-color-content-light: var(--gray-200) !important;
-  --card-border: 2px solid var(--gray-200);
-  --img-border: 1px solid var(--gray-200);
-  --gray-500: #d9dae5;
-}
 summary {
   color: var(--ifm-heading-color);
+}
+html[data-theme="dark"] .navbar .navbar__logo {
+  content: url("/img/logo-hdh-dark-theme.svg");
+}
+html[data-theme="light"] .navbar .navbar__logo {
+  content: url("/img/logo_dlp.svg");
+}
+
+html[data-theme="dark"] .navbar {
+  box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.2);
 }
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
@@ -347,9 +351,25 @@ summary {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   --ifm-link-color: var(--ifm-color-primary);
-}
 
-/* here */
+  --black: #070707;
+  /* --white: #070707; */
+
+  --ifm-navbar-shadow: white !important;
+  --ifm-navbar-background-color: var(--black) !important;
+  --ifm-background-color: var(--black) !important;
+  --ifm-heading-color: white !important;
+  --text-color: white !important;
+  --background-color: var(--black);
+  --ifm-color-content: white !important;
+  --ifm-color-content-light: var(--gray-200) !important;
+  --card-border: 2px solid var(--gray-200);
+  --img-border: 1px solid var(--gray-200);
+  --gray-500: #d9dae5;
+
+  --hover: var(--gray-800);
+}
+/* darkmode css  end*/
 html {
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
@@ -418,6 +438,7 @@ h2 {
 }
 
 /* style overwriting temporarily for the beta icon */
+
 .navbar__brand {
   margin-right: 0;
 }
