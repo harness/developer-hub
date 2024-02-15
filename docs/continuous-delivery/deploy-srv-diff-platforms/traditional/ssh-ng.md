@@ -678,7 +678,7 @@ Harness records the artifact version that was successfully deployed during previ
 If the first pipeline execution fails (regardless of stage), Harness skips the rollback since there is no record of any successful pipeline execution.
 
 #### N+1 time deployment
-In case of stage failures in subsequent executions ((Assume the service, environment, infrastructure didn't changed in corresponding stage)) - Harness will initiate the rollback to the previous successfull pipeline with stage execution. Previous pipeline execution needs not to be successfull for all stages, it will match the successfull stage regardless of the pipeline execution status.
+In case of stage failures in subsequent executions ((Assuming the service, environment, infrastructure didn't changed in the corresponding stage)), Harness initiates rollback to the previous successful pipeline. The previous pipeline execution must be successful for all stages.  The successful stage is matched regardless of the pipeline execution status.
 
 :::note
 
