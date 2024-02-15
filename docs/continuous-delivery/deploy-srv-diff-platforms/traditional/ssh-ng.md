@@ -675,7 +675,7 @@ Harness restores the state of deployment to the pipeline's previous successful s
 Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
 
 #### First time deployment
-In case if first pipeline execution fails (regardless of stage) - Harness will skip the rollback since there is no record of any successfull pipeline execution.
+If the first pipeline execution fails (regardless of stage), Harness skips the rollback since there is no record of any successful pipeline execution.
 
 #### N+1 time deployment
 In case of stage failures in subsequent executions ((Assume the service, environment, infrastructure didn't changed in corresponding stage)) - Harness will initiate the rollback to the previous successfull pipeline with stage execution. Previous pipeline execution needs not to be successfull for all stages, it will match the successfull stage regardless of the pipeline execution status.
