@@ -44,7 +44,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Added default values for minimum healthy percentage as 90 and maximum healthy percentage as 110 for instance refresh operation which is performed during ASG Rolling deployments to prevent downtime of services. (CDS-91335, ZD-57686)
+- Added default values for minimum healthy percentage as 90 and maximum healthy percentage as 110 for the instance refresh operation that is performed during ASG Rolling deployments to prevent service downtime. (CDS-91335, ZD-57686)
 
 ### Version 24.02.82304 <!--  February 12, 2024 -->
 
