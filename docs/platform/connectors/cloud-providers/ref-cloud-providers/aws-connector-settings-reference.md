@@ -985,7 +985,7 @@ When used for AWS ECS images for AWS Serverless Lambda deployments, your [AWS co
 
 Additional configuration is required in your ECS cluster and delegate, as explained below.
 
-For instructions on executing Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart).
+For instructions on executing Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart).
 
 ### Permissions
 

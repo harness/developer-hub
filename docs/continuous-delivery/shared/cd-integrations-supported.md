@@ -448,7 +448,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Serverless.com Framework</summary>
 
 - **Overview:**
-  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart) (AWS Lambda)
+  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart) (AWS Lambda)
 - **Supported connectors for deployment:**
   - AWS Cloud Connector
     - IRSA
