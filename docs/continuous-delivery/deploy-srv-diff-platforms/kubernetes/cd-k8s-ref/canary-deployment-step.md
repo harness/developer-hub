@@ -63,6 +63,10 @@ By default, Harness uses the `--dry-run` flag on the `kubectl apply` command
 
 If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
 
+## Traffic Routing Configuration
+
+For information on how to configure traffic routing for Canary deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
+
 ## Advanced
 
 See the following topics for these settings:

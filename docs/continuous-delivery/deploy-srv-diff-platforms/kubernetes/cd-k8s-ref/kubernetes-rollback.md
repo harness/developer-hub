@@ -1,7 +1,7 @@
 ---
 title: Kubernetes rollback
 description: How Harness does Kubernetes roll backs.
-sidebar_position: 6
+sidebar_position: 7
 helpdocs_topic_id: rt449t1xhy
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false

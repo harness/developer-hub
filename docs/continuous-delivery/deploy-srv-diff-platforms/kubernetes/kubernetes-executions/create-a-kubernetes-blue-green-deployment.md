@@ -253,6 +253,10 @@ Next, the **Swap Primary with Stage** step will swap the primary and stage serv
 
 If this were the second deployment, Harness would also swap the stage service to the pod set for the old app version.
 
+### Traffic Routing Configuration
+
+For information on how to configure traffic routing for Blue Green deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
+
 ## Swap primary with stage step
 
 Click the **Swap Primary with Stage** step.
