@@ -54,16 +54,6 @@ export const featureList: CardItem[] = [
     link: "tutorials/chaos-experiments",
   },
   {
-    title: "Secure Supply Chain",
-    module: MODULES.ssca,
-    icon: "img/icon_ssca.svg",
-    description: (
-      <>Set up your pipelines to secure your software supply chain.</>
-    ),
-    type: [docType.Documentation],
-    link: "tutorials/secure-supply-chain",
-  },
-  {
     title: "Improve Developer Productivity",
     module: MODULES.idp,
     icon: "img/icon_idp.svg",

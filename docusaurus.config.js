@@ -132,11 +132,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Secure Supply Chain",
-                to: "tutorials/secure-supply-chain",
-              },
-              {
-                // type: "doc",
                 label: "Run Chaos Experiments",
                 to: "tutorials/chaos-experiments",
               },

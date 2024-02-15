@@ -23,13 +23,13 @@ For maintain consistency, we'll refer to our `main` branch as both the base and 
 
 ## Prerequisites
 
-Before you begin, make sure you understand [SBOM generation](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/generate-sbom) and [SBOM drift](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/SBOM-Drift).
+Before you begin, make sure you understand [SBOM generation](/docs/software-supply-chain-assurance/sbom/generate-sbom) and [SBOM drift](/docs/software-supply-chain-assurance/sbom/SBOM-Drift).
 
 You need:
 
 * A Harness account with access to the SSCA module.
 * A GitHub account
-* A [GitHub connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) for your GitHub account.
+* A [GitHub connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your GitHub account.
 * An IDE or code editor. This tutorial uses Visual Studio Code.
 
 ## Set up the sample app

@@ -14,7 +14,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/secure-supply-chain/generate-sbom",
+    link: "/docs/software-supply-chain-assurance/sbom/generate-sbom",
   },
   {
     title: "Generate and verify SLSA Provenance",
@@ -26,7 +26,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/secure-supply-chain/generate-slsa",
+    link: "/docs/software-supply-chain-assurance/slsa/generate-slsa",
   },
 ];
 
@@ -41,7 +41,7 @@ export const SSCAList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/secure-supply-chain/generate-sbom",
+    link: "/docs/software-supply-chain-assurance/sbom/generate-sbom",
   },
   {
     title: "Generate and verify SLSA Provenance",
@@ -53,6 +53,6 @@ export const SSCAList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/secure-supply-chain/generate-slsa",
+    link: "/docs/software-supply-chain-assurance/slsa/generate-slsa",
   },
 ];

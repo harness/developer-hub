@@ -15,11 +15,11 @@ import {
             "",
           list: [
             {
-              title: "SSCA tutorials",
+              title: "SSCA onboarding guide",
               module: MODULES.ssca,
               description:
-                "Dive in with these tutorials.",
-              link: "/docs/software-supply-chain-assurance/get-started/tutorials",
+                "Start using Harness SSCA.",
+              link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
             },
             {
               title: "SSCA overview",

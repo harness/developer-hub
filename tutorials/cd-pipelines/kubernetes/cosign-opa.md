@@ -257,5 +257,5 @@ You've just learned how to use **Cosign** and **Open Policy Agent** to sign and 
 
 #### What's Next?
 
-- [Generate and verify SLSA Provenance](../../secure-supply-chain/generate-slsa.md) using the Harness SSCA steps in Harness CI/CD pipelines.
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+- [Generate and verify SLSA Provenance](/docs/software-supply-chain-assurance/slsa/generate-slsa) using the Harness SSCA steps in Harness CI/CD pipelines.
+- Visit the [Harness Developer Hub](https://developer.harness.io/) for more CI/CD documentation.
