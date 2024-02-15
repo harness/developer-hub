@@ -288,7 +288,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
 You can see the serverless.yaml manifest in Harness.
 
 :::info
-You can also use AWS S3 or Harness Local FileStore as your manifest provider. For information on how to configure those see [Manifest Providers for Serverless Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-providers-for-serverless-lambda.md).
+You can also use AWS S3 or Harness Local FileStore as your manifest provider. For information on how to configure those see [Manifest Providers for Serverless Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-sources-for-serverless-lambda.md).
 :::
 
 ![](./static/serverless-lambda-cd-quickstart-112.png)
