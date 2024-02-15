@@ -82,14 +82,13 @@ The following deprecated API endpoints are longer supported:
 
 ## February 2024
 
-### Version 1.25.x <!--  February 19, 2024 -->
+### Version 1.25.3 <!--  February 19, 2024 -->
 
 #### New features and enhancements
 
 - Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
 
 - Enhanced the `override-delegate-tag` API documentation to include details on `validForDays` and `validTillNextRelease` parameters. Additionally, the default value for `validForDays` has been updated to 180 days, extending from the previous 30 days. This update can be found [here](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag). (PL-46879)
-
 
 #### Fixed issues
 
