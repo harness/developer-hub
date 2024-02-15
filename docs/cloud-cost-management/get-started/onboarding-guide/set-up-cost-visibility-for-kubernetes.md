@@ -141,7 +141,7 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
   - Large - 13.2GB memory, 4CPU
 
 :::important
-These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers. We recommend using one delegate per cluster and Large size delegates for production clusters for optimal performance. Kindly avoid using MasterURL for now.
+These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers. We recommend using one delegate per cluster and Large size delegates for production clusters for optimal performance.
 :::
 
 - **Delegate permissions**: You can choose one of the following permissions for CCM:
