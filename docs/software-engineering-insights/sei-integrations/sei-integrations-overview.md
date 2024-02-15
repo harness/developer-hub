@@ -58,7 +58,7 @@ On-prem integrations and tools without application-specific integrations require
 
 ## Other integrations
 
-For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](./other-integrations/sei-integration-checkmarx).
+For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](./semi-automated-integrations/jenkins-plugin).
 
 :::tip
 
