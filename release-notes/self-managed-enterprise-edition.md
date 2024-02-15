@@ -71,18 +71,18 @@ This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.13.4](https://github.com/harness/helm-charts/releases/tag/harness-0.13.4) |
-| Air Gap Bundle | [0.13.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.4) |
+| Helm Chart | [0.14.x](https://github.com/harness/helm-charts/releases/tag/harness-0.14.x) |
+| Air Gap Bundle | [0.14.x](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.x) |
 | NG Manager | 1.22.6 |
 | CI Manager | 1.10.2 |
 | Pipeline Service | 1.59.6 |
 | Platform Service | 1.9.0 |
 | Access Control Service | 1.29.2 |
-| Delegate | 24.01.82004 |
+| Delegate | 24.02.82203 |
 | Change Data Capture | 1.2.0 |
-| Test Intelligence Service | release-223 |
-| NG UI | 0.372.18 |
-| LE NG | 67903 |
+| Test Intelligence Service | 1.7.1 |
+| NG UI | 1.5.10 |
+| LE NG | 1.1.0 |
 
 **Alternative air gap bundle download method**
 
@@ -127,7 +127,7 @@ gsutil -m cp \
 
 - Tooltips in the left navigation were incorrectly displayed behind the stage execution details panel. Now, tooltips are visible on the Execution page. (PL-43993)
 
-- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. ()
+- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
 
    This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
    
