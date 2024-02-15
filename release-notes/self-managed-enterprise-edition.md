@@ -65,6 +65,88 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+## February xx, 2024, version 1.22.6
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.13.4](https://github.com/harness/helm-charts/releases/tag/harness-0.13.4) |
+| Air Gap Bundle | [0.13.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.13.4) |
+| NG Manager | 1.22.6 |
+| CI Manager | 1.10.2 |
+| Pipeline Service | 1.59.6 |
+| Platform Service | 1.9.0 |
+| Access Control Service | 1.29.2 |
+| Delegate | 24.01.82004 |
+| Change Data Capture | 1.2.0 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.18 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.13.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.13.4/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+#### Harness Platform
+
+- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
+
+- Configure an absolute session timeout for your account (PL-43587)
+
+   A new **Absolute Session Timeout (in minutes)** setting is available on the Authentication page. When the **Absolute Session Timeout (in minutes)** is set, users will be logged out of their account after the configured timeout, regardless of any activity.
+
+   The default absolute session timeout is 0, which means that it is not set. You can set this to a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
+
+    :::info note
+    When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
+    :::
+
+### Early access features
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed a license validation issue that caused ng-manager errors. (PL-46455)
+
+- Tooltips in the left navigation were incorrectly displayed behind the stage execution details panel. Now, tooltips are visible on the Execution page. (PL-43993)
+
+- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. ()
+
+   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
+   
+   This item is available with Harness Platform version 1.22.3 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Fixed the ACL list roles API to correctly display `HarnessManaged`, `CreatedAt`, and `LastModifiedAt` date fields, ensuring accurate role management data in responses. (PL-43952)
+
+- Multi-select dropdowns would reset to the top after each selection. This issue is fixed for all multi-select dropdowns unless explicitly specified by the user. (PL-43925)
+
+- When editing user group data, member data was not added as expected. Now, the user group data related to the user group members is not lost when the user group is updated. (PL-43855, ZD-55944)  
+
+- Running `terraform apply` for an existing SSO-linked user group resulted in an empty user list. (PL-43763, ZD-55505)
+
+   This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+     - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
+
+- Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
+
+
 ## February 13, 2024, patch version 0.13.4
 
 This release includes the following Harness module and component versions.
