@@ -59,9 +59,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     </Tabs>
 
 
+<!-- 
+
 - The SonarQube integration includes better support for orchestrated branch scanning with SonarQube Enterprise. (STO-6840)
   - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the step.
   - With this enhancement, the orchestration step always downloads results for the branch specified in the step.
+
+-->
 
 - Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
 
