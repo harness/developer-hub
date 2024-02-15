@@ -7,7 +7,7 @@ sidebar_label: DORA
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can use [DORA Metrics Insights](../insights/sei-insights.md#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/insights/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -15,9 +15,9 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 
 Deployment Frequency represents how often an organization successfully releases software to production.
 
-To monitor Deployment Frequency, you must create a [Workflow profile](../sei-profiles/workflow-profile.md) and add the **Deployment Frequency** widget to your Insights.
+To monitor Deployment Frequency, you must create a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) and add the **Deployment Frequency** widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
 
 ![](./static/df-report.png)
 
@@ -100,13 +100,13 @@ Note that for lead time metrics you can define stages based on either of the fol
 * **Commit Created:** This event ensures that lead time tracking starts when the first commit is committed.
 * **API Event:** This This event triggers the lead time calculation based on a custom API event.
 
-The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](../sei-profiles/workflow-profile.md#workflow-profiles-for-lead-time).
+The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time).
 
 ### Lead Time for Changes calculation
 
 Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](../sei-profiles/workflow-profile.md#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
 ### Development Stages
 
@@ -206,21 +206,21 @@ To add the **Lead Time for Changes** widget to Insights:
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **Lead Time for Changes** widget.
 4. Configure the filters for the widget.
-5. On the **Settings** tab, select the relevant [Workflow profile](../sei-profiles/workflow-profile.md).
+5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
 
   Workflow profiles, also known as Lead Time profiles, determine the integrations to track, the start events that trigger lead time tracking (such as ticket creation or commit creation), and the stages that issues follow in your SDLC.
 
-  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
+  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
 
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information about other Lead Time reports, go to [Lead time reports](./velocity-metrics-reports/lead-time-reports.md).
+For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports).
 
 ## Change Failure Rate
 
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
-To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../sei-profiles/workflow-profile.md), and then add the **Change Failure Rate** widget to Insights.
+To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile), and then add the **Change Failure Rate** widget to Insights.
 
 1. Go to **Settings** and select **Workflow Profiles**.
 2. Select **Add Profile** or select an existing profile to modify.
@@ -302,4 +302,4 @@ There are several ways to present MTTR in SEI Insights, including:
 
 * **DORA Mean Time To Restore**
 * **Time To Restore Service**
-* **[Issue Resolution Time reports](./velocity-metrics-reports/issues-reports.md)**
+* **[Issue Resolution Time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports)**

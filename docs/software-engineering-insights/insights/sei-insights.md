@@ -27,7 +27,7 @@ The primary way to access Insights is through the **Insights** tab.
 
    Select **Manage Insights** to view all the Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
 
-   To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](../sei-projects-and-collections/manage-collections.md).
+   To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 
    If integration monitoring is enabled, you can view the integration status in the Insights header.
 
@@ -81,7 +81,7 @@ Some widgets allow you to drill down into data. For example, you can select a se
 
 6. Select at least one Collection category to associate with this Insight.
 
-   All [Collections](../sei-projects-and-collections/manage-collections.md) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
+   All [Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
 
    If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu.
 
@@ -113,7 +113,7 @@ You can also configure individual metrics and reports to specify what data is us
 
 ### Manage Insights associations
 
-You can manage the Collections associated with Insights from the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](../sei-projects-and-collections/manage-collections.md#manage-insights-associations).
+You can manage the Collections associated with Insights from the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections#manage-insights-associations).
 
 ### Change the color scheme
 
@@ -153,18 +153,18 @@ The following five Insights are the most frequently used on SEI:
 
 ### DORA Metrics
 
-Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](../sei-metrics-and-reports/dora-metrics.md).
+Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
 
 If you want to create a DORA Metrics Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add reports for [DORA metrics](../sei-metrics-and-reports/dora-metrics.md).
+2. Add reports for [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
 
 ### Dev Insights
 
-Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration. 
+Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
-For more information about SCM metrics and reports, go to [velocity metrics](../sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics.md) and [SCM reports](../sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md).
+For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 ![](./static/dev-insights.png)
 
@@ -184,8 +184,8 @@ If you want to create additional Business Alignment Insights, select the **Effor
 
 ### Trellis
 
-Use the Trellis Insight to examine [Trellis Scores](../sei-metrics-and-reports/trellis-score.md).
+Use the Trellis Insight to examine [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
 
 ### Planning Insights
 
-Use the Planning Insight to examine [sprint metrics](../sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics.md).
+Use the Planning Insight to examine [sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).

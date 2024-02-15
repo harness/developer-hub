@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
 
 :::info Issue Cycle Time webhook
 
-If you created a personal access token and allowed the `admin:org_hook` permission, SEI creates a user webhook to receive issue cycle time data for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports.md).
+If you created a personal access token and allowed the `admin:org_hook` permission, SEI creates a user webhook to receive issue cycle time data for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
 
 If you used OAuth, SEI creates an organization webhook instead.
 

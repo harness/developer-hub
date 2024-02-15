@@ -161,6 +161,22 @@ If a setting is specified in multiple input sets, the value is replaced as each 
 
 <!-- However, it is possible that you won't use every input set in the overlay for every run. When you run a pipeline with an overlay, you can select specific input sets to use. If an input set is not selected for a particular run, it is skipped. -->
 
+## Manage access to input sets
+
+:::info
+
+Currently, input set access control is behind the feature flag `PIE_INPUTSET_RBAC_PERMISSIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. We will also run a migration for you so that existing input sets remain accessible to users.
+
+:::
+
+Input sets can be access-controlled, similar to pipelines and other entities. This allows you to make some input sets invisible to certain users, or not let them edit the values in the input sets. The permissions for input sets are View, Create/Edit, and Delete. You can view and manage these permissions on the Roles page under **Access Control**.
+
+Input sets are listed along with other resources in the **Resource Group** section of the Access Control screens. For more information on setting up and managing permissions using Resource Groups and Roles, go to [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups/).
+
+To use an input set for a pipeline execution, the user must have View permissions on the input set, along with Execute permissions for the pipeline. To edit the input set, the user must have Edit permissions for the input set. 
+
+When a user creates a new input set, Create/Edit and View permissions are added by default for the user. 
+
 ## Run pipelines with input sets or overlays
 
 To run a pipeline with an input set or overlay:

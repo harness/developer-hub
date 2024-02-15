@@ -88,7 +88,7 @@ To set up the integration using the Jira API Key:
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
-3. Select Jira Software Cloud as the ~~i~~ntegration type.
+3. Select Jira Software Cloud as the integration type.
 4. Select the Using Jira API Token tile to set up the connection with Jira.
 5. Configure the integration settings and authentication:&#x20;
    * Integration Name: Name for your integration.
@@ -142,7 +142,7 @@ To set up the integration for the Jira Data Center:
 
 ![](../static/jira-dc-success.png)
 
-Once you have downloaded the `satellite.yml` file update it following the instructions [here](../../sei-ingestion-satellite/run-the-satellite-container).
+Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container).
 
 Here’s a sample `satellite.yml` file which uses username and password for authentication.
 
@@ -255,7 +255,7 @@ If you encounter any issues during the integration process, go to the Satellite 
 
 ## Add the Salesforce mapping
 
-If you also have an [SEI Salesforce integration](../other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
+If you also have an [SEI Salesforce integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **Integrations** under **Data Settings**.

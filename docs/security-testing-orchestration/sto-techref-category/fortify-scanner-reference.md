@@ -1,7 +1,7 @@
 ---
-title: Fortify scanner reference for STO
+title: Fortify Static Code Analyzer scanner reference for STO
 description: Ingest Fortify scan results into your pipelines.
-sidebar_label: Fortify scanner reference
+sidebar_label: Fortify Static Code Analyzer scanner reference
 sidebar_position: 170
 ---
 
