@@ -229,7 +229,7 @@ This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency 
 
 - **Blogs:** [Harness SRM Plugin - Release Announcement](https://www.harness.io/blog/announcing-the-harness-srm-backstage-plugin)
 - **Docs:** [Key Concepts](https://developer.harness.io/docs/internal-developer-portal/key-concepts)
-- **Tutorial:** [How to track migrations using Scorecards](https://developer.harness.io/tutorials/internal-developer-portal/how-to-track-migrations)
+- **Tutorial:** [How to track migrations using Scorecards](/docs/internal-developer-portal/scorecards/how-to-track-migrations)
 
 #### New features and enhancements
 
