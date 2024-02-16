@@ -22,7 +22,7 @@ Learn about the features, components, and key concepts of Harness SSCA:
 
 ## Use SSCA
 
-* [Generate or ingest SBOM](docs/category/generate-or-ingest-sbom)
+* [Generate or ingest SBOM](/docs/category/generate-or-ingest-sbom)
 * [Create and enforce SSCA policies](/docs/category/enforce-ssca-policies)
 * [Generate and verify SLSA Provenance](/docs/category/comply-with-slsa)
 * [Track remediations](/docs/category/remediation-tracker)
