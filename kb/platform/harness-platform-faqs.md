@@ -2842,3 +2842,34 @@ We can make use of environment variable TMPDIR on the delegate and use any direc
   value: /opt/harness-delegate/deployvol/tmp
 
 ```
+
+### I would like to make my pipeline dependant on the user which runs that pipeline and the RBAC of that user. Is that info accessible from inside of the pipeline?
+I'm expecting a variable like <+currentuser.role>
+
+We do not have a variable which will return the role for user, but you can use variable to get the user email:
+https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail
+ 
+And can make api call to list all role assigned to that user and can decide the next step accordingly:
+https://apidocs.harness.io/tag/User#operation/getAggregatedUser
+
+### DB Query to validate the User is provisioned via SCIM Or Manual for SMP
+
+```
+db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"SCIM"})
+```
+You need to replace the accounid with the actual account id and you should get the result for users who are SCIM provisioned and use MANUAL for users created through UI.
+
+```
+db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"MANUAL"})
+```
+### User is getting some error or is not able to redirect to a specifc account in case of user being part of multiple accounts. 
+
+In scenarios like these user can directly access the URL like : 
+
+https://app.harness.io/ng/account/xxxaccountidxxxx/settings/overview
+
+This way user will be directly to that specific account and then cns login and chage his default account.
+
+
+
+
