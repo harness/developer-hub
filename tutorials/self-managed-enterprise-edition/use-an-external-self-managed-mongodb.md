@@ -48,19 +48,21 @@ Ensure the following:
 
 ```mermaid
 graph TD;
-
   subgraph "External MongoDB Architecture 1 - 1 Data Center"
-    style A fill:#F47C20,stroke:#D7540D,stroke-width:2px,stroke-dasharray: 5, 5;
-    A[harness.customer.com] --> B[Proxy/Loadbalancer]
-    B --> C[Harness app Primary 1]
-    C --> D[Primary DC1]
-    C --> E[Secondary: 1 DC1]
-    C --> F[Secondary: 2 DC1]
-    
+    style A fill:#F47C20,stroke:#D7540D,stroke-width:2px,stroke-dasharray: 5, 5; center
+
+    A[harness.customer.com] ---> B[Proxy/Loadbalancer]
+    B ---> C[Harness app Primary 1]
+    C ---> D[Primary DC1]
+    C ---> E[Secondary: 1 DC1]
+    C ---> F[Secondary: 2 DC1]
+    D --- E --- F
+    G[Kubernetes cluster 1 DC1 primary site]
   end;
 
-  
 ```
+
+
 
 ## Set up MongoDB VMs
 
