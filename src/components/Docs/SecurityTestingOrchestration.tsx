@@ -18,11 +18,11 @@ export default function STO() {
             <h1>Security Testing Orchestration</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/security-tests">
+            <Link href="/kb/security-testing-orchestration">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/security-testing-orchestration">
@@ -37,8 +37,18 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Set up your pipelines to detect security vulnerabilities automatically using Security Testing Orchestration.
+            With Harness Security Testing Orchestration (STO), your pipelines can
+            detect security vulnerabilities automatically. Harness STO enables
+            DevOps and Security teams teams to left shift security testing as a key
+            outcome of their DevSecOps initiative. STO orchestrates scanning,
+            intelligently de-duplicating scanner output, prioritizing remediations,
+            and enforcing governance into your pipelines. STO puts scanning directly
+            into your pipelines to ensure that vulnerabilities are caught and fixed
+            before your products are ever released.
             </p>
+            <div>
+            <img src={`${baseUrl}img/sto.svg`} />
+            </div>
           </div>
         </div>
       </div>

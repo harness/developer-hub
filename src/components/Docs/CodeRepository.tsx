@@ -18,11 +18,11 @@ export default function Code() {
             <h1>Code Repository</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes">

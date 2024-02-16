@@ -3,7 +3,7 @@ title: Automate SBOM drift detection for GitHub repositories
 description: Build a pipeline that automates the SBOM Drift Detection on your GitHub repository.
 sidebar_position: 35
 redirect_from:
-  -/tutorials/secure-supply-chain/automate-sbom-drift-detection
+  - /tutorials/secure-supply-chain/automate-sbom-drift-detection
 ---
 
 In this tutorial, we'll walk you through setting up a pipeline in Harness to automatically track changes in the Software Bill of Materials (SBOM) for your GitHub project. Our focus will be on creating a pipeline that triggers whenever there's a new pull request (PR). This pipeline will compare the SBOM from the PR with the SBOM of the main branch to identify any differences and generate a drift report. Once the PR is merged, it will also update the SBOM for the main branch, ensuring it's always up-to-date for future tracking. By incorporating this process into your software delivery cycle, you can easily review and approve SBOM changes before they merge, keeping your project safe from risky components and updates.

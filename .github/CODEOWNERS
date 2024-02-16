@@ -12,6 +12,11 @@
 # Changes to Lock File
 *.lock  @wei-harness
 
+# Contributing
+CONTRIBUTING.md @ravilach
+README.md @ravilach
+/docs/hdh/ @ravilach
+
 # Knowledge Base
 /kb/ @deepanshuHarness
 /kb/continuous-integration/ @aimurphy @deepanshuHarness
@@ -42,7 +47,6 @@
 
 # CCM Docs
 /docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @additi
-
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
@@ -80,7 +84,7 @@
 # Release Notes
 
 # CD Release Notes
-release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @roshnisarangadharan 
+release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @roshnisarangadharan
 
 # CCM Release Notes
 release-notes/cloud-cost-management.md @rdsoze
@@ -120,11 +124,3 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 
 #SSCA Release Notes
 release-notes/service-reliability-management.md @sunilgupta-harness
-
-# Tutorials
-
-# CD Tutorials
-/tutorials/cd-pipelines/ @ravilach @Ompragash @nicholaslotz @dewan-ahmed
-
-# HDH Tutorials
-/tutorials/hdh/ @ravilach

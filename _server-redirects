@@ -45,9 +45,9 @@
 /tutorials/chaos-experiments /docs/chaos-engineering
 /tutorials/category/cloud-autostopping /docs/category/autostopping-guides
 /tutorials/cloud-costs /docs/cloud-cost-management
-
-# /tutorials /docs
-# each top tutorial landing page
+/tutorials/security-tests /docs/security-testing-orchestration
+/tutorials/cd-pipelines /docs/continuous-delivery
+/tutorials /docs
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
 

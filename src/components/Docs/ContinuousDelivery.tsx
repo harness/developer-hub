@@ -20,10 +20,10 @@ export default function CD() {
             <h1>Continuous Delivery & GitOps</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/cd-pipelines">
+            <Link href="/kb/continuous-delivery">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/continuous-delivery">
@@ -51,9 +51,16 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Make your software releases more efficient and reliable with
-              Harness Continuous Delivery.
+              Harness Continuous Delivery (CD) and GitOps enables deployment
+              of application and infrastructure changes in a safe and
+              sustainable way. Your CD pipelines and GitOps workflows can
+              automate all of the steps necessary to get your changes into
+              production. Make your software releases more efficient and
+              reliable with Harness CD and GitOps.
             </p>
+            <div>
+            <img src={`${baseUrl}img/cd.svg`} />
+            </div>
           </div>
         </div>
       </div>
