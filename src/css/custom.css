@@ -313,6 +313,7 @@
   --text-color: rgb(0, 0, 0) !important;
 
   --hover: var(--gray-200);
+  --platform-card-bg: var(--white);
 }
 
 /* darkmode css */
@@ -341,6 +342,7 @@ html[data-theme="dark"] .navbar {
 }
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
+  --platform-card-bg: var(--gray-200);
   --ifm-color-primary: var(--primary-5);
   --ifm-color-primary-dark: var(--primary-6);
   --ifm-color-primary-darker: var(--primary-7);

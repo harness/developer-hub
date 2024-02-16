@@ -47,9 +47,8 @@
 
     li {
       box-sizing: border-box;
-
+      background-color: var(--platform-card-bg);
       /* Auto layout */
-      background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
