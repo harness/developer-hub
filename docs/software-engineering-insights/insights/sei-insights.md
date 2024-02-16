@@ -1,7 +1,8 @@
 ---
-title: Insights
+title: Insights overview
 description: Insights are dashboards.
 sidebar_position: 1
+sidebar_label: Overview
 redirect_from:
   - /docs/software-engineering-insights/sei-insights
 ---
