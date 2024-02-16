@@ -14,11 +14,49 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: February 13th 2024
+### Latest Updated: February 15th 2024
 
 ## February 2024
 
 ### Android SDK
+
+#### Version 2.0.0
+
+ - There's been a major refactoring in the 2.0.0 version of the Android SDK which included some API changes and additional imporovements:
+
+ -- <u>Improvements</u>
+
+This is a major hardening effort of the SDK to improve its overall reliability:
+
+ --- With a now simplified threading model, we now use a dedicated thread for authentication, streaming and polling which lives for the lifetime of the SDK until `close()` is called. Previous `1.x.x` versions of the SDK would start and stop threads on demand and/or submit code to thread pools. This made it difficult to identify critical regions in the code and was error prone.
+ --- A 2nd thread is now used for posting metrics to the analytics backend however all interactions between the two threads are done via a `ConcurrentHashMap()` and passing a read-only authentication token, no other state is needed for metrics.
+ --- The user entry points into the SDK such as `boolVariation()`, `stringVariation()`, `numberVariation()` and so on are now designed in such a way that they will never perform network activity. Instead they will only query the internal cache. This prevents unexpected blocking of UI code or code that is sensitive to delays.
+ --- There is proper use of constructors and final fields to make SDK thread state immutable (and reduce the likelihood of null pointer exceptions where possible).
+ --- Centralized error handling, the SDK will reset itself on dropped connections, timed out connections or any other exception. it will never get into undefined state but restart after a delay of 1 minute.
+ --- Centralized network detection, SDK thread will go to sleep when there is no network and wake up when an Android network online event is detected.
+ 
+ -- <u>API Deprecations</u>
+ 
+ --- The following overloaded versions of `initialize()` have been marked deprecated:
+ ```
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,final Target target, final CloudCache cloudCache, @Nullable final AuthCallback authCallback) throws IllegalStateException
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,
+ final Target target, final AuthCallback authCallback) throws IllegalStateException
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,
+ final Target target, final CloudCache cloudCache) throws IllegalStateException
+ ```
+ 
+ --- A custom cache can now be configured via a new configuration property `io.harness.cfsdk.CfConfiguration.Builder.cache()` , `AuthCallback` and `AuthResult` have been deprecated. The SDK will now follow the same API style as other Harness SDKs. Instead of providing a callback on `initialize()` you should call `waitForInitialization()` directly after `initialize()`. For example:
+
+ ```
+ client.initialize(this, apiKey, sdkConfiguration, target)
+ if (client.waitForInitialization(30_000)) {
+  // SDK started ok
+  } else {
+    // SDK did not start in time, re-authentication will be retried in the background until success or client.close() is called
+    // You should expect default values to be served
+    }
+```
 
 #### Version 1.2.5
 
