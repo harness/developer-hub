@@ -47,6 +47,16 @@
 /tutorials/cloud-costs /docs/cloud-cost-management
 /tutorials/security-tests /docs/security-testing-orchestration
 /tutorials/cd-pipelines /docs/continuous-delivery
+/tutorials/cd-pipelines/unified-cicd /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/kubernetes /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/serverless /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/vm /docs/category/cd-and-gitops-tutorials
+
+
+/tutorials/cd-pipelines/infra-provisioning redir to individual topic
+/tutorials/cd-pipelines/continuous-verification redir to individual topic
+
+
 /tutorials /docs
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
