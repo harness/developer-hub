@@ -16,7 +16,7 @@ These configuration options can be found when adding a manifest to a service wit
 
 ### Git Sources
 
-All git based sources have the same configuration paramters and hence will all be described here.
+All git based sources have the same configuration parameters and hence will all be described here.
 
 #### Manifest Source
 
@@ -39,10 +39,10 @@ Below describes setting configuration parameters for AWS S3 bucket as a manifest
 
 #### Manifest Details
 
-1. **Manifest Identifier** Enter a name that identifies this Serverless manifest.
-2. **Region** Select the AWS region to use for the connection.
-3. **Bucket Name** Enter the AWS S3 bucket name.
-4. **File/Folder Path** Enter the path from the root of the bucket to the serverless.yml files.
+1. **Manifest Identifier**: Enter a name that identifies this Serverless manifest.
+2. **Region**: Select the AWS region to use for the connection.
+3. **Bucket Name**: Enter the AWS S3 bucket name.
+4. **File/Folder Path**: Enter the path from the root of the bucket to the `serverless.yml`files.
 
 :::info
 The file path here can be a `.zip` file. Harness will automatically decompress the file when it is pulled from the bucket. 
