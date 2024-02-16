@@ -26,16 +26,16 @@ We recommend you use either the [Harness UI](/docs/get-started/harness-ui-overvi
 - [Serverless pipelines](/docs/continuous-delivery/get-started/cd-tutorials/aws-lambda)
 - [VM pipelines for traditional apps](/docs/continuous-delivery/get-started/cd-tutorials/aws)
 - [Amazon ECS pipelines](/docs/continuous-delivery/get-started/cd-tutorials/amazon-ecs)
-- [Automate pipeline execution through pipeline triggers](/tutorials/cd-pipelines/trigger)
+- [Automate pipeline execution through pipeline triggers](/docs/platform/triggers/tutorial-cd-trigger)
 
 ## Step 3. See advanced CD concepts in action
 Now you are ready to learn advanced CD concepts through the following tutorials.
 
-- [Templates](/tutorials/cd-pipelines/templates)
-- [Notifications](/tutorials/cd-pipelines/notifications)
-- [Approvals](/tutorials/cd-pipelines/approvals)
+- [Templates](/docs/platform/templates/create-pipeline-template)
+- [Notifications](/docs/platform/notifications/notification-settings)
+- [Approvals](/docs/platform/approvals/approvals)
 - [Continuous Verification](/docs/continuous-delivery/get-started/cd-tutorials/prometheus)
-- [Infrastructure Provisioning as part of CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/cloudformation.md)
+- [Infrastructure Provisioning as part of CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/cloudformation)
 - [Variables & Expressions](/docs/platform/variables-and-expressions/harness-variables)
 
 ## Step 4. Automate onboarding for your own app 

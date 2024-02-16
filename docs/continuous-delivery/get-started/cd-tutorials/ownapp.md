@@ -844,7 +844,7 @@ Finally, it's time to execute your pipeline. Every exection of a CD pipeline lea
 
 With [Pipeline Triggers](/docs/category/triggers), you can start automating your deployments based on events happening in an external system. This system could be a Source Repository, an Artifact Repository, or a third party system. Any Developer with Pipeline Create and Edit permissions can configure a trigger in Harness.
 
-Follow the [Pipeline Triggers](/tutorials/cd-pipelines/trigger) tutorial to see triggers in action.
+Follow the [Pipeline Triggers tutorial](/docs/platform/triggers/tutorial-cd-trigger) to see triggers in action.
 
 #### Using API
 

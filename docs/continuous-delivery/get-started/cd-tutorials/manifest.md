@@ -523,11 +523,7 @@ kubectl delete service guestbook-ui -n default
 
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
-#### What's Next?
-
-- Learn about [variables](/tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Continue your learning journey by learning about [variables](/docs/platform/variables-and-expressions/add-a-variable),[pipeline triggers](/docs/platform/triggers/tutorial-cd-trigger), and [Harness GitOps](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 
 </TabItem>
 <TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
@@ -1069,7 +1065,7 @@ Finally, it's time to execute your pipeline. Every exection of a CD pipeline lea
 
 With [Pipeline Triggers](/docs/category/triggers), you can start automating your deployments based on events happening in an external system. This system could be a Source Repository, an Artifact Repository, or a third party system. Any Developer with Pipeline Create and Edit permissions can configure a trigger in Harness.
 
-Follow the [Pipeline Triggers](/tutorials/cd-pipelines/trigger) tutorial to see triggers in action.
+Follow the [Pipeline Triggers tutorial](/docs/platform/triggers/tutorial-cd-trigger) to see triggers in action.
 
 #### Using API
 
@@ -1081,10 +1077,7 @@ Refer to the [Get started with Harness API](/docs/platform/automation/api/api-qu
 
 You've just learned how to use Harness CD to deploy an application using a Kubernetes manifest.
 
-#### What's Next?
-
-- Learn about [variables](/tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Continue your learning journey by learning about [variables](/docs/platform/variables-and-expressions/add-a-variable) and [pipeline triggers](/docs/platform/triggers/tutorial-cd-trigger).
 
 ## How to deploy your own app by using Harness
 

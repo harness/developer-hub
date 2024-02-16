@@ -230,7 +230,7 @@ And in the pipeline, you can view and add comments to your approval. This inform
 
 Select **Approve** and the pipeline will progress. If you reject the approval, the pipeline will end and initiate rollback or the [pipeline failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
 
-For more information, go to [Using manual Harness approval stages](/docs/platform/approvals/adding-harness-approval-stages), and the [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals) and [Notifications](https://developer.harness.io/tutorials/cd-pipelines/notifications) tutorials.
+For more information, go to [Using manual Harness approval stages](/docs/platform/approvals/adding-harness-approval-stages), and the [Approvals tutorial](https://developer.harness.io/docs/platform/approvals/approvals), and [Notifications settings](https://developer.harness.io/docs/platform/notifications/notification-settings).
 
 ## Assigning roles to new team members
 
@@ -242,7 +242,7 @@ For more information, go to [Manage users](/docs/platform/role-based-access-cont
 
 If you are Pipeline Creator or Editor, you can add pipeline notifications to notify yourself and your teammates of deployment progress and status.
 
-Harness integrates with Slack, Webhook, MS Teams, PagerDuty, and Emails. For more information, go to the [Notifications](https://developer.harness.io/tutorials/cd-pipelines/notifications) tutorial.
+Harness integrates with Slack, Webhook, MS Teams, PagerDuty, and Emails. For more information, go to [Notifications settings](https://developer.harness.io/docs/platform/notifications/notification-settings).
 
 <DocImage path={require('./static/1b0c5cbdb16fd4f264f725d7ade91618344e79a1b28bb4c6857a9522e2c4dc4d.png')} width="60%" height="60%" title="Click to view full size image" />
 
