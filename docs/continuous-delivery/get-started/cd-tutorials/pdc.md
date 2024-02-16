@@ -1,11 +1,10 @@
 ---
-sidebar_position: 3
-hide_table_of_contents: true
-title: Physical Data Center
+title: Deploy to a physical data center
 description: Deploy artifacts to VMs or bare-metal hosts in a physical data center.
+hide_table_of_contents: true
+redirect_from:
+  - /tutorials/cd-pipelines/vm/pdc
 ---
-
-# Physical Data Center
 
 <CTABanner
   buttonText="Learn More"
@@ -19,7 +18,7 @@ description: Deploy artifacts to VMs or bare-metal hosts in a physical data cent
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment type **Secure Shell (SSH)** that manages remote linux servers.
+This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment type **Secure Shell (SSH)** or **WinRM** that manages remote Linux servers.
 
 :::info
 
@@ -41,8 +40,6 @@ Verify that you have the following:
 
 ## Getting Started with Harness CD
 
----
-
 1. Log in to [Harness](https://app.harness.io/).
 
 2. Select **Projects**, and then select **Default Project**.
@@ -55,7 +52,7 @@ For the pipeline to run successfully, follow all of the steps below as they are,
 
 ### Set up the Harness Delegate
 
-<details open>
+<details>
 <summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
@@ -90,7 +87,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs
 
 ### Set up a Harness secret for your SSH private key
 
-<details open>
+<details>
 <summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
@@ -109,7 +106,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 ### Set up Harness connectors to your physical data center and Artifactory repository
 
-<details open>
+<details>
 <summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
@@ -137,7 +134,7 @@ For this tutorial, we'll use an artifact for a ToDo List app, `todolist.war`, wh
 
 ### Set up the Harness environment
 
-<details open>
+<details>
 <summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
@@ -153,7 +150,7 @@ Environments define the deployment location, categorized as **Production** or **
 
 ### Set up the Harness service
 
-<details open>
+<details>
 <summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
@@ -169,7 +166,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 ### Set up the pipeline
 
-<details open>
+<details>
 <summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
@@ -186,7 +183,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <Tabs>
 <TabItem value="Canary">
 
-<details open>
+<details>
 <summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
@@ -197,12 +194,12 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 2. Select **Save**.
 3. You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Canary](../static/vm-tutorials/ssh-canary.png)
+![Canary](./static/vm-tutorials/ssh-canary.png)
 
 </TabItem>
 <TabItem value="Rolling">
 
-<details open>
+<details>
 <summary>What are Rolling deployments?</summary>
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
@@ -213,12 +210,12 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 2. Select **Save**.
 3. You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Rolling](../static/vm-tutorials/ssh-rolling.png)
+![Rolling](./static/vm-tutorials/ssh-rolling.png)
 
 </TabItem>
 <TabItem value="Basic">
 
-<details open>
+<details>
 <summary>What are Basic deployments?</summary>
 
 With basic deployments, all nodes (pods, instances, etc) within a single environment are updated at the same time with a single new service/artifact version. For more information, go to [When to use basic deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts/#when-to-use-basic-deployments).
@@ -229,7 +226,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 2. Select **Save**.
 3. You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Basic](../static/vm-tutorials/ssh-basic.png)
+![Basic](./static/vm-tutorials/ssh-basic.png)
 
 </TabItem>
 </Tabs>
@@ -261,8 +258,6 @@ Verify that you have the following:
 
 ## Getting Started with Harness CD
 
----
-
 1. Log into [Harness](https://app.harness.io/).
 
 2. Select **Projects**, and then select **Default Project**.
@@ -275,7 +270,7 @@ For the pipeline to run successfully, please follow all of the following steps a
 
 ### Delegate
 
-<details open>
+<details>
 <summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
@@ -310,7 +305,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs
 
 ### Secrets
 
-<details open>
+<details>
 <summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
@@ -328,7 +323,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 ### Connectors
 
-<details open>
+<details>
 <summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
@@ -353,7 +348,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 ### Environment
 
-<details open>
+<details>
 <summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
@@ -369,7 +364,7 @@ Environments define the deployment location, categorized as **Production** or **
 
 ### Services
 
-<details open>
+<details>
 <summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
@@ -385,7 +380,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 ### Pipeline
 
-<details open>
+<details>
 <summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
@@ -402,7 +397,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <Tabs>
 <TabItem value="Canary">
 
-<details open>
+<details>
 <summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
@@ -413,12 +408,12 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Canary](../static/vm-tutorials/winrm-canary.png)
+![Canary](./static/vm-tutorials/winrm-canary.png)
 
 </TabItem>
 <TabItem value="Rolling">
 
-<details open>
+<details>
 <summary>What are Rolling deployments?</summary>
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
@@ -429,12 +424,12 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Rolling](../static/vm-tutorials/winrm-rolling.png)
+![Rolling](./static/vm-tutorials/winrm-rolling.png)
 
 </TabItem>
 <TabItem value="Basic">
 
-<details open>
+<details>
 <summary>What are Basic deployments?</summary>
 
 With basic deployments, all nodes (pods, instances, etc) within a single environment are updated at the same time with a single new service/artifact version. For more information, go to [When to use basic deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts/#when-to-use-basic-deployments).
@@ -445,7 +440,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Basic](../static/vm-tutorials/winrm-basic.png)
+![Basic](./static/vm-tutorials/winrm-basic.png)
 
 </TabItem>
 </Tabs>

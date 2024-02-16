@@ -24,8 +24,8 @@ We recommend you use either the [Harness UI](/docs/get-started/harness-ui-overvi
 - [All CD & GitOps tutorials](/tutorials/cd-pipelines)
 - [Kubernetes pipelines & GitOps workflows](/tutorials/cd-pipelines/kubernetes/)
 - [Serverless pipelines](/tutorials/cd-pipelines/serverless/)
-- [VM pipelines for traditional apps](/tutorials/cd-pipelines/vm/)
-- [Amazon ECS pipelines](/tutorials/cd-pipelines/amazon-ecs)
+- [VM pipelines for traditional apps](/docs/continuous-delivery/get-started/cd-tutorials/aws)
+- [Amazon ECS pipelines](/docs/continuous-delivery/get-started/cd-tutorials/amazon-ecs)
 - [Automate pipeline execution through pipeline triggers](/tutorials/cd-pipelines/trigger)
 
 ## Step 3. See advanced CD concepts in action
@@ -35,7 +35,7 @@ Now you are ready to learn advanced CD concepts through the following tutorials.
 - [Notifications](/tutorials/cd-pipelines/notifications)
 - [Approvals](/tutorials/cd-pipelines/approvals)
 - [Continuous Verification](/tutorials/cd-pipelines/continuous-verification/)
-- [Infrastructure Provisioning as part of CD pipeline](/tutorials/cd-pipelines/infra-provisioning/)
+- [Infrastructure Provisioning as part of CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/cloudformation.md)
 - [Variables & Expressions](/docs/platform/variables-and-expressions/harness-variables)
 
 ## Step 4. Automate onboarding for your own app 

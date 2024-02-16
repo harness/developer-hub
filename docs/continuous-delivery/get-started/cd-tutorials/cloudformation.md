@@ -1,7 +1,9 @@
 ---
-sidebar_position: 0
-hide_table_of_contents: true
-title: AWS CloudFormation
+title: AWS CloudFormation infrastructure provisioning
+description: Learn how to use AWS CloudFormation for infrastructure provisioning for Harness CD.
+redirect_from:
+  - /tutorials/cd-pipelines/infra-provisioning/cloudformation
+  - /tutorials/cd-pipelines/infra-provisioning
 ---
 
 <CTABanner
@@ -53,10 +55,7 @@ This totrial will focsus on the use of CloudFormation to provision any resources
 </Tabs>
  -->
 
-## Provision and delete infrastructure
-
-<Tabs>
-<TabItem value="Provision with CloudFormation Create Stack">
+## Provision with CloudFormation Create Stack
 
 This tutorial will provision resources in a **Custom stage** using the CloudFormation **Create Stack** step.
 
@@ -134,8 +133,7 @@ If you already have a Git connector that gives access to your forked [harnesscd-
 
 Check your AWS Management console for CloudFormation and you'll find the new CloudFormation Stack created.
 
-</TabItem>
-<TabItem value="Rollback provisioned infrastructure with the CloudFormation Rollback step">
+## Rollback provisioned infrastructure with the CloudFormation Rollback step
 
 This tutorial will rollback infrastructure using the **CloudFormation Rollback Stack step** in the **Rollback** section of your Deploy stage.
 
@@ -269,6 +267,3 @@ Here we are using the same EKS cluster we provisioned in the **Provision with Cl
 6. Select **Add Step**, and add the **CLoudFormation Rollback** step.
 7. In **Provisioner Identifier**, enter `demoprovision` and apply changes.
 8. Select **Save** and **Run** the pipeline.
-
-</TabItem>
-</Tabs>

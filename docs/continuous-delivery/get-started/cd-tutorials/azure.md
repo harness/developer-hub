@@ -1,7 +1,9 @@
 ---
-sidebar_position: 0
+title: Deploy to Azure VMs
+description: Deploy a traditional app to Microsoft Azure VMs
 hide_table_of_contents: true
-title: AWS
+redirect_from:
+  - /tutorials/cd-pipelines/vm/azure
 ---
 
 <CTABanner
@@ -16,7 +18,7 @@ title: AWS
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment types **Secure Shell (SSH)** and **WinRM** to deploy applications to remote Linux and Windows servers.
+This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment types **Secure Shell (SSH)** and **WinRM** to deploy applications to remote Linux and Windows servers on Azure.
 
 :::info
 
@@ -31,7 +33,7 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 Verify the following:
 
-1. **One or more Linux Instances on AWS**. Make sure port **22** is open on the security group.
+1. **One or more Linux Instances on Azure**. Make sure port **22** is open.
 2. **SSH private key (\*.pem file) to authenticate with the remote instance(s).** To understand how SSH password-less authentication works, go to [Passwordless SSH using public-private key pairs](https://www.redhat.com/sysadmin/passwordless-ssh).
 3. **[Docker](https://docs.docker.com/engine/install/)** to set up and start the Harness Docker delegate.
    - For more information, go to [Delegate system and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
@@ -48,7 +50,7 @@ Verify the following:
 
 ### Delegate
 
-<details open>
+<details>
 <summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
@@ -83,7 +85,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs
 
 ### Secrets
 
-<details open>
+<details>
 <summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
@@ -100,31 +102,31 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
    - Enter the secret name `ssh-private-key` and select **Browse** to upload the SSH private key to the Harness Secret Manager.
    - Select **Save** and, if needed, modify the SSH port number.
    - Finally, select **Save and Continue** and verify the connection to remote server is successful.
-2. Create a secret to store the AWS secrete key.
+2. Create a secret to store the authentication key for your Azure application.
    - In **Project Setup**, select **Secrets**.
    - Click **New Secret**, and then select **Text**.
-   - Enter the secret name `harness_awssecretkey`.
+   - Enter the secret name `azuresecret`.
    - For the secret value, paste in the AWS Secret Key.
    - Select **Save**.
 
 ### Connectors
 
-<details open>
+<details>
 <summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
 
 </details>
 
-1. Create an **AWS connector**.
-   - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/aws-connector.yml).
+1. Create an **Azure connector**.
+   - Copy the contents of [azure-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/azure-connector.yml).
    - In Harness, in **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste the copied YAML.
-   - In the YAML, replace **AWS_ACCESS_KEY_ID** with the AWS Access Key ID value.
-   - Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
+   - Select **Create via YAML Builder** and paste in the copied YAML.
+   - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace and **TENANT_ID** with the Id of the Microsoft Entra ID in which you created your application.
+   - Select **Save Changes** and verify that the new connector named **harness_azureconnector** is successfully created.
    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
-   - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/artifactory-connector.yml).
+2. Create a **Artifactory connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+   - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/artifactory-connector.yml).
    - In Harness, in **Project Setup**, select **Connectors**.
    - Select **Create via YAML Builder** and paste the copied YAML.
    - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
@@ -132,7 +134,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 ### Environment
 
-<details open>
+<details>
 <summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
@@ -141,15 +143,15 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
    - Select **New Environment** and toggle to **YAML** to use the YAML editor.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/environment.yml) and paste it into the YAML editor and select **Save**.
+   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/environment.yml) and paste it into the YAML editor and select **Save**.
    - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/infrastructure-definition.yml) and paste it into the YAML editor.
-   - In the Infra Definition YAML, replace **AWS_REGION** with the region where your instance is running and **INSTANCE_NAME** with the name of the instance.
+   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/infrastructure-definition.yml) and paste it into the YAML editor.
+   - In the Infra Definition YAML, replace **VM_SUBSCRIPTION_ID**, **VM_RESOURCE_GROUP**, and **INSTANCE_NAME** with the VM Subscription ID, Resource Group and the name of the instance.
    - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
 ### Services
 
-<details open>
+<details>
 <summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
@@ -160,12 +162,12 @@ In Harness, services represent what you deploy to environments. You use services
    - Select **New Service**.
    - Name the service `harness_ssh`.
    - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-   - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/service.yml) and paste it into the YAML editor.
+   - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/service.yml) and paste it into the YAML editor.
    - Select **Save** and verify that the service **harness_ssh** is successfully created.
 
 ### Pipeline
 
-<details open>
+<details>
 <summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
@@ -176,56 +178,56 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
    - Select **New Pipeline**.
    - Enter the name `harness_ssh_pipeline`.
    - Select **Inline** to store the pipeline in Harness.
-   - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+   - Select **Start** and, in Pipeline Studio, toggle to **YAML** to use the YAML editor.
    - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
 <Tabs>
 <TabItem value="Canary">
 
-<details open>
+<details>
 <summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
 </details>
 
-- Copy the contents of [pipeline-ssh-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/pipeline-ssh-canary.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-ssh-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/pipeline-ssh-canary.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Canary](../static/vm-tutorials/ssh-canary.png)
+![Canary](./static/vm-tutorials/ssh-canary.png)
 
 </TabItem>
 <TabItem value="Rolling">
 
-<details open>
+<details>
 <summary>What are Rolling deployments?</summary>
 
-Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+Rolling deployments incrementally add nodes/instances in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
 </details>
 
-- Copy the contents of [pipeline-ssh-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/pipeline-ssh-rolling.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-ssh-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/pipeline-ssh-rolling.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Rolling](../static/vm-tutorials/ssh-rolling.png)
+![Rolling](./static/vm-tutorials/ssh-rolling.png)
 
 </TabItem>
 <TabItem value="Basic">
 
-<details open>
+<details>
 <summary>What are Basic deployments?</summary>
 
 With basic deployments, all nodes (pods, instances, etc) within a single environment are updated at the same time with a single new service/artifact version. For more information, go to [When to use basic deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts/#when-to-use-basic-deployments).
 
 </details>
 
-- Copy the contents of [pipeline-ssh-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/pipeline-ssh-basic.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-ssh-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/pipeline-ssh-basic.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Basic](../static/vm-tutorials/ssh-basic.png)
+![Basic](./static/vm-tutorials/ssh-basic.png)
 
 </TabItem>
 </Tabs>
@@ -245,7 +247,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 Verify the following:
 
-1. **One or more Windows instances on AWS**. Make sure port **5985** is open on the security group.
+1. **One or more Windows instances on Azure**. Make sure port **5985** is open.
    - Review Microsoft docs on [how to install and configure WinRM](https://learn.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
 2. **[Docker](https://docs.docker.com/engine/install/)** to set up and start the Harness Docker Delegate.
    - For more information, go to [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
@@ -263,7 +265,7 @@ Verify the following:
 
 ### Delegate
 
-<details open>
+<details>
 <summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
@@ -298,7 +300,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs
 
 ### Secrets
 
-<details open>
+<details>
 <summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
@@ -317,36 +319,36 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 2. Create a secret to store the AWS secrete key.
    - In **Project Setup**, select **Secrets**.
    - Select **New Secret**, and then select **Text**.
-   - Enter the secret name `harness_awssecretkey`.
+   - Enter the secret name `azuresecret`.
    - For the secret value, paste in the AWS Secret Key.
    - Select **Save**.
 
 ### Connectors
 
-<details open>
+<details>
 <summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
 
 </details>
 
-1. Create a **AWS connector**.
-   - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/aws-connector.yml).
+1. Create an **Azure connector**.
+   - Copy the contents of [azure-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/azure-connector.yml).
    - In Harness, in **Project Setup**, select **Connectors**.
    - Select **Create via YAML Builder** and paste the copied YAML.
-   - In the YAML, replace **AWS_ACCESS_KEY_ID** with the AWS Access Key ID value.
-   - Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
+   - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace **TENANT_ID** with the Id of the Microsoft Entra ID in which you created your application.
+   - Select **Save Changes** and verify that the new connector named **harness_azureconnector** is successfully created.
    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
-   - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/artifactory-connector.yml).
+2. Create a **Artifactory connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+   - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/artifactory-connector.yml).
    - In Harness, in **Project Setup**, select **Connectors**.
-   - Select **Create via YAML Builder** and paste in the copied YAML.
+   - Select **Create via YAML Builder** and paste the copied YAML.
    - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 
 ### Environment
 
-<details open>
+<details>
 <summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
@@ -355,15 +357,15 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
    - Select **New Environment** and toggle to **YAML** to use the YAML editor.
-   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/environment.yml) and paste it into the YAML editor and select **Save**.
+   - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/environment.yml) and paste it into the YAML editor and select **Save**.
    - In **Infrastructure Definitions**, select **Infrastructure Definition**, and the select **Edit YAML**.
-   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/infrastructure-definition.yml) and paste it into the YAML editor.
-   - In the Infra Definition YAML, replace **AWS_REGION** with the region where your instance is running and **INSTANCE_NAME** with the name of the instance.
+   - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/infrastructure-definition.yml) and paste it into the YAML editor.
+   - In the Infrastructure Definition YAML, replace **VM_SUBSCRIPTION_ID**, **VM_RESOURCE_GROUP**, and **INSTANCE_NAME** with the VM Subscription ID, Resource Group and the name of the instance.
    - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
 ### Services
 
-<details open>
+<details>
 <summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
@@ -374,12 +376,12 @@ In Harness, services represent what you deploy to environments. You use services
    - Select **New Service**.
    - Name the service `harness_winrm`.
    - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-   - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/service.yml) and paste it into the YAML editor.
+   - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/service.yml) and paste it into the YAML editor.
    - Select **Save** and verify that the Service **harness_ssh** is successfully created.
 
 ### Pipeline
 
-<details open>
+<details>
 <summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
@@ -396,50 +398,50 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <Tabs>
 <TabItem value="Canary">
 
-<details open>
+<details>
 <summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
 </details>
 
-- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-canary.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/pipeline-canary.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Canary](../static/vm-tutorials/winrm-canary.png)
+![Canary](./static/vm-tutorials/winrm-canary.png)
 
 </TabItem>
 <TabItem value="Rolling">
 
-<details open>
+<details>
 <summary>What are Rolling deployments?</summary>
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
 </details>
 
-- Copy the contents of [pipeline-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-rolling.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/pipeline-rolling.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Rolling](../static/vm-tutorials/winrm-rolling.png)
+![Rolling](./static/vm-tutorials/winrm-rolling.png)
 
 </TabItem>
 <TabItem value="Basic">
 
-<details open>
+<details>
 <summary>What are Basic deployments?</summary>
 
 With basic deployments, all nodes (pods, instances, etc) within a single environment are updated at the same time with a single new service/artifact version. For more information, go to [When to use basic deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts/#when-to-use-basic-deployments).
 
 </details>
 
-- Copy the contents of [pipeline-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-basic.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/pipeline-basic.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Basic](../static/vm-tutorials/winrm-basic.png)
+![Basic](./static/vm-tutorials/winrm-basic.png)
 
 </TabItem>
 </Tabs>
@@ -458,7 +460,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 ### Congratulations!🎉
 
-You've just learned how to use Harness CD to copy an artifact to AWS instances.
+You've just learned how to use Harness CD to copy an artifact to Azure instances.
 
 #### What's Next?
 

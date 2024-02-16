@@ -192,17 +192,6 @@ export const AdvList: CardItem[] = [
     time: "20min",
     link: "/tutorials/cd-pipelines/approvals",
   },
-  {
-    title: "Continuous Verification with Prometheus",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: (
-      <>Verify Deployments with Prometheus & Auto Rollback on Failures</>
-    ),
-    type: [docType.Documentation],
-    time: "20min",
-    link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
-  },
 ];
 
 export const CDList: CardSections = [
