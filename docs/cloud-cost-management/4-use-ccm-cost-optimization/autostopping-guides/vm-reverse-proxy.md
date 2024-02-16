@@ -25,7 +25,7 @@ Let's assume that you have a setup in AWS, where a domain `todolist.example.com`
 
 _Routing based on Hostname to an EC2 under AWS ALB_
 
-<DocImage path={require('../static/reverse-proxy-vm-autostop/ec2-under-alb.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/reverse-proxy-vm-autostop/ec2-under-alb.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Incorporating this rule into AutoStopping is a simple process. By importing the ALB (Application Load Balancer) as a Harness load balancer and configuring an AutoStopping rule for the EC2 instance with the custom domain as `todolist.example.com` in the Harness platform, the AutoStopping feature seamlessly manages the EC2 instance based on the defined rule.
 
@@ -39,7 +39,7 @@ Consider a scenario where an HAProxy serves as a reverse proxy, bridging the gap
 
 _HAProxy as a reverse proxy between ALB and EC2 instance_
 
-<DocImage path={require('../static/reverse-proxy-vm-autostop/ha-proxy-setup.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/reverse-proxy-vm-autostop/ha-proxy-setup.png')} width="60%" height="60%" title="Click to view full size image" />
 
 In this scenario, it is not feasible to directly onboard the EC2 instance to AutoStopping as previously done because the ALB does not directly send data to the resource. While it is possible to onboard the HAProxy machine, this is not the desired outcome since the goal is to AutoStop the EC2 machine itself. Additionally, since the HAProxy can be associated with multiple domains and applications, access to any of them would keep the proxy up, which would not result in the expected cost savings.
 
@@ -68,7 +68,7 @@ After you reload the HAProxy configuration after this, the setup looks like the 
 
 _Setup with HAProxy forwarding requests to Harness AutoStopping Proxy_
 
-<DocImage path={require('../static/reverse-proxy-vm-autostop/setup-with-autostopping-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/reverse-proxy-vm-autostop/setup-with-autostopping-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Warmup the instance
 
