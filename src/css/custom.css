@@ -424,11 +424,13 @@ h2 {
 .button--nav:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
+  color: white;
 }
 .button--cta:hover,
 .button--primary:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
+  color: white;
 }
 
 .button--primary {

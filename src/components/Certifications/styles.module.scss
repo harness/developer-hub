@@ -66,7 +66,7 @@
           border-radius: 8px 8px 0 0;
           &:hover {
             background-color: var(--gray-50);
-            color: var(--ifm-color-content-invert);
+            color: var(--hover);
           }
           &.active {
             font-weight: 700;
@@ -455,7 +455,7 @@
       }
       .innerCard {
         border: 2px solid var(--gray-200);
-        background-color: var(--white);
+        background-color: var(--background-color);
         border-radius: 8px;
         padding: 32px;
         display: flex;
@@ -552,14 +552,10 @@
   margin-top: 50px;
   .examDetailsCard {
     border: 2px solid var(--gray-200);
-    background-color: var(--white);
+    background-color: var(--background-color);
     border-radius: 8px;
     padding: 32px;
-    // display: flex;
-    // width: 100%;
-    // .desc {
-    //     margin-bottom: 24px;
-    // }
+
     .btnContainer {
       display: flex;
       gap: 24px;

@@ -10,10 +10,13 @@ import Feedback from "@site/src/components/Feedback";
 import MDXContent from "@theme/MDXContent";
 import Lottie from "lottie-react";
 import allModuleAnimation from "./assets/hdh_hero.json";
+import allModuleAnimationDark from "./assets/hdh_hero-dark.json";
 
 import styles from "./index.module.scss";
 
+import { useColorMode } from "@docusaurus/theme-common";
 function HomepageHeader() {
+  const { colorMode } = useColorMode();
   const { siteConfig } = useDocusaurusContext();
   return (
     <>
@@ -24,7 +27,13 @@ function HomepageHeader() {
         </div>
       </header>
       <div className={styles.heroImg}>
-        <Lottie animationData={allModuleAnimation} loop={true} />
+        <Lottie
+          animationData={
+            colorMode === "dark" ? allModuleAnimationDark : allModuleAnimation
+          }
+          loop={true}
+        />
+        {/* <Lottie animationData={allModuleAnimationDark} loop={true} /> */}
       </div>
     </>
   );
