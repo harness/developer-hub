@@ -118,6 +118,7 @@ These plugins are in addition to Harness CI's [built-in codebase and SCM integra
 
 | Plugin | Use | Source | Image |
 | ------ | --- | ------ | ----- |
+| GCP OIDC Token | [Generate a Google access token from your OIDC token](../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc](https://github.com/harness-community/drone-gcp-oidc) | plugins/gcp-oidc |
 | Google Chat | Post build status messages to your organization's Google Chat. | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
 | Google Cloud Functions | Deploy, list, and delete Google Cloud Functions. | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |
 | Google Cloud Storage Cache | Preserve files and directories between builds. You can also use the built-in [Save and Restore Cache from GCS steps](../caching-ci-data/save-cache-in-gcs.md). | [drone-gcs-cache](https://github.com/hvalle/drone-gcs-cache) | homerovalle/drone-gcs-cache |
@@ -195,13 +196,12 @@ Harness offers built-in support for [notifications](/docs/category/notifications
 
 These plugins are useful for security-related tasks, such as authentication or scanning. For more information about security features available in Harness CI, go to [Security hardening for Harness CI](/docs/continuous-integration/secure-ci/security-hardening).
 
-<!-- Temporarily hidden for further development: GCP OIDC - [Generate a Google access token from your OIDC token]  (../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc] (https://github.com/harness-community/drone-gcp-oidc) plugins/gcp-oidc -->
-
 | Plugin | Use | Source | Image |
 | ------ | --- | ------ | ----- |
 | Cloudflare Caching | Use Cloudflare's API to purge cache. | [drone-cloudflare-caching](https://github.com/jetrails/drone-cloudflare-caching) | jetrails/drone-cloudflare-caching |
 | Cloudflare DNS | Use Cloudflare's API to create/update/delete DNS records. | [drone-cloudflare-dns](https://github.com/jetrails/drone-cloudflare-dns) | jetrails/drone-cloudflare-dns |
 | DCO | Enforce Developer Certificate of Origin. | [drone-plugin-dco](https://git.madhouse-project.org/algernon/drone-plugin-dco) | algernon/drone-plugin-dco |
+| GCP OIDC Token | [Generate a Google access token from your OIDC token](../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc](https://github.com/harness-community/drone-gcp-oidc) | plugins/gcp-oidc |
 | GPG Sign | Sign your artifacts and build results with [GnuPG](https://www.gnupg.org/). | [drone-gpgsign](https://github.com/drone-plugins/drone-gpgsign) | plugins/gpgsign |
 | Maven Auth | Generate `settings.xml` with server authentication for a Maven repository. | [drone-mvn-auth](https://github.com/robertstettner/drone-mvn-auth) | robertstettner/drone-mvn-auth |
 | NPM Auth | Generate a `.npmrc` file locally to authenticate against any public/private NPM repository. | [drone-npm-auth](https://github.com/robertstettner/drone-npm-auth) | robertstettner/drone-npm-auth |

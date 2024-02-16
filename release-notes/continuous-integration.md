@@ -45,6 +45,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 * Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. (CI-10938)
 * Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
 * In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. If you want change this behavior, for example to limit it to directories at the root level or at a certain path, you can use the Test Globs setting to override the default test globs pattern. (CI-11272, ZD-57661)
+* The Harness Community team has developed a new plugin to help you automate more processes in your CI pipelines:
+   * The [GCP OIDC Token plugin](/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin) generates a Google Cloud access token from your OIDC token and then stores the GCP token in an output variable that you can use in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
 
 #### Fixed issues
 
