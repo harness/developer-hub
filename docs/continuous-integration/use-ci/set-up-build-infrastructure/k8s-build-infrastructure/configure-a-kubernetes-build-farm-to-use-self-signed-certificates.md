@@ -38,7 +38,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
      namespace: harness-delegate-ng  
    type: Opaque  
    stringData:                             
-     ca.bundle: |  
+     ca.bundle: XXXXXXXXXXXXXXXXXXXXXXXXXXX   
        -----BEGIN CERTIFICATE-----  
        XXXXXXXXXXXXXXXXXXXXXXXXXXX  
        -----END CERTIFICATE-------  
@@ -51,16 +51,16 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    For instructions, go to the Kubernetes documentation on [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/).
 
-   In the delegate pod, you must specify `DESTINATION_CA_PATH`. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
+   Provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
+
+   <!-- https://harness.atlassian.net/browse/STO-7123?focusedCommentId=672164 -->
 
    ```yaml
           env:
-           - name: DESTINATION_CA_PATH
-             value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-             volumeMounts:
-              - name: certvol
-                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-                subPath:  ca.bundle
+          volumeMounts:
+            - name: certvol
+              mountPath: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+              subPath:  ca.bundle
           volumes:
            - name: certvol
              secret:
@@ -100,15 +100,18 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    The `CI_MOUNT_VOLUMES` list must include *all* certificates that your build containers need to interact with external services.
 
    ```yaml
-          env:  
-           - name: ADDITIONAL_CERTS_PATH  
-             value: /tmp/ca.bundle  
-           - name: CI_MOUNT_VOLUMES  
-             value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
-          volumeMounts:  
-              - name: certvol  
-                mountPath: /tmp/ca.bundle  
-                subPath:  ca.bundle 
+        spec:
+          containers:
+            - image: harness/delegate:yy.mm.verno
+              env:  
+                 - name: ADDITIONAL_CERTS_PATH  
+                   value: /tmp/ca.bundle  
+                 - name: CI_MOUNT_VOLUMES  
+                   value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
+              volumeMounts:  
+                 - name: certvol  
+                   mountPath: /tmp/ca.bundle  
+                   subPath:  ca.bundle 
           volumes:  
             - name: certvol  
               secret:  
@@ -134,25 +137,22 @@ If you have STO scan steps in your pipeline, do the following:
 
    `docker login my-registry.local.org:799`
 
-   You would then need to configure or extend the `DESTINATION_CA_PATH` on the delegate as follows. Note the `value` path:
+   You would then need to configure or extend the `mountPath` on the delegate as follows. Note the `value` path:
 
    ```yaml
-   env:
-     - name: DESTINATION_CA_PATH
-       value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt"
-   volumeMounts:
-     - name: certvol
-       mountPath: opt/harness-delegate/ca-bundle
-       subPath:  ca.bundle
-   volumes:
-     - name: certvol
-       secret:
-       secretName: addcerts
-       items:
-          - key: ca.bundle
-            path: ca.bundle
-   ``` 
-   
+          env:
+          volumeMounts:
+            - name: certvol
+              mountPath: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt,/etc/docker/certs.d/my-registry.local.org:799/ca.crt"
+              subPath:  ca.bundle
+          volumes:
+           - name: certvol
+             secret:
+               secretName: addcerts
+               items:
+                - key: ca.bundle
+                  path: ca.bundle
+   ```
 
 3. Complete the additional steps and requirements described in [Add custom certificates to a delegate](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
 
