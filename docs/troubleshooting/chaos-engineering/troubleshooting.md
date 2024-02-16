@@ -117,7 +117,7 @@ This could be due to a variety of reasons, such as:
 
 ### Debug
 
-1. Check the subscriber's health; if the subscriber isn’t active, it can’t fetch the tasks to create the experiment.
+1. Check the subscriber's health; if the subscriber isn’t active, it can’t fetch the tasks to create the experiment. In such a case, check the logs of the subscriber and restart the subscriber pod.
 2. Check the logs of the control plane components, such as Chaos Manager and Kubernetes IFS.
 
 ## While executing an experiment, it directly moves to ERROR state and the execution data for the run is absent
@@ -164,13 +164,12 @@ This could be due to a variety of reasons, such as:
 2. If the experiment doesn’t have a label as an instance ID (aka infrastructure ID), check if you deployed the experiment manually or generated it from the UI (frontend). 
     1. The manifest generated from the UI will always have a label associated with it. If you don't see a label, use the infrastructure ID of the chaos infrastructure on which you are running the experiment. Also report the issue to [Harness support](mailto:support@harness.io).
     2. If you are using an API to generate the manifest, check the manifest for any erroneous values.
-    3. If the manifest was generated from the UI, contact [Harness support](mailto:support@harness.io).
 
 3. If the workflow has a label instance ID but it doesn't match the instance ID available in the workflow controller configmap:
     1. Compare both the instance IDs of the experiment and the configmap. If they don't match:
       1. Verify that the instance ID from the configmap is correct. The instance ID and the infra ID should match. 
         1. If they don't match, it means you have not applied the Kubernetes infrastructure manifest correctly.
-        2. If the instance ID matches the infra ID, it means the experiment has the wrong label.
+        2. If the instance ID matches the infra ID, it means the experiment has the wrong label. In such a case, you can update the label instance ID with the infrastructure ID.
 
 ## Started executing an experiment, but one of the experiment step nodes is in a PENDING state
 
