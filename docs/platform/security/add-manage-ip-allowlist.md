@@ -4,10 +4,6 @@ description: Add and manage the list of allowed IP addresses.
 sidebar_position: 1
 ---
 
-:::important
-Currently, this feature is behind the feature flag `PL_IP_ALLOWLIST_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Management of the IP allowlist involves reviewing and updating the list of approved IP addresses regularly to ensure that only authorized users are granted access. After you enable IP allowlist, only users connecting from the configured IP address/[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) block will be able to log into Harness.
 
 The following are some key benefits of IP allowlist management:
