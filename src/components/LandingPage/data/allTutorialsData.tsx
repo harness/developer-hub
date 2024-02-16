@@ -6,26 +6,6 @@ import { MODULES } from "../../../constants";
 /* Module Card lists are defined in the data file for each module */
 export const FeaturedList: CardItem[] = [
   {
-    title: "GAR GKE CI/CD Pipeline.",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: <>Build and push to GAR and deploy to GKE.</>,
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "30 min",
-    link: "/tutorials/cd-pipelines/unified-cicd/gar-gke-pipeline",
-  },
-  {
-    title: "Deploy a Kubernetes Helm Chart",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "8 min",
-    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-  },
-  {
     title: "Get started with the fastest CI on the planet",
 
     module: MODULES.ci,

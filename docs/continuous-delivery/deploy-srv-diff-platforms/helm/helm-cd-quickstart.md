@@ -8,7 +8,7 @@ Harness supports Helm deployments as part of its Kubernetes swimlane. You can de
 
 This topic summarizes Helm support in Harness and provides links to Helm-related topics.
 
-For a quick tutorial, go to [Deploy using Helm Chart](/tutorials/cd-pipelines/kubernetes/helm-chart).
+For a quick tutorial, go to [Deploy using Helm Chart](/docs/continuous-delivery/get-started/cd-tutorials/helm-chart).
 
 Learn [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts) before you review Helm deployment basics below.
 

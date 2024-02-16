@@ -14,7 +14,7 @@ You can create services from:
 * An account
 * An Organization
 
-If you are new to Harness, review [Harness key concepts](/docs/get-started/key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
+If you are new to Harness, review [Harness key concepts](/docs/get-started/key-concepts.md) and [create your first CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/manifest).
 
 
 import Tabs from '@theme/Tabs';

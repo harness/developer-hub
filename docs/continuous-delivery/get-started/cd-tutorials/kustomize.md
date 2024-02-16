@@ -1,10 +1,11 @@
 ---
-sidebar_position: 2
+title: Deploy using Kustomize
+description: Deploy using Kustomize
 hide_table_of_contents: true
-title: Kustomize
+sidebar_position: 2
+redirect_from:
+  - /tutorials/cd-pipelines/kubernetes/kustomize
 ---
-
-# Deploy using Kustomize
 
 <CTABanner
   buttonText="Learn More"
@@ -18,7 +19,7 @@ title: Kustomize
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<!---
+<!--
 Import statements for CLI downloads
 <MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
 -->
@@ -36,26 +37,16 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 :::
 
-:::info
-
 Kubernetes is required to complete these steps. Run the following to check your system resources and (optionally) install a local cluster.
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/main/delegate-preflight-checks/cluster-preflight-checks.sh)
 ```
 
-:::
-
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
 
-:::info
-
 Whether you're new to GitOps or have already used Argo CD, this guide will assist you in getting started with Harness GitOps, both with and without Argo CD.
-
-Harness also offers a Hosted GitOps solution, and a tutorial for it will be available soon.
-
-:::
 
 ## Before you begin
 
@@ -67,8 +58,6 @@ Verify the following:
    - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness GitOps
-
----
 
 1. Log in to the [Harness App](https://app.harness.io/).
 
@@ -211,7 +200,7 @@ A GitOps Application collects the Repository (**what you want to deploy**), Clus
 
 On successful Application sync, you'll see the below status tree under **Resource View**.
 
-![GitOps](../static/kustomize-tutorial/gitops.png)
+![GitOps](./static/kustomize-tutorial/gitops.png)
 
 ### Congratulations!🎉
 
@@ -243,8 +232,6 @@ Complete the following tasks:
    - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD
-
----
 
 1. Download and configure the Harness CLI.
 
@@ -431,7 +418,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/canary-pipeline.y
 
 - You can confirm the pipeline, stage, and execution steps are as shown below in the Harness UI.
 
-![Canary](../static/kustomize-tutorial/canary.png)
+![Canary](./static/kustomize-tutorial/canary.png)
 
 </TabItem>
 <TabItem value="bg" label="Blue Green">
@@ -444,7 +431,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/bluegreen-pipelin
 
 - You can confirm the pipeline, stage, and execution steps are as shown below in the Harness UI.
 
-![Blue Green](../static/kustomize-tutorial/bluegreen.png)
+![Blue Green](./static/kustomize-tutorial/bluegreen.png)
 
 </TabItem>
 <TabItem value="rolling" label="Rolling">
@@ -457,7 +444,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.
 
 - You can confirm the pipeline, stage, and execution steps are as shown below in the Harness UI.
 
-![Rolling](../static/kustomize-tutorial/rolling.png)
+![Rolling](./static/kustomize-tutorial/rolling.png)
 
 </TabItem>
 </Tabs>
@@ -477,8 +464,6 @@ Verify the following:
    - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD
-
----
 
 1. Log into [Harness](https://app.harness.io/).
 
@@ -605,7 +590,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Canary](../static/kustomize-tutorial/canary.png)
+![Canary](./static/kustomize-tutorial/canary.png)
 
 </TabItem>
 <TabItem value="bg" label="Blue Green">
@@ -624,7 +609,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Blue Green](../static/kustomize-tutorial/bluegreen.png)
+![Blue Green](./static/kustomize-tutorial/bluegreen.png)
 
 </TabItem>
 <TabItem value="rolling" label="Rolling">
@@ -643,7 +628,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
-![Rolling](../static/kustomize-tutorial/rolling.png)
+![Rolling](./static/kustomize-tutorial/rolling.png)
 
 </TabItem>
 </Tabs>

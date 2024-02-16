@@ -78,9 +78,7 @@ Verify that you have the following:
 
 :::info What is a delegate?
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. To learn more about delegates, go to the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
-
-Make sure the delegate is installed and it is connected. For more details, go to the Google Cloud Functions [tutorial](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Make sure the delegate is installed and it is connected. To learn more about delegates, go to the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 :::
 
@@ -158,9 +156,7 @@ Verify that you have the following:
 
 :::info What is a Delegate?
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
-
-Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Make sure the delegate is installed and it is connected. Learn more about the delegate in the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 :::
 
@@ -228,9 +224,7 @@ Verify that you have the following:
 
 :::info What is a delegate?
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Learn more about the delegate in the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
-
-Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Make sure the delegate is installed and it is connected. Learn more about the delegate in the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 :::
 
@@ -288,9 +282,7 @@ Verify that you have the following:
 
 :::info What is a delegate?
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Learn more about the delegate in the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
-
-Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Make sure the delegate is installed and it is connected. Learn more about the delegate in the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 :::
 
@@ -354,9 +346,7 @@ Verify that you have the following:
 
 :::info What is a delegate?
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. To learn more about delegates, go to the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
-
-Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Make sure the delegate is installed and it is connected. To learn more about delegates, go to the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 :::
 

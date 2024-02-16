@@ -28,7 +28,7 @@ This tutorial focuses on how to notify users of different pipeline events using 
 
 ## Before you begin
 
-- Before you start this tutorial, you need to have a **Harness CD pipeline** with active delegates and connectors. Please follow this [tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) to get started with Harness Continuous Delivery (CD). The tutorial below uses the Harness resources created as part of the get started tutorial.
+- Before you start this tutorial, you need to have a **Harness CD pipeline** with active delegates and connectors. Please follow this [tutorial to get started with Harness Continuous Delivery (CD)](/docs/continuous-delivery/get-started/cd-tutorials/manifest). The tutorial below uses the Harness resources created as part of that tutorial.
 
 - **Harness User Group:** This tutorial uses [Harness user groups](/docs/platform/role-based-access-control/add-user-groups/) to manage user access. Create a user group named `notification-demo` at the account level, and add yourself as a user.
 

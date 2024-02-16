@@ -97,9 +97,9 @@ Tabs can also now have direct [query strings](https://docusaurus.io/docs/markdow
 
 e.g deeper linking:
 
-- https://developer.harness.io/tutorials/hdh/hdh-docusaurus-sandbox/?tab-number=1#tabs
-- https://developer.harness.io/tutorials/hdh/hdh-docusaurus-sandbox/?tab-number=2#tabs
-- https://developer.harness.io//tutorials/cd-pipelines/kubernetes/manifest?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd
+- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox/?tab-number=1#tabs
+- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox/?tab-number=2#tabs
+- https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/manifest?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd
 
 Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue.
 `?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd`

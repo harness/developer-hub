@@ -1,14 +1,10 @@
 ---
-sidebar_position: 4
-hide_table_of_contents: true
 title: Secure Container Image Signing with Cosign and OPA
 description: Add container image verification with Cosign and policy enforcement via OPA to your Kubernetes deployment.
-keywords:
-  [Container Security, Image Signing, Cosign, Open Policy Agent, Kubernetes]
-slug: /cd-pipelines/kubernetes/cosign-opa
+sidebar_position: 4
+redirect_from:
+  - /tutorials/cd-pipelines/kubernetes/cosign-opa
 ---
-
-# Secure Container Image Signing with Cosign and OPA
 
 <CTABanner
   buttonText="Learn More"
@@ -19,9 +15,7 @@ slug: /cd-pipelines/kubernetes/cosign-opa
   target="_self"
 />
 
-<DocsTag  text="Harness Enterprise Feature" /> 
-<br />
-<br />
+<DocsTag text="Harness Enterprise Feature" />
 
 Imagine that you're deploying a container image to a Kubernetes cluster. But how can you verify that the container image is safe to deploy? [Cosign](https://github.com/sigstore/cosign) is a tool for container image signing and verification. Open Policy Agent (OPA) is an open-source, general-purpose policy engine that enables policy-based control across various software stacks, including Kubernetes deployments. Harness Continuous Delivery & GitOps includes OPA to ensure compliance in your deployment pipelines. In the [Kubernetes Manifest tutorial](../kubernetes/manifest.md), you deployed a container image for the guestbook application to a Kubernetes cluster. In this tutorial, we'll leverage the combined power of Cosign and OPA to ensure the secure deployment of container images to your Kubernetes cluster.
 
@@ -42,7 +36,7 @@ Ensure that you have the following:
 
 Without Cosign or OPA in place, your CD pipeline could pull an image and deploy it to your Kubernetes cluster without verification. With Cosign and OPA in place, the flow (simplified version) looks something like this:
 
-![Developer flow with Cosign and OPA](../static/k8s-cosign-opa-tutorial/developer-flow-with-cosign-opa.png)
+![Developer flow with Cosign and OPA](./static/k8s-cosign-opa-tutorial/developer-flow-with-cosign-opa.png)
 
 Let's dive into the project of securing image signing for your containerized applications.
 
@@ -100,7 +94,7 @@ Let's use Docker Hub as an example of an image registry.
 
 Here, the flag `-a` adds an annotation to each signature. A window will open for both commands for you to sign in to your OIDC provider and, once authenticated, you'll see a success message from Sigstore:
 
-![Cosign verify successful](../static/k8s-cosign-opa-tutorial/cosign_verify_success.png)
+![Cosign verify successful](./static/k8s-cosign-opa-tutorial/cosign_verify_success.png)
 
 The response in your terminal should look like this:
 
@@ -136,11 +130,9 @@ Looking at the above example, your goal is to allow the deployment of `dewandemo
 
 ## Image verification using Cosign and OPA
 
----
-
 From the [**Kubernetes Manifest tutorial**](../kubernetes/manifest.md), you have a stage **deploy-guestbook** within the deployment pipeline **harness_guestbook_pipeline** which has single step **Rollout Deployment**. Add two steps before the **Rollout Deployment** step for image verification using cosign and policy enforcement using open policy agent.
 
-![Updated deploy-guestbook stage](../static/k8s-cosign-opa-tutorial/updated-deploy-guestbook-stage.png)
+![Updated deploy-guestbook stage](./static/k8s-cosign-opa-tutorial/updated-deploy-guestbook-stage.png)
 
 For the first step, add a [Shell Script step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/). Let's call it **cosign_verify**. Keeping all other settings to default, add the following to the Script section. Replace `YOUR_DOCKERHUB_USERNAME`, `YOUR_OIDC_CERTIFICATE_IDENTITY` (could be your associated email), and `YOUR_OIDC_ISSUER` (google, microsoft, github, or gitlab) accordingly. The oidc-issuer for Google is `https://accounts.google.com`, Microsoft is `https://login.microsoftonline.com`, GitHub is `https://github.com/login/oauth`, and GitLab is `https://gitlab.com`.
 
@@ -173,8 +165,6 @@ When referencing any of these variables in the following step, use the format `<
 The first four variables on this list are used to ensure that the correct image with the right digest is coming from an approved image registry vetted by an appropriate OIDC provider. The last variable is an annotation for the image tag indicating the environment the image is for. You can modify the script and variables based on what information is important to you for image sign validation.
 
 ## Write the policies
-
----
 
 Let's add a [policy step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/) after the **cosign_verify** step (you can call this **policy_enforcement** step). You can define and store policies directly in the OPA service in Harness.
 

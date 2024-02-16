@@ -18,7 +18,7 @@
 | **5. Harness Configuration Management and Parameter Control** | |
 | Managing parameters securely using Harness | [Kubernetes steps timeouts and deadline parameters](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-steps-timeouts-and-deadline-parameters/) |
 | Understanding and implementing values overrides| [Add and override values YAML files](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files/) |
-| Handling Helm Chart parameter control| [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart/) |
+| Handling Helm Chart parameter control| [Deploy using Helm Chart](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/helm-chart) |
 | **6. Secure and Efficient Artifact Management**  | |
 | Onboarding new applications using Harness CD  | [Onboarding guide](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path/)|
 | Integrating Harness with artifact repositories | [Connect to an Artifact repository](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/)|

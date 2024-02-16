@@ -73,7 +73,7 @@ By installing the Prometheus Helm Chart into your Kubernetes cluster, you also g
 
 ## Verifying a Deployment with Harness
 
-There are a few objects to line up in Harness. Starting with the un-validated deployment itself. A deeper dive on deploying a manifest can be found in the [Kubernetes Manifest Tutorial](/tutorials/cd-pipelines/kubernetes/manifest). Then wiring in the Verify Step to your Pipeline and configuring the Prometheus PromQL queries to validate the application against.
+There are a few objects to line up in Harness. Starting with the un-validated deployment itself. A deeper dive on deploying a manifest can be found in the [Kubernetes Manifest Tutorial](/docs/continuous-delivery/get-started/cd-tutorials/manifest). Then wiring in the Verify Step to your Pipeline and configuring the Prometheus PromQL queries to validate the application against.
 
 1. Create a new Harness Kubernetes Deployment.
 2. In the Service Configuration, wire a Kubernetes Manifest to:

@@ -17,7 +17,7 @@ This tutorial will walk you through creating and using variables in Harness CD.
 
 :::info
 
-This tutorial builds upon [Deploy using Kubernetes Manifest - CD Pipeline](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest?pipeline=cd-pipeline). Make sure you have successfully deployed the Guestbook app from that tutorial before proceeding further.
+This tutorial builds upon [Deploy using Kubernetes Manifest - CD Pipeline](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/manifest?pipeline=cd-pipeline). Make sure you have successfully deployed the Guestbook app from that tutorial before proceeding further.
 
 :::
 
@@ -39,7 +39,7 @@ Variables are renderd by Harness using an expression language called [JEXL](http
 Verify you have the following:
 
 - A Harness CD account. You can [sign up for free](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-variables) if you don't have one.
-- A successfull [Guestbook app](https://github.com/harness-community/harnesscd-example-apps/tree/master/guestbook) deployment from the [Kubernetes Manifest - CD Pipeline tutorial](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest?pipeline=cd-pipeline).
+- A successfull [Guestbook app](https://github.com/harness-community/harnesscd-example-apps/tree/master/guestbook) deployment from the [Kubernetes Manifest - CD Pipeline tutorial](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/manifest?pipeline=cd-pipeline).
 
 ## Reference built-in variables
 

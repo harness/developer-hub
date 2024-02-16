@@ -26,7 +26,7 @@
 | **7. Deployment Strategies and Rollbacks in Harness**  | |
 | Implement different deployment strategies (e.g., Canary, Blue-Green) using Harness | [Blue Green deployment](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/#blue-green-deployment)|
 | Design and troubleshoot rollback strategies for failed deployments| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts) |
-| Manage and troubleshoot Helm and Umbrella Chart deployments in Kubernetes | [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart/)|
+| Manage and troubleshoot Helm and Umbrella Chart deployments in Kubernetes | [Deploy using Helm Chart](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/helm-chart)|
 | **8. Integrating and Optimizing the Use of Cloud Providers and Platforms in Harness** ||
 | Implement optimal Harness setups for varied cloud platforms (e.g., AWS, Azure)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms) |
 | Manage and troubleshoot deployments in varied environments (e.g., AWS EKS, Lambda)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms)|

@@ -66,7 +66,7 @@ Verify that you have the following:
 1. **A Kubernetes cluster** in CloudFormation: Create a **stack** in CloudFormation to provision an **EKS cluster** to be used as **deployment infrastructure**.
 2. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 3. Fork the **[harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file.
-4. A functioning **Harness pipeline** that deploys an application on your cluster using a manifest. Please follow this [get started tutorial](/tutorials/cd-pipelines/kubernetes/manifest) to set it up.
+4. A functioning **Harness pipeline** that deploys an application on your cluster using a manifest. Please follow this [get started tutorial](/docs/continuous-delivery/get-started/cd-tutorials/manifest) to set it up.
 
 ### Get started
 

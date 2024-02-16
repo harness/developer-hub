@@ -1,10 +1,11 @@
 ---
-sidebar_position: 3
+title: Deploy your own microservice application
+description: Deploy your own microservice application
 hide_table_of_contents: true
-title: Deploy Your Own Microservice Application
+sidebar_position: 3
+redirect_from:
+  - /tutorials/cd-pipelines/kubernetes/ownapp
 ---
-
-# Deploy Your Own Microservice Application
 
 <CTABanner
   buttonText="Learn More"
@@ -18,7 +19,7 @@ title: Deploy Your Own Microservice Application
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<!---
+<!--
 Import statements for CLI downloads
 <MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
 -->
@@ -28,7 +29,7 @@ import WindowsCLI from '/docs/platform/shared/cli/windows.md';
 import ARMCLI from '/docs/platform/shared/cli/arm.md';
 import AMDCLI from '/docs/platform/shared/cli/amd.md';
 
-_**This tutorial is a continuation of the Kubernetes Manifest tutorial. In the previous tutorial, we guided you through creating a sample pipeline using the Guestbook sample app. In this tutorial, we'll walk you through deploying your own microservice app with the Harness CD pipeline or GitOps workflow.**_
+This tutorial is a continuation of the [Kubernetes Manifest tutorial](./manifest). In that tutorial, we guided you through creating a sample pipeline using the Guestbook sample app. In this tutorial, we'll walk you through deploying your own microservice app with the Harness CD pipeline or GitOps workflow.
 
 **Sock Shop**, developed by Weaveworks, serves as a polyglot architectural pattern to showcase microservices-based deployments. This application suite integrates a range of technologies, such as SpringBoot, Go, REDIS, MYSQL, MongoDB, among others. We've chosen the Sock Shop as our demonstration app for the deployment process in Harness.
 
@@ -54,8 +55,6 @@ Verify that you have the following:
 2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
 ## Getting Started with Harness GitOps
-
----
 
 <Tabs>
 <TabItem value="cli" label="CLI">
@@ -292,14 +291,10 @@ Harness offers a [Terraform Provider](https://registry.terraform.io/providers/ha
 
 <DocVideo src="https://www.youtube.com/watch?v=U_XkKcfg8ts" width="75%" />
 
-<br/><br/>
-
 Before proceeding:
 
 1. Generate a [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
 1. Make sure [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) is installed on a computer that can connect to your cluster.
-
-<br/>
 
 ### Harness Terraform Provider
 
@@ -316,14 +311,12 @@ cd deploy-own-app/gitops/terraform
 terraform init
 ```
 
-<details open>
+<details>
 <summary>What is a Terraform Provider?</summary>
 
 A Terraform Provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
 
 </details>
-
-<br/>
 
 ### Input variables
 
@@ -361,11 +354,9 @@ Never store your Harness API Key in a plain text configuration file or in versio
 
 :::
 
-<br/>
-
 ### Terraform module
 
-<details open>
+<details>
 <summary>What is a Terraform module?</summary>
 
 A Terraform module is a collection of files that define the desired state to be enforced by Terraform. These files normally have the .tf extension.
@@ -411,8 +402,6 @@ terraform apply
 
 Observe the output of `terraform apply` as your resources are created. It may take a few minutes for all the resources to be provisioned.
 
-<br/>
-
 ### Verify GitOps deployment
 
 1. Log into [https://app.harness.io](https://app.harness.io). Select **Deployments**, then **GitOps**.
@@ -447,8 +436,6 @@ kubectl get pods -n default
      `
     - Sock Shop is accessible via the master and any of the node urls on port `30001`.
 
-<br/>
-
 ### Cleaning up
 
 1. If you know longer need the resources created in this tutorial, run the following command to delete the GitOps agent and associated Harness entities.
@@ -461,8 +448,6 @@ terraform destroy
 
 </TabItem>
 </Tabs>
-
-<br/>
 
 ### Congratulations!🎉
 
@@ -497,8 +482,6 @@ Verify the following:
 5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
 ## Getting Started with Harness CD
-
----
 
 1. Download and Configure Harness CLI.
 
@@ -703,8 +686,6 @@ Verify that you have the following:
 4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
 ## Getting Started with Harness CD \{#getting-started-harness-cd-ui}
-
----
 
 1. Log in to [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.

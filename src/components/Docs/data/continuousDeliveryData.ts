@@ -37,13 +37,6 @@ import { MODULES } from "@site/src/constants"
               link: "/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview",
             },
             {
-              title: "Create your first CD pipeline",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/tutorials/cd-pipelines/kubernetes/manifest",
-            },
-            {
               title: "Integrate CD with other Harness modules",
               module: MODULES.cd,
               description:

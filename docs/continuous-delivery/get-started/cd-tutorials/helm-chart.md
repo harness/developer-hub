@@ -1,10 +1,12 @@
 ---
-sidebar_position: 1
+title: Deploy using Helm Chart
+description: Deploy using Helm Chart
 hide_table_of_contents: true
-title: Helm Chart
+sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/get-started/create-first-pipeline
+  - /tutorials/cd-pipelines/kubernetes/helm-chart
 ---
-
-# Deploy using Helm Chart
 
 <CTABanner
   buttonText="Learn More"
@@ -18,7 +20,7 @@ title: Helm Chart
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<!---
+<!--
 Import statements for CLI downloads
 <MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
 -->
@@ -358,7 +360,7 @@ Finally, it's time to **Synchronize** the application state.
            ```
       On successful application sync, you'll see the status tree under **Resource View** as shown below:
 
-![GitOps](../static/k8s-helm-tutorial/gitops-helm.png)
+![GitOps](./static/k8s-helm-tutorial/gitops-helm.png)
 
 </TabItem>
 <TabItem value="uicdpipe" label="CD Pipeline">
@@ -381,8 +383,6 @@ Verify the following:
    - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD
-
----
 
 1. Download and Configure Harness CLI.
 
@@ -616,7 +616,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 2. You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![Canary](../static/k8s-helm-tutorial/canary.png)
+![Canary](./static/k8s-helm-tutorial/canary.png)
 
 </TabItem>
 <TabItem value="bgcli" label="Blue Green">
@@ -680,7 +680,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![Blue Green](../static/k8s-helm-tutorial/bluegreen.png)
+![Blue Green](./static/k8s-helm-tutorial/bluegreen.png)
 
 </TabItem>
 <TabItem value="k8srollingcli" label="K8s Rolling">
@@ -745,7 +745,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 2. You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![k8s-Rolling](../static/k8s-helm-tutorial/rolling.png)
+![k8s-Rolling](./static/k8s-helm-tutorial/rolling.png)
 
 </TabItem>
 <TabItem value="helmrollingcli" label="Native Helm Rolling">
@@ -810,7 +810,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 2. You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![Rolling](../static/k8s-helm-tutorial/rolling.png)
+![Rolling](./static/k8s-helm-tutorial/rolling.png)
 
 </TabItem>
 </Tabs>
@@ -997,7 +997,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![Canary](../static/k8s-helm-tutorial/canary.png)
+![Canary](./static/k8s-helm-tutorial/canary.png)
 
 </TabItem>
 <TabItem value="bgui" label="Blue Green">
@@ -1058,7 +1058,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![Blue Green](../static/k8s-helm-tutorial/bluegreen.png)
+![Blue Green](./static/k8s-helm-tutorial/bluegreen.png)
 
 </TabItem>
 <TabItem value="k8srollingui" label="K8s Rolling">
@@ -1119,7 +1119,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![k8s-Rolling](../static/k8s-helm-tutorial/rolling.png)
+![k8s-Rolling](./static/k8s-helm-tutorial/rolling.png)
 
 </TabItem>
 <TabItem value="helmrolling" label="Native Helm Rolling">
@@ -1180,7 +1180,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
-![Rolling](../static/k8s-helm-tutorial/rolling.png)
+![Rolling](./static/k8s-helm-tutorial/rolling.png)
 
 </TabItem>
 </Tabs>

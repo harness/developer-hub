@@ -1,10 +1,12 @@
 ---
-sidebar_position: 0
+title: Deploy using Kubernetes Manifest
+description: Deploy using Kubernetes Manifest
 hide_table_of_contents: true
-title: Manifest
+sidebar_position: 0
+redirect_from:
+  - /docs/continuous-delivery/get-started/create-first-pipeline
+  - /tutorials/cd-pipelines/kubernetes/manifest
 ---
-
-# Deploy using Kubernetes Manifest
 
 <CTABanner
   buttonText="Learn More"
@@ -18,7 +20,7 @@ title: Manifest
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<!---
+<!--
 Import statements for CLI downloads
 <MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
 -->
@@ -36,7 +38,6 @@ This tutorial will get you started with Harness Continuous Delivery (CD). We wil
 
 :::
 
-:::info
 
 Kubernetes is required to complete these steps. Run the following to check your system resources and (optionally) install a local cluster.
 
@@ -44,17 +45,12 @@ Kubernetes is required to complete these steps. Run the following to check your 
 bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/main/delegate-preflight-checks/cluster-preflight-checks.sh)
 ```
 
-:::
-
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
 
 Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync. Harness GitOps supports both Argo CD and Flux CD as the GitOps reconciler.
-:::info
 
 Whether you're new to GitOps or an experienced practitioner, this guide will assist you in getting started with Harness GitOps, offering you the option to choose between Argo CD and Flux CD.
-
-:::
 
 ## Before you begin \{#before-you-begin-gitops}
 
@@ -67,8 +63,6 @@ Verify that you have the following:
    - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness GitOps
-
----
 
 <Tabs queryString="iac">
 <TabItem value="cli" label="CLI">
@@ -168,7 +162,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 - Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
 
   - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
-    ![Harness GitOps Sync Success](../static/k8s-manifest-tutorial/gitops.png)
+    ![Harness GitOps Sync Success](./static/k8s-manifest-tutorial/gitops.png)
 
   - After a successful execution, you can check the deployment in your Kubernetes cluster using the following command:
 
@@ -218,7 +212,7 @@ If **Namespaced** is selected, the Harness GitOps agent is installed without clu
 
 - Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
 
-![Download YAML or Helm chart setting](../static/k8s-manifest-tutorial/download-agent-installation-fresh.png)
+![Download YAML or Helm chart setting](./static/k8s-manifest-tutorial/download-agent-installation-fresh.png)
 
 Download the Harness GitOps Agent script using either the YAML or Helm Chart options. The **YAML** option provides a manifest file, and the **Helm Chart** option offers a Helm chart file. Both can be downloaded and used to install the GitOps agent on your Kubernetes cluster. The third step includes the command to run this installation.
 
@@ -238,7 +232,7 @@ Harness GitOps Agent will have access to create or modify resources in other nam
 
 - Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
 
-![Download YAML or Helm chart setting](../static/k8s-manifest-tutorial/download-agent-installation-existing.png)
+![Download YAML or Helm chart setting](./static/k8s-manifest-tutorial/download-agent-installation-existing.png)
 
 Download the Harness GitOps Agent script using either the YAML or Helm Chart options. The **YAML** option provides a manifest file, and the **Helm Chart** option offers a Helm chart file. Both can be downloaded and used to install the GitOps agent on your Kubernetes cluster. The third step includes the command to run this installation.
 
@@ -342,7 +336,7 @@ Due to an update in the Kustomization Controller, the vanilla YAML files now nee
    kubectl get pods -n guestbook
    ```
 
-   - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):
+   - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at `http://localhost:8080`:
 
    ```bash
    kubectl port-forward svc/guestbook-ui 8080:80 -n guestbook
@@ -350,7 +344,7 @@ Due to an update in the Kustomization Controller, the vanilla YAML files now nee
 
 A successful Application sync will display the following status tree under **Resource View**.
 
-![GitOps](../static/k8s-manifest-tutorial/gitops.png)
+![GitOps](./static/k8s-manifest-tutorial/gitops.png)
 
 </TabItem>
 <TabItem value="terraform" label="Terraform Provider">
@@ -359,14 +353,10 @@ Harness offers a [Terraform Provider](https://registry.terraform.io/providers/ha
 
 <DocVideo src="https://www.youtube.com/watch?v=U_XkKcfg8ts" width="75%" />
 
-<br/><br/>
-
 Before proceeding:
 
 1. Generate a [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
 1. Make sure [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) is installed on a computer that can connect to your cluster.
-
-<br/>
 
 ### Harness Terraform Provider
 
@@ -389,8 +379,6 @@ terraform init
 A Terraform Provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
 
 </details>
-
-<br/>
 
 ### Input variables
 
@@ -428,8 +416,6 @@ Never store your Harness API Key in a plain text configuration file or in versio
 
 :::
 
-<br/>
-
 ### Terraform module
 
 <details open>
@@ -439,11 +425,7 @@ A Terraform module is a collection of files that define the desired state to be 
 
 </details>
 
-<br/>
-
-<DocImage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
-
-<br/><br/>
+<DocImage path={require('./static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
 
 1. Open **agent.tf**. This file defines the GitOps agent in Harness and then deploys the agent manifest to your cluster. The agent is created using the harness_gitops_platform_agent resource.
 
@@ -484,8 +466,6 @@ terraform apply
 
 Observe the output of `terraform apply` as your resources are created. It may take a few minutes for all the resources to be provisioned.
 
-<br/>
-
 ### Verify GitOps deployment
 
 1. Log into [https://app.harness.io](https://app.harness.io). Select **Deployments**, then **GitOps**.
@@ -505,7 +485,7 @@ Observe the output of `terraform apply` as your resources are created. It may ta
    - Click into the **guestbook** application. This is the application your deployed from the **harnesscd-example-apps** repo.
    - Select **Resource View** to see the cluster resources that have been deployed. A successful Application sync will display the following status tree.
 
-![GitOps](../static/k8s-manifest-tutorial/guestbook_sync_terraform_gitops.png)
+![GitOps](./static/k8s-manifest-tutorial/guestbook_sync_terraform_gitops.png)
 
 5. Return to a local command line. Confirm you can see the GitOps agent and guestbook application resources in your cluster.
 
@@ -515,13 +495,11 @@ kubectl get svc -n default
 kubectl get pods -n default
 ```
 
-6. To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080]:
+6. To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at `http://localhost:8080`:
 
 ```
 kubectl port-forward svc/guestbook-ui 8080:80
 ```
-
-<br/>
 
 ### Cleaning up
 
@@ -531,7 +509,7 @@ kubectl port-forward svc/guestbook-ui 8080:80
 terraform destroy
 ```
 
-**Note:** Since deleting the Guestbook application in Harness does not delete the deployed cluster resources themselves, you’ll need to manually remove the Kubernetes deployment.
+**Note:** Since deleting the Guestbook application in Harness does not delete the deployed cluster resources themselves, you'll need to manually remove the Kubernetes deployment.
 
 ```
 kubectl delete deployment guestbook-ui -n default
@@ -540,8 +518,6 @@ kubectl delete service guestbook-ui -n default
 
 </TabItem>
 </Tabs>
-
-<br/>
 
 ### Congratulations!🎉
 
@@ -576,8 +552,6 @@ Verify the following:
    - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD \{#getting-started-harness-cd-cli}
-
----
 
 1. Download and Configure Harness CLI.
 
@@ -789,7 +763,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
    You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
 
-   <DocImage path={require('../static/k8s-manifest-tutorial/canary.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/k8s-manifest-tutorial/canary.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="bg" label="Blue Green">
@@ -809,7 +783,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
-   <DocImage path={require('../static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="rolling" label="Rolling">
@@ -829,7 +803,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
-   <DocImage path={require('../static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
@@ -849,8 +823,6 @@ Verify that you have the following:
    - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 
 ## Getting Started with Harness CD \{#getting-started-harness-cd-ui}
-
----
 
 1. Log in to [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
@@ -1015,7 +987,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
    You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
 
-   <DocImage path={require('../static/k8s-manifest-tutorial/canary.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/k8s-manifest-tutorial/canary.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="bg" label="Blue Green">
@@ -1040,7 +1012,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
-   <DocImage path={require('../static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="rolling" label="Rolling">
@@ -1065,7 +1037,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
-   <DocImage path={require('../static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
