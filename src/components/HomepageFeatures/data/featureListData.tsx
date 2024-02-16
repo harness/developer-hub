@@ -30,14 +30,6 @@ export const featureList: CardItem[] = [
     link: "docs/feature-flags",
   },
   {
-    title: "Manage Cloud Costs",
-    module: MODULES.ccm,
-    icon: "img/icon_ccm.svg",
-    description: <>Achieve cost transparency and cut costs.</>,
-    type: [docType.Documentation],
-    link: "tutorials/cloud-costs",
-  },
-  {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",

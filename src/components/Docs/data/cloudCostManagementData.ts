@@ -15,13 +15,6 @@ import {
           "",
         list: [
           {
-            title: "CCM Tutorials",
-            module: MODULES.ccm,
-            description:
-              "Learn how to manage and optimize the costs associated with your cloud resources.",
-            link: "/tutorials/cloud-costs",
-          },
-          {
             title: "Get started",
             module: MODULES.ccm,
             description:

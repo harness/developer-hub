@@ -18,11 +18,11 @@ export default function CCM() {
             <h1>Cloud Cost Management</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/cloud-costs">
+            <Link href="/kb/cloud-cost-management">
               <button className={styles.btn}>  
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/cloud-cost-management">
@@ -37,9 +37,15 @@ export default function CCM() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
           <p>
-          Harness CCM is a cutting-edge cloud cost management solution that empowers your FinOps, infrastructure, and engineering teams with intelligent tools to optimize your cloud spend. 
-          With its advanced business intelligence (BI) capabilities, CCM provides complete cost transparency across teams in your organization.
+          Harness CCM is a cutting-edge cloud cost management solution that empowers
+          your FinOps, infrastructure, and engineering teams with intelligent tools
+          to optimize your cloud spend. With its advanced business intelligence (BI)
+          capabilities, CCM provides complete cost transparency across teams in your
+          organization.
           </p>
+          <div>
+            <img src={`${baseUrl}img/ccm.svg`} />
+          </div>
           </div>
         </div>
       </div>

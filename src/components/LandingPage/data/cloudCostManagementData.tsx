@@ -17,9 +17,8 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/cloud-costs/cloud-autostopping/vm-reverse-proxy",
+    link: "/docs/category/autostopping-tutorials",
   },
-
   {
     title: "AutoStopping idle VMs behind a reverse proxy",
     module: MODULES.ccm,
@@ -32,7 +31,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/cloud-costs/cloud-autostopping/vm-reverse-proxy",
+    link: "/docs/category/autostopping-tutorials",
   },
 ];
 
@@ -50,7 +49,7 @@ export const CCMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/cloud-costs/kubernetes",
+    link: "/docs/category/autostopping-tutorials",
   },
 
   {
@@ -65,7 +64,7 @@ export const CCMList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/cloud-costs/cloud-autostopping/vm-reverse-proxy",
+    link: "/docs/category/autostopping-tutorials",
   },
 
   {
@@ -80,7 +79,7 @@ export const CCMList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/cloud-costs/cloud-autostopping/vm-reverse-proxy",
+    link: "/docs/category/autostopping-tutorials",
   },
 ];
 

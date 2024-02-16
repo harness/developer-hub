@@ -1,0 +1,11 @@
+{
+    "label": "AutoStopping tutorials",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 3,
+    "link": {
+        "type": "generated-index",
+        "title": "AutoStopping tutorials"
+    }
+}

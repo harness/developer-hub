@@ -18,10 +18,10 @@ export default function gs() {
             <h1>Get Started</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes">

@@ -122,11 +122,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Manage Cloud Costs",
-                to: "tutorials/cloud-costs",
-              },
-              {
-                // type: "doc",
                 label: "Orchestrate Security Tests",
                 to: "tutorials/security-tests",
               },
