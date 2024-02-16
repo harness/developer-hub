@@ -105,15 +105,15 @@ CI build infrastructure pods can interact with servers using self-signed certifi
              value: /tmp/ca.bundle  
            - name: CI_MOUNT_VOLUMES  
              value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
-             volumeMounts:  
+          volumeMounts:  
               - name: certvol  
                 mountPath: /tmp/ca.bundle  
                 subPath:  ca.bundle 
           volumes:  
-           - name: certvol  
-             secret:  
-               secretName: addcerts  
-               items:  
+            - name: certvol  
+              secret:  
+                secretName: addcerts  
+                items:  
                 - key: ca.bundle  
                   path: ca.bundle
    ```
@@ -138,19 +138,19 @@ If you have STO scan steps in your pipeline, do the following:
 
    ```yaml
    env:
-   - name: DESTINATION_CA_PATH
-              value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt"
-            volumeMounts:
-            - name: certvol
-              mountPath: opt/harness-delegate/ca-bundle
-              subPath:  ca.bundle
-          volumes:
-          - name: certvol
-            secret:
-              secretName: addcerts
-              items:
-              - key: ca.bundle
-                path: ca.bundle
+     - name: DESTINATION_CA_PATH
+       value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt"
+   volumeMounts:
+     - name: certvol
+       mountPath: opt/harness-delegate/ca-bundle
+       subPath:  ca.bundle
+   volumes:
+     - name: certvol
+       secret:
+       secretName: addcerts
+       items:
+          - key: ca.bundle
+            path: ca.bundle
    ``` 
    
 
