@@ -12,7 +12,7 @@ For this guide, we assume you have set up the necessary Harness integrations (Ha
 
 For onboarding your team, go to the [Onboarding path](/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path).
 
-For CD tutorials, go to [Set up CD Pipelines](https://developer.harness.io/tutorials/cd-pipelines/).
+For CD tutorials, go to [CD and GitOps tutorials](/docs/category/cd-and-gitops-tutorials).
 
 If you have any additional questions, [reach out to us](mailto:support@harness.io) and our team will be happy to help!
 
@@ -155,7 +155,7 @@ allowStageExecutions: true
 
 Depending on the project you have access to and the pipeline you have permissions to, a Harness user can log in and deploy a service using the Harness Manager UI.
 
-To learn more, go to the [Harness CD tutorials](https://developer.harness.io/tutorials/cd-pipelines/) for various deployment types, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+To learn more, go to the [Harness CD tutorials](/docs/category/cd-and-gitops-tutorials) for various deployment types, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 Video overview:
 
@@ -230,7 +230,7 @@ And in the pipeline, you can view and add comments to your approval. This inform
 
 Select **Approve** and the pipeline will progress. If you reject the approval, the pipeline will end and initiate rollback or the [pipeline failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
 
-For more information, go to [Using manual Harness approval stages](/docs/platform/approvals/adding-harness-approval-stages), and the [Approvals tutorial](https://developer.harness.io/docs/platform/approvals/approvals), and [Notifications settings](https://developer.harness.io/docs/platform/notifications/notification-settings).
+For more information, go to [Using manual Harness approval stages](/docs/platform/approvals/adding-harness-approval-stages), and the [Approvals tutorial](https://developer.harness.io/docs/platform/approvals/approvals-tutorial), and [Notifications settings](https://developer.harness.io/docs/platform/notifications/notification-settings).
 
 ## Assigning roles to new team members
 

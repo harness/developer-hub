@@ -490,10 +490,7 @@ Finally, it's time to execute your pipeline.
 
 You've just learned how to use Harness CD to deploy a Google Cloud Function to Google Cloud.
 
-#### What's next?
-
-- Keep learning about Harness CD. For example, add [Triggers](/docs/platform/triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Keep learning about Harness CD. For example, add [Triggers](/docs/platform/triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
 
 </TabItem>
 <TabItem value="1g" label="1st Gen">
@@ -830,10 +827,7 @@ Finally, it's time to execute your pipeline.
 
 You've just learned how to use Harness CD to deploy an application using a Google Cloud Functions gen 1 to Google Cloud.
 
-#### What's Next?
-
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 
 </TabItem>
 </Tabs>

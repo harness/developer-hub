@@ -1229,7 +1229,4 @@ You can integrate your own microservice application into this tutorial by follow
 
 You've just learned how to use Harness CD to deploy application using a Helm Chart template.
 
-## Next steps
-
-- Keep learning about Harness CD. Add **Triggers** to your pipeline that'll respond to Git events. For more information, go to [Triggering pipelines](/docs/platform/triggers/triggering-pipelines).
-- Visit [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Keep learning about Harness CD. Add **Triggers** to your pipeline that'll respond to Git events. For more information, go to [Triggering pipelines](/docs/platform/triggers/triggering-pipelines).

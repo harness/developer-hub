@@ -453,10 +453,7 @@ terraform destroy
 
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
-#### What's Next?
-
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 
 </TabItem>
 <TabItem value="CD pipeline">
@@ -855,10 +852,6 @@ Refer to the [Get started with Harness API](/docs/platform/automation/api/api-qu
 ### Congratulations!🎉
 
 You've just learned how to use Harness CD to deploy your own application.
-
-#### What's Next?
-
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 </TabItem>
 </Tabs>

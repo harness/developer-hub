@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
-If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](https://developer.harness.io/tutorials/cd-pipelines).
+If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-and-gitops-tutorials).
 
 ## Overview
 
@@ -49,7 +49,7 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 | **Step**                                                                          | **Details**                                         | **Documentation Link**                                                                                                                                 | **Demo Video**                                                  |
 | --------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| <a href="#step-1-approvals--governance-opa">Approvals and governance (OPA)</a> \* | Harness Approval, JIRA Approval                     | [Approvals](https://developer.harness.io/docs/platform/approvals/approvals)                                                                            | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
+| <a href="#step-1-approvals--governance-opa">Approvals and governance (OPA)</a> \* | Harness Approval, JIRA Approval                     | [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial)                                                                            | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
 | <a href="#step-2-rbac">RBAC</a>                                                   | CoE, Distributed Center of DevOps                   | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)                   | [Watch Video](https://youtu.be/vIQfpRrES44?si=Du5OAej2t2Phu7Hg) |
 | <a href="#step-3-continuous-verification">Continuous Verification</a>             | Auto, Rolling Update, Canary, Blue Green, Load Test | [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/) |                                                                 |
 

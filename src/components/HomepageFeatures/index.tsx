@@ -55,7 +55,7 @@ export default function HomepageFeatures(): JSX.Element {
         ))}
       </div>
       <div className={styles.btnContainer}>
-        <Link href="/tutorials">
+        <Link href="/docs">
           <button className={`button button--primary ${styles.button}`}>
             See All Tutorials
           </button>

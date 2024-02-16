@@ -66,7 +66,7 @@ Follow these guidelines:
   - Manual interventions slow down service release velocity.
   - Manual interventions also do not result in consistent decisions. Depending on the group of users approving the deployment, the decisions are not always consistent due to differing opinions.
   - Since not all organizations have this level of automation, Harness does support manual intervention, Jira change management, and ServiceNow change management.
-    - For more information, go to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals).
+    - For more information, go to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial).
 
 ## Build once and deploy
 
@@ -148,7 +148,7 @@ For sensitive deployments, or when you’re getting started, introduce manual ap
 
 These steps give your developers and release managers the ability to validate a deployment before releasing to a given environment. As you gain confidence in your release process, you should aim to reduce these approvals.
 
-For more information, go to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals).    
+For more information, go to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial).    
 
 ## Self-service deployments
 

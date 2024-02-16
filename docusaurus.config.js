@@ -18,7 +18,7 @@ function hideIndexFromSidebarItems(items) {
 const config = {
   title: "Harness Developer Hub",
   tagline:
-    "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
+    "Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
@@ -104,29 +104,6 @@ const config = {
             html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
           },*/
-          {
-            position: "right",
-            type: "dropdown",
-            label: "Tutorials",
-            to: "tutorials",
-            items: [
-              {
-                // type: "doc",
-                label: "All Tutorials",
-                to: "tutorials",
-              },
-              {
-                // type: "doc",
-                label: "Set up CD Pipelines",
-                to: "tutorials/cd-pipelines",
-              },
-              {
-                // type: "doc",
-                label: "Orchestrate Security Tests",
-                to: "tutorials/security-tests",
-              },
-            ],
-          },
           {
             position: "right",
             type: "dropdown",
@@ -557,18 +534,17 @@ const config = {
         // ... other options
       },
     ],
-    [
-      path.resolve(__dirname, "./plugins/redirect-plugin"),
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
+    //[
+    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
+    //  {
+    //    id: "tutorials",
+    //    path: "tutorials",
+    //    routeBasePath: "tutorials",
+    //    exclude: ["**/shared/**", "**/static/**"],
+    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
+    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
+    //  },
+    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {

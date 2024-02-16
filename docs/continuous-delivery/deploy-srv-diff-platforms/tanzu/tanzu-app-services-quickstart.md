@@ -838,5 +838,5 @@ In your project's **Deployments**, you can see the deployment listed.
 
 ## Next steps
 
-See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
+See [CD tutorials](/docs/category/cd-and-gitops-tutorials) for other deployment features.
 

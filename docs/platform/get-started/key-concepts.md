@@ -79,7 +79,7 @@ Docs:
 [Templates overview](/docs/platform/templates/template)
 
 Tutorials:
-[Pipeline templates](/tutorials/cd-pipelines/templates)
+[Pipeline templates](/docs/platform/templates/create-pipeline-template)
 
 ## Automation
 You can automate the management of Harness entities in your account using one or more of the following approaches.

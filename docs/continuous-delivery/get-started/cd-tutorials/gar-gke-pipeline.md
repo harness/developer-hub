@@ -126,7 +126,7 @@ You're all set! Click **Save** and then **Run**. Use `master` for the git branch
 
 ## Add Approval and Slack Notifications
 
-In practical DevOps pipelines, gates are implemented to control artifact promotion to the production environment. Harness supports [various types of approvals](https://developer.harness.io/docs/platform/approvals/approvals) in Continuous Delivery (CD) pipelines. In this tutorial, you'll use the manual approval step.
+In practical DevOps pipelines, gates are implemented to control artifact promotion to the production environment. Harness supports [various types of approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) in Continuous Delivery (CD) pipelines. In this tutorial, you'll use the manual approval step.
 
 Within the **gke-deploy** stage, click **+ Add Step** before the **Rollout Deployment** step and find **Harness Approval** under Approval in the Step Library. Keep all default options, and you'll need to select the approver from the User Groups. Choose **Project** → **All Project Users** under user group selection. If you're the only member of this project, you'll be the sole approver. Click **Apply Selected**. Click **Apply Changes** for the manual approval step, and then click **Save**.
 

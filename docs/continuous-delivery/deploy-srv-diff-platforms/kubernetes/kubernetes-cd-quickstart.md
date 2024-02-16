@@ -243,4 +243,4 @@ For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/dele
 
 ## Next steps
 
-See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
+See [CD tutorials](/docs/category/cd-and-gitops-tutorials) for other deployment features.

@@ -206,10 +206,7 @@ On successful Application sync, you'll see the below status tree under **Resourc
 
 You've just learned how to use **Harness GitOps** to deploy an application using a Kustomize template.
 
-#### What's Next?
-
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 
 </TabItem>
 <TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
@@ -655,10 +652,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 You've just learned how to use Harness CD to deploy an application using a Kustomize template.
 
-#### What's Next?
-
-- Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](/docs/platform/triggers/triggering-pipelines).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
+Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](/docs/platform/triggers/triggering-pipelines).
 
 ## How to deploy your own app by using Harness
 

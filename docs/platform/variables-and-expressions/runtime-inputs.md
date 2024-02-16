@@ -54,7 +54,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you can use fixed values in [variables](docs/platform/variables-and-expressions/add-a-variable).
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you can use fixed values in [variables](/docs/platform/variables-and-expressions/add-a-variable).
 
 ## Runtime inputs
 

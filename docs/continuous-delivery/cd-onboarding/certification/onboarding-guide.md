@@ -33,7 +33,7 @@ Now you are ready to learn advanced CD concepts through the following tutorials.
 
 - [Templates](/docs/platform/templates/create-pipeline-template)
 - [Notifications](/docs/platform/notifications/notification-settings)
-- [Approvals](/docs/platform/approvals/approvals)
+- [Approvals](/docs/platform/approvals/approvals-tutorial)
 - [Continuous Verification](/docs/continuous-delivery/get-started/cd-tutorials/prometheus)
 - [Infrastructure Provisioning as part of CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/cloudformation)
 - [Variables & Expressions](/docs/platform/variables-and-expressions/harness-variables)

@@ -30,13 +30,6 @@ import {
             link: "/docs/platform/get-started/onboarding-guide",
           },
           {
-            title: "Tutorials",
-            module: MODULES.platform,
-            description:
-              "New to Harness? Follow these tutorials to go from novice to advanced.",
-            link: "/tutorials",
-          },
-          {
             title: "Start for free",
             module: MODULES.platform,
             description:
