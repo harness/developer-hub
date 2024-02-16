@@ -46,23 +46,39 @@ Ensure the following:
 
 ![MongoDB architecture](./static/mongodb-self-managed-architecture.png)
 
-```mermaid
-graph TD;
-  subgraph "External MongoDB Architecture 1 - 1 Data Center"
-    style A fill:#F47C20,stroke:#D7540D,stroke-width:2px,stroke-dasharray: 5, 5; center
+### MongoDB replica set configuration without region failover (single data center)
 
-    A[harness.customer.com] ---> B[Proxy/Loadbalancer]
-    B ---> C[Harness app Primary 1]
-    C ---> D[Primary DC1]
-    C ---> E[Secondary: 1 DC1]
-    C ---> F[Secondary: 2 DC1]
-    D --- E --- F
-    G[Kubernetes cluster 1 DC1 primary site]
-  end;
+This architecture supports HA for databases. It does not support region/DR failover.
 
-```
+![MongoDB architecture 1](./static/mongodb-arch-1.png)
 
+### MongoDB replica set configuration with region failover setup (two data centers)
 
+This architecture supports the following:
+
+- HA for databases
+- Region (DR) failover
+
+:::info
+The DC1 MongoDB priority level should be higher than DC2 to prevent cross-network DB connections.
+
+:::
+
+![DR architecture 1](./static/mongodb-dr-arch-1.png)
+
+### MongoDB replica set configuration with region failover setup (3 data centers)
+
+This architecture supports the following:
+
+- HA for databases
+- Region (DR) failover
+
+:::info
+The DC1 and DC2 MongoDB priority levels should be higher than DC3 to prevent cross-network DB connections.
+
+:::
+
+![DR architecture 2](./static/mongodb-dr-arch-2.png)
 
 ## Set up MongoDB VMs
 
