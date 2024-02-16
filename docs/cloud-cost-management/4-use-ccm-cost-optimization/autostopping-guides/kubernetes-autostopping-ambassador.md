@@ -1,9 +1,10 @@
 ---
-title: Kubernetes Autostopping for Ambassadaor
-description: This article provides instructions to create AutoStopping rules for Kubernetes with the Traefik ingress controller.
+title: Kubernetes Autostopping for Ambassador
+description: Create AutoStopping rules for Kubernetes with the Traefik ingress controller.
 sidebar_position: 40
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-ambassador
+  - /tutorials/cloud-costs/cloud-autostopping/kubernetes-autostopping-ambassador
 ---
 
 <CTABanner
@@ -15,21 +16,21 @@ redirect_from:
   target="_self"
 />
 
-This article provides instructions to create AutoStopping rules for Kubernetes with the Ambassador ingress controller.
+Learn how to create AutoStopping rules for Kubernetes with the Ambassador ingress controller.
 
-### Prerequisites
+## Prerequisites
 
-Make sure to meet the following prerequisites before you create an AutoStopping rule for Ambassador.
+You must meet the following prerequisites before creating an AutoStopping rule for Ambassador:
 
-- Make sure you are running at the least version 1.0.5 of `autostopping-controller` in your Kubernetes cluster.
-- Ambassador mapping is configured and is routing traffic to the service as expected.
-- You should have access to edit the Ambassador mapping.
+- You are running version 1.0.5 or later of `autostopping-controller` in your Kubernetes cluster.
+- Your Ambassador mapping is configured and routing traffic to the service as expected.
+- You have access to edit the Ambassador mapping.
 
-### Set up your cluster
+## Set up your cluster
 
-Create an AutoStopping rule in your cluster, either through the Harness UI or by applying YAML directly on the cluster of the form:
+Create an AutoStopping rule in your cluster, either through the Harness UI or by applying YAML directly on the cluster of the form, for example:
 
-```
+```yaml
 apiVersion: ccm.harness.io/v1
 kind: AutoStoppingRule
 metadata:
@@ -49,15 +50,15 @@ spec:
 
 After applying the YAML, an AutoStopping Rule is created in your cluster for service echo which is running on port 8080.
 
-### Changes in Ambassador Mapping
+## Change the Ambassador mapping
 
-After Ambassador Mapping is added as a first class entity to AutoStopping, these changes will be automated.
+Once Ambassador mapping is supported as a first class entity for AutoStopping, the following changes will be automated.
 
-After creating the AutoStopping Rule, make the following changes in your Ambassador Mapping:
+After creating the AutoStopping Rule, make the following changes in your Ambassador mapping.
 
-Change the destination and add an extra request header:
+1. Change the destination and add an extra request header:
 
-_From_
+Original:
 
 ```
 spec:
@@ -65,7 +66,7 @@ spec:
   service: echo
 ```
 
-_To_
+Edited:
 
 ```
 spec:
@@ -75,7 +76,7 @@ spec:
   service: autostopping-router
 ```
 
-After configuration, your ingressRoute looks like the following:
+Your ingressRoute should be similar to the following:
 
 ```
 apiVersion: getambassador.io/v2

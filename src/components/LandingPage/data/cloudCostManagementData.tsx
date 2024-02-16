@@ -17,7 +17,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/docs/category/autostopping-tutorials",
+    link: "/docs/category/autostopping-guides",
   },
   {
     title: "AutoStopping idle VMs behind a reverse proxy",
@@ -31,7 +31,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/docs/category/autostopping-tutorials",
+    link: "/docs/category/autostopping-guides",
   },
 ];
 
@@ -49,7 +49,7 @@ export const CCMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/docs/category/autostopping-tutorials",
+    link: "/docs/category/autostopping-guides",
   },
 
   {
@@ -64,7 +64,7 @@ export const CCMList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/docs/category/autostopping-tutorials",
+    link: "/docs/category/autostopping-guides",
   },
 
   {
@@ -79,7 +79,7 @@ export const CCMList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/docs/category/autostopping-tutorials",
+    link: "/docs/category/autostopping-guides",
   },
 ];
 

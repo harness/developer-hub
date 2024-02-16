@@ -1,9 +1,10 @@
 ---
+title: AutoStopping idle VMs behind a reverse proxy
+description: Autostop idle VMs behind a reverse proxy.
 sidebar_position: 2
-description: This guide describes how to autostop idle VMs behind a reverse proxy.
+redirect_from:
+  - /tutorials/cloud-costs/cloud-autostopping/vm-reverse-proxy
 ---
-
-# AutoStopping idle VMs behind a reverse proxy
 
 <CTABanner
   buttonText="Learn More"
@@ -20,7 +21,7 @@ AutoStopping goes beyond just stopping idle resources; it possesses the intellig
 
 ## AutoStopping an EC2 instance
 
-Let’s assume that you have a setup in AWS, where a domain `todolist.example.com` is mapped to an [AWS ALB](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html), pointing it to an underlying [TargetGroup](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) with one [EC2](https://aws.amazon.com/ec2/) after checking the [host headers](https://aws.amazon.com/blogs/aws/new-host-based-routing-support-for-aws-application-load-balancers/) as shown in the diagram below.
+Let's assume that you have a setup in AWS, where a domain `todolist.example.com` is mapped to an [AWS ALB](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html), pointing it to an underlying [TargetGroup](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) with one [EC2](https://aws.amazon.com/ec2/) after checking the [host headers](https://aws.amazon.com/blogs/aws/new-host-based-routing-support-for-aws-application-load-balancers/) as shown in the diagram below.
 
 _Routing based on Hostname to an EC2 under AWS ALB_
 
@@ -28,9 +29,9 @@ _Routing based on Hostname to an EC2 under AWS ALB_
 
 Incorporating this rule into AutoStopping is a simple process. By importing the ALB (Application Load Balancer) as a Harness load balancer and configuring an AutoStopping rule for the EC2 instance with the custom domain as `todolist.example.com` in the Harness platform, the AutoStopping feature seamlessly manages the EC2 instance based on the defined rule.
 
-## Adding a reverse proxy to the mix
+## Add a reverse proxy
 
-:::important
+:::info
 The content assumes HAProxy as a reverse proxy between ALB and the EC2 instance. But this setup can be replicated for others (Nginx) as well.
 :::
 
@@ -42,13 +43,13 @@ _HAProxy as a reverse proxy between ALB and EC2 instance_
 
 In this scenario, it is not feasible to directly onboard the EC2 instance to AutoStopping as previously done because the ALB does not directly send data to the resource. While it is possible to onboard the HAProxy machine, this is not the desired outcome since the goal is to AutoStop the EC2 machine itself. Additionally, since the HAProxy can be associated with multiple domains and applications, access to any of them would keep the proxy up, which would not result in the expected cost savings.
 
-## Introducing Harness AutoStopping Proxy
+## Use Harness AutoStopping Proxy
 
-[Harness AutoStopping Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb/) is a valuable solution in this scenario. It is built on top of the [envoy proxy](https://www.envoyproxy.io/), offering robust capabilities for handling routing and load balancing across different cloud providers. This proxy is not limited to HTTP traffic and can effectively handle any TCP-based traffic detection. Detailed documentation on creating an AutoStopping Proxy can be found [here](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb/).
+[Harness AutoStopping Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb) is a valuable solution in this scenario. It is built on top of the [envoy proxy](https://www.envoyproxy.io/), offering robust capabilities for handling routing and load balancing across different cloud providers. This proxy is not limited to HTTP traffic and can effectively handle any TCP-based traffic detection.
 
 After setting up an AutoStopping proxy, select the newly created proxy as the load balancer, and then configure the custom domain as `todolist.example.com` for the proxy. To route the traffic to the underlying EC2 instance, hit the proxy IP with a host header `Host: todolist.example.com`.
 
-### Forwarding HAproxy to Harness AutoStopping Proxy
+### Forward HAproxy to Harness AutoStopping Proxy
 
 Now that the Harness AutoStopping proxy can route to the EC2 instance with the domain `todolist.example.com`, configure the HAProxy to route the traffic to the AutoStopping proxy instead of the Ec2 instance. The configuration looks like this:
 
@@ -91,6 +92,6 @@ The AutoStopping Proxy actively monitors incoming activity. When the pre-configu
 2. The AutoStopping rule transitions itself to the "down" state, indicating that it is no longer actively accepting traffic.
 3. Simultaneously, the associated EC2 instance is also transitioned to the "down" state, indicating that it is no longer serving requests.
 
-### An end note
+## Conclusion
 
 In summary, by integrating Harness CCM's AutoStopping feature with setups utilizing HAProxy as a reverse proxy, you can leverage a robust solution for automating cloud resource optimization. It provides a powerful capability to automatically halt idle cloud resources and reactivate them as required. This approach allows you to efficiently manage your non-production cloud costs without compromising application availability. By dynamically controlling resource utilization, you can strike a balance between cost optimization and ensuring application availability in a flexible and automated manner.

@@ -1,11 +1,10 @@
 ---
-sidebar_position: 1
-hide_table_of_contents: true
 title: AutoStopping RDS with Proxy
-description: This guide walks you through the steps to reduce RDS costs by using AutoStopping rules.
+description: Reduce RDS Costs with Harness AutoStopping Proxy
+sidebar_position: 1
+redirect_from:
+  - /tutorials/cloud-costs/cloud-autostopping/rds
 ---
-
-# Reducing RDS Costs made easy with Harness AutoStopping Proxy
 
 <CTABanner
   buttonText="Learn More"
@@ -30,11 +29,14 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 
 ## Use Harness AutoStopping proxy for RDS
 
-1. Create a Harness AutoStopping proxy. <!--For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb).-->
-2. Create an AutoStopping rule for the RDS instance or cluster. <!--For more information, go to [Create AutoStopping rule for RDS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds).-->
-3. Connect to the RDS instance or cluster by using the AutoStopping proxy. If the RDS instance or cluster is in the stopped state, Harness starts it for you, allowing you to resume usage seamlessly. Subsequently, when you finish utilizing the RDS instance or cluster, Harness promptly detects this and initiates the process of stopping it.
+<!-- no toc -->
+1. [Create a Harness AutoStopping proxy.](#create-harness-autostopping-proxy)
+2. [Create an AutoStopping rule for the RDS instance or cluster.](#set-up-harness-autostopping-rule-for-rds)
+3. [Connect to the RDS instance or cluster by using the AutoStopping proxy.](#connect-to-the-rds-instance)
 
 ### Create Harness AutoStopping proxy
+
+For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb).
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Under **Setup**, select **Load Balancers**.
@@ -51,7 +53,7 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
       - If you select **Others**, enter the URL of the DNS provider. Make sure that you have updated the DNS mapping in your DNS provider.
    3. Select **Continue**.
 
-<DocImage path={require('../static/rds-autostopping-proxy/aws-autoproxy-lb.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('../static/rds-autostopping-proxy/aws-autoproxy-lb.png')} width="60%" height="60%" title="Click to view full size image" />
 
 10. **Select region**: Select the region where you have your cloud resources hosted.
 11. Select the **VPC** from the dropdown list.
@@ -68,30 +70,30 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 
 ### Set up Harness AutoStopping Rule for RDS
 
-This section walks you through the steps to configure an AutoStopping rule for your RDS instance.
+This section walks you through the steps to configure an AutoStopping rule for your RDS instance. For more information, go to [Create AutoStopping rule for RDS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds).
 
-### Define the AutoStopping rule
+#### Define the AutoStopping rule
 
-1. In **Cloud Costs,** in **AutoStopping Rules**, select **New AutoStopping Rule**.
-2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
+1. In **Cloud Costs**, in **AutoStopping Rules**, select **New AutoStopping Rule**.
+2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
+3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, go to [Connect to an AWS Connector](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
 
-<DocImage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-75.png')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-75.png')} width="60%" height="60%" title="Click to view full size image" />
 
-4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
-5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
+4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
+5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
 
-### Select the RDS instance or cluster to be managed by the AutoStopping Rule
+#### Select the RDS instance or cluster to be managed by the AutoStopping Rule
 
 Select the cloud resources that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
 
-1. In **Select the resources to be managed by the rule**, select **RDS** and then select Add RDS instance.
+1. In **Select the resources to be managed by the rule**, select **RDS** and then select Add RDS instance.
 
    <DocImage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-77.png')} width="60%" height="60%" title="Click to view full size image" />
 
-2. In **Select RDS Instance**, do the following:
+2. In **Select RDS Instance**, do the following:
 
-   1. Select the region where your instance is hosted from the drop-down list.
+   1. Select the region where your instance is hosted from the drop-down list.
    2. Select the RDS instance for which you want to enable AutoStopping Rule and select **Add Selected**.
 
    <DocImage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-78.png')} width="60%" height="60%" title="Click to view full size image" />
@@ -100,43 +102,39 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
 
 3. Select **Next**.
 
-### (Optional) Set Up Advanced Configuration
+:::info Optional settings
 
-In this step, you can configure the following settings:
+These are additional advanced settings:
 
-#### Dry Run
+* **Dry Run:** Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dry-run-mode).
+* **Add Dependency:** Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For more information, go to [Add Dependency](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#add-dependency).
+* **Fixed Schedules:** Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. For more information, og to [Fixed Schedules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#fixed-schedules).
 
-Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dry-run-mode).
+:::
 
-#### Add Dependency
-
-Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#add-dependency).
-
-#### Fixed Schedules
-
-Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#fixed-schedules).
-
-### Setup Access
+#### Setup Access
 
 1. In the Setup Access screen, select the AutoStopping Proxy from the dropdown list or [create a new one](#create-harness-autostopping-proxy).
 2. Specify the source port numbers and the target TCP ports your RDS instance or cluster is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port. You will be always connecting to the RDS instance through the AutoStopping proxy using this port. To onboard a MySQL RDS instance, select 3306 as the target port on the RDS instance.
 
    <DocImage path={require('../static/rds-autostopping-proxy/setup-access.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### Review
+#### Review the rule
 
-In Review, verify all the configuration details and select **Save Rule**. To edit any of the configuration settings, select **EDIT** and modify the settings.
+In Review, verify all the configuration details and select **Save Rule**. To edit any of the configuration settings, select **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping rules summary page](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard).
-
-After reviewing the rule, save it.
+Your AutoStopping rule is listed under the [AutoStopping rules summary page](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard).
 
 ### Connect to the RDS instance
 
-Once the rule is saved, go to the **Details** page of the AutoStopping rule for instructions to connect to the RDS instance. You can connect to your RDS instance using the following attributes:
+Once the rule is saved, go to the **Details** page of the AutoStopping rule for instructions to connect to the RDS instance.
+
+You can connect to your RDS instance using the following attributes:
 
 - IP/Hostname mapped to the AutoStopping proxy
 - Port displayed in the AutoStopping rule details page(20000 in this example)
 - Username and password of the RDS instance
 
-  <DocImage path={require('../static/rds-autostopping-proxy/details-page.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/rds-autostopping-proxy/details-page.png')} width="60%" height="60%" title="Click to view full size image" />
+
+If the RDS instance or cluster is in the stopped state, Harness starts it for you, allowing you to resume usage seamlessly. Subsequently, when you finish utilizing the RDS instance or cluster, Harness promptly detects this and initiates the process of stopping it.

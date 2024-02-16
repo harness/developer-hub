@@ -1,11 +1,11 @@
 {
-    "label": "AutoStopping tutorials",
+    "label": "AutoStopping guides",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "position": 3,
     "link": {
         "type": "generated-index",
-        "title": "AutoStopping tutorials"
+        "title": "AutoStopping guides"
     }
 }

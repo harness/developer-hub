@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Autostopping tutorial
+title: Kubernetes Autostopping
 description: This tutorial shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
 sidebar_position: 10
 helpdocs_topic_id: 9l4gblg2we
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-quick-start-guide
+  - /tutorials/cloud-costs/cloud-autostopping/kubernetes-autostopping-quick-start-guide
 ---
 
 <CTABanner
@@ -19,15 +20,18 @@ redirect_from:
   target="_self"
 />
 
-This quickstart shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-### Install a sample application​
+This tutorial explains how to create and test an AutoStopping rule for your Kubernetes cluster.
 
-To test AutoStopping, you can use a sample nginx application. Perform the following steps to install this sample application:
+## Install a sample application
 
-#### Apply the following YAML in your Kubernetes cluster​:
+To test AutoStopping, you can use a sample nginx application.
 
-```
+To install this sample application, apply the following YAML in your Kubernetes cluster. This installs a demo application named `autostopping-sample-app` that runs three pods running nginx in the `autostopping-sample` namespace.
+
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -74,28 +78,23 @@ spec:
       targetPort: 80
 ```
 
-This installs a demo application named `autostopping-sample-app` that runs three pods running nginx in the `autostopping-sample` namespace.​
-
-### Supported ingress controllers for Kubernetes AutoStopping
+## Supported ingress controllers for Kubernetes AutoStopping
 
 Kubernetes AutoStopping support is fully available for the following ingress controllers and API gateways:
 
-- Nginx​
-- Istio​
-- Traefik​
-- Ambassador​
+- Nginx
+- [Istio](./kubernetes-autostopping-for-istio.md)
+- [Traefik](./kubernetes-autostopping-traefik.md)
+- [Ambassador](./kubernetes-autostopping-ambassador.md)
 - HAProxy
 
-Setting up AutoStopping Rules for each of these are shown below. ​
+<Tabs>
+<TabItem value="nginx" label="Kubernetes AutoStopping for Nginx" default>
 
-### Kubernetes AutoStopping for Nginx​
+1. Expose your application by creating an ingress rule. Apply the following YAML to the cluster.
 
-#### Expose your application by creating an ingress rule.
-
-Apply the following YAML to the cluster.​
-
-```
-apiVersion: networking.k8s.io/v1​
+```yaml
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: autostopping-sample-ig
@@ -116,11 +115,9 @@ spec:
                  number: 80
 ```
 
-#### Create an AutoStopping Rule
+2. Create an AutoStopping Rule. Before applying this YAML, make sure that the `cloud-connector-id` is updated and the namespace of the Rule is the same as the `autostopping-sample-app` application.
 
-Before applying this YAML, make sure that the `cloud-connector-id` is updated and the namespace of the Rule is the same as the `autostopping-sample-app` application.​
-
-```
+```yaml
 apiVersion: ccm.harness.io/v1
 kind: AutoStoppingRule
 metadata:
@@ -139,14 +136,15 @@ spec:
     ahideProgressPage: false
 ```
 
-Your sample application is now managed by an AutoStopping Rule called `autostopping-sample-ru​`.
+Your sample application is now managed by an AutoStopping Rule called `autostopping-sample-ru`.
 
-### Kubernetes AutoStopping for Istio​
+</TabItem>
+<TabItem value="istio" label="Kubernetes AutoStopping for Istio">
 
-#### Expose your application by creating an ingress rule.
+1. Expose your application by creating an ingress rule.
 
-```
-apiVersion: networking.istio.io/v1alpha3​
+```yaml
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: httpbin
@@ -165,12 +163,10 @@ spec:
         host: autostopping-sample-svc
 ```
 
-#### Create an AutoStopping Rule
-
-Before applying this YAML, make sure that the `cloud-connector-id` is updated and the namespace of the Rule is the same as the `autostopping-sample-app` application.​
+2. Create an AutoStopping Rule. Before applying this YAML, make sure that the `cloud-connector-id` is updated and the namespace of the Rule is the same as the `autostopping-sample-app` application.
 
 ```
-apiVersion: ccm.harness.io/v1​
+apiVersion: ccm.harness.io/v1
 kind: AutoStoppingRule
 metadata:
     name: autostopping-sample-rule
@@ -188,4 +184,7 @@ spec:
     hideProgressPage: false
 ```
 
-Your sample application is now managed by an AutoStopping Rule called `autostopping-sample-rule`​.
+Your sample application is now managed by an AutoStopping Rule called `autostopping-sample-rule`.
+
+</TabItem>
+</Tabs>
