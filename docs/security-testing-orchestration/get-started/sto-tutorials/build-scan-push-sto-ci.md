@@ -2,6 +2,8 @@
 title: Create a build-scan-push pipeline (STO and CI)
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 80
+redirect_from:
+  - /tutorials/security-tests/build-scan-push-sto-ci
 ---
 
 import Tabs from '@theme/Tabs';
@@ -42,7 +44,7 @@ The following steps describe the workflow:
 
   - Harness STO and CI module licenses.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](/tutorials/security-tests/sast-scan-semgrep) is a good introduction.
+  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](./your-first-sto-pipeline) is a good introduction.
   - GitHub requirements:
 
     - A GitHub account and access token.
@@ -125,7 +127,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. In the Pipeline Studio, go to **Execution** and add a **Bandit** step to your pipeline.
 
@@ -146,7 +148,7 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
 :::
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 - `type:` [`Bandit`](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
 - `name:` A name for the step.
@@ -192,7 +194,7 @@ steps:
 </TabItem>
 </Tabs>
 
-#### Analyze the results
+### Analyze the results
 
 At this point, you might want to run a scan and view the detected issues.
 
@@ -215,7 +217,7 @@ Harness CI includes a set of [**Build and Push** steps](/docs/category/build-pus
 You'll now add one of these steps to build and push to your Docker Hub account.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. Add a **Build and Push to Docker Registry** step after the Bandit step.
 
@@ -234,7 +236,7 @@ You'll now add one of these steps to build and push to your Docker Hub account.
       `<+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows:
 
@@ -267,7 +269,7 @@ Here's an example:
 ## Scan the test image
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -288,7 +290,7 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 8.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -345,7 +347,7 @@ Here's an example:
 </TabItem>
 </Tabs>
 
-#### Run the pipeline and verify your results
+### Run the pipeline and verify your results
 
 This is a good time to run your pipeline and verify that it can scan the image.
 
@@ -373,7 +375,7 @@ This is a good time to run your pipeline and verify that it can scan the image.
 Assuming that the Trivy scan detected no critical vulnerabilities, you can now build and push a prod version of your image to Docker Hub. This step is identical to the previous [test image step](#build-and-push-a-test-image), except for the image tag: the test image tag is `1.x-scantest-DONOTUSE` and the prod image tag is `1.x`.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. Add a **Build and Push to Docker Registry** step after the Semgrep ingest step.
 
@@ -388,7 +390,7 @@ Assuming that the Trivy scan detected no critical vulnerabilities, you can now b
    4. Container image tag — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceID>`
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows:
 

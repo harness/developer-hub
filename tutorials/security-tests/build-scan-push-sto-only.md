@@ -44,7 +44,7 @@ The following steps describe the workflow:
 
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) and [Container image scans with Aqua Trivy](/tutorials/security-tests/sast-scan-semgrep) tutorials.
+  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](./sast-scan-semgrep) and [Container image scans with Aqua Trivy](./container-scan-aqua-trivy) tutorials.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
   - GitHub requirements — This tutorial assumes you have the following:
 

@@ -2,6 +2,8 @@
 title: Create a build-scan-push pipeline (STO only)
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 70
+redirect_from:
+  - /tutorials/security-tests/build-scan-push-sto-only
 ---
 
 import Tabs from '@theme/Tabs';
@@ -44,7 +46,7 @@ The following steps describe the workflow:
 
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) and [Container image scans with Aqua Trivy](/tutorials/security-tests/sast-scan-semgrep) tutorials.
+  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](./sast-scan-semgrep) and [Container image scans with Aqua Trivy](./container-scan-aqua-trivy) tutorials.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
   - GitHub requirements — This tutorial assumes you have the following:
 
@@ -117,13 +119,12 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
-
 ## Add the codebase scan step
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. Go to **Execution** and add a **Run** step.
 
@@ -164,7 +165,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
            ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
@@ -245,7 +246,7 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 :::
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. In **Execution**, add a **Semgrep** step after your **Run** step.
 
@@ -270,7 +271,7 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
    -->
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add a step after the `Run` step and configure it as follows:
 
@@ -335,7 +336,7 @@ This is a good time to run your pipeline and verify that it can scan the repo an
 Assuming that the Semgrep scanner detected no critical vulnerabilities, the next step is to build a local image using the `Dockerfile` in your codebase.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. Add a **Run** step after the Semgrep ingest step.
 
@@ -373,7 +374,7 @@ Assuming that the Semgrep scanner detected no critical vulnerabilities, the next
       2. Image = **docker**
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add a `Run` step and configure it as follows:
 
@@ -461,7 +462,7 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 7.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **None**
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -539,7 +540,7 @@ This is a good time to run your pipeline and verify that it can scan the repo an
 Assuming that the Aqua Trivy scanner detected no critical vulnerabilities, you can now push your new image to Docker Hub.
 
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<TabItem value="Visual" label="Visual" default>
 
 1. Add a **Run** step after the Aqua Trivy scan/ingest step.
 
@@ -565,7 +566,7 @@ Assuming that the Aqua Trivy scanner detected no critical vulnerabilities, you c
       2. Image = **docker**
 
 </TabItem>
-  <TabItem value="YAML" label="YAML">
+<TabItem value="YAML" label="YAML">
 
 Add a `Run` step after the Bandit scan step and configure it as follows:
 

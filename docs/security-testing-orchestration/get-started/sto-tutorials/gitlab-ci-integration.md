@@ -2,9 +2,9 @@
 title: Trigger automated scans using GitLab merge requests
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 60
+redirect_from:
+  - /tutorials/security-tests/gitlab-ci-integration
 ---
-
-# Trigger automated scans using GitLab merge requests
 
 <CTABanner
   buttonText="Learn More"
@@ -42,13 +42,13 @@ To do this tutorial, you need the following:
 
 1. In the Harness UI, click **Security Tests**, then **Pipelines**, then **Create a Pipeline**.
 
-<img src={create_pipeline} alt="Create a new STO pipeline." height="40%" width="40%" />
+   <img src={create_pipeline} alt="Create a new STO pipeline." height="40%" width="40%" />
 
 2. Enter a pipeline name and click **Start**.
 
 3. In the visual editor, add a **Security Tests** stage.
 
-<img src={add_sto_stage} alt="Create a new STO pipeline." height="40%" width="40%" />
+   <img src={add_sto_stage} alt="Create a new STO pipeline." height="40%" width="40%" />
 
 4. In **About your Stage**, do the following:
 
@@ -116,7 +116,7 @@ Add a trigger to your pipeline that that listens for incoming requests on a webh
 
 The steps to do this differ depending on the service you're using. These steps assume you're using GitLab.
 
-1. Go to your GitLab project and choode **Settings** > **Webhooks** in the left menu.
+1. Go to your GitLab project, select **Settings**, and then select **Webhooks** in the left menu.
 
 2. Enter the webhook URL and your GitLab personal access token.
 

@@ -8,8 +8,6 @@ redirect_from:
   - /tutorials/security-tests/your-first-sto-pipeline
 ---
 
-# Your first STO pipeline
-
 <CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."

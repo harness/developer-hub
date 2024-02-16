@@ -1,13 +1,10 @@
 ---
 title: DAST app scans using Zed Attack Proxy (ZAP)
-sidebar_position: 35
-sidebar_label: DAST app scans using ZAP
 description: Scan a web app using ZAP
-keywords: [STO, security, DAST, security, codebase, Zed Attack Proxy, ZAP]
-# slug: /sto-pipelines/sast/semgrep
+sidebar_position: 35
+redirect_from:
+  - /tutorials/security-tests/dast-scan-zap
 ---
-
-# DAST app scans using Zed Attack Proxy (ZAP)
 
 <CTABanner
   buttonText="Learn More"
@@ -18,7 +15,7 @@ keywords: [STO, security, DAST, security, codebase, Zed Attack Proxy, ZAP]
   target="_self"
 />
 
-[Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
+[Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a "man-in-the-middle proxy" between the tester's browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
 In this tutorial, you'll set up a simple pipeline with a Zap step that scans the app and ingests the results into STO.
 
@@ -38,13 +35,13 @@ In this tutorial, you'll set up a simple pipeline with a Zap step that scans the
 
 :::
 
-### Set up your app instance
+## Set up your app instance
 
 If you don't have your web app running yet, you can go through this tutorial by scanning an instance of the [Google Gruyere](https://google-gruyere.appspot.com/part1) app.
 
 To create an instance of this app for scanning, go to [Start Gruyere](https://google-gruyere.appspot.com/start).
 
-### Set up your pipeline
+## Set up your pipeline
 
 Do the following:
 
@@ -62,7 +59,7 @@ Do the following:
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
-### Add the Zap scan/ingest step
+## Add the Zap scan/ingest step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep.
 
@@ -159,7 +156,7 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
 </TabItem>
 </Tabs>
 
-### Run the pipeline and check your results
+## Run the pipeline and check your results
 
 1. Run the pipeline and then wait for the execution to finish.
 
@@ -167,11 +164,11 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
 
    ![view scan results](./static/dast-scans-zap/view-dast-scan-results.png)
 
-### Specify the baseline
+## Specify the baseline
 
 :::tip
 
-It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in the baseline.
+It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
 
 :::
 
@@ -181,7 +178,7 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 ![set the baseline](./static/dast-scans-zap/dast-scan-set-baseline.png)
 
-### YAML pipeline example
+## YAML pipeline example
 
 Here's an example of the pipeline you created in this tutorial.  If you copy this example, replace the placeholder values with appropriate values for your project, organization, and app instance ID.
 

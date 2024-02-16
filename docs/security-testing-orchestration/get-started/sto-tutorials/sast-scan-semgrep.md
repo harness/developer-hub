@@ -1,12 +1,10 @@
 ---
 title: SAST code scans using Semgrep
-sidebar_position: 30
 description: Scan a codebase using Semgrep
-keywords: [STO, security, SAST, security, codebase, Semgrep]
-# slug: /sto-pipelines/sast/semgrep
+sidebar_position: 30
+redirect_from:
+  - /tutorials/security-tests/sast-scan-semgrep
 ---
-
-# SAST code scans using Semgrep
 
 <CTABanner
   buttonText="Learn More"
@@ -33,7 +31,7 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
 
   - A Harness account and STO module license.
   - A basic understanding of key STO concepts and good practices. Here are some good resources:
-    - [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline)
+    - [Your first STO pipeline](./your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
@@ -41,13 +39,13 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
 
 :::
 
-### Set up your codebase
+## Set up your codebase
 
 To do this tutorial, you need a [codebase connector](/docs/category/code-repositories) to your Git repository and an access token. A connector can specify a Git account (`http://github.com/my-account`) or a specific repository (`http://github.com/my-account/my-repository`).
 
 This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your Git account and scan the fork. However, you can run your scans on any codebase that uses a language supported by Semgrep.
 
-### Set up your pipeline
+## Set up your pipeline
 
 Do the following:
 
@@ -82,7 +80,7 @@ Do the following:
 
 -->
 
-### Add the scan step
+## Add the scan step
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness.
 
@@ -171,7 +169,7 @@ Here's an example:
 </TabItem>
 </Tabs>
 
-### Add the Semgrep (ingest) step
+## Add the Semgrep (ingest) step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep.
 
@@ -244,7 +242,7 @@ Here's a YAML example:
 </TabItem>
 </Tabs>
 
-### Run the pipeline and check your results
+## Run the pipeline and check your results
 
 1. In the Pipeline Studio, select **Run** (top right).
 
@@ -270,11 +268,11 @@ Here's a YAML example:
 
    ![view scan results](./static/sast-semgrep-tutorial/security-tests-results.png)
 
-### Specify the baseline
+## Specify the baseline
 
 :::tip
 
-It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in the baseline.
+It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
 
 :::
 
@@ -284,7 +282,7 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 ![set the baseline](./static/sast-semgrep-tutorial/baseline-set.png)
 
-### YAML pipeline example
+## YAML pipeline example
 
 Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, connectors, and access token.
 

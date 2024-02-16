@@ -1,12 +1,12 @@
 ---
 title: Container image scans with Aqua Trivy
-sidebar_position: 40
 description: Scan a container image using Aqua Trivy
-keywords: [STO, security, container, image, security, Trivy]
-# slug: /sto-pipelines/sast/semgrep
+sidebar_position: 40
+redirect_from:
+  - /tutorials/security-tests/container-scan-aqua-trivy
 ---
 
-This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool. 
+This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
 In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps:
 
@@ -16,7 +16,6 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
 
 ![](./static/container-scan-trivy/pipeline-editor-stage.png)
 
-
 :::info Prerequisites
 
 - This tutorial has the following prerequisites:
@@ -24,30 +23,30 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is highly recommended. Here are some good resources: 
-    - [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline)
+    - [Your first STO pipeline](./your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to the Docker v2-compliant registry with the image you want to scan. 
     This tutorial uses an [example image on Docker Hub](https://hub.docker.com/r/snyklabs/goof) that contains known vulnerabilities.
 
 :::
 
-### Set up your pipeline
+## Set up your pipeline
 
 Do the following:
 
-1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**. 
+1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**.
 
-2. In the new pipeline, select **Add stage** > **Security Tests**. 
+2. In the new pipeline, select **Add stage** > **Security Tests**.
 
 3. Set up your stage as follows:
 
    1. Enter a **Stage Name**.
-   
-   2. Disable **Clone Codebase**. You don't need a code repository for this tutorial.
-   
 
-3. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.  
-   
+   2. Disable **Clone Codebase**. You don't need a code repository for this tutorial.
+
+
+3. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
+
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
 :::note
@@ -56,37 +55,25 @@ The following step is required only for Kubernetes or Docker infrastructures. If
 
 :::
 
-
-### Add a Docker-in-Docker background step
-
+## Add a Docker-in-Docker background step
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-
 <StoDinDRequirements />
 
-
-
-
-### Add the Aqua-Trivy scan step
-
+## Add the Aqua-Trivy scan step
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
-
-
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-
 
 Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
 
    1. Scan Mode = **Orchestration**
 
-   2. Target name — Click the Value Selector button on the right side of the input field and select **Runtime Input**. 
+   2. Target name — Click the Value Selector button on the right side of the input field and select **Runtime Input**.
 
    3. Target variant — Select **Runtime Input**.
 
@@ -100,13 +87,10 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
 
    8. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
-
 </TabItem>
-  <TabItem value="YAML" label="YAML">
-
+<TabItem value="YAML" label="YAML">
 
 Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
-
 
  *  `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
    *  `name:` A name for the step.
@@ -129,7 +113,6 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
             - `name: <+input>` 
             - [`domain`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#domain) `: docker.io` 
             - `tag: <+input>`
-
 
 Here's an example:
 
@@ -157,13 +140,10 @@ Here's an example:
 
 ```
 
-
 </TabItem>
 </Tabs>
 
-
-
-### Run the pipeline and check your results
+## Run the pipeline and check your results
 
 1. In the Pipeline Studio, select **Run** (top right).
 
@@ -191,18 +171,17 @@ Here's an example:
 
 :::tip
 
-It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in the baseline.
+It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into "shift-left" issues in downstream variants and security personnel to drill down into "shift-right" issues in the baseline.
 
 :::
 
 1. Select **Test Targets** (left menu).
 
-2. Select the baseline you want for your target. 
+2. Select the baseline you want for your target.
 
 ![set the baseline](./static/container-scan-trivy/snyklabs-goof-baseline-set.png)
 
-
-### YAML pipeline example
+## YAML pipeline example
 
 Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
 
@@ -270,7 +249,4 @@ pipeline:
             enabled: false
           sharedPaths:
             - /var/run
-
-
-
 ```
