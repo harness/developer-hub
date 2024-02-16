@@ -9,6 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics
+  - /tutorials/security-tests/sto-overview
 ---
 
 Companies perform security testing to avoid introducing vulnerabilities into the products their customers depend on. If a customer catches the security issue instead of the company, trust is lost.

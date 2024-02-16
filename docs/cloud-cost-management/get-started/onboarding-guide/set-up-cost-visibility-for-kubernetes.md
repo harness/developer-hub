@@ -141,7 +141,7 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
   - Large - 13.2GB memory, 4CPU
   
   
-:::important
+:::warning
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
 
@@ -158,7 +158,7 @@ These sizing requirements are for the Delegate only. Your cluster will require m
 - **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
 
 
-:::important note
+:::info
 Metrics Server is installed by default on GKE and AKS clusters; however, you need to install it on the AWS EKS cluster.
 :::
 

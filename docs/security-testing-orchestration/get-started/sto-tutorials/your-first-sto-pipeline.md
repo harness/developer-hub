@@ -5,6 +5,7 @@ sidebar_position: 20
 redirect_from:
   - /tutorials/security-tests/standalone-pipeline
   - /tutorials/security-tests/cicd-integrated-pipeline
+  - /tutorials/security-tests/your-first-sto-pipeline
 ---
 
 # Your first STO pipeline

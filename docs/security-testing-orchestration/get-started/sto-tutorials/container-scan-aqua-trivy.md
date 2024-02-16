@@ -28,6 +28,7 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to the Docker v2-compliant registry with the image you want to scan. 
     This tutorial uses an [example image on Docker Hub](https://hub.docker.com/r/snyklabs/goof) that contains known vulnerabilities.
+
 :::
 
 ### Set up your pipeline

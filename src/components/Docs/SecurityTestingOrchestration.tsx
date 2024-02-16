@@ -41,7 +41,7 @@ export default function STO() {
             detect security vulnerabilities automatically. Harness STO enables
             DevOps and Security teams teams to left shift security testing as a key
             outcome of their DevSecOps initiative. STO orchestrates scanning,
-            intelligently de-duplicating scanner output, prioritizing remediations,
+            intelligently deduplicating scanner output, prioritizing remediations,
             and enforcing governance into your pipelines. STO puts scanning directly
             into your pipelines to ensure that vulnerabilities are caught and fixed
             before your products are ever released.

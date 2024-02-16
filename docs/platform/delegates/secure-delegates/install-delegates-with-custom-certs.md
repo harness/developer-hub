@@ -362,7 +362,7 @@ In this topic, we will do the following:
 - Add a volume mount to the `harness-delegate.yaml` file and provide it to the delegate Java process.
 - Add a volume mount to the `harness-delegate.yaml` file and configure the delegate container OS to have the certificates.
 
-:::important note
+:::info
 Harness recommends that you keep your existing Java KeyStore in place during the installation process. Updating the KeyStore may cause issues with your delegate.
 :::
 

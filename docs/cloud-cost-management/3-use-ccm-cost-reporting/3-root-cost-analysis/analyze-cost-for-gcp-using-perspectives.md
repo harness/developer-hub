@@ -19,7 +19,7 @@ Harness Cloud Cost Management (CCM) provides you with a comprehensive view of yo
     ![](./static/analyze-cost-for-gcp-using-perspectives-12.png)
 
 
-:::important note
+:::info
 Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 :::
 
@@ -65,7 +65,7 @@ Perform the following steps to add filters.
   - **Project**: A fundamental organizational unit that allows you to manage and organize your cloud resources.
   - **SKUs**: Stock Keeping Unit (SKU) is a unique identifier used to represent specific types or configurations of cloud resources and services offered by Google. Each SKU corresponds to a particular product, service plan, or pricing option available in GCP.
 
-:::important note
+:::info
    - If you select the **Invoice Month** filter, the time filter option in the perspective is disabled. 
    - If you Group By on **GCP: Invoice Month**, then the data in the grid and chart will be presented in `yyyymm` format.
 :::
