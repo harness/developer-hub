@@ -243,11 +243,10 @@ There is a change in the permissions associated with [Overrides V2](/docs/contin
 on class `ScriptSshExecutor.java` made the log stream terminate.
   - Now we are closing the log stream consistently SSH executions.
 - Unable to enter matrix details in stage template. (CDS-85375)
-  - When editing the looping strategy setting in a stage template, the strategy editor disappeared arbitrarily. It should only get hidden when the entire strategy YAML is removed.
-- This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
-Unable to save/update/delete query in CDC - CD. For CV CDC Handlers, all inserts with the same _ids were failing due to a unique constraint violation. shouldUpdateOnConflict was set to true to change these inserts to upserts. (CDS-87168)
-- Users can create overrides in Overrides V2.0 with specific permissions. Service Specific and Service & Infrastructure specific overrides require Service create/update permission, while Global Environment and Infrastructure-specific overrides need Environment create/update permission.(CDS-87009)
-
+   When editing the looping strategy setting in a stage template, the strategy editor disappeared arbitrarily. It should only get hidden when the entire strategy YAML is removed.
+   This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
+- Unable to save/update/delete query in CDC - CD. For CV CDC Handlers, all inserts with the same _ids were failing due to a unique constraint violation. `shouldUpdateOnConflict` was set to `true` to change these inserts to upserts. (CDS-87168)
+- Users can create overrides in Overrides V2.0 with specific permissions. Service-specific and Service & Infrastructure-specific overrides require Service create/update permission, while Global Environment and Infrastructure-specific overrides need Environment create/update permission. (CDS-87009)
 ## December 2023
 
 ### Version 1.17.8
@@ -290,7 +289,8 @@ Unable to save/update/delete query in CDC - CD. For CV CDC Handlers, all inserts
   - Now Harness provides an empty file when content is null.
 - Changes in input set fixed value for Environment caused Save button to be disabled. (CDS-74710)
   - Now, in the input set, an `Unsaved changes` link appears when users make changes.
-- Graceful shutdown timeout not working with terraform 1.3.6. Terraform process forcefully deleted if not stopped within 30 seconds after step abortion. (CDS-84781)
+- The graceful shutdown timeout wasn't working with Terraform 1.3.6. (CDS-84781)
+   The Terraform process is now forcefully deleted if not stopped within 30 seconds after step abortion.
 ### Version 1.16.6
 
 #### Fixed issues
@@ -309,12 +309,16 @@ Unable to save/update/delete query in CDC - CD. For CV CDC Handlers, all inserts
 - Deployment failing with Terraform error on infra provisioners. (CDS-85684) Terraform tasks working directory was created based on account, org, project, and provisioner identifier.
   - This combination might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on same delegate.
   - With this change every Terraform step execution will run in a unique working directory.
-- Console logs missing from CloudFormation steps. There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.(CDS-84962, ZD-53810, ZD-53865)
-- When internal looping strategy fields marked as runtime, the run pipeline form did not prompt for input. Condition updated to validate looping strategy runtime inputs. (CDS-86445)
-- Blank tile on ASG traffic shifter. Blank tile on the UI for the ASG Traffic Shifter fixed. (CDS-86298)
-- Customer unable to set environment infrastructure definition. Infrastructure definition now set with provisioner step group template. (CDS-86109, ZD-54775)
-- Unsaved Changes Doesn't Display Whitespace Changes. Whitespace difference consideration implemented in diff editors. (CDS-85964)
-- Mismatch in Icon for Runtime in Codebase Configuration in pipeline level. Switching to expression mode updates the repository field icon accordingly. (CDS-85749
+- Console logs were missing from CloudFormation steps. There was an issue where CloudFormation steps were not updating the console longs when there were multiple steps with a similar prefix. (CDS-84962, ZD-53810, ZD-53865)
+   The issue is fixed now.
+- When internal looping strategy fields marked as runtime, the run pipeline form did not prompt for input. Condition updated to validate looping strategy runtime inputs.
+- The ASG Traffic Shifter UI included a blank tile. (CDS-86298)
+   This issue has been fixed.
+- Infrastructure definitions didn't allow you to set an environment. (CDS-86109, ZD-54775)
+   Infrastructure definitions now allow you to set the provisioner step group template.
+- Diff editors didn't display unsaved whitespace changes. (CDS-85964)
+   Whitespace difference consideration has been implemented in diff editors to resolve this issue.
+- Mismatch in Icon for Runtime in Codebase Configuration in pipeline level. Switching to expression mode updates the repository field icon accordingly. (CDS-85749)
 - Icons for conditional execution showing up despite selecting the default radio button. Condition icon removed from steps with only default/success condition. (CDS-85696, ZD-54189)
 - The delegateSelectors executionInput() field does not show. Added support for delegateSelectors under the spec of the step as an execution runtime field. (CDS-85678)
 - Unable to run pipeline because of input.default(true) in conditional execution. Typecast boolean value to a string for proper run pipeline form functioning. (CDS-85629, ZD-54465)
