@@ -5,7 +5,7 @@ description: Learn how to use self-managed AWS ElastiCache.
 sidebar_position: 40
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an Amazon ElastiCache Redis database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration.
+Harness Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your installation. This enables you to separate your data from node execution. To use an Amazon ElastiCache Redis database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration.
 
 This tutorial describes how to configure an Amazon ElastiCache Redis database for your installation.
 
