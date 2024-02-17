@@ -46,6 +46,40 @@ Ensure the following:
 
 ![MongoDB architecture](./static/mongodb-self-managed-architecture.png)
 
+### MongoDB replica set configuration without region failover (single data center)
+
+This architecture supports HA for databases. It does not support region/DR failover.
+
+![MongoDB architecture 1](./static/mongodb-arch-1.png)
+
+### MongoDB replica set configuration with region failover setup (two data centers)
+
+This architecture supports the following:
+
+- HA for databases
+- Region (DR) failover
+
+:::info
+The DC1 MongoDB priority level should be higher than DC2 to prevent cross-network DB connections.
+
+:::
+
+![DR architecture 1](./static/mongodb-dr-arch-1.png)
+
+### MongoDB replica set configuration with region failover setup (3 data centers)
+
+This architecture supports the following:
+
+- HA for databases
+- Region (DR) failover
+
+:::info
+The DC1 and DC2 MongoDB priority levels should be higher than DC3 to prevent cross-network DB connections.
+
+:::
+
+![DR architecture 2](./static/mongodb-dr-arch-2.png)
+
 ## Set up MongoDB VMs
 
 import Strongpass from '/tutorials/shared/strong-passwords.md'
