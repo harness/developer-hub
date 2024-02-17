@@ -207,7 +207,7 @@ To set up a MongoDB VM, do the following:
     sudo systemctl start mongod
     ```
 
-17. Log in to your MongoDB primary instance using the `mongo` command, and run following command to create your replicate set.
+17. Log in to your MongoDB primary instance using the `mongo` command, and run following command to create your replica set.
 
     To identify primary node, run this command:
 
@@ -238,7 +238,7 @@ To set up a MongoDB VM, do the following:
      roles:[{role: "root" , db:"admin"}]})
     ```
 
-19. Run the following to verify your replicaset configuration.
+19. Run the following to verify your replica set configuration.
 
     ```
     rs.conf()
