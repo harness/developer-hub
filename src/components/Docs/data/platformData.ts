@@ -19,7 +19,7 @@ export const featuredTutorials: CardItem[] = [
       link: "/tutorials/platform/onboard-terraform-provider",
     },
     {
-      title: "Install delegate",
+      title: "Install a delegate",
       module: MODULES.platform,
       icon: "",
       description: "Install a delegate",

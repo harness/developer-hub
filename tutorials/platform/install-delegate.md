@@ -38,6 +38,10 @@ https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 
 `6_vVHzo9Qeu9fXvj-AcQCb` is the `accountId`. 
 
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+
+![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
+
 Now you are ready to install the delegate on either Docker or Kubernetes. 
 
 
@@ -97,9 +101,9 @@ Now we are ready to install the delegate. The following example installs/upgrade
 
 To install the delegate, do the following:
 
-1. In Harness, select **Deployments**, then select your project.
-2. Under **Project Setup**, select **Delegates**.
-3. Select **Install a Delegate** to open the **New Delegate** dialog.
+1. In Harness, select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
+2. Select **Delegates**. The Delegates list page opens.
+3. Select **New Delegate**. The **New Delegate** dialog opens.
 
    ![](./static/install-delegate/install-a-k8s-delegate-helm.png)
 
@@ -284,32 +288,20 @@ To install the delegate, do the following:
      -e DELEGATE_NAME=docker-delegate \
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
-     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
-     -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+     -e ACCOUNT_ID=YOUR_HARNESS_ACCOUNTID_ \
+     -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
+     -e DELEGATE_TAGS="" \
+     -e LOG_STREAMING_SERVICE_URL=YOUR_LOG_STREAMING_SERVICE_URL/log-service/ \
+     -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
      harness/delegate:yy.mm.verno
    ```
 
-6. Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
+   :::info
+   The `docker run` command doesn't allow you to select the delegate token. You can replace the token in the command with another token if required.
 
-7. Run the command.
+   :::
 
-For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
-
-![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
-
-For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
-
-| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
-| ------------------------| -------------------------------------------	|
-| SaaS prod-1  	 		| `https://app.harness.io`       				|
-| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
-| SaaS prod-3  	 		| `https://app3.harness.io`        				|
-
-
-If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
-
+6. Run the command.
 
 </TabItem>
 </Tabs>
