@@ -152,7 +152,19 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 ### Additional CLI flags
 
-You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with specific command-line arguments.   
+<!-- https://harness.atlassian.net/browse/STO-6983 -->
+<!-- https://harness.atlassian.net/browse/STO-7003 -->
+
+You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with specific command-line arguments. Useful arguments include:
+
+* `--all-projects` — Search recursively down the repo folder tree.
+* `--detection-depth=n` — The folder depth to scan. This argument has no effect if the repo has fewer levels than the specified depth.
+
+:::note
+
+STO does not support [context-specific arguments](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#less-than-context-specific_options-greater-than) or arguments that appear at the end of the command line, such as Maven or Gradle arguments.
+
+:::
 
 ### Log Level
 
