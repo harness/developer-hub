@@ -265,6 +265,24 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+## Troubleshoot Sonar Scans
+
+### Can't generate SonarQube report due to shallow clone
+
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
+* Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Solution: Change the `depth` to `0`.
+
+### How do I add the sonar.projectVersion in a Harness pipeline?
+
+In your Configure SonarQube step, declare `sonar.projectVersion` under Additional CLI Flags, for example:
+
+```yaml
+Additional CLI Flags:
+-Dsonar.projectVersion=
+```
+
+
 
 ## Security step settings for SonarQube scans in STO (legacy)
 
