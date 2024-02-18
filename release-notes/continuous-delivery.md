@@ -51,28 +51,29 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.25.x
 
-#### New Features and Enhancements
-- You can now select secrets related to a valid certificate and key in the HTTP step for TLS connections. This feature is currently behind the feature flag, `CDS_HTTP_STEP_NG_CERTIFICATE`. To enable the feature, contact [Harness Support](mailto:support@harness.io). (CDS-88543, ZD-55531)
-  
 #### Fixed issues
-- Fixed an issue in the Amazon Elastic Container Service (Amazon ECS) Blue Green deployments where the ECS service was getting deleted after the first or second deployment. (CDS-91499, ZD-57892)
+- ECS service used to get deleted after first/second deployment in ECS Blue Green Deployment(CDS-91499, ZD-57892)
+   The issue is fixed by adding a condition for active service status.
 - The chained pipeline's input section in the Harness UI did not have the option to fetch manifests from the Git store for runtime config fields. (CDS-91387, ZD-57687)
-
-  This issue is resolved by adding a default option to add manifests from the Git store in the Harness UI. 
-- Fixed an issue in the Harness UI where codeblocks embedded in the Support AI were displayed as an answer to queries. (CDS-91369)
-- Fixed an issue where moving a the step details panel one stage moved the step details panel for other stages as well. (CDS-91351)
-  
-  The steps graph in the execution view has been updated to auto-reset its position when they are dragged out of the visible area of the UI.
-- Fixed an issue where a single-service, multi-environment, multi-cluster deployments done using a GitOps PR pipeline rejected some of the clusters. (CDS-90942)
-- Template settings were not visible in the new Org and Account settings navigation page. (CDS-89746, ZD-57373)
-  
-  The settings cards for modules were hidden when the corresponding module's license was absent. A code change has been made to display all settings cards regardless of module license. 
-- Fixed an issue where logs of a rejected Approval step was not visible in the console view. (CDS-89267)
-- Fixed an issue where users where incorrectly prompted about unsaved changes when viewing variables with default values in the Pipeline Studio and Input Set pages. (CDS-89117, ZD-57388, ZD-57603)
+   This issue is fixed now and you should be able to set the defaults correctly.
+- Codeblocks embedded in Support AI replies were not rendering correctly. (CDS-91364)
+   This issue is fixed now.
+- In step details panel one stage moved the step details panel for other stages as well.(CDS-91351)
+   The steps graph in the execution view has been updated to auto-reset its position when they are dragged out of the visible area of the UI.
+- Single-service, multi-environment, multi-cluster deployments done using a GitOps PR pipeline rejected some of the clusters. (CDS-90942)
+   The issue is fixed now.
+- Template settings were not visible in the new Organisation and Account settings navigation page. (CDS-89746, ZD-57373)
+   The issue is fixed.In the new nav, the settings cards for specific modules were previously hidden when the corresponding module's license was absent. It has now being modified to display all settings cards regardless of the license status.
+- Logs were not showing up for rejected Approval step in the console view. (CDS-89267)
+   The issue is fixed now to make logs visible.
+- Unsaved changes were appearing in input set pages and Pipeline studio for variables with default values.(CDS-89117, ZD-57388, ZD-57603)
+   The issue is fixed now.
 - Harness Approval step allowed the Variable Name field in the Approval Inputs page be blank. (CDS-88673)
-  
   This issue is fixed by enforcing proper validation for the Variable Name field.
-- Fixed an issue where the Pipeline Details tab did not show the Harness Approval Execution step if the Include Stage Execution Details field is unchecked in the Harness Approval step. (CDS-88133)
+- Feature of specifying TLS certificate and key in HTTPS step was not working.(CDS-88543, ZD-55531)
+   The issue is fixed now.
+- Pipeline Details tab did not show the Harness Approval Execution step if the Include Stage Execution Details field is unchecked in the Harness Approval step. (CDS-88133)
+   The issue is fixed now.
 
 ### Version 1.24.7
 
