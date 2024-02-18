@@ -49,7 +49,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2024
 
-### Version 1.25.x
+### Version 1.25.0
 
 #### Fixed issues
 - ECS service used to get deleted after first/second deployment in ECS Blue Green Deployment(CDS-91499, ZD-57892)
