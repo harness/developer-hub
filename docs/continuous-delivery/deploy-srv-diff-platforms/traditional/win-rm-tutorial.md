@@ -375,6 +375,9 @@ You are now taken to **Execution Strategies** where you will use a deployment st
 3. Click **Use Strategy**. Harness adds the **Deploy** step for execution.
 4. In the **Deploy** step that is added to your pipeline, click **Deploy**.
 
+### Prerequisites
+Following are the prerequisites that you should consider while using Basic Deployment:-
+
 ## Run the Pipeline to Deploy and Review
 
 After selecting the Execution Strategy, we are now ready to run the pipeline.
