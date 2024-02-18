@@ -189,7 +189,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful argments include:
+You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful arguments include:
 
 * `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
 * `-LocationPathExclude`— Exclude one or more paths from the scan.
