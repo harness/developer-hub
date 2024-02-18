@@ -189,7 +189,15 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `-incremental`.  
+You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful argments include:
+
+* `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
+* `-LocationPathExclude`— Exclude one or more paths from the scan.
+* `-LocationFilesExclude` — Exclude one or more paths from the scan.
+* `-OsaPathExclude` — Exclude matching paths from the scan.
+* `-OsaFilesExclude` — Exclude matching files from the scan.
+
+<!-- https://harness.atlassian.net/browse/STO-7006  -->
 
 
 ### Running incremental scans with Checkmarx
