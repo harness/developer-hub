@@ -15,8 +15,7 @@ This section describes the various operations that can be performed on resilienc
 This section discusses various operations that can be performed on [resilience probes](../../configure-chaos-experiments/probes/overview.md).
 
 ## Create resilience probes
-You can [create a probe](/docs/chaos-engineering/technical-reference/resilience-probes/use-probe#create-a-resilience-probe) from within an experiment or from the **Resilience Probes** tab.
-
+* You can [create a probe](/docs/chaos-engineering/technical-reference/resilience-probes/use-probe#create-a-resilience-probe) from within an experiment or from the **Resilience Probes** tab.
 
 * HCE allows you to create probes for two infrastructures, namely, Kubernetes and Linux. The type of probes allowed on each of these infrastructures is listed below.
 
@@ -58,7 +57,8 @@ Here, `probe-name` is the name of your probe.
 If you use the user interface, this step is not required.
 
 ## Known limitations
-Command probes in the **Source** mode is only available for Linux on the self-managed platform (SMP).
+* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SAAS.
+* In SMP (self-managed platform), **source** mode of command probe is only available for Kubernetes.
 
 ## Resilience probes status matrix
 Probe status is the single source of truth when executing a chaos experiment. The probe status in a chaos experiment can be in 4 different states.

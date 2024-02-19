@@ -11,17 +11,25 @@ This section introduces you to resilience probes, its importance, types, and gen
 
 ## What is a resilience probe?
 
-Resilience probes are health-checkers, that is, they monitor your application's health before, during and after a chaos experiment. Depending on the type of probe, it can run Kubernetes commands, send HTTP requests, execute Prometheus queries, and so on.
+Resilience probes are health-checkers, that is, they monitor your application's health before, during and after a chaos experiment. Depending on the type of probe, probes can:
+* Run cmd commands for innumerable validations, 
+* Run Kubernetes commands, send HTTP requests, check for a label or field selector missing and assert if the resource is absent or not,
+* Execute PromQL queries, perform conditional valdation on QPS or probe success percentages,
+* Validate your error budget (SLO probe),
+* Connect with the APM tool and assert metrics (Datadog probe).
+
+Depending on your requirement, probes can do a lot more than what is discussed earlier. 
 
 ## Why is it important?
 
-It is a tedious task to predict or test exhaustively for how and when failures will occur in a production environment. Resilience probes will help simulate various failures, thereby testing how your application would behave under different conditions. This way, even if there is an unexpected failure, the application is available and responds seamlessly to user requests, thereby improving the resilience of the application.
 
-This feature creates a global instance of probes, that is, a shared entity that can be used across multiple faults. This feature also brings reusability since you create the validation instance first and use it across different experiments. avoids repeated creation of same faults for similar requirements. 
+* Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults. 
+* It also brings reusability since you create the validation instance first and use it across different experiments. 
+* It avoids repeated creation of same probes for similar requirements. 
 
 This is also in accordance with how chaos engineering pans out:
-1. Plan the hypothesis
-2. Measure the validation criteria to check against the SLA
+1. Plan the hypothesis.
+2. Measure the validation criteria to check against the SLA.
 
 ## Types of resilience probes
 
@@ -35,7 +43,7 @@ HCE faciliates 6 types of resilience probes listed below. Click each probe to na
 6. Dynatrace probe
 7. [SLO probe](/docs/chaos-engineering/technical-reference/probes/slo-probe)
 
-## Generic runProperties for all probes
+## Generic run properties for all probes
 
 Listed below are the generic `runProperties` of all probes.
 

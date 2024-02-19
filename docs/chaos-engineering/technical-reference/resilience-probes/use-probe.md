@@ -40,6 +40,10 @@ This section describes steps you can follow to create and use a resilience probe
 
   ![setup](./static/use-probe/setup-6.png)
 
+:::tip
+If you are a first time user, you can create a resilience probe directly from Chaos Studio drawer (from within an experiment). For this, you will see an option to add a system probe (which is a health check system probe) as a one click button. This will not be present if you have configured atleast one resilience probe. 
+:::
+
 ## Edit a resilience probe
 
 * You can edit a resilience probe by navigating to the probe you wish to edit. Click the three vertical dot menu to the extreme right of the probe, and choose **Edit probe**. Modify the properties you wish to, and click **Save**.
