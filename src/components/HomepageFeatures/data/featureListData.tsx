@@ -15,7 +15,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: "Build faster and be more productive.",
-    link: "/docs/category/get-started-with-ci",
+    link: "docs/category/get-started-with-ci",
   },
   {
     title: "Continuous Delivery",
