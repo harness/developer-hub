@@ -52,7 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 ### Version 1.25.5
 
 #### Fixed issues
-- ECS services got deleted after the first or second deployment in th ECS Blue Green deployment. (CDS-91499, ZD-57892)
+- ECS services got deleted after the first or second deployment in the ECS Blue Green deployment. (CDS-91499, ZD-57892)
 
   The issue is fixed by adding a condition for active service status.
 - The chained pipeline's input section in the Harness UI did not have the option to fetch manifests from the Git store for runtime config fields. (CDS-91387, ZD-57687)
