@@ -153,6 +153,10 @@ probe:
       retry: 1
 ```
 
+## Limitations of resilience probes
+* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SAAS.
+* In SMP (self-managed platform), **source** mode of command probe is only available for Kubernetes.
+
 ## Next steps
 
 * [Configure and add a probe](./configure-and-add-probe.md)

@@ -8,8 +8,8 @@ This section describes the steps to validate a hypthesis using resilience probes
 
 ### Before you begin
 
-* [Probe overview](./overview)
-* [Configure and add a probe](./configure-and-add-probe.md)
+* [Probe overview](/docs/chaos-engineering/configure-chaos-experiments/probes/overview.md)
+* [Configure and add a probe](/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe.md)
 * [Chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/chaos-faults.md)
 
 ### Step 1. Add a probe
