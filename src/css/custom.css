@@ -314,6 +314,7 @@
 
   --hover: var(--gray-200);
   --platform-card-bg: var(--white);
+  --homepageFeatureCard: transparent;
 }
 
 /* darkmode css */
@@ -370,6 +371,7 @@ html[data-theme="dark"] .navbar {
   --gray-500: #d9dae5;
 
   --hover: var(--gray-800);
+  --homepageFeatureCard: var(--black);
 }
 /* darkmode css  end*/
 html {
