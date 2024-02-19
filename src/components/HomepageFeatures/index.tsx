@@ -48,7 +48,7 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      {<h2>Get Started with Tutorials</h2>}
+      {<h2>Get Started</h2>}
       <div className={styles.getStart}>
         {featureList.map((props, idx) => (
           <Feature key={idx} {...props} />
@@ -57,7 +57,7 @@ export default function HomepageFeatures(): JSX.Element {
       <div className={styles.btnContainer}>
         <Link href="/docs">
           <button className={`button button--primary ${styles.button}`}>
-            See All Tutorials
+            See All Documentation
           </button>
         </Link>
       </div>
