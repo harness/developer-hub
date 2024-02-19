@@ -1135,12 +1135,6 @@ The user can directly login using deep link, https://app.harness.io/ng/account/A
 
 This is a very common scenario when users get this issue. The reason behind this is mostly that the User has signed up for a personal account or part of a different account that doesn't have the SSO enabled which is set as his default account. Hence User can log in using a username and password. If he has forgotten his password, he can always use the forgot password and then try to log in.
 
-### Why can't I view the Allowlist option under my  account?
-
-The feature for allowlist is behind the feature flag `PL_IP_ALLOWLIST_NG`.
-
-For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/). Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 ### Why can't I set up/reset MFA?
 
 When the 2FA is set as force enabled on the account level by an admin of the account. The users will have to setup the 2FA for their profile.

@@ -29,7 +29,7 @@ The CET Agent can be installed on a variety of operating systems. The Agent requ
 | Windows | 7+ |
 | Windows Server | 2012+ |
 | Alpine | 3.10+ |
-| Amazon Linux (Arm) | 2 (Graviton 2) |
+| Amazon Linux (Arm) | 2 & 3 (Graviton 2 & 3) |
 | Amazon Linux | 2+ |
 | AIX | 6.1+, 7.1, 7.2, 8+ |
 | Mac | 10.15+ (Catalina) |
