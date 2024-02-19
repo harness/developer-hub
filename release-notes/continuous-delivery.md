@@ -59,7 +59,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Codeblocks embedded in Support AI replies were not rendering correctly. (CDS-91364)
    This issue is fixed now.
 - In step details panel one stage moved the step details panel for other stages as well.(CDS-91351)
-   The steps graph in the execution view has been updated to auto-reset its position when they are dragged out of the visible area of the UI.
+   The steps graph in the Execution View is now updated to auto-reset its position when a different stage is selected.
 - Single-service, multi-environment, multi-cluster deployments done using a GitOps PR pipeline rejected some of the clusters. (CDS-90942)
    The issue is fixed now.
 - Template settings were not visible in the new Organisation and Account settings navigation page. (CDS-89746, ZD-57373)
