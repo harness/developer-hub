@@ -14,7 +14,7 @@ sidebar_position: 30
 
 :::info
 
-This Feature is currently behind the Feature Flag `IDP_ENABLED FF`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account.
+This Feature is currently behind the Feature Flag `IDP_ENABLED FF`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account.
 
 :::
 
@@ -64,7 +64,7 @@ A warning message appears: Your Score for the service used needs to be more than
 
 #### Failure: 
 
-You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service haveing Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
+You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service having Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
 ### Example B: Pipeline > On Run (Policy Used: IDP Scorecard For Multi Service )
 

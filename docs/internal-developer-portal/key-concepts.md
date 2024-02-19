@@ -38,7 +38,7 @@ The [type of API specs](https://developer.harness.io/docs/internal-developer-por
 Is a way to assess new developers’ experience and performance while they start doing meaningful code contribution to the codebase since starting in the org, for example time taken by the new developers to merge their tenth pull request. 
 
 ## Software Templates
-Describes Templates that developers can use to create new entities. It contains both the parameters that are rendered in the frontend part of the scaffolding wizard (text boxes, auto completes, check-boxes, etc.) and the steps that are executed when scaffolding that component. In Harness IDP [Self Service Flows](https://developer.harness.io/docs/category/self-service-flows) are spftware templates. 
+Describes Templates that developers can use to create new entities. It contains both the parameters that are rendered in the frontend part of the scaffolding wizard (text boxes, auto completes, check-boxes, etc.) and the steps that are executed when scaffolding that component. In Harness IDP [Self Service Flows](https://developer.harness.io/docs/category/self-service-flows) are software templates. 
 
 ## [Scorecards](http://localhost:3000/docs/category/scorecards)
 Scorecards is a way to measure software maturity and best practices. Platform engineering personas (DevOps, SRE, Security, etc.) are able to define certain standards as “checks” for different sets of maturity models or standards in their organization. Based on how many best practices a particular software component follows, it gets a score out of 100. The score is used to gamify developers to meet more standards or best practices. It is also used to estimate a confidence on the software by other teams when thinking about using it internally.
