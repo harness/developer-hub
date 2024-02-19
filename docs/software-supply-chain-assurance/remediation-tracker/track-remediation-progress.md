@@ -25,12 +25,15 @@ The remediation tracker operates with two stages: 'In-progress' and 'Done'. Upon
 
 ### Tracking your Patch status
 
-For every artifact listed, the tracker offers a status overview, displaying the number of deployments that need attention, marked as 'Pending,' and those that have been remediated, labeled as 'Patched.' When a patch is applied, the tracker uses the predefined conditions set at its creation to assess the artifacts and update their status. If your artifact meets the specified conditions, it is categorized as 'Patched.' Conversely, if it fails to meet these conditions, it is classified under the 'Pending' category. The change in deployment status will be regularly updated each time you open the tracker.
+For every artifact listed, the tracker offers a status overview, displaying the number of deployments that need attention, marked as 'Pending,' and those that have been patched, labeled as 'Remediated.' When a patch is applied, the tracker uses the predefined conditions set at its creation to assess the artifacts and update their status. If your artifact meets the specified conditions, it is categorized as 'Remediated.' Conversely, if it fails to meet these conditions, it is classified under the 'Pending' category. The change in deployment status will be regularly updated each time you open the tracker.
 
 
 ![Tracking your Patch status](./static/track-your-patch-status.png "Tracking your Patch status")
 
+### Tracking the new deployments
+The tracker is capable of identifying any new deployments using the affected artifact. It signals these updates by adding a 'new' marker to the artifact listing and showing the number of new deployments. This marker is key for keeping track of deployments that occur after the tracker's implementation.
 
+![Tracking new deployments](./static/track-new-deployments.png "Tracking new deployments")
 
 ### Tracking the overall Remediation progress
 
