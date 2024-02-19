@@ -23,7 +23,7 @@ The type of API specs could be added in IDP.
 
 4. **grpc** - An API definition based on [Protocol Buffers](https://spec.graphql.org/) to use with [gRPC](https://grpc.io/).
 
-More detials on descriptor format for API's could be found in the [refernce docs](/docs/internal-developer-portal/api-refernces/api-reference.md)
+More detials on descriptor format for API's could be found in the [reference docs](/docs/internal-developer-portal/api-refernces/api-reference.md)
 
 ## Example for different use cases
 
@@ -115,4 +115,4 @@ spec:
 ## Steps to add the API as an entity.
 
 1. Save the YAML, created following the steps above, in your git repository. 
-2. Follow the steps mentioned to [register a software compenent](https://developer.harness.io/docs/internal-developer-portal/get-started/register-a-new-software-component#register-the-software-component), to add your API docs to IDP.  
+2. Follow the steps mentioned to [register a software component](https://developer.harness.io/docs/internal-developer-portal/get-started/register-a-new-software-component#register-the-software-component), to add your API docs to IDP.  
