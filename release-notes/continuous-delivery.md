@@ -51,11 +51,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.25.5
 
-#### Early access features
-- Selecting the TLS certificate and key in an HTTPS step. (CDS-88543, ZD-55531)
-
-  For TLS connections, you can now select the secrets related to a valid TLS certificate and key in the HTTP step. This feature is currently behind the feature flag, `CDS_HTTP_STEP_NG_CERTIFICATE`. To enable the feature, contact [Harness Support](mailto:support@harness.io).  
-
 #### Fixed issues
 - ECS services got deleted after the first or second deployment in th ECS Blue Green deployment. (CDS-91499, ZD-57892)
 
@@ -88,6 +83,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The Pipeline Details tab did not show the Harness Approval Execution step if the Include Stage Execution Details field is unchecked in the Harness Approval step. (CDS-88133)
 
   The issue is fixed now.
+- Unable to select the TLS certificate and key in an HTTPS step. (CDS-88543, ZD-55531)
+
+  For TLS connections, you can now select the secrets related to a valid TLS certificate and key in the HTTP step. This feature is currently behind the feature flag, `CDS_HTTP_STEP_NG_CERTIFICATE`. To enable the feature, contact [Harness Support](mailto:support@harness.io).  
 
 ### Version 1.24.7
 
