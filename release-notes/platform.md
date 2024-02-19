@@ -86,10 +86,26 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- Enhanced the override-delegate-tag API documentation to include details on validForDays and validTillNextRelease parameters. Additionally, the default value for validForDays has been updated to 180 days, extending from the previous 30 days. This update can be found in the Harness API docs  (PL-46879)
+
+- Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
+
 #### Fixed issues
 
-#### Early access features
+- Errors occurred when creating a connector with an identifier (Account, Organization, or Project Identifier) that did not exist, displaying a generic "something went wrong, please contact Harness Support" message. (PL-46909, ZD-57678)
 
+   The code has been updated to provide accurate error messages and the current status code when the provided identifiers are incorrect or absent, enhancing clarity and user guidance.
+
+- Delegates were restarting in the middle of execution, disrupting ongoing tasks. (PL-46793)
+
+  Implemented a fix to wait for the task response to complete before marking it as expired or failed during the delegate's unregistering process, preventing premature restarts.
+
+- The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595)
+   The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronisation.
 
 
 ### Version 1.24.7 <!--  February 12, 2024 -->
