@@ -27,11 +27,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- TBD new OPA policies https://harness.atlassian.net/browse/STO-6934 -->
 
-With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of issue criteria you can use to stop pipelines. (Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)).
+With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. (Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)).
 
 This release also includes the following sample policies:
 
-* **Security - CVE Age** No issues for CVEsw past a certain age. For example: no issues for CVEs created in 2021 or earlier.
+* **Security - CVE Age** No issues for CVEs past a certain age. For example: no issues for CVEs created in 2021 or earlier.
 
 * **Security - Issue Title** No issues with matching titles. For example: no issues with titles that match `javascript.express.mongodb.*`.
 
