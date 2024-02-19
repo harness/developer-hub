@@ -159,5 +159,5 @@ probe:
 
 ## Next steps
 
-* [Configure and add a probe](/docs/chaos-engineering/configure-and-add-probe.md)
-* [Using command probe in different modes](/docs/chaos-engineering/cmd-probe-usage.md)
+* [Configure and add a probe](/docs/chaos-engineering/configure-chaos-experiments/configure-and-add-probe.md)
+* [Using command probe in different modes](/docs/chaos-engineering/configure-chaos-experiments/cmd-probe-usage.md)

@@ -103,7 +103,7 @@ Below is an example AWS policy to execute the fault.
 :::info note
 - This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Go the [common tunables](/docs/chaos-engineering/technical-reference/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and AWS-specific tunables.
+- Go the [common tunables](/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
 

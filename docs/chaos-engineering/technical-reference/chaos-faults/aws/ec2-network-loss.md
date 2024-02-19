@@ -92,7 +92,7 @@ Below is an example AWS policy to execute the fault.
 
 :::info note
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Go to the [common tunables](/docs/chaos-engineering/technical-reference/common-tunables-for-all-faults.md) to tune the common tunables for all the faults.
+- Go to the [common tunables](/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults.md) to tune the common tunables for all the faults.
 :::
 
 ### Mandatory tunables

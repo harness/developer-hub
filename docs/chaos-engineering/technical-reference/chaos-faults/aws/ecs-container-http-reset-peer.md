@@ -95,7 +95,7 @@ Below is an example AWS policy to execute the fault.
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 - The ECS container should be in a healthy state before and after introducing chaos.
 - Refer to the [superset permission or policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Refer to the [common attributes](/docs/chaos-engineering/technical-reference/common-tunables-for-all-faults.md) to tune the common tunables for all the faults.
+- Refer to the [common attributes](/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults.md) to tune the common tunables for all the faults.
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
