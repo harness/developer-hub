@@ -7,7 +7,7 @@ redirect_from:
   - /tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external self-managed MongoDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy MongoDB with VMs and replication.
+Harness Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your installation. This enables you to separate your data from node execution. To use an external self-managed MongoDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy MongoDB with VMs and replication.
 
 ## Limitations
 
@@ -47,6 +47,40 @@ Ensure the following:
 ## Architecture
 
 ![MongoDB architecture](../static/mongodb-self-managed-architecture.png)
+
+### MongoDB replica set configuration without region failover (single data center)
+
+This architecture supports HA for databases. It does not support region/DR failover.
+
+![MongoDB architecture 1](./static/mongodb-arch-1.png)
+
+### MongoDB replica set configuration with region failover setup (two data centers)
+
+This architecture supports the following:
+
+- HA for databases
+- Region (DR) failover
+
+:::info
+The DC1 MongoDB priority level should be higher than DC2 to prevent cross-network DB connections.
+
+:::
+
+![DR architecture 1](./static/mongodb-dr-arch-1.png)
+
+### MongoDB replica set configuration with region failover setup (3 data centers)
+
+This architecture supports the following:
+
+- HA for databases
+- Region (DR) failover
+
+:::info
+The DC1 and DC2 MongoDB priority levels should be higher than DC3 to prevent cross-network DB connections.
+
+:::
+
+![DR architecture 2](./static/mongodb-dr-arch-2.png)
 
 ## Set up MongoDB VMs
 
@@ -175,7 +209,7 @@ To set up a MongoDB VM, do the following:
     sudo systemctl start mongod
     ```
 
-17. Log in to your MongoDB primary instance using the `mongo` command, and run following command to create your replicate set.
+17. Log in to your MongoDB primary instance using the `mongo` command, and run following command to create your replica set.
 
     To identify primary node, run this command:
 
@@ -206,7 +240,7 @@ To set up a MongoDB VM, do the following:
      roles:[{role: "root" , db:"admin"}]})
     ```
 
-19. Run the following to verify your replicaset configuration.
+19. Run the following to verify your replica set configuration.
 
     ```
     rs.conf()

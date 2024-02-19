@@ -96,7 +96,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "/img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -420,7 +420,7 @@ const config = {
       },
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
+        // disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       docs: {

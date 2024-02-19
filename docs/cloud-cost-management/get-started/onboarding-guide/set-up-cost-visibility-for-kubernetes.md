@@ -17,11 +17,10 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes 
 This topic describes how to connect your Kubernetes cluster to CCM.
 
 :::note
-After you enable CCM, for the first cluster, the data is available within a few minutes for viewing and analysis. However, you would not be able to see the idle cost because of the lack of utilization data. CCM generates the last 30 days of the cost data based on the first events. From the second cluster onwards, it takes about 2–3 hours for the data to be available for viewing and analysis.
+After you enable CCM, for the first cluster, the data is available within a few minutes for viewing and analysis. However, you would not be able to see the idle cost because of the lack of utilization data. CCM generates the last 30 days of the cost data based on the first events. From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
 
 If you are using an EKS connector, the data generation is delayed. AWS ingests data at the source (S3 bucket) four times a day. CCM takes about two hours to make the data available for viewing and analysis once it is available at the source.
 :::
- 
 
 ## Kubernetes Connector requirements and workflow
 
@@ -135,14 +134,14 @@ You must not rename the cluster. If you're setting up a new connector with this 
 - **Delegate size**: 
 Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload:
 
-  - Laptop - 1.6GB memory, 0.5CPU
-  - Small - 3.3GB memory, 1CPU
-  - Medium - 6.6GB memory, 2CPU
-  - Large - 13.2GB memory, 4CPU
-  
-  
+  - Laptop - 2GB memory, 0.5CPU
+  - Small - 4GB memory, 1CPU
+  - Medium - 8GB memory, 2CPU
+  - Large - 16GB memory, 4CPU
+
 :::warning
-These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
+- These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers. 
+- We recommend using one delegate per cluster and Large size delegates for production clusters for optimal performance.
 :::
 
 - **Delegate permissions**: You can choose one of the following permissions for CCM:

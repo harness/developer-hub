@@ -1,13 +1,13 @@
 ---
 title: Use an external self-managed PostgreSQL database with your installation
-description: Learn how to use an external self-managed PostgreSQL database with Self-Managed Enterprise Edition installations.
+description: Learn how to use an external self-managed PostgreSQL database with Harness Self-Managed Enterprise Edition installations.
 sidebar_label: External self-managed PostgreSQL
 sidebar_position: 40
 redirect_from:
   - /tutorials/self-managed-enterprise-edition/use-an-external-postgres-database
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external PostgreSQL database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy PostgreSQL with VMs and replication.
+Harness Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your installation. This enables you to separate your data from node execution. To use an external PostgreSQL database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy PostgreSQL with VMs and replication.
 
 The controller-worker replication setup described in this tutorial ensures data redundancy and fault tolerance, providing a robust and reliable environment to manage your PostgreSQL database.
 
