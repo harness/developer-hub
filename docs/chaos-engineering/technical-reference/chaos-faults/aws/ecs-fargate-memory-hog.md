@@ -4,7 +4,7 @@ title: ECS Fargate Memory Hog
 ---
 
 The ECS Fargate memory Hog experiment enables you to intentionally increase the memory usage of an ECS task container for a defined period, allowing you to assess and test the container's performance under high memory utilization conditions or latency caused due to it.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Fargate Memory Hog](./static/images/ecs-fargate-memory-hog.png)
 
@@ -70,7 +70,7 @@ Below is an example AWS policy to execute the fault.
 :::info note
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) for how to use a different profile for AWS faults.
 - The ECS containers should be in a healthy state before and after introducing chaos.
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+Refer to the [common attributes](/docs/chaos-engineering/technical-reference/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and AWS-specific tunables.
 - Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 

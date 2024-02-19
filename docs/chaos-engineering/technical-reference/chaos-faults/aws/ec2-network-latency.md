@@ -90,8 +90,8 @@ Below is an example AWS policy to execute the fault.
 ```
 
 :::info note
-- Go to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults and [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults.
-- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults and [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to the [common tunables](/docs/chaos-engineering/technical-reference/common-tunables-for-all-faults.md) to tune the common tunables for all the faults.
 :::
 
 ### Mandatory tunables
@@ -124,12 +124,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -154,7 +154,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> DESTINATION_IPS </td>
             <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted. </td>
-            <td> Comma-separated IP(S) or CIDR(S) can be provided. If not provided, it will induce network chaos for all ips/destinations. For more information, go to <a href="#run-wtih-destination-ips-and-destination-hosts"> destination IPs.</a></td>
+            <td> Comma-separated IP(S) or CIDR(S) can be provided. If not provided, it will induce network chaos for all ips/destinations. For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> destination IPs.</a></td>
         </tr>
         <tr>
             <td> DESTINATION_HOSTS </td>
@@ -169,12 +169,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds).  </td>
-            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
     </table>
 
