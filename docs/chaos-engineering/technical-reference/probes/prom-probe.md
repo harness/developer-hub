@@ -115,8 +115,8 @@ Listed below is the probe schema for the Prometheus probe, with properties share
     <td>criteria</td>
     <td>Flag to hold criteria for the comparison</td>
     <td>Mandatory</td>
-    <td>It supports <code>{`&gt;=, &lt;=, ==, &gt;, &lt;, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.</td>
-    <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation.</td>
+    <td>It supports <code>{`<, >, <=, >=, !=, ==, oneOf, between`}</code> for int and float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.</td>
+    <td>The <code>criteria</code> contains criteria of the comparison, as a part of comparison operation.</td>
   </tr>
   <tr>
     <td>value</td>
@@ -341,7 +341,7 @@ spec:
 For intricate queries that extend across multiple lines, you can use the 'queryPath' attribute to specify the path to a file containing the query. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `promProbe/inputs.queryPath` field.
 
 :::tip
-The fields 'queryPath' and 'query' are mutually exclusive. If 'query' is specified, it is used for the query; otherwise, 'queryPath' is used.
+The fields `queryPath` and `query` are mutually exclusive. If `query` is specified, it is used for the query; otherwise, `queryPath` is used.
 :::
 
 Use the following example to tune this:
@@ -389,7 +389,7 @@ spec:
 This establishes a fundamental authentication mechanism for the Prometheus server. The "username:password" encoded in base64 or bearer token, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
 
 :::tip
-The `credentials` and `credentialsFile` are two options that can't be used simultaneously.
+The `credentials` and `credentialsFile` are mutually exclusive, that is, these fields can't be used simultaneously.
 :::
 
 Use the following example to tune this:
