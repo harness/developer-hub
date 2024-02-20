@@ -277,7 +277,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
                       mountPath: /tmp/ca.bundle  
                       subPath:  ca.bundle 
               volumes:
-                # ADD VOLUME MOUNT HERE 
+                # ADD VOLUME HERE 
                 - name: certvol  
                   secret:  
                     secretName: addcerts  
