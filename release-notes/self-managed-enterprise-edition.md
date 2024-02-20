@@ -152,8 +152,6 @@ gsutil -m cp \
 
 
 
-### Early access features
-
 ### Fixed issues
 
 #### Continuous Delivery
