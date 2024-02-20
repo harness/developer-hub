@@ -50,7 +50,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
 2. Mount the secret as a `volume` on the delegate pod and add a `volumeMount` to your certificate files at `/opt/harness-delegate/ca-bundle`.
 
-  In the delegate pod, do the following:
+   In the delegate pod, do the following:
    
      1. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
    
