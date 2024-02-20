@@ -30,12 +30,12 @@ Node network loss:
         <tr>
             <td>NODE_LABEL</td>
             <td>Label of the node on which to induce network loss.</td>
-            <td>If not provided, the chaos operator selects nodes based on other criteria. For more information, go to <a href = "#network-interface"> network interface.</a></td>
+            <td>If not provided, the chaos operator selects nodes based on other criteria. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">target nodes with labels.</a></td>
         </tr>
         <tr>
             <td>TARGET_NODE</td>
             <td>Specific node name on which to induce network loss.</td>
-            <td>If not provided and NODE_LABEL is also not defined, the fault selects a random node. For more information, go to <a href = "#network-interface"> network interface.</a></td>
+            <td>If not provided and NODE_LABEL is also not defined, the fault selects a random node. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
         </tr>
         <tr>
             <td>SOCKET_PATH</td>

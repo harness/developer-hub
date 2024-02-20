@@ -29,23 +29,23 @@ Pod HTTP status code:
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the service to target, which refers to container that runs at pod-level. </td>
-        <td> Default: port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#target-service-port">target service port</a> </td>
+        <td> Default: port 80. For more information, go to <a href="#target-service-port">target service port</a> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> STATUS_CODE </td>
         <td> Modified status code for the HTTP response. Multiple values can be provided as a comma-separated list. A random value from the provided list will be selected. Supported values include [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].</td>
         <td> If no value is provided, a random value is selected from the list of supported values.
-         Defaults to random status code. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#status-code">status code </a> </td>
+         Defaults to random status code. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code#status-code">status code </a> </td>
       </tr>
       <tr>
         <td> MODIFY_RESPONSE_BODY </td>
         <td> Specifies whether to modify the body according to the status code provided.</td>
-        <td> If true, the body is replaced by a default template for the status code. Defaults to true. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#modify-response-body">modify response body </a> </td>
+        <td> If true, the body is replaced by a default template for the status code. Defaults to true. For more information, go to <a href="#modify-response-body">modify response body </a> </td>
       </tr>
     </table>
 
