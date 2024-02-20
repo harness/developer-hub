@@ -56,7 +56,10 @@ It is recommended to refer [this documentation](https://developer.harness.io/doc
 
 An Explore is a starting point for a query that is designed to explore a particular subject area. This topic describes the various explores available for monitoring your developer portal, and the data the provide. The following is list of explores available for visualizing IDP data.
 
-//TODO: Add the List of explores when available. 
+1. IDP Catalog
+2. IDP Scorecards
+3. IDP Plugins
+4. IDP Workflow Executions 
 
 Follow this [documentation](https://developer.harness.io/docs/platform/dashboards/create-visualizations-and-graphs) to create visualizations and graphs
 
