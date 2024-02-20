@@ -44,6 +44,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 #### New features and enhancements
 
 * (CI-11108, ZD-56810)
+* (CI-11185, ZD-57012, ZD-57319) <!-- doc ticket to close: CI-11381 -->
 
 #### Fixed issues
 
