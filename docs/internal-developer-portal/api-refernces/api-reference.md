@@ -2,10 +2,6 @@
 title: API Spec References
 description: API Specifications detials and YAML Format
 sidebar_position: 2
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/api-reference
 ---

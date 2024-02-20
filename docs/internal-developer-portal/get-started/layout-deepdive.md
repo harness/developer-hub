@@ -2,10 +2,6 @@
 title: Configuring Layout of IDP Catalog pages
 description: Learn how you can modify and use layout in IDP to customise your UI.
 sidebar_position: 100
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 ## Introduction
