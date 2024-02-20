@@ -71,6 +71,13 @@ import {
             link: "/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences",
           },
           {
+            title: "Commitment Orchestrator",
+            module: MODULES.ccm,
+            description:
+              "Manage all cloud commitments with Commitment Orchestrator",
+            link: "/docs/cloud-cost-management/use-ccm-cost-optimization/Commitment-orchestrator/overview",
+          },
+          {
             title: "Cost categories",
             module: MODULES.ccm,
             description:
@@ -91,6 +98,7 @@ import {
               "Find answers to frequently asked Harness CCM questions.",
             link: "/docs/faqs/cloud-cost-management-faqs",
           },
+        
         ],
     },
   ];

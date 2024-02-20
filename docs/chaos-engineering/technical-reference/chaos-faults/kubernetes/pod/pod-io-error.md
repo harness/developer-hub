@@ -88,7 +88,7 @@ Pod IO error:
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
@@ -98,22 +98,22 @@ Pod IO error:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>  
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
       </tr> 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds) </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
       </tr>
     </table>
 

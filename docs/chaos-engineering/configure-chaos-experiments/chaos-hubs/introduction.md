@@ -24,6 +24,10 @@ It is a ChaosHub with additional security and teaming features for better collab
 
 * You get access to many chaos scenarios in the Enterprise hub where you can browse through a scenarios and directly execute it.
 
+:::info note
+Resilience probes are currently not supported with Chaos Hubs.
+:::
+
 ## Next steps
 
 * [Add a ChaosHub](./add-chaos-hub)

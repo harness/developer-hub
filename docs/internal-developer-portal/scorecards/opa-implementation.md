@@ -54,7 +54,7 @@ In the REGO script we use `stage.spec.idpScorecard.orderService[_]` to fetch the
 
 * **Success:** Check the Score for the service you're using in your pipeline to be above the set limit so that when you save the Pipeline, the policy rule is evaluated and returns success.
 * **Warning:** A warning message appears: Your Score for the service used needs to be more than 50. If you save the Pipeline and deploy, Harness will throw an error.
-* **Failure:** You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service haveing Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
+* **Failure:** You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service having Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
 </TabItem>
 <TabItem value="b" label="Example: Pipeline > On Run (Policy Used: IDP Scorecard For Multi Service )">

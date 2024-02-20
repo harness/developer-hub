@@ -22,11 +22,18 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 ### Create a new delegate token
 
-1. Log in to the Harness Platform and go to **Account Settings -> Account Resources -> Delegates**.
-2. Select the **Tokens** tab.
-3. Select **+New Token** and enter a token name, for example `firstdeltoken`.
-4. Select **Apply**. Harness Platform generates a new token for you.
-5. Select **Copy** to copy and store the token in a temporary file. You will provide this token as an input parameter in the next installation step. The delegate will use this token to authenticate with the Harness Platform.
+You can install delegates from the Account, Project, or Org scope. In this example, we'll install create a new token in the Account scope.
+
+To create a new delegate token, do the following:
+
+1. In Harness, select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
+2. Select **Delegates**. The Delegates list page opens.
+3. Select the **Tokens** tab, then select **+New Token**. The **New Token** dialog opens.
+4. Enter a token name, for example `firstdeltoken`.
+5. Select **Apply**. Harness generates a new token for you.
+6. Select **Copy** to copy and store the token in a temporary file.
+
+   You will provide this token as an input parameter in the next installation step. The delegate will use this token to authenticate with the Harness Platform.
 
 ### Get your Harness account ID
 
@@ -38,7 +45,7 @@ https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 
 `6_vVHzo9Qeu9fXvj-AcQCb` is the `accountId`. 
 
-Now you are ready to install the delegate on either Docker or Kubernetes. 
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
 
 <Tabs>
 <TabItem value="Kubernetes">
@@ -49,11 +56,14 @@ Ensure that you have access to a Kubernetes cluster. For the purposes of this tu
 
 <h4>Install minikube </h4>
 
-- On Windows: 
+- On Windows
+
 ```
 choco install minikube
 ```
-- On macOS: 
+
+- On macOS:
+
 ```
 brew install minikube
 ```
@@ -90,13 +100,15 @@ NAME                                	CHART VERSION	APP VERSION	DESCRIPTION
 harness-delegate/harness-delegate-ng	1.0.8        	1.16.0     	A Helm chart for deploying harness-delegate
 ```
 
-Now we are ready to install the delegate. The following example installs/upgrades `firstk8sdel` delegate (which is a Kubernetes workload) in the `harness-delegate-ng` namespace using the `harness-delegate/harness-delegate-ng` Helm chart. 
+Now we are ready to install the delegate. The following example installs/upgrades `firstk8sdel` delegate (which is a Kubernetes workload) in the `harness-delegate-ng` namespace using the `harness-delegate/harness-delegate-ng` Helm chart.
 
-To install the delegate, do the following:
+You can install delegates from the Account, Project, or Org scope. In this example, we'll install a delegate in the Account scope.
 
-1. In Harness, select **Deployments**, then select your project.
-2. Under **Project Setup**, select **Delegates**.
-3. Select **Install a Delegate** to open the **New Delegate** dialog.
+To install a delegate, do the following:
+
+1. In Harness, select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
+2. Select **Delegates**. The Delegates list page opens.
+3. Select **New Delegate**. The **New Delegate** dialog opens.
 
    ![](./static/install-a-k8s-delegate-helm.png)
 
@@ -117,7 +129,7 @@ To install the delegate, do the following:
      --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
      --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
      --set delegateDockerImage=harness/delegate:yy.mm.verno \
-     --set replicas=1 --set upgrader.enabled=false
+     --set replicas=1 --set upgrader.enabled=true
    ```
 
 :::info note
@@ -143,11 +155,12 @@ Harness uses a Terraform module for the Kubernetes delegate. This module uses th
 ```
 module "delegate" {
   source = "harness/harness-delegate/kubernetes"
-  version = "0.1.5"
+  version = "0.1.8"
 
   account_id = "PUT_YOUR_HARNESS_ACCOUNTID_HERE"
   delegate_token = "PUT_YOUR_DELEGATE_TOKEN_HERE"
   delegate_name = "firstk8sdel"
+  deploy_mode = "Kubernetes"
   namespace = "harness-delegate-ng"
   manager_endpoint = "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE"
   delegate_image = "harness/delegate:yy.mm.verno"
@@ -178,16 +191,19 @@ Now replace the variables in the file with your Harness account ID and delegate 
 ### Run Terraform init, plan, and apply
 
 Initialize Terraform. This downloads the Terraform Helm provider to your machine.
+
 ```
 terraform init
 ```
 
 Run the following step to view the changes Terraform is going to make on your behalf.
+
 ```
 terraform plan
 ```
 
 Finally, run this step to make Terraform install the Kubernetes delegate using the Helm provider.
+
 ```
 terraform apply
 ```
@@ -252,11 +268,13 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 
 <h3> Install on Docker </h3>
 
-To install the delegate, do the following:
+You can install delegates from the Account, Project, or Org scope. In this example, we'll install a delegate in the Project scope.
 
-1. In Harness, select **Deployments**, then select your project.
+To install a delegate, do the following:
 
-2. Under **Project Setup**, select **Delegates**.
+1. In Harness, select your project, then select **Project Settings**.
+
+2. Under **Project-level resources**, select **Delegates**.
 
 3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
@@ -271,30 +289,39 @@ To install the delegate, do the following:
      -e DELEGATE_NAME=docker-delegate \
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
-     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
-     -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+     -e ACCOUNT_ID=YOUR_HARNESS_ACCOUNTID_ \
+     -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
+     -e DELEGATE_TAGS="" \
+     -e LOG_STREAMING_SERVICE_URL=YOUR_LOG_STREAMING_SERVICE_URL/log-service/ \
+     -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
      harness/delegate:yy.mm.verno
    ```
 
-6. Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
+   :::info
+   The `docker run` command doesn't allow you to select the delegate token. You can replace the token in the command with another token if required.
+
+   :::
+
+   :::info
+   Steps 6 and 7 are optional when installing a delegate using the CLI flow.
+   :::
+
+
+6. (Optional) Replace the `YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
+
+   For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+
+   ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
+
+   For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+   | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+   | ------------------------| -------------------------------------------	|
+   | SaaS prod-1  	 		| `https://app.harness.io`       				|
+   | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+   | SaaS prod-3  	 		| `https://app3.harness.io`        				|
 
 7. Run the command.
-
-For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
-
-![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
-
-For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
-
-| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
-| ------------------------| -------------------------------------------	|
-| SaaS prod-1  	 		| `https://app.harness.io`       				|
-| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
-| SaaS prod-3  	 		| `https://app3.harness.io`        				|
-
-If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate).
 
 </TabItem>
 </Tabs>
@@ -393,13 +420,13 @@ Use the following steps to troubleshoot your installation of the delegate using 
 2. Check the status of the delegate on your cluster:
 
    ```
-   kubectl describe pods -n <namespace>
+   kubectl describe pods -n <NAMESPACE>
    ```
 
 3. If the pod did not start, check the delegate logs:
 
    ```
-   kubectl logs -f <harnessDelegateName> -n <namespace>
+   kubectl logs -f <DELEGATE_NAME> -n <NAMESPACE>
    ```
 
    If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
@@ -407,7 +434,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
    ```
-   kubectl describe <pod_name> -n <namespace>
+   kubectl describe <POD_NAME> -n <NAMESPACE>
    ```
 
 </TabItem>
@@ -432,7 +459,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 3. If the pod did not start, check the delegate logs:
 
    ```
-   kubectl logs -f <harnessDelegateName> -n <namespace>
+   kubectl logs -f <DELEGATE_NAME> -n <NAMESPACE>
    ```
 
    If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
@@ -440,7 +467,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
    ```
-   kubectl describe <pod_name> -n <namespace>
+   kubectl describe <POD_NAME> -n <NAMESPACE>
    ```
 
 </TabItem>
@@ -451,13 +478,13 @@ Use the following steps to troubleshoot your installation of the delegate using 
 1. Check the status of the delegate on your cluster:
 
    ```
-   kubectl describe pods -n <namespace>
+   kubectl describe pods -n <NAMESPACE>
    ```
 
 2. If the pod did not start, check the delegate logs:
 
    ```
-   kubectl logs -f <harnessDelegateName> -n <namespace>
+   kubectl logs -f <DELEGATE_NAME> -n <NAMESPACE>
    ```
 
    If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
@@ -465,7 +492,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 3. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
    ```
-   kubectl describe <pod_name> -n <namespace>
+   kubectl describe <POD_NAME> -n <NAMESPACE>
    ```
 
 </TabItem>
@@ -482,19 +509,19 @@ Use the following steps to troubleshoot your installation of the delegate using 
 2. If the pod is not running, check the delegate logs:
 
    ```
-   docker container logs <delegatename> -f
+   docker container logs <DELEGATE_NAME> -f
    ```
 
 3. Restart the delegate container. To stop the container:
 
    ```
-   docker container stop <delegatename>
+   docker container stop <DELEGATE_NAME>
    ```
 
    To start the container:
 
    ```
-   docker container start <delegatename>
+   docker container start <DELEGATE_NAME>
    ```
 
 4. Make sure the container has sufficient CPU and memory resources. If not, remove the older containers:

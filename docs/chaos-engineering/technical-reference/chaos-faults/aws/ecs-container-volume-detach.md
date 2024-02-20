@@ -4,7 +4,7 @@ title: ECS Container Volume Detach
 ---
 
 ECS container volume detach provides a mechanism to detach and remove volumes associated with ECS task containers in an Amazon ECS (Elastic Container Service) task.
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Container Volume Detach](./static/images/ecs-container-volume-detach.png)
 
@@ -70,7 +70,7 @@ Below is an example AWS policy to execute the fault.
 :::info note
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 - The ECS containers should be in a healthy state before and after introducing chaos.
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+Refer to the [common attributes](/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults.md) and [AWS-specific tunables](./aws-fault-tunables.md) to tune the common tunables for all faults and AWS-specific tunables.
 - Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 

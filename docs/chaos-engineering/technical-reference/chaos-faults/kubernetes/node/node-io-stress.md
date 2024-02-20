@@ -88,7 +88,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>

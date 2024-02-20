@@ -62,12 +62,12 @@ Disk fill:
       <tr> 
         <td> FILL_PERCENTAGE </td>
         <td> Percentage to fill the ephemeral storage limit. This limit is set in the target pod. </td>
-        <td> It can be set to more than 100 which force evicts the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#disk-fill-percentage">disk fill percentage</a></td>
+        <td> It can be set to more than 100 which force evicts the pod. For more information, go to <a href="#disk-fill-percentage">disk fill percentage</a></td>
       </tr>
       <tr>
         <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
         <td> Ephemeral storage required to be filled (in mebibytes). It is mutually exclusive with <code>FILL_PERCENTAGE</code> environment variable. If both are provided, <code>FILL_PERCENTAGE</code> takes precedence.</td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#disk-fill-mebibytes">disk fill mebibytes</a></td>
+        <td> For more information, go to <a href="#disk-fill-mebibytes">disk fill mebibytes</a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
@@ -91,7 +91,7 @@ Disk fill:
       <tr> 
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to disk fill. </td>
-        <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill/#kill-specific-container">kill specific container</a></td>
+        <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill/#kill-specific-container">kill specific container</a></td>
       </tr>
       <tr>    
         <td> LIB_IMAGE </td>
@@ -99,39 +99,34 @@ Disk fill:
         <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr> 
-        <td> CONTAINER_PATH </td>
-        <td> Storage location of containers. </td>
-        <td> Default: <code>/var/lib/docker/containers</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#container-path">container path</a></td>
-      </tr>
-      <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
+        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to disk fill chaos. </td>
-        <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a></td>
+        <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a></td>
       </tr> 
       <tr>
         <td> DATA_BLOCK_SIZE </td>
         <td> Data block size used to fill the disk (in KB). </td>
-        <td> Default: 256 KB. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#data-block-size">data block size</a></td>
+        <td> Default: 256 KB. For more information, go to <a href="#data-block-size">data block size</a></td>
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
       </tr> 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 

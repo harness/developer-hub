@@ -32,7 +32,7 @@ CPU hog exec:
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores subject to CPU stress. </td>
-        <td> Default: 1. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog-exec#cpu-cores">CPU cores</a> </td>
+        <td> Default: 1. For more information, go to <a href="#cpu-cores">CPU cores</a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -67,7 +67,7 @@ CPU hog exec:
       <tr>
         <td> CHAOS_KILL_COMMAND </td>
         <td> Command to kill the chaos process. </td>
-        <td> Defaults to <code>kill $(find /proc -name exe -lname '*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '&#123;print $(NF-1)&#125;')</code>. Another useful one that generally works (in case the default doesn't) is <code>kill -9 $(ps afx | grep \"[md5sum] /dev/zero\" | awk '&#123;print $1&#125;' | tr '\n' ' ')</code>. In case neither works, please check whether the target pod's base image offers a shell. If yes, identify appropriate shell command to kill the chaos process. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog-exec#chaos-inject-and-kill-commands">chaos kill command</a></td>
+        <td> Defaults to <code>kill $(find /proc -name exe -lname '*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '&#123;print $(NF-1)&#125;')</code>. Another useful one that generally works (in case the default doesn't) is <code>kill -9 $(ps afx | grep \"[md5sum] /dev/zero\" | awk '&#123;print $1&#125;' | tr '\n' ' ')</code>. In case neither works, please check whether the target pod's base image offers a shell. If yes, identify appropriate shell command to kill the chaos process. For more information, go to <a href="#chaos-inject-and-kill-commands">chaos kill command</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -82,7 +82,7 @@ CPU hog exec:
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/technical-reference/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 

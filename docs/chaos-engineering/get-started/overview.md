@@ -54,7 +54,7 @@ CE takes a holistic approach to chaos engineering, and doesn't merely focus on f
 3. Centralized control plane which supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
 4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
 5. Native integration with [Harness Continuous Delivery (CD) pipelines](../integrations/chaos-cd).
-6. [Hypothesis validation using probes](../configure-chaos-experiments/probes/validate-hypothesis-using-probes) and SLO management using integration with Harness Continuous Verification (CV).
+6. [Hypothesis validation using probes](../configure-chaos-experiments/probes/configure-and-add-probe) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided gameday execution with detailed analytics and reporting based on experiment execution and application resilience.
 8. Chaos events, metrics and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
 
