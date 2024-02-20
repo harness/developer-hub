@@ -40,7 +40,7 @@ spec:
 
 ## Register software components in the catalog
 
-For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog#1-start-with-basic-entity-information).
+For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](/docs/internal-developer-portal/tutorials/register-component-in-catalog.md#start-with-basic-entity-information).
 
 ## Software ecosystem modelling
 

@@ -1,11 +1,11 @@
 {
-    "label": "Tutorials",
+    "label": "IDP tutorials",
     "collapsible": "true",
     "collapsed": "true",
     "position": 1000,
     "link": {
       "type": "generated-index",
-      "title": "Tutorials to get started with IDP and learn about the usage of the features"
+      "title": "IDP tutorials"
     },
     "customProps": {}
   }

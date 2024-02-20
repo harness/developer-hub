@@ -230,7 +230,7 @@ In case of **Fixed Value** provide the absolute value of template URL, for eg. `
 
 In case of **Runtime Input** provide the absolute value of the template URL after you run the pipeline. 
 
-In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](./service-onboarding-pipeline.md#manage-variables-in-the-pipeline).  
+In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline.md#manage-variables-in-the-pipeline).
 
 #### Configure Template
 

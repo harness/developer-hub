@@ -119,7 +119,7 @@ In the above example the the `Project Identifier` field once selected auto popul
 🎁 In our latest release, we've added improvements to scorecards✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for.
 
 - **Docs:** [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
-- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](/docs/internal-developer-portal/flows/service-onboarding-with-idp-stage)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](/docs/internal-developer-portal/tutorials/service-onboarding-with-idp-stage)
 
 
 #### New features and enhancements
@@ -229,7 +229,7 @@ This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency 
 
 - **Blogs:** [Harness SRM Plugin - Release Announcement](https://www.harness.io/blog/announcing-the-harness-srm-backstage-plugin)
 - **Docs:** [Key Concepts](https://developer.harness.io/docs/internal-developer-portal/key-concepts)
-- **Tutorial:** [How to track migrations using Scorecards](/docs/internal-developer-portal/scorecards/how-to-track-migrations)
+- **Tutorial:** [How to track migrations using Scorecards](/docs/internal-developer-portal/tutorials/how-to-track-migrations)
 
 #### New features and enhancements
 
@@ -388,7 +388,7 @@ contents:
 #### What's new
 
 - IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
-- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/docs/internal-developer-portal/flows/using-secret-as-an-input) (IDP-780)
+- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/docs/internal-developer-portal/tutorials/using-secret-as-an-input) (IDP-780)
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
 
 #### Fixed issues

@@ -6,12 +6,9 @@ redirect_from:
   - /tutorials/internal-developer-portal/service-onboarding-with-idp-stage
 ---
 
-## Introduction
-
 This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a application templated by cookiecutter for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
 
 Users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboards the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
-
 
 ## Prerequisites
 
@@ -41,7 +38,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 :::info
 
-You need to have completed all the steps under **[Pre-Requisites](/tutorials/internal-developer-portal/service-onboarding-with-idp-stage#prerequisites)** for the below given YAML to work properly 
+You need to have completed all the steps under **[PreRequisites](#prerequisites)** for the below given YAML to work properly 
 
 Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of pre-requisites. 
 

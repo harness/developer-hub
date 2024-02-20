@@ -32,7 +32,7 @@ Catalog -> Software Component -> Inspect Entity -> Raw YAML
 
 :::
 
-4. A [registered software component](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog) for which you want to track migration.
+4. A [registered software component](/docs/internal-developer-portal/tutorials/register-component-in-catalog) for which you want to track migration.
 
 ## Understanding Checks in Scorecards
 
