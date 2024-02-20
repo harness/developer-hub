@@ -1,12 +1,12 @@
 ---
 title: Custom Dashboards
-description: Using custom dashboards to enhance developer experience
+description: Using Custom Dashboards to measure key IDP metrics around Software Catalog and Workflows
 sidebar_position: 120
 ---
 
 ## Introduction
 
-Custom Dashboards are a Harness Platform Feature, that allows you to key metrics and data related to your module. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights out of your IDP, so you can enable good developer experience in your org. 
+Dashboards is a Harness Platform Feature, that allows you to visualize key metrics and data related to your module. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights out of your IDP, so you can enable good developer experience in your org. Dashboards also allow you to setup scheduled delivery of reporting and alerts for your executives and stakeholders.
 
 :::info
 
@@ -20,7 +20,7 @@ Custom Dashboards are a Harness Platform Feature, that allows you to key metrics
 
 To view and access dashboards, select **DASHBOARDS** from the left navigation in your Harness account. You can filter the data on the dashboards for IDP module by selecting the module name from the top of the page. 
 
-#### Present Left Nav
+#### Old Left Nav
 
 ![](./static/old-nav.png)
 
