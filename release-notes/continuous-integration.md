@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-02-20T10:00
+date: 2024-02-27T10:00
 sidebar_position: 10
 ---
 
@@ -23,6 +23,8 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## Deprecation notice: app.harness Docker registry
 
+<!-- Move to February section at end of May -->
+
 [Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
 
 You will be impacted by this deprecation if:
@@ -35,14 +37,26 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## February 2024
 
+### Version 1.14.x
+
+<!-- Feb 27, 2024 -->
+
+#### New features and enhancements
+
+* (CI-11108, ZD-56810)
+
+#### Fixed issues
+
+* When creating step group templates, you can now configure the **Run as User** setting for steps that allow this setting. Previously, this setting wasn't shown when creating step group templates. (CI-11332, ZD-58044)
+
 ### Version 1.13.1
 
 <!-- Feb 20, 2024 -->
 
 #### New features and enhancements
 
-* The error message text for the `no eligible delegates present` error now includes additional potential causes. (CI-10933, ZD-55977)
-* Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. (CI-10938)
+* The error message text for the `no eligible delegates present` error now includes additional potential causes. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10933, ZD-55977)
+* Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10938)
 * Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
 * In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. If you want change this behavior, for example to limit it to directories at the root level or at a certain path, you can use the Test Globs setting to override the default test globs pattern. (CI-11272, ZD-57661)
 * The Harness Community team has developed a new plugin to help you automate more processes in your CI pipelines:
@@ -50,7 +64,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### Fixed issues
 
-* Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. (CI-11220, ZD-57421)
+* Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11220, ZD-57421)
 * Fixed an issue where the YAML for build stage [input sets](/docs/platform/pipelines/input-sets) could have an invalid default value for [codebase advanced settings](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#edit-the-default-codebase-configuration). (CI-11291)
 * Addressed a security vulnerability in some CI APIs. (CI-11244, ZD-57445)
 * Applied optimizations to address caching errors. (CI-11173, ZD-57173)
@@ -157,90 +171,97 @@ To help identify pods that aren't cleaned up after a build, pod deletion logs no
 
 Documentation for the previously-deprecated Service Dependency step has been removed. The Service Dependency step was deprecated in February 2023 in favor of the [Background step](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
-## December 2023
+## Previous releases
 
-### Version 1.5.1
+### 2023 releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### December 2023
+
+##### Version 1.5.1
 
 <!-- Dec 20, 2023 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 - This release introduces a new versioning convention for CI manager.
 - [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby) is now generally available.
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#use-the-s3-upload-and-publish-plugin). (CI-10258, ZD-53311)
 - Improved error messaging related to addon disconnects. (CI-8877)
 - Fixed an issue with SCM service logging. (CI-8872)
 
-### Version 7006
+##### Version 7006
 
 <!-- Dec 18, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 If you configured an optional step setting (such as **Limit Memory**, **Limit CPU**, or **Timeout**) to accept runtime input (`<+input>`), and then provided no value for that setting at runtime, the pipeline could fail due to invalid `null` input. This has been fixed, and the effected settings can how handle empty (`null`) runtime input. (CI-10514, ZD-54217)
 
-### Version 6902
+##### Version 6902
 
 <!-- Dec 06, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 Improved the error message that appears if the Kubernetes cluster connector ID is `null` when running a pipeline that uses a Kubernetes cluster build infrastructure. (CI-8166)
 
-### Version 6801
+##### Version 6801
 
 <!-- Dec 01, 2023 -->
 
 This release includes backend changes only.
 
-## November 2023
+#### November 2023
 
-### Version 6704
+##### Version 6704
 
 <!-- Nov 29, 2023 -->
 
-#### Hotfix
+###### Hotfix
 
 Fixed an issue related to cache saving with Cache Intelligence.
 
-### Version 6703
+##### Version 6703
 
 <!-- Nov 22, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed a thread safety issue that caused errors like `IncorrectResultsSizeDataAccessException` and `returned non unique result`. (CI-10061, ZD-52625)
 - Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/download-logs). (CI-9657, ZD-50664)
 - Fixed an issue in the Get Started workflow where the account or organization name could be omitted from the repo URL in a GitHub connector created during the workflow.
 
-### Version 6603
+##### Version 6603
 
 <!-- Nov 21, 2023 -->
 
-#### Hotfix
+###### Hotfix
 
 Fixed an issue related to build queue limits. (CI-10326, ZD-53701)
 
-### Version 6601
+##### Version 6601
 
 <!-- Nov 16, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed an issue where time savings wasn't reported if Test Intelligence selected no tests. (CI-10196)
 - The Get Started workflow can generate pipeline identifiers from repository names. To avoid failures due to invalid characters in pipeline identifiers, periods (`.`) in repository names are now replaced by underscores (`_`) in pipeline identifiers. (CI-10156, ZD-52954)
 - A previous release simplified the format of the log base key used to [download logs](/docs/platform/pipelines/download-logs) for pipelines, and this release includes additional simplifications to support a new regex pattern. The simplified format is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. (CI-10085)
 
-### Version 6501
+##### Version 6501
 
 <!-- Nov 6, 2023 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
-##### Build and Push to GAR (CI-9926)
+**Build and Push to GAR (CI-9926)**
 
 This release includes a new [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar) offering first-class support for build and pushing artifacts to Google Artifact Registry (GAR). Previously, you could use Run steps to build and push to GAR. This new step combines the build and push steps into one streamlined step.
 
@@ -248,7 +269,7 @@ If using this step with Harness Cloud build infrastructure, you can also leverag
 
 Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr), the **Build and Push to GCR** step will be deprecated in favor of the new **Build and Push to GAR** step.
 
-##### Harness Cloud Windows image update (CI-9750)
+**Harness Cloud Windows image update (CI-9750)**
 
 The Harness Cloud Windows image has been upgraded to Windows Server 2022. This includes major and minor version upgrades for many components. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications).
 
@@ -258,9 +279,9 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 :::
 
-#### Early access features
+###### Early access features
 
-##### Delegate selectors for codebase tasks (CI-9980)
+**Delegate selectors for codebase tasks (CI-9980)**
 
 :::note
 
@@ -272,18 +293,11 @@ Without this feature flag enabled, delegate selectors aren't applied to delegate
 
 With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
-#### Fixed issues
+###### Fixed issues
 
 - When you add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) to a pipeline, the **Infrastructure** tab is selected by default, rather than the **Execution** tab. (CI-9624)
 - To address potential performance issues, resource consumption logs are now disabled for the `ci-addon` service, and the communication retry internal between the Lite Engine and the `ci-addon` service is now nine seconds. <!-- additional hotfix change behind FF CI_EXTRA_ADDON_RESOURCE --> (CI-10042, ZD-52559)
 - Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
-
-## Previous releases
-
-### Jan-Oct 2023 releases
-
-<details>
-<summary>Jan-Oct 2023 releases</summary>
 
 #### October 2023
 
