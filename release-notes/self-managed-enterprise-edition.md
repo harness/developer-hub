@@ -150,7 +150,7 @@ gsutil -m cp \
    Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
    :::
 
-
+- Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout)
 
 ### Fixed issues
 
