@@ -8,6 +8,50 @@ redirect_from:
 
 Here are some examples of matrix strategies you can use in your stages or steps. For information about how matrix strategies work and instructions for creating different types of looping strategies, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
+## Comparing how you write a for loop to iterate through elements with how you work with matrix.
+
+### Example 1
+Given a particular list and you want to iterate over that list and execute the stage.
+
+The way we will write in code using for loop is:
+
+```python
+listOfString=["a", "b", "c"]
+for(String s: listOfString) {
+	//run the stage
+}
+```
+Now using matrix we can write it as:
+
+```yaml
+stage:
+ matrix:
+   listOfString: ["a", "b", "c"]
+```
+
+### Example 2 
+Let's discuss how you can do nesting using for loop vs how you can do it via matrix.
+
+The way we will write in code using for loop is:
+
+```python
+for(String s: listA) {
+	for(String s1: listB) {
+	  stdout(s) // it would print the value of element being iterated on in listA
+	  stdout(s1) // it would print the value of element being iterated on in listB
+	}
+}
+```
+Now using matrix we can write it as:
+
+```yaml
+stage:
+ matrix:
+   listA: ["a", "b", "c"]
+   listB: ["some", "random", "list"]
+```
+If you want to refer to the element selected from listA, you can use ``<+matrix.listA>``. Similarly, if you want to refer to the element selected from listB, you can use ``<+matrix.listB>``.
+
 ## Basic matrix: Repeat over a list
 
 The simplest form of a matrix strategy is one-dimensional. It includes a single list of values to iterate over.
@@ -436,3 +480,4 @@ pipeline:
 Escaping is required for some punctuation. Note the use of double quotes around the entire object.
 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
+
