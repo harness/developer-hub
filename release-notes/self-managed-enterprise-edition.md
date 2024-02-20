@@ -103,6 +103,25 @@ gsutil -m cp \
 
 ### New features and enhancements
 
+#### Continuous Delivery
+
+- You can now see AccountID in Switch Account screen(CDS-88728)
+
+   Enhanced the Switch Account experience to show more data i.e ``AccountId``.
+
+
+- Support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
+
+   The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service. The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
+
+- Grouping and Collapsible are now supported for Overrides(CDS-82376)
+
+  Overrides in configurations are now grouped and collapsible, making them easier to search through.
+
+- Stage Selection component is moved to Pipeline Input tab from Configuration Tab (CDS-72890)
+
+   When setting up Triggers, you'll find the Stage Selection in the Pipeline Input tab for a smoother configuration experience.
+
 #### Continuous Integration
 
 - The [codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) `<+codebase.sourceBranch>` and `<+codebase.targetBranch>` are now always `null` for branch and tag builds. These expressions are primarily for differentiating the target and source branches for PR builds. For branch and tag builds, use `<+codebase.branch>` and `<+codebase.tag>`. (CI-10743, ZD-55284)
@@ -136,6 +155,84 @@ gsutil -m cp \
 ### Early access features
 
 ### Fixed issues
+
+#### Continuous Delivery
+
+- UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
+
+   The issue is fixed now to handle null check for approval message.
+
+
+- Unauthorized errors while using GCP and a GCP access token in between steady state checks, intermittently (CDS-88446, ZD-56104)
+
+   It occurred when the access token expiration overlapped with steady state check (watch) API calls.
+    The issue is fixed now. 
+
+- Even though only delegates can perform 10 connection tests in parallel, the UI did not restrict further attempts and threw an error at a later stage.(CDS-88377, ZD-56296)
+   
+   The issue is fixed now by adding restriction on UI to match backend limitation for the Delegate.
+
+- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list(CDS-88198, ZD-56156)
+
+   The issue is fixed now.
+
+- Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
+
+   The issue is fixed now by adding a validation, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+
+- Unable to select a new pipeline or template version. (CDS-87809, ZD-55910)
+
+   The issue is fixed now.
+
+- Branch selector dropdown not populating in Harness code repo: issue arises when entity is absent, resulting in 'no entity found' page. (CDS-87788)
+
+   The issue is fixed now. 
+
+- During K8s Async Steps, an 'Invalid task type' exception was thrown when the task parameter was not provided, resulting in a test failure. (CDS-87708)
+
+   The issue is fixed now.
+
+- Hyperlinks in the Harness approval message are not clickable. (CDS-87675, ZD-55826)
+   
+   The issue is fixed by adding logic to render clickable links within the text. If any URLs or hyperlinks are present in the approval message they are converted to clickable links. 
+
+- Github release trigger were not working as expected because UI didn't show the Conditions(CDS-87647, ZD-55832)
+
+   The issue is fixed now.
+
+- Http step with mtls not working due to exception caused during delegate capability check for the step(CDS-87547,ZD-55531)
+   
+   The issue is fixed now.
+
+- Unable to use '#' and '&' in branch names. (CDS-87468, ZD-55625)
+
+   The issue is fixed now.
+
+- There were issues while pulling tags of images in Github Container Registry when they have ``/`` inside the artifact name. (CDS-87457)
+
+   The issue is fixed now by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
+
+- Pipeline was failing with delegate error to fetch JSON format(CDS-87440,ZD-55387)
+
+   The JSON format was fetched using curl in the delegate but the same was not working in the UI.
+
+   The issue is fixed now.
+
+- Harness bidirectional sync webhook feature not working(CDS-85694,ZD-54338)
+   
+   These events are unrelated to bidirectional GitExperience processing and will now be disregarded instead of being flagged as failures.
+
+- Plugin steps weren't following delegate selectors, leading to intermittent pipeline failures.(CDS-85489)
+
+   The issue is fixed now.
+
+- WimRM connector was changed to SSH connector when the template was added to the pipeline. (CDS-85388)
+
+  The issue is fixed now.
+
+- Template inputs were not showing up in Pipeline editor (CDS-84490)
+   
+   It was due to an intermittent issue, this has been resolved now.
 
 #### Continuous Integration
 
@@ -187,7 +284,6 @@ gsutil -m cp \
 - The `platform-service` was not publishing the response count metric. (PL-43123)
 
    This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
-
 
 
 ## February 13, 2024, patch version 0.13.4
