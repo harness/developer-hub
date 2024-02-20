@@ -1,7 +1,7 @@
 ---
 title: Kubernetes steps timeouts and deadline parameters
 description: How Timeouts relate to the Kubernetes deadline parameter.
-sidebar_position: 6
+sidebar_position: 8
 helpdocs_topic_id: rsyh1cl5q0
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false

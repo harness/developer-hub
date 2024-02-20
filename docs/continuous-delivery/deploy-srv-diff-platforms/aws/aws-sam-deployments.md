@@ -123,14 +123,31 @@ To add your template, do the following:
 4. In **Deployment Type**, select **AWS SAM**.
 5. In **Manifests**, select **Add Manifest**.
 6. In **Specify Manifest Type**, select **AWS SAM Directory**, and then select **Continue**.
-7. In **Specify AWS SAM Directory Store**, select your Git provider. You can also use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
-8. Select or create a new Harness Git connector to your Git provider, and then select **Continue**.
-9. In **Manifest Details**, enter the following:
+7. In **Specify AWS SAM Directory Store**, choose a provider and follow the corresponding instructions below. You can also use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
+
+#### Git Providers
+8. Select your Git provider of choice.
+9. Select or create a new Harness Git connector to your Git provider, and then select **Continue**.
+10. In **Manifest Details**, enter the following:
    1. **Manifest Identifier:** Enter a name for the template.
    2. **Git Fetch Type:** Select how you want to fetch the template.
    3. **Branch**/**Commit Id:** Enter the branch name or commit Id.
    4. **File/Folder Path:** Enter the path to the template from the root of the repository.
-10. Select **Submit**.
+11. Select **Submit**.
+
+#### AWS S3
+8. Select the AWS S3 provider.
+9. Select or create a new Harness AWS connector to your AWS S3 provider, and then select **Continue**.
+10. In **Manifest Details**, enter the following:
+   1. **Manifest Identifier** Enter a name that identifies this Serverless manifest.
+   2. **Region** Select the AWS region to use for the connection.
+   3. **Bucket Name** Enter the AWS S3 bucket name.
+   4. **File/Folder Path** Enter the path from the root of the bucket to the serverless.yml file
+11. Select **Submit**
+
+:::info
+   For an AWS S3 provider, the file path can be a `.zip` file. Harness will automatically decompress the file when it is pulled from the bucket. 
+:::
 
 ### Values YAML
 

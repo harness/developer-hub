@@ -8,6 +8,71 @@ redirect_from:
 
 Here are some examples of matrix strategies you can use in your stages or steps. For information about how matrix strategies work and instructions for creating different types of looping strategies, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
+## Loop versus matrix
+
+A matrix is a pattern that iterates over a series of elements. You might know this as a loop or `for` loop.
+
+These examples compare how you would write a loop to iterate over a series of elements versus how you would use a matrix to achieve the same iterating "for each" effect.
+
+### Basic loop
+
+With a basic loop, you provide a list of elements and iterate over the list. In a Harness pipeline, the iterations could be individual steps or entire stages.
+
+For example, assume you want to repeat an entire stage for each item in a list.
+
+As a `for` loop, you might write something like this:
+
+```python
+listOfString=["a", "b", "c"]
+for(String s: listOfString) {
+	//run the stage
+}
+```
+
+As a matrix in a Harness pipeline, you would write:
+
+```yaml
+stage:
+ matrix:
+   listOfString: ["a", "b", "c"]
+```
+
+In your steps, you use expressions to indicate where you want to insert the matrix values. For example, the above example would be referenced by `<+matrix.listOfString>`.
+
+### Nested loops
+
+Just as you can write nested `for` loops, you can create nested matrices in Harness.
+
+Here's an example of nested `for` loops in Python:
+
+```python
+for(String s: listA) {
+	for(String s1: listB) {
+	  stdout(s) // it would print the value of element being iterated on in listA
+	  stdout(s1) // it would print the value of element being iterated on in listB
+	}
+}
+```
+
+To create nested, multi-dimensional matrices in Harness, you add another list of values to iterate over.
+
+For example, this matrix iterates over each item in `listB` for each item in `listA`:
+
+```yaml
+stage:
+ matrix:
+   listA: ["a", "b", "c"]
+   listB: ["some", "random", "list"]
+```
+
+This matrix produces a total of 9 iterations:
+
+* `a` + `some`, `a` + `random`, `a` + `list`
+* `b` + `some`, `b` + `random`, `b` + `list`
+* `c` + `some`, `c` + `random`, `c` + `list`
+
+Referencing values from nested matrices is the same as with one-dimensional matrices. In your steps, you use expressions to indicate where you want to insert the matrix values. For example, in the above example, to refer to the elements from `listA`, you would use the expression `<+matrix.listA>`, and to refer to elements from `listB`, you would use the expression `<+matrix.listB>`.
+
 ## Basic matrix: Repeat over a list
 
 The simplest form of a matrix strategy is one-dimensional. It includes a single list of values to iterate over.

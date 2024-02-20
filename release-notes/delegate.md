@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-02-12T10:00
+date: 2024-02-13T10:00
 sidebar_position: 4
 ---
 
@@ -40,24 +40,29 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## February 2024
 
+### Version 24.02.82306 <!--  February 16, 2024 -->
+
+#### Hotfix
+
+- Added default values for minimum healthy percentage as 90 and maximum healthy percentage as 110 for the instance refresh operation that is performed during ASG Rolling deployments to prevent service downtime. (CDS-91335, ZD-57686)
+
 ### Version 24.02.82304 <!--  February 12, 2024 -->
 
 #### Hotfix
 
 - Fixed an issue in ECS Blue Green deployments where the ECS service was deleted after the first or second deployment. (CDS-91499, ZD-57892)
 
+### Version 24.02.82203 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
 
 ### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
 
 #### Fixed issues
 
 - Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. (CI-10636, ZD-54688)
-
-### Version 24.02.82203 <!--  February 2, 2024 -->
-
-#### Hotfix
-
-- Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
 
 ## January 2024
 

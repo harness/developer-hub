@@ -13,7 +13,7 @@ For example, an SEI GitHub integration authenticates through a GitHub account to
 To integrate a tool with SEI, you can use either an application-specific SEI integration the generic SEI integration.
 
 :::info
-Please note that after adding an integration, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
+Please note that after adding an integration and for each subsequent data sync, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
 :::
 
 ![](./static/integrations-overview.png)
@@ -27,42 +27,42 @@ Integration mapping refers to the process of linking available or new integratio
 
 ## Application-specific SEI integrations
 
-* [Azure DevOps Services](./automated-integrations/sei-integration-azure-devops)
-* [Bitbucket](./automated-integrations/sei-integration-bitbucket)
-* [Checkmarx SAST](./other-integrations/sei-integration-checkmarx)
-* [Circle CI](./automated-integrations/sei-integration-circleci)
-* [Coverity](./other-integrations/sei-integration-coverity)
-* [Drone CI](./automated-integrations/sei-integration-droneci)
-* [Gerrit](./other-integrations/sei-integration-gerrit)
-* [GitHub](./automated-integrations/sei-integration-github)
-* [GitHub Actions](./automated-integrations/sei-github-actions)
-* [GitHub 2.0 - BETA](./automated-integrations/sei-integration-github-easyonboarding)
-* [GitLab](./automated-integrations/sei-integration-gitlab)
-* [Harness NG](./automated-integrations/sei-integration-harnessng)
-* [Helix Core Server](./other-integrations/sei-integration-helix)
-* [Jira](./automated-integrations/sei-integration-jira)
-* [Jira 2.0 - BETA](./automated-integrations/sei-integration-jira-easyonboarding)
-* [Microsoft Teams](./other-integrations/sei-integration-ms-teams)
-* [PagerDuty](./other-integrations/sei-integration-pagerduty)
-* [PostgreSQL](./other-integrations/sei-integration-postgresql)
-* [Salesforce](./other-integrations/sei-integration-salesforce)
-* [Slack](./other-integrations/sei-integration-slack)
-* [Snyk](./other-integrations/sei-integration-snyk)
-* [SonarQube](./automated-integrations/sei-integration-sonarqube)
-* [Splunk](./other-integrations/sei-integration-splunk)
-* [Tenable](./other-integrations/sei-integration-tenable)
-* [TestRail](./automated-integrations/sei-integration-testrail)
-* [Zendesk](./other-integrations/sei-integration-zendesk)
+* [Azure DevOps Services](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+* [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
+* [Checkmarx SAST](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-checkmarx)
+* [Circle CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci)
+* [Coverity](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-coverity)
+* [Drone CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci)
+* [Gerrit](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-gerrit)
+* [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
+* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
+* [GitHub 2.0 - BETA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding)
+* [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
+* [Harness NG](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
+* [Helix Core Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
+* [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira)
+* [Jira 2.0 - BETA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding)
+* [Microsoft Teams](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-ms-teams)
+* [PagerDuty](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+* [PostgreSQL](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-postgresql)
+* [Salesforce](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce)
+* [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
+* [Snyk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-snyk)
+* [SonarQube](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube)
+* [Splunk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-splunk)
+* [Tenable](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-tenable)
+* [TestRail](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-testrail)
+* [Zendesk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-zendesk)
 
-On-prem integrations and tools without application-specific integrations require [Ingestion Satellites](../sei-ingestion-satellite/satellite-overview).
+On-prem integrations and tools without application-specific integrations require [Ingestion Satellites](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 ## Other integrations
 
-For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](./other-integrations/sei-integration-checkmarx).
+For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin).
 
 :::tip
 
-In addition to SEI integrations, you can [import CSV files](../sei-propels-scripts/tables) and display the data in [Table reports](../sei-propels-scripts/table-reports).
+In addition to SEI integrations, you can [import CSV files](/docs/software-engineering-insights/sei-propels-scripts/tables) and display the data in [Table reports](/docs/software-engineering-insights/sei-propels-scripts/table-reports).
 
 :::
 

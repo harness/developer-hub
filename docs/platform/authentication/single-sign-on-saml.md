@@ -149,15 +149,15 @@ Now that Okta is set up in Harness as a SAML SSO provider, you can enable and te
    2. Log in using a Harness [user account](../role-based-access-control/add-users.md) that has a corresponding email address registered in Okta. If successful, you're redirected to the Okta log in page.
    3. On the Okta log in page, enter the email address associated with the Harness user account. The Harness account and Okta account can have different passwords. If successful, you'll be returned to Harness.
 
-   :::info note
+   :::info
 
    If you get locked out of Harness due to an SSO issue, you can log into Harness through [local login](#harness-local-login).
 
    :::
 
-   import Local from '/docs/platform/shared/local-login-note.md'
+import Llnote from '/docs/platform/shared/local-login-note.md'
 
-   <Local />
+<Llnote />
 
 ### SAML authorization with Okta
 
@@ -780,7 +780,7 @@ For example, `https://app.harness.io/gateway/api/users/saml-login?accountId=<you
 
 ### Set up Keycloak SAML SSO in Harness
 
-1. In your Harness Account, got to **Account SETUP** and click **Authentication**.
+1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
 2. Click **SAML Provider**. The **Add SAML Provider** settings appear.
 3. In **Name**, enter a name for your SAML provider.
 4. In **Select a SAML Provider**, click **Other**.  
@@ -795,7 +795,7 @@ To do this, in your Keycloak account, click **Realm Settings**.
    
    ![](./static/single-sign-on-saml-117.png)
 
-8. In Harness' Add SAML Provider dialog, under **Upload the Identity Provider metadata XML**, click **Upload.**
+8. In Harness' Add SAML Provider dialog, under **Upload the Identity Provider metadata XML**, click **Upload**.
 9.  Add the SAML metadata file you downloaded from your Keycloak realm settings.
 10. Select **Add Entity ID** and enter your custom Entity ID.​ The default Entity ID is `app.harness.io`. The value you enter here will override the default Entity ID.
 11. Click **Add**.  
@@ -816,20 +816,28 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 
 ## Harness Local Login
 
-To prevent lockouts or in the event of OAuth downtime, a user that has Account Admin assigned on All Account Level Resources or All Resources Including Child Scopes can use the Local Login URL `https://app.harness.io/auth/#/local-login` to log in and update the OAuth settings. _The user must have this access assigned directly on their Harness user, not via a group assignment._
+import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
-import Local from '/docs/platform/shared/local-login-note.md'
+<Harnessll />
 
-<Local />
+## Use encrypted SAML
 
-For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
+To use encrypted SAML with Harness, you download the encryption certificate from the Harness UI and upload it to your identity provider (IdP) settings to support the encrypted SAML flow.
 
-1. Log in using **Harness Local Login**.
+To download your encryption certificate and upload it to your IdP settings, do the following:
 
-   ![](./static/single-sign-on-saml-118.png)
+1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
+2. Under **Login via SAML**, select **More Options** (&vellip;), and then select **Edit**. The **Edit SAML Provider** options open.
 
-2. Change the settings to enable users to log in.
+   ![](./static/enable-encrypted-saml.png)
 
-:::info note
-You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
-:::
+3. Select the **Download** link to download the encryption certificate for SAML assertions.
+4. Sign in to your IdP.
+5. Edit your SAML integration.
+   
+   1. Enable assertion encryption.
+   2. Select your encryption algorithm.
+   3. Upload the encrypted certificate file you downloaded from the Harness UI in step 3 above.
+
+When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
+

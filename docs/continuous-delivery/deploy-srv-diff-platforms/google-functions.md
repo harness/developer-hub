@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Functions
 description: Deploy single-purpose functions to Google Cloud.
-sidebar_position: 800
+sidebar_position: 900
 ---
 
 # Google Cloud Functions deployments
