@@ -2841,9 +2841,8 @@ We can make use of environment variable TMPDIR on the delegate and use any direc
 
 ```
 
-### How can I make my pipeline dependent on the RBAC permissions of the user that runs pipeline? Is that info accessible from inside the pipeline?
+### How can I make my pipeline dependent on the RBAC permissions of the user that runs the pipeline? Is that info accessible from inside the pipeline? I'm expecting a variable like <+currentuser.role>
 
-I'm expecting a variable like <+currentuser.role>
 
 We don't have a variable like `<+currentuser.role>` that will return the role for user, but you can use a variable to get the user's email address. For more information, go to [Pipeline trigger by email](/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail).
 
