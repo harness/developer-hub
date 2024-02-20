@@ -2857,6 +2857,10 @@ Yes, you can use the following queries. Replace the `accountid` with the actual 
 
 This query returns results for users that were provisioned via SCIM.
 
+Yes, you can use the following queries. Replace the `accountid` with the actual account ID.
+
+This query returns results for users that were provisioned via SCIM.
+
 ```
 db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"SCIM"})
 ```
