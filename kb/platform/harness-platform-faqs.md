@@ -2825,9 +2825,9 @@ We do not provide any customized docker images for delegates however we do have 
 https://github.com/harness/delegate-dockerfile/tree/main
 ```
 
-### Can we use immutable delegate image in the statefulset deployment yaml for delegates?
+### Can we use a delegate with immutable image type in the statefulset deployment YAML for delegates?
 
-We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
+We can not use an immutable image type delegate in the statefulset deployment YAML that we had for legacy delegates. The delegates are architecturally different. Delegates with an immutable type must be used with their own deployment YAML.
 
 ### Is there a way to enable more granular level for delegate logs?
 
