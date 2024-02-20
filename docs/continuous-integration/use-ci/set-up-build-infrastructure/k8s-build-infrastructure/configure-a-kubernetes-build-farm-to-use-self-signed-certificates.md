@@ -56,7 +56,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    ```yaml
     spec:
       containers:
-      - image: harness/delegate:24.02.82302
+      - image: harness/delegate:yy.mm.verno
         volumeMounts:  
         - name: certvol  
           mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
@@ -165,7 +165,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
                     - name: ADDITIONAL_CERTS_PATH  
                       value: /tmp/ca.bundle  
                     - name: CI_MOUNT_VOLUMES  
-                      value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
+                      value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"  
                   volumeMounts:  
                     - name: certvol  
                       mountPath: /tmp/ca.bundle  
@@ -200,7 +200,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
      ```yaml
           env:
           - name: DESTINATION_CA_PATH
-            value: /etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt,/etc/docker/certs.d/my-registry.local.org:799/ca.crt
+            value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt,/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
             volumeMounts:
             - name: certvol
               mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
