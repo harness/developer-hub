@@ -114,7 +114,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
 2. Mount the secret as a volume on the delegate pod.
 
-   In the delegate pod, you must specify `DESTINATION_CA_PATH`. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
+   In the delegate pod, you must specify `DESTINATION_CA_PATH`. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `/opt/harness-delegate/ca-bundle`.
 
    For instructions, go to [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/) in the Kubernetes docs.
 
