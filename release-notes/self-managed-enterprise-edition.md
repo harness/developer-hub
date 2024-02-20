@@ -152,7 +152,7 @@ gsutil -m cp \
 
 - Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout) (PL-43630)
 
-- You can now do customisation of Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin.
+- You can now do customisation of Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. (PL-42139)
 
    To disable Audit View for specific users, administrators can now:
    - Create a role with Audit View permission disabled while enabling all other view permissions.
