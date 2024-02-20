@@ -32,7 +32,7 @@ Pod DNS error:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to DNS error. </td>
-        <td> None. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -42,22 +42,22 @@ Pod DNS error:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
+        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to chaos. </td>
-        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#target-pods">target pods</a></td>
+        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href="#target-pods">target pods</a></td>
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
         <td> List of the target host names or keywords. For example, '["litmuschaos","chaosnative.com"]'. </td>
-        <td> If this is not provided, all host names/domains become the target. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#target-host-names">target host names</a></td>
+        <td> If this is not provided, all host names/domains become the target. For more information, go to <a href="#target-host-names">target host names</a></td>
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
         <td> Determines whether the DNS query exactly matches one of the targets or uses any of the targets as a substring. It can be <code>exact</code> or <code>substring</code>. </td>
-        <td> If this is not provided, it is set to <code>exact</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#match-scheme">match scheme</a></td>
+        <td> If this is not provided, it is set to <code>exact</code>. For more information, go to <a href="#match-scheme">match scheme</a></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
