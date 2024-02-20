@@ -3,6 +3,7 @@ title: Manage Kustomize applications with Harness GitOps
 description: Manage Kustomize applications from the Harness GitOps user interface.
 sidebar_label: Manage Kustomize applications
 sidebar_position: 4
+---
 
 If you are managing workloads with Kustomize, you can also manage them from the GitOps user interface in Harness. Support for managing Kustomize workloads is accomplished by connecting the Harness GitOps agent to Kustomize through a special application resource in ArgoCD. You can use the GitOps user interface to manage both regular ArgoCD and Kustomize resources, and view them all on the GitOps dashboard. 
 
