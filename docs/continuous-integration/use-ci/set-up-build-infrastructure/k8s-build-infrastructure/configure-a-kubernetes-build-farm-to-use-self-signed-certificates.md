@@ -50,27 +50,77 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
 2. Mount the secret as a `volume` on the delegate pod and add a `volumeMount` to your certificate files at `/opt/harness-delegate/ca-bundle`.
 
+  In the delegate pod, do the following:
+   
+     1. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
+   
+     2. Mount your certificate files to `/opt/harness-delegate/ca-bundle`.
+
    For instructions, go to [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/) in the Kubernetes docs.
 
-   Here's an example: 
+   To mount the secret, go to the delegate `Deployment` and update `volumeMounts` and `volumes`. See the end of this example definition:
+
+   <details open>
+   <summary>Example: Mount the SSL certificate</summary>
 
    ```yaml
-    spec:
-      containers:
-      - image: harness/delegate:yy.mm.verno
-        volumeMounts:  
-        - name: certvol  
-          mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-          subPath: ca.bundle 
-      volumes:
-      - name: certvol  
-        secret:  
-          secretName: addcerts
-          items:  
-            - key: ca.bundle  
-              path: ca.bundle
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        labels:
+          harness.io/name: abc-ca-kubernetes-delegate
+        name: abc-ca-kubernetes-delegate
+        namespace: abc-ca-kubernetes-delegate
+      spec:
+        replicas: 1
+        minReadySeconds: 120
+        selector:
+          matchLabels:
+            harness.io/name: abc-ca-kubernetes-delegate
+        template:
+          metadata:
+            labels:
+              harness.io/name: abc-ca-kubernetes-delegate
+            annotations:
+              # ...
+          spec:
+            terminationGracePeriodSeconds: 600
+            restartPolicy: Always
+            containers:
+            - image: harness/delegate:yy.mm.verno
+              imagePullPolicy: Always
+              name: delegate
+              securityContext:
+                # ...
+              ports:
+                # ...
+              resources:
+                # ...
+              livenessProbe:
+                # ...
+              startupProbe:
+                # ...
+              envFrom:
+                # ...
+              env:
+                # ...
+              volumeMounts:  
+              ### ADD THE VOLUME MOUNT HERE
+              - name: certvol  
+                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                subPath: ca.bundle 
+            volumes:
+            ### ADD THE VOLUME HERE
+            - name: certvol  
+              secret:  
+                secretName: addcerts
+                items:  
+                  - key: ca.bundle  
+                    path: ca.bundle
 
    ```
+
+   </details>  
 
    Both CI build pods and the SCM client on the delegate support this method.
 
@@ -114,28 +164,80 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
 2. Mount the secret as a volume on the delegate pod.
 
-   In the delegate pod, you must specify `DESTINATION_CA_PATH`. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `/opt/harness-delegate/ca-bundle`.
+   In the delegate pod, do the following:
+   
+   1. Add  `DESTINATION_CA_PATH`to the environment. 
+   
+   2. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
+   
+   3. Mount your certificate files to `/opt/harness-delegate/ca-bundle`.
 
    For instructions, go to [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/) in the Kubernetes docs.
 
-   Here's an example:
+   To add `DESTINATION_CA_PATH` and mount the secret, go to the delegate `Deployment` and update `env`, `volumeMounts`, and `volumes`. See the end of this example definition:
+
+   <details open>
+   <summary>Example: Add `DESTINATION_CA_PATH` and mount the SSL certificate</summary>
 
    ```yaml
-          env:
-          - name: DESTINATION_CA_PATH
-            value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-            volumeMounts:
-            - name: certvol
-              mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-              subPath:  ca.bundle
-          volumes:
-          - name: certvol
-            secret:
-               secretName: addcerts
-               items:
-                - key: ca.bundle
-                  path: ca.bundle
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        labels:
+          harness.io/name: abc-ca-kubernetes-delegate
+        name: abc-ca-kubernetes-delegate
+        namespace: abc-ca-kubernetes-delegate
+      spec:
+        replicas: 1
+        minReadySeconds: 120
+        selector:
+          matchLabels:
+            harness.io/name: abc-ca-kubernetes-delegate
+        template:
+          metadata:
+            labels:
+              harness.io/name: abc-ca-kubernetes-delegate
+            annotations:
+              # ...
+          spec:
+            terminationGracePeriodSeconds: 600
+            restartPolicy: Always
+            containers:
+            - image: harness/delegate:yy.mm.verno
+              imagePullPolicy: Always
+              name: delegate
+              securityContext:
+                # ...
+              ports:
+                # ...
+              resources:
+                # ...
+              livenessProbe:
+                # ...
+              startupProbe:
+                # ...
+              envFrom:
+                # ...
+              env:
+              ### ADD DESTINATION_CA_PATH HERE
+              - name: DESTINATION_CA_PATH
+                value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+              volumeMounts: 
+              ### ADD THE VOLUME MOUNT HERE 
+              - name: certvol  
+                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                subPath: ca.bundle 
+            volumes:
+            ### ADD THE VOLUME HERE
+            - name: certvol  
+              secret:  
+                secretName: addcerts
+                items:  
+                  - key: ca.bundle  
+                    path: ca.bundle
    ```
+
+   </details> 
 
    Both CI build pods and the SCM client on the delegate support this method.
 
@@ -162,16 +264,20 @@ This workflow is applicable only if you're using a self-hosted registry to store
             spec:
               containers:
                 - image: harness/delegate:yy.mm.verno
-                  env:  
+                  # ...
+                  env: 
+                  # ADD ADDITIONAL_CERTS_PATH AND CI_MOUNT_VOLUMES HERE  
                     - name: ADDITIONAL_CERTS_PATH  
                       value: /tmp/ca.bundle  
                     - name: CI_MOUNT_VOLUMES  
                       value: "/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt"  
-                  volumeMounts:  
+                  volumeMounts: 
+                  # ADD VOLUME MOUNT HERE 
                     - name: certvol  
                       mountPath: /tmp/ca.bundle  
                       subPath:  ca.bundle 
-              volumes:  
+              volumes:
+                # ADD VOLUME MOUNT HERE 
                 - name: certvol  
                   secret:  
                     secretName: addcerts  
@@ -197,22 +303,25 @@ This workflow is applicable only if you're using a self-hosted registry to store
    `docker login my-registry.local.org:799`
 
    In this case, you'd add the path to your `DESTINATION_CA_PATH` environment like this:
- 
-     ```yaml
-          env:
-          - name: DESTINATION_CA_PATH
-            value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt,/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-            volumeMounts:
-            - name: certvol
-              mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-              subPath:  ca.bundle
-          volumes:
+
+   ```yaml
+    spec:
+      containers:
+      - image: harness/delegate:yy.mm.verno
+        env:
+        - name: DESTINATION_CA_PATH
+          value: "/etc/docker/certs.d/my-registry.local.org:799/ca.crt,/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+        volumeMounts:
           - name: certvol
-            secret:
-               secretName: addcerts
-               items:
-                - key: ca.bundle
-                  path: ca.bundle
+            mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+            subPath:  ca.bundle
+      volumes:
+      - name: certvol
+        secret:
+            secretName: addcerts
+             items:
+             - key: ca.bundle
+               path: ca.bundle
    ```
 
 
