@@ -63,7 +63,7 @@ By injecting known failures into the system, they can identify and fix issues be
 In general, anyone responsible for maintaining and deploying applications in a Kubernetes cluster, especially in a production environment, should consider using chaos probes to proactively identify and fix issues in their applications.
 
 
-## Why shoud you use probes?
+## Why should you use probes?
 
 By injecting known failures into the system, chaos probes can identify and fix issues before they occur in production. This can help ensure that the application remains available and responsive to user requests even in the event of unexpected failures.
 
@@ -102,6 +102,10 @@ The probe success percentage for each of the probes mentioned in the fault plays
 
 It is an important metric in evaluating the results of a chaos experiment and can be used to identify which parts of the system are most affected by the chaos injection and where improvements need to be made. It also helps to understand the behavior of the application during the chaos scenario and fine tune the application for better resiliency.
 
+## Known limitations of resilience probes
+
+* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SAAS.
+* In SMP (self-managed platform), **source** mode of command probe is only available for Kubernetes.
 
 ## Probe status and deriving inferences
 
@@ -155,5 +159,5 @@ probe:
 
 ## Next steps
 
-* [Configure and add a probe](./configure-and-add-probe.md)
-* [Validate a hypothesis using probes](./validate-hypothesis-using-probes.md)
+* [Configure and add a probe](/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe.md)
+* [Using command probe in different modes](/docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage.md)

@@ -62,7 +62,7 @@ curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/loc
  --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
 ### Response:
-The response will register a software compenent in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
+The response will register a software component in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
 
 
 ## Catalog Entities API

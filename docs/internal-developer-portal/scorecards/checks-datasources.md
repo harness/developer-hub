@@ -38,7 +38,7 @@ The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
 
 ### Supported Operators
 
-We support the folowing `regex operators` as Operators for all the Data Points.
+We support the following `regex operators` as Operators for all the Data Points.
 
 1. Less Than
 2. Less than or equal to
@@ -394,7 +394,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 ## Catalog 
 
-The following **Data Points** are avilable for Catalog Data Source. 
+The following **Data Points** are available for Catalog Data Source. 
 
 1. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
@@ -442,7 +442,7 @@ spec:
 
 - *Objective:* Checks if the catalog YAML file has the annotation `pagerduty.com/service-id` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `pagerduty.com/service-id` is present under the metadata field.
-- *Prerequisites:* The Pagerduty plugin needs to be configured and enabled in the admin section. Please [refer](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/) here for more details. 
+- *Prerequisites:* The PagerDuty plugin needs to be configured and enabled in the admin section. Please [refer](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/) here for more details. 
 
 ![](./static/pager-catalog.png)
 
@@ -498,7 +498,7 @@ The following **Data Points** are available for Kubernetes Data Source.
 
 ## Jira
 
-The following **Data Points** are avilable for Jira Data Source.
+The following **Data Points** are available for Jira Data Source.
 
 1. **Issues Count**:
 
@@ -583,7 +583,7 @@ spec:
 - The PagerDuty plugin must be configured and enabled in the admin section. Refer [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/).
 
 
-The following **Data Points** are avilable for PagerDuty Data Source.
+The following **Data Points** are available for PagerDuty Data Source.
 
 1. **Is on-call Set** - This data point can be used for creating rules that will check if the on-call is set for a given service.
 
@@ -622,15 +622,15 @@ The following **Data Points** are avilable for PagerDuty Data Source.
 
 ![](./static/check-overview.png)
 
-- To have an overview of a single check and information on all the componenets it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
+- To have an overview of a single check and information on all the components it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
 
-- The overview page lists all the components on which the check is appled and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades accross your software ecosystem. 
+- The overview page lists all the components on which the check is applied and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades across your software ecosystem. 
 
 ![](./static/check-component-overview.png)
 
 :::info
 
-Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and indvidual check overview page
+Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and individual check overview page
 
 ![](./static/breadcrumbs.png)
 

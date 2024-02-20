@@ -881,7 +881,7 @@ Note: There may be a chance the CET agent will work with a previous version of t
 #### My CET agent would not start due to incompatibility with my native Amazon operating system.  What is the minimum Amazon version required to run the CET agent?
 
 The CET agent requires at minimum the following versions of Amazon OS to run successfully:
-- Amazon Linux (Arm): 2 (Graviton 2)
+- Amazon Linux (Arm): 2 (Graviton 2 / 3)
 - Amazon Linux: 2+
 
 Note: There may be a chance the CET agent will work with a previous version of the operating system.  However, if there are any issues that may occur using the CET agent, it is required to upgrade to the minimum version of the OS in order to troubleshoot any issues.
@@ -1108,7 +1108,7 @@ Note: The version must exist in order for the CET agent to download.  An error m
 Users can downgrade to a previous Mac version of the CET agent.  To do this, replace the version in the URL with the version you are looking to download.
 
 Ex:
-https://get.et.harness.io/releases/5.3.0/osx/harness-et-agent.tar.gz
+https://get.et.harness.io/releases/5.7.0/osx/harness-et-agent.tar.gz
 
 5.3.0 is a Mac version of the CET agent.  Update this number to the version you are looking to download inside the URL.
 

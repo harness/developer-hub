@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 This topic shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness.
 
-In this topic, we'll use a publicly-available serverless.yaml and artifact and deploy them to your AWS Lambda service using a Harness Pipeline.
+In this topic, we'll use a publicly-available `serverless.yaml` file and artifact and deploy them to your AWS Lambda service using a Harness Pipeline.
 
 New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework Project](https://www.serverless.com/framework/docs/tutorial) from Serverless.
 
@@ -25,7 +25,7 @@ New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework 
 
 Setting up a Serverless Lambda application involves the following steps:
 
-1. Add a serverless.yaml file and ZIP artifact to a Harness Pipeline stage.
+1. Add a `serverless.yaml` file and ZIP artifact to a Harness Pipeline stage.
 2. Define your AWS Lambda service as the deployment target.
 3. Deploy the Serverless application to Lambda.
 
@@ -41,7 +41,7 @@ You have two options for deploying a Serverless.com Framework Lambda application
 
   For more information containerized step groups, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 
-- **Non-containerized:** Deploy your Serverless Lambda application in Harness using one or more Serverless versions running on one or more Harness delegates.
+- **Non-containerized:** Deploy your Serverless Lambda application in Harness using one or more Serverless versions running on one or more Harness Delegates.
 
 You select whether to use a containerized or non-containerized method in the **Execution** section of the your pipeline Deploy stage. This topic covers both methods.
 
@@ -64,10 +64,10 @@ Once a containerized step is run, Harness terminates the container.
 
 Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
 
-- **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
+- **GitHub account:** this quickstart uses a publicly available `serverless.yaml` file, but GitHub requires that you use a GitHub account for fetching files.
 - **(Non-containerized) Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. Typically, you will install a Kubernetes delegate in your own cluster.
   - You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
-  - The Delegate pod(s) must have Serverless installed. We'll add the Serverless installation script using the delegate environment variable `INIT_SCRIPT` to the delegate YAML file later in this quickstart.
+  - The delegate pod(s) must have Serverless installed. We'll add the Serverless installation script using the delegate environment variable `INIT_SCRIPT` to the delegate YAML file later in this quickstart.
 - **(Containerized) Kubernetes cluster and namespace where each container will run:** Each containerized step will run in a Kubernetes cluster you provide.
 - **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS User, do the following:
   - Log into your AWS account and go to the Identity & Access Management (IAM) page.
@@ -254,7 +254,7 @@ Once you have created a Service, it's persistent and you can use it throughout t
 
 ## Add the manifest
 
-Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-available serverless.yaml file](https://github.com/wings-software/harness-docs/tree/main/serverless/artifacts) available from Harness.
+Next, we can add a `serverless.yaml` for our deployment. We'll use [the publicly-available serverless.yaml file](https://github.com/wings-software/harness-docs/tree/main/serverless/artifacts) available from Harness.
 
 1. In **Service Definition**, in **Deployment Type**, click **Serverless Lambda**.
 2. In **Manifests**, click **Add Manifest**.
@@ -285,7 +285,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
    - **Folder Path:** `serverless/artifacts`.
    - In **Advanced**, you can see **Serverless Config File Path**. Use this setting when your Serverless manifest isn't named `serverless.yml|.yaml|.js|.json`. This option is the same as the `--config` option in `serverless deploy`. See [AWS - deploy](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy) from Serverless.
 
-You can see the serverless.yaml manifest in Harness.
+You can see the `serverless.yaml` manifest in Harness.
 
 :::info
 You can also use AWS S3 or Harness Local File Store as your manifest provider. For information on how to configure those manifests, go to [Manifest Providers for Serverless Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-sources-for-serverless-lambda.md).
@@ -293,7 +293,7 @@ You can also use AWS S3 or Harness Local File Store as your manifest provider. F
 
 ![](./static/serverless-lambda-cd-quickstart-112.png)
 
-Here's what the serverless.yaml looks like:
+Here's what the `serverless.yaml` file looks like:
 
 ```yaml
 service: <+service.name>
@@ -325,7 +325,7 @@ For Docker images, you use the expression `<+artifact.image>`.
 
 Currently, Harness supports ZIP file artifacts only. Harness doesn't support Docker images yet.Next, we'll add a publicly-available artifact to your Service. The artifact is a zip file with a JavaScript function hosted in Artifactory.
 
-We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate in a Kubernetes cluster. The Delegate is a worker process that performs the deployment operations. The Delegate will use the URL and credentials you provide in the Connector to connect to Artifactory and fetch the artifact at runtime.
+We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate in a Kubernetes cluster. The delegate is a worker process that performs the deployment operations. The delegate will use the URL and credentials you provide in the Connector to connect to Artifactory and fetch the artifact at runtime.
 
 1. In **Artifact**, click **Add Primary**.
 2. In **Specify Artifact Repository Type**, click **Artifactory**, and click **Continue.**
@@ -397,9 +397,9 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
 
 </details>
 
-9. Back in **Set Up Delegates**, in the list of Delegates, you can see your new Delegate and its tags.
+9. Back in **Set Up Delegates**, in the list of delegates, you can see your new delegate and its tags.
 10. Select the **Connect using Delegates with the following Tags** option.
-11. Enter the tag of the new Delegate and click **Save and Continue**.
+11. Enter the tag of the new delegate and click **Save and Continue**.
 
 ![](./static/serverless-lambda-cd-quickstart-118.png)
 
@@ -455,7 +455,7 @@ For a **non-containerized** execution, you need to edit the YAML to install Serv
 
    ```
 
-In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.
+In cases when the delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI. Save the YAML file as **harness-delegate.yml**.
 
 ### Add the artifact
 
@@ -465,7 +465,7 @@ In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edi
    - **Artifact Directory:** `serverless`.
    - **Artifact Details:** `Value`.
    - **Artifact Path:** `handler.zip`.
-     When you click one of the settings, the Delegate fetches artifact metadata from Artifactory.
+     When you click one of the settings, the delegate fetches artifact metadata from Artifactory.
 3. Click **Submit**.
 
    The artifact is now in the Service.
@@ -500,7 +500,7 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
    - **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
    - Enter the secret key as a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
    - **Delegates Setup:** `Only use Delegates with all of the following tags`.
-   - Select the Delegate you added earlier in this quickstart.
+   - Select the delegate you added earlier in this quickstart.
 8. The **Connection Test** verifies the connection. Click **Finish**.
 9. Back in **Amazon Web Services Details**, in **Region**, enter the region for your AWS Lambda service, such as **us-east-1**.
 10. In **Stage**, enter the name of the stage in your service that you want to deploy to, such as **dev**. This is the same as the `--stage` option in the `serverless deploy` command.
@@ -889,11 +889,11 @@ Harness automatically adds two Serverless Lambda steps to **Execution**:
 ![](./static/serverless-lambda-cd-quickstart-122.png)
 
 1. In **Execution**, click **Serverless Lambda Deploy**.
-2. Click the **Advanced** tab and select the Delegate that you installed in **Delegate Selector**.
+2. Click the **Advanced** tab and select the delegate that you installed in **Delegate Selector**.
 
    ![](./static/serverless-lambda-cd-quickstart-123.png)
 
-   If you only have one Delegate installed in your Project, then this isn't necessary. But if you have multiple Delegates, you want to make sure the Serverless Lambda Deploy step uses the Delegate where you installed Serverless.
+   If you only have one delegate installed in your Project, then this isn't necessary. But if you have multiple delegates, you want to make sure the Serverless Lambda Deploy step uses the delegate where you installed Serverless.
 
 3. Click **Apply Changes**.
 
@@ -975,9 +975,9 @@ Now that you're done the quickstart, here's some more information to help you ex
 
 ### Serverless manifest supports Harness secrets and expressions
 
-The serverless.yaml file you use with Harness can use Harness secret and built-in expressions.
+The `serverless.yaml` file you use with Harness can use Harness secret and built-in expressions.
 
-Expression support lets you take advantage of runtime inputs and input sets in your serverless.yaml files. For example, you could use a Stage variable as a runtime input to change plugins with each stage deployment:
+Expression support lets you take advantage of runtime inputs and input sets in your `serverless.yaml` files. For example, you could use a Stage variable as a runtime input to change plugins with each stage deployment:
 
 ```yaml
 service: <+service.name>
@@ -1011,8 +1011,8 @@ Harness can fetch your YAML files and packaged code from the following stores:
 
 - AWS S3 buckets.
   - You can store the serverless.yml and the artifact code in AWS S3, including in the same bucket.
-  - You can use the .Zip format to grab the serverless.yaml and the packaged code that has been bundled in .zip and published in S3.
-  - Harness will extrapolate the serverless.yaml file and use that for deployment.
+  - You can use the .Zip format to grab the `serverless.yaml` and the packaged code that has been bundled in .zip and published in S3.
+  - Harness will extrapolate the `serverless.yaml` file and use that for deployment.
   - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-s3).
 - Git providers.
 
@@ -1085,7 +1085,7 @@ You can see it in the artifact list:
 
 #### Docker sidecars
 
-Here's an example of a serverless.yaml referencing primary and sidecar artifacts:
+Here's an example of a `serverless.yaml` file referencing primary and sidecar artifacts:
 
 ```yaml
 
@@ -1099,7 +1099,7 @@ functions:
 
 #### Non-container sidecars
 
-Here's an example of a serverless.yaml referencing primary and sidecar artifacts:
+Here's an example of a `serverless.yaml` file referencing primary and sidecar artifacts:
 
 ```yaml
 service: my-project-134fadsaez
@@ -1131,7 +1131,7 @@ layers:
 
 #### Plugin support
 
-Harness supports Serverless plugins in your serverless.yaml file.
+Harness supports Serverless plugins in your `serverless.yaml` file.
 
 You simply add the plugin using the standard Serverless `plugins` format and Harness adds the plugin at runtime.
 
@@ -1157,7 +1157,7 @@ plugins:
 
 ### Serverless YAML for files and images
 
-The serverless.yaml format for files (for example, ZIP, JAR, WAR) is different from the format for Docker images.
+The `serverless.yaml` format for files (for example, ZIP, JAR, WAR) is different from the format for Docker images.
 
 #### Serverless YAML for files
 

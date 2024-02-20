@@ -211,7 +211,7 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>criteria </td>
    <td>Flag to hold criteria for the comparison </td>
    <td>Mandatory </td>
-   <td>It supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type. </td>
+   <td>It supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int and float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type. </td>
    <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation. </td>
   </tr>
   <tr>
@@ -287,7 +287,7 @@ probe:
       command: "<command>"
       comparator:
         type: "string" # supports: string, int, float
-        criteria: "contains" #supports >=,<=,>,<,==,!= for int and contains,equal,notEqual,matches,notMatches for string values
+        criteria: "contains" #supports >=,<=,>,<,==,!= for int and float, and contains, equal, notEqual, matches, notMatches, oneOf for string values
         value: "<value-for-criteria-match>"
       source: # omit this tag to "inline" the probe
         image: "<repo>/<tag>"
@@ -335,7 +335,7 @@ spec:
             type: "string"
             # criteria which should be followed by the actual output and the expected output
             #supports [>=, <=, >, <, ==, !=] for int and float
-            # supports [contains, equal, notEqual, matches, notMatches] for string values
+            # supports [contains, equal, notEqual, matches, notMatches, oneOf] for string values
             criteria: "contains"
             # expected value, which should follow the specified criteria
             value: "hello"

@@ -1,7 +1,7 @@
 ---
 title: Tutorials
 description: Learn about Harness Platform through step-by-step tutorials, interactive labs, and videos.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 In addition to the reference documentation, there are a variety of tutorials available.

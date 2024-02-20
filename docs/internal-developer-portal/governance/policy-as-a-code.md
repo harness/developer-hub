@@ -14,7 +14,7 @@ sidebar_position: 20
 
 :::info
 
-This Feature is currently behind the Feature Flag `IDP_ENABLED FF`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account.
+This Feature is currently behind the Feature Flag `IDP_ENABLED FF`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account.
 
 :::
 
@@ -52,7 +52,7 @@ deny[msg] {
 }
 ```
 
-In the REGO scrpit we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
+In the REGO script we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
 
 #### Success: 
 
@@ -64,7 +64,7 @@ A warning message appears: Your Score for the service used needs to be more than
 
 #### Failure: 
 
-You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service haveing Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
+You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service having Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
 ### Example B: Pipeline > On Run (Policy Used: IDP Scorecard For Multi Service )
 
@@ -93,7 +93,7 @@ deny[msg] {
 
 #### Success: 
 
-You deploy the Pipeline and during the dry run the Socres of all the services you have used in the pipeline turns to be more than the set limit(here: 50). As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
+You deploy the Pipeline and during the dry run the Scores of all the services you have used in the pipeline turns to be more than the set limit(here: 50). As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
 
 #### Failure: 
 Some of the services you have used have a score less than the set limit(here: 50). As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.

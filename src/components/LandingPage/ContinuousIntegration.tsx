@@ -9,8 +9,9 @@ import {
   // DroneList,
   CIList,
 } from "./data/continuousIntegrationData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CI() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CI" description="CI">
@@ -20,8 +21,10 @@ export default function CI() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Set up CI pipelines to automate building, testing, & publishing of artifacts</h3>
-
+        <h3>
+          Set up CI pipelines to automate building, testing, & publishing of
+          artifacts
+        </h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -86,8 +89,15 @@ export default function CI() {
               </Link>
             </div>
           </div>
-          <div>
-            <img src={`${baseUrl}img/ci.svg`} />
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/ci.svg`
+                  : `${baseUrl}img/CI_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>
