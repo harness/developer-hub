@@ -3,10 +3,6 @@ title: How to Add API Docs
 description: Instructions on adding API docs, defined in different formats.
 sidebar_position: 70
 sidebar_label: How to Add API Docs
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Introduction 

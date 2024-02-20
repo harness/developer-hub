@@ -1,7 +1,7 @@
 ---
 title: Create a service onboarding pipeline
 description: Create a basic service onboarding pipeline in Harness IDP
-sidebar_position: 5
+sidebar_position: 1
 redirect_from:
   - /tutorials/internal-developer-portal/service-onboarding-pipeline
 ---
@@ -69,7 +69,7 @@ In the CI or Build stage type, container step is named Run, and it has the same 
 
    Before we write the command, we must make an infrastructure choice, which means that we specify where the pipeline executes. You can execute the pipeline on your own infrastructure or on the Harness platform. If you have an existing delegate set up for deployments, you can use the associated connector and specify its Kubernetes namespace. If you want to use the Harness platform, you have to use the CI or Build stage type instead of the Custom stage type and choose the Harness platform as your infrastructure.
 
-   :::info
+   :::info note
    Depending upon our operation, we might have to adjust the memory limit of the container. If required, you can change Limit Memory from `500Mi` to `4000Mi`.
    :::
 
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="GitHub">
 
-Paste the following cookiecutter-based script into **Command** and then select **Apply Changes**.
+5. Paste the following cookiecutter-based script into **Command**.
 
    The script performs the following tasks:
 
@@ -119,9 +119,12 @@ Paste the following cookiecutter-based script into **Command** and then select *
    git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
    ```
 
-#### Manage variables in the pipeline
+6. Click **Apply Changes**.
 
-The script uses several pipeline variables. The variables are as follows:
+
+    ### Manage variables in the pipeline
+
+    The script uses several pipeline variables. The variables are as follows:
 
 - `<+pipeline.variables.project_name>`
 - `<+pipeline.variables.github_username>`
@@ -136,7 +139,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 </TabItem>
 <TabItem value="GitLab">
 
-Paste the following cookiecutter-based script into **Command** and then select **Apply Changes**.
+5. Paste the following cookiecutter-based script into **Command**.
 
    The script performs the following tasks:
 
@@ -174,9 +177,12 @@ Paste the following cookiecutter-based script into **Command** and then select *
    git push --set-upstream https://oauth2:<+pipeline.variables.gitlab_token>@gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git main
    ```
 
-#### Manage variables in the pipeline
+6. Click **Apply Changes**.
 
-The script uses several pipeline variables. The variables are as follows:
+
+    ### Manage variables in the pipeline
+
+    The script uses several pipeline variables. The variables are as follows:
 
 - `<+pipeline.variables.project_name>`
 - `<+pipeline.variables.gitlab_username>`
@@ -199,7 +205,7 @@ You can create any number of pipeline variables and decide their value type. Som
 
 Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
 
-## Create a software template definition in IDP
+### Create a software template definition in IDP
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.  
 
@@ -394,7 +400,7 @@ Let's take a look at the inputs that the template expects from a developer. The 
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
-## Authenticate the request
+### Authenticate the request
 
 Once you have written all the inputs that the template requires, you must add the following YAML snippet under `spec.parameters.properties`.
 
@@ -423,7 +429,7 @@ Also the token input is used as a parameter under `steps` as `apikey`
 
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
-## Action to trigger the pipeline
+### Action to trigger the pipeline
 
 :::info
 

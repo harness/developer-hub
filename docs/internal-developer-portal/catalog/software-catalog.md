@@ -2,10 +2,6 @@
 title: Software catalog
 description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/software-catalog
   - /tutorials/internal-developer-portal/add-links-in-components
@@ -44,11 +40,11 @@ spec:
 
 ## Register software components in the catalog
 
-For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
+For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog#1-start-with-basic-entity-information).
 
 ## Software ecosystem modelling
 
-The catalog is home to several types of software components such as services, websites, libraries, APIs, and even resources such as databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. For information about how to model your software ecosystem, go to [backstage.io](https://backstage.io/docs/features/software-catalog/system-model).
+The catalog is home to several types of software components such as services, websites, libraries, APIs, and even resources such as databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. For information about how to model your software ecosystem, go to [system model](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model).
 
 ## API access
 
@@ -77,86 +73,3 @@ Committed changes reflect on the catalog in 30 minutes. You can also press the r
 ### How does the catalog read files from my Git repository?
 
 IDP uses the Git connector you selected during the module onboarding process. To view or update the configured connector, go to **Internal Developer Portal** > **Admin** > **Connectors**.
-
-### How do I add links to software components?
-
-You can add links associated with the Software Components, which could be dashboards, support pages, runbooks, email groups, Slack channels, etc. Each link is an arbitrary name and URL pair, which can be accompanied by an icon for visual representation.
-
-Once you register a Software Component in the Catalog, links can be shown on the catalog Overview, based on your IDP YAML.
-
-![](./static/link-card.png)
-
-Links appear in the **Links Card**. These links can be anything, such as:
-
-- User and Group Management
-- Infrastructure and Cloud
-- Operational Dashboards
-- Support and Help
-- General Web and Information
-- Notifications and Alerts
-- And more
-
-Links are quick bookmarks for the developers corresponding to the software component.
-
-To add links to your software components in the catalog:
-
-1. Select the edit icon on the overview page, which will redirect you to the IDP YAML.
-
-   ![](./static/edit-icon.png)
-
-2. Add `links` to the IDP YAML, as shown in the example below.
-
-   Links have three attributes:
-
-   - `url`: This is the actual web address or URL that the link points to. It's the destination users will be directed to when they click on the link.
-   - `title`: This serves as the display name or label for the link. It gives users a brief idea of what to expect when they click on the link or where it might lead them.
-   - `icon`: An optional attribute, you can select from a category of supported icon that provides a visual representation or hint about the nature or category of the link.
-
-   The link attributes provide essential information and enhance the user experience by making navigation more intuitive and visually appealing. By categorizing and visually representing links, users can quickly find and access the resources they're interested in.
-
-<details>
-<summary>IDP YAML with links</summary>
-
-```yaml
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: artist-lookup
-  description: Artist Lookup
-  tags:
-    - java
-    - data
-  links:
-    - url: https://example.com/user
-      title: Examples Users
-      icon: user
-    - url: https://example.com/group
-      title: Example Group
-      icon: group
-    - url: https://example.com/cloud
-      title: Link with Cloud Icon
-      icon: cloud
-    - url: https://example.com/dashboard
-      title: Dashboard
-      icon: dashboard
-    - url: https://example.com/help
-      title: Support
-      icon: help
-    - url: https://example.com/web
-      title: Website
-      icon: web
-    - url: https://example.com/alert
-      title: Alerts
-      icon: alert
-  annotations:
-    backstage.io/linguist: 'https://github.com/backstage/backstage/tree/master/plugins/playlist'
-spec:
-  type: service
-  lifecycle: experimental
-  owner: team-a
-  system: artist-engagement-portal
-  dependsOn: ['resource:artists-db']
-  apiConsumedBy: ['component:www-artist']
-```
-
-</details>

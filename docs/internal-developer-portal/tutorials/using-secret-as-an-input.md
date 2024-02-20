@@ -1,7 +1,7 @@
 ---
 title: Using a short-lived secret to trigger a service onboarding pipeline
 description: Create a secret input field for developers to provide their credentials, and then use the credentials as a runtime input for a service onboarding pipeline.
-sidebar_position: 7
+sidebar_position: 2
 redirect_from:
   - /tutorials/internal-developer-portal/using-secret-as-an-input
 ---
@@ -10,7 +10,7 @@ Sometimes, as a platform engineer, you might want your developers to enter their
 
 ## Prerequisites
 
-* Make sure that you have created a [basic service onboarding pipeline](./service-onboarding-pipeline.md). 
+* Make sure that you have created a [basic service onboarding pipeline](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline). 
 * All account users who want to trigger pipelines and create secrets should have access to the project that contains the service onboarding pipeline.
 
 ## Pipeline changes
@@ -21,15 +21,14 @@ In your Harness pipeline, create a variable. Set its type to **Secret** and its 
 
 ## Template changes
 
-Update the `template.yaml` file that you registered with IDP so that it can:
+Use the following workflow to update the `template.yaml` file that you registered with IDP. The sections that follow include detailed instructions for each of these steps:
 
-<!-- no toc -->
-1. [Receive a secret input through the UI.](#create-an-input-field-in-the-template)
-2. [Create a Harness secret by using an action.](#add-a-step-to-create-the-secret)
-3. [Use the secret ID to trigger the Harness pipeline.](#use-the-secret-as-a-runtime-input-in-the-pipeline)
-4. [Delete the secret after the pipeline is triggered.](#delete-secret-after-the-job-is-done)
+1. Receive a secret input through the UI.
+2. Create a Harness secret by using an action.
+3. Use the secret ID to trigger the Harness pipeline.
+4. Delete the secret after the pipeline is triggered.
 
-### Create an input field in the template
+### 1. Create an input field in the template
 
 Inside the `spec.parameters[0].properties` field of your `template.yaml` file, add the following property. This property generates the input field in which users can enter their credentials:
 
@@ -46,7 +45,7 @@ spec:
 
 ![](./static/template-creator-ui-secret.png)
 
-### Add a step to create the secret
+### 2. Add a step to create the secret
 
 Use the `harness:create-secret` action in a step in the `template.yaml` file to create a Harness secret from the developer's input. The following step creates a secret in the specified project, so make sure that the project contains the service onboarding pipeline in which you plan to reference the secret:
 
@@ -66,7 +65,7 @@ spec:
 
 The output of this action includes a field named `secretId`. This field stores the generated secret's ID. You will use the secret ID in subsequent steps.
 
-### Use the secret as a runtime input in the pipeline
+### 3. Use the secret as a runtime input in the pipeline
 
 Use the `steps.createsecret.output.secretId` action to supply the secret ID as an input to the service onboarding pipeline that you want to trigger:
 
@@ -88,7 +87,7 @@ spec:
         apikey: ${{ parameters.token }}
 ```
 
-### Delete secret after the job is done
+### 4. Delete secret after the job is done
 
 Use the `harness:delete-secret` action to remove the secret from the project as you will no longer need it.
 
@@ -110,7 +109,7 @@ spec:
         apikey: ${{ parameters.token }}
 ```
 
-:::info
+:::info 
 
 If the pipeline step fails, the secret is not removed from the project. We are exploring various approaches for automatic cleanup. Until this issue is resolved, identify the secrets that this action creates and then delete them manually. These secrets are of the form `idp_template_tempsecret_{uniqueID}`.
 

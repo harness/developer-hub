@@ -2,10 +2,6 @@
 title: Scorecard Data Sources
 description: Adding Custom Checks and Data Sources for Scorecards 
 sidebar_position: 4
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/checks-datasources
 ---
