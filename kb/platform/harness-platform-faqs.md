@@ -2792,17 +2792,15 @@ Yes, please open a support ticket to request the name change.
 
 ### How do I install Harness delegate using Azure ACI?
 
-You can use the following repository as a sample to install it through Terraform. (Terraform Example)[https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd].
+You can use the following repository as a sample to install it through Terraform. [Terraform Example](https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd).
 
 ### How often does Harness upgrade the kubectl binary version within the delegate?
 
-We don’t have an exact period for when these upgrades occur, but we maintain a list of supported platforms and technologies at [https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/]. Using ```INIT_SCRIPT```, you can also customize the kubectl binary version.
+We don’t have an exact period for when these upgrades occur, but we maintain a list of supported platforms and technologies at [docs](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/). Using ```INIT_SCRIPT```, you can also customize the kubectl binary version.
 
 ### Can we add Custom Selector in the Harness Delegate chart for legacy delegates?
 
-For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
-
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
+For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here: [docs](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/)
 
 ### Can a service account created at project level be assigned permissions to access account level resource?
 
@@ -2842,3 +2840,73 @@ We can make use of environment variable TMPDIR on the delegate and use any direc
   value: /opt/harness-delegate/deployvol/tmp
 
 ```
+
+### Is the DelegateManagerGrpcClientModule utilized for delegate connection to the manager over gRPC?
+
+The DelegateManagerGrpcClientModule facilitates gRPC communication between the delegate and the manager. However, while it's involved in tasks such as sending task executions and serving as a fallback mechanism for sending task responses, it's recommended to consult the CI team for confirmation on its specific usage, as there might be additional or alternative configurations in place.
+
+### Which resource currently incorporates Audit Trail RBAC?
+
+Audit Trail RBAC (Role-Based Access Control) is included in the resource that allows customers to edit the Audit View permission within a role. By default, the Audit view permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. If a customer wishes to disable Audit View for their users, they need to follow a process involving creating a role with Audit view permission disabled and all other view permissions enabled, changing the role binding of "All Organization Users" or "All Account Users" user groups to the new role, thereby denying Audit View Permission for all users. If a customer wants to enable Audit View for a user, they can assign the default "Organization Viewer" or "Account Viewer" role to the user or user group based on the scope.
+
+### Has a method been devised for migrating projects from organizations, and what about migrating services from projects?
+
+ There is ongoing work on a project migration feature allowing projects to be moved from one organization to another within an account, but it's not yet complete. However, there exists a Clone entities script, enabling customers to clone their entities from one project in one organization to another project in another organization.
+
+### Is it possible to configure the delegate to continue running tasks for an additional 1-2 minutes after revoking the delegate?
+
+No, it is not configurable. After revoking the token, the delegate will disconnect within 5 minutes. If there are any tasks running, those that can complete within 5 minutes will finish successfully, but tasks taking longer than 5 minutes will fail.
+
+### What could be the reason for the failure of the Helm delegate to start, as indicated by the error message - Error Msg: Pod "xxxxxx" is invalid: spec.containers[0].resources.requests: Invalid value: "1": must be less than or equal to cpu limit
+
+The error message suggests that the pod for the Helm delegate failed to start due to an invalid CPU resource request, indicating that the CPU request exceeds the limit set for the container.
+To resolve the issue:
+- Identify the Cause: The error indicates an invalid CPU resource request, possibly exceeding the container's CPU limit.
+- Check Helm Chart Modifications: If modifications were made to the Helm chart locally, they might have caused discrepancies in deployed values. Utilize helm template. to inspect YAML values for debugging.
+- Adjust Namespace Limits: If applicable, ensure that there are no namespace limits conflicting with the Helm delegate installation. If found, consider changing the namespace to resolve the issue.
+
+### Where is the Kubernetes configuration (KubeConfig) stored on the Delegate if it's being utilized for Terraform (TF) Kubernetes steps?
+
+The Kubernetes configuration (KubeConfig) on the Delegate is typically stored at ${HARNESS_KUBE_CONFIG_PATH}, as per the Harness [documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes).
+However, if you're unable to locate it at the specified path or within the Delegate Pod, it's important to confirm whether you're using built-in Terraform steps or running the Terraform CLI in a script and what stage type is being employed. For Terraform dynamic provisioning of infrastructure, it's necessary to create a Terraform file without the kube_config specification. In this scenario, since the Kubernetes connector is utilized, the Delegate autonomously determines the context for Terraform.
+
+### Is mTLS supported between the Delegate and Connectors in Harness?
+
+No, mTLS isn't supported between the Delegate and Connectors in Harness. While mTLS is implemented between the Delegate and Manager, Connectors act as logical entities facilitating connections between the Manager and external systems via the Delegate. As such, there's no direct "connection" between Connectors and the Delegate that requires securing via mTLS.
+
+### When the ng delegate updater job terminates a delegate, does it consider whether jobs are running, and what is the associated grace period?
+
+Yes, the ng delegate updater job accounts for running jobs before terminating a delegate. A termination grace period of 10 minutes is set, [docs](https://developer.harness.io/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/). 
+Upon updating the delegate image, the updater will spin up a new delegate, wait for it to become healthy, and then terminate the old pod. The old pod will stop accepting new tasks, allowing currently executing tasks to finish within the 10-minute grace period before force termination.
+
+### When retrieving audit logs for ingestion into a SIEM tool, what are the considerations between using Audit Streaming via S3 bucket versus Audit trail via API?
+
+The choice between Audit Streaming and Audit trail primarily depends on convenience and infrastructure support. If a customer is already utilizing S3, they can seamlessly publish audit logs to it. Conversely, API-based access necessitates building state management on the customer's end to handle querying for the latest logs and manage failures. However, in terms of the data itself, there is no difference between the two methods.
+
+### How are inactive delegates managed in Harness NG, and what is the behavior of Kubernetes deployments when a node is shut down and restarted?
+
+In Harness NG, inactive delegates are automatically removed from the UI either immediately if gracefully shut down or within 6 hours if not. Kubernetes deployments running on a shutdown node will spin up on another available node upon restart, following Kubernetes deployment controller behavior. When the node restarts, Kubernetes will start the pod, which will register and then reappear in the UI. It's important to note that during the period of node shutdown, the delegate will not be visible in the UI. Delegates that are entirely deleted from a node will also disappear from the UI within 6 hours, and this timing cannot be changed.
+
+### What is the extent of Harness application's integration with Microsoft Graph API and its permissions requirements for controlling access to resources like users, groups, mail, etc.?
+
+The Harness application utilizes Microsoft Graph API for fetching a list of security groups when users exceed attribute limits in AAD(Entra). Additionally, there's integration for SAML Group Authorization. It's important to note that there might be a need to pass the x-api-key header with a token (SAT/PAT) for invoking Harness API from Microsoft tools.
+
+### Can priorityClassName be set on delegate pods using the delegate Helm Chart field to assign appropriate priorities?
+
+Currently, it's we can not set priorityClassName on delegate pods using the delegate Helm Chart field.
+
+### Why might a customer experience issues with their delegate unable to find the Helm utility, which resolves after delegate restarts, and could this be related to frequent gRPC Quota exceeded errors?
+
+The issue of the delegate being unable to find the Helm utility could be related to the binary being deleted or a change in the PATH environment variable. It's worth investigating if any steps or pipelines running on the delegate might be causing this. Additionally, the frequent gRPC Quota exceeded errors are likely unrelated and do not result in any loss of functionality.
+
+### Is there a way to disable auto-upgrade for Legacy delegates in Harness?
+
+No, the User can not disable auto-upgrade for Legacy delegates. However, users are encouraged to start using immutable delegates, which have the auto-upgrade off feature. For Legacy delegates, in case of incidents or emergencies, users can be temporarily pinned to an older delegate version until the underlying issue is resolved, but this is only for a limited time. For documentation on turning off auto-upgrade for Kubernetes immutable image type delegates, please refer to: [documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#disable-automatic-upgrade-for-installed-delegate-image).
+
+### How does the `DELEGATE_TASK_CAPACITY` feature flag affect the behavior of CI run steps in Harness?
+
+The `DELEGATE_TASK_CAPACITY` feature flag allows you to configure the maximum number of tasks that can run simultaneously. For instance, if `DELEGATE_TASK_CAPACITY` is set to 2 and there are 6 tasks running in parallel, Harness Manager will execute only 2 tasks at a time. However, if `DELEGATE_TASK_CAPACITY` is not configured, all 6 tasks will run in parallel.
+
+### When do delegates expire and what does this mean for their compatibility?
+
+Delegates expire six months (24 weeks) from the date the delegate image was released on DockerHub. Although delegate expiration doesn't stop them from working immediately, issues may arise if the backend has advanced too far ahead, rendering the delegate no longer forward-compatible. While delegates are backward compatible, it's highly recommended to upgrade at least once every six months to ensure optimal performance and compatibility.
