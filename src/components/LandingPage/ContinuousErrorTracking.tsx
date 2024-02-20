@@ -4,9 +4,10 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
-import {  CETList,FeaturedList } from "./data/continuousErrorTrackingData";
-
+import { CETList, FeaturedList } from "./data/continuousErrorTrackingData";
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CET() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -52,9 +53,10 @@ export default function CET() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Find and fix issues in minutes (instead of weeks) with full code level visibility
-            and deep context that streamlines remediation efforts across teams — all while keeping
-            your applications up and running. 
+              Find and fix issues in minutes (instead of weeks) with full code
+              level visibility and deep context that streamlines remediation
+              efforts across teams — all while keeping your applications up and
+              running.
             </p>
             <div className={styles.alignCenter}>
               <Link href="/docs/continuous-error-tracking">
@@ -73,8 +75,18 @@ export default function CET() {
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/cet.svg`} />
+          </div> */}
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/cet.svg`
+                  : `${baseUrl}img/CET_Landing_Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

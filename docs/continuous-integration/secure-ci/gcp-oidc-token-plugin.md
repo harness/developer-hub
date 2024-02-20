@@ -1,11 +1,10 @@
-<!-- hidden while plugin is still in dev -->
-<!-- ---
+---
 title: Generate GCP access tokens from OIDC tokens
 description: Use a plugin to publish Helm charts to Docker registries
 sidebar_position: 41
---- -->
+---
 
-The [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) generates a [Google Cloud access token](https://cloud.google.com/docs/authentication/token-types#access) from your OIDC token and then stores the GCP token in the output variable `GCLOUD_ACCESS_TOKEN`. You can use this variable in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
+The [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) generates a [Google Cloud access token](https://cloud.google.com/docs/authentication/token-types#access) from your OIDC token and then stores the GCP token in the output variable `GCLOUD_ACCESS_TOKEN`. You can also configure the plugin to generate a credentials .json file and then use that file to authenticate and generate a token. You can use the variable or credentials file in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
 
 For general information about using plugins in CI pipelines, go to [Explore plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [Use Drone plugins](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
@@ -35,6 +34,7 @@ To use the GCP OIDC plugin, [add a Plugin step](../use-ci/use-drone-plugins/run-
                       service_account_email_id: some-email@email.com
                       provider_id: service-account1
                       duration: 7200
+                      create_application_credentials_file: false
 ```
 
 To use the GCP OIDC plugin, configure the [Plugin step settings](../use-ci/use-drone-plugins/plugin-step-settings-reference.md) as follows:
@@ -48,6 +48,7 @@ To use the GCP OIDC plugin, configure the [Plugin step settings](../use-ci/use-d
 | `provider_id` | String | The provider ID for OIDC authentication. | `service-account1` |
 | `service_account_email_id` | String | The service account's email address. | `some-email@email.com` |
 | `duration` | String | The generated access token's lifecycle duration in seconds.<br/>The default is `3600`.<br/>The service account must have the `iam.allowServiceAccountCredentialLifetimeExtension` permission to set a custom duration. | `7200` |
+| `create_application_credentials_file` | Boolean | Set to `true` to generate `application_default_credentials.json` file.<br/>This file is an alternative way to generate the token by calling the credentials file.<br/>The default is `false`. | `true` |
 
 :::tip
 
@@ -77,6 +78,7 @@ Here's a YAML example of a Plugin step generating a GCP token and a Run step usi
                       service_account_email_id: some-email@email.com
                       provider_id: service-account1
                       duration: 7200
+                      create_application_credentials_file: false
               - step:
                   type: Run
                   name: list compute engine zone
@@ -87,3 +89,14 @@ Here's a YAML example of a Plugin step generating a GCP token and a Run step usi
                       curl -H "Authorization: Bearer <+steps.generate_token.output.outputVariables.GCLOUD_ACCESS_TOKEN>" \
                       "https://compute.googleapis.com/compute/v1/projects/my-cool-project/zones/some-zone/instances"
 ```
+
+### Get token from credentials file
+
+If you set `create_application_credentials_file` to `true`, run the following commands to authenticate and get the access token using the credentials file:
+
+```
+gcloud auth login --brief --cred-file <+execution.steps.STEP_ID.output.outputVariables.GOOGLE_APPLICATION_CREDENTIALS>
+gcloud config config-helper --format="json(credential)"
+```
+
+The first line authenticates and the second line generates the access token.
