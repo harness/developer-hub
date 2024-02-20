@@ -5,21 +5,37 @@ sidebar_label: Stop pipelines using OPA
 sidebar_position: 220
 ---
 
-:::note
-This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
-:::
+You can create governance policies to stop your pipelines based on specific scan results such as:
 
-Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
+- No issues in a list of severities such as Critical or High.
 
-* [Output variables in STO](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)
-* [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
+- No issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
 
-In this workflow, you create a simple OPA policy for the pipeline: If the scan detected any NEW_CRITICAL or NEW_HIGH severities, exit the build with an error and send an email. 
+- No issues in a list of titles such as `javascript.express.mongodb.*` or `javascript.express.security.audit.*`.
+
+- No more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+
+- No issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
+
+This topic describes the end-to-end workflow to create, test, and deploy a set of governance policies. 
 
 
-### Create the OPA policy
+## Important notes
 
-1. Go to **Account Settings** (left menu) &gt; **Policies**.
+This topic assumes that you have a basic knowledge of the following:
+
+- Governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
+- [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
+
+
+### Create an OPA policy
+
+1. You can create policies at the account or the project scope.
+
+   - For account-level policies, click the switcher (top left) and go to the account settings window.
+   - For project-level policies, 
+
+2. &gt; **Policies**.
 
 2. Click **Policies** (top right) and then **New Policy**. 
 
