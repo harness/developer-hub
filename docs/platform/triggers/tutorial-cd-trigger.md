@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Pipeline Triggers
+title: Tutorial - Pipeline Triggers
 description: Tutorial to get started with Triggers in Harness Pipelines.
 redirect_from:
   - /tutorials/cd-pipelines/trigger
