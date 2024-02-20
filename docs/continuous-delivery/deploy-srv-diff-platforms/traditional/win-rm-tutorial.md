@@ -33,7 +33,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 * Target host — In this guide, we use an AWS EC2 instance as the target host.
 * Credentials and other details for the EC2 Instance 
   * To configure and authenticate your WinRM credentials by using NTLM, you should have the domain name, username and password for the EC2 instance.
-
+* To use Harness execution strategies, make sure you should have [IIS service](https://learn.microsoft.com/en-us/iis/application-frameworks/scenario-build-an-aspnet-website-on-iis/configuring-step-1-install-iis-and-asp-net-modules#to-install-iis-and-aspnet-modules-on-windows-server-2012-using-the-ui) installed on your machine.
 ## Objectives
 
 You will learn how to:
@@ -98,6 +98,10 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.zip**, ava
 3. for **Artifact Directory**, enter a forward slash **/**.
 4. For **Artifact Details**, keep the default **Value**.
 5. For **Artifact Path**, leave the default Runtime Input value **\<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
+
+:::info note
+The artifact [expression](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources.md) may vary based on the chosen artifact type.
+:::
 
 ## Define the target infrastructure
 
