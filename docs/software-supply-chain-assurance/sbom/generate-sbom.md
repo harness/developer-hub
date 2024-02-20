@@ -52,9 +52,6 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
 
 The **SSCA Orchestration** step includes various settings for generating the SBOM for both Containers and Repositories. We will delve into the different fields that need to be configured for each option to support the generation of the SBOM.
 
-<Tabs>
-  <TabItem value="container" label="Container" default>
-
 * **Name:** Enter a name for the step.
 
 * **Step Mode:** Select **Generation**.
@@ -63,9 +60,20 @@ The **SSCA Orchestration** step includes various settings for generating the SBO
 
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
 
-* **Artifact Type:** Select **Container**.
+The Artifact Source allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
 
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+:::warning Deprecation Alert:
+
+Please note that the previously available `Container` option, has now been deprecated. In its place, we now offer native support for DockerHub and ECR. Additionally, the support for other registries like GCR (Google Container Registry) and ACR (Azure Container Registry) is coming soon. We encourage users to connect to their registries using the dedicated options available within the list of artifact sources.
+
+:::
+
+<Tabs>
+  <TabItem value="dockerhub" label="DockerHub" default>
+
+* **Artifact Type:** Select **DockerHub**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
 * **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
 
@@ -77,16 +85,54 @@ The **SSCA Orchestration** step includes various settings for generating the SBO
 
 <!-- ![](../static/sbom-ssca-orch-step.png) -->
 
-<DocImage path={require('../static/container-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('../static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
-:::info ECR and GCR repos
+:::info GCR and ACR repos
 
-If you're using Docker-compliant ECR or GCR repositories, you must:
+If you're using Docker-compliant GCR or ACR repositories:
 
-1. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-   * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+1. You can use `DockerHub` as the artifact source
+2. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
    * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
+   * For ACR, go to [Use Docker Registry for ACR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#azure-container-registry-acr)
+3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
+
+:::
+
+<!-- ![](./static/sbom-build-stage.png) -->
+</TabItem>
+
+<TabItem value="ecr" label="ECR" default>
+
+* **Artifact Type:** Select **ECR**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
+
+* **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
+
+* **Region:** The geographical location of your ECR repository.
+
+* **Account ID:** The unique identifier associated with your AWS account.
+
+* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+
+* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+
+<!-- ![](../static/sbom-ssca-orch-step.png) -->
+
+<DocImage path={require('../static/ecr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+
+:::info GCR and ACR repos
+
+If you're using Docker-compliant GCR or ACR repositories:
+
+1. You can use `DockerHub` as the artifact source
+2. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+   * For ACR, go to [Use Docker Registry for ACR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#azure-container-registry-acr)
+3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
 
 :::
 
@@ -95,10 +141,6 @@ If you're using Docker-compliant ECR or GCR repositories, you must:
 </TabItem>
   <TabItem value="Repository" label="Repository">
 
-* **Name:** Enter a name for the step.
-* **Step Mode:** Select **Generation**.
-* **SBOM Tool:** Select **Syft**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data).
-* **SBOM Format:** Select **SPDX** or **CycloneDX**.
 * **Artifact Type:** Select **Repository**.
 
     :::info
