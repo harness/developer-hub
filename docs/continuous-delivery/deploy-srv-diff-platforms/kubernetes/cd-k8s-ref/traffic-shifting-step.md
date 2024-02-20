@@ -34,7 +34,7 @@ Each provider will have some common configuration options and some provider spec
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
 
 :::note
-Currently, we only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1alpha4 resources.
+We currently only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1alpha4 versions of the TrafficSplit resource since these are the only versions that support having rules (such as uri, method, and headers as described later).
 :::
 
 * **Parameters**:
@@ -52,7 +52,7 @@ Currently, we only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1al
     * **method**:
         * **Rule Value**: Specify the request method type you want.
 
-    * **header**:
+    * **headers**:
         * **Values**:
             - **Key**: Specify the key of the request header
             - **Value**: Specify the value you want for this key
@@ -94,7 +94,7 @@ Before you begin, make sure you have an understanding of Istio and how it works 
     * **method**:
         * **Rule Value**: Specify the request method type you want.
 
-    * **header**:
+    * **headers**:
         * **Values**:
             - **Key**: Specify the key of the request header
             - **Value**: Specify the value you want for this key
