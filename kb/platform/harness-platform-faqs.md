@@ -2843,32 +2843,37 @@ We can make use of environment variable TMPDIR on the delegate and use any direc
 
 ```
 
-### I would like to make my pipeline dependant on the user which runs that pipeline and the RBAC of that user. Is that info accessible from inside of the pipeline?
+### How can I make my pipeline dependent on the RBAC permissions of the user that runs pipeline? Is that info accessible from inside the pipeline?
 I'm expecting a variable like <+currentuser.role>
 
-We do not have a variable which will return the role for user, but you can use variable to get the user email:
-https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail
- 
-And can make api call to list all role assigned to that user and can decide the next step accordingly:
-https://apidocs.harness.io/tag/User#operation/getAggregatedUser
+We don't have a variable like `<+currentuser.role>` that will return the role for user, but you can use a variable to get the user's email address. For more information, go to [Pipeline trigger by email](/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail).
 
-### DB Query to validate the User is provisioned via SCIM Or Manual for SMP
+ 
+You can also make an API call to list all roles assigned to the user and decide the next step accordingly. For more information, go to [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) in the API documentation.
+
+### Is there an SMP database query to validate whether a user was provisioned via SCIM or manually?
+
+Yes, you can use the following queries. Replace the `accountid` with the actual account ID.
+
+This query returns results for users that were provisioned via SCIM.
 
 ```
 db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"SCIM"})
 ```
-You need to replace the accounid with the actual account id and you should get the result for users who are SCIM provisioned and use MANUAL for users created through UI.
+
+This query for `MANUAL` returns results for users provisioned that were provisioned through the UI.
+
 
 ```
 db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"MANUAL"})
 ```
-### User is getting some error or is not able to redirect to a specifc account in case of user being part of multiple accounts. 
+### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
 
-In scenarios like these user can directly access the URL like : 
+You can directly access the following URL. 
 
-https://app.harness.io/ng/account/xxxaccountidxxxx/settings/overview
+`https://app.harness.io/ng/account/xxxaccountidxxxx/settings/overview`
 
-This way user will be directly to that specific account and then cns login and chage his default account.
+This will direct you to your specific account. You can then sign in and change your default account.
 
 
 
