@@ -150,7 +150,16 @@ gsutil -m cp \
    Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
    :::
 
-- Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout)
+- Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout) (PL-43630)
+
+- You can now do customisation of Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin.
+
+   To disable Audit View for specific users, administrators can now:
+   - Create a role with Audit View permission disabled while enabling all other view permissions.
+   - Update the role binding for the "All Organisation Users" or "All Account Users" user group to this new role, effectively denying Audit View Permission for all users in the group.
+   - To grant Audit View access to specific users, assign the default "Organization Viewer" or "Account Viewer" role, as applicable, to the individual user or user group.
+
+   This enhancement provides greater flexibility and control over user permissions, streamlining the management of audit view access within the system.
 
 ### Fixed issues
 
