@@ -47,6 +47,7 @@ Harness IDP requires some secrets to be set for **Plugins** and external integra
 
 :::info
 
-Workflows in IDP use Harness Pipelines as Orchestrator, so any secret requirement in workflows for eg., write action in git providers, can be added by using the [third-party secret managers](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview#using-third-party-secret-managers) enabled through [Delegates](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview#harness-secret-management-process-overview) along with the Harness Secret manager supported in Harness Pipelines. 
+Workflows in IDP use Harness Pipelines as Orchestrator, so any secret requirement in workflows for eg., write action in git providers, can be added by using the [third-party secret managers](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview#using-third-party-secret-managers) enabled through [Delegates](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview#harness-secret-management-process-overview). 
 
+You can use Harness Secret Manager as well for the above described function. 
 :::
