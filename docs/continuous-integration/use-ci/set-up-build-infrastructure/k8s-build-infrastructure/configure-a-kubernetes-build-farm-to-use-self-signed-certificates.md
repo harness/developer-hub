@@ -166,7 +166,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
    In the delegate pod, do the following:
    
-   1. Add  `DESTINATION_CA_PATH`to the environment. 
+   1. Add  `DESTINATION_CA_PATH` to the environment. 
    
    2. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted.
    
