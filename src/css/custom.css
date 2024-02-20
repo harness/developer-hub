@@ -314,6 +314,7 @@
 
   --hover: var(--gray-200);
   --platform-card-bg: var(--white);
+  --homepageFeatureCard: transparent;
 }
 
 /* darkmode css */
@@ -339,6 +340,10 @@ html[data-theme="light"] .navbar .navbar__logo {
 
 html[data-theme="dark"] .navbar {
   box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.2);
+}
+html[data-theme="dark"] code {
+  background-color: white;
+  color: #000000;
 }
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
@@ -370,6 +375,7 @@ html[data-theme="dark"] .navbar {
   --gray-500: #d9dae5;
 
   --hover: var(--gray-800);
+  --homepageFeatureCard: var(--black);
 }
 /* darkmode css  end*/
 html {

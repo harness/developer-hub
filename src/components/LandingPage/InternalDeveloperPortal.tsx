@@ -9,8 +9,10 @@ import {
   // DroneList,
   IDPList,
 } from "./data/internalDeveloperPortalData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function IDP() {
+  const { colorMode } = useColorMode();
+
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -82,8 +84,16 @@ export default function IDP() {
               </Link>
             </div>
           </div>
-          <div>
-            <img src={`${baseUrl}img/idp.svg`} />
+
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/idp.svg`
+                  : `${baseUrl}img/IDP_dark _mode.svg`
+              }
+            />
           </div>
         </div>
       </div>
