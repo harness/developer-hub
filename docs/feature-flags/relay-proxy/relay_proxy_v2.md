@@ -124,8 +124,8 @@ The below table outlines all of the configuration options that are available for
 | Environment Variable   | Example                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Default Value                          |
 |------------------------|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
 | PROXY_KEY              | d8ba3e2f-3993-4ae1-9bc9-014f5ec68273 | The ProxyKey you want to configure your Proxy to use                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | ""                                     |
-| CLIENT_SERVICE         | https://config.ff.harness.io/api/1.0 | The url of the FF Client Service running in Harness Saas that the Proxy commuincates with to fetch configuration data                                                                                                                                                                                                                                                                                                                                                                                                                             | "https://config.ff.harness.io/api/1.0" |
-| METRIC_SERVICE         | https://events.ff.harness.io/api/1.0 | The url of the FF Metric Service running in Harness Saas that the Proxy forwards SDK metric data onto                                                                                                                                                                                                                                                                                                                                                                                                                                             | "https://events.ff.harness.io/api/1.0" |
+| CLIENT_SERVICE         | `https://config.ff.harness.io/api/1.0` | The url of the FF Client Service running in Harness Saas that the Proxy commuincates with to fetch configuration data                                                                                                                                                                                                                                                                                                                                                                                                                             | `"https://config.ff.harness.io/api/1.0"` |
+| METRIC_SERVICE         | `https://events.ff.harness.io/api/1.0` | The url of the FF Metric Service running in Harness Saas that the Proxy forwards SDK metric data onto                                                                                                                                                                                                                                                                                                                                                                                                                                             | `"https://events.ff.harness.io/api/1.0"` |
 | AUTH_SECRET            | someRandomlyGeneratedSecretYouKeep   | Used by the Proxy to sign the JWT tokens it creates and returns to SDKs when they authenticate with the Proxy. The Proxy then checks that the token provided in any subsequent reqeusts by SDKs has been signed with this secret to ensure auth tokens can't be spoofed.                                                                                                                                                                                                                                                                          | "secret"                               |
 | METRIC_POST_DURATION   | 60                                   | Controls how frequently in seconds the Primary Proxy posts metrics to Harness. Setting this to 0 will disable metrics forwarding from the Proxy to Saas and the absolute minimum that it can be set to is 60 seconds. It's also worth knowing that the Primary forwards metrics on to Harness Saas whenever 60 seconds has elapsed OR it has received 1MB worth of data. So if there's a high volume of metrics data going through your Proxy you may see metrics requests forwarded to Harness Saas more frequently than the value you set here. | 60                                     |
 | HEARTBEAT_INTERVAL     | 60                                   | How often in seconds the proxy pings its health function. Set to 0 to disable                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | 60                                     |
@@ -216,9 +216,9 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | **Basic Startup** |
 | Methods      | Link | Purpose |
 | ----------- | ----------- | ----------- |
-| GET      | https://config.ff.harness.io/api/1.0/stream | Authenticates the Proxy Key. | 
-| GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the configuration associated with the Proxy Key. |
-| POST   | https://config.ff.harness.io/api/1.0/proxy/auth | Opens a stream with Harness SaaS to listen for changes. |
+| GET      | `https://config.ff.harness.io/api/1.0/stream` | Authenticates the Proxy Key. | 
+| GET   | `https://config.ff.harness.io/api/1.0/proxy/config` | Retrieves the configuration associated with the Proxy Key. |
+| POST   | `https://config.ff.harness.io/api/1.0/proxy/auth` | Opens a stream with Harness SaaS to listen for changes. |
 
 <br>
 </br>
@@ -226,11 +226,11 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | **Periodic Requests** |
 | Methods      | Link | Purpose |
 | ----------- | ----------- | ----------- |
-| GET      | https://config.ff.harness.io/api/1.0/client/env/envID/feature-configs | Retrieves the feature config changes that happen in Harness SaaS. | 
-| GET      | https://config.ff.harness.io/api/1.0/client/env/envID/target-segments | Retrieves the target group changes that happen in Harness SaaS. | 
-| GET      | https://config.ff.harness.io/api/1.0/proxy/config?environment=envID | Retrieves the environment specific changes that happen in Harness SaaS e.g. a new environment was associated with the Proxy Key. | 
-| GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the latest config associated with the Proxy Key. This request is made periodically if the stream between the Primary Proxy and Harness SaaS goes down to make sure the Proxy doesn’t get out of sync.  |
-| POST   | https://config.ff.harness.io/api/1.0/metrics/envID | Forwards metrics from the SDKs on to the Harness SaaS. |
+| GET      | `https://config.ff.harness.io/api/1.0/client/env/envID/feature-configs` | Retrieves the feature config changes that happen in Harness SaaS. | 
+| GET      | `https://config.ff.harness.io/api/1.0/client/env/envID/target-segments` | Retrieves the target group changes that happen in Harness SaaS. | 
+| GET      | `https://config.ff.harness.io/api/1.0/proxy/config?environment=envID` | Retrieves the environment specific changes that happen in Harness SaaS e.g. a new environment was associated with the Proxy Key. | 
+| GET   | `https://config.ff.harness.io/api/1.0/proxy/config` | Retrieves the latest config associated with the Proxy Key. This request is made periodically if the stream between the Primary Proxy and Harness SaaS goes down to make sure the Proxy doesn't get out of sync.  |
+| POST   | `https://config.ff.harness.io/api/1.0/metrics/envID` | Forwards metrics from the SDKs on to the Harness SaaS. |
 
 <br>
 </br>
@@ -373,7 +373,6 @@ Relay Proxy V2 was developed to fix some of the limitations that came with Relay
  - No real HA ability
  -- With Proxy V2 we’ve made it possible to. configure Proxy’s to run specifically as read replicas or a Primary that communicates with Harness SaaS. This was something that isn’t available with Proxy V1 and if you want to run multiple Proxy’s in V1 they all run as Primary’s.
 
-
 ## Why use the Relay Proxy?
 
 In the following cases, you might want to set up Relay Proxy:
@@ -384,11 +383,6 @@ In the following cases, you might want to set up Relay Proxy:
 
 If you decide to use the Relay Proxy, make sure it has a good place in your network design. For your app to run, it needs to be able to contact the Relay Proxy, and the architecture differs depending on the type of app. For example, if you want to link the Relay Proxy to any client-side apps, don't put it inside a firewall.
 
-### Are there any constraints to the Relay Proxy V2?  
+## Are there any constraints to the Relay Proxy V2?
 
 At this current time and due to the way Harness implements the authentication tokens, users have a limit of 1000 environments per key. 
-
-### Related Content
-
-<!-- Adding related content about Relay Proxy V1 and V2 that may be relevant to this -->
-
