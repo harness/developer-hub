@@ -2790,7 +2790,7 @@ You can use Harness Service Accounts to define granular roles and permissions fo
 
 Yes, please open a support ticket to request the name change.
 
-### How do I install Harness delegate using Azure ACI?
+### How do I install Harness Delegate using Azure ACI?
 
 You can use the following repository as a sample to install it through Terraform. [Terraform Example](https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd).
 
@@ -2798,9 +2798,9 @@ You can use the following repository as a sample to install it through Terraform
 
 We don’t have an exact period for when these upgrades occur, but we maintain a list of supported platforms and technologies at [docs](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/). Using ```INIT_SCRIPT```, you can also customize the kubectl binary version.
 
-### Can we add Custom Selector in the Harness Delegate chart for legacy delegates?
+### Can we add a Custom Selector in the Harness Delegate chart for legacy delegates?
 
-For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here: [docs](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/)
+For legacy delegates, we do not have a way to specify delegate selectors or delegate tags in the delegate helm chart. We do have an API to get the selectors as well as update it for the delegates. More details can be found here: [docs](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/)
 
 ### Can a service account created at project level be assigned permissions to access account level resource?
 
