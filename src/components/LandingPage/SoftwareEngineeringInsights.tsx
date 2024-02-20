@@ -4,17 +4,15 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
-import { FeaturedList,  SEIList } from "./data/softwareEngineeringInsightsData";
-
+import { FeaturedList, SEIList } from "./data/softwareEngineeringInsightsData";
+import { useColorMode } from "@docusaurus/theme-common";
 export default function SEI() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>
-          Create insights, setup your SEI profiles and
-          configure reports.
-        </h3>
+        <h3>Create insights, setup your SEI profiles and configure reports.</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -53,8 +51,12 @@ export default function SEI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Software Engineering Insights (SEI) enables engineering leaders to make data-driven decisions that improve engineering productivity, efficiency, alignment, planning, and execution. 
-            It provides actionable insights into software delivery and workflows across teams, processes, and systems to improve software quality, enhance developer experience, and accelerate time to value.
+              Harness Software Engineering Insights (SEI) enables engineering
+              leaders to make data-driven decisions that improve engineering
+              productivity, efficiency, alignment, planning, and execution. It
+              provides actionable insights into software delivery and workflows
+              across teams, processes, and systems to improve software quality,
+              enhance developer experience, and accelerate time to value.
             </p>
             <div className={styles.alignCenter}>
               <Link href="/docs/software-engineering-insights">
@@ -73,8 +75,18 @@ export default function SEI() {
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/sei.svg`} />
+          </div> */}
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/sei.svg`
+                  : `${baseUrl}img/SEI_Landing_Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import ModuleTiles from "./Modules";
 import styles from "./styles.module.scss";
-
+import { useColorMode } from "@docusaurus/theme-common";
 // harness-platform.svg | secret-mgmt.svg
 export default function LearnAboutPlatform(): JSX.Element {
+  const { colorMode } = useColorMode();
+
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [showMore, setShowMore] = useState(false);
   const [showMoreRelease, setShowMoreRelease] = useState(false);
@@ -31,7 +33,15 @@ export default function LearnAboutPlatform(): JSX.Element {
       <ul className={styles.platformList}>
         <a href="/docs/category/pipelines">
           <li>
-            <img src={`${baseUrl}img/automated-pipeline.svg`} />
+            <img
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/automated-pipeline.svg`
+                  : `${baseUrl}img/Pipelines_dark_mode.svg`
+              }
+            />
+
+            {/* <img src={`${baseUrl}img/automated-pipeline.svg`} /> */}
             <h4>Pipelines</h4>
             <p>
               Run CI, CD, STO, FF and custom stages in an automated pipeline
@@ -40,7 +50,14 @@ export default function LearnAboutPlatform(): JSX.Element {
         </a>
         <a href="/docs/category/templates">
           <li>
-            <img src={`${baseUrl}img/templates.svg`} />
+            {/* <img src={`${baseUrl}img/templates.svg`} /> */}
+            <img
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/templates.svg`
+                  : `${baseUrl}img/Templates_dark_mode.svg`
+              }
+            />
             <h4>Templates</h4>
             <p>
               Share organizational best practices for Pipelines, Steps, Stages,
@@ -50,7 +67,14 @@ export default function LearnAboutPlatform(): JSX.Element {
         </a>
         <a href="/docs/category/delegates">
           <li>
-            <img src={`${baseUrl}img/delegates.svg`} />
+            {/* <img src={`${baseUrl}img/delegates.svg`} /> */}
+            <img
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/delegates.svg`
+                  : `${baseUrl}img/Delegates_dark_mode.svg`
+              }
+            />
             <h4>Delegates</h4>
             <p>
               Install, configure, secure, monitor, upgrade Delegates running on
@@ -60,7 +84,13 @@ export default function LearnAboutPlatform(): JSX.Element {
         </a>
         <a href="/docs/platform/secrets/secrets-management/harness-secret-manager-overview">
           <li>
-            <img src={`${baseUrl}img/secret-mgmt.svg`} />
+            <img
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/secret-mgmt.svg`
+                  : `${baseUrl}img/Secrets_management_dark_mode.svg`
+              }
+            />
             <h4>Secrets Managment</h4>
             <p>
               Secure your secrets using popular Secret Managers and Key
