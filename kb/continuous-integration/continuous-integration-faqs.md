@@ -117,7 +117,7 @@ For Linux runners, you can use a tool such as `nohup` when you start the runner,
 nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
 ```
 
-## Self-hosted VM build infrastructures
+## Self-managed VM build infrastructures
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -125,7 +125,7 @@ No. The build VM terminates at the end of the stage and a new VM is used for the
 
 ### Why are build VMs running when there are no active builds?
 
-With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `pool` value in your `pool.yml` specifies the number of "warm" VMs. These VMs are kept in a ready state so they can pick up build requests immediately.
+With [self-managed VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `pool` value in your `pool.yml` specifies the number of "warm" VMs. These VMs are kept in a ready state so they can pick up build requests immediately.
 
 If there are no warm VMs available, the runner can launch additional VMs up to the `limit` in your `pool.yml`.
 
@@ -135,7 +135,7 @@ For AWS VMs, you can set `hibernate` in your `pool.yml` to hibernate warm VMs wh
 
 ### Do I need to install Docker on the VM that runs the Harness Delegate and Runner?
 
-Yes. Docker is required for [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
+Yes. Docker is required for [self-managed VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
 
 ### AWS build VM creation fails with no default VPC
 
@@ -148,7 +148,7 @@ If your CI build gets stuck at the initialize step on the health check for conne
 1. Verify that lite-engine is running on your build VMs.
    1. SSH/RDP into a VM from your VM pool that is in a running state.
    2. Check whether the lite-engine process is running on the VM.
-   3. Check the [cloud init output logs](#where-can-i-find-logs-for-self-hosted-aws-vm-lite-engine-and-cloud-init-output) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
+   3. Check the [cloud init output logs](#where-can-i-find-logs-for-self-managed-aws-vm-lite-engine-and-cloud-init-output) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
 2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
    1. Run `nc -vz <build-vm-ip> 9079` from the runner.
    2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) in AWS allows the runner to communicate with the build VMs.
@@ -163,13 +163,13 @@ If the delegate is connected but your AWS VM builds are failing, check the follo
    * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
 2. Confirm your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) and security group settings in `runner/pool.yml`.
 
-### Use internal or custom AMIs with self-hosted AWS VM build infrastructure
+### Use internal or custom AMIs with self-managed AWS VM build infrastructure
 
 If you are using an internal or custom AMI, make sure it has Docker installed.
 
 Additionally, make sure there are no firewall or anti-malware restrictions interfering with initialization, as described in [CI builds stuck at the initialize step on health check](#aws-vm-builds-stuck-at-the-initialize-step-on-health-check).
 
-### Where can I find logs for self-hosted AWS VM lite engine and cloud init output?
+### Where can I find logs for self-managed AWS VM lite engine and cloud init output?
 
 * Linux
    * Lite engine logs: `/var/log/lite-engine.log`
@@ -182,7 +182,7 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
 
 ### What is Harness Cloud?
 
-Harness Cloud lets you run builds on Harness-hosted runners that are preconfigured with tools, packages, and settings commonly used in CI pipelines. It is one of several build infrastructure options offered by Harness. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+Harness Cloud lets you run builds on Harness-managed runners that are preconfigured with tools, packages, and settings commonly used in CI pipelines. It is one of several build infrastructure options offered by Harness. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
 ### How do I use Harness Cloud build infrastructure?
 
@@ -190,11 +190,11 @@ Configuring your pipeline to use Harness Cloud takes just a few minutes. Make su
 
 ### Account verification error with Harness Cloud on Free plan
 
-Recently Harness has been the victim of several Crypto attacks that use our Harness-hosted build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
+Recently Harness has been the victim of several Crypto attacks that use our Harness-managed build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
 
 To address these issues, you can do one of the following:
 
-* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-hosted VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
+* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-managed VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
 * Create a Harness account with your work email and not a generic email address, like a Gmail address.
 
 ### What is the Harness Cloud build credit limit for the Free plan?
@@ -515,7 +515,7 @@ Yes, you can use [custom cache paths](https://developer.harness.io/docs/continuo
 
 ### How do I specify the disk size for a Windows instance in pool.yml?
 
-With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
+With [self-managed VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
 
 For example, here is a Windows pool configuration for an [AWS VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure):
 
@@ -1280,7 +1280,7 @@ No. The Post-Command script runs only if the Run Tests step succeeds.
 
 ### Can I limit memory and CPU for Run Tests steps running on Harness Cloud?
 
-No. Resource limits are not customizable when using Harness Cloud or self-hosted VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
+No. Resource limits are not customizable when using Harness Cloud or self-managed VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
 
 ### How can I understand the relationship between code changes and the selected tests?
 
@@ -1549,7 +1549,7 @@ Changes to a container image are isolated to the current step. While a subsequen
 
 ### What caching options does Harness CI offer?
 
-Harness CI offers a variety of [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) options, including S3, GCS, and Harness-hosted Cache Intelligence.
+Harness CI offers a variety of [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) options, including S3, GCS, and Harness-managed Cache Intelligence.
 
 ### How can I download files from an S3 bucket in Harness CI?
 

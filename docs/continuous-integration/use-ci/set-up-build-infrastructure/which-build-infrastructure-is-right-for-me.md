@@ -1,34 +1,47 @@
 ---
 title: Which build infrastructure is right for me
-description: Compare Harness-hosted and self-hosted CI build infrastructure options.
+description: Compare Harness-managed and self-managed CI build infrastructure options.
 sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can run builds on Harness-hosted machines or your own infrastructure.
+You can run builds on Harness-managed machines or your own infrastructure.
 
 The following table provides a high-level comparison of the Harness CI build infrastructure options. More details are provided in the following sections. To compare supported platforms and features, go to [Supported operating systems and architectures](#supported-operating-systems-and-architectures) and the [Feature compatibility matrix](#feature-compatibility-matrix).
 
-| Build infrastructure | Best for | Ease of setup | Scalable | Plans | Other considerations |
-| - | - | - | - | - | - |
-| [Harness Cloud](#harness-hosted-builds-harness-cloud) (Harness-hosted builds) | Getting started fast and minimizing maintenance | ✅ Easy | ✅ Yes | All | [Requires build credits](./use-harness-cloud-build-infrastructure.md#billing-and-build-credits) |
-| [Self-hosted local runner](#local-runners) | Building custom apps with specific build machine requirements | 🔸&nbsp;Moderate | ❌ No | All | Limited to host machine resources/capacity |
-| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | Building on Kubernetes clusters | 🔸&nbsp;Moderate | ✅ Yes | Paid | [Built-in Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access), [Docker-in-Docker requires privileged mode](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker), and macOS platforms aren't supported |
-| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | Managing your own VM pool | ❌&nbsp;Difficult | ✅ Yes | Paid | More support/flexibility for Docker commands and Windows builds when compared to Kubernetes cluster build infrastructure |
+```mermaid
+---
+title: Choose your build infrastructure
+---
+flowchart TD
+    A(Fastest setup) --> D(Harness CI Cloud)
+    B(Harness-managed infrastructure) --> D
 
-## Harness-hosted builds (Harness Cloud)
+    C(Bring your own infrastructure) --> E(Local runner)
+    C --> F(Kubernetes cluster)
+    C --> G(AWS/GCP/Azure VMs)
+```
+
+| Build infrastructure | Best for | Ease of setup | Scalable |
+| - | - | - | - |
+| [Harness Cloud](#harness-hosted-builds-harness-cloud) (Harness-hosted builds) | Getting started fast and minimizing maintenance | ✅ Easy | ✅ Yes |
+| [Self-hosted local runner](#local-runners) | Building custom apps with specific build machine requirements | 🔸&nbsp;Moderate | ❌ No |
+| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | Building on Kubernetes clusters | 🔸&nbsp;Moderate | ✅ Yes | 
+| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | Managing your own VM pool | ❌&nbsp;Difficult | ✅ Yes |
+
+## Harness-managed infrastructure - Harness Cloud
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-With Harness Cloud, your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
+With Harness Cloud, your builds run in isolation on Harness-managed machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on developing software instead of maintaining build farms.
 
 :::info Harness Cloud advantages
 
-* Harness-hosted infrastructure. You don't need to bring or maintain your own infrastructure.
+* Harness-managed infrastructure. You don't need to bring or maintain your own infrastructure.
 * Highly scalable.
 * Quick and easy configuration. Start building in seconds.
 * Linux, Windows, and macOS platforms with modifiable images.
@@ -38,9 +51,9 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 
 Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
-## Self-hosted builds
+## Bring-your-own infrastructure
 
-Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
+Self-managed build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
 
 ### Local runners
 
@@ -50,7 +63,7 @@ With the local runner, also known as the Docker runner, you can run builds on a 
 
 This option is recommended for small, limited-scale builds, such as one-off builds on your local machine. It is commonly used to build custom apps that have specific build machine requirements, such as legacy Windows apps that must be built on a custom Windows VM.
 
-Self-hosted local build infrastructure is available with all CI plans. To learn more, go to [Set up a local runner build infrastructure](./define-a-docker-build-infrastructure.md).
+Self-managed local build infrastructure is available with all CI plans. To learn more, go to [Set up a local runner build infrastructure](./define-a-docker-build-infrastructure.md).
 
 ### Kubernetes clusters
 
@@ -78,7 +91,7 @@ To learn more about VM build infrastructures, go to [Set up VM build infrastruct
 
 The following table shows the supported operating systems and architectures for each build infrastructure option.
 
-| Operating system | Architecture | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted Cloud provider VMs |
+| Operating system | Architecture | Harness Cloud | Self-managed local runner | Self-managed Kubernetes cluster | Self-managed AWS/GCP/Azure VMs |
 | -  | - | - | - | - | - |
 | Linux | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
@@ -90,7 +103,7 @@ The following table shows the supported operating systems and architectures for 
 
 Some Harness CI features are not compatible with all build infrastructures or platforms. New features are rolled out for Harness Cloud first before being enabled for other build infrastructures.
 
-| Feature | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted Cloud provider VMs |
+| Feature | Harness Cloud | Self-managed local runner | Self-managed Kubernetes cluster | Self-managed AWS/GCP/Azure VMs |
 | - | - | - | - | - |
 | [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |

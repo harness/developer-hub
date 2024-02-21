@@ -39,7 +39,7 @@ For an individual step, you can use the **Set Container Resources** settings to 
 
 :::info
 
-**Set Container Resources** settings aren't available for self-hosted VM or Harness Cloud build infrastructures.
+**Set Container Resources** settings aren't available for self-managed VM or Harness Cloud build infrastructures.
 
 :::
 
