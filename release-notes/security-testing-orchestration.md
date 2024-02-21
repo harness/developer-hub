@@ -31,14 +31,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Enhancement
 
-- The Issues table in **Issue Details** now includes popups for issues whose original CVSS scores were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
+- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
 
   ![](./static/sto-6927-override-popup-for-snyk.png)
 
 
+<!-- 
 ### Documentation change
 
 - The STO tutorials have been moved and are now located under [Get started with STO](/docs/category/get-started-with-sto).  
+
+-->
 
 <!-- 2024-02-07 -->
 
