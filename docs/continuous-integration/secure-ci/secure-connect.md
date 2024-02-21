@@ -12,7 +12,7 @@ Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECUR
 
 To use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) in firewalled environments, such as a corporate network, you can create a secure connect tunnel between the Harness Cloud network and your private network. This allows you to use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and on-premises code repositories. Secure connect is a faster alternative to allowlisting IPs.
 
-![Secure Connect architecture diagram](./static/secure-connect-arch.png)
+![Secure Connect architecture diagram](./static/secure-connect-arch2.png)
 
 ## Configure secure connect
 
