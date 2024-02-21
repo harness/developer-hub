@@ -42,6 +42,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 24.02.82308 <!--  February 21, 2024 -->
 
+- Upgraded the SDK for the ASG swimlane. (CDS-91937)
+
+### Version 24.02.82306 <!--  February 16, 2024 -->
+
 #### Hotfix
 
 - Added default values for minimum healthy percentage as 90 and maximum healthy percentage as 110 for the instance refresh operation that is performed during ASG Rolling deployments to prevent service downtime. (CDS-91335, ZD-57686)
