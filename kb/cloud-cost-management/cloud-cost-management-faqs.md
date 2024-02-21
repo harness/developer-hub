@@ -290,10 +290,6 @@ Yes, as soon as you change the JIRA status of a ticket created for a particular 
 
 Yes we do provide the facility to add custom policies to generate Asset Governance Recommendation. You can connect with our team and let us know the policies, we will hook those policies into our backend to generate recommendations.
 
-#### Why are my evaluations taking longer than 3 minutes to execute? 
-
-Cloud Asset Governance evaluations taking longer than three minutes can be due to complex policies with multiple resource checks or due to high volume of resources being evaluated. Additionally, limitations in the cloud provider's API response times and network latency can also contribute to longer execution times.
-
 #### Do we support any method to retrieve Kafka recommendations ?
 
 As of now we don't support any method to retrieve Kafka recommendations.
@@ -400,7 +396,9 @@ curl 'https://app.harness.io/gateway/ccm/api/governance/status/noIGUi15TS-_XrJIP
 
 noIGUi15TS-_XrJIPwYczQ here is the evaluation ID
 
+#### Why are my evaluations taking longer than 3 minutes to execute? 
 
+Cloud Asset Governance evaluations taking longer than three minutes can be due to complex policies with multiple resource checks or due to high volume of resources being evaluated. Additionally, limitations in the cloud provider's API response times and network latency can also contribute to longer execution times.
 
 ### Autostopping
 
