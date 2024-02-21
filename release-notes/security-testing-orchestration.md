@@ -25,38 +25,28 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2024
 
+<!-- 2024-02-21 -->
+
+### Version 1.84.0 
+
+### Enhancement
+
+- The Issues table in **Issue Details** now includes popups for issues whose original CVSS scores were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
+
+  ![](./static/sto-6927-override-popup-for-snyk.png)
+
+
+### Documentation change
+
+- The STO tutorials have been moved and are now located under [Get started with STO](/docs/category/get-started-with-sto).  
+
 <!-- 2024-02-07 -->
 
 ### Version 1.83.1 
 
 #### Enhancements
 
-- You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
-
-  ![Security override in Security Tests](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-override-in-security-tests.png)
-
-  This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override. 
-  
-  To enable this feature, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step ingests and processes the relevant data for issues with overridden severities.   
-
-  <Tabs>
-     <TabItem value="Visual" label="Visual" default>
-
-     ![Add ingest_tool_severity to Snyk step](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-add-setting-in-visual-editor.png)
-
-    </TabItem>
-  
-    <TabItem value="YAML" label="YAML">
-      ``` yaml
-      - step:
-          type: Snyk
-          spec:
-            settings:
-              ingest_tool_severity: "true"
-      ```
-
-    </TabItem>
-    </Tabs>
+- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
 
 
 <!-- 
