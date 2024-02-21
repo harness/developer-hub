@@ -5472,3 +5472,75 @@ Please read more on helm2 in the following [Documentation](https://developer.har
 
 They are facilitated through Deployment Templates. Consequently, deploying a service to a specific environment, such as "infra1," incurs billing for one service.
 
+#### Does Harness support any scripts available to migrate GCR triggers to GAR ?
+
+No, one can create a script and use the api to re-create them.
+Please read more on this in our [API Docs](https://apidocs.harness.io/tag/Triggers#operation/createTrigger)
+
+#### What is the log limit of CI step log fetch step and how can one export the logs ?
+
+Harness deployment logging has the following limitations:
+
+- A hard limit of **25MB** for an entire step's logs. Deployment logs beyond this limit are skipped and not available for download.
+The log limit for Harness CI steps is **5MB**, and you can export full CI logs to an external cache.
+- The Harness log service has a limit of 5000 lines. Logs rendered in the Harness UI are truncated from the top if the logs exceed the 5000 line limit.
+
+Please read more on this in the following [Documentation on logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations/) and [Truncated execution logs](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs/#truncated-execution-logs)
+
+#### Does Harness provide Pause/Resume Pipeline functionality in NextGen ?
+
+Yes, the Pause/Resume Pipeline functionality is provided behind the `FF: PIE_DEPRECATE_PAUSE_INTERRUPT_NG`. It is not planned to depricate the feature but due to feature complexity it is advisable to use the Harness Approval steps. 
+Please read more on how to use Automated Harness Approval steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#prevent-approval-by-pipeline-executor)
+
+#### How to prepare Azure VMSS Deployment in Harness ?
+
+Harness provides a template specific to Azure VMSS Deployment which can be referred from the following [Custom Template Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#azure-vmss---deployment-template-sample)
+
+#### What is the priority for status of an executed pipeline based on different looping/failure strategies ?
+
+Harness has a status calculation logic that works based on the priority of the statuses.
+- Negative(abort/failed/expired/errored) statues has more priority. It means if any stage is negative status then the parent would also be marked with that negative status hence the pipeline would also be marked with negative status.
+- In negative statuses the priority is
+```ABORTED > ABORTED > FAILED > FREEZE_FAILED > APPROVAL_REJECTED > EXPIRED```
+- If all the stages are positive(success/ignore-failed) then only the pipeline would be marked with the above statuses.
+- The order of priority in positive statuses
+```IGNORE_FAILED > SUCCEEDED```
+So if a stage is success and other is ignore-failed then pipeline would be marked as Ingore-failed.(Provided no subsequent stages has negative status).
+Same goes for negative statuses.
+
+#### Does Harness provide allowance for View, Edit and Access permissions for Input sets, independently of Pipeline permissions ?
+
+Yes, with feature availability of Access Control for Input Sets, one can view, edit and access permissions for Input sets, independently of Pipeline permissions.
+Below are the features and usages for the above feature :
+- Access controls for Input Sets: manage visibility and editing
+- Smooth transition for users with Execute rights on Pipelines
+- Beneficial for Golden Pipeline users handling various Deployments
+- API/Terraform users may require code updates
+- Hide Input Sets from "manual" users, improving automation workflows
+This feature can be enabled using the `FF: CDS_INPUT_SET_MIGRATION` after a pre-requisite `FF: CDS_INPUT_SET_MIGRATION` as enabled.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/input-sets/#manage-access-to-input-sets)
+
+#### Does Harness support Kubernetes traffic shifting for Istio ?
+
+Yes, Kubernetes Traffic Shifting Support for Istio and other Open Source Service Mesh Providers
+- One can now integrate with istio and generic service mesh interface providers like flomesh
+- One can perform traffic shifting for Blue Green and Canary Deployments
+- One generate the configuration for traffic shifting on the fly or you can bring your own traffic shifting definition
+
+This feature is provided behind the `FF: CDS_K8S_TRAFFIC_ROUTING_NG`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/)
+
+#### Does Harness provide AWS SAM and Serverless.com manifest from Harness Filestore ?
+
+Yes, One can now download their AWS SAM & Serverless.com Manifests from the Harness Filestore and AWS S3.
+This is provided behind the `FF: CDS_CONTAINER_STEP_GROUP_AWS_S3_DOWNLOAD`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/manifest-sources-for-serverless-lambda)
+
+#### How can one fetch defined variables in Service Overrides V2 in different components ?
+
+One can always fetch variables using the expression `<+serviceVariables.varName>` to access the override variables.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2)
+
+#### How many concurrent parallel executions are allowed by Harness ?
+
+Harness has a limitation of running concurrent 256 parallel executions.

@@ -22,6 +22,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## February 2024
+
+### Version 1.31.2
+
+#### New features and enhancements
+
+* This release adds API support to install and upgrade chaos infrastructure using Helm. (CHAOS-2998)
+
+#### Fixed issues
+
+* Disabling a Linux resilience probe removed all chaos faults associated with the chaos experiment. It has been fixed. Now, you can bulk enable and disable a Kubernetes and a Linux infrastrcuture's resilience probe. (CHAOS-3849)
+
 ## January 2024
 
 ### Version 1.30.0

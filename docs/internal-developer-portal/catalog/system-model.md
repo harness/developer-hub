@@ -7,9 +7,10 @@ redirect_from:
   - /docs/internal-developer-portal/get-started/system-model
 ---
 
-The systems model of IDP, as inspired by the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), is an approach to managing and understanding complex software ecosystems. This model is particularly relevant in the context of DevOps and microservices architectures, where the large number of interdependent components can be overwhelming.
+The systems model of Harness Internal Developer Portal, based on the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), helps manage and understand complex software ecosystems. This model is important for DevOps and microservices, where many connected parts can be hard to manage.
 
-In the context of IDP, the systems model is used to describe and organize the various software components, services, and tools that make up an organization's technical landscape. It is structured around five key concepts: Domains, Systems, APIs, Components, and Resources.
+The System Model describes, how we manage dependencies in Harness IDP, thereby organizing software components, services, and tools in their technical landscape. It structures around five key concepts: Domains, Systems, APIs, Components, and Resources.
+
 
 ![](static/intro-system.png)
 
@@ -87,7 +88,8 @@ system: core
 ```
 
 ### City Domains and Expansion
-#### New part of city: For example, expanding the city, a new Domain AI is created.
+
+**The city is expanding and creating a new Domain AI as a new part of the city.**
 
 ```YAML
 kind: Domain
@@ -96,7 +98,8 @@ name: ai
 
 ![](static/conclusion-system.png)
 
-Now to get the backend service and it's dependencies and ownership right in the software catalog we write an IDP YAML with the help of following conecpts: 
+
+To set up the backend service in the software catalog, we create an IDP YAML file. This file includes concepts such as dependencies and ownership.
 
 ### Neighborhoods: Domains
 
@@ -110,8 +113,9 @@ name: data-analytics-district
 ```
 
 ### Buildings: Systems
-Structure: Systems are akin to buildings, each encapsulating a set of functionalities provided by various components.
-Example: The "Customer Insights Tower" in the Data Analytics District represents a System comprising data processing services, analytics tools, and customer feedback components.
+1. **Structure:** Systems are akin to buildings, each encapsulating a set of functionalities provided by various components.
+
+2. **Example:** The "Customer Insights Tower" in the Data Analytics District represents a System comprising data processing services, analytics tools, and customer feedback components.
 
 ```YAML
 kind: System
@@ -195,4 +199,4 @@ Cloud storage buckets and CDN services used by a video streaming system.
 
 ## Conclusion 
 
-In practice, implementing a systems model like the one used by Backstage, involves creating a centralized catalog or repository where all the information about systems, components, and their relationships is stored and managed.
+In practice, implementing a systems model like the one used by Backstage, involves creating a centralized catalog or repository where all the information about systems, components, and their relationships is stored and managed. This dependency management in Harness IDP enables developers to have service onboarding using seamless integrations. 

@@ -6,7 +6,6 @@ redirect_from:
   - /docs/internal-developer-portal/features/checks-datasources
 ---
 
-
 Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for [scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) in Harness IDP.
 
 ### Overview
@@ -66,6 +65,12 @@ metadata:
 ```
 
 ![](./static/metadata-name-scorecards.png)
+
+:::info
+
+Few datasources like **PagerDuty**, **Kubernetes** are dependant on the Plugins to fetch data using the annotations meant for the plugins in `catalog-info.yaml` as well as the proxy defined in the plugins section. 
+
+:::
 
 
 ## GitHub
@@ -457,6 +462,14 @@ spec:
 ```
 
 ## Kubernetes
+
+:::info
+
+The Kubernetes datasource being dependant on the Kubernetes Plugin for annotations and proxy we only support `label-selector` eg. `'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'` rest all other annotation type mentioned [here](https://backstage.io/docs/features/kubernetes/configuration#common-backstageiokubernetes-id-label) are planned to be supported in the next few releases. 
+
+Also for additional filtering we support namespace in annotation `'backstage.io/kubernetes-namespace': dice-space` as well, but `label-selector` is mandatory. 
+
+:::
 
 ### Prerequisites:
 

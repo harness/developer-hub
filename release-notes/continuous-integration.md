@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-02-13T10:00
+date: 2024-02-20T10:00
 sidebar_position: 10
 ---
 
@@ -34,6 +34,26 @@ You will be impacted by this deprecation if:
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## February 2024
+
+### Version 1.13.1
+
+<!-- Feb 20, 2024 -->
+
+#### New features and enhancements
+
+* The error message text for the `no eligible delegates present` error now includes additional potential causes. (CI-10933, ZD-55977)
+* Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. (CI-10938)
+* Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
+* In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. If you want change this behavior, for example to limit it to directories at the root level or at a certain path, you can use the Test Globs setting to override the default test globs pattern. (CI-11272, ZD-57661)
+* The Harness Community team has developed a new plugin to help you automate more processes in your CI pipelines:
+   * The [GCP OIDC Token plugin](/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin) generates a Google Cloud access token from your OIDC token and then stores the GCP token in an output variable that you can use in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
+
+#### Fixed issues
+
+* Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. (CI-11220, ZD-57421)
+* Fixed an issue where the YAML for build stage [input sets](/docs/platform/pipelines/input-sets) could have an invalid default value for [codebase advanced settings](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#edit-the-default-codebase-configuration). (CI-11291)
+* Addressed a security vulnerability in some CI APIs. (CI-11244, ZD-57445)
+* Applied optimizations to address caching errors. (CI-11173, ZD-57173)
 
 ### Version 1.12.4
 
