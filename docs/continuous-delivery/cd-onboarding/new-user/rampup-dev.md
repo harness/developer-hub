@@ -8,7 +8,7 @@ redirect_from:
 
 This guide is intended to get users in the **Developer role** started with Harness CD.
 
-For this guide, we assume you have set up the necessary Harness integrations (Harness delegate, Kubernetes Cluster connector, AWS connector, JIRA connector, SSO configuration, etc.) and your Harness account configurations.
+For this guide, we assume you have set up the necessary Harness integrations (Harness Delegate, Kubernetes Cluster connector, AWS connector, JIRA connector, SSO configuration, etc.) and your Harness account configurations.
 
 For onboarding your team, go to the [Onboarding path](/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path).
 

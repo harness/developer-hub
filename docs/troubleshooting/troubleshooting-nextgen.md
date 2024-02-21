@@ -45,7 +45,7 @@ import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
 ## Delegate issues
 
-The Harness delegate runs as a service in your target deployment environment, on a host, a pod, a container, or as a task. The delegate makes outbound HTTPS connections over port 443 to run remote SSH and API calls. The delegate uses the credentials you provide in Harness connections to cloud providers and artifact servers.
+The Harness Delegate runs as a service in your target deployment environment, on a host, a pod, a container, or as a task. The delegate makes outbound HTTPS connections over port 443 to run remote SSH and API calls. The delegate uses the credentials you provide in Harness connections to cloud providers and artifact servers.
 
 When delegates experience issues, it’s usually because of network connectivity. For example, changes in ports and misconfigured proxies can interfere with delegate connections to providers and servers. Less common problems occur because of invalid credentials, access issues due to policy configuration, and the cross-project requirements of cloud vendors.
 
@@ -65,7 +65,7 @@ If these errors clear, typically a local or remote networking or similar issue i
 
 This is a symptom of running duplicate delegates. We call this the double delegate problem.
 
-If two Harness delegates with the same name are running in different clusters, they will show up as one delegate in Harness Manager. This will make it seem as though only one delegate is running.
+If two Harness Delegates with the same name are running in different clusters, they will show up as one delegate in Harness Manager. This will make it seem as though only one delegate is running.
 
 **Do not run delegates with the same name in different clusters.** Replace one of the delegates and the issue will go away.
 
@@ -152,7 +152,7 @@ For more information, go to [Autoscaling deployments](https://cloud.google.com/k
 
 ### Deleting a Kubernetes delegate
 
-In the case where you have to delete a Harness delegate from your Kubernetes cluster, you can delete the StatefulSet for the delegate.
+In the case where you have to delete a Harness Delegate from your Kubernetes cluster, you can delete the StatefulSet for the delegate.
 
 Once created, the StatefulSet ensures that the desired number of pods are running and available at all times. Deleting the pod without deleting the StatefulSet will result in the pod being recreated.
 
@@ -184,7 +184,7 @@ Remove one delegate. Typically, one delegate is in the wrong cluster. Remove tha
 
 ### Need to use long polling for delegate connection to Harness Manager
 
-By default, the Harness delegate connects to Harness Manager over a TLS-backed WebSocket connection, sometimes called a Secure WebSocket connection, using the `wss://` scheme ([RFC 6455](https://tools.ietf.org/html/rfc6455#section-11.1.2)).
+By default, the Harness Delegate connects to Harness Manager over a TLS-backed WebSocket connection, sometimes called a Secure WebSocket connection, using the `wss://` scheme ([RFC 6455](https://tools.ietf.org/html/rfc6455#section-11.1.2)).
 
 Some network intermediaries, such as transparent proxy servers and firewalls that are unaware of WebSocket, might drop the WebSocket connection. To avoid this uncommon error, you can instruct the delegate to use long polling.
 
@@ -327,7 +327,7 @@ If a secret's unencrypted value shares some content with the value of another Ha
 
 ### AWS KMS 403
 
-The Harness delegate runs in your target deployment environment and needs access to the default Harness AWS KMS for secrets management. If it does not have access, the following error can occur:
+The Harness Delegate runs in your target deployment environment and needs access to the default Harness AWS KMS for secrets management. If it does not have access, the following error can occur:
 
 ```
 Service: AWSKMS; Status Code: 403
@@ -559,10 +559,10 @@ After timeout, no resources may be added to the state file. A manual cleanup of 
 
 Harness performs the following validation when you use Terraform in a deployment:
 
-1. Is Terraform installed on the Harness delegate? Harness installs it automatically, but it might have been removed.
-2. Can the Harness delegate connect to the Git repo?
+1. Is Terraform installed on the Harness Delegate? Harness installs it automatically, but it might have been removed.
+2. Can the Harness Delegate connect to the Git repo?
 
-If the Harness delegate does not have Terraform installed, you will see a log entry such as the following:
+If the Harness Delegate does not have Terraform installed, you will see a log entry such as the following:
 
 ```
 2020-04-21 19:26:19,134 INFO software.wings.delegatetasks.validation.TerraformValidation - Running terraform validation for task  
@@ -582,14 +582,14 @@ For more information, go to [AWS backoff strategy](/docs/platform/connectors/clo
 
 ## Harness secret managers
 
-If the Harness delegate(s) cannot authenticate with a secret manager, you might see an error message such as this:
+If the Harness Delegate(s) cannot authenticate with a secret manager, you might see an error message such as this:
 
 ```
 Was not able to login Vault using the AppRole auth method.   
 Please check your credentials and try again
 ```
 
-For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
+For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) from the host running your Harness Delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
 
 For example, here is a cURL command for HashiCorp Vault:
 

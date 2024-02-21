@@ -71,7 +71,7 @@ Harness immediately starts analyzing data around workload usage.
 
 Initial recommendation and costing data can take up to 24 hours to start being reported/calculated. After a few hours, cost information will start to be imported. This tutorial didn't connect a public cloud billing bucket, so list pricing is used in cost calculation.
 
-In Harness, go to **Cloud Costs**, select **Setup**, select **Cloud Integration**, select `my_kubernetes_cluster`, and then select **View Costs**
+In Harness, go to **Cloud Costs**, select **Setup**, select **Cloud Integration**, select `my_kubernetes_cluster`, and then select **View Costs**.
 
 ![Initial Costs](./static/first-kubernetes-ccm-tutorial/init_costs.png)
 
@@ -79,7 +79,7 @@ After about a day, more usage data is captured and recommendations start to appe
 
 ![First Costs](./static/first-kubernetes-ccm-tutorial/first_costs.png)
 
-Digging into the savings recommendation, Harness CCM provides recommendations off of the usage data captured.
+Digging into the savings recommendation, Harness CCM provides recommendations based on the usage data captured.
 
 In Harness, go to **Cloud Costs**, select **Recommendations**, and then select your resource.
 
@@ -87,4 +87,4 @@ Digging into the recommendations list, look at a recommendation that corresponds
 
 ![First Rec](./static/first-kubernetes-ccm-tutorial/first_rec.png)
 
-Per this recommendation, resizing the worker node machine size is a prudent move. Taking a look at the back work for the recommendation, can take a look at the actual usage back in the previous perspective. Actions to be taken to reduce costs would be to right size the nodes and if not already, can place resource requests and limits onto the Kubernetes workloads based on what Harness CCM is reporting. This is just the start of the capabilities with Harness CCM, which can also provide additional rules and capabilities around auto-stopping of workloads and give additional infrastructure and workload recommendations. If additional changes are needed, can leverage the Harness Platform to [experiment](/docs/feature-flags) and [make](/docs/continuous-delivery) those changes.
+Per this recommendation, resizing the worker node machine size is a prudent move. Taking a look at the back work for the recommendation, you can view the actual usage in the previous perspective. Actions to be taken to reduce costs would be to right size the nodes and place resource requests and limits on the Kubernetes workloads based on what Harness CCM is reporting. This is just the start of the capabilities with Harness CCM, which can also provide additional rules and capabilities around auto-stopping workloads and give additional infrastructure and workload recommendations. If additional changes are needed, you can leverage the Harness Platform to [experiment](/docs/feature-flags) and [make](/docs/continuous-delivery) those changes.

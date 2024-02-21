@@ -17,7 +17,7 @@ The idea is that the design of an application should be resilient and handle any
 Harness Chaos Engineering is available is SaaS and self-managed formats.
 
 1. **SaaS (Software-as-a-service)**: You either sign up or get invited to a specific project. You can also create a project if you have the necessary permissions. HCE helps manage the cluster.
-2. **SMP (Self-managed platform)**: You create, manage and maintain your clusters. You are responsible for providing permissions to projects and handling issues associated with it.
+2. **SMP (Self-managed platform)**: You create, manage and maintain your clusters. You are responsible for providing permissions to projects and handling issues associated with them.
 
 ## Interaction between execution plane and control plane
 

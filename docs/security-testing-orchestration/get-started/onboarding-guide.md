@@ -47,7 +47,7 @@ Before you create your first Harness pipeline, you must have the following:
 
 Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
 
-* Harness delegate — Required to run builds in your Kubernetes infrastructure.
+* Harness Delegate — Required to run builds in your Kubernetes infrastructure.
 * Secret for Git access credentials — Required to set up a codebase connector.
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
@@ -133,7 +133,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 </details>
 
-To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness delegate.
+To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness Delegate.
 
 <details>
 <summary>Install a Kubernetes Delegate: Default Workflow</summary>

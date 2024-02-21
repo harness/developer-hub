@@ -18,7 +18,7 @@ You can navigate to chaos hubs in the chaos module and select `+ New ChaosHub`, 
 
 ### How do I connect to a private chaos hub?
 
-To connect to a private chaos hub repository, connect to a Harness GitHub connector through a Harness delegate, or GitHub directly by providing your GitHub SSH key or Personal Access Token (PAT). Once this is done, you can select the connector when adding a chaos hub.
+To connect to a private chaos hub repository, connect to a Harness GitHub connector through a Harness Delegate, or GitHub directly by providing your GitHub SSH key or Personal Access Token (PAT). Once this is done, you can select the connector when adding a chaos hub.
 
 ### How are faults different from experiments?
 

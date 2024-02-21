@@ -53,9 +53,9 @@ For the pipeline to run successfully, follow all of the steps below as they are,
 ### Set up the Harness Delegate
 
 <details>
-<summary>What is the Harness delegate?</summary>
+<summary>What is the Harness Delegate?</summary>
 
-The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 </details>
 
@@ -81,7 +81,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the Kubernetes Delegate using the Helm, Terraform Helm Provider or Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the Kubernetes Delegate using the Helm, Terraform Helm Provider or Kubernetes manifest.
 
 :::
 
@@ -90,7 +90,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs
 <details>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 
@@ -271,9 +271,9 @@ For the pipeline to run successfully, please follow all of the following steps a
 ### Delegate
 
 <details>
-<summary>What is the Harness delegate?</summary>
+<summary>What is the Harness Delegate?</summary>
 
-The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 </details>
 
@@ -299,7 +299,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the Kubernetes Delegate using the Helm, Terraform Helm Provider or Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the Kubernetes Delegate using the Helm, Terraform Helm Provider or Kubernetes manifest.
 
 :::
 
@@ -308,7 +308,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/docs
 <details>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 

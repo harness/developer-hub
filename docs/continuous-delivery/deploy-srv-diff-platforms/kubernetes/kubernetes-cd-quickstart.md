@@ -19,7 +19,7 @@ https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-41
 
 ## Set up a Kubernetes cluster for deployment
 
-You'll need a target Kubernetes cluster for the Harness delegate and deployment. Ensure your cluster meets the following minimum requirements:
+You'll need a target Kubernetes cluster for the Harness Delegate and deployment. Ensure your cluster meets the following minimum requirements:
 
 - **Number of nodes:** 2.
 - **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.

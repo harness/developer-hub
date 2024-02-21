@@ -10,7 +10,7 @@ This topic shows you how to deploy a publicly available application to your Tanz
 
 You'll learn how to:
 
-* Install and launch a Harness delegate in your target cluster.
+* Install and launch a Harness Delegate in your target cluster.
 * Connect Harness with your TAS account.
 * Connect Harness with a public image hosted on Artifactory.
 * Specify the manifest to use for the application.
@@ -32,7 +32,7 @@ You'll learn how to:
    * Azure Artifacts
    * Jenkins
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
-* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
+* Your Harness Delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
 * For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
 ## Connect to a TAS provider
@@ -78,9 +78,9 @@ To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-c
 10. Select **Save and Continue**.
 11. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
 
-## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness delegate
+## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness Delegate
 
-After the delegate pods are created, you must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
+After the delegate pods are created, you must edit your Harness Delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
 
 1. Open the `delegate.yaml` in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
@@ -91,7 +91,7 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
    
    :::info
-   Harness delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian based distributions like Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
+   Harness Delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian based distributions like Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
    :::
 
    :::info
@@ -552,7 +552,7 @@ import TabItem2 from '@theme/TabItem';
       The basic app setup configuration uses your manifest in Harness TAS to set up your application.
 
       1. **Name** - Edit the deployment step name.
-      2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+      2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
       3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
          The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
       4. **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
@@ -561,14 +561,14 @@ import TabItem2 from '@theme/TabItem';
 
    4. Select the **App Resize** step to define **Step Parameters**.
       1. **Name** - Edit the deployment step name.
-      2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+      2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
       3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
       4. **Total Instances** - Set the number or percentage of running instances you want to keep.
       5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
       6. Select **Apply Changes**.
 
    5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-      1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+      1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
       2. **Script** - Select one of the following options.
          - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
          - **Inline** - Select this option to enter a script inline.
@@ -604,7 +604,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
 
 3. Select the **Canary App Setup** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
        The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
     4. **Resize Strategy** - Select **Add new instances first, then downsize old instances** or **Downsize old instances first, then add new instances** strategy. You can also add **Resize Strategy** as a runtime input.
@@ -613,14 +613,14 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
     7.  Select **Apply Changes**.
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Ignore instance count in Manifest** - Select this option to override the instance count mentioned in the `manifest.yaml` file with the values mentioned in the **App Resize** step.
     4. **Total Instances** - Set the number or percentage of running instances you want to keep.
     5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     6. Select **Apply Changes**.
 5. Add more **App Resize** steps to perform gradual deployment.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
@@ -661,7 +661,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 
 3. Select the **BG App Setup** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
        The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
     4. **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
@@ -677,18 +677,18 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     7. Select **Apply Changes**.
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
     4. **Total Instances** - Set the number or percentage of running instances you want to keep.
     5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     6. Select **Apply Changes**.
 5. Select the **Swap Routes** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Downsize Old Application** - Select this option to down size older applications.
     4. Select **Apply Changes**.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
@@ -791,10 +791,10 @@ Before performing a rolling deployment, the TAS Rolling Deploy step first verifi
 
 3. Select the **Rolling Deploy** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2.  **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2.  **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3.  **Additional Routes** - Add additional routes in addition to the routes added in the TAS manifest.
 4. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
