@@ -255,6 +255,8 @@ gsutil -m cp \
 
 - Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325)
 
+- Added a missing field validation for **Repository Name** when using [Harness Code Repository](/docs/code-repository/code-supported) as the pipeline's [default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#configure-the-default-codebase). (CI-11042)
+
 #### Harness Platform
 
 - Fixed a license validation issue that caused ng-manager errors. (PL-46455)
