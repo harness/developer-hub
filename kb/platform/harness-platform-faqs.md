@@ -890,9 +890,7 @@ For more information, go to [Google cloud functions](/docs/faqs/continuous-deliv
 
 ### How can I use Harness CD with Google Cloud Functions?
 
-Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
-
-For more information, go to [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func/).
+Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
 
 ### Why am I getting the "Unsupported block type with the Run on Remote Workspace" error?
 
@@ -2823,9 +2821,9 @@ We do not provide any customized docker images for delegates however we do have 
 https://github.com/harness/delegate-dockerfile/tree/main
 ```
 
-### Can we use immutable delegate image in the statefulset deployment yaml for delegates?
+### Can we use a delegate with immutable image type in the statefulset deployment YAML for delegates?
 
-We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
+We can not use an immutable image type delegate in the statefulset deployment YAML that we had for legacy delegates. The delegates are architecturally different. Delegates with an immutable type must be used with their own deployment YAML.
 
 ### Is there a way to enable more granular level for delegate logs?
 
@@ -2840,6 +2838,37 @@ We can make use of environment variable TMPDIR on the delegate and use any direc
   value: /opt/harness-delegate/deployvol/tmp
 
 ```
+
+### How can I make my pipeline dependent on the RBAC permissions of the user that runs the pipeline? Is that info accessible from inside the pipeline? 
+
+
+We don't have a variable like `<+currentuser.role>` that will return the role for user, but you can use a variable to get the user's email address. For more information, go to [Pipeline trigger by email](/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail).
+
+You can also make an API call to list all roles assigned to the user and decide the next step accordingly. For more information, go to [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) in the API documentation.
+
+### Is there an SMP database query to validate whether a user was provisioned via SCIM or manually?
+
+Yes, you can use the following queries. Replace the `accountid` with the actual account ID.
+
+This query returns results for users that were provisioned via SCIM.
+
+```
+db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"SCIM"})
+```
+
+This query for `MANUAL` returns results for users provisioned that were provisioned through the UI.
+
+```
+db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"MANUAL"})
+```
+
+### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
+
+You can directly access the following URL. 
+
+`https://app.harness.io/ng/account/xxxaccountidxxxx/settings/overview`
+
+This will direct you to your specific account. You can then sign in and change your default account.
 
 ### Is the DelegateManagerGrpcClientModule utilized for delegate connection to the manager over gRPC?
 
@@ -2911,3 +2940,15 @@ The `DELEGATE_TASK_CAPACITY` feature flag allows you to configure the maximum nu
 ### When do delegates expire and what does this mean for their compatibility?
 
 Delegates expire six months (24 weeks) from the date the delegate image was released on DockerHub. Although delegate expiration doesn't stop them from working immediately, issues may arise if the backend has advanced too far ahead, rendering the delegate no longer forward-compatible. While delegates are backward compatible, it's highly recommended to upgrade at least once every six months to ensure optimal performance and compatibility.
+
+#### How do I get error details for a failed pipeline execution?
+
+You can use the `getExecutionDetailV2` API to get the error details under `executionErrorInfo` with the status as `failed`.
+
+#### Are AWS KMS secrets stored in AWS or Harness?
+
+Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
+
+#### Can we use an encryption method other than the default with AWS secret manager?
+
+No. When using the AWS secret manager, the default encryption is used. If you have to use a custom encryption, you must use the AWS KMS secret manager. 

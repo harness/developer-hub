@@ -1704,7 +1704,7 @@ The conditions in JEXL only allow the use of variable expressions that can be re
 
 Currently, Harness can't fail a step/stage/pipeline based on a percentage of test results. To achieve this, you would need to manually parse the test results (which are created after the test step execution) and export some variables containing the percentages you want to track. You could then have a step throw an error code based on the variable values to trigger a [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps), or you could manually review the outputs and manually [mark the stage as failed](https://developer.harness.io/docs/platform/pipelines/mark-as-failed).
 
-Due to potential subjectivity of test results, it would probably be better to handle this case with an [Approval stage or step](https://developer.harness.io/tutorials/cd-pipelines/approvals/) where the approver [reviews the test results](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests).
+Due to potential subjectivity of test results, it would probably be better to handle this case with an [Approval stage or step](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) where the approver [reviews the test results](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
 ### Can I abort a pipeline if the referenced branch is deleted?
 

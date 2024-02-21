@@ -23,7 +23,7 @@ Using recommendations without proper assessment could result in unexpected chang
 :::
 
 
-:::important note
+:::info
 Recommendations will not be generated for nodepools with multiple instance families. This applies to both native-managed clusters and clusters that are managed by third-party tools like spot.io.
 :::
 

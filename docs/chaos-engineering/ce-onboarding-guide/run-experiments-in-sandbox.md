@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 8
 title: Run chaos experiments in sandbox to build resilience 
 description: Execute chaos experiments to improve the resilience of an app in a sandbox.
 ---

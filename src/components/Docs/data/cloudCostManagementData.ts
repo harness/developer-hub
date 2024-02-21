@@ -4,23 +4,9 @@ import {
     docType,
   } from "@site/src/components/LandingPage/TutorialCard";
   import { MODULES } from "@site/src/constants"
-  
+
   /* Define the cards - start */
-  // Featured Tutorials
-  /*export const featuredTutorials: CardItem[] = [
-    
-      {
-        title: "Optimize Cloud Costs for Kubernetes",
-        module: MODULES.ccm,
-        icon: "img/icon_ccm.svg",
-        description: "Get started with optimizing your Kubernetes cloud costs by connecting your public cloud Kubernetes cluster to Harness.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "10min",
-        link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
-      },
-    ];*/
-    
+
     // Docs
     export const docsCards: CardSections = [
       {
@@ -28,13 +14,6 @@ import {
         description:
           "",
         list: [
-          {
-            title: "CCM Tutorials",
-            module: MODULES.ccm,
-            description:
-              "Learn how to manage and optimize the costs associated with your cloud resources.",
-            link: "/tutorials/cloud-costs",
-          },
           {
             title: "Get started",
             module: MODULES.ccm,
@@ -112,7 +91,6 @@ import {
               "Identify unusual or unexpected changes in your cloud service expenses.",
             link: "/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm",
           },
-        
           {
             title: "CCM FAQs",
             module: MODULES.ccm,

@@ -28,7 +28,7 @@ export default function HomepageCertifications(): JSX.Element {
               <h2>Become a Harness Certified Expert</h2>
               <div className={styles.desc}>
                 Learn intelligent software delivery skills at your own pace and
-                in once place. Step-by-step tutorials, videos, and reference
+                in once place. Guides, videos, and reference
                 docs to help you create and deliver software.
               </div>
               <div className={styles.badges}>

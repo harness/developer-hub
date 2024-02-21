@@ -31,11 +31,11 @@ If you have any further questions or need assistance, contact [Harness Support](
 
 ### How do I add a Feature Flags SDK to my project?
 
-For an example of adding an SDK to a project, follow [this FF tutorial](https://developer.harness.io/tutorials/feature-flags/typescript-react#adding-the-feature-flags-sdk-to-the-project).
+For an example of adding an SDK to a project, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/get-started/java-quickstart).
 
 ### How do I configure the source code for feature flags?
 
-You need to have the source code level setup so that the application can communicate with Harness Feature Flags. For a walkthrough, follow [this FF tutorial](https://developer.harness.io/tutorials/feature-flags/typescript-react#configure-your-source-code-for-feature-flags).
+You need to have the source code level setup so that the application can communicate with Harness Feature Flags. For a walkthrough, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/get-started/java-quickstart).
 
 ### Is there a way to see MAU utilization at the project level?
 
@@ -242,6 +242,8 @@ document.addEventListener('visibilitychange', (event) => {
   cf.refreshEvaluations();
 });
 ```
+
+For more information, go to [Make flags resilient during a mobile web browser refresh](https://developer.harness.io/docs/feature-flags/get-started/mobile-browser-refresh).
 
 ### How do you include a target using custom data?
 

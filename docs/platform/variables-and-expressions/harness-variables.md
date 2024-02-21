@@ -1,7 +1,7 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
@@ -41,13 +41,22 @@ The example mentioned in the previous section used `contains()`:
 
 `<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
 
-Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
+Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`, you can use `split()` like this:
 
 ```
 echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
 
 The output of this expression is `ghi`.
+
+
+Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`, you can use `split()` like this:
+
+```
+echo <+<+pipeline.variables.abc>.split('\\.')[1]>
+```
+
+The output of this expression is `6`.
 
 The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
 
