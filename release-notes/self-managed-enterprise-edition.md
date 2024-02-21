@@ -261,7 +261,7 @@ gsutil -m cp \
 
 -  In OCI Helm Connector with ECR type, during the new inline creation of a new connector, it opened the 'http' connector step.(CDS-88350)
 
-   The issue is fixed nowand it correctly open the appropriate ``AWS Connector``.
+   The issue is fixed now and it correctly opens the appropriate ``AWS Connector``.
 
 - Pipeline template using a stage template was not honoring ``gitBranch`` field for service selection.(CDS-88378)
 
