@@ -1,15 +1,15 @@
-import React from "react";
-import clsx from "clsx";
-import Tooltip from "rc-tooltip";
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { CardItem } from "../LandingPage/TutorialCard";
-import { featureList } from "./data/featureListData";
-import "rc-tooltip/assets/bootstrap.css";
-import styles from "./styles.module.scss";
+import React from 'react';
+import clsx from 'clsx';
+import Tooltip from 'rc-tooltip';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { CardItem } from '../LandingPage/TutorialCard';
+import { featureList } from './data/featureListData';
+import 'rc-tooltip/assets/bootstrap.css';
+import styles from './styles.module.scss';
 
 function Feature({ title, icon, description, type, module, link }: CardItem) {
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <Link href={link}>
       <div className={clsx(styles.getStartItem, styles[module])}>
@@ -19,27 +19,29 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
         </div>
         <div
           className={clsx(
-            "text--center padding-horiz--md",
+            'text--center padding-horiz--md',
             styles.titleAndDesc
           )}
         >
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
-        <div>
-          <ul className={styles.docTypes}>
-            {type.map((props, idx) => (
-              <li>
-                <Tooltip placement="top" overlay={props}>
-                  <img
-                    src={`${baseUrl}img/icon_doctype_${props}.svg`}
-                    alt={props}
-                  />
-                </Tooltip>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {type && (
+          <div>
+            <ul className={styles.docTypes}>
+              {type.map((props, idx) => (
+                <li>
+                  <Tooltip placement="top" overlay={props}>
+                    <img
+                      src={`${baseUrl}img/icon_doctype_${props}.svg`}
+                      alt={props}
+                    />
+                  </Tooltip>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </Link>
   );
@@ -48,16 +50,16 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      {<h2>Get Started with Tutorials</h2>}
+      {<h2>Get Started</h2>}
       <div className={styles.getStart}>
         {featureList.map((props, idx) => (
           <Feature key={idx} {...props} />
         ))}
       </div>
       <div className={styles.btnContainer}>
-        <Link href="/tutorials">
+        <Link href="/docs">
           <button className={`button button--primary ${styles.button}`}>
-            See All Tutorials
+            See All Documentation
           </button>
         </Link>
       </div>

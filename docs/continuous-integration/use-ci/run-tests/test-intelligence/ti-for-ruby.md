@@ -283,7 +283,7 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 
 ### Test Globs
 
-You can override the default test globs pattern. For example, the default for RSpec is `spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`.
+You can override the default test globs pattern. For example, the default for RSpec is `**/spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`, which would look for a `/spec` directory at the root level, rather than anywhere in the workspace.
 
 <!-- ### Output Variables
 

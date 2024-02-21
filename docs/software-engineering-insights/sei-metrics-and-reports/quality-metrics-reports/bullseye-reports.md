@@ -12,7 +12,7 @@ sidebar_position: 20
 2. Select **SEI Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **CSV** semi-automated integration, and select **Upload report**.
 4. Upload your Bullseye report as a CSV file.
-5. Add Bullseye reports to your [Insights](/docs/software-engineering-insights/sei-insights):
+5. Add Bullseye reports to your [Insights](/docs/software-engineering-insights/insights/sei-insights.md):
 
 ## Bullseye reports
 

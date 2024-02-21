@@ -18,15 +18,13 @@ You can configure perspective preferences in the **Cloud Costs** > **Setup** > *
 | - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - |
 
 
-  <DocImage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
 
+:::info
 
-:::important Note
-Changes made to these settings affect all CCM perspectives. To ensure smooth operations, it is advisable not to update these settings frequently. If changes are necessary, it's recommended to allow a time gap of at least 5 minutes between updates. 
-:::
+- Changes made to these settings affect all CCM perspectives. To ensure smooth operations, it is advisable not to update these settings frequently. If changes are necessary, it's recommended to allow a time gap of at least 5 minutes between updates.
+- Even if GCP discounts are included in the default settings, the overview page will not take the discounted costs into account. In other words, any available discounts for GCP services will not be reflected in the cost calculations and summary provided in the overview section.
 
-:::important note
-Even if GCP discounts are included in the default settings, the overview page will not take the discounted costs into account. In other words, any available discounts for GCP services will not be reflected in the cost calculations and summary provided in the overview section. 
 :::
 
 To edit preferences for a specific perspective: 
@@ -38,6 +36,7 @@ To edit preferences for a specific perspective:
 6. Select **Apply**.
 
   The cost data shown in the perspective chart is influenced by the set preferences. But it's important to note that for these changes to be permanent and take effect, you need to edit the perspective and update the preferences accordingly. Applying the preferences on the perspective page will not make the changes persistent. To learn how to edit a perspective, go to [Edit a perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#edit-a-perspective).
+
 ## General preferences
 
 The following preferences are applicable to all perspectives. By default, some of these preferences are enabled. However, you could choose to disable or enable these preferences in individual perspectives. 
@@ -58,12 +57,12 @@ The following preferences are applicable to all perspectives. By default, some o
 * **Show negative cost**
 
   Displays the negative cost with a dotted red bar and labels it as **NegativeCost** in the legend. To view it, please select "Group By" as **None** because in other Group Bys, it might not appear in the top 12 entries.
-  :::important Note
-  It will function as a toggle button only; we cannot save it at the perspective or account settings level.
+
+  :::info
+  This is a toggle only. This can't be saved at the perspective or account settings level.
   :::
-  
-  
-    ![](./static/create-cost-perspectives-31.png)
+
+   ![](./static/create-cost-perspectives-31.png)
 
 
 * **Show "unallocated" costs on clusters**

@@ -310,7 +310,7 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- You can now enable TLS for MongoDB, MinIO, and TimescaleDB cloud-based external databases. For configuration details, go to the Harness Self-Managed Enterprise Edition [tutorials](/tutorials/self-managed-enterprise-edition). (PL-46234)  
+- You can now enable TLS for MongoDB, MinIO, and TimescaleDB cloud-based external databases. For configuration details, go to [Configure external databases](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases). (PL-46234)
 
 
 #### Continuous Delivery & GitOps
@@ -2719,7 +2719,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
 
-  For more information, go to [Self-managed object storage](/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage/).
+  For more information, go to [Self-managed object storage](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-self-managed-minio-object-storage).
 
 - You can now apply Harness' recommended high performance configuration to reach a scale of 1000 concurrent pipelines. (SMP-1836)
 
@@ -2727,7 +2727,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - You can now use your Redis password in your external self-managed Redis database. (SMP-1860)
 
-  For more information, go to [Use an external self-managed Redis database with your installation](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database).
+  For more information, go to [Use an external self-managed Redis database with your installation](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database).
 
 ##### Continuous Delivery & GitOps
 
@@ -3475,10 +3475,10 @@ gsutil -m cp \
 
   To learn how to configure an external self-managed database, go to the following tutorials.
 
-  - [MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb/)
-  - [PostgreSQL](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/)
-  - [Redis](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database/)
-  - [TimescaleDB](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb/)
+  - [MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb)
+  - [PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database)
+  - [Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database)
+  - [TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb)
 
 ##### Continuous Delivery & GitOps
 
@@ -5383,7 +5383,7 @@ This release includes the following Harness module and component versions.
 
 #### New features and enhancements
 
-- You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
+- You can now use an external database with your installation. For more information, go to [Configure external databases](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases). (SMP-545)
 
 #### Fixed issues
 

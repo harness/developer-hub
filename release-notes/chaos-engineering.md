@@ -22,6 +22,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## February 2024
+
+### Version 1.31.2
+
+#### New features and enhancements
+
+* This release adds API support to install and upgrade chaos infrastructure using Helm. (CHAOS-2998)
+
+#### Fixed issues
+
+* Disabling a Linux resilience probe removed all chaos faults associated with the chaos experiment. It has been fixed. Now, you can bulk enable and disable a Kubernetes and a Linux infrastrcuture's resilience probe. (CHAOS-3849)
+
 ## January 2024
 
 ### Version 1.30.0
@@ -1009,7 +1021,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 #### Early access features
 
-The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](/tutorials/chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/tutorials/chaos-experiments/first-chaos-engineering).
+The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). [HCE documentation](/docs/chaos-engineering) is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering).
 
 #### Known issues
 

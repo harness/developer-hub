@@ -26,17 +26,17 @@ Pod HTTP modify body tests the application's resilience to erroneous or incorrec
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
-        <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#target-service-port">target service port</a></td>
+        <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> RESPONSE_BODY </td>
         <td> String body to overwrite the HTTP response body.</td>
-        <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#response-body">response body </a></td>
+        <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="#response-body">response body </a></td>
       </tr>
     </table>
 
@@ -50,62 +50,62 @@ Pod HTTP modify body tests the application's resilience to erroneous or incorrec
       <tr>
         <td> CONTENT_ENCODING </td>
         <td> Encoding type to compress or encode the response body. </td>
-        <td> Accepted values include gzip, deflate, br, identity. Defaults to none (no encoding). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#content-encoding-and-content-type">content encoding </a></td>
+        <td> Accepted values include gzip, deflate, br, identity. Defaults to none (no encoding). For more information, go to <a href="#content-encoding-and-content-type">content encoding </a></td>
       </tr>
       <tr>
         <td> CONTENT_TYPE </td>
         <td> Content type of the response body. </td>
-        <td> Default: text or plain. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#content-encoding-and-content-type">content type </a></td>
+        <td> Default: text or plain. For more information, go to <a href="#content-encoding-and-content-type">content type </a></td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>
         <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#proxy-port">proxy port </a></td>
+        <td> Default: 20000. For more information, go to <a href="#proxy-port">proxy port </a></td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Network interface used for the proxy. </td>
-        <td> Default: `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#network-interface">network interface</a></td>
+        <td> Default: `eth0`. For more information, go to <a href="#network-interface">network interface</a></td>
       </tr>
       <tr>
         <td> TOXICITY </td>
         <td> Percentage of HTTP requests to be affected. </td>
-        <td> Default: 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#toxicity">toxicity </a></td>
+        <td> Default: 100. For more information, go to <a href="#toxicity">toxicity </a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
+        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#container-runtime-and-socket-path">socket path </a></td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration of chaos injection (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
+        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 

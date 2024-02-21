@@ -1,7 +1,7 @@
 ---
 title: Delegate automatic upgrades and expiration policy
 description: Explains the auto-upgrade feature and the delegate expiration policy.
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 The Harness Delegate for Kubernetes supports automatic upgrades. With automatic upgrades, you don't need to worry about having the most up-to-date functionality. You always have the most recent version of the delegate. 
@@ -142,7 +142,7 @@ To find the delegate status, select an account, a project, or an organization, t
 
 ![Detecting delegate](static/detect-delegate.png)
 
-When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: OFF** or **AUTO UPGRADE: OFF**. 
+When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: ON** or **AUTO UPGRADE: OFF**. 
 
 ![Auto-upgrade on](static/auto-upgrade-on.png)
 

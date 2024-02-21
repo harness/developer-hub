@@ -59,7 +59,7 @@ Pod delete:
       <tr>
         <td> RANDOMNESS </td>
         <td> Introduces randomness into pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> Default: false. Supports true and false. For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete#random-interval">random interval</a> </td>
+        <td> Default: false. Supports true and false. For more information, go to <a href= "#random-interval">random interval</a> </td>
       </tr>
       <tr>
         <td> FORCE </td>
@@ -74,17 +74,17 @@ Pod delete:
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target . Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a> </td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial as well. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial as well. For more information, go to <a href= "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 

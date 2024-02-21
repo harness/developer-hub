@@ -49,6 +49,44 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2024
 
+### Version 1.25.5
+
+#### Fixed issues
+- ECS services got deleted after the first or second deployment in the ECS Blue Green deployment. (CDS-91499, ZD-57892)
+
+  The issue is fixed by adding a condition for active service status.
+- The chained pipeline's input section in the Harness UI did not have the option to fetch manifests from the Git store for runtime config fields. (CDS-91387, ZD-57687)
+
+  This issue is fixed now and you should be able to set the defaults correctly.
+- Codeblocks embedded in the Support AI replies were not rendering correctly. (CDS-91364)
+
+  This issue is fixed now.
+- Moving a stage in the Step Details panel moved the step details panel for other stages as well.(CDS-91351)
+
+  The steps graph in the Execution View is now updated to auto-reset its position when a different stage is selected.
+  
+- Single-service, multi-environment, multi-cluster deployments done using a GitOps PR pipeline rejected some of the clusters. (CDS-90942)
+
+  The issue is fixed now.
+- Template settings were not visible in the new Organisation and Account settings navigation page. (CDS-89746, ZD-57373)
+
+  In the new navigation page, the Settings cards for specific modules were previously hidden when the corresponding module's license was absent. The issue is fixed. The Organization and Account navigation page is now modified to display all Settings cards regardless of the license status.
+- Logs were not appearing for a rejected Approval step in the console view. (CDS-89267)
+  
+  The issue is fixed now.
+- Unsaved changes were appearing in the Input Set pages and Pipeline Studio for variables with default values. (CDS-89117, ZD-57388, ZD-57603)
+
+  The issue is fixed now.
+- The Harness Approval step allowed the Variable Name field in the Approval Inputs page be blank. (CDS-88673)
+  
+  This issue is fixed by enforcing proper validation for the Variable Name field.
+- The Pipeline Details tab did not show the Harness Approval Execution step if the Include Stage Execution Details field is unchecked in the Harness Approval step. (CDS-88133)
+
+  The issue is fixed now.
+- Unable to select the TLS certificate and key in an HTTPS step. (CDS-88543, ZD-55531)
+
+  For TLS connections, you can now select the secrets related to a valid TLS certificate and key in the HTTP step. This feature is currently behind the feature flag, `CDS_HTTP_STEP_NG_CERTIFICATE`. To enable the feature, contact [Harness Support](mailto:support@harness.io).  
+
 ### Version 1.24.7
 
 #### New Features and Enhancements
@@ -88,6 +126,18 @@ This results in no deployment even though the pipeline is successful. This issue
 - Issue with missing expressions and inconsistent suggestion placement during code scripting. The issue is fixed now in code editors like Shell Script to render a tooltip to view the complete suggestion value. (CDS-85027)
 - Improved the error messaging for the AWS SAM step when an incorrect expression or reference led to no image being found. (CDS-84058)
 - Selecting the secondary splunk query page would auto submit rather than letting you modify the second query. You will now be able to modify the second query without submitting automatically. (CDS-89153)
+
+### Version 1.21.6 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue with infrastructure definition to reconcile inconsistencies. (CDS-89314)
+
+#### Hotfix version 81614
+
+- Recent changes to enable Harness to evaluate delegate selector expressions at stage runtime caused pipelines to fail. (CDS-85692, ZD-54495)
+
+  Harness has fixed this issue by reverting the changes.
 
 ## January 2024
 
@@ -559,19 +609,6 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   As a workaround for this inconsistency, Harness has made the trigger's workflow capture branch hook events for on-premises BitBucket and convert them, on a best-effort basis, to a push hook. This change has the effect of making Harness's triggers for on-premises BitBucket to fire on the first push to a new branch. This change is behind the feature flag `CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM`. To enable this change in behavior, contact [Harness Support](mailto:support@harness.io).
 
   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-## February 2024
-
-### Version 1.21.6 <!--  February 2, 2024 -->
-
-#### Hotfix
-
-- Fixed an issue with infrastructure definition to reconcile inconsistencies. (CDS-89314)
-#### Hotfix version 81614
-
-- Recent changes to enable Harness to evaluate delegate selector expressions at stage runtime caused pipelines to fail. (CDS-85692, ZD-54495)
-
-  Harness has fixed this issue by reverting the changes.
 
 ### Version 81502
 
