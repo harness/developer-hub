@@ -109,7 +109,6 @@ gsutil -m cp \
 
    Enhanced the Switch Account experience to show more data i.e ``AccountId``.
 
-
 - Support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
 
    The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service. The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
@@ -121,6 +120,10 @@ gsutil -m cp \
 - Stage Selection component is moved to Pipeline Input tab from Configuration Tab (CDS-72890)
 
    When setting up Triggers, you'll find the Stage Selection in the Pipeline Input tab for a smoother configuration experience.
+
+- Option to select secrets in script output variables has been removed.(CDS-86690)
+
+   Script output variables for the 'secrets' type no longer require explicit selection; instead, fixed variables need to be input to designate them as secret values for subsequent steps/stages.
 
 #### Continuous Integration
 
@@ -168,7 +171,6 @@ gsutil -m cp \
 - UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
 
    The issue is fixed now to handle null check for approval message.
-
 
 - Unauthorized errors while using GCP and a GCP access token in between steady state checks, intermittently (CDS-88446, ZD-56104)
 
@@ -240,6 +242,50 @@ gsutil -m cp \
 - Template inputs were not showing up in Pipeline editor (CDS-84490)
    
    It was due to an intermittent issue, this has been resolved now.
+
+- Users having viewer permissions were able to edit the pipeline.(CDS-85221)
+
+   The issue is fixed now.
+
+- FF validation used to work for name and ID fields but not any other field (CDS-87581)
+
+   The issue is fixed, FF validation will work when importing resources from Git. 
+
+- When only one manifest is created in OCT Helm, runtime inputs were not being displayed.(CDS-87941)
+
+   The issue is fixed by updating the condition in code to select default behaviour if only 1 manifest is available
+
+- In the process of creating an input set or overlay input set from YAML view, the isHarnessCodeRepo query parameter was not being sent.(CDS-87956)
+
+   The issue is fixed.Whenever an input set or overlay input set is saved from YAML view, the provider value is sent to the handleSubmit function, which takes care of sending the query parameter to create APIs.
+
+-  In OCI Helm Connector with ECR type, during the new inline creation of a new connector, it opened the 'http' connector step.(CDS-88350)
+
+   The issue is fixed nowand it correctly open the appropriate ``AWS Connector``.
+
+- Pipeline template using a stage template was not honoring ``gitBranch`` field for service selection.(CDS-88378)
+
+   The issue is fixed now. 
+
+- The ExecutionList page overflowed the page when not needed.(CDS-88388)
+
+   The issue is fixed now.
+
+- CCM icon color didn't change in the new nav(CDS-88505)
+
+   The issue is fixed now. 
+
+- Icon for trigger was missing in new nav.(CDS-88529)
+
+   This issue occurred due to browser rendering, and a similar issue was discussed and addressed as part of CDS-88645.
+
+- When attempting to save Stage Templates of Azure Webapp Deployment Type, the screen repeatedly asked to save.(CDS-88930)
+
+   The issue is fixed now. 
+   
+- Pipeline invocation failed when searching for the YAML in the wrong branch.(CDS-91080)
+
+   The issue is fixed now.
 
 #### Continuous Integration
 
