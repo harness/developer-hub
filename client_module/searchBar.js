@@ -21,6 +21,15 @@ const doYourCustomStuff = () => {
         navbar.classList.add("navbar-sidebar--show");
         navbar__sidebar.classList.add("navbar-sidebar--show");
       }
+
+      const navbar__sidebar__items = document.querySelectorAll(
+        ".navbar-sidebar__items"
+      );
+      if (navbar__sidebar__items[0]) {
+        navbar__sidebar__items[0].classList.remove(
+          "navbar-sidebar__items--show-secondary"
+        );
+      }
     });
   }
   if (navbar__sidebar__close) {
