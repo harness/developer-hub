@@ -84,9 +84,11 @@ The following deprecated API endpoints are longer supported:
 
 ### Version 1.26.x <!--  February 26, 2024 -->
 
-#### New features and enhancements
-
 #### Fixed issues
+
+- While creating or updating a project with an org Identifier which is absent in that account, it used to throw error code: 500. (PL-47059)
+
+Now you will see the right error message if the provided org identifier is absent i.e. Error message: Organisation with identifier "OrgId" does not exist in accountIdentifier: "accountId"
 
 ### Version 1.25.5 <!--  February 19, 2024 -->
 
