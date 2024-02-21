@@ -467,6 +467,8 @@ spec:
 
 The Kubernetes datasource being dependant on the Kubernetes Plugin for annotations and proxy we only support `label-selector` eg. `'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'` rest all other annotation type mentioned [here](https://backstage.io/docs/features/kubernetes/configuration#common-backstageiokubernetes-id-label) are planned to be supported in the next few releases. 
 
+Also for additional filtering we support namespace in annotation `'backstage.io/kubernetes-namespace': dice-space` as well, but `label-selector` is mandatory. 
+
 :::
 
 ### Prerequisites:
