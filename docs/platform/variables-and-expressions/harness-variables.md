@@ -41,7 +41,7 @@ The example mentioned in the previous section used `contains()`:
 
 `<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
 
-Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`. You can use `split()` like this:
+Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`, you can use `split()` like this:
 
 ```
 echo <+<+pipeline.variables.abc>.split(':')[1]>
@@ -50,7 +50,7 @@ echo <+<+pipeline.variables.abc>.split(':')[1]>
 The output of this expression is `ghi`.
 
 
-Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`. You can use `split()` like this:
+Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`, you can use `split()` like this:
 
 ```
 echo <+<+pipeline.variables.abc>.split('\\.')[1]>
