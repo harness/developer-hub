@@ -7,85 +7,81 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can run builds on Harness-managed machines or your own infrastructure.
-
-The following table provides a high-level comparison of the Harness CI build infrastructure options. More details are provided in the following sections. To compare supported platforms and features, go to [Supported operating systems and architectures](#supported-operating-systems-and-architectures) and the [Feature compatibility matrix](#feature-compatibility-matrix).
+With Harness CI, you can run builds on Harness-managed machines or your own infrastructure. Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
 
 ```mermaid
 ---
 title: Choose your build infrastructure
 ---
 flowchart TD
-    A(Fastest setup) --> D(Harness CI Cloud)
+    A(Fastest setup) --> D(Harness Cloud)
     B(Harness-managed infrastructure) --> D
 
-    C(Bring your own infrastructure) --> E(Local runner)
+    C(Self-managed infrastructure) --> E(Local runner)
     C --> F(Kubernetes cluster)
     C --> G(AWS/GCP/Azure VMs)
 ```
-
-| Build infrastructure | Best for | Ease of setup | Scalable |
-| - | - | - | - |
-| [Harness Cloud](#harness-hosted-builds-harness-cloud) (Harness-hosted builds) | Getting started fast and minimizing maintenance | ✅ Easy | ✅ Yes |
-| [Self-hosted local runner](#local-runners) | Building custom apps with specific build machine requirements | 🔸&nbsp;Moderate | ❌ No |
-| [Self-hosted Kubernetes cluster](#kubernetes-clusters) | Building on Kubernetes clusters | 🔸&nbsp;Moderate | ✅ Yes | 
-| [Self-hosted Cloud provider VMs](#cloud-provider-virtual-machines) | Managing your own VM pool | ❌&nbsp;Difficult | ✅ Yes |
 
 ## Harness-managed infrastructure - Harness Cloud
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-With Harness Cloud, your builds run in isolation on Harness-managed machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
+When you [use Harness Cloud](./use-harness-cloud-build-infrastructure.md), your builds run in isolation on Harness-managed machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on developing software instead of maintaining build farms.
 
-:::info Harness Cloud advantages
+<details>
+<summary>Harness Cloud advantages</summary>
 
 * Harness-managed infrastructure. You don't need to bring or maintain your own infrastructure.
 * Highly scalable.
 * Quick and easy configuration. Start building in seconds.
 * Linux, Windows, and macOS platforms with modifiable images.
 * Usually  first to receive new feature developments.
+* Available for all plan tiers.
 
-:::
-
-Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
+</details>
 
 ## Bring-your-own infrastructure
 
-Self-managed build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
+Self-managed build infrastructure options include local machines, Kubernetes clusters, and AWS/GCP/Azure VMs.
 
-### Local runners
+<details>
+<summary>Local runner</summary>
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-With the local runner, also known as the Docker runner, you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
+When you [use a local runner](./define-a-docker-build-infrastructure.md), also known as a Docker runner, you run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
-This option is recommended for small, limited-scale builds, such as one-off builds on your local machine. It is commonly used to build custom apps that have specific build machine requirements, such as legacy Windows apps that must be built on a custom Windows VM.
+**This option is recommended for small, limited-scale builds, such as one-off builds on your local machine. It is commonly used to build custom apps that have specific build machine requirements, such as legacy Windows apps that must be built on a custom Windows VM.**
 
-Self-managed local build infrastructure is available with all CI plans. To learn more, go to [Set up a local runner build infrastructure](./define-a-docker-build-infrastructure.md).
+Self-managed local build infrastructure is available with all CI plans.
 
-### Kubernetes clusters
+</details>
+
+<details>
+<summary>Kubernetes cluster</summary>
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-Executing builds in a Kubernetes cluster is useful when you want to run ephemeral builds-at-scale in your own infrastructure.
-
-When running builds in a Kubernetes cluster, each CI stage executes in a pod, and the stage's steps share the pod's resources.
+When you [use a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), you can run ephemeral builds-at-scale in your own self-managed Kubernetes clusters. In this case, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
 If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are some configuration requirements. For example, the built-in [Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access) and [privileged mode is required for Docker-in-Docker](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker).
 
-To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+</details>
 
-### Cloud provider virtual machines
+<details>
+<summary>AWS/GCP/Azure VMs</summary>
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-Your build infrastructure can use VMs from a Cloud provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
+You can [run builds on self-managed AWS, GCP, or Azure VMs](/docs/category/set-up-vm-build-infrastructures)
 
-This is the most difficult build infrastructure option to configure and manage. However, compared to the Kubernetes cluster build infrastructure option, it allows you more freedom with Docker commands, offers native support for Windows, can support Docker builds on Windows (based on the VM configuration), and supports Linux, Windows, and macOS platforms.
+This option can be challenging to configure and manage if you're not already familiar with managing cloud-provider VMs. However, compared to the Kubernetes cluster build infrastructure option, it allows you more freedom with Docker commands, offers native support for Windows, can support Docker builds on Windows (based on the VM configuration), and supports Linux, Windows, and macOS platforms.
 
-To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+While you can use an Anka registry to configure a macOS build farm, Harness recommends using [Harness Cloud](./use-harness-cloud-build-infrastructure) for macOS builds.
+
+</details>
 
 ## Supported operating systems and architectures
 
@@ -95,9 +91,19 @@ The following table shows the supported operating systems and architectures for 
 | -  | - | - | - | - | - |
 | Linux | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| macOS | arm64 (M1) | ✅ Supported | ✅ Supported | ❌ Not supported | ✅ Supported |
+| macOS | arm64 (M1) | ✅ Supported & Recommended | ✅ Supported | ❌ Not supported | 🔸 Supported, not recommended |
 | Windows | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Windows | arm64 | ❌ Not supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+
+:::info
+
+**Harness recommends [Harness Cloud](./use-harness-cloud-build-infrastructure) for macOS builds.**
+
+This recommendation is due to licensing requirements and the complexity of configuring and managing macOS VMs with Anka virtualization.
+
+With Harness Cloud, your builds run on Harness-managed runners, and you can start running builds in minutes.
+
+:::
 
 ## Feature compatibility matrix
 
