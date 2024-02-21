@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/continuousIntegrationData";
+import { docsCards } from "./data/continuousIntegrationData";
 
 export default function CI() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -15,14 +15,14 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ci.svg`} />
-            <h1>Continuous Integration Documentation</h1>
+            <h1>Continuous Integration</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb/continuous-integration">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/continuous-integration">
@@ -37,22 +37,19 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how you can build faster and be more productive with Harness
-              CI.
+              Harness CI helps you build faster and be more productive.
+              Build and test your code, manage dependencies, upload artifacts,
+              and monitor build outcomes, all within the Harness Platform.
+              Leverage unique features, like AIDA, Test Intelligence, and Cache Intelligence,
+              and integrate third party tools, custom scripts, and other Harness modules.
             </p>
+            <div>
+            <img src={`${baseUrl}img/ci.svg`} />
+            </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
-        <>
-          <div className={styles.sectionDivider}></div>
-          <div className={styles.subSection}>
-            <h3>Featured Tutorials</h3>
-            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-          </div>
-        </>
-      )}
     </div>
     // </Layout>
   );

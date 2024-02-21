@@ -134,6 +134,12 @@ For example, the **Sprint Metrics Single Stat** widget can help you [use histori
 * **Sprint Goal Report**
 * **Sprint Distribution Retrospective Report**
 
+:::info
+* Sprint metric reports, only includes the issues that were both started and completed during the sprint timeframe.
+* If an issue is completed outside of the sprint, it is not included in the sprint metrics report for that specific sprint. Instead, the completion of the issue is reflected in the sprint where it was actually resolved.
+* If an issue is removed mid-sprint from the current sprint, it is not included in the sprint metrics report for that particular sprint. SEI excludes such issues from the calculation as it may affect the team's velocity and other related metrics.
+:::
+
 ## Sprint metrics
 
 Sprint metrics measure points and tickets in a sprint. This includes work that was planned (committed), completed (done/delivered), incomplete (missed), or added after the sprint started (creep).

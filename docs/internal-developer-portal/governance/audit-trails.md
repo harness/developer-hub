@@ -33,7 +33,7 @@ The Account Audit Trail includes the following IDP events:
 
 :::info
 
-The audit trails on Plugins is dependant on other srvices latest version, which are yet to be released, so it might take a week or two to make this available for our users. 
+The audit trails on Plugins is dependant on other services latest version, which are yet to be released, so it might take a week or two to make this available for our users. 
 
 :::
 

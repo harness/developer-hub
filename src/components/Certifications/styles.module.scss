@@ -60,12 +60,13 @@
           list-style: none;
           padding: 8px 16px;
           margin: 0;
-          color: var(--gray-700);
+          color: var(--ifm-color-content);
           font-weight: 600;
           cursor: pointer;
           border-radius: 8px 8px 0 0;
           &:hover {
             background-color: var(--gray-50);
+            color: var(--hover);
           }
           &.active {
             font-weight: 700;
@@ -234,7 +235,7 @@
         font-weight: 500;
         font-size: 24px;
         line-height: 32px;
-        color: #0b0b0d;
+        color: var(--ifm-color-content);
         &:hover {
           color: var(--primary);
         }
@@ -245,7 +246,7 @@
         line-height: 28px;
         /* or 175% */
         /* Light/Text/Primary */
-        color: #0b0b0d;
+        color: var(--ifm-color-content);
       }
       margin-top: 32px;
       .availableCertsBox {
@@ -454,7 +455,7 @@
       }
       .innerCard {
         border: 2px solid var(--gray-200);
-        background-color: var(--white);
+        background-color: var(--background-color);
         border-radius: 8px;
         padding: 32px;
         display: flex;
@@ -508,7 +509,7 @@
               }
               &.moreDetails {
                 background-color: var(--primary);
-                color: var(--white);
+                color: white;
               }
               &.startLearning {
                 color: var(--primary);
@@ -551,14 +552,10 @@
   margin-top: 50px;
   .examDetailsCard {
     border: 2px solid var(--gray-200);
-    background-color: var(--white);
+    background-color: var(--background-color);
     border-radius: 8px;
     padding: 32px;
-    // display: flex;
-    // width: 100%;
-    // .desc {
-    //     margin-bottom: 24px;
-    // }
+
     .btnContainer {
       display: flex;
       gap: 24px;
@@ -583,7 +580,7 @@
         }
         &.moreDetails {
           background-color: var(--primary);
-          color: var(--white);
+          color: white;
         }
         &.startLearning {
           color: var(--primary);

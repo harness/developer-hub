@@ -58,8 +58,8 @@ The following permissions are required:
 * [Air-gap mode](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
 * [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
-* [External Database](/tutorials/self-managed-enterprise-edition)
-* [Disaster Recovery](/tutorials/self-managed-enterprise-edition/set-up-disaster-recovery)
+* [External Database](./advanced-configurations/external-db/configure-external-databases)
+* [Disaster Recovery](./advanced-configurations/set-up-disaster-recovery)
 
 ## What's not supported
 * Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.

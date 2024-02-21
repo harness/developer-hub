@@ -31,67 +31,67 @@ Pod IO stress:
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specifies the size as a percentage of free space on the file system. </td>
-        <td> Default: 10 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#filesystem-utilization-percentage"> file system utilization percentage </a></td>
+        <td> Default: 10 %. For more information, go to <a href="#filesystem-utilization-percentage"> file system utilization percentage </a></td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specifies the size in gigabytes (GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both the values are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes priority. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#filesystem-utilization-bytes"> file system utilization bytes</a></td>
+        <td> Specifies the size in gigabytes (GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both the values are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes priority. For more information, go to <a href="#filesystem-utilization-bytes"> file system utilization bytes</a></td>
         <td> </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of IO workers involved in IO disk stress. </td>
-        <td> Default: 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#workers-for-stress">workers for stress</a></td>
+        <td> Default: 4. For more information, go to <a href="#workers-for-stress">workers for stress</a></td>
       </tr> 
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 120 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
+        <td> Default: 120 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path. </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#mount-path"> mount path</a></td>
+        <td> For more information, go to <a href="#mount-path"> mount path</a></td>
       </tr> 
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod IO stress. </td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
       </tr>  
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path</a></td>
+        <td> Default: <code>/run/containerd/containerd.sock</code> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path</a></td>
       </tr>    
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 

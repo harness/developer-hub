@@ -4,12 +4,6 @@
 
 const sidebars = {
   certifications: [
-    // Tutorial Link from Certs
-    {
-      type: "link",
-      label: "Tutorials",
-      href: "/tutorials",
-    },
     // Docs Link from Certs
     {
       type: "link",

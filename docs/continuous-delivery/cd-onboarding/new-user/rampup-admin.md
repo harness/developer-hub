@@ -101,7 +101,7 @@ To experience the full power of Harness Continuous Delivery, we recommend the fo
 4. [Add your environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments). 
 5. Automate your onboarding of teams:
    1. After the initial team is onboarded, Harness recommends automating onboarding for the next set of teams.
-   2. Using the Harness [Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/), you can automate your onboarding of projects, orgs, connectors, services, pipelines, etc. 
+   2. Using the Harness [Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider), you can automate your onboarding of projects, orgs, connectors, services, pipelines, etc. 
    3. Using Harness [Git Experience](/docs/platform/git-experience/git-experience-overview), you can manage and clone pipelines and templates in Git and share across projects. 
 6.  Automate your pipeline deployments and experiment with steps and conditions.
     1.  Harness offers triggers and APIs to automate the execution of pipelines. Harness recommends you automate the pipeline execution once the pipeline design and structure is relatively mature and not going to change. For more information on triggers and APIs, go to:

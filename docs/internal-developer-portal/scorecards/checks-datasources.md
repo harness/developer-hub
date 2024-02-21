@@ -2,14 +2,9 @@
 title: Scorecard Data Sources
 description: Adding Custom Checks and Data Sources for Scorecards 
 sidebar_position: 4
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/checks-datasources
 ---
-
 
 Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for [scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) in Harness IDP.
 
@@ -38,7 +33,7 @@ The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
 
 ### Supported Operators
 
-We support the folowing `regex operators` as Operators for all the Data Points.
+We support the following `regex operators` as Operators for all the Data Points.
 
 1. Less Than
 2. Less than or equal to
@@ -70,6 +65,12 @@ metadata:
 ```
 
 ![](./static/metadata-name-scorecards.png)
+
+:::info
+
+Few datasources like **PagerDuty**, **Kubernetes** are dependant on the Plugins to fetch data using the annotations meant for the plugins in `catalog-info.yaml` as well as the proxy defined in the plugins section. 
+
+:::
 
 
 ## GitHub
@@ -394,7 +395,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 ## Catalog 
 
-The following **Data Points** are avilable for Catalog Data Source. 
+The following **Data Points** are available for Catalog Data Source. 
 
 1. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
@@ -442,7 +443,7 @@ spec:
 
 - *Objective:* Checks if the catalog YAML file has the annotation `pagerduty.com/service-id` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `pagerduty.com/service-id` is present under the metadata field.
-- *Prerequisites:* The Pagerduty plugin needs to be configured and enabled in the admin section. Please [refer](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/) here for more details. 
+- *Prerequisites:* The PagerDuty plugin needs to be configured and enabled in the admin section. Please [refer](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/) here for more details. 
 
 ![](./static/pager-catalog.png)
 
@@ -461,6 +462,14 @@ spec:
 ```
 
 ## Kubernetes
+
+:::info
+
+The Kubernetes datasource being dependant on the Kubernetes Plugin for annotations and proxy we only support `label-selector` eg. `'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'` rest all other annotation type mentioned [here](https://backstage.io/docs/features/kubernetes/configuration#common-backstageiokubernetes-id-label) are planned to be supported in the next few releases. 
+
+Also for additional filtering we support namespace in annotation `'backstage.io/kubernetes-namespace': dice-space` as well, but `label-selector` is mandatory. 
+
+:::
 
 ### Prerequisites:
 
@@ -498,7 +507,7 @@ The following **Data Points** are available for Kubernetes Data Source.
 
 ## Jira
 
-The following **Data Points** are avilable for Jira Data Source.
+The following **Data Points** are available for Jira Data Source.
 
 1. **Issues Count**:
 
@@ -583,7 +592,7 @@ spec:
 - The PagerDuty plugin must be configured and enabled in the admin section. Refer [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/).
 
 
-The following **Data Points** are avilable for PagerDuty Data Source.
+The following **Data Points** are available for PagerDuty Data Source.
 
 1. **Is on-call Set** - This data point can be used for creating rules that will check if the on-call is set for a given service.
 
@@ -622,15 +631,15 @@ The following **Data Points** are avilable for PagerDuty Data Source.
 
 ![](./static/check-overview.png)
 
-- To have an overview of a single check and information on all the componenets it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
+- To have an overview of a single check and information on all the components it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
 
-- The overview page lists all the components on which the check is appled and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades accross your software ecosystem. 
+- The overview page lists all the components on which the check is applied and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades across your software ecosystem. 
 
 ![](./static/check-component-overview.png)
 
 :::info
 
-Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and indvidual check overview page
+Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and individual check overview page
 
 ![](./static/breadcrumbs.png)
 

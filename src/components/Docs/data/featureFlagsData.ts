@@ -6,20 +6,7 @@ import {
 import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
-// Featured Tutorials
-export const featuredTutorials: CardItem[] = [
-    {
-      title: "Add Feature Flags to a JavaScript app",
-      module: MODULES.ff,
-      icon: "img/icon_ff.svg",
-      description: "Add Feature Flags to a JavaScript application.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "10min",
-      link: "/tutorials/feature-flags/typescript-react",
-    },
-  ];
-  
+
   // Docs
   export const docsCards: CardSections = [
     {
@@ -27,13 +14,6 @@ export const featuredTutorials: CardItem[] = [
       description:
         "",
       list: [
-        {
-          title: "Feature Flags tutorial",
-          module: MODULES.ff,
-          description:
-            "Dive in to this tutorial to add flags to a JavaScript app.",
-          link: "/tutorials/feature-flags/typescript-react",
-        },
         {
           title: "Get started with Feature Flags",
           module: MODULES.ff,
