@@ -221,7 +221,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted">
+  <TabItem value="k8s" label="Self-managed">
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces test reports, uploads the reports to GCS, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 

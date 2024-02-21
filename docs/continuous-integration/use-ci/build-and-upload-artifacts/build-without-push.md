@@ -8,9 +8,9 @@ In Harness CI, you can build images without pushing them. For example, you can u
 
 The configuration depends on your build infrastructure:
 
-## Harness Cloud, local runner, or self-hosted VM
+## Harness Cloud, local runner, or self-managed VM
 
-To build without pushing on Harness Cloud, a local runner, or a self-hosted VM build infrastructure, add the following environment variable to your [Build and Push step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact):
+To build without pushing on Harness Cloud, a local runner, or a self-managed VM build infrastructure, add the following environment variable to your [Build and Push step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact):
 
 ```yaml
                     envVariables:

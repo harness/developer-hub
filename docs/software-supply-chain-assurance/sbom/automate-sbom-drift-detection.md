@@ -76,7 +76,7 @@ Once you create the pipeline, you should be able to create a new stage.
 
 A build stage has four tabs for configuration: Overview, Infrastructure, Execution, and Advanced. For the purposes of this tutorial, you'll use the Infrastructure and Execution tabs.
 
-**Infrastructure:** Select the infrastructure to run your build. For the quickest setup, use Harness Cloud build infrastructure to run your build on Harness-hosted runners.
+**Infrastructure:** Select the infrastructure to run your build. For the quickest setup, use Harness Cloud build infrastructure to run your build on Harness-managed runners.
 **Execution:** Add steps to the stage. In this tutorial, you'll add steps to generate the SBOM and drift.
 
 ### Add a step to install dependencies

@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-You can build and test a [C#](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/) and [.NET Core](https://learn.microsoft.com/en-us/dotnet/core/introduction) application using a Linux or Windows platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [C#](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/) and [.NET Core](https://learn.microsoft.com/en-us/dotnet/core/introduction) application using a Linux or Windows platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -46,9 +46,9 @@ stages:
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-There are several self-hosted build infrastructure options. This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
+There are several self-managed build infrastructure options. This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
 ```yaml
 stages:
@@ -92,7 +92,7 @@ The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud ru
 
 </TabItem>
 
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies or run commands such as `dotnet restore`.
 
@@ -133,9 +133,9 @@ Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integrat
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -203,7 +203,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -263,7 +263,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -336,7 +336,7 @@ With this feature flag enabled, you can use Run Tests steps to [run unit tests w
 ```
 
 </TabItem>
-  <TabItem value="Self-Hosted">
+  <TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -453,7 +453,7 @@ On Windows platforms, you might also need to run the [setup-msbuild](https://git
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dotnet/framework/sdk/tags) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -599,7 +599,7 @@ pipeline:
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
