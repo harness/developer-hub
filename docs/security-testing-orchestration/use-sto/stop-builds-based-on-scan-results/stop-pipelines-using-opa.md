@@ -24,54 +24,220 @@ This topic describes the end-to-end workflow to create, test, and deploy a set o
 
 This topic assumes that you have a basic knowledge of the following:
 
-- Governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
+- Governance policies and how to implement them: 
+  - [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+  - [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+  - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
 - [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
 
+## Security Tests policy samples
 
-### Create an OPA policy
+The Harness Policy library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to create governance policies for your STO scans. 
+
+You can apply any Security Tests policy using the **On Step** event for a scan step.
+
+### Exclude vulnerabilities by severity
+
+Apply a policy to a scan step to warn or block on any vulnerabilities with the specified severity.   
+
+```json
+
+package securityTests
+
+import future.keywords.in
+import future.keywords.if
+
+# Define a set of severities that are denied (Critical, High, Medium, Low, Info)
+# The following example denies if the scan results include any issue with a severity of Critical or High.
+
+deny_list := fill_defaults([
+  {
+    "severity": {"value": "Critical", "operator": "=="}
+  },
+  {
+    "severity": {"value": "High", "operator": "=="}
+  }
+])
+
+```
+
+### Exclude vulnerabilities by reference ID
+
+Apply a policy to a scan step to warn or block on any vulnerabilities in a specific list of CVEs or CWEs. 
+
+```json
+
+package securityTests
+
+import future.keywords.in
+import future.keywords.if
+
+# Define a set of reference-identifiers that are denied
+# The following policy denies if the scan results include any occurrence of CWE-772 or CVE-2019-14250
+
+deny_list := fill_defaults([
+  {
+    "refId": {"value": "772", "operator": "=="},
+    "refType": {"value": "cwe", "operator": "=="}
+  },
+ {
+    "refId": {"value": "2019-14250", "operator": "=="},
+    "refType": {"value": "cve", "operator": "=="}
+  }
+])
+
+```
+
+### Exclude vulnerabilities by title
+
+Apply a policy to a scan step to warn or block on any vulnerabilities in a specific list of issue titles. 
+
+You can use the `~` operator to find titles based on [Python regular expressions](https://docs.python.org/3/library/re.html). 
+
+```json
+
+package securityTests
+
+import future.keywords.in
+import future.keywords.if
+
+# Define a set of titles that are denied
+# The following example denies if the scan results include any Javascript Mongo or Javascript Security Audit issues
+
+deny_list := fill_defaults([
+  {
+    "title": {"value": "javascript.express.mongodb.*", "operator": "~"}
+  },
+  {
+    "title": {"value": "javascript.express.security.audit.*", "operator": "~"}
+  }
+])
+
+```
+
+### Exclude vulnerabilities by number of occurrences
+
+Apply a policy to a scan step to warn or block vulnerabilities based on a set of titles and the maximum allowed number of occurrences for each vulnerability. 
+
+You can use the `~` operator to find titles based on [Python regular expressions](https://docs.python.org/3/library/re.html).  
+
+```json
+
+package securityTests
+
+import future.keywords.in
+import future.keywords.if
+
+# Define a set of titles and maximum occurrences that are denied
+# The following example denies on scan results with more than 25 occurrences of TAR- or cURL-related issues
+
+deny_list := fill_defaults([
+  {
+    "title": {"value": ".*tar.*", "operator": "~"},
+    "maxOccurrences": {"value": 25, "operator": ">="},
+  },
+  {
+    "title": {"value": ".*curl.*", "operator": "~"},
+    "maxOccurrences": {"value": 25, "operator": ">="},
+  }
+])
+
+```
+
+### Exclude vulnerabilities by CVE age
+
+Apply a policy to a scan step to warn or block vulnerabilities based on CVEs by severity and age. 
+
+```json
+
+package securityTests
+
+import future.keywords.in
+import future.keywords.if
+
+# Define a set of CVE ages (as old/older than given year) and severities (equal/greater than) that are denied
+# This example denies any critical-severity CVE from 2021 or earlier, OR any high-severity CVE from 2020 or earlier
+
+deny_list := fill_defaults([
+  {
+    "year": {"value": 2021, "operator": "<="},
+    "severity": {"value": "Critical", "operator": "=="}
+  },
+  {
+    "year": {"value": 2020, "operator": "<="},
+    "severity": {"value": "High", "operator": "=="}
+  }
+])
+
+```
+
+
+## Workflow description
+
+### Create a new OPA policy
 
 1. You can create policies at the account or the project scope.
 
-   - For account-level policies, click the switcher (top left) and go to the account settings window.
-   - For project-level policies, 
+   - For account-level policies, select your account (top left). 
+   - For project-level policies, select **Project settings** (left).
+   - Then go to **Security and Governance** > **Policies**.
 
-2. &gt; **Policies**.
+2. Select **Policies** (top right) and then **New Policy**. 
 
-2. Click **Policies** (top right) and then **New Policy**. 
+3. Select a **Security Tests** policy from the [**Policy samples**](#security-tests-policy-samples) library. 
 
-3. Name the policy **Security no NEW_CRITICAL or NEW_HIGH issues**. 
+   <DocImage path={require('./static/opa-01-select-policy-sample.png')} width="50%" height="50%" title="Select policy sample" />
 
-4. In the Edit Policy window, enter the following OPA code: 
+4. Select **Add this sample** (bottom). The policy sample appears in the edit pane (left).
 
-   ```
-    package pipeline_environment
+   <DocImage path={require('./static/opa-02-use-this-sample.png')} width="50%" height="50%" title="Select policy sample" />
 
-   deny[sprintf("Scan can't contain any NEW_CRITICAL vulnerability '%s'", [input[_].outcome.outputVariables.NEW_CRITICAL])] {
-       input[_].outcome.outputVariables.NEW_CRITICAL != "0"
-   }
+5. Configure the policy as needed. In this example, the policy excludes vulnerabilities with a severity of Critical. 
 
-   deny[sprintf("Scan can't contain any high vulnerability '%s'", [input[_].outcome.outputVariables.NEW_HIGH])] {
-       input[_].outcome.outputVariables.NEW_HIGH != "0"
-   }
-   ```
+   <DocImage path={require('./static/opa-03-configure-policy.png')} width="100%" height="100%" title="Select policy sample" />
 
-5. Click **Save**. 
+6. Test your policy to ensure that it works as intended.
+
+   Each policy sample includes a set of test data that you can use. In the **Testing Terminal**, examine the test data and edit it as needed. Then click **Test** to verify the results.
+
+   It is good practice to test both a Success and Failure case for your policy. The following example illustrates this workflow.
+
+   In this example, the policy denies on reference ID CWE-1230. In this case, you would do the following:
+
+   1. Search the test results for the string `1230`. In this case, the ID is not found. 
+
+       <DocImage path={require('./static/opa-05-test-policy-search-for-id.png')} width="100%" height="100%" title="Select policy sample" />
+
+   2. Click **Test**. The test succeeds.
+
+       <DocImage path={require('./static/opa-06-test-policy-succeeded.png')} width="100%" height="100%" title="Select policy sample" />
+
+   3. Search the test results for the string `cwe` and edit an entry so it matches the reference ID.
+
+       <DocImage path={require('./static/opa-07-edit-test-data-for-matching-cwe.png')} width="100%" height="100%" title="Select policy sample" />
+
+   4. Click **Test** again. The test fails because the data includes the specified CWE.
+
+       <DocImage path={require('./static/opa-08-test-failed.png')} width="100%" height="100%" title="Select policy sample" />
+
+7. Once you're satisfied that the policy works as intended, save it.
+
 
 ### Create a policy set
 
-A _policy set_ is a collection of one or more policies. You combine policies into a set and then include it in a Policy step. 
+A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-set) is a collection of one or more policies. You combine policies into a set and then include it in a scan step. 
 
-1. In the Policies Overview page, click **Policy Sets** (top right) and then **New Policiy Set**. 
+1. Go to **Security and Governance** > **Policies**. Then click **Policy Sets** (top right) and then **New Policy Set**. 
 
 2. Click **New Policy Set**. The Policy Set wizard appears.
 
 3. Overview:
 
-    1. Name = **Security Set - Block on Issue Severity**
+    1. Name — Enter a descriptive name such as **myorg/myimage policies**.
 
-    2. Entity type this policy applies to = **Custom**
+    2. Entity type this policy applies to = **Security Tests**
 
-    3. On what event should the policy be set to = **On Step**. 
+    3. On what event should the policy be set to = **On Step** 
    
        These settings allow you to apply the member policies to a specific step, which you'll define below. 
 
@@ -81,13 +247,17 @@ A _policy set_ is a collection of one or more policies. You combine policies int
     
    2. Select the policy you just created and set the pull-down to **Error and Exit**. This is the action to take if any policies in the set are violated. 
 
-      ![](../static/notif-opa-select-policy.png)
+      <!-- ![](../static/notif-opa-select-policy.png) -->
+
+      <DocImage path={require('./static/opa-09-add-policy-to-policy-set.png')} width="80%" height="80%" title="Select policy sample" />
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
 5. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
 
-    ![](../static/notif-opa-policy-set-enforced-yes.png)
+     <!-- ![](../static/notif-opa-policy-set-enforced-yes.png) -->
+   
+      <DocImage path={require('./static/opa-10-enable-enforced.png')} width="80%" height="80%" title="Select policy sample" />
 
 
 ### Enforce the policy in your scan step
@@ -100,9 +270,9 @@ Now you can set up your scan step to stop builds automatically when the policy g
 
 3. Click **Apply Changes** and then save the updated pipeline. 
 
-   ![](../static/notif-opa-policy-add-policy-set.png)
+   <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="80%" height="80%" title="Select policy sample" />
 
-
+<!-- 
 ### Set up email notifications for pipeline failures
 
 You have a Policy that fails the pipeline based on an OPA policy. Now you can configure the stage to send an email notification automatically whenever the pipeline fails. 
@@ -252,3 +422,4 @@ pipeline:
       enabled: true
 
 ```
+-->
