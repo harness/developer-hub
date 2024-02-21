@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/selfManagedEnterpriseEditionData";
+import { docsCards } from "./data/selfManagedEnterpriseEditionData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -15,14 +15,14 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_harness.svg`} />
-            <h1>Self-Managed Enterprise Edition Documentation</h1>
+            <h1>Self-Managed Enterprise Edition</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/self-managed-enterprise-edition">
+            <Link href="/kb">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/self-managed-enterprise-edition">
@@ -37,16 +37,18 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Self-Managed Enterprise Edition is an end-to-end solution for continuous, self-managed delivery.
+            Harness Self-Managed Enterprise Edition is an end-to-end solution for continuous, self-managed delivery. 
+            It is designed to assist developers and DevOps teams in delivering software with maximum speed, quality,
+             security, reliability, and resilience at the lowest possible cost. It helps you stay within the
+             governance boundaries required to achieve organizational objectives.
             </p>
+            <div>
+            <img src={`${baseUrl}img/platform.svg`} />
+            </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.subSection}>
-        </div>
-        <div className={styles.subSection}>
-      </div>
     </div>
     // </Layout>
   );

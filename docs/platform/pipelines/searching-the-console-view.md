@@ -8,9 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-When viewing execution details, you can search logs in the console view.
+If you've run at least one pipeline in Harness, you can view the execution details, including logs and other outputs. When viewing execution details, you can search logs in the console view.
 
-To view execution details, you must have run a pipeline at least once. If you haven't run a pipeline before, try a [tutorial](/tutorials/) to get started with Harness.
+:::tip
+
+If you haven't run a pipeline yet, [Try Harness CI](/docs/continuous-integration/get-started/tutorials) to get started with Harness for free.
+
+:::
 
 ## Search step logs
 

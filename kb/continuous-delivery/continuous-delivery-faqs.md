@@ -1317,9 +1317,8 @@ See more on this here : [Documentation](https://developer.harness.io/docs/faqs/c
 
 
 #### How can I use Harness CD with Google Cloud Functions?
-Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
 
-See more on this here : [Documentation](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/)
+Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
 
 #### Is it possible to add variables at the Infrastructure Definition level?
 As of now, Harness does not provide direct support for variables within infrastructure definitions. However, you can achieve a similar outcome by using tags in the form of `key:value`. For example, you can define a tag like `region:us-east` and reference it using the following expression: `<+infra.tags.region>`.
@@ -2823,11 +2822,10 @@ Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline
 
 #### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
 
-One can refer to the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
-
-Please read more on `workflow variables` in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
-
-Please read more on `regular platform variables` in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/variables/)
+For infomation about this, go to:
+* [Migrating variables and expressions from firstgen to nextgen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
+* [Workflow variables](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
+* [Add and reference variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable)
 
 #### How can multi-service pipelines be executed in parallel as stages while ensuring that users select a single environment for all these parallel stages?
 
@@ -5343,7 +5341,7 @@ Please read more on OPA policy step in the following [Documentation](https://dev
 #### How can one migrate a service to a higher scope (if available at projeect level) ?
 
 Currently, there's no built-in way to move or upgrade services to higher levels. When sharing a service, it needs to have a scope at either the organizational or account level. Fortunately, you can always use the terraform provider to recreate those services at a higher level.
-Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/)
+Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/docs/platform/automation/terraform/onboard-terraform-provider)
 
 #### How can one use AWS CodeDeploy Template support at Harness ?
 
@@ -5428,8 +5426,7 @@ Please read more on manifest commit Id in the following [Documentation](https://
 
 #### Does Harness support Triggers in GitX ?
 
-No, Harness does not support Triggers for GitX.
-Please read more on triggers in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/trigger/)
+No, Harness does not support [triggers](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger) for GitX.
 
 #### How to diagnose instances where pipeline fails to initiate due to trigger issues ?
 

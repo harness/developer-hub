@@ -6,29 +6,6 @@ import {
   import { MODULES } from "@site/src/constants"
   
   /* Define the cards - start */
-  // Featured Tutorials
-  export const featuredTutorials: CardItem[] = [
-      {
-        title: "Your first STO pipeline",
-        module: MODULES.sto,
-        icon: "img/icon_sto.svg",
-        description: "Set up a pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "15min",
-        link: "/tutorials/security-tests/your-first-sto-pipeline",
-      },
-      {
-        title: "Create a build-scan-push pipeline (STO only)",
-        module: MODULES.sto,
-        icon: "img/icon_sto.svg",
-        description: "Set up an end-to-end STO pipeline that scans your codebase. Then it builds an image and scans it. If the image scan detects no critical issues, the pipeline pushes the image to your registry.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "15min",
-        link: "/tutorials/security-tests/build-scan-push-sto-only",
-      },
-    ];
     
     // Docs
     export const docsCards: CardSections = [
@@ -42,7 +19,7 @@ import {
               module: MODULES.sto,
               description:
                 "Dive in with these tutorials.",
-              link: "/docs/security-testing-orchestration/get-started/tutorials",
+              link: "/docs/security-testing-orchestration/get-started/sto-tutorials/tutorials",
             },
             {
               title: "STO basics",

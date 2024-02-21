@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 In addition to a Harness account, this tutorial requires a GitHub account and knowledge of Python, FastAPI, Git, and GitHub.
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 
 <CISignupTip />
 

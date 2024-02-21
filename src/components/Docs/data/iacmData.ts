@@ -2,29 +2,6 @@ import { CardSections } from "@site/src/components/LandingPage/TutorialCard";
 import { MODULES } from "@site/src/constants"
   
 /* Define the cards - start */
-// Featured Tutorials
-// export const featuredTutorials: CardItem[] = [
-//   {
-//     title: "Getting Started",
-//     module: MODULES.iacm,
-//     icon: "img/iacm-icon.svg",
-//     description: "Use SSCA module steps to generate SBOM and enforce policies in Harness pipelines.",
-//     newDoc: true,
-//     type: [docType.Documentation],
-//     time: "15min",
-//     link: "/tutorials/secure-supply-chain/generate-sbom",
-//   },
-//   {
-//     title: "Generate and verify SLSA Provenance",
-//     module: MODULES.iacm,
-//     icon: "img/iacm-icon.svg",
-//     description: "Use SSCA module steps to generate and verify SLSA Provenance in Harness pipelines.",
-//     newDoc: true,
-//     type: [docType.Documentation],
-//     time: "15min",
-//     link: "/tutorials/secure-supply-chain/generate-slsa",
-//   },
-// ];
 
 // Docs
 export const docsCards: CardSections = [

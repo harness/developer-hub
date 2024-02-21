@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 # Key concepts
 
-This topic covers basic terminology and concepts related to SEI. For information about creating SEI Insights and configuring integrations go to [Insights](/docs/software-engineering-insights/sei-insights)
+This topic covers basic terminology and concepts related to SEI. For information about creating SEI Insights and configuring integrations go to [Insights](../insights/sei-insights).
 
 ## Projects
 
@@ -24,7 +24,7 @@ For more information, Go to [Projects and Collections](/docs/software-engineerin
 
 Insights in SEI provide a visual representation of key metrics and KPIs, enabling engineering teams to monitor their performance and identify areas for improvement. To create a Insight in SEI, users can utilize pre-built reports that are specifically designed to display relevant data points. These reports can be customized and arranged on the insight canvas to create a comprehensive view of team performance.
 
-For more information, go to [Insights](/docs/software-engineering-insights/sei-insights)
+For more information, go to [Insights](../insights/sei-insights).
 
 ## Ingestion Satellite
 

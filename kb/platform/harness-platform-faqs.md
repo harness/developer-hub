@@ -890,9 +890,7 @@ For more information, go to [Google cloud functions](/docs/faqs/continuous-deliv
 
 ### How can I use Harness CD with Google Cloud Functions?
 
-Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
-
-For more information, go to [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func/).
+Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
 
 ### Why am I getting the "Unsupported block type with the Run on Remote Workspace" error?
 

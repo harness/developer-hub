@@ -47,7 +47,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>NG_PIPELINE_TEMPLATE</td>
-        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is Limited GA.</b> </td>
+        <td>Enables <a href="https://developer.harness.io/docs/platform/templates/create-pipeline-template">Harness templates.</a>. <b>This feature is Limited GA.</b> </td>
     </tr>
     <tr>
         <td>OPA_GIT_GOVERNANCE</td>

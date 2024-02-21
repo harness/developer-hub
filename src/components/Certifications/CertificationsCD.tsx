@@ -146,7 +146,7 @@ export default function CertificationsCD() {
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -169,7 +169,7 @@ export default function CertificationsCD() {
                     Register for Exam
                   </button>
                 </Link>
-                {/* <Link href="/tutorials/cd-pipelines">
+                {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -230,7 +230,7 @@ export default function CertificationsCD() {
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -253,7 +253,7 @@ export default function CertificationsCD() {
                     Register for Exam
                   </button>
                 </Link>
-                {/* <Link href="/tutorials/cd-pipelines">
+                {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -316,7 +316,7 @@ export default function CertificationsCD() {
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -339,7 +339,7 @@ export default function CertificationsCD() {
                     Register for Exam
                   </button>
                 </Link>
-                {/* <Link href="/tutorials/cd-pipelines">
+                {/* <Link href="/docs/continuous-delivery">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>

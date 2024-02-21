@@ -743,8 +743,6 @@ Sign up with a new account and then sign in.
 
 If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 
-Try the [Tutorials and quickstarts](../../get-started/tutorials).
-
 ## Updating Harness NextGen
 
 **Do not upgrade Harness past 4 major releases.** Instead, upgrades each interim release until you upgrade to the latest release. A best practice is to upgrade Harness once a month. Use the following steps to update your Harness Self-Managed Enterprise Edition installation.
