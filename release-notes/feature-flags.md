@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: February 15th 2024
+### Latest Updated: February 21st 2024
 
 ## February 2024
 
@@ -74,6 +74,12 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 #### Version 1.2.0
 
  - Resolved an issue where the `AnalyticsManager` class was causing crashes. For context, this class uses a dictionary and does not sanitize the thread when reading/writing which was causing crashes due to race conditions.
+
+### JavaScript SDK
+
+#### Version 1.24.0
+
+ - Disables streaming if Reactive Native + Android are detected. (FFM-10442)
 
 ### .NET SDK
 
