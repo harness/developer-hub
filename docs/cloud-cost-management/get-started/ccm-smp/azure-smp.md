@@ -48,15 +48,15 @@ Copy & Save **Application (client) ID** → `clientId`.
 
 9. From the new Client secret, Copy & Save **Value** → `clientSecret`. For more information, go to [Add credentials](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app#add-credentials).
 
-:::important note
-Make a note of the following: 
+:::info
+Make a note of the following:
 
 - tenantId
 
 - clientId
 
 - clientSecret
-:::  
+:::
 
 ## Setup a new Storage Account and a new Storage Container
 1. Select a **Subscription** from the drop down.
@@ -84,8 +84,8 @@ Make a note of the following:
 
   <docimage path={require('./static/azure-destination-storage-sas-token.png')} width="50%" height="50%" title="Click to view full size image" />
 
-:::important note
-Make a note of the following: 
+:::info
+Make a note of the following:
 
 - storageName
 
@@ -141,7 +141,7 @@ ccm:
 ```
 </details>
 
-:::important note
+:::info
 Air-gapped environment for Azure in SMP is not supported as of now
 :::
 
@@ -151,8 +151,6 @@ Air-gapped environment for Azure in SMP is not supported as of now
 ```
 helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml 
 ```
-          
-    
 
 ## Handling Kubernetes secrets
 
@@ -372,8 +370,8 @@ SMTP_USE_SSL: <SMTP_USE_SSL>
 SMTP_USERNAME: <SMTP_USERNAME>
 ```
 
-:::important important
-Increase TimescaleDB to 100Gi: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
+:::info
+To increase TimescaleDB to 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
 :::
 
 ## Next steps

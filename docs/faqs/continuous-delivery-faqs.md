@@ -825,7 +825,7 @@ You can deploy an image to your TAS space using a TAS manifest, vars files, and 
 
 #### What are the requirements?
 
-You must install the CF CLI v7, autoscaler, and Create-Service-Push plugins on the Harness delegates that perform deployment.
+You must install the CF CLI v7, autoscaler, and Create-Service-Push plugins on the Harness Delegates that perform deployment.
 
 #### What deployment strategies are supported?
 

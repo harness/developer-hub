@@ -40,11 +40,11 @@ When you add an ELK verification provider and click SUBMIT, you might see the fo
 
 #### Cause
 
-The Harness delegate does not have a valid connection to the ELK server.
+The Harness Delegate does not have a valid connection to the ELK server.
 
 #### Solution
 
-On the same server or instance where the Harness delegate is running, run one of the following cURL commands to verify whether the delegate can connect to the ELK server.
+On the same server or instance where the Harness Delegate is running, run one of the following cURL commands to verify whether the delegate can connect to the ELK server.
 
 If you do not have a username and password for the ELK server:
 

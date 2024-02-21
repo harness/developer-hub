@@ -180,7 +180,7 @@ Some services require HTTP headers to be included in connections. Without the he
 
 Harness performs an HTTP capability check with the headers included on the target service.
 
-If the target host server require headers and you do not include headers in the **Headers** setting of the HTTP step, the Harness delegate will fail the deployment with the error `No eligible delegates could perform this task` (`error 400`).
+If the target host server require headers and you do not include headers in the **Headers** setting of the HTTP step, the Harness Delegate will fail the deployment with the error `No eligible delegates could perform this task` (`error 400`).
 
 Add the required headers in **Headers** and run the deployment. Adding the headers will prevent the `400` error.
 
@@ -194,7 +194,7 @@ During a capability check, the non-secret headers are used as is but the secret 
 `x-api-key:<<<api_key>>>`  
 `content-type:application/json`
 
-This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness delegate. 
+This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness Delegate. 
 
 :::info
 Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow these workarounds.

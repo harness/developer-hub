@@ -610,7 +610,7 @@ Harness supports the following Terraform versions:
 - v0.15.0
 - v0.14.0
 
-Here's an example install script for the Harness delegate:
+Here's an example install script for the Harness Delegate:
 
 ```bash
 # Install TF

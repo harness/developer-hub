@@ -340,8 +340,8 @@ Following are some secrets from platform-service that you will need to update:
     SMTP_USERNAME: <SMTP_USERNAME>
     ```
 
-:::important note
-Note: ```kubectl edit pvc wal-volume-harness-timescaledb-0 -n \<namespace\>``` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
+:::info
+Run `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
 :::
 
 ## GCP Connector Setup
@@ -355,8 +355,7 @@ In the **Grant Permissions** step of GCP Connector flow, follow below steps:
 
 Please refer [this](https://www.cloudquery.io/blog/creating-cross-project-service-accounts-in-gcp#how-do-we-grant-it-access-to-other-projects?) doc if you encounter any difficulties understanding the process. It provides a comprehensive explanation of all steps accompanied by screenshots.
 
-:::important note
-Note: Not supporting **GCP Inventory management** in the **Choose Requirements** step of GCP Connector flow.
+:::info
+Not supporting **GCP Inventory management** in the **Choose Requirements** step of GCP Connector flow.
 :::
-
 

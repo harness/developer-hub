@@ -452,7 +452,7 @@ Once your Helm chart is added, it appears in the **Manifests** section. For ex
 
 - If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 - For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
-- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
+- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
 - Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
 
@@ -1165,7 +1165,7 @@ To use a GCR artifact, you create or use a Harness GCP Connector to connect to G
 <details>
 <summary>GCP connector YAML</summary>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 ```yaml
 connector:
@@ -1337,7 +1337,7 @@ For Google Container Registry (GCR), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 </details>
 
@@ -1356,7 +1356,7 @@ import TabItem7 from '@theme/TabItem';
 <Tabs7>
   <TabItem7 value="YAML" label="YAML" default>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 <details>
 <summary>Google Artifact Registry connector YAML</summary>
@@ -1530,7 +1530,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::note
 
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation.
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness Delegate, has the required permissions. See the **Permissions** tab in this documentation.
 
     :::
 
@@ -1549,7 +1549,7 @@ For Google Artifact Registry, the following roles are required:
 
 For more information, go to the GCP documentation [Configure roles and permissions](https://cloud.google.com/artifact-registry/docs/access-control).
 
-Ensure the Harness delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`.
+Ensure the Harness Delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`.
 
 </details>
 
@@ -1566,7 +1566,7 @@ import TabItem8 from '@theme/TabItem';
 <Tabs8>
   <TabItem8 value="YAML" label="YAML" default>
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>ECR connector YAML</summary>
@@ -1789,7 +1789,7 @@ import TabItem9 from '@theme/TabItem';
 <Tabs9>
   <TabItem9 value="YAML" label="YAML" default>
 
-This example uses a Harness delegate installed in Azure for credentials.
+This example uses a Harness Delegate installed in Azure for credentials.
 
 <details>
 <summary>Azure connector for ACR YAML</summary>

@@ -396,7 +396,9 @@ curl 'https://app.harness.io/gateway/ccm/api/governance/status/noIGUi15TS-_XrJIP
 
 noIGUi15TS-_XrJIPwYczQ here is the evaluation ID
 
+#### Why are my evaluations taking longer than 3 minutes to execute? 
 
+Cloud Asset Governance evaluations taking longer than three minutes can be due to complex policies with multiple resource checks or due to high volume of resources being evaluated. Additionally, limitations in the cloud provider's API response times and network latency can also contribute to longer execution times.
 
 ### Autostopping
 

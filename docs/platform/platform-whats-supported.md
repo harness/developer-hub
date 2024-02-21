@@ -86,7 +86,7 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 - [Deploy delegate on Docker](/docs/platform/delegates/install-delegates/overview)
 
-- [Install delegate minimal image without SDKs](/tutorials/platform/secure-delegate-default-to-minimal/)
+- [Install delegate minimal image without SDKs](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 - [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
 

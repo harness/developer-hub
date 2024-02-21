@@ -1,16 +1,31 @@
 ---
 title: Create a pipeline template
-description: This quickstart walks you through the steps to create a pipeline template.
+description: Learn how to create a pipeline template.
 sidebar_position: 4
 helpdocs_topic_id: gvbaldmib5
 helpdocs_category_id: m8tm1mgn2g
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /tutorials/cd-pipelines/templates
 ---
 
-Harness templates let you standardize builds for all your services and distribute them across teams. Templates are reusable builds with a common configuration that conforms to organizational standards, making maintenance easier and less prone to errors.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-A pipeline template lets you distribute reusable pipelines across your team or among multiple teams. Instead of building pipelines from scratch, templates simplify the process by having parameters already built-in.
+Harness [templates](./template.md) let you standardize builds for all your services and distribute them across teams. Templates are reusable builds with a common configuration that conforms to organizational standards, making maintenance easier and less prone to errors.
+
+## Template benefits
+
+A [pipeline](/docs/category/pipelines) template lets you distribute reusable pipelines across your team or among multiple teams. Instead of building pipelines from scratch, templates simplify the process by having parameters already built-in.
+
+Benefits include:
+
+- Share common logic without duplicating it on multiple pipelines. For example, if you have some tasks or operations that every pipeline must do, then make them a part of a template to use in your pipelines.
+- Reduce the complexity and size of creating a single pipeline.
+- Set a pattern that you and your team can follow throughout your pipelines.
+- Save time and create generic templates that you can use across all scopes in your Harness account.
+- Add or remove a change in one file rather than a lot of stages.
 
 For example, you can automate your build and deploy services by adding a pipeline template. You can link the following templates to your pipeline template:
 
@@ -19,44 +34,77 @@ For example, you can automate your build and deploy services by adding a pipelin
 * Approval stage: To add approval stages for PROD.
 * Prod deploy stage: To deploy to Production.
 
-This topic walks you through the steps to create a pipeline template.
+## Before you begin
 
-### Before you begin
-
-* Review [Templates overview](template.md) to understand template concepts.
-* Review [Permissions reference](../role-based-access-control/permissions-reference) to learn about the permissions required to create a template at various scopes.
-* Review [Pipelines and stages](/docs/category/pipelines).
-
-### Limitations
-
-Failure strategy and notification settings can only be provided when you create a template.
-
-### Review: Permissions requirements
-
-You need create/edit, delete, and access permissions on templates to create a pipeline template. Go to [Permissions reference](../role-based-access-control/permissions-reference) for more information.
-
-### Review: Pipeline template scope
-
-You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
+* Failure strategy and notification settings can only be provided when you *create* a template, not when you use it in a pipeline.
+* You need [permissions](../role-based-access-control/permissions-reference) to create/edit, delete, and access templates to create a pipeline template.
+* You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 
-|  |  |
+| Scope | When to add templates |
 | --- | --- |
-| **Scope** | **When to add templates?** |
-| **Account** | To share step/stage/pipeline templates with users in the account, as well as users within the organizations and projects created within this account. |
-| **Organization** | To share step/stage/pipeline templates with users in the organization as well as within the projects created within the org. |
-| **Project** | To share step/stage/pipeline templates with users within the project. |
+| Account | To share step/stage/pipeline templates with users in the account, as well as users within the organizations and projects created within this account. |
+| Organization | To share step/stage/pipeline templates with users in the organization as well as within the projects created within the org. |
+| Project | To share step/stage/pipeline templates with users within the project. |
 
-### Visual summary
-
-Here is a quick overview of pipeline templates:
-
-* You can add a pipeline template to an account, org, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * You can either link an existing stage template or add a stage to your pipeline template.
 * You can either link to a step template or add a step for any new step that you add to your pipeline stage.
 
 ![](./static/create-pipeline-template-65.png)
+
+## Create a pipeline template
+
+Harness templates allow you to design reusable content, logic, and parameters, ensuring that the application is the major focus of your pipelines. Instead of creating pipelines from scratch each time, Harness lets you select from pre-built templates and link them to your pipelines. The process of developing pipelines thus becomes easier by reducing duplication and increasing reusability.
+
+<details>
+<summary>Tutorial: Create a CD pipeline template</summary>
+
+This tutorial focuses on how to use templates with Harness CD pipelines. We will guide you through saving a sample deployment pipeline as a template, and then using it to get started with a new pipeline at project level.
+
+1. Make sure you have followed the [get started with CD tutorial](/docs/continuous-delivery/get-started/cd-tutorials/manifest) and have the `guestbook` deployment pipeline up and running.
+2. In the **Pipeline Studio** of the `guestbook` pipeline, select the dropdown menu next to **Save**, and select **Save as Template**.
+3. Enter the **Name** `harness-deployment-template` and the **Version Label** `0.0.1`.
+4. For this tutorial, select **Save To** `Project`.  There are three **Save To** options that declare the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the template is created.
+4. Set up the template to be stored inline (in the Harness Platform) or in a remote Git repo.
+
+<Tabs>
+<TabItem value="Inline">
+
+1. Select **Inline** and **Save** the Template.
+2. Go to **Templates** under **Project Setup** in the left navigation.
+
+</TabItem>
+<TabItem value="Remote">
+
+1. In **Git Connector**, select the `harness_gitconnector` you created during the get-started tutorial It will pre-fill the other settings.
+2. Select **Save**.
+3. Connect to your Github account and select **Commit to a New Branch**.
+4. Select **Save**.
+5. Harness will create the template and push it to Github.
+6. When prompted to use use the template, select **No**.
+7. Check your forked `harenesscd-example` apps repo and under **master-patch** branch you'll find the deployment-template under `.harness` directory.
+
+</TabItem>
+</Tabs>
+
+To use the pipeline template to create a pipeline:
+
+1. In **Default Project**, select **Pipelines**.
+2. Select **New Pipeline**.
+3. Enter the name `guestbook_template_pipeline`.
+4. Select **Inline** to store the pipeline in Harness.
+5. Now select **Start with Template**.
+6. Select the `harness-deployment-template` you just created and select **Use Template**.
+7. Select **Save** and then select **Run** to run the pipeline.
+
+:::warning
+
+The `harness-deployment-template` will only work under the `default_project` which already has all the pipeline resources created during get started pipeline.
+
+:::
+
+</details>
 
 ### Step 1: Add a template
 
@@ -70,7 +118,7 @@ To add a template, do the following:
 4. In **Name**, enter a name for the template, for example `Quickstart`.
 5. (Optional) Select the pencil icon to enter a **Description**.
 6. (Optional) Select the pencil icon to add **Tags**.
-7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
 
    ![](./static/create-pipeline-template-68.png)
 
@@ -88,7 +136,7 @@ To add a template, do the following:
 
 ### Step 2: Add a stage
 
-This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 
+This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment.
 
 Other options include:
 
@@ -175,11 +223,11 @@ To define execution strategies, do the following:
 
 9. Select **Continue**. The template is published successfully.
 
-### Next Step
+## Use templates
 
-* [Use a template](use-a-template.md)
+After creating a template, [use it to create a pipeline](use-a-template.md).
 
-### See also
+You can also:
 
 * [Create a step template](run-step-template-quickstart.md)
 * [Create an HTTP step template](harness-template-library.md)

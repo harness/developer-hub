@@ -100,7 +100,7 @@ connector:
       - doc-immut
 ```
 
-The `InheritFromDelegate` credential is used in this example. This credential is used when a Harness delegate is running inside the target cluster.
+The `InheritFromDelegate` credential is used in this example. This credential is used when a Harness Delegate is running inside the target cluster.
 
 Here is the YAML for an Infrastructure Definition.
 
@@ -433,7 +433,7 @@ To create the Harness Rancher connector, do the following:
 5. In **Rancher URL**, enter the URL to the Rancher server.
 6. In **Authentication**, select **Bearer Token**, and select or add a Harness secret containing the token.
 7. Select **Continue**.
-8. In **Delegates Setup**, select or add a Harness delegate to use when performing this connection, or let Harness select the delegate.
+8. In **Delegates Setup**, select or add a Harness Delegate to use when performing this connection, or let Harness select the delegate.
 9. Select **Continue**.
 
 To add an **Infrastructure Definition** with the Rancher connection method, do the following:

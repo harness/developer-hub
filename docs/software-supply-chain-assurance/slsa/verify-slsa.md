@@ -6,11 +6,23 @@ sidebar_position: 20
 
 You can use Harness SSCA to verify SLSA Provenance and confirm that you can trust an artifact before deployment. You can also use SSCA to [generate SLSA Provenance](./generate-slsa.md).
 
-:::tip Tutorial
+<details>
+<summary>Generate and verify SLSA Provenance architecture</summary>
 
-For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Provenance](/tutorials/secure-supply-chain/generate-slsa).
+To generate and verify SLSA Provenance with Harness SSCA, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). The stages must have these minimum steps:
 
-:::
+- **Build** stage:
+  - **Build and Push an image to Docker Registry** step: Build and push an image to a Docker registry.
+  - [SLSA generation enabled in the stage settings.](./generate-slsa.md)
+- **Deploy** stage:
+  - **SLSA Verification** step: Verify the SLSA Provenance.
+  - **Rolling deployment** step: Deploy the image.
+
+<!-- ![](./static/slsa-pipeline-example.png) -->
+
+<DocImage path={require('./static/slsa-pipeline-example.png')} />
+
+</details>
 
 ## Prepare a pipeline
 
@@ -58,9 +70,11 @@ deny[msg]{
 }
 ```
 
+For more examples, go to [Policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case).
+
 ## Add the SLSA Verification step
 
-Use the **SLSA Verification** step in a **Deploy** stage to verify provenance. This is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
+Add the **SLSA Verification** step to a **Deploy** stage to verify provenance. The SLSA Verification step is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 
 ### Configure SLSA Verification step settings
 

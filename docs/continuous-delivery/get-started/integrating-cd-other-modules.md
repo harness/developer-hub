@@ -146,10 +146,8 @@ It's that simple to integrate Harness CI and CD.
 
 This was just a simple introduction to the integration.
 
-For a longer tutorial of Harness CI and CD integration, go to [End-To-End CI/CD Pipeline](/tutorials/cd-pipelines/unified-cicd/e2e-pipeline).
+For a longer tutorial of Harness CI and CD integration, go to [End-To-End CI/CD Pipeline](/docs/continuous-delivery/get-started/cd-tutorials/e2e-pipeline).
 
 ## Harness Chaos Engineering
 
-The Harness Chaos Engineering (HCE) integration with Harness CD allows chaos experiments to be executed as part of a Harness CD pipeline.
-
-For a tutorial of this integration, go to [Integration with Harness CD](/tutorials/chaos-experiments/integration-with-harness-cd).
+The [Harness Chaos Engineering (HCE) integration with Harness CD](/docs/chaos-engineering/integrations/chaos-cd) allows chaos experiments to be executed as part of a Harness CD pipeline.

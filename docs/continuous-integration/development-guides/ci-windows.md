@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-You can build and test a [Microsoft Windows](https://learn.microsoft.com/en-us/windows/apps/get-started/?tabs=net-maui%2Ccpp-win32) application using a Windows platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure) build infrastructure.
+You can build and test a [Microsoft Windows](https://learn.microsoft.com/en-us/windows/apps/get-started/?tabs=net-maui%2Ccpp-win32) application using a Windows platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -44,9 +44,9 @@ stages:
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-There are several self-hosted build infrastructure options. This example uses a Kubernetes cluster build infrastructure. For instructions and important information, go to [Run Windows builds in a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure).
+There are several self-managed build infrastructure options. This example uses a Kubernetes cluster build infrastructure. For instructions and important information, go to [Run Windows builds in a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure).
 
 ```yaml
 stages:
@@ -91,7 +91,7 @@ Harness Cloud runners include pre-installed libraries and tools, and you can use
 
 </TabItem>
 
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies.
 
@@ -133,9 +133,9 @@ Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-i
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -203,7 +203,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -271,7 +271,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -331,7 +331,7 @@ You can use a **Run** step to install a different version or edition of Visual S
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 If not already included on your build machine, you can specify a container image that has the necessary binaries or use a **Run** step to install Visual Studio.
 
@@ -374,7 +374,7 @@ Several shell binaries are pre-installed on Hosted Cloud runners, including Bash
 You can also use **Run** steps to install different shell tools into the build environment, or specify a container image that has the necessary binaries for the command you want to run.
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
@@ -480,7 +480,7 @@ pipeline:
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 

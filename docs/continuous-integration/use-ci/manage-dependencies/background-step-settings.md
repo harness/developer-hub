@@ -78,7 +78,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 * [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
 * [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Background** steps can use binaries available on the host machine. The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need.
-* [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Background** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
+* [Self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Background** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-managed VM build infrastructure.
 * [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Background** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
 
 :::
@@ -285,7 +285,7 @@ The host port and container port binding are similar to [port mapping in Docker]
 
 Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running. For example, assume you create a Background step with the [Name and ID](#name-and-id) `myloginservice`. To call this service in later steps in the same stage, you use:
 
-* `myloginservice:container_port` for containerized steps, such as those running in self-hosted VM build infrastructures or running Docker images.
+* `myloginservice:container_port` for containerized steps, such as those running in self-managed VM build infrastructures or running Docker images.
 * `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine). For steps running MySQL in a Kubernetes cluster build infrastructure, you must use `127.0.0.1:host_port`.
 
 :::info

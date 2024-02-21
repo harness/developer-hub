@@ -66,7 +66,7 @@ View Scorecards, Checks and default Datasources
 
 #### 2. Create / Edit
 
-[Create or Edit](https://developer.harness.io/tutorials/internal-developer-portal/how-to-track-migrations#create-a-scorecard) Scorecards, as well as add custom checks using datasources. 
+[Create or Edit scorecards](../scorecards/scorecard), as well as add custom checks using datasources.
 
 #### 3. Delete
 

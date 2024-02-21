@@ -34,7 +34,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 :::info
 
-These fields are optional when using a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure). These fields are only required if the build machine doesn't have the required binaries pre-installed.
+These fields are optional when using a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), [self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure). These fields are only required if the build machine doesn't have the required binaries pre-installed.
 
 :::
 
@@ -61,7 +61,7 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 Output variables are not available for all plugins.
 
-Support for plugin output variables may vary with [self-hosted Cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Support for plugin output variables may vary with [self-managed AWS/GCP/Azure VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 :::
 

@@ -341,10 +341,10 @@ html[data-theme="light"] .navbar .navbar__logo {
 html[data-theme="dark"] .navbar {
   box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.2);
 }
-html[data-theme="dark"] code {
+/* html[data-theme="dark"] code {
   background-color: white;
   color: #000000;
-}
+} */
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
   --platform-card-bg: var(--gray-200);

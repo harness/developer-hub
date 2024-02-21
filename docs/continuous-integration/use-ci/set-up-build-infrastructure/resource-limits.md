@@ -8,12 +8,14 @@ This topic describes container resource allocation logic, how you can configure 
 
 ## Build pod resource allocation
 
-By default, resource requests are always set to the minimum, and additional resources are requested only as needed during build execution, depending on the [resource request logic](#resource-request-logic-and-calculations). Resources are not consumed after a step's execution is done.
+Build pod resources are defined in terms of *requests* and *limits*.
 
 * **What are Kubernetes container requests?** Containers are guaranteed to get requests. If a container requests a resource, Kubernetes only schedules it on a node that can give the container the requested resource.
 * **What are Kubernetes container limits?** This defines the upper limit for resource consumption by a Kubernetes container. When the container uses more than the defined limit, Kubernetes evicts the pod.
 
-For more information, go to the Kubernetes documentation on [Kubernetes best practices: Resource requests and limits](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits).
+For more information, go to the Kubernetes documentation on [Resource requests and limits](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits).
+
+In Harness, by default, resource requests are always set to the minimum, and additional resources are requested only as needed during build execution, depending on the [resource request logic](#resource-request-logic-and-calculations). Resources are not consumed after a step's execution is done.
 
 Default resource minimums (requests) and maximums (limits) are as follows:
 
@@ -21,6 +23,12 @@ Default resource minimums (requests) and maximums (limits) are as follows:
 | --------- | ----------- | ----------- | -------------- | -------------- |
 | Steps | 10m | 400m | 10Mi | 500Mi |
 | Add on (execution-related steps on containers in Kubernetes pods) | 100m | 100m | 100Mi | 100Mi |
+
+## Don't use LimitRange policies to constrain limits
+
+[LimitRange policies](https://kubernetes.io/docs/concepts/policy/limit-range/) set on your Kubernetes cluster can interfere with build pod scheduling. **Don't use LimitRange policies to constrain limits.**
+
+If you choose to use a LimitRange policy, use only the `defaultRequest` policy. Don't use polices that constrain limits, such as `max` and `min`.
 
 ## Override resource limits
 
@@ -31,11 +39,13 @@ For an individual step, you can use the **Set Container Resources** settings to 
 
 :::info
 
-**Set Container Resources** settings aren't available for self-hosted VM or Harness Cloud build infrastructures.
+**Set Container Resources** settings aren't available for self-managed VM or Harness Cloud build infrastructures.
 
 :::
 
 To increase default resource limits across the board, you can contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_INCREASE_DEFAULT_RESOURCES`. This feature flag increases maximum CPU to 1000m and maximum memory to 3000Mi.
+
+To restrict add on (lite engine) resources, you can contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_CONSERVATIVE_K8_RESOURCE_LIMITS`. This feature flag sets lite engine resource limits to the default minimum (100m CPU and 100Mi memory).
 
 ## Resource request logic and calculations
 
