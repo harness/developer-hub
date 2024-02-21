@@ -84,6 +84,33 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
+## Supported Flags for JFrog
+
+This plugin can also be used to pass optional flags supported by JFrog CLI. Currently, this plugin supports the following flags:-
+
+- `--build-name`: Specifies the name of the build associated with the uploaded artifacts in JFrog Artifactory. This flag allows organizing and tracking artifacts based on their build name.
+  
+- `--build-number`: Specifies the build number associated with the uploaded artifacts in JFrog Artifactory. This flag allows versioning and identifying different builds of the same project or component.
+
+To use these flags, the plugin must be run by using a **Plugin** step and passing the image as `plugins/artifactory`.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: plugin
+                  identifier: plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifactory
+                    settings:
+                      access_token: YOUR_JFROG_TOKEN
+                      url: YOUR_JFROG_ARTIFACTORY_URL
+                      source: /path/to/source
+                      target: /path/to/target
+                      build_name: ARTIFACTS_BUILD_NAME
+                      build_number: ARTIFACTS_BUILD_NUMBER
+```
+
 ## View artifacts on the Artifacts tab
 
 You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../../viewing-builds.md). To do this, add a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
