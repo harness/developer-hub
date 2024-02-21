@@ -2943,14 +2943,14 @@ The `DELEGATE_TASK_CAPACITY` feature flag allows you to configure the maximum nu
 
 Delegates expire six months (24 weeks) from the date the delegate image was released on DockerHub. Although delegate expiration doesn't stop them from working immediately, issues may arise if the backend has advanced too far ahead, rendering the delegate no longer forward-compatible. While delegates are backward compatible, it's highly recommended to upgrade at least once every six months to ensure optimal performance and compatibility.
 
-#### How to get failure error for pipeline
+#### How do I get error details for a failed pipeline execution?
 
-You can make use of getExecutionDetailV2 api and get the error details under executionErrorInfo with status as failed.
+You can use the `getExecutionDetailV2` API to get the error details under `executionErrorInfo` with the status as `failed`.
 
-#### While using AWS KMS secret is stored in AWS or Harness end
+#### Are AWS KMS secrets stored in AWS or Harness?
 
 Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
 
-#### Can we use any other encryption (other than the default one) while using AWS secret manager
+#### Can we use an encryption method other than the default with AWS secret manager?
 
-No, while using AWS Secret manager, default encryption will be used if you have to use custom encryption, then you need to use AWS KMS secret manager. 
+No. When using the AWS secret manager, the default encryption is used. If you have to use a custom encryption, you must use the AWS KMS secret manager. 
