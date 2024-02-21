@@ -34,7 +34,7 @@ Each provider will have some common configuration options and some provider spec
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
 
 :::note
-We currently only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1alpha4 versions of the TrafficSplit resource since these are the only versions that support having rules (such as uri, method, and headers as described later).
+Currently, we only support `specs.smi-spec.io/v1alpha3` and `specs.smi-spec.io/v1alpha4` TrafficSplit resource versions since these are the only versions that support having rules (such as uri, method, and headers described below).
 :::
 
 * **Parameters**:
