@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
 
 ### How to add and manage a custom chaos hub?
 
@@ -24,7 +24,7 @@ To connect to a private chaos hub repository, connect to a Harness GitHub connec
 
 Faults refer to the failures that are injected into the target resource as part of an experiment. Whereas a chaos experiment is a set of different faults coupled together to achieve a desired chaos impact.
 
-### What are the possible reasons I can’t see tunables in **Tune Fault** UI?
+### What are the possible reasons I can’t see tunables in Tune Fault UI?
 
 Since the tuning of a chaos experiment is highly declarative, sometimes it may cause parsing issues, these may be the possible reasons:
 
@@ -74,7 +74,7 @@ The chaos infrastructure setup involves the creation of CRDs and RBAC resources.
 
 It is recommended that you **don't** run multiple cluster-scoped chaos infrastructures on the same cluster since this would result in the chaos infrastructures overwriting each other's cluster-level resources.
 
-## Chaos infrastructure is inactive, how to execute my experiment?
+### Chaos infrastructure is inactive, how to execute my experiment?
 
 A chaos infrastructure could be inactive due to a variety of reasons. When you try to execute an experiment but the chaos infrastructure is inactive, you can switch over to a different infrastructure that is active (represented with a green circle at the right side of the infrastructure name) and execute your experiment or create a new chaos infrastructure (provided you have the necessary privileges to create one) and execute your experiment on it.
 

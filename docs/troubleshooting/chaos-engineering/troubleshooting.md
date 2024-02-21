@@ -186,3 +186,11 @@ kubectl describe pod <pod-name> -n <namespace>
 ```
 
 The events section of the result of executing the earlier command will help determine whether the issue is related to memory/CPU. If so, you can free the required memory/CPU.
+
+## After injecting chaos, experiment aborts and probes fail continuously, how can this be addressed?
+
+If you inject chaos into your application, but the experiment gets aborted due to continuous probe failure, you can:
+
+### Workaround
+1. Add 1 to 2 s of intial delay (**Initial Delay** is the field name while configuring the resilience probes); and
+2. Provide multiple attempts (**Attempt** is the field name in resilience probes).
