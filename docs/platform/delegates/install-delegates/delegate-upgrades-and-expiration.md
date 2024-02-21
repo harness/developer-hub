@@ -142,7 +142,7 @@ To find the delegate status, select an account, a project, or an organization, t
 
 ![Detecting delegate](static/detect-delegate.png)
 
-When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: OFF** or **AUTO UPGRADE: OFF**. 
+When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: ON** or **AUTO UPGRADE: OFF**. 
 
 ![Auto-upgrade on](static/auto-upgrade-on.png)
 
