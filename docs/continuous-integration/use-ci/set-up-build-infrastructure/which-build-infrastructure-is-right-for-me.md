@@ -9,18 +9,19 @@ import TabItem from '@theme/TabItem';
 
 With Harness CI, you can run builds on Harness-managed machines or your own infrastructure. Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
 
-```mermaid
----
-title: Choose your build infrastructure
----
-flowchart TD
-    A(Fastest setup) --> D(Harness Cloud)
-    B(Harness-managed infrastructure) --> D
 
-    C(Self-managed infrastructure) --> E(Local runner)
-    C --> F(Kubernetes cluster)
-    C --> G(AWS/GCP/Azure VMs)
-```
+<!--```mermaid -->
+<!-- --- -->
+<!-- title: Choose your build infrastructure -->
+<!-- --- -->
+<!-- flowchart TD dashdashcaret -->
+<!--    A(Fastest setup) dashdashcaret D(Harness Cloud) -->
+<!--    B(Harness-managed infrastructure) dashdashcaret D -->
+<!-- -->
+<!--    C(Self-managed infrastructure) dashdashcaret E(Local runner) -->
+<!--    C dashdashcaret F(Kubernetes cluster) -->
+<!--    C dashdashcaret G(AWS/GCP/Azure VMs) -->
+<!--```-->
 
 ## Harness-managed infrastructure - Harness Cloud
 
