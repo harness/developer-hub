@@ -7,7 +7,13 @@ sidebar_position: 40
 
 ## Introduction 
 
-A Backstage Plugin adds functionality to Backstage.
+A Backstage Plugin adds functionality to Backstage. In this tutorial we will be using the a backstage monorepo to build out frontend plugins. 
+
+## Pre-Requisites
+
+1. Fork and Clone this [repository](https://github.com/harness/backstage-plugins), we will be using this repo to build our backstage-frontend plugins. 
+
+2. Alternatively you can set up your own Backstage project by creating a [Backstage App](https://backstage.io/docs/getting-started/create-an-app#create-an-app). A Backstage App is a monorepo setup with lerna that includes everything you need to run Backstage in your own environment.
 
 ## Create a Plugin
 To create a new frontend plugin, make sure you've run `yarn install` and installed dependencies, then run the following on your command line (a shortcut to invoking the [backstage-cli new --select plugin](https://backstage.io/docs/local-dev/cli-commands#new)) from the root of your project.
@@ -39,7 +45,7 @@ Each plugin is treated as a self-contained web app and can include almost any ty
 ## Developing guidelines
 - Consider writing plugins in TypeScript.
 - Plan the directory structure of your plugin so that it becomes easy to manage.
-- Prefer using the Backstage components, otherwise go with Material UI.
+- Prefer using the [Backstage components](https://backstage.io/storybook), otherwise go with Material UI.
 - Check out the shared Backstage APIs before building a new one.
 
 ## Plugin concepts / API
@@ -185,4 +191,4 @@ Luckily both of these steps happen automatically when you create a plugin with t
 
 ## Talking to the outside world
 
-If your plugin needs to communicate with services outside the Backstage environment you will probably face challenges like CORS policies and/or backend-side authorization. To smooth this process out you can use proxy - either the one you already have (like Nginx, HAProxy, etc.) or the proxy-backend plugin that we provide for the Backstage backend. [Read more](https://github.com/backstage/backstage/blob/master/plugins/proxy-backend/README.md)
+If your plugin needs to communicate with services outside the Backstage environment you will probably face challenges like CORS policies and/or backend-side authorization. To smooth this process out you can use proxy. [Read more](https://backstage.io/docs/plugins/proxying/)
