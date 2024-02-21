@@ -176,7 +176,7 @@ You can use this field to run the Snyk scan with additional options.
 
 ### Show original CVSS scores overridden by Snyk security policies 
 
-You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
+You can configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
 
 ![Security override in Security Tests](../static/sto-7041-override-in-security-tests.png)
 
