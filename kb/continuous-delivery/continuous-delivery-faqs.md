@@ -2401,7 +2401,7 @@ deny[msg] {
 
 #### How to solve the following error? Invalid request: Profile definition must end with ']
 
-Harness delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
+Harness Delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
 
 #### Why am I receiving the message 'Current execution is queued as another execution is running with given resource key' in the step resource constraint?
 
@@ -4372,9 +4372,9 @@ No this is not supported as of now, as currently command step is only applicable
 
 We don't charge separately for infrastructure provisioning swimlanes or custom script orchestration like 'cdk deploy.' Our current licensing model is straightforward, and there's no additional fee for this usage.
 
-#### Can I use the same cluster for running the Harness delegate and containerized step group(s), or is it required to use separate clusters ?
+#### Can I use the same cluster for running the Harness Delegate and containerized step group(s), or is it required to use separate clusters ?
 
-Certainly! one has the flexibility to use the same cluster for both the Harness delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
+Certainly! one has the flexibility to use the same cluster for both the Harness Delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
 
 #### What are the Google Cloud Functions supported by Harness ?
@@ -4532,7 +4532,7 @@ use UI to update the Tags.
 You can access the variables using the expression.
 Also for your reference, you can click on the copy icon by the side of the variable to get its corresponding expression for access.
 
-#### How do I add custom certificates to Harness delegates?
+#### How do I add custom certificates to Harness Delegates?
 
 You can use the instructions mentioned here to install custom certificates - https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/
 
@@ -4925,7 +4925,7 @@ To fetch files from the Harness file store in a Run step, you can use the follow
 ```
 Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
 
-#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
+#### Is there a way the user can pull from Bitbucket/Github inside the Harness Delegate and then push it to the target server?
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
 
 #### Is there a way to prevent editing the input set during the rerun of pipelines?

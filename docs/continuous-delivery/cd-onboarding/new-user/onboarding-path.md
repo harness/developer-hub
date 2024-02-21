@@ -97,9 +97,9 @@ A Harness project is a group of Harness modules and their pipelines. For example
 
 ### Step 2. Installing Delegate
 
-The Harness delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager.
+The Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager.
 
-The first time you connect Harness to a third-party resource, the Harness delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed and registers with Harness, you can Harness connect to third-party resources. The delegate performs all operations, including deployment and integration.
+The first time you connect Harness to a third-party resource, the Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed and registers with Harness, you can Harness connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
 For more information, go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate).
 

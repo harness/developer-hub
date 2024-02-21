@@ -25,7 +25,7 @@ You can use Harness with Terraform in the following ways:
 
 * **Dynamic infrastructure provisioning:** you can provision the target infrastructure for a deployment as part of the stage's **Environment** settings, and then deploy to that provisioned infrastructure in the same stage.
 * **Ad hoc provisioning:** provision any resources other than the target infrastructure for the deployment.
-  * **Local provisioning:** you can run configuration files on the Harness delegate(s) installed in your environment.
+  * **Local provisioning:** you can run configuration files on the Harness Delegate(s) installed in your environment.
   * **Terraform Cloud/Enterprise:** you can run Terraform Cloud workspaces by connecting Harness to your Terraform Cloud account.
 
 You can do all methods in the same stage if you want.
@@ -53,7 +53,7 @@ The Google Kubernetes Engine infrastructure option lets you provision a cluster 
 
 You can use the Harness Terraform steps to provision any resources. You simply add the steps in the Deploy or Custom stage **Execution**.
 
-For steps on how to run Terraform configuration files on Harness delegates installed in your environment, go to:
+For steps on how to run Terraform configuration files on Harness Delegates installed in your environment, go to:
 
 * [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step)
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
@@ -86,7 +86,7 @@ You can install Terraform manually or use the `INIT_SCRIPT` environment variab
 
 For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
-The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
+The Harness Delegate uses RedHat Universal Base Image (redhat/ubi8).
 
 Here's an example of the script to install Terraform:
 
@@ -111,7 +111,7 @@ terraform --version
 
 ## Running Terraform on remote workspaces
 
-In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces. 
+In addition to running Terraform configuration files locally on the Harness Delegate, Harness supports running Terraform Cloud and Enterprise workspaces. 
 
 There are two ways you can run Terraform Cloud and Enterprise workspaces:
 

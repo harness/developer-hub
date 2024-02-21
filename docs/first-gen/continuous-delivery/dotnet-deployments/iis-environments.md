@@ -90,7 +90,7 @@ This following table describes the fields for an Azure Infrastructure Definition
 | **Resource Group** | Select the resource group where your VM is located. |
 | **WinRM** **Connection Attributes** | Select the name of the WinRM Connection you created. This is the value you entered in **Name** when you created the WinRM Connection in **Secrets Management**. |
 | **Tags** | Click **Add** to use a tag to quickly select the VM you want to use. |
-| **Use Public DNS for connection** | If locating the VM(s) requires public DNS name resolution, enable this option. Since the Harness delegate can only run on Linux, it must either be run on a Linux VM in the same subnet as your deployment target VMs or on a Linux server with network access to your Azure VMs. In the latter case, you can use public DNS to resolve the hostname of the target VMs. |
+| **Use Public DNS for connection** | If locating the VM(s) requires public DNS name resolution, enable this option. Since the Harness Delegate can only run on Linux, it must either be run on a Linux VM in the same subnet as your deployment target VMs or on a Linux server with network access to your Azure VMs. In the latter case, you can use public DNS to resolve the hostname of the target VMs. |
 | **Scope to specific Services** | Select the Harness Service you created for your IIS Website. |
 
 ### Option: Override an IIS Service Configuration

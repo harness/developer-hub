@@ -44,14 +44,14 @@ Overall, the TokenRequest API provides a more flexible and extensible authentica
 
 To select which API to use:
 
-- **Auth Provider API**: this is the current default. You do not have to change the default settings of Harness connectors or the Harness delegates you use.
-- **TokenRequest API**: you must install the provider-specific plugin on the Harness delegate(s) to use the TokenRequest API introduced in Kubernetes 1.22.
+- **Auth Provider API**: this is the current default. You do not have to change the default settings of Harness connectors or the Harness Delegates you use.
+- **TokenRequest API**: you must install the provider-specific plugin on the Harness Delegate(s) to use the TokenRequest API introduced in Kubernetes 1.22.
 
 ### Install the kubelogin client-go credential (exec) plugin on the delegate
 
 When using the Harness Azure connector with Kubernetes version >= 1.22, you can use the **kubelogin client-go credential (exec) plugin** to authenticate to AKS cluster.
 
-The Harness Azure connector has 4 authentication types. For each type, you must install the following dependencies in the Harness delegates you use or Harness will follow the old Auth Provider API format.
+The Harness Azure connector has 4 authentication types. For each type, you must install the following dependencies in the Harness Delegates you use or Harness will follow the old Auth Provider API format.
 
 - **Secret** (`SERVICE_PRINCIPAL_SECRET`): Kubelogin binary.
 - **Certificate** (`SERVICE_PRINCIPAL_CERT`): Kubelogin binary and azurecli (azurecli is required as kubelogin does not support certificate in PEM format).
@@ -590,7 +590,7 @@ You can add Azure connectors at the account, org, or project level at any time, 
 There are two primary ways for the Harness connector to authenticate with Azure:
 
 * Select **Specify credentials here** to use an Application (client) and Tenant (directory) Id.
-* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness delegate that is running in your Azure subscription or AKS cluster.
+* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness Delegate that is running in your Azure subscription or AKS cluster.
 
 <details>
 <summary>Specify credentials</summary>
@@ -659,9 +659,9 @@ If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-con
 1. Select how you want Harness to connect to Azure:
 
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-   * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
+   * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness Delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
 
-2. If connecting through a Harness delegate, select either:
+2. If connecting through a Harness Delegate, select either:
 
    * **Use any available Delegate:** Harness selects an available delegate at runtime.
    * **Only use Delegates with all of the following tags:** Use tags to match one or more suitable delegates. You can also install a new delegate at this time.

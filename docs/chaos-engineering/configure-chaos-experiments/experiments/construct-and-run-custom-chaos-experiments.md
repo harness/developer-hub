@@ -240,7 +240,7 @@ Create (or register) a chaos infrastructure (Kubernetes infrastructure) that inj
 
 
 1. Specify a name for the chaos infrastructure and provide description and tags (description and tags are optional).
-2. Choose the mode of installation for the Harness delegate. Harness delegate is a remote agent to access your Kubernetes cluster resources and inject faults into them as a part of a chaos experiment.
+2. Choose the mode of installation for the Harness Delegate. Harness Delegate is a remote agent to access your Kubernetes cluster resources and inject faults into them as a part of a chaos experiment.
 3. **Cluster Wide** installation mode allows you to target resources across all the namespaces in your cluster whereas **Namespace Mode** installation restricts injecting chaos to a certain namespace in which the delegate will be installed.
 
 In this tutorial, the delegate will be installed in the **hce** namespace in **Cluster Wide** mode.

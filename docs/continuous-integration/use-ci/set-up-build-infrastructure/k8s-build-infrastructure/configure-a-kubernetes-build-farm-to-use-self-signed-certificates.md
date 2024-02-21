@@ -28,7 +28,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
 ## Enable self-signed certificates
 
-1. Create a Kubernetes secret or config map with the required certificates in the same namespace used by the Harness delegate. For example:
+1. Create a Kubernetes secret or config map with the required certificates in the same namespace used by the Harness Delegate. For example:
 
    ```yaml
    apiVersion: v1  

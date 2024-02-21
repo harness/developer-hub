@@ -231,11 +231,11 @@ spec:
 
 The [Git file generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files) is a subtype of the Git generator. The Git file generator generates parameters using the contents of JSON/YAML files found within a specified repository. `template.spec.project` refers to the Argo CD project ID that is mapped to your Harness project. 
 
-Navigate to **GitOps > Settings > GitOps: Agents** to find the project ID. Update the project in **git-generator-files.yaml** in your **GitHub forked repo** with the ID you see there.
+Navigate to **GitOps > Settings > GitOps: Agents** to find the project ID. Update the project in `git-generator-files.yaml` in your **GitHub forked repo** with the ID you see there.
 
 ![Argo Project ID](./static/e2e/argo-project-id.png)
 
-Also replace **GITHUB_USERNAME** in git-generator-files.yaml with your actual GitHub user.
+Also replace **GITHUB_USERNAME** in the `git-generator-files.yaml` file with your actual GitHub user.
 
 Create a Harness GitOps Application by executing the following command:
 

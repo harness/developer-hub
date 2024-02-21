@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-By default, the tasks performed by Harness CD steps are run on the Harness delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
+By default, the tasks performed by Harness CD steps are run on the Harness Delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
 
 To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster as the runtime infrastructure for CD steps.
 
@@ -30,7 +30,7 @@ This option is disabled for deployment types that do not support containerized s
 
 - CD containerized step groups are only supported in a Deploy stage. They are not supported in a Custom stage.
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
-- You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.
+- You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
 - Currently, containerized step groups are supported in the following deployment types:
   - [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
   - [Serverless.com framework for AWS Lambda deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#before-you-begin)
@@ -324,7 +324,7 @@ resource "harness_platform_connector_docker" "test" {
    3. **Authentication:** `Anonymous`.
    
    ![Harness Docker Hub registry settings](../static/539247318e3a3170d30ef2b94e905a20c6be96af64838f30df8a9d54c4a6ac44.png)  
-5. Connect using a Harness delegate, and select **Continue**.
+5. Connect using a Harness Delegate, and select **Continue**.
 6. Select any delegate or select/create a specific delegate, and then select **Save and Continue**.
 7. When the connection test is complete, select **Finish**.
 
@@ -471,7 +471,7 @@ Select the step to see its log and how the DinD is set up. The general sequence 
 
 ## Using AWS SAM and Serverless.com Harness Connectors with containerized step groups
 
-For AWS SAM and Serverless deployments with CD containerized steps, users were not able to deploy with a Harness connector using ISRA and IAM roles for the authentication performed by the Harness delegate.
+For AWS SAM and Serverless deployments with CD containerized steps, users were not able to deploy with a Harness connector using ISRA and IAM roles for the authentication performed by the Harness Delegate.
 
 The primary issue stemmed from the fact that the service account specified in the step group configuration was not being utilized by the step images during deployment.
 
