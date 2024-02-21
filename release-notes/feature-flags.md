@@ -79,7 +79,7 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
 #### Version 1.24.0
 
- - Disables streaming if Reactive Native + Android is detected. (FFM-10442)
+ - Disables streaming if Reactive Native + Android are detected. (FFM-10442)
 
 ### .NET SDK
 
