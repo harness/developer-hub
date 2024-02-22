@@ -49,4 +49,7 @@
 /tutorials/cd-pipelines/vm /docs/category/cd-and-gitops-tutorials
 /tutorials /docs
 
+# Added by aimurphy 22 Feb 24 to test something
+/docs/continuous-integration/development-guides/mlops-with-ci https://www.harness.io/blog/weaveworks-closes-its-doors
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
