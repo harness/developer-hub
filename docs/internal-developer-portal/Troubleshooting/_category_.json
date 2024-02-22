@@ -1,12 +1,11 @@
 {
-    "label": "API References",
+    "label": "Troubleshoot & FAQs",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 1010,
+    "position": 1020,
     "link": {
       "type": "generated-index",
-      "title": "API References"
+      "title": "Troubleshoot and FAQ for IDP"
     },
     "customProps": {}
   }
-  

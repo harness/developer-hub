@@ -1,7 +1,7 @@
 ---
 title: Supported Custom Actions
 description: These Custom Actions are supported in Harness IDP
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ## Introduction
