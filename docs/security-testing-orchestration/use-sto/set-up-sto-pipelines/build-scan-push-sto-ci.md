@@ -1,9 +1,10 @@
 ---
-title: Create a build-scan-push pipeline (STO and CI)
+title: "Tutorial: Create a build-scan-push pipeline (STO and CI)"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 80
 redirect_from:
   - /tutorials/security-tests/build-scan-push-sto-ci
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-ci
 ---
 
 import Tabs from '@theme/Tabs';
@@ -36,7 +37,7 @@ The following steps describe the workflow:
 
 4. If the image has no critical vulnerabilities, another Build and Push step pushes a prod image to Docker Hub.
 
-![scan-build-scan-push tutorial pipeline](./static/sbsp-sto-ci/sbsp-pipeline-ui.png)
+![scan-build-scan-push tutorial pipeline](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/sbsp-pipeline-ui.png)
 
 :::info Prerequisites
 
@@ -124,7 +125,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## Scan the code
 
-import set_up_harness_26 from '../static/your-first-pipeline/configure-bandit-step.png'
+import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/configure-bandit-step.png'
 
 <Tabs>
 <TabItem value="Visual" label="Visual" default>

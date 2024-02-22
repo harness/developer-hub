@@ -1,9 +1,10 @@
 ---
-title: Create a build-scan-push pipeline (STO only)
+title: "Tutorial: Create a build-scan-push pipeline (STO only)"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 70
 redirect_from:
   - /tutorials/security-tests/build-scan-push-sto-only
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-only
 ---
 
 import Tabs from '@theme/Tabs';
@@ -38,7 +39,7 @@ The following steps describe the workflow:
 
 5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub.
 
-![scan-build-scan-push tutorial pipeline](./static/sbsp-sto-only/00-pipeline-steps.png)
+![scan-build-scan-push tutorial pipeline](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-only/00-pipeline-steps.png)
 
 :::info Prerequisites
 
@@ -162,7 +163,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
          - Key : `SEMGREP_APP_TOKEN`
          - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`.
 
-           ![set the value type](./static/sbsp-sto-ci/set-value-type.png)
+           ![set the value type](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/set-value-type.png)
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
