@@ -57,12 +57,26 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   This issue is fixed by adding a meaningful error message.
 - The Subscriptions card under the CD Activity & Usage page's Trend tab was not loading properly. (CDS-91344)
   
-  The date API call got cancelled when the `useEffect` component was being loaded causing this issue. This issue is fixed by making the date API call only after the `useEffect` component was mounted. 
+  The date API call got cancelled when its component was being mounted causing this issue. This issue is fixed by making the date API call only after the component was mounted. 
 
-  The error handling is also improved by displaying a proper error message as part of the failed API response. On instances where a proper message is not present, `Something went wrong` message appears by default. 
+  The error handling is also improved by displaying a proper error message as part of the failed API response. On instances where a proper message is not present, `Something went wrong` message appears by default.
+- Scaling down Autoscaling Groups (ASG) rolling deployment was causing downtime. (CDS-91335, ZD-57686)
+  
+  This issue is fixed by updating the AWS Java SDK for ASG utilized in deployments from version 1.12.261 to 1.12.654. 
+  
+  Also, Harness has improved the instance refresh operation parameters. Now, for ASG rolling deployments, the default values for the minimum healthy percentage and maximum healthy percentage parameters during instance refresh operations are set to 90% and 110% respectively. This change mitigates downtime during service deployment.
+
 - Artifactory and Git connectors did not honor Secrets Manager selector. (CDS-91300, ZD-57541)
 
-  These connectors did not check the connectivity to the Secrets Manager. Hence, the secrets were not getting resolved on the delegate. This issue is fixed. Now, the connection test also checks if the Secret Manager is accessible.
+  These connectors did not check the connectivity to the Secrets Manager. Hence, the secrets were not getting resolved on the delegate. This issue is fixed. Now, the connection test also checks if the Secrets Manager is accessible. 
+  
+  This fix is behind the feature flag, `CDS_SERVICE_AND_INFRA_STEP_DELEGATE_SELECTOR_PRECEDENCE`. To enable this fix, contact [Harness Support](mailto:support@harness.io). 
+- Users were unable to create custom queries as a heath source for monitored services. (CDS-91181, ZD-57562)
+  
+  This issue is fixed by making the service instance field configurable for users.
+
+  This item requires Harness Delegate version 82400. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - Harness did not display dynamically provisioned infrastructure inputs when the input field was set as runtime. (CDS-90757)
   
   This issue is fixed. The provisioner runtime input field now appears in the infrastructure input card.
