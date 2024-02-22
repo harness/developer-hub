@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Authentication methods
 
-There are two methods available for Harness CE to authenticate itself with AWS and obtain the necessary permissions that are specific to the targeted services:
+There are two methods available for HCE to authenticate itself with AWS and obtain the necessary permissions that are specific to the targeted services:
 
 * **Recommended: IAM Roles for Service Accounts (IRSA)** 
 
@@ -26,7 +26,7 @@ There are two methods available for Harness CE to authenticate itself with AWS a
 
 ### Terminology for accounts
 
-In this topic, we refer to three types of accounts:
+In this topic, Harness refers to three types of accounts:
 
 * **The experiment service account:** A Kubernetes service account created when you install a chaos infrastructure on your EKS cluster. This is the account that executes and controls chaos experiments. Its default name is `litmus-admin`, however you can use a different name.
 

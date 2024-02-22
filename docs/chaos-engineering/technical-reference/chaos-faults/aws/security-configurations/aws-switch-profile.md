@@ -1,5 +1,6 @@
 ---
 title: AWS named profile for chaos
+sidebar_position: 2
 description: Manage different users to perform AWS API calls
 ---
 This section describes how different users are managed to perform AWS API calls.
@@ -18,7 +19,7 @@ aws_access_key_id=AKERI44QH8DHBEXAMPLE
 aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 ```
 
-## Prepare multiple profiles for CE
+## Prepare multiple profiles for HCE
 
 ### 1. Prepare Kubernetes secret
 
