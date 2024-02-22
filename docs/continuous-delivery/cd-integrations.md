@@ -220,10 +220,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/download-logs">Download execution logs</a>.</td>
     </tr>
     <tr>
-        <td>CDS_SHELL_VARIABLES_EXPORT</td>
-        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Limited GA.</b></td>
-    </tr>
-    <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>

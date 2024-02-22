@@ -464,12 +464,6 @@ Variables of type Secret must have a non-empty value.
 
 ### Scoping output variables using aliases
 
-:::note
-
-Currently, scoping output variables using aliases is behind the feature flag `CDS_SHELL_VARIABLES_EXPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 To prevent variable name conflicts, you can use **Publish Variable Names (Alias)** to scope output variables to different entities.
 
 1. First, use **Script Output Variables** to export the variables.
