@@ -121,10 +121,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_AUTO_APPROVAL</td>
-        <td>Support for scheduled approval configuration to let the Approval occur after a time window.</td>
-    </tr>
-    <tr>
         <td>CDS_ARTIFACTS_PRIMARY_IDENTIFIER</td>
         <td>Allows you to change the expression value for the primary artifact identifier. <b>This feature is in Beta.</b></td>
     </tr>
