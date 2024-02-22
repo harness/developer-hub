@@ -21,21 +21,21 @@ You should review and complete the following prerequisites.
 ## Step 2. Create your first CD pipeline 
 We recommend you use either the [Harness UI](/docs/get-started/harness-ui-overview) or the [Harness CLI](/docs/category/cli) for learning how to create pipelines as well as for creating your first pipeline. Additionally, you should use a Harness-provided sample app here so that you can see how the basic features work. The tutorials below are all based on a sample app. You will onboard your own app in the next step.
 
-- [All CD & GitOps tutorials](/tutorials/cd-pipelines)
-- [Kubernetes pipelines & GitOps workflows](/tutorials/cd-pipelines/kubernetes/)
-- [Serverless pipelines](/tutorials/cd-pipelines/serverless/)
-- [VM pipelines for traditional apps](/tutorials/cd-pipelines/vm/)
-- [Amazon ECS pipelines](/tutorials/cd-pipelines/amazon-ecs)
-- [Automate pipeline execution through pipeline triggers](/tutorials/cd-pipelines/trigger)
+- [All CD & GitOps tutorials](/docs/category/cd-and-gitops-tutorials)
+- [Kubernetes pipelines & GitOps workflows](/docs/continuous-delivery/get-started/cd-tutorials/manifest)
+- [Serverless pipelines](/docs/continuous-delivery/get-started/cd-tutorials/aws-lambda)
+- [VM pipelines for traditional apps](/docs/continuous-delivery/get-started/cd-tutorials/aws)
+- [Amazon ECS pipelines](/docs/continuous-delivery/get-started/cd-tutorials/amazon-ecs)
+- [Automate pipeline execution through pipeline triggers](/docs/platform/triggers/tutorial-cd-trigger)
 
 ## Step 3. See advanced CD concepts in action
 Now you are ready to learn advanced CD concepts through the following tutorials.
 
-- [Templates](/tutorials/cd-pipelines/templates)
-- [Notifications](/tutorials/cd-pipelines/notifications)
-- [Approvals](/tutorials/cd-pipelines/approvals)
-- [Continuous Verification](/tutorials/cd-pipelines/continuous-verification/)
-- [Infrastructure Provisioning as part of CD pipeline](/tutorials/cd-pipelines/infra-provisioning/)
+- [Templates](/docs/platform/templates/create-pipeline-template)
+- [Notifications](/docs/platform/notifications/notification-settings)
+- [Approvals](/docs/platform/approvals/approvals-tutorial)
+- [Continuous Verification](/docs/continuous-delivery/get-started/cd-tutorials/prometheus)
+- [Infrastructure Provisioning as part of CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/cloudformation)
 - [Variables & Expressions](/docs/platform/variables-and-expressions/harness-variables)
 
 ## Step 4. Automate onboarding for your own app 

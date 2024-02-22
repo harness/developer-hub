@@ -829,7 +829,7 @@ This issue can occur if a User Group was provisioned via SCIM (System for Cross-
 
 To resolve this issue, you need to de-provision the affected User Group from Harness and then provision the same User Group again. This will create a new Harness Identifier for the group, ensuring that any naming restrictions are applied correctly, and it should no longer contain hyphens or other disallowed characters.
 
-### Why is the Harness delegate instance status showing Expiring in 2 months but the latest version is valid for 3 months?
+### Why is the Harness Delegate instance status showing Expiring in 2 months but the latest version is valid for 3 months?
 
 For the delegates with an immutable image type, the instance status will show Expiring in 2 months only, it's the expected behavior.
 
@@ -876,7 +876,7 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
 
-### How can I avoid pulling Harness delegate images from a public repo?
+### How can I avoid pulling Harness Delegate images from a public repo?
 
 You can add a special Harness Container Image Registry connector to your Harness account. With this connector, the delegate pulls these images from the Harness Container Image Registry only.
 
@@ -890,9 +890,7 @@ For more information, go to [Google cloud functions](/docs/faqs/continuous-deliv
 
 ### How can I use Harness CD with Google Cloud Functions?
 
-Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
-
-For more information, go to [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func/).
+Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
 
 ### Why am I getting the "Unsupported block type with the Run on Remote Workspace" error?
 
@@ -2204,7 +2202,7 @@ If you would like to use service account only you can create a account level ser
 
 ### How do I run a Harness docker delegate in detached mode?
 
-Docker provides a -d flag option for running the containers in detached mode. So when we are running the Harness delegate Docker run command we can add the option to get the console back and the container will continue to run in detach mode. For example below is a sample delegate run command:
+Docker provides a -d flag option for running the containers in detached mode. So when we are running the Harness Delegate Docker run command we can add the option to get the console back and the container will continue to run in detach mode. For example below is a sample delegate run command:
 
 ```
 docker run  --cpus=1 --memory=2g \
@@ -2942,3 +2940,15 @@ The `DELEGATE_TASK_CAPACITY` feature flag allows you to configure the maximum nu
 ### When do delegates expire and what does this mean for their compatibility?
 
 Delegates expire six months (24 weeks) from the date the delegate image was released on DockerHub. Although delegate expiration doesn't stop them from working immediately, issues may arise if the backend has advanced too far ahead, rendering the delegate no longer forward-compatible. While delegates are backward compatible, it's highly recommended to upgrade at least once every six months to ensure optimal performance and compatibility.
+
+#### How do I get error details for a failed pipeline execution?
+
+You can use the `getExecutionDetailV2` API to get the error details under `executionErrorInfo` with the status as `failed`.
+
+#### Are AWS KMS secrets stored in AWS or Harness?
+
+Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
+
+#### Can we use an encryption method other than the default with AWS secret manager?
+
+No. When using the AWS secret manager, the default encryption is used. If you have to use a custom encryption, you must use the AWS KMS secret manager. 

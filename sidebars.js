@@ -4,12 +4,6 @@
 
 const sidebars = {
   allcontent: [
-    // Tutorial Link from Docs
-    {
-      type: "link",
-      label: "Tutorials",
-      href: "/tutorials",
-    },
     // Documentation Parent
     {
       type: "category",

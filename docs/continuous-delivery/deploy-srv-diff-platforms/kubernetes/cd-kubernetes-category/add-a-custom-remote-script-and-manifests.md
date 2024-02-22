@@ -167,7 +167,7 @@ For more information on Helm command flags, go to [Add Helm chart](/docs/continu
 
 ## Task Breakdown of custom remote manifest with Kubernetes deployment
 
-Harness performs deployment with two Harness delegate tasks. These are jobs that are assigned to the delegate by the Harness Manager.  
+Harness performs deployment with two Harness Delegate tasks. These are jobs that are assigned to the delegate by the Harness Manager.  
 
 1. **Fetch Files**: This task goes to the source repository or manifest source to fetch the manifests and download them onto the delegate running in your environment.
 2. **Kubernetes Rolling Deploy**: This task takes the manifests collected from the Fetch Files task and deploys them into the target Kubernetes cluster.

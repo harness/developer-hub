@@ -296,7 +296,7 @@ There is a change in the permissions associated with [Overrides V2](/docs/contin
 - Service phase fails to parse a variable value. (CDS-87290)
   - There was an issue in the service phase of the stage execution where it fails to render a string variable, and throws the error `Invalid yaml: Malformed numeric value '00:00:00.100' at [Source: (StringReader); line: 36, column: 30]`. This was because variables with time format with milliseconds were being sent without quotes.
   - Now, string variables with values such as `00:00:00.100` (time in milliseconds) are supported in Service variables.
-- Kubernetes Apply step started failing after upgrading to the current Harness delegate type (immutable). (CDS-87011)
+- Kubernetes Apply step started failing after upgrading to the current Harness Delegate type (immutable). (CDS-87011)
   - When using the `--dependency-update` flag with a Helm chart and Kubernetes Apply step, Harness didn't ignore the unrelated to Helm template output lines.
   - Harness was trying to interpret some of the Helm template output as a manifest. This resulted in a failure during the step.
   - This issue has been resolved. Now Harness will ignore anything unrelated to the manifest output when using the Kubernetes Apply step with the `--dependency-update` flag.
@@ -1876,7 +1876,7 @@ This release does not include early access features.
 
 - The **Helm Deploy** step timed out during the Helm steady state check and Helm rollback failed to initialize. (CDS-73264)
 
-  This is now fixed and the rollback does execute. Please make sure your Harness delegate(s) are on delegate version 23.08.80104 to use these changes.
+  This is now fixed and the rollback does execute. Please make sure your Harness Delegate(s) are on delegate version 23.08.80104 to use these changes.
 
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
 
@@ -2987,7 +2987,7 @@ This release does not include any early access features.
 
   The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
 
-  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness Delegate. It they are missing, Harness will follow the old auth provider format.
 
   - `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
   - `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider.
@@ -3212,7 +3212,7 @@ The custom table being used should allow access to this table via web services.
   The parameters of the **Route Mapping** step are:
 
   - **Name** - Deployment step name. For example, Map Route or Unmap Route.
-  - **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timing out and initiating the failure strategy.
+  - **Timeout** - How long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timing out and initiating the failure strategy.
   - **Mapping Type** - Select **Map Route** or **UnMap Route** to map or unmap routes respectively.
   - **App Name** - Enter the application name.
   - **Routes** - Enter the routes you want to map or unmap to this deployment.
@@ -3692,7 +3692,7 @@ connector:
 
 - The HTTP step error message needed improvement. (CDS-52537)
 
-  Previously only assertion logs were present. Now all logs are added on the Harness delegate.
+  Previously only assertion logs were present. Now all logs are added on the Harness Delegate.
 
   The error message for the step is now improved with more comprehensive logs.
 

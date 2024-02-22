@@ -348,7 +348,7 @@ To use a GCR artifact, you create or use a Harness GCP Connector to connect to G
 <details>
 <summary>GCP connector YAML</summary>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 ```yaml
 connector:
@@ -532,7 +532,7 @@ For Google Container Registry (GCR), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 <details>
 <summary>Use Docker Registry for GCR</summary>
@@ -560,7 +560,7 @@ For Google Container Registry (GCR), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 </details>
 
@@ -605,7 +605,7 @@ To use a GCS artifact, you create or use a Harness GCP Connector to connect to G
 <details>
 <summary>GCP connector YAML</summary>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 ```yaml
 connector:
@@ -805,7 +805,7 @@ For details on all the Google Artifact Registry requirements for the GCP Connect
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 <details>
 <summary>Google Artifact Registry connector YAML</summary>
@@ -980,7 +980,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::note 
 
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness Delegate, has the required permissions. See the **Permissions** tab in this documentation. 
    
     :::
 
@@ -1014,7 +1014,7 @@ For Google Artifact Registry, the following roles are required:
 
 For more information, go to the GCP documentation [Configure roles and permissions](https://cloud.google.com/artifact-registry/docs/access-control).
 
-Ensure the Harness delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`. 
+Ensure the Harness Delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`. 
 
 
 
@@ -1295,7 +1295,7 @@ You connect to ACR using a Harness Azure Connector. For details on all the Azure
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in Azure for credentials.
+This example uses a Harness Delegate installed in Azure for credentials.
 
 <details>
 <summary>Azure connector for ACR YAML</summary>
@@ -1700,7 +1700,7 @@ You connect to ECR using a Harness AWS connector. For details on all the ECR req
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>ECR connector YAML</summary>
@@ -2031,7 +2031,7 @@ You connect to AWS using a Harness AWS connector. For details on all the AWS req
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>AWS connector YAML</summary>
@@ -2287,7 +2287,7 @@ For AWS AMI artifacts, a version number represents the name of AMI. You can filt
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>AWS connector YAML</summary>

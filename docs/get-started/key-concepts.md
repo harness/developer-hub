@@ -10,7 +10,7 @@ redirect_from:
   - /docs/getting-started/key-concepts
 ---
 
-Before you begin using Harness modules, you should be familiar with the key concepts.
+Before you [sign up for Harness](https://app.harness.io/auth/#/signup/) and start using Harness modules, you should be familiar with these key concepts.
 
 ## Projects
 
@@ -144,5 +144,3 @@ For more information, go to [Harness GitOps basics](/docs/continuous-delivery/gi
 In GitOps, changes are managed via Git files and Agents, without requiring pipelines. Deployments refer to executed pipelines in Harness.
 
 This difference is why you see **Deployments** and **GitOps** separated in the Harness UI.
-
-**What's next?** [Sign up for Harness](https://app.harness.io/auth/#/signup/) and then try a [quickstart](tutorials.md).

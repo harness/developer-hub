@@ -2,12 +2,9 @@
 title: Software catalog
 description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/software-catalog
+  - /tutorials/internal-developer-portal/add-links-in-components
 ---
 
 ![](./static/catalog-screenshot.png)
@@ -41,11 +38,13 @@ spec:
   system: project-x
 ```
 
-For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
+## Register software components in the catalog
+
+For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](/docs/internal-developer-portal/tutorials/register-component-in-catalog.md#start-with-basic-entity-information).
 
 ## Software ecosystem modelling
 
-The catalog is home to several types of software components such as services, websites, libraries, APIs, and even resources such as databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. For information about how to model your software ecosystem, go to [backstage.io](https://backstage.io/docs/features/software-catalog/system-model).
+The catalog is home to several types of software components such as services, websites, libraries, APIs, and even resources such as databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. For information about how to model your software ecosystem, go to [system model](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model).
 
 ## API access
 

@@ -22,6 +22,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## February 2024
+
+### Version 1.31.2
+
+#### New features and enhancements
+
+* This release adds API support to install and upgrade chaos infrastructure using Helm. (CHAOS-2998)
+
+#### Fixed issues
+
+* Disabling a Linux resilience probe removed all chaos faults associated with the chaos experiment. It has been fixed. Now, you can bulk enable and disable a Kubernetes and a Linux infrastrcuture's resilience probe. (CHAOS-3849)
+
 ## January 2024
 
 ### Version 1.30.0
@@ -887,7 +899,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
     * This release adds support for X-API-KEY authentication for user-facing HCE APIs. This way, you can avoid using a JWT token, which gives more control over the module, and set your own custom expiration time on the X-API-KEY. 
 
 * Support for deployment on existing chaos infrastructure (CHAOS-954)
-    * This release adds support for deploying your chaos infrastructures on clusters that use the existing (deployed) Harness delegates (also known as the brownfield method of deployment). You can select the connector that points to the required delegate and other details like installation mode, service account name, and namespace, after which the YAML manifest is generated and sent over to the cluster instead of being downloaded on your system. Once the delegate receives the manifest, it deploys your chaos infrastructure on the selected cluster. Currently, you can deploy the chaos infrastructure by using only account-level delegates.
+    * This release adds support for deploying your chaos infrastructures on clusters that use the existing (deployed) Harness Delegates (also known as the brownfield method of deployment). You can select the connector that points to the required delegate and other details like installation mode, service account name, and namespace, after which the YAML manifest is generated and sent over to the cluster instead of being downloaded on your system. Once the delegate receives the manifest, it deploys your chaos infrastructure on the selected cluster. Currently, you can deploy the chaos infrastructure by using only account-level delegates.
 
 * Details of an experiment are prefilled when adding it to a chaos hub (CHAOS-989)
     * Instead of forcing you to re-enter details, this release prefills the details of the experiment that you want to add to a chaos hub. You can simply navigate to the experiment and select **Add to ChaosHub**. The resulting screen displays the name of the experiment, a description (optional), and tags (optional). You can add your experiment to the chaos hub of your choice by selecting **Save**.
@@ -1009,7 +1021,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 #### Early access features
 
-The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](/tutorials/chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/tutorials/chaos-experiments/first-chaos-engineering).
+The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). [HCE documentation](/docs/chaos-engineering) is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering).
 
 #### Known issues
 

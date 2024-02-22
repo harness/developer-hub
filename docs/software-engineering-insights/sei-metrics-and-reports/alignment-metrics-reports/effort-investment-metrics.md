@@ -27,7 +27,7 @@ Add these widgets to your Insights to analyze effort investment metrics.
 
 :::tip
 
-Use [Business Alignment Insights](/docs/software-engineering-insights/sei-insights#business-alignment) to observe these metrics.
+Use [Business Alignment Insights](/docs/software-engineering-insights/insights/sei-insights#business-alignment) to observe these metrics.
 
 :::
 

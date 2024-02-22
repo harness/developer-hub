@@ -334,7 +334,7 @@ The options avialable to you to specify a Helm chart store depend on whether or 
   - For details on using different authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 ### Helm commands performance analysis
-Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness delegate.
+Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness Delegate.
 Below is the summary of a few vulnerable helm commands which Harness uses:
 1. `helm repo add`: Avoids redundant additions by checking if the repository already exists and employs locking to prevent conflicts during parallel deployments.
 2. `helm repo update`: Asynchronously fetches index.yaml for all repos, unmarshals and sorts them. Parallel commands do not perform locking, but still manage to run without any failures.
@@ -342,7 +342,7 @@ Below is the summary of a few vulnerable helm commands which Harness uses:
 
 #### Harness improvements
 To improve performance of concurrent helm commands, 'N' parallel helm commands on the same helm repository will not always spawn an equivalent number of processes. This is achieved by trying to re-use the output from one command by other concurrent commands. 
-This reduces both CPU and memory usage of the Harness delegate, since concurrently running processes are reduced. These improvements are available from `81803` version of Harness delegate.
+This reduces both CPU and memory usage of the Harness Delegate, since concurrently running processes are reduced. These improvements are available from `81803` version of Harness Delegate.
 
 #### Harness Certified Limits
 Delegate used for benchmarking: 2 vCPUs, 8 GB memory K8s delegate (1 replica, version 81803)

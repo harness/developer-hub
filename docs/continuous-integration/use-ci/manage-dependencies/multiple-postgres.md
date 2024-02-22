@@ -45,7 +45,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 * Enter a **Name** and note the **Id**. You need the **Id** to call the service in later steps in this stage.
@@ -115,7 +115,7 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -210,7 +210,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 * Enter a **Name**.
@@ -277,7 +277,7 @@ psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h SECOND_BACKGROUND_STEP_ID -p SE
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -390,7 +390,7 @@ pipeline:
 
 
 </TabItem>
-  <TabItem value="k8s" label="self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="self-managed Kubernetes cluster">
 
 
 ```yaml

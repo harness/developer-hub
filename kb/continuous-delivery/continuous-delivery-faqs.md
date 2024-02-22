@@ -878,7 +878,7 @@ Yes, you can control access and permissions for the Harness GitOps Agent. It com
 
 #### Can I use the Harness GitOps Agent with different Kubernetes distributions?
 
-Yes, the Harness GitOps Agent is designed to work with various Kubernetes distributions, including managed Kubernetes services like Amazon EKS, Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS), as well as self-hosted Kubernetes clusters.
+Yes, the Harness GitOps Agent is designed to work with various Kubernetes distributions, including managed Kubernetes services like Amazon EKS, Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS), as well as self-managed Kubernetes clusters.
 
 #### Getting an error while evaluating expression/ Expression evaluation fails
 
@@ -1317,9 +1317,8 @@ See more on this here : [Documentation](https://developer.harness.io/docs/faqs/c
 
 
 #### How can I use Harness CD with Google Cloud Functions?
-Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
 
-See more on this here : [Documentation](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/)
+Harness CD pipelines help you to orchestrate and automate your [Google Cloud Function deployments](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func) and push updated functions to Google Cloud.
 
 #### Is it possible to add variables at the Infrastructure Definition level?
 As of now, Harness does not provide direct support for variables within infrastructure definitions. However, you can achieve a similar outcome by using tags in the form of `key:value`. For example, you can define a tag like `region:us-east` and reference it using the following expression: `<+infra.tags.region>`.
@@ -2402,7 +2401,7 @@ deny[msg] {
 
 #### How to solve the following error? Invalid request: Profile definition must end with ']
 
-Harness delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
+Harness Delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
 
 #### Why am I receiving the message 'Current execution is queued as another execution is running with given resource key' in the step resource constraint?
 
@@ -2823,11 +2822,10 @@ Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline
 
 #### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
 
-One can refer to the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
-
-Please read more on `workflow variables` in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
-
-Please read more on `regular platform variables` in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/variables/)
+For infomation about this, go to:
+* [Migrating variables and expressions from firstgen to nextgen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
+* [Workflow variables](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
+* [Add and reference variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable)
 
 #### How can multi-service pipelines be executed in parallel as stages while ensuring that users select a single environment for all these parallel stages?
 
@@ -4374,9 +4372,9 @@ No this is not supported as of now, as currently command step is only applicable
 
 We don't charge separately for infrastructure provisioning swimlanes or custom script orchestration like 'cdk deploy.' Our current licensing model is straightforward, and there's no additional fee for this usage.
 
-#### Can I use the same cluster for running the Harness delegate and containerized step group(s), or is it required to use separate clusters ?
+#### Can I use the same cluster for running the Harness Delegate and containerized step group(s), or is it required to use separate clusters ?
 
-Certainly! one has the flexibility to use the same cluster for both the Harness delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
+Certainly! one has the flexibility to use the same cluster for both the Harness Delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
 
 #### What are the Google Cloud Functions supported by Harness ?
@@ -4534,7 +4532,7 @@ use UI to update the Tags.
 You can access the variables using the expression.
 Also for your reference, you can click on the copy icon by the side of the variable to get its corresponding expression for access.
 
-#### How do I add custom certificates to Harness delegates?
+#### How do I add custom certificates to Harness Delegates?
 
 You can use the instructions mentioned here to install custom certificates - https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/
 
@@ -4927,7 +4925,7 @@ To fetch files from the Harness file store in a Run step, you can use the follow
 ```
 Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
 
-#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
+#### Is there a way the user can pull from Bitbucket/Github inside the Harness Delegate and then push it to the target server?
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
 
 #### Is there a way to prevent editing the input set during the rerun of pipelines?
@@ -5343,7 +5341,7 @@ Please read more on OPA policy step in the following [Documentation](https://dev
 #### How can one migrate a service to a higher scope (if available at projeect level) ?
 
 Currently, there's no built-in way to move or upgrade services to higher levels. When sharing a service, it needs to have a scope at either the organizational or account level. Fortunately, you can always use the terraform provider to recreate those services at a higher level.
-Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/)
+Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/docs/platform/automation/terraform/onboard-terraform-provider)
 
 #### How can one use AWS CodeDeploy Template support at Harness ?
 
@@ -5428,8 +5426,7 @@ Please read more on manifest commit Id in the following [Documentation](https://
 
 #### Does Harness support Triggers in GitX ?
 
-No, Harness does not support Triggers for GitX.
-Please read more on triggers in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/trigger/)
+No, Harness does not support [triggers](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger) for GitX.
 
 #### How to diagnose instances where pipeline fails to initiate due to trigger issues ?
 

@@ -58,7 +58,7 @@ This functionality is limited to the modules and settings that you have access t
 
 ## Infrastructure
 
-4. Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-hosted VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
+4. Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-managed AWS/GCP/Azure VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
 
 ![](./static/infrastructure.png)
 
@@ -230,7 +230,7 @@ In case of **Fixed Value** provide the absolute value of template URL, for eg. `
 
 In case of **Runtime Input** provide the absolute value of the template URL after you run the pipeline. 
 
-In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-pipeline#manage-variables-in-the-pipeline).  
+In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline.md#manage-variables-in-the-pipeline).
 
 #### Configure Template
 

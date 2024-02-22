@@ -1,0 +1,11 @@
+{
+    "label":"Insights",
+    "position": 21,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Insights"
+    }
+ }

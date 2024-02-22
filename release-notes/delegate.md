@@ -59,6 +59,9 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
    
    This issue has been resolved by implementing an appropriate error message code for enforcement limit accounts when customers reach their enforcement limits, eliminating the null pointer exception. 
 
+### Version 24.02.82308 <!--  February 21, 2024 -->
+
+- Upgraded the SDK for the ASG swimlane. (CDS-91937)
 
 ### Version 24.02.82306 <!--  February 16, 2024 -->
 

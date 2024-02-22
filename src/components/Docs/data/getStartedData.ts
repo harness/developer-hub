@@ -7,22 +7,6 @@ import {
 
   
   /* Define the cards - start */
-  export const featuredTutorials: CardItem[] = []
-/* Uncomment if you want to show the Featured Tutorials section -->
-  // Featured Tutorials
-  export const featuredTutorials: CardItem[] = [
-      {
-        title: "Get started for free with the fastest CI on the planet",
-        module: MODULES.ci,
-        icon: "img/icon_ci.svg",
-        description: "Get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "5min",
-        link: "/docs/continuous-integration/get-started/tutorials",
-      },
-    ];
-    */
     
     // Docs
     export const docsCards: CardSections = [
@@ -44,13 +28,6 @@ import {
             description:
               "A self-service onboarding guide for Harness Platform.",
             link: "/docs/platform/get-started/onboarding-guide",
-          },
-          {
-            title: "Tutorials",
-            module: MODULES.platform,
-            description:
-              "New to Harness? Follow these tutorials to go from novice to advanced.",
-            link: "/tutorials",
           },
           {
             title: "Start for free",

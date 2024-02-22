@@ -36,14 +36,7 @@ Review the following resources to learn about the features, components, and key 
 
 ## Create your first Harness SEI Insight
 
-Learn about the [insight creation process in Harness SEI](/docs/software-engineering-insights/sei-insights), and then create your own:
-
-* [Tutorial: Create an Sprint Metrics Insight on Harness SEI](/tutorials/software-engineering-insights/sprint-metrics-insight)
-* [Tutorial: Create an Trellis Score Insight on Harness SEI](/tutorials/software-engineering-insights/trellis-insight)
-* [Tutorial: Create an DORA Metrics Insight on Harness SEI](/tutorials/software-engineering-insights/dora-insight)
-* [Tutorial: Create an Developer Metrics Insight on Harness SEI](/tutorials/software-engineering-insights/developer-insight)
-
-
+Learn about and create [Insights in Harness SEI](../insights/sei-insights.md).
 
 ## Propelo and Harness
 
