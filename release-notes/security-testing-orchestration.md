@@ -29,11 +29,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.84.0 
 
-#### Enhancement
+#### Enhancements
 
 - The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
 
   ![](./static/sto-6927-override-popup-for-snyk.png)
+
+- This release includes back-end improvements to ensure that dashboards refresh less than five minutes after a database update. (STO-7084, ZD-57533)
 
 
 <!-- 
