@@ -45,7 +45,7 @@ The following steps describe the workflow:
 
   - Harness STO and CI module licenses.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](../your-first-sto-pipeline) is a good introduction.
+  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline) is a good introduction.
   - GitHub requirements:
 
     - A GitHub account and access token.

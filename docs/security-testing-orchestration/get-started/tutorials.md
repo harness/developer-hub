@@ -26,6 +26,6 @@ The following workflows and tutorials are available.
 
 - Integrated end-to-end workflows:
 
-  - [Create a build-scan-push pipeline (STO only)](./sto-tutorials/build-scan-push-sto-only) Set up an end-to-end STO pipeline that scans your codebase. Then it builds an image and scans it. If the image scan detects no critical issues, the pipeline pushes the image to your registry.
+  - [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-only) Set up an end-to-end STO pipeline that scans your codebase. Then it builds an image and scans it. If the image scan detects no critical issues, the pipeline pushes the image to your registry.
 
-  - [Create a build-scan-push pipeline (STO and CI)](./sto-tutorials/build-scan-push-sto-ci) Set up an end-to-end STO/CI pipeline that scans your codebase, builds/pushes a test image, and then scans it. If there are no critical issues, the pipeline builds/pushes a prod image.
+  - [Create a build-scan-push pipeline (STO and CI)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-ci) Set up an end-to-end STO/CI pipeline that scans your codebase, builds/pushes a test image, and then scans it. If there are no critical issues, the pipeline builds/pushes a prod image.

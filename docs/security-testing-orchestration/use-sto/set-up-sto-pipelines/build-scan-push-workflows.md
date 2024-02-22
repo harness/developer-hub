@@ -11,7 +11,7 @@ The following workflows provide some examples of you can set up pipelines to aut
 
 ## Build/scan/push with Docker-in-Docker
 
-This workflow is useful if you can use Docker-in-Docker and don't have a CI license. For a hands-on example of how to implement this, go to [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-only).
+This workflow is useful if you can use Docker-in-Docker and don't have a CI license. For a hands-on example of how to implement this, go to [Create a build-scan-push pipeline (STO only)](./build-scan-push-sto-only).
 
 1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
 
@@ -169,7 +169,7 @@ pipeline:
 
 ## Build/scan/push with CI and Docker-in-Docker
 
-This workflow is useful if you can use Docker-in-Docker and have a CI license. For a hands-on example of how to implement this, go to [Create a build-scan-push pipeline (STO and CI)](/docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-ci).
+This workflow is useful if you can use Docker-in-Docker and have a CI license. For a hands-on example of how to implement this, go to [Create a build-scan-push pipeline (STO and CI)](./build-scan-push-sto-ci).
 
 1. Add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to your pipeline.
 
