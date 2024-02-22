@@ -37,7 +37,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## February 2024
 
-### Version 1.14.x
+### Version 1.15.x
 
 <!-- Feb 27, 2024 -->
 
