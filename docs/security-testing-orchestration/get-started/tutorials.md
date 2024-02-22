@@ -20,7 +20,7 @@ The following workflows and tutorials are available.
 
   - [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) This "quick-start" tutorial shows how to scan a codebase using [Semgrep](https://semgrep.dev), which can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/).
 
-  - [Container image scans with Aqua Trivy](./sto-tutorials/container-scan-aqua-trivy) This "quick-start" tutorial shows how to scan a container image using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
+  - [Container image scans with Aqua Trivy](../sto-techref-category/trivy/container-scan-aqua-trivy) This "quick-start" tutorial shows how to scan a container image using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
   - [Trigger automated scans using GitLab merge requests](./sto-tutorials/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
 

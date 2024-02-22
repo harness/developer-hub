@@ -279,22 +279,22 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 
 3.  Target variant — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
 
-4.  [Container image Type](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) = **V2**
+4.  [Container image Type](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) = **V2**
 
-5.  [Domain](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#domain) = `docker.io`
+5.  [Domain](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#domain) = `docker.io`
 
 6.  Container image name — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
 7.  Container image tag — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>`
 
-8.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
+8.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
-- `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
+- `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
@@ -307,10 +307,10 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
     - `advanced : `
       - `log :`
         - `level : info`
-        - [`fail_on_severity`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) `: critical`
+        - [`fail_on_severity`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) `: critical`
     - `privileged: true`
     - `image:`
-      - [`type`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) `: docker_v2`
+      - [`type`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) `: docker_v2`
       - `name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
       - `access_token: <+secrets.getValue("YOUR_DOCKERHUB_ACCESS_TOKEN")`
       - `domain: docker.io`

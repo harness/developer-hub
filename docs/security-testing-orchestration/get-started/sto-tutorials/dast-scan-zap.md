@@ -105,7 +105,7 @@ import TabItem from '@theme/TabItem';
 
       - Instance Protocol = **https**
 
-   5. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
+   5. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
       <img src={config_zap} alt="Zap step palette example" height="50%" width="50%" />
 

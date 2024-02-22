@@ -1,7 +1,7 @@
 ---
 title: Aqua Trivy scanner reference for STO
 description: Scan container images with  Aqua Trivy.
-sidebar_position: 30
+sidebar_position: 10
 sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
@@ -55,11 +55,11 @@ The recommended workflow is add an AquaTrivy step to a Security Tests or CI Buil
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
 
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -69,7 +69,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -79,15 +79,15 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
 
 
 <!-- #### Detect target and variant 
 
-import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectContainer/>
 <StoSettingScanTypeAutodetectNote/       -->
@@ -95,14 +95,14 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -112,7 +112,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Type
 
 
-import StoSettingImageType from './shared/step_palette/image/_type.md';
+import StoSettingImageType from '../shared/step_palette/image/_type.md';
 
 
 
@@ -122,7 +122,7 @@ import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 
 
-import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
 
 
 
@@ -131,7 +131,7 @@ import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 #### Name
 
 
-import StoSettingImageName from './shared/step_palette/image/_name.md';
+import StoSettingImageName from '../shared/step_palette/image/_name.md';
 
 
 
@@ -141,7 +141,7 @@ import StoSettingImageName from './shared/step_palette/image/_name.md';
 #### Tag
 
 
-import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
 
 
@@ -150,7 +150,7 @@ import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 #### Access ID
 
 
-import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from '../shared/step_palette/image/_access-id.md';
 
 
 
@@ -159,7 +159,7 @@ import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
 #### Access Token
 
 
-import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from '../shared/step_palette/image/_access-token.md';
 
 
 
@@ -169,7 +169,7 @@ import StoSettingImageAccessToken from './shared/step_palette/image/_access-toke
 #### Region  
 
 
-import StoSettingImageRegion from './shared/step_palette/image/_region.md';
+import StoSettingImageRegion from '../shared/step_palette/image/_region.md';
 
 
 
@@ -186,7 +186,7 @@ import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 #### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 
 
@@ -200,7 +200,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 
 
@@ -211,7 +211,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 #### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
 
 
 <StoSettingCliFlags />
@@ -224,7 +224,7 @@ For example, you can customize the security issues to detect using the `scanners
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -269,12 +269,12 @@ You can set up Aqua Trivy scans using a Security step, but this is a legacy func
 STO supports the following `policy_type` settings for Aqua-Trivy:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
+* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -309,7 +309,7 @@ The following settings are also required, depending on the container type:
 #### Ingestion file 
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />
