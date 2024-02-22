@@ -102,7 +102,7 @@ Every STO scan has a specific [target name and variant](/docs/security-testing-o
 
 </details>
 
-import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
+import set_up_harness_26 from './static/configure-bandit-step.png'
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

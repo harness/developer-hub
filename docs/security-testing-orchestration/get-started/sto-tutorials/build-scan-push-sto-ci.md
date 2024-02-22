@@ -44,7 +44,7 @@ The following steps describe the workflow:
 
   - Harness STO and CI module licenses.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](./your-first-sto-pipeline) is a good introduction.
+  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](../your-first-sto-pipeline) is a good introduction.
   - GitHub requirements:
 
     - A GitHub account and access token.
@@ -124,7 +124,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## Scan the code
 
-import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
+import set_up_harness_26 from '../static/your-first-pipeline/configure-bandit-step.png'
 
 <Tabs>
 <TabItem value="Visual" label="Visual" default>
