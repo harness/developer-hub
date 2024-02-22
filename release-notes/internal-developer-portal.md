@@ -49,10 +49,10 @@ steps:
     apikey: ${{ parameters.token }}
 ```
 
-- The Custom field extension **`HarnessAutoOrgPicker`**, which auto populates org id on project selection, would now pick project field value from the key that mentions `projectPickerRef` irrespective of it's name. Earlier the properties need to be named `project_id` for the custom field extension to update the org id. [IDP-2243]
+- The Custom field extension **`HarnessAutoOrgPicker`**, which auto populates org id on project selection, would now pick project field value from the key that is mentioned under `projectPickerRef` as dependencies, if it's name is other than `projectId`. When properties have the project key and are named as `projectId` in that case you don't need to add the dependencies. [IDP-2243]
 
 ```YAML
-## Example
+## Example where projectId is mentioned under project_name
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
@@ -68,13 +68,14 @@ spec:
            description: Harness Project Identifier
            type: string
            ui:field: HarnessProjectPicker
-           projectPickerRef
          orgId:
            title: Org Identifier
            description: Harness org Identifier
            type: string
            ui:field: HarnessAutoOrgPicker 
-
+           dependencies:
+            projectPickerRef:
+              - 'project_name'
 ```
 
 ### Version 0.21.0
