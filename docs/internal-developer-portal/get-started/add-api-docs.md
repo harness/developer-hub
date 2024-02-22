@@ -19,7 +19,7 @@ The type of API specs could be added in IDP.
 
 4. **grpc** - An API definition based on [Protocol Buffers](https://spec.graphql.org/) to use with [gRPC](https://grpc.io/).
 
-More detials on descriptor format for API's could be found in the [reference docs](/docs/internal-developer-portal/api-refernces/api-reference.md)
+More details on descriptor format for API's could be found below in the references.
 
 ## Example for different use cases
 
