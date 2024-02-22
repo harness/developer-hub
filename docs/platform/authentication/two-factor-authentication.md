@@ -71,7 +71,7 @@ To set up 2FA for all account users and groups, do the following:
 
 ### Reset two-factor authentication
 
-If a user loses the QR Code, an admin can reset two-factor authentication and email them a new QR Code and secret key.
+If a user loses the QR Code, an account admin can reset two-factor authentication and email them a new QR Code and secret key.
 
 To reset two-factor authentication for a user, do the following:
 
