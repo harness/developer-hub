@@ -71,11 +71,15 @@ To set up 2FA for all account users and groups, do the following:
 
 ### Reset two-factor authentication
 
-Only account admins reset two-factor authentication for users.
+If a user loses the QR Code, an admin can reset two-factor authentication and email them a new QR Code and secret key.
 
-To reset two-factor authenticate for a user, do the following:
+To reset two-factor authentication for a user, do the following:
 
 1. In Harness, go to your account, and then select **Account Settings**.
 2. Under **Access Control**, select **Users**.
 3. Select **More Options** (&vellip;) corresponding to the user for which you want to reset two-factor authentication.
-4. Select **Email new 2fa**.
+
+   ![](./static/reset-two-factor-authentication.png)
+
+4. Select **Email new Two Factor Auth secret**.
+   The user will receive an email to reset their authentication.
