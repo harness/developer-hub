@@ -1,7 +1,7 @@
 ---
 title: Configuration Settings
 description: Guide on how to use RBAC to define access control on SEI Configuration Settings at the Account Level.
-sidebar_position: 5
+sidebar_position: 25
 ---
 
 # Manage access control for SEI Configuration Settings
