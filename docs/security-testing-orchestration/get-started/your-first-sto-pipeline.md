@@ -6,6 +6,7 @@ redirect_from:
   - /tutorials/security-tests/standalone-pipeline
   - /tutorials/security-tests/cicd-integrated-pipeline
   - /tutorials/security-tests/your-first-sto-pipeline
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/your-first-sto-pipeline
 ---
 
 <CTABanner

@@ -5,6 +5,7 @@ sidebar_position: 10
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/sto-tutorials
   - /docs/security-testing-orchestration/get-started/tutorials
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/tutorials
 ---
 
 The following workflows and tutorials are available.
@@ -17,7 +18,7 @@ The following workflows and tutorials are available.
 
 - Quickstarts:
 
-  - [SAST code scans using Semgrep](./sto-tutorials/sast-scan-semgrep) This "quick-start" tutorial shows how to scan a codebase using [Semgrep](https://semgrep.dev), which can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/).
+  - [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) This "quick-start" tutorial shows how to scan a codebase using [Semgrep](https://semgrep.dev), which can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/).
 
   - [Container image scans with Aqua Trivy](./sto-tutorials/container-scan-aqua-trivy) This "quick-start" tutorial shows how to scan a container image using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 

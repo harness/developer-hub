@@ -1,9 +1,10 @@
 ---
-title: SAST code scans using Semgrep
+title: "Tutorial: SAST code scans using Semgrep"
 description: Scan a codebase using Semgrep
 sidebar_position: 30
 redirect_from:
   - /tutorials/security-tests/sast-scan-semgrep
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/sast-scan-semgrep
 ---
 
 <CTABanner
@@ -199,7 +200,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
 Add a step after the `Run` step and configure it as follows:
 
-- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference)
+- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`

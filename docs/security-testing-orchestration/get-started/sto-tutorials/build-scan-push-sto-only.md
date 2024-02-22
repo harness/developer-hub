@@ -162,7 +162,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
          - Key : `SEMGREP_APP_TOKEN`
          - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`.
 
-           ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
+           ![set the value type](./static/sbsp-sto-ci/set-value-type.png)
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -275,7 +275,7 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 
 Add a step after the `Run` step and configure it as follows:
 
-- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference)
+- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
