@@ -1,7 +1,7 @@
 ---
 title: STO Tutorials
 description: Your first pipeline, targeted quickstarts, and build-scan-push workflows.
-sidebar_position: 10
+sidebar_position: 30
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/sto-tutorials
   - /docs/security-testing-orchestration/get-started/tutorials
@@ -22,7 +22,7 @@ The following workflows and tutorials are available.
 
   - [Container image scans with Aqua Trivy](../sto-techref-category/trivy/container-scan-aqua-trivy) This "quick-start" tutorial shows how to scan a container image using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
-  - [Trigger automated scans using GitLab merge requests](./sto-tutorials/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
+  - [Trigger automated scans using GitLab merge requests](../use-sto/set-up-sto-pipelines/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
 
 - Integrated end-to-end workflows:
 
