@@ -13,7 +13,7 @@ Solution| Supported Platform| Connected | HA | Monitoring| Disaster Recovery |
 
 ### Terms of support
 
-The support policy is 12 months of support and followed up with 6 months of limited support for critical security fixes only.
+The support policy is 12 months of full support, followed by 6 months of limited support for critical security fixes only.
 
 Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
 
