@@ -1,17 +1,20 @@
 ---
-title: Use Harness IDP for self serviced Harness CI/CD onboarding
-description: This tutorial will give an idea on how to create a new service using flows and provision a Harness Deployment pipeline for the newly created service. 
-sidebar_position: 6
+title: Create a service onboarding pipeline (using IDP Stage)
+description: Create a basic service onboarding pipeline in Harness IDP
+sidebar_position: 4
 ---
 
-In this tutorial we will create a self service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
+This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a application templated by cookiecutter for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
 
-## Pre-Requisite:
+Users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboards the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
 
-- Make sure you have `IDP_ENABLE_STAGE` Feature Flag enabled on your account. 
+## Prerequisites
+
+Before you begin this tutorial, make sure that you have completed the following requirements:
+
+- Enable Harness IDP for your account.
 - Make sure you are assigned the [IDP Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or another role that has full access to all IDP resources. 
 - Create a **GitHub** connector named `democonnector` at the account scope. This connector should be configured for a GitHub organization (personal accounts are currently not supported by this tutorial). 
-- [Delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) with [Terraform Installed on it](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#important-install-terraform-on-delegates)
 
 ## Create a Pipeline
 
@@ -33,7 +36,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 :::info
 
-You need to have completed all the [pre-requisites](#pre-requisite) for the below given YAML to work properly 
+You need to have completed all the steps under **[PreRequisites](#prerequisites)** for the below given YAML to work properly 
 
 Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of pre-requisites. 
 
@@ -169,73 +172,7 @@ Please update the `connectorRef: <the_connector_name_you_created_under_prerequis
       value: catalog-info.yaml
 ```
 
-## Add the Custom Stage to Provision the Deployment Pipeline.
-
-### Pre-requisites
-
-- Fork this [repo](https://github.com/harness-community/idp-samples/tree/main) or download the [folder](https://github.com/harness-community/idp-samples/tree/main/terraform) and add it to your own git provider, to be used as **Configuration File Repository**. Also on `harness_resources.tf` file update the `org id` and in `harness.tf` update the `account_id`.
-
-Now, if you also use Harness CI/CD, you can follow the steps below to create a [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) with Terraform Apply step to provision the Harness deployment pipeline. 
-
-
-
-4. [Add a Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage), after the Developer Portal Stage.
-
-5. [Add the Terraform Apply step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#step-1-add-the-terraform-plan-step), that could provision Harness Pipeline for the newly created service. 
-
-While you add the Terraform Apply step make sure to add the **[Provisioner Identifier](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#provisioner-identifier)** as an [expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions) as `harness<+pipeline.executionId>`
-
-You could find the [config files](https://github.com/harness-community/idp-samples/tree/main/terraform) to provision a pipeline. Now create a connector to add this config files.  
-
-We also have a Terraform Var Files, as mentioned in the below example YAML. 
-
-![](./static/tfvar.png)
-
-```YAML
-# Example
-- stage:
-    name: Build out Harness
-    identifier: Build_out_Harness
-    description: ""
-    type: Custom
-    spec:
-        execution:
-        steps:
-            - step:
-                type: TerraformApply
-                name: Harness Apply
-                identifier: Harness_Apply
-                spec:
-                provisionerIdentifier: harness<+pipeline.executionId>
-                configuration:
-                    type: Inline
-                    spec:
-                    configFiles:
-                        store:
-                        spec:
-                            connectorRef: Github_IDP_Organization
-                            repoName: idp-terraform
-                            gitFetchType: Branch
-                            branch: master
-                            folderPath: terraform
-                        type: Github
-                    varFiles:
-                        - varFile:
-                            spec:
-                            content: |-
-                                key = "<+secrets.getValue("tf_token")>"
-                                project_name = "<+pipeline.variables.project_name>"
-                                repo_name = "<+pipeline.variables.project_name>"
-                            identifier: tfvars
-                            type: Inline
-                timeout: 10m
-
-```
-
-![](./static/terraform-apply.png)
-
-
-6. Now save the Pipeline. 
+4. Now Save the pipeline. 
 
 :::info
 
