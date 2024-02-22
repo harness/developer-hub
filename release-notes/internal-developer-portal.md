@@ -20,6 +20,63 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## February 2024
 
+### Version 0.22.0
+
+<!-- Feb 22, 2024 -->
+
+Given the interest of our users to know more about our IDP and what's coming up next, we have released a detailed [roadmap](https://developer.harness.io/roadmap/#idp) for IDP. Also we would further like to hear the feedback of users on our [ideas platform](https://ideas.harness.io/) regarding how they envision their developer portal to be and what improvements they would like to see in our IDP especially the suggestions for Plugins and support for new integrations.  
+
+- **New Docs:** [Use Harness IDP for self serviced Harness CI/CD onboarding](https://developer.harness.io/docs/internal-developer-portal/flows/self-service-onboarding-pipeline-tutorial), [How to build Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/get-started/custom-dashboards)
+
+- **New Videos:** [Create a New Python Lambda app using Harness IDP in 5 minutes](https://youtu.be/JMjbqAilJHU) 
+
+#### New features and enhancements
+
+- We have added support for displaying warning message on connector page, when a connector or secret is deleted. [IDP-2018]
+- You can now optionally remove the pipeline url used to orchestrate the workflow, from the workflow execution logs displayed as output while using the custom action [trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). For this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`. [IDP-2183]
+
+```YAML
+## Example
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+    url: "Pipeline URL"
+    hidePipelineURLLog: true
+    inputset:
+        project_name: ${{ parameters.project_name }}
+    apikey: ${{ parameters.token }}
+```
+
+- The Custom field extension **`HarnessAutoOrgPicker`**, which auto populates org id on project selection, would now pick project field value from the key that mentions `projectPickerRef` irrespective of it's name. Earlier the properties need to be named `project_id` for the custom field extension to update the org id. [IDP-2243]
+
+```YAML
+## Example
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         project_name:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+           projectPickerRef
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker 
+
+```
+
 ### Version 0.21.0
 
 <!-- Feb 8, 2024 -->
