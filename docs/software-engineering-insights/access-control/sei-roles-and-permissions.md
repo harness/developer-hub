@@ -29,6 +29,8 @@ Roles are scope-specific and can be created at either project or account [scope]
   * SEI Collection Admin
   * SEI Viewer
 
+![](./static/account-scope-roles.png)
+
 ## Resource Group
 
 A Resource Group is a grouping of resources that are managed by the same set of users using the same set of access control policies. 
