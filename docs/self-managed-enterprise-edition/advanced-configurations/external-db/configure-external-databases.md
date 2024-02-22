@@ -16,7 +16,7 @@ Harness supports multiple databases when you deploy Harness Self-Managed Enterpr
 Below are some of the benefits of using an external database:
 
 - High availability
-- [Disaster recovery](../set-up-disaster-recovery)
+- [Disaster recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery.md)
 - No maintenance downtime
 - Secondary read support (read scaling)
 
@@ -28,8 +28,8 @@ The specific steps and procedures to set up an external database with Harness va
 
 You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
 
-- [Cloud-based MongoDB](./use-an-external-mongodb-database)
-- [Self-managed MongoDB](./use-an-external-self-managed-mongodb)
-- [Self-managed PostgreSQL](./use-an-external-postgres-database)
-- [Self-managed Redis](./use-an-external-redis-database)
-- [Self-managed TimescaleDB](./use-an-external-sm-timescaledb)
+- [Cloud-based MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database.md)
+- [Self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb.md)
+- [Self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database.md)
+- [Self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database.md)
+- [Self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb.md)
