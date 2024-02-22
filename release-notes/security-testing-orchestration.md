@@ -713,7 +713,7 @@ The following security steps are now generally available:
 * [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)
 * [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) (STO-5053)
 * [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) (STO-5051)
-* [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
+* [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference) (STO-5058)
 
 
 ##### Version 1.34.0 

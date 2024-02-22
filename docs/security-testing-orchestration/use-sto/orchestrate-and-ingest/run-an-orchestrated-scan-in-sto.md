@@ -27,7 +27,7 @@ STO supports orchestration scans for popular open-source scanners such as Aqua-T
 Here are some example workflows that illustrate how to set up an orchestration scan:
 
 - [Container image scans with Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/container-scan-aqua-trivy)
-- [DAST app scans using Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/get-started/sto-tutorials/dast-scan-zap)
+- [DAST app scans using Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap/dast-scan-zap)
 
 ## See also
 

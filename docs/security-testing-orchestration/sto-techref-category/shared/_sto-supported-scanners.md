@@ -85,7 +85,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
          	<ul>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference">OpenVAS</a> Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
         <td valign="top">
