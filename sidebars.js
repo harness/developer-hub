@@ -384,24 +384,6 @@ const sidebars = {
         },
       ],
     },
-    // Cert Link from Docs
-    {
-      type: "link",
-      label: "Certifications",
-      href: "/certifications",
-    },
-    // KB Link from Docs
-    {
-      type: "link",
-      label: "Knowledge Base",
-      href: "/kb",
-    },
-    // Community Link from Docs
-    {
-      type: "link",
-      label: "Community",
-      href: "/community",
-    },
   ],
 
 };
