@@ -4,6 +4,7 @@ description: Install Harness Delegate on Kubernetes or Docker
 sidebar_position: 2
 redirect_from:
   - /tutorials/platform/install-delegate
+  - /docs/platform/delegates/install-delegates/install-delegate/
 ---
 
 import Tabs from '@theme/Tabs';
