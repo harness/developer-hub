@@ -82,7 +82,7 @@ The following deprecated API endpoints are longer supported:
 
 ## February 2024
 
-### Version 1.26.x <!--  February 26, 2024 -->
+### Version 1.26.8 <!--  February 26, 2024 -->
 
 #### Fixed issues
 
