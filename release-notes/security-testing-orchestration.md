@@ -37,6 +37,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - This release includes back-end improvements to ensure that dashboards refresh less than five minutes after a database update. (STO-7084, ZD-57533)
 
+- This release introduces a new behavior when the baseline for a target changes. (STO-7105)
+
+  - Previous behavior:
+  
+    When [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
+
+  - New behavior: 
+  
+    The baseline for a scan is fixed when STO ingests the results. **Only in \<_target_>:\<_variant_>** and **Remediated** issues are based on the baseline specified at the time of the scan.
+
+   Harness has introduced this behavior to avoid ambiguous or unexpected results when a target baseline changes. This can happen automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions. This new behavior also ensures that the  **Security Tests** UI for a given pipeline execution always uses the same criteria to categorize issues as **Only in \<_target_>:\<_variant_>** and **Remediated**.
+
 
 <!-- 
 ### Documentation change
