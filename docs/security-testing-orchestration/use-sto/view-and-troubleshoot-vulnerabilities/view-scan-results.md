@@ -23,7 +23,7 @@ The following steps describe the general workflow:
 
     - **Only in \<_target_>:\<_variant_>** Issues only found in the scanned variant.
 
-    - **Common to \<_target_>:\<_baseline_>** Issues also found in the previous scan of the target baseline.
+    - **Common to \<_target_>:\<_baseline_>** Issues also found in the target baseline.
 
     - **Common to previous scan** 
       - Issues also found in the previous scan (if the scanned target has no baseline), OR
@@ -31,7 +31,7 @@ The following steps describe the general workflow:
 
     <!-- **Common to previous / baseline scan** Issues also found in both the previous scan of the specified variant AND the previous scan of the baseline. -->
 
-    - **Remediated** An issue has a status of Remediated if it was found in the previous scan but not the current scan. 
+    - **Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant. 
       
       <DocImage path={require('./static/remediated-issue.png')} width="60%" height="60%" />
 
