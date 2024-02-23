@@ -26,7 +26,7 @@ You can generate and sign provenance as per the [SLSA v1.0 spec](https://slsa.de
 
 ### Attestation/Provenance generation & verification tools
 
-* [Sigstore Cosign with its embedded The Update Framework (TUF)](https://docs.sigstore.dev/about/overview/)
+* [Sigstore Cosign with built-in in-toto attestations](https://docs.sigstore.dev/verifying/attestation/)
 
 ### Policy enforcement attributes
 
