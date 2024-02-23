@@ -40,9 +40,9 @@ You can apply any Security Tests policy using the **On Step** event for a scan s
 
 Apply a policy to a scan step to warn or block on any vulnerabilities with the specified severity.
 
-::: note
+:::note
 
-This policy sample supports the following vulnerabilities only: Critical, High, Medium, Low, and Info. The other vulnerabilities, such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
+This policy sample supports the following vulnerabilities only: Critical, High, Medium, Low, and Info. To create policies based on output variables such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
 
 :::
 
@@ -220,11 +220,7 @@ For example, suppose you want a policy to warn or block if a scan step finds any
 
 ### Create a new OPA policy
 
-1. You can create policies at the account or the project scope.
-
-   - For account-level policies, select your account (top left). 
-   - For project-level policies, select **Project settings** (left).
-   - Then go to **Security and Governance** > **Policies**.
+1. You can create policies at the account or the project scope. Go to your account or project, then select **Security and Governance** > **Policies**.
 
 2. Select **Policies** (top right) and then **New Policy**. 
 
