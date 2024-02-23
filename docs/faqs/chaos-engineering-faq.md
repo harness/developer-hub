@@ -116,3 +116,7 @@ Harness provides an audit log to the account admin where user actions on the cha
 ### Can Harness perform security chaos tests in the users’ environments?
 
 Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the correct rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen/).
+
+### Avoiding image override in the manifest 
+
+When you edit an experiment that has multiple repositories, a pop up asks if you want to override the images or not. Select **NO** to avoid overriding the image repository in the manifest.
