@@ -272,3 +272,23 @@ The client SDK keys are intended only for evaluation purposes on Harness servers
 #### Can we call initialize more than once to update attributes?
 
 We do not have a option to do update without closing the sdk. So ee will need to close the SDK and re-init it in the mean time, to force the attributes to update.
+### We specify that a percentage rollout gets hashed to create a number between 1-100 which is used for the percentage rollout. Does the attribute get combined with the flagID at all
+We don’t involve the flag ID in the hash. However you can choose to hash on different target attributes, you can change it in the UI when setting the percentage rollouts.
+
+### Would a target always be in the same bucket regardless of the feature flag? What I mean by that is if I roll out multiple flags which are entirely independent of 10% TRUE, I would expect a different 10% to be used for both flags, otherwise, the first x% of targets would be the first to see new features which seems unintended.
+Yeah, a target will generally always be in the same bucket. a target with the identifier “test” will always come out as 57. so a 50/50 split will always be false.
+
+### How do I configure the bucket behaviour so that I can release two features simultaneously to two different buckets? I.e. I want to deliver true to buckets 1-10 for flag 1 and true to buckets 10-20 for another feature.
+
+For your 1-10 flag you could create a “Multivariate” with the variations: “variant”, “excluded” and “control” and set to serve 10% “variant“ and 90% to exclude with 0 to control. 
+
+for your 10-20 flag you could create a “Multivariate” with the variations: “excluded”, “variant” and “control” and set it to serve 10% “excluded “, 10% to “variant” and 80% to control. 
+
+### Is there a way to configure what buckets to use for TRUE and false? There are cases where I don't want the same targets always to get the feature rollout, especially if I am trying to experiment with different flags and I don't want both targets to overlap.
+Yeah, the buckets are fairly static. so 50/50 on a boolean flag will always have true in the first 50 and false in the second 50. You can, however, create a “Multivariate” flag and what order you add the variations is what order the buckets are created. so Creating a “string” flag with “false” first and “true” second will switch the order. You can also use this to add control groups. Some users would create a flag with 3 variations: “control”, “excluded” and “variant” as a way to mix what users see.
+
+### Is there a reason you are not concatenating the feature flag ID along with the identifier before hashing to identify the bucket?
+Regarding concatenating the feature flag ID along with the identifier before hashing to identify the bucket, this is not currently a feature in Harness.
+
+### Is there a way to check in Harness UI what variation a target got served? Say I need to validate what flags a customer is seeing is there a way to do that?
+To check what variation a target got served in Harness UI, you can go to the Feature Flags dashboard, select the flag you want to check, and then click on the Analytics tab. From there, you can filter by target and see which variation was served to that target.
