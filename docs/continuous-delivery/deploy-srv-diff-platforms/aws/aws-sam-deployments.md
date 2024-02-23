@@ -32,6 +32,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - Harness supports Go templating with SAM templates and values.yaml files.
 - Currently, you cannot add artifacts to your Harness SAM service.
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
+- Rollback for AWS SAM is not currently supported.
 
 ## Demo Video
 
