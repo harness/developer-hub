@@ -21,9 +21,9 @@ The following steps describe the general workflow:
 
 3. Drill down to the relevant issues list to view the issues found in the scan:
 
-    - **Only in current scan** New issues not found in any previous scan of that target.
+    - **Only in \<_target_>:\<_variant_>** New issues not found in any previous scan of that target.
 
-    - **Common to \<_target_>:\<_variant_>** Issues also found in the last scan of the specified variant.
+    - **Common to \<_target_>:\<_baseline_>** Issues also found in the last scan of the specified variant.
 
     - **Common to previous scan** 
       - Issues also found in the last scan (if the scanned target has no baseline), OR
@@ -31,11 +31,13 @@ The following steps describe the general workflow:
 
     - **Common to previous / baseline scan** Issues also found in both the last scan of the specified variant AND the last scan of the baseline. 
 
-   :::note
+      :::note important notes
 
-   For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+      - For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 
-   :::
+      - The **Security Tests** UI categorizes issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant against the baseline specified when the scan was run. This might be different from the baseline currently specified for the target. Baselines can change automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions.
+
+      :::
 
 3. To investigate an issue in detail, click the issue in the list to open **Issue Details** (right). 
 
