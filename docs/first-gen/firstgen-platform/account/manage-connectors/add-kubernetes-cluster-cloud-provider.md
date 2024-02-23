@@ -99,7 +99,7 @@ The authentication strategy for the Kubernetes cluster is used to fill in the di
 
 The **Kubernetes Cluster** settings support the following authentication strategies:
 
-* **Inherit from selected Delegate**. Use this option if you installed the Harness delegate in your cluster. This is the most common method and works great for platforms such Amazon EKS.
+* **Inherit from selected Delegate**. Use this option if you installed the Harness Delegate in your cluster. This is the most common method and works great for platforms such Amazon EKS.
 * Username and password.
 * Custom: CA certificate, client certificate, and client key. Key passphrase and key algorithm are optional.
 * Kubernetes Service Account Token.

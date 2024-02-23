@@ -11,9 +11,9 @@ Most of the items in this guide align with the onboarding wizard that is shown w
 
 ## Set up a delegate at the account level
 
-The Harness delegate is a service you run in your local network or VPC to connect Harness SaaS with your artifacts, infrastructure, collaboration, verification, and other providers. 
+The Harness Delegate is a service you run in your local network or VPC to connect Harness SaaS with your artifacts, infrastructure, collaboration, verification, and other providers. 
 
-The first time you connect Harness to a third party resource, the Harness delegate is installed in your target infrastructure, such as a Kubernetes cluster. 
+The first time you connect Harness to a third party resource, the Harness Delegate is installed in your target infrastructure, such as a Kubernetes cluster. 
 
 After the delegate is installed and registers with Harness, you connect Harness to third party resources. 
 

@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
 Verify the following:
 
 1. **Obtain GitHub personal access token with the repo scope**. For the GitHub documentation, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-2. **Docker**. For this tutorial ensure that you have the Docker runtime installed on your Harness delegate host. If not, use one of the following options to install Docker:
+2. **Docker**. For this tutorial ensure that you have the Docker runtime installed on your Harness Delegate host. If not, use one of the following options to install Docker:
    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -83,9 +83,9 @@ Going forward, follow all the steps as they are, including the naming convention
 ## Delegate
 
 <details>
-<summary>What is the Harness delegate?</summary>
+<summary>What is the Harness Delegate?</summary>
 
-The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 </details>
 
@@ -124,7 +124,7 @@ Replace `DELEGATE_IMAGE:TAG` with the custom delegate image `harnesscommunity/se
 <details>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 
@@ -140,7 +140,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 1. Select **New Secret**, and then select **Text**.
 2. Enter the secret name `awssecret`.
-3. For the secret value, paste the access token for your AWS user account. The Harness delegate uses this credential to authenticate Harness with AWS at deployment runtime.
+3. For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
 4. Select **Save**.
 
 <Tabs queryString="interface">
@@ -415,7 +415,7 @@ You've just learned how to use Harness CD to deploy an AWS Lambda function on AW
 Verify the following:
 
 1. **Obtain GitHub personal access token with the repo scope**. For GitHub documentation, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-2. **Docker**. For this tutorial ensure that you have the Docker runtime installed on your Harness delegate host. If not, use one of the following options to install Docker:
+2. **Docker**. For this tutorial ensure that you have the Docker runtime installed on your Harness Delegate host. If not, use one of the following options to install Docker:
    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -541,9 +541,9 @@ For the pipeline to run successfully, please follow the remaining steps as they 
 ### Delegate
 
 <details>
-<summary>What is the Harness delegate?</summary>
+<summary>What is the Harness Delegate?</summary>
 
-The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 </details>
 
@@ -581,7 +581,7 @@ You can also follow the [Install Harness Delegate on Kubernetes](/docs/platform/
 <details>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 

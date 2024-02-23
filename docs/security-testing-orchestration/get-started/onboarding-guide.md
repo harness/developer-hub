@@ -47,7 +47,7 @@ Before you create your first Harness pipeline, you must have the following:
 
 Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
 
-* Harness delegate — Required to run builds in your Kubernetes infrastructure.
+* Harness Delegate — Required to run builds in your Kubernetes infrastructure.
 * Secret for Git access credentials — Required to set up a codebase connector.
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
@@ -95,9 +95,9 @@ You need a Harness build infrastructure to run scans in STO. First, review [Oper
 
 - [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) 
 
-  This is the simplest option. Not initial setup is required. Run your pipelines on Harness-hosted VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
+  This is the simplest option. Not initial setup is required. Run your pipelines on Harness-managed VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
 
-- [Self-hosted Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
+- [Self-managed Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
 
    Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
 
@@ -133,7 +133,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 </details>
 
-To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness delegate.
+To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness Delegate.
 
 <details>
 <summary>Install a Kubernetes Delegate: Default Workflow</summary>

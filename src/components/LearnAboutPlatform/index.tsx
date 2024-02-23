@@ -18,7 +18,7 @@ export default function LearnAboutPlatform(): JSX.Element {
   };
   return (
     <section className={styles.learnAboutPlatform}>
-      <h2>Learn More with Documentation</h2>
+      <h2>Learn More</h2>
       <div className={styles.platform}>
         <div className={styles.subSectionName}>
           <h3>Modules</h3>

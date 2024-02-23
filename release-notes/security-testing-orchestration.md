@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-12-21T10:00
+date: 2024-02-21T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -25,64 +25,64 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2024
 
+### Version TBD
+
+<!-- 2024-02-28 -->
 <!-- TBD new OPA policies https://harness.atlassian.net/browse/STO-6934 -->
 
 With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. (Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)).
 
 This release also includes the following sample policies:
 
-* **Security - CVE Age** No issues for CVEs past a certain age. For example: no issues for CVEs created in 2021 or earlier.
+- **Security - Severity** Warn or block if the scan step finds any vulnerabilities with the specified severity and age.  For example: issues with severity High or Critical.
 
-* **Security - Issue Title** No issues with matching titles. For example: no issues with titles that match `javascript.express.mongodb.*`.
+* **Security - CVE Age** Warn or block if the scan step finds any vulnerabilities with the specified severity and age.  For example: no issues for CVEs created in 2021 or earlier.
 
-* **Security - Number of Occurrences** No more than a set of number of occurrences of a matching issue. For example: no more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+* **Security - Issue Title** Warn or block if the scan step finds any vulnerabilities with matching titles. For example: no issues with titles that match `javascript.express.mongodb.*`.
 
-- **Security - Reference IDs** No issues that match a set of reference IDs. For example: no issues for CWE-78 or CVE-2023-52138.
+* **Security - Number of Occurrences** Warn or block if the scan step finds more than a set of number of occurrences of a matching vulnerability. For example: no more than 15 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
 
-- **Security - Severity** No issues that match a set of severities. For example: no issues with severities of Critical or High.
+- **Security - Reference IDs** Warn or block if the scan step finds vulnerabilities that match a set of reference IDs. For example: no issues for CWE-78 or CVE-2023-52138.
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
-<!-- 
-You can write deny criteria for specific issue titles,[CWE](https://cwe.mitre.org/) and [CVE](https://cve.mitre.org/) reference IDs, severity scores, number of occurrences,  
--->
 
+### Version 1.84.0 
 
-<!-- TBD new OPA policies https://harness.atlassian.net/browse/STO-6934 -->
-
-
-<!-- 2024-02-07 -->
-
-### Version 1.83.1 
+<!-- 2024-02-21 -->
 
 #### Enhancements
 
-- You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
+- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
 
-  ![Security override in Security Tests](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-override-in-security-tests.png)
+  ![](./static/sto-6927-override-popup-for-snyk.png)
 
-  This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override. 
+- This release includes back-end improvements to ensure that dashboards refresh less than five minutes after a database update. (STO-7084, ZD-57533)
+
+- This release introduces a new behavior when the baseline for a target changes. (STO-7105)
+
+  - Previous behavior:
   
-  To enable this feature, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step ingests and processes the relevant data for issues with overridden severities.   
+    When [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
 
-  <Tabs>
-     <TabItem value="Visual" label="Visual" default>
-
-     ![Add ingest_tool_severity to Snyk step](../docs/security-testing-orchestration/sto-techref-category/static/sto-7041-add-setting-in-visual-editor.png)
-
-    </TabItem>
+  - New behavior: 
   
-    <TabItem value="YAML" label="YAML">
-      ``` yaml
-      - step:
-          type: Snyk
-          spec:
-            settings:
-              ingest_tool_severity: "true"
-      ```
+    The baseline for a scan is fixed when STO ingests the results. **Only in \<_target_>:\<_variant_>** and **Remediated** issues are based on the baseline specified at the time of the scan.
 
-    </TabItem>
-    </Tabs>
+   Harness has introduced this behavior to avoid ambiguous or unexpected results when a target baseline changes. This can happen automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions. This new behavior also ensures that the  **Security Tests** UI for a given pipeline execution always uses the same criteria to categorize issues as **Only in \<_target_>:\<_variant_>** and **Remediated**.
+
+
+
+
+
+
+### Version 1.83.1 
+
+<!-- 2024-02-07 -->
+
+#### Enhancements
+
+- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
 
 
 <!-- 
@@ -101,7 +101,6 @@ You can write deny criteria for specific issue titles,[CWE](https://cwe.mitre.or
 
 
 ## January 2024 
-
 
 <!-- 2024-01-24 -->
 
@@ -214,13 +213,20 @@ You can now scan your repositories and other components used in your code with [
 
 - Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
 
-## October 2023
+## Previous releases
 
-### Version 1.72.0
+### Jan-Oct 2023 releases
+
+<details>
+<summary>Jan-Oct 2023 releases</summary>
+
+#### October 2023
+
+##### Version 1.72.0
 
 <!-- 2023-10-29 -->
 
-##### New features and enhancements
+###### New features and enhancements
 
 import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
 import sto_exemptions_table from './static/sto-exemptions-table.png'
@@ -249,7 +255,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 <!-- EULA RQMT REMOVED -- H4 Early access -- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**). Each account user must sign the EULA only once. The setting is inherited at the project scope. (PL-39723) -->
 
-#### Fixed issues
+##### Fixed issues
 
 - Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scans. (STO-6613)
 
@@ -263,20 +269,20 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 - Fixed a UI issue in **Security Tests** when all vulnerabilities detected in a scan had exemptions. The tab showed "No Security Issues Found", all issue counts were 0, and no issues appeared in the UI even when the selected filter included exempted issues. (STO-6642)
 
-### Version 1.71.1
+#### Version 1.71.1
 
 <!-- 2023-10-15 -->
 
-#### Early access
+##### Early access
 
 - Updated the exemptions page to bubble up soon-to-expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
 
-#### Fixed issues
+##### Fixed issues
 
 - The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
 - Updated the icon for a false positive exemption to match the other icons (STO-6555)
 
-### Version 1.70.1
+#### Version 1.70.1
 
 <!-- 2023-10-08 -->
 
@@ -284,18 +290,18 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 - Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
 
-#### Early access
+##### Early access
 
 - Added support for Matrix pipelines to the pipeline execution results filters
   
   This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
 
 
-### Version 1.69.3
+#### Version 1.69.3
 
 <!-- 2023-10-01 -->
 
-#### Early access
+##### Early access
 
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
 
@@ -309,17 +315,17 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-#### Fixed issue
+##### Fixed issue
 
 - Occurrences page size longer resets on page update. (STO-6472)
 
-## September 2023 
+#### September 2023 
 
-### Version 1.68.0
+##### Version 1.68.0
 
 <!-- 2023-09-10 -->
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed the following UI issues in in **Security Tests**: 
 
@@ -329,27 +335,27 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
  
   - Added an **Exclude** field to the SonarQube step and removed the **Include** step. The **Exclude** field corresponds to the `sonar.exclusions` setting, which you can use to [narrow the focus](https://docs.sonarsource.com/sonarqube/latest/project-administration/analysis-scope/#excluding-specific-rules-from-specific-files) of a SonarQube scan. (STO-6441)
 
-### Version 1.67.2
+##### Version 1.67.2
 
 <!-- 2023-09-03 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 - In the STO Overview, **Today's Snapshot** shows new and remediated issue counts if today's issue counts include any newly detected vulnerabilities or new remddiations. (STO-4998) 
 
-#### Fixed issues
+###### Fixed issues
 
 - Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
 
 - Implemented fixes to improve scan times for large jobs using Checkmarx, Snyk, and other scanners. (STO-6408, STO-5676, ZD-49328, ZD-41409, ZD-42436, ZD-49383) 
 
-## August 2023 
+#### August 2023 
 
-### Version 1.67.1
+##### Version 1.67.1
 
 <!-- 2023-08-27 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 - The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4818) 
 
@@ -368,7 +374,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 -->
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed a pagination issue in the Security Tests page where switching between different pages resulted in a "Failed to get issues" error. The error occurred when switching from a page of issues (such as 21-40) to another issue for which those settings were invalid. (STO-6465)
 
@@ -381,12 +387,12 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 - Fixed a UI issue in the Security Tests tag where the clickable severity tiles &mdash; introduced in version 1.64.1, described [below](#august-09-2023-version-1641) &mdash; had an extra border on the right. (STO-6372)
 
 
-### SonarQube runner update
+#### SonarQube runner update
 
 <!-- August 25, 2023  -->
 
 
-#### Fixed issues
+##### Fixed issues
 
 This update to the SonarQube runner includes the following fixed issues:
 
@@ -395,12 +401,12 @@ This update to the SonarQube runner includes the following fixed issues:
 - Fixed an issue where the SonarQube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field. (STO-6443)
 
 
-### Version 1.66.1
+#### Version 1.66.1
 
 <!-- 2023-09-20 -->
 
 
-#### Fixed issues
+##### Fixed issues
 
 <!-- 
 
@@ -416,11 +422,11 @@ This update to the SonarQube runner includes the following fixed issues:
 
 
 
-### Version 1.64.1
+#### Version 1.64.1
 
 <!-- August 09, 2023 -->
 
-##### New features and enhancements
+###### New features and enhancements
 
 * Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
 
@@ -431,53 +437,53 @@ This update to the SonarQube runner includes the following fixed issues:
 
 * The issue lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
 
-#### Early access
+##### Early access
 
 * The **Security Tests** tab includes a set of pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212).
   ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
 
    This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-#### Fixed issues
+##### Fixed issues
 
 * Fixed a UI issue where the **Issue Details** pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
 
-### Version 1.62.2
+#### Version 1.62.2
 
 <!-- August 02, 2023 -->
 
-#### Fixed issues
+##### Fixed issues
 
 * Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
 
-## July 2023
+#### July 2023
 
-### Version 1.61.1 
+##### Version 1.61.1 
 
 <!-- July 12, 2023 -->
 
-#### New features and enhancements
+###### New features and enhancements
 
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities. (STO-5670)
 
 This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
 
-##### Fossa runner update
+###### Fossa runner update
 
 <!-- July 20, 2023 -->
 
 * Updated a Fossa runner image to fix an issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
 
 
-### Version 1.60.0
+#### Version 1.60.0
 
 <!-- July 12, 2023 -->
 
-#### New features and enhancements
+##### New features and enhancements
 
 - You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
@@ -485,7 +491,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 - Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 
-#### Early Access
+##### Early Access
 
 * The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step. 
 
@@ -504,17 +510,17 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
  This integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
 
-#### Fixed Issues
+##### Fixed Issues
 
 * Fixed an issue where some Reference Identifiers were not listed in the AIDA **Edit Inputs** form for enhancing a Security Issue's remediation steps. (STO-6102)
 
-## June 2023
+#### June 2023
 
-### Version 1.58.3
+##### Version 1.58.3
 
 <!-- June 21, 2023 -->
 
-#### Early access features
+###### Early access features
 
 Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability detected by STO, Harness AIDA explains the issue precisely and provides detailed advice  — including code changes and package upgrades — on how to fix it. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
 
@@ -522,18 +528,18 @@ Harness AIDA reduces developer toil by streamlining and simplifying the process 
 
 For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
-#### Fixed issues
+###### Fixed issues
 
 * A defective Zap runner image was rebuilt to resolve failures in orchestrated Zap scans. (STO-6094, ZD-46330)
 
 * In the **Request Exemption** dialog, you need to provide a reason only when the **Other** exemption reason is selected. (STO-5942)
 
 
-### Version 1.57.4
+##### Version 1.57.4
 
 <!-- June 8, 2023 -->
 
-#### New features
+###### New features
 
 * Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
 * Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
@@ -541,19 +547,19 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
   ![](./static/checkmarx-zip-size-override-sto-5991.png)
 
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed an issue where STO results were not showing up in output variables when using STO steps inside a step group in a security stage. (STO-6038, ZD-45802)
 
 * Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
 
-## May 2023 
+#### May 2023 
 
-### Version 1.54.1
+##### Version 1.54.1
 
 <!-- May 25, 2023 -->
 
-##### New features
+###### New features
 
 * This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
@@ -570,33 +576,32 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
 
 * Fixed an issue in non-Kubernetes builds where a scan would not produce output variables. This meant that failing a pipeline using `fail_on_severity` was not supported on non-Kubernetes builds.  Now, STO can generate output variables and fail pipelines using `fail_on_severity` on all supported build infrastructures. (STO-5483)
 
 
-
-### Version 1.53.0
+##### Version 1.53.0
 
 <!-- May 17, 2023 -->
 
-#### New features
+###### New features
 
 * Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
 
   ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
 
-### Version 1.50.3
+##### Version 1.50.3
 
 <!-- May 10, 2023 -->
 
-#### What's new
+###### What's new
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -616,7 +621,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
    ![](./static/sto-exemption-reason-pulldown.gif)
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed a UI issue to ensure that all input fields related to STO security steps appear the Template Studio view. (STO-5746, ZD-42167)
 
@@ -630,11 +635,11 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 * Implemented fixes to improve UI speed and performance in the Security Testing Dashboard. (STO-5612)
 
-### Plugin update version 1.11.1
+##### Plugin update version 1.11.1
 
 <!-- May 3, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 This update includes the following fixed issues:
 
@@ -642,10 +647,10 @@ This update includes the following fixed issues:
 
 * Fixed a Snyk ingestion issue that caused the scan to scan step to fail if the target name included a space. (STO-5855)
 
-## April 2023
+#### April 2023
 
 
-#### Plugin update version 1.10.1
+###### Plugin update version 1.10.1
 
 <!-- April 20, 2023 -->
 
@@ -662,28 +667,28 @@ This update includes the following fixed issues:
 
 * Fixed an issue that prevented orchestrated Mend scans from running if the [Use version in project names](https://docs.mend.io/en-US/bundle/sca_user_guide/page/using_version_in_product_or_project_names.html) setting was turned off. (STO-5774)
 
-### Version 1.43.1
+##### Version 1.43.1
 
 <!-- April 6, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
 * Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
 * The new Sonarqube step in the scanner template didn't pass `project_key` field required for data extraction mode. STO Manager v1.0.79100 now has the logic process this parameter correctly. (STO-5712)
 * 
 
-## March 2023
+#### March 2023
 
-### Version 1.40.2
+##### Version 1.40.2
 
 <!-- March 30, 2023 -->
 
-#### What's new
+###### What's new
 
 * The Snyk integration has been updated. Orchestrated Snyk scans now upload results to the external Snyk portal by default. (STO-5607)
 
-#### Early access 
+###### Early access 
 
 * This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations):
    * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
@@ -698,32 +703,32 @@ This update includes the following fixed issues:
 
    **External Tickets** now automatically populates the **Default Project Name** and **Default Project Type** menus based on the selected ticket-provider connector. (STO-5492)
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed an issue with SonarQube scans: if a repository had a .gitignore with a specific pattern, all files were ignored during the scan. (STO-5711)
 * Fixed an issue with Snyk scans to ensure that **Issue Details** shows all remediation information from the scan results under Remediation. (STO-5663)
 * Fixed an issue where, if a scan detected no issues and a later scan detected one or more issues, **Issue Details** would include remediation information from the later scan. (STO-5463)
 *  Fixed a UI issue where the **Security Tests** tab was incorrectly showing issue counts and the Ignored status for some issues. This was due to a DB query that caused exemptions scoped to an issue in one project to be applied to the same issue in all projects in the account. (STO-5718)
 
-### Version 1.38.3 
+##### Version 1.38.3 
 
 <!-- March 23, 2023 -->
 
-#### Fixed Issues
+###### Fixed Issues
 
 * Fixed an issue that caused OWASP scans of Go apps to fail with the message `[ERROR] Unexpected exception occurred initializing Golang Mod Analyzer`. (STO-5602)
 * Fixed a UI issue in **Issue Details** that caused some redundant fields such as `CWE` to appear. (CI-5365)
 
-### Version 1.37.1 
+##### Version 1.37.1 
 
 <!-- March 20, 2023 -->
 
-#### Fixed issues
+###### Fixed issues
 
 * The search pull-down widget has been removed from the Security Tests &gt; Overview page. To search for and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
 * Fixed an issue in **Security Tests** &gt; **Overview** where the **Issue distribution over time** graph was empty for some projects. (STO-5318)
 
-### Scanner Template GA release
+##### Scanner Template GA release
 
 <!-- March 14, 2023 -->
 
@@ -743,26 +748,26 @@ The following security steps are now generally available:
 * [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
 
 
-### Version 1.34.0 
+##### Version 1.34.0 
 
 <!-- March 9, 2023 -->
 
 
-#### Early access 
+###### Early access 
 
 * The new [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
 
-#### Fixed issues
+###### Fixed issues
 
 * Fixed an issue in the Jira integration to ensure that **Create Ticket** now appears in **Issue Details**, even if an issue has an Exemption associated with it. (STO-5526)
 * Fixed an issue in the Jira integration that allowed users to try to create tickets against targets with no baseline specified, which is not supported and resulted in a 404 response. (STO-5477)
 * Fixed an issue in the Back Duck configuration UI where the in-tool help said that the Image Region setting was required when scanning AWS ECR container images. This field is optional. (STO-5450)
 
-### Version v1.32.1
+##### Version v1.32.1
 
 <!-- March 2, 2023 -->
 
-#### What's new
+###### What's new
 
 - The Twistlock integration has been upgraded to use version 22.12.582. (STO-5575)
 - The Brakeman, Nikto, and Nmap scanner integrations now enable you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5465)
@@ -784,7 +789,7 @@ The following security steps are now generally available:
 ![Security Testing Dashboard -- filters and Refresh button](static/sto-dashboard-with-new-filters.png)
 
 
-#### Early access
+###### Early access
 
 - Improved UI for configuring scan steps (STO-4867)
   
@@ -809,41 +814,41 @@ The following security steps are now generally available:
 
 - This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
 
-#### Fixed issues
+###### Fixed issues
 
 - The ShiftLeft integration now uses the latest CLI, which fixes an issue where orchestrated ShiftLeft scans would fail with an error. (STO-4994)
 
-## February 2023
+#### February 2023
 
-### Version 1.31.4
+##### Version 1.31.4
 
 <!-- February 24, 2023 -->
 
-#### Fixed issue
+###### Fixed issue
 
 * Fixed a race condition allowing for duplicate targets to get created. (STO-5481)
 
-### February 16
+##### February 16
 
-#### Fixed issue 
+###### Fixed issue 
 
 * Fixed an issue with Prisma Cloud (formerly Twistlock) scans where the step would fail when a twistcli policy encountered a Compliance or Vulnerabilities threshold check that failed. (STO-5559)
 
-### February 5
+#### February 5
 
-##### What's new
+###### What's new
 
 * **Issue Details** now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
 
-#### Fixed issues
+##### Fixed issues
 
 This release does not include fixed issues.
 
-## January 2023
+#### January 2023
 
-### Version 1.25.0
+##### Version 1.25.0
 
-#### What's new
+###### What's new
 
 * You can now ingest results from a specific Checkmarx scan. This option is useful for ensuring that a pipeline ingests the scan triggered by a specific event. Add the setting `product_scan_id` = `MY_SCAN_ID` to the Checkmarx step. This overrides the default behavior, which is to ingest results for the most recent scan. (STO-5424)  
 
@@ -854,44 +859,46 @@ This release does not include fixed issues.
 * To make **Issue Details** easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398) 
 
 
-#### Fixed issues
+##### Fixed issues
 
 * Fixed an issue that caused a scheduled AWS ECR scan to time out or to terminate with a status of Invalid. (STO-5449)  
 
-### Version 1.24.1
+#### Version 1.24.1
 
 <!-- 2023-01-15 -->
 
-#### What's new
+##### What's new
 
 * Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, specify `tool_args` = `---offline-scan`. (STO-5388) 
 
-#### Fixed issues
+##### Fixed issues
 
 * Fixed an issue where, in some situations, the severity and severity code of a detected issue were not updated when new occurrences of the same issue were detected. (STO-4809)  
 
-### Version 1.22.0
+#### Version 1.22.0
 
-##### What's new
+###### What's new
 
 * Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. (STO-5041) 
 
 * STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference). (STO-5161)  
 
 
-### Version 1.21
+#### Version 1.21
 
 <!-- 2023-01-01 -->
 
-##### New features
+###### New features
 
 * The Issues Details pane has been revised to make it easier to navigate. Raw JSON data now appears at the bottom of each occurrence and is collapsed by default. (STO-4839)  
 
-#### Fixed issues
+##### Fixed issues
 
 This release does not include fixed issues.
 
-## Previous releases
+</details>
+
+### 2022 releases
 
 <details>
 <summary>2022 releases</summary>

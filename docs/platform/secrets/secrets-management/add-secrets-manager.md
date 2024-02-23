@@ -234,7 +234,7 @@ To create a Hashicorp admin token, do the following:
 
 1. Select **New Secret**, and then select **Text**.
 2. Enter the secret name `hashicorp_admin`.
-3. For the secret value, paste the admin token from the Hashicorp Public vault URL. The Harness delegate uses this credential to authenticate Harness with Hashicorp at deployment runtime.
+3. For the secret value, paste the admin token from the Hashicorp Public vault URL. The Harness Delegate uses this credential to authenticate Harness with Hashicorp at deployment runtime.
 4. Select **Save**.
 
 #### Create a Hashicorp connector

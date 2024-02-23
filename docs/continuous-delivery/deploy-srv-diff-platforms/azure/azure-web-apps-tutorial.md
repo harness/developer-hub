@@ -113,11 +113,11 @@ The above example uses a [publicly available Docker image from Harness](https://
 
 You might want to use that the first time you set up an Azure Web App deployment.
 
-### Harness delegate requirement
+### Harness Delegate requirement
 
-As covered in [Harness Platform architecture](/docs/get-started/harness-platform-architecture), a Harness delegate must be installed in your infrastructure for Harness to perform tasks.
+As covered in [Harness Platform architecture](/docs/get-started/harness-platform-architecture), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
 
-You can install a Harness delegate in your infrastructure as part of adding the connector for the **App Services Configuration** or **Artifacts**.
+You can install a Harness Delegate in your infrastructure as part of adding the connector for the **App Services Configuration** or **Artifacts**.
 
 There are several types of delegates you can use for an Azure App Service deployment, such as Kubernetes and Docker Delegates, as listed in the [Delegates](/docs/category/delegates) category.
 

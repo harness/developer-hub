@@ -159,7 +159,7 @@ The Shell Script step succeeds or fails based on the exit value of the script. A
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
 
-* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use.
+* Execute scripts on the host running a Harness Delegate. You can use delegate selectors to identify which Harness Delegate to use.
 * Execute scripts on a remote target host in the deployment infrastructure definition.
 
 When executing a script, you can also **dynamically capture** the execution output from the script, providing runtime variables based on the script execution context, and export those to another step in the same stage or another stage in the same pipeline.

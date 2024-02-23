@@ -878,7 +878,7 @@ Yes, you can control access and permissions for the Harness GitOps Agent. It com
 
 #### Can I use the Harness GitOps Agent with different Kubernetes distributions?
 
-Yes, the Harness GitOps Agent is designed to work with various Kubernetes distributions, including managed Kubernetes services like Amazon EKS, Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS), as well as self-hosted Kubernetes clusters.
+Yes, the Harness GitOps Agent is designed to work with various Kubernetes distributions, including managed Kubernetes services like Amazon EKS, Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS), as well as self-managed Kubernetes clusters.
 
 #### Getting an error while evaluating expression/ Expression evaluation fails
 
@@ -2401,7 +2401,7 @@ deny[msg] {
 
 #### How to solve the following error? Invalid request: Profile definition must end with ']
 
-Harness delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
+Harness Delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
 
 #### Why am I receiving the message 'Current execution is queued as another execution is running with given resource key' in the step resource constraint?
 
@@ -4372,9 +4372,9 @@ No this is not supported as of now, as currently command step is only applicable
 
 We don't charge separately for infrastructure provisioning swimlanes or custom script orchestration like 'cdk deploy.' Our current licensing model is straightforward, and there's no additional fee for this usage.
 
-#### Can I use the same cluster for running the Harness delegate and containerized step group(s), or is it required to use separate clusters ?
+#### Can I use the same cluster for running the Harness Delegate and containerized step group(s), or is it required to use separate clusters ?
 
-Certainly! one has the flexibility to use the same cluster for both the Harness delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
+Certainly! one has the flexibility to use the same cluster for both the Harness Delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
 
 #### What are the Google Cloud Functions supported by Harness ?
@@ -4532,7 +4532,7 @@ use UI to update the Tags.
 You can access the variables using the expression.
 Also for your reference, you can click on the copy icon by the side of the variable to get its corresponding expression for access.
 
-#### How do I add custom certificates to Harness delegates?
+#### How do I add custom certificates to Harness Delegates?
 
 You can use the instructions mentioned here to install custom certificates - https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/
 
@@ -4925,7 +4925,7 @@ To fetch files from the Harness file store in a Run step, you can use the follow
 ```
 Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
 
-#### Is there a way the user can pull from Bitbucket/Github inside the Harness delegate and then push it to the target server?
+#### Is there a way the user can pull from Bitbucket/Github inside the Harness Delegate and then push it to the target server?
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
 
 #### Is there a way to prevent editing the input set during the rerun of pipelines?
@@ -5544,3 +5544,102 @@ Please read more on this in the following [Documentation](https://developer.harn
 #### How many concurrent parallel executions are allowed by Harness ?
 
 Harness has a limitation of running concurrent 256 parallel executions.
+
+#### How can we mimic the functionality of assigning Usage Scopes in FirstGen connectors to specify allowed usage for environment types within NextGen ?
+
+Functionality for assigning scopes are not yet possible to create. One can try using policies to enforce restriction.
+Please read more on OPA Policies the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
+
+##### Is it possible to customize Slack notifications for pipeline executions to include additional information such as the Project/Organization ?
+
+No, this feature is yet to be introduced. Please read more on how to create slack notification in the following [Documentation](https://developer.harness.io/docs/platform/notifications/send-notifications-using-slack/)
+
+#### What is the ratio for service instance to active service moving forward ?
+
+The ratio for Service Instance to Active Service is **21**. Please read more on this in this following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#what-are-service-instances)
+
+#### Is there a method to configure the Harness GitOps agent auto updater to utilize our Artifactory proxy for Docker Hub, considering policy of not allowing Kubernetes clusters to access the public internet directly ?
+
+Organizations can import the GitOps Image from the specified [Docker Hub repository](https://hub.docker.com/r/harness/gitops-agent/tags) into their JFrog Artifactory. However, utilizing the auto updater feature may not be feasible in this scenario. Nonetheless, manual copying of the image to the Artifactory and subsequent pulling from there remains an alternative approach.
+Please read more on Harness GitOps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/)
+
+#### Can one use remote stage templates with different branches but same repository as the pipelines ?
+
+Yes, one can use remote stage templates with different branches but same repository as the pipelines. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/templates/create-a-remote-stage-template)
+
+#### What are the potential statuses of nodes (stages/steps) when utilizing a looping strategy ?
+
+The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy)
+
+#### Is there a way to create a github repository tag in Harness ?
+
+One can use `curl` commands to create tags via API for [Github repository tags](https://docs.github.com/en/rest/repos/tags?apiVersion=2022-11-28). 
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions/#set-up-the-workflow)
+
+#### What pattern should be specified for the scopedFilePath parameter in this API call ?
+
+The scopedFilePath parameter value depends on the file's scope:
+
+- For a file on the project level, use scopedFilePath = `/path/to/file`.
+- For a file on the organization level, use scopedFilePath = `org:/path/to/file`.
+- For a file on the account level, use scopedFilePath = `account:/path/to/file`.
+Remember to encode `/path/to/file` as `%2Fpath%2Fto%2Ffile`. Populate query arguments based on the file's storage location and identifiers such as accountIdentifier, orgIdentifier, and projectIdentifier.
+
+Please read more on this in the following [Documentation](https://apidocs.harness.io/tag/File-Store#operation/getFileContentUsingScopedFilePath)
+
+#### What is the impact on Kubernetes deployments when it comes to the immutability of labels?
+
+Kubernetes labels are immutable. If a specific deployment object already exists in the cluster, you cannot change its labels.
+- If the deployment object already exists before the Harness deployment, it might conflict with the default Harness Kubernetes canary deployment due to the use of the label `harness.io/track`.
+- If you are deploying different Harness deployment objects to the same cluster, you might encounter a selector error.
+Please read more on this in the following [Documentation on Invalid value LabelSelector](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments/)
+
+#### What are the constraints regarding Kustomize build commands within Harness, specifically in terms of supported commands and their functionality ?
+
+Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a kustomization target from a directory or URL.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments#limitations-1)
+
+#### Can we use expression without providing the full path (pipeline+stage+step) when we provision infra dynamically
+
+No, when we provision infra dynamically it is considered as a separate execution, therefore all the variables that are referenced need to be referenced with full path.
+
+#### Can we create a dashboard which shows realtime status of pipeline deployments
+
+Yes, you can use field "status" in dashboard to check the status of pipeline
+
+#### We have a single artifact that is deployed multiple times with different run arguments as different services in parallel in a deployment. When the pipeline is run each service asks to select the artifact tag. They should all be set to the same tag. Is there a way to select the artifact tag once and use it for all 10 of the services?
+
+For the first service you can keep the tag as runtime value, with it also declare a pipeline variable and keep it as runtime input.
+ 
+For all other service, provide the pipeline variable expression as a value for tag.
+ 
+So now when you run the pipeline, the first service will ask for the tag value and you can copy the same tag value to pipeline variable which is also a runtime input which will then be assigned to all other services.
+
+#### How to reference the tag of artifact in deploy stage.
+
+You can use ```<+artifacts.primary.tag>``` expression
+
+#### How is infra key formed for deployments
+
+The infra key is formed from service Id + environment Id + connector Id +  infrastructure Id
+
+#### How to differentiate between infra key if service Id, environment Id, connector Id, infrastructure Id are same to ensure deployments are not queued
+
+You can either change the connector id (creating duplicate connector with same spec) or Change the secret identifier in case of secure shell deployments.
+
+#### How to use Github event type X-GitHub-Event: pull_request_review in triggers
+
+You can use custom triggers and use header conditions to match the attribute type.
+
+#### We have a pipeline generator tool that we would like to automate. We have a software project in python that outputs ~30 harness pipelines as yaml. Changes could result in new pipelines being created, or old ones being destroyed. I would like to automate the syncing of these pipeline resources with Harness.
+
+Yes, the pipeline will be in sync depending on the type of pipeline created, you can use the [API](https://apidocs.harness.io/tag/Pipeline#operation/postPipelineV2) , if the pipeline created is a remote pipeline, than we would suggest using : [API](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup) to sync the pipeline with Git.
+
+#### Is it possible to create a pipeline / delete a pipeline using the Harness Git Experience? As in, if I push a yaml file into a git repo, could that create a new pipeline automatically? If that is not the case, would this require a REST API call to facilitate the pipeline resource management(creation/deletion)?
+
+Directly pushing a YAML into .harness folder will not create the pipeline, you can either use pipeline create [API] (https://apidocs.harness.io/tag/Pipeline#operation/postPipelineV2) or if the you already have the pipeline YAML you can use [API](https://apidocs.harness.io/tag/Pipeline#operation/importPipeline) to import and create the pipeline.
+
+#### In the overview page why Environments always showed 0 when the reality there are some environments
+
+The overview page offers a summary of deployments and overall health metrics for the project. Currently, the fields are empty as there are no deployments within the project. Once a deployment is in the project, these fields will be automatically updated.

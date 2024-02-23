@@ -1,7 +1,7 @@
 ---
 title: Use Harness IDP for self serviced Harness CI/CD onboarding
 description: This tutorial will give an idea on how to create a new service using flows and provision a Harness Deployment pipeline for the newly created service. 
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 In this tutorial we will create a self service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
