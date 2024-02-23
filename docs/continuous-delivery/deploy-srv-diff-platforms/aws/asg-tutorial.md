@@ -40,7 +40,7 @@ Here's a summary of how Harness deploys new ASG versions:
    1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region. Harness creates a new launch template with name same as the ASG name and that launch template is applied to the new ASG.  
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-   2. Harness uses the new version of the launch template and other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity & new launch template version.
+   2. Harness uses the new version of the launch template and other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity and new launch template version.
    3. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
 
 Notes:
