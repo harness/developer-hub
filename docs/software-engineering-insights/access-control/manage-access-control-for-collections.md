@@ -1,27 +1,30 @@
 ---
-title: Insights
-description: Guide on how to use RBAC to define access control on SEI Insights.
-sidebar_position: 5
+title: Collections
+description: Guide on how to use RBAC to define access control on SEI Collections.
+sidebar_position: 15
 ---
 
-# Manage access control for SEI Insights
+# Manage access control for SEI Collections
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness Resources according to their role assignment.
 
-This topic describes how to add and manage access control for SEI Insights.
+This topic describes how to add and manage access control for SEI Collections.
 
 ## Before You Begin
+
+Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness Resources according to their role assignment.
+
+This topic describes how to add and manage access control for SEI Collections.
 
 * [RBAC in SEI](/docs/software-engineering-insights/access-control/sei-roles-and-permissions)
 * [RBAC in Harnesss](/docs/platform/role-based-access-control/add-manage-roles)
 
-## SEI Insights Roles and Permissions
+## SEI Collections Roles and Permissions
 
 The following roles are supported for SEI Insights:
 
-* **SEI Admin:** To view, add, edit, and delete SEI Insights with the capability to add widgets to Insights. The access can be given to all Insights or specific Insights.
-* **SEI Collection Admin:** To view all Insights or user-associated Insights with the capability to edit the user-associated Collections.
-* **SEI Viewer:** To view all Insights or user-associated Insights.
+* **SEI Admin:** To view, add, edit, and delete SEI Collections with the capability to edit Insights. The access can be given to all Collections or specific Collections.
+* **SEI Collection Admin:** To view, edit and delete all the user-associated Collections.
 
 :::info
 Note that the specific Insight or Collection selection option is supported only in the project-level scope.
@@ -29,11 +32,9 @@ Note that the specific Insight or Collection selection option is supported only 
 
 | Role | Scope | Permission |
 | - | - | - |
-| SEI Admin | Account | <ul><li>Add Insight</li> <li>Add Widgets / Reports</li> <li>Edit Insights</li> <li>Delete Insights</li></ul> |
-| SEI Collection Admin | Account | View |
-| SEI Collection Admin | Project | View |
-| SEI Viewer | Account | View|
-| SEI Viewer | Project | View|
+| SEI Admin | Account | <ul><li>Add Collections</li> <li>Edit Collections</li><li>Delete Collections</li></ul> |
+| SEI Collection Admin | Account | <ul><li>Edit Collections</li><li>Delete Collections</li></ul> |
+| SEI Collection Admin | Project | <ul><li>Edit Collections</li><li>Delete Collections</li></ul> |
 
 It is important to note that the permissions mentioned in the table above are entirely dependent on the resource group that is mapped to the role. Therefore, it is crucial to define the role binding accurately between the role and the associated resource group for the user to ensure that the permissions are correctly applied.
 
@@ -41,7 +42,7 @@ It is important to note that the permissions mentioned in the table above are en
 
 In this section, we will walk through the process of defining and managing access controls for resource groups within an account and project-level scope.
 
-We will cover how to set up permissions for Insights at the account level, as well as limiting access to specific Insights at the project level.
+We will cover how to set up permissions for Collections at the Account level, as well as limiting access to specific Collections at the project level.
 
 ### Account Level
 
@@ -51,7 +52,7 @@ At the account level scope, the resource group allows you to define permissions 
 * Insights
 * Collections
 
-In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/access-control/sei-roles-and-permissions#built-in-resource-groups) or [create a new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to Insights.
+In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/access-control/sei-roles-and-permissions#built-in-resource-groups) or [create a new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to Collections.
 
 At the account level, there are two built-in resource groups available:
 
@@ -60,7 +61,7 @@ At the account level, there are two built-in resource groups available:
 
 ![](./static/account-level-default-rg.png)
 
-For example, if we want to set up a user with CRUD access to all Insights, which is a project-level resource, we will use the **All Resources Including Child Scopes** resource group in the **Role Binding** to that user.
+For example, if we want to set up a user with edit access to all Collections, which is a project-level resource, we will use the **All Resources Including Child Scopes** resource group in the **Role Binding** to that user.
 
 For more information on adding and managing resource groups, go to [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 
@@ -68,15 +69,15 @@ For more information on adding and managing resource groups, go to [Manage Resou
 Note that you cannot restrict access to a specific group of entities such as specific Insights or Collection under the account scope. This is possible at the project level.
 :::
 
-Perform the following steps to **create a new Resource Group** to define CRUD access to all Insights.
+Perform the following steps to **create a new Resource Group** to define **Edit & Manage** access to all **Collections**.
 
 1. In **Harness**, click **Account Settings**, and then click **Access Control**.
 2. In **Resource Groups**, click on the **+New Resource Group**. For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 3. Choose the scope of the resource group: 
-   1. **Account Only:** Insights access is unavailable when selecting the scope as `Account Only` as they are a **Project Level** resource entity.
+   1. **Account Only:** Collections access is unavailable when selecting the scope as `Account Only` as it is a **Project Level** resource entity.
    2. **All (including all Organizations and Projects):** Applies permissions across all organizations and their respective projects.
    3. **Specified Organizations (and their Projects):** Sets permissions for a particular organization and its associated projects.
-4. Under the settings for the SEI module’s shared resources, select **Insights**. At the project level scope by default, **All Insights** is selected.
+4. Under the settings for the SEI module’s shared resources, select **Collections**. At the project level scope by default, **All Collections** is selected.
 5. Click **Apply Changes**.
 
 :::info
@@ -92,33 +93,33 @@ At the project level scope, the resource group enables you to set permissions fo
 
 You have the option to define the resource group to allow access to all entities, such as **All Insights** and **All Collections**, or to specify a group of resource entities, such as **specific Insights** and **specific Collections**.
 
-In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/access-control/sei-roles-and-permissions#built-in-resource-groups) or define a [new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to the Insights. To configure the permissions for **Collections**, go to [Manage Access Control for SEI Collections](/docs/software-engineering-insights/access-control/manage-access-control-for-insights).
+In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/access-control/sei-roles-and-permissions#built-in-resource-groups) or define a [new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to the Collections. To configure the permissions for **Insights**, go to [Manage Access Control for SEI Insights](/docs/software-engineering-insights/access-control/manage-access-control-for-insights).
 
 At the project level, there is one built-in resource group available:
 
 * **Project Viewer - All Project Level Resources:** This resource group defines the permissions for all resources in the project's scope. This is set for each project. If you have multiple projects, you have an **All Project Level Resources** for each project.
 
-For example, if we want to set up view access to all Insights, which is a project-level resource, we will use this resource group. 
+For example, if we want to set up view access to all Collections, which is a project-level resource, we will use this resource group. 
 
 ![](./static/project-level-default-rg.png)
 
 
 For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 
-To limit access to specific Insights you can create a new custom resource group.
+To limit access to specific **Collections** you can create a new custom resource group.
 
-Perform the following steps to limit access to specific Insights:
+Perform the following steps to limit access to specific Collections:
 
 1. In **Harness**, click **Account Settings**, and then click **Access Control**.
 2. Go to the **Resource Groups** tab and click on **+New Resource Group**. For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
-3. Under the settings for the SEI module’s shared resources, select **Insights**. By default, **All Insights** is selected.
+3. Under the settings for the SEI module’s shared resources, select **Collections**. By default, **All Collections** is selected.
 4. Select the **Specified** option and click on **+Add**.
-5. Select the **Insights** for which you want to limit the access.
+5. Select the **Collections** for which you want to limit the access.
 6. Click **Apply Changes**.
 
 ## Add and Manage Access Control for Users​
 
-Perform the following steps to define access to Insights for different users.
+Perform the following steps to define access to **Collections** for different users.
 
 1. In **Harness**, click **Access Control**.
 2. In **User**, in **New User**, add or select the **User** for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Manage users](/docs/platform/role-based-access-control/add-users).
@@ -132,9 +133,9 @@ The difference between adding a **User** at the **Account level** and **Project 
 
 ## Use cases
 
-### Add User with All Insights Edit Access at the Account Level
+### Add User with All Collections Edit Access at the Account Level
 
-In this scenario, we will configure a user with edit permissions to all Insights.
+In this scenario, we will configure a user with **View & Edit** permissions to all **Collections**.
 
 #### Step 1: Selecting the Resource Group
 
@@ -149,7 +150,7 @@ To view all the permissions associated with the Resource Group:
 
 1. In **Harness**, click **Access Control**.
 2. In **User**, in **New User**, add or select the **User** for which you want to add or modify the access control. For more information on adding and managing users, see [Manage users](/docs/platform/role-based-access-control/add-user-groups).
-3. In **Assign Roles**, select the `SEI ADMIN` role from the dropdown.
+3. In **Assign Roles**, select the `SEI COLLECTION ADMIN` role from the dropdown.
 4. In **Resource Groups**, select the **All Resources Including Child Scopes** resource group to define the access control.
 5. Click **Save**.
 
@@ -161,16 +162,16 @@ This will enable the user to view all account-level resources and seamlessly acc
 Note that if you are creating a custom resource group ensure that you have added the required **Administrative Functions** permissions to enable the user to access and operate over the respective resource entities. For example: In this scenario, the resource group must have permissions for `orgs`, `projects` etc.
 :::
 
-### Add User with specific Insights View Access at the Project Level
+### Add User with specific Collections Edit Access at the Project Level
 
-In this scenario, we will configure a user with view permissions to specific Insights at the Project Level.
+In this scenario, we will configure a user with **Edit/Manage** permissions to specific **Collections** at the **Project Level**.
 
 #### Step 1: Configure the resource group
 
 In this scenario, we will use two resource groups and associate them with the user.
 
 1. **Built-in project-level resource group:** Project Viewer - All Project Level Resources.
-2. **Custom Resource group:** Newly created resource group with permissions to specific Insights under the project. 
+2. **Custom Resource group:** Newly created resource group with permissions to specific Collections under the project. 
 
 To create the custom **Resource Group**:
 
@@ -178,16 +179,16 @@ To create the custom **Resource Group**:
 2. In **Resource Groups**, click on **+New Resource Group**. For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 3. Add a **Name** to the resource group.
 4. The resource group scope in the scenario is by default set to the **Project Level**.
-5. Under the settings for the SEI module’s shared resources, select **Insights**. At the project level scope by default, **All Insights** is selected. 
+5. Under the settings for the SEI module’s shared resources, select **Collections**. At the project level scope by default, **All Collections** is selected. 
 6. Select the **Specified** option and click on **+Add**.
-7. Select the **Insights** for which you want to limit the access.
+7. Select the **Collections** for which you want to limit the access.
 8. Click **Apply Changes**.
 
 #### Step 2: Add the role-binding to the required user
 
 1. In **Harness**, click **Access Control**.
 2. In **User**, in **New User**, select the **User** for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Manage users](/docs/platform/role-based-access-control/add-users).
-3. In **Assign Roles**, select the `SEI VIEWER` role from the dropdown.
+3. In **Assign Roles**, select the `SEI COLLECTION ADMIN` role from the dropdown.
 4. In **Resource Groups**, select the resource group you created earlier to define the access control.
 5. Click **Save**.
 
