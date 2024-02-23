@@ -16,11 +16,11 @@ Here's a high-level summary of the setup steps and how Harness deploys ASGs.
 Here's a summary of how you set up ASG deployments in Harness:
 
 1. Create the Harness ASG service.
-   1. Add launch template manifest file. 
-   2. Add ASG configuration manifest file. 
+   1. Add the launch template manifest file. 
+   2. Add the ASG configuration manifest file. 
    3. Add scaling policies (optional).
    4. Add scheduled update group actions (optional).
-   5. Add user data script file (optional). 
+   5. Add the user data script file (optional). 
    6. Add the AMI image to use for the ASG as an artifact.
 2. Create the Harness ASG environment.
    1. Connect Harness to the AWS region where you want to deploy.
@@ -40,7 +40,7 @@ Here's a summary of how Harness deploys new ASG versions:
    1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region. Harness creates a new launch template with name same as the ASG name and that launch template is applied to the new ASG.  
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-   2. Harness uses the new version of the launch template & other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity & new launch template version.
+   2. Harness uses the new version of the launch template and other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity & new launch template version.
    3. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
 
 Notes:
@@ -1105,7 +1105,7 @@ The Rolling Deploy step has the following options:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Minimum Healthy Percentage (optional)**
-  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, harness sets the default value for this field as 90%.
+  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, Harness sets the default value for this field as 90%.
 - **Instance Warmup (optional)**
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
