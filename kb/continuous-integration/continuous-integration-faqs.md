@@ -1880,7 +1880,9 @@ If a file becomes corrupted in the bucket during the restoration process, it is 
 
 You can create a custom dimension to achieve your use case, for example :
  
-Custom Dimension : contains(${pipeline_execution_summary_ci.error_message}, "Timeout")
+Custom Dimension : 
+
+```contains(${pipeline_execution_summary_ci.error_message}, "Timeout")```
 
 ## General issues with connectors, secrets, delegates, and other Platform components
 
