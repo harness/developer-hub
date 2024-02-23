@@ -597,7 +597,7 @@ No, The cloud connector will not propagate the tags to AWS while making calls.
 
 We have limited logging for the AWS calls.
 
-### Ho do delegate selectors work in connectors?
+### How do delegate selectors work in connectors?
 
 The delegate selector in a connector always works as AND and not OR. Let's say you have delegate A named "ABC" and delegate B named "BCD". In the connector selector options, you will need to give only 1 tag, either "ABC" or "BCD". If you need to have multiple delegates there, then you will need to add custom tags to the delegate and specify the common one in the selector.
 
