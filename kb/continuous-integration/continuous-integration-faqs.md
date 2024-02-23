@@ -1876,6 +1876,14 @@ For steps, you can set a custom timeout limit in each step's **Optional Configur
 
 If a file becomes corrupted in the bucket during the restoration process, it is best practice to remove the corrupted file from the bucket. To ensure robustness in your pipeline, think about incorporating a Failure Strategy into the restore step to mitigate pipeline failures.
 
+### How to create a dashboard to identify builds that are ending with an 'timeout' in a specific task.
+
+You can create a custom dimension to achieve your use case, for example :
+ 
+Custom Dimension : 
+
+```contains(${pipeline_execution_summary_ci.error_message}, "Timeout")```
+
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
