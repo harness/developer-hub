@@ -73,16 +73,28 @@ import future.keywords.in
 import future.keywords.if
 
 # Define a set of reference-identifiers that are denied
-# The following policy denies if the scan results include any occurrence of CWE-772 or CVE-2019-14250
+# The following policy denies if the scan results include any occurrence of 
+#  - cwe-772
+#  - cve-2019-14250
+#  - CWE-772
+#  - CVE-2019-14250
 
 deny_list := fill_defaults([
   {
     "refId": {"value": "772", "operator": "=="},
     "refType": {"value": "cwe", "operator": "=="}
   },
- {
+     {
+    "refId": {"value": "772", "operator": "=="},
+    "refType": {"value": "CWE", "operator": "=="}
+  },
+  {
     "refId": {"value": "2019-14250", "operator": "=="},
     "refType": {"value": "cve", "operator": "=="}
+  },
+ {
+    "refId": {"value": "2019-14250", "operator": "=="},
+    "refType": {"value": "CVE", "operator": "=="}
   }
 ])
 
@@ -106,10 +118,10 @@ import future.keywords.if
 
 deny_list := fill_defaults([
   {
-    "title": {"value": "javascript.express.mongodb.*", "operator": "~"}
+    "title": {"value": "tar@1.34", "operator": "~"}
   },
   {
-    "title": {"value": "javascript.express.security.audit.*", "operator": "~"}
+    "title": {"value": "libsqlite3", "operator": "~"}
   }
 ])
 
@@ -156,11 +168,18 @@ import future.keywords.in
 import future.keywords.if
 
 # Define a set of CVE ages (as old/older than given year) and severities (equal/greater than) that are denied
-# This example denies any critical-severity CVE from 2021 or earlier, OR any high-severity CVE from 2020 or earlier
+# This example denies CVEs for any of the following filters:
+#   - Old Critical severities (2021 or earlier)
+#   - New Critical severities (2023 or later)
+#   - Very old Medium severities (2015 or earlier)
 
 deny_list := fill_defaults([
   {
-    "year": {"value": 2021, "operator": "<="},
+    "year": {"value": 2020, "operator": "<="},
+    "severity": {"value": "Critical", "operator": "=="}
+  },
+    {
+    "year": {"value": 2023, "operator": ">="},
     "severity": {"value": "Critical", "operator": "=="}
   },
   {
@@ -188,7 +207,7 @@ deny_list := fill_defaults([
 
    <DocImage path={require('./static/opa-01-select-policy-sample.png')} width="50%" height="50%" title="Select policy sample" />
 
-4. Select **Add this sample** (bottom). The policy sample appears in the edit pane (left).
+4. Select **Use this sample** (bottom). The policy sample appears in the edit pane (left).
 
    <DocImage path={require('./static/opa-02-use-this-sample.png')} width="50%" height="50%" title="Select policy sample" />
 
@@ -272,7 +291,7 @@ Now you can set up your scan step to stop builds automatically when the policy g
 
    <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="80%" height="80%" title="Select policy sample" />
 
-<!-- 
+
 ### Set up email notifications for pipeline failures
 
 You have a Policy that fails the pipeline based on an OPA policy. Now you can configure the stage to send an email notification automatically whenever the pipeline fails. 
@@ -282,7 +301,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
 2. Set up the notification as follows:
 
-     1. Overview page —  Enter a notifcation name such as **Pipeline failed -- NEW_CRITICAL or NEW_HIGH issues detected**.
+     1. Overview page —  Enter a notification name such as **Pipeline failed -- NEW_CRITICAL or NEW_HIGH issues detected**.
 
      2. Pipeline Events page  —  Select **Stage Failed** for the event that triggers the notification. Then select the stage that has the Policy step you just created.
 
@@ -290,6 +309,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 
+<!--
 
 ## YAML pipeline example
 
