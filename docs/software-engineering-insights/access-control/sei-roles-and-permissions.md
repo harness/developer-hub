@@ -150,7 +150,7 @@ At the project level scope, SEI provides two default roles - **SEI Collection Ad
 
 The resources related to these roles apply only to the project-level scope and depend on the associated Resource Group. You can manage permissions for the following SEI resources at the project level:
 
-* [Insights](/docs/software-engineering-insights/sei-insights)
+* Insights
 * [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collections)
 
 ### Account Level
