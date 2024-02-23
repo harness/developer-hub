@@ -5599,3 +5599,47 @@ Please read more on this in the following [Documentation on Invalid value LabelS
 
 Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a kustomization target from a directory or URL.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments#limitations-1)
+
+#### Can we use expression without providing the full path (pipeline+stage+step) when we provision infra dynamically
+
+No, when we provision infra dynamically it is considered as a separate execution, therefore all the variables that are referenced need to be referenced with full path.
+
+#### Can we create a dashboard which shows realtime status of pipeline deployments
+
+Yes, you can use field "status" in dashboard to check the status of pipeline
+
+#### We have a single artifact that is deployed multiple times with different run arguments as different services in parallel in a deployment. When the pipeline is run each service asks to select the artifact tag. They should all be set to the same tag. Is there a way to select the artifact tag once and use it for all 10 of the services?
+
+For the first service you can keep the tag as runtime value, with it also declare a pipeline variable and keep it as runtime input.
+ 
+For all other service, provide the pipeline variable expression as a value for tag.
+ 
+So now when you run the pipeline, the first service will ask for the tag value and you can copy the same tag value to pipeline variable which is also a runtime input which will then be assigned to all other services.
+
+#### How to reference the tag of artifact in deploy stage.
+
+You can use "<+artifacts.primary.tag>" expression
+
+#### How is infra key formed for deployments
+
+The infra key is formed from service Id + environment Id + connector Id +  infrastructure Id
+
+#### How to differentiate between infra key if service Id, environment Id, connector Id, infrastructure Id are same to ensure deployments are not queued
+
+You can either change the connector id (creating duplicate connector with same spec) or Change the secret identifier in case of secure shell deployments.
+
+#### How to use Github event type X-GitHub-Event: pull_request_review in triggers
+
+You can use custom triggers and use header conditions to match the attribute type.
+
+#### We have a pipeline generator tool that we would like to automate. We have a software project in python that outputs ~30 harness pipelines as yaml. Changes could result in new pipelines being created, or old ones being destroyed. I would like to automate the syncing of these pipeline resources with Harness.
+
+Yes, the pipeline will be in sync depending on the type of pipeline created, you can use the [API](https://apidocs.harness.io/tag/Pipeline#operation/postPipelineV2) , if the pipeline created is a remote pipeline, than we would suggest using : [API](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup) to sync the pipeline with Git.
+
+#### Is it possible to create a pipeline / delete a pipeline using the Harness Git Experience? As in, if I push a yaml file into a git repo, could that create a new pipeline automatically? If that is not the case, would this require a REST API call to facilitate the pipeline resource management(creation/deletion)?
+
+Directly pushing a YAML into .harness folder will not create the pipeline, you can either use pipeline create [API] (https://apidocs.harness.io/tag/Pipeline#operation/postPipelineV2) or if the you already have the pipeline YAML you can use [API](https://apidocs.harness.io/tag/Pipeline#operation/importPipeline) to import and create the pipeline.
+
+#### In the overview page why Environments always showed 0 when the reality there are some environments
+
+The overview page offers a summary of deployments and overall health metrics for the project. Currently, the fields are empty as there are no deployments within the project. Once a deployment is in the project, these fields will be automatically updated.
