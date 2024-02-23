@@ -14,10 +14,10 @@ Changes in infrastructure, the addition of new services, or inefficient utilizat
 
 Currently, CCM detects anomalies for the following:
 
- **Clusters**: Kubernetes clusters, namespaces, and workloads
- * **AWS**: Services, accounts, and usage types
- * **GCP**: Products, projects, and SKUs
- * **Azure**: Subscription IDs, service names, and resources
+ **Clusters**: Kubernetes clusters, namespaces, workloads and services.
+ * **AWS**: Accounts, services and usage types
+ * **GCP**: Projects, products and SKUs
+ * **Azure**: Subscription IDs, resource groups and meter categories
 
 
  :::note
@@ -120,7 +120,7 @@ For example, the actual cost is predicted to be in the range of $10–$14 with a
 This is a time series forecasting model designed to handle the challenges often encountered in time series data, such as seasonality, holidays, and other recurring patterns. The model combines both additive and multiplicative elements to effectively capture the diverse patterns present in the data.
 
 ## Data requirement for anomaly prediction
-The time duration considered for each entity ranges from a minimum of 14 days to a maximum of 36 days, with these values currently being set as the boundaries. For the algorithms that analyze these time series data, a minimum of 14 days of data is needed to effectively grasp usage patterns and make predictions based on those patterns. However, a problem arises when new services or dimensions are added to the system. These newly introduced elements don't yet have the required 14 days worth of data for analysis. To address this challenge, CCM extends the data timeline by adding zeros to fill the gaps, ensuring that a continuous 2-week period of data is available. With this extended data, the algorithms can then accurately predict anomalies even for the new entities until a full 14 days of real data is gathered. 
+The time duration considered for each entity ranges from a minimum of 14 days to a maximum of 41 days, with these values currently being set as the boundaries. For the algorithms that analyze these time series data, a minimum of 14 days of data is needed to effectively grasp usage patterns and make predictions based on those patterns. However, a problem arises when new services or dimensions are added to the system. These newly introduced elements don't yet have the required 14 days worth of data for analysis. To address this challenge, CCM extends the data timeline by adding zeros to fill the gaps, ensuring that a continuous 2-week period of data is available. With this extended data, the algorithms can then accurately predict anomalies even for the new entities until a full 14 days of real data is gathered. 
 
 ## Filtering out anomalies less than $100
 
