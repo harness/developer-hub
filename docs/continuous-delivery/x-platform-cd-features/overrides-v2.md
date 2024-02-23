@@ -168,15 +168,22 @@ Overrides defined at project/organization/account levels have the following over
 1. Project
 2. Organization
 3. Account
-## Moving overrides from Inline to Remote
+
+## Manage Overrides using Git Experience
+:::info note
+Currently, Git Experience support for overrides is behind the feature flag `CDS_OVERRIDES_GITX` . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 When you create overrides, you can store the overrides in one of the following ways:
 
-Inline: Overrides are stored in Harness Platform.
-Remote: Overrides are stored in a repository based on users choice.
+**Inline**: Overrides are stored in the Harness Platform.
 
-Overrides can be stored remote or inline based on your choice.
+**Remote**: Overrides are stored in a repository based on users choice.
 
-The topic explains how to use the Remote option to store your overrides in a repository. We've covered storing overrides in GitHub, you can choose a source code repository based on your preference.
+Overrides can be stored remotely or inline based on your choice.
+### Moving overrides from Inline to Remote
+
+This topic explains how to use the Remote option to store your overrides in a repository. We've covered storing overrides in GitHub, you can choose a source code repository based on your preferences.
 
 1. Select **Overrides**.
 2. You will have an option to select **Inline** and **Remote** under every override method.
@@ -185,14 +192,14 @@ The topic explains how to use the Remote option to store your overrides in a rep
 4. Select **Remote**.
 5. In **Git Connector**, select or create a Git connector to the repo for your environment.​ For more information, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 ![](./static/remote_overrides.png)
-6. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Repository**. Harness does not create the repository for you.
+6. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Github before entering it in **Repository**. Harness does not create the repository for you.
 7. Select **Git Branch** , currently only default branch of the repository is supported for overrides.
 8. Harness Git Experience auto-populates the **YAML Path** based on the scope where overrides are configured i.e ``{scope}/overrides/harnessdevenv.yaml``.
-9. Click on **Save**.
+9. Click **Save**.
 
 
 :::info note
-Overrides also support [Biderectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
+Overrides also support [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup.md).
 :::
 
 :::info note
