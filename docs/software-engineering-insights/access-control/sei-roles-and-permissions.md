@@ -164,7 +164,7 @@ At account level scope SEI alongside the **SEI Viewer** and **SEI Collection Adm
 The resources associated are dependent on the Resource Group defined. You can manage permissions for the following SEI resources at the account level:
 
 * Configuration Settings (All account level resources)
-* [Insights](/docs/software-engineering-insights/sei-insights)
+* Insights
 * [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collections)
 
 :::info
