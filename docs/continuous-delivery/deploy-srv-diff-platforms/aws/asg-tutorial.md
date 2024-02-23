@@ -371,9 +371,7 @@ To configure a Harness ASG service in the Harness Manager, do the following:
 
 ### ASG Launch Template files
 
-AWS does not have a dedicated public resource for Launch Template file formatting because Launch template creation is typically done using the AWS CLI, SDKs, or Management Console, which have their own syntax and methods for specifying the parameters.
-
-However, the AWS CLI [create-launch-template](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-launch-template.html) command reference documentation provides a detailed description of the parameters that can be used when creating a launch template.
+AWS does not have a dedicated public resource for Launch Template file formatting because Launch template creation is typically done using the AWS CLI, SDKs, or Management Console, which have their own syntax and methods for specifying the parameters. However, the AWS CLI [create-launch-template](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-launch-template.html) command reference documentation provides a detailed description of the parameters that can be used when creating a launch template.
 
 <details>
 <summary>ASG Launch Template file example</summary>
