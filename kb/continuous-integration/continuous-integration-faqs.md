@@ -948,7 +948,13 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 ### Initialize step to fails with a "Null value" error
 
-This can occur if an expression or variable is called before it's value is resolved. In Build (CI) stages, steps run in separate containers/build pods, and you can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved). For example, if you use an expression for an output variable from a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies) in step that runs before the repeat loop completes, then the expression's value isn't available to the step that requested it.
+This can occur if an expression or variable is called before it's value is resolved.
+
+In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved).
+
+For example, assume you have a step (named, for example, `my-cool-step`) that uses an expression to referencing the output variable of a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies). If `my-cool-step` runs before the repeat loop completes, then the expression's value isn't resolved and therefore it isn't available when `my-cool-step` calls that value.
+
+Similarly, when using step group templates with Harness CI and Kubernetes cluster build infrastructure, Harness can resolve only stage variables and pipeline variables during initialization. Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod. In this case, if you encounter the `null value` error and you are using step variables, try configuring these as stage or pipeline variables instead. Also make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#stage-level-and-pipeline-level-expressions) if you change them from step variables to stage/pipeline variables.
 
 ### Initialize step occasionally times out at 8 minutes
 
