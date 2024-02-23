@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Key concepts of the Harness Platform
-sidebar_position: 2
+sidebar_position: 3
 redirect_from:
   - /docs/platform/get-started/platform-overview
 ---

@@ -24,7 +24,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 <details>
 <summary>Use the terminal</summary>
