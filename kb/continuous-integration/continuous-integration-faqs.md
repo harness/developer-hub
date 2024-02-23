@@ -694,7 +694,7 @@ Harness uses user `1000` by default. You can use a step's **Run as User** settin
 
 If your build runs as non-root (meaning you have set `runAsNonRoot: true` in your build infrastructure settings), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to all build infrastructures.
 
-#### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
+### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
 
 This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#run-as-non-root-or-a-specific-user).
 
