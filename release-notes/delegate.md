@@ -59,6 +59,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
    
    This issue has been resolved by implementing an appropriate error message code for enforcement limit accounts when customers reach their enforcement limits, eliminating the null pointer exception. 
 
+- Users were unable to create custom queries as a heath source for monitored services. (CDS-91181, ZD-57562)
+  
+   This issue is fixed by making the service instance field configurable for users.
+
 ### Version 24.02.82308 <!--  February 21, 2024 -->
 
 - Upgraded the SDK for the ASG swimlane. (CDS-91937)
