@@ -21,15 +21,19 @@ The following steps describe the general workflow:
 
 3. Drill down to the relevant issues list to view the issues found in the scan:
 
-    - **Only in \<_target_>:\<_variant_>** New issues not found in any previous scan of that target.
+    - **Only in \<_target_>:\<_variant_>** Issues only found in the scanned variant.
 
-    - **Common to \<_target_>:\<_baseline_>** Issues also found in the last scan of the specified variant.
+    - **Common to \<_target_>:\<_baseline_>** Issues also found in the previous scan of the target baseline.
 
     - **Common to previous scan** 
-      - Issues also found in the last scan (if the scanned target has no baseline), OR
-      - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
+      - Issues also found in the previous scan (if the scanned target has no baseline), OR
+      - Issues also found in the previous scan of the baseline (if the scanned variant is the baseline).
 
-    - **Common to previous / baseline scan** Issues also found in both the last scan of the specified variant AND the last scan of the baseline. 
+    <!-- **Common to previous / baseline scan** Issues also found in both the previous scan of the specified variant AND the previous scan of the baseline. -->
+
+    - **Remediated** An issue has a status of Remediated if it was found in the previous scan but not the current scan. 
+      
+      <DocImage path={require('./static/remediated-issue.png')} width="60%" height="60%" />
 
       :::note important notes
 
