@@ -5618,7 +5618,7 @@ So now when you run the pipeline, the first service will ask for the tag value a
 
 #### How to reference the tag of artifact in deploy stage.
 
-You can use "<+artifacts.primary.tag>" expression
+You can use ```<+artifacts.primary.tag>``` expression
 
 #### How is infra key formed for deployments
 
