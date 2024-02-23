@@ -75,7 +75,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Fixed an issue in ECS Blue Green deployments where the ECS service was deleted after the first or second deployment. (CDS-91499, ZD-57892)
 
-### Version 24.02.82203 <!--  February 2, 2024 -->
+### Version 24.02.82303 <!--  February 2, 2024 -->
 
 #### Hotfix
 
