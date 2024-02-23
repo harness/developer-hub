@@ -94,7 +94,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Helm manifest runtime inputs for chart versions appear as runtime input in the pipeline execution page, even if the chart version was already provided as a fixed value. (CDS-89158)
   
   This issue is fixed. 
-- The Continue button in the Services section was enabled even when the selected service was not available. (CDS-85658)
+- The Continue button in the Services section for remote services was enabled even when the selected service was not available. (CDS-85658)
   
   This issue is fixed by adding form validation to the service field when: 
   * Service does not exist in the selected branch for remote services.
