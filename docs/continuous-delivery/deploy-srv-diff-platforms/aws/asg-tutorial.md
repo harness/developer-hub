@@ -4,7 +4,7 @@ description: Deploy an ASG using Harness CD.
 sidebar_position: 1
 ---
 
-This topic explains how to deploy new AWS Auto Scaling Groups (ASGs) and instances to Amazon Web Services (AWS) using Harness.
+This topic explains how to deploy new AWS Auto Scale Groups (ASGs) and instances to Amazon Elastic Compute Cloud (EC2) using Harness.
 
 ## Deployment summary
 
@@ -20,7 +20,7 @@ Here's a summary of how you set up ASG deployments in Harness:
    2. Add ASG configuration manifest file. 
    3. Add scaling policies (optional).
    4. Add scheduled update group actions (optional).
-   5. Add user data script file. 
+   5. Add user data script file (optional). 
    6. Add the AMI image to use for the ASG as an artifact.
 2. Create the Harness ASG environment.
    1. Connect Harness to the AWS region where you want to deploy.
@@ -37,10 +37,10 @@ Here's a summary of how you set up ASG deployments in Harness:
 Here's a summary of how Harness deploys new ASG versions:
 
 1. First deployment:
-   1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region.
+   1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region. Harness creates a new launch template with name same as the ASG name and that launch template is applied to the new ASG.  
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-   2. Harness uses the new version of the launch template & other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
+   2. Harness uses the new version of the launch template & other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity & new launch template version.
    3. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
 
 Notes:
@@ -1107,11 +1107,11 @@ The Rolling Deploy step has the following options:
 - **Minimum Healthy Percentage (optional)**
   - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, harness sets the default value for this field as 90%. 
 - **Maximum Healthy Percentage (optional)**
-    - The percentage of the desired capacity of the ASG that your Auto Scaling group can increase to when replacing instances. For more information, go to [Instance refresh core concepts](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html#instance-refresh-core-concepts) from AWS.
+    - The percentage of the desired capacity of the ASG that your Auto Scaling group can increase to when replacing instances. For more information, go to [Instance refresh core concepts](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html#instance-refresh-core-concepts) from AWS. If not specified, harness sets the default value for this field as 110%.
 - **Instance Warmup (optional)**
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
-  - Choose whether AWS Auto Scaling skips replacing instances that match the desired configuration. If no desired configuration is specified, then it skips replacing instances that have the same launch template and instance types that the ASG was using before the instance refresh started. For more information, go to [Use an instance refresh with skip matching](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh-skip-matching.html) from AWS. If not specified, harness sets the default value for this field as 110%.
+  - Choose whether AWS Auto Scaling skips replacing instances that match the desired configuration. If no desired configuration is specified, then it skips replacing instances that have the same launch template and instance types that the ASG was using before the instance refresh started. For more information, go to [Use an instance refresh with skip matching](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh-skip-matching.html) from AWS.
 
 
 <details>
