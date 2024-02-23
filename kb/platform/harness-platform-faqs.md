@@ -2952,3 +2952,9 @@ Harness stores the secret in its Harness store and retrieves the encryption keys
 #### Can we use an encryption method other than the default with AWS secret manager?
 
 No. When using the AWS secret manager, the default encryption is used. If you have to use a custom encryption, you must use the AWS KMS secret manager. 
+
+#### Is user can do additional encoding of the harness delegate token?
+No, the additional encoding is not supported on the delegate token.
+
+#### In network security policies what harness IP's are need to be whitelisted to connect to the harness?
+You need to allow these IP's: https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/

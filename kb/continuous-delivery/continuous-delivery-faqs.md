@@ -5643,3 +5643,11 @@ Directly pushing a YAML into .harness folder will not create the pipeline, you c
 #### In the overview page why Environments always showed 0 when the reality there are some environments
 
 The overview page offers a summary of deployments and overall health metrics for the project. Currently, the fields are empty as there are no deployments within the project. Once a deployment is in the project, these fields will be automatically updated.
+
+
+#### In the custom stage user can't able to see command script step template while adding the step?
+The command script step template is only available in CD stage.
+
+
+#### Is user can also sync the harness service to the git?
+Yes, We have a bi-directional functionality to sync the harness entities: https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/
