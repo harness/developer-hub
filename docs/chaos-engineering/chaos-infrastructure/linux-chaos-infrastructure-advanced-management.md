@@ -36,8 +36,8 @@ A set of mandatory input flags is required for the installation of the chaos inf
 :::info note
 LCI does not currently support:
 1. Cron schedules
-2. GameDays
-3. Executing parallel faults in SaaS (the self-managed platform supports executing parallel faults on LCI)
+2. [GameDays](/docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday.md)
+3. Executing [parallel faults](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments.md) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
 :::
 
 
