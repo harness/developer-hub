@@ -8,7 +8,7 @@ Use the [Harness AIDA](/docs/platform/harness-aida/aida-overview) Semantic Code 
 
 ## Natural language processing
 
-With Semantic Code Search enabled, AIDA treats your search query as a natural language question and searches for code that matches the semantic meaning of your question, rather than looking for specific keywords or regular expressions (as occurs with the [Keyword search](./keyword-search)). More detailed questions allow AIDA to provide more refined results.
+With Semantic Code Search enabled, AIDA treats your search query as a natural language question and searches for code that matches the semantic meaning of your question, rather than looking for specific keywords or regular expressions. More detailed questions allow AIDA to provide more refined results.
 
 ### Semantic search question examples
 
@@ -24,4 +24,4 @@ Unlike keyword searches, the code returned from a semantic search might not cont
 To get more accurate results from semantic search:
 
 * Ask specific questions with details of what you need.
-* Combine broader semantic searches with targeted [keyword searches](./keyword-search) to find the exact code you need.
+* Combine broader semantic searches with targeted [keyword searches](/docs/code-repository/work-in-repos/keyword-search) to find the exact code you need.
