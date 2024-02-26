@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Generate SBOM
 redirect_from:
   - /docs/software-supply-chain-assurance/generate-sbom
+  - /tutorials/secure-supply-chain/generate-sbom
 ---
 
 import Tabs from '@theme/Tabs';
@@ -210,8 +211,6 @@ The signed attestation for an Image, stored as an `.att` file, is placed in the 
 SBOMs for both Containers and Code Repositories are accessible in the [Artifacts view](../artifact-view.md). Additionally, you can locate the SBOM for any artifact on the **Artifacts** tab within the **Execution Details** page in Harness. For detailed insights, including viewing attestations and identifying violations, please refer to the [View Attestations and Violations](../ssca-view-results.md) documentation.
 
 
-:::tip
+## Enforce policies
 
 After generating an SBOM, you can use it to [enforce SSCA policies](../ssca-policies/enforce-ssca-policies.md).
-
-:::
