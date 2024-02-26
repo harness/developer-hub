@@ -19,8 +19,7 @@ You can create governance policies to stop your pipelines based on specific scan
 
 This topic describes the end-to-end workflow to create, test, and deploy a set of governance policies. 
 
-
-## Important notes
+### Important notes
 
 This topic assumes that you have a basic knowledge of the following:
 
@@ -30,195 +29,17 @@ This topic assumes that you have a basic knowledge of the following:
   - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
 - [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
 
-## Security Tests policy samples
 
-The Harness Policy library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to create governance policies for your STO scans. 
+### Security Tests policy samples
 
-You can apply any Security Tests policy using the **On Step** event for a scan step.
+import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use-sto/shared/security-tests-policy-samples.md';
 
-### Exclude vulnerabilities by severity
+<SecurityTestsPolicySamples />
 
-Apply a policy to a scan step to warn or block on any vulnerabilities with the specified severity.
 
-:::note
+### Workflow description
 
-This policy sample supports the following vulnerabilities only: Critical, High, Medium, Low, and Info. To create policies based on output variables such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
-
-:::
-
-```json
-
-package securityTests
-
-import future.keywords.in
-import future.keywords.if
-
-# Define a set of severities that are denied (Critical, High, Medium, Low, Info)
-# The following example denies if the scan results include any issue with a severity of Critical or High.
-
-deny_list := fill_defaults([
-  {
-    "severity": {"value": "Critical", "operator": "=="}
-  },
-  {
-    "severity": {"value": "High", "operator": "=="}
-  }
-])
-
-```
-
-### Exclude vulnerabilities by reference ID
-
-Apply a policy to a scan step to warn or block on any vulnerabilities in a specific list of CVEs or CWEs. 
-
-```json
-
-package securityTests
-
-import future.keywords.in
-import future.keywords.if
-
-# Define a set of reference-identifiers that are denied
-# The following policy denies if the scan results include any occurrence of 
-#  - cwe-772
-#  - cve-2019-14250
-#  - CWE-772
-#  - CVE-2019-14250
-
-deny_list := fill_defaults([
-  {
-    "refId": {"value": "772", "operator": "=="},
-    "refType": {"value": "cwe", "operator": "=="}
-  },
-     {
-    "refId": {"value": "772", "operator": "=="},
-    "refType": {"value": "CWE", "operator": "=="}
-  },
-  {
-    "refId": {"value": "2019-14250", "operator": "=="},
-    "refType": {"value": "cve", "operator": "=="}
-  },
- {
-    "refId": {"value": "2019-14250", "operator": "=="},
-    "refType": {"value": "CVE", "operator": "=="}
-  }
-])
-
-```
-
-### Exclude vulnerabilities by title
-
-Apply a policy to a scan step to warn or block on any vulnerabilities in a specific list of issue titles. 
-
-You can use the `~` operator to find titles based on [Python regular expressions](https://docs.python.org/3/library/re.html). 
-
-```json
-
-package securityTests
-
-import future.keywords.in
-import future.keywords.if
-
-# Define a set of titles that are denied
-# The following example denies if the scan results include any Javascript Mongo or Javascript Security Audit issues
-
-deny_list := fill_defaults([
-  {
-    "title": {"value": "tar@1.34", "operator": "~"}
-  },
-  {
-    "title": {"value": "libsqlite3", "operator": "~"}
-  }
-])
-
-```
-
-### Exclude vulnerabilities by number of occurrences
-
-Apply a policy to a scan step to warn or block vulnerabilities based on a set of titles and the maximum allowed number of occurrences for each vulnerability. 
-
-You can use the `~` operator to find titles based on [Python regular expressions](https://docs.python.org/3/library/re.html).  
-
-```json
-
-package securityTests
-
-import future.keywords.in
-import future.keywords.if
-
-# Define a set of titles and maximum occurrences that are denied
-# The following example denies on scan results with more than 25 occurrences of TAR- or cURL-related issues
-
-deny_list := fill_defaults([
-  {
-    "title": {"value": ".*tar.*", "operator": "~"},
-    "maxOccurrences": {"value": 25, "operator": ">="},
-  },
-  {
-    "title": {"value": ".*curl.*", "operator": "~"},
-    "maxOccurrences": {"value": 25, "operator": ">="},
-  }
-])
-
-```
-
-### Exclude vulnerabilities by CVE age
-
-Apply a policy to a scan step to warn or block vulnerabilities based on CVEs by severity and age. 
-
-```json
-
-package securityTests
-
-import future.keywords.in
-import future.keywords.if
-
-# Define a set of CVE ages (as old/older than given year) and severities (equal/greater than) that are denied
-# This example denies CVEs for any of the following filters:
-#   - Old Critical severities (2021 or earlier)
-#   - New Critical severities (2023 or later)
-#   - Very old Medium severities (2015 or earlier)
-
-deny_list := fill_defaults([
-  {
-    "year": {"value": 2020, "operator": "<="},
-    "severity": {"value": "Critical", "operator": "=="}
-  },
-    {
-    "year": {"value": 2023, "operator": ">="},
-    "severity": {"value": "Critical", "operator": "=="}
-  },
-  {
-    "year": {"value": 2020, "operator": "<="},
-    "severity": {"value": "High", "operator": "=="}
-  }
-])
-
-```
-
-### Exclude vulnerabilities using STO output variables
-
-You can create policies based on the [output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables) generated by an STO scan step. 
-
-For example, suppose you want a policy to warn or block if a scan step finds any new vulnerabilities with severities of Critical or High. In this case, you can [create a policy](#create-a-new-opa-policy) with the following OPA code: 
-
-   ```
-    package pipeline_environment
-
-    # Warn or block if the scan step detects any NEW_CRITICAL or NEW_HIGH vulnerabilities 
-
-   deny[sprintf("Scan can't contain any NEW_CRITICAL vulnerability '%s'", [input[_].outcome.outputVariables.NEW_CRITICAL])] {
-       input[_].outcome.outputVariables.NEW_CRITICAL != "0"
-   }
-
-   deny[sprintf("Scan can't contain any high vulnerability '%s'", [input[_].outcome.outputVariables.NEW_HIGH])] {
-       input[_].outcome.outputVariables.NEW_HIGH != "0"
-   }
-   ```
-
-## Workflow description
-
-### Create a new OPA policy
+#### Create a new Security Tests OPA policy
 
 1. You can create policies at the account or the project scope. Go to your account or project, then select **Security and Governance** > **Policies**.
 
@@ -228,7 +49,7 @@ For example, suppose you want a policy to warn or block if a scan step finds any
 
    <DocImage path={require('./static/opa-01-select-policy-sample.png')} width="50%" height="50%" title="Select policy sample" />
 
-4. Select **Use this sample** (bottom). The policy sample appears in the edit pane (left).
+4. Select **Use this sample** (bottom). This copies the entire policy sample to the edit pane (left).
 
    <DocImage path={require('./static/opa-02-use-this-sample.png')} width="50%" height="50%" title="Select policy sample" />
 
@@ -263,7 +84,7 @@ For example, suppose you want a policy to warn or block if a scan step finds any
 7. Once you're satisfied that the policy works as intended, save it.
 
 
-### Create a policy set
+#### Create a policy set
 
 A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-set) is a collection of one or more policies. You combine policies into a set and then include it in a scan step. 
 
@@ -300,7 +121,7 @@ A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overv
       <DocImage path={require('./static/opa-10-enable-enforced.png')} width="80%" height="80%" title="Select policy sample" />
 
 
-### Enforce the policy in your scan step
+#### Enforce the policy in your scan step
 
 Now you can set up your scan step to stop builds automatically when the policy gets violated. 
 
@@ -313,7 +134,7 @@ Now you can set up your scan step to stop builds automatically when the policy g
    <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="80%" height="80%" title="Select policy sample" />
 
 
-### Set up email notifications for pipeline failures
+#### Set up email notifications for pipeline failures
 
 You have a Policy that fails the pipeline based on an OPA policy. Now you can configure the stage to send an email notification automatically whenever the pipeline fails. 
 
