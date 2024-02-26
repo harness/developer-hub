@@ -54,24 +54,18 @@ Cloud policies use a declarative vocabulary of resources, filters, and actions t
 Here’s an example of a **cloud asset governance policy** to migrate your Amazon EBS volumes from gp2 to gp3 and save up to 20% on costs:
 
 
+
 ```
 policies:
-
 - name: migrate-gp2-to-gp3-ebs-volumes
+  resource: ebs
+  filters:
+    - VolumeType: gp2
+    - modifyable
 
-resource: ebs
-
-filters:
-
-- VolumeType: gp2
-
-- modifyable
-
-actions:
-
-- type: modify
-
-volume-type: gp3
+  actions:
+    - type: modify
+    - volume-type: gp3
 ```
 
 ## How are cost savings calculated?

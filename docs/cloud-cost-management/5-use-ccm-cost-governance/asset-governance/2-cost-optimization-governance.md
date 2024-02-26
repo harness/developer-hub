@@ -8,7 +8,7 @@ description: This topic describes how to optimize cloud costs using asset govern
 # Optimize cloud costs by using the asset governance rules
 
 :::note
-Currently, Azure support for Asset Governance is behind the feature flag **CCM_ENABLE_AZURE_CLOUD_ASSET_GOVERNANCE_UI** and GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
