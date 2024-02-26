@@ -7,21 +7,15 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-With Harness CI, you can run builds on Harness-managed machines or your own infrastructure. Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
+With Harness CI, you can run builds on [Harness-managed machines](#harness-managed-infrastructure---harness-cloud) or [your own infrastructure](#bring-your-own-infrastructure).
 
+| Harness-managed runners | Self-managed runners |
+| ----------------------- | -------------------- |
+| Maintained and updated by Harness. | Maintained and updated by you or your cloud services provider. |
+| Preinstalled with common software/tools. You can add additional tools at runtime. | Configuration determined by you or your cloud services provider. |
+| Free monthly build credits with the ability to purchase additional credits. | Costs vary (physical hardware maintenance, cloud services provider pricing model, or other factors). |
 
-<!--```mermaid -->
-<!-- --- -->
-<!-- title: Choose your build infrastructure -->
-<!-- --- -->
-<!-- flowchart TD dashdashcaret -->
-<!--    A(Fastest setup) dashdashcaret D(Harness Cloud) -->
-<!--    B(Harness-managed infrastructure) dashdashcaret D -->
-<!-- -->
-<!--    C(Self-managed infrastructure) dashdashcaret E(Local runner) -->
-<!--    C dashdashcaret F(Kubernetes cluster) -->
-<!--    C dashdashcaret G(AWS/GCP/Azure VMs) -->
-<!--```-->
+Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
 
 ## Harness-managed infrastructure - Harness Cloud
 
@@ -38,7 +32,7 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 * Highly scalable.
 * Quick and easy configuration. Start building in seconds.
 * Linux, Windows, and macOS platforms with modifiable images.
-* Usually  first to receive new feature developments.
+* Usually first to receive new feature developments.
 * Available for all plan tiers.
 
 </details>
