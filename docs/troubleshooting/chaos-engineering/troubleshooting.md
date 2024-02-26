@@ -171,9 +171,32 @@ This could be due to a variety of reasons, such as:
         1. If they don't match, it means you have not applied the Kubernetes infrastructure manifest correctly.
         2. If the instance ID matches the infra ID, it means the experiment has the wrong label. In such a case, you can update the label instance ID with the infrastructure ID.
 
+## Connection to Kubernetes infrastructure fails after setting up the namespace and pods  
+
+When you set up the namespace and pods but when you connect to the Kubernetes infrastructure, it fails to connect, you can execute the commands mentioned below.
+
+### Debug
+
+1. Check the status of your chaos infrastructure on your cluster
+
+```
+kubectl get pods -n <namespace_name>
+```
+
+1. Check the chaos infrastructure logs
+
+```
+kubectl logs -f <pod-name> -n <namespace_name>
+```
+  1. If the chaos infrastructure is not in a healthy state,
+    ```
+    kubectl describe pods <pod-name> -n <namespace_name>
+    ```
+Check the logs of all pods in the namespace.
+
 ## Started executing an experiment, but one of the experiment step nodes is in a PENDING state
 
-If you execute an experiment but one of the nodes in the experiment is in a `PENDING` state, it means that the experiment was successfully sent to the execution plane, the workflow controller started the experiment, and the experiment pods were created, but the pod could not start. 
+If you execute an experiment but one of the nodes in the experiment is in a `PENDING` state, it means that the experiment was successfully sent to the execution plane, the workflow controller started the experiment, and the experiment pods were created, but the pod could not start.
 
 This could be because there weren't adequate resources to facilitate the pod's start.
 
