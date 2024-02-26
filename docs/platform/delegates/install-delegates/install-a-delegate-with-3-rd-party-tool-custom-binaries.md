@@ -233,7 +233,7 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
 
 You can modify the delegate YAML before or after you install the delegate.
 
-If you haven't yet installed the delegate, finish [Installing the delegate](./install-delegate) in your target environment.
+If you haven't yet installed the delegate, finish [Installing the delegate](/docs/platform/get-started/tutorials/install-delegate) in your target environment.
 
 If you already installed the delegate, you need to apply the updated delegate YAML and restart the delegate. For example, if your delegate is in a Kubernetes cluster, run the kubectl command to apply it:
 
