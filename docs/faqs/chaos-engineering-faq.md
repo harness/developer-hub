@@ -120,3 +120,25 @@ Harness Chaos supports experiments that simulate DoS attacks on services. You ca
 ### How can I avoid image override in the manifest?
 
 When you edit an experiment that has multiple repositories, a pop up asks if you want to override the images or not. Select **NO** to avoid overriding the image repository in the manifest.
+
+### Where can I find my chaos experiment report?
+
+* To find details about your chaos experiment such as resilience score, total runs, infrastructure used, schedule details, probe details, run history, and so on, navigate to your experiment. Click **View report**.
+
+![report 3](./static/hce-report-3.png)
+
+* Below is a sample screen of probe details in the report.
+
+![report 4](./static/hce-report-4.png)
+
+* To view the details of a **specific chaos step**, click the chaos step.
+
+![report 1](./static/hce-report-1.png)
+
+* Click **v** arrow and click **View probe details**.
+![report 2](./static/hce-report-2.png)
+
+:::tip
+* You can download the choas experiment report.
+* The probe result summary can be seen in the experiment logs too.
+:::
