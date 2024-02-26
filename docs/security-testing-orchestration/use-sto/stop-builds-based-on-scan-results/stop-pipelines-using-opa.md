@@ -236,7 +236,7 @@ For example, suppose you want a policy to warn or block if a scan step finds any
 
    <DocImage path={require('./static/opa-03-configure-policy.png')} width="100%" height="100%" title="Select policy sample" />
 
-6. Test your policy to ensure that it works as intended.
+6. Test your policy to verify that it works as intended.
 
    Each policy sample includes a set of test data that you can use. In the **Testing Terminal**, examine the test data and edit it as needed. Then click **Test** to verify the results.
 
