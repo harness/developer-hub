@@ -1,6 +1,6 @@
 ---
 title: Onboard with Terraform Provider
-description: Onboard with Terraform Provider tutorial
+description: This tutorial shows you how to onboard with your Terraform provider.
 sidebar_position: 3
 redirect_from:
   - /tutorials/platform/onboard-terraform-provider
