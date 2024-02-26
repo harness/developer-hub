@@ -1,7 +1,7 @@
 ---
-description: Deploy a Harness Delegate that uses Workload Identity to access Google Cloud Services
-keywords: [Google,delegate,Terraform,GKE,workload identity]
 title: Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity
+description: Deploy a Harness Delegate that uses Workload Identity to access Google Cloud Services
+keywords:[Google,delegate,Terraform,GKE,workload identity]
 sidebar_position: 50
 redirect_from:
   - /tutorials/platform/gke-workload-identity
