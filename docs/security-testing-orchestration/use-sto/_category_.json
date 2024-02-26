@@ -1,12 +1,12 @@
 {
-    "label": "STO workflows",
+    "label": "Use STO",
     "position": 20,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "STO workflows"
+        "title": "Use STO"
     },
     "customProps": {
         "helpdocs_category_id": "utstv3qzqt"

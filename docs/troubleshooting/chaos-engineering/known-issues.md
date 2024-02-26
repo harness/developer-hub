@@ -16,4 +16,27 @@ For faults such as [node network loss](/docs/chaos-engineering/technical-referen
 
 A solution to this is to increase the status check timeout duration so that the experiment completes and you can fetch the status of helper pods. 
  
+## Enable/disable Linux resilience probe
 
+Similar to Kubernetes probe, you can enable or disable a Linux probe from the probe table. But when you do so, two fields namely `type` and `attempt` (that have empty values) are also added to the Linux probe.
+When you manually edit a Linux resilience probe manifest for parameters `type` and `attempt`, the edited values will not reflect in the updated manifest. Instead, the values from the database are reflected.
+
+For example,
+For a Linux experiment, if you have a probe named `abc`, with the following characteristics:
+
+```
+probe:
+  - name: abc
+    mode: SOT
+```
+
+When you enable or disable the probe, the parameters reflect as follows:
+
+```
+probe:
+  - name: abc
+    type: ""
+    runProperties:
+      attempt: 0
+    mode: SOT
+```

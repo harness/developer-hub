@@ -73,7 +73,7 @@ To use an AKS cluster for deployments, the AKS cluster must have local accounts 
 
    - **Specify master URL and credentials:**
       - Provide the Kubernetes master node URL. To get the master URL, use `kubectl cluster-info`.
-      - Enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a Harness delegate.
+      - Enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a Harness Delegate.
    - **Use the credentials of a specific Harness Delegate:** Select this option to have the connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a delegate while creating your connector, if you haven't installed the delegate already.
 
 <details>

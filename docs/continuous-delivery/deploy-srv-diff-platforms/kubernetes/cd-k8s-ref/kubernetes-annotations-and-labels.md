@@ -1,7 +1,7 @@
 ---
 title: Kubernetes annotations and labels
 description: Use Kubernetes annotations and labels in your manifests.
-sidebar_position: 7
+sidebar_position: 11
 helpdocs_topic_id: u7h63vxg7z
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false

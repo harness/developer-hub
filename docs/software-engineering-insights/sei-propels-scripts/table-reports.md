@@ -4,7 +4,7 @@ description: Use Table reports to analyze data from Tables.
 sidebar_position: 20
 ---
 
-Add Table reports to your [Insights](../sei-insights.md) to analyze data from [Tables](./tables.md).
+Add Table reports to your [Insights](../insights/sei-insights.md) to analyze data from [Tables](./tables.md).
 
 While both Custom Table Reports and Table Reports ingest imported CSVs (stored in SEI Tables), the difference is that Table Reports are used to analyze an entire Table, whereas Custom Table Reports can focus on specific segments of Table data, such as specific columns.
 

@@ -15,11 +15,12 @@ import TabItem from '@theme/TabItem';
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
-Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
+There are two ways you can run GitHub Actions in Harness CI pipelines:
 
-This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
+* If you are using Harness Cloud build infrastructure, use the [built-in GitHub Action step](./ci-github-action-step.md).
+* For all other build infrastructures, use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
-For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action step](./ci-github-action-step.md).
+This topic explains how to use the GitHub Actions Drone plugin in a Plugin step.
 
 ## Add the Plugin step
 

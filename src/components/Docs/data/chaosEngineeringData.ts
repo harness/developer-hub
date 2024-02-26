@@ -113,37 +113,4 @@ import { MODULES } from "@site/src/constants"
         },
 ];
 
-// Featured Tutorials
-export const featuredTutorials: CardItem[] = [
-    {
-      title: "Run your first chaos experiment on a Kubernetes cluster",
-      module: MODULES.ce,
-      icon: "img/icon_ce.svg",
-      description: "Execute your first chaos experiment on a Kubernetes cluster.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "10min",
-      link: "/tutorials/chaos-experiments/first-chaos-engineering",
-    },
-    {
-      title: "Running chaos experiments in GitLab pipelines",
-      module: MODULES.ce,
-      icon: "img/icon_ce.svg",
-      description: "Create Harness chaos experiments and run them in GitLab pipelines.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "15min",
-      link: "/tutorials/chaos-experiments/chaos-experiments-on-gitlab",
-    },
-    {
-      title: "Run your first chaos experiment on a Kubernetes cluster using API",
-      module: MODULES.ce,
-      icon: "img/icon_ce.svg",
-      description: "Get started with Harness Chaos Engineering API.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "10min",
-      link: "/tutorials/chaos-experiments/first-chaos-experiment-via-API",
-    },
-  ];
   /* Define the cards - end */

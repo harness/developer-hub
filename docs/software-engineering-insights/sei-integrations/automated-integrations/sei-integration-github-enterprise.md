@@ -13,7 +13,7 @@ Use the SEI Github Enterprise integration to integrate SEI with Github Enterpris
 
 ## Configure the authentication
 
-SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](./sei-integration-github#configure-authentication).
+SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github#configure-authentication).
 
 
 import Tabs from '@theme/Tabs';

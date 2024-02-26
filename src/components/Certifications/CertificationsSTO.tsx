@@ -289,7 +289,7 @@ export default function CertificationsSTO() {
                         Register for Exam
                       </button>
                     </Link> */}
-                  {/* <Link href="/tutorials/cd-pipelines">
+                  {/* <Link href="/docs/security-testing-orchestration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>

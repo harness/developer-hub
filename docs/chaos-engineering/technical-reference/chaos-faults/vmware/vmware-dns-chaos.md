@@ -1,5 +1,5 @@
 ---
-id: VMware-DNS-chaos
+id: vmware-dns-chaos
 title: VMware DNS chaos
 ---
 VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. It checks the performance of the application (or process) running on the VMware VMs.
@@ -46,6 +46,11 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> VM_NAME </td>
+        <td> Name of the target VM(s).</td>
+        <td> Multiple comma-separated names can be provided. For example, <code>vm-1,vm-2</code>.</td>
+      </tr>
+      <tr>
         <td> VM_USER_NAME </td>
         <td> Username of the target VM(s).</td>
         <td> Multiple usernames can be provided as comma-separated values (when there are multiple VMs subject to chaos). It also helps run the govc command. </td>
@@ -78,17 +83,17 @@ stringData:
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
@@ -104,6 +109,11 @@ stringData:
         <td> UPSTREAM_SERVER </td>
         <td> Custom upstream server to which the intercepted DNS requests will be forwarded. </td>
         <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

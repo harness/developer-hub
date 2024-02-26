@@ -31,9 +31,9 @@ Rework is defined as changes to existing code, regardless of the age of the code
 
 :::info
 
-The Impact factor depends on the [Investment profile](../sei-profiles/investment-profile.md). The metrics that contribute to the Impact factor require categories from the Investment profile as input parameters.
+The Impact factor depends on the [Investment profile](/docs/software-engineering-insights/sei-profiles/investment-profile). The metrics that contribute to the Impact factor require categories from the Investment profile as input parameters.
 
-To configure this, go to [Configure the Impact Factor in a Trellis profile](../sei-profiles/trellis-profile.md#enable-the-impact-factor).
+To configure this, go to [Configure the Impact Factor in a Trellis profile](/docs/software-engineering-insights/sei-profiles/trellis-profile#enable-the-impact-factor).
 
 :::
 
@@ -95,7 +95,7 @@ Leadership and collaboration measures developer teamwork and contribution to pee
 
 ## Modify factors and weights
 
-A [Trellis profile](../sei-profiles/trellis-profile.md) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
+A [Trellis profile](/docs/software-engineering-insights/sei-profiles/trellis-profile) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
 
 In the **Factors and Weights** section of your Trellis profile, you can enable and disable individual [factors] to include or exclude them from your Trellis Score calculation.
 
@@ -112,9 +112,9 @@ Weights are relative. For example, if all factors are weighted 5, then all facto
 Add these widgets to your Insights to analyze Trellis Scores.
 
 * **Trellis Score Report:** Trellis Scores by developer.
-* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](../sei-projects-and-collections/manage-collections.md).
+* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 * **Individual Raw Stats:** A table of base values that contribute to Trellis Scores.
-* **Raw Stats by Collection:** Base values organized by [Collection](../sei-projects-and-collections/manage-collections.md).
+* **Raw Stats by Collection:** Base values organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 
 ### Raw stats
 

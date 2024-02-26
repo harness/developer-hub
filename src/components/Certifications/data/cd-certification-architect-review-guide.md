@@ -2,7 +2,7 @@
 | ----- | ----|
 | **1. Harness Delegates Management** | |
 | Understand and troubleshoot Delegate installation and connectivity | [Install a delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#install-a-delegate)|
-| Implement high availability for Harness Delegates  | [High availability](https://developer.harness.io/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/#high-availability) |
+| Implement high availability for Harness Delegates  | [High availability](https://developer.harness.io/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database/#high-availability) |
 | Manage Delegate upgradability and customization using INIT_SCRIPT  | [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/) |
 | **2. Security Practices in Harness** ||
 | Apply the Principle of Least Privilege (PoLP) in Harness setup | [Manage roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/)|
@@ -21,12 +21,12 @@
 | Implement effective observability and monitoring of Harness components| [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/) |
 | Understand and optimize feedback loops within CD pipelines | [Pipeline design guide](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/pipeline-design-guide) |
 | **6. Utilizing and Managing Secrets and Configurations in Harness**  | |
-| Efficiently manage secrets within Harness | [Use secrets managers](https://developer.harness.io/tutorials/platform/secrets-management/) |
+| Efficiently manage secrets within Harness | [Use secrets managers](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager) |
 | Ensure secure and optimal handling of configurations | [Keep your pipelines DRY](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/rampup-dry) |
 | **7. Deployment Strategies and Rollbacks in Harness**  | |
 | Implement different deployment strategies (e.g., Canary, Blue-Green) using Harness | [Blue Green deployment](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/#blue-green-deployment)|
 | Design and troubleshoot rollback strategies for failed deployments| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts) |
-| Manage and troubleshoot Helm and Umbrella Chart deployments in Kubernetes | [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart/)|
+| Manage and troubleshoot Helm and Umbrella Chart deployments in Kubernetes | [Deploy using Helm Chart](https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/helm-chart)|
 | **8. Integrating and Optimizing the Use of Cloud Providers and Platforms in Harness** ||
 | Implement optimal Harness setups for varied cloud platforms (e.g., AWS, Azure)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms) |
 | Manage and troubleshoot deployments in varied environments (e.g., AWS EKS, Lambda)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms)|

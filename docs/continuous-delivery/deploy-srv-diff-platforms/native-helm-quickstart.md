@@ -113,7 +113,7 @@ Next, we'll add the NGINX Helm chart for the deployment.
 
 ## Add a Helm chart to a Native Helm service
 
-To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness Delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness Delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 1. In the Harness service for your Native Helm deployment, in **Manifests**, select **Add Manifest**.
 
@@ -130,10 +130,10 @@ To add a Helm chart in this example, we will add a Harness connector to the HTTP
 8. Select **Continue**.
 9. In **Delegates Setup**, select/create a delegate, and then select **Save and Continue**.
     
-    For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+    For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
     When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.  
-    If you are using Helm v2, you will need to install Helm v2 and Tiller on the delegate pod. For steps on installing software on the delegate, go to [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+    If you are using Helm v2, you will need to install Helm v2 and Tiller on the delegate pod. For steps on installing software on the delegate, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 10. In **Manifest Details**, enter the following settings can select **Submit**.
    * **Manifest Identifier**: enter **nginx**.
    * **Chart Name**: enter **nginx**.
@@ -334,7 +334,7 @@ The options avialable to you to specify a Helm chart store depend on whether or 
   - For details on using different authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 ### Helm commands performance analysis
-Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness delegate.
+Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness Delegate.
 Below is the summary of a few vulnerable helm commands which Harness uses:
 1. `helm repo add`: Avoids redundant additions by checking if the repository already exists and employs locking to prevent conflicts during parallel deployments.
 2. `helm repo update`: Asynchronously fetches index.yaml for all repos, unmarshals and sorts them. Parallel commands do not perform locking, but still manage to run without any failures.
@@ -342,7 +342,7 @@ Below is the summary of a few vulnerable helm commands which Harness uses:
 
 #### Harness improvements
 To improve performance of concurrent helm commands, 'N' parallel helm commands on the same helm repository will not always spawn an equivalent number of processes. This is achieved by trying to re-use the output from one command by other concurrent commands. 
-This reduces both CPU and memory usage of the Harness delegate, since concurrently running processes are reduced. These improvements are available from `81803` version of Harness delegate.
+This reduces both CPU and memory usage of the Harness Delegate, since concurrently running processes are reduced. These improvements are available from `81803` version of Harness Delegate.
 
 #### Harness Certified Limits
 Delegate used for benchmarking: 2 vCPUs, 8 GB memory K8s delegate (1 replica, version 81803)

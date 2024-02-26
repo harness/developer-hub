@@ -69,5 +69,5 @@ If no failure strategy is set at the step or stage level, then selecting **Mark 
 ## Important notes
 
 * The Wait step is available in approval, custom, CD, and feature flag stages.
-* The Wait step does not use a Harness delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
+* The Wait step does not use a Harness Delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
 

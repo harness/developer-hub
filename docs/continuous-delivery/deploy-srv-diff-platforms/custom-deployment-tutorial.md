@@ -64,13 +64,13 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/delegates/install-delegates/overview).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -2241,6 +2241,261 @@ filePathRegex: null
 Completed service step
 ```
 
+### Azure VMSS - Deployment Template Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy services using Azure VMSS.
+
+#### Azure VMSS Deployment Template
+
+```yaml
+template:
+  name: Azure VMSS
+  identifier: Azure_VMSS
+  versionLabel: v1
+  type: CustomDeployment
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  icon: 
+  spec:
+    infrastructure:
+      variables:
+        - name: AzureConnector
+          type: Connector
+          value: azure
+          description: "Azure Connector Id"
+          required: false
+        - name: Subscription
+          type: String
+          value: <+input>
+          description: "Your Subscription ID"
+          required: false
+        - name: ResourceGroup
+          type: String
+          value: <+input>
+          description: "Resource Group Name"
+          required: false
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |+
+              #
+              # Script is expected to query Infrastructure and dump json
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+              #!/bin/bash
+
+              applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+              tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+              secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+              subscription=<+infra.variables.Subscription>
+              resourceGroup=<+infra.variables.ResourceGroup>
+              vmssName=<+serviceVariables.vmssName>
+
+              echo "******* Infra Details *******"
+              echo -e "Application ID = $applicationId"
+              echo -e "Tenant ID = $tenantId"
+              echo -e "Secret ID = $secretKey"
+              echo -e "Subscription = $subscription"
+              echo -e "Resource Group = $resourceGroup"
+              echo -e "VMSS Name = $vmssName"
+              echo -e ""
+
+              az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+              az account set --subscription $subscription
+
+              az vmss list-instances --name $vmssName --resource-group $resourceGroup > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+
+
+      instanceAttributes:
+        - name: instancename
+          jsonPath: id
+          description: "instance name to query"
+        - name: vmId
+          jsonPath: vmId
+          description: "Azure VMSS VM Id"
+        - name: vmName
+          jsonPath: name
+          description: "VM Name"
+        - name: computerName
+          jsonPath: osProfile.computerName
+          description: "Computer Name"
+        - name: artifact
+          jsonPath: storageProfile.imageReference.id
+          description: "Artifact ID"
+        - name: resourceGroup
+          jsonPath: resourceGroup
+          description: "Azure Resource Group"
+      instancesListPath: $
+    execution:
+      stepTemplateRefs: []
+  description: |
+    This is deployment template for Azure VMSS. Make sure the delegate has Azure CLI installed for this template to work correctly. The CLI commands used in these templates are defined here - https://learn.microsoft.com/en-us/cli/azure/vmss?view=azure-cli-latest#az-vmss-create
+
+```
+
+#### Azure VMSS Setup Step Template 
+
+```yaml
+template:
+  name: VMSS Setup
+  identifier: VMSS_Setup
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+
+            applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+            tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+            secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+            subscription=<+infra.variables.Subscription>
+            resourceGroup=<+infra.variables.ResourceGroup>
+
+            echo "******* Infra Details *******"
+            echo -e "Application ID = $applicationId"
+            echo -e "Tenant ID = $tenantId"
+            echo -e "Secret ID = $secretKey"
+            echo -e "Subscription = $subscription"
+            echo -e "Resource Group = $resourceGroup"
+            echo -e ""
+
+            imageGallery=<+serviceVariables.imageGallery>
+            imageDefinition=<+serviceVariables.imageDefinition>
+            imageVersion=<+serviceVariables.imageVersion>
+            instanceCount=<+serviceVariables.instanceCount>
+            vmssName=<+serviceVariables.vmssName>
+            username=<+serviceVariables.vmUserName>
+            vmPwd=<+serviceVariables.vmPwd>
+
+            echo "******* Service Details *******"
+            echo -e "Image Gallery = $imageGallery"
+            echo -e "Image Definition = $imageDefinition"
+            echo -e "Image Version = $imageVersion"
+            echo -e "Instance Count = $instanceCount"
+            echo -e "VMSS Name = $vmssName"
+            echo -e "VM Username = $username"
+            echo -e "VM Password = $vmPwd"
+            echo -e ""
+
+            az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+            az account set --subscription $subscription
+
+            echo -e "Sending request to create VMSS - [$vmssName] ..."
+
+            az vmss create \
+            --resource-group $resourceGroup \
+            --name $vmssName \
+            --instance-count $instanceCount \
+            --admin-username $username \
+            --admin-password $vmPwd \
+            --no-wait \
+            --image "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Compute/galleries/$imageGallery/images/$imageDefinition/versions/$imageVersion"
+      environmentVariables: []
+      outputVariables: []
+
+```
+
+#### Azure VMSS Steady State Check Step
+
+```yaml
+template:
+  name: VMSS Steady State Check
+  identifier: VMSS_Steady_State_Check
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+
+            #!/bin/bash
+            sleep 15
+            applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+            tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+            secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+            subscription=<+infra.variables.Subscription>
+            resourceGroup=<+infra.variables.ResourceGroup>
+            vmssName=<+serviceVariables.vmssName>
+
+            echo "******* Infra Details *******"
+            echo -e "Application ID = $applicationId"
+            echo -e "Tenant ID = $tenantId"
+            echo -e "Secret ID = $secretKey"
+            echo -e "Subscription = $subscription"
+            echo -e "Resource Group = $resourceGroup"
+            echo -e "VMSS Name = $vmssName"
+            echo -e ""
+
+            az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+            az account set --subscription $subscription
+
+            while :
+            do
+                    echo -e ""
+                    reachedSteadyState="YES"
+
+                    while read line; do
+                            echo $line
+                            status=$(echo $line | awk '{print $2}')
+
+                            if [[ -z "$status" ]]; then
+                                    continue
+                            fi
+
+                            if [[ $status != "Succeeded" ]]; then
+                                    reachedSteadyState="NO"
+                            fi
+                    done <<< "$(az vmss list-instances --name $vmssName --resource-group $resourceGroup | jq -r '.[] | [.name,.provisioningState] | @tsv')"
+
+
+                    if [[ $reachedSteadyState == "NO" ]]
+                    then
+                            echo "Some of the VMs are still being created/updated/deleted ..."
+                            echo "Sleeping for 15s"
+                            sleep 15
+
+                    else
+                            echo "All the VMs have reached steady state"
+                            break;
+                    fi
+            done
+      environmentVariables: []
+      outputVariables: []
+
+```
 
 
 

@@ -148,7 +148,7 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                    {/*<Link href="/tutorials/ci-pipelines">
+                    {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -172,7 +172,7 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                   {/*<Link href="/tutorials/ci-pipelines">
+                   {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -235,7 +235,7 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                       {/*<Link href="/tutorials/ci-pipelines">
+                       {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -258,7 +258,7 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                   {/*<Link href="/tutorials/ci-pipelines">
+                   {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -318,7 +318,7 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                       {/*<Link href="/tutorials/ci-pipelines">
+                       {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>

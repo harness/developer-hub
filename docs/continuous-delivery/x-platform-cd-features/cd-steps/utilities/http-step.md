@@ -115,7 +115,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Step execution inputs and outputs
 
@@ -163,14 +163,14 @@ This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact 
 
 You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
 
-1. In **Optional Configuration**, in **Certificate**, enter the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
-2. In **Certificate Key**, enter the public key.
+1. In **Optional Configuration**, in **Certificate**, select the secret for the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+2. In **Certificate Key**, select the secret for the public key.
 
-You can use fixed values, expressions, or runtime inputs for these settings. It is good practice to use Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) for these values.
+You can use fixed values, expressions, or runtime inputs for these settings. For more information, go to Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/).
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 
@@ -180,7 +180,7 @@ Some services require HTTP headers to be included in connections. Without the he
 
 Harness performs an HTTP capability check with the headers included on the target service.
 
-If the target host server require headers and you do not include headers in the **Headers** setting of the HTTP step, the Harness delegate will fail the deployment with the error `No eligible delegates could perform this task` (`error 400`).
+If the target host server require headers and you do not include headers in the **Headers** setting of the HTTP step, the Harness Delegate will fail the deployment with the error `No eligible delegates could perform this task` (`error 400`).
 
 Add the required headers in **Headers** and run the deployment. Adding the headers will prevent the `400` error.
 
@@ -194,7 +194,7 @@ During a capability check, the non-secret headers are used as is but the secret 
 `x-api-key:<<<api_key>>>`  
 `content-type:application/json`
 
-This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness delegate. 
+This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness Delegate. 
 
 :::info
 Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow these workarounds.
@@ -287,7 +287,7 @@ In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
 For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/)..
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
@@ -332,7 +332,7 @@ In Request **Body**, enter the body of the HTTP payload to send to the URL.
 
 You can use a **Fixed Value**, **Runtime Input**, or **Expression**.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
@@ -369,7 +369,7 @@ Here are some examples:
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too.
 
 ### Headers
 
@@ -380,7 +380,7 @@ Headers are `key:value` pairs. For example:
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
+You can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables) too.
 
 You can reference [Harness secrets](/docs/platform/secrets/add-use-text-secrets) in the **Value** setting too.
 

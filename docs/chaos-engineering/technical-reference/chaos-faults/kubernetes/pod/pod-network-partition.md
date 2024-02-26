@@ -26,52 +26,52 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
+        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> POLICY_TYPES </td>
         <td> Contains the type of network policy. </td>
-        <td> It supports <code>egress</code>, <code>ingress</code> and <code>all</code> values. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#policy-type">policy type</a></td>
+        <td> It supports <code>egress</code>, <code>ingress</code> and <code>all</code> values. For more information, go to <a href="#policy-type">policy type</a></td>
       </tr>
       <tr>
         <td> POD_SELECTOR </td>
         <td> Contains the labels of the destination pods. </td>
-        <td> For example, <code>app=cart</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#target-specific-pods">target pods</a></td>
+        <td> For example, <code>app=cart</code>. For more information, go to <a href="#target-specific-pods">target pods</a></td>
       </tr>
       <tr>
         <td> NAMESPACE_SELECTOR </td>
         <td> Contains the labels of the destination namespaces. </td>
-        <td> For example, <code>env=prod</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#target-specific-namespaces">target namespaces</a> </td>
+        <td> For example, <code>env=prod</code>. For more information, go to <a href="#target-specific-namespaces">target namespaces</a> </td>
       </tr>
       <tr>
         <td> PORTS </td>
         <td> Comma-separated list of the target ports. </td>
-        <td> For example, 80,443,22. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#destination-ports">destination ports</a></td>
+        <td> For example, 80,443,22. For more information, go to <a href="#destination-ports">destination ports</a></td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the services or pods or the CIDR blocks (range of IPs) whose accessibility impacted. Comma-separated IPs or CIDRs can be provided.</td>
-        <td> If values are not provided, the fault induces network chaos on all IPs or destinations. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#destination-ips-and-destination-hosts">destination IPs</a></td>
+        <td> If values are not provided, the fault induces network chaos on all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a></td>
       </tr>  
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
-        <td> If not provided, this fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#destination-ips-and-destination-hosts">destination hosts</a></td>
+        <td> If not provided, this fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a></td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr> 
       <tr>   
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
     </table>
 

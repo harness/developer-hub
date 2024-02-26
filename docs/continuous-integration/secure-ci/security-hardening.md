@@ -6,7 +6,7 @@ sidebar_position: 10
 
 Harness offers features that help you build securely with Harness CI. Combine these features with known industry best practices.
 
-The information is targeted at Harness CI. It is not a comprehensive explanation of all security features and capabilities throughout all Harness products.
+The information is targeted at Harness CI. It is not a comprehensive explanation of all security features and capabilities throughout all Harness products, such as [Harness STO](/docs/security-testing-orchestration).
 
 ## Access control
 
@@ -54,7 +54,7 @@ For information about creating keys/tokens for a specific provider or tool, refe
 
 For network security and private networking, Harness offers features such as:
 
-* [IP allowlists](/docs/platform/Security/add-manage-ip-allowlist)
+* [IP allowlists](/docs/platform/security/add-manage-ip-allowlist)
 * [Secure connect for Harness Cloud](./secure-connect)
 * [OIDC](#oidc)
 
@@ -62,9 +62,11 @@ For network security and private networking, Harness offers features such as:
 
 You can use OpenID Connect (OIDC) with Harness CI.
 
-With Harness Cloud, you can leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp). GCP connectors are used for functionality such as the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar). You can also [Configure OIDC with GCP WIF for builds on Harness Cloud](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+With Harness Cloud, you can leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp). You can then use OIDC-enabled GCP connectors in GCP-related steps, such as the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar). You can also [Configure OIDC with GCP WIF for builds on Harness Cloud](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
-OIDC is also available in other areas of Harness, such as in the [platform-agnostic Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#openid-connect), and in other Harness modules.
+Not all step types support GCP connectors. However, you might need to perform operations with OIDC in steps that don't support GCP connectors. For example, if you use a Run step to pull artifacts from GAR with OIDC, you need the OIDC token in the Run step to successfully pull the artifact. In these cases, you can [use the GCP OIDC plugin to generate a GCP access token from an OIDC token](./gcp-oidc-token-plugin.md).
+
+OIDC is also available in other areas of Harness, such as in the [platform-agnostic Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/#openid-connect) and in other Harness modules.
 
 ## FAQ and troubleshooting
 

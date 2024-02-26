@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
-If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](https://developer.harness.io/tutorials/cd-pipelines).
+If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](/docs/category/cd-and-gitops-tutorials).
 
 ## Overview
 
@@ -26,7 +26,7 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 | **Step**                                                                                                                           | **Details**                                        | **Documentation Link**                                                                                                             | **Demo Video**                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | <a href="#step-1-account--entities-setup">Account and entities setup</a>                                                           | Create organization, project, invite initial users | [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/) |                                                                                                 |
-| <a href="#step-2-installing-delegate">Installing delegates</a>                                                                     | Kubernetes, Docker                                 | [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)              | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
+| <a href="#step-2-installing-delegate">Installing delegates</a>                                                                     | Kubernetes, Docker                                 | [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)              | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
 | <a href="#step-3-installing-secret-manager--migrating-existing-secrets">Installing secret managers, Migrating existing secrets</a> | AWS KMS, HashiCorp, Azure Key Vault, Google KMS    | [Add a secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager/)                 |                                                                                                 |
 
 ### <a href="#phase-2-deploy-to-qa"> Phase 2: Deploy to QA </a>
@@ -43,13 +43,13 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 | **Step**                                                              | **Details**                                                      | **Documentation Link**                                                                                                              | **Demo Video**                                                  |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | <a href="#step-1-deployment-strategy">Deployment strategies</a> \*    | Rollback, Blue Green, Canary, Kubernetes Apply, Kubernetes Scale | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/) | [Watch Video](https://youtu.be/VJjDbwoxLfM?feature=shared)      |
-| <a href="#step-2-triggers--input-sets">Triggers and input sets</a> \* | SCM triggers, artifact triggers                                  | [Pipeline triggers](https://developer.harness.io/tutorials/cd-pipelines/trigger/)                                                   | [Watch Video](https://youtu.be/nIPjsANiKRk?si=euQzhaYGfnPaacUe) |
+| <a href="#step-2-triggers--input-sets">Triggers and input sets</a> \* | SCM triggers, artifact triggers                                  | [Pipeline triggers](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger)                                                   | [Watch Video](https://youtu.be/nIPjsANiKRk?si=euQzhaYGfnPaacUe) |
 
 ### <a href="#phase-4-deploy-to-production"> Phase 4: Deploy to production </a>
 
 | **Step**                                                                          | **Details**                                         | **Documentation Link**                                                                                                                                 | **Demo Video**                                                  |
 | --------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| <a href="#step-1-approvals--governance-opa">Approvals and governance (OPA)</a> \* | Harness Approval, JIRA Approval                     | [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals/)                                                                            | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
+| <a href="#step-1-approvals--governance-opa">Approvals and governance (OPA)</a> \* | Harness Approval, JIRA Approval                     | [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial)                                                                            | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
 | <a href="#step-2-rbac">RBAC</a>                                                   | CoE, Distributed Center of DevOps                   | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)                   | [Watch Video](https://youtu.be/vIQfpRrES44?si=Du5OAej2t2Phu7Hg) |
 | <a href="#step-3-continuous-verification">Continuous Verification</a>             | Auto, Rolling Update, Canary, Blue Green, Load Test | [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/) |                                                                 |
 
@@ -97,11 +97,11 @@ A Harness project is a group of Harness modules and their pipelines. For example
 
 ### Step 2. Installing Delegate
 
-The Harness delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager.
+The Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager.
 
-The first time you connect Harness to a third-party resource, the Harness delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed and registers with Harness, you can Harness connect to third-party resources. The delegate performs all operations, including deployment and integration.
+The first time you connect Harness to a third-party resource, the Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed and registers with Harness, you can Harness connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
-For more information, go to [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/).
+For more information, go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate).
 
 ### Step 3. Installing secret managers, migrating existing secrets
 
@@ -1397,7 +1397,7 @@ template:
 
 The Harness Terraform Provider enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using this Provider. Currently the following Harness resources can be managed via the Provider.
 
-For more information, go to [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider).
+For more information, go to [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider).
 
 <details>
 <summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>

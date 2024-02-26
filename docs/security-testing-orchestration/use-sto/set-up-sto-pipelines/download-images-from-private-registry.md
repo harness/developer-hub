@@ -1,7 +1,8 @@
 ---
-title: Configure STO to download images from a private registry
+title: Store STO images in a private registry
 description: Store your scanner images in a private registry. Useful for air-gapped environments.
-sidebar_position: 40
+sidebar_label: Store images in a private registry
+sidebar_position: 30
 ---
 
 Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
@@ -17,7 +18,7 @@ To do this, you need to:
 
 ## Create STO scanner images with your own SSL certificates (optional)
 
-Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
+Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
 
 In this workflow, you set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and Harness Manager.
 
@@ -150,6 +151,7 @@ Do the following if you're using a generic **Security** step for you scan:
 
    2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
+<!-- 
 ## YAML example for configuring STO to download images from a private registry
 
 The following pipeline downloads its Security Scan image (bandit) and all of its CI build images from the Harness Image Registry. 
@@ -218,3 +220,5 @@ pipeline:
   name: sto_scanner_image_download_example
 
 ```
+
+-->

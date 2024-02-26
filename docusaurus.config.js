@@ -18,12 +18,12 @@ function hideIndexFromSidebarItems(items) {
 const config = {
   title: "Harness Developer Hub",
   tagline:
-    "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
+    "Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  //onBrokenAnchors: "ignore", #DS 3.1+
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
@@ -96,7 +96,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "/img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -104,82 +104,6 @@ const config = {
             html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
           },*/
-          {
-            position: "right",
-            type: "dropdown",
-            label: "Tutorials",
-            to: "tutorials",
-            items: [
-              {
-                // type: "doc",
-                label: "All Tutorials",
-                to: "tutorials",
-              },
-              {
-                // type: "doc",
-                label: "Set up CI Pipelines",
-                to: "tutorials/ci-pipelines",
-                // docId: "ci-pipelines",
-                // activeBasePath: "to",
-              },
-              {
-                // type: "doc",
-                label: "Set up CD Pipelines",
-                to: "tutorials/cd-pipelines",
-              },
-              {
-                // type: "doc",
-                label: "Manage Feature Flags",
-                to: "tutorials/feature-flags",
-                // activeBaseRegex: "/feature-flags",
-              },
-              {
-                // type: "doc",
-                label: "Manage Cloud Costs",
-                to: "tutorials/cloud-costs",
-              },
-              {
-                // type: "doc",
-                label: "Orchestrate Security Tests",
-                to: "tutorials/security-tests",
-              },
-              {
-                // type: "doc",
-                label: "Secure Supply Chain",
-                to: "tutorials/secure-supply-chain",
-              },
-              {
-                // type: "doc",
-                label: "Run Chaos Experiments",
-                to: "tutorials/chaos-experiments",
-              },
-              {
-                // type: "doc",
-                label: "Manage Service Reliability",
-                to: "tutorials/service-reliability",
-              },
-              {
-                // type: "doc",
-                label: "Track Errors",
-                to: "tutorials/error-tracking",
-              },
-              {
-                // type: "doc",
-                label: "Manage Developer Portal",
-                to: "tutorials/internal-developer-portal",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Platform",
-                to: "tutorials/platform",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Self-Managed EE",
-                to: "tutorials/self-managed-enterprise-edition",
-              },
-            ],
-          },
           {
             position: "right",
             type: "dropdown",
@@ -229,10 +153,6 @@ const config = {
               {
                 label: "Service Reliability Management",
                 to: "docs/service-reliability-management",
-              },
-              {
-                label: "Continuous Error Tracking",
-                to: "docs/continuous-error-tracking",
               },
               {
                 label: "Internal Developer Portal",
@@ -318,39 +238,44 @@ const config = {
                 label: "Instructions",
                 to: "certifications/instructions",
               },
-
               {
                 label: "FAQs",
                 to: "certifications/faqs",
               },
+              {
+                label: "Instructor Led Training",
+                to: "certifications/instructor-led-training",
+              },
             ],
           },
           {
-            position: "right",
-            to: "kb",
             label: "Knowledge Base",
-          },
-          {
             position: "right",
-            to: "community",
-            label: "Community",
+            type: "dropdown",
+            to: "kb",
+            items: [
+              {
+                to: "kb",
+                label: "Knowledge Base",
+              },
+              {
+                to: "community",
+                label: "Community",
+              },
+            ],
           },
-          //{
-          //  position: "right",
-          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
-          //  label: "Join Slack",
-          //},
+
           {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
             type: "custom-coveo-search",
             position: "right",
           },
           {
             position: "right",
-            // label: "Sign up",
+            html: '<button class="button button--nav">Sign in</button>',
+            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
+          },
+          {
+            position: "right",
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
@@ -405,10 +330,6 @@ const config = {
               {
                 label: "Service Reliability Management",
                 to: "https://harness.io/products/service-reliability-management",
-              },
-              {
-                label: "Continuous Error Tracking",
-                to: "https://www.harness.io/products/continuous-error-tracking",
               },
               {
                 label: "Internal Developer Portal",
@@ -491,7 +412,7 @@ const config = {
       },
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
+        // disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       docs: {
@@ -605,18 +526,17 @@ const config = {
         // ... other options
       },
     ],
-    [
-      path.resolve(__dirname, "./plugins/redirect-plugin"),
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
+    //[
+    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
+    //  {
+    //    id: "tutorials",
+    //    path: "tutorials",
+    //    routeBasePath: "tutorials",
+    //    exclude: ["**/shared/**", "**/static/**"],
+    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
+    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
+    //  },
+    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
@@ -661,6 +581,7 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
+  clientModules: [path.join(__dirname, "/client_module/searchBar")],
 };
 
 module.exports = config;

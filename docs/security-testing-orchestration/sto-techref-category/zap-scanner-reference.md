@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap) tutorial.
+For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) tutorial](/docs/security-testing-orchestration/get-started/sto-tutorials/dast-scan-zap).
 
 ## Important notes for running ZAP scans in STO
 
@@ -91,12 +91,13 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 <StoSettingScanTypeInst />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
-
+<StoSettingScanTypeAutodetectApp/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 #### Name 
 
@@ -197,7 +198,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 ## Security step settings for ZAP scans in STO (legacy)

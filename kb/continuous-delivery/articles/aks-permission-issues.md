@@ -23,7 +23,7 @@ We need to update the creds such that the tenent have access to this clusters re
 
 To further verify if we a list permission which seems to be misssing, we will run the following commands? This will ensure that their creds are valid and have the required permissions?
  
-1. AzCLI Login on Harness delegate using the creds with which they created the connector
+1. AzCLI Login on Harness Delegate using the creds with which they created the connector
 
    `az login --service-principal -u <app-id> -p <password-or-cert> --tenant <tenant>`
  

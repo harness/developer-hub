@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
+You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -75,12 +75,12 @@ If you need to use Intel-based architecture, [Rosetta](https://developer.apple.c
 </Tabs>
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-You can build Android apps on a Linux or Mac platform on self-hosted [build infrastructures](/docs/category/set-up-build-infrastructure), including Kubernetes clusters, VMs, and local runners.
+You can build Android apps on a Linux or Mac platform on self-managed [build infrastructures](/docs/category/set-up-build-infrastructure), including Kubernetes clusters, VMs, and local runners.
 
 <Tabs>
-  <TabItem value="sh1" label="Linux" default>
+  <TabItem value="sm1" label="Linux" default>
 
 This example sets up a Linux platform on a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/).
 
@@ -104,9 +104,9 @@ stages:
 ```
 
 </TabItem>
-  <TabItem value="sh2" label="macOS">
+  <TabItem value="sm2" label="macOS">
 
-To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+To configure a self-managed macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 This example uses a VM build infrastructure:
 
@@ -157,7 +157,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to install dependencies in the build environment.
 
@@ -216,9 +216,9 @@ Cache Intelligence supports Gradle. If you're using Gradle and your dependencies
 :::
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -300,7 +300,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 ```yaml
 - step:
@@ -414,7 +414,7 @@ If you need to install additional versions, use a **Run** step. These examples u
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 Specify the desired Android Docker image tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -496,7 +496,7 @@ The following examples use [fastlane](https://docs.fastlane.tools/) to deploy an
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 ```yaml
 - step:
@@ -597,7 +597,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 This pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
 
@@ -710,6 +710,6 @@ pipeline:
 Now that you have created a pipeline that builds and tests an Android app, you could:
 
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 - Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

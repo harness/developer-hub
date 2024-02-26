@@ -4,11 +4,11 @@ description: Create and edit Collection categories
 sidebar_position: 30
 ---
 
-Collection categories are broad classifications that serve as containers for [Collections](./manage-collections.md) but are not, themselves, Collections. For example, **Teams** is an Collection category; whereas **Engineering Team** and **Docs Team** are Collections under the **Teams** category.
+Collection categories are broad classifications that serve as containers for [Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) but are not, themselves, Collections. For example, **Teams** is an Collection category; whereas **Engineering Team** and **Docs Team** are Collections under the **Teams** category.
 
 Each [Harness project](/docs/category/organizations-and-projects) has two default Collection categories: Teams and Sprints. You can modify the default categories and create custom categories.
 
-For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./manage-collection-cat.md).
+For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat).
 
 ## View, edit, and enable/disable Collection categories
 
@@ -43,4 +43,4 @@ Adding custom Collection categories is considered an advanced feature. It is rec
 
 6. Select **Save**.
 
-The new Collection category is added as a tab on the **Collection Setup** page. From here, [add Collections](./manage-collections.md) to your new Collection category.
+The new Collection category is added as a tab on the **Collection Setup** page. From here, [add Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) to your new Collection category.

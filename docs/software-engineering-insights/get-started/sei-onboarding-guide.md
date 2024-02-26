@@ -21,29 +21,27 @@ Harness supports Single Sign-On (SSO) with SAML, LDAP (including Active Director
 
 Review the following resources to learn about the SSO configuration options on the Harness Platform.
 
-* [Authentication overview](../../platform/authentication/authentication-overview.md)
-* [Single Sign-On (SSO) with SAML](../../platform/authentication/single-sign-on-saml.md)
-* [Single Sign-On (SSO) with LDAP](../../platform/authentication/single-sign-on-sso-with-ldap.md)
-* [Single Sign-On (SSO) with OAuth](../../platform/authentication/single-sign-on-sso-with-oauth.md)
-* [Two-factor authentication](../../platform/authentication/two-factor-authentication.md)
+* [Authentication overview](/docs/platform/authentication/authentication-overview)
+* [Single Sign-On (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml)
+* [Single Sign-On (SSO) with LDAP](/docs/platform/authentication/single-sign-on-sso-with-ldap)
+* [Single Sign-On (SSO) with OAuth](/docs/platform/authentication/single-sign-on-sso-with-oauth)
+* [Two-factor authentication](/docs/platform/authentication/two-factor-authentication)
 
 ## Learn about Harness SEI concepts and features
 
 Review the following resources to learn about the features, components, and key concepts of Harness SEI.
 
-* [SEI overview](./overview.md): Learn about Harness SEI module and key features.
-* [SEI key concepts](./sei-key-concepts.md): Get definitions of common components and integrations you'll encounter in Harness SEI, such as Ingestion Satellite, Integrations, Insights, Collections, and more.
+* [SEI overview](/docs/software-engineering-insights/get-started/overview): Learn about Harness SEI module and key features.
+* [SEI key concepts](/docs/software-engineering-insights/get-started/sei-key-concepts): Get definitions of common components and integrations you'll encounter in Harness SEI, such as Ingestion Satellite, Integrations, Insights, Collections, and more.
 
 ## Create your first Harness SEI Insight
 
-Learn about the [insight creation process in Harness SEI](../sei-insights.md), and then create your own:
-
-* [Tutorial: Create an Sprint Metrics Insights on Harness SEI](../sei-insights.md)
+Learn about and create [Insights in Harness SEI](../insights/sei-insights.md).
 
 ## Propelo and Harness
 
-If you're migrating to Harness SEI from Propelo standalone application, review the [SEI migration guide](./propelo-and-harness.md) for useful information about changing your existing user roles to the available SEI roles on Harness.
+If you're migrating to Harness SEI from Propelo standalone application, review the [SEI migration guide](/docs/software-engineering-insights/get-started/propelo-and-harness) for useful information about changing your existing user roles to the available SEI roles on Harness.
 
-* [Propelo and Harness](./propelo-and-harness.md)
-* [User roles](../access-control/sei-roles-and-permissions)
+* [Propelo and Harness](/docs/software-engineering-insights/get-started/propelo-and-harness)
+* [User roles](/docs/software-engineering-insights/access-control/sei-roles-and-permissions)
 

@@ -1,7 +1,7 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
@@ -41,13 +41,22 @@ The example mentioned in the previous section used `contains()`:
 
 `<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
 
-Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
+Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`, you can use `split()` like this:
 
 ```
 echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
 
 The output of this expression is `ghi`.
+
+
+Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`, you can use `split()` like this:
+
+```
+echo <+<+pipeline.variables.abc>.split('\\.')[1]>
+```
+
+The output of this expression is `6`.
 
 The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
 
@@ -627,6 +636,8 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 - If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing. Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
 
+- Usage of `getClass()` in expressions is not supported and will not be evaluated.
+
 ## Debugging expressions
 
 An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions.
@@ -745,6 +756,32 @@ https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs
 :::important
 The expression \<+pipeline.execution.Url> has been deprecated.
 :::
+
+
+
+### \<+pipeline.executionMode>
+
+The execution mode  of the pipeline. This will tell the execution mode(i.e `NORMAL`, `POST_EXECUTION_ROLLBACK`, `PIPELINE_ROLLBACK`) of the pipeline.
+
+**Types of Execution Mode:**
+1) Normal Execution: A execution which could either be successful or failed.
+
+2) [Post deployment Rollback[POST_EXECUTION_ROLLBACK]](../../continuous-delivery/manage-deployments/rollback-deployments.md)
+
+3) [Rollback pipelines[PIPELINE_ROLLBACK]](../../platform/pipelines/define-a-failure-strategy-for-pipelines.md)
+
+![](./static/execution-mode-expression.png)
+
+We can use the expression `<+pipeline.executionMode>` under conditional execution. Conditional execution is to ensure that a step only runs when a Post Execution Rollback has been triggered.
+
+![](./static/execution-mode-conditional-execution.png)
+
+For example:
+
+**Output:**
+
+![](./static/execution-mode-execution-output.png)
+
 
 ### \<+pipeline.name>
 

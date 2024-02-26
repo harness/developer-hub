@@ -12,8 +12,8 @@ Harness Continuous Delivery (CD) is a powerful platform to manage and automate d
 - Familiarity with Git and Git operations.
 - A Harness account with relevant permissions.
 - A Git account (GitHub, GitLab, Bitbucket, etc.) and repository.
-- [Harness Git Experience quickstart](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities)
-- [Import a pipeline from Git](/docs/platform/Git-Experience/import-a-pipeline)
+- [Harness Git Experience quickstart](/docs/platform/git-experience/configure-git-experience-for-harness-entities)
+- [Import a pipeline from Git](/docs/platform/git-experience/import-a-pipeline)
 
 
 ## Onboarding steps
