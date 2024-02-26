@@ -75,7 +75,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   
   This issue is fixed by making the service instance field configurable for users.
 
-  This item requires Harness Delegate version 82402. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 24.02.82402. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness did not display dynamically provisioned infrastructure inputs when the input field was set as runtime. (CDS-90757)
   
