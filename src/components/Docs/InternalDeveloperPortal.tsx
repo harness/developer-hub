@@ -6,7 +6,6 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/internalDeveloperPortal";
-import { FeaturedList } from "../LandingPage/data/internalDeveloperPortalData";
 
 export default function IDP() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -16,13 +15,13 @@ export default function IDP() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img width={64} src={`${baseUrl}img/icon_idp.svg`} />
-            <h1>Internal Developer Portal Documentation</h1>
+            <h1>Internal Developer Portal</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/internal-developer-portal">
+            <Link href="/kb">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/internal-developer-portal">
@@ -36,17 +35,22 @@ export default function IDP() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              A home for developers to create, manage, and explore software.
+              Harness IDP is a home for developers to create, manage, and explore software.
+              It enables you to create new software components quickly
+              while adhering to your company's best practices. It enables you to
+              manage the software you own by presenting a developer-centric view
+              of all relevant information such as service health, deployments,
+              and alerts. It also enables you to explore the internal software
+              ecosystem of the company, discover technical documentation, APIs,
+              and services, all of which enable better collaboration.
             </p>
+            <div>
+            <img src={`${baseUrl}img/idp.svg`} />
+            </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.sectionDivider}></div>
-      <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
-        <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
-      </div>
     </div>
     // </Layout>
   );

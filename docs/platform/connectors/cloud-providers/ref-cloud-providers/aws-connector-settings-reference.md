@@ -425,9 +425,9 @@ Specify the credentials that enable Harness to connect your AWS account. There a
 
 :::warning
 
-Ensure that the AWS IAM roles applied to the credentials you use (the Harness delegate or the access key) include the policies needed by Harness to deploy to the target AWS service.
+Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) include the policies needed by Harness to deploy to the target AWS service.
 
-If the IAM role used by your AWS connector does not have the policies required by the AWS service you want to access, you can modify or switch the role. This entails changing the role assigned to the AWS account or Harness delegate that your AWS connector is using. When you switch or modify the IAM role used by the connector, it might take up to 5 minutes to take effect.
+If the IAM role used by your AWS connector does not have the policies required by the AWS service you want to access, you can modify or switch the role. This entails changing the role assigned to the AWS account or Harness Delegate that your AWS connector is using. When you switch or modify the IAM role used by the connector, it might take up to 5 minutes to take effect.
 
 Additionally, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure.
 
@@ -439,7 +439,7 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 If you want to use a certain AWS account for the connection and then deploy in a different AWS account, select **Enable cross-account access (STS Role)** in your AWS connector's **Credentials** settings. The STS role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA credentials option.
 
-This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. The AWS account used for AWS access in the connector's **Credentials** settings assumes the IAM role you specify in the **Cross account role ARN** field. However, the Harness delegate always runs in the account you specify in the connector's **Credentials** through **AWS Access Key** or **Assume IAM Role on Delegate**.
+This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. The AWS account used for AWS access in the connector's **Credentials** settings assumes the IAM role you specify in the **Cross account role ARN** field. However, the Harness Delegate always runs in the account you specify in the connector's **Credentials** through **AWS Access Key** or **Assume IAM Role on Delegate**.
 
 In the **Cross account role ARN** field, input the Amazon Resource Name (ARN) of the role that you want the connector to assume. This is an IAM role in the target deployment AWS account.
 

@@ -17,11 +17,10 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes 
 This topic describes how to connect your Kubernetes cluster to CCM.
 
 :::note
-After you enable CCM, for the first cluster, the data is available within a few minutes for viewing and analysis. However, you would not be able to see the idle cost because of the lack of utilization data. CCM generates the last 30 days of the cost data based on the first events. From the second cluster onwards, it takes about 2–3 hours for the data to be available for viewing and analysis.
+After you enable CCM, for the first cluster, the data is available within a few minutes for viewing and analysis. However, you would not be able to see the idle cost because of the lack of utilization data. CCM generates the last 30 days of the cost data based on the first events. From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
 
 If you are using an EKS connector, the data generation is delayed. AWS ingests data at the source (S3 bucket) four times a day. CCM takes about two hours to make the data available for viewing and analysis once it is available at the source.
 :::
- 
 
 ## Kubernetes Connector requirements and workflow
 
@@ -29,7 +28,7 @@ For CCM, Kubernetes connectors are available only at the Account level in Harnes
 
 ## Create a cloud provider Kubernetes connector
 You need to have completed the following tasks before creating a CCM connector for your Kubernetes cluster:
-* You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. For more information, go to [Install a Kubernetes Delegate](/tutorials/platform/install-delegate/). The Delegate is responsible for collecting metrics from the K8s connector.
+* You need to set up a Harness Delegate for each Cloud Provider (Kubernetes cluster) connector. Delegates are installed when adding a connector. For more information, go to [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/install-delegate). The delegate is responsible for collecting metrics from the Kubernetes connector.
 
   ### Delegate role requirements for CCM visibility features and recommendations:
   
@@ -140,7 +139,7 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
   - Medium - 8GB memory, 2CPU
   - Large - 16GB memory, 4CPU
 
-:::important
+:::warning
 - These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers. 
 - We recommend using one delegate per cluster and Large size delegates for production clusters for optimal performance.
 :::
@@ -158,7 +157,7 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
 - **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
 
 
-:::important note
+:::info
 Metrics Server is installed by default on GKE and AKS clusters; however, you need to install it on the AWS EKS cluster.
 :::
 

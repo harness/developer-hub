@@ -99,7 +99,7 @@ This topic provided a high level overview of how you can model your software del
 
 For more details and example, go to:
 
-* [CD tutorials](/tutorials/cd-pipelines/)
+* [CD tutorials](/docs/category/cd-and-gitops-tutorials)
 * [CD overview and key concepts](./key-concepts.md)
 * [Service-based licensing and usage for CD](./service-licensing-for-cd.md)
 * [Deployment concepts and strategies](../manage-deployments/deployment-concepts.md)

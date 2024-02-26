@@ -27,36 +27,37 @@ Your deny list rules can use any combination of the following attributes, in add
 Use allow list policies to define a list of approved licenses, suppliers, and PURLs. The allow list ensures that your artifacts only include components that meet your specifications, which can help mitigate security and compliance risks. When you enforce policies in your pipelines, if an artifact includes a component that is not included in the allow list, the attribute's policy evaluation fails. Policy evaluation will also fail if the attribute on which the policy is enforced is not present in the corresponding SBOM.
 
 
-## Using OPA policies 
+## Using OPA policies
 
-You need to define SBOM policies using OPA at project, org and account level and include them in the pipeline for enforcement. A typical SBOM policy consist of following sections:
+You can define OPA policy sets at project, org, and account levels. A typical SBOM policy set has three sections:
 
-* **deny_list** - here you will add all the rules for denying the use of components based on specified criteria
+* `deny_list`: Rules for denying the use of components based on specified criteria.
+* `allow_list`: Rules for allowed licenses, suppliers, and PURLs.
+* `Enforcement Logic`: Don't edit this part. It provides policy examples and logic that ensures your policies are consistently enforced.
 
-* **allow_list** - here you will add the rules for allowed licenses, suppliers and PURLs 
+:::warning
 
-* **Enforcement Logic** - you don’t need to touch this part and use it as is from the sample policies provided
+When writing SBOM OPA policies, select one of the sample policies from the Policy library and change *only* the `deny_list` and `allow_list` sections according to the rules you want to enforce.
 
-
-:::info Important
-
-To create a SBOM OPA policy, select one of the existing sample policies present in the policy library and ONLY change the deny_list and allow_list sections to include rules that you want to enforce. DO NOT change anything below the comment line "#### DO NOT CHANGE THE FOLLOWING SCRIPT ####". This is needed for consistently enforcing the rules that you will define.
+**Do not** change anything below `#### DO NOT CHANGE THE FOLLOWING SCRIPT ####`. The content below this comment line is required to consistently enforce your SBOM OPA policy rules.
 
 :::
- 
-While creating policy set, you need to select SBOM as entity type:
 
-<docimage path={require('../static/SBOM-OPA-Policy-Set.png')} />
+When creating a policy set for SBOM, set the **Entity Type** to **SBOM**.
 
+<!-- ![](./static/ssca-policy-file-store.png) -->
 
-We have included following samples in the policy library to help you create rules for SBOM policy enforcement:
+<DocImage path={require('./static/sbom-opa-policy-set.png')} />
+
+### Sample policies
+
+Harness has the following samples in the Policy Library to help you create rules for SBOM policy enforcement:
 
 * SBOM - Allow list
 * SBOM - Deny list
 * SBOM - Allow and Deny list
 
-
-Here is simple sample policy:
+Here is an example of a sample policy:
 
 ```
 package sbom

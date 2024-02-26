@@ -35,7 +35,6 @@ These entities are behind feature flags. Contact [Harness Support](mailto:suppor
 - If you make an invalid YAML change to the YAML in the Git repo file an **Invalid YAML Detected** error appears in the Harness UI. You can fix the invalid YAML in Harness or in the Git repo.
 - If your Git repo server is on-premise, it must have connectivity to Harness SaaS. 
 - Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
-- If you are using a custom role, then you will need to assign the `core_gitxWebhooks_edit` permission to the role as a bare minimum.
 - When configuring a webhook, you need to be the owner of the relevant git repository.
 
 

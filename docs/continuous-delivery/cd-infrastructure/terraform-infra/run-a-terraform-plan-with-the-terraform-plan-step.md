@@ -472,6 +472,10 @@ For example, if the Terraform Plan step with the Id `TfPlan` is in the **Executi
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
 
+When Terraform plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
+
 :::note
 When the `Run on Remote Workspace` option is selected, you will not be able to export the JSON representation of terraform plan.
 :::
@@ -520,7 +524,7 @@ and found no differences, so no changes are needed.
 
 ## Skip state storage
 
-The following feature requires a minimum Harness delegate version of 812xx.
+The following feature requires a minimum Harness Delegate version of 812xx.
 
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 

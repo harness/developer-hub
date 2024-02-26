@@ -16,7 +16,7 @@ Here's a step-by-step tutorial on how you can migrate from GitHub Actions to Har
 - Identify and list all the required environment variables, secrets, and deployment scripts.
 - Ensure you have access to a Harness account. If not, create one. 
   
-### Step 2: Harness delegate installation
+### Step 2: Harness Delegate installation
 
 - Download and install the Harness Delegate to your Kubernetes cluster or a VM within your network.
 - The Delegate will connect your Harness account to your infrastructure. 

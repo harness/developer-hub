@@ -69,4 +69,4 @@ Make sure that the **Log Level** setting in your scanner is not set to **Debug**
 
 <!-- https://harness.atlassian.net/browse/STO-6171 -->
 
-You might find that STO scans run slower than expected when you're running STO in Harness Self-Managed Platform. This issue has been observed when the Harness delegate and Harness server are running in the same cluster with a load balancer that has `preserve client IP` enabled. In this case, consider disabling this option to speed up your scans. 
+You might find that STO scans run slower than expected when you're running STO in Harness Self-Managed Platform. This issue has been observed when the Harness Delegate and Harness server are running in the same cluster with a load balancer that has `preserve client IP` enabled. In this case, consider disabling this option to speed up your scans. 

@@ -3,7 +3,7 @@ title: Linux chaos infrastructure advanced management
 sidebar_position: 2
 description: Guide to advanced setup with Linux chaos infrastructure
 ---
-This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure.
+This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure (LCI).
 
 HCE supports executing Linux faults similar to Kubernetes faults. 
 
@@ -32,6 +32,14 @@ A set of mandatory input flags is required for the installation of the chaos inf
 10. **custom-tls-certificate**: TLS certificate used to communicate with the control plane.
 11. **http-proxy**: HTTP proxy URL used to communicate with the control plane.
 12. **http-client-timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
+
+:::info note
+LCI does not currently support:
+1. Cron schedules
+2. [GameDays](/docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday.md)
+3. Executing [parallel faults](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments.md) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
+:::
+
 
 ## Infrastructure service
 The Linux chaos infrastructure is installed as an executable binary on your Linux machine. This infrastructure is managed as a `Systemd` service.

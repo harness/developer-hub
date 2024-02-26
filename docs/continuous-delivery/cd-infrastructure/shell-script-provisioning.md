@@ -234,7 +234,7 @@ pipeline:
 ```
 </details>
 
-When you run this pipeline, the **Shell Script Provision** step show that the `$PROVISIONER_OUTPUT_PATH` environment variable has been initialized on the Harness delegate.
+When you run this pipeline, the **Shell Script Provision** step show that the `$PROVISIONER_OUTPUT_PATH` environment variable has been initialized on the Harness Delegate.
 
 ```
 "PROVISIONER_OUTPUT_PATH" has been initialized to "/opt/harness-delegate/shellScriptProvisioner/F__QtYt1QdOyAc3QKUFIIA-zTte04H7SsG6iU9VIRxOAA-shell1/output.json"

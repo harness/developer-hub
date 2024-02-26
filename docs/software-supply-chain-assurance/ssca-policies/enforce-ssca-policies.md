@@ -6,18 +6,13 @@ sidebar_position: 20
 
 Enforce SBOM policies in the CI and CD stages of your Harness pipelines to ensure that your artifacts only contain approved components.
 
-:::tip Tutorial
-
-For an end-to-end walkthrough, try this tutorial: [Generate SBOM and enforce policies](/tutorials/secure-supply-chain/generate-sbom).
-
-:::
-
 ## Requirements
 
 To enforce SSCA policies in a Harness pipeline, you need:
 
-* A pipeline that includes SBOM Enforcement step.
-* SBOM OPA policies that you want to enforce.
+* A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. You'll add the SBOM Enforcement step to one of these stages.
+* [SBOM OPA policies that you want to enforce.](./create-ssca-policies.md)
+* SBOM to compare policies against. For example, you can [use SSCA to generate SBOM](../sbom/generate-sbom.md) or [import SBOM](../sbom/ingest-sbom-data.md).
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../sbom/generate-sbom.md#generate-a-key-pair).
 
 ## Add an SSCA Enforcement step

@@ -267,7 +267,10 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-
+:::info note
+1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, the original stage name.
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the matrix.
+:::
 ### Matrix examples and best practices
 
 - [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
@@ -327,6 +330,93 @@ repeat:
 ```
 
 For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
+
+#### Use a custom label for repeat stages and steps
+You can use the keyword `nodeName` when specifying your repeat items to define your stage and step naming convention. Expressions are supported, so you can customize the name as required. For example:
+
+##### Customize the stage name:
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: custom_1
+        identifier: custom_1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          repeat:
+            items:
+              - host1
+              - host2
+              - host3
+            nodeName: TestDeploy_<+repeat.item>
+```
+![](./static/looping_name_example_1.png)
+
+##### Customize the step name:
+
+```yaml
+tags: {}
+  stages:
+    - stage:
+        name: custom_stage_2
+        identifier: custom_stage_2
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello_world
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items:
+                        - host1
+                        - host2
+                        - host3
+                      nodeName: Test_Deploy_step_<+repeat.item>
+
+
+```
+![](./static/looping_name_example_2.png)
+:::info 
+When creating a CI pipeline where both stage and step uses looping strategy and you want to use expressions inside nodeName in step then you have to use ``Test_Deploy_step_<+step.item>`` instead of ``Test_Deploy_step_<+repeat.item>``.
+:::
+
+:::info note
+1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, and the original stage name will be there.
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the repeats. 
+:::
 
 ## Looping strategies as runtime input
 
