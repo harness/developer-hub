@@ -4,6 +4,12 @@ The Harness Policy Library includes the following [policy samples](/docs/platfor
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
+<!-- NOTE: FOR ANY UPDATES TO THIS LIST, YOU MUST ALSO UPDATE THE TOC IN POLICY DOCS HERE:
+
+    https://developer.harness.io/docs/platform/governance/policy-as-code/sample-policy-use-case
+
+ -->
+
 - [Exclude vulnerabilities by severity](#exclude-vulnerabilities-by-severity)
 - [Exclude vulnerabilities by reference ID](#exclude-vulnerabilities-by-reference-id)
 - [Exclude vulnerabilities by title](#exclude-vulnerabilities-by-title)
