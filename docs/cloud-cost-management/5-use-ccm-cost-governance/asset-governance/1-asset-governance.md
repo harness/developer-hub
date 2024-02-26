@@ -70,7 +70,7 @@ policies:
 
 ## How are cost savings calculated?
 
-Cost savings are calculated for the last 30 days. However, for rightsizing rules, it depends on the resize percentage specified in the policy. For example, let's consider the following rule to resize an RDS instance. The potential or realized cost savings is 30% of the last 30 days cost.
+Cost savings are calculated for the last 30 days. The cost is computed via the visibility feature of the CCM connector. Once cost is present in your CUR data or Billing Report, we ingest the cost at our side. Then we get the cost for the target resources for last 30 days and show that on the Evaluation.
 
 ```
 policies:
