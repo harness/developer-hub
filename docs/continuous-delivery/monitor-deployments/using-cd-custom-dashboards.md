@@ -138,7 +138,7 @@ This will only show the services that had at least 1 pipeline execution. It won'
 
 
 List of dimensions:
-1. Service tag: The service tag, displayed as `key:value`. For example, if there are 5 tags in a service, there will be 5 rows having 1 tag (`key:value` pair) in each row.
+1. Service tag: The service tag is displayed as `key:value`. For example, if there are 5 tags in a service, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 
 ### Pipelines
@@ -380,7 +380,7 @@ This view contains the data related to the pipeline execution tags. It will cont
 
 
 List of dimensions:
-1. Execution tag: The execution tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Execution tag: The execution tag is displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
 ### Service Execution Tags
 This view contains the data related to the service execution tags. It will contain the tags that were present in the service at the start of the execution.
@@ -389,7 +389,7 @@ This view contains the data related to the service execution tags. It will conta
 
 
 List of dimensions:
-1. Service Execution tag: The execution tag, it will be displayed as `key:value`. If there are let's say 5 tags in a service, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Service Execution tag: The execution tag is displayed as `key:value`. If there are 5 tags in a service, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
 
 ### Harness Approval Step Execution
@@ -482,7 +482,7 @@ This will only show the services that had at least 1 pipeline execution. It won'
 
 
 List of dimensions:
-1. Service tag: The service tag, displayed as `key:value`. For example, if there are 5 tags in a service, there will be 5 rows having 1 tag (`key:value` pair) in each row.
+1. Service tag: The service tag is displayed as `key:value`. For example, if there are 5 tags in a service, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 
 ### Pipelines
