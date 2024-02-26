@@ -49,7 +49,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2024
 
-### Version 1.26.x
+### Version 1.26.11
 
 #### Fixed issues
 - A Command step with looping strategy for a Custom Deployment Template displayed a null pointer exception when the runOnDelegate option was disabled. (CDS-91458)
@@ -71,11 +71,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   These connectors did not check the connectivity to the Secrets Manager. Hence, the secrets were not getting resolved on the delegate. This issue is fixed. Now, the connection test also checks if the Secrets Manager is accessible. 
   
   This fix is behind the feature flag, `CDS_SERVICE_AND_INFRA_STEP_DELEGATE_SELECTOR_PRECEDENCE`. To enable this fix, contact [Harness Support](mailto:support@harness.io). 
-- Users were unable to create custom queries as a heath source for monitored services. (CDS-91181, ZD-57562)
+- Users were unable to create custom queries that are nor part of the APM metrics as a heath source for monitored services. (CDS-91181, ZD-57562)
   
   This issue is fixed by making the service instance field configurable for users.
 
-  This item requires Harness Delegate version 82400. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 82402. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness did not display dynamically provisioned infrastructure inputs when the input field was set as runtime. (CDS-90757)
   
