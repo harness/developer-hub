@@ -307,7 +307,7 @@ Here's when you can reference expressions resolved from information in each of t
 - **Execution expressions** apply to steps in **Execution**.
   - Each step's **Execution** expressions can be referenced only after Harness has progressed through that step in the **Execution** section.
 
-   <DocImage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
 
 #### CI stage initialization fails with a "null value" error
 

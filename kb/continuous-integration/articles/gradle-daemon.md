@@ -1,6 +1,8 @@
 ---
 title: Gradle build and daemon issues
 description: These are some Gradle issues you might encounter with Harness CI.
+redirect_from:
+  - /kb/continuous-integration/articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance
 ---
 
 This article addresses some Gradle issues you might encounter with [Harness Continuous Integration (CI)](https://developer.harness.io/docs/continuous-integration/get-started/overview).
