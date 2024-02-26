@@ -1,11 +1,11 @@
 {
-    "label": "Platform tutorials",
+    "label": "Tutorials",
     "position": 2,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Tutorials"
+        "title": "Platform tutorials"
     }
 }
