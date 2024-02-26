@@ -1,7 +1,7 @@
 | Objective  | Material   |
 | ------- | ---------|
 | **1. Understanding and Troubleshooting Harness Delegates**  ||
-| Manage and troubleshoot Kubernetes Delegates  | [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)  |
+| Manage and troubleshoot Kubernetes Delegates  | [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate)  |
 | Implement and troubleshoot networking and connectivity issues  | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **2. Managing Build Environments and Dependencies** | |
 | Navigate and solve issues in Docker-in-Docker build environments  | [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage) |
@@ -10,7 +10,7 @@
 | Develop and troubleshoot pipeline triggers | [Troubleshoot failed triggers](https://developer.harness.io/docs/platform/triggers/troubleshoot-registered-triggers/)|
 | Optimize CI pipeline efficiency and speed| [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)  |
 | **4. Ensuring Security and Compliance in CI Pipelines**  | |
-| Implement secrets management and ensure secure build processes  | [Use secrets managers](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager)|
+| Implement secrets management and ensure secure build processes  | [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager)|
 | Adhere to the Principle of Least Privilege (PoLP) in CI/CD | [Roles and resource groups work together](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/#roles-and-resource-groups-work-together) |
 | **5. Utilizing Test Intelligence in CI**   | |
 | Implement and manage Test Intelligence for optimizing testing | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence)|

@@ -142,7 +142,7 @@ resource "harness_platform_service" "service" {
 
 #### Create a Kubernetes connector at account level
 
-We will deploy the service defined earlier to the Kubernetes cluster associated with this connector. This connector will inherit the permissions of a delegate named `firstk8sdel` which you can install using the Kubernetes delegate instructions from [Install Delegate](/docs/platform/delegates/install-delegates/install-delegate)
+We will deploy the service defined earlier to the Kubernetes cluster associated with this connector. This connector will inherit the permissions of a delegate named `firstk8sdel` which you can install using the Kubernetes delegate instructions from [Install Delegate](/docs/platform/get-started/tutorials/install-delegate)
 ```
 resource "harness_platform_connector_kubernetes" "k8sconn" {
   name        = "K8SConnByTF"
@@ -260,7 +260,7 @@ Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 
 ## Verify and run pipeline on Harness UI
 
-On Harness UI, you can go to Account Settings --> Organizations to see the new organization. Click View Projects to see the new project. Click the project and go into the "Continuous Delivery" module. When you click Pipelines now, you can see the new pipeline has been created. You can run this pipeline as long as you have previously installed a delegate with name `firstk8sdel` using the Kubernetes delegate instructions from [Install Delegate](/docs/platform/delegates/install-delegates/install-delegate). As previously shown, you can change the delegate name to any other delegate you may have installed by editing the Kubernetes connector resource of the main.tf file.
+On Harness UI, you can go to Account Settings --> Organizations to see the new organization. Click View Projects to see the new project. Click the project and go into the "Continuous Delivery" module. When you click Pipelines now, you can see the new pipeline has been created. You can run this pipeline as long as you have previously installed a delegate with name `firstk8sdel` using the Kubernetes delegate instructions from [Install Delegate](/docs/platform/get-started/tutorials/install-delegate). As previously shown, you can change the delegate name to any other delegate you may have installed by editing the Kubernetes connector resource of the main.tf file.
 
 ## Run terraform destroy
 

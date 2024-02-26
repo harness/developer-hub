@@ -460,7 +460,7 @@ Here's the expressions referencing these variables:
 <+infra.variables.test12>
 ```
 
-Reference [Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager) connector variables using the following expressions.
+Reference [Secret Manager](/docs/platform/get-started/tutorials/add-secrets-manager) connector variables using the following expressions.
 
 * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
 * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`

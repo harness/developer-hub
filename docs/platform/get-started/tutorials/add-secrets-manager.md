@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /tutorials/platform/secrets-management
-  - /docs/platform/secrets/secrets-management/add-secrets-manager/
+  - /docs/platform/get-started/tutorials/add-secrets-manager/
 ---
 
 import Tabs from '@theme/Tabs';

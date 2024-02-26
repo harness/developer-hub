@@ -201,7 +201,7 @@ Verify that you have the following:
 
 :::note
 
-You can also go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) for instructions on installing the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) for instructions on installing the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
 
