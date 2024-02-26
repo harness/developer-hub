@@ -168,6 +168,8 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
+
 ## Security step settings for Burp scans in STO (legacy)
 
 :::note
@@ -258,3 +260,5 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 
 <StoSettingFailOnSeverity />
+
+-->
