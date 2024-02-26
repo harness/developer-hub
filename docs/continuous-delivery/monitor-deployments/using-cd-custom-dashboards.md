@@ -511,7 +511,7 @@ This view contains the data related to the service.
 List of dimensions:
 1. Created Time: Creation time of the service
 2. Modified Name: Modification time of the service
-3. Service Name: Name of the pipeline
+3. Service Name: Name of the Service
 4. Store Type: Indicates whether Service as INLINE OR REMOTE.
 
 ### Projects
