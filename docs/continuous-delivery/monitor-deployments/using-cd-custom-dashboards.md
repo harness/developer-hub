@@ -126,12 +126,11 @@ List of dimensions:
 1. Pipeline tag: The pipeline tag, displayed as `key:value`. For example, if there are 5 tags in a pipeline, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 ### Service Tags
-This view contains the data related to service tags. It will contain the real-time tags of the service.
+Displays a list of tags associated with a service.
 
 :::note
 
-This will only show the services that had at least 1 pipeline execution. It won't display the tags for the services that didn't get executed even once.
-
+Service Tags only displays the tags for the services that were part of pipelines that were successfully executed at least once.
 :::
 
 <DocImage path={require('./static/using-cd-custom-dashboards-23.png')} width="60%" height="60%" title="Click to view full size image" />
@@ -470,11 +469,11 @@ List of dimensions:
 
 
 ### Service Tags
-This view contains the data related to service tags. It will contain the real-time tags of the service.
+Displays a list of tags associated with a service.
 
 :::note
 
-This will only show the services that had at least 1 pipeline execution. It won't display the tags for the services that didn't get executed even once.
+Service Tags only displays the tags for the services that were part of pipelines that were successfully executed at least once.
 
 :::
 
