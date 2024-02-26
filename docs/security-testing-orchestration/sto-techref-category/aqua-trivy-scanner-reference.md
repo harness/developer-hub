@@ -256,6 +256,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Aqua Trivy scans in STO (legacy)
 
@@ -285,7 +286,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `policy_type` = `containerImage`, `ingestionOnly`
 * `product_config_name` 
 	+ `aqua-trivy` — Run the Trivy image scanner with default settings.
-	<!-- + `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode. -->
+	+ `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode. 
 * `container_domain` — The image registry domain, for example `docker.io`
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
@@ -313,6 +314,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />
+
+-->
 
 
 ## YAML pipeline example
