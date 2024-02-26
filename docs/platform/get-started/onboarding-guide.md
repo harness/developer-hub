@@ -68,7 +68,7 @@ You can achieve a high degree of automation and repeatability in deploying and m
 #### Install the Harness Terraform Provider & Setup Terraform Configuration
 
 Harness Terraform Registry is available here: https://registry.terraform.io/providers/harness/harness. You can use the following docs to get started.
-- [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
+- [Onboard with Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider)
 - [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview)
 - [Advanced Terraform onboarding](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 
