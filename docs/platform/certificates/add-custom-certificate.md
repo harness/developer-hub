@@ -1,5 +1,5 @@
 ---
-title: Adding a custom certificate
+title: Add a custom certificate to Harness Platform
 description: Doc explaining steps to add your own signed custom certificate.
 sidebar_position: 
 helpdocs_topic_id: 
@@ -10,13 +10,13 @@ helpdocs_is_published: false
 
 ## Custom Certificate Feature Overview
 
-The Custom Certificate Feature within Harness offers a robust solution for managing the lifecycle of certificates across various organizational scopes, including accounts, organizations, and projects. This feature is designed to bolster security measures and simplify the process of digital certificate management across the Harness platform.
+The Custom Certificate Feature within Harness offers a robust solution for managing the lifecycle of certificates at all hierarchical levels within Harness, including accounts, organizations, and projects. This feature is designed to bolster security measures and simplify the process of digital certificate management across the Harness platform.
 
 ### Key Features
 
 - **Scope Availability**: Enables the creation and management of certificates at all hierarchical levels within Harness, including account, organization, and project scopes.
 - **Lifecycle Management**: Offers comprehensive management capabilities for certificates, encompassing creation, viewing, editing, and deletion.
-- **Integration with Connectors**: Provides specialized support for integration with HashiCorp Vault connectors, ensuring secure connections and streamlined operations within external systems.
+- **Integration with Connectors**: Provides specialized support for integration with HashiCorp Vault connectors, ensuring secure connections and streamlined operations within external systems. This will be followed up with more connectors integration.
 
 ### Adding a Custom Certificate
 
