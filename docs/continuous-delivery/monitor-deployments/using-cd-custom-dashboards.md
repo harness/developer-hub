@@ -501,6 +501,18 @@ List of dimensions:
 2. Modified Name: Modification time of the pipeline
 3. Pipeline Name: Name of the pipeline
 
+### Services
+This view contains the data related to the service.
+
+<DocImage path={require('./static/using-cd-custom-dashboards-25.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+
+List of dimensions:
+1. Created Time: Creation time of the service
+2. Modified Name: Modification time of the service
+3. Service Name: Name of the pipeline
+4. Store Type: Indicates whether Service as INLINE OR REMOTE.
 
 ### Projects
 This view contains the data related to the projects. 
