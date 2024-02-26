@@ -1048,21 +1048,9 @@ Typically, this is configured within your Maven settings.xml file to publish art
 
 However, if you're not publishing directly via Maven, you can push directly using the AWS CLI or cURL, as explained in the AWS documentation on [Publishing with curl](https://docs.aws.amazon.com/codeartifact/latest/ug/maven-curl.html).
 
-### How do I enable the Gradle daemon in builds?
+### Gradle build, daemon, OOM, and other Gradle issues
 
-To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
-
-Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance).
-
-### Out of memory errors with Gradle
-
-If a Gradle build experiences out of memory errors, add the following to your `gradle.properties` file:
-
-```
--XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
-```
-
-Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+For Gradle build or daemon issues, go to the Knowledge Base article on [Gradle build and daemon issues](./articles/gradle-daemon).
 
 ### Can I push without building?
 
@@ -1688,7 +1676,7 @@ Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.har
 
 ### Can I configure service dependencies in Gradle builds?
 
-Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
+Yes. For details, go to the Knowledge Base article on [Gradle build and daemon issues](./articles/gradle-daemon).
 
 ### What happens if I don't provide the Fully Qualified Name (FQN) for an image in a private repo?
 
