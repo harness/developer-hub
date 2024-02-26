@@ -8,24 +8,24 @@ sidebar_label: Harness Feature Flag Architecture
 
 This diagram describes the logical architecture of the Feature Flags system within a production cluster. Comprising three microservices, the Feature Flags architecture is orchestrated as follows:
 
-    1. **Admin Service**:
-    Functionality: The Admin Service is responsible for creation, modification, and management of feature flags.
-    Workflow: Change events initiated within the Admin Service are transmitted to the Client Service for subsequent processing.
+1. **Admin Service**:
+Functionality: The Admin Service is responsible for creation, modification, and management of feature flags.
+Workflow: Change events initiated within the Admin Service are transmitted to the Client Service for subsequent processing.
 
 
-    2. **Client Service**:
-    Functionality: The Client Service serves flag data and conducts evaluations for Software Development Kits (SDKs).
-    Workflow: Upon any changes to flags, the Client Service receives an event and proceeds to dispatch it to connected SDKs through the SSE Proxy notification service.
+2. **Client Service**:
+Functionality: The Client Service serves flag data and conducts evaluations for Software Development Kits (SDKs).
+Workflow: Upon any changes to flags, the Client Service receives an event and proceeds to dispatch it to connected SDKs through the SSE Proxy notification service.
 
 
-    3. **Metrics Service**:
-    Functionality: The Metrics Service manages, stores and queries SDK evaluation counts.
-    Workflow: SDKs sends the number of times they have evaluated a flag in the last 60 mins to Metrics Service. Metrics service then stores this information as a time series for aggregation and tracking.
+3. **Metrics Service**:
+Functionality: The Metrics Service manages, stores and queries SDK evaluation counts.
+Workflow: SDKs sends the number of times they have evaluated a flag in the last 60 mins to Metrics Service. Metrics service then stores this information as a time series for aggregation and tracking.
 
 
-    4. **SSE Proxy Service**:
-    Functionality: SSE Proxy manages long lived connections from SDKs, providing updates to SDKs when a flag changes.
-    Workflow: Upon flag changes, the Client Service will send the event details to SSE Proxy.  SSE Proxy will forward this event to every connected SDK over SSE.
+4. **SSE Proxy Service**:
+Functionality: SSE Proxy manages long lived connections from SDKs, providing updates to SDKs when a flag changes.
+Workflow: Upon flag changes, the Client Service will send the event details to SSE Proxy.  SSE Proxy will forward this event to every connected SDK over SSE.
 
 
 **Platform Features**:
@@ -38,9 +38,9 @@ SDKs play a pivotal role in fetching and assessing flags. The dedicated Google C
 
 **Managed Services**:
 Feature Flags leverages managed services for scalable data storage and messaging solutions for its microservices.
-    1. Flag data is stored in Google Cloud Platform's Cloud SQL.
-    2. Cloud Memorystore is used for events and caching operations..
-    3. Timescale is used for the storage of historical evaluation data.
+1. Flag data is stored in Google Cloud Platform's Cloud SQL.
+2. Cloud Memorystore is used for events and caching operations..
+3. Timescale is used for the storage of historical evaluation data.
 
 
 
