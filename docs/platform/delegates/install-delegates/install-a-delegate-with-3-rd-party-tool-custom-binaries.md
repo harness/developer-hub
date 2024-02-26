@@ -38,7 +38,7 @@ To install a delegate, you download its YAML file and run it in your target envi
 
 To modify the delegate image, you need to edit the delegate YAML file to specify delegate environment variables, the delegate base image, [Harness-required SDKs](#add-harness-required-sdks) (depending on the selected base image), and [third-party tools to install](#add-your-custom-tools).
 
-You can modify the delegate YAML before or after you install the delegate. To get the delegate YAML, follow the steps to [Install a delegate](./install-delegate). To follow along with the examples in this topic, use the **Kubernetes Manifest** option for delegate installation.
+You can modify the delegate YAML before or after you install the delegate. To get the delegate YAML, follow the steps to [Install a delegate](/docs/platform/get-started/tutorials/install-delegate). To follow along with the examples in this topic, use the **Kubernetes Manifest** option for delegate installation.
 
 Since the delegate is declaratively defined in YAML, it is easy to add custom scripts and customize the delegate in other ways too. SDKs and additional tools are specified in the `INIT_SCRIPT`, with the exception of [delegate Helm chart deployments](#delegate-helm-chart-deployments). For more examples, go to [Common delegate initialization scripts](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts.md).
 
