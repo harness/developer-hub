@@ -90,11 +90,25 @@ New Relic supports multiple APIs. The Harness Connector leverages the New Relic 
 
 For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets). Enter the API key needed to connect with the server.
 
-For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
+If you are having trouble connecting, retrieving, or generating your API key, follow the docs linked below depending on if you're using the NerdGraph API or the Insight Query API.
 
-If you have trouble finding step on generating the **Insights query key**, look for the API key types help in the New Relic help panel:
+<details>
+<summary> NerdGraph API </summary>
+   - For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
 
-![](../static/connect-to-monitoring-and-logging-systems-17.png)
+   - If you have trouble finding step on generating the **Insights query key**, look for the API key types help in the New Relic help panel:
+
+   ![](../static/connect-to-monitoring-and-logging-systems-17.png)
+</details>
+
+<details>
+<summary> Insights Query API (DEPRECATED) </summary>
+   - For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
+
+   - If you have trouble finding step on generating the **Insights query key**, look for the API key types help in the New Relic help panel:
+
+   ![](../static/connect-to-monitoring-and-logging-systems-17.png)
+</details>
 
 1. Click **Continue**. The Setup Delegates settings appear.
 2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
