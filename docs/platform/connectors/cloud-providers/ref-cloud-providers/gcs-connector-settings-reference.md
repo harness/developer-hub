@@ -20,7 +20,6 @@ Certain roles are required in your GCP account, depending on how you are using t
 
 If you use the GCP connector to connect to GKE, the GCP service account used for any credentials requires:
 
-* **Kubernetes Engine Admin** (`roles/storage.objectViewer`)
 * **Kubernetes Engine Developer** (`roles/container.clusterAdmin`)
 * **Storage Object Viewer** (`roles/storage.objectViewer`)
 
@@ -40,7 +39,6 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 * Storage Object Viewer (`roles/storage.objectViewer`)
 * Storage Object Admin (`roles/storage.objectAdmin`)
-* Storage Admin (`roles/storage.admin`)
 
 For more information, go to the GCP [Artifact registry roles reference](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
 
@@ -50,7 +48,6 @@ Ensure the Harness Delegate you have installed can reach `storage.cloud.google.c
 
 For Google Artifact Registry, the following roles are required:
 
-* Artifact Registry Administrator (`roles/artifactregistry.admin`)
 * Artifact Registry Reader
 * Artifact Registry Writer
 
