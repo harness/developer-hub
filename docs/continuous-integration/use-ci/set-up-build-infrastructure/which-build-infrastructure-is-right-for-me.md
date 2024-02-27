@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 With Harness CI, you can run builds on [Harness-managed machines](#harness-managed-infrastructure---harness-cloud) or [your own infrastructure](#bring-your-own-infrastructure).
 
-| Harness-managed runners | Self-managed runners |
+| Harness-managed machines<br/>Harness Cloud | Self-managed machines |
 | ----------------------- | -------------------- |
 | Maintained and updated by Harness. | Maintained and updated by you or your cloud services provider. |
 | Preinstalled with common software/tools. You can add additional tools at runtime. | Configuration determined by you or your cloud services provider. |
@@ -96,7 +96,7 @@ The following table shows the supported operating systems and architectures for 
 
 This recommendation is due to licensing requirements and the complexity of configuring and managing macOS VMs with Anka virtualization.
 
-With Harness Cloud, your builds run on Harness-managed runners, and you can start running builds in minutes.
+With Harness Cloud, your builds run on Harness-managed machines, and you can start running builds in minutes.
 
 :::
 
