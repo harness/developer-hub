@@ -94,6 +94,7 @@ If you are having trouble connecting, retrieving, or generating your API key, fo
 
 <details>
 <summary> NerdGraph API </summary>
+   
    - For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
 
    - If you have trouble finding step on generating the **Insights query key**, look for the API key types help in the New Relic help panel:
