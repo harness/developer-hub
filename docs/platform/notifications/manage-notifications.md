@@ -19,17 +19,22 @@ With the notifications management, you can configure notifications for the deleg
 
 You can use notifications management to configure and edit notifications for delegate events from the account, project, or org scope in Harness.
 
-### Add a delegate event notification
+### Add a delegate event notification rule
 
-You can add delegate event notifications at the account, project, or org scope. In this example, we'll add a new delegate event notification in the account scope.
+You can add delegate event notification rules at the account, project, or org scope. In this example, we'll add a new delegate event notification in the account scope.
 
-To add a new delegate event notification, do the following:
+To add a new delegate event notification rule, do the following:
 
 1. Sign in to Harness.
 2. Select your account.
 3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
 4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+
+    ![](./static/notifications-management.png)
+
 5. Select **Setup New Notification**. The **New Notification Setup** wizard opens.
+
+   ![](./static/new-notification-setup.png)
 
    1. On the **Overview** screen, enter a **Notification Name**, then select **Continue**. The **Resources** screen opens.
    2. Under **Select Resource Type**, **Delegate** is selected for you by default. Additional resources will be available with future development.
@@ -38,14 +43,49 @@ To add a new delegate event notification, do the following:
    5. In **Condition Name**, enter a name for your notification condition, for example, `Delegate expires soon`.
    6. Click **Add Events**, and then select the event for which you want to set your notification. In this example, we've selected **About to expire in 2 weeks**.
 
-   :::info note
-   You can select multiple events on which to receive notifications. **Added Events** increments with each selection you make.
-   :::
+      :::info note
+      You can select multiple events on which to receive notifications. **Added Events** increments with each selection you make.
+      :::
 
    7. Select **Apply**, then select **Continue**. The **Set Channels** screen opens.
-   8. Select your **Notification Channels**, then select **Submit**.
+   8. Select your **Notification Channels**. 
+   9. (Optional) Toggle the **Enable on Save** option on to enable the rule.
+
+      :::info
+      If you don't toggle the **Enable on Save** option on in this step, you can enable the rule when you're ready to do so later on the **Notifications Management**. For more information, go to [Enable a delegate event notification rule](#enable-a-delegate-event-notification-rule).
+      :::
+
+   10. Select **Submit**.
 
    You new notification is added to the Notifications Management page.
+
+### Enable a delegate event notification rule
+
+After you create a delegate event notification rule, if you didn't enable the rule when you first created it, you must enable the rule to receive notifications.
+
+You can enable notification rules at the account, project, or org scope. In this example, we'll enable a notification rule in the account scope.
+
+To enable a delegate event notification rule, do the following.
+
+1. Sign in to Harness.
+2. Select your account.
+3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
+4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+5. Under **Status**, for the rule that you want to enable, toggle the option to the on setting. Harness returns a message that the rule was successfully enabled.
+
+### Enable a delegate event notification rule
+
+You might need to temporarily disable notification rules you've set.
+
+You can disable notification rules at the account, project, or org scope. In this example, we'll disable a notification rule in the account scope.
+
+To disable a delegate event notification rule, do the following.
+
+1. Sign in to Harness.
+2. Select your account.
+3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
+4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+5. Under **Status**, for the rule that you want to disable, toggle the option to the off setting. Harness returns a message that the rule was successfully disabled.
 
 ### Edit a delegate event notification
 
@@ -57,6 +97,9 @@ To manage delegate event notifications, do the following:
 2. Select your account.
 3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
 4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+
+   
+
 5. Select **More Options** (&vellip;) corresponding to the notification you want to update, and then select **Edit**. The **Edit Notification Setup** wizard opens. 
 6. Edit your notification information on the necessary screen, selecting **Continue** to step through the wizard until you reach the **Set Channels** screen, then select **Submit** to save your changes.
 
@@ -112,5 +155,4 @@ To edit a channel, do the following:
 4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
 5. Select **Channels**.
 6. Select **More Options** (&vellip;) corresponding to the channel you want to update, and then select **Edit**. The **Edit Channel** dialog opens.
-7. Update your channel settings as required, then select **Apply** to save your changes.
-
+7. Update your channel settings, then select **Apply** to save your changes.
