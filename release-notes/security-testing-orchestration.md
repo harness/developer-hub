@@ -23,6 +23,38 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## March 2024
+
+### Version TBD
+
+#### Early access feature
+
+- This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. (STO-6738)
+
+  ![](./static/built-in-scan-steps.png)
+
+  :::note
+
+  These steps are behind the following feature flags. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
+
+  - The SAST step is behind the feature flag `STO_ONE_CLICK_SAST`. 
+
+  - Secret detection, SCA, Containers, and DAST scans are behind the feature flag `STO_ONE_CLICK`.
+
+  :::
+
+  You can add built-in scanners for the following scan types:
+
+    - [**SAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) Add a Semgrep scan to detect vulnerabilities in your code repositories.
+
+    - [**Secret Detection**](/docs/security-testing-orchestration/sto-techref-category/built-in/secrets) Add a GitLeaks scan to detect passwords and other secrets in your code repositories.
+
+    - [**SCA**](/docs/security-testing-orchestration/sto-techref-category/built-in/sca) Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. 
+
+    - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in/containers) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
+
+    - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
+
 ## February 2024
 
 <!-- 2024-02-21 -->
