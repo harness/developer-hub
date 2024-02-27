@@ -148,20 +148,78 @@ An example support bundle manifest is available in the [Harness Helm chart repo]
 
 After you have [installed the utility](#installation-options), download and prepare your support bundle manifest.
 
+#### Pre-requisite
+
+`yq` v4 or above. For installation instructions, go to [Install](https://github.com/mikefarah/yq?tab=readme-ov-file#install).
+
 To download the support bundle manifest and prepare it for use, do the following:
 
-1. Run the following command.
-
+- Run the following command applicable for your OS.
+   
+   **Linux**
+   
    ```bash
-   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <YOUR_NAMESPAACE> <YOUR_RELEASE_NAME>
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
+   ```
+
+   **MacOS**
+   
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/macos.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
+   ```
+
+   **Windows**
+   
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/windows.ps1) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
    ```
 
    This will create a `support-bundle.yaml` file in the current directory. You can use this file to collect the support bundle information from all of your running services.
 
-2. To download a module-specific manifest, you can use the following command.
+### Download a module-specific manifest
+
+- To download a module-specific manifest, you can use the following command.
 
    ```bash
-   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <your-namespace> <your-release-name> <module-name>
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> <MODULE_NAME>
+   ```
+
+   **Time Since**
+
+   You can provide time since for the logs to be collected.
+
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> --last 1 hours
+   ```
+
+   Supported values are:
+   
+   - x minutes
+   - x hours
+   - x days
+
+   **Time Range**
+
+   You can provide a time range for the logs to be collected. Provide the start and end date in YYYY-MM-DD format.
+
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> --between 2021-01-01 2021-01-02
+   ```
+
+   **Number of Files**
+
+   You can provide the number of files to be collected for the logs. The default value is 2.
+
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> --num-files 10
+   ```
+
+   **File Path**
+   
+   If you are using a different file path for the logs, you can provide the path using the following command.
+
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> --filepath /path/to/logs*.log
    ```
 
 #### Example manifest
