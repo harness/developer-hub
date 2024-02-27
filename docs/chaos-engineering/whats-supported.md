@@ -63,8 +63,8 @@ The following table shows available fault types and where they are supported. Fo
 ## Harness Self-Managed Enterprise Edition
 
 Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness SaaS with the following limitations:
-* Harness enterprise chaos hub is not connected by default.
-  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness enterprise chaos hub. For more information on adding the chaos hub, go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
+* Harness Enterprise ChaosHub is not connected by default.
+  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness Enterprise ChaosHub. For more information on adding the ChaosHub, go to [Add a custom ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 * Custom dashboards
 * Harness AI Development Assistant (AIDA™) for CE
 
