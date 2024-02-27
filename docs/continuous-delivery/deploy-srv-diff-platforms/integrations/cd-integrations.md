@@ -32,6 +32,11 @@ Harness supports integration with flow modeling tools (LucidChart, Visio etc,) a
 
 These platforms are supported through our native pipeline tools/steps such as the [shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) or the [http step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md).
 
+For example, let's say you wanted to create a pipeline that transfered a test plan document in LucidChart from your development team to your test team when an artifact succesfully deploys to your QA or Dev environment. To do this you could follow these broad steps: 
+1. Store the the access token for LucidChart's V1 API in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+2. Use the [http step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) to build a request for your desired API endpoint. In this example, the API endpoint would be `/transferUserContent` as a `POST` request. Simply fill out the required fields in the step as described in the step reference doc. 
+3. Add the step to the end of your deployment pipeline for artifacts going to the QA or Dev environment pipeline so that the transfer happens after a succesful deployment.
+
 ## IT Service Management (ITSM)
 
 ServiceNow is the most common ITSM tool, followed closely by Jira by customers who need an ITSM integration or tool.
@@ -52,3 +57,13 @@ Harness integrates with Value Stream Management platforms such as Jellyfish.
 
 Iterable showcased our integration with Jellyfish with their blog found here:
 https://iterable.com/blog/deployment-frequency-tracking-with-harness-jellyfish-integration/
+
+Since Jellyfish exposes their API, you can use the Harness [shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) or [http step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md).
+to integrate with Jellyfish. 
+
+The broad steps are as follows:
+1. Use the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to store your API key or other relevant secrets for Jellyfish in Harness.
+2. Build out your request in the shell script step or the http step. The shell script step will allow for more customizability whereas the http step will give more readability. 
+3. Add your step to the correct spot in your pipeline. Consider adding the deploy to Jellyfish in parallel to the production deploy step for more access to built in variables. 
+
+For more information, please read the Iterable blog referenced above!
