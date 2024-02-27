@@ -15,7 +15,7 @@ Build hardening for Level 3 compliance is achieved through:
 1. Built-in infrastructure isolation for every build where new infrastructure is created for every run and deleted after the run completes.
 2. OPA policy enforcement on CI stage templates with non-privileged, hosted containerized steps that do not use volume mounts. This disallows the build steps to access the provenance key information in compliance with SLSA specifications. 
 
-End result is that that hackers cannot tamper with the provenance generation process. This capability when coupled with open source governance through [SBOM lifecycle management](../sbom/generate-sbom.md) provides the most advanced shift-left supply chain security solution in the market today. 
+End result is that hackers cannot do tampering during the build process. This capability when coupled with open source governance through [SBOM lifecycle management](../sbom/generate-sbom.md) provides the most advanced shift-left supply chain security solution in the market today. 
 
 <details>
 <summary>Generate and verify SLSA Provenance architecture</summary>
