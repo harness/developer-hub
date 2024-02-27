@@ -67,14 +67,22 @@ Ensure that you have access to a Kubernetes cluster. For the purposes of this tu
    ```
    choco install minikube
    ```
-
+   
+   :::info
+   For Chocolatey installation instructions, go to [Installing Chocolatey](https://chocolatey.org/install) in the Chocolatey documentation.
+   
    For additional options to install minikube on Windows, go to [minikube start](https://minikube.sigs.k8s.io/docs/start/) in the minikube documentation.
+   :::
 
 - On macOS:
 
    ```
    brew install minikube
    ```
+
+   :::info
+   For Homebrew installation instructions, go to [Installation](https://docs.brew.sh/Installation) in the Homebrew documentation.
+   :::
 
 Now start minikube with the following config.
 
