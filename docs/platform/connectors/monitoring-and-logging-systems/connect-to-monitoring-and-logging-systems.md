@@ -80,7 +80,7 @@ You cannot use a Grafana URL.
 6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API. 
 
 :::info note
-New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. See Step 8 for creating an Insights API Key.
+New Relic supports multiple APIs. The Harness Connector leverages the NerdGraph API or the deprecated New Relic Insights API, which supports NRQL. See Step 8 for creating an Insights API Key.
 :::
    
    ![](../static/connect-to-monitoring-and-logging-systems-16.png)
@@ -90,16 +90,14 @@ New Relic supports multiple APIs. The Harness Connector leverages the New Relic 
 
 For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets). Enter the API key needed to connect with the server.
 
-If you are having trouble connecting, retrieving, or generating your API key, follow the docs linked below depending on if you're using the NerdGraph API or the Insight Query API.
+If you are having trouble connecting to the API, follow the docs linked below depending on if you're using the NerdGraph API or the Insight Query API.
 
 <details>
 <summary> NerdGraph API </summary>
    
-   - For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
+   - For steps on connecting to the NerdGraph API, follow these docs from New Relic: [NerdGraph API](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/)
+   - You gain access to this API by using the `user key` for a specific account.
 
-   - If you have trouble finding step on generating the **Insights query key**, look for the API key types help in the New Relic help panel:
-
-   ![](../static/connect-to-monitoring-and-logging-systems-17.png)
 </details>
 
 <details>
