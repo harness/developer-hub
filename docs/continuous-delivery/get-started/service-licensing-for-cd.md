@@ -104,6 +104,7 @@ Service types that are classified as a serverless application:
 | hello-lambda       | 15                                   | 3                                    |
 
 #### GitOps Applications
+
 For GitOps (Argo/Flux) applications deployed through Harness in the last month, every unique GitOps application is counted as an Active Service.
 If a GitOps application has more than 20 pods (95th percentile of pod count during the month, measured every 60 minutes), for every additional 20 pods, another Active Service is counted.
 For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service.
