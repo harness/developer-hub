@@ -71,19 +71,19 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Governance Policies | <ul><li>View</li><li>Edit</li><li>Create</li><li>Delete</li></ul> |
 | Governance Policy Sets | <ul><li>View</li><li>Edit</li><li>Create</li><li>Delete</li></ul> |
 
-### Discovery
+## Discovery
 
 | Resource | Permissions |
 | ---  | ----------- |
 | Network Map | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 
-### Supply Chain Assurance
+## Supply Chain Assurance
 
 | Resource | Permissions |
 | ---  | ----------- |
 | Remediation Tracker | <ul><li>View</li><li>Create/Edit</li><li>Close</li></ul> |
 
-### Webhooks
+## Webhooks
 
 | Resource | Permissions |
 | ---  | ----------- |
