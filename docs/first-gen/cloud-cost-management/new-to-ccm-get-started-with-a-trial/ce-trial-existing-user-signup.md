@@ -184,7 +184,7 @@ You can also click **Enable Cloud Cost Management**.
    
      ![](./static/ce-trial-existing-user-signup-07.png)
 4. In **Cluster Details**, select:
-	1. **Inherit from selected Delegate**: (Recommended) Select this option if the Kubernetes cluster is the same cluster where the Harness delegate was installed.
+	1. **Inherit from selected Delegate**: (Recommended) Select this option if the Kubernetes cluster is the same cluster where the Harness Delegate was installed.
 		1. **Delegate Name**: Select the Delegate.
 	2. **Enter manually**: In this option, the Cloud Provider uses the credentials that you enter manually. The Delegate uses these credentials to send deployment tasks to the cluster. The Delegate can be outside or within the target cluster.Use this option, if you wish to use a single Delegate to access multiple Kubernetes clusters. To do so, you need to enter specific credentials manually.
 		1. **Master Url**: The Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl:  

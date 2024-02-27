@@ -61,19 +61,18 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  5. On the left hand side should be a panel titled *Resources*. Scroll down until you reach the *Feature Flags* section and select your Resource Group. 
  6. On the right hand side of the page, select *By Tag*, followed by *Add Tag*.
  7. From there, you can asign any pre-existing tags to the Resource Group.
- 8. The users under the assigned tags should be limited to whichever settings you have permitted for them such as permission to *Create/Edit* within Feature Flags. 
+ 8. The tags assigned to users will control their permissions to toggle flags within Feature Flags. Users under the assigned tags will be restricted based on the permissions you have granted them, such as the ability to toggle flags or make edits within Feature Flags. 
+ 9. Additionally, it's crucial to add Environments as a Resource Group. Do read the below subsection on *Environments As A Resource Group* to learn more. 
 
-<!-- ### Managing Permissions Using Tagging -->
+### Environments As A Resource Group
 
-<!-- 
-below to be edited in second draft
+Additionally, it's crucial to add Environments as a Resource Group. This step helps limit the environments in which users can toggle a flag. By assigning tags to users within specific environments, you ensure that they only have access to toggle flags within those designated environments. 
 
-You can manage permissions of  
+:::tip
 
- 1. On the Home Page of the Harness Application, head over to *Feature Flags*.
- 2. Under the *Feature Flags* tab, scroll down and click on the *Project Setup* dropdown menu. Click *Access Control*. 
---> 
-<!-- ### Best Practices to be added in second draft -->
+Check out the [Manage Resource Groups in Harness](../../../docs/platform/role-based-access-control/add-resource-groups.md) if you'd like to learn more on this.
+
+:::
 
 # Related Content
 

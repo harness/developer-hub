@@ -26,7 +26,7 @@ Other build infrastructures can leverage remote Docker caching using your existi
 
 :::note
 
-Support for other storage backends with self-hosted runners is in development.
+Support for other storage backends with self-managed runners is in development.
 
 :::
 

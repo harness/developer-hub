@@ -64,9 +64,9 @@ Here are some key features of Harness CI. For information about general Harness 
 
 ### Harness Cloud
 
-You can run builds on your own build infrastructure or on Harness-hosted build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+You can run builds on your own build infrastructure or on Harness-managed build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
-With Harness Cloud, you can run builds in isolation on Harness-hosted virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
+With Harness Cloud, you can run builds in isolation on Harness-managed virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 

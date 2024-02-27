@@ -295,6 +295,7 @@ In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI F
 
 
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 
 ## Security step settings for SonarQube scans in STO (legacy)
@@ -361,3 +362,5 @@ Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-tok
 * `product_exclude` — If you want to exclude some files from a scan, you can use this setting to configure the `sonar.exclusions` in your SonarQube project. For more information, go to [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
 * `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 * `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
+
+-->

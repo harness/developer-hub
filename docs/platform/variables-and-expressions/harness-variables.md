@@ -1,7 +1,7 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
@@ -41,13 +41,22 @@ The example mentioned in the previous section used `contains()`:
 
 `<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
 
-Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
+Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`, you can use `split()` like this:
 
 ```
 echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
 
 The output of this expression is `ghi`.
+
+
+Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`, you can use `split()` like this:
+
+```
+echo <+<+pipeline.variables.abc>.split('\\.')[1]>
+```
+
+The output of this expression is `6`.
 
 The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
 
@@ -276,23 +285,33 @@ You can reference the environment name variable, `<+env.name>`, in a service's V
 
 ### Only use expressions after they can be resolved
 
-When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. Consequently, you can use an expression only after Harness has the required information. If you try to use an expression before Harness has its information, it will fail.
+When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. Consequently, your pipelines can use expressions only after Harness has the required information to resolve the expression's value. If you try to use an expression before Harness has the necessary information, the expression resolves to null and the pipeline can fail or execute incorrectly.
 
-In this illustration, you can see how the information in each section of the stage is referenced.
+#### Demonstration of Harness expression resolution in a CD stage
 
-<DocImage path={require('./static/harness-variables-20.png')} width="80%" height="80%" title="Click to view full size image" />
+This example demonstrates when and where certain expressions (by prefix) are resolved over the duration of a CD stage, so that you can determine which events need to occur before you can safely reference a certain expression and ensure that it is successfully resolved when the pipeline runs.
 
-Here is how you reference the information in each of these sections.
+<figure>
 
-- **Service expressions** can only be resolved after Harness has progressed through the **Service** section of the pipeline.
-  - Consequently, service expressions can be used in the **Infrastructure** and **Execution** sections.
-- **Infrastructure expressions** can only be used after Harness has progressed through the **Infrastructure** section of the pipeline.
-  - In **Infrastructure**, you can reference **Service** settings.
+![](./static/harness-variables-20.png)
+
+<figcaption>Different expressions originate from different parts of a stage. </figcaption>
+</figure>
+
+Here's when you can reference expressions resolved from information in each of these stage sections:
+
+- **Service expressions** can be resolved only after Harness has progressed through the **Service** section of the pipeline. Consequently, you can use service expressions in the **Infrastructure** and **Execution** sections of the stage.
+- **Infrastructure expressions** can be resolved only after Harness has progressed through the **Infrastructure** section of the pipeline.
+  - In the **Infrastructure** section, you can reference **Service** settings.
   - Since **Execution** follows **Infrastructure**, you can reference **Infrastructure** expressions in **Execution**.
 - **Execution expressions** apply to steps in **Execution**.
-  - Each step's **Execution** expressions can only be used after Harness has progressed through that step in the **Execution** section:
+  - Each step's **Execution** expressions can be referenced only after Harness has progressed through that step in the **Execution** section.
 
 <DocImage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
+
+#### CI stage initialization fails with a "null value" error
+
+If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
 
 ### Variable expressions in conditional execution settings
 

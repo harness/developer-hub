@@ -76,6 +76,12 @@ export const IdpData: Horizon = {
     description: "Q2 2024, May-July 2024",
     feature: [
       {
+        tag: [{ value: "Self-Managed" }],
+        title: "Self-Managed Version",
+        description:
+          "Release and support for self-managed IDP that will be hosted on users infra and environment",
+      },
+      {
         tag: [{ value: "Software Catalog" }, { value: "Onboarding" }],
         title: "Network Maps for Auto-Discovery",
         description:

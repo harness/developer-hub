@@ -188,7 +188,7 @@ You can use this field to run the Snyk scan with additional options.
 
 ### Show original CVSS scores overridden by Snyk security policies 
 
-You can now configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
+You can configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
 
 ![Security override in Security Tests](../static/sto-7041-override-in-security-tests.png)
 
@@ -235,7 +235,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
-
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Snyk scans in STO (legacy)
 
@@ -279,3 +279,4 @@ import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+-->

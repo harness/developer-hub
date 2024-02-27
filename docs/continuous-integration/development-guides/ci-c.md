@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-You can build and test C and C++ applications on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure. This guide uses a Linux platform, but you can also use macOS and Windows platforms with Harness.
+You can build and test C and C++ applications on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure. This guide uses a Linux platform, but you can also use macOS and Windows platforms with Harness.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -60,7 +60,7 @@ In the following YAML example, the Run step runs a Python script to get dependen
 ```
 
 </TabItem>
-  <TabItem value="sh" label="Self-hosted">
+  <TabItem value="sh" label="Self-managed">
 
 ```yaml
 - step:
@@ -116,9 +116,9 @@ Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-int
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -180,7 +180,7 @@ You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integr
 ```
 
 </TabItem>
-<TabItem value="selfhosted" label="Self-hosted">
+<TabItem value="selfmanaged" label="Self-managed">
 
 ```yaml
 - step:
@@ -220,7 +220,7 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 <Tabs>
 <TabItem value="Harness Cloud">
 
-CLang and GNU C++ are pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+CLang and GNU C++ are pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 If you want to use a different compiler or a specific version of a compiler, you can use a **Run** step to install it, for example:
 
@@ -237,7 +237,7 @@ If you want to use a different compiler or a specific version of a compiler, you
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 You can use a **Run** step to install compilers, such as CLang or GNU C++, if they are not already installed on your host machine, for example:
 

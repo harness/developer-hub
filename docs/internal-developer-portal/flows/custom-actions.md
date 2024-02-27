@@ -1,11 +1,7 @@
 ---
 title: Supported Custom Actions
 description: These Custom Actions are supported in Harness IDP
-sidebar_position: 3
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 ## Introduction
@@ -174,28 +170,10 @@ spec:
 
 3. `HarnessAutoOrgPicker` : It auto populates org id on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input.
 
-:::info
-
-For `HarnessAutoOrgPicker` to work, the Project Identifier under Properties should be named `projectId` and using the `HarnessProjectPicker`. **Here's an example YAML that won't auto populate the org name.**
-
-```
-# Example template.yaml file
-properties:
-    <ANY NAME OTHER THAN projectId>:
-        title: Project Identifier
-        description: Harness Project Identifier
-        type: string
-        ui:field: HarnessProjectPicker
-    orgId:
-        title: Org Identifier
-        description: Harness org Identifier
-        type: string
-        ui:field: HarnessAutoOrgPicker  
-```
-:::
 
 
-A working example: 
+1. For `HarnessAutoOrgPicker` to work, it is suggested to name the Project Identifier under Properties as `projectId` and using the `HarnessProjectPicker`.
+
 
 ```YAML
 # Example template.yaml file
@@ -222,6 +200,26 @@ spec:
 
 ```
 
+2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
+
+
+```YAML
+# Example template.yaml file
+properties:
+    <ANY NAME OTHER THAN projectId>:
+        title: Project Identifier
+        description: Harness Project Identifier
+        type: string
+        ui:field: HarnessProjectPicker
+    orgId:
+        title: Org Identifier
+        description: Harness org Identifier
+        type: string
+        ui:field: HarnessAutoOrgPicker
+        dependencies:
+          projectPickerRef:
+            - 'project_name'          
+```
 
 ### Custom Actions Usage Limitations
 

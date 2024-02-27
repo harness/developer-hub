@@ -30,22 +30,22 @@ Node network latency:
         <tr>
             <td>NODE_LABEL</td>
             <td>Label of the node on which to induce network latency.</td>
-            <td>If not provided, the chaos operator selects nodes based on other criteria.</td>
+            <td>If not provided, the chaos operator selects nodes based on other criteria. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">target nodes with labels.</a></td>
         </tr>
         <tr>
             <td>TARGET_NODE</td>
             <td>Specific node name on which to induce network latency.</td>
-            <td>If not provided and NODE_LABEL is also not defined, the fault selects a random node.</td>
+            <td>If not provided and NODE_LABEL is also not defined, the fault selects a random node. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
         </tr>
         <tr>
             <td>SOCKET_PATH</td>
             <td>Path of the containerd or crio or docker socket file.</td>
-            <td>Defaults to <code>/run/containerd/containerd.sock</code>. For other runtimes, refer to the respective socket paths.</td>
+            <td>Defaults to <code>/run/containerd/containerd.sock</code>. For other runtimes, refer to the respective socket paths. For more information, go to <a href = "#container-runtime-and-socket-path"> socket path.</a></td>
         </tr>
         <tr>
             <td>CONTAINER_RUNTIME</td>
             <td>Container runtime interface for the cluster.</td>
-            <td>Default: containerd. Supports docker, containerd, and crio.</td>
+            <td>Default: containerd. Supports docker, containerd, and crio. For more information, go to <a href = "#container-runtime-and-socket-path"> container runtime.</a></td>
         </tr>
         <tr>
             <td>TC_IMAGE</td>
@@ -55,27 +55,27 @@ Node network latency:
         <tr>
             <td>DESTINATION_HOSTS</td>
             <td>DNS names or FQDN names of the services and ports whose accessibility is impacted.</td>
-            <td>If not provided, network chaos is induced for all destinations or <code>DESTINATION_IPS</code> if defined.</td>
+            <td>If not provided, network chaos is induced for all destinations or <code>DESTINATION_IPS</code> if defined. For more information, go to <a href = "#destination-ips-and-destination-hosts"> destination hosts.</a></td>
         </tr>
         <tr>
             <td>DESTINATION_IPS</td>
             <td>Comma-separated IP addresses and ports of services, pods, or CIDR blocks whose accessibility is impacted.</td>
-            <td>If not provided, network chaos is induced for all destinations.</td>
+            <td>If not provided, network chaos is induced for all destinations. For more information, go to <a href = "#destination-ips-and-destination-hosts"> destination IPs.</a></td>
         </tr>
         <tr>
             <td>NETWORK_INTERFACE</td>
             <td>Name of the ethernet interface considered for shaping traffic.</td>
-            <td>Default is typically <code>eth0</code>.</td>
+            <td>Default is typically <code>eth0</code>. For more information, go to <a href = "#network-interface"> network interface.</a></td>
         </tr>
         <tr>
             <td>NETWORK_LATENCY</td>
             <td>Packet latency (in ms) across the node.</td>
-            <td>Default: 2000.</td>
+            <td>Default: 2000. For more information, go to <a href = "#network-packet-latency"> network packet latency.</a></td>
         </tr>
         <tr>
             <td>RAMP_TIME</td>
             <td>Period to wait before and after injecting chaos (in seconds).</td>
-            <td>For example, 30 s.</td>
+            <td>For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
         </tr>
     </tbody>
 </table>

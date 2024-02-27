@@ -91,7 +91,7 @@ Before creating the GCP connector, you need to:
 
 * **Assign IAM roles to the GCP service account or Harness Delegate that you will attach to the connector.**
   * The necessary IAM roles and policies depend on which GCP service you'll use with Harness and which operations you'll want Harness to perform in GCP.
-  * GCP connectors can also inherit IAM roles from Harness delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
+  * GCP connectors can also inherit IAM roles from Harness Delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
   * If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness Delegate that your GCP connector is using. You might need to wait up to five minutes for the change to take effect.
   * For details about the roles and policies required to use a GCP connector with GKE, GCS, GCR, GAR, or Stackdriver, go to [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
   * The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.

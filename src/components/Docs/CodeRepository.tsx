@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/codeRepositoryData";
+import { docsCards } from "./data/codeRepositoryData";
 
 export default function Code() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -15,14 +15,14 @@ export default function Code() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_code.svg`} />
-            <h1>Code Repository Documentation</h1>
+            <h1>Code Repository</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes">
@@ -43,15 +43,6 @@ export default function Code() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
-        <>
-          <div className={styles.sectionDivider}></div>
-          <div className={styles.subSection}>
-            <h3>Featured Tutorials</h3>
-            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-          </div>
-        </>
-      )}
     </div>
     // </Layout>
   );

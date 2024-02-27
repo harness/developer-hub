@@ -190,6 +190,8 @@ If you get this message when scanning a repo that doesn't use Yarn, there might 
 
 
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
+
 ## Security step settings for OWASP scans in STO (legacy)
 
 You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
@@ -228,3 +230,4 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+-->

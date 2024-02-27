@@ -1,7 +1,7 @@
 ---
 title: Fixed values, runtime inputs, and expressions
 description: You can change the input type for most settings in Harness.
-sidebar_position: 8
+sidebar_position: 1
 helpdocs_topic_id: f6yobn7iq0
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
@@ -54,7 +54,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. More details on the usage of Fixed values [here](https://developer.harness.io/tutorials/cd-pipelines/variables#create-an-account-level-variable).
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you can use fixed values in [variables](/docs/platform/variables-and-expressions/add-a-variable).
 
 ## Runtime inputs
 

@@ -11,19 +11,19 @@ These experiments primarily involve ECS Fargate and aren't dependent on EC2 inst
 
 Faults that belong to this category are listed below:
 
-1. [ECS Fargate CPU Hog](./ecs-fargate-cpu-hog)
+1. [ECS Fargate CPU Hog](./ecs-fargate-cpu-hog.md)
 
-2. [ECS Fargate Memory Hog](./ecs-fargate-memory-hog)
+2. [ECS Fargate Memory Hog](./ecs-fargate-memory-hog.md)
 
-3. [AWS ECS Invalid Container Image](./ecs-invalid-container-image)
+3. [AWS ECS Invalid Container Image](./ecs-invalid-container-image.md)
 
-4. [AWS ECS Update Container Resource Limit](./ecs-update-container-resource-limit)
+4. [AWS ECS Update Container Resource Limit](./ecs-update-container-resource-limit.md)
 
-5. [AWS ECS Update Container Timeout](./ecs-update-container-timeout)
+5. [AWS ECS Update Container Timeout](./ecs-update-container-timeout.md)
 
-6. [AWS ECS Update Task Role](./ecs-update-task-role)
+6. [AWS ECS Update Task Role](./ecs-update-task-role.md)
 
-7. [AWS ECS Container Volume Detach](./ecs-container-volume-detach)
+7. [AWS ECS Container Volume Detach](./ecs-container-volume-detach.md)
 
 ## EC2-backed faults
 
@@ -31,27 +31,27 @@ These experiments induce chaos within a container and depend on an EC2 instance.
 
 Faults that belong to this category are listed below:
 
-1. [AWS ECS Agent Stop](./ecs-agent-stop)
+1. [AWS ECS Agent Stop](./ecs-agent-stop.md)
 
-2. [AWS ECS Container CPU Hog](./ecs-container-cpu-hog)
+2. [AWS ECS Container CPU Hog](./ecs-container-cpu-hog.md)
 
-3. [AWS ECS Container HTTP Latency](./ecs-container-http-latency)
+3. [AWS ECS Container HTTP Latency](./ecs-container-http-latency.md)
 
-4. [AWS ECS Container HTTP Modify Body](./ecs-container-http-modify-body)
+4. [AWS ECS Container HTTP Modify Body](./ecs-container-http-modify-body.md)
 
-5. [AWS ECS Container HTTP Reset Peer](./ecs-container-http-reset-peer)
+5. [AWS ECS Container HTTP Reset Peer](./ecs-container-http-reset-peer.md)
 
-6. [AWS ECS Container HTTP Status Code](./ecs-container-http-status-code)
+6. [AWS ECS Container HTTP Status Code](./ecs-container-http-status-code.md)
 
-7. [AWS ECS Container IO Stress](./ecs-container-io-stress)
+7. [AWS ECS Container IO Stress](./ecs-container-io-stress.md)
 
-8. [AWS ECS Container Memory Hog](./ecs-container-memory-hog)
+8. [AWS ECS Container Memory Hog](./ecs-container-memory-hog.md)
 
-9. [AWS ECS Container Network Latency](./ecs-container-network-latency)
+9. [AWS ECS Container Network Latency](./ecs-container-network-latency.md)
 
-10. [AWS ECS Container Network Loss](./ecs-container-network-loss)
+10. [AWS ECS Container Network Loss](./ecs-container-network-loss.md)
 
-11. [AWS ECS Instance Stop](./ecs-instance-stop)
+11. [AWS ECS Instance Stop](./ecs-instance-stop.md)
 
 ## EC2-backed and serverless faults
 
@@ -59,9 +59,9 @@ These experiments are versatile and are applicable to both serverless ECS tasks 
 
 Faults that belong to this category are listed below:
 
-1. [AWS ECS Task Stop](./ecs-task-stop)
+1. [AWS ECS Task Stop](./ecs-task-stop.md)
 
-2. [AWS ECS Task Scale](./ecs-task-scale)
+2. [AWS ECS Task Scale](./ecs-task-scale.md)
 
-3. [AWS ECS Network Restrict](./ecs-network-restrict)
+3. [AWS ECS Network Restrict](./ecs-network-restrict.md)
 

@@ -21,32 +21,34 @@ To view a chaos dashboard, follow the steps below.
 
 ### Step 1. Navigate to Chaos Dashboards
 
-Navigate to **Chaos Dashboards**.
+* Navigate to **Chaos Dashboards**.
 
 ![chaos-dashboard](./static/overview/chaos-dashboard-intro.png)
 
 ### Step 2. Go to Dashboards
 
-Click **Go to Dashboards**.
+* Click **Go to Dashboards**.
 
 ![go-to-dashboard](./static/overview/go-to-dashboard.png)
 
 ### Step 3. Select Chaos from list of modules
 
-From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](./create-a-new-dashboard.md). Here, you can select a predefined chaos dashboards.
+* From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](./create-a-new-dashboard.md). Here, you can select a predefined chaos dashboards.
 
 ![select-chaos](./static/overview/select-chaos.png)
 
 ### Step 4. Predefined dashboard
 
-You will see multiple visualizations in this predefined dashboard.
+* You will see multiple visualizations in this predefined dashboard.
 
 :::tip
 The values represented in the dashboards refer to previous week, month, and year. These visualizations don't consider the ongoing (or current) week, month, or year.
 :::
 
 ![analysis-one](./static/overview/analysis-1.png)
+
 ![analysis-two](./static/overview/analysis-2.png)
+
 ![analysis-three](./static/overview/analysis-3.png)
 
 :::info note 

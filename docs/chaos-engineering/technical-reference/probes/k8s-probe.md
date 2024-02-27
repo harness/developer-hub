@@ -8,8 +8,8 @@ With the proliferation of custom resources and operators, especially in the case
 
 - **create:** Creates Kubernetes resource based on the data provided inside the probe.k8sProbe/inputs.data field.
 - **delete:** Deletes matching kubernetes resource via GVR and filters (field selectors/label selectors).
-- **present:** Checks for the presence of kubernetes resource based on GVR and filters (field selectors or label selectors).
-- **absent:** Checks for the absence of kubernetes resource based on GVR and filters (field selectors or label selectors).
+- **present:** Checks for the presence of Kubernetes resource based on GVR and filters (field selectors or label selectors).
+- **absent:** Checks for the absence of Kubernetes resource based on GVR and filters (field selectors or label selectors).
 
 :::tip
 The Kubernetes probe is fully declarative in the way they are conceived
@@ -53,52 +53,52 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
   </tr>
   <tr>
    <td>group </td>
-   <td>Flag to hold the group of the kubernetes resource for the k8sProbe </td>
+   <td>Flag to hold the group of the Kubernetes resource for the k8sProbe </td>
    <td>Optional </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>group</code> contains group of the kubernetes resource on which k8sProbe performs the specified operation.</td>
+   <td>The <code>group</code> contains group of the Kubernetes resource on which k8sProbe performs the specified operation.</td>
   </tr>
   <tr>
    <td>version </td>
-   <td>Flag to hold the apiVersion of the kubernetes resource for the k8sProbe </td>
+   <td>Flag to hold the apiVersion of the Kubernetes resource for the k8sProbe </td>
    <td>Mandatory </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>version</code> contains apiVersion of the kubernetes resource on which k8sProbe performs the specified operation </td>
+   <td>The <code>version</code> contains apiVersion of the Kubernetes resource on which k8sProbe performs the specified operation </td>
   </tr>
   <tr>
    <td>resource </td>
-   <td>Flag to hold the kubernetes resource name for the k8sProbe </td>
+   <td>Flag to hold the Kubernetes resource name for the k8sProbe </td>
    <td>Mandatory </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>resource</code> contains the kubernetes resource name on which k8sProbe performs the specified operation. </td>
+   <td>The <code>resource</code> contains the Kubernetes resource name on which k8sProbe performs the specified operation. </td>
   </tr>
   <tr>
    <td>namespace </td>
-   <td>Flag to hold the namespace of the kubernetes resource for the k8sProbe </td>
+   <td>Flag to hold the namespace of the Kubernetes resource for the k8sProbe </td>
    <td>Optional </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>namespace</code> contains namespace of the kubernetes resource on which k8sProbe performs the specified operation. </td>
+   <td>The <code>namespace</code> contains namespace of the Kubernetes resource on which k8sProbe performs the specified operation. </td>
   </tr>
   <tr>
    <td>fieldSelector </td>
-   <td>Flag to hold the fieldSelectors of the kubernetes resource for the k8sProbe </td>
+   <td>Flag to hold the fieldSelectors of the Kubernetes resource for the k8sProbe </td>
    <td>Optional </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>fieldSelector</code> contains fieldSelector to derived the kubernetes resource on which k8sProbe performs the specified operation. </td>
+   <td>The <code>fieldSelector</code> contains fieldSelector to derived the Kubernetes resource on which k8sProbe performs the specified operation. </td>
   </tr>
   <tr>
    <td>labelSelector </td>
-   <td>Flag to hold the labelSelectors of the kubernetes resource for the k8sProbe </td>
+   <td>Flag to hold the labelSelectors of the Kubernetes resource for the k8sProbe </td>
    <td>Optional </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>labelSelector</code> contains labelSelector to derived the kubernetes resource on which k8sProbe performs the specified operation. </td>
+   <td>The <code>labelSelector</code> contains labelSelector to derived the Kubernetes resource on which k8sProbe performs the specified operation. </td>
   </tr>
   <tr>
    <td>operation</td>
    <td>Flag to hold the operation type for the k8sProbe </td>
    <td>Mandatory </td>
    <td>N/A <code>type: string</code> </td>
-   <td>The <code>operation</code> contains operation which should be applied on the kubernetes resource as part of k8sProbe. It supports four type of operation. It can be one of <code>create, delete, present, absent</code>.</td>
+   <td>The <code>operation</code> contains operation which should be applied on the Kubernetes resource as part of k8sProbe. It supports four type of operation. It can be one of <code>create, delete, present, absent</code>.</td>
   </tr>
   <tr>
    <td>resourceNames </td>

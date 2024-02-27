@@ -35,7 +35,7 @@ Pod API modify body:
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
-        <td> Defaults to port 80. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#target-service-port">target service port</a></td>
+        <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
@@ -45,12 +45,12 @@ Pod API modify body:
       <tr>
         <td> RESPONSE_BODY </td>
         <td> String body to overwrite the HTTP response body.</td>
-        <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#response-body">response body </a></td>
+        <td> If no value is provided, response will be an empty body. Defaults to empty body. For more information, go to <a href="#response-body">response body </a></td>
       </tr>
       <tr>
         <td> PATH_FILTER </td>
         <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#path-filter">path filter </a></td>
+        <td> For more information, go to <a href="#path-filter">path filter </a></td>
       </tr>
     </table>
 
@@ -64,22 +64,22 @@ Pod API modify body:
       <tr>
         <td> PROXY_PORT </td>
         <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#advanced-fault-tunables">proxy port</a></td>
+        <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a></td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
         <td> Direction of the flow of control, ingress or egress </td>
-        <td> Default: `ingress`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#advanced-fault-tunables">service direction </a></td>
+        <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a></td>
       </tr>
       <tr>
         <td> DATA_DIRECTION </td>
         <td> API payload type, request or response </td>
-        <td> Default: `both`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#advanced-fault-tunables">data direction </a></td>
+        <td> Default: `both`. For more information, go to <a href="#advanced-fault-tunables">data direction </a></td>
       </tr>
       <tr>
         <td> DESTINATION_PORTS </td>
@@ -94,57 +94,57 @@ Pod API modify body:
       <tr>
         <td> CUSTOM_CERTIFICATES </td>
         <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication </td>
-        <td> The HTTPS communications necessitate its use as intermediate certificates by the proxy server. These same certificates must also be loaded into the target application. For more information, go to <a href="#https">https</a></td>
+        <td> The HTTPS communications necessitate its use as intermediate certificates by the proxy server. These same certificates must also be loaded into the target application. For more information, go to <a href="#https">HTTPS</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_PATH </td>
         <td> Provide the root CA certificate directory path </td>
-        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">https</a></td>
+        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
       </tr>
       <tr>
         <td> HTTPS_ROOT_CERT_FILE_NAME </td>
         <td> Provide the root CA certificate file name </td>
-        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">https</a></td>
+        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Network interface used for the proxy.</td>
-        <td> Default: `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#advanced-fault-tunables">network interface </a></td>
+        <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">container runtime </a> </td>
+        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path </a></td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration of chaos injection (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
+        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
 
