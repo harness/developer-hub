@@ -98,9 +98,9 @@ Service types that are classified as a serverless application:
 
 | **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
 | ------------------ | ------------------------------------ | ------------------------------------ |
-| hello-lambda       | 0                                    | 0.6                                  |
+| hello-lambda       | 0                                    | 0.2                                  |
 | hello-lambda       | 5                                    | 1                                    |
-| hello-lambda       | 7                                    | 2                                    |
+| hello-lambda       | 7                                    | 1.4                                  |
 | hello-lambda       | 15                                   | 3                                    |
 
 #### GitOps Applications
