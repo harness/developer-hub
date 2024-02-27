@@ -7,17 +7,17 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-With Harness CI, you can run builds on [Harness-managed machines](#harness-managed-infrastructure---harness-cloud) or [your own infrastructure](#bring-your-own-infrastructure).
+With Harness CI, you can run builds on [Harness-managed machines (Harness Cloud)](#harness-cloud) or [your own infrastructure](#bring-your-own-infrastructure).
 
-| Harness-managed machines<br/>Harness Cloud | Self-managed machines |
-| ----------------------- | -------------------- |
+| Harness Cloud | Self-managed machines |
+| ------------- | --------------------- |
 | Maintained and updated by Harness. | Maintained and updated by you or your cloud services provider. |
-| Preinstalled with common software/tools. You can add additional tools at runtime. | Configuration determined by you or your cloud services provider. |
-| Free monthly build credits with the ability to purchase additional credits. | Costs vary (physical hardware maintenance, cloud services provider pricing model, or other factors). |
+| Preinstalled with common software/tools.<br/>You can add additional tools at runtime. | Configuration determined by you or your cloud services provider. |
+| Free monthly build credits with the ability to purchase additional credits. | Costs vary for physical hardware maintenance, cloud services provider pricing models, or other factors. |
 
 Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
 
-## Harness-managed infrastructure - Harness Cloud
+## Harness Cloud
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
