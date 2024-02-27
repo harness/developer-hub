@@ -86,7 +86,7 @@ Services types that are calculated this way:
 
 
 ### Serverless Applications
-For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.2 Active Services are counted.
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.2 Active Services are counted. We will always round up to the next whole number. 
 
 Service types that are classified as a serverless application:
 
@@ -101,7 +101,7 @@ Service types that are classified as a serverless application:
 | ------------------ | ------------------------------------ | ------------------------------------ |
 | hello-lambda       | 0                                    | 0                                    |
 | hello-lambda       | 5                                    | 1                                    |
-| hello-lambda       | 7                                    | 1.4                                  |
+| hello-lambda       | 7                                    | 1.4 (this will round to 2)           |
 | hello-lambda       | 15                                   | 3                                    |
 
 #### GitOps Applications
