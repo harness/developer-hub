@@ -70,7 +70,7 @@ You can use remediation flows in the SSCA module to respond quickly and effectiv
 
 ## SLSA compliance
 
-With the Harness SSCA module, you can achieve SLSA Level 2 compliance by generating SLSA Provenance according to the [SLSA v1.0 spec](https://slsa.dev/).
+With the Harness SSCA module, you can achieve SLSA Level 3 compliance by generating SLSA Provenance according to the [SLSA v1.0 spec](https://slsa.dev/).
 
 Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
 
