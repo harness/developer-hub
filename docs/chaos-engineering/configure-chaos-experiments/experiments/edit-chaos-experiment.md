@@ -33,7 +33,7 @@ You can execute the chaos experiment with advanced security options: **runAsUser
 
 1. **runAsUser**: Specifies the user ID used to start all the processes in the experiment pod containers. Default user ID is 1000.
 
-2. **runAsGroup**: Specifies the group ID used to start all the processes in the experiment pod containers instead of a user ID.
+2. **runAsGroup**: Specifies the group ID used to start all the processes in the experiment pod containers. Default group ID is 0.
 
 To select one of the options, 
 
