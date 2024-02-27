@@ -38,6 +38,6 @@ At present, Harness currently *does not* support nested prerequities as this fun
    For the example below, the `Read_Java` flag must be set to `True` before this flag can be enabled.
 1. Select **Save**. The Prerequisite flag is listed on the Feature Flag page and must be met before you can turn on the Feature Flag.
 
-   ["A screenshot of the Prerequisite flag added to the Write_Java flag.](./static/3-add-prerequisites-to-feature-flag-03.png)
+   !["A screenshot of the Prerequisite flag added to the Write_Java flag.](./static/3-add-prerequisites-to-feature-flag-03.png)
    
    
