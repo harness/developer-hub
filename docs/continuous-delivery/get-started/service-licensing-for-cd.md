@@ -16,7 +16,8 @@ The CD License calculation uses the **Active Services** count and the number of 
 
 ### What are Active Services?
 
-- When Harness deploys a service via a pipeline, the service is counted as an Active Service. 
+- When Harness deploys a service via a pipeline, the service is counted as an Active Service.
+- When Harness deploys a GitOps Application, the GitOps Application is counted as an active service
 - It remains an Active Service for the next 30 days.
 - Harness obtains all services that are part of any pipeline execution (deployment) over the past 30 Days. This represents the total Active Services consumed by an account.
 - There is no cap on the number of Service Instances (pods, hosts, etc.)  that are created by the service.
@@ -47,13 +48,13 @@ If you deploy Elastic Search with a Helm chart, you’ll get Kibana, Logstash, E
 
 Each of these services will spin up a pod on a target infrastructure, and each of those pods will count as an instance.
 
-The Elastic Search Helm chart could consume 15 instances (pods) depending on the replica count. This gets multiplied by the number of environments: if you deploy to a Kubernetes cluster in dev, QA, and prod, then `15 instances x 3 = 45 instances`. 
+The Elastic Search Helm chart could consume 15 instances (pods) depending on the replica count. This gets multiplied by the number of environments: if you deploy to a Kubernetes cluster in dev, QA, and prod, then `15 instances x 3 = 45 service instances`. 
 
 This causes Elastic Search to consume 3 Active Services. 
 
 ### How does Harness CD & GitOps count Active Services?
 
-For containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last month is considered an Active Service.
+For containerized and non-containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last month is considered an Active Service.
 If a Service has more than 20 Service Instances (95th percentile of Service Instances during the month, measured every 60 minutes), for every additional 20 Service Instances, another Active Service is counted. Even if a service is deployed and it generates 0 service instances, Harness will charge for 1 Active Service because it was used via a Deploy stage in a pipeline. 
 
 
@@ -94,11 +95,11 @@ Service types that are classified as a serverless application:
 - Serverless.com
 - AWS SAM
 
-#### Calculation table: Serverless Function Instance
+#### Calculation table: Serverless Functions
 
 | **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
 | ------------------ | ------------------------------------ | ------------------------------------ |
-| hello-lambda       | 0                                    | 0.2                                  |
+| hello-lambda       | 0                                    | 0                                    |
 | hello-lambda       | 5                                    | 1                                    |
 | hello-lambda       | 7                                    | 1.4                                  |
 | hello-lambda       | 15                                   | 3                                    |
@@ -107,17 +108,49 @@ Service types that are classified as a serverless application:
 
 For GitOps (Argo/Flux) applications deployed through Harness in the last month, every unique GitOps application is counted as an Active Service.
 If a GitOps application has more than 20 pods (95th percentile of pod count during the month, measured every 60 minutes), for every additional 20 pods, another Active Service is counted.
-For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service.
+
+#### Calculation table: GitOps Application
+
+| **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
+| ------------------ | ------------------------------------ | ------------------------------------ |
+| gitOps-guestbook   | 1                                    | 1                                    |
+| gitOps-guestbook   | 22                                   | 2                                    |
+| gitOps-guestbook   | 31                                   | 2                                    |
+| gitOps-guestbook   | 45                                   | 3                                    |
+
+#### Custom Deployment Templates - Deploy Stages
+
+For applications deployed in the last month through Custom deployment template deploy stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service. 
+
+_Note:_ If the Fetch Instance Script in the Custom Deployment Template, is unable to query the number of service instances deployed, Harness will count it as 0 Service Instances, 1 Active Service license consumed.
+ 
+#### Calculation table: Deployment Template Stages
+
+| **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
+| ------------------ | ------------------------------------ | ------------------------------------ |
+| ansibleDeploy      | 0                                    | 1                                    |
+| ansibleDeploy      | 22                                   | 2                                    |
+| ansibleDeploy      | 31                                   | 2                                    |
+| ansibleDeploy      | 45                                   | 3                                    |
 
 #### Pipeline Executions with no services
 
-For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service is counted for each successful 100 pipeline executions for each of those custom deployment stages.
+For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service is counted for 100 successful pipeline executions for each of those custom deployment stages.
 
 Scenarios that fall under this bucket:
 
 - Pipeline executions that only run infrastructure provisioning steps
 - Pipeline executions that only perform shell script executions
-- Pipeline executions that only run custom stages 
+- Pipeline executions that only run custom stages
+
+#### Calculation table: Pipeline Executions
+
+| **Pipeline Name**  | **Execution Count**                  | **Active Service Licenses Consumed** |
+| ------------------ | ------------------------------------ | ------------------------------------ |
+| terraformJob       | 1                                    | 1                                    |
+| terraformJob       | 150                                  | 1                                    |
+| terraformJob       | 250                                  | 2                                    |
+| terraformJob       | 300                                  | 3                                    |
 
  
 ## Deleting a licensed service in Harness
