@@ -2,6 +2,12 @@
 
 The Harness Policy Library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to create governance policies for your STO scans. 
 
+:::note
+
+These policy samples are behind the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io) to enable them.
+
+:::
+
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 <!-- NOTE: FOR ANY UPDATES TO THIS LIST, YOU MUST ALSO UPDATE THE TOC IN POLICY DOCS HERE:

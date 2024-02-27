@@ -27,12 +27,16 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version TBD
 
+#### Early access feature
+
 <!-- 2024-02-28 -->
 <!-- TBD new OPA policies https://harness.atlassian.net/browse/STO-6934 -->
 
-With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. (Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)).
+With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. (Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)). (STO-6738)
 
-This release also includes the following sample policies:
+This feature is behind the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io) to enable them.
+
+You can create STO-specific OPA policies using these policy samples:
 
 - **Security - Severity** Warn or block if the scan step finds any vulnerabilities with the specified severity and age.  For example: issues with severity High or Critical.
 
