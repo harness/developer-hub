@@ -69,130 +69,23 @@ This turns Elastic Search into 3 Active Services.
 | hello-lambda       | 7                                    | 2                                    |
 | hello-lambda       | 15                                   | 3                                    |
 
-## Kubernetes and Native Helm
 
-**Formula:** 
+## How Harness CD & GitOps counts Active Services?
+For containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last month is considered an Active Service.
+If a Service has more than 20 Service Instances (95th percentile of Service Instances during the month, measured every 60 minutes), for every additional 20 Service Instances, another Active Service is counted.
 
-```
-(1 Service * 1 Artifact Version * 1 Environment * 1 Cluster * 1 Pod) = 1 Service Instance
-```
+## Serverless Applications
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.2 Active Services are counted.
 
-When a user deploys a Kubernetes (standard or via Helm Chart) or [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart) service via Harness, the service is counted as `1 Active Service`.
+## GitOps Applications
+For GitOps (Argo/Flux) applications deployed through Harness in the last month, every unique GitOps application is counted as an Active Service.
+If a GitOps application has more than 20 pods (95th percentile of pod count during the month, measured every 60 minutes), for every additional 20 pods, another Active Service is counted.
+For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service.
 
-Using the **Container Service Instance/Traditional Service Instance** table above, if you deploy nginx and it has 17 instances (pods), it will count as 1 Active Service.
+## Pipeline Executions with no Aervices
+For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service is counted for each successful 100 pipeline executions for each of those custom deployment stages.
 
-If you deploy nginx and it spins up 22 instances (pods), it will count as 2 Active Services.
-
-Periodically, Harness uses the Kubernetes Connector you set up for your deployments to query the instances that have been deployed.
-
-HorizontalPodAutoscalers will also impact the instance count. If the HorizontalPodAutoscaler is attached to a service deployed by Harness that will scale your instances, it can impact your 95th percentile service instances count. 
-
-You can see the instance count in the Service Dashboard for your service.
-
-<DocImage path={require('./static/ad3c4ad2ace7b18449351ff7c933f05e35adafbbbd1a48a2b56f95bdade420f5.png')} width="60%" height="60%" title="Click to view full size image" />  
-
-From the Delegate installed on the cluster or that has access to a Kubernetes cluster, We run the instance sync job every 10 minutes.
-
-## ECS
-
-**Formula:** 
-
-```
-(1 Service * 1 Artifact Version * 1 Environment * 1 Cluster * 1 Task Count) = 1 Service Instance
-```
-
-An ECS service in Harness is made up of an ECS Task Definition, Service Definition, Scaling Policy, and Scalable Target.
-
-For ECS, an Active Service is determined by the number of containers spun up from the ECS Task.
-
-The ECS Task that is deployed via the Harness service will count as 1 Active Service. If the number of containers or instances deployed by the Task exceeds 21 containers, it will count as 2 Active Services.
-
-If the same service is deployed across multiple environments, that will increase the instance count for that Active Service.  
-
-Periodically, Harness uses the Harness AWS connector that was used for the deployments to query the instances that have been deployed.
-
-AWS Auto Scaling will also impact the instance count because if it's attached to a service deployed by Harness, Auto Scaling will scale your instances. This can impact your 95th percentile service instances count. 
-
-You can see the instance count in the Service Dashboard for your service.
-
-<DocImage path={require('./static/97ba19d1c0a5b0cc6c63675c94e7d38162a0f83ab43209643d0d87fe87c7157b.png')} width="60%" height="60%" title="Click to view full size image" />  
-
-## Tanzu Application Services (formerly Pivotal Cloud Foundry)
-
-**Formula:** 
-
-```
-(1 Service * 1 Artifact Version * 1 Environment * 1 Foundation * 1 Instance) = 1 Service Instance
-```
-
-When a user deploys a Tanzu Application Services (TAS) application, Harness tracks the number of application instances that are deployed across multiple environments and infrastructures.
-
-The Active Service will represent the Tanzu manifest and artifact that was deployed via the Harness pipeline.
-
-If you deploy a TAS manifest that specifies the number of instances, that is what Harness will track as service instances for the deployed Active Service.
-
-Periodically, Harness will query via the Harness TAS connector that was used for the deployments to get the updated count.
-
- 
-## SSH and WinRM
-
-**Formula:** 
-
-```
-(1 Service * 1 Artifact Version *  1 Environment * 1 Host) = 1 Service Instance
-```
-
-For SSH/WinRM, when a user deploys the artifact that is associated with the Harness service to a target host, that will represent 1 instance of the app. Harness will count the service as an Active Service.
-
-If the same artifact version and service is deployed to multiple hosts, that will be considered multiple instances of the same Active Service. 
-
-Harness uses the SSH/WinRM credential added to Harness for the target PDC, AWS environment, or Azure environment to query the list of hosts.
-
-
-## Azure WebApps
-
-**Formula:**
-
-```
-(1 Service * 1 Artifact Version *  1 Environment * 1 Slot) = 1 Service Instance
-```
-
-When a user deploys a service in Azure Web Apps, Harness will treat the artifact and WebApp configuration as the Active Service and deploy it to a target environment.
-
-Depending on the number of infrastructures where the Azure WebApp is deployed, Harness will calculate the number of service instances in the Azure environment.
-
-To obtain the revised list of instances, Harness queries Azure using the Harness Azure connector used for deployments. 
-
-## AWS Lambda, AWS SAM, Google Functions, Serverless.com 
-
-**Formula:**
-
-```
-(1 Service  * 1 Region * 1 Function Version) = 1 Service Instance
-``` 
-
-Harness will calculate a serverless function to be an Active Service when the function is deployed via a Harness pipeline.
-
-When the serverless function has multiple versions, each version counts as a new service instance for that service.
-
-After 5 Service Instances, Harness will calculate the Active Service as a 2nd Service.
-
-To obtain the revised list of instances, Harness queries the Harness connector used for deployment.
-
-## Custom Deployment Templates
-
-**Formula:**
-
-```
-(1 Service  * 1 Environment * 1 Infra Definition * 1 Artifact Version) = 1 Service Instance
-```
-
-In a [Custom Deployment Template](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you define what and where you are deploying, and the custom service represents the Active Service deployed by Harness.
-
-Harness needs to query external sources to be able to know which instances exist, and then Harness must iterate over each instance to deploy to them.
-
-Depending on where you add the **Fetch Instances** step in your pipeline stage, Harness will query the instances. We recommend querying the instances **after the service is deployed**.
-
+You can track Active Services in any month for your account by going to the Deployments/License Consumption page in the Harness UI."
  
 ## Deleting a licensed service in Harness
 
