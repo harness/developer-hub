@@ -253,6 +253,10 @@ The _Pipeline Admin_ role has the following permissions:
    - Under **Policies**, select the following:  
       - For **Governance Policies**, select **View**, **Edit**, **Create** and **Delete**.
       - For **Governance Policy Sets**, select **View**, **Edit**, **Create** and **Delete**.
+      
+      The video below gives an overview of Policies RBAC in Harness.
+
+      <DocVideo src="https://www.loom.com/share/6e11552bd64f4f5d80674e9df1a72b92?sid=4e79bbc9-adf2-477f-adb5-d00300e7b1c8" width="100%" height="600" />
 
 6. Select **Apply Changes**.
 
