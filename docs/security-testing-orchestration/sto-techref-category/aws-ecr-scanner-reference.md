@@ -193,6 +193,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for AWS ECR scans in STO (legacy)
 
@@ -242,11 +243,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ###  Fail on Severity
 
-<!--
+import StoSettingFailOnSeverity2 from './shared/step_palette/all/_fail-on-severity.md';
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+<StoSettingFailOnSeverity2 />
 
 -->
-
-<StoSettingFailOnSeverity />

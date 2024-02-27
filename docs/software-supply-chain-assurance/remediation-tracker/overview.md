@@ -41,12 +41,12 @@ The tracker seamlessly integrates with project management software like Jira, of
 
 ### Track real-time Remediation Progress
 
-The tracker effectively oversees the remediation progress across all artifacts by keeping track of all deployments and clearly indicating the ongoing status of environments, whether pending or patched. It provides a real-time and up-to-date count of the total number of impacted artifacts and environments. This comprehensive overview ensures you always have accurate and updated information.
+The tracker effectively oversees the remediation progress across all artifacts by keeping track of all deployments and clearly indicating the ongoing status of environments, whether pending or remediated. It provides a real-time and up-to-date count of the total number of impacted artifacts and environments. This comprehensive overview ensures you always have accurate and updated information.
 
 
 ### Remediation completes when all environments are patched
 
-Offering real-time tracking, the tracker consistently updates its status, showing the number of deployments needing patching alongside those already patched. When it identifies that all pending deployments associated with every artifact in the tracker have been patched, it automatically updates its status to 'closed.' For more flexibility, there's also an option to manually close the tracker when necessary.
+Offering real-time tracking, the tracker consistently updates its status, showing the number of deployments needing patching alongside those already remediated. When it identifies that all pending deployments associated with every artifact in the tracker have been patched, it automatically updates its status to 'closed.' For more flexibility, there's also an option to manually close the tracker when necessary.
 
 With these features, the SSCA Remediation Tracker provides essential tools and information for promptly identifying affected artifacts and taking decisive action to mitigate potential security threats, enhancing software supply chain security.
 

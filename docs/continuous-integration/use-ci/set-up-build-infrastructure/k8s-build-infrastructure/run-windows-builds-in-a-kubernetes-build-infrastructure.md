@@ -1,7 +1,6 @@
 ---
 title: Run Windows builds in a Kubernetes build infrastructure
 description: You can run Windows builds in your Kubernetes build infrastructure.
-
 sidebar_position: 50
 helpdocs_topic_id: ud5rjfcp8h
 helpdocs_category_id: rg8mrhqm95
@@ -11,24 +10,29 @@ helpdocs_is_published: true
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 images are available for running CI Builds and for out-of-the-box CI steps such as Run, Save, and Restore.
+You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 and 2022 images are available for running CI builds and for out-of-the-box CI steps such as Run, Save Cache, and Restore Cache.
 
-:::info
+## Prerequisites
 
-* The following steps aren't supported on Windows platforms on Kubernetes cluster build infrastructures: **Build and Push an image to Docker Registry**, **Build and Push to ECR**, **Build and Push to GAR**, and **Build and Push to GCR**. Try using the [buildah plugin](../../build-and-upload-artifacts/build-and-push-nonroot.md) instead.
-* **Docker commands aren't supported.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
+These conditions apply when running Windows builds on Harness CI Kubernetes cluster build infrastructure.
 
-:::
+### Windows Server 2022 or 2019 is required
 
-## Windows Server 2019 is required
+Windows Server 2019 and 2022 images are supported.
 
-Only Windows Server 2019 images are supported.
+* Amazon EKS: The [AMI type](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-windows-ami.html) must be [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore).
+* GCP: Only Windows Server 2019 is supported.
+* GKS: Use the recommended image type for Windows Server 2019 or 2022.
 
-With Amazon EKS, the [AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-windows-ami.html) type must be [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore).
+   ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
 
-With GKS, use the recommended image type for Windows Server 2019.
+### Some built-in steps aren't supported
 
-![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
+The following steps aren't supported on Windows platforms on Kubernetes cluster build infrastructures: **Build and Push an image to Docker Registry**, **Build and Push to ECR**, **Build and Push to GAR**, and **Build and Push to GCR**. Try using the [buildah plugin](../../build-and-upload-artifacts/build-and-push-nonroot.md) instead.
+
+### Docker commands aren't supported
+
+If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; **however, Windows doesn't support privileged mode.** If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 
 ## Configure cluster and build infrastructure
 
