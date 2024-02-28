@@ -54,6 +54,6 @@ EOF
 
 ```
 
-Replace placeholders like {{ExecutionId}}, YOUR_API_TOKEN, YOUR_APPLICATION_ID, and YOUR_PIPELINE_ID with actual values relevant to your Harness setup.
+Replace placeholders like ExecutionId, YOUR_API_TOKEN, YOUR_APPLICATION_ID, and YOUR_PIPELINE_ID with actual values relevant to your Harness setup.
 
 This script retrieves the Input Template YAML using the Harness API and then retries the desired pipeline with the extracted YAML.
