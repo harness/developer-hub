@@ -905,7 +905,7 @@ With a [Kubernetes cluster build infrastructure](/docs/continuous-integration/us
 
 ### Enable self-signed certificates with a self-hosted image registry (advanced)
 
-:::important
+:::warning
 
 This workflow is applicable only if you're using a self-hosted registry to store your container images. For all other workflows, go to [Enable self-signed certificates](#enable-self-signed-certificates). 
 
