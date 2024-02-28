@@ -1,7 +1,7 @@
 ---
 title: Delegate mTLS support
 description: How to set up mTLS support
-# sidebar_position: 40
+sidebar_position: 50
 ---
 
 mTLS is part of the TLS protocol, which allows the server to verify the authenticity of the client. To achieve that, the client has to provide a client certificate during the TLS handshake, which is verified by the server using a previously configured CA certificate.

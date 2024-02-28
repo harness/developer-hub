@@ -1,7 +1,7 @@
 ---
 title: Secure delegates with tokens
 description: Secure delegate to Harness communication by replacing the default delegate token with new tokens.
-# sidebar_position: 20
+sidebar_position: 20
 helpdocs_topic_id: omydtsrycn
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
