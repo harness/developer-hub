@@ -2,7 +2,7 @@
 title: "Tutorial: Trigger automated scans using GitLab merge requests"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_label: "Tutorial: Trigger automated scans using GitLab merge requests"
-sidebar_position: 55
+sidebar_position: 90
 redirect_from:
   - /tutorials/security-tests/gitlab-ci-integration
   - /docs/security-testing-orchestration/get-started/sto-tutorials/gitlab-ci-integration
