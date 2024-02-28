@@ -213,5 +213,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Can I change the CPU/memory allocation for steps running on Harness cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-change-the-cpumemory-allocation-for-steps-running-on-harness-cloud)
 * [Can I prioritize my build pod if there are resource shortages on the host node?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-set-the-priority-class-level-can-i-prioritize-my-build-pod-if-there-are-resource-shortages-on-the-host-node)
 * [Experiencing OOM on java heap for the delegate](/kb/continuous-integration/continuous-integration-faqs/#experiencing-oom-on-java-heap-for-the-delegate)
-* [Out of memory errors with Gradle](/kb/continuous-integration/continuous-integration-faqs/#out-of-memory-errors-with-gradle)
+* [Out of memory errors with Gradle](/kb/continuous-integration/articles/gradle-daemon)
 * [DinD Background step fails when Docker daemon disconnects or hit quota limit after some time](/kb/continuous-integration/continuous-integration-faqs/#dind-background-step-fails-when-docker-daemon-disconnects-or-hit-quota-limit-after-some-time)

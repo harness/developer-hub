@@ -20,9 +20,9 @@ The Harness SSCA module supports the following components and standards.
 
 ### SLSA compliance level
 
-* Level 2, when used along with Harness CI Hosted Builds.
+* Level 3, when used along with Harness CI Hosted Builds.
 
-You can generate and sign provenance as per the [SLSA v1.0 spec](https://slsa.dev/) to achieve Level 2 compliance.
+You can generate and sign provenance as per the [SLSA v1.0 spec](https://slsa.dev/) to achieve Level 3 compliance.
 
 ### Attestation/Provenance generation & verification tools
 

@@ -753,6 +753,15 @@ For example, if you had a Terragrunt Plan step with the Id `Plan_Step`, you coul
 ```
 cat "<+execution.steps.Plan_Step.plan.jsonFilePath>"
 ```
+JSON representation of Terraform plan can be accessed across different stages as well.
+
+For example, if the Terragrunt Plan step with the Id `TgPlan` is in the **Execution** steps of a stage with the Id `TgStage`, then the expression is like this:
+
+`<+pipeline.stages.TgStage.spec.execution.steps.TgPlan.plan.jsonFilePath>`
+
+When Terragrunt plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
 
 ##### Scope of expression
 

@@ -33,8 +33,9 @@ How you share data across stages depends on the type of data you need to share. 
 Use the following caching methods to reduce build time:
 
 * [Harness Cache Intelligence](./cache-intelligence.md)
-* [Save and Restore Caches from S3 buckets](saving-cache.md)
-* [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
+* [Save and Restore Caches from S3 buckets](./saving-cache.md)
+* [Save and Restore Caches from GCS buckets](./save-cache-in-gcs.md)
+* [Save and Restore Caches from Azure storage](./save-cache-azure.md)
 
 You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) with caching.
 

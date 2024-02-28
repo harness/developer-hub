@@ -10,13 +10,15 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
 import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
+
 
 <SbomAbout />
 
 ## Generate SBOM in Harness
 
-These instructions describe how to generate SBOM with the Harness **SSCA Orchestration** step. This step uses Syft. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md). For information about enforcing SSCA policies, go to [Enforce SSCA policies](/docs/category/enforce-ssca-policies).
+These instructions describe how to generate SBOM with the Harness **SSCA Orchestration** step. This step uses Syft. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md). For information about enforcing SSCA policies, go to Enforce [SSCA policies](https://developer.harness.io/docs/category/enforce-ssca-policies)
 
 ### Prepare a pipeline
 
@@ -72,53 +74,103 @@ Use the **SSCA Orchestration** step to generate an SBOM in either the **Build** 
 * In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
 * In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
 
-:::info
+:::info 
 
 SSCA Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
 
 :::
 
-How you configure the **SSCA Orchestration** step depends on whether you're generating SBOM for containers or repositories.
-
-<Tabs>
-  <TabItem value="container" label="SBOM for Containers" default>
-
-To generate SBOM for containers, configure the SSCA Orchestration step as follows:
+The **SSCA Orchestration** step includes various settings for generating the SBOM for both Containers and Repositories. We will delve into the different fields that need to be configured for each option to support the generation of the SBOM.
 
 * **Name:** Enter a name for the step.
+
 * **Step Mode:** Select **Generation**.
+
 * **SBOM Tool:** Select **Syft**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
+
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
-* **Artifact Type:** Select **Container**.
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 
-   :::info ECR and GCR repos
+The Artifact Source allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
 
-   If you're using Docker-compliant ECR or GCR repositories, you must:
+:::warning Deprecation Alert:
 
-   1. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-      * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-      * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-   2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
+Please note that the previously available `Container` option, has now been deprecated. In its place, we now offer native support for DockerHub and ECR. Additionally, the support for other registries like GCR (Google Container Registry) and ACR (Azure Container Registry) is coming soon. We encourage users to connect to their registries using the dedicated options available within the list of artifact sources.
 
-   :::
+:::
+
+<Tabs>
+  <TabItem value="dockerhub" label="DockerHub" default>
+
+* **Artifact Type:** Select **DockerHub**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
 * **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
+
 * **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+
 * **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
-* **SBOM Drift:** Select this option if you want to [track changes in SBOM](./SBOM-Drift.md). Harness SSCA can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
+
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
 <!-- ![](../static/sbom-ssca-orch-step.png) -->
 
-<DocImage path={require('../static/container-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('../static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+
+:::info GCR and ACR repos
+
+If you're using Docker-compliant GCR or ACR repositories:
+
+1. You can use `DockerHub` as the artifact source
+2. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+   * For ACR, go to [Use Docker Registry for ACR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#azure-container-registry-acr)
+3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
+
+:::
+
+<!-- ![](./static/sbom-build-stage.png) -->
+</TabItem>
+
+<TabItem value="ecr" label="ECR" default>
+
+* **Artifact Type:** Select **ECR**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
+
+* **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
+
+* **Region:** The geographical location of your ECR repository.
+
+* **Account ID:** The unique identifier associated with your AWS account.
+
+* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+
+* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+
+<!-- ![](../static/sbom-ssca-orch-step.png) -->
+
+<DocImage path={require('../static/ecr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+
+:::info GCR and ACR repos
+
+If you're using Docker-compliant GCR or ACR repositories:
+
+1. You can use `DockerHub` as the artifact source
+2. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+   * For ACR, go to [Use Docker Registry for ACR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#azure-container-registry-acr)
+3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
+
+:::
+
+<!-- ![](./static/sbom-build-stage.png) -->
 
 </TabItem>
   <TabItem value="Repository" label="Repository">
 
-* **Name:** Enter a name for the step.
-* **Step Mode:** Select **Generation**.
-* **SBOM Tool:** Select **Syft**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data).
-* **SBOM Format:** Select **SPDX** or **CycloneDX**.
 * **Artifact Type:** Select **Repository**.
 
     :::info
@@ -129,8 +181,7 @@ To generate SBOM for containers, configure the SSCA Orchestration step as follow
     * Add a [Git Clone step or Run step to a Build stage](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
     :::
-
-* **Repository URL:** Enter the URL for the repository you've cloned into the stage workspace and for which you want to generate SBOM.
+* **Repository URL:** The Repository URL you've configured for cloning into the workspace.
 * **Source Path:** Leave blank or enter a path (in the repository) for which you want to generate SBOM. Use this setting to generate SBOM for a specific section of your code repo, rather than your entire repo. The path must start with `/`.
    For example, if your repository URL is `https://github.com/username/repo`, and you want to generate SBOM for `https://github.com/username/repo/service-core/source`, then enter `/service-core/source` for **Source Path**.
    To generate an SBOM for the entire repository, leave this field empty.
@@ -140,8 +191,11 @@ To generate SBOM for containers, configure the SSCA Orchestration step as follow
 
 <DocImage path={require('../static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
+<!-- ![](./static/sbom-deploy-stage.png) -->
+
 </TabItem>
 </Tabs>
+
 
 ### Run the pipeline
 
@@ -152,9 +206,10 @@ When the pipeline runs, the **SSCA Orchestration** step performs the following a
   - Generates and signs an attestation using the provided key and password.
   - Stores the SBOM in Harness and uploads the `.att` file to your container registry to accompany the image.
 
-The signed attestation for an Image, stored as an `.att` file, is placed in the artifact repository alongside the Image.
+The signed attestation for an Image, stored as an `.att` file, is placed in the artifact repository alongside the Image. 
 
 SBOMs for both Containers and Code Repositories are accessible in the [Artifacts view](../artifact-view.md). Additionally, you can locate the SBOM for any artifact on the **Artifacts** tab within the **Execution Details** page in Harness. For detailed insights, including viewing attestations and identifying violations, please refer to the [View Attestations and Violations](../ssca-view-results.md) documentation.
+
 
 ## Enforce policies
 

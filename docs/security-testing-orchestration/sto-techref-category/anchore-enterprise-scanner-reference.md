@@ -238,7 +238,7 @@ In the **Advanced** settings, you can use the following options:
 
 <!--  /step-palette -->
 
-
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Anchore Enterprise scans in STO (legacy)
 
@@ -302,15 +302,16 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-<!-- step-palette -->
+
 ### Fail on Severity
 
-<!-- import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
- -->
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
-<!-- /step-palette -->
+
+
+-->
 
 ## Anchore Enterprise orchestration example
 

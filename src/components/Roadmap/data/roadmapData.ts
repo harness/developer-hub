@@ -4,6 +4,7 @@ import { CiData } from "./ciData";
 import { FfData } from "./ffData";
 import { CcmData } from "./ccmData";
 import { StoData } from "./stoData";
+import { SscaData } from "./sscaData";
 import { CeData } from "./ceData";
 import { SrmData } from "./srmData";
 import { IdpData } from "./idpData";
@@ -73,6 +74,12 @@ const ModuleData: ModuleData[] = [
     description: "Secure your applications at the speed of development.",
     module: MODULES.sto,
     horizon: StoData,
+  },
+  {
+    title: "Software Supply Chain Assurance",
+    description: "Ensure Artifact Integrity and Open Source Governance",
+    module: MODULES.ssca,
+    horizon: SscaData,
   },
   {
     title: "Chaos Engineering",
