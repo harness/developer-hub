@@ -143,8 +143,8 @@ To add your template, do the following:
    1. **Manifest Identifier** Enter a name that identifies this Serverless manifest.
    2. **Region** Select the AWS region to use for the connection.
    3. **Bucket Name** Enter the AWS S3 bucket name.
-   4. **File/Folder Path** Enter the path from the root of the bucket to the serverless.yml file
-11. Select **Submit**
+   4. **File/Folder Path** Enter the path from the root of the bucket to the `serverless.yml` file.
+11. Select **Submit**.
 
 :::info
    For an AWS S3 provider, the file path can be a `.zip` file. Harness will automatically decompress the file when it is pulled from the bucket. 
