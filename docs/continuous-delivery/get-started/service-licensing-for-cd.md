@@ -86,7 +86,7 @@ Services types that are calculated this way:
 
 
 ### Serverless Applications
-For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.2 Active Services are counted. We will always round up to the next whole number. 
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.2 Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. 
 
 Service types that are classified as a serverless application:
 
@@ -100,13 +100,14 @@ Service types that are classified as a serverless application:
 | **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
 | ------------------ | ------------------------------------ | ------------------------------------ |
 | hello-lambda       | 0                                    | 0                                    |
+| hello-lambda       | 1                                    | 0.2 (this will round to 1)           |
 | hello-lambda       | 5                                    | 1                                    |
 | hello-lambda       | 7                                    | 1.4 (this will round to 2)           |
 | hello-lambda       | 15                                   | 3                                    |
 
 #### GitOps Applications
 
-For GitOps (Argo/Flux) applications deployed through Harness in the last month, every unique GitOps application is counted as an Active Service.
+For GitOps (ArgoCD/Flux) applications deployed through Harness in the last month, every unique GitOps application is counted as an Active Service.
 If a GitOps application has more than 20 pods (95th percentile of pod count during the month, measured every 60 minutes), for every additional 20 pods, another Active Service is counted.
 
 #### Calculation table: GitOps Application
@@ -120,9 +121,9 @@ If a GitOps application has more than 20 pods (95th percentile of pod count duri
 
 #### Custom Deployment Templates - Deploy Stages
 
-For applications deployed in the last month through Custom deployment template deploy stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service. 
+For applications deployed in the last month through custom deployment template deploy stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service. 
 
-_Note:_ If the Fetch Instance Script in the Custom Deployment Template, is unable to query the number of service instances deployed, Harness will count it as 0 Service Instances, 1 Active Service license consumed.
+_Note: If the Fetch Instance Script in the Custom Deployment Template, is unable to query the number of service instances deployed, this service will consume 1 Active Service license._
  
 #### Calculation table: Deployment Template Stages
 
@@ -135,13 +136,13 @@ _Note:_ If the Fetch Instance Script in the Custom Deployment Template, is unabl
 
 #### Pipeline Executions with no services
 
-For applications deployed in the last month through Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service is counted for 100 successful pipeline executions for each of those custom deployment stages.
+For applications deployed in the last month using Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service will be counted for every 100 successful pipeline executions for each of those custom deployment stages.
 
 Scenarios that fall under this bucket:
 
 - Pipeline executions that only run infrastructure provisioning steps
 - Pipeline executions that only perform shell script executions
-- Pipeline executions that only run custom stages
+- Pipeline executions that only run custom stages with environment configured
 
 #### Calculation table: Pipeline Executions
 
