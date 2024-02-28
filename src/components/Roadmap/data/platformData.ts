@@ -74,7 +74,7 @@ export const platformData: Horizon = {
       {
         tag: [],
         title: "Custom banners",
-        description: "Ability to display custom banners in Harness UI",
+        description: "Display custom banners in the Harness UI",
       },
        {
         tag: [{ value: "Delegate" }],
