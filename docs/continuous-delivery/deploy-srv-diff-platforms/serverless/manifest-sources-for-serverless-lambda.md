@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # Manifest Sources
 
-You will need to configure a manifest source in your service when deploying an AWS SAM or Serverless Lambda function. This topic desribes the possible sources and their configuration options.
+You will need to configure a manifest source in your service when deploying an AWS SAM or Serverless Lambda function. This topic describes the possible sources and their configuration options.
 
 ## Before You Begin 
 
