@@ -120,7 +120,7 @@ The fields ignored in the process of standard change creation are available in s
    ![](./static/create-service-now-tickets-in-cd-stages-14.png)
 :::note
 
-For more information on standard change templates, go to [Change Management - POST /sn_chg_rest/change/standard/{standard_change_template_id}](https://docs.servicenow.com/bundle/utah-api-reference/page/integrate/inbound-rest/concept/change-management-api.html#title_change-POST-standard) , [Best practice: Make the most of standard changes](https://www.servicenow.com/community/itsm-blog/best-practice-make-the-most-of-standard-changes/ba-p/2267543) from ServiceNow and [Standard Change Properties](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0716365).
+For more information on standard change templates, go to [Change Management - POST /sn_chg_rest/change/standard/standard_change_template_id](https://docs.servicenow.com/bundle/utah-api-reference/page/integrate/inbound-rest/concept/change-management-api.html#title_change-POST-standard) , [Best practice: Make the most of standard changes](https://www.servicenow.com/community/itsm-blog/best-practice-make-the-most-of-standard-changes/ba-p/2267543) from ServiceNow and [Standard Change Properties](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0716365).
 
 :::
 
