@@ -6,10 +6,6 @@ description: An additional level of security to guard chaos experiments from cha
 
 This section introduces you through ChaosGuard and describes how Harness provides RBAC (role-based access control) to users or user groups to access the **chaos resources** at different levels using **ChaosGuard**.
 
-:::note
-This feature is currently behind `CHAOS_SECURITY_GOVERNANCE` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 ## What is ChaosGuard?
 
 ChaosGuard, as the name suggests, is an additional level of security that guards chaos experiments from chaos-enabled users (users who have permissions to execute chaos experiments). 
