@@ -61,9 +61,4 @@ export const CcmData: Horizon = {
       },
     ],
   },
-  Released: {
-    description: "What has been released",
-    feature: [
-    ],
-  },
 };

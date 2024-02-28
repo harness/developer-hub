@@ -10,7 +10,9 @@ slug: /
 import Roadmap from "@site/src/components/Roadmap"
 
 # Harness Roadmaps
-This roadmap illustrates our intended direction and offers a sneak peek at several features currently in development to enhance your overall experience. A significant number of these enhancements have been prioritized based on valuable input directly sourced from our customers.
+This roadmap illustrates our intended direction and offers a sneak peek at several features currently in development to enhance your overall experience. A significant number of these enhancements have been prioritized based on valuable input directly sourced from our customers. 
+
+You can submit your product ideas to the [Harness Idea Portal](https://ideas.harness.io).
 
 <Roadmap />
 

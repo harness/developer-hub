@@ -65,9 +65,4 @@ export const StoData: Horizon = {
       },
     ],
   },
-  Released: {
-    description: "What has been released",
-    feature: [
-    ],
-  },
 };

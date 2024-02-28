@@ -21,6 +21,8 @@ const Roadmap = () => {
     { value: "idp", name: "Internal Developer Portal" },
     { value: "sei", name: "Software Engineering Insights" },
     { value: "iacm", name: "Infrastructure as Code Management" },
+    { value: "code", name: "Code Repository" },
+    { value: "aida", name: "AI Development Assistant" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -116,7 +118,7 @@ const Roadmap = () => {
               )}
             </div>
             <h1>
-              <span>{selectedDropdownModule.value} </span>Overall Strategy
+              {selectedDropdownModule.name} Roadmap
             </h1>
             <p>{selectedModule.description}</p>
 
@@ -156,9 +158,8 @@ const Roadmap = () => {
                 {key &&
                   key.map((key, index) => (
                     <div
-                      className={`${styles.listTabItems} ${
-                        mobileViewHorizon[0] === key ? styles.active : ""
-                      }`}
+                      className={`${styles.listTabItems} ${mobileViewHorizon[0] === key ? styles.active : ""
+                        }`}
                       onClick={() => handleSwitchTab(key)}
                     >
                       <li key={index}>{key}</li>
