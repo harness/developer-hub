@@ -5644,6 +5644,14 @@ Directly pushing a YAML into .harness folder will not create the pipeline, you c
 
 The overview page offers a summary of deployments and overall health metrics for the project. Currently, the fields are empty as there are no deployments within the project. Once a deployment is in the project, these fields will be automatically updated.
 
+#### Why can't I add a command script step template to a Custom stage?
+
+The command script step template is only available in CD stages.
+
+#### Can I sync the Harness service to Git?
+
+Yes, we have a [bi-directional functionality to sync the Harness entities](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup).
+
 #### Blue/Green Deployment not scaling back up after Scale Down Step
 
 If a replica count isn't defined on the Deployment, the Scale Down Step will set the replicas count permanently to `0`. Once a replica count is defined on the Deployment, the Blue/Green Swap Step should scale the appropriate Deployment correctly.
