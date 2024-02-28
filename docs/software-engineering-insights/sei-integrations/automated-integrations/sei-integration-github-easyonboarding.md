@@ -121,17 +121,10 @@ To create a GitHub personal access token to configure the SEI GitHub integration
    * **Fetch Commit Files**: Allow SEI to ingest data within commits from GitHub.
 
 :::info
-The support for Connecting via Webhook has been deprecated.
+The support for Connecting via Webhook has been deprecated as part of this feature.
 :::
 
 8. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
-
-:::info **ISSUE CYCLE TIME WEBHOOK**
-
-If you created a personal access token and allowed the admin:org\_hook permission, SEI creates a user webhook to receive issue cycle time data for the SCM Issue Time Across Stages Report.
-
-If you use GitHub App, SEI creates an organization webhook instead.
-:::
 
 ## Connect with GitHub Enterprise
 
