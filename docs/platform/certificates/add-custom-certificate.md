@@ -28,9 +28,19 @@ To integrate a custom certificate, navigate to the **Account Settings**, **Organ
 
 ## Create a certificate
 
-1. **Overview Section**: Input the certificate's Name, Tags (optional), and Description (optional). Proceed by selecting **Continue**.
-2. **Details Page**: Input the TLS Certificate in X.509 Format. This section also allows the chaining of multiple certificates to enhance flexibility in certificate management. Finalize by selecting **Save**.
-3. **Confirmation**: Upon successful creation, a notification will appear: `Certificate [certificateName] created successfully`.
+To add a new certificate within Harness, follow these comprehensive steps to navigate through the system and input the necessary details:
+
+1. Navigate to the preferred settings page (Account Settings, Organization Settings, or Project Settings) based on the scope where you want to add the certificate. Within this page, locate and click on the Certificates option. This action will take you to the certificate management page, where you can view all existing certificates under the selected scope.
+
+2. On the certificate management page, click on New Certificate.
+
+3. In the Overview Section, enter the certificate's Name, and optionally add Tags and a Description. Ensure all details are accurate and reflective of the certificate's purpose. Once completed, click on Continue to proceed.
+
+4. Move to the Details Page, where you're required to input the TLS Certificate in the X.509 Format. This section also provides the option to chain multiple certificates, offering enhanced flexibility for certificate management. Ensure that the certificate details are correctly entered and conform to the X.509 standard.
+
+5. After entering all necessary details, click on Save to finalize the creation of the certificate. A confirmation notification will then appear, indicating Certificate [certificateName] created successfully, which signifies that the certificate has been successfully created and is now part of your Harness environment.
+
+   ![](./static/TLSCertFormat.png)
 
 :::info note
 If the certificate details fail validation, an error message will be displayed: `Invalid request: Certificate is not a valid X509 Certificate`.
@@ -48,7 +58,9 @@ Integrating certificates with connectors is essential for securing communication
 1. Navigate to the Connectors page and select the desired connector for certificate integration. Enter the edit mode and proceed until reaching the **SSL/TLS Certificate** section.
 2. In the **SSL/TLS certificate for this connector** dropdown, select the certificate you wish to associate. Apply the selection, continue through the setup, and perform a connection test to confirm the integration's success.
 
+   ![](./static/connectorAddCert.png)
+
 :::important note
- For configurations using a root token, you must set the **Renewal Interval** to `0`.
- 
- :::
+For configurations using a root token, you must set the **Renewal Interval** to `0`.
+
+:::
