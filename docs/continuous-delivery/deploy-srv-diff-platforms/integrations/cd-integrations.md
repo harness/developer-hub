@@ -26,6 +26,8 @@ You can use the [shell script step](/docs/continuous-delivery/x-platform-cd-feat
 
 Harness supports integration with System Center Configuration Manager (SCCM) using Harness Pipelines. For example, the [shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) will support an integration with SCCM.
 
+For example, if you wanted to create a pipeline that installed required infrastructure in a window's environment you could use the [CLI](https://learn.microsoft.com/en-us/mem/configmgr/core/servers/deploy/install/use-a-command-line-to-install-sites) within a [shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) to do so. Simply use the required CLI commands in the step, and add the step where you need it in your deployment pipeline. 
+
 ## Modeling
 
 Harness supports integration with flow modeling tools (LucidChart, Visio etc,) and DB Modeling tools (ER/Studio, Erwin Data Modeler).
