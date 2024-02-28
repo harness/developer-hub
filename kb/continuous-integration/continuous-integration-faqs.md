@@ -443,7 +443,7 @@ To help identify pods that aren't cleaned up after a build, pod deletion logs in
 
 ### Can I mount internal CA certs on the CI build pod?
 
-Yes. To do this with a Kubernetes cluster build infrastructure, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+Yes. To do this with a Kubernetes cluster build infrastructure, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure#configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 ### Can I use self-signed certs with local runner build infrastructure?
 
@@ -491,7 +491,7 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Docker delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables)
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
 * [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure)
-* [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates)
+* [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure#configure-a-kubernetes-build-farm-to-use-self-signed-certificates)
 
 ### Certificate volumes aren't mounted to the build pod
 

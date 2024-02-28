@@ -329,7 +329,7 @@ Go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-wi
 
 ## Use self-signed certificates with a Kubernetes cluster build infrastructure
 
-Go to [Configure a Kubernetes build farm to use self-signed certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+Go to [Configure a Kubernetes build farm to use self-signed certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs#configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 ## Troubleshoot Kubernetes cluster build infrastructures
 

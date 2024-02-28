@@ -269,4 +269,4 @@ If you want to use specific delegates, you must identify those delegates. For mo
 
 ### Kubernetes delegate with self-signed certificates
 
-If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs#configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
