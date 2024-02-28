@@ -17,7 +17,7 @@ Retrying a pipeline based on the latest ExecutionId can be a challenging task, e
 
 1. Use the [API Endpoint](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getInputsetYamlV2) to get the input set YAML from pipeline execution id 
 
-2. Use the pipeline retry API [Endpoint](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/retryPipeline) to retry the pipeline by passing the fetched input set YAML.
+2. Use the pipeline retry [API Endpoint](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/retryPipeline) to retry the pipeline by passing the fetched input set YAML.
 
 For example, the following Shell script uses Harness API endpoints to retrieve the input set YAML and retry the pipeline with the extracted input set YAML.To use this Shell script, replace placeholders, like `ExecutionId`, `YOUR_API_TOKEN`, `YOUR_APPLICATION_ID`, and `YOUR_PIPELINE_ID` with actual values relevant to your Harness account.
 
