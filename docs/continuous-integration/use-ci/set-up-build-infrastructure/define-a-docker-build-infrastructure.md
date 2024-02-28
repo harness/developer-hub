@@ -188,7 +188,7 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::info
 
-   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate).
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs#add-custom-certificates-to-a-delegate-for-sto).
 
    :::
 
