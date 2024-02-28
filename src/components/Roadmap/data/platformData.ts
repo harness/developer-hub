@@ -112,7 +112,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Access Control" }],
         title: "Centralized view of permissions on a resource",
         description:
-          "Centralized visibility of what permissions have been granted to who and on what resources",
+          "Centralized visibility into which permissions have been granted to whom and on what resources",
       },
       {
         tag: [{ value: "Policy" }],
@@ -141,13 +141,13 @@ export const platformData: Horizon = {
         tag: [{ value: "Secure" }],
         title: "Encrypted SAML",
         description:
-          "Enable encrypted SAML to allow Harness integration with your IdP",
+          "Enable encrypted SAML to allow Harness integration with your IDP",
       },
       {
         tag: [],
         title: "Gov cloud support for Azure Key Vault",
         description:
-          "Support Azure government cloud for Azure Key Vault Connector with username/password",
+          "Support government cloud for Azure Key Vault connectors with username/password",
       },
       {
         tag: [{ value: "Session Management" }],
