@@ -17,18 +17,20 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 
 * While it's not a strict limitation, some users can forget that when you use a ServiceNow Create step, it creates a new, independent ServiceNow ticket every time it is run (as opposed to updating the same issue).  
 * Remember that you should only add ServiceNow Create to a stage if you want to create a new ServiceNow ticket on every run of the stage.
+* You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Create ServiceNow step setup.
+* Make sure you have the following roles:
+   + `itil` for end-to-end integration with Harness platform.​
 
 ## Important notes for using templates
 
-* You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Create ServiceNow step setup.
-* You must install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) before using templates to create ServiceNow tickets.​
+* You must install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) before using templates to create ServiceNow tickets.​
 * Make sure you have the following roles:
 	+ `x_harne_harness_ap.integration_user_role​` to access templates.
 	+ `itil` for end-to-end integration with Harness platform.​
 
 ### Required ServiceNow integration app for Harness templates
 
-The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using Harness templates. You can install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
+The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using Harness templates. You can install the latest version of the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
 For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
 
@@ -82,10 +84,14 @@ The timezone settings govern the display value of the settings not their actu
 
 Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
-In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression. You can also search for the templates you need.
 
 :::note
-Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+Existing templates are listed and can be searched only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+
+The searching of form templates requires:
+- This feature requires Harness Delegate version 82400 or later.
+- Atleast `1.0.2` version of the Integration for Harness Software Delivery Platform app
 :::
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
@@ -94,23 +100,29 @@ Your ServiceNow ticket is now added to your Pipeline.
 
 ## Create from Standard Template
 
-This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*.
-
 :::note
 This feature is behind the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+
+This feature requires Harness Delegate version 81200 or later
 :::
+
+This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*. This feature can be used to create low-risk standard change requests using pre-approved standard templates.
 
 Select **Create From Standard Template** to create a ticket by using an existing standard template in your ServiceNow integration.
 
-In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
-
-:::note
-Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
-:::
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression. You can also search for the templates you need.
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
-Your ServiceNow ticket is now added to your pipeline.
+Your ServiceNow ticket is now added to your pipeline. After standard template is loaded, fields are marked editable based on `Standard Change Properties` if `change_manager` role is present with the integration user. Else, the properties can't be fetched and fields are made read-only as per default settings in ServiceNow documentation. 
+
+The fields ignored in the process of standard change creation are available in step output as `ignoredFields` in `fields`.
+   ![](./static/create-service-now-tickets-in-cd-stages-14.png)
+:::note
+
+For more information on standard change templates, go to [Change Management - POST /sn_chg_rest/change/standard/{standard_change_template_id}](https://docs.servicenow.com/bundle/utah-api-reference/page/integrate/inbound-rest/concept/change-management-api.html#title_change-POST-standard) , [Best practice: Make the most of standard changes](https://www.servicenow.com/community/itsm-blog/best-practice-make-the-most-of-standard-changes/ba-p/2267543) from ServiceNow and [Standard Change Properties](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0716365).
+
+:::
 
 ## Normal and standard change requests
 

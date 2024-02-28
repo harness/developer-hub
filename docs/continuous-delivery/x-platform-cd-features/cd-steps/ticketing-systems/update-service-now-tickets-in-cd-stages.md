@@ -8,15 +8,20 @@ This topic describes how to update ServiceNow tickets in CD Stages.
 
 Harness provides the ability to update [ServiceNow change requests](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/change-management/concept/c_ITILChangeManagement.html) and [incident tickets](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/incident-management/concept/c_IncidentManagement.html) from your Pipeline step using the **ServiceNow Update** step.
 
-You can add the Create ServiceNow step to a Harness CD stage or an Approval stage and do the following:
+You can add the ServiceNow Update step to a Harness CD stage or an Approval stage and do the following:
 
-* Automatically update change requests in ServiceNow to track updates to your build, test, and production environments by adding a **ServiceNow Create** step in your Pipeline.
+* Automatically update change requests in ServiceNow to track updates to your build, test, and production environments by adding a **ServiceNow Update** step in your Pipeline.
 * Automatically assign tickets in ServiceNow to triage and resolve incidents quickly in case of Pipeline failures.
+
+## Important notes
+
+* You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Update ServiceNow step setup.
+* Make sure you have the following roles:
+   + `itil` for end-to-end integration with Harness platform.​
 
 ## Important notes for using templates
 
-* You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Create ServiceNow step setup.
-* You must install the You must install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) before using templates to update ServiceNow tickets.
+* You must install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) before using templates to update ServiceNow tickets.
 * Make sure you have the following roles:
 	+ `x_harne_harness_ap.integration_user_role​` to access templates.
 	+ `itil` for end-to-end integration with Harness platform.​​​
@@ -24,7 +29,7 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 
 ### Required ServiceNow integration app for Harness templates
 
-The Integration for Harness Software Delivery Platform app is required to update ServiceNow tickets using Harness templates. You can install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the  [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
+The Integration for Harness Software Delivery Platform app is required to update ServiceNow tickets using Harness templates. You can install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the  [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
 For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
 
@@ -51,15 +56,19 @@ The timezone settings govern the display value of the settings not their actu
    ![](./static/update-service-now-tickets-in-cd-stages-23.png)
 
 8. If you want to update multiple change tasks under a parent change request, select **Update Multiple**, and then do the following:
-  
+
   - In **Change Request Number**, specify the change request whose tasks you want to update.
 
   - In **Change Task Type**, specify which task type you want to target. All tasks whose type matches your selection are updated. If you want all tasks under the parent to be updated regardless of their task type, leave this field blank.
+   
+   ![](./static/update-service-now-tickets-in-cd-stages-25.png)  
 
   :::note 
   The **Update Multiple** option appears only if you select **Change Task** in the **Ticket Type** field. 
 
   This feature is behind the feature flag `CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+
+  This feature requires Harness Delegate version 80800 or later.
   :::
 
 ## Update fields
@@ -71,11 +80,11 @@ The timezone settings govern the display value of the settings not their actu
   :::note More information
   If the ticket number is a fixed value, and not a runtime value or expression, in addition to listing fields that have values, Harness does the following for you:
     * It includes values from ServiceNow in the fields. 
-    * It displays any new fields that have been added to the ticket in ServiceNow after the last time you viewed this section.
     * If the value of a field has changed in ServiceNow, Harness includes a refresh icon that you can select if you want the field to show the updated value. Harness does not automatically update the field with the latest value. 
     
     This feature is behind the feature flag `CDS_SERVICENOW_FETCH_FIELDS`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
   :::
+   ![](./static/update-service-now-tickets-in-cd-stages-26.png)    
 
 3. In **Description**, enter a detailed description of the ticket.
 
@@ -90,7 +99,7 @@ The timezone settings govern the display value of the settings not their actu
 
 ## Apply from template
 
-1. Select **Apply From Template** to update a ticket using an existing template.
+1. Select **Apply From Template** to update a ticket using an existing form template.
 2. In **Template Name**, enter the name of an existing template or provide an expression.  
    All the fields corresponding to the Template are listed.
 3. Select **Apply Changes**.
