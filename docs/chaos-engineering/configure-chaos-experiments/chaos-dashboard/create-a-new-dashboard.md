@@ -10,7 +10,7 @@ This section will guide you through creating a new chaos dashboard, and creating
 
 ## Before you begin
 
-Refer to [overview of chaos dashboards](./overview) to understand what a chaos dashboard is, and how you can view a predefined chaos dashboard.
+Refer to [overview of chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview.md) to understand what a chaos dashboard is, and how you can view a predefined chaos dashboard.
 
 ## Create a new visualization 
 To create a new visualization in a new dashboard, follow the steps mentioned below.
@@ -102,7 +102,7 @@ To visualize the number of successful experiment runs for a specific time period
 * If you wish to save your visualization, click **Save**. Otherwise, you can **Cancel** and add visualizations again.
 
 :::info note
-You can find the definitions for many of the fields [here](../../get-started/key-concepts).
+You can find the definitions for many of the fields [here](/docs/chaos-engineering/get-started/key-concepts.md).
 :::
 
 ## Description of fields used
@@ -111,4 +111,4 @@ You can find the definitions for many of the fields [here](../../get-started/key
 
 ## Next steps
 
-* [Best practices to build effective dashboards](../../../platform/dashboards/dashboard-best-practices) 
+* [Best practices to build effective dashboards](/docs/platform/dashboards/dashboard-best-practices.md) 

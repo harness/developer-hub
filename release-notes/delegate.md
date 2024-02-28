@@ -64,6 +64,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
   
    This issue is fixed by making the service instance field configurable for users.
 
+### Version 24.02.82309 <!--  February 28, 2024 -->
+
+- We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. (CCM-16052)
+
+
 ### Version 24.02.82308 <!--  February 21, 2024 -->
 
 - Upgraded the SDK for the ASG swimlane. (CDS-91937)
