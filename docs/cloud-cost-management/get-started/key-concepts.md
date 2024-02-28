@@ -137,13 +137,41 @@ Forecasted costs are predictions based on your historical cost data. The forecas
 The following table lists some of the examples for forecasted cost calculation. In this example, the current date is considered as **March 30, 2021.**
 
 
-
 | **Selected** **Date Range** | **Forecasted Date Range** |
 | --- | --- |
 | Predefined date range, for example, Last 7 days, Last 30 days, Last month, and so on | Calculated for the next 7 days, next 30 days, or next month based on the selected date range |
 | Custom date range, for example, March 25 - 30 (6 days) | March 31 - April 5 (next 6 days) |
 | Future date range, for example, March 25 - April 3 (invalid date range) | Not applicable |
 | Past date range, for example, March 1 -15 | Not applicable |
+
+
+### K8s Storage cost
+
+To fetch persistent volume data, listPersistentVolumeCall is used. In the response, V1PersistentVolumeSpec is given which will be used to find the PVType. Currently, CCM supports below PVTypes:
+
+```
+enum PVType {
+  PV_TYPE_UNSPECIFIED = 0;
+  PV_TYPE_GCE_PERSISTENT_DISK = 1;
+  PV_TYPE_AWS_EBS = 2;
+  PV_TYPE_AZURE_DISK = 3;
+  PV_TYPE_NFS = 4;
+}
+```
+
+Out of which, the exact price rate for GCP K8s PV (`PV_TYPE_GCE_PERSISTENT_DISK`) is calculated by calling the GCP K8s APIs. For all other cloud providers and bare metal machines, the hardcoded price value is used. If no PV type for a cloud provider is detected, it falls to `PV_TYPE_UNSPECIFIED`.
+
+
+| **PVType** | **Default Hardcoded price (perGBPerMonth)** |
+| --- | --- |
+| `PV_TYPE_UNSPECIFIED`| `0.040` |
+| `PV_TYPE_AWS_EBS` | `0.040` |
+| `PV_TYPE_AZURE_DISK` | `0.040` |
+| `PV_TYPE_NFS` | `0.001018` |
+
+Later, the storage cost is added in the total cluster cost.
+
+Total cluster cost = CPU + Memory + Storage
 
 ### Cost Trend
 
