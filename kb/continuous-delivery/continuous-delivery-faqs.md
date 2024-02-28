@@ -5158,11 +5158,12 @@ If a pipeline is running and a freeze happens, the pipeline will continue to run
 
 #### How to get the build id from a pipeline?
 
-You can use the expression ```<+pipeline.executionId>``` to get the build ID from a pipeline.
+You can use the expression `<+pipeline.executionId>` to get the build ID from a pipeline.
 
 #### How to delete a job after its execution is complete?
 
-You can add a shell script to check the job status before executing the Kubernetes Delete. To run kubectl commands, it's required to use the Harness Kubeconfig as an environment variable. Here’s an example script for guidance:
+You can add a shell script to check the job status before executing the Kubernetes Delete. To run kubectl commands, it's required to use the Harness Kubeconfig as an environment variable. Here's an example script for guidance:
+
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl wait --for=condition=complete job/myjob -n <+infra.namespace>
@@ -5180,33 +5181,35 @@ This generally represents a bug on the delegate, and upgrading its version may r
 
 If you encounter the exception "Encryption failed after 3 retries" during the Terraform Plan, it's often due to network issues or restrictions. To address this problem, consider the following steps:
 * Check Network Connectivity: Verify the network connection between the delegate and the secret manager. If you are using Harness Secret Manager, ensure there is connectivity between the delegate and Google KMS.
-* Company Network Policies: If your company has strict network policies, you can use this feature flag ```CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG```  that shifts the responsibility of decrypting the secret from the delegate to our manager. This approach means your delegate won't require network permissions to access KMS.
+* Company Network Policies: If your company has strict network policies, you can use this feature flag `CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG`  that shifts the responsibility of decrypting the secret from the delegate to our manager. This approach means your delegate won't require network permissions to access KMS.
 
 #### How to mark the pipeline as success even the approval got rejected?
 
 To configure a pipeline to be marked as successful even if an approval is rejected, follow these steps:
-1. Navigate to the ```Advanced``` tab of your pipeline configuration.
-2. Under this tab, locate the section labeled ```Failure Strategy```.
-3. In this section, select ```Approval Rejection``` from the dropdown ```On Failure of type```.
-4. Next, choose the ```Perform Action``` option.
-5. From the available actions, select ```Mark as Success```.
-   
-#### Where is located the latest CD Release notes?
+1. Navigate to the `Advanced` tab of your pipeline configuration.
+2. Under this tab, locate the section labeled `Failure Strategy`.
+3. In this section, select `Approval Rejection` from the dropdown `On Failure of type`.
+4. Next, choose the `Perform Action` option.
+5. From the available actions, select `Mark as Success`.
 
-You can access the latest CD Release notes in this [link](https://developer.harness.io/release-notes/continuous-delivery/).
+#### Where can I find the CD release notes?
 
-#### Where can I find the ${workflow.startTs} variable?
+Go to the [Continuous Delivery release notes](https://developer.harness.io/release-notes/continuous-delivery/).
 
-You might be referring to how this variable appears in the NextGen platform, as ```${workflow.startTs}``` is from the FirstGen platform, which we no longer support. In NextGen, although the concept of a 'workflow' does not exist, we do have a similar variable that indicates when the pipeline started. This variable is ```<+pipeline.startTs>```.
+#### Where can I find the workflow.startTs variable?
+
+The variable `${workflow.startTs}` is from Harness FirstGen, which is no longer supported. In Harness NextGen, although the concept of a 'workflow' doesn't exist, there is a similar variable that indicates when the pipeline started: `<+pipeline.startTs>`
 
 #### How to define Helm values files as optional during a deployment?
 
-Currently, we don’t support this feature. We’re currently working on this feature as a long-term one. Please check here for more information: [Allow Helm Values files on Deploys to be Optional
-] (https://ideas.harness.io/continuous-delivery/p/allow-helm-values-files-on-deploys-to-be-optional)
+Currently, we don't support this feature. We're currently working on this feature as a long-term one. For more information, go to [Allow Helm Values files on Deploys to be Optional](https://ideas.harness.io/continuous-delivery/p/allow-helm-values-files-on-deploys-to-be-optional).
 
 #### How can I pass output variables from one pipeline stage to another when calling a pipeline from within a pipeline?
 
-To pass output variables from one stage of a pipeline to another, you should utilize pipeline chaining. Firstly, in your parent pipeline, you need to define the output variable in the output section of the initial stage. Then, in the subsequent stage, reference this output variable using the expression ```<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>```. This setup ensures that when the parent pipeline is executed, the output variable from the first stage is seamlessly passed to the second stage as an input variable. For more detailed guidance and examples, you can refer to these resources in our documentation:
+To pass output variables from one stage of a pipeline to another, you should utilize pipeline chaining. Firstly, in your parent pipeline, you need to define the output variable in the output section of the initial stage. Then, in the subsequent stage, reference this output variable using the expression `<+pipeline.PIPELINE_STAGE_ID.outputVariables.OUTPUT_VARIABLE_NAME>`. This setup ensures that when the parent pipeline is executed, the output variable from the first stage is seamlessly passed to the second stage as an input variable.
+
+For more detailed guidance and examples, go to:
+
 - [Chained Pipeline Output Variables](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables)
 - [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining)
 - [Output Variable for PowerShell Script](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script)
@@ -5216,17 +5219,20 @@ To pass output variables from one stage of a pipeline to another, you should uti
 As per the current design, executing a pipeline directly through the Harness CLI is not possible. However, you can run the API in any CLI to execute the pipeline.
 
 #### Which variables should I use to consistently obtain `<+trigger.sourceBranch>` and `<+trigger.targetBranch>`, even if the pipeline is run manually?
- 
+
 You can utilize the following codebase expressions to retrieve the PR number, source branch, and target branch:
-- ```<+codebase.prNumber>```
-- ```<+codebase.sourceBranch>```
-- ```<+codebase.targetBranch>```
-  
+
+- `<+codebase.prNumber>`
+- `<+codebase.sourceBranch>`
+- `<+codebase.targetBranch>`
+
 #### Can I use my own release names within each namespace of my cluster, allowing for multiple matching release names across a single cluster, despite the dialogue indicating that release names must be unique across the entire cluster?
 
 Harness utilizes the release name for tracking releases. The release name is crucial as it's used to create the corresponding Harness release ConfigMap or Secret. Therefore, it needs to be unique within each namespace in the cluster. This means you can have the same release name in different namespaces within the same cluster but not within the same namespace.
-While you can choose your own release name and using release-+INFRA_KEY is not mandatory, we recommend it. This is because there's a risk of errors if users manually assign the same name for different deployments within the same namespace. However, if you ensure each release name is unique per namespace, that approach will work as well.
-For example, if you have 'app1' as a release name and two different namespaces like 'prod' and 'dev', you can deploy using the same 'app1' release name in both namespaces.
+
+While you can choose your own release name and using `release-+INFRA_KEY` is not mandatory, we recommend it. This is because there's a risk of errors if users manually assign the same name for different deployments within the same namespace. However, if you ensure each release name is unique per namespace, that approach will work as well.
+
+For example, if you have `app1` as a release name and two different namespaces like `prod` and `dev`, you can deploy using the same `app1` release name in both namespaces.
 
 #### How can I create overrides V2 at the infrastructure, environment, and service levels using CLI/API?
 
@@ -5247,6 +5253,7 @@ Currently, there is no native step for running the bosh CLI within Harness. The 
 #### Can manual approval stages in Harness be configured to make approverInputs mandatory?
 
 The approver inputs are optional by default. However, it is possible to enforce a policy that denies a pipeline from proceeding if the approver input is not provided. Below is an example of a policy that can be applied using the On Run/On Save event for a pipeline:
+
 ```
 package pipeline
 
@@ -5270,15 +5277,15 @@ When deploying multiple Helm charts using the same infrastructure definition, th
 
 #### How to retrieve the service artifact tag in the deploy stage?
 
-You can retrieve the service artifact by using the following expression ```<+artifacts.primary.tag>```.
+You can retrieve the service artifact by using the following expression `<+artifacts.primary.tag>`.
 
 #### Which command does Harness use to apply the manifests during a blue-green deployment?
 
-We use a kubectl command similar to the one below: ```kubectl --kubeconfig=config apply --filename=manifests.yaml --record```
+We use a kubectl command similar to the one below: `kubectl --kubeconfig=config apply --filename=manifests.yaml --record`
 
 #### How can I retrieve the list of files modified in a pull request that triggered a pipeline execution?
 
-The method to fetch modified files varies based on your Git provider, as the payload structure is unique for each provider's trigger mechanism. For instance, when using GitHub, you can obtain the list of modified files within a pull request by utilizing the following expression: ```<+trigger.payload.head_commit.modified>```. This approach allows you to access specific details about the changes that initiated the pipeline execution.
+The method to fetch modified files varies based on your Git provider, as the payload structure is unique for each provider's trigger mechanism. For instance, when using GitHub, you can obtain the list of modified files within a pull request by utilizing the following expression: `<+trigger.payload.head_commit.modified>`. This approach allows you to access specific details about the changes that initiated the pipeline execution.
 
 #### Can we send pipeline notification for events based on variable expression evaluation?
 
