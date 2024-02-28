@@ -81,7 +81,7 @@ stringData:
       <tr>
         <td> DISK_AFFECTED_PERC </td>
         <td> Percentage of total disks that are filtered using the target label (specify numeric values only). </td>
-        <td> Defaults to 0 (that corresponds to 1 disk).</a></td>
+        <td> Defaults to 0 (that corresponds to 1 disk).</td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
