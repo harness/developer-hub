@@ -1,7 +1,7 @@
 ---
 title: Generate code with AIDA
 description: Intelligent code generation using Harness AIDA.
-sidebar_position: 50
+sidebar_position: 52
 ---
 
 Code Generation with AIDA turbocharges your coding experience. This IDE extension amplifies developer productivity by leveraging the power of Harness AI Development Assistant (AIDA) to revolutionize the way you write code, tests, and comments.
