@@ -11,6 +11,9 @@ import { IdpData } from "./idpData";
 import { SeiData } from "./seiData";
 import { IacmData } from "./IacmData";
 import { platformData } from "./platformData";
+import { aidaData } from "./aidaData";
+import { codeData } from "./codeData";
+
 
 export interface ModuleData {
   title: string;
@@ -110,6 +113,18 @@ const ModuleData: ModuleData[] = [
     description: "Covering all your Infrastructure as Code Management needs.",
     module: MODULES.iacm,
     horizon: IacmData,
+  },
+  {
+    title: "Code Repository",
+    description: "Securely host private Git repositories and collaborate on Code with advanced access controls and governance.",
+    module: MODULES.code,
+    horizon: codeData,
+  },
+  {
+    title: "AI Development Assistant",
+    description: "Unlock the power of AI infused software delivery.",
+    module: MODULES.aida,
+    horizon: aidaData,
   },
  
 ];

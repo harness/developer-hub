@@ -18,7 +18,8 @@ export enum MODULES {
   code = 'code',
   platform = 'platform',
   cv = 'cv',
-  smp = "smp"
+  smp = "smp",
+  aida = "aida"
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -39,6 +40,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.platform]: 'Harness Platform',
     [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
     [MODULES.cv]: 'Continuous Verification',
+    [MODULES.aida]: 'AI Development Assistant',
 }
 
 export const MODULE_ICON = {
@@ -58,4 +60,5 @@ export const MODULE_ICON = {
     [MODULES.platform]: 'img/icon_harness.svg',
     [MODULES.smp]: 'img/icon_harness.svg',
     [MODULES.cv]: 'img/icon_cv.svg',
+    [MODULES.aida]: 'img/icon_aida.svg',
 }

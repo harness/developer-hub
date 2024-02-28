@@ -116,9 +116,4 @@ export const IacmData: Horizon = {
       },
     ],
   },
-  Released: {
-    description: "What has been released",
-    feature: [
-    ],
-  },
 };

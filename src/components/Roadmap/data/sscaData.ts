@@ -61,9 +61,4 @@ export const SscaData: Horizon = {
       },
     ],
   },
-  Released: {
-    description: "What has been released",
-    feature: [
-    ],
-  },
 };

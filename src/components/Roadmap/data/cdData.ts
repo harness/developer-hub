@@ -130,9 +130,4 @@ export const CdData: Horizon = {
       },
     ],
   },
-  Released: {
-    description: "What has been released",
-    feature: [
-    ],
-  },
 };
