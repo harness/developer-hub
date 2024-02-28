@@ -1900,7 +1900,7 @@ For stability, Harness applies limits to prevent excessive API usage. Harness re
 
 Queued license limit reached means that your account has reached the maximum build concurrency limit. The concurrency limit is the number of builds that can run at the same time. Any builds triggered after hitting the concurrency limit either fail or are queued.
 
-If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
+If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
 
 ### Can I use Harness Queue Intelligence with Kubernetes cluster build infra?
 
