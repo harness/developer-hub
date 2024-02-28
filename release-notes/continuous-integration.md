@@ -35,6 +35,22 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
+<!-- ## March 2024 -->
+
+<!-- Version 1.16.x -->
+
+<!-- Mar 5, 2024 -->
+
+<!-- #### New features and enhancements -->
+
+<!-- * (CI-7929, ZD-42045) ? -->
+
+<!-- #### Fixed issues -->
+<!-- Fix links when uncomment -->
+<!-- * Added null handling for empty runtime input for the [Post-Command in a Run Tests step]  (/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#pre-command-post-command-and-shell). Previously, if you configured Post-Command as [runtime input]  (/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and left the field blank at runtime, it would fail the pipeline by supplying `null` as the Post-Command, rather than an empty field. (CI-11365, ZD-58254)
+* When [viewing builds]  (/docs/continuous-integration/use-ci/viewing-builds), the running status is now correctly updated for Background steps that are inside step groups. (CI-10239)
+* Resolved an issue where expressions could unexpectedly/incorrectly resolve as `null` if those expressions were supplied as environment variables in steps that were in step group templates or other looping strategies. (CI-11305, ZD-57626)-->
+
 ## February 2024
 
 ### Version 1.15.x
