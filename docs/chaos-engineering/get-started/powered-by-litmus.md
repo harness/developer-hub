@@ -35,8 +35,14 @@ Harness CE module has the following additional capabilities:
 4. [GCP chaos faults](../technical-reference/chaos-faults/gcp/)
 5. [Azure chaos faults](../technical-reference/chaos-faults/azure/)
 6. [Linux chaos faults](../technical-reference/chaos-faults/linux/)
-7. Teaming around chaos hubs
-8. Additional resilience probes
+7. [Windows chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/windows/)
+8. [Cloud Foundry chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry)
+9. [Load chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/load)
+10. [Security chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos)
+11. [SSH chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/ssh)
+12. Teaming around chaos hubs
+13. Resilience probes (Dynatrace and [Datadog](/docs/chaos-engineering/technical-reference/probes/datadog-probe.md))
+14. [Chaosguard](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
