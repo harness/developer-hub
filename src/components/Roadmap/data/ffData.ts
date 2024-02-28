@@ -21,7 +21,7 @@ export const FfData: Horizon = {
       },
       {
         tag: [{ value: "Proxy" }],
-        title: "Proxy Re-architecutre for Scalability Improvements",
+        title: "Proxy Re-architecture for Scalability Improvements",
         description: "Redesign of proxy architecture for new level of resilience.",
       },
       {
