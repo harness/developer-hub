@@ -78,7 +78,7 @@ export const platformData: Horizon = {
       },
        {
         tag: [{ value: "Delegate" }],
-        title: "Restriction on usage of Delegate",
+        title: "Restrict delegate usage",
         description: "Ability to restrict the usage of delegate across Account/Org/Project and Environments",
       },
     ],
