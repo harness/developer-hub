@@ -161,11 +161,11 @@ To add an artifact source template to a stage template, do the following:
 2. In **Service**, in **Select Service**, select **Add Service**.
 3. In the new service, in **Artifacts**, select **Use template**.
 
-   ![use template](./static/8818bc80c6c74f021eb456676680d3c2bb05208b033c045a8adce177ef93af55.png
+   ![use template](./static/template_artifact_use.png)
 
 4. Select the artifact source template you want to use, and then select **Use Template**.
 
-   ![template selected](./static/d18f8cfaf6ad2a4e5f61e78d9d9eddff4df602507c8748463eb31c9e2339cb30.png
+   ![template selected](./static/template_artifact_select.png)
 
 5. In **Configure Artifact Source**, enter a name for the artifact.
 6. In **Tag**, you can change the setting to **Fixed Value**, and then select the tag to use. Or you can use a runtime input or expression.
@@ -173,7 +173,7 @@ To add an artifact source template to a stage template, do the following:
 
    The artifact source template is added to the stage template.
 
-   ![added template](./static/6d8ee2d4dc0820635512c5112bf5bb6f2ec9f806c1abedf75a71c2a869decbe9.png
+   ![added template](./static/6d8ee2d4dc0820635512c5112bf5bb6f2ec9f806c1abedf75a71c2a869decbe9.png)
 
 ## Use artifact templates in CD services
 
@@ -194,11 +194,11 @@ import TabItem2 from '@theme/TabItem';
 5. Select **Configuration**.
 6. In **Service Definition**, in **Artifacts**, select **Use template**.
 
-   ![use template](./static/8818bc80c6c74f021eb456676680d3c2bb05208b033c045a8adce177ef93af55.png)
+   ![use template](./static/template_artifact_use.png)
 
 7. Select the artifact source template you want to use, and then select **Use Template**.
 
-   ![template selected](./static/d18f8cfaf6ad2a4e5f61e78d9d9eddff4df602507c8748463eb31c9e2339cb30.png)
+   ![template selected](./static/template_artifact_select.png)
 
 8. Enter a name for template.
 9. In **Tag**, you can change the setting to **Fixed Value**, and then select the tag to use. Or you can use a runtime input or expression.
