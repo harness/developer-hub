@@ -10,8 +10,10 @@ const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
     { value: "platform", name: "Platform" },
-    { value: "cd", name: "Continuous Delivery & GitOps" },
+    { value: "code", name: "Code Repository" },
     { value: "ci", name: "Continuous Integration" },
+    { value: "cd", name: "Continuous Delivery & GitOps" },
+    { value: "iacm", name: "Infrastructure as Code Management" },
     { value: "ff", name: "Feature Flags" },
     { value: "ccm", name: "Cloud Cost Management" },
     { value: "sto", name: "Security Testing Orchestration" },
@@ -20,8 +22,6 @@ const Roadmap = () => {
     { value: "srm", name: "Service Reliability Management" },
     { value: "idp", name: "Internal Developer Portal" },
     { value: "sei", name: "Software Engineering Insights" },
-    { value: "iacm", name: "Infrastructure as Code Management" },
-    { value: "code", name: "Code Repository" },
     { value: "aida", name: "AI Development Assistant" },
   ];
 
