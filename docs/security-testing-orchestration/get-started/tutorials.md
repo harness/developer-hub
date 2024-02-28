@@ -22,6 +22,8 @@ The following workflows and tutorials are available.
 
   - [Container image scans with Aqua Trivy](../sto-techref-category/trivy/container-scan-aqua-trivy) This "quick-start" tutorial shows how to scan a container image using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
+  - [DAST app scans using Zed Attack Proxy](../sto-techref-category/zap/dast-scan-zap) This "quick-start" tutorial shows how to scan an application instance using [Zed Attack Proxy (ZAP)](https://www.zaproxy.org), an open-source penetration tool for testing web applications. 
+
   - [Trigger automated scans using GitLab merge requests](../use-sto/set-up-sto-pipelines/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
 
 - Integrated end-to-end workflows:
