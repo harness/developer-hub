@@ -37,7 +37,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Notify" }],
         title: "Centralized Notification system",
         description:
-          "Centralized notification system to configure notifications on Delegate",
+          "Centralized notification system to configure delegate notifications",
       },
       {
         tag: [{ value: "Scale" }],
