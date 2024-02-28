@@ -46,6 +46,12 @@ https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 
 `6_vVHzo9Qeu9fXvj-AcQCb` is the `accountId`. 
 
+:::info note
+
+When you install a delegate via the Harness UI, several dependencies in this topic are prefilled for your convenience. This topic explains where to find the required information for CLI-based installation.
+
+:::
+
 For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
 
 <Tabs>
@@ -59,19 +65,32 @@ Ensure that you have access to a Kubernetes cluster. For the purposes of this tu
 
 - On Windows
 
-```
-choco install minikube
-```
+   ```
+   choco install minikube
+   ```
+   
+   :::info
+   For Chocolatey installation instructions, go to [Installing Chocolatey](https://chocolatey.org/install) in the Chocolatey documentation.
+   
+   For additional options to install minikube on Windows, go to [minikube start](https://minikube.sigs.k8s.io/docs/start/) in the minikube documentation.
+   :::
 
 - On macOS:
 
-```
-brew install minikube
-```
+   ```
+   brew install minikube
+   ```
+
+   :::info
+   For Homebrew installation instructions, go to [Installation](https://docs.brew.sh/Installation) in the Homebrew documentation.
+   :::
+
 Now start minikube with the following config.
-```
-minikube start --memory 4g --cpus 4
-```
+
+   ```
+   minikube start --memory 4g --cpus 4
+   ```
+
 Validate that you have kubectl access to your cluster.
 
 ```

@@ -9,7 +9,7 @@ title: Continuous Delivery & GitOps ILT
 
 :::info
 
-Currently Instructor Led Training is in beta. Please reach out to [certifications@harness.io](mailto:certifications@harness.io)
+Currently Instructor Led Training is scheduled via e-mail. Please reach out to [certifications@harness.io](mailto:certifications@harness.io)
 for the latest offerings and ability to schedule. 
 
 :::

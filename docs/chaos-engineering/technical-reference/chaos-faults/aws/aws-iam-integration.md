@@ -12,7 +12,7 @@ There are two methods available for HCE to authenticate itself with AWS and obta
 
   IRSA leverages an OpenID Connect (OIDC) provider for authentication. This method is applicable when the execution plane is installed on an Amazon EKS cluster. With IRSA, you have these benefits:
 
-    - **Least privilege:** Using IRSA avoids extending permissions for the pods on the node, such as restricting the node IAM role for pods from making an AWS API call. You can scope IAM permissions to a service account, and then only pods that use that service account have access to those permissions.
+    - **Least privilege:** Using IRSA avoids extending permissions for the pods on the node, such as restricting the node IAM role for pods from making an AWS API call. You can scope IAM permissions to a service account, and this way, only pods that use that service account have access to those permissions.
 
     - **Credential isolation:** An experiment can only retrieve credentials for the IAM role associated with a particular service account. This experiment does not have access to credentials for other experiments belonging to other pods.
 
@@ -24,13 +24,13 @@ There are two methods available for HCE to authenticate itself with AWS and obta
 
 ## Account terminology and summary of steps for IAM integration
 
-### Terminology for accounts
+### Account terminology
 
 In this topic, Harness refers to three types of accounts:
 
 * **The experiment service account:** A Kubernetes service account created when you install a chaos infrastructure on your EKS cluster. This is the account that executes and controls chaos experiments. Its default name is `litmus-admin`, however you can use a different name.
 
-* **The AWS source account:** This AWS account also resides where you install a chaos infrastructure, and serves as the host for the EKS cluster. This account enables Harness CE to access resources across multiple target accounts.
+* **AWS source account:** This AWS account also resides where you install a chaos infrastructure, and serves as the host for the EKS cluster. This account enables Harness CE to access resources across multiple target accounts.
 
 * **Target accounts:** These are AWS accounts where you'll run experiments against resources and services to intentionally disrupt them. You can have many target accounts.
 
@@ -95,37 +95,13 @@ To create an OIDC provider for your EKS cluster:
   2021-09-07 14:54:05 [✔]  created IAM Open ID Connect provider for cluster "litmus-demo" in "us-west-1"
   ```
 
-### Step 2: Create an IAM role and policy for your experiment service account 
+:::tip
+* By default, chaos infrastructure associated with your chaos experiment has `litmus-admin` as a chaos service account. Based on the chaos experiment you wish to execute, you can configure the policy and attach the policy to a role, and go to [step 2](#associate-the-iam-role-with-the-experiment-service-account). Refer to [AWS superset policy](/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults.md) to know more.
+* If you wish to create a custom service account, you can create one and configure the policy and attach the policy with a role.
+* For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html).
+:::
 
-The experiment service account is usually named `litmus-admin`. You must create an IAM role and policy for this account with the permissions that you would like chaos experiments to have. 
-
-To create the IAM role and policy: 
-
-1. Create a permission policy for the role, and note the policy's Amazon Resource Name (ARN). 
-
-  There are several ways to create a new IAM permission policy. For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html). 
-
-  Make a note of the **policy's ARN** for the next step.
-
-1. To create the role and attach the policy you just created, use the `eksctl` command. For example:
-
-  ```bash
-  eksctl create iamserviceaccount \
-  --name <experiment_service_account_name> \
-  --namespace <service_account_namespace> \
-  --cluster <cluster_name> \
-  --attach-policy-arn <IAM_policy_ARN> \
-  --approve \
-  --override-existing-serviceaccounts
-  ```
-
-  Where:
-
-    * `experiment_service_account_name` is the name of the experiment service account, usually `litmus-admin`.
-    * `service_account_namespace` is namespace where you installed the execution plane.
-    * `IAM_policy_ARN` is ARN for the policy you created in the previous step.
-
-### Step 3: Associate the IAM role with the experiment service account
+### Step 2: Associate the IAM role with the experiment service account
 
 Associate the IAM role you created in the previous step by annotating the experiment service account (usually `litmus-admin`). This will give it the required access to AWS resources.
 
@@ -141,7 +117,7 @@ eks.amazonaws.com/role-arn=arn:aws:iam::<account_ID>:role/<IAM_role_name>
 2. For the cluster autoscaler experiment, annotate the experiment service account in the `kube-system` namespace.
 :::
 
-### Step 4: Verify the association of the IAM role with the experiment service account
+### Step 3: Verify the association of the IAM role with the experiment service account
 
 To verify the association between the experiment service account (`litmus-admin`) and the IAM role: 
 
@@ -225,15 +201,6 @@ To configure trust between the AWS source account OIDC provider and a target acc
           {
               "Effect": "Allow",
               "Principal": {
-                  "AWS": "arn:aws:iam::2222222222:role/chaos-role"
-              },
-              "Action": [
-                  "sts:AssumeRole"
-              ]
-          },
-          {
-              "Effect": "Allow",
-              "Principal": {
                   "Federated": "arn:aws:iam::1111111111:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/AAAAA11111111C9909AEC6992AEFNWQO0"
               },
               "Action": "sts:AssumeRoleWithWebIdentity"
@@ -252,13 +219,6 @@ To configure trust between the AWS source account OIDC provider and a target acc
   {
       "Version": "2012-10-17",
       "Statement": [
-          {
-              "Effect": "Allow",
-              "Principal": {
-                  "AWS": "arn:aws:iam::1111111111:role/chaos-role"
-              },
-              "Action": "sts:AssumeRole"
-          },
           {
               "Effect": "Allow",
               "Principal": {
@@ -290,10 +250,8 @@ For example, if the target account has a role named `chaos-role`, you must annot
 
 1. Repeat the above step for the chaos role in each target account.
 
-## Remove all secret references from experiment definitions
+## Enable AWS access using secrets from experiment definitions
 
-If you've already configured some experiments with secret references, or if you use chaos experiment templates, you must remove references to secret mounts, since IAM integration does not rely on secrets. To do so, remove references to secret mounts from the experiment definition YAML files. 
+When you create a new AWS chaos experiment, you can choose to enable or disable AWS access. You can select or deselect the button depending on your use of the secret references.
 
-For example, remove the highlighted lines in this experiment configuration:
-
-![Chaos experiment definition YAML](./static/images/remove-secret-refs.png)
+![Chaos experiment definition YAML](./static/images/use-secret.png)

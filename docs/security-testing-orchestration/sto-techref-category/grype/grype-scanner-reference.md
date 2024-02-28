@@ -42,8 +42,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Grype step settings for STO
 
-The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Grype scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
+The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
 <!--
@@ -265,7 +264,8 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
- 
+<!-- STO-7187 remove legacy configs for scanners with step palettes 
+
 ## Security step settings for Grype scans in STO (legacy)
  
 :::note
@@ -311,7 +311,7 @@ The following settings are also required, depending on the container type:
 	- `container_access_id`: Username
 	- `container_access_token`: Password/token
 
--->
+
 
 #### Container scan settings
 
@@ -329,3 +329,4 @@ import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+-->

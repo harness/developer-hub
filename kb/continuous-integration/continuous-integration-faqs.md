@@ -160,7 +160,7 @@ If the delegate is connected but your AWS VM builds are failing, check the follo
 
 1. Make sure your the AMIs, specified in `pool.yml`, are still available.
    * Amazon reprovisions their AMIs every two months.
-   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
+   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2022 Base with Containers` and update `ami` in `pool.yml`.
 2. Confirm your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) and security group settings in `runner/pool.yml`.
 
 ### Use internal or custom AMIs with self-managed AWS VM build infrastructure
@@ -431,7 +431,7 @@ To help identify pods that aren't cleaned up after a build, pod deletion logs in
 
 ### Can I mount internal CA certs on the CI build pod?
 
-Yes. With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+Yes. To do this with a Kubernetes cluster build infrastructure, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 ### Can I use self-signed certs with local runner build infrastructure?
 
@@ -952,9 +952,19 @@ This can occur if an expression or variable is called before it's value is resol
 
 In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved).
 
-For example, assume you have a step (named, for example, `my-cool-step`) that uses an expression to referencing the output variable of a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies). If `my-cool-step` runs before the repeat loop completes, then the expression's value isn't resolved and therefore it isn't available when `my-cool-step` calls that value.
+For example, assume you have a step (named, for example, `my-cool-step`) that uses an expression to reference the output variable of a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies). If `my-cool-step` runs before the repeat loop completes, then the expression's value isn't resolved and therefore it isn't available when `my-cool-step` calls that value.
 
-Similarly, when using step group templates with Harness CI and Kubernetes cluster build infrastructure, Harness can resolve only stage variables and pipeline variables during initialization. Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod. In this case, if you encounter the `null value` error and you are using step variables, try configuring these as stage or pipeline variables instead. Also make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#stage-level-and-pipeline-level-expressions) if you change them from step variables to stage/pipeline variables.
+Depending on how your expression/variable's value is generated, you need to either rearrange the flow of steps in your stage/pipeline or determine how you can provide the value earlier (such as by declaring it in a pipeline variable or stage variable).
+
+**With a Kubernetes cluster build infrastructure, all step-level variables must be resolved upfront during pod creation.** Therefore, steps referencing output variable from prior steps in the same stage resolve as null, regardless of how the steps are arranged in your stage. To avoid this, generate the output variables in a prior *stage* and then use an expression referencing the value from the prior stage, for example:
+
+```
+<+pipeline.stages.PRIOR_STAGE.spec.execution.steps.PRIOR_STAGE_STEP.output.outputVariables.SOME_VAR>
+```
+
+Similarly, **when using step group templates with a Kubernetes cluster build infrastructure, Harness can resolve only *stage* variables and *pipeline* variables during initialization.** Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod, and step/step group variables are not. In this case, if you encounter the `null value` error and you are using step-level variables, try configuring these as stage or pipeline variables instead.
+
+Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#stage-level-and-pipeline-level-expressions) if you change them from step variables to stage/pipeline variables.
 
 ### Initialize step occasionally times out at 8 minutes
 
@@ -1048,21 +1058,9 @@ Typically, this is configured within your Maven settings.xml file to publish art
 
 However, if you're not publishing directly via Maven, you can push directly using the AWS CLI or cURL, as explained in the AWS documentation on [Publishing with curl](https://docs.aws.amazon.com/codeartifact/latest/ug/maven-curl.html).
 
-### How do I enable the Gradle daemon in builds?
+### Gradle build, daemon, OOM, and other Gradle issues
 
-To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
-
-Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance).
-
-### Out of memory errors with Gradle
-
-If a Gradle build experiences out of memory errors, add the following to your `gradle.properties` file:
-
-```
--XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
-```
-
-Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+For Gradle build or daemon issues, go to the Knowledge Base article on [Gradle build and daemon issues](./articles/gradle-daemon).
 
 ### Can I push without building?
 
@@ -1688,7 +1686,7 @@ Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.har
 
 ### Can I configure service dependencies in Gradle builds?
 
-Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
+Yes. For details, go to the Knowledge Base article on [Gradle build and daemon issues](./articles/gradle-daemon).
 
 ### What happens if I don't provide the Fully Qualified Name (FQN) for an image in a private repo?
 

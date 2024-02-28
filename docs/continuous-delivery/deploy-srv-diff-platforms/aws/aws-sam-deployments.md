@@ -32,6 +32,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - Harness supports Go templating with SAM templates and values.yaml files.
 - Currently, you cannot add artifacts to your Harness SAM service.
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
+- Harness doesn't support a controlled AWS SAM Rollback after a deployment pipeline failure occurs. AWS SAM will deploy the lambda function and if it fails during stack creation, cloudformation will roll it back. After a succesful AWS SAM deployment, Harness is not able to initiate a rollback, due to the AWS SAM cli's limitation to trigger rollback on demand.
 
 ## Demo Video
 
@@ -142,8 +143,8 @@ To add your template, do the following:
    1. **Manifest Identifier** Enter a name that identifies this Serverless manifest.
    2. **Region** Select the AWS region to use for the connection.
    3. **Bucket Name** Enter the AWS S3 bucket name.
-   4. **File/Folder Path** Enter the path from the root of the bucket to the serverless.yml file
-11. Select **Submit**
+   4. **File/Folder Path** Enter the path from the root of the bucket to the `serverless.yml` file.
+11. Select **Submit**.
 
 :::info
    For an AWS S3 provider, the file path can be a `.zip` file. Harness will automatically decompress the file when it is pulled from the bucket. 
