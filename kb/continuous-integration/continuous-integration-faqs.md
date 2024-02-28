@@ -178,16 +178,17 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
    * Lite engine logs: `C:\Program Files\lite-engine\log.out`
    * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
 
-### Where does the harness-docker-runner create the hostpath volume directories on mac?
+### Where does the harness-docker-runner create the hostpath volume directories on macOS?
 
-harness-docker-runner will create the host volumes under ```/tmp/harness-*``` on mac
+The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
 
-### Why am i getting the below error when trying to run the build on local build infra?
+### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
 
 ```
 failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
 ```
-This error could occur when there's a mismatch between the OS type configured for the local build infrastructure and the OS type selected in the pipeline infra settings. For instance, if the local infrastructure is configurted on macOS but the pipeline infra specifies Linux, this error may arise
+
+This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
 
 ## Harness Cloud
 
@@ -875,9 +876,9 @@ Also, [SCM service connection failures can occur when using self-signed certific
 
 You can add a Run step to the beginning of your Build stage that runs `ls -ltr`. This returns all content cloned by the Clone Codebase step.
 
-### Why is the codebase connector config is not getting saved?
+### Why is the codebase connector config not saved?
 
-The codebase connector could fail to save if none of the CI stage within the pipeline doesn't have the clone option enabled
+Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
 
 ## SCM status updates and PR checks
 
@@ -1190,9 +1191,9 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
 
-### What is the defaut build context when using the Harness native build and push step? 
+### What is the default build context when using Build and Push steps?
 
-The default build context is current directory which is ```/harness```
+The default build context is the stage workspace directory, which is `/harness`.
 
 ## Upload artifacts
 
@@ -1903,9 +1904,9 @@ Queued license limit reached means that your account has reached the maximum bui
 
 If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
 
-### Can we use Harness queue intelligence with kuberneted build infra?
+### Can I use Harness Queue Intelligence with Kubernetes cluster build infra?
 
-Queue intelligence is currently only supported when the builds running on Harness cloud
+Queue intelligence is currently supported for Harness Cloud only.
 
 ### What is the timeout limit for a CI pipeline?
 
@@ -1915,9 +1916,9 @@ For pipelines, the default timeout limit is, generally, the product of the stage
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
 
-### Can we add an approval step in CI stage?
+### Can I add an Approval step to a CI stage?
 
-Currently approval step can not be added in a CI stage
+Currently, Approval steps aren't compatible with CI stages.
 
 ## General issues with connectors, secrets, delegates, and other Platform components
 
