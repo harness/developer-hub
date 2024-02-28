@@ -6,7 +6,7 @@ sidebar_position: 4
 
 This topic describes how to update ServiceNow tickets in CD Stages.
 
-Harness provides the ability to update [ServiceNow change requests](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/change-management/concept/c_ITILChangeManagement.html) and [incident tickets](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/incident-management/concept/c_IncidentManagement.html) from your Pipeline step using the **ServiceNow Update** step.
+Harness provides the ability to update [ServiceNow change requests](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/change-management/concept/c_ITILChangeManagement.html), [incident tickets](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/incident-management/concept/c_IncidentManagement.html), [change tasks](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/change-management/concept/change-types.html), and [problem type](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/problem-management/concept/c_ProblemManagement.html) from your Pipeline step using the **ServiceNow Update** step.
 
 You can add the ServiceNow Update step to a Harness CD stage or an Approval stage and do the following:
 
@@ -29,7 +29,7 @@ You can add the ServiceNow Update step to a Harness CD stage or an Approval stag
 
 ### Required ServiceNow integration app for Harness templates
 
-The Integration for Harness Software Delivery Platform app is required to update ServiceNow tickets using Harness templates. You can install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the  [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
+The Integration for Harness Software Delivery Platform app is required to update ServiceNow tickets using Harness templates. You can install the latest version of the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the  [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
 For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
 
