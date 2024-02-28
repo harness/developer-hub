@@ -33,19 +33,19 @@ The table below elaborates on the regulatory requirements required for advanced 
 | Who        | Users who are subjected to the above conditions                                                | Harness DB or Identity store      | Selective application of conditions to users (for example, contractors, other team members) |
 | When       | The time window in which chaos is allowed to be executed                                       | User Input or Harness DB          | Minimize windows for disruptive activity, upon approval/authorization                       |
 
-With ChaosGuard, each experiment run consists of a security step wherein one or more [rules](./chaosguard-concepts#2-rule) are evaluated before execution. Each rule consists of one or more [conditions](./chaosguard-concepts#1-condition) describing the constraints specified in the table above. The experiment is allowed to proceed only upon a successful evaluation of all the rules. 
+With ChaosGuard, each experiment run consists of a security step wherein one or more [rules](./chaosguard-concepts#2-rule) are evaluated before execution. Each rule consists of one or more [conditions](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts#1-condition) describing the constraints specified in the table above. The experiment is allowed to proceed only upon a successful evaluation of all the rules. 
 
 ## RBAC at different levels
 
 Harness allows users to exercise fine-grained control, which is sufficient for environments that are local to a team or group. You can perform the following operations: 
 
-1. View/Add (by connecting to the relevant Git repo)/Edit (the access information, refresh durations, etc.)/Delete the **chaos artefact sources** ([ChaosHub](../chaos-hubs/add-chaos-hub)).
+1. View/Add (by connecting to the relevant Git repo)/Edit (the access information, refresh durations, etc.)/Delete the **chaos artefact sources** ([ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub.md)).
 
-2. View/Add (by installing the chaos agent)/Edit/Delete the target infrastructure, where the chaos experiments are carried out ([Chaos infrastructure](../../chaos-infrastructure/connect-chaos-infrastructures)).
+2. View/Add (by installing the chaos agent)/Edit/Delete the target infrastructure, where the chaos experiments are carried out ([Chaos infrastructure](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures.md)).
 
-3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](../experiments/construct-and-run-custom-chaos-experiments)).
+3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md)).
 
-4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](../gameday/run-gameday). 
+4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday.md). 
 
 ![fine-grain control](./static/introduction-to-chaosguard/fine-grain-control.png)
 
@@ -55,5 +55,5 @@ The Harness project admin persona can create a custom role by selecting the desi
 
 ## Next steps
 
-* [ChaosGuard concepts](./chaosguard-concepts)
-* [Configuring ChaosGuard](./configuring-chaosguard)
+* [ChaosGuard concepts](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts.md)
+* [Configuring ChaosGuard](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/configuring-chaosguard.md)

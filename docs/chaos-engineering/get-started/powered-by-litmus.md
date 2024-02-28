@@ -29,12 +29,12 @@ Following are the common features between Litmus and Harness Chaos Engineering:
 
 Harness CE module has the following additional capabilities:
 
-1. [Kubelet density chaos fault](../technical-reference/chaos-faults/kube-resilience/kubelet-density)
-2. [VMware chaos faults](../technical-reference/chaos-faults/vmware/)
-3. [AWS chaos faults](../technical-reference/chaos-faults/aws/)
-4. [GCP chaos faults](../technical-reference/chaos-faults/gcp/)
-5. [Azure chaos faults](../technical-reference/chaos-faults/azure/)
-6. [Linux chaos faults](../technical-reference/chaos-faults/linux/)
+1. [Kubelet density chaos fault](/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/kubelet-density)
+2. [VMware chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/vmware/)
+3. [AWS chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/aws/)
+4. [GCP chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/)
+5. [Azure chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/azure/)
+6. [Linux chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/linux/)
 7. Teaming around chaos hubs
 8. Additional resilience probes
 
@@ -42,8 +42,8 @@ Harness CE module has the following additional capabilities:
 
 In addition to the above features, CE integrates with these Harness modules:
 
-- Continuous Delivery (CD). Go to [Use CE with CD](/docs/chaos-engineering/integrations/chaos-cd).
-- Feature Flags (FF). Go to [Use CE with FF](/docs/chaos-engineering/integrations/chaos-ff).
+- Continuous Delivery (CD). Go to [Use CE with CD](/docs/chaos-engineering/integrations/chaos-cd.md).
+- Feature Flags (FF). Go to [Use CE with FF](/docs/chaos-engineering/integrations/chaos-ff.md).
 - Service Reliability Management (SRM). Documentation coming soon.
 
 ## Harness CE versus LitmusChaos
