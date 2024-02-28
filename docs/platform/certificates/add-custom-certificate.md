@@ -1,7 +1,7 @@
 ---
 title: Add a custom certificate to Harness Platform
 description: This topic explains how to add your own signed custom certificate.
-sidebar_position: 
+sidebar_position: 1
 sidebar_label: Add a custom certificate
 ---
 :::info note
@@ -20,25 +20,19 @@ The Custom Certificate Feature offers a robust solution for managing the lifecyc
 
 To integrate a custom certificate, navigate to the **Account Settings**, **Organization Settings**, or **Project Settings** based on the desired scope for the certificate addition.
 
-## Navigation steps
-
-1. Within the chosen settings page, locate and select the **Certificates** option to access the certificate management page. This page displays all existing certificates under the specified scope.
-
-2. Select **New Certificate** to initiate the creation of a new certificate.
-
 ## Create a certificate
 
-To add a new certificate within Harness, follow these comprehensive steps to navigate through the system and input the necessary details:
+To add a new certificate within Harness, follow these steps to navigate through the portal and input the necessary details:
 
-1. Navigate to the preferred settings page (Account Settings, Organization Settings, or Project Settings) based on the scope where you want to add the certificate. Within this page, locate and click on the Certificates option. This action will take you to the certificate management page, where you can view all existing certificates under the selected scope.
+1. Navigate to the preferred settings page (**Account Settings, Organization Settings,** or **Project Settings**) based on the scope where you want to add the certificate. Within this page, locate and click on the **Certificates** option. This action will take you to the certificate management page, where you can view all existing certificates under the selected scope.
 
-2. On the certificate management page, click on New Certificate.
+2. On the certificate management page, click on **New Certificate**.
 
-3. In the Overview Section, enter the certificate's Name, and optionally add Tags and a Description. Ensure all details are accurate and reflective of the certificate's purpose. Once completed, click on Continue to proceed.
+3. In the **Overview** Section, enter the certificate's Name, and optionally add **Tags** and a **Description**. Ensure all details are accurate and reflective of the certificate's purpose. Once completed, click on **Continue** to proceed.
 
-4. Move to the Details Page, where you're required to input the TLS Certificate in the X.509 Format. This section also provides the option to chain multiple certificates, offering enhanced flexibility for certificate management. Ensure that the certificate details are correctly entered and conform to the X.509 standard.
+4. Move to the **Details** Page, where you're required to input the **TLS Certificate** in the **X.509 Format**. This section also provides the option to chain multiple certificates, offering enhanced flexibility for certificate management. Ensure that the certificate details are correctly entered and conform to the **X.509** standard.
 
-5. After entering all necessary details, click on Save to finalize the creation of the certificate. A confirmation notification will then appear, indicating Certificate [certificateName] created successfully, which signifies that the certificate has been successfully created and is now part of your Harness environment.
+5. After entering all necessary details, click on Save to finalize the creation of the certificate. A confirmation notification will then appear, indicating **Certificate [certificateName] created successfully**, which signifies that the certificate has been successfully created and is now part of your Harness environment.
 
    ![](./static/TLSCertFormat.png)
 
