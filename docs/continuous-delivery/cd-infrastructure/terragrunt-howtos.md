@@ -35,7 +35,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
 - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
-- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
 - [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
@@ -61,9 +61,9 @@ For details on configuring the Terragrunt steps, go to [Terragrunt steps](#terra
 
 ## Important: Install Terraform and Terragrunt on delegates
 
-Terraform and Terragrunt must be installed on the Harness delegates used for deployment. You can install Terraform and Terragrunt manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
+Terraform and Terragrunt must be installed on the Harness Delegates used for deployment. You can install Terraform and Terragrunt manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+For steps on using the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 Here's an example of the installation script to install Terraform and Terragrunt:
 
@@ -94,7 +94,7 @@ For the Terraform versions supported by Terragrunt, go to [Terraform Version Com
 
 ### Permissions
 
-The Harness delegate requires permissions according to the deployment platform and the operations of the Terragrunt and Terraform scripts.
+The Harness Delegate requires permissions according to the deployment platform and the operations of the Terragrunt and Terraform scripts.
 
 In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](/docs/first-gen/firstgen-platform/security/secrets-management/secret-management). You can then select them in the Terragrunt Provisioner step.
 
@@ -204,7 +204,7 @@ In contrast, key management services like Google Cloud KMS or AWS KMS do not hav
 
 When designing your secret management strategy and selecting a secret management solution, consider the maximum secret size limit and other limitations that may affect your use case. You may need to choose a secret manager that can handle larger secret sizes or find alternative strategies for managing secrets that exceed the maximum size limit of your chosen secret manager.
 
-When the `terragrunt plan` command runs on the Harness delegate, the delegate encrypts the plan and saves it to the secrets manager you selected. The encrypted data is passed to the Harness Manager.
+When the `terragrunt plan` command runs on the Harness Delegate, the delegate encrypts the plan and saves it to the secrets manager you selected. The encrypted data is passed to the Harness Manager.
 
 When the plan is applied, the Harness manager passes the encrypted data to the delegate.
 
@@ -629,7 +629,7 @@ count_of_null_resources = "7"
 file_message = "testing tvar"
 ```
 
-You can Harness [variable](/docs/platform/Variables-and-Expressions/harness-variables) and [secret](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
+You can Harness [variable](/docs/platform/variables-and-expressions/harness-variables) and [secret](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
 
 
 ### Backend Configuration
@@ -753,6 +753,15 @@ For example, if you had a Terragrunt Plan step with the Id `Plan_Step`, you coul
 ```
 cat "<+execution.steps.Plan_Step.plan.jsonFilePath>"
 ```
+JSON representation of Terraform plan can be accessed across different stages as well.
+
+For example, if the Terragrunt Plan step with the Id `TgPlan` is in the **Execution** steps of a stage with the Id `TgStage`, then the expression is like this:
+
+`<+pipeline.stages.TgStage.spec.execution.steps.TgPlan.plan.jsonFilePath>`
+
+When Terragrunt plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
 
 ##### Scope of expression
 

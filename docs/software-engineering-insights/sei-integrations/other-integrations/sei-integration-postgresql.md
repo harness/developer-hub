@@ -15,17 +15,13 @@ This SEI integration is under development. It provides limited integration suppo
 
 :::
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **Integrations** under **Data Settings**.

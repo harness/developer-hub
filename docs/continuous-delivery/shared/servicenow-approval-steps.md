@@ -65,7 +65,21 @@ The **Approval Criteria** in the step determines if the Pipeline or stage is a
 
 Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to `True` for the step to be successful.
 
-In **Conditions**, you can use the ServiceNow ticket related fields to define approval criteria.
+In **Conditions**, you can use the ServiceNow ticket related fields to define approval criteria. Four supported operators are `=`, `!=`, `in`, and `not in`. 
+For example, 
+- The condition for the `State` field to be in `Resolved`, `Closed`, or `Cancelled` can be specified as:
+   ![](./static/service-now-approvals-08.png)
+- The condition for the `State` field to not be in either `New`, `In Progress`, or `On Hold` can be specified as:
+   ![](./static/service-now-approvals-09.png)
+- The condition for the `State` field to be in `Resolved`, `Closed`, or `Cancelled` without fixed `Ticket Type` can be specified as:
+   ![](./static/service-now-approvals-10.png)
+
+:::important
+
+Multiple conditions with the same Jira field are not allowed. Such use cases can be solved using `in`, `not in` operators, or **JEXL Expression**.
+
+:::   
+
 
 In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). You can use a JEXL expression if the field is set to **Fixed value** or **Expression**.
 
@@ -118,6 +132,10 @@ For details, go to **Custom table support** in [Create ServiceNow tickets in CD 
 ## Approval variables
 
 After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
+
+### Notes
+
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations).
 
 ## See also
 

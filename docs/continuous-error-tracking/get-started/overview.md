@@ -7,9 +7,6 @@ redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-overview
 ---
 
-# Continuous Error Tracking overview
-
-
 Harness Continuous Error Tracking (CET) is a developer first observability solution that enables developers to identify, triage, and resolve errors in applications. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
 
 With the increase in release velocity, the risk to code quality also increases. Using Harness Error Tracking, as a developer, you can:
@@ -24,12 +21,10 @@ CET consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM
 
 ![Harness Error Tracking](./static/et-quickstart-overview-diagram.png)
 
-
 ## Further reading
 
-- [Tutorials](/tutorials/error-tracking)
-- [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies/#service-reliability-management)
-
+- [Demo - Find and fix Java exceptions](./java-error-tracking.md)
+- [Supported platforms and technologies](../whats-supported.md)
 
 ## Next steps
 

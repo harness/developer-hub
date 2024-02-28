@@ -94,6 +94,56 @@ When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retr
 
 ![A diagram of the Relay Proxy V2 Architecture in Single Proxy Mode. ](./images/relay_proxy_v2_single_proxy.png)
 
+## Configuration
+
+### Required Configuration
+
+The below configuration options are required in order for the Primary & Replica Proxy to start up
+
+#### Primary
+
+| Environment Variable | Example                              | Description                                                                                                                                                                                                                                                              | Default Value |
+|----------------------|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| PROXY_KEY            | d8ba3e2f-3993-4ae1-9bc9-014f5ec68273 | The ProxyKey you want to configure your Proxy to use                                                                                                                                                                                                                     | ""            |
+| REDIS_ADDRESS        | localhost:6379                       | The host and port of the redis server you want your Proxy to connect to                                                                                                                                                                                                  | ""            |
+| READ_REPLICA         | false                                | Determines if the Proxy runs as a read replica or a Primary                                                                                                                                                                                                              | false         |
+| AUTH_SECRET          | someRandomlyGeneratedSecretYouKeep   | Used by the Proxy to sign the JWT tokens it creates and returns to SDKs when they authenticate with the Proxy. The Proxy then checks that the token provided in any subsequent reqeusts by SDKs has been signed with this secret to ensure auth tokens can't be spoofed. | ""            |
+
+#### Replica
+
+| Environment Variable | Example                            | Description                                                                                                                                                                                                                                                              | Default Value |
+|----------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| REDIS_ADDRESS        | localhost:6379                     | The host and port of the redis server you want your Proxy to connect to                                                                                                                                                                                                  | ""            |
+| READ_REPLICA         | true                               | Determines if the Proxy runs as a read replica or a Primary                                                                                                                                                                                                              | false         |
+| AUTH_SECRET          | someRandomlyGeneratedSecretYouKeep | Used by the Proxy to sign the JWT tokens it creates and returns to SDKs when they authenticate with the Proxy. The Proxy then checks that the token provided in any subsequent reqeusts by SDKs has been signed with this secret to ensure auth tokens can't be spoofed. | ""            |
+
+### Full Breakdown of Configuration Options
+
+The below table outlines all of the configuration options that are available for the Proixy. However in 99% of cases the only configuration options that users need to worry about are the required ones listed above.
+
+| Environment Variable   | Example                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Default Value                          |
+|------------------------|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| PROXY_KEY              | d8ba3e2f-3993-4ae1-9bc9-014f5ec68273 | The ProxyKey you want to configure your Proxy to use                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | ""                                     |
+| CLIENT_SERVICE         | `https://config.ff.harness.io/api/1.0` | The url of the FF Client Service running in Harness Saas that the Proxy commuincates with to fetch configuration data                                                                                                                                                                                                                                                                                                                                                                                                                             | `"https://config.ff.harness.io/api/1.0"` |
+| METRIC_SERVICE         | `https://events.ff.harness.io/api/1.0` | The url of the FF Metric Service running in Harness Saas that the Proxy forwards SDK metric data onto                                                                                                                                                                                                                                                                                                                                                                                                                                             | `"https://events.ff.harness.io/api/1.0"` |
+| AUTH_SECRET            | someRandomlyGeneratedSecretYouKeep   | Used by the Proxy to sign the JWT tokens it creates and returns to SDKs when they authenticate with the Proxy. The Proxy then checks that the token provided in any subsequent reqeusts by SDKs has been signed with this secret to ensure auth tokens can't be spoofed.                                                                                                                                                                                                                                                                          | "secret"                               |
+| METRIC_POST_DURATION   | 60                                   | Controls how frequently in seconds the Primary Proxy posts metrics to Harness. Setting this to 0 will disable metrics forwarding from the Proxy to Saas and the absolute minimum that it can be set to is 60 seconds. It's also worth knowing that the Primary forwards metrics on to Harness Saas whenever 60 seconds has elapsed OR it has received 1MB worth of data. So if there's a high volume of metrics data going through your Proxy you may see metrics requests forwarded to Harness Saas more frequently than the value you set here. | 60                                     |
+| HEARTBEAT_INTERVAL     | 60                                   | How often in seconds the proxy pings its health function. Set to 0 to disable                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | 60                                     |
+| READ_REPLICA           | true                                 | Determines if the Proxy runs as a read replica or a Primary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | ""                                     |
+| REDIS_ADDRESS          | localhost:6379                       | The host and port of the redis server you want your Proxy to connect to                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | ""                                     |
+| REDIS_PASSWORD         | foobar                               | Sets the password used to connect to your redis server. This is only required if password auth is enforced by your redis server.                                                                                                                                                                                                                                                                                                                                                                                                                  | ""                                     |
+| REDIS_DB               | 0                                    | Database to be selected after connecting to the server. This is only required if you aren't using the default redis database.                                                                                                                                                                                                                                                                                                                                                                                                                     | 0                                      |
+| PORT                   | 8000                                 | Port that the Proxy http server runs on inside the Relay Proxy container. This should only be changed for specific local dev purposes. The Pushpin Proxy that runs inside the Relay Proxy container expects the Proxy HTTP server to be available on port 8000. If you change this in a Production environment it is likely that SDK traffic won't be able to reach your Proxy.                                                                                                                                                                   | 8000                                   |
+| TLS_ENABLED            | false                                | If true the proxy will use the tlsCert and tlsKey to run with https enabled                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | false                                  |
+| TLS_CERT               | ./certfile                           | Path to tls cert file. Required if tls enabled is true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | ""                                     |
+| TLS_KEY                | ./keyfile                            | Path to tls key file. Required if tls enabled is true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | ""                                     |
+| BYPASS_AUTH            | false                                | Contorls whether or not authentication is enforced on the Proxy's endpoints. This is ONLY used for local dev purposes to aid debugging, never set this to true in Production environments                                                                                                                                                                                                                                                                                                                                                         | false                                  |
+| LOG_LEVEL              | INFO                                 | Contorls the logging level, valid options are INFO, DEBUG & ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | INFO                                   |
+| GCP_PROFILER_ENABLED   | false                                | Enables the GCP Cloud Profiler. If you're using the Profiler in GCP to monitor your applications CPU & Memory usage then setting this to true will mean the Proxy will appear there along side your other applications. If you aren't using the GCP Profiler then you can ignore this setting.                                                                                                                                                                                                                                                    | false                                  |
+| PPROF                  | false                                | Enables the golang profiler on port 6060. This is also only used for local development and we don't recommend enabling this in your production envrionments                                                                                                                                                                                                                                                                                                                                                                                       | false                                  |
+| METRICS_STREAM_MAX_LEN | 1000                                 | Sets the max length of the redis stream that replicas use to send metrics to the Primary                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 1000                                   |
+
+
 # The Proxy Key V2
 
 ## Creating A Proxy Key
@@ -128,12 +178,6 @@ If you just want to rotate your Proxy Key as a part of security practices then y
 The user will be able to easily rotate the key by making request to the Admin API. 
 
 A new key will be given and the old key will be rendered invalid. All auth tokens will also be invalidated.
-
-### Monitoring the Proxy
-
-To monitor the Proxy, here is an example that users can run locally. It will bring up a Primary Proxy, Read Replica, Prometheus and Grafana using Docker. They can, then, log in to Grafana and view the Harness FF Proxy Dashboard. 
-
-You can find this resource to monitor the Proxy over in the [Harness Feature Flags Proxy Repo on GitHub](https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoring) on GitHub.
 
 ### Startup Sequence
 
@@ -172,9 +216,9 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | **Basic Startup** |
 | Methods      | Link | Purpose |
 | ----------- | ----------- | ----------- |
-| GET      | https://config.ff.harness.io/api/1.0/stream | Authenticates the Proxy Key. | 
-| GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the configuration associated with the Proxy Key. |
-| POST   | https://config.ff.harness.io/api/1.0/proxy/auth | Opens a stream with Harness SaaS to listen for changes. |
+| GET      | `https://config.ff.harness.io/api/1.0/stream` | Authenticates the Proxy Key. | 
+| GET   | `https://config.ff.harness.io/api/1.0/proxy/config` | Retrieves the configuration associated with the Proxy Key. |
+| POST   | `https://config.ff.harness.io/api/1.0/proxy/auth` | Opens a stream with Harness SaaS to listen for changes. |
 
 <br>
 </br>
@@ -182,14 +226,71 @@ Below, you will find the endpoints requested by the Primary Relay Proxy when it 
 | **Periodic Requests** |
 | Methods      | Link | Purpose |
 | ----------- | ----------- | ----------- |
-| GET      | https://config.ff.harness.io/api/1.0/client/env/envID/feature-configs | Retrieves the feature config changes that happen in Harness SaaS. | 
-| GET      | https://config.ff.harness.io/api/1.0/client/env/envID/target-segments | Retrieves the target group changes that happen in Harness SaaS. | 
-| GET      | https://config.ff.harness.io/api/1.0/proxy/config?environment=envID | Retrieves the environment specific changes that happen in Harness SaaS e.g. a new environment was associated with the Proxy Key. | 
-| GET   | https://config.ff.harness.io/api/1.0/proxy/config | Retrieves the latest config associated with the Proxy Key. This request is made periodically if the stream between the Primary Proxy and Harness SaaS goes down to make sure the Proxy doesn’t get out of sync.  |
-| POST   | https://config.ff.harness.io/api/1.0/metrics/envID | Forwards metrics from the SDKs on to the Harness SaaS. |
+| GET      | `https://config.ff.harness.io/api/1.0/client/env/envID/feature-configs` | Retrieves the feature config changes that happen in Harness SaaS. | 
+| GET      | `https://config.ff.harness.io/api/1.0/client/env/envID/target-segments` | Retrieves the target group changes that happen in Harness SaaS. | 
+| GET      | `https://config.ff.harness.io/api/1.0/proxy/config?environment=envID` | Retrieves the environment specific changes that happen in Harness SaaS e.g. a new environment was associated with the Proxy Key. | 
+| GET   | `https://config.ff.harness.io/api/1.0/proxy/config` | Retrieves the latest config associated with the Proxy Key. This request is made periodically if the stream between the Primary Proxy and Harness SaaS goes down to make sure the Proxy doesn't get out of sync.  |
+| POST   | `https://config.ff.harness.io/api/1.0/metrics/envID` | Forwards metrics from the SDKs on to the Harness SaaS. |
 
 <br>
 </br>
+
+
+## Monitoring the Proxy
+
+The proxy uses Prometheus for recording metrics that can be used to understand how the proxy is behaving and performing. You can view and scrape these metrics by hitting the proxy's /metrics endpoint. For example, if you're running the proxy locally on port 7000, you can view the metrics it exposes by making the following request:
+
+`$ curl localhost:7000/metrics`
+
+### Examples
+
+There's an example [grafana dashboard](https://grafana.com/grafana/dashboards/20091-harness-ff-proxy/) built using the Prometheus metrics the Proxy exposes that you can import into your grafana instance.
+
+There's also a [getting started example](https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoring) that runs the Proxy in HA mode with Prometheus and Grafana setup.
+
+### Example Prometheus Configuration
+
+Below is an example prometheus configuration that can be used to scrape metrics from the proxy.
+
+```
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['localhost:7000']
+```
+
+### Metrics Exposed
+
+Here is a breakdown of all the prometheus metrics exposed by the Proxy.
+
+| **Name**                                                    | **Type**  | **Labels**                                                                                                                                                                                        | **Description**                                                                                              |
+|-------------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| ff_proxy_http_requests_total                                | counter   | code: The HTTP response code<br></br>envID: The environmentID<br></br>method: The HTTP method used for the request<br></br>url: The requests URL                                                     | Records the number of requests to an endpoint                                                                |
+| ff_proxy_http_requests_duration                             | histogram | envID: The environmentID<br></br>url: The requests URL                                                                                                                                             | Records the request duration for an endpoint                                                                 |
+| ff_http_requests_content_length_histogram                   | histogram | envID: The environmentID<br></br>url: The requests URL                                                                                                                                             | Records the value of the Content-Length header for an HTTP request                                           |
+| ff_proxy_metrics_forwarded                                  | counter   | envID: The environmentID<br></br>error: Indicates if an error occurred during forwarding                                                                                                           | Tracks the number of metrics forwarded from the proxy to SaaS Feature Flags                                  |
+| ff_proxy_sdk_usage                                          | counter   | envID: The environment ID<br></br>sdk_language: The programming language of the SDK<br></br>sdk_type: The type of the SDK (e.g., server, client, mobile)<br></br>sdk_version: The version of the SDK | Tracks what SDKs are using the FF proxy                                                                      |
+| ff_proxy_to_client_service_requests                         | counter   | url: The URL the request is being made to<br></br>envID: The environmentID<br></br>code: The status code returned by Harness Saas                                                                  | Tracks what requests the Primary Proxy makes to Harness Saas                                                 |
+| ff_proxy_to_ff_client_service_requests_duration             | histogram | url: The URL the request is being made to<br></br>envID: The environmentID                                                                                                                         | Tracks the request duration for http requests made from the Proxy to Harness Saas                            |
+| ff_proxy_saas_to_primary_sse_consumer_messages_received     | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that the Primary Proxy has recevied from Harness Saas                        |
+| ff_proxy_primary_to_replica_sse_producer_messages_published | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that have been forwarded from the Primary Proxy to Replica Proxy's           |
+| ff_proxy_primary_metrics_stream_consumer_messages_received  | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of metrics requests the Primary has received from Replica Proxy's                          |
+| ff_proxy_replica_sse_consumer_messages_received             | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that Replicas have received from the Primary Proxy                           |
+| ff_proxy_replica_to_sdk_sse_producer_messages_published     | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of SSE events that Replicas have forwarded on to SDKs                                      |
+| ff_proxy_replica_metrics_stream_producer_messages_published | counter   | topic: The name of the stream being subscribed to<br></br>error: Indicates if an error occurred consuming or publishing events to the stream                                                       | Tracks the number of metrics requests that have been forwarded from Replicas to the Primary                  |
+| ff_proxy_redis_cache_write_count                            | counter   | error: Indicates whether an error occurred during the write operation<br></br>key: The cache key                                                                                               | Tracks how many writes are made to the cache                                                                 |
+| ff_proxy_redis_cache_remove_count                           | counter   | key: The cache key                                                                                                                                                                            | Tracks how many deletes are made to the cache                                                                |
+| ff_proxy_redis_cache_delete_duration                        | histogram | N/A                                                                                                                                                                                               | Tracks how long delete operations to the cache take                                                          |
+| ff_proxy_redis_cache_write_duration                         | histogram | N/A                                                                                                                                                                                               | Tracks how long write operations to the cache take                                                           |
+| ff_proxy_memoize_cache_hit                                  | counter   | N/A                                                                                                                                                                                               | Tracks the number of hits on lookups in the Proxy's memoize cache.                                           |
+| ff_proxy_memoize_cache_miss                                 | counter   | N/A                                                                                                                                                                                               | Tracks the number of misses on lookups in the Proxy's memoize cache.                                         |
+| ff_proxy_memoize_cache_write_marshal                        | counter   | N/A                                                                                                                                                                                               | Tracks the number of writes to the memoize cache                                                             |
+| ff_proxy_memoize_cache_hit_with_unmarshal                   | counter   | N/A                                                                                                                                                                                               | Tracks the number of hits in the memoize cache where we had to perform an unmarshal over returning raw bytes |
 
 ## Account Stream
 
@@ -272,7 +373,6 @@ Relay Proxy V2 was developed to fix some of the limitations that came with Relay
  - No real HA ability
  -- With Proxy V2 we’ve made it possible to. configure Proxy’s to run specifically as read replicas or a Primary that communicates with Harness SaaS. This was something that isn’t available with Proxy V1 and if you want to run multiple Proxy’s in V1 they all run as Primary’s.
 
-
 ## Why use the Relay Proxy?
 
 In the following cases, you might want to set up Relay Proxy:
@@ -283,11 +383,6 @@ In the following cases, you might want to set up Relay Proxy:
 
 If you decide to use the Relay Proxy, make sure it has a good place in your network design. For your app to run, it needs to be able to contact the Relay Proxy, and the architecture differs depending on the type of app. For example, if you want to link the Relay Proxy to any client-side apps, don't put it inside a firewall.
 
-### Are there any constraints to the Relay Proxy V2?  
+## Are there any constraints to the Relay Proxy V2?
 
 At this current time and due to the way Harness implements the authentication tokens, users have a limit of 1000 environments per key. 
-
-### Related Content
-
-<!-- Adding related content about Relay Proxy V1 and V2 that may be relevant to this -->
-

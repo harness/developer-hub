@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
 
 ### How to add and manage a custom chaos hub?
 
@@ -18,13 +18,13 @@ You can navigate to chaos hubs in the chaos module and select `+ New ChaosHub`, 
 
 ### How do I connect to a private chaos hub?
 
-To connect to a private chaos hub repository, connect to a Harness GitHub connector through a Harness delegate, or GitHub directly by providing your GitHub SSH key or Personal Access Token (PAT). Once this is done, you can select the connector when adding a chaos hub.
+To connect to a private chaos hub repository, connect to a Harness GitHub connector through a Harness Delegate, or GitHub directly by providing your GitHub SSH key or Personal Access Token (PAT). Once this is done, you can select the connector when adding a chaos hub.
 
 ### How are faults different from experiments?
 
 Faults refer to the failures that are injected into the target resource as part of an experiment. Whereas a chaos experiment is a set of different faults coupled together to achieve a desired chaos impact.
 
-### What are the possible reasons I can’t see tunables in **Tune Fault** UI?
+### What are the possible reasons I can’t see tunables in Tune Fault UI?
 
 Since the tuning of a chaos experiment is highly declarative, sometimes it may cause parsing issues, these may be the possible reasons:
 
@@ -74,7 +74,7 @@ The chaos infrastructure setup involves the creation of CRDs and RBAC resources.
 
 It is recommended that you **don't** run multiple cluster-scoped chaos infrastructures on the same cluster since this would result in the chaos infrastructures overwriting each other's cluster-level resources.
 
-## Chaos infrastructure is inactive, how to execute my experiment?
+### Chaos infrastructure is inactive, how to execute my experiment?
 
 A chaos infrastructure could be inactive due to a variety of reasons. When you try to execute an experiment but the chaos infrastructure is inactive, you can switch over to a different infrastructure that is active (represented with a green circle at the right side of the infrastructure name) and execute your experiment or create a new chaos infrastructure (provided you have the necessary privileges to create one) and execute your experiment on it.
 
@@ -116,3 +116,29 @@ Harness provides an audit log to the account admin where user actions on the cha
 ### Can Harness perform security chaos tests in the users’ environments?
 
 Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the correct rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen/).
+
+### How can I avoid image override in the manifest?
+
+When you edit an experiment that has multiple repositories, a pop up asks if you want to override the images or not. Select **NO** to avoid overriding the image repository in the manifest.
+
+### Where can I find my chaos experiment report?
+
+* To find details about your chaos experiment such as resilience score, total runs, infrastructure used, schedule details, probe details, run history, and so on, navigate to your experiment. Click **View report**.
+
+![report 3](./static/hce-report-3.png)
+
+* Below is a sample screen of probe details in the report.
+
+![report 4](./static/hce-report-4.png)
+
+* To view the details of a **specific chaos step**, click the chaos step.
+
+![report 1](./static/hce-report-1.png)
+
+* Click **v** arrow and click **View probe details**.
+![report 2](./static/hce-report-2.png)
+
+:::tip
+* You can download the choas experiment report.
+* The probe result summary can be seen in the experiment logs too.
+:::

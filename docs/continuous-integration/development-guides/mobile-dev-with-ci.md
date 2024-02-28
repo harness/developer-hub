@@ -7,7 +7,7 @@ redirect_from:
   - /docs/continuous-integration/use-ci/mobile-dev-with-ci
 ---
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 
 Harness CI supports mobile app development.
 

@@ -4,24 +4,6 @@
 
 const sidebars = {
   kb: [
-    // Tutorial Link from KB
-    {
-      type: "link",
-      label: "Tutorials",
-      href: "/tutorials",
-    },
-    // Docs Link from KB
-    {
-      type: "link",
-      label: "Documentation",
-      href: "/docs",
-    },
-    // Cert Link from KB
-    {
-      type: "link",
-      label: "Certifications",
-      href: "/certifications",
-    },
     // KB Parent
     {
       type: "category",
@@ -214,13 +196,6 @@ const sidebars = {
         },
 
       ],
-    },
-
-    // Community Link from KB
-    {
-      type: "link",
-      label: "Community",
-      href: "/community",
     },
   ],
 };

@@ -5,61 +5,72 @@ import CertCard from "./CertCard";
 const Carousel = ({ certs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentDotIndex, setCurrentDotIndex] = useState(0);
-  const [flag, setFlag] = useState(false);
 
-  const handleDotClick = (index, dotindex) => {
+  const handleDotClick = (index, dotIndex) => {
     setCurrentIndex(index);
-    setCurrentDotIndex(dotindex);
-    setFlag(true);
+    setCurrentDotIndex(dotIndex);
   };
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setFlag(false);
-    }, 500);
-
-    return () => {
-      // This cleanup function will clear the timeout if the component unmounts
-      clearTimeout(timeoutId);
-    };
-  }, [flag]);
-
-  useEffect(() => {
-    setCurrentDotIndex(currentIndex / 2);
-  }, [currentIndex]);
 
   const handleNext = () => {
-    if (currentIndex == certs.length - 1) {
+    if (currentDotIndex >= Math.ceil(certs.length / 2) - 1) {
+      setCurrentDotIndex(0);
       setCurrentIndex(0);
-    } else {
-      setCurrentIndex(currentIndex + 2);
+      return;
     }
+    setCurrentIndex((currentIndex + 2) % certs.length);
+    setCurrentDotIndex(currentDotIndex + 1);
+  };
 
-    setFlag(true);
-  };
   const handlePrev = () => {
-    if (currentIndex == 0) {
-      setCurrentIndex(certs.length - 1);
-    } else {
-      setCurrentIndex(currentIndex - 2);
+    if (currentDotIndex === 0) {
+      setCurrentDotIndex(Math.ceil(certs.length / 2) - 1);
+      setCurrentIndex(Math.ceil(certs.length / 2) - 1);
+      return;
     }
-    setFlag(true);
+    setCurrentIndex((currentIndex - 2) % certs.length);
+    setCurrentDotIndex(currentDotIndex - 1);
   };
+
+  //for mobile view
+  const [mobileCurrentIndex, setMobileCurrentIndex] = useState(0);
+
+
+  const handleMobileDotClick = (index, dotIndex) => {
+    setMobileCurrentIndex(index);
+  };
+
+  const handleMobileNext = () => {
+    if (mobileCurrentIndex >= certs.length -1) {
+      setMobileCurrentIndex(0);
+      return;
+    }
+    setMobileCurrentIndex(mobileCurrentIndex + 1);
+  };
+
+  const handleMobilePrev = () => {
+    if (mobileCurrentIndex === 0) {
+      setMobileCurrentIndex(certs.length -1);
+      return;
+    }
+    setMobileCurrentIndex(mobileCurrentIndex - 1);
+  };
+
   return (
     <>
       <div className={styles.carousel}>
         <div
           className={styles.twoCards}
           style={{
-            transform: flag ? `translateX(110%)` : `translateX(0%)`,
+            transform: `translateX(${-currentDotIndex * 102.5}%)`,
           }}
         >
-          {certs.slice(currentIndex, currentIndex + 2).map((cert) => (
+          {certs.map((cert) => (
             <CertCard thumb={true} key={cert.title} {...cert} />
           ))}
         </div>
 
         <div className={styles.indicator}>
-          <i onClick={handlePrev} className=" fa-solid fa-chevron-left"></i>
+          <i onClick={handlePrev} className="fa-solid fa-chevron-left"></i>
           {Array(Math.ceil(certs.length / 2))
             .fill("item")
             .map((_, index) => (
@@ -74,6 +85,42 @@ const Carousel = ({ certs }) => {
               ></div>
             ))}
           <i onClick={handleNext} className="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+      <div className={styles.carouselMobile}>
+        <div
+          className={styles.cards}
+          style={{
+            transform: `translateX(${-mobileCurrentIndex * 101.5}%)`,
+          }}
+        >
+          {certs.map((cert) => (
+            <CertCard thumb={true} key={cert.title} {...cert} />
+          ))}
+        </div>
+
+        <div className={styles.indicator}>
+          <i
+            onClick={handleMobilePrev}
+            className="fa-solid fa-chevron-left"
+          ></i>
+          {Array(Math.ceil(certs.length))
+            .fill("item")
+            .map((_, index) => (
+              <div
+                key={index}
+                className={`${styles.dot}   ${
+                  mobileCurrentIndex === index ? styles.active : ""
+                }`}
+                onClick={() => {
+                  handleMobileDotClick(index, index);
+                }}
+              ></div>
+            ))}
+          <i
+            onClick={handleMobileNext}
+            className="fa-solid fa-chevron-right"
+          ></i>
         </div>
       </div>
     </>

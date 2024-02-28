@@ -1,5 +1,5 @@
 ---
-id: VMware-service-stop
+id: vmware-service-stop
 title: VMware service stop
 ---
 VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
@@ -57,7 +57,7 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
       <tr>
-        <td> SERVICE_NAME </td>
+        <td> SERVICE_NAMES </td>
         <td> Name of the target service. </td>
         <td> For example, <code>nginx</code>. For more information, go to <a href="#service-name"> service name.</a></td>
       </tr>
@@ -95,6 +95,11 @@ stringData:
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

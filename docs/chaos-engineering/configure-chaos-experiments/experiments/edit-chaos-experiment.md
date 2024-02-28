@@ -6,7 +6,7 @@ description: Guide to edit and update chaos expriments
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes two actions:
+You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes three actions:
 1. Editing an experiment
 2. Update old experiment manifests
 3. Bulk updating cron schedules
@@ -26,6 +26,34 @@ On the **Chaos Experiments** page, select the **`⋮`** icon against the name of
 You can either update the changes to the same experiment and save it or create a copy of the experiment and then apply the changes to it.
 
 ![save](./static/edit-experiment/save-after-edit.png)
+
+## Execute experiment with advanced options
+
+You can execute the chaos experiment with advanced security options: **runAsUser** or **runAsGroup**. Both the options allow privileged or restricted access to experiment pods.
+
+1. **runAsUser**: Specifies the user ID used to start all the processes in the experiment pod containers. Default user ID is 1000.
+
+2. **runAsGroup**: Specifies the group ID used to start all the processes in the experiment pod containers. Default group ID is 0.
+
+To select one of the options, 
+
+### Step 1: Navigate to your experiment
+
+* Click **Experiment builder** tab. Click **Advanced Options** on the right side of the screen.
+
+![run as user group](./static/edit-experiment/advanced-1.png)
+
+### Step 2: Select the option and save
+
+* Click **Security** tab and select/unselect one or both the options.
+
+![advanced](./static/edit-experiment/advanced-2.png)
+
+### Step 3: Save the changes
+
+Click **Save**.
+
+![save changes](./static/edit-experiment/save-3.png)
 
 ## Update old experiment manifests
 

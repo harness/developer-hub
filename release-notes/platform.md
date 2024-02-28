@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-01-22:T10:00:30
+date: 2024-02-27:T10:00:30
 sidebar_position: 3
 ---
 
@@ -80,7 +80,203 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## February 2024
+
+### Version 1.26.14<!--  February 27, 2024 -->
+
+#### Fixed issues
+
+- Creating or updating a project with an org identifier absent in the account used to throw error code: 500. (PL-47059, ZD-58093)
+
+   Now, the UI displays the following improved error message if the provided org identifier is absent: `Organisation with identifier "OrgId" does not exist in accountIdentifier: "accountId"`.
+
+- The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595, ZD-57053)
+   
+   The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+   This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronisation.
+
+   This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Pipelines were failing due to errors related to the inability to acquire delegate tasks. (PL-42600, ZD-54025, ZD-54324)
+
+   The logic for calculating CPU and Memory usage has been improved, specifically for scenarios utilizing the dynamic task request handling feature in delegates, enhancing the reliability of task allocation and pipeline execution.
+
+   This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Version 1.25.5 <!--  February 19, 2024 -->
+
+#### New features and enhancements
+
+:::danger Important default delegate YAML update
+
+- Harness has updated the default HPA in the Harness Delegate YAML to use `autoscaling/v2` instead of `autoscaling/v1` which was used in earlier delegate versions.
+
+   With this update, the delegate default scaling metrics are now 70% of CPU and 70% of memory utilization.
+
+   ```yaml
+   
+   ---
+   
+   
+   apiVersion: autoscaling/v2
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: kubernetes-delegate-hpa
+     namespace: harness-delegate-ng
+     labels:
+         harness.io/name: kubernetes-delegate
+   spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: kubernetes-delegate
+    minReplicas: 1
+    maxReplicas: 1
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+   
+   
+   ---
+   
+   ```
+   
+   Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` of your delegate YAML to `autoscaling/v1`.
+
+   For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes).
+
+   
+   This update only affects new delegate installations. Your existing, running delegates are not affected.
+   
+   :::
+
+- Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
+
+  This item is available with Harness Platform version 1.25.5 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Enhanced the `override-delegate-tag` API documentation to include details on `validForDays` and `validTillNextRelease` parameters. Additionally, the default value for `validForDays` has been updated to 180 days, extending from the previous 30 days. For more information, go to [Override delegate image tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) in the API documentation. (PL-46879)
+
+  This item is available with Harness Platform version 1.25.5 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- Errors occurred when creating a connector with an identifier (Account, Organization, or Project Identifier) that did not exist, displaying a generic "something went wrong, please contact Harness Support" message. (PL-46909, ZD-57678)
+
+   The code has been updated to provide accurate error messages and the current status code when the provided identifiers are incorrect or absent, enhancing clarity and user guidance.
+
+- Delegates were restarting in the middle of execution, disrupting ongoing tasks. (PL-46793)
+
+   Implemented a fix to wait for the task response to complete before marking it as expired or failed during the delegate's unregistering process, preventing premature restarts.
+
+   This item is available with Harness Platform version 1.25.5 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- API keys created using the harness_platform_apikey Terraform provider were expiring even when no expiration date was set. (PL-43308)
+
+   You can now view the API key expiration date at the top of the API Key table on the user profile page. Additionally, for API key’s tokens where the expiration was intended to be set as No Expiration, you can see the default expiration date, clarifying the token's validity period.
+
+### Version 1.24.7 <!--  February 12, 2024 -->
+
+#### New features and enhancements
+
+- You can now enable file logging for supported services through override in Harness Self-Managed Enterprise Edition (On-prem) installations. (PL-44211)
+
+   To enable file logging, add the following to your `override.yaml` file in the `global` section:
+
+   ```yaml
+   global:
+       fileLogging:
+           enabled: true
+           logFilename: /opt/harness/logs/pod.log #provide log filename
+           maxFileSize: 50MB #max single file size, for log archiving
+           maxBackupFileCount: 10 #max count of files
+           totalFileSizeCap: 1GB
+
+   ```
+
+- Added support for encrypted assertions in the SAML response. (PL-43353)
+
+- Added support for selecting the environment in the manual credentials option while creating an Azure key vault connector. (PL-46485)
+
+#### Fixed issues
+
+- The authentication mechanism of a secret manager couldn't be changed from a non-password-based to a password-based mechanism due to a bug in the secret manager update API. (PL-46657)
+
+   This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password-based mechanism.
+
+- Git connectors worked intermittently and failed with a `Please provide valid git repository url Provided repo url is invalid. Invalid request: Couldn't connect to given repo` error message. (PL-43598, ZD-55236)
+
+   This issue has been resolved. Now, if there are multiple connectors whose secrets are stored in a secret manager connector, when you update the connector's secret, Harness updates the PPTs of all the linked connectors, along with the secret manager connector.
+
+   This item is available with Harness Platform version 1.24.7 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronization.
+
+### Version 1.23.5 <!--  February 05, 2024 -->
+
+#### New features and enhancements
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
+
+   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
+
+   This item requires Harness Delegate version 24.01.82110 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- The `helm-init-container` images lacked a versioned tag and the pull policy for `waitForInitContainers` was not configurable. This led to the usage of unstable images in some places, which were not updated to the stable image because of the cached image with the same tag and image digest. (PL-46444)
+
+   This has been resolved by adding configuration options for image, resources, and security, which can be controlled at global and service levels in the overrides and the versioned image of `helm-init-container` is now being used. The image pull policy is also set to `Always` as the default.
+
 ## January 2024
+
+### Version 1.22.3 <!--  January 29, 2024 -->
+
+
+#### New features and enhancements
+
+- Removed the unused `org.redisson:redisson` library dependency from the delegate. (PL-42485, ZD-53588, ZD-53760)
+
+- Deletion of SCIM-managed user groups was not allowed. (PL-39439, ZD-53340)
+
+  You can now delete SCIM-managed user groups via the delete API for user groups.
+
+   :::info
+   Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
+   :::
+   
+#### Fixed issues
+
+- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
+
+   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
+   
+   This item is available with Harness Platform version 1.22.3 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Running `terraform apply` for an existing SSO-linked user group resulted in an empty user list. (PL-43763, ZD-55505)
+
+   This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+     - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
+
+- The `platform-service` was not publishing the response count metric. (PL-43123)
+
+   This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
 
 ### Version 1.21.5 <!--  January 22, 2024 -->
 
@@ -123,7 +319,7 @@ The following deprecated API endpoints are longer supported:
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
 
-   For more information, go to [Allow public access to pipeline executions](docs/platform/pipelines/allow-public-access-to-executions).
+   For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/allow-public-access-to-executions).
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
@@ -135,7 +331,7 @@ The following deprecated API endpoints are longer supported:
 
    Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
-   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
 
    This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -169,7 +365,7 @@ Currently, allowlist verification for delegate registration is behind the featur
 
    The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
-   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
 
 #### Fixed issues
 
@@ -1674,7 +1870,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -2336,9 +2532,9 @@ Delegate version: 22.10.77021
 
   [Create a Remote Step Template](/docs/platform/templates/create-a-remote-step-template/)
 
-  [Create a Remote Stage Template](/docs/platform/Templates/create-a-remote-stage-template)
+  [Create a Remote Stage Template](/docs/platform/templates/create-a-remote-stage-template)
 
-  [Create a Remote Pipeline Template](/docs/platform/Templates/create-a-remote-pipeline-template)
+  [Create a Remote Pipeline Template](/docs/platform/templates/create-a-remote-pipeline-template)
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
@@ -2516,7 +2712,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
   This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
+See [Add a Custom Secret Manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
 
 ###### Fixed issues
 

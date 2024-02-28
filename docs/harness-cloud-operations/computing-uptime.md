@@ -132,6 +132,24 @@ All the Platform SLIs are applicable here. Pipeline relevant if the chaos use ca
 | Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
 | ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
 
+## Service Reliability Management
+All the Platform SLIs are applicable here.
+
+| **Component**                  | **SLI**         | **Threshold**                          | **Availability** |
+|--------------------------------|-----------------|----------------------------------------|------------------|
+| SLO Creation API               | APIs Error rate | More than 5% over 5 min rolling window | Major outage     |
+|                                |                 | More than 1% over 5 min rolling window | Partial outage   |
+| SLO Update API                 | APIs Error rate | More than 5% over 5 min rolling window | Major outage     |
+|                                |                 | More than 1% over 5 min rolling window | Partial outage   |
+| SLO List API                   | APIs Error rate | More than 5% over 5 min rolling window | Major outage     |
+|                                |                 | More than 1% over 5 min rolling window | Partial outage   |
+| Monitored service creation API | APIs Error rate | More than 5% over 5 min rolling window | Major outage     |
+|                                |                 | More than 1% over 5 min rolling window | Partial outage   |
+| Monitored Service update API   | APIs Error rate | More than 5% over 5 min rolling window | Major outage     |
+|                                |                 | More than 1% over 5 min rolling window | Partial outage   |
+| Monitored Service List API     | APIs Error rate | More than 5% over 5 min rolling window | Major outage     |
+|                                |                 | More than 1% over 5 min rolling window | Partial outage   |
+
 ## Security Test Orchestration 
 All the Platform SLIs are applicable here. Pipeline relevant if the STO use case is tied to a pipeline. 
 

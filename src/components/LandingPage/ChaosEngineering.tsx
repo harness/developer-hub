@@ -5,15 +5,11 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, CEList } from "./data/chaosEngineeringData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CE() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
-    // <Layout title="CE" description="CE">
-    //   <ul className={styles.breadCrumb}>
-    //     <li>Get Started</li>
-    //     <li>Run chaos experiments</li>
-    //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
         <h3>Ensure app and infrastructure resilience</h3>
@@ -80,8 +76,18 @@ export default function CE() {
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/ce.svg`} />
+          </div> */}
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/ce.svg`
+                  : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

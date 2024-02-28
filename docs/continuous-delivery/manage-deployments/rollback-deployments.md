@@ -36,7 +36,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
 
 For post deployment rollback, Harness assumes that you have created a pipeline with multiple deployments so that the rollback steps can roll the pipeline back to the last successful deployment. 
 
-For more details on creating a pipeline, go to [Create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
+For more details on creating a pipeline, go to [Create your first CD pipeline](/docs/continuous-delivery/get-started/cd-tutorials/manifest).
 
 1. Open your [services dashboard](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#individual-service-dashboards).
 2. In **Summary**, in the **Environments & Groups** panel, select the deployment you want to roll back, and then select the **instances** link.
@@ -58,3 +58,18 @@ For more details on creating a pipeline, go to [Create your first CD pipeline](/
    Once the rollback is complete, your deployed instances will return to the state they were in before the most recent deployment.
 
    ![](../x-platform-cd-features/advanced/static/rollback-deployment-3.png)
+
+## Permissions required for Post Deployment Rollback
+
+To perform Post Deployment Rollback, user must have following permissions:-
+
+1. Pipeline **Execute** permission. 
+2. Environment **Rollback** permission.
+![](./static/post_prod_rollabck.png)
+:::info
+
+A user will be allowed to execute rollbacks on any instance only if they possess these two specified permissions for the pipeline and environment through which deployment occurred. Otherwise, they will be presented with the following message when attempting to click **Rollback***.
+
+
+![](./static/permissions_post_rollback.png)
+:::

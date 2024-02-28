@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
-There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Cache Intelligence also doesn't require you to bring your own storage, because the cache is stored in the Harness-hosted environment, Harness Cloud.
+There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Cache Intelligence also doesn't require you to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
 
 <!-- Video: Cache Intelligence demo
 https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26-->
@@ -17,7 +17,7 @@ https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44
 
 ## Supported build infrastructures
 
-Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-hosted build environment.
+Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-managed build environment.
 
 For other build infrastructures, you can use Save and Restore Cache steps, such as [Save and Restore Cache from S3](./saving-cache.md), to include caching in your CI pipelines.
 

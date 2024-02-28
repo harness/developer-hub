@@ -1,7 +1,7 @@
 ---
 title: Example Kubernetes manifests using Go templating
 description: Use Go templating and variables in Kubernetes manifests.
-sidebar_position: 7
+sidebar_position: 9
 helpdocs_topic_id: qvlmr4plcp
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
@@ -320,7 +320,7 @@ Use the **Skip Rendering K8s manifest files** option in the [Kubernetes Apply]
 
 ## Important notes
 
-* [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
+* [Harness Variables and Expressions](/docs/platform/variables-and-expressions/harness-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 * The values.yaml file used in a stage Service doesn't support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Service.
 * Harness uses Go template version 0.4. If you're used to Helm templates, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.  
 - You can install Go template version 0.4 locally to test your manifests.

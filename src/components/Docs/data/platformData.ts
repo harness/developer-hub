@@ -6,29 +6,6 @@ import {
 import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
-// Featured Tutorials
-export const featuredTutorials: CardItem[] = [
-    {
-      title: "Onboard with Terraform Provider",
-      module: MODULES.platform,
-      /*icon: "img/icon_harness.svg",*/
-      description: "Automate resource onboarding using Terraform Provider.",
-      newDoc: true,
-      type: [docType.Documentation],
-      /*time: "10min",*/
-      link: "/tutorials/platform/onboard-terraform-provider",
-    },
-    {
-      title: "Install delegate",
-      module: MODULES.platform,
-      icon: "",
-      description: "Install a delegate",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "",
-      link: "/tutorials/platform/install-delegate",
-    },
-  ];
 
   // Docs
   export const docsCards: CardSections = [
@@ -70,7 +47,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Create and manage roles and resource groups, and set up role-based access control.",
-          link: "/docs/category/access-control-1",
+          link: "/docs/category/access-control-2",
         },
         {
           title: "Secrets management",
@@ -112,14 +89,14 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Configure Git Experience for pipelines and associated entities.",
-          link: "/docs/platform/Git-Experience/configure-git-experience-for-harness-entities",
+          link: "/docs/platform/git-experience/configure-git-experience-for-harness-entities",
         },
         {
           title: "Policy as Code",
           module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/policy-as-code/harness-governance-quickstart",
         },
       ],
   },

@@ -28,12 +28,12 @@ Pod API status code:
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to changes in the API status code. </td>
-        <td> None. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> None. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> TARGET_SERVICE_PORT </td>
@@ -67,7 +67,7 @@ Pod API status code:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>
@@ -92,7 +92,22 @@ Pod API status code:
       <tr>
         <td> HTTPS_ENABLED </td>
         <td> facilitate HTTPS support for both incoming and outgoing traffic </td>
-        <td> Default: false. For more information, go to <a href="#https-enabled">https enabled</a></td>
+        <td> Default: false. For more information, go to <a href="#https">HTTPS</a></td>
+      </tr>
+      <tr>
+        <td> CUSTOM_CERTIFICATES </td>
+        <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication </td>
+        <td> The HTTPS communications necessitate its use as intermediate certificates by the proxy server. These same certificates must also be loaded into the target application. For more information, go to <a href="#https">HTTPS</a></td>
+      </tr>
+      <tr>
+        <td> HTTPS_ROOT_CERT_PATH </td>
+        <td> Provide the root CA certificate directory path </td>
+        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
+      </tr>
+      <tr>
+        <td> HTTPS_ROOT_CERT_FILE_NAME </td>
+        <td> Provide the root CA certificate file name </td>
+        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
@@ -112,27 +127,27 @@ Pod API status code:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration of chaos injection (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>.</td>
+        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>.</td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a>.</td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a>.</td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
+        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
       </tr>
     </table>
 
@@ -293,17 +308,30 @@ spec:
               value: "80"        
 ```
 
-### HTTPS enabled
+### HTTPS
 
-This item is employed to facilitate HTTPS for both incoming and outgoing traffic, and its usage can vary depending on whether it's applied to `ingress` or `egress` scenarios. Tune it by using the `HTTPS_ENABLED` environment variable.
+Enable the HTTPS support for both incoming and outgoing traffic by setting the `HTTPS_ENABLED` field to `true`. Its usage varies depending on whether it's applied to `ingress` or `egress` scenarios.
 
-* When applied to `ingress` traffic, it should be configured as `true` if the HTTPS URL of the target application includes a port, following the format `https://<hostname>:port`. However, for HTTPS URLs in the form of `https://<hostname>` without a port, this setting is not required.
+#### Ingress
 
-* For egress traffic, setting it to `true` is necessary to enable HTTPS support for external services, which will then establish TLS certificates for the proxy within the target application.
+Set this parameter if the HTTPS URL of the target application includes a port, formatted as `https://<hostname>:port`. However, if the HTTPS URL is in the format `https://<hostname>` without a port, this setting is not required.
+
+#### Egress
+
+For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application.
+
+* If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there's no need to provide `CUSTOM_CERTIFICATES`. However, if the root certificate directory and file name differ from `/etc/ssl/certs` and `ca-certificates.crt` respectively, set the root certificate directory path using the `HTTPS_ROOT_CERT_PATH` ENV variable and the file name using the `HTTPS_ROOT_CERT_FILE_NAME` ENV variable.
+* If the HTTP client in the target application isn't configured to reload certificates with each API call, you must provide the `CUSTOM_CERTIFICATES` ENV variable to the chaos experiment and no need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` ENV. The same custom certificates should be loaded into the target application. You can generate custom certificates using the following commands:
+   ```bash
+   openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.crt -days 365 -nodes -subj '/CN=*'
+   cat key.pem cert.crt > ca-cert.pem
+   cat ca-cert.pem | base64 # provide it inside the CUSTOM_CERTIFICATES ENV
+   ```
+  Load the `cert.crt` into the target application and provide the base64 encoded value of ca-cert.pem to the `CUSTOM_CERTIFICATES` ENV variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # "./static/manifests/pod-api-status-code/https-enabled.yaml yaml"
+[embedmd]: # "./static/manifests/pod-api-latency/https-enabled.yaml yaml"
 
 ```yaml
 ## enable https support
@@ -320,19 +348,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: pod-api-status-code
+    - name: pod-api-latency
       spec:
         components:
           env:
             # enable https support
             - name: HTTPS_ENABLED
               value: 'true'
+            - name: CUSTOM_CERTIFICATES
+              value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
             # provide the api path filter
             - name: PATH_FILTER
               value: '/status'
-            # provide the status code
-            - name: STATUS_CODE
-              value: "500"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
               value: "80"        

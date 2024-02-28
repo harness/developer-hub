@@ -148,6 +148,46 @@ Let's look at an example of setting up an Infrastructure Definition for a pre-ex
    
    ![](static/ssh-ng-174.png)
 
+#### Targetting Specific Hosts for Deployment
+
+Users can pass in specific Host IPs to perform deployment in the SSH Infrastructure Definition. When your deployment stage deploys an Secure Shell (SSH) Service or Windows Remote Management (WinRM) using an Infrastructure Definition of deployment type SSH or WinRM, you can select target hosts that were not selected in the Stage's Infrastructure Definition. Harness will present a dropdown in the Pipeline Run form with the queried list of host names.
+
+##### Demo Video
+
+<DocVideo src="https://www.loom.com/share/934229d83f9d44b6ab4dd83ba1abf607?sid=c05c8a9d-5f27-40cb-a654-c7ece7a0d74e" />
+
+
+```yaml
+infrastructureDefinition:
+  name: aws-ssh-infra
+  identifier: awssshinfra
+  orgIdentifier: default
+  projectIdentifier: alexctest
+  environmentRef: qasetup
+  deploymentType: Ssh
+  type: SshWinRmAws
+  spec:
+    credentialsRef: qasetupcredentials
+    connectorRef: qasetupconnector
+    region: us-east-1
+    awsInstanceFilter:
+      vpcs:
+        - vpc-c20f38b9
+      tags:
+        type: ssh
+    hostConnectionType: PublicIP
+    instanceType: Aws
+    targetedHosts: <+input> ## This will be provided at runtime. 
+  allowSimultaneousDeployments: false
+```
+
+**Limitation**
+- `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+- Only supported with AWS & Azure infrastructure, target to specific hosts already uses the same permissions as before, no new API call required.
+
+ 
+
+
 #### Create the PDC connector for the hosts
 
 1. In **Infrastructure Definition**, for **Connector**, select **Select Connector** to create the Connector for the PDC.
@@ -592,7 +632,7 @@ Harness creates 2 phases as step groups.
 
 ![](static/ssh-ng-199.png)
 
-You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](/docs/platform/Approvals/service-now-approvals).
+You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), [Adding Jira Approval Stages and Steps](/docs/platform/approvals/adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](/docs/platform/approvals/service-now-approvals).
 
 The Looping Strategy for the first Phase selects 50% of the target hosts:
 
@@ -630,8 +670,26 @@ For Microsoft Azure or AWS:
 * `<+instance.host.privateIp>`
 * `<+instance.host.publicIp>`
 
+### Rollback
+Harness restores the state of deployment to the pipeline's previous successful stage execution based on `serivce`, `enviroment` and `infrastucture` details.
+Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
 
-`instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+#### First time deployment
+If the first pipeline execution fails (regardless of stage), Harness skips the rollback since there is no record of any successful pipeline execution.
 
-For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
+#### N+1 time deployment
+In case of stage failures in subsequent executions ((Assuming the service, environment, infrastructure didn't changed in the corresponding stage)), Harness initiates rollback to the previous successful pipeline. The previous pipeline execution must be successful for all stages.  The successful stage is matched regardless of the pipeline execution status.
+
+:::note
+
+* If any of the `service`, `environment`, or `infrastructure` details were changed in the stage, Harness won't consider any previous successful pipeline executions for rollback. It is treated as a completely different deployment.
+* In case of multiple stages referencing the same `service`, `environment`, and `infrastructure` details, Harness will rollback the deployment to last successful pipeline with stage execution that shared the same `service`, `environment`, and `infrastructure`.
+
+:::
+
+ - For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
+
+
+
+
 

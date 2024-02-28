@@ -37,7 +37,7 @@ CPU hog:
       <tr>
         <td> NODE_LABEL </td>
         <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> CPU_LOAD </td>
@@ -57,7 +57,7 @@ CPU hog:
       <tr> 
         <td> TARGET_CONTAINER </td>
         <td> Name of the target container under stress. </td>
-        <td> If this value is not provided, the fault selects the first container of the target pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+        <td> If this value is not provided, the fault selects the first container of the target pod. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
@@ -67,12 +67,12 @@ CPU hog:
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog#container-runtime-and-socket-path">container runtime</a> </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime</a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog#container-runtime-and-socket-path">socket path</a> </td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a> </td>
       </tr> 
       <tr>
         <td> RAMP_TIME </td>

@@ -1,20 +1,17 @@
 .certCard {
   border-radius: 8px;
-  // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
   box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
-  padding: 32px 32px 56px 32px;
-  // margin: 0 2.75% 30px 0;
+  padding: 24px;
   background: var(--white);
-  width: 31.5%;
-  // width: 440px;
   font-family: "Inter";
   border: 2px solid transparent;
   position: relative;
   min-height: 350px;
-  min-width: 250px;
+  min-width: 300px;
+  width: 300px;
   height: 400px;
   &.thumb {
-    width: 48.5%;
+    width: 300px;
     background-color: var(--white);
     padding: 24px;
     h4 {
@@ -36,6 +33,7 @@
     margin-bottom: 16px;
     display: flex;
     align-items: center;
+    color: black;
     img {
       height: 16px;
       width: auto;

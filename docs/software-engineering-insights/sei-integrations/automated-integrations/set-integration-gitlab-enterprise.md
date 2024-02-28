@@ -18,19 +18,15 @@ To integrate SEI with GitLab Enterprise, you have two options based on the acces
 
 ## Configure the authentication
 
-SEI communicates with GitLab Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitLab personal access token to configure the **SEI GitHub integration**. To learn more on this, Go to [Configuring the authentication](./sei-integration-gitlab#configure-authentication).
-
+SEI communicates with GitLab Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitLab personal access token to configure the **SEI GitHub integration**. To learn more on this, Go to [Configuring the authentication](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab#configure-authentication).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configue the integration
-
 
 <Tabs>
   <TabItem value="private-onprem" label="Private On-Prem" default>
-
 
 The private on-premise integrations are configured using a SEI Satellite. Follow the instructions to download the Satellite configuration file.
 

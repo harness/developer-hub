@@ -24,7 +24,7 @@ For more information, go to [supported platforms and technologies](/docs/get-st
 
 ## Add the Bamboo step
 
-This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/Pipelines/add-a-stage).
+This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/pipelines/add-a-stage).
 
 In your CD stage's **Execution**, select **Add Step**, then select **Bamboo**.
 

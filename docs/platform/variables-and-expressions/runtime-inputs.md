@@ -1,13 +1,13 @@
 ---
 title: Fixed values, runtime inputs, and expressions
 description: You can change the input type for most settings in Harness.
-sidebar_position: 8
+sidebar_position: 1
 helpdocs_topic_id: f6yobn7iq0
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/platform/References/runtime-inputs
+  - /docs/platform/references/runtime-inputs
 ---
 
 
@@ -54,7 +54,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. More details on the usage of Fixed values [here](https://developer.harness.io/tutorials/cd-pipelines/variables#create-an-account-level-variable).
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you can use fixed values in [variables](/docs/platform/variables-and-expressions/add-a-variable).
 
 ## Runtime inputs
 
@@ -66,11 +66,11 @@ Runtime input is especially useful for templatizing your pipelines, because runt
 
 :::note
 
-Using runtime input for templatizing is different from the [Harness Template Library feature](/docs/platform/Templates/template).
+Using runtime input for templatizing is different from the [Harness Template Library feature](/docs/platform/templates/template).
 
 :::
 
-You can also create [input sets and overlays](/docs/platform/Pipelines/input-sets) to quickly populate runtime inputs with sets of preconfigured values. You can create input sets for different pipeline use cases, and then select the relevant input set at runtime.
+You can also create [input sets and overlays](/docs/platform/pipelines/input-sets) to quickly populate runtime inputs with sets of preconfigured values. You can create input sets for different pipeline use cases, and then select the relevant input set at runtime.
 
 ### Use runtime inputs
 
@@ -187,7 +187,7 @@ Harness doesn't support *nested* JSON objects in runtime input. For example, thi
 
 #### Default values in templates
 
-You can specify default values in [templates](/docs/platform/Templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
+You can specify default values in [templates](/docs/platform/templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
 
 ```yaml
 pipeline:
@@ -323,7 +323,7 @@ There is a time limit for mid-run input. Pipelines don't wait indefinitely for m
 If you allow mid-run input *and* you specify a default values, you can configure the pipeline to use the default values instead of failing if the input time elapses. To do this:
 
 1. Go to the stage or step with the execution input.
-2. Add a [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+2. Add a [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
 3. For **On failure of type**, select **Execution-time Inputs Timeout Errors**.
 4. Under **Perform Action**, select **Proceed with Default Values**.
 To automatically use the default value during such timeouts: 

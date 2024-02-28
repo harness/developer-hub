@@ -18,6 +18,7 @@ export const certifications: CardItem[] = [
     link: "/certifications/continuous-integration",
     numberOfCerts: 3,
   },
+
   {
     title: "Feature Flags Certifications",
     module: MODULES.ff,
@@ -30,7 +31,7 @@ export const certifications: CardItem[] = [
     title: "Cloud Cost Management Certifications",
     module: MODULES.ccm,
     description:
-      " Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
+      "Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
     link: "/certifications/cloud-cost-management",
     numberOfCerts: 1,
   },
@@ -38,16 +39,16 @@ export const certifications: CardItem[] = [
     title: "Security Testing Orchestration Certifications",
     module: MODULES.sto,
     description:
-      " Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.",
+      "Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.",
     link: "/certifications/sto",
     numberOfCerts: 2,
   },
-
-  // {
-  //   title: "Chaos Engineering Certifications",
-  //   module: MODULES.ce,
-  //   description: "Comming Soon",
-  //   link: "/certifications/chao-engineering",
-  //   numberOfCerts: 3,
-  // },
+  {
+    title: "Chaos Engineering Certifications",
+    module: MODULES.ce,
+    description:
+      "Discover how your applications stand up to real-world failure scenarios.",
+    link: "/certifications/chaos-engineering",
+    numberOfCerts: 1,
+  },
 ];

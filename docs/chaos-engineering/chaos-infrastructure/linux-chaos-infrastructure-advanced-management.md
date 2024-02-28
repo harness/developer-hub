@@ -1,9 +1,15 @@
 ---
 title: Linux chaos infrastructure advanced management
-sidebar_position: 30
+sidebar_position: 2
 description: Guide to advanced setup with Linux chaos infrastructure
 ---
-This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), and [logs](#logs) associated with the Linux chaos infrastructure.
+This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure (LCI).
+
+HCE supports executing Linux faults similar to Kubernetes faults. 
+
+## Before you begin
+* [Connect to Linux infrastructure](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
+* [Disconnect from Linux infrastructure](/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure#remove-infrastructure)
 
 ## Advanced setup
 A set of mandatory input flags is required for the installation of the chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
@@ -26,6 +32,14 @@ A set of mandatory input flags is required for the installation of the chaos inf
 10. **custom-tls-certificate**: TLS certificate used to communicate with the control plane.
 11. **http-proxy**: HTTP proxy URL used to communicate with the control plane.
 12. **http-client-timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
+
+:::info note
+LCI does not currently support:
+1. Cron schedules
+2. [GameDays](/docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday.md)
+3. Executing [parallel faults](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments.md) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
+:::
+
 
 ## Infrastructure service
 The Linux chaos infrastructure is installed as an executable binary on your Linux machine. This infrastructure is managed as a `Systemd` service.
@@ -62,3 +76,15 @@ Logs that are generated are stored in the `/var/log/linux-chaos-infrastructure` 
 :::info
 - These files are rotated based on their age; where files older than a specific number of days are removed. By default, this value is **30 days**.
 :::
+
+## Resilience probes for Linux
+
+HCE allows you to create the below probes for Linux:
+
+1. [HTTP](/docs/chaos-engineering/technical-reference/probes/http-probe)
+2. [Command](/docs/chaos-engineering/technical-reference/probes/cmd-probe)
+3. [Datadog](/docs/chaos-engineering/technical-reference/probes/datadog-probe)
+4. Dynatrace
+
+When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/troubleshooting/chaos-engineering/known-issues) for more information. 
+

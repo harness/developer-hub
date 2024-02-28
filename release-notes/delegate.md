@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-01-29T10:00
+date: 2024-02-27T10:00
 sidebar_position: 4
 ---
 
@@ -37,9 +37,77 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
+
+## February 2024
+
+### Harness version 1.26.14, Harness Delegate version 24.02.82402 <!--  February 27, 2024 -->
+
+#### Fixed issues
+
+- The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595, ZD-57053)
+
+  The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)  
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronisation.
+
+- Pipelines were failing due to errors related to the inability to acquire delegate tasks. (PL-42600, ZD-54025, ZD-54324)
+
+   The logic for calculating CPU and Memory usage has been improved, specifically for scenarios utilizing the dynamic task request handling feature in delegates, enhancing the reliability of task allocation and pipeline execution.
+
+- A null pointer exception was occurring for enforcement limit accounts, triggered by the introduction of the startup plan. (GTM-3247)
+   
+   This issue has been resolved by implementing an appropriate error message code for enforcement limit accounts when customers reach their enforcement limits, eliminating the null pointer exception. 
+
+- Users were unable to create custom queries as a heath source for monitored services. (CDS-91181, ZD-57562)
+  
+   This issue is fixed by making the service instance field configurable for users.
+
+### Version 24.02.82309 <!--  February 28, 2024 -->
+
+- We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. (CCM-16052)
+
+
+### Version 24.02.82308 <!--  February 21, 2024 -->
+
+- Upgraded the SDK for the ASG swimlane. (CDS-91937)
+
+### Version 24.02.82306 <!--  February 16, 2024 -->
+
+#### Hotfix
+
+- Added default values for minimum healthy percentage as 90 and maximum healthy percentage as 110 for the instance refresh operation that is performed during ASG Rolling deployments to prevent service downtime. (CDS-91335, ZD-57686)
+
+### Version 24.02.82304 <!--  February 12, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue in ECS Blue Green deployments where the ECS service was deleted after the first or second deployment. (CDS-91499, ZD-57892)
+
+### Version 24.02.82303 <!--  February 2, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
+
+### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
+
+#### Fixed issues
+
+- Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. (CI-10636, ZD-54688)
+
+- Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. (CI-11220, ZD-57421)
+
+- Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. (CI-10938)
+
+- The error message text for the `no eligible delegates present` error now includes additional potential causes. (CI-10933, ZD-55977)
+
 ## January 2024
 
 ### Harness version 1.22.3, Harness Delegate version 24.01.82202 <!--  January 29, 2024 -->
+
+#### Fixed issues
 
 - The Azure endpoints were not being set according to the Azure environment selected, which caused the Azure connectors to function properly only for the Azure public cloud but not for other Azure cloud variations such as Azure Gov, Azure China, and so on. (PL-43333, ZD-54717)
 
@@ -49,7 +117,9 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 24.01.82110 <!--  January 29, 2024 -->
 
-- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531)
+#### Hotfix
+
+- You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
    For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
 
@@ -73,13 +143,15 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
-   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
 
 #### Fixed issues
 
 - Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
 
    This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
+
+- Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. (CI-10789, ZD-55265)
 
 ### Harness version 1.17.8, Harness Delegate version 23.12.82000 <!--  January 2, 2024 -->
 
@@ -544,7 +616,7 @@ If your Terragrunt configuration has module dependencies and you want to target 
 
    This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
 
-- Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
+- Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
 - The execution logs from the Initialize step showed SSH keys used in the environment for the Command step. (CDS-79144, ZD-50623)
   
@@ -858,7 +930,11 @@ Harness NextGen release 79916 includes the following changes for the Harness Del
 
 ###### Early access
 
-- Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. (PL-39351)
+- Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it.
+
+   Delegate task capacity is only supported for CD tasks executed as child processes of a delegate (for example, it does not work for CI builds or CD Container step tasks that spin up new pods).
+
+   You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. (PL-39351)
 
    This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 

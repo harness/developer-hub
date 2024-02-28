@@ -14,7 +14,9 @@ description: View Kubernetes cluster information such as deployment status and p
 
 ### Application configuration YAML
 
-The plugin supports two types of application configuration.
+The plugin supports two types of application configuration, which needs to be updated by the user in the **Configurations**
+
+![](./static/app-config-k8s.png)
 
 #### Authentication using a Kubernetes service account (default)
 
@@ -55,7 +57,7 @@ In both cases, replace `<your-base-url>` with the base URL of the target cluster
 
 If you are using a service account to authenticate, ensure that a secret variable `K8S_SA_TOKEN` is set with the Kubernetes service account key.
 
-Please make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example refernce YAML.
+Please make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example reference YAML.
 
 ```YAML
 apiVersion: rbac.authorization.k8s.io/v1
@@ -118,6 +120,78 @@ This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a 
 ## Annotations
 
 There are several annotations supported by the Kubernetes plugin, and you can use them in your service's `catalog-info.yaml` descriptor file to link to a Kubernetes entity. For details, go to the [plugin docs](https://backstage.io/docs/features/kubernetes/configuration#surfacing-your-kubernetes-components-as-part-of-an-entity).
+
+### Adding the entity annotation
+
+In order for IDP to detect that an entity has Kubernetes components, the following annotation should be added to the entity's `catalog-info.yaml`:
+
+```YAML
+annotations:
+  'backstage.io/kubernetes-id': dice-roller
+```
+### Adding the namespace annotation
+Entities can have the `backstage.io/kubernetes-namespace` annotation, this will cause the entity's Kubernetes resources to by looked up via that namespace.
+
+```YAML
+annotations:
+  'backstage.io/kubernetes-namespace': dice-space
+```
+
+### Labeling Kubernetes components
+In order for Kubernetes components to show up in the software catalog as a part of an entity, Kubernetes components themselves can have the following label:
+
+```YAML
+'backstage.io/kubernetes-id': <BACKSTAGE_ENTITY_NAME>
+```
+
+### Label selector query annotation
+You can write your own custom label selector query that Backstage will use to lookup the objects (similar to `kubectl --selector="your query here"`). Review the labels and selectors Kubernetes documentation for more info.
+
+```YAML
+'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'
+```
+## Troubleshooting
+
+### Kubernetes is not showing up on Service Entities
+
+This can be debugged by checking if the Service Account token has appropriate permissions or not. 
+
+The Kubernetes tab will not show anything when the catalog info annotation does not match the related Kubernetes resource. We recommend you add the following labels to your resources and use the label selector annotation as follows:
+
+`backstage.io/kubernetes-id: <entity-service-name>` for get k8s service-related objects. [See the plugin code](https://github.com/backstage/backstage/blob/a1f587c/plugins/kubernetes-backend/src/service/KubernetesFetcher.ts#L119)
+
+```YAML
+# k8s related yaml (service.yaml, deployment.yaml, ingress.yaml)
+metadata:
+  creationTimestamp: '2022-03-13T13:52:46.000Z'
+  labels:
+    app: <k8s-app-name>
+    env: <environment>
+    backstage.io/kubernetes-id: <service-entity-name>
+  name: <k8s-app-name>
+  namespace: <namespace>
+```
+
+`k8s-app-name` and `service-entity-name` could be different, but if you would like to have consistent names between k8s and backstage, we recommend use same name and the catalog info annotations would use label selector:
+
+```YAML
+# catalog-info.yaml (backstage)
+annotations:
+  backstage.io/kubernetes-label-selector: '<label-selector>'
+```
+
+## Use of K8s Plugin
+
+The Plugin displays the information on your cluster and health of the pods under these clusters, including information on namespace and CPU and Memory usage. 
+
+![](./static/k8s-cluster-info.png)
+
+You can as well have a detailed view of your containers and pods, including the YAML view.
+
+![](./static/detail-cluster-info.png)
+![](./static/yaml-view.png)
+![](./static/namespace.png)
+
 
 ## Support
 

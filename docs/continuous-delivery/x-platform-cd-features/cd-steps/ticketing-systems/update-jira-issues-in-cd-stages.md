@@ -8,12 +8,12 @@ This topic describes how to update a Jira issue using the Update Jira step.
 
 You can add the Update Jira step to a Harness CD stage or an Approval stage.
 
-You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages).
+You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) and [add Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages).
 
 ## Before you begin
 
 * [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
-* [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages)
+* [Adding Jira approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages)
 
 ## Limitations
 
@@ -27,7 +27,7 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
    ![](./static/update-jira-issues-in-cd-stages-14.png)
 
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
 5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/connectors/ticketing-systems/connect-to-jira) to use.
 6. In **Issue Key**, enter the Jira issue key of the issue you want to update.
 7. Select **Apply Changes**.
@@ -140,7 +140,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Apply and test
 

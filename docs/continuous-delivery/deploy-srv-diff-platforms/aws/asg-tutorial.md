@@ -4,12 +4,6 @@ description: Deploy an ASG using Harness CD.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, ASG deployments are behind the feature flag `CDS_ASG_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This topic explains how to deploy new AWS Auto Scale Groups (ASGs) and instances to Amazon Elastic Compute Cloud (EC2) using Harness.
 
 ## Deployment summary
@@ -22,15 +16,16 @@ Here's a high-level summary of the setup steps and how Harness deploys ASGs.
 Here's a summary of how you set up ASG deployments in Harness:
 
 1. Create the Harness ASG service.
-   1. Add launch template.
-   2. Add ASG configuration.
+   1. Add the launch template manifest file. 
+   2. Add the ASG configuration manifest file. 
    3. Add scaling policies (optional).
-   4. Add scheduled update group action (optional).
-   5. Add the AMI image to use for the ASG as an artifact.
+   4. Add scheduled update group actions (optional).
+   5. Add the user data script file (optional). 
+   6. Add the AMI image to use for the ASG as an artifact.
 2. Create the Harness ASG environment.
    1. Connect Harness to the AWS region where you want to deploy.
 3. Define the Harness ASG pipeline execution.
-   1. Select a deployment strategy (rolling, canary, blue green) and Harness automatically creates the steps to deploy the new ASG.
+   1. Select a deployment strategy (rolling, canary, blue-green) and Harness automatically creates the steps to deploy the new ASG.
 4. Deploy the Harness pipeline.
 
 </details>
@@ -42,10 +37,10 @@ Here's a summary of how you set up ASG deployments in Harness:
 Here's a summary of how Harness deploys new ASG versions:
 
 1. First deployment:
-   1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region.
+   1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region. Harness creates a new launch template with name same as the ASG name and that launch template is applied to the new ASG.  
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-   2. Harness uses the new version of the launch template to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
+   2. Harness uses the new version of the launch template and other configurations to update the ASG. For example, if you also increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity and new launch template version.
    3. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
 
 Notes:
@@ -135,6 +130,7 @@ The Harness ASG service contains the following:
 - ASG configuration file.
 - Scaling policies (optional).
 - Scheduled update group action (optional).
+- User Data script file.
 - The AMI image to use for the ASG.
 
 Harness supports standard ASG JSON formatted files. For more information, go to [Get started with Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/get-started-with-ec2-auto-scaling.html) from AWS.
@@ -371,6 +367,24 @@ To configure a Harness ASG service in the Harness Manager, do the following:
 
 </TabItem>
 </Tabs>
+
+
+### ASG Launch Template files
+
+AWS does not have a dedicated public resource for Launch Template file formatting because Launch template creation is typically done using the AWS CLI, SDKs, or Management Console, which have their own syntax and methods for specifying the parameters. However, the AWS CLI [create-launch-template](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-launch-template.html) command reference documentation provides a detailed description of the parameters that can be used when creating a launch template.
+
+<details>
+<summary>ASG Launch Template file example</summary>
+
+```json
+{
+  "LaunchTemplateData": {
+    "InstanceType": "t2.micro",
+    "KeyName": "vit-cd-play"
+  }
+}
+```
+</details>
 
 
 ### ASG configuration files
@@ -819,7 +833,7 @@ In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use
 
 ## Harness ASG pipelines
 
-Once you have a the service and environment created, you can create the pipeline.
+Once you have the service and environment created, you can create the pipeline.
 
 :::note
 
@@ -1089,7 +1103,7 @@ The Rolling Deploy step has the following options:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Minimum Healthy Percentage (optional)**
-  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS.
+  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, Harness sets the default value for this field as 90%.
 - **Instance Warmup (optional)**
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
@@ -1172,7 +1186,7 @@ Rolling Deployment Finished Successfully
   <TabItem4 value="Rolling Rollback step" label="Rolling Rollback step">
 
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
 
 During rollback of the first deployment, Harness deletes the ASG.
 
@@ -1285,7 +1299,7 @@ This is the standard Harness ASG Rolling Deploy step. For details, go to [Rollin
   <TabItem5 value="Rollback steps" label="Rollback steps">
 
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
 
 For ASG canary deployments there are two rollback steps:
 
@@ -1504,7 +1518,7 @@ In the **Advanced** settings of all step, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Notes
 

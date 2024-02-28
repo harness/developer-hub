@@ -1,5 +1,6 @@
 ---
 title: Policy for all AWS faults
+sidebar_position: 3
 description: AWS superset policy to execute all AWS faults
 ---
 
