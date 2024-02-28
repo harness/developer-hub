@@ -794,6 +794,7 @@ With a [Kubernetes cluster build infrastructure](/docs/continuous-integration/us
 * With a [Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Kaniko reads certificates from `/kaniko/ssl/certs/additional-ca-cert-bundle.crt`.
 * Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
 * Different base images use different paths as their default certificate location. For example, Alpine images use the path `/etc/ssl/certs/ca-certificates.crt`. For other images, make sure you verify the default certificate path.
+* For more information about using a Kubernetes cluster build infrastructure for Harness CI, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
 :::
 
