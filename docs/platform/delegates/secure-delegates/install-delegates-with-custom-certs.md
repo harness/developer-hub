@@ -1088,7 +1088,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
 4. Restart the delegate. Once it's up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
-### Troubleshoot Kubernetes cluster build infrastructures
+### Troubleshoot self-signed certificates for Kubernetes cluster build infrastructures
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:
 
