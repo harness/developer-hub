@@ -95,7 +95,7 @@ If you are having trouble connecting to the API, follow the docs linked below de
 <details>
 <summary> NerdGraph API </summary>
    
-   - For steps on connecting to the NerdGraph API, follow these docs from New Relic: [NerdGraph API](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/)
+   - For steps on connecting to the NerdGraph API, go to [NerdGraph API](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph/) in the New Relic documentation.
    - You gain access to this API by using the `user key` for a specific account.
 
 </details>
