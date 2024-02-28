@@ -69,7 +69,7 @@ export const platformData: Horizon = {
       {
         tag: [],
         title: "Audit Trails",
-        description: "Send the audit events to Splunk and GCS bucket",
+        description: "Send audit events to Splunk and GCS bucket",
       },
       {
         tag: [],
