@@ -17,7 +17,7 @@ The CD License calculation uses the **Active Services** count and the number of 
 ### What are Active Services?
 
 - When Harness deploys a service via a pipeline, the service is counted as an Active Service.
-- When Harness deploys a GitOps Application, the GitOps Application is counted as an active service
+- When Harness deploys a GitOps Application, the GitOps Application is counted as an Active Service.
 - It remains an Active Service for the next 30 days.
 - Harness obtains all services that are part of any pipeline execution (deployment) over the past 30 Days. This represents the total Active Services consumed by an account.
 - There is no cap on the number of Service Instances (pods, hosts, etc.)  that are created by the service.
