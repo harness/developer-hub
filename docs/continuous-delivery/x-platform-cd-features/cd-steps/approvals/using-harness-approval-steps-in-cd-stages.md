@@ -112,12 +112,6 @@ Even if the User is in the user group selected in **User Group**, they won't be 
 
 ## Automatic Approvals
 
-:::note
-
-Currently, the automatic approvals feature is behind the feature flag `CDS_AUTO_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You can set the Approval step to automatically approve at a specific date and time.
 
 1. In **Schedule Auto Approval**, select **Auto Approve**.

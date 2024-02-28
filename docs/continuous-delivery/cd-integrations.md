@@ -121,10 +121,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_AUTO_APPROVAL</td>
-        <td>Support for scheduled approval configuration to let the Approval occur after a time window.</td>
-    </tr>
-    <tr>
         <td>CDS_ARTIFACTS_PRIMARY_IDENTIFIER</td>
         <td>Allows you to change the expression value for the primary artifact identifier. <b>This feature is in Beta.</b></td>
     </tr>
@@ -222,10 +218,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
         <td>Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/download-logs">Download execution logs</a>.</td>
-    </tr>
-    <tr>
-        <td>CDS_SHELL_VARIABLES_EXPORT</td>
-        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Limited GA.</b></td>
     </tr>
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>

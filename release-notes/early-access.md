@@ -296,7 +296,17 @@ You will also experience an enhanced user interface when configuring the integra
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
-### Aqua Security integration
+### Open Source Vulnerabilities (OSV) scanner integration
+
+* **Release date:** February 2024
+* **Issue number:** STO-6767
+* **Feature flag:** `STO_STEP_PALETTE_OSV`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
+
+
+### Aqua Security scanner integration
 
 * **Release date:** November 2023
 * **Issue number:** STO-6382

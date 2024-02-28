@@ -158,6 +158,10 @@ Once, you've made all the changes, click **Apply Preferences** or click **Reset 
 
 ![](./static/node-pool-recommendations-13.png)
 
+:::important note
+For nodepool recommendations, we base our calculations using public pricing data, which may differ from actual price.
+:::
+
 #### Sharing recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.

@@ -27,6 +27,34 @@ You can either update the changes to the same experiment and save it or create a
 
 ![save](./static/edit-experiment/save-after-edit.png)
 
+## Execute experiment with advanced options
+
+You can execute the chaos experiment with advanced security options: **runAsUser** or **runAsGroup**. Both the options allow privileged or restricted access to experiment pods.
+
+1. **runAsUser**: Specifies the user ID used to start all the processes in the experiment pod containers. Default user ID is 1000.
+
+2. **runAsGroup**: Specifies the group ID used to start all the processes in the experiment pod containers. Default group ID is 0.
+
+To select one of the options, 
+
+### Step 1: Navigate to your experiment
+
+* Click **Experiment builder** tab. Click **Advanced Options** on the right side of the screen.
+
+![run as user group](./static/edit-experiment/advanced-1.png)
+
+### Step 2: Select the option and save
+
+* Click **Security** tab and select/unselect one or both the options.
+
+![advanced](./static/edit-experiment/advanced-2.png)
+
+### Step 3: Save the changes
+
+Click **Save**.
+
+![save changes](./static/edit-experiment/save-3.png)
+
 ## Update old experiment manifests
 
 When you upgrade the chaos infrastructure, you also need to update the images in the experiment manifest (yaml file) corresponding to the updated chaos infrastructure. The upgraded images should match the images in the Enterprise Chaos Hub. 

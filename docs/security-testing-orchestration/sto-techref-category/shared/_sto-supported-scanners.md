@@ -18,7 +18,8 @@ If you use a scanner that isn't listed in the following table, you can still ing
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference">CodeQL</a> Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/coverity-scanner-reference">Coverity</a> Ingestion </li> 
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>       		
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>  
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference">Open Source Vulnerabilities (OSV)</a> Orchestration, Ingestion </li>     		
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code(<i>open-source option</i>) </a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>

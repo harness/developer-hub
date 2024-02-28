@@ -36,7 +36,8 @@ These are the requirements to configure an Azure VM application, Entra ID app re
 1. In Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and create a VM to host your Harness Delegate and runner. Select a machine type with 4 vCPU and 16 GiB memory or more. Harness recommends the following machine images:
 
    * [Ubuntu 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview)
-   * [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22)
+   * [Microsoft Windows Server 2022 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272022datacenter%27%29%5D%22)
+   * [Microsoft Windows Server 2019 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272019datacenter%27%29%5D%22)
 
 2. Create a resource group for your VM.
 3. Configure the VM to allow ingress on the following:
@@ -119,7 +120,7 @@ instances:
 
 
 </TabItem>
-  <TabItem value="windows" label="Windows Server 2019 pool.yml">
+  <TabItem value="windows" label="Windows Server 2022 pool.yml">
 
 
 ```yaml
@@ -145,7 +146,7 @@ instances:
       password: XXXXXXX
       publisher: MicrosoftWindowsServer
       offer: WindowsServer
-      sku: 2019-Datacenter-with-Containers
+      sku: 2022-datacenter-g2
       version: latest
 ```
 

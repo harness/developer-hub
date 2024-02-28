@@ -472,6 +472,10 @@ For example, if the Terraform Plan step with the Id `TfPlan` is in the **Executi
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
 
+When Terraform plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
+
 :::note
 When the `Run on Remote Workspace` option is selected, you will not be able to export the JSON representation of terraform plan.
 :::

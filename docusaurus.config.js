@@ -155,10 +155,6 @@ const config = {
                 to: "docs/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "docs/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
@@ -334,10 +330,6 @@ const config = {
               {
                 label: "Service Reliability Management",
                 to: "https://harness.io/products/service-reliability-management",
-              },
-              {
-                label: "Continuous Error Tracking",
-                to: "https://www.harness.io/products/continuous-error-tracking",
               },
               {
                 label: "Internal Developer Portal",

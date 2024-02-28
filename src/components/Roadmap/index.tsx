@@ -15,6 +15,7 @@ const Roadmap = () => {
     { value: "ff", name: "Feature Flags" },
     { value: "ccm", name: "Cloud Cost Management" },
     { value: "sto", name: "Security Testing Orchestration" },
+    { value: "ssca", name: "Sofware Supply Chain Assurance" },
     { value: "ce", name: "Chaos Engineering" },
     { value: "srm", name: "Service Reliability Management" },
     { value: "idp", name: "Internal Developer Portal" },

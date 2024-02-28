@@ -32,8 +32,8 @@ Windows EC2 blackhole chaos determines the performance of the application (or pr
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
 - Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
-- Go to [AWS named profile for chaos](../aws/security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
-- Go to [superset permission/policy](../aws/security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to [AWS named profile for chaos](/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [superset permission/policy](/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 
 Here is an example AWS policy to execute the fault.

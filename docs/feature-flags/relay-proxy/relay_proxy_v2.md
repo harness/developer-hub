@@ -28,6 +28,27 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 ## Relay Proxy V2 Architecture 
 
+### Network Traffic Architecture
+
+Here are some diagrams to explain the Network Traffic Architecture for Feature Flag's Relay Proxy V2. These diagrams provide detail on how network requests are made as well as the Protocols used between Harness Saas to the Client SDK or the Server SDK. 
+
+![A in-depth diagram of the Relay Proxy V2 Network Architecture for the Client SDK. ](./images/proxy_v2_architecture_client_sdk.png)
+
+
+The loop, displayed in both diagrams between Harness Saas and the Primary Proxy, is only executed if the stream between the Primary Proxy and Harness Saas disconnects. Once the Primary Proxy reconnects with Harness Saas, it exits the loop and normal streaming functionality resumes.
+
+
+![A in-depth diagram of the Relay Proxy V2 Network Architecture for the Server SDK. ](./images/proxy_v2_architecture_server_sdk.png)
+
+
+When we're in this loop, the Primary Proxy polls Harness SaaS for changes once a minute and attempts to re-establish the stream connection. If it fails to do this, it will pause its attempt to re-establish the stream connection for *one minute*. After one minute has passed, it will poll again and re-attempt the stream. This is done continuously until it has re-established the stream with Harness Saas.
+
+![A capture of the Requests made between th Primary Proxy and Harness Saas ](./images/proxy_targetgroups_flag_changes.png)
+
+As captured above, these requests are made whenever the Proxy receives an SSE event indicating that a `Flag` or `TargetGroup` has changed. 
+
+Within the Thread, you can see that the The Primary consumes metrics from the Redis stream as soon as they are made available. Internally, it will batch them and post them to Harness Saas. The Primary Proxy forwards metrics to Harness Saas at *one minute intervals*.
+
 ### HA Mode
 
 Feature Flag's Relay Proxy resides between the SDKs and the hosted Harness Feature Flag services. Upon startup, proxy loads the necessary data from the Feature Flag services to ensure that it is completely functional even if the network connection drops temporarily. The diagram below shows the Relay Proxy V2 in HA Mode:

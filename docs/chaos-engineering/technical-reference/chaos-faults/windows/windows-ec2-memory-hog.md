@@ -38,7 +38,7 @@ Windows EC2 memory hog:
 
 :::info note
 - Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you will must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
-- Go to [AWS named profile for chaos](../aws/security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [AWS named profile for chaos](/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
 Here is an example AWS policy to execute the fault.

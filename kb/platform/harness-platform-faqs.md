@@ -597,7 +597,7 @@ No, The cloud connector will not propagate the tags to AWS while making calls.
 
 We have limited logging for the AWS calls.
 
-### Ho do delegate selectors work in connectors?
+### How do delegate selectors work in connectors?
 
 The delegate selector in a connector always works as AND and not OR. Let's say you have delegate A named "ABC" and delegate B named "BCD". In the connector selector options, you will need to give only 1 tag, either "ABC" or "BCD". If you need to have multiple delegates there, then you will need to add custom tags to the delegate and specify the common one in the selector.
 
@@ -2952,3 +2952,9 @@ Harness stores the secret in its Harness store and retrieves the encryption keys
 #### Can we use an encryption method other than the default with AWS secret manager?
 
 No. When using the AWS secret manager, the default encryption is used. If you have to use a custom encryption, you must use the AWS KMS secret manager. 
+
+#### Can I do additional encoding of the Harness Delegate token?
+No, the additional encoding is not supported on the delegate token.
+
+#### In network security policies, what Harness IPs do I need to allowlist to connect to Harness?
+For a list of Harness IPs to allow, go to [Allowlist Harness domains and IPs](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips).
