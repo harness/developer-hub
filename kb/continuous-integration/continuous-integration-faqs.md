@@ -160,7 +160,7 @@ If the delegate is connected but your AWS VM builds are failing, check the follo
 
 1. Make sure your the AMIs, specified in `pool.yml`, are still available.
    * Amazon reprovisions their AMIs every two months.
-   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
+   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2022 Base with Containers` and update `ami` in `pool.yml`.
 2. Confirm your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) and security group settings in `runner/pool.yml`.
 
 ### Use internal or custom AMIs with self-managed AWS VM build infrastructure

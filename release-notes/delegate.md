@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-02-26T10:00
+date: 2024-02-27T10:00
 sidebar_position: 4
 ---
 
@@ -40,12 +40,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## February 2024
 
-### Harness version 1.26.11, Harness Delegate version 24.02.82402 <!--  February 26, 2024 -->
+### Harness version 1.26.14, Harness Delegate version 24.02.82402 <!--  February 27, 2024 -->
 
 #### Fixed issues
 
 - The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595, ZD-57053)
-   The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+  The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
 
 - When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)  
 
@@ -62,6 +63,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Users were unable to create custom queries as a heath source for monitored services. (CDS-91181, ZD-57562)
   
    This issue is fixed by making the service instance field configurable for users.
+
+### Version 24.02.82309 <!--  February 28, 2024 -->
+
+- We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. (CCM-16052)
+
 
 ### Version 24.02.82308 <!--  February 21, 2024 -->
 

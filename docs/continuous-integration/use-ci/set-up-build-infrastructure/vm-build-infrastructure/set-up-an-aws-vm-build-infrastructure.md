@@ -61,7 +61,7 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 
 1. In the [AWS EC2 Console](https://console.aws.amazon.com/ec2/), launch a VM instance that will host your Harness Delegate and runner. This instance must use an Ubuntu AMI that is `t2.large` or greater.
 
-   Although the primary VM must be Ubuntu, the build VMs (in your VM pool) can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher). All machine images must have Docker installed.
+   The primary VM must be Ubuntu. The build VMs (in your VM pool) can be Ubuntu, AWS Linux, or Windows Server 2019 or higher. All machine images must have Docker installed.
 
 2. Attach a key pair to your EC2 instance. Create a key pair if you don't already have one.
 3. You don't need to enable **Allow HTTP/HTTPS traffic**.
