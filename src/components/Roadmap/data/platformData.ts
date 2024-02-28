@@ -17,9 +17,9 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "Secure" }],
-        title: "OIDC Support",
+        title: "OIDC Support for AWS",
         description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider resources without secrets or credentials",
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your AWS resources without secrets or credentials",
       },
       {
         tag: [],
@@ -81,6 +81,11 @@ export const platformData: Horizon = {
         title: "Restrict delegate usage",
         description: "Ability to restrict delegate usage across Accounts/Orgs/Projects and Environments",
       },
+       {
+        tag: [],
+        title: "Console log line limit",
+        description: "Ability to increase the console log line limits",
+      },
     ],
   },
   Later: {
@@ -99,9 +104,27 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "Secure" }],
-        title: "OIDC Support",
+        title: "OIDC Support for secret managers",
         description:
           "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
+      },
+      {
+        tag: [{ value: "Access Control" }],
+        title: "Centralized view of permissions on a resource",
+        description:
+          "Centralized visibility of what permissions have been granted to who and on what resources",
+      },
+      {
+        tag: [{ value: "Policy" }],
+        title: "Policy to govern projects",
+        description:
+          "Support to allow policy to govern projects",
+      },
+      {
+        tag: [{ value: "Notify" }],
+        title: "Customized notification body text",
+        description:
+          "Create and manage customized notification body text",
       },
     ],
   },
@@ -110,15 +133,27 @@ export const platformData: Horizon = {
     feature: [
          {
         tag: [{ value: "Secure" }],
-        title: "OIDC Support",
+        title: "OIDC Support for GCP",
         description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider resources without secrets or credentials",
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your GCP resources without secrets or credentials",
       },
       {
         tag: [{ value: "Secure" }],
-        title: " Encrypted SAML",
+        title: "Encrypted SAML",
         description:
           "Enable encrypted SAML to allow Harness integration with your IdP",
+      },
+      {
+        tag: [],
+        title: "Gov cloud support for Azure Key Vault",
+        description:
+          "Support Azure government cloud for Azure Key Vault Connector with username/password",
+      },
+      {
+        tag: [{ value: "Session Management" }],
+        title: "Absolute session timeout",
+        description:
+          "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
       },
     ],
   },
