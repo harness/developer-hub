@@ -16,10 +16,10 @@ export const platformData: Horizon = {
           "Extended Data Retention, Data Archiving and Compliance capabilites ",
       },
       {
-        tag: [{ value: "AWS" }, { value: "GCP" }],
+        tag: [{ value: "Secure" }],
         title: "OIDC Support",
         description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider",
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider resources without secrets or credentials",
       },
       {
         tag: [],
@@ -34,10 +34,22 @@ export const platformData: Horizon = {
           "Customers can request to be migrated to a different SaaS cluster",
       },
       {
-        tag: [{ value: "Delegate" }],
+        tag: [{ value: "Notify" }],
         title: "Centralized Notification system",
         description:
-          "Centralized notification system to configure notifications on Delegate",
+          "Centralized notification system to configure delegate notifications",
+      },
+      {
+        tag: [{ value: "Scale" }],
+        title: "Test Account Cluster",
+        description:
+          "Customers can be onboarded in a new cluser for their test accounts",
+      },
+      {
+        tag: [{ value: "Resource Management" }],
+        title: "Project movement across organization",
+        description:
+          "",
       },
     ],
   },
@@ -53,6 +65,21 @@ export const platformData: Horizon = {
         tag: [{ value: "Pipeline" }],
         title: "Priority Queue for Pipeline Execution",
         description: "",
+      },
+      {
+        tag: [],
+        title: "Audit Trails",
+        description: "Send audit events to Splunk and GCS bucket",
+      },
+      {
+        tag: [],
+        title: "Custom banners",
+        description: "Display custom banners in the Harness UI",
+      },
+       {
+        tag: [{ value: "Delegate" }],
+        title: "Restrict delegate usage",
+        description: "Ability to restrict delegate usage across Accounts/Orgs/Projects and Environments",
       },
     ],
   },
@@ -70,11 +97,29 @@ export const platformData: Horizon = {
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
       },
+      {
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support",
+        description:
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
+      },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+         {
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support",
+        description:
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider resources without secrets or credentials",
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: " Encrypted SAML",
+        description:
+          "Enable encrypted SAML to allow Harness integration with your IdP",
+      },
     ],
   },
 };
