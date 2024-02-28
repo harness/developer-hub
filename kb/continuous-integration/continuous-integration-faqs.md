@@ -1892,14 +1892,9 @@ For pipelines, the default timeout limit is, generally, the product of the stage
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
 
-### General issues with connectors, secrets, delegates, and other Platform components
+## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
-
-
-### Is the user can do git authentication in the run step?
-Yes, user can use codebase connector's Git credentials in a CI Run step to do the authentication. Doc for reference: https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/
-
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 

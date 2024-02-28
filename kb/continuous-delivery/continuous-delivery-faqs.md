@@ -5644,10 +5644,10 @@ Directly pushing a YAML into .harness folder will not create the pipeline, you c
 
 The overview page offers a summary of deployments and overall health metrics for the project. Currently, the fields are empty as there are no deployments within the project. Once a deployment is in the project, these fields will be automatically updated.
 
+#### Why can't I add a command script step template to a Custom stage?
 
-#### In the custom stage user can't able to see command script step template while adding the step?
-The command script step template is only available in CD stage.
+The command script step template is only available in CD stages.
 
+#### Can I sync the Harness service to Git?
 
-#### Is user can also sync the harness service to the git?
-Yes, We have a bi-directional functionality to sync the harness entities: https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/
+Yes, we have a [bi-directional functionality to sync the Harness entities](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup).
