@@ -1,9 +1,10 @@
 ---
-title: DAST app scans using Zed Attack Proxy (ZAP)
+title: "Tutorial: DAST app scans using Zed Attack Proxy"
 description: Scan a web app using ZAP
-sidebar_position: 35
+sidebar_position: 20
 redirect_from:
   - /tutorials/security-tests/dast-scan-zap
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/dast-scan-zap
 ---
 
 <CTABanner
@@ -71,7 +72,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
 
-1. In **Execution**, add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) step.
+1. In **Execution**, add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) step.
 
 2. Configure the step as follows:
 
@@ -79,7 +80,7 @@ import TabItem from '@theme/TabItem';
 
    2. Scan Mode = **Orchestration**
 
-   3. [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration)
+   3. [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration)
 
    4. Set the following fields based on the app you're scanning.
 
@@ -105,21 +106,21 @@ import TabItem from '@theme/TabItem';
 
       - Instance Protocol = **https**
 
-   5. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
+   5. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
       <img src={config_zap} alt="Zap step palette example" height="50%" width="50%" />
 
 </TabItem>
   <TabItem value="YAML" label="YAML">
 
-Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) step and set the following fields based on the web app you want to scan. For example, suppose you're scanning version 8.1.2 of `https://myorg.org/welcome:9090`. You could then set the fields like this:
+Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) step and set the following fields based on the web app you want to scan. For example, suppose you're scanning version 8.1.2 of `https://myorg.org/welcome:9090`. You could then set the fields like this:
 
-- `type:` [`Zap`](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference)
+- `type:` [`Zap`](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference)
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
     - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview)
-    - [`config`](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
+    - [`config`](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
       - `target : `
         - `name : https://myorg.org/welcome`
         - `type : instance`

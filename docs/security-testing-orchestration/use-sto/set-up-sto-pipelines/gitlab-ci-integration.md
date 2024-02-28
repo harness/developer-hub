@@ -1,9 +1,11 @@
 ---
-title: Trigger automated scans using GitLab merge requests
+title: "Tutorial: Trigger automated scans using GitLab merge requests"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
-sidebar_position: 60
+sidebar_label: "Tutorial: Trigger automated scans using GitLab merge requests"
+sidebar_position: 90
 redirect_from:
   - /tutorials/security-tests/gitlab-ci-integration
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/gitlab-ci-integration
 ---
 
 <CTABanner
@@ -18,7 +20,7 @@ redirect_from:
 import create_pipeline from './static/trigger-tutorial/trigger-tutorial-00-create-pipeline.png'
 import add_sto_stage from './static/trigger-tutorial/trigger-tutorial-01-create-sto-stage.png'
 
-This tutorial shows how you can set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event. You'll do the following:
+This topic shows how you can set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event. You'll do the following:
 
 - Add a webhook to the code repo that sends Git-event notifications to the Harness pipeline.
 - Add a [Git trigger](/docs/platform/triggers/triggering-pipelines/) to the pipeline that responds to these notifications.

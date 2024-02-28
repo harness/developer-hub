@@ -1,9 +1,10 @@
 ---
-title: SAST code scans using Semgrep
+title: "Tutorial: SAST code scans using Semgrep"
 description: Scan a codebase using Semgrep
 sidebar_position: 30
 redirect_from:
   - /tutorials/security-tests/sast-scan-semgrep
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/sast-scan-semgrep
 ---
 
 <CTABanner
@@ -31,7 +32,7 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
 
   - A Harness account and STO module license.
   - A basic understanding of key STO concepts and good practices. Here are some good resources:
-    - [Your first STO pipeline](./your-first-sto-pipeline)
+    - [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
@@ -199,7 +200,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
 Add a step after the `Run` step and configure it as follows:
 
-- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference)
+- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
