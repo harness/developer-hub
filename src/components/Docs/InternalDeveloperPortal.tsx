@@ -6,8 +6,9 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/internalDeveloperPortal";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function IDP() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -35,17 +36,25 @@ export default function IDP() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness IDP is a home for developers to create, manage, and explore software.
-              It enables you to create new software components quickly
-              while adhering to your company's best practices. It enables you to
-              manage the software you own by presenting a developer-centric view
-              of all relevant information such as service health, deployments,
-              and alerts. It also enables you to explore the internal software
-              ecosystem of the company, discover technical documentation, APIs,
-              and services, all of which enable better collaboration.
+              Harness IDP is a home for developers to create, manage, and
+              explore software. It enables you to create new software components
+              quickly while adhering to your company's best practices. It
+              enables you to manage the software you own by presenting a
+              developer-centric view of all relevant information such as service
+              health, deployments, and alerts. It also enables you to explore
+              the internal software ecosystem of the company, discover technical
+              documentation, APIs, and services, all of which enable better
+              collaboration.
             </p>
-            <div>
-            <img src={`${baseUrl}img/idp.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/idp.svg`
+                    : `${baseUrl}img/IDP_dark _mode.svg`
+                }
+              />{" "}
             </div>
           </div>
         </div>

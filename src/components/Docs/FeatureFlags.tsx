@@ -7,7 +7,9 @@ import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/featureFlagsData";
 
+import { useColorMode } from "@docusaurus/theme-common";
 export default function FF() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -37,13 +39,21 @@ export default function FF() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Feature Flags (FF) is a feature management solution that
-            lets you change your software's functionality without deploying new code.
-            It does this by letting you hide code or behavior without having to
-            ship new versions of the software. A feature flag is like a powerful <i>If</i> statement.
+              Harness Feature Flags (FF) is a feature management solution that
+              lets you change your software's functionality without deploying
+              new code. It does this by letting you hide code or behavior
+              without having to ship new versions of the software. A feature
+              flag is like a powerful <i>If</i> statement.
             </p>
-            <div>
-            <img src={`${baseUrl}img/ff.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/ff.svg`
+                    : `${baseUrl}img/FF_Landing_Page_dark_mode.svg`
+                }
+              />{" "}
             </div>
           </div>
         </div>
