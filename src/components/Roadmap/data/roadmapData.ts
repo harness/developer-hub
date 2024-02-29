@@ -9,7 +9,7 @@ import { CeData } from "./ceData";
 import { SrmData } from "./srmData";
 import { IdpData } from "./idpData";
 import { SeiData } from "./seiData";
-import { IacmData } from "./iacmData";
+import { IacmData } from "./IacmData";
 import { platformData } from "./platformData";
 import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
