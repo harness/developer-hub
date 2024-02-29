@@ -159,7 +159,7 @@ enum PVType {
 }
 ```
 
-For GCP Kubernetes persistent volumes (PV_TYPE_GCE_PERSISTENT_DISK), the exact price rate is calculated by calling the GCP Kubernetes APIs. For all other cloud providers, a hardcoded price value is used for cost calculation. 
+For GCP Kubernetes persistent volumes (`PV_TYPE_GCE_PERSISTENT_DISK``), the exact price rate is calculated by calling the GCP Kubernetes APIs. For all other cloud providers, a hardcoded price value is used for cost calculation. 
 
 
 | **PVType** | **Default Hardcoded price (perGBPerMonth)** |
