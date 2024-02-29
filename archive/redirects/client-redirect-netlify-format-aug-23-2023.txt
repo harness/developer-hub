@@ -415,7 +415,6 @@ https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-inf
 https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-macos-build-infra-with-anka-registry https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry
 https://developer.harness.io/docs/category/onboard-with-ci https://developer.harness.io/docs/category/get-started-with-ci
 https://developer.harness.io/docs/category/migrating-to-harness-ci https://developer.harness.io/docs/category/migrate-to-harness-ci
-https://developer.harness.io/docs/category/test-intelligence https://developer.harness.io/docs/category/run-tests
 https://developer.harness.io/docs/category/run-ci-scripts https://developer.harness.io/docs/category/run-scripts
 https://developer.harness.io/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference
 https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline
