@@ -61,6 +61,7 @@ With Harness AIDA Code Assistant activated, developers can start leveraging its 
 * Code explanation and comment generation
 * Test generation
 
+
 <!--
 
 ### Code autocomplete
