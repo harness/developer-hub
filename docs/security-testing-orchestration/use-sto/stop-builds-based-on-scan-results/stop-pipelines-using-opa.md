@@ -1,36 +1,38 @@
 ---
-title: Use governance policies and security scan results to stop STO pipelines automatically 
-description: Use governance policies to stop pipelines based on issue severities.
+title: Use security test policies to stop STO pipelines automatically 
+description: Use security test policies to stop pipelines automatically.
 sidebar_label: Stop pipelines using OPA
 sidebar_position: 220
 ---
 
-You can create governance policies to stop your pipelines based on specific scan results such as:
+You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your security tests, and to stop your pipelines if a security test violates those policies. 
 
-- No issues in a list of severities such as Critical or High.
+You can use Harness Policy as Code to enforce Security Test policies such as: 
 
-- No issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
+- A security test cannot include any issues in a list of severities such as Critical or New Critical.
 
-- No issues in a list of titles such as `javascript.express.mongodb.*` or `javascript.express.security.audit.*`.
+- A security test cannot include any issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
 
-- No more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+- A security test cannot include any issues in a list of titles such as `javascript.express.mongodb.*` or `javascript.express.security.audit.*`.
 
-- No issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
+- A security test cannot include any more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
 
-This topic describes the end-to-end workflow to create, test, and deploy a set of governance policies. 
+- A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
 ### Important notes
 
-This topic assumes that you have a basic knowledge of the following:
+- Security Test policies are behind the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io) to enable them.
 
-- Governance policies and how to implement them: 
-  - [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
-  - [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
-  - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
-- [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
+- This topic assumes that you have a basic knowledge of the following:
+
+  - Governance policies and how to implement them: 
+    - [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+    - [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+    - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
+  - [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
 
 
-### Security Tests policy samples
+### Security Test policy samples
 
 import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use-sto/shared/security-tests-policy-samples.md';
 
@@ -38,6 +40,15 @@ import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use
 
 
 ### Workflow description
+
+The following steps describes the end-to-end workflow:
+
+1. [Create your policies](#create-a-new-security-tests-opa-policy) using [Security test policy samples](#security-tests-policy-samples).
+
+2. Create a [policy set](#create-a-policy-set) with the policies you want to enforce.
+
+3. [Enforce the policy set](#enforce-the-policy-in-your-scan-step) in your scan step.
+
 
 #### Create a new Security Tests OPA policy
 
@@ -55,7 +66,7 @@ import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use
 
 5. Configure the policy as needed. In this example, the policy excludes vulnerabilities with a severity of Critical. 
 
-   <DocImage path={require('./static/opa-03-configure-policy.png')} width="100%" height="100%" title="Select policy sample" />
+   <DocImage path={require('./static/opa-03-configure-policy.png')} width="50%" height="50%" title="Select policy sample" />
 
 6. Test your policy to verify that it works as intended.
 
@@ -67,19 +78,19 @@ import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use
 
    1. Search the test results for the string `1230`. In this case, the ID is not found. 
 
-       <DocImage path={require('./static/opa-05-test-policy-search-for-id.png')} width="100%" height="100%" title="Select policy sample" />
+       <DocImage path={require('./static/opa-05-test-policy-search-for-id.png')} width="50%" height="50%" title="Select policy sample" />
 
    2. Click **Test**. The test succeeds.
 
-       <DocImage path={require('./static/opa-06-test-policy-succeeded.png')} width="100%" height="100%" title="Select policy sample" />
+       <DocImage path={require('./static/opa-06-test-policy-succeeded.png')} width="50%" height="50%" title="Select policy sample" />
 
    3. Search the test results for the string `cwe` and edit an entry so it matches the reference ID.
 
-       <DocImage path={require('./static/opa-07-edit-test-data-for-matching-cwe.png')} width="100%" height="100%" title="Select policy sample" />
+       <DocImage path={require('./static/opa-07-edit-test-data-for-matching-cwe.png')} width="50%" height="50%" title="Select policy sample" />
 
    4. Click **Test** again. The test fails because the data includes the specified CWE.
 
-       <DocImage path={require('./static/opa-08-test-failed.png')} width="100%" height="100%" title="Select policy sample" />
+       <DocImage path={require('./static/opa-08-test-failed.png')} width="50%" height="50%" title="Select policy sample" />
 
 7. Once you're satisfied that the policy works as intended, save it.
 
@@ -110,7 +121,7 @@ A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overv
 
       <!-- ![](../static/notif-opa-select-policy.png) -->
 
-      <DocImage path={require('./static/opa-09-add-policy-to-policy-set.png')} width="80%" height="80%" title="Select policy sample" />
+      <DocImage path={require('./static/opa-09-add-policy-to-policy-set.png')} width="50%" height="50%" title="Select policy sample" />
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
@@ -118,7 +129,7 @@ A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overv
 
      <!-- ![](../static/notif-opa-policy-set-enforced-yes.png) -->
    
-      <DocImage path={require('./static/opa-10-enable-enforced.png')} width="80%" height="80%" title="Select policy sample" />
+      <DocImage path={require('./static/opa-10-enable-enforced.png')} width="50%" height="50%" title="Select policy sample" />
 
 
 #### Enforce the policy in your scan step
@@ -131,7 +142,7 @@ Now you can set up your scan step to stop builds automatically when the policy g
 
 3. Click **Apply Changes** and then save the updated pipeline. 
 
-   <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="80%" height="80%" title="Select policy sample" />
+   <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="50%" height="50%" title="Select policy sample" />
 
 
 #### Set up email notifications for pipeline failures

@@ -25,12 +25,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2024
 
-### Version TBD
+### Version 1.85.0
 
 #### Early access feature
 
-<!-- 2024-02-28 -->
-<!-- TBD new OPA policies https://harness.atlassian.net/browse/STO-6934 -->
+<!-- 2024-02-29 -->
 
 With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. (Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)). (STO-6738)
 
@@ -49,6 +48,17 @@ You can create STO-specific OPA policies using these policy samples:
 - **Security - Reference IDs** Warn or block if the scan step finds vulnerabilities that match a set of reference IDs. For example: no issues for CWE-78 or CVE-2023-52138.
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+
+#### Fixed issues
+
+- Previously, the ingestion engine assigned a scan type of SAST to  all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not.  With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7208, ZD-58495)
+
+- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+
+- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference IDs to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct  resource ID and vulnerability data. (STO-7140)
+
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
+
 
 
 ### Version 1.84.0 

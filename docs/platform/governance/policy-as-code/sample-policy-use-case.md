@@ -850,7 +850,7 @@ deny[msg] {
 }
 ```
 
-### Security Tests policy samples
+### Security Test policy samples
 
 import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use-sto/shared/security-tests-policy-samples.md';
 
