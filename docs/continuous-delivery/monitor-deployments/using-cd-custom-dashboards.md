@@ -513,7 +513,7 @@ Environment Tags only displays the tags for the environments that were part of p
 
 :::
 
-<DocImage path={require('./static/using-cd-custom-dashboards-23.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-26.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
