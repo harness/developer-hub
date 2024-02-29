@@ -20,11 +20,6 @@ export const CiData: Horizon = {
         description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage.  It's currently supported when running builds in Harness Cloud, and with this work we will make it available for users running self-managed builds as well.",
       },
       {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for all test types",
-        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
-      },
-      {
         tag: [{ value: "Cloud" }],
         title: "Credits usage consumption by pipeline report",
         description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
@@ -64,6 +59,11 @@ export const CiData: Horizon = {
   Next: {
     description: "Q2 2024, May-Jul 2024",
     feature: [
+      {
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for all test types",
+        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
+      },
       {
         tag: [{ value: "Fast" }],
         title: "Build Cache for Maven",
