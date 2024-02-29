@@ -167,12 +167,13 @@ To download the support bundle manifest and prepare it for use, do the following
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/macos.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
    ```
-
+<!--
    **Windows**
    
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/windows.ps1) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
    ```
+  --->
 
    This will create a `support-bundle.yaml` file in the current directory. You can use this file to collect the support bundle information from all of your running services.
 
@@ -181,7 +182,7 @@ To download the support bundle manifest and prepare it for use, do the following
 - To download a module-specific manifest, you can use the following command.
 
    ```bash
-   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/script.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> <MODULE_NAME>
+   bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> <MODULE_NAME>
    ```
 
    **Time Since**
@@ -208,7 +209,7 @@ To download the support bundle manifest and prepare it for use, do the following
 
    **Number of Files**
 
-   You can provide the number of files to be collected for the logs. The default value is 2.
+   You can provide the number of files to be collected for the logs. The default value is 2. This is exclusive to the `--last` and `--between` flags, if either is provided, this will not be used.
 
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> --num-files 10
@@ -216,7 +217,7 @@ To download the support bundle manifest and prepare it for use, do the following
 
    **File Path**
    
-   If you are using a different file path for the logs, you can provide the path using the following command.
+   If you are use a different file path for your logs, you can provide the path using the following command. Adding `*.log` or any extension you have provided for the file is important. If you have provided the file path as `/logs/service.txt`, then provide the path in the flag as `/logs/service*.txt`.
 
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME> --filepath /path/to/logs*.log
@@ -224,7 +225,7 @@ To download the support bundle manifest and prepare it for use, do the following
 
 #### Example manifest
 
-The following example manifest collects Helm values for releases and logs ConfigMap data for the `ng-manager` service.
+The following example manifest collects Helm values for releases, logs, and ConfigMap data for the `ng-manager` service.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -256,7 +257,7 @@ spec:
 
 ## Generate the support bundle
 
-The process of generating the support bundle involves collecting diagnostic information as required by the user. This process involves interacting with various system components to gather logs, ConfigMaps (excluding secrets), and override files. The support bundle generator is optimized to handle concurrent requests from multiple users and ensure efficient use of resources.
+The process of generating the support bundle involves collecting diagnostic information as required by the user. This process involves interacting with various system components to gather logs, ConfigMaps (excluding secrets), and override files. The support bundle generator is optimized to use minimum resources to collect all the required data without having an effect on running services.
 
 ### Methods to generate the bundle
 
@@ -295,3 +296,13 @@ To send your log bundle files to Harness, do the following:
 3. Complete the MFA.
 4. Drag your file(s) or click to add the file manually for upload.
 5. Select **Submit**.
+
+
+## Use in an air gap environment
+
+To use the support bundle utility in an air gap environment, do the following:
+
+1. Download the tool binary.
+2. Download the manifest.
+3. Transfer the manifest to the jumpbox VM if the VM doesn't have internet access. If the VM has internet access, you can run the command directly run the command directly.
+4. Follow the remaining steps in [Generate the bundle](#generate-the-support-bundle).
