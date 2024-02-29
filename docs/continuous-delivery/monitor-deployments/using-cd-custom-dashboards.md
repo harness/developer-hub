@@ -550,6 +550,20 @@ List of dimensions:
 3. Service Name: Name of the Service
 4. Store Type: Indicates whether Service as INLINE OR REMOTE.
 
+
+### Envrionments
+This view contains the data related to the environment.
+
+<DocImage path={require('./static/using-cd-custom-dashboards-28.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+
+List of dimensions:
+1. Created Time: Creation time of the environment
+2. Modified Name: Modification time of the environment
+3. Environment Name: Name of the environment
+4. Store Type: Indicates whether environment as INLINE OR REMOTE.
+5. 
 ### Projects
 This view contains the data related to the projects. 
 
