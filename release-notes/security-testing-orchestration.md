@@ -31,21 +31,27 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- 2024-02-29 -->
 
-With this release, you can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA rules against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). (STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
 
-To enforce security tests against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
+This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
 
-You can create STO-specific OPA policies using these policy samples:
+:::note
 
-- **Security - Severity** Warn or block if the scan step finds any vulnerabilities with the specified severity and age.  For example: issues with severity High or Critical.
+To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
 
-* **Security - CVE Age** Warn or block if the scan step finds any vulnerabilities with the specified severity and age.  For example: no issues for CVEs created in 2021 or earlier.
+:::
 
-* **Security - Issue Title** Warn or block if the scan step finds any vulnerabilities with matching titles. For example: no issues with titles that match `javascript.express.mongodb.*`.
+This release includes a set of security test policy samples, which make it easy to create policies such as:
 
-* **Security - Number of Occurrences** Warn or block if the scan step finds more than a set of number of occurrences of a matching vulnerability. For example: no more than 15 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+- A security test cannot include any issues in a list of severities such as Critical or New Critical.
 
-- **Security - Reference IDs** Warn or block if the scan step finds vulnerabilities that match a set of reference IDs. For example: no issues for CWE-78 or CVE-2023-52138.
+- A security test cannot include any issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
+
+- A security test cannot include any issues in a list of titles such as `libsqlite3` or `javascript.express.security.audit`.
+
+- A security test cannot include any more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+
+- A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 

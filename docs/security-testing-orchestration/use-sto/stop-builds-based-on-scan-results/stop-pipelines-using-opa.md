@@ -21,7 +21,7 @@ You can use Harness Policy as Code to enforce policies such as:
 
 ### Important notes
 
-- To enforce policies against your security tests, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
+- To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
 
 - This topic assumes that you have a basic knowledge of the following:
 

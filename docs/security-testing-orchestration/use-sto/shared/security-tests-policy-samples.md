@@ -31,7 +31,7 @@ Here is a sample policy that you can evaluate using the **On Step** event for a 
 
 :::note
 
-This policy sample supports the following vulnerabilities only: Critical, High, Medium, Low, and Info. To create policies based on output variables such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables).
+This policy sample supports the following vulnerabilities only: `Critical`, `High`, `Medium`, `Low`, and `Info`. To create policies based on output variables such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables).
 
 :::
 
