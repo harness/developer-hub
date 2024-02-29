@@ -57,23 +57,26 @@ With Harness AIDA Code Assistant activated, developers can start leveraging its 
 
 ## Features
 
+* Code autocomplete
+* Code explanation and comment generation
+* Test generation
+
+
+<!--
+
 ### Code autocomplete
 
-<!-- Video:
-./static/code_generation_demo.mov-->
-<DocVideo src="./static/code_generation_demo.mov" />
+<DocImage src="./static/code_generation_demo.mov" />
 
 ### Code explanation and comment generation
 
-<!-- Video:
-./static/comment_gen_demo.mov-->
-<DocVideo src="./static/comment_gen_demo.mov" />
+<DocImage src="./static/comment_gen_demo.mov" />
 
 ### Test generation
 
-<!-- Video:
-./static/test_generation_demo.mov-->
-<DocVideo src="./static/test_generation_demo.mov" />
+<DocImage src="./static/test_generation_demo.mov" />
+
+-->
 
 ## Supported IDEs
 
