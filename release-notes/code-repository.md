@@ -2,7 +2,7 @@
 title: Code Repository release notes
 sidebar_label: Code Repository
 tags: [NextGen, "code repository"]
-date: 2024-01-22T10:00
+date: 2024-03-01T10:00
 sidebar_position: 7
 ---
 
@@ -20,6 +20,19 @@ These release notes describe recent changes to Harness Code Repository.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 2024
+
+<!-- 01 March 2024 -->
+
+### Version 0.72.0
+
+#### New features and enhancements
+
+* [Harness AIDA Semantic Code Search](/docs/code-repository/work-in-repos/semantic-search): Use natural language queries to search your codebase.
+* [Harness AIDA Pull Request Summary Generation](/docs/code-repository/pull-requests/aida-code-pr): Automatically create comprehensive and informative PR summaries.
+* Change request resolution [branch rule](/docs/code-repository/): You can require change requests to be resolved before allowing PRs to be merged.
+* Cancel [repository import](/docs/code-repository/config-repos/import-repo): You can cancel in-progress repository imports.
 
 ## January 2024
 
