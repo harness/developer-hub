@@ -6,8 +6,9 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards, featureHighlights } from "./data/chaosEngineeringData";
-
-export default function CD() {
+import { useColorMode } from "@docusaurus/theme-common";
+export default function CE() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -37,17 +38,25 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Chaos Engineering (CE) provides the end-to-end tooling 
-              required to achieve Continuous Resilience in your Software Delivery 
-              Life Cycle. Using Harness CE, your developers, QA teams, and SREs 
-              inject chaos experiments in a controlled fashion, either to assert 
-              resilience against pre-determined faults or to find weaknesses against 
-              them. Harness CE helps to achieve faster incident response and recovery 
-              times, increase overall service resilience, optimize costs, and result 
-              in an improved customer experience.
+              Harness Chaos Engineering (CE) provides the end-to-end tooling
+              required to achieve Continuous Resilience in your Software
+              Delivery Life Cycle. Using Harness CE, your developers, QA teams,
+              and SREs inject chaos experiments in a controlled fashion, either
+              to assert resilience against pre-determined faults or to find
+              weaknesses against them. Harness CE helps to achieve faster
+              incident response and recovery times, increase overall service
+              resilience, optimize costs, and result in an improved customer
+              experience.
             </p>
-            <div>
-            <img src={`${baseUrl}img/ce.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/ce.svg`
+                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
+                }
+              />
             </div>
           </div>
         </div>

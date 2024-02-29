@@ -139,6 +139,20 @@ Service Tags only displays the tags for the services that were part of pipelines
 List of dimensions:
 1. Service tag: The service tag is displayed as `key:value`. For example, if there are 5 tags in a service, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
+### Environment Tags
+Displays a list of tags associated with a environment.
+
+:::note
+
+Environment Tags only displays the tags for the environments that were part of pipelines that were successfully executed at least once.
+:::
+
+<DocImage path={require('./static/using-cd-custom-dashboards-26.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+List of dimensions:
+1. Environment tag: The environment tag is displayed as `key:value`. For example, if there are 5 tags in a environment, there will be 5 rows having 1 tag (`key:value` pair) in each row.
+
 
 ### Pipelines
 This view contains the data related to the pipelines. 
@@ -384,12 +398,19 @@ List of dimensions:
 ### Service Execution Tags
 This view contains the data related to the service execution tags. It will contain the tags that were present in the service at the start of the execution.
 
-<DocImage path={require('./static/using-cd-custom-dashboards-24.png')} width="60%" height="60%" title="Click to view full size image" />
 
+<DocImage path={require('./static/using-cd-custom-dashboards-24.png')} width="60%" height="60%" title="Click to view full size image" />
 
 List of dimensions:
 1. Service Execution tag: The execution tag is displayed as `key:value`. If there are 5 tags in a service, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
+### Environment Execution Tags
+This view contains the data related to the environment execution tags. It will contain the tags that were present in the environment at the start of the execution.
+
+<DocImage path={require('./static/using-cd-custom-dashboards-27.png')} width="60%" height="60%" title="Click to view full size image" />
+
+List of dimensions:
+1. Environment execution tag: The execution tag is displayed as `key:value`. If there are 5 tags in a environment, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 ### Harness Approval Step Execution
 This view contains the data related to the Harness Approval Step Executions. If any field from this view is selected it will only show the data related to the executions which have a harness approval step. For e.g. if their are Jira approval and Harness Approval steps in a single pipeline execution, then selecting fields from this view, will only show Harness approval data.
@@ -483,6 +504,21 @@ Service Tags only displays the tags for the services that were part of pipelines
 List of dimensions:
 1. Service tag: The service tag is displayed as `key:value`. For example, if there are 5 tags in a service, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
+### Environment Tags
+Displays a list of tags associated with a environment.
+
+:::note
+
+Environment Tags only displays the tags for the environments that were part of pipelines that were successfully executed at least once.
+
+:::
+
+<DocImage path={require('./static/using-cd-custom-dashboards-26.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+List of dimensions:
+1. Environment tag: The environment tag is displayed as `key:value`. For example, if there are 5 tags in a environment, there will be 5 rows having 1 tag (`key:value` pair) in each row.
+
 
 ### Pipelines
 This view contains the data related to the pipelines. 
@@ -514,6 +550,20 @@ List of dimensions:
 3. Service Name: Name of the Service
 4. Store Type: Indicates whether Service as INLINE OR REMOTE.
 
+
+### Envrionments
+This view contains the data related to the environment.
+
+<DocImage path={require('./static/using-cd-custom-dashboards-28.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+
+List of dimensions:
+1. Created Time: Creation time of the environment
+2. Modified Name: Modification time of the environment
+3. Environment Name: Name of the environment
+4. Store Type: Indicates whether environment as INLINE OR REMOTE.
+5. 
 ### Projects
 This view contains the data related to the projects. 
 

@@ -26,11 +26,11 @@ Learn more about these benefits in our [CE/CD integration blog](https://www.harn
 
 You might consider injecting these types of faults as chaos steps in your CD pipeline:
 
-* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down. The [Pod network latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency/) fault is an example.
+* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down. The [Pod network latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency.md) fault is an example.
 
-* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor. The [Pod CPU hog](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog/) fault is an example.
+* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor. The [Pod CPU hog](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog.md) fault is an example.
 
-* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The [Pod HTTP latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency/) fault is an example.
+* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The [Pod HTTP latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency.md) fault is an example.
 
 For more information about Harness CD, go to the [CD tutorials](/docs/category/cd-and-gitops-tutorials).
 
@@ -44,9 +44,9 @@ To use CE with CD using a selected experiment (though you can use many experimen
 
 ### Step 1: Add a chaos experiment and run it
 
-[Create a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) and run it to make sure it runs to completion. 
+[Create a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md) and run it to make sure it runs to completion. 
 
-In the example below, the relevant [probes](/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe) are added to avoid a false positive or false negative scenario around the resilience score.
+In the example below, the relevant [probes](/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe.md) are added to avoid a false positive or false negative scenario around the resilience score.
 
 ![Completed chaos experiments with probes shown](./static/exp-run-complete-with-probes.png)
 
@@ -90,7 +90,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
-	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) in Chaos Studio. 
+	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md) in Chaos Studio. 
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
 	Selecting these options takes you to Chaos Studio without saving your work.
@@ -99,7 +99,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Back in **Configure Chaos Experiment**, enter the **Expected Resilience Score** for this experiment.
 
-	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) is initiated.
+	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) is initiated.
 	
 	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
@@ -113,7 +113,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 ### Step 3: Choose a failure strategy
 
-[A failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) specifies the actions to take if pipeline stages or steps fail due to different conditions. You can configure a failure strategy against each chaos step (experiment) in the pipeline, or through a shell script step at the end of the execution of all chaos steps. Below are examples showing these two options.
+[A failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md) specifies the actions to take if pipeline stages or steps fail due to different conditions. You can configure a failure strategy against each chaos step (experiment) in the pipeline, or through a shell script step at the end of the execution of all chaos steps. Below are examples showing these two options.
 
 #### Example 1: Failure strategy for one chaos step
 
@@ -140,11 +140,11 @@ When the CD pipeline is triggered:
 
 * Based on the experiment's success or failure, you can decide whether to continue with the deployment. You can automate this by defining a [failure strategy](#step-3-choose-a-failure-strategy) in your pipeline. 
 
-	For more information, go to [Define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+	For more information, go to [Define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 
 ## Tutorial - Integrate CE with CD
 
-This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](../configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis).
+This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis).
 
 <details>
 <summary>Tutorial - Integrate CE with CD</summary>
@@ -159,7 +159,7 @@ It can be observed that currently the pipeline is able to deploy the application
 
 ![Online Boutique App Cart](./static/integration-with-harness-cd/online-boutique-app-cart.png)
 
-1. Add a chaos step to this pipeline so that the chaos experiment you created in the [running chaos experiments with API tutorial](../configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis), `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow you to validate the deployment against the chaos hypothesis.
+1. Add a chaos step to this pipeline so that the chaos experiment you created in the [running chaos experiments with API tutorial](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis), `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow you to validate the deployment against the chaos hypothesis.
 
    To add the chaos step, select the **Add Step** icon next to the **Rollout Deployment** icon for the CD deployment stage, and then select **Chaos Step**.
 

@@ -21,7 +21,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>  
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference">Open Source Vulnerabilities (OSV)</a> Orchestration, Ingestion </li>     		
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference">Semgrep Code(<i>open-source option</i>) </a> Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code(<i>open-source option</i>) </a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
         	</ul>
         </td>
@@ -69,7 +69,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <td valign="top">Secrets</td>
         <td valign="top">
           <ul>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy (_Containers_)</a> Orchestration, Ingestion  </li>            
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference">Aqua Trivy (_Containers_)</a> Orchestration, Ingestion  </li>            
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks (_SAST_)</a>  Orchestration, Ingestion </li>
           </ul>
         </td>
@@ -86,7 +86,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
          	<ul>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference">OpenVAS</a> Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
         <td valign="top">
@@ -108,7 +108,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <td valign="top">
          	<ul>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion </li>
         	</ul>
         </td>

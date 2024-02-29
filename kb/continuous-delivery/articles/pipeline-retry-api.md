@@ -2,9 +2,9 @@
 description: KB - Using API to retry pipleine with input set YAML
 title: Pipeline retry API
 ---
-# Introduction
 
 This knowledge base article provides step-by-step guidance on how to retry a pipeline based on the latest ExecutionId using Harness APIs.
+
 
 ## Problem Statement
 
@@ -21,6 +21,21 @@ Retrying a pipeline based on the latest ExecutionId can be a challenging task, e
 
 For example, the following Shell script uses Harness API endpoints to retrieve the input set YAML and retry the pipeline with the extracted input set YAML.To use this Shell script, replace placeholders, like `ExecutionId`, `YOUR_API_TOKEN`, `YOUR_APPLICATION_ID`, and `YOUR_PIPELINE_ID` with actual values relevant to your Harness account.
 
+
+## Problem
+
+Retrying a pipeline based on the latest ExecutionId can be a challenging task, especially when dealing with complex deployment scenarios. Retrying a pipeline with an input set requires two endpoints: 
+
+* Pipeline Execution Details API - [Get the inputSet YAML used for a given Plan Execution endpoint](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getInputsetYamlV2)
+* Pipeline Execute API - [Retry an executed pipeline with inputSet pipeline YAML endpoint](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/retryPipeline)
+
+## Solution
+
+1. Use the [Pipeline Execution Details API](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getInputsetYamlV2) to get the the inputSet YAML used for the Plan Execution that you want to retry.
+2. Use the [Pipeline Execute API](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/retryPipeline) to retry the pipeline with the inputSet pipeline YAML.
+
+Here is a Shell script that uses these two endpoints. To use this Shell script for yourself, replace placeholders, like `ExecutionId`, `YOUR_API_TOKEN`, `YOUR_APPLICATION_ID`, and `YOUR_PIPELINE_ID`, with actual values relevant to your Harness account.
+
 ```
 microdnf install jq
 API_KEY=""
@@ -30,6 +45,7 @@ ORG_IDENTIFIER=""
 PROJECT_IDENTIFIER=""
 PipelineIdentifier=""
 Retrystages=""
+
 # API endpoint URL
 URL="https://app.harness.io/pipeline/api/pipelines/execution/${PLAN_EXECUTION_ID}/inputsetV2?accountIdentifier=${ACCOUNT_IDENTIFIER}&orgIdentifier=${ORG_IDENTIFIER}&projectIdentifier=${PROJECT_IDENTIFIER}&resolveExpressions=false&resolveExpressionsType=RESOLVE_ALL_EXPRESSIONS"
 

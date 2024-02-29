@@ -10,8 +10,11 @@ const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
     { value: "platform", name: "Platform" },
-    { value: "cd", name: "Continuous Delivery & GitOps" },
+    { value: "aida", name: "AI Development Assistant" },
+    { value: "code", name: "Code Repository" },
     { value: "ci", name: "Continuous Integration" },
+    { value: "cd", name: "Continuous Delivery & GitOps" },
+    { value: "iacm", name: "Infrastructure as Code Management" },
     { value: "ff", name: "Feature Flags" },
     { value: "ccm", name: "Cloud Cost Management" },
     { value: "sto", name: "Security Testing Orchestration" },
@@ -20,7 +23,6 @@ const Roadmap = () => {
     { value: "srm", name: "Service Reliability Management" },
     { value: "idp", name: "Internal Developer Portal" },
     { value: "sei", name: "Software Engineering Insights" },
-    { value: "iacm", name: "Infrastructure as Code Management" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -116,7 +118,7 @@ const Roadmap = () => {
               )}
             </div>
             <h1>
-              <span>{selectedDropdownModule.value} </span>Overall Strategy
+              {selectedDropdownModule.name} Roadmap
             </h1>
             <p>{selectedModule.description}</p>
 
@@ -156,9 +158,8 @@ const Roadmap = () => {
                 {key &&
                   key.map((key, index) => (
                     <div
-                      className={`${styles.listTabItems} ${
-                        mobileViewHorizon[0] === key ? styles.active : ""
-                      }`}
+                      className={`${styles.listTabItems} ${mobileViewHorizon[0] === key ? styles.active : ""
+                        }`}
                       onClick={() => handleSwitchTab(key)}
                     >
                       <li key={index}>{key}</li>
