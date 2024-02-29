@@ -26,8 +26,8 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 | **Step**                                                                                                                           | **Details**                                        | **Documentation Link**                                                                                                             | **Demo Video**                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | <a href="#step-1-account--entities-setup">Account and entities setup</a>                                                           | Create organization, project, invite initial users | [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/) |                                                                                                 |
-| <a href="#step-2-installing-delegate">Installing delegates</a>                                                                     | Kubernetes, Docker                                 | [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)              | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
-| <a href="#step-3-installing-secret-manager--migrating-existing-secrets">Installing secret managers, Migrating existing secrets</a> | AWS KMS, HashiCorp, Azure Key Vault, Google KMS    | [Add a secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager/)                 |                                                                                                 |
+| <a href="#step-2-installing-delegate">Installing delegates</a>                                                                     | Kubernetes, Docker                                 | [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate)              | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
+| <a href="#step-3-installing-secret-manager--migrating-existing-secrets">Installing secret managers, Migrating existing secrets</a> | AWS KMS, HashiCorp, Azure Key Vault, Google KMS    | [Add a secret manager](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager/)                 |                                                                                                 |
 
 ### <a href="#phase-2-deploy-to-qa"> Phase 2: Deploy to QA </a>
 
@@ -101,11 +101,11 @@ The Harness Delegate is a service you run in your local network or VPC to connec
 
 The first time you connect Harness to a third-party resource, the Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed and registers with Harness, you can Harness connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
-For more information, go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate).
+For more information, go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate).
 
 ### Step 3. Installing secret managers, migrating existing secrets
 
-Harness includes a built-in secret management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness connectors and pipelines. For more information, go to [Add a secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager).
+Harness includes a built-in secret management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness connectors and pipelines. For more information, go to [Add a secret manager](/docs/platform/get-started/tutorials/add-secrets-manager).
 
 Looking for specific secret managers? Go to:
 
@@ -1397,7 +1397,7 @@ template:
 
 The Harness Terraform Provider enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using this Provider. Currently the following Harness resources can be managed via the Provider.
 
-For more information, go to [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider).
+For more information, go to [Onboard with Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider).
 
 <details>
 <summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>

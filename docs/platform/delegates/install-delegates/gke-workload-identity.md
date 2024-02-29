@@ -102,7 +102,7 @@ Deploy a Harness Delegate onto the GKE cluster.
     - `harness_delegate_token`: This is a [Harness Delegate token](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/).
     - `harness_delegate_name`: Defaults to `harness-delegate`.
     - `harness_delegate_namespace`: Defaults to `harness-delegate-ng`.
-    - `harness_manager_endpoint`: Use the **Harness Cluster Hosting Account** from your **Account Overview** page to find the matching endpoint URL for this value. For example, the endpoint URL for `prod-2` is `https://app.harness.io/gratis`. For more information, go to [Install delegate](/docs/platform/delegates/install-delegates/install-delegate).
+    - `harness_manager_endpoint`: Use the **Harness Cluster Hosting Account** from your **Account Overview** page to find the matching endpoint URL for this value. For example, the endpoint URL for `prod-2` is `https://app.harness.io/gratis`. For more information, go to [Install delegate](/docs/platform/get-started/tutorials/install-delegate).
 
 3. To deploy the Harness Delegate, run `task deploy_harness_delegate`, and then wait while the delegate connects.
 

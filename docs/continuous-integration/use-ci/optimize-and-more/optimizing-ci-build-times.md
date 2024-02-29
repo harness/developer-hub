@@ -106,7 +106,7 @@ Use these strategies to automate and manage build sequences.
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
-* [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Bring-your-own Secrets Manager](/docs/platform/get-started/tutorials/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 * [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)

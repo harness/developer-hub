@@ -4,13 +4,13 @@ description: Install Harness Delegates using Helm, Terraform, Kubernetes, or Doc
 sidebar_position: 1
 ---
 
-import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 import InitScript from './install-a-delegate-with-3-rd-party-tool-custom-binaries.md';
 import CustomImage from './build-custom-delegate-images-with-third-party-tools.md';
 
 ## Install the default delegate
 
-Expand the section below for instructions on installing the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, or Kubernetes manifest or a Docker delegate using the `docker run` command. You can also review the instructions directly [here](./install-delegate).
+Expand the section below for instructions on installing the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, or Kubernetes manifest or a Docker delegate using the `docker run` command. You can also review the instructions directly [here](/docs/platform/get-started/tutorials/install-delegate).
 
 <details>
 <summary>Install the default delegate on Kubernetes or Docker</summary>

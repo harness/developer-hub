@@ -20,7 +20,7 @@ This guide provides steps to onboard and build automation using the Harness Terr
 1. Install the Harness Terraform Provider:
     - [Harness Terraform Registry](https://registry.terraform.io/providers/harness/harness).
 2. Configure Terraform. Review the following documentation: 
-     - [Onboard with the Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
+     - [Onboard with the Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider)
      - [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview)
      - [Advanced Terraform onboarding](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 

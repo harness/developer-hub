@@ -55,7 +55,7 @@ You can automate the onboarding of users from external sources along with their 
 
 ## Step 4: Install delegate 
 
-- [Install delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)
+- [Install delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate)
 - [Build and set up a delegate with a minimal image type](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 - [Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity](/docs/platform/delegates/install-delegates/gke-workload-identity)
 
@@ -68,7 +68,7 @@ You can achieve a high degree of automation and repeatability in deploying and m
 #### Install the Harness Terraform Provider & Setup Terraform Configuration
 
 Harness Terraform Registry is available here: https://registry.terraform.io/providers/harness/harness. You can use the following docs to get started.
-- [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
+- [Onboard with Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider)
 - [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview)
 - [Advanced Terraform onboarding](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 

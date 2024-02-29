@@ -1,6 +1,6 @@
 ---
 title: Add a secret manager
-description: This topic explains how to store and use encrypted secrets (such as access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud KMS, HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
+description: This tutorial explains how to store and use encrypted secrets (such as access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud KMS, HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
 sidebar_position: 3
 helpdocs_topic_id: bo4qbrcggv
 helpdocs_category_id: 48wnu4u0tj
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /tutorials/platform/secrets-management
+  - /docs/platform/get-started/tutorials/add-secrets-manager/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -409,7 +410,7 @@ When you create a secret, Harness shows the list of secret managers at the paren
 If a default secret manager is updated or deleted, Harness Default Secret Manager automatically becomes the new default.
 :::
 
-![](../static/select-secrets-manager-scope2.png)
+![](./static/select-secrets-manager-scope2.png)
 
 Harness creates new secrets with secret manager scope information and identifiers. Harness displays the secret manager scope on the secret list page.
 
@@ -442,6 +443,6 @@ Follow these steps for a demo of secrets sanitization in logs.
 2. Observe the execution logs as Harness runs the pipeline.
 3. In console logs, the secret is masked with asterisks (`*`), as shown in the following image.
 
-![](../static/secret-log.png)
+![](./static/secret-log.png)
 
 When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed. For more information, go to [secrets and log-sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization). The only exception is output variables. If an output variable value contains a secret, be aware that the secret will be visible in the build details. For more information, go to [output variables](/docs/continuous-integration/use-ci/run-step-settings/#output-variables).
