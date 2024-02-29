@@ -51,11 +51,11 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 #### Fixed issues
 
-- Previously, the ingestion engine assigned a scan type of SAST to  all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not.  With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7208, ZD-58495)
+- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not.  With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7208, ZD-58495)
 
 - Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
 
-- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference IDs to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct  resource ID and vulnerability data. (STO-7140)
+- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference IDs to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct resource ID and vulnerability data. (STO-7140)
 
 - With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
 
