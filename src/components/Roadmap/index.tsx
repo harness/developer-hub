@@ -10,6 +10,7 @@ const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
     { value: "platform", name: "Platform" },
+    { value: "aida", name: "AI Development Assistant" },
     { value: "code", name: "Code Repository" },
     { value: "ci", name: "Continuous Integration" },
     { value: "cd", name: "Continuous Delivery & GitOps" },
@@ -22,7 +23,6 @@ const Roadmap = () => {
     { value: "srm", name: "Service Reliability Management" },
     { value: "idp", name: "Internal Developer Portal" },
     { value: "sei", name: "Software Engineering Insights" },
-    { value: "aida", name: "AI Development Assistant" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

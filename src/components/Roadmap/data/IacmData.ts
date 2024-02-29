@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const IacmData: Horizon = {
   Now: {
-    description: "What is being delivered now",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         tag: [{ value: "Simplify Onboarding" }],
@@ -42,7 +42,7 @@ export const IacmData: Horizon = {
     ],
   },
   Next: {
-    description: "What is being developed next",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
       {
         tag: [],
@@ -87,7 +87,7 @@ export const IacmData: Horizon = {
     ],
   },
   Later: {
-    description: "What is being developed later",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
