@@ -10,10 +10,12 @@ export const platformData: Horizon = {
     description: "What is being developed next",
     feature: [
       {
+        tag: [],
         title: "Enterprise Code Generation",
         description: "AI code generation specifically trained on customer code",
       },
       {
+        tag: [],
         title: "Integration Test Selection",
         description: "Select integration tests corresponding to code changes reducing the overall test cycle time.",
       },
@@ -23,14 +25,17 @@ export const platformData: Horizon = {
     description: "What is being developed later",
     feature: [
       {
+        tag: [],
         title: "Automatic Code Refactoring",
         description: "Re-factor code to upgrade libraries, reduce complexity, etc.",
       },
       {
+        tag: [],
         title: "Auto generate release notes",
         description: "AI-generated release notes",
       },
       {
+        tag: [],
         title: "Review and Optimize Infrastructure",
         description: "Review and optimize infrastructure-as-code resources, including Pulumi, CloudFormation, Crossplane, etc.",
       },
@@ -39,7 +44,7 @@ export const platformData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
-         {
+      {
         tag: [],
         title: "Code Assistant",
         description:
