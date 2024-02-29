@@ -5,15 +5,15 @@ sidebar_label: Stop pipelines using OPA
 sidebar_position: 220
 ---
 
-You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your security tests, and to stop your pipelines if a security test violates those policies. 
+You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate those policies. 
 
-You can use Harness Policy as Code to enforce Security Test policies such as: 
+You can use Harness Policy as Code to enforce policies such as: 
 
 - A security test cannot include any issues in a list of severities such as Critical or New Critical.
 
 - A security test cannot include any issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
 
-- A security test cannot include any issues in a list of titles such as `javascript.express.mongodb.*` or `javascript.express.security.audit.*`.
+- A security test cannot include any issues in a list of titles such as `libsqlite3` or `javascript.express.security.audit`.
 
 - A security test cannot include any more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
 
@@ -21,7 +21,7 @@ You can use Harness Policy as Code to enforce Security Test policies such as:
 
 ### Important notes
 
-- Security Test policies are behind the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io) to enable them.
+- To enforce policies against your security tests, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
 
 - This topic assumes that you have a basic knowledge of the following:
 

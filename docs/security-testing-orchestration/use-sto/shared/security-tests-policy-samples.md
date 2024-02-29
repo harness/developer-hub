@@ -1,6 +1,6 @@
 
 
-The Harness Policy Library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to create policies and apply them against your STO security tests. 
+The Harness Policy Library includes the following [policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case) that make it easy to [create security test policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#workflow-description) and enforce them against your scan results. 
 
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
@@ -31,8 +31,7 @@ Here is a sample policy that you can evaluate using the **On Step** event for a 
 
 :::note
 
-
-- This policy sample supports the following vulnerabilities only: Critical, High, Medium, Low, and Info. To create policies based on output variables such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables).
+This policy sample supports the following vulnerabilities only: Critical, High, Medium, Low, and Info. To create policies based on output variables such as `NEW_CRITICAL`, go to [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables).
 
 :::
 
