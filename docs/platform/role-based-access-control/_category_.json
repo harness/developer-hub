@@ -1,15 +1,14 @@
 {
-    "label": "Access Control",
+    "label": "Platform access control",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "position": "8",
     "link": {
         "type": "generated-index",
-        "title": "Access Control"
+        "title": "Platform access control"
     },
     "customProps": {
-        
         "helpdocs_category_id": "w4rzhnf27d"
     }
 }

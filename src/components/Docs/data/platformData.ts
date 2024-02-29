@@ -47,7 +47,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.platform,
           description:
             "Create and manage roles and resource groups, and set up role-based access control.",
-          link: "/docs/category/access-control-2",
+          link: "/docs/category/platform-access-control",
         },
         {
           title: "Secrets management",
