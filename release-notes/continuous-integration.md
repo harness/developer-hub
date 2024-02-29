@@ -41,10 +41,6 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 <!-- Mar 5, 2024 -->
 
-<!-- #### New features and enhancements -->
-
-<!-- * (CI-7929, ZD-42045) ? -->
-
 <!-- #### Fixed issues -->
 <!-- Fix links when uncomment -->
 <!-- * Added null handling for empty runtime input for the [Post-Command in a Run Tests step]  (/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#pre-command-post-command-and-shell). Previously, if you configured Post-Command as [runtime input]  (/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and left the field blank at runtime, it would fail the pipeline by supplying `null` as the Post-Command, rather than an empty field. (CI-11365, ZD-58254)
