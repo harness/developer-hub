@@ -126,7 +126,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/docs/category/dashboards">
+            <a href="/docs/category/harness-dashboards">
               <h4>Dashboards &amp; Reports</h4>
               <p>
                 Create &amp; share Dashboards as well as schedule &amp; download
