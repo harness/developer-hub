@@ -147,7 +147,7 @@ The following table lists some of the examples for forecasted cost calculation. 
 
 ### K8s Storage cost
 
-To fetch persistent volume data, listPersistentVolumeCall is used. In the response, V1PersistentVolumeSpec is given which will be used to find the PVType. Currently, CCM supports below PVTypes:
+To access information about persistent volumes, we retrieve data related to their specifications. These specifications include details such as the type of persistent volume being used. Currently, within our system, we support various types of persistent volumes, each serving different purposes. The supported types, known as PVTypes, include
 
 ```
 enum PVType {
@@ -159,7 +159,7 @@ enum PVType {
 }
 ```
 
-Out of which, the exact price rate for GCP K8s PV (`PV_TYPE_GCE_PERSISTENT_DISK`) is calculated by calling the GCP K8s APIs. For all other cloud providers and bare metal machines, the hardcoded price value is used. If no PV type for a cloud provider is detected, it falls to `PV_TYPE_UNSPECIFIED`.
+For GCP Kubernetes persistent volumes (PV_TYPE_GCE_PERSISTENT_DISK), the exact price rate is calculated by calling the GCP Kubernetes APIs. For all other cloud providers, a hardcoded price value is used for cost calculation. 
 
 
 | **PVType** | **Default Hardcoded price (perGBPerMonth)** |
