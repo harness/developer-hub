@@ -178,7 +178,9 @@ You can use this field to run the Snyk scan with additional options.
 
 You can configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
 
-![Security override in Security Tests](../static/sto-7041-override-in-security-tests.png)
+<DocImage path={require('../static/sto-7041-override-in-security-tests.png')} width="50%" height="50%" title="Snyk security override in Security Tests" />
+
+<DocImage path={require('../static/sto-6927-override-popup-for-snyk.png')} width="50%" height="50%" title="Override for Snyk issue in Issue Details table" />
 
 This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
   
@@ -187,7 +189,7 @@ To enable this behavior, add the setting `ingest_tool_severity` and set it to `t
   <Tabs>
      <TabItem value="Visual" label="Visual" default>
 
-     ![Add ingest_tool_severity to Snyk step](../static/sto-7041-add-setting-in-visual-editor.png)
+     <DocImage path={require('../static/sto-7041-add-setting-in-visual-editor.png')} width="40%" height="40%" title="Add ingest_tool_severity to Snyk ste" />
 
     </TabItem>
   
