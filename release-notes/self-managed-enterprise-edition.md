@@ -271,10 +271,6 @@ gsutil -m cp \
 
    The issue is fixed now.
 
-- CCM icon color didn't change in the new nav (CDS-88505, CCM-16503)
-
-   The issue is fixed now. 
-
 - Icon for trigger was missing in new nav.(CDS-88529)
 
    This issue occurred due to browser rendering, and a similar issue was discussed and addressed as part of CDS-88645.
