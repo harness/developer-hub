@@ -1,8 +1,8 @@
 ---
 title: Zed Attack Proxy (ZAP) scanner reference for STO
 description: Scan application instances with ​Zed Attack Proxy (ZAP).
-sidebar_label: Zed Attack Proxy (ZAP) scanner reference
-sidebar_position: 430
+sidebar_label: Zed Attack Proxy scanner reference
+sidebar_position: 10
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) tutorial](/docs/security-testing-orchestration/get-started/sto-tutorials/dast-scan-zap).
+For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) tutorial](/docs/security-testing-orchestration/sto-techref-category/zap/dast-scan-zap).
 
 ## Important notes for running ZAP scans in STO
 
@@ -52,11 +52,11 @@ The recommended workflow is add a ZAP step to a Security Tests or CI Build stage
 
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
 
-import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch  from '../shared/step_palette/scan/mode/_orchestration.md';
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -65,7 +65,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -86,36 +86,36 @@ The following options are supported for Zap scans:
 
 #### Type
 
-import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
+import StoSettingScanTypeInst     from '../shared/step_palette/target/type/_app.md';
 
 <StoSettingScanTypeInst />
 
 
 <!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectApp from '../shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectApp/>
 <StoSettingScanTypeAutodetectNote/       -->
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -124,35 +124,35 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 #### Domain
 
-import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+import StoSettingInstanceDomain from '../shared/step_palette/instance/_domain.md';
 
 
 <StoSettingInstanceDomain />
 
 #### Protocol
 
-import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+import StoSettingInstanceProtocol from '../shared/step_palette/instance/_protocol.md';
 
 
 <StoSettingInstanceProtocol />
 
 #### Port
 
-import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+import StoSettingInstancePort from '../shared/step_palette/instance/_port.md';
 
 
 <StoSettingInstancePort />
 
 #### Path
 
-import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+import StoSettingInstancePath from '../shared/step_palette/instance/_path.md';
 
 
 <StoSettingInstancePath />
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 
 <StoSettingIngestionFile  />
@@ -161,14 +161,14 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 
 <StoSettingLogLevel />
 
 #### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
 
 
 <StoSettingCliFlags />
@@ -176,7 +176,7 @@ import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 #### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -218,7 +218,7 @@ STO supports the following scan policy types for ZAP:
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -246,7 +246,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 #### Ingestion
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />

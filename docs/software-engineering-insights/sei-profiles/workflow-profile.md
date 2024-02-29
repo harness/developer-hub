@@ -192,15 +192,11 @@ You can modify Workflow profile stages and grades according to your team's SDLC 
 
 ## Add the Jira Release stage
 
-:::info
-This feature is currently not supported on Harness SEI.
-:::
-
-<!-- When configuring a workflow profile in Jira, you have the option to add a release stage. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
+When configuring a workflow profile in Jira, you have the option to add a release stage. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
 
 By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to `Ticket Created` and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
 
-If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile. -->
+If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile.
 
 ## Measure Lead Time by Jira Statuses
 

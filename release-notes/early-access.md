@@ -561,7 +561,7 @@ You can scan container images and repositories using [Fossa](/docs/security-test
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
 
-You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
+You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 
 #### Harness AI Development Assistant (AIDA:tm:) for STO
 

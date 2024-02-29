@@ -97,7 +97,7 @@ Use [templates](/docs/category/templates/) to share and utilize pre-build pipeli
 
 Use these strategies to automate and manage build sequences.
 
-* [Queue Intelligence](./queue-intelligence.md)
+* [Queue Intelligence](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
 * [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)

@@ -2,14 +2,14 @@
 title: Semgrep scanner reference for STO
 description: Scan code repositories with Semgrep.
 sidebar_label: Semgrep settings reference
-sidebar_position: 360
+sidebar_position: 20
 ---
 
 You can ingest scan results from [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories.
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
-- [SAST code scans using Semgrep](/docs/security-testing-orchestration/get-started/sto-tutorials/sast-scan-semgrep)
-- [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-only)
+- [SAST code scans using Semgrep](./sast-scan-semgrep)
+- [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-only)
 
 ## Important notes for running Semgrep scans in STO
 
@@ -45,14 +45,14 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -60,7 +60,7 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo     from '../shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
@@ -68,8 +68,8 @@ import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.
 
 #### Target and variant detection
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/
@@ -78,7 +78,7 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
@@ -86,7 +86,7 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -94,7 +94,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Workspace (_repository_)
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -102,7 +102,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
@@ -117,13 +117,13 @@ Log Level, CLI flags, and Fail on Severity
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -152,7 +152,7 @@ The following pipeline example illustrates an ingestion workflow. It consists of
 * A Run step that uses a [Semgrep container](https://hub.docker.com/r/returntocorp/semgrep) to scan the codebase defined for the pipeline and then publish the results to a SARIF data file.
 * A Semgrep step that ingests the SARIF data.
 
-![](./static/semgrep-ingest-pipeline.png)
+![](../static/semgrep-ingest-pipeline.png)
 
 ```yaml
 pipeline:

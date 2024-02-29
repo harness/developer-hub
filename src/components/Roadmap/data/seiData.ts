@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q2 2024, May - July 2024",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         tag: [{ value: "Easy Adoption" }],
@@ -33,7 +33,7 @@ export const SeiData: Horizon = {
   },
 
   Next: {
-    description: "Q3 2024, August - October 2024",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
       {
         tag: [{ value: "Easy Adoption" }],
@@ -59,7 +59,7 @@ export const SeiData: Horizon = {
   },
   
   Later: {
-    description: "Q4 2024, October + 2024",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [{ value: "Easy Adoption" }],

@@ -1,9 +1,10 @@
 ---
-title: Create a build-scan-push pipeline (STO only)
+title: "Tutorial: Create a build-scan-push pipeline (STO only)"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 70
 redirect_from:
   - /tutorials/security-tests/build-scan-push-sto-only
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-only
 ---
 
 import Tabs from '@theme/Tabs';
@@ -38,7 +39,7 @@ The following steps describe the workflow:
 
 5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub.
 
-![scan-build-scan-push tutorial pipeline](./static/sbsp-sto-only/00-pipeline-steps.png)
+![scan-build-scan-push tutorial pipeline](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-only/00-pipeline-steps.png)
 
 :::info Prerequisites
 
@@ -46,7 +47,7 @@ The following steps describe the workflow:
 
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](./sast-scan-semgrep) and [Container image scans with Aqua Trivy](./container-scan-aqua-trivy) tutorials.
+  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) and [Container image scans with Aqua Trivy](../../sto-techref-category/trivy/container-scan-aqua-trivy) tutorials.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
   - GitHub requirements — This tutorial assumes you have the following:
 
@@ -162,7 +163,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
          - Key : `SEMGREP_APP_TOKEN`
          - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`.
 
-           ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
+           ![set the value type](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/set-value-type.png)
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -275,7 +276,7 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 
 Add a step after the `Run` step and configure it as follows:
 
-- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference)
+- `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
@@ -453,20 +454,20 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 
 3.  Target variant — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>`
 
-4.  [Container image Type](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) = **Local Image**
+4.  [Container image Type](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) = **Local Image**
 
 5.  Container image name — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
 6.  Container image tag — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>`
 
-7.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **None**
+7.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) = **None**
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
-- `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
+- `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
@@ -479,10 +480,10 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
     - `advanced : `
       - `log :`
         - `level : info`
-        - [`fail_on_severity`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) `: critical`
+        - [`fail_on_severity`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) `: critical`
     - `privileged: true`
     - `image:`
-      - [`type`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) `: local_image`
+      - [`type`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) `: local_image`
       - `name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
       - `tag: <+stage.variables.DOCKER_IMAGE_TAG>`
 

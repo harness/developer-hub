@@ -1,7 +1,7 @@
 import { Horizon } from "./roadmapData";
 export const platformData: Horizon = {
   Now: {
-    description: "What is being delivered now",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         title: "List UI Improvements",
@@ -16,10 +16,10 @@ export const platformData: Horizon = {
           "Extended Data Retention, Data Archiving and Compliance capabilites ",
       },
       {
-        tag: [{ value: "AWS" }, { value: "GCP" }],
-        title: "OIDC Support",
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support for AWS",
         description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider",
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your AWS resources without secrets or credentials",
       },
       {
         tag: [],
@@ -34,15 +34,27 @@ export const platformData: Horizon = {
           "Customers can request to be migrated to a different SaaS cluster",
       },
       {
-        tag: [{ value: "Delegate" }],
+        tag: [{ value: "Notify" }],
         title: "Centralized Notification system",
         description:
-          "Centralized notification system to configure notifications on Delegate",
+          "Centralized notification system to configure delegate notifications",
+      },
+      {
+        tag: [{ value: "Scale" }],
+        title: "Test Account Cluster",
+        description:
+          "Customers can be onboarded in a new cluser for their test accounts",
+      },
+      {
+        tag: [{ value: "Resource Management" }],
+        title: "Project movement across organization",
+        description:
+          "",
       },
     ],
   },
   Next: {
-    description: "What is being developed next",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
       {
         tag: [{ value: "Pipeline" }, { value: "Template" }],
@@ -54,10 +66,30 @@ export const platformData: Horizon = {
         title: "Priority Queue for Pipeline Execution",
         description: "",
       },
+      {
+        tag: [],
+        title: "Audit Trails",
+        description: "Send audit events to Splunk and GCS bucket",
+      },
+      {
+        tag: [],
+        title: "Custom banners",
+        description: "Display custom banners in the Harness UI",
+      },
+       {
+        tag: [{ value: "Delegate" }],
+        title: "Restrict delegate usage",
+        description: "Ability to restrict delegate usage across Accounts/Orgs/Projects and Environments",
+      },
+       {
+        tag: [],
+        title: "Console log line limit",
+        description: "Ability to increase the console log line limits",
+      },
     ],
   },
   Later: {
-    description: "What is being developed later",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [{ value: "Pipeline" }, { value: "Insights" }],
@@ -70,11 +102,59 @@ export const platformData: Horizon = {
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
       },
+      {
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support for secret managers",
+        description:
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
+      },
+      {
+        tag: [{ value: "Access Control" }],
+        title: "Centralized view of permissions on a resource",
+        description:
+          "Centralized visibility into which permissions have been granted to whom and on what resources",
+      },
+      {
+        tag: [{ value: "Policy" }],
+        title: "Policy to govern projects",
+        description:
+          "Support to allow policy to govern projects",
+      },
+      {
+        tag: [{ value: "Notify" }],
+        title: "Customized notification body text",
+        description:
+          "Create and manage customized notification body text",
+      },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+         {
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support for GCP",
+        description:
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your GCP resources without secrets or credentials",
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "Encrypted SAML",
+        description:
+          "Enable encrypted SAML to allow Harness integration with your IDP",
+      },
+      {
+        tag: [],
+        title: "Gov cloud support for Azure Key Vault",
+        description:
+          "Support government cloud for Azure Key Vault connectors with username/password",
+      },
+      {
+        tag: [{ value: "Session Management" }],
+        title: "Absolute session timeout",
+        description:
+          "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
+      },
     ],
   },
 };
