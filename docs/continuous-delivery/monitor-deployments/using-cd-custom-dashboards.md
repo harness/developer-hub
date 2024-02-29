@@ -410,7 +410,7 @@ This view contains the data related to the environment execution tags. It will c
 <DocImage path={require('./static/using-cd-custom-dashboards-27.png')} width="60%" height="60%" title="Click to view full size image" />
 
 List of dimensions:
-1. Environment Execution tag: The execution tag is displayed as `key:value`. If there are 5 tags in a environment, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+1. Environment execution tag: The execution tag is displayed as `key:value`. If there are 5 tags in a environment, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 ### Harness Approval Step Execution
 This view contains the data related to the Harness Approval Step Executions. If any field from this view is selected it will only show the data related to the executions which have a harness approval step. For e.g. if their are Jira approval and Harness Approval steps in a single pipeline execution, then selecting fields from this view, will only show Harness approval data.
