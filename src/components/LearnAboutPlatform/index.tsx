@@ -114,7 +114,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/docs/category/access-control-1">
+            <a href="/docs/category/platform-access-control">
               <h4>Role-Based Access Control</h4>
               <p>Use Roles &amp; User Groups for authorization</p>
             </a>
