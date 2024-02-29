@@ -147,7 +147,7 @@ Displays a list of tags associated with a environment.
 Environment Tags only displays the tags for the environments that were part of pipelines that were successfully executed at least once.
 :::
 
-<DocImage path={require('./static/using-cd-custom-dashboards-23.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-26.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -407,7 +407,7 @@ List of dimensions:
 ### Environment Execution Tags
 This view contains the data related to the environment execution tags. It will contain the tags that were present in the environment at the start of the execution.
 
-<DocImage path={require('./static/using-cd-custom-dashboards-24.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-27.png')} width="60%" height="60%" title="Click to view full size image" />
 
 List of dimensions:
 1. Environment Execution tag: The execution tag is displayed as `key:value`. If there are 5 tags in a environment, there will be 5 rows having 1 tag(`key:value` pair) in each row.
