@@ -271,7 +271,7 @@ gsutil -m cp \
 
    The issue is fixed now.
 
-- CCM icon color didn't change in the new nav(CDS-88505)
+- CCM icon color didn't change in the new nav (CDS-88505, CCM-16503)
 
    The issue is fixed now. 
 
@@ -300,8 +300,6 @@ gsutil -m cp \
 - Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. This change requires Harness Delegate version 24.01.82108 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10789, ZD-55265)
 
 - Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325)
-
-- Added a missing field validation for **Repository Name** when using [Harness Code Repository](/docs/code-repository/code-supported) as the pipeline's [default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#configure-the-default-codebase). (CI-11042)
 
 #### Harness Platform
 
