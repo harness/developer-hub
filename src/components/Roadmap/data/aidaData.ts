@@ -10,12 +10,12 @@ export const platformData: Horizon = {
     description: "What is being developed next",
     feature: [
       {
-        title: "Enterprise Code Seneration",
+        title: "Enterprise Code Generation",
         description: "AI code generation specifically trained on customer code",
       },
       {
         title: "Integration Test Selection",
-        description: "Select integration tests corresponding to code changes reducing the overall test cycle time",
+        description: "Select integration tests corresponding to code changes reducing the overall test cycle time.",
       },
     ],
   },
@@ -24,7 +24,7 @@ export const platformData: Horizon = {
     feature: [
       {
         title: "Automatic Code Refactoring",
-        description: "Re-factor code to upgrade libraries, reduce complexity, etc",
+        description: "Re-factor code to upgrade libraries, reduce complexity, etc.",
       },
       {
         title: "Auto generate release notes",
@@ -32,7 +32,7 @@ export const platformData: Horizon = {
       },
       {
         title: "Review and Optimize Infrastructure",
-        description: "Reviews and omptimize infrastructure-as-code resources, including Pulumi, CloudFormation, Crossplane, etc.",
+        description: "Review and optimize infrastructure-as-code resources, including Pulumi, CloudFormation, Crossplane, etc.",
       },
     ],
   },
@@ -85,7 +85,7 @@ export const platformData: Horizon = {
         tag: [],
         title: "Harness Support",
         description:
-          "Helps users understand the product, troubleshoot failures/exceptions/security vulnerabilities by leveraging documentation, community articles, internal/external knowledge base articles",
+          "Helps users understand the product, troubleshoot failures/exceptions/security vulnerabilities by leveraging documentation, community articles, internal/external knowledge base articles.",
       },
       {
         tag: [],
@@ -97,7 +97,7 @@ export const platformData: Horizon = {
         tag: [],
         title: "Policy As Code Assistant",
         description:
-          "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend",
+          "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
       },
       {
         tag: [],
@@ -109,13 +109,13 @@ export const platformData: Horizon = {
         tag: [],
         title: "Policy As Code Assistant (Pipelines)",
         description:
-          "Automatically generate Open Policy Agent (OPA) rego policies for Pipeline governance.",
+          "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },
       {
         tag: [],
         title: "Policy As Code Assistant (Pipelines)",
         description:
-          "Automatically generate Open Policy Agent (OPA) rego policies for Pipeline governance.",
+          "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },
       {
         tag: [],
