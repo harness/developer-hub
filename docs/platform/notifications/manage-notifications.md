@@ -97,9 +97,6 @@ To manage delegate event notifications, do the following:
 2. Select your account.
 3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
 4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-
-   
-
 5. Select **More Options** (&vellip;) corresponding to the notification you want to update, and then select **Edit**. The **Edit Notification Setup** wizard opens. 
 6. Edit your notification information on the necessary screen, selecting **Continue** to step through the wizard until you reach the **Set Channels** screen, then select **Submit** to save your changes.
 
@@ -118,7 +115,7 @@ To delete a delegate event notification, do the following:
 
 ## Manage event notification channels
 
-With notifications management, you can enable or disable notification channels at the account, project, and org scopes.
+With notifications management, you can enable or disable notification channels at the account, project, and org scopes. For more information on notification channels, go to [Get started with notifications](/docs/platform/notifications/notification-settings#get-started-with-notifications).
 
 ### Add a new channel
 
