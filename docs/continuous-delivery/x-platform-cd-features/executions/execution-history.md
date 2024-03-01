@@ -1,30 +1,38 @@
 ---
-title: Execution History
+title: Pipeline Execution History
 description: Learn more about the execution history of a pipeline. Where to find it and what information it contains.
 sidebar_position: 7
 ---
 
-This topic covers the execution history page for any given pipeline. Reading this page should tell you how to navigate to it, and what information is contained within.
+This topic describes how to view the execution history pipelines, how to navigate to it, and what information is contained within.
 
 ## Where Can I Find Execution History?
 
-There are a few places you can look to find the execution history of your pipeline or all pipelines.
+You can find the execution history of your pipeline or all pipelines in a project in the following places in the Harness UI.
 
 ### Executions Tab
 
-Find the execution history of all pipelines for a given project in the left navigation tab:
+You can view the execution history of all pipelines for a given project in the **Executions** tab in the left navigation of the Harness UI:
 
 ![](./static/leftnav-executions-tab.png)
 
 ### Pipelines Tab
 
-In the pipelines tab, click the button for more actions on the pipeline you're interested in and select `View Executions`.
+You can view the execution history of all pipelines for a given project in the **Pipelines** tab also. 
+
+In the Harness UI left navigation, select **Pipelines**. A list of pipelines created under the project appears. 
+
+Select the more actions button on the right for the pipeline of your choice, and then select **View Executions**.
 
 ![](./static/pipelinetab-executions.png)
 
 ### Pipeline Studio
 
-You can find the execution history on the top right corner when you are in the pipeline studio for a given pipeline.
+You can view the execution history of a specific pipeline using Pipeline Studio.
+
+In the Harness UI left navigation, select **Pipelines**, and then select the pipeline for which you want to view the execution details. 
+
+Select the **Execution History** option on the top right corner of the page to view the execution details.
 
 ![](./static/pipelinestudio-execution-history.png)
 
@@ -32,26 +40,26 @@ You can find the execution history on the top right corner when you are in the p
 
 Each execution has the following information displayed for it. Each execution also has more information if you click the arrow on the left of it and open the dropdown. 
 
-1. **Pipeline Name**
-    - The name of the pipeline and execution id.
+* **Pipeline Name**
+    - The name of the pipeline and execution ID.
     - When expanded, this column also shows the name of each stage in the pipeline. 
-2. **Status**
+* **Status**
     - Shows the status of the execution. The options are `SUCCESS`, `FAILED`, `ABORTED`, `EXPIRED`.
-    - When expanded, shows the status of each stage as an emoji. You can hover over the emoji for more info.
-3. **Service**
-    - Shows the service used for the pipeline. For pipelines with more than one service, a `+X` modifier will be displayed where `X` is the number of additional services. 
-    - When expanded, this column shows the service for each individual stage of the pipeline.
-    - Hover over the service name to see the artifact attached to that service. 
-4. **Environment**
-    - Shows the infrastructure used for the pipeline. For pipelines with more than one associated environment, a `+X` modifier will be displayed where `X` is the number of additional environments.
+    - When expanded, this column shows the status of each stage as an emoji. You can hover over the emoji for more information.
+* **Service**
+    - Shows the services used in the pipeline. For pipelines with more than one service, a `+X` modifier will be displayed where `X` is the number of additional services. 
+    - When expanded, this column shows the services used in each individual stage of the pipeline.
+    - Hover over the service name to see the artifact attached to the service. 
+* **Environment**
+    - Shows the infrastructure used in the pipeline. For pipelines with more than one associated environment, a `+X` modifier will be displayed where `X` is the number of additional environments.
     - When expanded, this column shows the environment for each individual stage of the pipeline.
     - Hover over the environment name to see the infrastructure associated with the environment.
-5. **Trigger** (This column is unlabeled)
+* **Trigger** (This column is unlabeled)
     - This column shows the origin of each execution.
-6. **Execution Start Time**
+* **Execution Start Time**
     - Shows the user, method, and start time of the execution.
-7. **Details Button**
-    - The final column is a button for each pipeline offering additional execution actions including:
+* **More details** 
+  The more details icon for each pipeline offers additional execution actions:
     - Add Execution Notes
     - View Execution
     - Edit Pipeline
