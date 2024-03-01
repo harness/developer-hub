@@ -8,7 +8,7 @@ Harness Continuous Delivery (CD) has evolved to seamlessly integrate with modern
 
 To learn more, go to:
 - [Harness Git Experience overview](/docs/platform/git-experience/git-experience-overview) 
-- [Onboard with Terraform Provider](/docs/platform/automation/terraform/onboard-terraform-provider)
+- [Onboard with Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider)
 
 
 ## Harness Git Experience Setup

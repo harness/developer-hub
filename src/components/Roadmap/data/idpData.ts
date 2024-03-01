@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const IdpData: Horizon = {
   Now: {
-    description: "Q1 2024, Feb-April 2024",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         tag: [{ value: "Self Service Onboarding" }, { value: "IDP Workflows" }],
@@ -73,7 +73,7 @@ export const IdpData: Horizon = {
     ],
   },
   Next: {
-    description: "Q2 2024, May-July 2024",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
       {
         tag: [{ value: "Self-Managed" }],
@@ -107,7 +107,7 @@ export const IdpData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2024+, Oct+ 2024",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [{ value: "Software Catalog" }],

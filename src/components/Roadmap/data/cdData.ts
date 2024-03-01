@@ -1,7 +1,7 @@
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
   "Now": {
-    description: "Q2 2024, May-July 2024",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         tag: [],
@@ -76,7 +76,7 @@ export const CdData: Horizon = {
     ],
   },
   "Next": {
-    description: "Q3 2024, Aug-Oct 2024",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
       {
         tag: [{ value: "Azure" }],
@@ -101,7 +101,7 @@ export const CdData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q4 2024+, Oct+ 2024",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [],
@@ -128,11 +128,6 @@ export const CdData: Horizon = {
         title: "External Secret Operator in GitOps",
         description: "Harness will support GitOps Deployments to pull secrets from an external secret manager.",
       },
-    ],
-  },
-  Released: {
-    description: "What has been released",
-    feature: [
     ],
   },
 };

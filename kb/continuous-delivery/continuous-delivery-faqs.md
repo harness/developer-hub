@@ -4926,13 +4926,32 @@ To fetch files from the Harness file store in a Run step, you can use the follow
 Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
 
 #### Is there a way the user can pull from Bitbucket/Github inside the Harness Delegate and then push it to the target server?
+
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
+
+#### I want my step to be skipped if there was failure and we have marked Ignore Failure in failure strategy
+
+You can have conditional execution, something like `<+pipeline.stages.<<staged>>.spec.execution.steps.<<stepid>>.status> != "IGNORE_FAILED"`
+
+#### Can we add a skip condition on env/infa used in a stage?
+
+No, Env/Infra deatils are not present once the stage is initilzed and gets resolved once the stage starts, so adding conditions on these will not work.
+
+#### Is it possible to have a single cluster using potentially matching release names?
+
+Harness uses a release name for tracking releases. The release name is used to create the corresponding Harness release ConfigMap or Secret.
+
+So we recommend to name it unique across namespaces, so you can use matching release names in clusters if namespaces are different.
+
+#### How to use the Opsgenie plugin and integration with Harness to create new alerts based on testcase health?
+
+We do have different built-in notification mechanisms,  slack/email/ms teams/pager duty or custom, but if you want to integrate opsgenie, you have to create a shell script and make a call to opsgenie utilizing the api exposed by opsgenie to use for alert purposes.
 
 #### Is there a way to prevent editing the input set during the rerun of pipelines?
 
 No, currently, there is no way to prevent a user from editing an input set.
 
-#### Is it possible for me to specify an artifact source based on the environment? 
+#### Is it possible for me to specify an artifact source based on the environment?
 
 You can create overrides for manifest, config file, variable, and values.yaml.
 For artifact overrides, I would suggest creating a variable override. You can define the artifact as an expression and use the variable expression.
@@ -5341,7 +5360,7 @@ Please read more on OPA policy step in the following [Documentation](https://dev
 #### How can one migrate a service to a higher scope (if available at projeect level) ?
 
 Currently, there's no built-in way to move or upgrade services to higher levels. When sharing a service, it needs to have a scope at either the organizational or account level. Fortunately, you can always use the terraform provider to recreate those services at a higher level.
-Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/docs/platform/automation/terraform/onboard-terraform-provider)
+Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/docs/platform/get-started/tutorials/onboard-terraform-provider)
 
 #### How can one use AWS CodeDeploy Template support at Harness ?
 
@@ -5643,3 +5662,17 @@ Directly pushing a YAML into .harness folder will not create the pipeline, you c
 #### In the overview page why Environments always showed 0 when the reality there are some environments
 
 The overview page offers a summary of deployments and overall health metrics for the project. Currently, the fields are empty as there are no deployments within the project. Once a deployment is in the project, these fields will be automatically updated.
+
+#### Why can't I add a command script step template to a Custom stage?
+
+The command script step template is only available in CD stages.
+
+#### Can I sync the Harness service to Git?
+
+Yes, we have a [bi-directional functionality to sync the Harness entities](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup).
+
+#### Blue/Green Deployment not scaling back up after Scale Down Step
+
+If a replica count isn't defined on the Deployment, the Scale Down Step will set the replicas count permanently to `0`. Once a replica count is defined on the Deployment, the Blue/Green Swap Step should scale the appropriate Deployment correctly.
+
+If using a `Horizontal Pod Autoscaler` to scale replicas, you can set the `Delete Resources` flag in the Scale Down step to delete the resources instead of scaling them down. This will cause the Staging pod to be deleted so that when a new deployment happens, the pods are scaled appropriately to 1 replica and then picked up by the `Horizontal Pod Autoscaler`.

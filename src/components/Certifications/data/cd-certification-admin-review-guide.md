@@ -26,7 +26,7 @@
 | Understanding and addressing drift between Git and deployed workloads  | [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/)|
 | Managing Harness Git Experience for different entities| [Harness Git Experience quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/)|
 | **8. Implementing and Managing Secret Management** | |
-| Integrating Harness with different Secrets Managers| [Use secrets managers](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager) |
+| Integrating Harness with different Secrets Managers| [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager) |
 | Ensuring secure handling of secrets in pipelines  | [Add and reference file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets/)|
 | **9. Infrastructure as Code (IaC) and Provisioning Management**  | |
 | Implementing IaC principles with Harness | [Harness Policy As Code overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)|

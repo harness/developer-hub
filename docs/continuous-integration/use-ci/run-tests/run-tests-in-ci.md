@@ -41,7 +41,7 @@ For more information about configuring **Run** steps, go to [Use Run steps](../r
 
 :::tip
 
-Harness supports [code coverage](./code-coverage) in **Run** steps.
+Harness supports [code coverage](./code-coverage.md) in **Run** steps.
 
 :::
 

@@ -19,7 +19,7 @@ GCP VM service kill fault assesses a GKE node's resilience by evaluating the ser
 - The target nodes should be in the ready state before and after injecting chaos.
 - Adequate GCP permissions to do `gcloud ssh` on the VM instance.
 - The VM instances should be in a healthy state.
-- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp.md) docs for more information.
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ stringData:
       <tr>
       <td>DEFAULT_HEALTH_CHECK</td>
       <td>Determines if you wish to run the default health check which is present inside the fault. </td>
-      <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

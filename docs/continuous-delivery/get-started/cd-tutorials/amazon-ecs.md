@@ -15,7 +15,7 @@ redirect_from:
   target="_self"
 />
 
-import DelegateInstall from '/docs/platform/delegates/install-delegates/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 :::info
 
