@@ -65,7 +65,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## February xx, 2024, version 1.22.6
+## March 1, 2024, version 1.22.6
 
 This release includes the following Harness module and component versions.
 
@@ -105,7 +105,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- You can now see AccountID in Switch Account screen(CDS-88728)
+- You can now see AccountID in Switch Account screen (CDS-88728)
 
    Enhanced the Switch Account experience to show more data i.e ``AccountId``.
 
@@ -113,7 +113,7 @@ gsutil -m cp \
 
    The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service. The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
 
-- Grouping and Collapsible are now supported for Overrides(CDS-82376)
+- Grouping and Collapsible are now supported for Overrides (CDS-82376)
 
   Overrides in configurations are now grouped and collapsible, making them easier to search through.
 
@@ -121,7 +121,7 @@ gsutil -m cp \
 
    When setting up Triggers, you'll find the Stage Selection in the Pipeline Input tab for a smoother configuration experience.
 
-- Option to select secrets in script output variables has been removed.(CDS-86690)
+- Option to select secrets in script output variables has been removed. (CDS-86690)
 
    Script output variables for the 'secrets' type no longer require explicit selection; instead, fixed variables need to be input to designate them as secret values for subsequent steps/stages.
 
@@ -181,7 +181,7 @@ gsutil -m cp \
    
    The issue is fixed now by adding restriction on UI to match backend limitation for the Delegate.
 
-- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list(CDS-88198, ZD-56156)
+- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list. (CDS-88198, ZD-56156)
 
    The issue is fixed now.
 
@@ -205,11 +205,11 @@ gsutil -m cp \
    
    The issue is fixed by adding logic to render clickable links within the text. If any URLs or hyperlinks are present in the approval message they are converted to clickable links. 
 
-- Github release trigger were not working as expected because UI didn't show the Conditions(CDS-87647, ZD-55832)
+- Github release trigger were not working as expected because UI didn't show the Conditions (CDS-87647, ZD-55832)
 
    The issue is fixed now.
 
-- Http step with mtls not working due to exception caused during delegate capability check for the step(CDS-87547,ZD-55531)
+- Http step with mtls not working due to exception caused during delegate capability check for the step (CDS-87547, ZD-55531)
    
    The issue is fixed now.
 
@@ -221,13 +221,13 @@ gsutil -m cp \
 
    The issue is fixed now by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
 
-- Pipeline was failing with delegate error to fetch JSON format(CDS-87440,ZD-55387)
+- Pipeline was failing with delegate error to fetch JSON format. (CDS-87440, ZD-55387)
 
    The JSON format was fetched using curl in the delegate but the same was not working in the UI.
 
    The issue is fixed now.
 
-- Harness bidirectional sync webhook feature not working(CDS-85694,ZD-54338)
+- Harness bidirectional sync webhook feature not working. (CDS-85694, ZD-54338)
    
    These events are unrelated to bidirectional GitExperience processing and will now be disregarded instead of being flagged as failures.
 
@@ -239,7 +239,7 @@ gsutil -m cp \
 
   The issue is fixed now.
 
-- Template inputs were not showing up in Pipeline editor (CDS-84490)
+- Template inputs were not showing up in Pipeline editor. (CDS-84490)
    
    It was due to an intermittent issue, this has been resolved now.
 
@@ -247,13 +247,13 @@ gsutil -m cp \
 
    The issue is fixed now.
 
-- FF validation used to work for name and ID fields but not any other field (CDS-87581)
+- FF validation used to work for name and ID fields but not any other field. (CDS-87581)
 
    The issue is fixed, FF validation will work when importing resources from Git. 
 
-- When only one manifest is created in OCT Helm, runtime inputs were not being displayed.(CDS-87941)
+- When only one manifest is created in OCT Helm, runtime inputs were not being displayed. (CDS-87941)
 
-   The issue is fixed by updating the condition in code to select default behaviour if only 1 manifest is available
+   The issue is fixed by updating the condition in code to select default behaviour if only 1 manifest is available.
 
 - In the process of creating an input set or overlay input set from YAML view, the isHarnessCodeRepo query parameter was not being sent.(CDS-87956)
 
@@ -263,23 +263,23 @@ gsutil -m cp \
 
    The issue is fixed now and it correctly opens the appropriate ``AWS Connector``.
 
-- Pipeline template using a stage template was not honoring ``gitBranch`` field for service selection.(CDS-88378)
+- Pipeline template using a stage template was not honoring ``gitBranch`` field for service selection. (CDS-88378)
 
    The issue is fixed now. 
 
-- The ExecutionList page overflowed the page when not needed.(CDS-88388)
+- The ExecutionList page overflowed the page when not needed. (CDS-88388)
 
    The issue is fixed now.
 
-- Icon for trigger was missing in new nav.(CDS-88529)
+- Icon for trigger was missing in new nav. (CDS-88529)
 
    This issue occurred due to browser rendering, and a similar issue was discussed and addressed as part of CDS-88645.
 
-- When attempting to save Stage Templates of Azure Webapp Deployment Type, the screen repeatedly asked to save.(CDS-88930)
+- When attempting to save Stage Templates of Azure Webapp Deployment Type, the screen repeatedly asked to save. (CDS-88930)
 
    The issue is fixed now. 
    
-- Pipeline invocation failed when searching for the YAML in the wrong branch.(CDS-91080)
+- Pipeline invocation failed when searching for the YAML in the wrong branch. (CDS-91080)
 
    The issue is fixed now.
 
