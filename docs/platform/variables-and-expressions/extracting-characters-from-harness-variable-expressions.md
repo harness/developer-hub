@@ -10,19 +10,19 @@ helpdocs_is_published: true
 
 You can use any [Java string method](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary) to extract characters or manipulate strings with expressions.
 
-## Example: Use the charAt() method
+## Example: Use the contains(CharSequence) method
 
-For example, you can return the character at a specified index in a Harness variable expression string.
+For example, you can return `true` if a string contains the specified sequence of char values in a Harness variable expression string.
 
 This can be helpful with [built-in variable expressions](harness-variables.md) such as `<+artifact.tag>`, `<+artifact.image>`, or variables that contain version numbers or other important strings.
 
-To return characters, you can use the `charAt()` method with your variable expression.
+To return characters, you can use the `contains(CharSequence s)` method with your variable expression.
 
 Let's look at an example where you have a variable named `<+version>`. that evaluates to `1234`.
 
-To get the first character of the string, you would use `<+<+version>.charAt(0)>`. This would return `1`.
+To get the first character of the string, you would use `<+<+version>.contains(CharSequence 1234)>`. This would return `true`.
 
-The `<+version>` references the variable, and the rest of the expression evaluates the string using the `charAt()` method.
+The `<+version>` references the variable, and the rest of the expression evaluates the string using the `contains(CharSequence s)` method.
 
 ## See also
 
