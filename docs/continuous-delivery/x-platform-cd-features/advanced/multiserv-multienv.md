@@ -412,6 +412,6 @@ Max concurrency changes based on the following:
 
 * Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
 * You cannot propagate multi environments between stages
-* When using stage variables with multi environment, the expression required to use for particular stage changes, for example, without multi ennvironment if expression was expected to be `<+pipeline.stages.sampleStage.variables.resourceNamePrefix>`, after using multi environment the expressions path changes and gets updated based on the iteration number of stage for example `<+pipeline.stages.sampleStage_1.variables.resourceNamePrefix>`
+* When using stage variables with multi environments, the expression used for a particular stage changes. For example, if the expression for a stage without multi environment is `<+pipeline.stages.sampleStage.variables.resourceNamePrefix>`, for multi environment, expression path changes and gets updated based on the iteration number of stage like this, `<+pipeline.stages.sampleStage_1.variables.resourceNamePrefix>`.
 
 
