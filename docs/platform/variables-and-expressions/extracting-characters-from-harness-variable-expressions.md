@@ -20,7 +20,7 @@ To return characters, you can use the `contains(CharSequence s)` method with you
 
 Let's look at an example where you have a variable named `<+version>` that evaluates to `1234`.
 
-To get the verify character sequence in the string, you would use `<+<+version>.contains(CharSequence 1234)>`. This would return `true`.
+To verify character sequence in the string, you would use `<+<+version>.contains(CharSequence 1234)>`. This would return `true`.
 
 The `<+version>` references the variable, and the rest of the expression evaluates the string using the `contains(CharSequence s)` method.
 
