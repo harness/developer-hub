@@ -304,5 +304,5 @@ To use the support bundle utility in an air gap environment, do the following:
 
 1. Download the tool binary.
 2. Download the manifest.
-3. Transfer the manifest to the jumpbox VM if the VM doesn't have internet access. If the VM has internet access, you can run the command directly run the command directly.
+3. Transfer the manifest to the jumpbox VM if the VM doesn't have internet access. If the VM has internet access, you can run the above commands directly on the VM.
 4. Follow the remaining steps in [Generate the bundle](#generate-the-support-bundle).
