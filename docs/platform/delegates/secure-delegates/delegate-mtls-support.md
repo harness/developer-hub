@@ -87,13 +87,13 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ## Move delegates to mTLS
 
-You can move existing delegates with an immutable image type (image tag `yy.mm.xxxxx`) to mTLS.
+You can move existing delegates (with the image tag in `yy.mm.xxxxx` format) to mTLS, legacy delegates are not supported. For more information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 ### Prerequisites for delegate migration
 
 Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
 
-- The delegate must have an immutable image type (image tag _`yy.mm.xxxxx`_). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+- The delegate must not be legacy delegate (it has image tag in _`yy.mm.xxxxx`_ format).
 
 - You must have access to the delegate YAML.
 
