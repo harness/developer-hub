@@ -59,7 +59,7 @@ Each execution has the following information displayed for it. Each execution al
 * **Execution Start Time**
     - Shows the user, method, and start time of the execution.
 * **More details** 
-  The more details icon for each pipeline offers additional execution actions:
+    The more details icon for each pipeline offers additional execution actions:
     - Add Execution Notes
     - View Execution
     - Edit Pipeline
