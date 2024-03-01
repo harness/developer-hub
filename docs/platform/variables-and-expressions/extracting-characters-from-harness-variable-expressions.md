@@ -1,6 +1,6 @@
 ---
 title: Extracting characters from Harness variable expressions
-description: You can verify a sequence of characters at a specified index in a Harness variable expression string.
+description: You can extract characters, verify a sequence of values, and manipulate strings with Harness variable expressions.
 sidebar_position: 4
 helpdocs_topic_id: 91bhqk7t4q
 helpdocs_category_id: bp8t5hf922
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use any [Java string method](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary) to extract characters or manipulate strings with expressions.
+You can use any [Java string method](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary) to extract characters, verify a sequence of values, and manipulate strings with expressions.
 
 ## Example: Use the contains(CharSequence) method
 
