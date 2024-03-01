@@ -16,7 +16,7 @@ For example, you can return `true` if a string contains the specified sequence o
 
 This can be helpful with [built-in variable expressions](harness-variables.md) such as `<+artifact.tag>`, `<+artifact.image>`, or variables that contain version numbers or other important strings.
 
-To return characters, you can use the `contains(CharSequence s)` method with your variable expression.
+To verify character sequence, you can use the `contains(CharSequence s)` method with your variable expression.
 
 Let's look at an example where you have a variable named `<+version>` that evaluates to `1234`.
 
