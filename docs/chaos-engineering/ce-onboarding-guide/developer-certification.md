@@ -22,7 +22,7 @@ In the preceding diagram, steps 4 (navigate to app.harness.io) and 1 (register f
 
 1. [Execute the Podtato head application in sandbox](/docs/chaos-engineering/ce-onboarding-guide/run-experiments-in-sandbox.md) before attempting the Harness Chaos Engineering Developer certification exam.
 
-2. Navigate to [Certifications on Harness developer hub](https://developer.harness.io/certifications/chaos-engineering?lvl=developer) or select **Go to Harness University**.
+2. Navigate to [University on Harness developer hub](https://developer.harness.io/university/chaos-engineering?lvl=developer) or select **Go to Harness University**.
 
    ![finish](./static/dev-cert/finish.png)
 
