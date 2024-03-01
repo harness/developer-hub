@@ -38,10 +38,15 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 
 ## Custom dashboards support known limitations
 
+:::info note
+Custom Dashboards is a licensed functionality on Self-Managed Enterprise Edition, Contact [Harness Support](mailto:support@harness.io) to obtain the license.
+:::
+
 - CCM models have a query limit of 350GB per tile.
 
 - Self-Managed Enterprise Edition:
 
    - Harness does not support FIPS-compliant environments.
 
-   - Air-gapped installations are in beta and require a license renewal every 365 days. 
+   - Air-gapped installations are in beta and require a license renewal every 365 days.
+ 
