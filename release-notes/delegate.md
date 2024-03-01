@@ -41,7 +41,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 24.02.82406
 ### Hotfix
-AWS Lambda rollback data is now considers the integer values of function version, instead of using string value while trying to create rollback data.
+AWS Lambda rollback data now considers the integer values of function version, instead of using string value while trying to create rollback data.
+For example - if deployed function versions are {8,9,10} and current function version being deployed is {11}, then previous rollback version will be {10} (instead of {9}).
 
 ## February 2024
 
