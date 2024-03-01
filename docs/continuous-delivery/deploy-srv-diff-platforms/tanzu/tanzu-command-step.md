@@ -116,6 +116,12 @@ If you exit from the script (`exit 0`), Harness does not populate the output var
 
 :::
 
+### Using manifests in your scripts
+
+In order to use defined manifests in the Service in Tanzu command script you have to use a special expression `${service.manifest}`
+For example, you have to use `${service.manifest}/tas/manifest.yml` to access the /tas/manifest.yml from your repo, and `${service.manifest}/tas/vars.yml` to access the /tas/vars.yml.
+To access a manifest by a path like above, leave the File/Folder path as "/" in the service manifest source definition.
+
 ## Using Harness expressions in your scripts
 
 If you need quotes around the Harness variable expressions in your script, use single quotes, like this:
