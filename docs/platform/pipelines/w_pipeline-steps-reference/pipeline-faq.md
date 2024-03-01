@@ -8,7 +8,7 @@ sidebar_position: 5
 
 #### Q: How can I get the status of harness pipeline during the run itself?
 A: You can use any status value in a JEXL condition. For example, <+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"
-The expression <+execution.steps.[step Id].status> resolves to the status of a step. For example, <+execution.steps.mystep.status>.
+The expression `<+execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+execution.steps.mystep.status>`.
 
 
 #### Q: Is there a trigger with condition type On Pipeline completion , so that once one pipeline completes it triggers another pipeline?
