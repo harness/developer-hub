@@ -8,6 +8,9 @@
   flex-direction: column;
   gap: 8px;
   border: 2px solid #d9dae5;
+  &:hover {
+    text-decoration: none;
+  }
   // background-color: white;
   .tag {
     width: auto;
@@ -17,7 +20,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-     p {
+    p {
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 12px;
@@ -114,4 +117,3 @@
 .sei:hover {
   border-color: var(--mod-sei-200);
 }
-
