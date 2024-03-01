@@ -61,7 +61,7 @@ import { MODULES } from "@site/src/constants"
     {
       name: "Instructor Led Training",
       description:
-        "Virtual and dedicated courses to accelerate your knowledge",
+        "Virtual and dedicated courses to accelerate your knowledge.",
       list: [
         {
           title: "Continuous Delivery & GitOps",
