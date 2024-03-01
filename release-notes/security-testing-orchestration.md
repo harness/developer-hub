@@ -21,6 +21,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
+:::
+
 
 ## February 2024
 
@@ -41,6 +43,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
 
 - With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
+
+<!-- 
 
 #### Early access feature
 

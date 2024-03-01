@@ -2,14 +2,14 @@
 title: Use governance policies and security scan results to stop STO pipelines automatically 
 description: Use governance policies to stop pipelines based on issue severities.
 sidebar_label: Stop pipelines using OPA
-sidebar_position: 230
+sidebar_position: 220
 ---
 
 :::note
 This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
 :::
 
-Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
+Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues that were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
 
 * [Output variables in STO](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)
 * [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
