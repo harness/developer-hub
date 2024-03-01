@@ -93,7 +93,7 @@ You can move existing delegates (with the image tag in `yy.mm.xxxxx` format) to 
 
 Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
 
-- The delegate must not be legacy delegate (it has image tag in _`yy.mm.xxxxx`_ format).
+- The delegate must have an image tag in _`yy.mm.xxxxx`_ format). It cannot be a legacy delegate.
 
 - You must have access to the delegate YAML.
 
