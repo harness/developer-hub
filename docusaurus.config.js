@@ -201,50 +201,18 @@ const config = {
             ],
           },
           {
-            label: "Certifications",
+            label: "University",
             position: "right",
             type: "dropdown",
-            to: "certifications",
+            to: "university",
             items: [
               {
-                label: "All Certifications",
-                to: "certifications",
-              },
-              {
-                label: "Continuous Integration",
-                to: "certifications/continuous-integration",
-              },
-              {
-                label: "Continuous Delivery & GitOps",
-                to: "certifications/continuous-delivery",
-              },
-              {
-                label: "Feature Flags",
-                to: "certifications/feature-flags",
-              },
-              {
-                label: "Cloud Cost Management",
-                to: "certifications/cloud-cost-management",
-              },
-              {
-                label: "Security Testing Orchestration",
-                to: "certifications/sto",
-              },
-              {
-                label: "Chaos Engineering",
-                to: "certifications/chaos-engineering",
-              },
-              {
-                label: "Instructions",
-                to: "certifications/instructions",
-              },
-              {
-                label: "FAQs",
-                to: "certifications/faqs",
+                label: "Certifications",
+                to: "university/certifications",
               },
               {
                 label: "Instructor Led Training",
-                to: "certifications/instructor-led-training",
+                to: "university/instructor-led-training",
               },
             ],
           },
@@ -504,11 +472,11 @@ const config = {
       path.resolve(__dirname, "./plugins/redirect-plugin"),
 
       {
-        id: "certifications",
-        path: "certifications",
-        routeBasePath: "certifications",
+        id: "university",
+        path: "university",
+        routeBasePath: "university",
         exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        sidebarPath: require.resolve("./sidebars-university.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

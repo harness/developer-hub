@@ -3,7 +3,7 @@ hide_table_of_contents: true
 hide_title: true
 id: all-certifications
 title: Certifications
-slug: /
+slug: /certifications
 ---
 
 <!-- Custom component -->

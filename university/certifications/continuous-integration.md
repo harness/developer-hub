@@ -5,7 +5,8 @@ hide_title: true
 id: "continuous-integration"
 title: Continuous Integration Certifications
 description: Continuous Integration Certifications
-# slug: "/continuous-integration"
+redirect_from:
+  - /certifications/continuous-integration
 ---
 
 <!-- Custom component -->

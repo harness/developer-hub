@@ -57,7 +57,7 @@ export default function CloudCostManagement() {
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
-            <Link to={`${baseUrl}certifications`}>
+            <Link to={`${baseUrl}university/certifications`}>
               <i className="fa-solid fa-arrow-left"></i> Back to all
               certifications
             </Link>

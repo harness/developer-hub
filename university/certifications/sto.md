@@ -5,7 +5,8 @@ hide_title: true
 id: "sto"
 title: Security Testing Orchestration
 description: Security Testing Orchestration Engineering Certifications
-
+redirect_from:
+  - /certifications/sto
 ---
 
 <!-- Custom component -->

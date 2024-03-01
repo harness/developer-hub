@@ -5,7 +5,8 @@ hide_title: true
 id: "continuous-delivery"
 title: Continuous Delivery & GitOps Certifications
 description: Continuous Delivery & GitOps Certifications
-# slug: "/continuous-delivery"
+redirect_from:
+  - /certifications/continuous-delivery
 ---
 
 <!-- Custom component -->

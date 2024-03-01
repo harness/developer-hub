@@ -5,7 +5,8 @@ hide_title: true
 id: "cloud-cost-management"
 title: Cloud Cost Management
 description: Cloud Cost Management Certifications
-# slug: "/continuous-integration"
+redirect_from:
+  - /certifications/cloud-cost-management
 ---
 
 <!-- Custom component -->

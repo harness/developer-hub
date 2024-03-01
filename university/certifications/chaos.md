@@ -5,7 +5,8 @@ hide_title: true
 id: "chaos-engineering"
 title: Chaos Engineering Certifications
 description: Chaos Engineering Certifications
-# slug: "/continuous-delivery"
+redirect_from:
+  - /certifications/chaos-engineering
 ---
 
 <!-- Custom component -->

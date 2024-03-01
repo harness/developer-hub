@@ -15,7 +15,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Feature Flags Certification today!"
-  link="/certifications/feature-flags"
+  link="/university/certifications/feature-flags"
   closable={true}
   target="_self"
 />

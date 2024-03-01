@@ -49,4 +49,7 @@
 /tutorials/cd-pipelines/vm /docs/category/cd-and-gitops-tutorials
 /tutorials /docs
 
+# Added by ravilach in March 2024 for Harness University Launch
+/certifications /university/certifications
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

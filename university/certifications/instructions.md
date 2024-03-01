@@ -2,6 +2,8 @@
 sidebar_position: 6
 description: Hands On Labs Instructions
 title: Hands on Labs instructions
+redirect_from:
+  - /certifications/instructions
 ---
 
 # Instructions

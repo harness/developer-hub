@@ -2,7 +2,8 @@
 sidebar_position: 1
 description: Instructor Led Training offering for Harness CD & GitOps
 title: Continuous Delivery & GitOps ILT
-
+redirect_from:
+  - /certifications/instructor-led-training
 ---
 
 # Instructor Led Training for Harness Continuous Delivery & GitOps
@@ -14,7 +15,7 @@ for the latest offerings and ability to schedule.
 
 :::
 
-Instructor Led Training for Harness Continuous Delivery & GitOps is designed to be delivered over the course of two days. 
+Instructor Led Training for Harness Continuous Delivery & GitOps is designed to be delivered over the course of multiple days. 
 
 ## Course Syllabus 
 These are proposed timings for the exercises. Timing can be adjusted based on your class need. This syllabus is subject to change. 

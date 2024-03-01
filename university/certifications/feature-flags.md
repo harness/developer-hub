@@ -5,7 +5,8 @@ hide_title: true
 id: "feature-flags"
 title: Feature Flags Certifications
 description: Feature Flags Certifications
-# slug: "/continuous-integration"
+redirect_from:
+  - /certifications/feature-flags
 ---
 
 <!-- Custom component -->

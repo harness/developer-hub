@@ -10,11 +10,11 @@ const sidebars = {
       label: "Documentation",
       href: "/docs",
     },
-    // Cert Link from Community
+    // University Link from Community
     {
       type: "link",
-      label: "Certifications",
-      href: "/certifications",
+      label: "University",
+      href: "/university",
     },
     // KB from Community
     {
