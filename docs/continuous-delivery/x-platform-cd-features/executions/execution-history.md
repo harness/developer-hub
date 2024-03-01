@@ -4,7 +4,7 @@ description: Learn more about the execution history of a pipeline. Where to find
 sidebar_position: 7
 ---
 
-This topic describes how to view the execution history pipelines, how to navigate to it, and what information is contained within.
+This topic describes how to navigate to the execution history of pipelines and what information is contained within.
 
 ## Where Can I Find Execution History?
 
@@ -38,7 +38,7 @@ Select the **Execution History** option on the top right corner of the page to v
 
 ## Execution Reference
 
-Each execution has the following information displayed for it. Each execution also has more information if you click the arrow on the left of it and open the dropdown. 
+Each pipeline execution displays the following information.
 
 * **Pipeline Name**
     - The name of the pipeline and execution ID.
