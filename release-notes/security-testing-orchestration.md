@@ -23,14 +23,12 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+
 ## February 2024
 
-<!-- 
+### Version 1.85.0 
 
-### Version 1.85.0
-
-<!-- 2024-03-04 
-
+<!-- 2024-03-01 -->
 
 #### Fixed issues
 
@@ -46,13 +44,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
 
--->
-
-### Version 1.84.0 
+<!-- 
 
 #### Early access feature
-
-<!-- 2024-03-01 -->
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
 
@@ -78,7 +72,9 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
+-->
 
+### Version 1.84.0 
 
 #### Enhancements
 
