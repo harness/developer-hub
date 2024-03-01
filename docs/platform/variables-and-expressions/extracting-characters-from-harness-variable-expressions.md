@@ -1,5 +1,5 @@
 ---
-title: Extracting characters from Harness variable expressions
+title: Verify character sequence in Harness variable expressions
 description: You can extract characters, verify a sequence of values, and manipulate strings with Harness variable expressions.
 sidebar_position: 4
 helpdocs_topic_id: 91bhqk7t4q
