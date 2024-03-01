@@ -1,6 +1,6 @@
 ---
 title: Extracting characters from Harness variable expressions
-description: You can return the character at a specified index in a Harness variable expression string.
+description: You can verify a sequence of characters at a specified index in a Harness variable expression string.
 sidebar_position: 4
 helpdocs_topic_id: 91bhqk7t4q
 helpdocs_category_id: bp8t5hf922
@@ -18,9 +18,9 @@ This can be helpful with [built-in variable expressions](harness-variables.md) s
 
 To return characters, you can use the `contains(CharSequence s)` method with your variable expression.
 
-Let's look at an example where you have a variable named `<+version>`. that evaluates to `1234`.
+Let's look at an example where you have a variable named `<+version>` that evaluates to `1234`.
 
-To get the first character of the string, you would use `<+<+version>.contains(CharSequence 1234)>`. This would return `true`.
+To get the verify character sequence in the string, you would use `<+<+version>.contains(CharSequence 1234)>`. This would return `true`.
 
 The `<+version>` references the variable, and the rest of the expression evaluates the string using the `contains(CharSequence s)` method.
 
