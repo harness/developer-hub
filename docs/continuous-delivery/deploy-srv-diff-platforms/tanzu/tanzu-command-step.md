@@ -120,9 +120,9 @@ If you exit from the script (`exit 0`), Harness does not populate the output var
 
 In order to use defined manifests in the Service in Tanzu command script you have to use a special expression `${service.manifest}`
 
-If you are using remote Manifest files via a Git repo, ${service.manifest} refers to the File/Folder path containing your manifest files and ${service.manifest.repoRoot} refers to the root folder of the repo.
+If you are accessing remote manifest files using a Git repository, `${service.manifest}` refers to the file or folder path containing your manifest files and `${service.manifest.repoRoot}` refers to the root folder of the repository.
 
-For example, you can use `${service.manifest.repoRoot}/tas/manifest.yml` to access the /tas/manifest.yml from your repo, and `${service.manifest.repoRoot}/tas/vars.yml` to access the /tas/vars.yml.
+For example, you can use `${service.manifest.repoRoot}/tas/manifest.yml` to access `/tas/manifest.yml` from your repository and `${service.manifest.repoRoot}/tas/vars.yml` to access `/tas/vars.yml`.
 
 ## Using Harness expressions in your scripts
 
