@@ -40,6 +40,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## February 2024
 
+### Version 24.02.82404 <!--  February 29, 2024 -->
+
+#### Hotfix
+
+- Updated the behavior of the Scale step. After the Scale step is executed, all workload pods are published as new pods, as the scale step can be used to scale pods and change traffic on the pods. (CDS-91534, ZD-54319)
+
 ### Harness version 1.26.14, Harness Delegate version 24.02.82402 <!--  February 27, 2024 -->
 
 #### Fixed issues
@@ -66,10 +72,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 24.02.82309 <!--  February 28, 2024 -->
 
+#### Hotfix
+
 - We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. (CCM-16052)
 
 
 ### Version 24.02.82308 <!--  February 21, 2024 -->
+
+#### Hotfix
 
 - Upgraded the SDK for the ASG swimlane. (CDS-91937)
 
