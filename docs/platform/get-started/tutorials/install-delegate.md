@@ -1,9 +1,10 @@
 ---
 title: Install Harness Delegate on Kubernetes or Docker
-description: Install Harness Delegate on Kubernetes or Docker
+description: This tutorial shows you how to install Harness Delegate on Kubernetes or Docker.
 sidebar_position: 2
 redirect_from:
   - /tutorials/platform/install-delegate
+  - /docs/platform/get-started/tutorials/install-delegate/
 ---
 
 import Tabs from '@theme/Tabs';

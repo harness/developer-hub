@@ -20,7 +20,7 @@
 | Optimize and manage code repository, connectors, and trigger settings| [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 | **6. Authentication and Security Management in Harness CI** ||
 | Configure and manage authentication methods for various connectors (e.g., Git, Docker)     | [Using Git Credentials from Codebase Connector in CI Pipeline's Run Step](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/) |
-| Implement and utilize Secrets Management tools with Harness CI | [Use secrets managers](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager) |
+| Implement and utilize Secrets Management tools with Harness CI | [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager) |
 | Understand and implement access control using Harness RBAC configurations | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)|
 | **7. Implementing and Utilizing Test Intelligence in Harness CI** | |
 | Configure and synchronize Harness Test Intelligence with main/master branches              | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) |

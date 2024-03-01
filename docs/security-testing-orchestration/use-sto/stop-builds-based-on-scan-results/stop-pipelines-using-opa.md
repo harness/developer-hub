@@ -1,61 +1,115 @@
 ---
-title: Use governance policies and security scan results to stop STO pipelines automatically 
-description: Use governance policies to stop pipelines based on issue severities.
+title: Use security test policies to stop STO pipelines automatically 
+description: Use security test policies to stop pipelines automatically.
 sidebar_label: Stop pipelines using OPA
 sidebar_position: 220
 ---
 
-:::note
-This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
-:::
+You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate those policies. 
 
-Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
+You can use Harness Policy as Code to enforce policies such as: 
 
-* [Output variables in STO](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)
-* [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
+- A security test cannot include any issues in a list of severities such as Critical or New Critical.
 
-In this workflow, you create a simple OPA policy for the pipeline: If the scan detected any NEW_CRITICAL or NEW_HIGH severities, exit the build with an error and send an email. 
+- A security test cannot include any issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
+
+- A security test cannot include any issues in a list of titles such as `libsqlite3` or `javascript.express.security.audit`.
+
+- A security test cannot include any more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+
+- A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
+
+### Important notes
+
+- To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
+
+- This topic assumes that you have a basic knowledge of the following:
+
+  - Governance policies and how to implement them: 
+    - [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+    - [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+    - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
+  - [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
 
 
-### Create the OPA policy
+### Security Test policy samples
 
-1. Go to **Account Settings** (left menu) &gt; **Policies**.
+import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use-sto/shared/security-tests-policy-samples.md';
 
-2. Click **Policies** (top right) and then **New Policy**. 
+<SecurityTestsPolicySamples />
 
-3. Name the policy **Security no NEW_CRITICAL or NEW_HIGH issues**. 
 
-4. In the Edit Policy window, enter the following OPA code: 
+### Workflow description
 
-   ```
-    package pipeline_environment
+The following steps describes the end-to-end workflow:
 
-   deny[sprintf("Scan can't contain any NEW_CRITICAL vulnerability '%s'", [input[_].outcome.outputVariables.NEW_CRITICAL])] {
-       input[_].outcome.outputVariables.NEW_CRITICAL != "0"
-   }
+1. [Create your policies](#create-a-new-security-tests-opa-policy) using [Security test policy samples](#security-tests-policy-samples).
 
-   deny[sprintf("Scan can't contain any high vulnerability '%s'", [input[_].outcome.outputVariables.NEW_HIGH])] {
-       input[_].outcome.outputVariables.NEW_HIGH != "0"
-   }
-   ```
+2. Create a [policy set](#create-a-policy-set) with the policies you want to enforce.
 
-5. Click **Save**. 
+3. [Enforce the policy set](#enforce-the-policy-in-your-scan-step) in your scan step.
 
-### Create a policy set
 
-A _policy set_ is a collection of one or more policies. You combine policies into a set and then include it in a Policy step. 
+#### Create a new Security Tests OPA policy
 
-1. In the Policies Overview page, click **Policy Sets** (top right) and then **New Policiy Set**. 
+1. You can create policies at the account or the project scope. Go to your account or project, then select **Security and Governance** > **Policies**.
+
+2. Select **Policies** (top right) and then **New Policy**. 
+
+3. Select a **Security Tests** policy from the [**Policy samples**](#security-tests-policy-samples) library. 
+
+   <DocImage path={require('./static/opa-01-select-policy-sample.png')} width="50%" height="50%" title="Select policy sample" />
+
+4. Select **Use this sample** (bottom). This copies the entire policy sample to the edit pane (left).
+
+   <DocImage path={require('./static/opa-02-use-this-sample.png')} width="50%" height="50%" title="Select policy sample" />
+
+5. Configure the policy as needed. In this example, the policy excludes vulnerabilities with a severity of Critical. 
+
+   <DocImage path={require('./static/opa-03-configure-policy.png')} width="50%" height="50%" title="Select policy sample" />
+
+6. Test your policy to verify that it works as intended.
+
+   Each policy sample includes a set of test data that you can use. In the **Testing Terminal**, examine the test data and edit it as needed. Then click **Test** to verify the results.
+
+   It is good practice to test both a Success and Failure case for your policy. The following example illustrates this workflow.
+
+   In this example, the policy denies on reference ID CWE-1230. In this case, you would do the following:
+
+   1. Search the test results for the string `1230`. In this case, the ID is not found. 
+
+       <DocImage path={require('./static/opa-05-test-policy-search-for-id.png')} width="50%" height="50%" title="Select policy sample" />
+
+   2. Click **Test**. The test succeeds.
+
+       <DocImage path={require('./static/opa-06-test-policy-succeeded.png')} width="50%" height="50%" title="Select policy sample" />
+
+   3. Search the test results for the string `cwe` and edit an entry so it matches the reference ID.
+
+       <DocImage path={require('./static/opa-07-edit-test-data-for-matching-cwe.png')} width="50%" height="50%" title="Select policy sample" />
+
+   4. Click **Test** again. The test fails because the data includes the specified CWE.
+
+       <DocImage path={require('./static/opa-08-test-failed.png')} width="50%" height="50%" title="Select policy sample" />
+
+7. Once you're satisfied that the policy works as intended, save it.
+
+
+#### Create a policy set
+
+A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-set) is a collection of one or more policies. You combine policies into a set and then include it in a scan step. 
+
+1. Go to **Security and Governance** > **Policies**. Then click **Policy Sets** (top right) and then **New Policy Set**. 
 
 2. Click **New Policy Set**. The Policy Set wizard appears.
 
 3. Overview:
 
-    1. Name = **Security Set - Block on Issue Severity**
+    1. Name — Enter a descriptive name such as **myorg/myimage policies**.
 
-    2. Entity type this policy applies to = **Custom**
+    2. Entity type this policy applies to = **Security Tests**
 
-    3. On what event should the policy be set to = **On Step**. 
+    3. On what event should the policy be set to = **On Step** 
    
        These settings allow you to apply the member policies to a specific step, which you'll define below. 
 
@@ -65,16 +119,20 @@ A _policy set_ is a collection of one or more policies. You combine policies int
     
    2. Select the policy you just created and set the pull-down to **Error and Exit**. This is the action to take if any policies in the set are violated. 
 
-      ![](../static/notif-opa-select-policy.png)
+      <!-- ![](../static/notif-opa-select-policy.png) -->
+
+      <DocImage path={require('./static/opa-09-add-policy-to-policy-set.png')} width="50%" height="50%" title="Select policy sample" />
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
 5. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
 
-    ![](../static/notif-opa-policy-set-enforced-yes.png)
+     <!-- ![](../static/notif-opa-policy-set-enforced-yes.png) -->
+   
+      <DocImage path={require('./static/opa-10-enable-enforced.png')} width="50%" height="50%" title="Select policy sample" />
 
 
-### Enforce the policy in your scan step
+#### Enforce the policy in your scan step
 
 Now you can set up your scan step to stop builds automatically when the policy gets violated. 
 
@@ -84,10 +142,10 @@ Now you can set up your scan step to stop builds automatically when the policy g
 
 3. Click **Apply Changes** and then save the updated pipeline. 
 
-   ![](../static/notif-opa-policy-add-policy-set.png)
+   <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="50%" height="50%" title="Select policy sample" />
 
 
-### Set up email notifications for pipeline failures
+#### Set up email notifications for pipeline failures
 
 You have a Policy that fails the pipeline based on an OPA policy. Now you can configure the stage to send an email notification automatically whenever the pipeline fails. 
 
@@ -96,7 +154,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
 2. Set up the notification as follows:
 
-     1. Overview page —  Enter a notifcation name such as **Pipeline failed -- NEW_CRITICAL or NEW_HIGH issues detected**.
+     1. Overview page —  Enter a notification name such as **Pipeline failed -- NEW_CRITICAL or NEW_HIGH issues detected**.
 
      2. Pipeline Events page  —  Select **Stage Failed** for the event that triggers the notification. Then select the stage that has the Policy step you just created.
 
@@ -104,6 +162,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 
+<!--
 
 ## YAML pipeline example
 
@@ -236,3 +295,4 @@ pipeline:
       enabled: true
 
 ```
+-->
