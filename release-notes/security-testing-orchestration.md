@@ -57,7 +57,11 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 #### Fixed issues
 
-- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7208, ZD-58495)
+- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+
+- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+
+- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
 
 - Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
 
