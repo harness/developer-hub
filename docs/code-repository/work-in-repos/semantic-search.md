@@ -25,3 +25,8 @@ To get more accurate results from semantic search:
 
 * Ask specific questions with details of what you need.
 * Combine broader semantic searches with targeted [keyword searches](/docs/code-repository/work-in-repos/keyword-search) to find the exact code you need.
+
+### Use Harness AIDA for semantic searches of your code
+
+![An example of semantic code search with Harness AIDA](./static/semanticsearch.gif)
+
