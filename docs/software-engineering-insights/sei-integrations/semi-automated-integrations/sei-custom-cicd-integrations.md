@@ -11,10 +11,10 @@ Configure the webhook API call according to the following webhook specifications
 
 ## Webhook specification
 
-* Method: POST
-* Base URL: `https://app.harness.io/gateway/sei/api/v1/custom-cicd`
-* Header: Requires Bearer token key authorization. The content type is ```application/json```
-* Body: Contains a data object with ```request_type``` and ```payload```.
+* **Method:** `POST`
+* **Base URL:** `https://app.harness.io/gateway/sei/api/v1/custom-cicd`
+* **Header:** Requires Bearer token key authorization. The content type is ```application/json```
+* **Body:** Contains a data object with ```request_type``` and ```payload```.
 
 
 <details>
@@ -68,39 +68,43 @@ curl --location 'https://app.harness.io/gateway/sei/api/v1/custom-cicd' \
 
 ```
 
+:::info
+Please note that the API endpoint mentioned in the webhook specifications is relative to the environment you are using. You will need to replace it with the actual URL that are specific to your environment.
+:::
+
 ### Payload fields
 
 Payload is an object with required and optional fields.
 
 #### Required Fields:
 
-| Field | Description |
-| - | - |
-| pipeline (string) | The name of the CI/CD job. |
-| job_full_name (string) | A human-readable identifier for the job, often the same as the pipeline name. |
-| qualified_name (string) | A qualified name for the job, typically the same as the pipeline name. |
-| instance_name (string) | The identifier for the CI/CD instance (not the UUID). |
-| instance_guid (string) | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://app.harness.io/gateway/sei/api/v1/custom-cicd` |
-| start_time (integer) | Job start time in epoch milliseconds. |
-| duration (integer) | Job duration in milliseconds. |
-| result (string) | The result of the job, either "success" or "failure." |
+| Field | Data Type | Description |
+| - | - | - |
+| `pipeline` | string | The name of the CI/CD job. |
+| `job_full_name` | string | A human-readable identifier for the job, often the same as the pipeline name. |
+| `qualified_name` | string | A qualified name for the job, typically the same as the pipeline name. |
+| `instance_name` | string | The identifier for the CI/CD instance (not the UUID). |
+| `instance_guid` | string | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://app.harness.io/gateway/sei/api/v1/custom-cicd` |
+| `start_time` | integer | Job start time in epoch milliseconds. |
+| `duration` | integer | Job duration in milliseconds. |
+| `result` | string | The result of the job, either `SUCCESS` or `FAILURE`. |
 
 #### Optional Fields:
 
-| Field | Description |
-| - | - |
-| user_id (string) | User identifier in string |
-| job_run_params (array) | An array of parameters associated with the job run. |
-| scm_commit_ids (array of strings) | An array of commit ids related to the deployment |
-| repo_url (string) | The URL of the repository related to the job. |
-| build_number (integer) | The build number associated with the job. |
-| instance_url (string) | URL of the CI/CD instance. |
-| job_run (object) | Information about the job run, including stages, steps, and their results. |
-| module_name (string) | The name of the module related to the job |
-| ci and cd (boolean): | One is true and the other is false, depending on whether this is for a CI job or a CD job. |
-| artifacts (array of objects) | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
-| trigger_chain (array of objects): | Information about the chain of triggers. |
-| branch_name (string): | The name of the branch related to the job. |
+| Field | Data Type | Description |
+| - | - | - |
+| `user_id` | string | User identifier in string |
+| `job_run_params` | array | An array of parameters associated with the job run. |
+| `scm_commit_ids` | array of strings | An array of commit ids related to the deployment |
+| `repo_url` | string | The URL of the repository related to the job. |
+| `build_number` | integer | The build number associated with the job. |
+| `instance_url` | string | URL of the CI/CD instance. |
+| `job_run` | object | Information about the job run, including stages, steps, and their results. |
+| `module_name` | integer |The name of the module related to the job |
+| `ci` and `cd` | boolean | One is true and the other is false, depending on whether this is for a CI job or a CD job. |
+| `artifacts` | array of objects | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
+| `trigger_chain` | array of objects | Information about the chain of triggers. |
+| `branch_name` | string | The name of the branch related to the job. |
 
 Here is an example payload:
 
@@ -181,16 +185,16 @@ Here is an example payload:
 
 ## Generate UUID / GUID
 
-Follow the steps to generate a Universally Unique Identifier (UUID) for custom Continuous Integration/Continuous Deployment (CI/CD) integrations. A UUID is used to uniquely identify and link your custom integration within Propel.
+Follow the steps to generate a **Universally Unique Identifier (UUID)** for custom Continuous Integration/Continuous Deployment (CI/CD) integrations. A UUID is used to uniquely identify and link your custom integration within Propel.
 
 ### Requirements
 
-* Access to Propel API with a valid access token. 
-* A CI/CD integration (e.g., Jenkins) that you want to associate with a UUID.
+* Access to **Propel API** with a valid access token. 
+* A **CI/CD integration** (e.g., **Jenkins**) that you want to associate with a UUID.
 
 ### Step 1: Create a Mock Jenkins Integration
 
-To create a mock Jenkins integration go to the Integrations under Settings and select the Jenkins CI/CD integration and click install. Fill in the following details and save the integration:
+To create a mock **Jenkins integration** go to the **Integrations** under **Settings** and select the **Jenkins CI/CD integration** and click **Install**. Fill in the following details and **Save** the integration:
 
 | Field       | Description                   |
 | - | - |
@@ -200,7 +204,7 @@ To create a mock Jenkins integration go to the Integrations under Settings and s
 
 ### Step 2: Generate a UUID for the Jenkins Integration
 
-To generate a UUID for the Jenkins integration you can use the Propel API. Here's an example of a cURL command:
+To generate a UUID for the **Jenkins integration** you can use the **Propel API**. Here's an example of a cURL command:
 
 ```shell
 curl --location 'https://app.harness.io/gateway/sei/api/v1/cicd/instances' \
@@ -211,8 +215,11 @@ curl --location 'https://app.harness.io/gateway/sei/api/v1/cicd/instances' \
     "name": "Custom CICD Integration",
 }' 
 ```
-
 You can find the `INTEGRATION_ID` in the mock Jenkins integration created during Step 1 in SEI. This will generate the UUID for the integration named "Custom CICD Integration".
+
+:::info
+Please note that the Propel API mentioned in the command above is relative to the environment you are using. You will need to replace it with the actual URL that are specific to your environment.
+:::
 
 ### Step 3: Import Propel from GitHub Repository
 
