@@ -5,6 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import CertCard, { certType } from "./CertCard";
 import { university } from "./data/certificationsData";
+import IltCard, { iltType } from "./IltCard";
+import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
 
 const devFeatures = ["Free Plan"];
@@ -87,10 +89,22 @@ export default function University() {
           ))}
         </div>
       </div>
+
       <div className={styles.tabs}>
         <h2>Instructor-Led Training</h2>
-        <div>
-          ADD ILT CONTENT HERE
+        <div
+          className={clsx(
+            styles.tabContent,
+            styles.active
+          )}
+        >
+          <div className={styles.cardContainer}>
+            {ilt
+              .filter((ilt) => iltType.user)
+              .map((ilt) => (
+                <IltCard {...ilt} />
+              ))}
+          </div>
         </div>
       </div>
 

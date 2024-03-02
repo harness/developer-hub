@@ -11,6 +11,8 @@ import AdminCertificationReviewDetails from "./data/cd-certification-admin-revie
 import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
 import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
+import IltCard, { iltType } from "./IltCard";
+import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -85,8 +87,19 @@ export default function CertificationsCD() {
 
       <div className={styles.tabs}>
         <h2>Instructor-Led Training</h2>
-        <div>
-          ADD ILT CONTENT HERE
+        <div
+          className={clsx(
+            styles.tabContent,
+            styles.active
+          )}
+        >
+          <div className={styles.cardContainer}>
+            {ilt
+              .filter((ilt) => iltType.user)
+              .map((ilt) => (
+                <IltCard {...ilt} />
+              ))}
+          </div>
         </div>
       </div>
   
