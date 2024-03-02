@@ -40,7 +40,7 @@ Harness always saves the final log line that contains the status (Success, Failu
 
 
 #### Q: Can I see all the pipeline executions in one view if I am an account admin?
-A: You will not be able to see all pipeline execution under one view as we have 3 level of scoping in Harness Next Gen and based on the organistaion and Project pipeline executions can be seen as prat of the execution history tab.
+A: You will not be able to see all pipeline execution under one view as we have 3 level of scoping in Harness Next Gen and based on the organization and Project pipeline executions can be seen as part of the execution history tab.
 
 #### Q: Do we have a stage-level configuration where I can set the environment variables and is available to all steps?
 A: In CIE If you have set a environment variables in stage level it will be available for all steps. In CD you can make use os stage variables or pipeline variables to achieve your usecase of using same variables in anywahere in pipeline and stages.
