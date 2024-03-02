@@ -43,7 +43,7 @@ Harness always saves the final log line that contains the status (Success, Failu
 A: You will not be able to see all pipeline execution under one view as we have 3 level of scoping in Harness Next Gen and based on the organization and Project pipeline executions can be seen as part of the execution history tab.
 
 #### Q: Do we have a stage-level configuration where I can set the environment variables and is available to all steps?
-A: In CIE If you have set a environment variables in stage level it will be available for all steps. In CD you can make use os stage variables or pipeline variables to achieve your usecase of using same variables in anywahere in pipeline and stages.
+A: In CIE If you have set a environment variables in stage level it will be available for all steps. In CD you can make use of stage variables or pipeline variables to achieve your use-case of using the same variables anywhere in pipeline and stages.
 
 #### Q: What has happened to the pause button?
 A: We have deprecated the pause button. The pause button wasn't consistent and it put pipelines in a bad state. 
