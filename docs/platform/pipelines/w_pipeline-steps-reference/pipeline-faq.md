@@ -12,7 +12,7 @@ The expression `<+execution.steps.[step Id].status>` resolves to the status of a
 
 
 #### Q: Is there a trigger with condition type On Pipeline completion , so that once one pipeline completes it triggers another pipeline?
-A: We do not have a trigger, but, we do have a stage called Pipeline Chainging which lets you start a pipeline based on a pipeline completing.
+A: We do not have a trigger, but, we do have a stage called Pipeline Chaining which lets you start a pipeline based on a pipeline completing.
 
 
 #### Q: is there a limit to the number of pipelines a project can have?
