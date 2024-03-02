@@ -20,7 +20,7 @@ A: No, there is no limit to how many pipelines can be created in a project.
 
 
 #### Q: What is the character limit on pipeline names?
-A: Charatcer limit is 128 characters.
+A: Character limit is 128 characters.
 
 #### Q: How can I specify my pipeline to pick the right delegate my my environment?
 A: In the Pipeline Advanced Settings, you can pass in a delegate selector as a fixed, runtime input or expression to ensure the correct delegate is leveraged for the pipeline. 
