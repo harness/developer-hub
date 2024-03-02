@@ -105,15 +105,15 @@ You are now ready to test your skills of the various Harness modules by completi
 
 ### Developer Certification
 
-- [CI Developer](/certifications/continuous-integration?lvl=developer)
-- [CD Developer](/certifications/continuous-delivery?lvl=developer)
+- [CI Developer](/university/continuous-integration)
+- [CD Developer](/university/continuous-delivery)
 
 ### Administrator Certification
 
-- [CI Administrator](/certifications/continuous-integration?lvl=administrator)
-- [CD Administrator](/certifications/continuous-delivery?lvl=administrator)
+- [CI Administrator](/university/continuous-integration)
+- [CD Administrator](/university/continuous-delivery)
 
 ### Architect Certification
 
-- [CI Architect](/certifications/continuous-integration?lvl=architect)
-- [CD Architect](/certifications/continuous-delivery?lvl=architect)
+- [CI Architect](/university/continuous-integration)
+- [CD Architect](/university/continuous-delivery)
