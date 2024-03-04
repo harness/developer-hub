@@ -24,29 +24,28 @@ These release notes describe recent changes to Harness Delegate.
 
 ## Important upcoming changes
 
-::: warning
+:::warning important changes
 
 Please note that the following important changes will occur **March 31, 2024**:
 
 - The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
 
-<details>
-<summary>Legacy delegate installation flow</summary>
+   <details>
+   <summary>Legacy delegate installation flow</summary>
 
-### New Delegate Page
+   #### New Delegate Page
 
-The `Switch back to old delegate install experience` link will be removed.
+   The `Switch back to old delegate install experience` link will be removed.
 
-![](./static/switch-to-old-delegate-install.png)
+   ![](./static/switch-to-old-delegate-install.png)
 
+   #### Legacy delegate installation flow deprecated
 
-### Legacy delegate installation flow deprecated
+   You will no long be able to reach the legacy delegate installation flow.
 
-You will no long be able to reach the legacy delegate installation flow.
+   ![](./static/old-delegate-install-exp.png)
 
-![](./static/old-delegate-install-exp.png)
-
-</details>
+   </details>
 
 - Delegate tokens not used within the last 30 days will be revoked automatically.
    
