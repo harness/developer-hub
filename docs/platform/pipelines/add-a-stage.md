@@ -122,7 +122,7 @@ When you run this pipeline, the value you set for `NAME` in the stage settings i
 On the **Advanced** tab, you can configure:
 
 * [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping strategies - Matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
 ## Add a Custom stage

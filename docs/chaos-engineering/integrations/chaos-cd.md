@@ -99,7 +99,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Back in **Configure Chaos Experiment**, enter the **Expected Resilience Score** for this experiment.
 
-	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) is initiated.
+	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
 	
 	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 

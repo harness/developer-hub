@@ -22,7 +22,7 @@ Currently, the Rollback Pipeline failure strategy applies to the following deplo
 
 1. In a pipeline's step or stage, select **Advanced**.
 2. In **Failure Strategy** > **On failure of type**, select a failure type or select **All Errors**. 
-   Go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md) for information about error types.
+   Go to [Step and Stage Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) for information about error types.
 3. In **Perform Action**, select **Rollback Pipeline**.
 
    Here's the equivalent YAML for the Pipeline Rollback failure strategy: 
@@ -46,5 +46,5 @@ If you select **Mark as Success**, the stage passes, and the next stage's execut
 
 ## See also
 
-[Step and stage failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+[Step and stage failure strategy references](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 

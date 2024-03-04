@@ -40,9 +40,9 @@ When you add a Custom Approval stage, a Custom Approval step is added to the sta
 
 In the Custom Approval step, you enter a script that is executed at Pipeline runtime.
 
-If the script fails, the step fails and the step or stage [Failure Strategy](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) is initiated.
+If the script fails, the step fails and the step or stage [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
 
-You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](../variables-and-expressions/harness-variables.md).
+You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](/docs/platform/variables-and-expressions/harness-variables.md).
 
 Rejection criteria is optional.
 
@@ -218,7 +218,7 @@ In **Advanced**, you can use the following options:
 
 * [Delegate Selector](../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
 * [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Apply and Test
 

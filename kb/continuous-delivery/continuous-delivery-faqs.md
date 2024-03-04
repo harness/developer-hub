@@ -1807,7 +1807,7 @@ You should see a Service Reliability module on your left panel. There you will s
 #### How to enable additional failure strategies
 
 Once you click on Add under Failure strategies, you can select the timeout failure strategy by default It select All Errors and you can an action say Manual Intervention or another option.
-[Documentataion](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+[Documentataion](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 #### Variables in NextGen from migration from First Gen to be used in Jira Approval step
 

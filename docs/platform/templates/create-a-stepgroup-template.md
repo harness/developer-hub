@@ -158,7 +158,7 @@ If you do not use step group conditional execution settings, then the stage's co
 
 ## Add a failure strategy
 
-A step group can have its own **Failure Strategy** separate from the failure strategy for the stage. The failure strategy can execute the rollback steps for the step group. For more information, go to [Step and stage failure strategy references](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+A step group can have its own **Failure Strategy** separate from the failure strategy for the stage. The failure strategy can execute the rollback steps for the step group. For more information, go to [Step and stage failure strategy references](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
 The failure strategy of any step in a step group overrides the failure strategy of the step group. If you do not use a step group failure strategy, then the stage's failure strategy is applied.
 

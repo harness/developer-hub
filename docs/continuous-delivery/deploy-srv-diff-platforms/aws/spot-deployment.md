@@ -337,7 +337,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
     * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
@@ -380,7 +380,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 6. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
     * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 7. Select **Apply Changes**. 
@@ -469,7 +469,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
     * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
