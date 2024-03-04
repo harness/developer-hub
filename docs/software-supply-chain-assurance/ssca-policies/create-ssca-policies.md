@@ -4,7 +4,7 @@ description: Create SSCA policies in the Harness File Store.
 sidebar_position: 10
 ---
 
-This document provides a step-by-step guide on how to create SSCA Policies. For guidance on how to write these policies, please refer to the section on write  policy definitions. To learn about implementing SSCA policies, follow the instructions in the section on enforcing SSCA policies.
+This document provides a step-by-step guide on how to create SSCA Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](./define-ssca-policies.md). To learn about implementing SSCA policies, follow the instructions in the section on [enforcing SSCA policies](./enforce-ssca-policies.md).
 
 
 ### Before you begin
