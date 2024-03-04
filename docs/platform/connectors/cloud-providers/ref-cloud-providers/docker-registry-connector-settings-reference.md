@@ -91,6 +91,6 @@ You can connect through a Harness Delegate or the Harness Platform. If you plan 
 
 :::tip
 
-The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 :::
