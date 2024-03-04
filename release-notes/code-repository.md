@@ -25,7 +25,7 @@ These release notes describe recent changes to Harness Code Repository.
 
 <!-- 01 March 2024 -->
 
-### Version 0.72.0
+### Version 0.72.4
 
 #### New features and enhancements
 
