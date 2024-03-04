@@ -35,15 +35,16 @@ To auto scale the delegate, do the following:
 
 3. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
 
-   To fine-tune your autoscaling, you can set the `targetMemoryUtilizationPercentage` to add a new replica if Memory utilization exceeds this percentage
+   To fine-tune your autoscaling, you can set the `targetMemoryUtilizationPercentage` to add a new replica when memory utilization exceeds this percentage.
 
-4. (Optional) Set the `targetCPUUtilizationPercentage` to add a new replica if CPU utilization exceeds this percentage.
+4. (Optional) Set the `targetCPUUtilizationPercentage` to add a new replica when CPU utilization exceeds this percentage.
 
 5. Save the file, and restart your pods.
 
    When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
 
-:::info CPU based HPA is not recommended as CPU assignments greater than 100% are usual and should not be a reason to scale or reject tasks. It should be consider when the CPU usage is above 100% for a long time. Harness recommends using Memory based HPA for autoscaling.
+:::info 
+Using CPU-based HPA is not advisable as CPU assignments that exceed 100% are common and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
 
 ## Configure Harness Delegate autoscaling using replicas for Kubernetes 1.23 and later
 
@@ -146,7 +147,7 @@ To auto scale the delegate for Kubernetes versions lower than 1.23, do the follo
 
 ## Example delegate YAML
 
-Here's an example YAML file which configures delegates to have a minimum of 2 replicas. If the Memory usage goes above 80%, new tasks won't be accepted. Once the Memory usage hits 70%, a new pod will be created to handle the load, up to a maximum of 10 replicas. When the Memory usage goes back down below 70%, the number of replicas will be scaled back down to a minimum of 2.
+Here's an example YAML file that configures delegates to have a minimum of 2 replicas. New tasks won't be accepted if the Memory usage goes above 80%. Once the Memory usage hits 70%, a new pod will be created to handle the load, up to a maximum of 10 replicas. When the Memory usage goes down below 70%, the number of replicas will be scaled back down to a minimum of 2.
 
 ```yaml
 apiVersion: v1
