@@ -16,20 +16,39 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
+## November 2023
 
-## Latest: version 81400
+### Version 81700
 
-### New features and enhancements
+### Version 81601
 
-- Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+### Version 81501
 
-  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+#### New features and enhancements
+
+- The perspectives page has been enhanced with pagination for both the Card and List views. Each page will display a maximum of 20 perspectives, addressing the issue where some customers experienced lag during the initial rendering of the perspectives list pages. 
 
 ### Early access features
 
 This release does not include any early access features.
 
-### Fixed issues
+#### Fixed issues
+
+- In the updated functionality for K8s connectors, the "View Costs" feature is now enabled based on the presence of cluster data rather than relying solely on the last events received. This enhancement ensures that users retain the ability to view historical costs.
+
+### Version 81402
+
+#### New features and enhancements
+
+- Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+
+  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
 
 - Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
 
