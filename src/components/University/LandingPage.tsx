@@ -310,7 +310,7 @@ export default function University() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available Certification</h5>
+                <h5>Available University</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
