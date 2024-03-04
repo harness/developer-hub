@@ -22,6 +22,10 @@ Templates in Harness IDP is powered by the [Backstage Software Template](https:/
 
 **Templates** are stored in the **Catalog** under a **kind Template**. The minimum that is needed to define a template is a `template.yaml` file, but it would be good to also have some files in there that can be templated in.
 
+### Adding the owner
+
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+
 A simple `template.yaml` definition might look something like this:
 
 ```YAML

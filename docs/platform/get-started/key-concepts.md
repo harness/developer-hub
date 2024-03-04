@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Key concepts of the Harness Platform
-sidebar_position: 2
+sidebar_position: 3
 redirect_from:
   - /docs/platform/get-started/platform-overview
 ---
@@ -64,7 +64,7 @@ Harness Delegate is a lightweight worker process that is installed on your infra
 
 Docs:
 [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview)
-[Install Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate)
+[Install Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate)
 
 ## Governance using Policy as Code
 Adding governance guardrails with Open Policy Agent (OPA) based policies is easy. Edit one of the policy-as-code samples or writer your own.

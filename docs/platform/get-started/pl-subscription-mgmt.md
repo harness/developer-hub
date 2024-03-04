@@ -1,7 +1,7 @@
 ---
 title: Subscriptions and licenses
 description: View and manage your Harness subscriptions and licenses.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import Manage from '/docs/platform/shared/subscription-manage.md';

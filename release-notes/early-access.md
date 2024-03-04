@@ -296,17 +296,16 @@ You will also experience an enhanced user interface when configuring the integra
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
-### Open Source Vulnerabilities (OSV) scanner integration
+### Write OPA policies based on STO scan results
 
-* **Release date:** February 2024
-* **Issue number:** STO-6767
-* **Feature flag:** `STO_STEP_PALETTE_OSV`
+* **Release date:** November 2023
+* **Issue number:** STO-6738
+* **Feature flag:** `STO_DATA_OPA`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
+You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
-
-### Aqua Security scanner integration
+### Aqua Security integration
 
 * **Release date:** November 2023
 * **Issue number:** STO-6382
@@ -562,7 +561,7 @@ You can scan container images and repositories using [Fossa](/docs/security-test
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
 
-You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
+You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 
 #### Harness AI Development Assistant (AIDA:tm:) for STO
 

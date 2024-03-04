@@ -10,6 +10,20 @@ sidebar_position: 3
 
 You can check Drone license details by navigating to `dronehost:port/varz`, such as `https://dronehost/varz`.
 
+### I am getting a "malformed license" error despite having an active licence
+
+A malformed license error, such as the following, can occur if the license is not applied correctly.
+
+```
+ {"error":"Malformed License","level":"fatal","msg":"main: invalid or expired license","time":"2024-02-26T11:48:35Z"}
+```
+
+Check that the [drone-license enviroment variable](https://docs.drone.io/server/reference/drone-license/) is applied correctly and there are no extra lines or whitespace added on the key file.
+
+### A Drone license allows up to 15 users. Is there a limit on the number of Drone instances with that license? Or just a limit on authenticated users?
+
+The license file is applicable per instance. The license is applied to a single instance and the 15 user limit is applied on that instance.
+
 ### Can I install Drone using Helm?
 
 Yes, charts in the following GitHub repository are used to deploy Drone to Kubernetes: [https://github.com/drone/charts](https://github.com/drone/charts).
@@ -68,6 +82,10 @@ Yes, Drone supports AES-GCM encryption of secrets stored in the database. You mu
 ### When migrating from sqlite to PostgreSQL, I am getting database error 42704: type "number" does not exist.
 
 The `build_deploy_id` type is `number`, and this type is not present in PostgreSQL. To resolve this, you must create a new table with type `bigint`, and then copy the data after renaming the table. For more information, refer to the [discussion of database error 42704 on the PGloader GitHub repository](https://github.com/dimitri/pgloader/issues/1284).
+
+### Drone uses SQLite as the default database engine. Is that recommended for production use, or would you recommend using MySQL/Postgres?
+
+You can use SQLite, but [Harness recommends using Postgres](https://docs.drone.io/server/storage/database/).
 
 ## Drone user management
 

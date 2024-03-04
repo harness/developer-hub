@@ -1,11 +1,11 @@
 {
-    "label":"Access control",
+    "label": "Access control for SEI",
     "position": 75,
-    "collapsible":"true",
-    "collapsed":"true",
-    "className":"red",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
     "link":{
-       "type":"generated-index",
-       "title":"Access control"
+       "type": "generated-index",
+       "title": "Access control for SEI"
     }
  }
