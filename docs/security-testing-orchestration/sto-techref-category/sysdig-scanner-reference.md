@@ -206,6 +206,8 @@ In the **Advanced** settings, you can use the following options:
 
 ### Sysdig orchestration pipeline
 
+If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+
 <details>
 
 <summary>
@@ -306,6 +308,80 @@ pipeline:
 </details>
 
 ### Sysdig ingestion pipeline
+
+If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+
+<details>
+
+<summary>
+YAML pipeline, Sysdig scan, Ingestion mode
+</summary>
+
+```yaml
+
+pipeline:
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORG_ID
+  tags: {}
+  stages:
+    - stage:
+        name: sysdig_ingest_scan
+        identifier: sysdig_ingest_scan
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      # In this example, the codebase connector points to 
+                      # https://github.com/GitHubGoneMad/sysdig-scans
+                      cp /harness/sysdig-scan-results.json /shared/scan_results/
+              - step:
+                  type: Sysdig
+                  name: Sysdig_1
+                  identifier: Sysdig_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      type: container
+                      detection: manual
+                      name: YOUR_CONTAINER_IMAGE_REPO/NAME
+                      variant: YOUR_CONTAINER_IMAGE_NAME
+                    advanced:
+                      log:
+                        level: info
+                    privileged: false
+                    ingestion:
+                      file: /shared/scan_results/sysdig-scan-results.json
+          sharedPaths:
+            - /shared/scan_results/
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
+        build: <+input>
+  identifier: sysdig_ingestion_test_v2
+  name: sysdig_ingestion_test_v2
+
+
+
+```
+
+</details>
 
 
 
