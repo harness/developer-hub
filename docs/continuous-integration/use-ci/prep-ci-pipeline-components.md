@@ -136,7 +136,7 @@ Failure strategies are a critical pipeline design component that determine what 
 
 See also:
 
-* [Retry failed executions](/docs/platform/pipelines/resume-pipeline-deployments)
+* [Retry failed executions](/docs/platform/pipelines/failure-handling/resume-pipeline-deployments)
 
 ### Environment variables
 

@@ -2122,7 +2122,7 @@ Yes you can refer here, [documentation](https://apidocs.harness.io/tag/User#oper
 
 ### If we abort the pipeline and a step is being executed, will it be immediately stopped or it will finish the step task execution and after that abort the execution?
 
-When you abort a pipeline, the pipeline will finish executing its current task and then stop execution. For further details you can refer [here](https://developer.harness.io/docs/platform/pipelines/abort-pipeline/#key-considerations).
+When you [abort a pipeline](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline), the pipeline will finish executing its current task and then stop execution.
 
 ### Do we support referencing a ldap secret?
 
