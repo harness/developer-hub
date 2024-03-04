@@ -110,7 +110,7 @@ You can start executing the sandbox again if you run out of time by click **Run*
 
 ### Perform the same steps for the next experiment
 
-1. The above steps complete the execution of the pod delete experiment. There is one more experiment to execute, that is, [pod network loss](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss.md). You can follow the same steps as you did for pod delete experiment to execute this experiment as well. In this experiment, a probe is configured in the background to check for the availability of the Podtato app's left arm, which is targeted.
+1. The above steps complete the execution of the pod delete experiment. There is one more experiment to execute, that is, [pod network loss](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss.md). You can follow the same steps as you did for pod delete experiment to execute this experiment as well. In this experiment, a probe is configured in the background to check for the availability of the Podtato app's left arm, which is targeted.
 
 ![pod network loss](./static/sandbox/pod-nw-loss.png)
 

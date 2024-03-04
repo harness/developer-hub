@@ -8,8 +8,8 @@ This section describes the [advanced setup](#advanced-setup), [infrastructure se
 HCE supports executing Linux faults similar to Kubernetes faults. 
 
 ## Before you begin
-* [Connect to Linux infrastructure](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
-* [Disconnect from Linux infrastructure](/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure#remove-infrastructure)
+* [Connect to Linux infrastructure](/docs/chaos-engineering/chaos-faults/prerequisites/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
+* [Disconnect from Linux infrastructure](/docs/chaos-engineering/chaos-faults/prerequisites/chaos-infrastructure/disconnect-chaos-infrastructure#remove-infrastructure)
 
 ## Advanced setup
 A set of mandatory input flags is required for the installation of the chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
@@ -36,7 +36,7 @@ A set of mandatory input flags is required for the installation of the chaos inf
 :::info note
 LCI does not currently support:
 1. Cron schedules
-2. [GameDays](/docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday.md)
+2. [GameDays](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md)
 3. Executing [parallel faults](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/create-complex-chaos-experiments.md) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
 :::
 

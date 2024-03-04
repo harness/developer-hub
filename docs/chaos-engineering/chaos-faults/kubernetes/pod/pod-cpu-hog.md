@@ -42,7 +42,7 @@ CPU hog:
       <tr>
         <td> CPU_LOAD </td>
         <td> Perentage of CPU to be consumed. </td>
-        <td> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog#cpu-load">CPU load </a> </td>
+        <td> For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog#cpu-load">CPU load </a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
