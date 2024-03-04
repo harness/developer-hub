@@ -1,0 +1,11 @@
+{
+    "label": "Execution history and logs",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 3,
+    "link": {
+        "type": "generated-index",
+        "title": "Execution history and logs"
+    }
+}

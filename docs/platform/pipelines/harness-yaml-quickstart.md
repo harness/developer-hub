@@ -1,7 +1,7 @@
 ---
-title: Harness YAML overview
-description: You can use YAML to create pipelines in Harness
-sidebar_position: 2
+title: Write pipelines in YAML
+description: You can use YAML to create pipelines in Harness.
+sidebar_position: 1
 helpdocs_topic_id: 1eishcolt3
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false

@@ -65,7 +65,7 @@ Each pipeline execution displays the following information.
     - Edit Pipeline
     - [Re-run Pipeline](/docs/platform/pipelines/resume-pipeline-deployments/)
     - [Abort Pipeline](/docs/platform/pipelines/abort-pipeline/#aborting-a-pipeline)
-    - [View Compiled YAML](/docs/platform/pipelines/view-and-compare-pipeline-executions/#view-compiled-yaml)
-    - [Compare Pipeline](/docs/platform/pipelines/view-and-compare-pipeline-executions/#compare-executions)
-    - [Download Logs](/docs/platform/pipelines/download-logs/)
+    - [View Compiled YAML](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#view-compiled-yaml)
+    - [Compare Pipeline](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#compare-executions)
+    - [Download Logs](/docs/platform/pipelines/executions-and-logs/download-logs)
 

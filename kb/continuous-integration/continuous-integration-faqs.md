@@ -1824,7 +1824,7 @@ Finally, if your build is older than six months, it is outside the data retentio
 
 ### Can I compare pipeline changes between builds?
 
-Yes. Go to [view and compare pipeline executions](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
+Yes. Go to [view and compare pipeline executions](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions).
 
 ### How do I create a dashboard to identify builds that end with a timeout in a specific task?
 

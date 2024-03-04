@@ -1148,7 +1148,7 @@ Customers should be mindful of the fact that connectors are often tied to a secr
 #### How to visualize and compare pipeline changes? 
 
 Harness allows users to compare changes to a pipeline YAML. This is often useful tool to determine why a pipeline has changed behavior. 
-See site for more details [here](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
+See site for more details [here](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions).
 
 #### Harness rollback deployments. 
 
@@ -3289,7 +3289,7 @@ This config will do that  connector-scope: accountIn case you want to do it conn
 
 #### How to download pipeline logs based on the given pipeline execution key?
 
-You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
+You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/download-logs) from the Harness UI or via API.
 
 #### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
 

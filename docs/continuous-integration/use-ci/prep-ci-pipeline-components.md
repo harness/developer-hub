@@ -155,4 +155,4 @@ You can freely switch between the two editors. When editing a pipeline in Harnes
 
 ![](./static/harness-yaml-quickstart-21.png)
 
-For more information about Harness YAML, go to the [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart).
+For more information about Harness YAML, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart).
