@@ -1,5 +1,5 @@
 ---
-title: Run specific stages in pipeline
+title: Run specific stages
 description: Run specific stages in a pipeline.
 sidebar_position: 7
 helpdocs_topic_id: 95q2sp1hpr
@@ -50,6 +50,6 @@ You can view the execution details in the pipeline's execution history.
 
 ## Rerun stages from execution history
 
-When viewing execution details for a previous pipeline run, you can select **Re-run** or **Re-run Stage** to rerun a single stage. If necessary, you're prompted to provide runtime inputs.
+When [viewing execution details](/docs/category/execution-history-and-logs) for a previous pipeline run, you can select **Re-run** or **Re-run Stage** to rerun a single stage. If necessary, you're prompted to provide runtime inputs.
 
 ![](./static/run-specific-stage-in-pipeline-49.png)
