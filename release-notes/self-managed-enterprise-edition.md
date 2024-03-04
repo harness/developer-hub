@@ -65,7 +65,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## February xx, 2024, version 1.22.6
+## March xx, 2024, version 1.22.6
 
 This release includes the following Harness module and component versions.
 
@@ -73,15 +73,15 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.14.0](https://github.com/harness/helm-charts/releases/tag/harness-0.14.0) |
 | Air Gap Bundle | [0.14.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.0) |
-| NG Manager | 1.22.6 |
-| CI Manager | 1.10.2 |
-| Pipeline Service | 1.59.6 |
-| Platform Service | 1.9.0 |
-| Access Control Service | 1.29.2 |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.1 |
 | Delegate | 24.02.82203 |
-| Change Data Capture | 1.2.0 |
-| Test Intelligence Service | 1.7.1 |
-| NG UI | 1.5.10 |
+| Change Data Capture | 1.5.1 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.4 |
 | LE NG | 1.1.0 |
 
 **Alternative air gap bundle download method**
@@ -8242,7 +8242,7 @@ As part of this story we have changed the label for the audits for NG Auth Setti
 
 PL-28284
 
-he migration will run to remove following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON.
+The migration will run to remove following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON.
 
 At Account Scope, Account Basic/Account Viewer -All Account Resources.
 
