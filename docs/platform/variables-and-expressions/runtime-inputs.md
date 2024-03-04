@@ -263,7 +263,7 @@ Use multiple selection if you want to choose one or more values from the list of
 
 ![](./static/runtime-inputs-11.png)
 
-## Supply runtime input during execution
+### Supply runtime input during execution
 
 Sometimes you might not know the value for a runtime input at the beginning of the pipeline run. For example:
 
@@ -275,7 +275,7 @@ In these cases, you might need to provide runtime input during pipeline executio
 
 You must have a role with **Pipeline Execute** [permission](/docs/platform/role-based-access-control/permissions-reference/) to be able to submit runtime inputs during execution.
 
-### Configure execution inputs
+#### Configure execution inputs
 
 You must configure runtime inputs to allow specification during pipeline execution.
 
