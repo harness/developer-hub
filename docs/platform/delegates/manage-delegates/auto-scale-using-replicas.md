@@ -45,7 +45,7 @@ To auto scale the delegate, do the following:
 
 :::info 
 Using CPU-based HPA is not advisable as CPU assignments that exceed 100% are common and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
-
+:::
 ## Configure Harness Delegate autoscaling using replicas for Kubernetes 1.23 and later
 
 The HPA configuration setting is included in the default Kubernetes delegate YAML file. Harness updated the default HPA in the Harness Delegate YAML versions 24.02.82302 and later to use `autoscaling/v2` instead of `autoscaling/v1`, which was used in earlier delegate versions.
