@@ -36,9 +36,9 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | **Step** | **Details** | **Documentation** | **Demo** |
 | - | - | - | - |
 | <a href="/docs/platform/authentication/authentication-overview">Configure SSO</a> | Automate the onboarding of users from external sources | [Click here](/docs/platform/authentication/authentication-overview) |  |
-| <a href="#">API Guide</a> | Learn about how you can create any resource on SEI using Rest APIs | [Click here](/docs/platform/automation/api/api-quickstart) |   |
+| <a href="/docs/platform/automation/api/api-quickstart">API Guide</a> | Learn about how you can create any resource on SEI using Rest APIs | [Click here](/docs/platform/automation/api/api-quickstart) |   |
 
-### <a href="/docs/platform/automation/api/api-quickstart"> Phase 3: Integration Mapping </a>
+### <a href="#phase-3-integration-mapping"> Phase 3: Integration Mapping </a>
 
 | **Step** | **Details** | **Documentation** | **Demo** |
 | - | - | - | - |
