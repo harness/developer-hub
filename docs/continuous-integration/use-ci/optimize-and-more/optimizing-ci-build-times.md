@@ -100,7 +100,7 @@ Use these strategies to automate and manage build sequences.
 * [Queue Intelligence](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
-* [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
+* [Define failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Automated triggers](/docs/category/triggers/)
 
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.

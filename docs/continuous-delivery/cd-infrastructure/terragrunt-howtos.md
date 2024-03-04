@@ -135,7 +135,7 @@ To add a Terragrunt Plan step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
    You can use:
 
@@ -234,7 +234,7 @@ To add a Terragrunt Apply step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
    You can use:
 
@@ -344,7 +344,7 @@ To add a Terragrunt Destroy step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
    You can use:
 
@@ -413,7 +413,7 @@ To add a Terragrunt Rollback step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
    You can use:
 

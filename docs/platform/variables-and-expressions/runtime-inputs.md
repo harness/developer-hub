@@ -323,7 +323,7 @@ There is a time limit for mid-run input. Pipelines don't wait indefinitely for m
 If you allow mid-run input *and* you specify a default values, you can configure the pipeline to use the default values instead of failing if the input time elapses. To do this:
 
 1. Go to the stage or step with the execution input.
-2. Add a [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+2. Add a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 3. For **On failure of type**, select **Execution-time Inputs Timeout Errors**.
 4. Under **Perform Action**, select **Proceed with Default Values**.
 To automatically use the default value during such timeouts: 

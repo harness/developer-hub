@@ -97,7 +97,7 @@ You can select one or more specific Delegates using the [Delegate Selector](../d
 
 It's important to understand how the Timeout, Retry Interval, and Script Timeout settings relate to each other.
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, `1d` for one day.
 
@@ -157,7 +157,7 @@ Custom Approval steps must have at least one **Approval Criteria**. You can also
 
 ![](./static/custom-approvals-07.png)
 
-Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
+Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
 In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system. The supported operators are `=`, `!=`, `in`, and `not in`. 
 For example, 

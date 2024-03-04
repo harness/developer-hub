@@ -125,7 +125,7 @@ For information about looping strategies to go:
 
 ### Failure Strategies
 
-[Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
+[Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
 Each failure strategy is comprised of the following:
 

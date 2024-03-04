@@ -461,7 +461,7 @@ contains(arr, elem) {
 
 ### Add failure strategies to a CI/CD stage
 
-You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous security steps. One use case for this would be to enable manual interventions when a Security step generates a failure. You can set up a workflow like this:
+You can implement [Failure Strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous security steps. One use case for this would be to enable manual interventions when a Security step generates a failure. You can set up a workflow like this:
 
 1. A Build step is downstream from the Security step. It has a failure strategy that's set to run on [All Errors](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types).
 2. The scanner detects issues and the Security step generates an error.

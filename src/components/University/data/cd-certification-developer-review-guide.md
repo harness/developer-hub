@@ -25,7 +25,7 @@
 | Policy as Code  | [Policy as Code Overview](/docs/platform/governance/policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](/docs/category/approvals/) |
-| Failure Strategies  | [Define a Failure Strategy on Stages and Steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) |
+| Failure Strategies  | [Define a Failure Strategy on Stages and Steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) |
 |**4. Continuous Verification** | |
 | APM/Log Based Verification  | [Verify Deployments with the Verify Step](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) |
 | Validate Deployments | [Continuous Verification](/docs/category/verify-deployments) |

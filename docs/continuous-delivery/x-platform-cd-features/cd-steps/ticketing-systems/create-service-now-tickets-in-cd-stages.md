@@ -50,7 +50,7 @@ The timezone settings govern the display value of the settings not their actu
 
 3. In **Name**, enter a name that describes the step.
 
-4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)).
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 

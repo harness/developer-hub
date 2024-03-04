@@ -165,6 +165,6 @@ The failure strategy contains error conditions that must occur for the strategy 
 
 Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
 
-For more information, go to [Step and Stage Failure Strategy References](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md).
+For more information, go to [Step and Stage Failure Strategy References](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md).
 
 

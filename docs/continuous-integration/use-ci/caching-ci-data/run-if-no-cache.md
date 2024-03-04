@@ -18,7 +18,7 @@ This is an advanced pattern that requires you to be familiar with:
 * **Save Cache** and **Restore Cache** steps:
   * [Save and Restore Cache from S3](./saving-cache.md)
   * [Save and Restore Cache from GCS](./save-cache-in-gcs.md)
-* [Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 * [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), particularly [step conditions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions).
 
 ## Install dependencies if cache isn't restored
