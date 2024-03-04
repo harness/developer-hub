@@ -146,6 +146,7 @@ const Roadmap = () => {
                           tag={feature.tag}
                           title={feature.title}
                           description={feature.description}
+                          link={feature.link}
                         />
                       ))}
                   </div>
@@ -174,6 +175,7 @@ const Roadmap = () => {
                       tag={feature.tag}
                       title={feature.title}
                       description={feature.description}
+                      link={feature.link}
                     />
                   ))}
               </div>
