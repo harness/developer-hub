@@ -170,3 +170,16 @@ You can use --recursive flag while using clone so that it fetch submodules
 #### Can we create custom drone plugins using Python? Plugin boilerplates/starters would be highly appreciated
 
 Yes, you can write drone plugin more details can be found here https://github.com/drone-plugins/drone-pypi
+
+#### Getting below error although having active licence
+```
+ {"error":"Malformed License","level":"fatal","msg":"main: invalid or expired license","time":"2024-02-26T11:48:35Z"}
+```
+
+It seems like licence is not applied correctly, so need to check and verify if env variable is applied correctly and there is no extra/unwanted line/space is added on key file https://docs.drone.io/server/reference/drone-license/
+
+#### Drone uses SQLite as its database engine by default, is that OK for production use, or would you recommend using MySQL/Postgres?
+You can use SQLite, but we  recommend using postgres https://docs.drone.io/server/storage/database/
+
+#### Drone license is for up to 15 users, is there a limit on the number of Drone instances with that license? Or just a limit on authenticated users? 
+The license file is applicable per instance, so can be applied on one drone instance and on top of that the user limit will be applicable
