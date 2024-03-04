@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Run chaos experiments in sandbox to build resilience 
+title: Walkthrough- Run chaos experiments in sandbox to build resilience 
 description: Execute chaos experiments to improve the resilience of an app in a sandbox.
 ---
 
@@ -63,7 +63,7 @@ Once you have created an account with Harness, click **Get started** of the **Ch
 
 ![exp created](./static/sandbox/exp-runs.png)
 
-2. In this step, click **Run** to execute the [pod delete chaos experiment](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete.md) that was previously created. In the background, the experiment also creates probes that check for the availability of the Podtato app's left arm, which is deleted during the pod delete experiment.
+2. In this step, click **Run** to execute the [pod delete chaos experiment](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md) that was previously created. In the background, the experiment also creates probes that check for the availability of the Podtato app's left arm, which is deleted during the pod delete experiment.
 
 ![exp runs](./static/sandbox/execute-exp.png)
 

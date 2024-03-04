@@ -24,6 +24,6 @@ If you're an existing user in [cloud.chaosnative.com](https://cloud.chaosnative.
 
 1. Create an account in [Harness](https://app.harness.io/). If you already have an account, then navigate to the **Chaos** module.
 
-1. [Connect](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures.md) the chaos infrastructure in Harness.
+1. [Connect](/docs/chaos-engineering/chaos-faults/prerequisites/chaos-infrastructure/connect-chaos-infrastructures.md) the chaos infrastructure in Harness.
 
 
