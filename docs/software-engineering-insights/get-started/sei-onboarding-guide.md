@@ -103,7 +103,7 @@ Harness Platform is purpose-built to help developers and DevOps teams deliver so
 
 **Team & Enterprise Plans:** You must have received an invitation email from your Account Administrator. Reach out to **support@harness.io** if you need more information or if you do not know who your **Account Administrator** is.
 
-After your account has been created, you can sign in to your Harness account [here](app.harness.io).
+After your account has been created, you can sign in to your Harness account [here](https://app.harness.io/).
 
 ### Self-Managed Enterprise Edition​
 
