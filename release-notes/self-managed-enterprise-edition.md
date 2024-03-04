@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-03-01T10:00
+date: 2024-03-04T10:00
 sidebar_position: 16
 ---
 
@@ -65,21 +65,21 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## March xx, 2024, version 1.22.6
+## March 4, 2024, version 1.24.7
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.14.0](https://github.com/harness/helm-charts/releases/tag/harness-0.14.0) |
-| Air Gap Bundle | [0.14.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.0) |
+| Helm Chart | [0.14.1](https://github.com/harness/helm-charts/releases/tag/harness-0.14.1) |
+| Air Gap Bundle | [0.14.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.1) |
 | NG Manager | 1.24.7 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
 | Platform Service | 1.12.0 |
 | Access Control Service | 1.33.1 |
 | Delegate | 24.02.82203 |
-| Change Data Capture | 1.5.1 |
+| Change Data Capture | 1.5.2 |
 | Test Intelligence Service | 1.8.1 |
 | NG UI | 1.7.4 |
 | LE NG | 1.1.0 |
@@ -90,14 +90,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.14.0/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.0/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.1/sto_images.tgz" \
   .
 ```
 
