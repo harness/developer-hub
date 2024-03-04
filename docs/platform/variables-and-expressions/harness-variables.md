@@ -763,35 +763,27 @@ For example:
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs/pipelines/Triggers/executions/EpE_zuNVQn2FXjhIkyFQ_w/pipeline
 ```
 
-:::important
-The expression \<+pipeline.execution.Url> has been deprecated.
+:::warning
+The version of this expression with an additional period, `<+pipeline.execution.Url>`, has been deprecated.
 :::
-
-
 
 ### \<+pipeline.executionMode>
 
-The execution mode  of the pipeline. This will tell the execution mode(i.e `NORMAL`, `POST_EXECUTION_ROLLBACK`, `PIPELINE_ROLLBACK`) of the pipeline.
+This expression describes the pipeline's execution mode:
 
-**Types of Execution Mode:**
-1) Normal Execution: A execution which could either be successful or failed.
-
-2) [Post deployment Rollback[POST_EXECUTION_ROLLBACK]](../../continuous-delivery/manage-deployments/rollback-deployments.md)
-
-3) [Rollback pipelines[PIPELINE_ROLLBACK]](../../platform/pipelines/define-a-failure-strategy-for-pipelines.md)
+* `NORMAL`: A normal execution. It could either have succeeded or failed.
+* `POST_EXECUTION_ROLLBACK`: A [post-deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments.md) execution.
+* `PIPELINE_ROLLBACK`: A [rollback pipeline](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) execution.
 
 ![](./static/execution-mode-expression.png)
 
-We can use the expression `<+pipeline.executionMode>` under conditional execution. Conditional execution is to ensure that a step only runs when a Post Execution Rollback has been triggered.
+You can use this expression in conditional executions.
 
 ![](./static/execution-mode-conditional-execution.png)
 
-For example:
-
-**Output:**
+For example, you can create a conditional execution to ensure that a step runs only when a post-deployment rollback happens. Here's an example of the logs for this conditional execution scenario:
 
 ![](./static/execution-mode-execution-output.png)
-
 
 ### \<+pipeline.name>
 

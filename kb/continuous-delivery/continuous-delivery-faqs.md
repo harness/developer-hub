@@ -1123,7 +1123,7 @@ You can add a failure strategy in the deploy stage by either ignoring the failur
 
 We do have a pipeline rollback feature that is behind a feature flag. This might work better as you would be able to have both stages separate, with different steps, as you did before, but a failure in the test job stage could roll back both stages.
  
-[Documentation](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-for-pipelines)
+[Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines)
   
 Also, for the kubernetes job, if you use the Apply step instead of Rollout then the step will wait for the job to complete before proceeding, and you would not need the wait step.
 

@@ -31,7 +31,7 @@ You can apply failure strategies to:
 * **Stages:** A stage failure strategy applies to all steps and step groups in the stage that don't have step-level failure strategies.
 * **Steps:** This failure strategy overrides (or enhances) the stage failure strategy.
 * **Step Groups:** You can set up a failure strategy for all steps in the group. Individual steps in the group don't have a failure strategy.
-* **Pipelines:** [Pipeline rollback](/docs/platform/pipelines/define-a-failure-strategy-for-pipelines) is a failure strategy for all stages in a pipeline. The pipeline rolls back if any of the stages in the pipeline fails.
+* **Pipelines:** [Pipeline rollback](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) is a failure strategy for all stages in a pipeline. The pipeline rolls back if any of the stages in the pipeline fails.
 
 ### Add a stage failure strategy
 

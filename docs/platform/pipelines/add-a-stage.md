@@ -144,7 +144,7 @@ Like the standard stages, Custom stages support:
 
 :::info Rollback
 
-Custom stages *don't* support [rollback](./define-a-failure-strategy-for-pipelines.md), but you can use [conditional executions](./w_pipeline-steps-reference/step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
+Custom stages *don't* support [rollback failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines), but you can use [conditional executions](./w_pipeline-steps-reference/step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
 
 :::
 

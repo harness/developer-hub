@@ -321,7 +321,7 @@ You must indent `when` to the same depth as either `step.identifier` or `stage.i
 
 ### Failure strategies
 
-Use `failureStrategies` to define [failure strategies for stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can also define failure strategies for pipelines to [rollback failed pipelines](./define-a-failure-strategy-for-pipelines.md).
+Use `failureStrategies` to define [failure strategies for stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can also define failure strategies for pipelines to [rollback failed pipelines](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines).
 
 ```yaml
               failureStrategies:  
