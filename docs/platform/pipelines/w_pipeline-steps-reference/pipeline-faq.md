@@ -15,7 +15,7 @@ The expression `<+execution.steps.[step Id].status>` resolves to the status of a
 A: We do not have a trigger, but, we do have a stage called Pipeline Chaining which lets you start a pipeline based on a pipeline completing.
 
 
-#### Q: is there a limit to the number of pipelines a project can have?
+#### Q: Is there a limit to the number of pipelines a project can have?
 A: No, there is no limit to how many pipelines can be created in a project.
 
 
