@@ -94,6 +94,8 @@ Modify the **Report Paths** (`reports.paths`) value to include a [Harness expres
 <details>
 <summary>Recommended maven-surefire-plugin and pom.xml modifications for test splitting</summary>
 
+The following modification is recommended when using test splitting in a Run Tests step with step-level `parallelism`. This modification is recommended because it doesn't change the default behavior and preserves the default test report directory. If you are using stage-level `parallelism`, this modification has no impact and isn't required.
+
 The default maven-surefire-plugin configuration in `pom.xml` is as follows:
 
 ```
