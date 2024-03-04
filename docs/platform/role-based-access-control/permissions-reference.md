@@ -64,6 +64,31 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Delegate Configurations | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Delegates | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
+## Policies
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Governance Policies | <ul><li>View</li><li>Edit</li><li>Create</li><li>Delete</li></ul> |
+| Governance Policy Sets | <ul><li>View</li><li>Edit</li><li>Create</li><li>Delete</li></ul> |
+
+## Discovery
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Network Map | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+
+## Supply Chain Assurance
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Remediation Tracker | <ul><li>View</li><li>Create/Edit</li><li>Close</li></ul> |
+
+## Webhooks
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Webhooks | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+
 ## Module-specific permissions
 
 ### Chaos Engineering
@@ -146,3 +171,12 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Catalog Access Policies | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
 | Integrations            | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul>        |
 | Advanced Configurations | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
+
+### Continuous Error Tracking
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Tokens | <ul><li>View</li><li>Create/Edit</li><li>Revoke</li></ul> |
+| Critical Events | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Agents | <ul><li>View</li></ul> |
+

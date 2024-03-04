@@ -4,7 +4,7 @@ import { MODULES } from "../../../constants";
 
 export const featureList: CardItem[] = [
   {
-    title: "Code Repository",
+    title: "Host Git Repositories",
     module: MODULES.code,
     icon: "img/icon_code.svg",
     description: <>Accelerate development with security at scale.</>,
@@ -12,7 +12,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Continuous Integration",
+    title: "Set up CI Pipelines",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: "Build faster and be more productive.",
@@ -20,7 +20,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Continuous Delivery",
+    title: "Set up CD Pipelines",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description:
@@ -29,15 +29,15 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Infrastructure as Code Management",
+    title: "Manage Infrastructure as Code",
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
-    description: <>Manage your infrastructure as code, end-to-end.</>,
+    description: <>Manage your infrastructure with ease.</>,
     link: "docs/category/get-started-with-iacm",
     type: [docType.Documentation],
   },
   {
-    title: "Feature Flags",
+    title: "Release Faster with Feature Flags",
     module: MODULES.ff,
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
@@ -45,7 +45,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Cloud Cost Management",
+    title: "Optimize Cloud Costs",
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
@@ -53,15 +53,15 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Security Testing Orchestration",
+    title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
-    description: <>Scan code, containers, and live applications.</>,
+    description: <>Shift left scanning of code, containers, & live apps.</>,
     link: "docs/category/get-started-with-sto",
     type: [docType.Documentation],
   },
   {
-    title: "Software Supply Chain Assurance",
+    title: "Secure Supply Chain",
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
@@ -69,7 +69,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Service Reliability Management",
+    title: "Manage Service Reliability",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, and analyze impact of changes.</>,
@@ -77,7 +77,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Chaos Engineering",
+    title: "Run Chaos Experiments",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
@@ -85,17 +85,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Continuous Error Tracking",
-    module: MODULES.cet,
-    icon: "img/icon_cet.svg",
-    description: (
-      <>Identify, triage, and resolve errors proactively.</>
-    ),
-    link: "docs/category/get-started-with-cet",
-    type: [docType.Documentation],
-  },
-  {
-    title: "Internal Developer Portal",
+    title: "Increase Developer Productivity",
     module: MODULES.idp,
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
@@ -103,15 +93,15 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Software Engineering Insights",
+    title: "Measure Software Engineering Processes",
     module: MODULES.sei,
     icon: "img/icon_sei.svg",
-    description: <>Use data-led insights to remove bottlenecks and improve productivity.</>,
+    description: <>Use data-led insights to remove SDLC bottlenecks.</>,
     link: "docs/category/get-started-with-sei",
     type: [docType.Documentation],
   },
   {
-    title: "Harness Platform",
+    title: "Administer Harness Platform",
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Deliver software with the highest velocity, quality, security, reliability, and resilience.</>,
@@ -119,7 +109,7 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "Harness Self-Managed Enterprise Edition",
+    title: "Administer Harness Self-Managed Enterprise Edition",
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Install Harness Platform on self-managed Kubernetes cluster.</>,

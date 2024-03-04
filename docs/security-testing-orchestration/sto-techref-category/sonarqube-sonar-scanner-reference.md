@@ -226,9 +226,24 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 #### Additional CLI flags
 
 
-You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. The following flag increases the timeout window: `-sonar.ws.timeout 300`
+You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
-<a name="fail-on-severity"></a>
+* `-sonar.ws.timeout 300` Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
+
+* `-Dsonar.projectVersion=<version_number>` The project version to scan
+
+* `-Dsonar.test.exclusions=**src/test/**/*.*` The test files to include from the scan
+
+##### YAML example
+
+```yaml
+              - step:
+                  type: Sonarqube
+                  spec:
+                    advanced:
+                      args:
+                        cli: "-Dsonar.projectVersion=1.2.3"
+```
 
 
 #### Fail on Severity
@@ -264,6 +279,23 @@ In the **Advanced** settings, you can use the following options:
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+## Troubleshoot Sonar Scans
+
+### Can't generate SonarQube report due to shallow clone
+
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
+* Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Solution: Change the `depth` to `0`.
+
+### How to add the sonar.projectVersion in a Harness pipeline
+
+In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
+
+
+
+
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 
 ## Security step settings for SonarQube scans in STO (legacy)
@@ -330,3 +362,5 @@ Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-tok
 * `product_exclude` — If you want to exclude some files from a scan, you can use this setting to configure the `sonar.exclusions` in your SonarQube project. For more information, go to [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
 * `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 * `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
+
+-->

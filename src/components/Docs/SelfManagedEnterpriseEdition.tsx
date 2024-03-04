@@ -6,8 +6,10 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/selfManagedEnterpriseEditionData";
+import { useColorMode } from "@docusaurus/theme-common";
 
 export default function CD() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -37,13 +39,22 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Self-Managed Enterprise Edition is an end-to-end solution for continuous, self-managed delivery. 
-            It is designed to assist developers and DevOps teams in delivering software with maximum speed, quality,
-             security, reliability, and resilience at the lowest possible cost. It helps you stay within the
-             governance boundaries required to achieve organizational objectives.
+              Harness Self-Managed Enterprise Edition is an end-to-end solution
+              for continuous, self-managed delivery. It is designed to assist
+              developers and DevOps teams in delivering software with maximum
+              speed, quality, security, reliability, and resilience at the
+              lowest possible cost. It helps you stay within the governance
+              boundaries required to achieve organizational objectives.
             </p>
-            <div>
-            <img src={`${baseUrl}img/platform.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/platform.svg`
+                    : `${baseUrl}img/Harness_Platform_dark_mode.svg`
+                }
+              />
             </div>
           </div>
         </div>

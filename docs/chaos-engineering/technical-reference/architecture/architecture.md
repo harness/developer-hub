@@ -56,12 +56,12 @@ The resource utilization matrix for execution plane components is summarized bel
 The table below is indicative of low to medium-load working conditions. As chaos activity increases, more resources will be required, and the values represented here may vary.
 :::
 
-| Deployment          | container           | CPU (Requested) | Memory (Requested) | Image                                |
-|---------------------|---------------------|-----------------|--------------------|--------------------------------------|
-| chaos-operator-ce   | chaos-operator-ce   | 125m            | 300M               | chaosnative/chaos-operator           |
-| chaos-exporter      | chaos-exporter      | 125m            | 300M               | chaosnative/chaos-exporter           |
-| subscriber          | subscriber          | 125m            | 300M               | chaosnative/harness-chaos-subscriber |
-| workflow-controller | workflow-controller | 125m            | 300M               | chaosnative/workflow-controller      |
+| Deployment          | container           | CPU (Requested) | Memory (Requested) | Image                                               |
+|---------------------|---------------------|-----------------|--------------------|-----------------------------------------------------|
+| chaos-operator-ce   | chaos-operator-ce   | 125m            | 300M               | docker.io/harness/chaos-operator:1.31.0             |
+| chaos-exporter      | chaos-exporter      | 125m            | 300M               | docker.io/harness/chaos-exporter:1.31.0             |
+| subscriber          | subscriber          | 125m            | 300M               | docker.io/harness/chaos-subscriber:1.31.0           |
+| workflow-controller | workflow-controller | 125m            | 300M               | docker.io/harness/chaos-workflow-controller:v3.4.16 |
 
 ## Chaos infrastructure
 

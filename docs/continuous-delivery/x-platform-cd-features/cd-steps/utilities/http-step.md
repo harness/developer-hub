@@ -161,6 +161,10 @@ This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact 
 
 :::
 
+:::important
+This feature requires Harness Delegate version 82400 or later. 
+:::
+
 You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
 
 1. In **Optional Configuration**, in **Certificate**, select the secret for the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.

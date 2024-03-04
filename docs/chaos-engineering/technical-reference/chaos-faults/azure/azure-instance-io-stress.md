@@ -128,7 +128,7 @@ If you change the secret key name from `azure.auth` to a new name, ensure that y
     <tr>
         <td> DEFAULT_HEALTH_CHECK </td>
         <td> Determines if you wish to run the default health check which is present inside the fault. </td>
-        <td> Default: 'true'. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
         </tr>
     <tr>
         <td> SEQUENCE </td>

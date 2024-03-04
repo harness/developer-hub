@@ -155,10 +155,6 @@ const config = {
                 to: "docs/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "docs/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
@@ -205,50 +201,50 @@ const config = {
             ],
           },
           {
-            label: "Certifications",
+            label: "University",
             position: "right",
             type: "dropdown",
-            to: "certifications",
+            to: "university",
             items: [
               {
-                label: "All Certifications",
-                to: "certifications",
+                label: "Learn Harness",
+                to: "university",
               },
               {
                 label: "Continuous Integration",
-                to: "certifications/continuous-integration",
+                to: "university/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                to: "certifications/continuous-delivery",
+                to: "university/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                to: "certifications/feature-flags",
+                to: "university/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                to: "certifications/cloud-cost-management",
+                to: "university/cloud-cost-management",
               },
               {
                 label: "Security Testing Orchestration",
-                to: "certifications/sto",
+                to: "university/sto",
               },
               {
                 label: "Chaos Engineering",
-                to: "certifications/chaos-engineering",
+                to: "university/chaos-engineering",
               },
               {
                 label: "Instructions",
-                to: "certifications/instructions",
+                to: "university/instructions",
               },
               {
                 label: "FAQs",
-                to: "certifications/faqs",
+                to: "university/faqs",
               },
               {
                 label: "Instructor Led Training",
-                to: "certifications/instructor-led-training",
+                to: "university/instructor-led-training",
               },
             ],
           },
@@ -336,10 +332,6 @@ const config = {
                 to: "https://harness.io/products/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "https://www.harness.io/products/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "https://www.harness.io/products/internal-developer-portal",
               },
@@ -358,7 +350,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
               },
               {
                 label: "API Reference",
@@ -512,11 +504,11 @@ const config = {
       path.resolve(__dirname, "./plugins/redirect-plugin"),
 
       {
-        id: "certifications",
-        path: "certifications",
-        routeBasePath: "certifications",
+        id: "university",
+        path: "university",
+        routeBasePath: "university",
         exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        sidebarPath: require.resolve("./sidebars-university.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

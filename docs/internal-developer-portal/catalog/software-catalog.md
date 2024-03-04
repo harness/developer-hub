@@ -4,7 +4,6 @@ description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
 redirect_from:
   - /docs/internal-developer-portal/features/software-catalog
-  - /tutorials/internal-developer-portal/add-links-in-components
 ---
 
 ![](./static/catalog-screenshot.png)
@@ -40,7 +39,7 @@ spec:
 
 ## Register software components in the catalog
 
-For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](/docs/internal-developer-portal/tutorials/register-component-in-catalog.md#start-with-basic-entity-information).
+For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](/docs/internal-developer-portal/tutorials/register-component-in-catalog#start-with-basic-entity-information).
 
 ## Software ecosystem modelling
 

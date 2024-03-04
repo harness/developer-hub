@@ -18,7 +18,7 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 ## Before You Begin
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
+* [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ## Important: Install Terraform on Delegates
@@ -471,6 +471,10 @@ For information on Terraform Plan in the **Dynamic Provisioning** steps in **Inf
 For example, if the Terraform Plan step with the Id `TfPlan` is in the **Execution** steps of a stage with the Id `TfStage`, then the expression is like this:
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
+
+When Terraform plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
 
 :::note
 When the `Run on Remote Workspace` option is selected, you will not be able to export the JSON representation of terraform plan.

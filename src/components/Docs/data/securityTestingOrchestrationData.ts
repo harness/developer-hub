@@ -19,7 +19,7 @@ import {
               module: MODULES.sto,
               description:
                 "Dive in with these tutorials.",
-              link: "/docs/security-testing-orchestration/get-started/sto-tutorials/tutorials",
+              link: "/docs/security-testing-orchestration/get-started/tutorials",
             },
             {
               title: "STO basics",

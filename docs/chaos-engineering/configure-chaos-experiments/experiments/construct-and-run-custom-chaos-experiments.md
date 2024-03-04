@@ -15,7 +15,7 @@ Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate ch
 
 A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
-For more information, go to [flow of control in a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution).
+For more information, go to [flow of control in a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution.md).
 
 ## Construct a chaos experiment
 
@@ -30,7 +30,7 @@ To add a chaos experiment:
 	![Experiment Overview](./static/construct-and-run-custom-chaos-experiments/experiment-overview.png)
 
 :::tip
-For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures).
+For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures.md).
 :::
 
 3. This takes you to the **Experiment Builder** tab, where you can choose how to start building your experiment.
@@ -66,7 +66,7 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 
 		* **Tune fault parameters:** Every fault has a set of common parameters, such as the chaos duration, ramp time, etc., and a set of unique parameters that may be customised as needed.
 
-		* **Add chaos probes:** (Optional) On the **Probes** tab, you can add chaos [probes](/docs/chaos-engineering/configure-chaos-experiments/probes/overview) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
+		* **Add chaos probes:** (Optional) On the **Probes** tab, you can add chaos [probes](/docs/chaos-engineering/configure-chaos-experiments/probes/overview.md) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
 
 		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score) of the experiment.
 

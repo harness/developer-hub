@@ -8,9 +8,10 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/continuousDeliveryData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -51,15 +52,22 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Continuous Delivery (CD) and GitOps enables deployment
-              of application and infrastructure changes in a safe and
-              sustainable way. Your CD pipelines and GitOps workflows can
-              automate all of the steps necessary to get your changes into
-              production. Make your software releases more efficient and
-              reliable with Harness CD and GitOps.
+              Harness Continuous Delivery (CD) and GitOps enables deployment of
+              application and infrastructure changes in a safe and sustainable
+              way. Your CD pipelines and GitOps workflows can automate all of
+              the steps necessary to get your changes into production. Make your
+              software releases more efficient and reliable with Harness CD and
+              GitOps.
             </p>
-            <div>
-            <img src={`${baseUrl}img/cd.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/cd.svg`
+                    : `${baseUrl}img/CD_Landing_Page_dark_mode.svg`
+                }
+              />
             </div>
           </div>
         </div>

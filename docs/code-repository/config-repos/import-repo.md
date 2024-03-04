@@ -31,6 +31,14 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
 7. Select your preference for visibility (**Public** or **Private**).
 8. Select **Import Repository** or **Import Repositories**.
 
+You can observe in-progress imports on the **Repositories** page.
+
+:::tip Cancel import
+
+To cancel an in-progress import, locate the in-progress import on the **Repositories** page, select **More options** (&vellip;), and then select **Cancel Import**.
+
+:::
+
 ## Work with repositories
 
 After importing a repository, you can:

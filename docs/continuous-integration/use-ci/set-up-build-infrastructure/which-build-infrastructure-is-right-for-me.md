@@ -7,23 +7,17 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-With Harness CI, you can run builds on Harness-managed machines or your own infrastructure. Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
+With Harness CI, you can run builds on [Harness-managed machines (Harness Cloud)](#harness-cloud) or [your own infrastructure](#bring-your-own-infrastructure).
 
+| Harness Cloud | Self-managed machines |
+| ------------- | --------------------- |
+| Maintained and updated by Harness. | Maintained and updated by you or your cloud services provider. |
+| Preinstalled with common software/tools.<br/>You can add additional tools at runtime. | Configuration determined by you or your cloud services provider. |
+| Free monthly build credits with the ability to purchase additional credits. | Costs vary for physical hardware maintenance, cloud services provider pricing models, or other factors. |
 
-<!--```mermaid -->
-<!-- --- -->
-<!-- title: Choose your build infrastructure -->
-<!-- --- -->
-<!-- flowchart TD dashdashcaret -->
-<!--    A(Fastest setup) dashdashcaret D(Harness Cloud) -->
-<!--    B(Harness-managed infrastructure) dashdashcaret D -->
-<!-- -->
-<!--    C(Self-managed infrastructure) dashdashcaret E(Local runner) -->
-<!--    C dashdashcaret F(Kubernetes cluster) -->
-<!--    C dashdashcaret G(AWS/GCP/Azure VMs) -->
-<!--```-->
+Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
 
-## Harness-managed infrastructure - Harness Cloud
+## Harness Cloud
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -38,7 +32,7 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 * Highly scalable.
 * Quick and easy configuration. Start building in seconds.
 * Linux, Windows, and macOS platforms with modifiable images.
-* Usually  first to receive new feature developments.
+* Usually first to receive new feature developments.
 * Available for all plan tiers.
 
 </details>
@@ -102,7 +96,7 @@ The following table shows the supported operating systems and architectures for 
 
 This recommendation is due to licensing requirements and the complexity of configuring and managing macOS VMs with Anka virtualization.
 
-With Harness Cloud, your builds run on Harness-managed runners, and you can start running builds in minutes.
+With Harness Cloud, your builds run on Harness-managed machines, and you can start running builds in minutes.
 
 :::
 
@@ -120,7 +114,7 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) in Build and Push steps | ✅ Supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
 | [Delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) | 🔸 Not applicable | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Bring-your-own secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager) | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| [Bring-your-own secret manager](/docs/platform/get-started/tutorials/add-secrets-manager) | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | [STO](/docs/security-testing-orchestration) steps/stages | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | Plugins | ✅ Supported - Run on containers or host machine | <ul><li>✅ Supported - Run on containers</li><li>❌ Not supported - Run on host machine</li></ul> | <ul><li>✅ Supported - Run on containers</li><li>🔸 Not applicable - Run on host machine</li></ul> | <ul><li>✅ Supported - Run on containers</li><li>❌ Not supported - Run on host machine</li></ul> |

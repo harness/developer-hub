@@ -1,5 +1,5 @@
 ---
-title: Search
+title: Keyword search
 description: Use built-in keyword search to query your codebase.
 sidebar_position: 50
 ---

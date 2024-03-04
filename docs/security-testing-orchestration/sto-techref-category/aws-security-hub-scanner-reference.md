@@ -124,6 +124,8 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 <StoSettingFailOnSeverity />
 
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
+
 ## Security step settings for AWS Security Hub scans in STO (legacy)
 
 You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
@@ -152,3 +154,5 @@ import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
+
+-->

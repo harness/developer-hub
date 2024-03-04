@@ -42,7 +42,7 @@ For **Deployment Templates**, any step using the repeat looping strategy with `<
 
 ## Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use all of the `<+instance...>` expressions to reference your hosts. These expressions can only be used with a looping strategy.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
