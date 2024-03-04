@@ -5676,3 +5676,16 @@ Yes, we have a [bi-directional functionality to sync the Harness entities](https
 If a replica count isn't defined on the Deployment, the Scale Down Step will set the replicas count permanently to `0`. Once a replica count is defined on the Deployment, the Blue/Green Swap Step should scale the appropriate Deployment correctly.
 
 If using a `Horizontal Pod Autoscaler` to scale replicas, you can set the `Delete Resources` flag in the Scale Down step to delete the resources instead of scaling them down. This will cause the Staging pod to be deleted so that when a new deployment happens, the pods are scaled appropriately to 1 replica and then picked up by the `Horizontal Pod Autoscaler`.
+
+#### How to get harness secrets from powershell?
+
+You can refer any harness secret inside the script using syntax <+secrets.getValue(“secret_identifier”)> , need to add org/account prefeix before identifier used if those are org/account level secret 
+
+
+#### How to mask a secret that is used as output variable
+
+Secret will be visible in the following areas of the pipeline execution:
+* 		On the Output tab of the step where the output variable originates.
+* 		In the step logs for any later steps that reference that variable.
+So if there is any secret needs to be used, we recommend to create a harness secret and refer that directly within pipeline instead of using as output variable.
+
