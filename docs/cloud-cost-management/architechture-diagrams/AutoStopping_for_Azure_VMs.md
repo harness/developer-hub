@@ -1,5 +1,5 @@
 ---
-title: AutoStopping for Azure VMs\
+title: AutoStopping for Azure VMs
 description: AutoStopping for Azure VMs
 sidebar_label: AutoStopping for Azure VMs
 ---
