@@ -80,7 +80,7 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 <!-- 2024-02-21 -->
 
-- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
+- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies). (STO-6927)
 
   ![](./static/sto-6927-override-popup-for-snyk.png)
 
@@ -109,7 +109,7 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 #### Enhancements
 
-- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
+- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
 
 
 <!-- 
