@@ -31,10 +31,6 @@ Harness can help orchestrate and govern the practices of deploying secure code. 
 
 ![MLOps process diagram](./static/mlops2.png)
 
-## Try MLOps with Harness
-
-This tutorial demonstrates how  Harness can automate the process of training, deploying, and monitoring a machine learning model for a sample credit card loan application.
-
 ### Prerequisites
 
 * Clone the [MLOps sample repository](https://github.com/harness-community/mlopssample).
@@ -140,6 +136,6 @@ Monitoring and managing machine learning models in production involves ensuring 
 
 This involves setting up KPIs, monitoring infrastructure, drift detection, monitoring model performance, alerts, A/B Testing, automated deployments, track model experiments, model freshness/retirement, and so on.
 
-Check out the video and then try it for yourself.
+This video demonstrates how Harness can automate the process of training, deploying, and monitoring a machine learning model for a sample credit card loan application.
 
 <DocVideo src="https://www.youtube.com/watch?v=T6O7m15O-VQ"/>
