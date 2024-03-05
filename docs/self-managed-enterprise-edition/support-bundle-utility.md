@@ -9,6 +9,10 @@ import TabItem from '@theme/TabItem';
 
 Harness Self-Managed Enterprise Edition provides a support bundle utility plugin option that enables you to troubleshoot system issues more efficiently. This feature allows you to collect data from various services on your system. The tool records logs from all pods running in a Kubernetes cluster and relevant ConfigMaps (excluding secrets). All the gathered data is then compiled into a downloadable bundle that you can use for troubleshooting and customer support purposes.
 
+:::info
+This utility does not collect any sensitive information, as Harness is committed to safeguarding your data privacy.
+:::
+
 ## Installation
 
 ### Prerequisites
