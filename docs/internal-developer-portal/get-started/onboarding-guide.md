@@ -180,3 +180,7 @@ In connector - The account path is `https://github.com/sathish-soundarapandian`.
 **Recommendations**
 
 If using GitHub connector, customers can go with App based authentication which provides higher number of API requests in an hour window. Read more about [GitHub Apps - GitHub Docs.](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/rate-limits-for-github-apps)
+
+## Next steps
+
+Check out the [IDP tutorials](/docs/category/idp-tutorials) for walkthroughs and deep dives into specific IDP use cases.
