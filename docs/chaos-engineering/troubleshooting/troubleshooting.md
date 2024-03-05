@@ -107,7 +107,7 @@ source:
 
 ## Executing an experiment moves it to QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture#chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/kubernetes#subscriber). 
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/kubernetes.md). 
 
 This could be due to a variety of reasons, such as:
 
