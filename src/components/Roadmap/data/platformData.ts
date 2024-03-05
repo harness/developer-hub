@@ -130,6 +130,7 @@ export const platformData: Horizon = {
   },
   Released: {
     description: "What has been released",
+
     feature: [
          {
         tag: [{ value: "Secure" }],
@@ -156,5 +157,6 @@ export const platformData: Horizon = {
           "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
       },
     ],
+
   },
 };

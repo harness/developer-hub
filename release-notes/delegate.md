@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-02-29T10:00
+date: 2024-03-05T10:00
 sidebar_position: 4
 ---
 
@@ -22,6 +22,38 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
+## Important upcoming changes
+
+:::warning important changes
+
+Please note that the following important changes will occur **March 31, 2024**:
+
+- The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
+
+   <details>
+   <summary>Legacy delegate installation flow</summary>
+
+   #### New Delegate Page
+
+   The `Switch back to old delegate install experience` link will be removed.
+
+   ![](./static/switch-to-old-delegate-install.png)
+
+   #### Legacy delegate installation flow deprecated
+
+   You will no longer be able to reach the legacy delegate installation flow.
+
+   ![](./static/old-delegate-install-exp.png)
+
+   </details>
+
+- Delegate tokens not used within the last 30 days will be revoked automatically.
+   
+   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
+
+:::
+
+
 <details>
 <summary>Deprecation notice</summary>
 
@@ -37,6 +69,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
+## March 2024
+
+### Version 24.02.82406 <!--  March 1, 2024 -->
+
+#### Hotfix
+
+- Previously, during the creation of rollback data, AWS Lambda would use string values for function versions. However, it now considers the integer values of function versions. This means that if you have deployed function versions `{8,9,10}` and you are currently deploying version `{11}`, the previous rollback version will be `{10}`, instead of `{9}`. (CDS-92300)
 
 ## February 2024
 

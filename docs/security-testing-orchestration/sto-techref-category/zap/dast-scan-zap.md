@@ -11,7 +11,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Security Testing Orchestration certification today!"
-  link="/certifications/sto"
+  link="/university/sto"
   closable={true}
   target="_self"
 />

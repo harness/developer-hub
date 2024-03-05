@@ -13,8 +13,8 @@ const sidebars = {
     // Cert Link from Community
     {
       type: "link",
-      label: "Certifications",
-      href: "/certifications",
+      label: "University",
+      href: "/university",
     },
     // KB from Community
     {

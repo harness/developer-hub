@@ -23,15 +23,64 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+
 ## February 2024
 
-<!-- 2024-02-21 -->
+### Version 1.85.0 
+
+<!-- 2024-03-01 -->
+
+#### Fixed issues
+
+- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+
+- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+
+- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
+
+- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+
+- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
+
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
+
+<!-- 
+
+#### Early access feature
+
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
+
+This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
+
+:::note
+
+To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+This release includes a set of security test policy samples, which make it easy to create policies such as:
+
+- A security test cannot include any issues in a list of severities such as Critical or New Critical.
+
+- A security test cannot include any issues for CVEs past a certain age, for example no critical-severity CVEs more then three years old.
+
+- A security test cannot include any issues in a list of titles such as `libsqlite3` or `javascript.express.security.audit`.
+
+- A security test cannot include any more than 75 occurrences of TAR-related issues (issue title matches regex `".*tar.*"`). 
+
+- A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
+
+For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+
+-->
 
 ### Version 1.84.0 
 
 #### Enhancements
 
-- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
+<!-- 2024-02-21 -->
+
+- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies). (STO-6927)
 
   ![](./static/sto-6927-override-popup-for-snyk.png)
 
@@ -50,20 +99,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
    Harness has introduced this behavior to avoid ambiguous or unexpected results when a target baseline changes. This can happen automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions. This new behavior also ensures that the  **Security Tests** UI for a given pipeline execution always uses the same criteria to categorize issues as **Only in \<_target_>:\<_variant_>** and **Remediated**.
 
 
-<!-- 
-### Documentation change
 
-- The STO tutorials have been moved and are now located under [Get started with STO](/docs/category/get-started-with-sto).  
 
--->
 
-<!-- 2024-02-07 -->
 
 ### Version 1.83.1 
 
+<!-- 2024-02-07 -->
+
 #### Enhancements
 
-- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
+- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
 
 
 <!-- 
@@ -82,7 +128,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 
 ## January 2024 
-
 
 <!-- 2024-01-24 -->
 

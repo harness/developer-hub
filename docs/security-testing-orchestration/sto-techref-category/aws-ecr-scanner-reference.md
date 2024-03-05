@@ -140,10 +140,21 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 <StoSettingAuthAccessToken />
 
+#### Session Token
+
+If you need to specify a session token, add it using the key `AWS_SESSION_TOKEN` under **Settings**.
+
+![](./static/aws-ecr-session-token-setting.png)
+
 
 #### Access Region
 
-The AWS region of the image to scan.
+The AWS region of the image to scan. 
+
+
+
+
+
 
 <!-- 
 ### Ingestion

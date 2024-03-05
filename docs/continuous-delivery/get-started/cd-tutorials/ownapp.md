@@ -11,7 +11,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Delivery & GitOps Certification today!"
-  link="/certifications/continuous-delivery"
+  link="/university/continuous-delivery"
   closable={true}
   target="_self"
 />
