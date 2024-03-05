@@ -510,13 +510,7 @@ These output variable could be viewed under the output tab in
 
 ### 7. Slack Notify
 
-:::warning
-
-There has been some recent upgrades to this step and this is dependent on the NG-UI service release, which has a different release cadence than that of IDP, until then this feature wouldn't functions as desired. We expect the dependent service releases to happen in the following week. 
-
-:::
-
-This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
+This step is used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
 
 <Tabs>
@@ -529,8 +523,8 @@ This step is used to notify in your team's clack channel or individual developer
     name: slacknotify
     identifier: slacknotify
     spec:
-    slackId: <+pipeline.variables.slack_id>
-    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
+    emailId: <+pipeline.variables.email_id>
+    messageContent: " Hello <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
     token: slacksecrettestws
 ```
 
@@ -550,28 +544,9 @@ The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL`
 </TabItem>
 </Tabs>
 
-#### Slack Channel ID
+#### Slack Email ID
 
-<Tabs>
-<TabItem value="Slack Web App" label="Slack Web App" default>
-
-1. Open any web browser and log in to your Slack account.
-2. Now, go to your workspace main page and view the URL in the search bar at the top.
-3. The URL looks ends with a C and letters.  This part of the path represents your Slack Channel ID.
-
-![](./static/slack-channel-id.png)
-
-
-</TabItem>
-<TabItem value="MacOS/Windows App" label="MacOS/Windows App">
-
-1. Go to your team channel or individual slack space, click n the profile picture and got to details and copy the member ID
-
-![](./static/slack-member-id.png)
-
-
-</TabItem>
-</Tabs>
+Use the email ID you have used to register in Slack. 
 
 #### Slack secret key
 
@@ -592,7 +567,7 @@ Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#s
 
 :::info
 
-We have been using **Expression** for most of the input values like `<+pipeline.variables.slack_id>` to be able to provide these values from the templates in the form of `slack_id: ${{ parameters.slackid }}` 
+We have been using **Expression** for most of the input values like `<+pipeline.variables.email_id>` to be able to provide these values from the templates in the form of `email_id: ${{ parameters.emailid }}` 
 
 Example
 
@@ -602,13 +577,13 @@ spec:
   parameters:
     - title: Service Details
       required:
-        - slackid
+        - emailid
         - triggerName
       properties:
-        slackid:
-          title: Insert your Slack ID
+        emailid:
+          title: Enter your Email ID
           type: string
-          description: Your Slack Channel ID
+          description: The email ID in slack
 ...
 ...
   steps:
@@ -617,7 +592,7 @@ spec:
       action: trigger:harness-custom-pipeline
       input:
         url: ""
-        slack_id: ${{ parameters.slackid }}
+        email_id: ${{ parameters.emailid }}
 ...
 
 ```
@@ -718,8 +693,8 @@ pipeline:
                   name: slacknotify
                   identifier: slacknotify
                   spec:
-                    slackId: <+pipeline.variables.slack_id>
-                    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
+                    email: <+pipeline.variables.email_id>
+                    messageContent: " Hello <@<+pipeline.variables.email_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catlog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
                     token: slacksecrettestws
           cloneCodebase: false
           caching:
@@ -776,7 +751,7 @@ pipeline:
       description: ""
       required: false
       value: catalog-info.yaml
-    - name: slack_id
+    - name: email_id
       type: String
       description: ""
       required: false
