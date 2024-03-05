@@ -18,6 +18,7 @@ This topic describes how to deploy AWS ASG deployments using Harness and the Spo
 * Spot Elastigroup deployments support AMI artifacts only.
 * Spot Elastigroup deployments support only Basic, Canary, and Blue Green execution types.
 * Your spot account must be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
+* Currently, Harness does not support using Spot Elastigroup with an OIDC-enabled AWS connector.
 
 ## Connect to a Spot cloud provider
 
@@ -26,6 +27,12 @@ You can connect Harness to a Spot cloud provider by adding a [Harness Spot Elast
 To connect to a Spot cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
 To use an AWS connector, your spot account must first be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
+
+:::note
+
+Currently, Harness does not support using Spot Elastigroup with an OIDC-enabled AWS connector.
+
+:::
 
 ## Create the Harness Spot Elastigroup pipeline 
 
