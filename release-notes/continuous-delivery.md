@@ -46,10 +46,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## March 2024
 
-## February 2024
-
-### Version 1.27.9
+### Version 1.27.10
 
 #### Fixed issues
 - Adding config files or manifests in a Custom stage, the environment step threw an error, `UnsupportedOperationException: Not inside service step or one of it's children`. (CDS-92218, ZD-58321)
@@ -91,6 +90,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The Pipeline Studio view was disabled when switching from Pipeline Studio to YAML view after partially filling a stage or step until the errors in the pipeline were fixed. (CDS-85556)
   
   This issue is fixed by allowing users to return to the Pipeline Studio view if the pipeline is unmodified in the YAML view. Users can also discard the changes made in the YAML view to force switch the Pipeline Studio view.
+
+## February 2024
 
 ### Version 1.26.11
 
