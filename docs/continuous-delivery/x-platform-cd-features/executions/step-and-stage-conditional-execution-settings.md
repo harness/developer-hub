@@ -110,3 +110,6 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
+## Unresolved Expressions during Conditional Execution
+
+This topic lists unresolved expressions during conditional execution  
