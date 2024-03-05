@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-03-04:T10:00:30
+date: 2024-03-05:T10:00:30
 sidebar_position: 3
 ---
 
@@ -80,11 +80,10 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-<!---
 
 ## March 2024
 
-### Version 1.27.10
+### Version 1.27.10<!--  March 5, 2024 -->
 
 #### New features and enhancements
 
@@ -99,7 +98,6 @@ The following deprecated API endpoints are longer supported:
 - After adding users to an Azure AD group, which then propagated to Harness, not all users were reflected in the "All Account Users" and "Harness Prod Users" user groups. The "Harness Prod Users" group, tied to SCIM, did not automatically include all newly created users in Harness, affecting the Harness STO module go-live. (PL-47669, ZD-55559, ZD-57091, ZD-58412, ZD-58486)
 
    We have fixed this issue with concurrent updates to user groups during user synchronization through SCIM, ensuring complete sync of all users in user groups from Azure AD to Harness.
--->
 
 ## February 2024
 
