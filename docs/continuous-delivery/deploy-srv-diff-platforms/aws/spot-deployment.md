@@ -28,12 +28,6 @@ To connect to a Spot cloud provider using Spot's API, go to [Spot API authentica
 
 To use an AWS connector, your spot account must first be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
 
-:::note
-
-Currently, Harness does not support using Spot Elastigroup with an OIDC-enabled AWS connector.
-
-:::
-
 ## Create the Harness Spot Elastigroup pipeline 
 
 You can create a service and environment either when you are building the pipeline or separately in **Services** and **Environments**. This topic walks you through building these within a pipeline. 

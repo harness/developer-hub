@@ -97,7 +97,7 @@ When you do your own deployments, you might need additional permissions added to
 
 :::note 
 
-If you are using the OIDC credential type for your AWS connector, also add a trust relationship between this IAM role and your identity provider. For information on using OIDC with AWS at Harness see: [AWS Connector -- Credentials](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md#credentials)
+If you are using the OIDC credential type for your AWS connector, also add a trust relationship between this IAM role and your identity provider. For information on using OIDC with AWS at Harness, go to [AWS Connector -- Credentials](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md#credentials).
 
 :::
 

@@ -58,7 +58,7 @@ Review the following information carefully to ensure you select the correct cred
    * **Use OIDC**: Select this option to connect to AWS with OIDC. This requires the user to create an OIDC identity provider in AWS and add it in a trust relationship with an IAM role that Harness will assume when doing any AWS operations with this connector.
    :::note
 
-   The `Use OIDC` credential option is currently behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
    :::
 2. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).

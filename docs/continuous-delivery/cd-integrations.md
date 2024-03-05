@@ -229,6 +229,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_AWS_OIDC_AUTHENTICATION</td>
-        <td>Enables the option to connect to AWS with OIDC. Only currently supported for Kubernetes, Helm, Terraform, and Cloudformation. <b>This feature is in Beta.</b> </td>
+        <td>Enables the option to connect to AWS with OIDC. Currently, this option is only supported for Kubernetes, Helm, Terraform, and Cloudformation. <b>This is a Beta feature.</b> </td>
     </tr>
 </table>
