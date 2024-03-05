@@ -107,11 +107,19 @@ For more details and example, go to:
 
 ## How Harness Models it's Pipelines?
 
-In a follow up to this blog: [Mastering Continuous Delivery a Closer Look](https://www.harness.io/blog/mastering-continuous-delivery-a-closer-look-at-how-harness-engineers-deploy-software) we have published the sample pipeline yamls and templates we use for deployment. 
+[Mastering Continuous Delivery: A Closer Look at How Harness Engineers Deploy Software](https://www.harness.io/blog/mastering-continuous-delivery-a-closer-look-at-how-harness-engineers-deploy-software) from Harness highlights their journey towards optimizing their Continuous Delivery (CD) pipelines. They address challenges like migration complexities, pipeline management issues, and the lack of standardization across services. By introducing a simplified, unified "Golden K8s Pipeline," integrating version control through GitHub, and adopting a uniform deployment process, Harness streamlined its deployment strategies. These changes resulted in significant benefits such as enhanced collaboration, consistent deployment practices, and automated workflows, paving the way for further advancements like adopting Helm Charts for better scalability and simplification.
 
+### Demo Video
+
+<!-- Video: Golden Pipeline Demo Video
+https://youtu.be/p-3FZM49RqQ-->
+<docvideo src="https://www.loom.com/share/9f636b7a813248499c745a98daa283ed?sid=595c2126-3781-41eb-9acc-9ea23836f2cb" />
 
 
 #### Pipeline Template
+
+This YAML describes a pipeline configuration for deploying Kubernetes (K8s) services using a template named "Golden_K8s." The pipeline, designated as "Golden Harness K8s Deployment," is structured for deploying services across various environments, including QA, production, and UAT, while ensuring deployment on both primary and failover infrastructures. It incorporates steps for prerequisite checks, applying Kubernetes resources, and post-deployment actions, which may involve updating Jira. The configuration also allows for specifying variables related to deployment types, environments, and integration points such as webhooks, sign-off pages, and Git details, emphasizing flexibility and control in deployment processes.
+
 
 ```yaml
 pipeline:
@@ -224,6 +232,8 @@ pipeline:
 ```
 
 #### Stage Template
+
+The YAML outlines a detailed stage template named "Golden K8s" for deploying Kubernetes services, incorporating various steps to ensure robust and regulated deployments. It checks environmental prerequisites, verifies QA deployments, sets deployment-specific parameters, and includes security scans, mandatory validation, and approval steps. The template also manages notifications, sanity checks post-deployment, and has provisions for rollback in case of failure. This structured approach emphasizes thoroughness, security, and compliance, tailored for diverse environments including production and QA.
 
 ```yaml
 template:
@@ -866,3 +876,6 @@ template:
   versionLabel: "0.8"
 
 ```
+
+
+
