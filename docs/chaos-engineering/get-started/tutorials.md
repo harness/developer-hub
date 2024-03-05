@@ -1,5 +1,6 @@
 ---
-title: Tutorials
+title: CE tutorials
+sidebar_label: Tutorials
 description: Get started with CE with these tutorials and guides
 sidebar_position: 3
 ---

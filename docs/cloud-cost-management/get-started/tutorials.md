@@ -1,5 +1,6 @@
 ---
-title: Tutorials
+title: CCM tutorials
+sidebar_label: Tutorials
 description: Get started with these CCM tutorials.
 sidebar_position: 3
 ---

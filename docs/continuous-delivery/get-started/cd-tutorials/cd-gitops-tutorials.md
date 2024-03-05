@@ -1,7 +1,7 @@
 ---
 title: CD & GitOps tutorials overview
 description: Helpful tutorials for using Harness CD and GitOps
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 These tutorials and guides showcase some use cases of Harness CD and GitOps.

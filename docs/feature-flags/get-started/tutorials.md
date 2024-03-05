@@ -1,5 +1,6 @@
 ---
 title: Feature Flags tutorials
+sidebar_label: Tutorials
 description: Learn about Harness Feature Flags with these tutorials.
 sidebar_position: 3
 ---
