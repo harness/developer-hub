@@ -25,6 +25,10 @@ Harness can help orchestrate and govern the practices of deploying secure code. 
 
 ![MLOps process diagram](./static/mlops.png)
 
+Watch this short demo on how Harness can automate the process of training, deploying, monitoring a machine learning model for a credit card loan application.
+
+<DocVideo src="https://www.youtube.com/watch?v=T6O7m15O-VQ" />
+
 import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 
 <CISignupTip />
