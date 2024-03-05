@@ -249,6 +249,10 @@ Now that our pipeline is ready to execute when a project name and a GitHub repos
 
 [Source](https://github.com/Debanitrkl/backstage-test/blob/main/tutorial-self-service-flow-template.yaml)
 
+### Adding the owner
+
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template

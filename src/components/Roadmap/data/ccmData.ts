@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const CcmData: Horizon = {
   Now: {
-    description: "What is being delivered now",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         tag: [],
@@ -27,7 +27,7 @@ export const CcmData: Horizon = {
     ],
   },
   Next: {
-    description: "What is being developed next",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
       {
         tag: [],
@@ -47,23 +47,18 @@ export const CcmData: Horizon = {
     ],
   },
   Later: {
-    description: "What is being developed later",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [{ value: "K8s" }, { value: "Security" }],
         title: "Sustainability",
-        description: "Tracking carbon footprint impact of cloud consumptionr",
+        description: "Tracking carbon footprint impact of cloud consumption",
       },
       {
         tag: [{ value: "K8s" }, { value: "Security" }],
         title: "SaaS cost optimization ",
         description: "Optimize spend and utilization of SaaS tools beyond cloud providers",
       },
-    ],
-  },
-  Released: {
-    description: "What has been released",
-    feature: [
     ],
   },
 };

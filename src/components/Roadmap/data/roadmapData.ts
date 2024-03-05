@@ -9,8 +9,11 @@ import { CeData } from "./ceData";
 import { SrmData } from "./srmData";
 import { IdpData } from "./idpData";
 import { SeiData } from "./seiData";
-import { IacmData } from "./IacmData";
+import { IacmData } from "./iacmData";
 import { platformData } from "./platformData";
+import { aidaData } from "./aidaData";
+import { codeData } from "./codeData";
+
 
 export interface ModuleData {
   title: string;
@@ -29,6 +32,7 @@ export type Feature = {
   tag?: tag[];
   title: string;
   description: string;
+  link?: string;
 };
 export interface Horizon {
   [key: string]: {
@@ -83,7 +87,8 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Chaos Engineering",
-    description: "Discover how your applications stand up to real-world failure scenarios.",
+    description:
+      "Discover how your applications stand up to real-world failure scenarios.",
     module: MODULES.ce,
     horizon: CeData,
   },
@@ -101,7 +106,8 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Software Engineering Insights",
-    description: "Discover SDLC bottlenecks, assess team productivity, and improve developer experience guided by data and insights.",
+    description:
+      "Discover SDLC bottlenecks, assess team productivity, and improve developer experience guided by data and insights.",
     module: MODULES.sei,
     horizon: SeiData,
   },
@@ -111,7 +117,20 @@ const ModuleData: ModuleData[] = [
     module: MODULES.iacm,
     horizon: IacmData,
   },
- 
+
+  {
+    title: "Code Repository",
+    description: "Securely host private Git repositories and collaborate on Code with advanced access controls and governance.",
+    module: MODULES.code,
+    horizon: codeData,
+  },
+  {
+    title: "AI Development Assistant",
+    description: "Unlock the power of AI infused software delivery.",
+    module: MODULES.aida,
+    horizon: aidaData,
+  },
+
 ];
 
 export default ModuleData;

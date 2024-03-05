@@ -1,5 +1,5 @@
 {
-    "label": "Dashboards",
+    "label": "Harness dashboards",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -7,7 +7,7 @@
 
     "link": {
         "type": "generated-index",
-        "title": "Dashboards"
+        "title": "Harness dashboards"
     },
     "customProps": {
         "helpdocs_category_id": "id0hnxv6sg"

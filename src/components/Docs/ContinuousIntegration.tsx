@@ -6,8 +6,9 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/continuousIntegrationData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CI() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -37,14 +38,22 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CI helps you build faster and be more productive.
-              Build and test your code, manage dependencies, upload artifacts,
-              and monitor build outcomes, all within the Harness Platform.
-              Leverage unique features, like AIDA, Test Intelligence, and Cache Intelligence,
-              and integrate third party tools, custom scripts, and other Harness modules.
+              Harness CI helps you build faster and be more productive. Build
+              and test your code, manage dependencies, upload artifacts, and
+              monitor build outcomes, all within the Harness Platform. Leverage
+              unique features, like AIDA, Test Intelligence, and Cache
+              Intelligence, and integrate third party tools, custom scripts, and
+              other Harness modules.
             </p>
-            <div>
-            <img src={`${baseUrl}img/ci.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/ci.svg`
+                    : `${baseUrl}img/CI_dark_mode.svg`
+                }
+              />{" "}
             </div>
           </div>
         </div>

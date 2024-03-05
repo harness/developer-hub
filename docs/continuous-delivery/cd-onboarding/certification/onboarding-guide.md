@@ -52,10 +52,10 @@ We recommend you either use Git Experience, Harness Terraform Provider or the Ha
 ## Step 6. Become a Harness Certified Expert
 
 ### Developer Certification
-This [certification](/certifications/continuous-delivery?lvl=developer) is the starting point for evaluating your understanding of Harness CD & GitOps concepts. 
+This [certification](/university/continuous-delivery) is the starting point for evaluating your understanding of Harness CD & GitOps concepts. 
 
 ### Administrator Certification
-After completing the Developer Certification, you are now ready to test your skills as a Harness CD & GitOps Administrator through the [Administrator certification](/certifications/continuous-delivery?lvl=administrator).
+After completing the Developer Certification, you are now ready to test your skills as a Harness CD & GitOps Administrator through the [Administrator certification](/university/continuous-delivery).
 
 ### Architect Certification
-After completing the Administrator Certification, you are now ready to test your skills as a Harness CD & GitOps Architect through the [Architect certification](/certifications/continuous-delivery?lvl=architect).
+After completing the Administrator Certification, you are now ready to test your skills as a Harness CD & GitOps Architect through the [Architect certification](/university/continuous-delivery).

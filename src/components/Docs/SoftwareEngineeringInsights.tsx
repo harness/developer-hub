@@ -6,8 +6,9 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/softwareEngineeringInsightsData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CI() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -30,14 +31,24 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Software Engineering Insights (SEI) enables engineering leaders to make data-driven
-              decisions that improve engineering productivity, efficiency, alignment, planning, and execution.
-              It provides actionable insights into software delivery and workflows across teams, processes, and
-              systems to improve software quality, enhance developer experience, and accelerate time to value.
-              Learn how you can use data-led insights to remove bottlenecks and improve productivity.
+              Harness Software Engineering Insights (SEI) enables engineering
+              leaders to make data-driven decisions that improve engineering
+              productivity, efficiency, alignment, planning, and execution. It
+              provides actionable insights into software delivery and workflows
+              across teams, processes, and systems to improve software quality,
+              enhance developer experience, and accelerate time to value. Learn
+              how you can use data-led insights to remove bottlenecks and
+              improve productivity.
             </p>
-            <div>
-            <img src={`${baseUrl}img/sei.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/sei.svg`
+                    : `${baseUrl}img/SEI_Landing_Page_dark_mode.svg`
+                }
+              />{" "}
             </div>
           </div>
         </div>

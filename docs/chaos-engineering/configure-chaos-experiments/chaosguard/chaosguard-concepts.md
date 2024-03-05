@@ -7,7 +7,7 @@ This section walks you through the concepts of [ChaosGuard](./introduction-to-ch
 
 ## Before you begin
 
-[Harness RBAC functionality](../../technical-reference/security/introduction) acts as a first-level security check (or deterrent) that can be leveraged to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](./introduction-to-chaosguard). 
+[Harness RBAC functionality](/docs/chaos-engineering/technical-reference/security/introduction.md) acts as a first-level security check (or deterrent) that can be leveraged to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard.md). 
 
 ## ChaosGuard concepts
 
@@ -58,4 +58,4 @@ The security evaluation step iterates over every active (or enabled) rule for ev
 ![flow-chart](./static/chaosguard-concepts/flow-chart-chaosguard.png)
 
 ## Next steps
-* [Configuring ChaosGuard](./configuring-chaosguard)
+* [Configuring ChaosGuard](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/configuring-chaosguard.md)

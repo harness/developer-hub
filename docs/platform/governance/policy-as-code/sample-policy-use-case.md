@@ -57,6 +57,18 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 		- [Enforce secret naming conventions](#enforce-secret-naming-conventions)
 		- [Enforce what secrets manager can be used to save secrets.](#enforce-what-secrets-manager-can-be-used-to-save-secrets)
 
+<!-- STO-7218
+	- [Security Tests policy samples](#security-tests-policy-samples)
+	    - [Exclude vulnerabilities by severity](#exclude-vulnerabilities-by-severity)
+	    - [Exclude vulnerabilities by reference ID](#exclude-vulnerabilities-by-reference-id)
+	    - [Exclude vulnerabilities by title](#exclude-vulnerabilities-by-title)
+	    - [Exclude vulnerabilities by number of occurrences](#exclude-vulnerabilities-by-number-of-occurrences)
+	    - [Exclude vulnerabilities by CVE age](#exclude-vulnerabilities-by-cve-age)
+	    - [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
+-->
+
+
+
 ## Policy samples
 
 
@@ -841,3 +853,12 @@ deny[msg] {
 }
 ```
 
+<!-- STO-7218
+
+### Security Test policy samples
+
+import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use-sto/shared/security-tests-policy-samples.md';
+
+<SecurityTestsPolicySamples />
+
+-->

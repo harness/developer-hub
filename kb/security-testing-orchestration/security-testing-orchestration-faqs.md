@@ -12,31 +12,35 @@ To approve exemptions, users must have the **Approve/Reject** permission. Curren
 
 Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans.
 
-## Pod evicted during an Aqua scan
+## Aqua scans
+
+### Pod evicted during an Aqua scan
 
 Pod eviction during an Aqua scan can be attributed to resource constraints, especially with a large image size (around 4GB).
 
 To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
 
-## Why is the STO Grype step throwing the exception "db could not be loaded: the vulnerability database was built n weeks ago (max allowed age is 5 days)"?
+## Grype scans
 
-This exception indicates that the Grype step in the STO process is unable to load the vulnerability database due to its age exceeding the maximum allowed age of 5 days. If the environment where you're running these scans has restricted internet connectivity (firewalled), you must set up a local database for Grype to update itself. For comprehensive documentation for the initial setup, configuring the local database, and final configuration, go to [Set up Grype in air-gapped environments](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/grype/grype-setup-in-airgapped/).
+### Grype exception "db could not be loaded: the vulnerability database was built n weeks ago (max allowed age is 5 days)"
 
-While Harness updates the database every time it rebuilds the Grype image, this is primarily done for performance reasons. A fresher database requires less time and effort to update at runtime. However, this update is not sufficient to bypass the database access requirement, as the maximum allowed age is 5 days. You can temporarily disable the age check and run Grype with the database it ships with, but this is not recommended from a security standpoint. It's advisable to follow the provided instructions to resolve the database access issue in a more secure manner.
+Go to [Troubleshoot "vulnerability database build date exceeds max allowed age" exception](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference#troubleshoot-vulnerability-database-build-date-exceeds-max-allowed-age-exception) in the Grype scanner reference.
 
-## Can't generate SonarQube report due to shallow clone
+## OWASP scans
 
-* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
-* Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
-* Solution: Change the `depth` to `0`.
+### OWASP step generates exception when initializing Yarn Audit Analyzer 
 
-## How do I add the sonar.projectVersion in a Harness pipeline?
+<!-- https://harness.atlassian.net/browse/STO-6975 -->
 
-In your Configure SonarQube step, declare `sonar.projectVersion` under Additional CLI Flags, for example:
+Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference#owasp-step-generates-yarn-audit-analyzer-exception) in the OWASP scanner reference.
+  
 
-```yaml
-Additional CLI Flags:
--Dsonar.projectVersion=
-```
+## Sonar scans
 
-For more information, go to the [Security step UI settings reference](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/#project-version)
+Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference. 
+
+This section discusses the following:
+
+- [Can't generate SonarQube report due to shallow clone](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#cant-generate-sonarqube-report-due-to-shallow-clone)
+- [How to include arguments such as `sonar.projectVersion` in a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#additional-cli-flags)
+

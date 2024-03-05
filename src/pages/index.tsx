@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
-import HomepageCertifications from "@site/src/components/HomepageCertifications";
+import HomepageUniversity from "@site/src/components/HomepageUniversity";
 import Feedback from "@site/src/components/Feedback";
 import MDXContent from "@theme/MDXContent";
 import Lottie from "lottie-react";
@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
             <Feedback />
           </main>
 
-          <HomepageCertifications />
+          <HomepageUniversity />
         </div>
       </Layout>
     </MDXContent>

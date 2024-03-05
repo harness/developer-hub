@@ -70,7 +70,7 @@ Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-
    
 * **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
-These workflows are covered in [Your first STO pipeline](./sto-tutorials/your-first-sto-pipeline).
+These workflows are covered in [Your first STO pipeline](./your-first-sto-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -230,7 +230,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 ### Create a Codebase Connector
 
-You'll need a GitHub account to do the [STO Tutorials](./sto-tutorials/tutorials). 
+You'll need a GitHub account to do the [STO Tutorials](./tutorials). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
  - [Azure](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
@@ -267,9 +267,9 @@ To do the STO tutorials, point the connector at the following repo: [https://git
 
 Now that you've set up Harness, you're ready to start using STO.
 
-A good next step is to go through [Your first STO pipeline](./sto-tutorials/your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+A good next step is to go through [Your first STO pipeline](./your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
-The [STO tutorials](./sto-tutorials/tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
+The [STO tutorials](./tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
 
 Happy scanning! 
 

@@ -244,7 +244,7 @@ The following data can be consumed through dashboards:
 
 ### Documentation link
 
- [Dashboards](/docs/category/dashboards)
+ [Dashboards](/docs/category/ccm-dashboards)
 
 </details>
 
