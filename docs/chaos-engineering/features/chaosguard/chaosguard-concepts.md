@@ -7,7 +7,7 @@ This section walks you through the concepts of [ChaosGuard](/docs/chaos-engineer
 
 ## Before you begin
 
-[Harness RBAC functionality](/docs/chaos-engineering/features/security/introduction.md) acts as a first-level security check (or deterrent) that can be leveraged to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md). 
+[Harness RBAC functionality](/docs/chaos-engineering/architecture-and-security/security/introduction.md) acts as a first-level security check (or deterrent) that can be leveraged to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md). 
 
 ## ChaosGuard concepts
 

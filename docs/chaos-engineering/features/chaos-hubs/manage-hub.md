@@ -68,7 +68,7 @@ You can also save an experiment as a template to a custom ChaosHub when [creatin
 
 ## Sync Harness with a ChaosHub Git repository
 
-When you [connect a custom ChaosHub](/docs/chaos-engineering/chaos-faults/prerequisites/chaos-hubs/add-chaos-hub.md), you can add and edit experiments in that hub in either Harness or the custom hub's GitHub repository. When you make changes in Harness, your repository is synced automatically. When you make changes in your repository, you must sync it with Harness using the UI.
+When you [connect a custom ChaosHub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md), you can add and edit experiments in that hub in either Harness or the custom hub's GitHub repository. When you make changes in Harness, your repository is synced automatically. When you make changes in your repository, you must sync it with Harness using the UI.
 
 To sync your custom ChaosHub's git repo with Harness:
 
