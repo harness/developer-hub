@@ -1,4 +1,4 @@
-Described below are descriptions of various fields used to plot and analyze data in [Chaosguard](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard).
+Described below are descriptions of various fields used to plot and analyze data in [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md).
 
 1. **Chaos experiment runs**
 

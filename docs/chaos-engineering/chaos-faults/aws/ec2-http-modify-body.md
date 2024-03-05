@@ -9,8 +9,7 @@ EC2 HTTP modify body injects HTTP chaos which affects the request or response by
 ![EC2 HTTP Modify Response](./static/images/ec2-http-modify-body.png)
 
 ## Use cases
-EC2 HTTP modify body 
-sts the application's resilience to erroneous (or incorrect) HTTP response body.
+EC2 HTTP modify body determines the application's resilience to erroneous (or incorrect) HTTP response body.
 
 ### Prerequisites
 - Kubernetes >= 1.17

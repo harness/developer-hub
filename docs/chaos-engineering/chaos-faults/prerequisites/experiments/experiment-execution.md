@@ -16,7 +16,7 @@ The below diagram shows the flow of control when a user creates a new chaos expe
    * **Chaos infrastructure:** Which chaos infrastructure will be targeted as part of the experiment.
    * **Fault and fault tunables:** The fault templates can be fetched from any connected chaos hubs, where the tunables can be modified wherever necessary. Multiple faults can be added in any desired order.
    * **Fault probes:** Optionally, additional probes can be defined on top of the default “Healthcheck” probe for a fault, to validate custom hypothesis conditions as part of the experiment.
-   * **Fault weights:** Fault weights define the importance of a fault with respect to other faults present in an experiment. More formally, it is used for calculating the experiment’s [**resilience score**](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score), a quantitative measure of the target environment’s resilience when the respective experiment is performed.
+   * **Fault weights:** Fault weights define the importance of a fault with respect to other faults present in an experiment. More formally, it is used for calculating the experiment’s [**resilience score**](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/resilience-score), a quantitative measure of the target environment’s resilience when the respective experiment is performed.
 
    The experiment is now created and ready to be executed.
 

@@ -98,8 +98,8 @@ Construct the chaos fault using one of the three options mentioned earlier and s
 
 	![Save experiment options](./static/construct-and-run-custom-chaos-experiments/save-experiment.png)
 
-	* Select **Save** to save the experiment to the Chaos Experiments page. You can add it to a [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub) later.
-	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [ChaosHub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
+	* Select **Save** to save the experiment to the Chaos Experiments page. You can add it to a [ChaosHub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md) later.
+	* Select **Add Experiment to ChaosHub** to save this experiment as a template in a selected [ChaosHub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md).
 
 ### Run the experiment
 
