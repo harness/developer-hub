@@ -204,7 +204,7 @@ export default function University() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available University</h5>
+                <h5>Available Certifications</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_dev_cd_badge.svg`}
@@ -256,7 +256,7 @@ export default function University() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available University</h5>
+                <h5>Available Certifications</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -310,7 +310,7 @@ export default function University() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available University</h5>
+                <h5>Available Certifications</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
