@@ -1,5 +1,5 @@
 ---
-title: Install delegates with custom certificates
+title: Install delegates with custom self-signed certificates
 description: How to install delegates with custom certificates.
 sidebar_position: 10
 redirect_from:
