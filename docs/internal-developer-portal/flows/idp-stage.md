@@ -523,7 +523,7 @@ This step is used to notify individual developers once the pipeline is executed 
     name: slacknotify
     identifier: slacknotify
     spec:
-    slackId: <+pipeline.variables.slack_id>
+    emailId: <+pipeline.variables.email_id>
     messageContent: " Hello <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
     token: slacksecrettestws
 ```
@@ -580,7 +580,7 @@ spec:
         - emailid
         - triggerName
       properties:
-        slackid:
+        emailid:
           title: Enter your Email ID
           type: string
           description: The email ID in slack
@@ -592,7 +592,7 @@ spec:
       action: trigger:harness-custom-pipeline
       input:
         url: ""
-        slack_id: ${{ parameters.emailid }}
+        email_id: ${{ parameters.emailid }}
 ...
 
 ```
