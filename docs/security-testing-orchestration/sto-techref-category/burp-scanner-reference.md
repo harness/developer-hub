@@ -81,11 +81,13 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 <StoSettingScanTypeInst />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
+<StoSettingScanTypeAutodetectApp/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -165,6 +167,8 @@ You should create a Harness text secret with your encrypted token and reference 
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
+
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Burp scans in STO (legacy)
 
@@ -256,3 +260,5 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 
 <StoSettingFailOnSeverity />
+
+-->

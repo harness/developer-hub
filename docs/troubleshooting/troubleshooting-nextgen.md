@@ -12,8 +12,6 @@ This topic contains general troubleshooting information for error messages and o
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
 
-<!-- TOC is not needed due to presence of minitoc in prod. -->
-
 ## Login issues
 
 The following issues can occur when logging in to Harness.
@@ -39,11 +37,17 @@ You should not be logged out anymore.
 * Chrome [Session storage](https://developers.google.com/web/tools/chrome-devtools/storage/sessionstorage) is used by Harness Manager. If you close all the tabs running Harness Manager and then open a new tab running Harness Manager, you will likely need to log in again.
 * A Chrome session will timeout after 5 minutes, but a session timeout can also happen if the tab running Harness Manager is idle for 24 hours. However, as long as the tab is not closed, Harness Manager will continue keep polling to check if a refresh is needed for the token. For example, if you have kept the tab open for 3 days, you might still be logged in, as long as the workstation has not been turned off or entered sleep mode preventing the refresh.
 
+### Harness local login
+
+import Harnessll from '/docs/platform/shared/harness-local-login.md'
+
+<Harnessll />
+
 ## Delegate issues
 
-The Harness delegate runs as a service in your target deployment environment, on a host, a pod, a container, or as a task. The delegate makes outbound HTTPS connections over port 443 to run remote SSH and API calls. The delegate uses the credentials you provide in Harness connections to cloud providers and artifact servers.
+The Harness Delegate runs as a service in your target deployment environment, on a host, a pod, a container, or as a task. The delegate makes outbound HTTPS connections over port 443 to run remote SSH and API calls. The delegate uses the credentials you provide in Harness connections to cloud providers and artifact servers.
 
-When delegates experience issues, it’s usually because of network connectivity.  For example, changes in ports and misconfigured proxies can interfere with delegate connections to providers and servers. Less common problems occur because of invalid credentials, access issues due to policy configuration, and the cross-project requirements of cloud vendors.
+When delegates experience issues, it’s usually because of network connectivity. For example, changes in ports and misconfigured proxies can interfere with delegate connections to providers and servers. Less common problems occur because of invalid credentials, access issues due to policy configuration, and the cross-project requirements of cloud vendors.
 
 If you suspect network connectivity is causing the delegate to fail, troubleshoot your network. If the problem is not resolved, check the validity of the delegate credentials.
 
@@ -61,7 +65,7 @@ If these errors clear, typically a local or remote networking or similar issue i
 
 This is a symptom of running duplicate delegates. We call this the double delegate problem.
 
-If two Harness delegates with the same name are running in different clusters, they will show up as one delegate in Harness Manager. This will make it seem as though only one delegate is running.
+If two Harness Delegates with the same name are running in different clusters, they will show up as one delegate in Harness Manager. This will make it seem as though only one delegate is running.
 
 **Do not run delegates with the same name in different clusters.** Replace one of the delegates and the issue will go away.
 
@@ -84,6 +88,7 @@ IllegalArgumentException: Custom Resource Definition Optional[destinationrules.n
   
 Failed.
 ```
+
 ### Running multiple delegates on the same host
 
 If deployment entities are getting added and removed in the same deployment, you might have two delegates running on the same host.
@@ -147,7 +152,7 @@ For more information, go to [Autoscaling deployments](https://cloud.google.com/k
 
 ### Deleting a Kubernetes delegate
 
-In the case where you have to delete a Harness delegate from your Kubernetes cluster, you can delete the StatefulSet for the delegate.
+In the case where you have to delete a Harness Delegate from your Kubernetes cluster, you can delete the StatefulSet for the delegate.
 
 Once created, the StatefulSet ensures that the desired number of pods are running and available at all times. Deleting the pod without deleting the StatefulSet will result in the pod being recreated.
 
@@ -161,7 +166,6 @@ Note that the `-0` suffix in the pod name is removed for the StatefulSet name.
 
 This rare error can be noticed in delegate logs:
 
-
 ```
 Sending heartbeat...  
   
@@ -169,6 +173,7 @@ Delegate 0000 received heartbeat response 0s after sending. 26s since last respo
   
 Self destruct sequence initiated...
 ```
+
 #### Cause
 
 Delegate self-destructing because there are two delegates with the same name, probably deployed to two different clusters.
@@ -179,14 +184,13 @@ Remove one delegate. Typically, one delegate is in the wrong cluster. Remove tha
 
 ### Need to use long polling for delegate connection to Harness Manager
 
-By default, the Harness delegate connects to Harness Manager over a TLS-backed WebSocket connection, sometimes called a Secure WebSocket connection, using the `wss://` scheme ([RFC 6455](https://tools.ietf.org/html/rfc6455#section-11.1.2)).
+By default, the Harness Delegate connects to Harness Manager over a TLS-backed WebSocket connection, sometimes called a Secure WebSocket connection, using the `wss://` scheme ([RFC 6455](https://tools.ietf.org/html/rfc6455#section-11.1.2)).
 
 Some network intermediaries, such as transparent proxy servers and firewalls that are unaware of WebSocket, might drop the WebSocket connection. To avoid this uncommon error, you can instruct the delegate to use long polling.
 
 To set up the delegate to use long polling, you use the delegate YAML file.
 
 For a Kubernetes Delegate, you can set the `POLL_FOR_TASKS` setting to `true` in the **harness-delegate.yaml** file:
-
 
 ```
 ...  
@@ -196,24 +200,25 @@ For a Kubernetes Delegate, you can set the `POLL_FOR_TASKS` setting to `true` in
           value: "true"  
 ...
 ```
+
 ### KubernetesClientException: Operation: [list] for kind: [Deployment] with name: [null] in namespace: [default] failed
 
 If you have a proxy set up on the network where the Harness Kubernetes Delegate is running, you need to add the cluster master host name or IP address in the delegate harness-delegate.yaml `NO_PROXY` list.
 
 For example, you might see a log error like this:
 
-
 ```
 io.fabric8.kubernetes.client.KubernetesClientException: Operation: [list]  for kind: [Deployment]  with name: [null]  in namespace: [default]  failed.
 ```
+
 1. Obtain the cluster master host name or IP address (`kubectl cluster-info`).
 2. Open the **harness-delegate.yaml** you used to create the delegate, and add the cluster master host name or IP address to the `NO_PROXY` setting in the `StatefulSet` spec:
-
 
 ```
         - name: NO_PROXY  
           value: "192.0.2.0"
 ```
+
 3. Apply harness-delegate.yaml again to restart the Kubernetes delegate (`kubectl apply -f harness-delegate.yaml`).
 
 ### Out-of-memory error (Java heap space)
@@ -248,10 +253,10 @@ This error means that no delegate could meet the URL validation criteria. When a
 
 Error message:
 
-
 ```
 Secret manager Harness SecretStore of type KMS is not able to encrypt/decrypt. Please check your setup
 ```
+
 This error results when Harness Secret Manager (named **Harness SecretStore**) is not able to encrypt or decrypt keys stored in AWS KMS. The error is usually transitory and is caused by a network connectivity issue or brief service outage.
 
 Check [Harness site status](https://status.harness.io/) and [AWS status](https://status.aws.amazon.com/) (search for **AWS Key Management Service**).
@@ -272,10 +277,10 @@ One possible cause of this error is if you are using a personal access token (PA
 
 To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. Go to [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.
 
-
 ```
 org.eclipse.jgit.api.errors.TransportException: https://github.com/*******/*******: git-upload-pack not permitted on 'https://github.com/*******/*******/'
 ```
+
 ## Naming conventions
 
 :::info note
@@ -322,18 +327,18 @@ If a secret's unencrypted value shares some content with the value of another Ha
 
 ### AWS KMS 403
 
-The Harness delegate runs in your target deployment environment and needs access to the default Harness AWS KMS for secrets management. If it does not have access, the following error can occur:
-
+The Harness Delegate runs in your target deployment environment and needs access to the default Harness AWS KMS for secrets management. If it does not have access, the following error can occur:
 
 ```
 Service: AWSKMS; Status Code: 403
 ```
-Ensure that the delegate can reach the Harness KMS URL by logging into the delegate host(s) and entering the following cURL command:
 
+Ensure that the delegate can reach the Harness KMS URL by logging into the delegate host(s) and entering the following cURL command:
 
 ```
 curl https://kms.us-east-1.amazonaws.com
 ```
+
 Next, ensure that your proxies are not blocking the URL or port 443.
 
 If this does not fix your error, and you are not using the default Harness KMS secret store, the AWS KMS access key provided in Harness for your own KMS store is likely invalid.
@@ -352,16 +357,17 @@ If you are using macOS Catalina, the default shell is zsh. The zsh shell require
 
 For example, this command fails:
 
-
 ```
 curl -X POST -H 'content-type: application/json' --url https://app.harness.io/gateway/api/webhooks/xxx?accountId=xxx -d '{"application":"fCLnFhwsTryU-HEdKDVZ1g","parameters":{"Environment":"K8sv2","test":"foo"}}'
 ```
+
 The following command works:
 
 
 ```
 curl -X POST -H 'content-type: application/json' --url "https://app.harness.io/gateway/api/webhooks/xxx?accountId=xxx -d '{"application":"fCLnFhwsTryU-HEdKDVZ1g","parameters":{"Environment":"K8sv2","test":"foo"}}'"
 ```
+
 ### User does not have "Deployment: execute" permission
 
 Error messages of the form `User does not have "Deployment: execute" permission` indicate that your user group's role settings do not include **Pipeline:** **Execute**.
@@ -394,7 +400,6 @@ For example, the cURL command shows a download progress indication on the screen
 
 You can test this for yourself with the following short example:
 
-
 ```
 curl https://app.harness.io/version.txt >out.txt 2>err.txt  
   
@@ -402,6 +407,7 @@ cat out.txt
   
 cat err.txt
 ```
+
 As you can see, the err.txt file has the cURL command output that in Harness will show with the `ERROR` prefix.
 
 If Harness does not show standard error, then many errors will not be captured, confusing customers. Therefore, Harness shows the standard error in its logs.
@@ -418,10 +424,10 @@ The following troubleshooting information should help you diagnose common Helm p
 
 If Harness cannot get an update from a chart repo you have set up for your Helm service, during deployment, you might see the following message:
 
-
 ```
 Unable to get an update from the "XYZ" chart repository ... read: connection reset by peer
 ```
+
 To fix this, find the delegate that the Helm update ran on, and then SSH to the delegate host and run the Helm commands manually. This will confirm if you are having an issue with your Harness setup or a general connectivity issue.
 
 ## Kubernetes
@@ -463,16 +469,15 @@ This is required because some API classes, such as the [MasterAuth class](https
 
 If you are deploying different Harness pipelines to the same cluster during testing or experimentation, you might encounter a selector error such as this:
 
-
 ```
 The Deployment “harness-example-deployment” is invalid: spec.selector:   
   Invalid value: v1.LabelSelector{MatchLabels:map[string]string{“app”:“harness-example”},   
   MatchExpressions:[]v1.LabelSelectorRequirement{}}: field is immutable
 ```
+
 This error means that, in the cluster, there is a deployment with same name which uses a different pod selector.
 
 Delete or rename the deployment. Let's look at deleting the deployment. First, get a list of the deployments:
-
 
 ```
 kubectl get all  
@@ -485,8 +490,8 @@ NAME                                             DESIRED   CURRENT   UP-TO-DATE 
 deployment.apps/harness-example-deployment       1         1         1            1           4d  
 ...
 ```
-And then delete the deployment:
 
+And then delete the deployment:
 
 ```
 kubectl delete deploy/harness-example-deployment svc/kubernetes  
@@ -495,22 +500,22 @@ deployment.extensions "harness-example-deployment" deleted
   
 service "kubernetes" deleted
 ```
+
 Rerun the Harness deployment and the error should not occur.
 
 ### Cannot create property
 
 The following error message can appear if a property, such as the security settings (securityContext) in the pod or container, are located in the wrong place in the specification:
 
-
 ```
 ConstructorException: Cannot create property=spec for JavaBean=class V1StatefulSet
 ```
+
 Ensure that your YAML specification is formed correctly.
 
 For steps on how to add a security context for a pod or container, go to [Configure a security context for a pod or container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
 
 Here is an example:
-
 
 ```
 apiVersion: v1  
@@ -527,6 +532,7 @@ spec:
       runAsUser: 2000  
       allowPrivilegeEscalation: false
 ```
+
 ## Terraform
 
 The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
@@ -535,10 +541,10 @@ The following are resolutions to common configuration problems when [Terraform p
 
 When a [Terraform Apply](../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
 
-
 ```
 Error creating [object]. The [object] already exists.
 ```
+
 Use a longer timeout for the Terraform Apply step.
 
 When the Terraform Apply times out, Terraform locks the Terraform state file. A Terraform [Force Unlock](https://www.terraform.io/docs/language/state/locking.html#force-unlock) needs to be performed.
@@ -553,17 +559,17 @@ After timeout, no resources may be added to the state file. A manual cleanup of 
 
 Harness performs the following validation when you use Terraform in a deployment:
 
-1. Is Terraform installed on the Harness delegate? Harness installs it automatically, but it might have been removed.
-2. Can the Harness delegate connect to the Git repo?
+1. Is Terraform installed on the Harness Delegate? Harness installs it automatically, but it might have been removed.
+2. Can the Harness Delegate connect to the Git repo?
 
-If the Harness delegate does not have Terraform installed, you will see a log entry such as the following:
-
+If the Harness Delegate does not have Terraform installed, you will see a log entry such as the following:
 
 ```
 2020-04-21 19:26:19,134 INFO software.wings.delegatetasks.validation.TerraformValidation - Running terraform validation for task  
   
 2020-04-21 19:26:19,157 INFO software.wings.delegatetasks.validation.TerraformValidation - Terraform validation result: false
 ```
+
 The message `Terraform validation result: false` means Terraform is not installed on the delegate.
 
 Install Terraform on the delegate to fix this.
@@ -576,21 +582,21 @@ For more information, go to [AWS backoff strategy](/docs/platform/connectors/clo
 
 ## Harness secret managers
 
-If the Harness delegate(s) cannot authenticate with a secret manager, you might see an error message such as this:
-
+If the Harness Delegate(s) cannot authenticate with a secret manager, you might see an error message such as this:
 
 ```
 Was not able to login Vault using the AppRole auth method.   
 Please check your credentials and try again
 ```
-For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
+
+For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) from the host running your Harness Delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
 
 For example, here is a cURL command for HashiCorp Vault:
-
 
 ```
 curl -X POST -d '{"role_id":"<APPROLE_ID>", "secret_id":"<SECRET_ID>"}' https://<HOST>:<PORT>/v1/auth/approle/login
 ```
+
 If the delegate fails to connect, it is likely because of the credentials or a networking issue.
 
 ## SAML SSO
@@ -625,7 +631,7 @@ If you publish output variables in your Shell Script step, structure your script
 
 ## Harness policy engine
 
-The following errors might occur during the set up or use of [Harness policy engine](/docs/platform/governance/Policy-as-code/harness-governance-overview).
+The following errors might occur during the set up or use of [Harness policy engine](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
 ### Policy evaluation failed
 

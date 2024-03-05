@@ -1,7 +1,7 @@
 ---
 title: Publish anything to the Artifacts tab
 description: You can publish any URL to the Artifacts tab.
-sidebar_position: 160
+sidebar_position: 31
 redirect_from:
   - /tutorials/ci-pipelines/publish/artifacts-tab
 ---
@@ -13,7 +13,7 @@ You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-pl
 
 :::tip
 
-If you use AWS S3, you can use either the Artifact Metadata Publisher plugin or the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings/#use-the-s3-upload-and-publish-plugin), which combines the upload artifact and publish URL steps in one plugin.
+If you use AWS S3, you can use either the Artifact Metadata Publisher plugin or the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3/#use-the-s3-upload-and-publish-plugin), which combines the upload artifact and publish URL steps in one plugin.
 
 :::
 
@@ -178,10 +178,10 @@ For `connectorRef`, you can use the built-in Docker connector, `account.harnessI
 
 Add a step to upload your artifact to cloud storage:
 
-- [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog)
-- [Upload Artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings)
-- [Upload Artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings)
-- [Upload Artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus)
+- [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog)
+- [Upload Artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings)
+- [Upload Artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3)
+- [Upload Artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus)
 
 For example, this tutorial uploads the combined Allure report to GCS:
 
@@ -326,7 +326,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted">
+  <TabItem value="k8s" label="Self-managed">
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) and uploads the Allure report artifact to GCS.
 
@@ -422,10 +422,10 @@ pipeline:
 
 * [View test reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#view-reports-on-the-artifacts-tab)
 * [View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/code-coverage/#view-code-coverage-reports-on-the-artifacts-tab)
-* [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
-* [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
-* [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
-* [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#view-artifacts-on-the-artifacts-tab)
+* [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
+* [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
+* [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
+* [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#view-artifacts-on-the-artifacts-tab)
 
 ## Troubleshoot the Artifacts tab
 

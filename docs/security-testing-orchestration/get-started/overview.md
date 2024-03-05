@@ -9,6 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics
+  - /tutorials/security-tests/sto-overview
 ---
 
 Companies perform security testing to avoid introducing vulnerabilities into the products their customers depend on. If a customer catches the security issue instead of the company, trust is lost.
@@ -17,7 +18,7 @@ Harness Security Testing Orchestration (STO) enables DevOps teams to left-shift 
 
 This topic describes the security scanning problems facing developers and how STO provides the solutions they need.
 
-### Common scanning problems
+## Common scanning problems
 
 Many current security testing practices have the following issues:
 
@@ -27,7 +28,7 @@ Many current security testing practices have the following issues:
 * **Inconsistent Governance:** Developers don't have guidance and governance to help them decide where scans should be in their release process.
 * **Not integrated with CI/CD:** Scans happen outside of the Pipeline instead of acting as gate checks.
 
-#### Delayed feedback loop
+### Delayed feedback loop
 
 Current security testing is challenging for DevOps teams because most security testing is done right before code has reached production. This is a delayed feedback loop.
 
@@ -39,7 +40,7 @@ All of the release stages where security testing could have been applied are pas
 
 Developers need to move forward, but by the time the security testing feedback arrives it could be days or weeks later and they have to stop current work and fix it.
 
-#### SDLC complexity problem
+### SDLC complexity problem
 
 Building software, from raw code to development to deployment, is too complex because there are many tools for so many types of scanning, and the outputs from all these tools are disparate. There is no uniform data format or language.
 
@@ -53,13 +54,13 @@ Your software teams must normalize all the output, track exemptions, and verifyi
 
 In addition, DevOps and security teams need to act on the information provided from security testing, but ensuring that these are the only vulnerabilities is challenging.
 
-### Harness Security Testing Orchestration (STO) solution
+## Harness Security Testing Orchestration (STO) solution
 
 Harness STO enables DevOps and security teams to left-shift security testing:
 
 * **Test:** Test code, OSS libraries, containers, and live apps with popular security scanners as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that scanning is timely and easy to apply.
 * **Remediate:** Repair security vulnerabilities by empowering developers with a prioritized list that is intelligently deduplicated across all scanners. Harness provides dashboards with clear security vulnerabilities identified.
-* **Govern:** Use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](/docs/platform/governance/Policy-as-code/harness-governance-overview) to enforce your security testing practices.
+* **Govern:** Use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](/docs/platform/governance/policy-as-code/harness-governance-overview) to enforce your security testing practices.
 
 With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and providing developers with deduplicated and prioritized vulnerabilities.
 
@@ -75,13 +76,13 @@ The following 1min video provides a quick summary of STO:
 
 -->
 
-### STO features
+## STO features
 
 Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You don't need any other Harness modules to use STO. 
 
 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the pipeline automatically if any "show-stopper" vulnerabilities are detected.
 
-These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
+These workflows are covered in [Your first STO pipeline](./your-first-sto-pipeline).
 
 ![](./static/security-testing-orchestration-basics-31.png)
 
@@ -119,11 +120,11 @@ Now let's apply these features to common use cases:
     </tr>
 </table>
 
-### Scanner coverage
+## Scanner coverage
 
 For a list of supported scanners, see [Scanners supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanners-supported-by-sto). 
 
 
-### Next Steps
+## Try Harness STO
 
-* [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline)
+Check out the [STO tutorials](./tutorials) and get started running [your first STO pipeline](./your-first-sto-pipeline) today!

@@ -1,5 +1,5 @@
 ---
-id: VMware-network-rate-limit
+id: vmware-network-rate-limit
 title: VMware network rate limit
 ---
 VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).
@@ -45,7 +45,7 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> VM_NAMES </td>
+        <td> VM_NAME </td>
         <td> Comma-separated names of the target VMs.</td>
         <td> For example, <code> vm-1,vm-2</code>. </td>
       </tr>
@@ -77,12 +77,12 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> NETWORK_BANDWIDTH </td>
@@ -122,12 +122,17 @@ stringData:
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
       </tr>
     </table>
 

@@ -2,10 +2,6 @@
 title: Configuring Layout of IDP Catalog pages
 description: Learn how you can modify and use layout in IDP to customise your UI.
 sidebar_position: 100
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 ## Introduction
@@ -140,7 +136,7 @@ You can find all the layout configurations in the IDP Admin layout section. Here
 | default                           | Default                                   |
 
 ## Understanding md Units in Grid Layouts
-- Grid System: We use a 12-column grid system for responsive layouts. Where md is the recommended unit, and `md: 1` stands for 1/12th of the grid. Alos you can used lg as well. 
+- Grid System: We use a 12-column grid system for responsive layouts. Where md is the recommended unit, and `md: 1` stands for 1/12th of the grid. Also you can used `lg` as well. 
 - Optimal Sizes: For medium devices, common sizes are md: 4, md: 6(half of the page), or md: 8. 
 
 ## Best Practices

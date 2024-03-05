@@ -13,12 +13,12 @@ import TabItem from '@theme/TabItem';
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
 
-You can build and test a [Python](https://www.python.org/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [Python](https://www.python.org/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -44,7 +44,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -92,9 +92,9 @@ Add caching to your `stage.spec`.
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -184,7 +184,7 @@ These examples run tests in a **Run** step.
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -246,7 +246,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 ```
 
 </TabItem>
-  <TabItem value="Self-Hosted">
+  <TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -336,7 +336,7 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 
 </TabItem>
 
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -556,7 +556,7 @@ pipeline:
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -683,6 +683,6 @@ pipeline:
 Now that you have created a pipeline that builds and tests a Python app, you could:
 
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 - Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

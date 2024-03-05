@@ -9,7 +9,7 @@ With the **Bitrise plugin** step (also called the **Bitrise** step), you can use
 
 :::info
 
-Currently, the **Bitrise plugin** step is supported for Harness Cloud build infrastructure only.
+Currently, the **Bitrise plugin** step is supported for Harness Cloud build infrastructure only. For other build infrastructures, you can run Bitrise integrations in a Run step or write a custom plugin.
 
 :::
 

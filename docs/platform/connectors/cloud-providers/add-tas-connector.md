@@ -24,7 +24,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 <details>
 <summary>Use the terminal</summary>
@@ -166,7 +166,7 @@ Perform the following steps to add a TAS connector.
 2. Select **New Connector**, and select **Tanzu Application Service** under **Cloud Providers**.
 3. Enter a connector name, enter an optional description and tag, and then select **Continue**.
 
-   Harness automatically creates an **[ID](/docs/platform/References/entity-identifier-reference)** for the connector. The ID is based on the connector's name.
+   Harness automatically creates an **[ID](/docs/platform/references/entity-identifier-reference)** for the connector. The ID is based on the connector's name.
 
 4. Enter the TAS **Endpoint URL**. For example, `https://api.system.tas-mycompany.com`.
 5. In **Authentication**, select one of the following options:

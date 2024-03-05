@@ -72,12 +72,13 @@ import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.
 <StoSettingScanTypeRepo />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
-
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 #### Name 
 
@@ -188,7 +189,15 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `-incremental`.  
+You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful arguments include:
+
+* `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
+* `-LocationPathExclude`— Exclude one or more paths from the scan.
+* `-LocationFilesExclude` — Exclude one or more paths from the scan.
+* `-OsaPathExclude` — Exclude matching paths from the scan.
+* `-OsaFilesExclude` — Exclude matching files from the scan.
+
+<!-- https://harness.atlassian.net/browse/STO-7006  -->
 
 
 ### Running incremental scans with Checkmarx
@@ -240,9 +249,10 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Checkmarx scans in STO (legacy)
 
@@ -282,6 +292,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />
+
+-->
+
 
 ## Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan
 

@@ -159,7 +159,7 @@ The Shell Script step succeeds or fails based on the exit value of the script. A
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
 
-* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use.
+* Execute scripts on the host running a Harness Delegate. You can use delegate selectors to identify which Harness Delegate to use.
 * Execute scripts on a remote target host in the deployment infrastructure definition.
 
 When executing a script, you can also **dynamically capture** the execution output from the script, providing runtime variables based on the script execution context, and export those to another step in the same stage or another stage in the same pipeline.
@@ -297,7 +297,7 @@ You can specify where to run the script **Target Host** or **On Delegate**.
 If you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 If you select a target host, your choice of **Delegate Selector** determines which delegate connects to the target host. Therefore, if only some of the delegates have access to the target host, exercise care when specifying the delegate selector so that the correct delegate is selected.
 
-Go to [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) for more information.
+Go to [select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for more information.
 
 If you select **Target Host**, depending on the script type, enter the following:
 
@@ -325,7 +325,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 ## Using shell scripts in CD stages
@@ -357,11 +357,11 @@ You don't need to use `export` for the variables to use them with **Script Outpu
 
 ### Using Harness expressions in your scripts
 
-If you need quotes around the [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your script, use single quotes, like this:
+If you need quotes around the [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in your script, use single quotes, like this:
 
 `export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
-If you use [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
+If you use [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
 ### Specify input variables
 
@@ -463,12 +463,6 @@ Variables of type Secret must have a non-empty value.
 :::
 
 ### Scoping output variables using aliases
-
-:::note
-
-Currently, scoping output variables using aliases is behind the feature flag `CDS_SHELL_VARIABLES_EXPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 To prevent variable name conflicts, you can use **Publish Variable Names (Alias)** to scope output variables to different entities.
 
@@ -605,7 +599,7 @@ For **Script Input Variables** and **Script Output Variables**, you simply selec
 
 If you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
-See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors).
+See [select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 
 If you select **Target Host**, enter the following:
 

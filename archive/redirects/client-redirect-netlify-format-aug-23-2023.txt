@@ -15,7 +15,6 @@ https://developer.harness.io/docs/platform/APIs/harness-rest-api-reference https
 https://developer.harness.io/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness
 https://developer.harness.io/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference https://developer.harness.io/docs/platform/Resource-Development/APIs/api-permissions-reference
 https://developer.harness.io/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference
-https://developer.harness.io/docs/category/users https://developer.harness.io/docs/category/access-control-1
 https://developer.harness.io/docs/platform/Role-Based-Access-Control/harness-default-user-groups https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups
 https://developer.harness.io/docs/platform/User-Management/harness-default-user-groups https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups
 https://developer.harness.io/docs/platform/User-Management/add-user-groups https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups
@@ -124,7 +123,6 @@ https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/depl
 https://developer.harness.io/docs/chaos-engineering/configure-chaos-experiments/experiments/use-chaos-with-srm https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm
 https://developer.harness.io/docs/category/continuous-verification-1 https://developer.harness.io/docs/category/configure-cv
 https://developer.harness.io/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-setup
-https://developer.harness.io/docs/category/role-based-access-control https://developer.harness.io/docs/category/access-control-1
 https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/ https://developer.harness.io/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate
 https://developer.harness.io/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine https://developer.harness.io/docs/feature-flags/harness-policy-engine
 https://developer.harness.io/kb/continuous-delivery/continuous-verification-ml https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/machine-learning
@@ -417,7 +415,6 @@ https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-inf
 https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-macos-build-infra-with-anka-registry https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry
 https://developer.harness.io/docs/category/onboard-with-ci https://developer.harness.io/docs/category/get-started-with-ci
 https://developer.harness.io/docs/category/migrating-to-harness-ci https://developer.harness.io/docs/category/migrate-to-harness-ci
-https://developer.harness.io/docs/category/test-intelligence https://developer.harness.io/docs/category/run-tests
 https://developer.harness.io/docs/category/run-ci-scripts https://developer.harness.io/docs/category/run-scripts
 https://developer.harness.io/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference
 https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline

@@ -10,9 +10,19 @@ const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
     { value: "platform", name: "Platform" },
-    { value: "cd", name: "Continuous Delivery & GitOps - Coming Soon" },
-    { value: "ci", name: "Continuous Integration - Coming Soon" },
-    { value: "ff", name: "Feature Flags - Coming Soon" },
+    { value: "aida", name: "AI Development Assistant" },
+    { value: "code", name: "Code Repository" },
+    { value: "ci", name: "Continuous Integration" },
+    { value: "cd", name: "Continuous Delivery & GitOps" },
+    { value: "iacm", name: "Infrastructure as Code Management" },
+    { value: "ff", name: "Feature Flags" },
+    { value: "ccm", name: "Cloud Cost Management" },
+    { value: "sto", name: "Security Testing Orchestration" },
+    { value: "ssca", name: "Sofware Supply Chain Assurance" },
+    { value: "ce", name: "Chaos Engineering" },
+    { value: "srm", name: "Service Reliability Management" },
+    { value: "idp", name: "Internal Developer Portal" },
+    { value: "sei", name: "Software Engineering Insights" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -108,84 +118,39 @@ const Roadmap = () => {
               )}
             </div>
             <h1>
-              <span>{selectedDropdownModule.value} </span>Overall Strategy
+              {selectedDropdownModule.name} Roadmap
             </h1>
             <p>{selectedModule.description}</p>
 
             {selectedModule && (
               <div className={styles.RoadmapSection}>
-                <div className={styles.section}>
-                  <div className={styles.sectionDescription}>
-                    <div className={styles.titleLine}>
-                      <h4>{key[0]}</h4>
-                      <p>
-                        {Object.keys(selectedModule.horizon).length > 0 &&
-                          selectedModule.horizon[
-                            Object.keys(selectedModule.horizon)[0]
-                          ].description}
-                      </p>
+                {key.map((k, index) => (
+                  <div className={styles.section}>
+                    <div className={styles.sectionDescription}>
+                      <div className={styles.titleLine}>
+                        <h4>{key[index]}</h4>
+                        <p>
+                          {Object.keys(selectedModule.horizon).length > 0 &&
+                            selectedModule.horizon[
+                              Object.keys(selectedModule.horizon)[index]
+                            ].description}
+                        </p>
+                      </div>
                     </div>
+                    {Object.keys(selectedModule.horizon).length > 0 &&
+                      selectedModule.horizon[
+                        Object.keys(selectedModule.horizon)[index]
+                      ].feature.map((feature, index) => (
+                        <HorizonCard
+                          module={selectedModule.module}
+                          tag={feature.tag}
+                          title={feature.title}
+                          description={feature.description}
+                          link={feature.link}
+                        />
+                      ))}
                   </div>
-                  {Object.keys(selectedModule.horizon).length > 0 &&
-                    selectedModule.horizon[
-                      Object.keys(selectedModule.horizon)[0]
-                    ].feature.map((feature, index) => (
-                      <HorizonCard
-                        module={selectedModule.module}
-                        tag={feature.tag}
-                        title={feature.title}
-                        description={feature.description}
-                      />
-                    ))}
-                </div>
-                <div className={styles.section}>
-                  <div className={styles.sectionDescription}>
-                    <div className={styles.titleLine}>
-                      <h4>{key[1]}</h4>
-                      <p>
-                        {Object.keys(selectedModule.horizon).length > 0 &&
-                          selectedModule.horizon[
-                            Object.keys(selectedModule.horizon)[1]
-                          ].description}
-                      </p>
-                    </div>
-                  </div>
-                  {Object.keys(selectedModule.horizon).length > 0 &&
-                    selectedModule.horizon[
-                      Object.keys(selectedModule.horizon)[1]
-                    ].feature.map((feature, index) => (
-                      <HorizonCard
-                        module={selectedModule.module}
-                        tag={feature.tag}
-                        title={feature.title}
-                        description={feature.description}
-                      />
-                    ))}
-                </div>
-                <div className={styles.section}>
-                  <div className={styles.sectionDescription}>
-                    <div className={styles.titleLine}>
-                      <h4>{key[2]}</h4>
-                      <p>
-                        {Object.keys(selectedModule.horizon).length > 0 &&
-                          selectedModule.horizon[
-                            Object.keys(selectedModule.horizon)[2]
-                          ].description}
-                      </p>
-                    </div>
-                  </div>
-                  {Object.keys(selectedModule.horizon).length > 0 &&
-                    selectedModule.horizon[
-                      Object.keys(selectedModule.horizon)[2]
-                    ].feature.map((feature, index) => (
-                      <HorizonCard
-                        module={selectedModule.module}
-                        tag={feature.tag}
-                        title={feature.title}
-                        description={feature.description}
-                      />
-                    ))}
-                </div>
+                ))}
               </div>
             )}
 
@@ -194,9 +159,8 @@ const Roadmap = () => {
                 {key &&
                   key.map((key, index) => (
                     <div
-                      className={`${styles.listTabItems} ${
-                        mobileViewHorizon[0] === key ? styles.active : ""
-                      }`}
+                      className={`${styles.listTabItems} ${mobileViewHorizon[0] === key ? styles.active : ""
+                        }`}
                       onClick={() => handleSwitchTab(key)}
                     >
                       <li key={index}>{key}</li>
@@ -211,6 +175,7 @@ const Roadmap = () => {
                       tag={feature.tag}
                       title={feature.title}
                       description={feature.description}
+                      link={feature.link}
                     />
                   ))}
               </div>

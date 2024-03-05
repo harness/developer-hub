@@ -10,12 +10,115 @@ sidebar_position: 11
 
 Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: January 26th 2024
+### Latest Updated: March 5th 2024
+
+## March 2024
+
+### .NET SDK
+
+ - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets.
+ - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
+
+## February 2024
+
+### Android SDK
+
+#### Version 2.0.0
+
+ - There's been a major refactoring in the 2.0.0 version of the Android SDK which included some API changes and additional imporovements:
+
+ -- <u>Improvements</u>
+
+This is a major hardening effort of the SDK to improve its overall reliability:
+
+ --- With a now simplified threading model, we now use a dedicated thread for authentication, streaming and polling which lives for the lifetime of the SDK until `close()` is called. Previous `1.x.x` versions of the SDK would start and stop threads on demand and/or submit code to thread pools. This made it difficult to identify critical regions in the code and was error prone.
+ --- A 2nd thread is now used for posting metrics to the analytics backend however all interactions between the two threads are done via a `ConcurrentHashMap()` and passing a read-only authentication token, no other state is needed for metrics.
+ --- The user entry points into the SDK such as `boolVariation()`, `stringVariation()`, `numberVariation()` and so on are now designed in such a way that they will never perform network activity. Instead they will only query the internal cache. This prevents unexpected blocking of UI code or code that is sensitive to delays.
+ --- There is proper use of constructors and final fields to make SDK thread state immutable (and reduce the likelihood of null pointer exceptions where possible).
+ --- Centralized error handling, the SDK will reset itself on dropped connections, timed out connections or any other exception. it will never get into undefined state but restart after a delay of 1 minute.
+ --- Centralized network detection, SDK thread will go to sleep when there is no network and wake up when an Android network online event is detected.
+ 
+ -- <u>API Deprecations</u>
+ 
+ --- The following overloaded versions of `initialize()` have been marked deprecated:
+ ```
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,final Target target, final CloudCache cloudCache, @Nullable final AuthCallback authCallback) throws IllegalStateException
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,
+ final Target target, final AuthCallback authCallback) throws IllegalStateException
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,
+ final Target target, final CloudCache cloudCache) throws IllegalStateException
+ ```
+ 
+ --- A custom cache can now be configured via a new configuration property `io.harness.cfsdk.CfConfiguration.Builder.cache()` , `AuthCallback` and `AuthResult` have been deprecated. The SDK will now follow the same API style as other Harness SDKs. Instead of providing a callback on `initialize()` you should call `waitForInitialization()` directly after `initialize()`. For example:
+
+ ```
+ client.initialize(this, apiKey, sdkConfiguration, target)
+ if (client.waitForInitialization(30_000)) {
+  // SDK started ok
+  } else {
+    // SDK did not start in time, re-authentication will be retried in the background until success or client.close() is called
+    // You should expect default values to be served
+    }
+```
+
+#### Version 1.2.5
+
+ - We've updated the `README` with instructions on how to add a ProGuard rule for Release builds. (FFM-10499)
+ - Now doesn't throw the `RejectedExecutionException` inside the `runRescheduleThreadWrapEx()`.
+
+### Flutter SDK
+
+#### Version 2.1.3
+
+ - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
+
+### iOS SDK
+
+#### Version 1.2.0
+
+ - Resolved an issue where the `AnalyticsManager` class was causing crashes. For context, this class uses a dictionary and does not sanitize the thread when reading/writing which was causing crashes due to race conditions.
+
+### Java SDK
+
+#### Version 1.5.1
+
+ - We've updated logback to remove `CVE-2023-6481`. (FFM-10377)
+ - Used a single `ExecutorService` for `UpdateProcessor`. (FFM-10760)
+
+### JavaScript SDK
+
+#### Version 1.24.0
+
+ - Disables streaming if Reactive Native + Android are detected. (FFM-10442)
+
+### .NET SDK
+
+#### Version 1.4.3
+
+ - Doesn't make network requests from the Evaluation thread. (FFM-10645)
+ - The cache buffer size is configurable. 
+ - We have fixed an issue where the `Disabling metrics` acion would not disable metrics in all scenarios. 
+
+#### Version 1.4.2
+
+ - We have resolved important issues which prevented evaluation metrics from growing exponentially in memory and flushed frequently, while preserving complete metrics accuracy. (FFM-10627)
+ - Bumped `System.IdentityModel.Tokens.Jwt` from 6.15.0 to 6.34.0.
+ - Wiremock has been upgraded. (FFM-10410)
+ - `Analytics` has now been separated into `EvaluationAnalytics` and `TargetAnalytics`. (FFM-10602)
+
+### React SDK
+
+#### Version 1.8.1
+
+ - We've fixed an issue where the new `useFeatureFlagsClient` hook and the `withFeatureFlagsClient` HOC were not correctly exported, making it more complex to import into your application (FFM-10591)
+ 
+#### Version 1.8.0
+
+- We've added a new `useFeatureFlagsClient` hook and `withFeatureFlagsClient` HOC to allow easy access to the instance of the Javascript Client SDK which the React Client SDK uses under the hood (FFM-10522)
 
 ## January 2024
 
@@ -27,6 +130,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - It now includes a synchronous initialization option.
 
 ### Android SDK
+
+#### Version 1.2.4
+
+ - Fixed the null pointer when calling the `initialize()` function. (FFM-10499)
 
 #### Version 1.2.3
 
@@ -64,9 +171,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Javascript SDK
 
+#### Version 1.23.0
+
+ - We've added defensive code around the `BTOA` usage. (FFM-10499)
+
 #### Version 1.22.0
 
-- When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
+ - When using the `cache` option, the cache key is now based on target and instance to be more unique. (FFM-10453)
 
 ### Node.js SDK
 
@@ -135,7 +246,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.0.3
 
-The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
+ - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
 We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
 

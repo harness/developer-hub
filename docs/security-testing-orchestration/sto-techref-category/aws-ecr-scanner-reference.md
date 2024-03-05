@@ -62,11 +62,13 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 <StoSettingScanTypeCont />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Detect target and variant 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -138,10 +140,21 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 <StoSettingAuthAccessToken />
 
+#### Session Token
+
+If you need to specify a session token, add it using the key `AWS_SESSION_TOKEN` under **Settings**.
+
+![](./static/aws-ecr-session-token-setting.png)
+
 
 #### Access Region
 
-The AWS region of the image to scan.
+The AWS region of the image to scan. 
+
+
+
+
+
 
 <!-- 
 ### Ingestion
@@ -189,8 +202,9 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for AWS ECR scans in STO (legacy)
 
@@ -240,11 +254,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ###  Fail on Severity
 
-<!--
+import StoSettingFailOnSeverity2 from './shared/step_palette/all/_fail-on-severity.md';
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+<StoSettingFailOnSeverity2 />
 
 -->
-
-<StoSettingFailOnSeverity />

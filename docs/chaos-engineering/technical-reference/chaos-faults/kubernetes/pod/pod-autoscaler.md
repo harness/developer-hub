@@ -27,7 +27,7 @@ Pod autoscaler determines how an application accomodates multiple replicas of a 
       <tr>
         <td> REPLICA_COUNT </td>
         <td> Number of replicas you wish to scale to. </td>
-        <td> <code>nil</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-autoscaler#replica-counts">replica counts</a></td>
+        <td> <code>nil</code>. For more information, go to <a href="#replica-counts">replica counts</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>

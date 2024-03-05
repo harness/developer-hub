@@ -77,7 +77,6 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanType from './shared/step_palette/scan/_type.md';
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
@@ -86,11 +85,15 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 <StoSettingScanTypeCont />
 
 
-<!--  #### Target and variant detection 
+<!-- #### Target and variant detection 
 
-import StoSettingScanTypeAutodetect from './shared/step_palette/target/_auto-detect.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-<StoSettingScanTypeAutodetect / -->
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 
@@ -312,7 +315,10 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Mend scans in STO (legacy)
 
@@ -341,7 +347,6 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * [`fail_on_severity`](#fail-on-severity)
 * `tool_args` You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `tool_args log.files.path /tmp/sto_scan_logs`.
 
-<!-- Same example as described in Additional CLI Flags above -->
 		
 #### Lookup settings
 
@@ -378,6 +383,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />
+
+-->
 
 ## Mend orchestration pipeline example
 

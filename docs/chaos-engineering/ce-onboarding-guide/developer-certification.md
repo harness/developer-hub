@@ -1,17 +1,16 @@
 ---
-sidebar_position: 3
-title: HCE Developer certification 
+sidebar_position: 9
+title: HCE Developer certification
 description: Become a Harness certified chaos engineering developer
 ---
+
 This tutorial guides you through registering for the Harness Chaos developer exam certification and completing it.
 
-## Prerequisites
+Before you begin,.
 
-Before you begin, [execute the Podtato head application in sandbox](/docs/chaos-engineering/ce-onboarding-guide/run-experiments-in-sandbox.md).
+## Obtaining developer certification
 
-## Steps involved in obtaining developer certification
-
-The diagram represents the steps involved in obtaining the Harness developer certification. 
+The diagram represents the steps involved in obtaining the Harness developer certification.
 
 ![diagram](./static/dev-cert/exam-flowchart.png)
 
@@ -21,47 +20,46 @@ In the preceding diagram, steps 4 (navigate to app.harness.io) and 1 (register f
 
 ## Developer certification exam
 
-1. Once you are done with executing the Podtato head application, you can attempt the Harness Chaos Engineering Developer certification exam. Navigate to [Harness developer hub](https://developer.harness.io/certifications/chaos-engineering?lvl=developer) or click **Go to Harness University**.
+1. [Execute the Podtato head application in sandbox](/docs/chaos-engineering/ce-onboarding-guide/run-experiments-in-sandbox.md) before attempting the Harness Chaos Engineering Developer certification exam.
 
-![finish](./static/dev-cert/finish.png)
+2. Navigate to [University on Harness developer hub](https://developer.harness.io/university/chaos-engineering?lvl=developer) or select **Go to Harness University**.
 
-2. You can **Register for free** or sign in. 
+   ![finish](./static/dev-cert/finish.png)
 
-![register](./static/dev-cert/harness-uni.png)
+3. You can **Register for free** or sign in.
 
-3. If you haven't previously registered, click **Sign up** and enter the details required. Else **Sign in**. 
+   ![register](./static/dev-cert/harness-uni.png)
 
-![sign in](./static/dev-cert/sign-up-exam.png)
+4. If you haven't previously registered, click **Sign up** and enter the details required. Else **Sign in**. 
 
-4. Click **Register for exam**.
+   ![sign in](./static/dev-cert/sign-up-exam.png)
 
-![sign in](./static/dev-cert/register-for-exam.png)
+5. Click **Register for exam**.
 
-5. Basic connectivity is checked, click **Proceed**.
+   ![sign in](./static/dev-cert/register-for-exam.png)
 
-![proceed](./static/dev-cert/proceed.png)
+6. Basic connectivity is checked, click **Proceed**.
 
-6. Read through the terms and condition, click **Agree and continue**.
+   ![proceed](./static/dev-cert/proceed.png)
 
-![agree](./static/dev-cert/agree-continue.png)
+7. Read through the terms and condition, click **Agree and continue**.
 
-7. Click **I am ready to begin**.
+   ![agree](./static/dev-cert/agree-continue.png)
 
-![ready](./static/dev-cert/begin.png)
+8. Click **I am ready to begin**.
 
-8. Choose the options that you think suit the questions the best. At the end, the screen will display a code, along with 4 options. Go to the sandbox and enter the code. 
+   ![ready](./static/dev-cert/begin.png)
 
-![enter code](./static/dev-cert/enter-code.png)
+9. Choose the options that you think suit the questions the best. At the end, the screen will display a code, along with 4 options. Go to the sandbox and enter the code.
 
-9. Once you enter the code, click **Generate**.
+   ![enter code](./static/dev-cert/enter-code.png)
 
-![generate code](./static/dev-cert/generate-code.png)
+10. Once you enter the code, click **Generate**.
 
-10. The code generated on this page is one of the options on the Harness university exam page. Select the code that was generated for you, and click **Submit exam**.
+   ![generate code](./static/dev-cert/generate-code.png)
 
-![enter code](./static/dev-cert/enter-code.png)
+11. The code generated on this page is one of the options on the Harness university exam page. Select the code that was generated for you, and click **Submit exam**.
+
+  ![enter code](./static/dev-cert/enter-code.png)
 
 That's it! The screen will determine and display your results. All the best!
-
-## Conclusion
-With that, you have successfully completed the Harness chaos engineering developer certification exam. Check [this tutorial](../../../tutorials/chaos-experiments/first-chaos-engineering) to execute your first chaos experiment and the [documentation](../get-started/overview) to learn about various kinds of [faults](../technical-reference/chaos-faults).

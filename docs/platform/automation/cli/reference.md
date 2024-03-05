@@ -28,7 +28,7 @@ COMMANDS:
    gitops-cluster, gitops-cluster  Gitops Cluster specific commands, eg: apply (create/update), delete, list
    gitops-repository, gitops-repo  Gitops repository specific commands, eg: apply (create/update), delete, list
    infrastructure, infra           Infrastructure specific commands, eg: apply (create/update), delete, list
-   pipeline, pipeline              Pipeline specific commands, eg: apply (create/update), delete, list
+   pipeline, pipeline              Pipeline specific commands, eg: apply (create/update), delete, run, list
    login, login                    Login with account identifier and api key.
    account, acc                    Fetch Account details
    help, h                         Shows a list of commands or help for one command
@@ -70,7 +70,7 @@ Setup Harness CD & GitOps in a few commands
 
 `harness service`            - Creates, deletes, or updates a Harness Service.
 
-`harness pipeline`           - Creates, deletes, or updates a Harness Pipeline.
+`harness pipeline`           - Creates, deletes, updates, or runs a Harness Pipeline.
 
 ## Global options
 
@@ -257,6 +257,38 @@ Setup Harness CD & GitOps in a few commands
       --help, -h                show help
    
    ```
+
+10. `harness pipeline apply help`
+    ```
+    NAME:
+       harness pipeline apply - Create a new pipeline or Update  an existing one.
+
+    USAGE:
+       harness pipeline apply [command options] [arguments...]
+
+    OPTIONS:
+       --docker-user value  docker username for the docker connector
+       --git-user value     git username for the github connector
+       --org-id value       provide an Organization Identifier
+       --project-id value   provide a Project Identifier
+       --help, -h           show help
+    ```
+
+11. `harness pipeline run help`
+    ```
+    NAME:
+      harness pipeline run - Run a pipeline.
+
+    USAGE:
+      harness pipeline run [command options] [arguments...]
+
+    OPTIONS:
+      --pipeline-id value  identifier of pipeline to execute
+      --inputs-file value  path to YAML file containing pipeline inputs
+      --org-id value       provide an Organization Identifier
+      --project-id value   provide a Project Identifier
+      --help, -h           show help
+    ```
 
 <!-- 
 ## Environment

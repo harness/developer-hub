@@ -17,6 +17,16 @@ Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Conta
 
 :::
 
+:::warning
+
+**Harness recommends [Harness Cloud](../use-harness-cloud-build-infrastructure) for macOS builds.**
+
+This recommendation is due to licensing requirements and the complexity of managing macOS VMs with Anka virtualization.
+
+With Harness Cloud, your builds run on Harness-managed runners, and you can start running builds in minutes.
+
+:::
+
 This topic describes how to use AWS EC2 instances to run a macOS build farm with [Anka's virtualization platform for macOS](https://docs.veertu.com/anka/what-is-anka/). This configuration uses [AWS EC2 instances and dedicated hosts](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/) to host a Harness Delegate and Runner, as well as the Anka Controller, Registry, and Virtualization. Working through the Anka controller and registry, the Harness Runner creates VMs dynamically in response to CI build requests.
 
 For more information about Anka and Mac on EC2 go to the Anka documentation on [What is the Anka Build Cloud](https://docs.veertu.com/anka/anka-build-cloud/), [Setting up the Controller and Registry on Linux/Docker](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/), and [Anka on AWS EC2 Macs - Community AMIs](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami).
@@ -280,12 +290,12 @@ Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build i
 
 You can [launch more Anka Virtualization nodes on your EC2 dedicated host](#set-up-anka-virtualization) and [create more VM templates](#create-anka-vm-templates) as needed. After you join a Virtualization node to the Controller cluster, it can pull VM templates from the registry and use them to create VMs.
 
-## Troubleshoot self-hosted VM build infrastructure
+## Troubleshoot self-managed VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
 * [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
 * [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
 * [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
 * [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

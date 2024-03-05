@@ -22,19 +22,15 @@ To set up an orchestration scan, you specify information such as:
 
 STO supports orchestration scans for popular open-source scanners such as Aqua-Trivy and Bandit as well as commercial scanners such as SonarQube. For a complete list of supported scanners, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
 
-
-### Example workflows 
+## Example workflows
 
 Here are some example workflows that illustrate how to set up an orchestration scan:
 
-- [Container image scans with Aqua Trivy](/tutorials/security-tests/container-scan-aqua-trivy)
-- [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap)
+- [Container image scans with Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/container-scan-aqua-trivy)
+- [DAST app scans using Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap/dast-scan-zap)
 
-
-### See also
+## See also
 
 - [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
 - [STO technical reference](/docs/category/sto-technical-reference)
 - [Run an ingestion-only scan in an STO pipeline](ingest-scan-results-into-an-sto-pipeline.md)
-
-

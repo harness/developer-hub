@@ -235,7 +235,7 @@ namespace: <+infra.namespace>
 
 For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
-[Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
+[Harness Variables and Expressions](/docs/platform/variables-and-expressions/harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
 
 ## Shell script step
 

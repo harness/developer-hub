@@ -22,6 +22,18 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
+### Allowlist verification for delegate registration
+
+* **Release date:** January 2024
+* **Release version:** 1.19.6
+* **Issue number:** PL-42471
+* **Feature flag:** `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+With this feature flag enabled, delegates with an immutable image type can register only if their IP/CIDR address is included in the allowed list received by Harness Manager. The IP address/CIDR must be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
+
+Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
+
 ### Grant public access to Harness pipeline executions
 
 * **Release date:** January 2024
@@ -75,7 +87,7 @@ You can delete a user provisioned in Harness through SCIM in NextGen and retain 
 * **Feature flag:** `NG_TEMPLATE_GITX`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/Templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/Templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/Templates/create-a-remote-pipeline-template).
+You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/templates/create-a-remote-pipeline-template).
 
 ### Use expressions to reference secrets in Vaults
 
@@ -109,7 +121,11 @@ The following early access (beta) features are available for the Harness Delegat
 * **Feature flag:** `DELEGATE_TASK_CAPACITY_CHECK`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. When this feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
+Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. 
+
+Delegate task capacity is only supported for CD tasks executed as child processes of a delegate (for example, it does not work for CI builds or CD Container step tasks that spin up new pods).
+
+You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. When this feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
 ### Capture delegate agent metrics for delegates shipped on immutable image types
 
@@ -241,9 +257,63 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 No early access (beta) features are available for Harness Code Repository. -->
 
+## SEI early access features
+
+The following early access (beta) features are available for the Harness Software Engineering Insights module.
+
+### SEI Jira Integration Enhanced Experience
+
+* **Release date:** February 2024
+* **Issue number:** SEI-5188
+* **Feature flag:** `SHOULD_ENABLE_REAUTH`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new re-authorization flow for the Jira and GitHub Integrations. The feature is related to SEI-3727.
+
+### SEI Jira Integration Enhanced Experience
+
+* **Release date:** January 2024
+* **Issue number:** SEI-3727
+* **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App.
+
+You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
+
+### SEI GitHub Integration Enhanced Experience
+
+* **Release date:** January 2024
+* **Issue number:** SEI-3727
+* **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
+
+You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
+
 ## STO early access features
 
-The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
+The following early access (beta) features are available for the Harness Security Testing Orchestration module.
+
+### Write OPA policies based on STO scan results
+
+* **Release date:** February 2024
+* **Issue number:** STO-6738
+* **Feature flag:** `STO_DATA_OPA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+
+
+### Open Source Vulnerabilities (OSV) scanner integration
+
+* **Release date:** February 2024
+* **Issue number:** STO-6767
+* **Feature flag:** `STO_STEP_PALETTE_OSV`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
 
 ### Aqua Security integration
 
@@ -320,7 +390,7 @@ Review the following information for details about data privacy and terms of use
 
 **Update (November 2023):** AIDA for STO is now generally available. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
-**Update (January 2024):** Most AIDA functionalities are generally available. For more information, go to the [AIDA overview](/docs/platform/Harness-AIDA/aida-overview).
+**Update (January 2024):** Most AIDA functionalities are generally available. For more information, go to the [AIDA overview](/docs/platform/harness-aida/aida-overview).
 
 #### Google Cloud Secret Manager
 
@@ -501,7 +571,7 @@ You can scan container images and repositories using [Fossa](/docs/security-test
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
 
-You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
+You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 
 #### Harness AI Development Assistant (AIDA:tm:) for STO
 
@@ -532,8 +602,7 @@ import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-
 This feature includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
 
 - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.
-- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.
+- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image in a Kubernetes build infrastructure. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
 - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-- For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
 
 ![STO step palette](static/sto-step-palette.png)

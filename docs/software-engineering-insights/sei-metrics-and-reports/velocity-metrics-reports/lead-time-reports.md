@@ -14,16 +14,16 @@ The overall lead time is the sum of the average time spent in each stage configu
 
 ## Workflow profiles for lead time
 
-Lead time is based on time spent in stages defined in a [Workflow profile](../../sei-profiles/workflow-profile.md).
+Lead time is based on time spent in stages defined in a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
 
-For example, the default configuration for a [PR-based Workflow profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
+For example, the default configuration for a [PR-based Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#create-a-profile-to-track-lead-time-in-scm) has four stages:
 
 * PR creation time.
 * Time to Comment.
 * Approval time.
 * Merge time.
 
-Similarly, the default configuration for a [Ticket-based Workflow profile](../../sei-profiles/workflow-profile.md#configuration-examples) has five stages:
+Similarly, the default configuration for a [Ticket-based Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configuration-examples) has five stages:
 
 * Lead time to First Commit.
 * PR Creation time.
@@ -42,7 +42,7 @@ You can configure grading thresholds (good, acceptable, and slow) for each stage
 
 You can modify Workflow profile stages and grades according to your team's SDLC process. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
-For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](../../sei-profiles/workflow-profile.md#configure-the-velocity-lead-time-type-workflow-profile).
+For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile).
 
 ### Development Stages
 
@@ -159,6 +159,19 @@ Merge Time = Pull Request Merged event - Pull Request approval event
 
 </details>
 
+### How data is correlated between the Tickets, Commits and Pull Requests?
+
+To ensure the accuracy of SEI calculations, it is necessary to maintain code hygiene throughout the development lifecycle.
+
+1. **Tickets and Pull Requests:** In order to correlate data between the ticketing system and pull request (PR) information in SEI, the PR title must include the ticket key from the ticketing system. By doing so, SEI can associate the relevant data from both systems and provide a comprehensive view of each issue's progression.
+2. **Commits and Default Branch:** SEI captures all commits made to the default branch, typically named `main` or `master`. These commits serve as the basis for calculating various metrics within SEI.
+3. **Commits and Pull Requests:** SEI collects commit data related to pull requests (PRs), irrespective of the target branch. This information is vital for measuring lead time metrics during the PR process. 
+
+To learn more about how SCM Commits are ingested on Harness SEI, go to [Technical Reference: SCM Commits](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-commits)
+
+It's important to note that certain usecases like the Lead Time calculations, offer valuable insights only after the work has been completed and merged. Consequently, when assessing these metrics in SEI, make sure to configure the Workflow Profile based on the final code changes rather than individual contributions before merging.
+
+
 ## Lead Time by Time Spent in Stages Report
 
 Use the **Lead Time by Time Spent in Stages Report** to calculate lead time for issues moving through your issue management system, such as Jira. By default, this report shows the average total lead time for all issues. You can drill down to explore data for individual issues. You can also configure this report to show the median, 90th percentile, or 95th percentile, instead of the average time.
@@ -172,11 +185,11 @@ Lead time is based on the stages configured in the [Workflow profile](#workflow-
 />
 
 
-When configuring the [Workflow profile](../../sei-profiles/workflow-profile.md) for this report, make sure you only track issues in issue management. To do this:
+When configuring the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) for this report, make sure you only track issues in issue management. To do this:
 
-* Make sure the **Start Event** is **Ticket Created**.
-* Disable the development (SCM) stages.
-* Make sure the workflow only includes issue management stages.
+* Make sure to select the checkbox for Measure Lead Time only using the Jira Statuses
+* This will automatically remove the development (SCM) stages.
+* You can customize the workflow and add more custom stages to accurately calculate the value for your Lead Time metric.
 
 This report requires that you set the **Issues Resolved In** filter, because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
 
@@ -226,16 +239,14 @@ This report is useful for measuring the velocity of tasks from the time they are
 
 Lead time is based on the stages configured in the [Workflow profile](#workflow-profiles-for-lead-time). Elapsed time for a stage is based on the first time an issue enters a given stage and the first time it leaves that stage. Overall lead time for all issues is based on all tickets that have passed through the defined stages.
 
-When configuring the [Workflow profile](../../sei-profiles/workflow-profile.md) for this report, make sure:
+When configuring the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile) for this report, make sure:
 
 * The **Start Event** is `Ticket Created`. This ensures that lead time tracking starts in issue management.
 * Configure stages for issue management and other tools you want to track, such as SCM and CI/CD.
 * Stages flow sequentially from one tool to the next, such as *`Development in Progress`* in Jira followed by your SCM development stages (first commit and PR creation-to-merge time).
 * Stages *do not* overlap. Meaning, the same event *is not* tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
-This report requires that you set the **Issues Resolved In** filter, because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
-
-You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the widget/Insight, and they persist even if you change [collections associated with Insights](../../sei-projects-and-collections/manage-collections.md#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
+You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the widget/Insight, and they persist even if you change [collections associated with Insights](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
 
 You can also add filters at the collection level. Collection-level filters take precedence over widget-level filters when defined for the same attribute. For non-conflicting filters, both filters are considered.
 
@@ -266,12 +277,14 @@ DORA Lead Time for Change and DORA Mean Time for Restore reports do not require 
 
 DORA profiles can be configured to calculate the Lead time concerning either Issue (`start event: Ticket Created`) or SCM Pull Requests (`start event: Commit Created`).
 
-For information about the Lead Time For Changes DORA metric, go to [DORA metrics](../dora-metrics.md).
+For information about the Lead Time For Changes DORA metric, go to [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
 
 ## PR and SCM lead time
 
-For information about reports that track PR lead time, SCM issue lead time, and lead time between SCM commits and CI/CD jobs, go to [SCM reports](./scm-reports.md). Such reports include:
+For information about reports that track PR lead time, SCM issue lead time, and lead time between SCM commits and CI/CD jobs, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports). Such reports include:
 
 ## Support lead time
 
-For information about support lead time reports, such as the **Support Response Time Report** and the **Support Response Time Trend Report**, go to [Support reports](../support-metrics.md).
+For information about support lead time reports, such as the **Support Response Time Report** and the **Support Response Time Trend Report**, go to [Support reports](/docs/software-engineering-insights/sei-metrics-and-reports/support-metrics).
+
+

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 8
 title: Run chaos experiments in sandbox to build resilience 
 description: Execute chaos experiments to improve the resilience of an app in a sandbox.
 ---
@@ -63,7 +63,7 @@ Once you have created an account with Harness, click **Get started** of the **Ch
 
 ![exp created](./static/sandbox/exp-runs.png)
 
-2. In this step, click **Run** to execute the [pod delete chaos experiment](../technical-reference/chaos-faults/kubernetes/pod/pod-delete) that was previously created. In the background, the experiment also creates probes that check for the availability of the Podtato app's left arm, which is deleted during the pod delete experiment.
+2. In this step, click **Run** to execute the [pod delete chaos experiment](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete.md) that was previously created. In the background, the experiment also creates probes that check for the availability of the Podtato app's left arm, which is deleted during the pod delete experiment.
 
 ![exp runs](./static/sandbox/execute-exp.png)
 
@@ -110,7 +110,7 @@ You can start executing the sandbox again if you run out of time by click **Run*
 
 ### Perform the same steps for the next experiment
 
-1. The above steps complete the execution of the pod delete experiment. There is one more experiment to execute, that is, [pod network loss](../technical-reference/chaos-faults/kubernetes/pod/pod-network-loss). You can follow the same steps as you did for pod delete experiment to execute this experiment as well. In this experiment, a probe is configured in the background to check for the availability of the Podtato app's left arm, which is targeted.
+1. The above steps complete the execution of the pod delete experiment. There is one more experiment to execute, that is, [pod network loss](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss.md). You can follow the same steps as you did for pod delete experiment to execute this experiment as well. In this experiment, a probe is configured in the background to check for the availability of the Podtato app's left arm, which is targeted.
 
 ![pod network loss](./static/sandbox/pod-nw-loss.png)
 
@@ -133,4 +133,4 @@ You can start executing the sandbox again if you run out of time by click **Run*
 </Accordion>
 
 ## Next steps
-[Harness Chaos Engineering Developer Certification](./developer-certification) 
+[Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/ce-onboarding-guide/developer-certification.md) 

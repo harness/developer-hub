@@ -38,7 +38,7 @@ For more information, go to [Delegates overview](/docs/platform/delegates/delega
 
 ### What data does the delegate send to Harness Manager?
 
-The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. In the case that the WebSocket connection is dropped, the Harness delegate falls back to outbound-only, polling-based task fetch.
+The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. In the case that the WebSocket connection is dropped, the Harness Delegate falls back to outbound-only, polling-based task fetch.
 
 * **Heartbeat:** The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to let Harness Manager know that it is running.
 * **Deployment data:** The information from the API executions the delegate performs is sent to Harness Manager and shown on the **Deployments** page.
@@ -235,7 +235,7 @@ You can save your filters, too.
 
 ### Does Harness provide governance features?
 
-Yes. The Harness [pipeline governance](/docs/platform/governance/Policy-as-code/harness-governance-overview) feature enables you to measure how conformant your pipelines are with your regulatory and operations standards.
+Yes. The Harness [pipeline governance](/docs/platform/governance/policy-as-code/harness-governance-overview) feature enables you to measure how conformant your pipelines are with your regulatory and operations standards.
 
 ### How do I set up governance?
 

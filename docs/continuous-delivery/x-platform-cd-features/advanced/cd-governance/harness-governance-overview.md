@@ -12,7 +12,7 @@ Currently, this feature is behind the feature flag, `OPA_PIPELINE_GOVERNANCE`. C
 This topic provides an overview of how Harness Policy As Code implemented governance.
 
 :::note
-Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/platform/governance/Policy-as-code/harness-governance-quickstart).
+Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
 :::
 
@@ -84,7 +84,7 @@ Harness policies are written and tested using the built-in policy editor.
 
 ![](./static/harness-governance-overview-07.png)
 
-For an example of how to use the policy editor, see [Harness Policy As Code quickstart](/docs/platform/governance/Policy-as-code/harness-governance-quickstart).
+For an example of how to use the policy editor, see [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
 #### Policy Library
 
@@ -202,7 +202,7 @@ Policy Sets can be configured to evaluate policies on these Feature Flag events:
 - Flag is created.
 - Flag is toggled on or off.
 
-See [Use Harness Policy As Code for Feature Flags](/docs/platform/governance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
+See [Use Harness Policy As Code for Feature Flags](/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-feature-flags).
 
 #### Connectors
 
@@ -210,7 +210,7 @@ Policies are evaluated against Harness [Connectors](/docs/category/connectors).
 
 You can configure a Policy Set to evaluate policies when you save a container.
 
-Go to [Use Harness Policy As Code for Connectors](/docs/platform/governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
+Go to [Use Harness Policy As Code for Connectors](/docs/platform/governance/policy-as-code/sample-policy-use-case#connector-policy-samples).
 
 #### Template
 

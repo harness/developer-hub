@@ -881,7 +881,7 @@ Note: There may be a chance the CET agent will work with a previous version of t
 #### My CET agent would not start due to incompatibility with my native Amazon operating system.  What is the minimum Amazon version required to run the CET agent?
 
 The CET agent requires at minimum the following versions of Amazon OS to run successfully:
-- Amazon Linux (Arm): 2 (Graviton 2)
+- Amazon Linux (Arm): 2 (Graviton 2 / 3)
 - Amazon Linux: 2+
 
 Note: There may be a chance the CET agent will work with a previous version of the operating system.  However, if there are any issues that may occur using the CET agent, it is required to upgrade to the minimum version of the OS in order to troubleshoot any issues.
@@ -1108,7 +1108,7 @@ Note: The version must exist in order for the CET agent to download.  An error m
 Users can downgrade to a previous Mac version of the CET agent.  To do this, replace the version in the URL with the version you are looking to download.
 
 Ex:
-https://get.et.harness.io/releases/5.3.0/osx/harness-et-agent.tar.gz
+https://get.et.harness.io/releases/5.7.0/osx/harness-et-agent.tar.gz
 
 5.3.0 is a Mac version of the CET agent.  Update this number to the version you are looking to download inside the URL.
 
@@ -1164,4 +1164,405 @@ There are various ways one can install and deploy the CET agent to monitor a Jav
 - Standalone installation via tar file and extracting under a desired directory
 - Modifying your Docker image to include the CET agent
 - Using an init container such as within Kubernetes to automatically install the CET agent at runtime without changing any existing images
+
+
+
+#### How can a user verify that the settings such as application name and environment ID are being placed correctly for the CET agent that will be monitoring a specific JVM.
+
+The arguments that need to be added for the CET agent to connect to the appropriate service can be found using the following steps:
+- Navigate to the Error Tracking project in question.
+- Click on Monitored Services.
+- Select the item from the list of monitored services.
+- Click on Agent Configuration.
+
+From here, ensure that the arguments to use for the CET agent includes the application name, collector URL, environment ID, token, and deployment name.  This will allow the CET agent to monitor the application successfully.
+
+
+
+#### I have added the arguments, but not sure how to attach the CET agent.  How do I attach the CET agent to recognize the arguments I would like to pass to monitor my application?
+
+An agentpath is required to be used so that the JVM knows to use the CET agent to monitor the application.
+
+For example, running a java program called yourapp.jar requires to use the following:
+java -jar yourapp.jar.
+
+Using agentpath and specifying the location of the CET agent will allow the application to be monitored:
+java -agentpath:/home/user/harness/lib/libETAgent.so -jar yourapp.jar
+
+where libETAgent.so is the name of the CET agent being attached to your application.
+
+Remember to include all relevant arguments to ensure your CET agent knows where to send exceptions that are being found.
+
+
+
+#### Is there a way to shorten all arguments being used for the CET agent when running my application via command line?
+
+When running via command line, all the parameters can be exported to a variable within an environment such as Linux to shorten what is being displayed on the command line.
+
+For instance, we are running an application that has various arguments:
+java -agentpath:/opt/harness/lib/libETAgent.so -Dharness.etagent.collector.url=https://collector.et.harness.io/prod1 -Dharness.etagent.application.name=TesterService -Dharness.etagent.deployment.name=1.0 -Dharness.etagent.env.id=TesterPreProd -Dharness.etagent.token=cet_token -cp /opt/harness/lib/rt_sup.jar com.overops.Tester
+
+Use an environment variable to move save some of the arguments being used by the JVM.  In this case, we move the CET arguments to a variable (note the single-quotes being used):
+export CET_ARGS='-agentpath:/opt/harness/lib/libETAgent.so -Dharness.etagent.collector.url=https://collector.et.harness.io/prod1 -Dharness.etagent.application.name=TesterService -Dharness.etagent.deployment.name=1.0 -Dharness.etagent.env.id=TesterPreProd -Dharness.etagent.token=cet_token'
+
+Replace the arguments with the newly created variable to shorten your command line entry:
+java $CET_ARGS -cp /opt/harness/lib/rt_sup.jar com.overops.Tester
+
+
+
+#### What is the easiest way to verify if my CET agent is connected in case my application has not thrown any exceptions?
+
+The quickest way to verify if the CET agent is connected and monitoring your application is to access the Harness UI to verify if the CET agent is present.
+
+- Navigate to the Error Tracking project in question.
+- Expand PROJECT SETUP.
+- Select Agents.
+
+This will show agents that are currently running and monitoring the JVM application.
+
+
+
+#### I started my application with the CET agent attached.  However, I am not seeing the agent listed in the Harness UI.  Is there a way to see what is occurring when the CET agent tries to start?
+
+The CET agent has its own set of logs that can be referenced for details on what occurs when it is running.  To find them, navigate to /home/user/.harness/logs.  The name of the log should have the name agent.X.log, where X is the PID number of the application the CET agent is trying to monitor.  Find the PID number to locate the correct CET agent log.
+
+
+
+#### I checked for CET agent logs, but noticed that they are not appearing within its location (/home/user/.harness/logs).  Is there any way to start the CET agent and view the logs in real time while the application is starting?
+
+The best way to confirm if there are any issues with the CET agent starting when there are no logs being written is to use the parameter -Dharness.etagent.log.to.console.  This argument will allow the logs to bypass being written to its default location and write all logs to the console screen.  This way, if there are any errors appearing on the screen when attempting to attach the CET agent, one can remedy this by taking the necessary actions based on the error being shown.
+
+
+
+#### Is there an easy way to test the CET agent to confirm I can connect without utilizing one of my currently running applications?
+
+The CET agent comes included with a test application that can be easily accessed to run and verify that the CET agent can connect to Harness from within your environment.
+
+Run the following command to test the CET agent with our Tester program:
+java -agentpath:/locationOfCETAgent/harness/lib/libETAgent.so -Dharness.etagent.collector.url=collector_URL -Dharness.etagent.application.name=yourAppName -Dharness.etagent.deployment.name=deploymentNumber -Dharness.etagent.env.id=yourEnvID -Dharness.etagent.token=yourToken -cp /locationOfCETAgent/harness/lib/rt_sup.jar com.overops.Tester
+
+Once it has successfully started, you will be presented with the following:
+Select an option:
+1: Throw an exception
+2: Write to log
+3: Verify Overops Agent
+q: Quit
+
+Verify that the agent is appearing on the Harness UI.  Once that has been verified, select an option to throw an exception, which is option 1.  Verify that the exception is shown on the Harness UI to confirm that the CET agent is able to successfully find an exception at the time it is thrown.
+
+Press Q for quit to end the Tester application.
+
+
+
+#### My application is being monitored by the CET agent.  Where can I navigate to view the exceptions being thrown by my JVM application?
+
+The CET agent will report exceptions being thrown by the JVM application.  To find these exceptions on the Harness UI, please do the following:
+- Navigate to the Error Tracking project in question.
+- The Events Summary page should load with all services being monitored.  Click on the name of the monitored service.
+
+A page will appear showing all exceptions that have been collected by the CET agent.
+
+
+
+
+#### How do I upgrade the CET agent on my Linux system?
+
+Upgrading the CET agent on a Linux system is similar to installing the CET agent for the first time.
+
+- Ensure that the CET agent is not actively monitoring any applications.  If so, stop the application with the CET agent attached.
+- Download the latest Linux version of the CET agent using the following link: https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz
+- Extract the downloaded file into the same directory where the previous version of the CET agent is installed on.
+- Confirm that the CET agent has upgraded by opening the file called VERSION which shows the currently installed version of the CET agent.
+- Run the CET agent to confirm it is working after upgrading.
+
+
+
+
+#### How do I upgrade the CET agent on my Alpine system?
+
+Upgrading the CET agent on an Alpine system is similar to installing the CET agent for the first time.
+
+- Ensure that the CET agent is not actively monitoring any applications.  If so, stop the application with the CET agent attached.
+- Download the latest Alpine version of the CET agent using the following link: https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz
+- Extract the downloaded file into the same directory where the previous version of the CET agent is installed on.
+- Confirm that the CET agent has upgraded by opening the file called VERSION which shows the currently installed version of the CET agent.
+- Run the CET agent to confirm it is working after upgrading.
+
+
+
+
+#### How do I upgrade the CET agent on my Graviton system?
+
+Upgrading the CET agent on a Graviton system is similar to installing the CET agent for the first time.
+
+- Ensure that the CET agent is not actively monitoring any applications.  If so, stop the application with the CET agent attached.
+- Download the latest Graviton version of the CET agent using the following link: https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz
+- Extract the downloaded file into the same directory where the previous version of the CET agent is installed on.
+- Confirm that the CET agent has upgraded by opening the file called VERSION which shows the currently installed version of the CET agent.
+- Run the CET agent to confirm it is working after upgrading.
+
+
+
+
+#### How do I upgrade the CET agent on my Windows system?
+
+Upgrading the CET agent on a Windows system is similar to installing the CET agent for the first time.
+
+- Ensure that the CET agent is not actively monitoring any applications.  If so, stop the application with the CET agent attached.
+- Download the latest Windows version of the CET agent using the following link: https://get.et.harness.io/releases/latest/win/harness-et-agent.zip
+- Extract the downloaded file into the same directory where the previous version of the CET agent is installed on.
+- Confirm that the CET agent has upgraded by opening the file called VERSION which shows the currently installed version of the CET agent.
+- Run the CET agent to confirm it is working after upgrading.
+
+
+
+
+#### How do I upgrade the CET agent on my AIX system?
+
+Upgrading the CET agent on an AIX system is similar to installing the CET agent for the first time.
+
+- Ensure that the CET agent is not actively monitoring any applications.  If so, stop the application with the CET agent attached.
+- Download the latest AIX version of the CET agent using the following link: https://get.et.harness.io/releases/latest/aix/harness-et-agent.tar.gz
+- Extract the downloaded file into the same directory where the previous version of the CET agent is installed on.
+- Confirm that the CET agent has upgraded by opening the file called VERSION which shows the currently installed version of the CET agent.
+- Run the CET agent to confirm it is working after upgrading.
+
+
+
+
+#### How do I upgrade the CET agent on my Mac system?
+
+Upgrading the CET agent on a Mac system is similar to installing the CET agent for the first time.
+
+- Ensure that the CET agent is not actively monitoring any applications.  If so, stop the application with the CET agent attached.
+- Download the latest Mac version of the CET agent using the following link: https://get.et.harness.io/releases/latest/osx/harness-et-agent.tar.gz
+- Extract the downloaded file into the same directory where the previous version of the CET agent is installed on.
+- Confirm that the CET agent has upgraded by opening the file called VERSION which shows the currently installed version of the CET agent.
+- Run the CET agent to confirm it is working after upgrading.
+
+
+
+#### Is there a way to add the CET agent to a Docker container to monitor my JVM application?
+
+A Dockerfile is the best method to include and download the CET agent into your Docker container.
+
+Add the following line into your Dockerfile to download the CET agent into your Docker container:
+RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+
+
+
+#### How can the CET agent arguments be added to my Docker container to ensure my application is being monitored?
+
+A Dockerfile is the easiest way to add environment variables to apply certain parameters when monitoring an application in your Docker container.
+
+Enter the following parameters as environment variables within your Dockerfile:
+ENV ET_COLLECTOR_URL=collector_URL
+ENV ET_APPLICATION_NAME=AppName
+ENV ET_DEPLOYMENT_NAME=DeploymentVersionNumber
+ENV ET_ENV_ID=EnvironmentName
+ENV ET_TOKEN=b34*****-****-****-****-***********42a
+
+Note: The values can be obtained within your Agent Configurations section of Monitored Services within the CET module.
+
+
+
+#### What is the basic template to start with to write a Dockerfile which consists of the CET agent, my CET agent arguments along with the application that needs to be monitored?
+
+The following Dockerfile can be used as a starting basis for the application a user is looking to use to run their application with the CET agent attached to it:
+FROM openjdk:8-jre
+ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"
+ENV ET_COLLECTOR_URL=collector_URL
+ENV ET_APPLICATION_NAME=AppName
+ENV ET_DEPLOYMENT_NAME=DeploymentVersionNumber
+ENV ET_ENV_ID=EnvironmentName
+ENV ET_TOKEN=b34*****-****-****-****-***********42a
+RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+ENTRYPOINT java $JAVA_TOOL_OPTIONS -jar yourapp.jar
+
+Note: The values can be obtained within your Agent Configurations section of Monitored Services within the CET module.
+
+
+
+
+#### I have a Kubernetes deployment where I would like to add the CET agent to monitor my application.  How can I add the CET agent without having to add more overhead to my Kubernetes pod running my application?
+
+The CET agent within Kubernetes can be added as a sidecar to your application.  This way, the CET agent will run separate from your application by using a shared volume which is mounted into the target container.
+
+Use the following example as a template to run the CET agent sidecar to monitor your Kubernetes deployment:
+kind: Deployment
+spec:
+  template:
+    spec:
+      volumes:
+        - name: et-agent
+          emptyDir: {}
+      initContainers:
+        - name: init-et-agent
+          image: harness/et-agent-sidecar
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: et-agent
+              mountPath: /opt/harness-et-agent
+
+      containers:
+        - name: my-javaapp-container
+          image: my-javaapp-image
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-agentpath:/opt/harness-et-agent/harness/lib/libETAgent.so"
+            - name: ET_COLLECTOR_URL
+              value: "https://collector.et.harness.io/prod1/"
+            - name: ET_APPLICATION_NAME
+              value: cetmigrationpoc
+            - name: ET_DEPLOYMENT_NAME
+              value: 1
+            - name: ET_ENV_ID
+              value: staging
+            - name: ET_TOKEN
+              value: b34*****-****-****-****-***********42a
+          volumeMounts:
+            - name: et-agent
+              mountPath: /opt/harness-et-agent
+
+Ensure to set the environment variables appropriately based on your Harness CET configuration.
+
+
+
+#### Is there a way to setup notifications when the CET agent finds exceptions?
+
+In order to setup notifications, simply navigate to the Monitored Services section for the application in question.
+Click on the service you are looking to setup notifications for.
+Navigate to the Notifications tab.
+Click on New Notification Rule.
+Follow the on-screen guide to setup a new notification.
+
+
+
+#### How does a user acess all the events collected by the CET agent for the application being monitored?
+
+Users can navigate to view all the exceptions found by the CET agent.
+
+Click on the Error Tracking module within Harness.
+The Events Summary page will load showing all events for all monitored services found within the date range selected on the top under the Time Period dropdown.
+Select the monitored service in question.
+This will load all events found for the monitored service.
+
+
+
+#### What type of exceptions can be found by the CET agent?
+
+The CET agent will track and find runtime exceptions normally thrown by any Java application.  Event types can be any one of the following:
+- Caught Exception - Exceptions captured and handled by the user’s service.
+- Uncaught Exception - Exceptions that were not captured by the user’s service.
+- Swallowed Exception - Exceptions that were captured but ignored by the user’s service.
+- Log Error - Events logged as errors in the user’s service.
+- Log Warning - Events logged as warnings in the user’s service.
+- HTTP Error - HTTP communication errors.
+- Custom Error - Events that occur in the custom SDK.
+
+
+
+
+
+#### I see a comprehensive list of different exceptions that have been found, and want to drill down to view the details of one of the exceptions.  How do I navigate to see the details of one of the exceptions found by the CET agent?
+
+From the Event Summary page, click on the monitored service to view all exceptions captured.
+Once the list of all exceptions are shown, click on the specific exception you want to view.
+The Automated Root Cause (ARC) screen will be shown.  This will be the main screen which will show the details that were captured when the exception occurred.
+
+
+
+
+#### How can a user verify the detail description of where the exception occurred which was captured by the CET agent?
+
+When accessing the Automated Root Cause (ARC) screen from the Harness UI, there are details displayed on the top left of the screen showing the following:
+- Name - name of the application monitored by the CET agent
+- Msg - error message printed
+- Origin - location of the entry point where the exception is thrown
+- Server - name of the server where the application is running
+- Service - name of the service where the application is running
+- Environment - name of the environment where the application is running
+- Deployment - deployment version of the application being monitored
+- First Seen - details of the first time this excetpion was seen
+- Times - number of times when the exception for this application was thrown
+
+To access this, simply navigate to the Events Summary section of the monitored service, then click on any of the events to access the ARC screen.
+
+
+
+#### What are snapshots and how do they work with the exceptions being recorded by the CET agent?
+
+Continuous Error Tracking captures snapshots when events, application errors (exceptions), and logs (warnings and errors) occur according to a defined algorithm.
+
+A Continuous Error Tracking snapshot contains valuable information about events in the monitored application. This includes:
+
+- Date and time of the snapshot
+- The server and application where the event occurred
+- The deployment where the event was captured
+- The full call stack
+- The source code
+
+
+
+#### There was a small change made in my code that I am monitoring with the CET agent.  How can I force a new snapshot be taken by the CET agent.
+
+Within the Automated Root Cause (ARC) screen, there is an option available to force a snapshot.  This way, if there were any changes made and a new snapshot needs to be taken, users can select this option so that a new snapshot can be taken.
+
+
+
+#### Why does the Automated Root Cause (ARC) screen only show my code within the call stack window and not other methods/classes being called?
+
+The ARC screen will only display code written by the user while hiding any third party code not written by the coder.  This provides the user a cleaner view of their stack trace to easily navigate their path through the code.
+
+
+
+#### How can we navigate through our code in the Automated Root Cause (ARC) screen to understand where exactly our exception is being thrown?
+
+The ARC screen provides a comprehensive call stack trace, covering the entry point to the method in which the event occurred, even if the source code spans across multiple machines.
+
+Continuous Error Tracking enables tracing of the code and variable state associated with the event all the way back to the initiation point, where the parameters were passed. If the event involves calls across multiple machines, ARC displays a unified call stack.
+
+The call stack displays the chain of methods within the environment leading up to the event. The first method in the line is the last method on a non-third party code within your application.
+
+When an exception is caught and re-thrown once or multiple times within the thread, the Related Errors dropdown displays the error analysis. This feature is available only when such exceptions exist.
+
+While navigation the ARC Screen, select a method in the call stack to see its source code.
+
+
+
+#### Is there a way to view and/or capture the full stack trace of the code where the exception was thrown from the Automated Root Cause (ARC) screen?
+
+By default, the third party code is hidden when viewing the decompiled code in the ARC screen.
+
+At the bottom of the call stack in the ARC screen, there are options where you can view where the 3rd party libraries are being used as well as having the option to copy the full stack trace.
+
+Click on the bullet next to Show 3rd party/utility methods to show the full stack trace along with the locations of the third party methods.
+
+To view the full stack trace along with the method details, click on Copy Stack.  This will copy the full stack trace to the clipboard.  Paste the full stack trace in any text editor available.
+
+
+
+#### What details are collected in the variable state when the snapshots are recorded by the CET agent and viewed in the Automated Root Cause (ARC) screen?
+
+The Recorded Variables section displays the variable values and objects accessible from the method. It displays all the local variables and parameters including this in the non-static methods. The first method also contains thread-local variables defined for this thread as well as SLF4J and Log4J Mapped Diagnostics Context (MDC) values. The MDC objects are often too large for the full set of data to be available in the log. However, the Error Tracking Agent is capable of capturing and recording the entire object.
+
+In some scenarios, such as asynchronous message passing, the MDC objects contain a key-value map of the recorded requests, initial servlet information, and much more. However, back tracing the source of a bad request in an asynchronous environment is a known challenge. Continuous Error Tracking helps you overcome this challenge by providing extended visibility into MDC.
+
+The choice of the collected variables most relevant within an allocated timeframe is determined by the Error Tracking Agent using an adaptive machine learning algorithm. The selection process is based on which and how many variables to collect, the number of items to collect, the length of string to capture, and so on.
+
+
+
+#### What details are collected in the log tab of the Automated Root Cause screen?
+
+The Log tab displays the last 250 log statements leading up to the event. The log statements are collected directly from the JVM/CLR memory. This ensures that the DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.
+
+In the Log tab, the error or exception lines are displayed first, followed by the stack trace. It also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
+
+
+
+#### What details are collected in the Agent & Host Environment tab in the Automated Root Cause (ARC) screen?
+
+The Agent & Host Environment tab displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
+
+
 

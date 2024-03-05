@@ -19,6 +19,8 @@ import set_up_harness_23 from './static/set-up-harness-for-sto-23.png'
 import set_up_harness_24 from './static/set-up-harness-for-sto-23_NEW.png'
 import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
 
+<!-- -->
+
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
@@ -45,7 +47,7 @@ Before you create your first Harness pipeline, you must have the following:
 
 Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
 
-* Harness delegate — Required to run builds in your Kubernetes infrastructure.
+* Harness Delegate — Required to run builds in your Kubernetes infrastructure.
 * Secret for Git access credentials — Required to set up a codebase connector.
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
@@ -68,7 +70,7 @@ Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-
    
 * **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 
-These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
+These workflows are covered in [Your first STO pipeline](./your-first-sto-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -93,9 +95,9 @@ You need a Harness build infrastructure to run scans in STO. First, review [Oper
 
 - [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) 
 
-  This is the simplest option. Not initial setup is required. Run your pipelines on Harness-hosted VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
+  This is the simplest option. Not initial setup is required. Run your pipelines on Harness-managed VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
 
-- [Self-hosted Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
+- [Self-managed Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
 
    Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
 
@@ -131,7 +133,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 </details>
 
-To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness delegate.
+To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness Delegate.
 
 <details>
 <summary>Install a Kubernetes Delegate: Default Workflow</summary>
@@ -228,14 +230,14 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 ### Create a Codebase Connector
 
-You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/). 
+You'll need a GitHub account to do the [STO Tutorials](./tutorials). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
- - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
- - [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
- - [Git](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
- - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
- - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+ - [Azure](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
+ - [Bitbucket](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+ - [Git](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) (platform-agnostic)
+ - [GitHub](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+ - [GitLab](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
 To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 
@@ -265,9 +267,9 @@ To do the STO tutorials, point the connector at the following repo: [https://git
 
 Now that you've set up Harness, you're ready to start using STO.
 
-A good next step is to go through [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+A good next step is to go through [Your first STO pipeline](./your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
-The [STO tutorials](/tutorials/security-tests) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
+The [STO tutorials](./tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
 
 Happy scanning! 
 
@@ -277,7 +279,7 @@ Happy scanning!
 
 The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. This pipeline uses [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code.  Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. 
 
-This workflow is covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
+This workflow is covered in [Your first STO pipeline](./sto-tutorials/your-first-sto-pipeline).
 
 ### Add a Security Test stage
 

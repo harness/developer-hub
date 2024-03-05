@@ -7,7 +7,7 @@ sidebar_position: 21
 
 This topic provides a guide on how the Rework metric is calculated on SEI.
 
-Rework is defined as changes to existing code, regardless of the age of the code. This includes alterations, fixes, enhancements, or optimizations. 
+Rework is defined as changes to existing code, regardless of the age of the code. This includes alterations, fixes, enhancements, or optimizations.
 
 Rework Metrics is a concept used to measure the amount of changes made to existing code, regardless of its age. It includes alterations, fixes, enhancements, or optimizations. By measuring the amount of rework, developers can assess the stability of the code, the frequency of necessary changes, and the efficiency of development efforts. The Rework Metrics can be calculated by measuring the percentage of code that has undergone recent modifications, as well as the percentage of legacy code that has been modified.
 
@@ -31,7 +31,7 @@ These are lines of code that are older than 30 days, or the time duration config
 
 ### Percentage of Rework
 
-The Percentage of Rework metric helps in understanding the proportion of the codebase that has undergone recent modifications. This metric's value is calculated as Total Refactored Lines of Code divided by Total lines, multiplied by 100. 
+The Percentage of Rework metric helps in understanding the proportion of the codebase that has undergone recent modifications. This metric's value is calculated as Total Refactored Lines of Code divided by Total lines, multiplied by 100.
 
 The higher the value, the more frequently changes are being made to the codebase. This may suggest possible issues with initial code quality or changing requirements.
 
@@ -43,7 +43,7 @@ Metric value = Total Refactored Lines of Code / Total lines changed *100
 
 ### Percentage of Legacy Rework
 
-The Percentage of Legacy Rework metric provides insight into the extent of modifications done on older segments of the codebase. This metric's value is calculated as Total Legacy Lines of Code divided by Total lines, multiplied by 100. 
+The Percentage of Legacy Rework metric provides insight into the extent of modifications done on older segments of the codebase. This metric's value is calculated as Total Legacy Lines of Code divided by Total lines, multiplied by 100.
 
 A high value of this metric suggests that a significant portion of the codebase is old and has undergone recent modifications, which may indicate the need for refactoring and improving the code quality.
 

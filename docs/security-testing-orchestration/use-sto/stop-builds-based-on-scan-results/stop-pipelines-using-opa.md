@@ -6,10 +6,10 @@ sidebar_position: 220
 ---
 
 :::note
-This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
+This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
 :::
 
-Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
+Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues that were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
 
 * [Output variables in STO](/docs/security-testing-orchestration/get-started/key-concepts/output-variables)
 * [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
@@ -65,13 +65,13 @@ A _policy set_ is a collection of one or more policies. You combine policies int
     
    2. Select the policy you just created and set the pull-down to **Error and Exit**. This is the action to take if any policies in the set are violated. 
 
-      ![](../static/notif-opa-select-policy.png)
+      <!-- ![](../static/notif-opa-select-policy.png) -->
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
 5. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
 
-    ![](../static/notif-opa-policy-set-enforced-yes.png)
+     <!-- ![](../static/notif-opa-policy-set-enforced-yes.png) -->
 
 
 ### Enforce the policy in your scan step
@@ -84,7 +84,7 @@ Now you can set up your scan step to stop builds automatically when the policy g
 
 3. Click **Apply Changes** and then save the updated pipeline. 
 
-   ![](../static/notif-opa-policy-add-policy-set.png)
+    <!--  ![](../static/notif-opa-policy-add-policy-set.png) -->
 
 
 ### Set up email notifications for pipeline failures
@@ -100,7 +100,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      2. Pipeline Events page  —  Select **Stage Failed** for the event that triggers the notification. Then select the stage that has the Policy step you just created.
 
-        ![](../static/notif-select-stage-failed-and-stage.png)
+       <!--  ![](../static/notif-select-stage-failed-and-stage.png) -->
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 
