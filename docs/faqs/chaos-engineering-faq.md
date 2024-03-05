@@ -142,3 +142,9 @@ When you edit an experiment that has multiple repositories, a pop up asks if you
 * You can download the choas experiment report.
 * The probe result summary can be seen in the experiment logs too.
 :::
+
+
+### How can I pass secrets in the source mode of command probe without specifying an image so as to execute the probe by passing username and password?
+
+* To pass secrets as environment variables in the source mode of the command probe, specify the environment variable or the environment variable file on the target VM and reference this file in the script where you are executing the probe.
+* If you want to execute the probe on a server other than the target, disable the security context in the advanced fault settings.

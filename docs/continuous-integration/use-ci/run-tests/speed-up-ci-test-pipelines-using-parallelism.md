@@ -186,7 +186,7 @@ In the context of test splitting, the `parallelism` strategy defines the number 
 <details>
 <summary>Learn more about parallel workloads</summary>
 
-To demonstrate how tests are split into concurrent (parallel) workloads, assume that you use the `test_count` splitting strategy to divide 20 tests into four workloads. To tell Harness to create four workloads, you would set your parallelism strategy to `parallelism: 4`. Then use the `test_count` splitting strategy in your **Run** step's commands. When the pipeline runs, `test_count` uses simple division to split the 20 tests into four workloads; therefore, each parallel instance runs five different tests.
+To demonstrate how tests are split into concurrent (parallel) workloads, assume that you use the `file_size` splitting strategy to divide 20 tests into four workloads. To tell Harness to create four workloads, you would set your parallelism strategy to `parallelism: 4`. Then use the `file_size` splitting strategy in your **Run** step's commands. When the pipeline runs, `file_size` splits the 20 tests into four workloads based on the file size. For the purpose of this example, assume all files are roughly the same size, and, therefore, each parallel instance runs five different tests:
 
 ```
 20 tests / 4 workloads = 5 tests per workload
@@ -199,7 +199,7 @@ Parallel instances are zero-indexed, resulting in the following breakdown:
 * Instance 2 runs tests 11-15.
 * Instance 3 runs tests 16-20.
 
-The four instances run concurrently, but they might finish at different times depending on individual test times. This example used `test_count`, which simply divides the tests based on the total number of tests; therefore, the instances might not finish at the same time if some tests run longer than others. To achieve more equal run times, you can use more nuanced splitting strategies, such as file size or timing.
+The four instances run concurrently, but they might finish at different times depending on individual test times (if some tests run longer than others). To achieve more equal run times, you can use more nuanced splitting strategies, such as `testcase_timing`.
 
 </details>
 
@@ -348,7 +348,7 @@ Call the `split_tests` binary. The path depends on your build infrastructure.
 
 Specify the set of all tests that you want to run across all parallel instances. Whether to use `--glob` or `--file-path` is determined by [`--split-by`](#split-by).
 
-* For `--split-by file_timing`, `--split-by file_size`, or `--split-by test_count`, you can use a glob expression to specify the set of files to split, such as `--glob "**/test_*.py"`.
+* For `--split-by file_timing` or `--split-by file_size`, you can use a glob expression to specify the set of files to split, such as `--glob "**/test_*.py"`.
 * For `--split-by class_timing`, `--split-by testcase_timing`, and `--split-by testsuite_timing`, you must provide a text file of the elements to split. For example, if you want to split by Java class timing, you could specify the set of classes to split and test in a new-line-delineated string and then reference the text file in with `--file-path FILE_NAME.txt`:
 
    ```shell
@@ -368,7 +368,6 @@ The `split_tests` binary supports these test splitting strategies:
 * `--split-by class_timing`: Split tests into groups based on the timing data for individual classes. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
 * `--split-by file_size`: Split tests into groups based on the size of individual files.
 * `--split-by file_timing`: (Default) Split tests into groups based on the test times of individual files. `split_tests` uses the most recent timing data to ensure that all parallel test runs finish at approximately the same time. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
-* `--split-by test_count`: Split tests into groups based on the total number of tests.
 * `--split-by testcase_timing`: Split tests into groups based on the timing data for individual test cases. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
 * `--split-by testsuite_timing`: Split tests into groups based on the timing data for individual test suites. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
 
