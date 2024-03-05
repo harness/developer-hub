@@ -18,6 +18,7 @@ Coverity is a fast, accurate, and highly scalable static analysis (SAST) solutio
 * **Coverity Issues Single Stat:** Present a single statistic related to Coverity issues.
 * **Coverity Issues Trend Report:** Understand daily, weekly, and monthly trends in your Coverity issues.
 
+<!--
 ## Microsoft Threat Modeling
 
 The Microsoft Threat Modeling tool allows software architects to identify and mitigate potential security issues early, when they are relatively easy and cost-effective to resolve.
@@ -36,12 +37,7 @@ The NCC Group's Managed Vulnerability Scanning Services deliver hands-on rapid d
 3. Select **Available Integrations**, locate the **NCC Group Report** semi-automated integration, and select **Upload report**.
 4. Add the **NCC Group Vulnerability Report** to your [Insights](/docs/software-engineering-insights/insights/sei-insights). This report provides details on detected vulnerabilities. Vulnerabilities can be categorized by status.
 
-## Praetorian
-
-1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
-3. Select **Available Integrations**, locate the **Praetorian Report** semi-automated integration, and select **Upload report**.
-4. Add the **Praetorian Issues Report** to your [Insights](/docs/software-engineering-insights/insights/sei-insights). This report helps analyze security vulnerabilities reported by Praetorian.
+-->
 
 ## Snyk
 
