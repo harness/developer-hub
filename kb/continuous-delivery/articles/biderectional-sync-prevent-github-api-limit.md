@@ -4,7 +4,7 @@ title: Preventing GitHub API Rate Limits with Bidirectional Sync
 ---
 # Introduction
 
-This KB discusses how Bidirectional Sync can help prevent reaching Github API Limit Issue.
+This knowledge base article discusses how Bidirectional Sync can help prevent reaching the GitHub API limit issue.
 
 ## API rate limits, what causes them?
 
