@@ -1344,8 +1344,10 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 In addition to the requirements of the Harness ASG service and environment, an ASG Blue Green deployment requires you to set up the following resources up within AWS:
 
 - A security group that allows inbound access to your Application Load Balancer's listener ports.
+  ![SG for ALB listener](./static/aws-req-for-esg-2.png)
 - A pair of target groups, typically staging (Stage) and production (Prod) both with the instance target type.
-- An Application Load Balancer (ALB), with one listener rule for both your target groups' ports.
+- An Application Load Balancer (ALB) with one listener rule for both your target groups.
+  ![listener rule](./static/aws-req-for-esg-1.png)
 
 Let's take a look at the first two deployments.
 
@@ -1354,12 +1356,10 @@ Let's take a look at the first two deployments.
 The first Blue Green deployment follows these steps:
 
 1. ASG Blue Green Deploy step:
-   1. Checks that listener ARN and listener rule ARN for prod are valid.
-   2. Fetches target group ARNs for prod.
-   3. Checks that listener ARN and listener rule ARN for stage are valid.
-   4. Fetches target group ARNs for stage.
-   5. Creates launch template and ASG using the format `[app_name]__1`, like `asgdemo__1`.
-   6. Sets the tag `BG_VERSION=BLUE` on new ASG.
+   1. Checks that listener ARN and listener rule ARN are valid.
+   2. Fetches target groups' ARN.
+   3. Creates launch template and ASG using the format `[app_name]__1`, like `asgdemo__1`.
+   4. Sets the tag `BG_VERSION=BLUE` on new ASG.
 2. ASG Blue Green Swap step:
    1. Not used as there is only one ASG at this point.
 
@@ -1372,12 +1372,10 @@ Harness will create a new ASG with the suffix `__2` and swap prod traffic to it.
 The second Blue Green deployment follows these steps:
 
 1. ASG Blue Green Deploy step:
-   1. Checks that listener ARN and listener rule ARN for prod are valid.
-   2. Fetches target group ARNs for prod.
-   3. Checks that listener ARN and listener rule ARN for stage are valid.
-   4. Fetches target group ARNs for stage.
-   5. Creates launch template and new ASG using the format `[app_name]__2`, like `asgdemo__2`.
-   6. Sets the tag `BG_VERSION=GREEN` on new ASG, for example, `asgdemo__2`.
+   1. Checks that listener ARN and listener rule ARN are valid.
+   2. Fetches target groups' ARN.
+   3. Creates launch template and new ASG using the format `[app_name]__2`, like `asgdemo__2`.
+   4. Sets the tag `BG_VERSION=GREEN` on new ASG, for example, `asgdemo__2`.
 2. ASG Blue Green Swap step swaps target groups and updates tags:
    1. Modifies the ELB prod listener to forward requests to target groups associated with new autoscaling group.
    2. Modifies the ELB stage listener to forward requests to target groups associated with the old autoscaling group.
@@ -1406,6 +1404,11 @@ The ASG Blue Green Deploy step has the following settings:
 - **Prod Listener Rule ARN:** select the ARN for the prod listener rule. 
 - **Stage Listener:** select the listener to use for stage traffic.
 - **Stage Listener Rule ARN:** select the ARN for the stage listener rule.
+  
+  :::important
+  There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.
+  :::
+  
 
 Harness fetches these AWS settings using the Harness AWS connector you have set up in the **Infrastructure Definition** in the **Environment** section of the stage.
 
