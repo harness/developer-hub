@@ -112,8 +112,9 @@ For more details and example, go to:
 ### Demo Video
 
 <!-- Video: Golden Pipeline Demo Video
-https://youtu.be/p-3FZM49RqQ-->
-<docvideo src="https://www.loom.com/share/9f636b7a813248499c745a98daa283ed?sid=595c2126-3781-41eb-9acc-9ea23836f2cb" />
+https://www.loom.com/share/9f636b7a813248499c745a98daa283ed?sid=595c2126-3781-41eb-9acc-9ea23836f2cb-->
+<DocVideo src="https://www.loom.com/share/9f636b7a813248499c745a98daa283ed?sid=595c2126-3781-41eb-9acc-9ea23836f2cb" />
+
 
 
 #### Pipeline Template
