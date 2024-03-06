@@ -72,7 +72,60 @@ Defining your baselines using regular expressions provides significant benefits 
 </details>
 
 
-### Important notes for setting up target baselines in STO
+### How dynamic baselines work
+
+You can specify a default baseline regex for each target type. The baseline for a target is the most recently scanned target that matches the default regex. 
+
+For example, the Container Image target type has a default regex that matches on `latest` or a two-dot version tag such as `v1.2.3` or `2.3.4`.
+
+Suppose you scan a new image target, `jdoe/myimage`, with the following tags. The baseline gets updated as follows:
+
+<!-- 
+- Scan 1: tag = `scantest-DONOTUSE` => no match => no baseline
+- Scan 2: tag = `v2.3.0`            => baseline = `v2.3.0`
+- Scan 3: tag = `latest`            => baseline = `latest` 
+-->
+
+<table>
+    <tr>
+        <th></th>
+        <th>tag</th>
+        <th>baseline before scan</th>
+        <th>baseline after scan</th>
+    </tr>
+    <tr>
+        <th>Scan 1</th>
+        <td><code>scantest-DONOTUSE</code></td>
+        <td>none</td>
+        <td>none (no match)</td>
+    </tr>
+    <tr>
+        <th>Scan 2</th>
+        <td><code>v2.3.0</code></td>
+        <td>none</td>
+        <td><code>v2.3.0</code></td>
+    </tr>
+    <tr>
+        <th>Scan 3</th>
+        <td><code>latest</code></td>
+        <td><code>v2.3.0</code></td>
+        <td><code>latest</code></td>
+    </tr>
+</table>
+
+### Predefined default regexes
+
+STO includes a set of predefined default regexes for new repository and container image targets:
+
+- For repositories, the baseline is `master` or `main`.
+
+- For container images, the baseline is `latest` or the highest two-dot version number if it can be detected, such as
+  - `1.2.3` 
+  - `1.15.4-linux-amd64` 
+
+- STO does not include default regexes for application instances and configurations. 
+
+### Important notes for setting up dynamic baselines in STO
 
 * You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
 
@@ -84,29 +137,24 @@ Defining your baselines using regular expressions provides significant benefits 
 
 * Defining regular expressions is outside the scope of this documentation. Harness recommends that you test any regular expressions thoroughly to ensure that the expression matches any variant name that might be used for the scan target.
 
-* STO includes a set of predefined regexes 
+### Define the default regex for an account, organization, or project
 
-### Default regexes for projects and accounts
+To specify default regexes at a specific scope:
 
-STO includes a set of default regexes automatically for new repository and container image targets:
+1. Select the account, organization (overrides account defaults), or project (overrides organization defaults). 
 
-- For repositories, the baseline is `master` or `main`.
-- For container images, the baseline is `latest` or the highest two-dot version number if it can be detected, such as
-  - `1.2.3` 
-  - `1.15.4-linux-amd64` 
-- STO does not include default regexes for application instances and configurations. 
+   <DocImage path={require('./static/baselines-00-select-scope.png')} width="50%" height="50%" title="Select scope" /> 
 
-You can specify your own default regexes for all four target types at the project or the account level:
+2. Go to **Default Settings** > **Security Testing Orchestration**. 
 
-- Go to **Project Settings** > **Default Settings** > **Security Testing Orchestration**
-- Go to **Account Settings** > **Default Settings** > **Security Testing Orchestration**
+   <DocImage path={require('./static/baselines-01-edit-default-regexes.png')} width="75%" height="75%" title="Add shared path for scan results" /> 
 
-### Specify a regex for an individual target
+
+### Override the default regex for an individual target
 
 To override the default regex for an individual target, go to **Test Targets**. Then set the value type for the target to **RegEx** and enter the regex. 
 
 ![](./static/baseline-regex-individual-target.png)
-
 
 
 ### Regex examples
