@@ -65,7 +65,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## March 6, 2024, version 1.24.7
+## March 6, 2024, version 0.14.3
 
 This release includes the following Harness module and component versions.
 
@@ -540,7 +540,7 @@ gsutil -m cp \
    Previously, the job was triggered after 30 minutes, which caused issues. However, this has now been resolved by reducing the time to 1 minute.
    
 
-## January 29, 2024, version 1.19.10
+## January 29, 2024, version 0.13.0
 
 ### New features and enhancements
 
@@ -825,7 +825,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
-## January 8, 2024, version 81720
+## January 8, 2024, version 0.12.0
 
 ### New features and enhancements
 
@@ -1386,7 +1386,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 <details>
 <summary>2023 releases</summary>
 
-#### November 30, 2023, version 81308
+#### November 30, 2023, version 0.11.0
 
 ##### New features and enhancements
 
@@ -2004,7 +2004,7 @@ gsutil -m cp \
 
 - Default values for external databases caused upgrade issues. Harness removed local default MongoDB values from `values.yaml` files to resolve the issue. (SMP-2339)
 
-#### November 1, 2023, version 80917
+#### November 1, 2023, version 0.10.0
 
 ##### New features and enhancements
 
@@ -2865,7 +2865,7 @@ gsutil -m cp \
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
 
-#### September 30, 2023, version 80220
+#### September 30, 2023, version 0.9.0
 
 ##### New features and enhancements
 
@@ -3695,7 +3695,7 @@ gsutil -m cp \
 
   Project, account, and organization names have also been added to the report.
 
-#### July 31, 2023, version 79819
+#### July 31, 2023, version 0.8.0
 
 ##### Known issues
 
@@ -4535,7 +4535,7 @@ This release does not include any early access features.
 
   This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
 
-#### June 30, 2023, version 79421
+#### June 30, 2023, version 0.7.0
 
 This release includes the following Harness module and component versions.
 
@@ -4989,7 +4989,7 @@ gsutil -m cp \
 
   This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
 
-#### June 14, 2023, version 79230
+#### June 14, 2023, version 0.6.0
 
 This release includes the following Harness module and component versions.
 
