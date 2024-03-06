@@ -1,17 +1,16 @@
 ---
 title: Pipeline Frequently Asked Questions
-description: Frequently asked questions about Pipelines.
+description: Frequently asked questions about pipelines.
 sidebar_position: 5
 ---
 
-## Common Questions asked about Pipeline
 
-#### Q: How can I get the status of harness pipeline during the run itself?
+#### Q: How can I get the status of Harness pipeline during the run itself?
 A: You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`
 The expression `<+execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+execution.steps.mystep.status>`.
 
 
-#### Q: Is there a trigger with condition type On Pipeline completion , so that once one pipeline completes it triggers another pipeline?
+#### Q: Is there a trigger with condition type On ipeline completion , so that once one pipeline completes it triggers another pipeline?
 A: We do not have a trigger, but, we do have a stage called Pipeline Chaining which lets you start a pipeline based on a pipeline completing.
 
 
@@ -25,10 +24,10 @@ A: Character limit is 128 characters.
 #### Q: How can I specify my pipeline to pick the right delegate for my environment?
 A: In the Pipeline Advanced Settings, you can pass in a delegate selector as a fixed, runtime input or expression to ensure the correct delegate is leveraged for the pipeline. 
 
-#### Q: How long are harness deployment logs visible in the UI?
+#### Q: How long are Harness deployment logs visible in the UI?
 A: The default retention is set per account and its value is 6 months.
 
-#### Q: How long are harness deployment logs visible in the UI?
+#### Q: How long are Harness deployment logs visible in the UI?
 A: The default retention is set per account and its value is 6 months.
 
 #### Q: When a pipeline is deleted, are all the logs that the pipeline produced(delegate, audit, deploy) deleted as well?
