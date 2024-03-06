@@ -97,14 +97,14 @@ The Git Clone step uses a containerized step group. For more information, go to 
 
 
 <Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 1. In your Developer Portal stage, in **Execution**, select **Add Step**.
 2. Select **Git Clone**.
 3. Configure the steps using the settings described below.
 
 </TabItem>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -187,7 +187,7 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
 
 
 <Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 #### Repository Type
 
@@ -220,7 +220,7 @@ Provide the input required the template in terms of key value pairs in this step
 
 
 </TabItem>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -247,7 +247,7 @@ This step is to create the repository in your git provider which will be later u
 
 
 <Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 #### Repository Type
 
@@ -281,7 +281,7 @@ The following topics provide more information about creating code repo connector
 Add the org, repo name, Repo Description and Default branch for the repo you want to create.
 
 </TabItem>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -319,7 +319,7 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
 
 
 <Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 #### File Name, Path
 Name the `catalog-info.yaml` followed by providing a path if you don't want to register in the root of the repo created in the `Create Repo` step. 
@@ -344,7 +344,7 @@ spec:
 
 
 </TabItem>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -388,7 +388,7 @@ This step is used to push the `service/application` created using Cookiecutter s
 
 
 <Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 #### Connector
 
@@ -422,7 +422,7 @@ Add the Org, Repo Name, Repo Description and Branch Name where you want to push 
 This when enabled or set to `true`, will be able to overwrite the changes to **Default branch** set in the **Create Repo** step. 
 
 </TabItem>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -450,7 +450,7 @@ This step is used to register the software component created in the Catalog of H
 
 
 <Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 #### Connector
 
@@ -480,7 +480,7 @@ The following topics provide more information about creating code repo connector
 Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present.
 
 </TabItem>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
 
 ```YAML
@@ -513,7 +513,7 @@ This step is used to notify individual developers once the pipeline is executed 
 
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
  
 ```YAML
@@ -532,7 +532,7 @@ The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL`
 The `token` is the [Bot-tokens](https://api.slack.com/authentication/token-types#bot) 
 
 </TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 1. Add the **Name** of the Step
 
