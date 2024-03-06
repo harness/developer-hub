@@ -329,6 +329,12 @@ In the example provided for this step we have used pipeline variables as input f
 
 :::
 
+:::info
+
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository the `catalog-info.yaml` is getting published to, for it to be registered in the catalog. 
+
+:::
+
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
