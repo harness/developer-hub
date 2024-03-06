@@ -18,6 +18,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## March 2024
 
+### Android SDK
+
+#### Version 2.0.1
+
+ - We've added support for the `Retry-After` header. (FFM-10745)
+ - The `TooManyRequestsException` error has now been resolved. (FFM-10879)
+
 ### iOS SDK
 
 #### Version 1.3.0
