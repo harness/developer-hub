@@ -18,9 +18,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## March 2024
 
+### iOS SDK
+
+ - We've tidied up behaviour around flag deletion:
+ -- It now exposes new `onDelete` event that you can listen for which is emitted when a flag has been deleted.
+ - Previously, if a flag was deleted, its evaluations would remain in the SDK cache and any variation calls made to it would result in an out-of-date evaluation for your target. (FFM-10877)
+ - It doesn't report metrics when default variation served which would result in inaccurate flag metrics. (FFM-8318)
+
 ### .NET SDK
 
- - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets.
+ - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
  - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
 
 ## February 2024
