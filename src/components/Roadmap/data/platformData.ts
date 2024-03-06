@@ -166,7 +166,7 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         title: "Backup and restore",
         description:
-          "Use velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition",
+          "Use Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition",
       },
       {
         tag: [{ value: "SMP" }],
@@ -178,7 +178,7 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         title: "External Database",
         description:
-          "Configura external databases as a self-managed solution",
+          "Configure external databases as a self-managed solution",
       },
     ],
 
