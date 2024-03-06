@@ -98,6 +98,11 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
 ### JavaScript SDK
 
+### Version 1.25.0
+
+ - It allows the overriding of cache storage mechanism. (FFM-10772)
+ - Removed React Native Android detection. (FFM-10810)
+
 #### Version 1.24.0
 
  - Disables streaming if Reactive Native + Android are detected. (FFM-10442)
