@@ -35,7 +35,7 @@ Each category contributes to an overall score reflecting the SBOM's quality, com
 You can view the scores of all generated SBOMs from the **Artifacts view**. Additionally, the score of an SBOMs generated from a specific pipeline execution can be found in the **Supply Chain Assurance** tab within the pipeline execution window.
 
 ### Artifact view in SSCA
-Go to SSCA module, and navigate to "Artifacts" section.
+Go to SSCA module, and navigate to [Artifacts](../artifact-view.md) section.
 You can view the score alongside the SBOM under the SBOM column.
 
 !["SBOM Score from Artifacts view"](./static/sbom-score-artifact-view.png)
