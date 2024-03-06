@@ -54,6 +54,10 @@ In the above example we import all the API specs in `json` format as a `$text` e
 
 :::
 
+The above mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format. 
+
+![](./static/openapi-json.png)
+
 ### Import API spec for a single API defined in openapi spec in swaggger
 
 ```YAML
@@ -79,6 +83,10 @@ spec:
   definition:
     $text: ./petstore.oas.yaml
 ```
+
+The above mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
+
+![](./static/swagger-api.png)
 
 ### Define API spec for a single API openapi format and import the same
 
@@ -108,6 +116,11 @@ spec:
           summary: List all artists
     ...
 ```
+
+The above mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
+
+![](./static/spotify-api.png)
+
 ## Steps to add the API as an entity.
 
 1. Save the YAML, created following the steps above, in your git repository. 
