@@ -90,7 +90,7 @@ In **Template Name**, you can enter the name of an existing template, select fro
 Existing templates are listed and can be searched only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
 
 Make sure you have met the following requirements for searching form templates:
-- Harness Delegate version 82400 or later.
+- Harness Delegate version 81200 or later.
 - Integration for Harness Software Delivery Platform app version 1.0.2 or later.
 :::
 
