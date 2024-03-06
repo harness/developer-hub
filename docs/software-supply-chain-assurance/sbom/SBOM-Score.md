@@ -32,20 +32,22 @@ Each category contributes to an overall score reflecting the SBOM's quality, com
 **Score Display**: The final score, ranging from 0 to 10, is displayed alongside the SBOM details within SSCA.
 
 ## Viewing the Score
+You can view the scores of all generated SBOMs from the **Artifacts view**. Additionally, the score of an SBOMs generated from a specific pipeline execution can be found in the **Supply Chain Assurance** tab within the pipeline execution window.
 
-### Artifact View in SSCA
+### Artifact view in SSCA
+Go to SSCA module, and navigate to "Artifacts" section.
+You can view the score alongside the SBOM under the SBOM column.
 
-You can view the score alongside the SBOM in the SBOM column
-
-<docimage path={require('../static/SBOM-Score-Artifact-View.png')} />
+!["SBOM Score from Artifacts view"](./static/sbom-score-artifact-view.png)
 
 By clicking on the score, you see the complete breakdown of scores in various categories. You can expand each category to see the score of individual items
 
-<docimage path={require('../static/SBOM-Score-Details.png')} />
+!["SBOM Score details"](./static/sbom-score-details.png)
 
+### Supply Chain Assurance Tab 
+The scores of the SBOM for a specific pipeline execution can be found in the **Supply Chain Assurance** tab within the pipeline execution window.
 
-You can also see the SBOM score in the pipeline execution view alongside the SBOM
-
+!["SBOM Score from Supply Chain Assurance Tab"](./static/sbom-score-ssca-tab.png)
 
 ## Score Interpretation
 
@@ -56,5 +58,4 @@ You can also see the SBOM score in the pipeline execution view alongside the SBO
 **Lower Scores**: Suggest areas for improvement or further investigation.
 
 
-
-For more detailed information on scoring criteria, visit the sbomqs tool's GitHub page: sbomqs GitHub [Repository](https://github.com/interlynk-io/sbomqs/).
+For more detailed information on the scoring criteria, please visit the [sbomqs GitHub repository](https://github.com/interlynk-io/sbomqs/).
