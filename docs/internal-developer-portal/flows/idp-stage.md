@@ -97,10 +97,16 @@ The Git Clone step uses a containerized step group. For more information, go to 
 
 
 <Tabs>
+<TabItem value="Pipeline Studio" label="Pipeline Studio">
+
+1. In your Developer Portal stage, in **Execution**, select **Add Step**.
+2. Select **Git Clone**.
+3. Configure the steps using the settings described below.
+
+</TabItem>
 <TabItem value="YAML" label="YAML" default>
 
-
-```
+```YAML
 - step:
    type: GitClone
    name: GitClone_1
@@ -113,15 +119,6 @@ The Git Clone step uses a containerized step group. For more information, go to 
        spec:
          branch: main
 ```
-
-
-</TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
-
-1. In your Developer Portal stage, in **Execution**, select **Add Step**.
-2. Select **Git Clone**.
-3. Configure the steps using the settings described below.
-
 
 </TabItem>
 </Tabs>
@@ -190,25 +187,7 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
 
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
-
-
-```YAML
-- step:
-    type: CookieCutter
-    name: CookieCutter
-    identifier: idpcookiecutter
-    spec:
-    templateType: public
-    publicTemplateUrl: <+pipeline.variables.public_template_url>
-    cookieCutterVariables:
-        app_name: <+pipeline.variables.project_name>
-```
-
-
-</TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-
 
 #### Repository Type
 
@@ -239,6 +218,23 @@ Provide the input required the template in terms of key value pairs in this step
 ![](./static/key-value-cookiecutter.png)
 
 
+
+</TabItem>
+<TabItem value="YAML" label="YAML" default>
+
+```YAML
+- step:
+    type: CookieCutter
+    name: CookieCutter
+    identifier: idpcookiecutter
+    spec:
+    templateType: public
+    publicTemplateUrl: <+pipeline.variables.public_template_url>
+    cookieCutterVariables:
+        app_name: <+pipeline.variables.project_name>
+```
+
+
 </TabItem>
 </Tabs>
 
@@ -251,23 +247,6 @@ This step is to create the repository in your git provider which will be later u
 
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
-
-```YAML
-- step:
-    type: CreateRepo
-    name: CreateRepo
-    identifier: createrepo
-    spec:
-    connectorRef: account.testdev
-    organization: <+pipeline.variables.organization>
-    repository: <+pipeline.variables.project_name>
-    repoType: <+pipeline.variables.repository_type>
-    description: <+pipeline.variables.repository_description>
-    defaultBranch: <+pipeline.variables.repository_default_branch>
-```
-
-</TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### Repository Type
@@ -301,6 +280,23 @@ The following topics provide more information about creating code repo connector
 
 Add the org, repo name, Repo Description and Default branch for the repo you want to create.
 
+</TabItem>
+<TabItem value="YAML" label="YAML" default>
+
+```YAML
+- step:
+    type: CreateRepo
+    name: CreateRepo
+    identifier: createrepo
+    spec:
+    connectorRef: account.testdev
+    organization: <+pipeline.variables.organization>
+    repository: <+pipeline.variables.project_name>
+    repoType: <+pipeline.variables.repository_type>
+    description: <+pipeline.variables.repository_description>
+    defaultBranch: <+pipeline.variables.repository_default_branch>
+```
+
 
 </TabItem>
 </Tabs>
@@ -323,31 +319,6 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
 
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
-
-```YAML
-- step:
-    type: CreateCatalog
-    name: createcatalog
-    identifier: createcatalog
-    spec:
-    fileName: <+pipeline.variables.catalog_file_name>
-    filePath: <+pipeline.variables.project_name>
-    fileContent: |-
-        apiVersion: backstage.io/v1alpha1
-        kind: Component
-        metadata:
-        name: <+pipeline.variables.project_name>
-        description: <+pipeline.variables.project_name> created using self service flow
-        annotations:
-            backstage.io/techdocs-ref: dir:.
-        spec:
-        type: service
-        owner: test
-        lifecycle: experimental
-```
-
-</TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### File Name, Path
@@ -373,6 +344,31 @@ spec:
 
 
 </TabItem>
+<TabItem value="YAML" label="YAML" default>
+
+```YAML
+- step:
+    type: CreateCatalog
+    name: createcatalog
+    identifier: createcatalog
+    spec:
+    fileName: <+pipeline.variables.catalog_file_name>
+    filePath: <+pipeline.variables.project_name>
+    fileContent: |-
+        apiVersion: backstage.io/v1alpha1
+        kind: Component
+        metadata:
+        name: <+pipeline.variables.project_name>
+        description: <+pipeline.variables.project_name> created using self service flow
+        annotations:
+            backstage.io/techdocs-ref: dir:.
+        spec:
+        type: service
+        owner: test
+        lifecycle: experimental
+```
+
+</TabItem>
 </Tabs>
 
 #### Output
@@ -392,22 +388,6 @@ This step is used to push the `service/application` created using Cookiecutter s
 
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
-
-```YAML
-- step:
-    type: DirectPush
-    name: DirectPush
-    identifier: directpush
-    spec:
-    connectorRef: account.testdev
-    repository: <+pipeline.variables.project_name>
-    organization: <+pipeline.variables.organization>
-    codeDirectory: <+pipeline.variables.project_name>
-    branch: <+pipeline.variables.direct_push_branch>
-```
-
-</TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### Connector
@@ -437,6 +417,27 @@ The following topics provide more information about creating code repo connector
 
 Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code.
 
+#### Allow Force Push
+
+This when enabled or set to `true`, will be able to overwrite the changes to **Default branch** set in the **Create Repo** step. 
+
+</TabItem>
+<TabItem value="YAML" label="YAML" default>
+
+```YAML
+- step:
+    type: DirectPush
+    name: DirectPush
+    identifier: directpush
+    spec:
+      connectorType: Github
+      forcePush: true
+      connectorRef: account.testdev
+      organization: <+pipeline.variables.organization>
+      repository: <+pipeline.variables.project_name>
+      codeDirectory: <+pipeline.variables.project_name>
+      branch: <+pipeline.variables.direct_push_branch>
+```
 
 </TabItem>
 </Tabs>
@@ -449,24 +450,6 @@ This step is used to register the software component created in the Catalog of H
 
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
-
-
-```YAML
-- step:
-    type: RegisterCatalog
-    name: registercatalog
-    identifier: registercatalog
-    spec:
-    connectorRef: account.testdev
-    repository: <+pipeline.variables.project_name>
-    organization: <+pipeline.variables.organization>
-    filePath: <+pipeline.variables.catalog_file_name>
-    branch: <+pipeline.variables.direct_push_branch>
-```
-
-
-</TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
 
 #### Connector
@@ -496,6 +479,22 @@ The following topics provide more information about creating code repo connector
 
 Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present.
 
+</TabItem>
+<TabItem value="YAML" label="YAML" default>
+
+
+```YAML
+- step:
+    type: RegisterCatalog
+    name: registercatalog
+    identifier: registercatalog
+    spec:
+    connectorRef: account.testdev
+    repository: <+pipeline.variables.project_name>
+    organization: <+pipeline.variables.organization>
+    filePath: <+pipeline.variables.catalog_file_name>
+    branch: <+pipeline.variables.direct_push_branch>
+```
 
 </TabItem>
 </Tabs>
