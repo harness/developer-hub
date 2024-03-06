@@ -253,6 +253,12 @@ In the example provided for this step we have used pipeline variables as input f
 
 :::
 
+:::info
+
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository getting created in this step. 
+
+:::
+
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
@@ -326,6 +332,12 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
 :::warning
 
 In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
+
+:::info
+
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository the `catalog-info.yaml` is getting published to, for it to be registered in the catalog. 
 
 :::
 
