@@ -30,6 +30,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
  - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
 
+### React SDK
+
+#### Version 1.9.0
+
+ - We've updated Javascript Client SDK. (FFM-10875)
+
 ## February 2024
 
 ### Android SDK
