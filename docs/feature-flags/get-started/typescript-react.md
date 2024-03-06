@@ -4,7 +4,6 @@ description: Try out adding JavaScript Feature Flags to a TypeScript and React A
 sidebar_position: 8
 redirect_from:
   - /docs/feature-flags/ff-onboarding/tutorials
-  - /docs/feature-flags/get-started/tutorials
   - /tutorials/feature-flags/typescript-react
 ---
 
@@ -12,7 +11,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Feature Flags Certification today!"
-  link="/certifications/feature-flags"
+  link="/university/feature-flags"
   closable={true}
   target="_self"
 />

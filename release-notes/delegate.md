@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-02-27T10:00
+date: 2024-03-05T10:00
 sidebar_position: 4
 ---
 
@@ -22,6 +22,38 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
+## Important upcoming changes
+
+:::warning important changes
+
+Please note that the following important changes will occur **March 31, 2024**:
+
+- The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
+
+   <details>
+   <summary>Legacy delegate installation flow</summary>
+
+   #### New Delegate Page
+
+   The `Switch back to old delegate install experience` link will be removed.
+
+   ![](./static/switch-to-old-delegate-install.png)
+
+   #### Legacy delegate installation flow deprecated
+
+   You will no longer be able to reach the legacy delegate installation flow.
+
+   ![](./static/old-delegate-install-exp.png)
+
+   </details>
+
+- Delegate tokens not used within the last 30 days will be revoked automatically.
+   
+   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
+
+:::
+
+
 <details>
 <summary>Deprecation notice</summary>
 
@@ -37,15 +69,29 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
+## March 2024
+
+### Version 24.02.82406 <!--  March 1, 2024 -->
+
+#### Hotfix
+
+- Previously, during the creation of rollback data, AWS Lambda would use string values for function versions. However, it now considers the integer values of function versions. This means that if you have deployed function versions `{8,9,10}` and you are currently deploying version `{11}`, the previous rollback version will be `{10}`, instead of `{9}`. (CDS-92300)
 
 ## February 2024
+
+### Version 24.02.82404 <!--  February 29, 2024 -->
+
+#### Hotfix
+
+- Updated the behavior of the Scale step. After the Scale step is executed, all workload pods are published as new pods, as the scale step can be used to scale pods and change traffic on the pods. (CDS-91534, ZD-54319)
 
 ### Harness version 1.26.14, Harness Delegate version 24.02.82402 <!--  February 27, 2024 -->
 
 #### Fixed issues
 
 - The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595, ZD-57053)
-   The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+  The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
 
 - When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)  
 
@@ -63,7 +109,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
   
    This issue is fixed by making the service instance field configurable for users.
 
+### Version 24.02.82309 <!--  February 28, 2024 -->
+
+#### Hotfix
+
+- We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. (CCM-16052)
+
+
 ### Version 24.02.82308 <!--  February 21, 2024 -->
+
+#### Hotfix
 
 - Upgraded the SDK for the ASG swimlane. (CDS-91937)
 

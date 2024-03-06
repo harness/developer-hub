@@ -6,8 +6,9 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/securityTestingOrchestrationData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function STO() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -37,17 +38,25 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            With Harness Security Testing Orchestration (STO), your pipelines can
-            detect security vulnerabilities automatically. Harness STO enables
-            DevOps and Security teams teams to left shift security testing as a key
-            outcome of their DevSecOps initiative. STO orchestrates scanning,
-            intelligently deduplicating scanner output, prioritizing remediations,
-            and enforcing governance into your pipelines. STO puts scanning directly
-            into your pipelines to ensure that vulnerabilities are caught and fixed
-            before your products are ever released.
+              With Harness Security Testing Orchestration (STO), your pipelines
+              can detect security vulnerabilities automatically. Harness STO
+              enables DevOps and Security teams teams to left shift security
+              testing as a key outcome of their DevSecOps initiative. STO
+              orchestrates scanning, intelligently deduplicating scanner output,
+              prioritizing remediations, and enforcing governance into your
+              pipelines. STO puts scanning directly into your pipelines to
+              ensure that vulnerabilities are caught and fixed before your
+              products are ever released.
             </p>
-            <div>
-            <img src={`${baseUrl}img/sto.svg`} />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/sto.svg`
+                    : `${baseUrl}img/STO_Dark.svg`
+                }
+              />{" "}
             </div>
           </div>
         </div>

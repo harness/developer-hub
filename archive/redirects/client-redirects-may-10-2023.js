@@ -165,11 +165,6 @@ module.exports = {
 
     // Created by Rashmi Sahoo to fix PL redirects April 27th, 2023
     {
-      from: "/docs/category/role-based-access-control",
-      to: "/docs/category/access-control-1",
-    },
-
-    {
       from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/",
       to: "/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate",
     },

@@ -33,7 +33,7 @@ If you need to share `settings.xml` with multiple steps in the same stage, decla
 
 Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the [Build stage settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) when the pipeline runs.
 
-These steps assume you have an understanding of the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager). You should also be familiar with [adding text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets), [adding file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](https://developer.harness.io/docs/platform/secrets/add-use-ssh-secrets).
+These steps assume you have an understanding of the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager). You should also be familiar with [adding text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets), [adding file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](https://developer.harness.io/docs/platform/secrets/add-use-ssh-secrets).
 
 ### Create a secret at the account scope
 
