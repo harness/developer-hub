@@ -15,6 +15,8 @@ For certain settings, the values in the Free plan also apply to the trial period
 
 ## Pipeline Execution Concurrency
 
+ Go to **Account Settings**, select **Account Resources**, select **Default Settings**, select **Pipeline**, and then setting pipeline concurrency. Depends on plan tier.
+
 ### Concurrent Active Pipeline Executions
 
 Number of concurrent pipeline executions per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily in steps such as the wait step or approval step), not those that have executed to completion.
