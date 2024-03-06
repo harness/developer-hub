@@ -65,6 +65,8 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+<!--
+
 ## March 4, 2024, version 1.24.7
 
 This release includes the following Harness module and component versions.
@@ -333,7 +335,7 @@ gsutil -m cp \
 - The `platform-service` was not publishing the response count metric. (PL-43123)
 
    This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
-
+-->
 
 ## February 13, 2024, patch version 0.13.4
 

@@ -71,4 +71,4 @@ SSCA evaluates the components described in the artifact's SBOM against your [pol
 
 All components must meet the conditions described in *both* the `allow_list` and `deny_list` to fully pass the policy evaluation.
 
-You can review policy violations on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
+You can review policy violations on the **Execution details** page in Harness. For more information, go to [view pipeline execution results](../ssca-view-results.md).
