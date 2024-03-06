@@ -93,11 +93,11 @@ By cloning the repository, you gain access to the necessary code, scripts, or co
 
 The Git Clone step uses a containerized step group. For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
 
-![](./static/git-clone.png)
-
-
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+![](./static/git-clone.png)
+
 
 1. In your Developer Portal stage, in **Execution**, select **Add Step**.
 2. Select **Git Clone**.
@@ -183,11 +183,16 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 Cookiecutter step is used to take inputs for the cookiecutter template. 
 
-![](./static/cookicutter.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+![](./static/cookicutter.png)
 
 #### Repository Type
 
@@ -218,7 +223,6 @@ Provide the input required the template in terms of key value pairs in this step
 ![](./static/key-value-cookiecutter.png)
 
 
-
 </TabItem>
 <TabItem value="YAML" label="YAML">
 
@@ -243,11 +247,16 @@ Provide the input required the template in terms of key value pairs in this step
 
 This step is to create the repository in your git provider which will be later used to add the service/app created using cookiecutter step along with the catalog which will be created in the **Create Catalog** step. 
 
-![](./static/create-repo.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+![](./static/create-repo.png)
 
 #### Repository Type
 
@@ -297,7 +306,6 @@ Add the org, repo name, Repo Description and Default branch for the repo you wan
     defaultBranch: <+pipeline.variables.repository_default_branch>
 ```
 
-
 </TabItem>
 </Tabs>
 
@@ -315,11 +323,16 @@ These output variable could be viewed under the output tab in
 
 This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software component we have created in previous step in our IDP catalog. 
 
-![](./static/create-catalog.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+![](./static/create-catalog.png)
 
 #### File Name, Path
 Name the `catalog-info.yaml` followed by providing a path if you don't want to register in the root of the repo created in the `Create Repo` step. 
@@ -341,7 +354,6 @@ spec:
   owner: test
   lifecycle: experimental
 ```
-
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -384,11 +396,16 @@ These output variable could be viewed under the output tab in
 
 This step is used to push the `service/application` created using Cookiecutter step along with the `catalog-info.yaml` in the repo you created in previous step. 
 
-![](./static/direct-push.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+![](./static/direct-push.png)
 
 #### Connector
 
@@ -446,11 +463,16 @@ This when enabled or set to `true`, will be able to overwrite the changes to **D
 
 This step is used to register the software component created in the Catalog of Harness IDP using `catalog-info.yaml`. 
 
-![](./static/register-catalog.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+![](./static/register-catalog.png)
 
 #### Connector
 
@@ -511,6 +533,11 @@ These output variable could be viewed under the output tab in
 
 This step is used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
+:::warning
+
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
 <TabItem value="YAML" label="YAML">
