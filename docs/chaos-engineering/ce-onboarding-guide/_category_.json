@@ -1,13 +1,13 @@
 {
   "position": 3,
-  "label": "CE onboarding guide",
+  "label": "HCE onboarding guide",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"CE onboarding guide"
+      "title":"HCE onboarding guide"
    },
   "customProps": {
-    "description": "CE onboarding guide"
+    "description": "HCE onboarding guide"
   }
 }
