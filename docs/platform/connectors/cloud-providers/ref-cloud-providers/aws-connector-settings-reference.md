@@ -428,7 +428,7 @@ Specify the credentials that enable Harness to connect your AWS account. There a
 
 The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Currently, this option is only supported for Kubernetes, Helm, Terraform, and CloudFormation deployment types. 
+Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and CloudFormation deployment types. 
 :::
 
 :::warning
