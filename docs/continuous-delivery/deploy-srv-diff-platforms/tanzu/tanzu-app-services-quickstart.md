@@ -761,7 +761,26 @@ Now the pipeline stage is complete and can be deployed.
   </TabItem2>    
 </Tabs2>
 
-## Use Case: Blue Green Deployment Support with a configurable amount of Tanzu Applications to maintain
+## Deploy and review
+
+1. Click **Save** **> Save Pipeline**, then select **Run**.
+   Now you can select the specific artifact to deploy.
+2. Select a **Primary Artifact**.
+3. Select a **Tag**.
+4. Select the following **Infrastructure** parameters.
+    1. **Connector**
+    2. **Organization**
+    3. **Space**
+5. Click **Run Pipeline**. Harness will verify the pipeline and then run it.
+   You can see the status of the deployment, pause or abort it.
+
+6. Toggle **Console View** to watch the deployment with more detailed logging.  
+
+The deployment was successful.
+
+In your project's **Deployments**, you can see the deployment listed.
+
+### Blue Green Deployment Support with a configurable amount of Tanzu Applications to maintain
 
 :::note
 
@@ -812,26 +831,6 @@ Here's a demo video:
 <!-- Video:
 https://www.loom.com/share/5533c4832652403bac6ef06c5c926c2b?sid=11f56157-d01f-4915-ba88-5c269087615a-->
 <DocVideo src="https://www.loom.com/share/5533c4832652403bac6ef06c5c926c2b?sid=11f56157-d01f-4915-ba88-5c269087615a" />
-
-
-## Deploy and review
-
-1. Click **Save** **> Save Pipeline**, then select **Run**.
-   Now you can select the specific artifact to deploy.
-2. Select a **Primary Artifact**.
-3. Select a **Tag**.
-4. Select the following **Infrastructure** parameters.
-    1. **Connector**
-    2. **Organization**
-    3. **Space**
-5. Click **Run Pipeline**. Harness will verify the pipeline and then run it.
-   You can see the status of the deployment, pause or abort it.
-
-6. Toggle **Console View** to watch the deployment with more detailed logging.  
-
-The deployment was successful.
-
-In your project's **Deployments**, you can see the deployment listed.
 
 
 ## Next steps
