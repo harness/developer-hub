@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-03-04T10:00
+date: 2024-03-06T10:00
 sidebar_position: 16
 ---
 
@@ -65,23 +65,21 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-<!--
-
-## March 4, 2024, version 1.24.7
+## March 6, 2024, version 1.24.7
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.14.1](https://github.com/harness/helm-charts/releases/tag/harness-0.14.1) |
-| Air Gap Bundle | [0.14.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.1) |
+| Helm Chart | [0.14.3](https://github.com/harness/helm-charts/releases/tag/harness-0.14.3) |
+| Air Gap Bundle | [0.14.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.3) |
 | NG Manager | 1.24.7 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
 | Platform Service | 1.12.0 |
 | Access Control Service | 1.33.1 |
 | Delegate | 24.02.82203 |
-| Change Data Capture | 1.5.2 |
+| Change Data Capture | 1.5.3 |
 | Test Intelligence Service | 1.8.1 |
 | NG UI | 1.7.4 |
 | LE NG | 1.1.0 |
@@ -92,14 +90,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.14.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/sto_images.tgz" \
   .
 ```
 
@@ -157,7 +155,7 @@ gsutil -m cp \
 
 - Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout) (PL-43630)
 
-- You can now do customisation of Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. (PL-42139)
+- You can now customize Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. (PL-42139)
 
    To disable Audit View for specific users, administrators can now:
    - Create a role with Audit View permission disabled while enabling all other view permissions.
@@ -211,7 +209,7 @@ gsutil -m cp \
 
    The issue is fixed now.
 
-- Http step with mtls not working due to exception caused during delegate capability check for the step (CDS-87547, ZD-55531)
+- Http step with MTLS not working due to exception caused during delegate capability check for the step (CDS-87547, ZD-55531)
    
    The issue is fixed now.
 
@@ -255,7 +253,7 @@ gsutil -m cp \
 
 - When only one manifest is created in OCT Helm, runtime inputs were not being displayed. (CDS-87941)
 
-   The issue is fixed by updating the condition in code to select default behaviour if only 1 manifest is available.
+   The issue is fixed by updating the condition in code to select default behavior if only 1 manifest is available.
 
 - In the process of creating an input set or overlay input set from YAML view, the isHarnessCodeRepo query parameter was not being sent.(CDS-87956)
 
@@ -335,7 +333,7 @@ gsutil -m cp \
 - The `platform-service` was not publishing the response count metric. (PL-43123)
 
    This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
--->
+
 
 ## February 13, 2024, patch version 0.13.4
 
