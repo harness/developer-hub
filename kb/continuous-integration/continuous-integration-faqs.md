@@ -914,7 +914,7 @@ To do this, you could:
 
 1. Modify the failed step's command to save output to a file, such as `your_command 2>&1 | tee output_file.log`.
 2. After the failed step, add a Run step that reads the file's content and uses your Git provider's API to export the file's contents to a pull request comment.
-3. Configure the subsequent step's [conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to **Always execute this step**.
+3. Configure the subsequent step's [conditional execution settings](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) to **Always execute this step**.
 
 ### Does my pipeline have to have a Build stage to get the build status on the PR?
 
@@ -1716,7 +1716,7 @@ FQN is required for images in private repos.
 
 ### Run a step only run if a certain file, like a .toml configuration file, changes in my repo
 
-To run a step only when a certain file changes, you can configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
+To run a step only when a certain file changes, you can [define conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
 
 Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
 

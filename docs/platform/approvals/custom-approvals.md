@@ -217,7 +217,7 @@ For **Script Input Variables** and **Script Output Variables**, you simply se
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
-* [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Skip Condition Settings](../pipelines/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Apply and Test

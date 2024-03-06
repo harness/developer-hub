@@ -73,7 +73,7 @@ See the following:
 
 * [Add a Stage](/docs/platform/pipelines/add-a-stage.md)
 * [Add a Stage Template Quickstart](/docs/platform/templates/add-a-stage-template.md)
-* [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
 
 ### Step
 
@@ -155,7 +155,7 @@ You can set conditions on when you run Stages and steps. For example, `Execute T
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 
-For more information, go to [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information, go to [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings).
 
 ### Failure strategies
 

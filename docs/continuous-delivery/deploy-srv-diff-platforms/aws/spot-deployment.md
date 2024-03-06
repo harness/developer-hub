@@ -336,7 +336,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
     * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
@@ -379,7 +379,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 6. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
     * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
@@ -468,7 +468,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
     * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)

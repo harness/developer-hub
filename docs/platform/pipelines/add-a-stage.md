@@ -121,7 +121,7 @@ When you run this pipeline, the value you set for `NAME` in the stage settings i
 
 On the **Advanced** tab, you can configure:
 
-* [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
 * [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping strategies - Matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
@@ -144,7 +144,7 @@ Like the standard stages, Custom stages support:
 
 :::info Rollback
 
-Custom stages *don't* support [rollback failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines), but you can use [conditional executions](./w_pipeline-steps-reference/step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
+Custom stages *don't* support [rollback failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines), but you can use [conditional executions](./step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
 
 :::
 

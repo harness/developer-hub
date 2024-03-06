@@ -146,15 +146,15 @@ How and when failure strategies are resolved depends on a number of conditions.
 
 ### Failure strategies take precedence over conditional executions
 
-Harness pipeline stages and steps can include both [conditional executions](../w_pipeline-steps-reference/step-skip-condition-settings.md) and failure strategies.
+Harness pipeline stages and steps can include both [conditional executions](../step-skip-condition-settings.md) and failure strategies.
 
 ![](../static/define-a-failure-strategy-on-stages-and-steps-12.png)
 
 When using these settings together in multiple stages, you must consider how they could interact.
 
-For example, assume you have a pipeline with two stages: **stage 1** and **stage 2**. Assume stage 2's **Conditional Execution** is set to **Execute this step only if prior stage or step failed**, and stage 1's **Failure Strategy** is set to **Rollback Stage on All Errors**. If stage 1 has any error, it is rolled back and it is not considered a failure; therefore, the stage 2's **Conditional Execution** is not executed. In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy** to **Ignore Failure**. Then rollback won't occur and stage 2's **Conditional Execution** executes.
+For example, assume you have a pipeline with two stages: **stage 1** and **stage 2**. Assume stage 2's **Conditional Execution** is set to **Execute this stage only if prior pipeline or stage failed**, and stage 1's **Failure Strategy** is set to **Rollback Stage** on **All Errors**. If stage 1 has any error, it is rolled back and it is not considered a failure; therefore, the stage 2's **Conditional Execution** is not executed. In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy** to **Ignore Failure**. Then the pipeline proceeds (instead of rolling back) when stage 1 fails and stage 2's **Conditional Execution** executes.
 
-If you want to run particular steps when a stage fails, make sure you add those steps to the stage's **Rollback** settings.
+If you want to run particular steps when a stage fails, make sure you add those steps to the stage's **Rollback** failure strategy settings. Typically, you don't want a rollback to continue when there is an error. However, if you want to force a step to run whether or not the rollback fails, include the required step in the stage's **Rollback** settings, configure the required step's conditional execution to **Always**, and then set the preceding step's failure strategy to **Mark as failure** for **All errors**. This ensures the required step runs even if the previous step fails.
 
 ### Stage, step, and step group failure strategy priority
 

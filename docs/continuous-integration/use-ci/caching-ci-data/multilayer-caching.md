@@ -10,12 +10,12 @@ For example, it is a common practice in Ruby builds to add or change gems. In a 
 
 Multilayer caching is an advanced pattern that requires you to be familiar with:
 
-* [CI pipeline creation](../prep-ci-pipeline-components.md).
+* [CI pipeline creation](../prep-ci-pipeline-components.md)
 * **Save Cache** and **Restore Cache** steps:
   * [Save and Restore Cache from S3](./saving-cache.md)
   * [Save and Restore Cache from GCS](./save-cache-in-gcs.md)
-* [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
-* [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), particularly [step conditions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions).
+* [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings)
 
 ## Pattern for multilayer caching in CI pipelines
 
@@ -25,7 +25,7 @@ The general pattern for multilayer caching in CI pipelines is as follows:
   * You need one step for each cache, as identified by a cache key, that you want to attempt to restore.
   * These steps represent a cadence of potential caches to restore. You want your pipeline to check if the first cache exists, and, if it doesn't, then check for the second cache, and so on.
 * All **Restore Cache** steps except the last (`n-1`) must have **Fail if Key Doesn't Exist** and a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) that ignores the failure so that the step failure doesn't cause the entire pipeline to fail.
-* All **Restore Cache** steps after the first (`n+1`) have a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) so they only run if the preceding step failed.
+* All **Restore Cache** steps after the first (`n+1`) have a [conditional execution](/docs/platform/pipelines/step-skip-condition-settings) so they only run if the preceding step failed.
 * Use multiple **Save Cache** steps, which can run in parallel.
   * You need one step for each cache, as identified by a cache key, that you want to save.
   * The **Save Cache** steps don't need failure strategies or conditional execution conditions.
@@ -119,7 +119,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
                        archiveFormat: Tar
    ```
 
-3. On each **Restore Cache** step *except the first*, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that runs the step only if the preceding step failed.
+3. On each **Restore Cache** step *except the first*, add a [conditional execution](/docs/platform/pipelines/step-skip-condition-settings) that runs the step only if the preceding step failed.
 
    Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.L1_Caching.status> == "IGNORE_FAILED"`. For example:
 

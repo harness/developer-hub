@@ -112,7 +112,7 @@ Stages and steps have advanced settings you can use to control the flow of opera
 
 ### Conditional Executions
 
-Use [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
+Use [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
 
 You can specify conditional execution settings for an entire stage and for individual steps. A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings. A step's conditional execution settings overrides the stage's conditional execution settings.
 

@@ -136,7 +136,7 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 

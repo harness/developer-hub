@@ -310,7 +310,7 @@ Here's an example of the step group structure:
 
 ### Conditional executions
 
-Use `when` to define [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) for stages and steps.
+Use `when` to define [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings) for stages and steps.
 
 You must indent `when` to the same depth as either `step.identifier` or `stage.identifier`.
 

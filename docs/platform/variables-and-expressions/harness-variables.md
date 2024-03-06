@@ -321,7 +321,7 @@ You can only use variable expressions in the JEXL conditions that can be resolve
 
 Conditional execution settings are used to determine if the stage _should be run_, and therefore you cannot use variable expressions that can't be resolved until the stage _is run_.
 
-For more information on conditional execution, go to [Stage and Step Conditional Execution Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information on conditional execution, go to [Define conditional executions for steps and stages](/docs/platform/pipelines/step-skip-condition-settings).
 
 ### Variable value size
 

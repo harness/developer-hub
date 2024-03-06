@@ -179,7 +179,7 @@ If you use count, you are overriding the `desiredCount` in the ECS service defin
 All steps include the following **Advanced** settings:
 
 - [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-- [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+- [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings)
 - [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 - [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 - [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)

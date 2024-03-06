@@ -14,7 +14,7 @@
 | Canary Deployments  | [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/manage-deployments/deployment-concepts) |
 |**3. Continuous Delivery** | |
 | Barriers | [Synchronize Parallel Stages and Step Groups ](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/) |
-| Conditional Execution  | [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
+| Conditional Execution  | [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings) |
 | Steps | [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) |
 | Looping Strategies | [Best Practices for Looping Strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies) |
 | Terraform Provider | [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview/)|

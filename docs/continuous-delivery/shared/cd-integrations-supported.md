@@ -643,7 +643,7 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
   - [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
   - [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+  - [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
   - [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
   - [Triggers](/docs/category/triggers)
   - [Input set and overlays](/docs/platform/pipelines/input-sets)

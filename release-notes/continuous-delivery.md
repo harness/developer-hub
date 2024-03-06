@@ -3152,7 +3152,7 @@ The custom table being used should allow access to this table via web services.
 
   The GitOps Fetch Linked Apps step output was not set correctly, leading to a null value for the step. This has been fixed and the step now returns the linked apps correctly.
 
-- The [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) was not using the JEXL expression [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) logic correctly. (CDS-58081)
+- The [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) was not using the JEXL expression [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings) logic correctly. (CDS-58081)
 
   The JEXL condition was not being evaluated and when the expression evaluated to `false` the step would still execute. This is now fixed and the JEXL expression is used correctly.
 
