@@ -5,7 +5,7 @@ sidebar_position: 20
 sidebar_label: SCA scan step reference 
 ---
 
-Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. A built-in step enables you to add scans quickly and with minimal configuration. These steps use scanners that are free to STO users and are ready to run as soon as you add them to your pipeline.
+Add an OWASP Dependency Check and/or OSV scan to detect vulnerabilities in your open-source libraries and packages. A built-in step enables you to add scans quickly and with minimal configuration. These steps use scanners that are free to STO users and are ready to run as soon as you add them to your pipeline.
 
 ![](../static/built-in-scan-steps.png)
 
