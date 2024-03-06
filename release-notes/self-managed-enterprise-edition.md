@@ -4423,7 +4423,7 @@ gsutil -m cp \
 
 - Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
 
-#### July 12, 2023, patch release for version 79421
+#### July 12, 2023, patch version 0.7.2
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -4475,7 +4475,7 @@ This release does not include any early access features.
 
   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. Custom dashboards are available if enabled.
 
-#### July 7, 2023, patch release for version 79421
+#### July 7, 2023, patch version 0.7.1
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5632,7 +5632,7 @@ This release includes the following Harness module and component versions.
 
   This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
 
-#### May 30, 2023, patch release for version 78926
+#### May 30, 2023, patch version 0.5.5
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5682,7 +5682,7 @@ This release includes the following Harness module and component versions.
         tolerations: []
   ```
 
-#### May 12, 2023, patch release for version 78926
+#### May 12, 2023, patch version 0.5.4
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5709,7 +5709,7 @@ This release includes the following Harness module and component versions.
 
 - The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
 
-#### April 26, 2023, version 78926
+#### April 26, 2023, version 0.5.0
 
 This release includes the following Harness module and component versions.
 
