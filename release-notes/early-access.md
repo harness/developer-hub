@@ -298,7 +298,7 @@ The following early access (beta) features are available for the Harness Securit
 
 ### Built-in scanners
 
-* **Release date:** February 2024
+* **Release date:** March 2024
 * **Issue number:** STO-6738
 * **Feature flags:** `STO_ONE_CLICK_SAST`, `STO_ONE_CLICK`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)

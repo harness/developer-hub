@@ -13,11 +13,11 @@ Use this step to add a Semgrep scan to detect vulnerabilities in your code repos
 
 - This step is currently behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
-- Currently only [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference) scans are available for this step. 
+- Currently only [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) scans are available for this step. 
 
 - You don't need a Semgrep access token to run this step.
 
-- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference#target-and-variant-detection) automatically.
+- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection) automatically.
 
 - All other settings such as **Log level** and **Fail on Severity** are set to their defaults.
 

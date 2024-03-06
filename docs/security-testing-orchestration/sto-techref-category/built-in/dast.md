@@ -13,11 +13,11 @@ Use this step to add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in 
 
 - This step is currently behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
-- Currently only [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) scans are available for this step. 
+- Currently only [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference) scans are available for this step. 
 
-- You must specify the [application domain](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#domain) that you want to scan before you can add the step.
+- You must specify the [application domain](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#domain) that you want to scan before you can add the step.
 
-- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#target-and-variant-detectionn) automatically.
+- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detectionn) automatically.
 
 - All other settings such as **Log Level** and **Fail on Severity** are set to their defaults. 
 

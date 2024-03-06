@@ -13,11 +13,11 @@ Use this step to add an Aqua Trivy or Anchor Grype scan to detect vulnerabilitie
 
 - This step is currently behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
-- Currently [Aqua Trify](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) or [Anchor Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scans are available for this step.
+- Currently [Aqua Trify](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) or [Anchor Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scans are available for this step.
 
 - If you choose to add both scanners, you might see the same vulnerability listed twice — detected once by Trivy and again by Grype — in your scan results.
  
-- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#detect-target-and-variant) automatically.
+- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant) automatically.
 
 - All other settings such as **Log level** and **Fail on Severity** are set to their defaults. 
 
