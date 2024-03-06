@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 
 In this tutorial, you'll create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two popular open-source tools:
 
-- [Bandit](https://bandit.readthedocs.io/en/latest), for scanning Python code.
+- [Bandit](https://bandit.readthedocs.io/en/latest), for scanning Python repositories.
 
 - [Aqua Trivy](https://www.aquasec.com/products/trivy/), for scanning container images.
 
@@ -50,10 +50,7 @@ The following steps describe the workflow:
 
     - A GitHub account and access token.
     - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`).
-    - Your GitHub account should include a repository with Python code. The repo should also include a Dockerfile for creating an image.
-
-      This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
-
+    - This tutorial uses the [dvpwa repository](https://github.com/GitHubGoneMad/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
   - Docker requirements:
     - A Docker Hub account and access token.
     - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image.
@@ -63,17 +60,17 @@ The following steps describe the workflow:
 
 ## Set up your codebase
 
-This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
+This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/GitHubGoneMad/dvpwa">https://github.com/GitHubGoneMad/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
 
-1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/williamwissemann/dvpwa.
+1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/GitHubGoneMad/dvpwa.
 
 2. If you don't have a GitHub connector, do the following:
 
-   1. In your Harness project, select **Project Setup** > **Connectors**.
+   1. In your Harness project, select **Project Settings** > **Project-level resuorces** > **Connectors**.
    2. Select **New Connector**, then select **Code Repositories** > **GitHub**.
    3. Set the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) as appropriate.
       - Use **Account** for the [URL type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#url-type).
-      - This tutorial uses Harness Cloud, so select **Connect through Harness Platform** when prompted for the connectivity mode.
+      - This tutorial uses [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) for its build infrastructure, so select **Connect through Harness Platform** when prompted for the connectivity mode.
 
 ## Set up your pipeline
 
@@ -81,16 +78,19 @@ Do the following:
 
 1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**.
 
+   <DocImage path={require('./static/create-new-sto-pipeline.png')} width="60%" height="60%" />
+
 2. In the new pipeline, select **Add stage** > **Build**.
 
 3. Set up your stage as follows:
 
-   1. Enter a **Stage Name**.
+   1. Stage Name = **build_scan_push_with_ci**
 
    2. Select **Third-party Git provider** and then select your GitHub connector.
 
-   3. For **Repository Name**, click the type selector ("tack" button on the right) and then select **Runtime Expression**.
+   3. Repository Name = **dvpwa**.
 
+<!-- 
 5. Expand **Overview** > **Advanced** and add the following stage variables.
 
    You'll be specifying runtime inputs for some of these variables. This enables you to specify the code repo, branch, image label, and image tag, and other variables at runtime.
@@ -107,6 +107,8 @@ Do the following:
 
    - `DOCKER_IMAGE_TAG` — Select **String** and **Runtime Input**.
 
+-->
+
 6. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
@@ -117,7 +119,7 @@ The following step is required for Kubernetes or Docker infrastructures only. If
 
 :::
 
-### Add a Docker-in-Docker background step
+#### Add a Docker-in-Docker background step
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
@@ -130,17 +132,19 @@ import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-
 <Tabs>
 <TabItem value="Visual" label="Visual" default>
 
-1. In the Pipeline Studio, go to **Execution** and add a **Bandit** step to your pipeline.
+1. In the Pipeline Studio, go to **Execution**. 
+
+2. Add a **Bandit** step (under **Security Tests** in the Step Library).
 
 2. Configure the step as follows:
 
    1. Scan Mode = **Orchestration**
 
-   2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Expression**. Then enter the following expression: `<+stage.variables.GITHUB_REPO>`
+   2. Target name = **dvpwa**
 
-   3. Target variant — Select **Expression** as the value type and enter the following: `<+stage.variables.GITHUB_BRANCH>`
+   3. Target variant = **master**
 
-      When scanning a code repo, you generally want to specify the repo name and branch for the target.
+      When scanning a code repo, you generally want to specify the repo name and the branch for the target.
 
 :::info
 
@@ -158,10 +162,10 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
   - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
     - `target : `
-      - `name : <+stage.variables.GITHUB_REPO>`
+      - `name : dvpwa`
       - `type : repository`
-      - `variant : <+stage.variables.GITHUB_BRANCH>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline.
-        When scanning a repository, you will generally use the repository name and branch for these fields.
+      - `variant : master` 
+         When scanning a repository, you will generally use the repository name and branch for these fields.
     - `advanced : `
       - `log :`
         - `level : info`
@@ -203,11 +207,8 @@ At this point, you might want to run a scan and view the detected issues.
 2. In Run Pipeline, enter the repository and target settings you want to use. If you're using the [dvpwa repository](https://github.com/williamwissemann/dvpwa), enter the following:
 
    1. Under Codebase:
-      - Repository name : **dvpwa**
-      - Branch name : **master**
-   2. Under Stage:
-      - Target name : **dvpwa** (= the repo name)
-      - Target variant : **master** (= the branch name)
+      - Build type : **Git Branch**
+      - Branch name : **main**
 
 3. Run the pipeline. When the execution finishes, select [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) to view the scan results.
 
@@ -220,7 +221,7 @@ You'll now add one of these steps to build and push to your Docker Hub account.
 <Tabs>
 <TabItem value="Visual" label="Visual" default>
 
-1. Add a **Build and Push to Docker Registry** step after the Bandit step.
+1. Select **Edit Pipeline** (top right). Then add a **Build and Push an image to Docker Registry** step after the Bandit step.
 
 2. Configure the step as follows:
 
@@ -228,13 +229,9 @@ You'll now add one of these steps to build and push to your Docker Hub account.
 
    2. Docker Connector — Select your Docker Hub connector.
 
-   3. Docker Repository — Select **Expression** for the value type, then enter the following:
+   3. Docker Repository — **_YOUR_DOCKER_HUB_USERNAME_/dvpwa** (for example, **jsmith/dvpwa**).
 
-      `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
-
-   4. Tags— Select **Expression** for the value type, then enter the following:
-
-      `<+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
+   4. Tags — **scantest-DONOTUSE**
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -245,10 +242,10 @@ Add a **Build and Push to Docker Registry** step after the Bandit step and confi
 - `name: build_push_test_image`
 - `identifier:` A unique step ID.
 - `spec :`
-  - `connectorRef : YOUR_DOCKERHUB_CONNECTOR`
-  - `repo : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
+  - `connectorRef : YOUR_DOCKERHUB_CONNECTOR_ID`
+  - `repo : YOUR_DOCKERHUB_USERNAME/dvpwa`
   - `type : container`
-  - `variant : <+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
+  - `variant : scantest-DONOTUSE`
 
 Here's an example:
 
@@ -258,10 +255,10 @@ Here's an example:
     name: build_push_test_image
     identifier: build_push_test_image
     spec:
-    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-    repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+    connectorRef: YOUR_DOCKERHUB_CONNECTOR_ID
+    repo: jsmith/dvpwa
     tags:
-      - <+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE
+      - scantest-DONOTUSE
 ```
 
 </TabItem>
@@ -276,17 +273,17 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 
 1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
 
-2.  Target name — Click the "tack" button on the right side of the input field and select **Expression**. Then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
+2.  Target name = **_YOUR_DOCKER_HUB_USERNAME_/dvpwa** (for example, **jsmith/dvpwa**)
 
-3.  Target variant — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
+3.  Target variant = **scantest-DONOTUSE**
 
 4.  [Container image Type](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) = **V2**
 
 5.  [Domain](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#domain) = `docker.io`
 
-6.  Container image name — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
+6.  Container image name = **_YOUR_DOCKER_HUB_USERNAME_/dvpwa** (for example, **jsmith/dvpwa**)
 
-7.  Container image tag — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>`
+7.  Container image tag = **scantest-DONOTUSE**
 
 8.  [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
@@ -302,9 +299,9 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
   - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
   - `target : `
-    - `name : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
+    - `name : YOUR_DOCKER_HUB_USERNAME/dvpwa`
     - `type : container`
-    - `variant : <+stage.variables.DOCKER_IMAGE_TAG>` When scanning an image, you generally use the image label and tag for the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) .
+    - `variant : scantest-DONOTUSE` When scanning an image, you generally use the image label and tag for the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) .
     - `advanced : `
       - `log :`
         - `level : info`
@@ -312,10 +309,9 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
     - `privileged: true`
     - `image:`
       - [`type`](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) `: docker_v2`
-      - `name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
-      - `access_token: <+secrets.getValue("YOUR_DOCKERHUB_ACCESS_TOKEN")`
+      - `name: YOUR_DOCKER_HUB_USERNAME/dvpwa`
       - `domain: docker.io`
-      - `tag: <+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
+      - `tag: scantest-DONOTUSE`
 
 Here's an example:
 
@@ -328,19 +324,18 @@ Here's an example:
       mode: orchestration
       config: default
       target:
-        name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+        name: jsmith/dvpwa
         type: container
-        variant: <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
+        variant: scantest-DONOTUSE
       advanced:
         log:
           level: info
       privileged: true
       image:
         type: docker_v2
-        name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+        name: jsmith/dvpwa
         domain: docker.io
-        access_token: <+secrets.getValue("YOUR_DOCKERHUB_ACCESS_TOKEN")
-        tag: <+stage.variables.DOCKER_IMAGE_TAG><+sequenceID>-scantest-DONOTUSE
+        tag: scantest-DONOTUSE
       sbom:
         format: spdx-json
 ```
@@ -352,33 +347,28 @@ Here's an example:
 
 This is a good time to run your pipeline and verify that it can scan the image.
 
-1. Click **Run** and set the GitHub and Docker variables.
+1. Click **Run** and specify **main** for the branch name for the codebase.
 
-   If you forked the [dvpwa repository](https://github.com/williamwissemann/dvpwa) repo into your GitHub account and want to use that, set the fields like this:
 
-   - `GITHUB_REPO` = **dvpwa**
-   - `GITHUB_BRANCH`= **master**
-   - `DOCKER_IMAGE_LABEL` = **dvpwa**
-   - `DOCKER_IMAGE_TAG` = **1.**
-
-   With this setup, you'll build and push an image with a tag that looks like this: `1.x-scantest-DONOTUSE`
+   With this setup, you'll build and push an image with a `scantest-DONOTUSE` tag. 
 
    :::tip
 
-   [Input sets](/docs/platform/pipelines/input-sets/) enable you to reuse a single pipeline for multiple scenarios. You can define each scenario in an input set and then select the relevant input set at runtime. To save these inputs, click **Save as New Input Set**.
+   [Input sets](/docs/platform/pipelines/input-sets/) enable you to reuse a single pipeline for multiple scenarios. You can define each scenario in an input set and then select the relevant input set at runtime. To save your runtime inputs, click **Save as New Input Set**.
 
    :::
 
 2. Click **Run Pipeline** and view the results in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
 
 ## Build and push the prod image
+ 
 
 Assuming that the Trivy scan detected no critical vulnerabilities, you can now build and push a prod version of your image to Docker Hub. This step is identical to the previous [test image step](#build-and-push-a-test-image), except for the image tag: the test image tag is `1.x-scantest-DONOTUSE` and the prod image tag is `1.x`.
 
 <Tabs>
 <TabItem value="Visual" label="Visual" default>
 
-1. Add a **Build and Push to Docker Registry** step after the Semgrep ingest step.
+1. Add a **Build and Push to Docker Registry** step after the Trivy ingest step.
 
 2. Configure the step as follows:
 
