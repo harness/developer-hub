@@ -253,6 +253,12 @@ In the example provided for this step we have used pipeline variables as input f
 
 :::
 
+:::info
+
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository getting created in this step. 
+
+:::
+
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
