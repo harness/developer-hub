@@ -73,6 +73,22 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Harness version 1.28.xx, Harness Delegate version 24.02.82500 <!--  February 27, 2024 -->
 
+#### New features and enhancements
+
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. (PL-47746)
+
+   - Use CPU_USAGE_THRESHOLD for CPU control (default: no limit)
+
+   - Use MEMORY_USAGE_THRESHOLD for memory control (default: 80%)
+
+   If you are using RESOURCE_USAGE_THRESHOLD (deprecated), it exclusively controls the memory threshold.
+
+
+
+#### Fixed issues
+
+
+
 ### Version 24.02.82406 <!--  March 1, 2024 -->
 
 #### Hotfix
