@@ -19,7 +19,7 @@ You can use Harness Policy as Code to enforce policies such as:
 
 - A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
-### Important notes
+## Important notes
 
 - To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
 
@@ -32,14 +32,14 @@ You can use Harness Policy as Code to enforce policies such as:
   - [Severity scores and levels in STO](/docs/security-testing-orchestration/get-started/key-concepts/severities)
 
 
-### Security Test policy samples
+## Security Test policy samples
 
 import SecurityTestsPolicySamples from '/docs/security-testing-orchestration/use-sto/shared/security-tests-policy-samples.md';
 
 <SecurityTestsPolicySamples />
 
 
-### Workflow description
+## Workflow description
 
 The following steps describes the end-to-end workflow:
 
@@ -50,7 +50,7 @@ The following steps describes the end-to-end workflow:
 3. [Enforce the policy set](#enforce-the-policy-in-your-scan-step) in your scan step.
 
 
-#### Create a new Security Tests OPA policy
+### Create a new Security Tests OPA policy
 
 1. You can create policies at the account or the project scope. Go to your account or project, then select **Security and Governance** > **Policies**.
 
@@ -95,7 +95,7 @@ The following steps describes the end-to-end workflow:
 7. Once you're satisfied that the policy works as intended, save it.
 
 
-#### Create a policy set
+### Create a policy set
 
 A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-set) is a collection of one or more policies. You combine policies into a set and then include it in a scan step. 
 
@@ -132,7 +132,7 @@ A [policy set](/docs/platform/governance/policy-as-code/harness-governance-overv
       <DocImage path={require('./static/opa-10-enable-enforced.png')} width="50%" height="50%" title="Select policy sample" />
 
 
-#### Enforce the policy in your scan step
+### Enforce the policy in your scan step
 
 Now you can set up your scan step to stop builds automatically when the policy gets violated. 
 
@@ -145,7 +145,7 @@ Now you can set up your scan step to stop builds automatically when the policy g
    <DocImage path={require('./static/opa-11-add-policy-set-to-scan-step.png')} width="50%" height="50%" title="Select policy sample" />
 
 
-#### Set up email notifications for pipeline failures
+### Set up email notifications for pipeline failures
 
 You have a Policy that fails the pipeline based on an OPA policy. Now you can configure the stage to send an email notification automatically whenever the pipeline fails. 
 
@@ -162,7 +162,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 
-<!--
+
 
 ## YAML pipeline example
 
@@ -295,4 +295,3 @@ pipeline:
       enabled: true
 
 ```
--->
