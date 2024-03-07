@@ -30,12 +30,10 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 7. Optionally, enter a description of the rule.
 8. Select **Apply**.
 9. Enter the YAML policy in the rule editor.
-10. Select **Save**. 
-
-  If the policy is invalid, an error message is displayed.
-10. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
-11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
-12. After evaluating the output, select **Run Once** to execute the rule. 
+10. Select **Save**. If the policy is invalid, an error message is displayed.
+11. Select the **Account/ Subscription/ Projec**t and the **Region** (Region field isn't applicable in case of GCP) from the dropdown list in the Test Terminal.
+12. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
+13. After evaluating the output, select **Run Once** to execute the rule. 
 
   <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -83,7 +81,7 @@ To create enforcement, perform the following steps:
 7. Select the cloud provider.
 8. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 9. Select **Continue**. 
-10. Select the target accounts and target regions. You could select multiple accounts and regions.
+10. Select the target accounts/subscriptions/projects and target region (Region field isn't applicable in case of GCP). You could select multiple accounts and regions.
 11. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
 13. Select **Finish**. 
