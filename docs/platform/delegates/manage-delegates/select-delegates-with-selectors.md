@@ -134,10 +134,6 @@ Delegate selectors in pipeline, stage, step, and step group can be defined as a 
 
 If you're using expressions, there are two options, either the entire list of delegate selectors can be an expression or elements of delegate selectors can be expressions.
 
-Here's a video about delegate selectors defined as expression:
-
-<DocVideo src="https://harness-24.wistia.com/medias/8ffcic0xpi" />
-
 ### See also
 
 - [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
