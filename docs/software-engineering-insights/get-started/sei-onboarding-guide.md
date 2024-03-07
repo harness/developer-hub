@@ -179,11 +179,11 @@ There is no limitation on the number of projects that you can create in an accou
 
 </details>
 
-## Phase 2: Single Sign-On (Automate onboarding of users from external sources​)
+## Phase 2: Single Sign-On (Automate onboarding of users from external sources)
 
 You can automate the onboarding of users from external sources along with their user group memberships & role assignments.
 
-Harness supports **Single Sign-On (SSO)** with **SAML**, **LDAP (including Active Directory and OpenLDAP)** and **OAuth** integrating with your SSO provider to enable you to log your users into Harness as part of your SSO infrastructure.
+Harness supports **Single Sign-On (SSO)** with **SAML**, **LDAP (including Active Directory and OpenLDAP)**, and **OAuth** integrating with your SSO provider to enable you to log your users into Harness as part of your SSO infrastructure.
 
 
 * [Authentication overview](/docs/platform/authentication/authentication-overview)
@@ -196,7 +196,7 @@ Harness supports **Single Sign-On (SSO)** with **SAML**, **LDAP (including Activ
 * [Provision users and groups with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
 * [Just-in-time user provisioning](/docs/platform/role-based-access-control/provision-use-jit)
 
-### API​
+### API
 
 Use the [API quickstart](/docs/platform/automation/api/api-quickstart) to get started.
 
