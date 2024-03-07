@@ -40,3 +40,31 @@ probe:
       attempt: 0
     mode: SOT
 ```
+
+# Limitations for Windows Chaos Infrastructure
+
+Here are some of the Limitations with Windows Chaos Infrastructure.
+
+## Integration with Pipeline:
+
+The Harness Chaos Engineering platform provides native integration for chaos experiments with the CD module. Support for integrating Windows chaos experiments with Harness CD pipelines is yet to be added.
+
+## Game Day Support:
+
+Harness Chaos Engineering currently offers Game Day support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, Game Day support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive Game Day exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
+
+## Inclusion in Chaos Guard Policies:
+
+Chaos Guard is a feature within Harness Chaos Engineering that enhances the security and control of chaos experiments. It allows for the creation of policies that define who can execute which experiments, when, and from which Chaos Hub, based on customized security standards. Currently, Windows chaos experiments are not supported in Chaos Guard policies, but this integration is anticipated in future releases. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
+
+## Scheduled or Cron Experiments:
+
+At present, Windows chaos experiments do not support scheduled executions, meaning that experiments cannot be set to run automatically at specified intervals. The introduction of scheduled or cron-based runs for Windows chaos experiments is under consideration for future updates. This feature will enable users to automate their chaos experiments, allowing for more consistent and efficient testing of system resilience over time.
+
+## Support for Windows Server 32-bit:
+
+The Windows chaos infrastructure tool is currently compatible only with 64-bit versions of Windows. There are plans to extend support to 32-bit Windows Server editions in upcoming releases.
+
+## Auto Upgrade Support:
+
+The Windows chaos infrastructure currently lacks support for auto-upgrades. This means that for every upgrade, the user must manually perform the upgrade process. This involves first uninstalling the current infrastructure using the provided uninstallation script and then reinstalling it with the desired version of the infrastructure.
