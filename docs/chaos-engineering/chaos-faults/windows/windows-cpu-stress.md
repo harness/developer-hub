@@ -10,12 +10,13 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
 
 ## Use cases
 
-- Windows CPU stress determines the resilience of an application when stress is applied on the CPU resources of Windows virtual machine.
+- Windows CPU stress determines the resilience of an application when stress is applied on the CPU resources of Windows VM.
 - Windows CPU stress simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
 - It helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
 - It verifies the autopilot functionality of cloud managed clusters.
 
-* Ensure that the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) are fulfilled before executing the experiment.
+## Prerequisites
+- Ensure that the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
 
 ### Mandatory tunables
 
@@ -28,12 +29,12 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores subject to CPU stress. </td>
-        <td> <code>CPU_CORES</code> and <code>CPU_PERCENTAGE</code> are mututally exclusive, and if values for both there tunables are provided, the latter takes precedence. For example,  if <code>CPU_CORES</code> is 1 and <code>CPU_PERCENTAGE</code> is 0, one of the cores are stressed. </td>
+        <td> <code>CPU_CORES</code> and <code>CPU_PERCENTAGE</code> are mututally exclusive, and if values for both there tunables are provided, the latter takes precedence. For example,  if <code>CPU_CORES</code> is 1 and <code>CPU_PERCENTAGE</code> is 0, one of the cores are stressed. For more information, go to <a href="#cpu-cores">CPU cores</a>.</td>
       </tr>
       <tr>
           <td> CPU_PERCENTAGE </td>
           <td> Percentage of CPU core that is consumed.</td>
-          <td> <code>CPU_CORES</code> and <code>CPU_PERCENTAGE</code> are mututally exclusive, and if values for both there tunables are provided, the latter takes precedence. For example, if <code>CPU_CORES</code> is 1 and <code>CPU_PERCENTAGE</code> is 50, 50 percent of the resources are stressed. </td>
+          <td> <code>CPU_CORES</code> and <code>CPU_PERCENTAGE</code> are mututally exclusive, and if values for both there tunables are provided, the latter takes precedence. For example, if <code>CPU_CORES</code> is 1 and <code>CPU_PERCENTAGE</code> is 50, 50 percent of the resources are stressed. For more information, go to <a href="#cpu-percentage">CPU percentage</a>.</td>
       </tr>
      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -60,51 +61,57 @@ Windows CPU stress applies stress on the CPU resources of Windows OS VM.
 ### CPU cores
 The `CPU_CORE` environment variable applies stress on the target Windows VM for a specific duration. If the variable is set to `0`, the fault consumes all the available CPU resources.
 
-Use the following example to specify CPU cores:
+Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-windows-cpu-hog/vm-cpu-hog-core.yaml yaml)
+[embedmd]:# (./static/manifests/windows-cpu-stress/win-cpu-stress-core.yaml yaml)
 ```yaml
-# CPU hog in the VMware VM
+# CPU hog in the Windows VM
 apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
+kind: MachineChaosExperiment
 metadata:
-  name: engine-nginx
+  infraType: "windows"
 spec:
   engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-cpu-stress
-    spec:
-      components:
-        env:
-       # CPU cores for stress
-        - name: CPU_CORES 
-          value: '1'
+  steps:
+    - - name: windows-cpu-stress
+  tasks:
+    - name: windows-cpu-stress
+      infraId: ""
+      definition:
+        chaos:
+          fault: windows-cpu-stress
+          env:
+           # CPU cores for stress
+            - name: CPU_CORES 
+              value: '1'
 ```
 
 ### CPU percentage
 The `CPU_PERCENTAGE` environment variable specifies the percentage of stress applied on the target Windows VM for a specific duration. If the variable is set to `0`, the fault consumes all the available CPU cores.
 
-Use the following example to specify CPU percentage:
+Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-windows-cpu-hog/vm-cpu-hog-core.yaml yaml)
+[embedmd]:# (./static/manifests/windows-cpu-stress/win-cpu-stress-perc.yaml yaml)
 ```yaml
-# CPU hog in the VMware VM
+# CPU hog in the Windows VM
 apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
+kind: MachineChaosExperiment
 metadata:
-  name: engine-nginx
+  name: windows-cpu-stress
 spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-cpu-stress
-    spec:
-      components:
-        env:
-       # CPU cores for stress
-        - name: CPU_PERCENTAGE 
-          value: '50'
+  infraType: "windows"
+  steps:
+    - - name: windows-cpu-stress
+  tasks:
+    - name: windows-cpu-stress
+      infraId: ""
+      definition:
+        chaos:
+          fault: windows-cpu-stress
+          env:
+           # CPU cores for stress
+            - name: CPU_PERCENTAGE 
+              value: '50'
 ```
 
 :::info note
