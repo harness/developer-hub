@@ -422,11 +422,15 @@ When creating a CI pipeline where both stage and step uses looping strategy and 
 
 You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
 
-When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run the a pipeline with a `parallelism` strategy, and then run the same pipeline with a `matrix` strategy, simply by providing different runtime input.
+When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run s pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
-The following video demonstrates how to configure and use runtime input for looping strategies.
+To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy, select the **Thumbtack** icon and change the input type to **Runtime Input**.
 
-<DocVideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
+![Selecting runtime input for the looping strategy.](./static/looping-runtime-input.png)
+
+When you run the pipeline, you'll be prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
+
+Due to the potential complexity of looping strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
 
 ## Looping strategy expressions
 
