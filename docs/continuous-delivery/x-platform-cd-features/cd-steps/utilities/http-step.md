@@ -211,15 +211,15 @@ Using `<<<and>>>` in HTTP requests might result in bad requests on the server si
 Capability checks are basic accessibility checks and do not follow multiple redirects. Hence, Harness returns from the first `302 Found` response during capability checks. 
 
 :::info
-You can enable **Ignore status code for HTTP connections**, when enabled Harness only requires a valid response from the target HTTP server and does not verify the response code. This is particularly useful when the Harness delegate is configured with a proxy, as socket connection tests conducted by Harness from the delegate do not account for proxy details.
+You can enable **Ignore status code for HTTP connections**. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is particularly useful when the Harness Delegate is configured with a proxy because socket connection tests conducted by Harness from the delegate do not account for proxy details.
 This setting is only relevant for HTTP steps and HTTP Helm repositories.
-You can enable the setting by following below steps:-
-1. This setting can be enabled by navigating to **Project Settings**. 
+You can enable the setting by using the steps below:
+1. Enable the setting by navigating to **Project Settings**. 
 2. Select **Default Settings** under **General**.
 3. Under **Continuous Deployment**, you can set **Ignore status code for HTTP connections** as **true**.
 ![](./static/Ignore%20status%20code%20for%20HTTP%20connections.png)
 
-This setting can be enbaled using feature flag ``CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG``.
+This setting is behind the feature flag, ``CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG``. To enable this feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 :::
 
 

@@ -233,7 +233,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG</td>
-        <td> When enabled Harness only requires a valid response from the target HTTP server and does not verify the response code. </td>
+        <td> When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. </td>
     </tr>
 
 </table>
