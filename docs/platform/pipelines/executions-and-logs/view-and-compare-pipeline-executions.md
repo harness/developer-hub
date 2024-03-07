@@ -1,7 +1,7 @@
 ---
 title: View and compare pipeline executions
 description: View and compare the YAML used for pipeline executions.
-sidebar_position: 9
+sidebar_position: 1
 helpdocs_topic_id: n39cwsfvmj
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

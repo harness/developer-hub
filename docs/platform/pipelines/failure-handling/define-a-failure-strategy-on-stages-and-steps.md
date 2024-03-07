@@ -1,7 +1,7 @@
 ---
 title: Define failure strategies for stages and steps
 description: A failure strategy defines how your stages and steps handle different failure conditions.
-sidebar_position: 11
+sidebar_position: 1
 helpdocs_topic_id: 0zvnn5s1ph
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

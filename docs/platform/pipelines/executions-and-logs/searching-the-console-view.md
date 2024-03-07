@@ -1,7 +1,7 @@
 ---
 title: Search the console view
 description: When viewing execution details, you can search logs in the console view.
-sidebar_position: 10
+sidebar_position: 2
 helpdocs_topic_id: gnht939ijo
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

@@ -23,7 +23,7 @@ This topic provides settings and permissions for the Docker connector. You can u
 ## Create a Docker connector
 
 <Tabs>
-<TabItem value="Visual" label="Visual editor" default>
+  <TabItem value="Visual" label="Visual editor" default>
 
 1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to create the connector.
 2. Select **Connectors**, select **New Connector**, and then select the **Docker Registry** connector.
@@ -32,7 +32,7 @@ This topic provides settings and permissions for the Docker connector. You can u
 5. In the list of connectors, make a note of your Docker connector's ID. When you need to reference this connector, use this ID in your pipeline YAML, such as `connectorRef: docker_connector_ID`.
 
 </TabItem>
-<TabItem value="YAML" label="YAML editor">
+  <TabItem value="YAML" label="YAML editor">
 
 You can create Docker connectors in the YAML editor. For example:
 
@@ -80,9 +80,6 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
 ## Authentication
 
 You can authenticate anonymously or by username and password.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="unpw" label="Username and password" default>

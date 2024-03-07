@@ -1,7 +1,7 @@
 ---
 title: Mark stage as failed
 description: Mark a stage as failed during execution.
-sidebar_position: 9
+sidebar_position: 5
 redirect_from:
   - /docs/platform/pipelines/mark-as-failed
 ---

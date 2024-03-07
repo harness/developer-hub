@@ -1,7 +1,7 @@
 ---
 title: Define conditional executions for stages and steps
 description: You can define conditional execution settings for stages and steps.
-sidebar_position: 18
+sidebar_position: 17
 helpdocs_topic_id: i36ibenkq2
 helpdocs_category_id: lussbhnyjt
 helpdocs_is_private: false

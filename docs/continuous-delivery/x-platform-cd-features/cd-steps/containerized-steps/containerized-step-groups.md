@@ -214,7 +214,7 @@ Started container lite-engine
 
 ## Harness Docker connector for all group steps
 
-In each step in a containerized step group, you must provide a [Harness connector](docs/category/connectors) to a Docker container registry and an image for the container step to run.
+In each step in a containerized step group, you must provide a [Harness connector](/docs/category/connectors) to a Docker container registry and an image for the container step to run.
 
 You can create connectors in-line while adding steps or separately outside of the pipeline creation process. Images are specified at the step level.
 

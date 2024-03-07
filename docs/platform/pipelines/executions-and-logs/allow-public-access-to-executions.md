@@ -2,7 +2,7 @@
 title: Allow public access to pipeline executions
 description: Learn how to allow public access to pipeline executions.
 sidebar_label: Allow public access to executions
-sidebar_position: 14
+sidebar_position: 4
 redirect_from:
   - /docs/platform/pipelines/allow-public-access-to-executions
 ---

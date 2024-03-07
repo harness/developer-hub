@@ -1,7 +1,7 @@
 ---
 title: Rollback pipelines
 description: Rollback pipelines to handle different failure conditions.
-sidebar_position: 12
+sidebar_position: 2
 redirect_from:
   - /docs/platform/pipelines/define-a-failure-strategy-for-pipelines
 ---

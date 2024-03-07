@@ -1,7 +1,7 @@
 ---
 title: Abort a pipeline, stage, or step
 description: Abort pipeline, stage, or step execution
-sidebar_position: 13
+sidebar_position: 6
 redirect_from:
   - /docs/platform/pipelines/abort-pipeline
 ---

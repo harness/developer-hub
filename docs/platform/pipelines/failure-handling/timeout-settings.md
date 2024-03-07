@@ -1,7 +1,7 @@
 ---
 title: Timeout settings
 description: Configure timeouts for steps, stages, and pipelines
-sidebar_position: 12
+sidebar_position: 10
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/timeout-settings
 ---

@@ -1,7 +1,7 @@
 ---
 title: Pipeline settings
 description: This topic describes centralized pipeline settings.
-sidebar_position: 3
+sidebar_position: 30
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings
   - /docs/category/pipeline-and-steps-reference

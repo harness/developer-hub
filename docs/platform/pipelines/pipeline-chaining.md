@@ -1,7 +1,7 @@
 ---
 title: Pipeline chaining in Harness
 description: Chain your pipelines in Harness to create complex workflows.
-sidebar_position: 12
+sidebar_position: 21
 ---
 
 Pipeline chaining involves using the output of one pipeline as input for another. You can link multiple processing steps together and execute them sequentially, creating a more complex workflow.

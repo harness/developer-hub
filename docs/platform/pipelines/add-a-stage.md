@@ -1,7 +1,7 @@
 ---
 title: Add a stage
 description: Learn how to add and configure a pipeline stage.
-sidebar_position: 3
+sidebar_position: 10
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

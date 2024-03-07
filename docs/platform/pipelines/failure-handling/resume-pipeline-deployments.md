@@ -1,7 +1,7 @@
 ---
 title: Retry failed executions from any stage
 description: Describes how to resume pipeline deployments that fail during execution.
-sidebar_position: 10
+sidebar_position: 7
 helpdocs_topic_id: z5n5llv35m
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
