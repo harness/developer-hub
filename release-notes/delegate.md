@@ -83,11 +83,15 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    If you are using RESOURCE_USAGE_THRESHOLD (deprecated), it exclusively controls the memory threshold.
 
-
-
 #### Fixed issues
 
+- Attempts to use the `harness_platform_user` resource to create or delete users results in an error. The message "Request failed as you have an older version of entity, please reload the page and try again" is displayed and the Terraform state goes out of sync with Harness. (PL-39870, ZD-47107)
 
+   This issue has been fixed.
+
+- Continuous Verification for Google Cloud Operations logged error for the `resourceName` field. (CDS-89441)
+  
+   This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list).
 
 ### Version 24.02.82406 <!--  March 1, 2024 -->
 
