@@ -34,7 +34,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.9.0
 
- - We've updated Javascript Client SDK. (FFM-10875)
+ - We've updated the internal Javascript Client SDK to v1.25.0 to unlock the ability to change the mechanism used for caching flags. (FFM-10875)
 
 ## February 2024
 
