@@ -17,7 +17,7 @@ Instructor Led Training for Harness Continuous Delivery & GitOps is designed to 
 :::info
 
 Instructor Led Training can be delivered in a shared virtual, dedicated virtual, or dedicated on-site fashion. Please reach out to [university@harness.io](mailto:univerity@harness.io)
-for the availability to schedule a dedicated sessions. 
+for the availability to schedule a dedicated session. 
 
 :::
 
