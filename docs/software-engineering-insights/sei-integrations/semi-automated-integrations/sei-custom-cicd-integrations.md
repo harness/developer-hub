@@ -5,15 +5,16 @@ sidebar_position: 1
 sidebar_label: Custom CI/CD integrations
 ---
 
-SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration, such as Jenkins and GitHub Actions.
+SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration, such as Jenkins and Circle CI.
 
 Configure the webhook API call according to the following webhook specifications.
 
 ## Webhook specification
 
 * **Method:** `POST`
-* **Base URL:** `https://app.harness.io/gateway/sei/api/v1/custom-cicd`
-* **Header:** Requires Bearer token key authorization. The content type is ```application/json```
+* **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
+* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
+* **Header:** Requires Harness SEI API Key authorization. The content type is ```application/json```
 * **Body:** Contains a data object with ```request_type``` and ```payload```.
 
 
@@ -24,7 +25,7 @@ Configure the webhook API call according to the following webhook specifications
 
 **Header**
 
-* Authorization: Bearer `<BEARER_TOKEN>`
+* Authorization: API KEY `<HARNESS_SEI_API_KEY>`
 * Content-Type: `application/json`
 
 **Body**
@@ -37,19 +38,18 @@ Configure the webhook API call according to the following webhook specifications
 
 </details>
 
-Here is an example of a request:
+Here is an example of a request on PROD2 environment:
 
 ```bash
-curl --location 'https://app.harness.io/gateway/sei/api/v1/custom-cicd' \
+curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
 --header 'sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"' \
 --header 'Accept: application/json, text/plain, */*' \
 --header 'Referer: https://app.harness.io/' \
 --header 'sec-ch-ua-mobile: ?0' \
---header 'Authorization: Bearer <BEARER_TOKEN>' \
+--header 'Authorization: API KEY <HARNESS_SEI_API_KEY>' \
 --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
 --header 'sec-ch-ua-platform: "macOS"' \
 --header 'Content-Type: application/json' \
---header 'Cookie: <COOKIE>' \
 --data '{
     "job_name": "pipelines-testing",
     "instance_guid": "c9a73c1b-7590-34sa-a82f-c53a469686b7",
@@ -187,13 +187,13 @@ Follow the steps to generate a **Globally Unique Identifier (GUID)** for custom 
 
 ### Requirements
 
-* Access to **Harness API** with a valid access token. 
+* Access to **Harness SEI API** with a valid access token. 
 
 ### Step 1: Create a CI/CD integration
 
-We need to create a placeholder CI/CD integration that will be the container for the data. We recommend using **Jenkins** as the integration type.
-Go to **Integrations** under **Settings**, select the **Jenkins CI/CD integration**, and click **Install**.
-Fill in the following details and **Save** the integration:
+We need to create a placeholder Custom integration that will be the container for the data. We recommend using **Custom** as the integration type.
+Go to **Integrations** under **Settings**, select the **Custom integration**, and click **Install**.
+Fill in the following details and **Save** the integration. This will automatically download the `satellite.yml` file with the `<INTEGRATION_ID>`.
 
 | Field       | Description                   |
 | - | - |
@@ -203,12 +203,12 @@ Fill in the following details and **Save** the integration:
 
 ### Step 2: Generate a CI/CD Instance GUID associated with that integration
 
-We need to generate a CI/CD instance GUID associated with that integration. This needs to be done with a request to the **Harness API**.
+We need to generate a CI/CD instance GUID associated with that integration. This needs to be done with a request to the **Harness SEI API**.
 Here is an example using a cURL command:
 
 ```shell
-curl --location 'https://app.harness.io/gateway/sei/api/v1/cicd/instances' \
---header 'Authorization: Bearer <BEARER_TOKEN>' \
+curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \ # The Base URL is relative to the environment that you're using.
+--header 'Authorization: API KEY <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{
     "integration_id": "<INTEGRATION_ID>",
@@ -216,8 +216,8 @@ curl --location 'https://app.harness.io/gateway/sei/api/v1/cicd/instances' \
 }' 
 ```
 
-Use the `<INTEGRATION_ID>` of the placeholder Jenkins integration created during Step 1. It can be found in the URL of the integration page in SEI.
-This will generate a GUID for the integration named "Custom CI/CD Integration".
+Use the `<INTEGRATION_ID>` of the placeholder Custom integration created during Step 1. It can be found in the `satellite.yml` file.
+This will generate a GUID for the integration named **Custom CI/CD Integration**.
 
 ### Step 3: Integrate directly with the CI/CD Webhook API
 
