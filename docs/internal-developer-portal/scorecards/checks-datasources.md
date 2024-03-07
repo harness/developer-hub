@@ -397,7 +397,47 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 The following **Data Points** are available for Catalog Data Source. 
 
-1. **Owner is defined**:
+1. **Evaluate expression (JEXL):**
+- *Objective:* Evaluate [JEXL expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) on the catalog YAML file.
+- *Calculation Method:* The catalog YAML is inspected to perform custom JEXL expression and returns the evaluated data.
+
+#### Example Usage: 
+
+Below is an example of `catalog-info.yaml` 
+
+```YAML
+##Example
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: artist-web
+  description: The place to be, for great artists
+  labels:
+    example.com/custom: custom_label_value
+  annotations:
+    example.com/service-discovery: artistweb
+    circleci.com/project-slug: github/example-org/artist-website
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: website
+  lifecycle: production
+  owner: artist-relations-team
+  system: public-websites
+```
+
+In the above example using the **Evaluate expression** we can match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the [supported values](https://backstage.io/docs/features/software-catalog/descriptor-format#contents) under the root field. 
+
+for eg. `+metadata.name>` would point to `artist-db` from the above example, and could be used to check the values 
+ 
+![](./static/checks-catalog-metadataname.png)
+
+2. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
 - *Calculation Method:* The catalog YAML is inspected to check if the owner is under the spec field and the owner should not be Unknown.
 
@@ -417,7 +457,7 @@ spec:
   owner: order-team
 ```
 
-2. **Documentation Exists**:
+3. **Documentation Exists**:
 - *Objective:* Checks if the catalog YAML file has the annotation `backstage.io/techdocs-ref` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `backstage.io/techdocs-ref` is present under the metadata field.
 - *Prerequisites:* The directory configured should have the `mkdocs.yml` file and a docs directory having all the documentation in markdown format.
@@ -439,7 +479,7 @@ spec:
 
 ```
 
-3. **Pagerduty is set**:
+4. **Pagerduty is set**:
 
 - *Objective:* Checks if the catalog YAML file has the annotation `pagerduty.com/service-id` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `pagerduty.com/service-id` is present under the metadata field.
