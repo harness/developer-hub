@@ -40,7 +40,6 @@ Windows network blackhole chaos simulates a network blackhole scenario on Window
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
         <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
-      </tr>
     </table>
 
 ### Optional tunables
