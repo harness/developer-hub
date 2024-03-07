@@ -34,13 +34,29 @@ Here are some examples of Java string methods with expressions.
 
 ### contains()
 
-This expression uses `contains()`:
+Use `contains()` to check if a value contains a certain string.
+
+For example, this expression uses `contains()` to check if a trigger payload field contains the string `triggerDemo`:
 
 ```
-<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>
+<+<+trigger.payload.pull_request.diff_url>.contains("triggerDemo")>
+```
+
+As another example, assume you have a variable `deployEnv` and you want to check if it contains the string `prod`. You can use `contains()` like this:
+
+```
+<+<+pipeline.variables.deployEnv>.contains("prod")>
+```
+
+You can also nest an expression in the `contains()` method to check if one expression contains the entire value of another expression, for example:
+
+```
+<+<+pipeline.variables.someVar>.contains(<+pipeline.variables.otherVar>)>
 ```
 
 ### split()
+
+You might use `split()` if you want to extract certain details from a string or create an assertion expression based on a variable.
 
 In this example, assume you have a pipeline variable called `abc` with value `def:ghi`. You might use `split()` like this:
 
@@ -58,6 +74,12 @@ For this example, assume you have a pipeline variable called `abc` with value `5
 
 This expression resolves to `6`.
 
+To create an assertion expression from a variable, assume you have a variable `someVar` with the value `prod-environment-variable`. To extract `prod` from this value, you would use `split()` like this:
+
+```
+<+<+pipeline.variables.someVar>.split('-')[0]>
+```
+
 ### charAt()
 
 Use `charAt()` to return the character at a specified index in a Harness variable expression string.
@@ -73,6 +95,14 @@ To get the first character of the string, you would use `charAt()` like this:
 ```
 
 This expression evaluates to `1`.
+
+### substring()
+
+To demonstrate the `substring()` method, assume you have a variable `someVar` with the value `prod-environment-variable`. To extract `prod` from this value, you would use `substring()` like this:
+
+```
+<+<+pipeline.variables.someVar>.substring(0,3)>
+```
 
 ## Use multiple methods
 
