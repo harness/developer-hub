@@ -34,6 +34,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've removed the metrics flush on map overflow. (FFM-10816)
  - We've added `Retry-After` HTTP header support. (FFM-10821)
 
+### Javascript SDK
+
+#### Version 1.26.0
+
+ - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
+
 ### .NET SDK
 
 #### Version 1.5.0
