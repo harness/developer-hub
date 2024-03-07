@@ -433,7 +433,7 @@ spec:
 
 In the above example using the **Evaluate expression** we can match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the [supported values](https://backstage.io/docs/features/software-catalog/descriptor-format#contents) under the root field. 
 
-for eg. `+metadata.name>` would point to `artist-db` from the above example, and could be used to check the values 
+for eg. `<+metadata.name>` would point to `artist-db` from the above example, and could be used to check the values 
  
 :::info
 
