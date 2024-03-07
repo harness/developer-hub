@@ -43,4 +43,10 @@ The advantages of enforcements lie in their ability to automate routine tasks, r
 #### Testing Terminal 
 
 In our rule editor, we have a test terminal so that when customers are trying out their rules, they can see the output in the terminal itself. This is done to ensure that customers can run the rules and try them accordingly to check how the output would look on the selected region and account on our terminals. We give them two options: first, to select the target region, and second, to select the subscription. They can provide the relevant inputs and run the rule at once, or they can choose to try and generate a simulation of rule enforcement. The test terminal helps with effective debugging and also assists in trying out the rules.
+
 #### Cost Correlation
+
+**Cost Correlation refresh API**
+
+This API would be used to refresh or update the cost of all the resources in the evaluation. This API is exposed to resolve the case where cost for any resource are not yet part of CUR, Billing Report or Billing Data yet(due to newly deployed resources etc).
+Limit: For any evaluation you can hit the refresh cost button only one time in last 30 minutes.
