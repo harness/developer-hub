@@ -38,17 +38,6 @@ export const StoData: Horizon = {
         title: "Downloadable Pipeline Reports",
         description: "Allow users to download and schedule a detailed report with STO results in PDF and CSV format.",
       },
-      {
-        tag: [{ value: "Platform" }, { value: "Cross Module" }],
-        title: "Combine Artifacts with SSCA",
-        description: "Provide granular vulnerability data for an artifact/target, additional to current pipeline view.",
-      },
-      {
-        tag: [ {value: "Usability"} ],
-        title: "Combine Artifacts with SSCA",
-        description: "Provide granular vulnerability data for an artifact/target, additional to current pipeline view.",
-      },
-
     ],
   },
   "Later": {
@@ -70,9 +59,19 @@ export const StoData: Horizon = {
         description: "Extend STO support to the IACM module within Harness Platform.",
       },
       {
+        tag: [{ value: "Platform" }, { value: "Cross Module" }],
+        title: "Combine Artifacts with SSCA",
+        description: "Provide granular vulnerability data for an artifact/target, additional to current pipeline view.",
+      },
+      {
         tag: [{ value: "Data Handling" }],
         title: "Target Deletion",
         description: "Allow to delete unwanted targets/artifacts vulnerability data to reduce noise.",
+      },
+      {
+        tag: [{ value: "Exemption Workflow" }],
+        title: "Glocal Exemption Management",
+        description: "Allow to exempt issues/vulnerabilities at Acoount, Organization level, additional to current Pipleine and Project.",
       },
     ],
   },
