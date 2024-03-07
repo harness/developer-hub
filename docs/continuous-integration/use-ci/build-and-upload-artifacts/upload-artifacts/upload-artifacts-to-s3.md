@@ -330,7 +330,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted">
+  <TabItem value="k8s" label="Self-managed">
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces a text file, uploads the file to S3, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -468,7 +468,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted">
+  <TabItem value="k8s" label="Self-managed">
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces a text file and uses the S3 Upload and Publish plugin to uploads the file to S3 and publish the artifact URL on the **Artifacts** tab.
 

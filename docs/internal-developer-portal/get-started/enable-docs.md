@@ -2,10 +2,6 @@
 title: Enable documentation for your component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
 sidebar_position: 40
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-docs
 ---

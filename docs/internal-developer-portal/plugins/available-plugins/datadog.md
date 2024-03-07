@@ -22,7 +22,7 @@ _No action required_
 
 ### Secrets
 
-- No secrets are required for this plugin as there are no authenticaton configured. 
+- No secrets are required for this plugin as there are no authentication configured. 
 
 ## Layout
 

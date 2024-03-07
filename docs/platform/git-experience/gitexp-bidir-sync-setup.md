@@ -16,16 +16,15 @@ This topic explains how to set up and use bidirectional sync.
 - Pipelines
 - Templates
 - Input Sets
+- Services
+- Environments
+- Infrastructure
 
 #### Behind a Feature Flag
 
 :::note
 These entities are behind feature flags. Contact [Harness Support](mailto:support@harness.io) to enable the feature, and reference the corresponding feature flag below. 
 :::
-
-- Services (CDS_SERVICE_GITX)
-- Environments (CDS_ENV_GITX)
-- Infrastructure (CDS_INFRA_GITX)
 - Overrides (CDS_OVERRIDES_GITX)
 
 ## Important notes
@@ -35,7 +34,6 @@ These entities are behind feature flags. Contact [Harness Support](mailto:suppor
 - If you make an invalid YAML change to the YAML in the Git repo file an **Invalid YAML Detected** error appears in the Harness UI. You can fix the invalid YAML in Harness or in the Git repo.
 - If your Git repo server is on-premise, it must have connectivity to Harness SaaS. 
 - Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
-- If you are using a custom role, then you will need to assign the `core_gitxWebhooks_edit` permission to the role as a bare minimum.
 - When configuring a webhook, you need to be the owner of the relevant git repository.
 
 

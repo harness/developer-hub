@@ -12,7 +12,7 @@ helpdocs_is_published: true
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
@@ -97,7 +97,7 @@ Use [templates](/docs/category/templates/) to share and utilize pre-build pipeli
 
 Use these strategies to automate and manage build sequences.
 
-* [Queue Intelligence](./queue-intelligence.md)
+* [Queue Intelligence](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
 * [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
@@ -106,7 +106,7 @@ Use these strategies to automate and manage build sequences.
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
-* [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Bring-your-own Secrets Manager](/docs/platform/get-started/tutorials/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 * [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)

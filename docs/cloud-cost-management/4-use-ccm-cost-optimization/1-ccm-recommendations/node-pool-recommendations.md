@@ -23,7 +23,7 @@ Using recommendations without proper assessment could result in unexpected chang
 :::
 
 
-:::important note
+:::info
 Recommendations will not be generated for nodepools with multiple instance families. This applies to both native-managed clusters and clusters that are managed by third-party tools like spot.io.
 :::
 
@@ -157,6 +157,10 @@ Select your preferences and click **Save Preferences**. The category of the inst
 Once, you've made all the changes, click **Apply Preferences** or click **Reset to default**.
 
 ![](./static/node-pool-recommendations-13.png)
+
+:::important note
+For nodepool recommendations, we base our calculations using public pricing data, which may differ from actual price.
+:::
 
 #### Sharing recommendations
 

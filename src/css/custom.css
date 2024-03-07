@@ -298,8 +298,86 @@
   --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* here */
+  --ifm-color-content-light: var(--gray-800);
+  --background-color: white;
+
+  --card-border: 2px solid transparent;
+  --img-border: 1px solid var(--gray-400);
+  --ifm-alert-background-color: var(--primary-1);
+  --ifm-alert-border-color: var(--primary-3);
+  --ifm-tabs-color-active: var(--primary);
+  --ifm-tabs-color-active-border: var(--primary);
+
+  --text-color: rgb(0, 0, 0) !important;
+
+  --hover: var(--gray-200);
+  --platform-card-bg: var(--white);
+  --homepageFeatureCard: transparent;
 }
 
+/* darkmode css */
+iframe {
+  border: var(--card-border);
+}
+.card {
+  background-color: transparent !important;
+}
+.cta-banner-tagline {
+  color: #000000;
+}
+
+summary {
+  color: var(--ifm-heading-color);
+}
+html[data-theme="dark"] .navbar .navbar__logo {
+  content: url("/img/logo-hdh-dark-theme.svg");
+}
+html[data-theme="light"] .navbar .navbar__logo {
+  content: url("/img/logo_dlp.svg");
+}
+
+html[data-theme="dark"] .navbar {
+  box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.2);
+}
+/* html[data-theme="dark"] code {
+  background-color: white;
+  color: #000000;
+} */
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --platform-card-bg: var(--gray-200);
+  --ifm-color-primary: var(--primary-5);
+  --ifm-color-primary-dark: var(--primary-6);
+  --ifm-color-primary-darker: var(--primary-7);
+  --ifm-color-primary-darkest: var(--primary-8);
+  --ifm-color-primary-light: var(--primary-4);
+  --ifm-color-primary-lighter: var(--primary-3);
+  --ifm-color-primary-lightest: var(--primary-2);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --ifm-link-color: var(--ifm-color-primary);
+
+  --black: #070707;
+  /* --white: #070707; */
+
+  --ifm-navbar-shadow: white !important;
+  --ifm-navbar-background-color: var(--black) !important;
+  --ifm-background-color: var(--black) !important;
+  --ifm-heading-color: white !important;
+  --text-color: white !important;
+  --background-color: var(--black);
+  --ifm-color-content: white !important;
+  --ifm-color-content-light: var(--gray-200) !important;
+  --card-border: 2px solid var(--gray-200);
+  --img-border: 1px solid var(--gray-200);
+  --gray-500: #d9dae5;
+
+  --hover: var(--gray-800);
+  --homepageFeatureCard: var(--black);
+}
+/* darkmode css  end*/
 html {
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
@@ -330,19 +408,6 @@ h2 {
   display: flex;
   align-items: center;
 }
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: var(--primary-5);
-  --ifm-color-primary-dark: var(--primary-6);
-  --ifm-color-primary-darker: var(--primary-7);
-  --ifm-color-primary-darkest: var(--primary-8);
-  --ifm-color-primary-light: var(--primary-4);
-  --ifm-color-primary-lighter: var(--primary-3);
-  --ifm-color-primary-lightest: #var(--primary-2);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-  --ifm-link-color: var(--ifm-color-primary);
-}
 
 .button--cta,
 .button--primary {
@@ -367,11 +432,13 @@ h2 {
 .button--nav:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
+  color: white;
 }
 .button--cta:hover,
 .button--primary:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
+  color: white;
 }
 
 .button--primary {
@@ -381,6 +448,7 @@ h2 {
 }
 
 /* style overwriting temporarily for the beta icon */
+
 .navbar__brand {
   margin-right: 0;
 }
@@ -411,12 +479,12 @@ h2 {
 }
 
 /* #DLP-36 styles for details + summary */
-.alert--info {
+/* .alert--info {
   --ifm-alert-background-color: var(--primary-1);
   --ifm-alert-border-color: var(--primary-3);
   --ifm-tabs-color-active: var(--primary);
   --ifm-tabs-color-active-border: var(--primary);
-}
+} */
 
 /* #HDH-103 anchor style in alert section */
 .alert a {
@@ -724,7 +792,7 @@ figure p {
 }
 
 #search-button {
-  color: var(--gray-600);
+  color: var(--ifm-heading-color);
   font-size: 24px;
   position: absolute;
   right: 0;

@@ -12,7 +12,7 @@ In Harness, you specify the location of the function definition and artifact and
 
 This topic covers the basics of Harness' Lambda support and provides examples on how to deploy your Lambda functions through Harness CD.
 
-**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart).
+**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart).
 
 ## Important notes
 
@@ -21,6 +21,7 @@ This topic covers the basics of Harness' Lambda support and provides examples on
 - Currently, Lambda functions can be packaged as ZIP files in S3 Buckets or as containers in AWS ECR.
   - If Harness were to support another repository, like Nexus, when the container is fetched by the API, AWS spins up AWS resources (S3, ECR) anyways, and so Harness has limited support to S3 and ECR.
   - The containers must exist in ECR. Containers are not supported in other repositories.
+- Currently, Lambda functions can't be deployed with an OIDC-enabled AWS Connector. 
 
 ## AWS IAM permissions
 

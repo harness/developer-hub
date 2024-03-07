@@ -101,7 +101,7 @@ For a **Background** step to run a service, the build environment must have the 
 
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted Kubernetes cluster">
+  <TabItem value="selfmanaged" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -241,7 +241,7 @@ For the **Run** step to run the health check commands, the build environment mus
 
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted Kubernetes cluster">
+  <TabItem value="selfmanaged" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -431,7 +431,7 @@ pipeline:
 
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted Kubernetes cluster">
+  <TabItem value="selfmanaged" label="Self-managed Kubernetes cluster">
 
 
 ```yaml

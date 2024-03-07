@@ -129,7 +129,7 @@ Click **SUBMIT** and **your workflow is complete.** You can look or modify the d
 
 The following procedure deploys the workflow you created in this guide.
 
-Before deploying the workflow, ensure all Harness delegates that can reach the resources used in the workflow are running. In **Harness**, click **Setup**, and then click **Harness Delegates**.To deploy your workflow, do the following:
+Before deploying the workflow, ensure all Harness Delegates that can reach the resources used in the workflow are running. In **Harness**, click **Setup**, and then click **Harness Delegates**.To deploy your workflow, do the following:
 
 1. In your workflow, click **Deploy**.![](./static/4-helm-workflows-26.png)![](./static/4-helm-workflows-27.png)
 2. In **Notes**, enter information about the deployment that others should know. Harness records all the important details, and maintains the records of each deployment, but you might need to share some information about your deployment.

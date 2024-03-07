@@ -178,7 +178,7 @@ Kubernetes command flags are command-line options that can be passed to a Kubern
 
 You can add command flags in your Apply step and Harness will run them after the `kubectl apply -f <filename>` command it runs to deploy your manifest.
 
-The availability of specific command flags is based on the version of the kubectl binary that is installed on the Harness delegate performing deployment. For example, `kubectl apply -f <filename> --server-side` is only available on kubectl version 1.22. 
+The availability of specific command flags is based on the version of the kubectl binary that is installed on the Harness Delegate performing deployment. For example, `kubectl apply -f <filename> --server-side` is only available on kubectl version 1.22. 
 
 To use command flags, do the following:
 

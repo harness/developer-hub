@@ -1,7 +1,7 @@
 ---
 title: Install a legacy Kubernetes delegate
 description: Install a legacy Kubernetes delegate.
-sidebar_position: 7
+sidebar_position: 8
 helpdocs_topic_id: f9bd10b3nj
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

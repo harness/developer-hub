@@ -448,7 +448,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Serverless.com Framework</summary>
 
 - **Overview:**
-  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart) (AWS Lambda)
+  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart) (AWS Lambda)
 - **Supported connectors for deployment:**
   - AWS Cloud Connector
     - IRSA
@@ -610,7 +610,7 @@ Harness supports the following Terraform versions:
 - v0.15.0
 - v0.14.0
 
-Here's an example install script for the Harness delegate:
+Here's an example install script for the Harness Delegate:
 
 ```bash
 # Install TF
@@ -681,22 +681,23 @@ Manifests, specifications, config files, and other deployment files can be pulle
 The following table lists where you can store your manifests or config files for each integration.
 
 
-|                               | **Github** | **Gitlab** | **Bitbucket** | **Harness File Store** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
-| ----------------------------- | ---------- | ---------- | ------------- | --------------------- | ----------- | ------------ | ------------- | ---------- | ---------- | ------------------------ | ------------------------- |
-| **Kubernetes**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
-| **Values YAML**               | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          | ✅                        |
-| **Kustomize**                 | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          |                           |
-| **Kustomize Patches**  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
-| **OpenShift Template** | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
-| **OpenShift Params**   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
-| **AWS ECS**                   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
-| **Helm Chart**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
-| **Serverless.com Framework**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
-| **SSH**                       |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
-| **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
-| **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
-| **Google Cloud Function**     | ✅         | ✅         | ✅            | ✅                    | ✅          |              |              |           |           |                         |                         |
 
+|                              | **Github** | **Gitlab** | **Bitbucket** | **Harness File Store** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
+|------------------------------| --------- | ---------- | ------------- | --------------------- | ----------- | ------------ | ------------- | ---------- | ---------- | ------------------------ | ------------------------- |
+| **Kubernetes**               | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
+| **Values YAML**              | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          | ✅                        |
+| **Kustomize**                | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          |                           |
+| **Kustomize Patches**        | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
+| **OpenShift Template**       | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **OpenShift Params**         | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **AWS ECS**                  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
+| **AWS SAM**                  | ✅         | ✅          | ✅             | ✅                    | ✅           |              |               | ✅          |            |                          |                           |
+| **Helm Chart**               | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
+| **Serverless.com Framework** | ✅         | ✅         | ✅            | ✅                      | ✅          |              |               | ✅           |            |                          |                           |
+| **SSH**                      |           |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **WinRM**                    |           |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **Azure Web Apps**           |           |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **Google Cloud Function**    | ✅         | ✅         | ✅            | ✅                    | ✅          |              |              |           |           |                         |                         |
 
 
 
@@ -807,6 +808,5 @@ All CD features supported in Harness SaaS are also supported in Self-Managed Ent
 - **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/triggers/triggers-reference/#polling-frequency).
 - **ServiceNow:** ServiceNow versions [Utah](https://docs.servicenow.com/bundle/utah-release-notes/page/release-notes/family-release-notes.html) and earlier are supported.
 - **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
-- **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
 - **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
 - **Harness AI Development Assistant (AIDA):** To support AIDA in Self-Managed Enterprise Edition running in an offline environment, you must add `https://harness.openai.azure.com` to your allowlist.

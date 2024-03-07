@@ -61,7 +61,7 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 
 1. In the [AWS EC2 Console](https://console.aws.amazon.com/ec2/), launch a VM instance that will host your Harness Delegate and runner. This instance must use an Ubuntu AMI that is `t2.large` or greater.
 
-   Although the primary VM must be Ubuntu, the build VMs (in your VM pool) can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher). All machine images must have Docker installed.
+   The primary VM must be Ubuntu. The build VMs (in your VM pool) can be Ubuntu, AWS Linux, or Windows Server 2019 or higher. All machine images must have Docker installed.
 
 2. Attach a key pair to your EC2 instance. Create a key pair if you don't already have one.
 3. You don't need to enable **Allow HTTP/HTTPS traffic**.
@@ -423,15 +423,15 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 
 ## Troubleshoot AWS VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
 * [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
 * [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
 * [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
-* [Use internal or custom AMIs](/kb/continuous-integration/continuous-integration-faqs/#use-internal-or-custom-amis-with-self-hosted-aws-vm-build-infrastructure)
-* [Where can I find self-hosted VM lite engine and cloud init output logs?](/kb/continuous-integration/continuous-integration-faqs/#where-can-i-find-logs-for-self-hosted-aws-vm-lite-engine-and-cloud-init-output)
+* [Use internal or custom AMIs](/kb/continuous-integration/continuous-integration-faqs/#use-internal-or-custom-amis-with-self-managed-aws-vm-build-infrastructure)
+* [Where can I find self-managed VM lite engine and cloud init output logs?](/kb/continuous-integration/continuous-integration-faqs/#where-can-i-find-logs-for-self-managed-aws-vm-lite-engine-and-cloud-init-output)
 * [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
 * [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
 * [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
 * [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

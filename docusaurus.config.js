@@ -18,7 +18,7 @@ function hideIndexFromSidebarItems(items) {
 const config = {
   title: "Harness Developer Hub",
   tagline:
-    "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
+    "Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
@@ -96,7 +96,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "/img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -104,87 +104,6 @@ const config = {
             html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
           },*/
-          {
-            position: "right",
-            type: "dropdown",
-            label: "Tutorials",
-            to: "tutorials",
-            items: [
-              {
-                // type: "doc",
-                label: "All Tutorials",
-                to: "tutorials",
-              },
-              {
-                // type: "doc",
-                label: "Set up CI Pipelines",
-                to: "tutorials/ci-pipelines",
-                // docId: "ci-pipelines",
-                // activeBasePath: "to",
-              },
-              {
-                // type: "doc",
-                label: "Set up CD Pipelines",
-                to: "tutorials/cd-pipelines",
-              },
-              {
-                // type: "doc",
-                label: "Manage Feature Flags",
-                to: "tutorials/feature-flags",
-                // activeBaseRegex: "/feature-flags",
-              },
-              {
-                // type: "doc",
-                label: "Manage Cloud Costs",
-                to: "tutorials/cloud-costs",
-              },
-              {
-                // type: "doc",
-                label: "Orchestrate Security Tests",
-                to: "tutorials/security-tests",
-              },
-              {
-                // type: "doc",
-                label: "Secure Supply Chain",
-                to: "tutorials/secure-supply-chain",
-              },
-              {
-                // type: "doc",
-                label: "Run Chaos Experiments",
-                to: "tutorials/chaos-experiments",
-              },
-              {
-                // type: "doc",
-                label: "Manage Service Reliability",
-                to: "tutorials/service-reliability",
-              },
-              {
-                // type: "doc",
-                label: "Track Errors",
-                to: "tutorials/error-tracking",
-              },
-              {
-                // type: "doc",
-                label: "Manage Developer Portal",
-                to: "tutorials/internal-developer-portal",
-              },
-              {
-                // type: "doc",
-                label: "Manage Engineering Insights",
-                to: "tutorials/software-engineering-insights",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Platform",
-                to: "tutorials/platform",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Self-Managed EE",
-                to: "tutorials/self-managed-enterprise-edition",
-              },
-            ],
-          },
           {
             position: "right",
             type: "dropdown",
@@ -236,10 +155,6 @@ const config = {
                 to: "docs/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "docs/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
@@ -286,47 +201,50 @@ const config = {
             ],
           },
           {
-            label: "Certifications",
+            label: "University",
             position: "right",
             type: "dropdown",
-            to: "certifications",
+            to: "university",
             items: [
               {
-                label: "All Certifications",
-                to: "certifications",
+                label: "Learn Harness",
+                to: "university",
               },
               {
                 label: "Continuous Integration",
-                to: "certifications/continuous-integration",
+                to: "university/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                to: "certifications/continuous-delivery",
+                to: "university/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                to: "certifications/feature-flags",
+                to: "university/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                to: "certifications/cloud-cost-management",
+                to: "university/cloud-cost-management",
               },
               {
                 label: "Security Testing Orchestration",
-                to: "certifications/sto",
+                to: "university/sto",
               },
               {
                 label: "Chaos Engineering",
-                to: "certifications/chaos-engineering",
+                to: "university/chaos-engineering",
               },
               {
                 label: "Instructions",
-                to: "certifications/instructions",
+                to: "university/instructions",
               },
-
               {
                 label: "FAQs",
-                to: "certifications/faqs",
+                to: "university/faqs",
+              },
+              {
+                label: "Instructor Led Training",
+                to: "university/instructor-led-training",
               },
             ],
           },
@@ -414,10 +332,6 @@ const config = {
                 to: "https://harness.io/products/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "https://www.harness.io/products/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "https://www.harness.io/products/internal-developer-portal",
               },
@@ -436,7 +350,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
               },
               {
                 label: "API Reference",
@@ -498,7 +412,7 @@ const config = {
       },
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
+        // disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       docs: {
@@ -590,11 +504,11 @@ const config = {
       path.resolve(__dirname, "./plugins/redirect-plugin"),
 
       {
-        id: "certifications",
-        path: "certifications",
-        routeBasePath: "certifications",
+        id: "university",
+        path: "university",
+        routeBasePath: "university",
         exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        sidebarPath: require.resolve("./sidebars-university.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },
@@ -612,18 +526,17 @@ const config = {
         // ... other options
       },
     ],
-    [
-      path.resolve(__dirname, "./plugins/redirect-plugin"),
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
+    //[
+    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
+    //  {
+    //    id: "tutorials",
+    //    path: "tutorials",
+    //    routeBasePath: "tutorials",
+    //    exclude: ["**/shared/**", "**/static/**"],
+    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
+    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
+    //  },
+    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {

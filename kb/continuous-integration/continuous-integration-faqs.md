@@ -117,7 +117,7 @@ For Linux runners, you can use a tool such as `nohup` when you start the runner,
 nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
 ```
 
-## Self-hosted VM build infrastructures
+## Self-managed VM build infrastructures
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -125,7 +125,7 @@ No. The build VM terminates at the end of the stage and a new VM is used for the
 
 ### Why are build VMs running when there are no active builds?
 
-With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `pool` value in your `pool.yml` specifies the number of "warm" VMs. These VMs are kept in a ready state so they can pick up build requests immediately.
+With [self-managed VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `pool` value in your `pool.yml` specifies the number of "warm" VMs. These VMs are kept in a ready state so they can pick up build requests immediately.
 
 If there are no warm VMs available, the runner can launch additional VMs up to the `limit` in your `pool.yml`.
 
@@ -135,7 +135,7 @@ For AWS VMs, you can set `hibernate` in your `pool.yml` to hibernate warm VMs wh
 
 ### Do I need to install Docker on the VM that runs the Harness Delegate and Runner?
 
-Yes. Docker is required for [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
+Yes. Docker is required for [self-managed VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
 
 ### AWS build VM creation fails with no default VPC
 
@@ -148,7 +148,7 @@ If your CI build gets stuck at the initialize step on the health check for conne
 1. Verify that lite-engine is running on your build VMs.
    1. SSH/RDP into a VM from your VM pool that is in a running state.
    2. Check whether the lite-engine process is running on the VM.
-   3. Check the [cloud init output logs](#where-can-i-find-logs-for-self-hosted-aws-vm-lite-engine-and-cloud-init-output) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
+   3. Check the [cloud init output logs](#where-can-i-find-logs-for-self-managed-aws-vm-lite-engine-and-cloud-init-output) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
 2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
    1. Run `nc -vz <build-vm-ip> 9079` from the runner.
    2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) in AWS allows the runner to communicate with the build VMs.
@@ -160,16 +160,16 @@ If the delegate is connected but your AWS VM builds are failing, check the follo
 
 1. Make sure your the AMIs, specified in `pool.yml`, are still available.
    * Amazon reprovisions their AMIs every two months.
-   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
+   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2022 Base with Containers` and update `ami` in `pool.yml`.
 2. Confirm your [security group setup](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/#configure-ports-and-security-group-settings) and security group settings in `runner/pool.yml`.
 
-### Use internal or custom AMIs with self-hosted AWS VM build infrastructure
+### Use internal or custom AMIs with self-managed AWS VM build infrastructure
 
 If you are using an internal or custom AMI, make sure it has Docker installed.
 
 Additionally, make sure there are no firewall or anti-malware restrictions interfering with initialization, as described in [CI builds stuck at the initialize step on health check](#aws-vm-builds-stuck-at-the-initialize-step-on-health-check).
 
-### Where can I find logs for self-hosted AWS VM lite engine and cloud init output?
+### Where can I find logs for self-managed AWS VM lite engine and cloud init output?
 
 * Linux
    * Lite engine logs: `/var/log/lite-engine.log`
@@ -178,11 +178,23 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
    * Lite engine logs: `C:\Program Files\lite-engine\log.out`
    * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
 
+### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+
+The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
+
+### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+
+```
+failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+```
+
+This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+
 ## Harness Cloud
 
 ### What is Harness Cloud?
 
-Harness Cloud lets you run builds on Harness-hosted runners that are preconfigured with tools, packages, and settings commonly used in CI pipelines. It is one of several build infrastructure options offered by Harness. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+Harness Cloud lets you run builds on Harness-managed runners that are preconfigured with tools, packages, and settings commonly used in CI pipelines. It is one of several build infrastructure options offered by Harness. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
 ### How do I use Harness Cloud build infrastructure?
 
@@ -190,11 +202,11 @@ Configuring your pipeline to use Harness Cloud takes just a few minutes. Make su
 
 ### Account verification error with Harness Cloud on Free plan
 
-Recently Harness has been the victim of several Crypto attacks that use our Harness-hosted build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
+Recently Harness has been the victim of several Crypto attacks that use our Harness-managed build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
 
 To address these issues, you can do one of the following:
 
-* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-hosted VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
+* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-managed VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
 * Create a Harness account with your work email and not a generic email address, like a Gmail address.
 
 ### What is the Harness Cloud build credit limit for the Free plan?
@@ -431,7 +443,7 @@ To help identify pods that aren't cleaned up after a build, pod deletion logs in
 
 ### Can I mount internal CA certs on the CI build pod?
 
-Yes. With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+Yes. To do this with a Kubernetes cluster build infrastructure, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 ### Can I use self-signed certs with local runner build infrastructure?
 
@@ -515,7 +527,7 @@ Yes, you can use [custom cache paths](https://developer.harness.io/docs/continuo
 
 ### How do I specify the disk size for a Windows instance in pool.yml?
 
-With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
+With [self-managed VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
 
 For example, here is a Windows pool configuration for an [AWS VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure):
 
@@ -694,7 +706,7 @@ Harness uses user `1000` by default. You can use a step's **Run as User** settin
 
 If your build runs as non-root (meaning you have set `runAsNonRoot: true` in your build infrastructure settings), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to all build infrastructures.
 
-#### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
+### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
 
 This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#run-as-non-root-or-a-specific-user).
 
@@ -864,6 +876,10 @@ Also, [SCM service connection failures can occur when using self-signed certific
 
 You can add a Run step to the beginning of your Build stage that runs `ls -ltr`. This returns all content cloned by the Clone Codebase step.
 
+### Why is the codebase connector config not saved?
+
+Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
+
 ## SCM status updates and PR checks
 
 ### Does Harness supports Pull Request status updates?
@@ -930,7 +946,7 @@ Because the build status updates operate through the default codebase connector,
 
 You could try modifying the permissions of the code repo connector's token so that it can't write to the repo, but this could interfere with other connector functionality.
 
-Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning the codebase.
+Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning codebases from PRs, auto-populating branch names when you manually run builds, and so on.
 
 ### Why was the PR build status not updated for an Approval stage?
 
@@ -948,7 +964,23 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 ### Initialize step to fails with a "Null value" error
 
-This can occur if an expression or variable is called before it's value is resolved. In Build (CI) stages, steps run in separate containers/build pods, and you can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved). For example, if you use an expression for an output variable from a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies) in step that runs before the repeat loop completes, then the expression's value isn't available to the step that requested it.
+This can occur if an expression or variable is called before it's value is resolved.
+
+In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved).
+
+For example, assume you have a step (named, for example, `my-cool-step`) that uses an expression to reference the output variable of a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies). If `my-cool-step` runs before the repeat loop completes, then the expression's value isn't resolved and therefore it isn't available when `my-cool-step` calls that value.
+
+Depending on how your expression/variable's value is generated, you need to either rearrange the flow of steps in your stage/pipeline or determine how you can provide the value earlier (such as by declaring it in a pipeline variable or stage variable).
+
+**With a Kubernetes cluster build infrastructure, all step-level variables must be resolved upfront during pod creation.** Therefore, steps referencing output variable from prior steps in the same stage resolve as null, regardless of how the steps are arranged in your stage. To avoid this, generate the output variables in a prior *stage* and then use an expression referencing the value from the prior stage, for example:
+
+```
+<+pipeline.stages.PRIOR_STAGE.spec.execution.steps.PRIOR_STAGE_STEP.output.outputVariables.SOME_VAR>
+```
+
+Similarly, **when using step groups or step group templates with a Kubernetes cluster build infrastructure, Harness can resolve only *stage* variables and *pipeline* variables during initialization.** Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod, and step/step group variables are not. In this case, if you encounter the `null value` error and you are using step-level variables, try configuring these as stage or pipeline variables instead.
+
+Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#stage-level-and-pipeline-level-expressions) if you change them from step variables to stage/pipeline variables.
 
 ### Initialize step occasionally times out at 8 minutes
 
@@ -1042,21 +1074,9 @@ Typically, this is configured within your Maven settings.xml file to publish art
 
 However, if you're not publishing directly via Maven, you can push directly using the AWS CLI or cURL, as explained in the AWS documentation on [Publishing with curl](https://docs.aws.amazon.com/codeartifact/latest/ug/maven-curl.html).
 
-### How do I enable the Gradle daemon in builds?
+### Gradle build, daemon, OOM, and other Gradle issues
 
-To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
-
-Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance).
-
-### Out of memory errors with Gradle
-
-If a Gradle build experiences out of memory errors, add the following to your `gradle.properties` file:
-
-```
--XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
-```
-
-Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+For Gradle build or daemon issues, go to the Knowledge Base article on [Gradle build and daemon issues](./articles/gradle-daemon).
 
 ### Can I push without building?
 
@@ -1169,6 +1189,10 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 Go to the [Kaniko container runtime error article](./articles/kaniko_container_runtime_error).
 
+### What is the default build context when using Build and Push steps?
+
+The default build context is the stage workspace directory, which is `/harness`.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1280,7 +1304,7 @@ No. The Post-Command script runs only if the Run Tests step succeeds.
 
 ### Can I limit memory and CPU for Run Tests steps running on Harness Cloud?
 
-No. Resource limits are not customizable when using Harness Cloud or self-hosted VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
+No. Resource limits are not customizable when using Harness Cloud or self-managed VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
 
 ### How can I understand the relationship between code changes and the selected tests?
 
@@ -1549,7 +1573,7 @@ Changes to a container image are isolated to the current step. While a subsequen
 
 ### What caching options does Harness CI offer?
 
-Harness CI offers a variety of [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) options, including S3, GCS, and Harness-hosted Cache Intelligence.
+Harness CI offers a variety of [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) options, including S3, GCS, and Harness-managed Cache Intelligence.
 
 ### How can I download files from an S3 bucket in Harness CI?
 
@@ -1581,6 +1605,12 @@ By default, the Save Cache to S3 step doesn't override the cache. You can use th
 ### How can I check if the cache was restored?
 
 You can use conditional executions and failure strategies to [check if a cache was downloaded and, if it wasn't, install the dependencies that would be provided by the cache](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache).
+
+### How do I handle a corrupted file when using the Restore Cache from S3 step?
+
+If a file becomes corrupted in the bucket during the restoration process, the best practice is to remove the corrupted file from the bucket.
+
+To ensure robustness in your pipeline, consider adding a Failure Strategy to the restore step to mitigate pipeline failures. For example, you can [check if a cache was downloaded and, if it wasn't, install the dependencies that would be provided by the cache](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache).
 
 ## Cache Intelligence
 
@@ -1676,7 +1706,7 @@ Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.har
 
 ### Can I configure service dependencies in Gradle builds?
 
-Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
+Yes. For details, go to the Knowledge Base article on [Gradle build and daemon issues](./articles/gradle-daemon).
 
 ### What happens if I don't provide the Fully Qualified Name (FQN) for an image in a private repo?
 
@@ -1704,7 +1734,7 @@ The conditions in JEXL only allow the use of variable expressions that can be re
 
 Currently, Harness can't fail a step/stage/pipeline based on a percentage of test results. To achieve this, you would need to manually parse the test results (which are created after the test step execution) and export some variables containing the percentages you want to track. You could then have a step throw an error code based on the variable values to trigger a [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps), or you could manually review the outputs and manually [mark the stage as failed](https://developer.harness.io/docs/platform/pipelines/mark-as-failed).
 
-Due to potential subjectivity of test results, it would probably be better to handle this case with an [Approval stage or step](https://developer.harness.io/tutorials/cd-pipelines/approvals/) where the approver [reviews the test results](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests).
+Due to potential subjectivity of test results, it would probably be better to handle this case with an [Approval stage or step](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) where the approver [reviews the test results](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
 ### Can I abort a pipeline if the referenced branch is deleted?
 
@@ -1796,6 +1826,14 @@ Finally, if your build is older than six months, it is outside the data retentio
 
 Yes. Go to [view and compare pipeline executions](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
 
+### How do I create a dashboard to identify builds that end with a timeout in a specific task?
+
+You can create a custom dimension for this, such as:
+
+```
+contains(${pipeline_execution_summary_ci.error_message}, "Timeout")
+```
+
 ## Debug mode
 
 ### Why does the debug mode SSH session close after some time?
@@ -1862,7 +1900,11 @@ For stability, Harness applies limits to prevent excessive API usage. Harness re
 
 Queued license limit reached means that your account has reached the maximum build concurrency limit. The concurrency limit is the number of builds that can run at the same time. Any builds triggered after hitting the concurrency limit either fail or are queued.
 
-If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
+If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
+
+### Can I use Harness Queue Intelligence with Kubernetes cluster build infra?
+
+Queue intelligence is currently supported for Harness Cloud only.
 
 ### What is the timeout limit for a CI pipeline?
 
@@ -1872,9 +1914,9 @@ For pipelines, the default timeout limit is, generally, the product of the stage
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
 
-### What is the recommended procedure for dealing with a corrupted file while using Restore S3 Cache step?
+### Can I add an Approval step to a CI stage?
 
-If a file becomes corrupted in the bucket during the restoration process, it is best practice to remove the corrupted file from the bucket. To ensure robustness in your pipeline, think about incorporating a Failure Strategy into the restore step to mitigate pipeline failures.
+Currently, Approval steps aren't compatible with CI stages.
 
 ## General issues with connectors, secrets, delegates, and other Platform components
 

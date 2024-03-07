@@ -5,13 +5,17 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, SRMList } from "./data/serviceReliabilityManagementData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function SRM() {
+  const { colorMode } = useColorMode();
+
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Monitor SLOs, track error budget burndown, identify change impact</h3>
+        <h3>
+          Monitor SLOs, track error budget burndown, identify change impact
+        </h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -74,8 +78,19 @@ export default function SRM() {
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/srm.svg`} />
+          </div> */}
+
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/srm.svg`
+                  : `${baseUrl}img/SRM_Landing_ Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

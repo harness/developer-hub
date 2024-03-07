@@ -18,6 +18,7 @@ This topic describes how to deploy AWS ASG deployments using Harness and the Spo
 * Spot Elastigroup deployments support AMI artifacts only.
 * Spot Elastigroup deployments support only Basic, Canary, and Blue Green execution types.
 * Your spot account must be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
+* Currently, Harness does not support using Spot Elastigroup with an OIDC-enabled AWS connector.
 
 ## Connect to a Spot cloud provider
 
@@ -323,14 +324,14 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, you can use Harness expressions, such as `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
        * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
 4. Select the **Elastigroup Deploy** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * **New Service**: Select:
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
@@ -360,20 +361,20 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
    ![](./static/spot-canary.png)
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
        * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
 4. Select the **Elastigroup Canary Deploy** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * **New Service**: Select:
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. Select the **Elastigroup Deploy** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * **New Service**: Select:
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
@@ -449,7 +450,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
    ![](./static/spot-bg.png)
 3. Select the **Elastigroup Blue Green Stage Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
@@ -464,7 +465,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
 
 4. Select the **Elastigroup Swap Route** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
-    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Timeout**: Set how long you want the Harness Delegate to wait for the Spot cloud to respond to API requests before timeout.
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)

@@ -291,7 +291,7 @@ The following **Platform** settings are available:
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-Use the **VMs** infrastructure option for [self-hosted cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Use the **VMs** infrastructure option for [self-managed cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 The following **Platform** settings are available:
 

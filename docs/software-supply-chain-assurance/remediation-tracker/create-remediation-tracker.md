@@ -88,7 +88,7 @@ By clicking on the tracker, you can access a list of all artifacts that utilize 
 
 ## Viewing the affected deployment environments
 
-When all the artifacts are listed, you can click on any artifact to see a detailed list of its deployments and environments. This view also includes the specific pipeline used for deployment and displays the tag of the artifact utilized in each deployment. Here’s how it appears:
+When all the artifacts are listed, you can click on any artifact to see a detailed list of its deployments and environments. This view also includes the specific pipeline used for deployment and displays the tag of the artifact and the component version utilized in each deployment. Here’s how it appears:
 
 
 ## 

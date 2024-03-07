@@ -20,6 +20,64 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## February 2024
 
+### Version 0.22.0
+
+<!-- Feb 22, 2024 -->
+
+Given the interest of our users to know more about our IDP and what's coming up next, we have released a detailed [roadmap](https://developer.harness.io/roadmap/#idp) for IDP. Also we would further like to hear the feedback of users on our [ideas platform](https://ideas.harness.io/) regarding how they envision their developer portal to be and what improvements they would like to see in our IDP especially the suggestions for Plugins and support for new integrations.  
+
+- **New Docs:** [Use Harness IDP for self serviced Harness CI/CD onboarding](https://developer.harness.io/docs/internal-developer-portal/flows/self-service-onboarding-pipeline-tutorial), [How to build Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/get-started/custom-dashboards)
+
+- **New Videos:** [Create a New Python Lambda app using Harness IDP in 5 minutes](https://youtu.be/JMjbqAilJHU) 
+
+#### New features and enhancements
+
+- We have added support for displaying warning message on connector page, when a connector or secret is deleted. [IDP-2018]
+- You can now optionally remove the pipeline url used to orchestrate the workflow, from the workflow execution logs displayed as output while using the custom action [trigger:harness-custom-pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline). For this you need to use the boolean property `hidePipelineURLLog` and set the value as `true`. [IDP-2183]
+
+```YAML
+## Example
+steps:
+- id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+    url: "Pipeline URL"
+    hidePipelineURLLog: true
+    inputset:
+        project_name: ${{ parameters.project_name }}
+    apikey: ${{ parameters.token }}
+```
+
+- The Custom field extension **`HarnessAutoOrgPicker`**, which auto populates org id on project selection, would now pick project field value from the key that is mentioned under `projectPickerRef` as dependencies, if it's name is other than `projectId`. When properties have the project key and are named as `projectId` in that case you don't need to add the dependencies. [IDP-2243]
+
+```YAML
+## Example where projectId is mentioned under project_name
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: your-workflow
+  ...
+spec:
+  ...
+  parameters:
+    - title: Details
+       properties:
+         project_name:
+           title: Project Identifier
+           description: Harness Project Identifier
+           type: string
+           ui:field: HarnessProjectPicker
+         orgId:
+           title: Org Identifier
+           description: Harness org Identifier
+           type: string
+           ui:field: HarnessAutoOrgPicker 
+           dependencies:
+            projectPickerRef:
+              - 'project_name'
+```
+
 ### Version 0.21.0
 
 <!-- Feb 8, 2024 -->
@@ -119,7 +177,7 @@ In the above example the the `Project Identifier` field once selected auto popul
 🎁 In our latest release, we've added improvements to scorecards✨ and the clarity of audit trails 📊 – features you've been eagerly waiting for.
 
 - **Docs:** [Governance](https://developer.harness.io/docs/category/governance), [Rafay Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rafay-kubernetes)
-- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-with-idp-stage)
+- **Tutorial:** [Create a service onboarding pipeline (using IDP Stage)](/docs/internal-developer-portal/tutorials/service-onboarding-with-idp-stage)
 
 
 #### New features and enhancements
@@ -196,7 +254,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 - **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [Supported OPA Policies in IDP](/docs/internal-developer-portal/scorecards/opa-implementation), [New IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
 
-- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/tutorials/internal-developer-portal/opa-scorecards)
+- **Tutorial:** [Harness Policy As Code for Services using Scorecards](/docs/internal-developer-portal/scorecards/opa-implementation)
 
 #### Early access features
 
@@ -229,7 +287,7 @@ This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency 
 
 - **Blogs:** [Harness SRM Plugin - Release Announcement](https://www.harness.io/blog/announcing-the-harness-srm-backstage-plugin)
 - **Docs:** [Key Concepts](https://developer.harness.io/docs/internal-developer-portal/key-concepts)
-- **Tutorial:** [How to track migrations using Scorecards](https://developer.harness.io/tutorials/internal-developer-portal/how-to-track-migrations)
+- **Tutorial:** [How to track migrations using Scorecards](/docs/internal-developer-portal/tutorials/how-to-track-migrations)
 
 #### New features and enhancements
 
@@ -278,15 +336,15 @@ Since last release, we have released some interesting docs and video tutorials t
 
 <!-- Nov 7, 2023 -->
 
-[Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here’s a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what’s happening in this year's edition of the event. Here’s some of the content updates.
+[Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here's a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what's happening in this year's edition of the event. Here's some of the content updates:
 
-- **Himanshu’s(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
-- **Docs:** [Updated Onboarding Guide](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](https://developer.harness.io/docs/internal-developer-portal/public-api) 
-- **Tutorial:** [How to add Links in Software Components](https://developer.harness.io/tutorials/internal-developer-portal/add-links-in-components) 
+- **Himanshu's(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
+- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
+- **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/software-catalog)
 
 #### New features and enhancements
 
-- We've introduced more explicit error messages when removing secrets to ensure users are fully aware and cautious of this action. [IDP-1520] 
+- We've introduced more explicit error messages when removing secrets to ensure users are fully aware and cautious of this action. [IDP-1520]
 - Backstage, powering the IDP platform has been upgraded to v1.17, take a look at the [release notes](https://backstage.io/docs/releases/v1.17.0) to find out the updates in this version.[IDP-1179]
 
 #### Fixed Issues
@@ -304,7 +362,7 @@ Post-Limited GA, we've taken your genius tips and mixed them into the Internal D
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i) 
-- **Tutorial:** [How to register Software Components in Catalog](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog)
+- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component)
 - **Docs:** [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources) 
 
 #### New features and enhancements
@@ -388,7 +446,7 @@ contents:
 #### What's new
 
 - IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
-- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
+- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/docs/internal-developer-portal/tutorials/using-secret-as-an-input) (IDP-780)
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
 
 #### Fixed issues

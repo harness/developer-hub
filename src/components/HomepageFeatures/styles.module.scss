@@ -19,18 +19,21 @@
       color: unset;
     }
     .getStartItem {
+      // border: var(--card-border);
+
       width: 270px; // 250px;
       height: 230px;
       overflow: hidden;
       /* Light/Background/White */
-      background: #ffffff;
+      background: var(--homepageFeatureCard);
       /* Light/Medium */
       box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04),
         0px 2px 4px rgba(96, 97, 112, 0.16);
-      border: 2px solid transparent;
+      // border: 2px solid transparent;
       border-radius: 8px;
       margin: 0 32px 32px 0;
       padding: 32px 0 24px 0;
+      border: var(--card-border);
       .titleAndDesc {
         height: 96px;
       }
@@ -84,7 +87,7 @@
         width: 24px;
         height: 24px;
         overflow: hidden;
-        background-color: #f3f3fa;
+        background-color: var(--ifm-heading-color);
         display: flex;
         justify-content: center;
         align-content: center;
