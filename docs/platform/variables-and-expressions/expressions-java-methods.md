@@ -1,0 +1,85 @@
+---
+title: Use Java string methods
+description: You can use any Java string method on Harness expressions.
+sidebar_position: 4
+helpdocs_topic_id: 91bhqk7t4q
+helpdocs_category_id: bp8t5hf922
+helpdocs_is_private: false
+helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/variables-and-expressions/extracting-characters-from-harness-variable-expressions
+---
+
+You can use any [Java string method](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary) to extract characters or manipulate [expression](./harness-variables.md) strings.
+
+## Format
+
+The correct format for using a Java method with an expression is:
+
+```
+<+<+expression>.methodName()>
+```
+
+The `<+expression>` calls the variable that you want to use the method on. Then you append the method and any parameters after the expression. The entire statement is wrapped in an expression delimiter (`<+...>`) so that Harness knows to evaluate the entire statement as one expression returning one, resolved value.
+
+The content between the expression delimiter (`<+...>`) is passed to [JEXL](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
+
+```
+<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "harness-software"
+```
+
+## Java string method examples
+
+Here are some examples of Java string methods with expressions.
+
+### contains()
+
+This expression uses `contains()`:
+
+```
+<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>
+```
+
+### split()
+
+In this example, assume you have a pipeline variable called `abc` with value `def:ghi`. You might use `split()` like this:
+
+```
+<+<+pipeline.variables.abc>.split(':')[1]>
+```
+
+This expression evaluates to `ghi`.
+
+For this example, assume you have a pipeline variable called `abc` with value `5.6.0`. You could use `split()` like this:
+
+```
+<+<+pipeline.variables.abc>.split('\\.')[1]>
+```
+
+This expression resolves to `6`.
+
+### charAt()
+
+Use `charAt()` to return the character at a specified index in a Harness variable expression string.
+
+This can be useful, for example, with an expression such as `<+artifact.tag>` that contains a version number that you want to pull out.
+
+To demonstrate this method, assume you have the expression `<+version>` with the value `1.2.3`.
+
+To get the first character of the string, you would use `charAt()` like this:
+
+```
+<+<+version>.charAt(0)>
+```
+
+This expression evaluates to `1`.
+
+## Use multiple methods
+
+You can also use multiple, nested methods. For example, assume you have a variable called `myvar` with a value `hello`, and you use the methods `substring` and `indexOf`. You could use these methods like this:
+
+```
+<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
+```
+
+This expression evaluates to `ello`.

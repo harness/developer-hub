@@ -35,36 +35,7 @@ Harness pre-populates many variables, as documented below, and you can set your 
 
 ## Java string methods
 
-You can use all Java string methods on Harness variable expressions.
-
-The example mentioned in the previous section used `contains()`:
-
-`<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
-
-Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`, you can use `split()` like this:
-
-```
-echo <+<+pipeline.variables.abc>.split(':')[1]>
-```
-
-The output of this expression is `ghi`.
-
-
-Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`, you can use `split()` like this:
-
-```
-echo <+<+pipeline.variables.abc>.split('\\.')[1]>
-```
-
-The output of this expression is `6`.
-
-The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
-
-For example, let's use a variable `myvar` using the methods `substring` and `indexOf` with value `Hello`. You can use these methods like this:
-
-`<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>`
-
-This expression evaluates to `ello`.
+You can [use any Java string method on Harness variable expressions](./expressions-java-methods.md).
 
 ## FQNs and expressions
 
@@ -2067,7 +2038,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | helmChart.metadata.url                                                 | N/A                                                                                                                                                                                                                                                                                                                                   |
 | helmChart.name                                                         | pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                                                                    |
 | helmChart.version                                                      | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion                                                                                                                                                                                                                                             |
-| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")`     | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>`                                                                                                                                                                                    |
+| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")`     | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+<secrets.getValue("test_secret")>.concat(<+pipeline.variables.envVar>)>`                                                                                                                                                                                    |
 | **Email Step**                                                         | **Email Step**                                                                                                                                                                                                                                                                                                                        |
 | toAddress                                                              | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to                                                                                                                                                                                                                                                                         |
 | ccAddress                                                              | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc                                                                                                                                                                                                                                                                         |
