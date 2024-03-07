@@ -209,7 +209,7 @@ and Size [small, medium, large].
 "Subscribe to RSS" size="medium"/> />
 ```
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-integration/rss.xml" tooltip=
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-integration/rss.xml" tooltip=
 "Subscribe to RSS" size="medium"/>
 
 ## Pills
