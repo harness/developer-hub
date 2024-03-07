@@ -20,16 +20,34 @@ Helm: Needed for installing ESO.
 Kubectl: Configured for your Kubernetes cluster.
 Secrets Manager Access: Credentials for your chosen secret management system
 
-
-The installation and configuration of the External Secrets Operator (ESO) in a Kubernetes environment involve several key steps, which are detailed below based on the information from various sources:
-
 ### Installing ESO with Helm
 
-1. **Add the Helm Repository**: First, add the ESO Helm chart repository to your Helm installation:
-   ```bash
-   helm repo add external-secrets https://charts.external-secrets.io
-   helm repo update
+Create ArgoCD Application for External Secrets Operator:
+
+Define an ArgoCD Application to deploy the External Secrets Operator using its Helm chart.  In Harness CD, go to GitOps, and create an application like the following:
+
+
    ```
+   apiVersion: argoproj.io/v1alpha1
+   kind: Application
+   metadata:
+     name: external-secrets
+     namespace: argocd
+   spec:
+     project: default
+     source:
+       repoURL: 'https://external-secrets.github.io/external-secrets/'
+       chart: external-secrets
+       targetRevision: &lt;chart-version>
+     destination:
+       server: 'https://kubernetes.default.svc'
+       namespace: external-secrets
+     syncPolicy:
+       automated:
+         selfHeal: true
+         prune: true
+   ```
+
 
 2. **Install the ESO**: Install ESO in the `external-secrets` namespace. The installation can be done via Helm upgrade or install command:
    ```bash
