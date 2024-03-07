@@ -16,6 +16,17 @@ This document explains how to use Helm to install, upgrade, or uninstall Harness
 
 Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
+## Helm client version compatibility
+
+Harness validates Helm client compatibility against the following versions:
+
+- 3.9.4
+- 3.10.3
+- 3.11.3
+- 3.12.3
+- 3.13.3
+- 3.14.2 
+
 :::info note
 You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
 :::
