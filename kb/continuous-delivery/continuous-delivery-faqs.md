@@ -3896,10 +3896,6 @@ In Git Experience one can have following options:
 - Moving inline resources to Remote resources
 - Support for in-built features such as Service Dashboard and  Post Production Rollback for remote Services
 
-#### What are the Feature Flags required for Git Experience ?
-
-Feature Flags for Git Experience usage are - `CDS_ENV_GITX`, ` CDS_INFRA_GITX` and  `CDS_SERVICE_GITX`
-
 #### How does Harness provide enhanced control to users in the deployment sequence for applying autoscaling policies in ECS Blue-Green deplotment ?
 
  Harness exposes further control to users when in the deployment sequence they want to apply the autoscaling policies. This ensures that the existing containers are not impacted during release and after release it scales down based on traffic demand.

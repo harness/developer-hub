@@ -2,7 +2,7 @@
 title: Deploy using Kubernetes Manifest
 description: Deploy using Kubernetes Manifest
 hide_table_of_contents: true
-sidebar_position: 0
+sidebar_position: 2
 redirect_from:
   - /docs/continuous-delivery/get-started/create-first-pipeline
   - /tutorials/cd-pipelines/kubernetes/manifest

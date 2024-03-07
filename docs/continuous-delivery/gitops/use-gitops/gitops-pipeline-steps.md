@@ -61,13 +61,15 @@ In this step, you can do the following:
 
 You can create a maximum of two Merge PR steps in a stage.
 
+Currently, Git connectors authenticated through OAuth are not supported in the Merge PR step.
+
 :::
 
 This step merges a PR.
 
 ### Fetch Linked Apps step
 
-The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app.
+The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps apps which are generated via ApplicationSet.
 
 The following image shows information that is displayed on the **Output** tab of the step:
 
