@@ -27,7 +27,7 @@ Create ArgoCD Application for External Secrets Operator:
 Define an ArgoCD Application to deploy the External Secrets Operator using its Helm chart.  In Harness CD, go to GitOps, and create an application like the following:
 
 
-   ```
+   ```yaml
    apiVersion: argoproj.io/v1alpha1
    kind: Application
    metadata:
