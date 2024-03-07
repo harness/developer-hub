@@ -61,6 +61,8 @@ In this step, you can do the following:
 
 You can create a maximum of two Merge PR steps in a stage.
 
+Currently, Git connectors authenticated through OAuth are not supported in the Merge PR step.
+
 :::
 
 This step merges a PR.
