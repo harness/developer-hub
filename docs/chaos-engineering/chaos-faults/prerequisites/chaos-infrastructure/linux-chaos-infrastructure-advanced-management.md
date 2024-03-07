@@ -1,6 +1,6 @@
 ---
 title: Linux chaos infrastructure advanced management
-sidebar_position: 2
+sidebar_position: 4
 description: Guide to advanced setup with Linux chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure (LCI).

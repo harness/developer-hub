@@ -1,0 +1,16 @@
+# CPU hog in the Windows VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: windows-cpu-stress
+    spec:
+      components:
+        env:
+       # CPU cores for stress
+        - name: CPU_CORES 
+          value: '1'
