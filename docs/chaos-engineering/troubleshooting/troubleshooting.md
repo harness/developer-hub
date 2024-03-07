@@ -286,41 +286,42 @@ Apply the changes and start the service. The service should now enter a running 
 
 By following these steps, you can manually grant the necessary permissions for the service to start successfully.
 
-## Windows Chaos Infrastructure Installation Failed with "The Specified Service Already Exists"
+# Windows chaos infrastructure troubleshooting
+
+## Windows chaos infrastructure installation failed with "The Specified Service Already Exists"
 
 **Error Message:**
 The specified service already exists.
 
-**Solution:**
+### Solution
 
-- Run Uninstallation Script: Use the provided script to remove the previous installation.
-- Manually Remove Previous Installation:
-  - Delete the service using the command sc delete WindowsChaosInfrastructure.
-  - Remove the chaos directory, typically located at C:\HCE.
-- Reinstall: After cleanup, rerun the installation script.
+- Run the uninstallation script: Use the provided script to remove the previous installation.
+- Manually remove the previous installation:
+  - Delete the service using the command `sc delete WindowsChaosInfrastructure`.
+  - Remove the chaos directory, typically located at `C:\\HCE`.
+- Reinstall: After cleanup, re-run the installation script.
 
-## Windows Infra Installation Failed with "Account Name is Invalid"
+## Windows infrastructure installation failed with "Account name is invalid"
 
 **Error Message:**
 The account name is invalid or does not exist, or the password is invalid for the account name specified.
 
+### Solution
 
-**Solution:**
+- Verify account name: Ensure that the account name provided in the `-AdminUser` flag is correct and exists on the system.
+- Correct Syntax: Use the correct syntax, for example, `.\Administrator` for the local administrator account.
 
-- Verify Account Name: Ensure the account name provided in the -AdminUser flag is correct and exists on the system.
-- Correct Syntax: Use the correct syntax, e.g., .\Administrator for the local Administrator account.
+## Windows infrastructure service fails to create with error or Exit Code 216
 
-## Windows Infra Service Fails to Create with Error or Exit Code 216
+### Solution
 
-**Solution:**
-
-**Check Windows Version:** The error indicates incompatibility with the Windows version. Currently, only 64-bit versions are supported. Support for 32-bit versions is planned for future releases.
-
-
-## Windows Infra Default Command Fails with "Could Not Create SSL/TLS Secure Channel"
+**Check Windows version:** The error indicates incompatibility with the Windows version. Currently, only 64-bit versions are supported. Support for 32-bit versions is planned for future releases.
 
 
-**Solution:**
+## Windows infrastructure default command fails with "Could not create SSL/TLS secure channel"
+
+
+### Solution
 
 Force TLS 1.2: Add the following line to the beginning of your command to force PowerShell to use TLS 1.2:
 
@@ -334,6 +335,6 @@ For example:
 powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://app.harness.io/public/shared/tools/chaos/windows/1.32.0/install.ps1' -OutFile 'install.ps1' -UseBasicParsing; .\install.ps1 -AdminUser '.\uditgaurav' -AdminPass 'password@123' -InfraId '59cedc73-c544-432a-99e7-ec20b2fc73c0' -AccessKey 'ow03gxzvkjdck9ws5jjmznu2gzx7h0ep' -ServerUrl 'https://shubhamch.pr2.harness.io/chaos/mserver/api' }"
 ```
 
-This modification forces PowerShell to use TLS 1.2 for secure connections, resolving the SSL/TLS issue.
+This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
 
-For further assistance, please refer to the documentation or contact Harness support.
+For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness support](mailto:support@harness.io).
