@@ -1,7 +1,7 @@
 ---
 title: Harness Platform FAQs
 description: Frequently asked questions about Harness Platform.
-# sidebar_position: 2
+sidebar_position: 2
 ---
 
 # Harness Platform FAQs

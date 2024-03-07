@@ -6,31 +6,15 @@ redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/pipeline-faq
 ---
 
-## Is there a limit to the number of pipelines a project can have?
+This page answer some frequently asked questions about pipelines in Harness. For additional information and questions about pipelines generally, pipeline components (such as delegates, connectors, and secrets), and module-specific pipelines (such as CI/CD pipelines), go to the module and Platform documentation and the other FAQ pages.
 
-No, there is no limit to the number of pipelines you can create in a project.
+## How many pipelines can I have?
 
-## What is the character limit on pipeline names?
+There is no limit to the number of pipelines you can create in a project.
+
+## Is there a character limit for pipeline names?
 
 Pipeline names are limited to 128 characters.
-
-## Can I increase the concurrent pipeline execution limit?
-
-Depending on your plan tier, you can [set the pipeline execution concurrency limit](https://developer.harness.io/docs/platform/pipelines/pipeline-settings) up to 1000.
-
-## Can I get a pipeline's status while it's running?
-
-While you can't get the status for the entire pipeline, you can call the status of specific stages or steps.
-
-You can use Harness expressions to reference the status of completed stages and steps in a pipeline, such as:
-
-```yaml
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>
-<+pipeline.stages.STAGE_ID.status>
-<+execution.steps.STEP_ID.status>
-```
-
-This can be useful, for example, when configuring [conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings).
 
 ## Pipeline access control
 
@@ -49,14 +33,6 @@ Harness RBAC doesn't offer a setting to hide pipelines. However, you can achieve
 ### Can I provide access to specific pipelines in Harness?
 
 You can use [Harness RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) to create a [resource group](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups) that has visibility (access) to specific pipelines.
-
-### What permission do I need to see deployments for all projects?
-
-You need permissions to view pipelines at the account scope to access deployments for all projects. For more information and examples, go to [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness).
-
-### Can I see all pipeline executions for my account in one place if I am an account admin?
-
-It is not possible to view all pipeline executions for an entire account under a single view due to the [three-tier permissions hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). You need to drill down into an organization or project to view the execution history for that org/project.
 
 ### Can I allow a user to edit existing pipelines but not create new pipelines?
 
@@ -186,7 +162,25 @@ Unfortunately, it is generally not possible to recover deleted entities. Some en
 
 When a pipeline is deleted, the audit details are retained, and the execution logs are deleted.
 
-## Pipeline logs
+## Pipeline executions and logs
+
+### Can I increase the concurrent pipeline execution limit?
+
+Depending on your plan tier, you can [set the pipeline execution concurrency limit](https://developer.harness.io/docs/platform/pipelines/pipeline-settings) up to 1000.
+
+### Can I get a pipeline's status while it's running?
+
+While you can't get the status for the entire pipeline, you can call the status of specific stages or steps.
+
+You can use Harness expressions to reference the status of completed stages and steps in a pipeline, such as:
+
+```yaml
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>
+<+pipeline.stages.STAGE_ID.status>
+<+execution.steps.STEP_ID.status>
+```
+
+This can be useful, for example, when configuring [conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings).
 
 ### How long are Harness deployment logs visible in the UI?
 
@@ -195,6 +189,14 @@ The default pipeline execution [data retention](https://developer.harness.io/doc
 ### Is the a line limit on the console log?
 
 Yes. For details, go to [Deployment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations/).
+
+### What permission do I need to see deployments for all projects?
+
+You need permissions to view pipelines at the account scope to access deployments for all projects. For more information and examples, go to [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness).
+
+### Can I see all pipeline executions for my account in one place if I am an account admin?
+
+It is not possible to view all pipeline executions for an entire account under a single view due to the [three-tier permissions hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). You need to drill down into an organization or project to view the execution history for that org/project.
 
 ## Pipeline notifications
 
@@ -277,7 +279,3 @@ json_content='<+pipeline>'
 variables=$(echo "$json_content" | jq -r 'recurse | objects | select(has("variables")) | .variables | to_entries | map("\(.key) = \(.value)") | join(" ")')
 echo "$variables"
 ```
-
-## Other pipeline questions
-
-For additional information and questions about pipelines generally, pipeline components (such as delegates, connectors, and secrets), and module-specific pipelines (such as CI/CD pipelines), go to the module and Platform documentation and the other FAQ pages.
