@@ -91,7 +91,7 @@ The following deprecated API endpoints are longer supported:
 
 - Upgraded org.eclipse.jetty.* from v9.4.53.v20231009 to 9.4.54.v20240208. (PL-47854)
 
-- The delegate list page now shows the latest delegate version beside the New Delegate button. This will help you compare your delegate version with the latest supported delegate version. (PL-47049) this ticket suddenly popped up today on the saas RN page, not sure if I should add it or not, will delete this line once I have clarity from Nataraja
+- The delegate list page now shows the latest delegate version beside the New Delegate button. This will help you compare your delegate version with the latest supported delegate version. (PL-47049)
    
    This item is available with Harness Platform version 1.28.xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
