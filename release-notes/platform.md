@@ -87,8 +87,27 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- You can now add multiple emails to User Group notifications. This support allows you to include Harness Users or add emails separated by commas. (PL-46480)
+
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. (PL-47746)
+
+   - Use CPU_USAGE_THRESHOLD for CPU control (default: no limit)
+
+   - Use MEMORY_USAGE_THRESHOLD for memory control (default: 80%)
+
+   If you are using RESOURCE_USAGE_THRESHOLD (deprecated), it exclusively controls the memory threshold.
+
+- Upgraded org.eclipse.jetty.* from v9.4.53.v20231009 to 9.4.54.v20240208. (PL-47854)
+
 #### Fixed issues
 
+- Customers were unable to view delegate logs due to the system not automatically switching to app.harness.io as the remote logging service when GCP is blocked by a firewall. (PL-46958, ZD-57844)
+
+   The issue is fixed regarding the auto-switching mechanism for the remote logging destination, ensuring accessibility to delegate logs when GCP is blocked by a firewall.
+
+- Perpetual tasks experienced significant delays in reassignment after the current delegate was shut down. (PL-47781, ZD-58497, ZD-58522, ZD-58650)
+
+   We have addressed the issue of prolonged delays in perpetual task reassignment following delegate shutdowns by increasing the frequency of cron jobs that reset the perpetual task state for reassignment.
 
 ### Version 1.27.10<!--  March 5, 2024 -->
 
