@@ -1,3 +1,26 @@
+### Setting up External Secrets Operator
+
+The External Secrets Operator (ESO) is a powerful tool for managing secrets in a Kubernetes environment. It bridges the gap between Kubernetes and external secret management systems like AWS Secrets Manager or Azure KeyVault. Here's a detailed overview of the process:
+
+Overview
+Functionality: ESO syncs secrets from external APIs into Kubernetes, ensuring secure and automated management of secrets.
+
+Key Components:
+
+SecretStore: A namespaced Kubernetes resource that connects to an external secret manager.
+ExternalSecret: Defines the specific data to be fetched from the external source.
+ClusterSecretStore: A global variant of SecretStore for use across multiple namespaces.
+Roles and Access Control:
+
+Cluster Operators: Manage the ESO and access policies.
+Application Developers: Define ExternalSecrets for their needs.
+Prerequisites
+Kubernetes Cluster: With ArgoCD installed.
+Helm: Needed for installing ESO.
+Kubectl: Configured for your Kubernetes cluster.
+Secrets Manager Access: Credentials for your chosen secret management system
+
+
 The installation and configuration of the External Secrets Operator (ESO) in a Kubernetes environment involve several key steps, which are detailed below based on the information from various sources:
 
 ### Installing ESO with Helm
