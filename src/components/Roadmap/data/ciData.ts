@@ -11,7 +11,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Go",
+        title: "Build Cache for Bazel",
         description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {
@@ -71,7 +71,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Bazel",
+        title: "Build Cache for Go",
         description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {

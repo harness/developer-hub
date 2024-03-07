@@ -101,7 +101,7 @@ To access sample manifest files:
 
 You have now completed adding folders and manifests to file store.
 
-## Select Kubernetes manifests and the *values.yaml* file from file store
+## Select Kubernetes manifests and the values.yaml file from file store
 
 You can select and apply the file store folder with the Kubernetes manifests and the *values.yaml* file to your pipeline.
 
