@@ -18,11 +18,6 @@ export const StoData: Horizon = {
         title: "Semgrep scanner support",
         description: "Support Commercial Semgrep scanner integration in all STO modes - Ingestion, orchestration, and extraction.",
       },
-      {
-        tag: [{ value: "Governance" }, { value: "AIDA" }],
-        title: "Enhanced governance using OPA",
-        description: "Allow users to govern pipelines using out-of-the-Box OPA policies based on STO Vulnerability results.",
-      },
     ],
   },
   "Next": {
@@ -43,6 +38,17 @@ export const StoData: Horizon = {
         title: "Downloadable Pipeline Reports",
         description: "Allow users to download and schedule a detailed report with STO results in PDF and CSV format.",
       },
+      {
+        tag: [{ value: "Platform" }, { value: "Cross Module" }],
+        title: "Combine Artifacts with SSCA",
+        description: "Provide granular vulnerability data for an artifact/target, additional to current pipeline view.",
+      },
+      {
+        tag: [ {value: "Usability"} ],
+        title: "Combine Artifacts with SSCA",
+        description: "Provide granular vulnerability data for an artifact/target, additional to current pipeline view.",
+      },
+
     ],
   },
   "Later": {
@@ -63,11 +69,21 @@ export const StoData: Horizon = {
         title: "STO for IACM Module",
         description: "Extend STO support to the IACM module within Harness Platform.",
       },
+      {
+        tag: [{ value: "Data Handling" }],
+        title: "Target Deletion",
+        description: "Allow to delete unwanted targets/artifacts vulnerability data to reduce noise.",
+      },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Governance" }, { value: "AIDA" }],
+        title: "Enhanced governance using OPA",
+        description: "Allow users to govern pipelines using out-of-the-Box OPA policies based on STO Vulnerability results.",
+      },
     ],
   },
 };
