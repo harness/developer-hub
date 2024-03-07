@@ -75,9 +75,11 @@ To add a step failure strategy:
 
 You can also define stage, step, and step group failure strategies at runtime by configuring them as [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs).
 
-This video explains how to define a failure strategy as runtime input:
+To do this, go to the **Failure Strategy** settings where you want to configure a failure strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
-<DocVideo src="https://harness-24.wistia.com/medias/bj2kzkgw8a" />
+When you run the pipeline, you'll be prompted to define the failure strategy settings for that run.
+
+Due to the potential complexity of failure strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for failure strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually define the entire failure strategy each time.
 
 ### Failure strategies for CD steps and stages
 

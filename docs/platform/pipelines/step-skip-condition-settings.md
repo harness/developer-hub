@@ -97,9 +97,11 @@ To clear a stage, step, or step group's conditional execution settings, go to th
 
 You can also define stage, step group, and step conditional executions settings at runtime by configuring them as [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs).
 
-This video explains how to define a conditional execution as runtime input:
+To do this, go to the **Conditional Execution** settings where you want to configure a condition to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
-<DocVideo src="https://harness-24.wistia.com/medias/5w053wtla8" />
+When you run the pipeline, you'll be prompted to define the conditional execution settings for that run.
+
+Due to the potential complexity of JEXL expressions in conditional executions, [input sets](/docs/platform/pipelines/input-sets) are useful for conditional executions as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire conditional execution each time.
 
 ## Variables and expressions in conditional execution settings
 

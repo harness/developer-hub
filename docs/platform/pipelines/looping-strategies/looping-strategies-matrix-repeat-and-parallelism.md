@@ -424,7 +424,7 @@ You can configure stage, step, and step group looping strategies as [runtime inp
 
 When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run s pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
-To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy, select the **Thumbtack** icon and change the input type to **Runtime Input**.
+To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
 ![Selecting runtime input for the looping strategy.](./static/looping-runtime-input.png)
 
