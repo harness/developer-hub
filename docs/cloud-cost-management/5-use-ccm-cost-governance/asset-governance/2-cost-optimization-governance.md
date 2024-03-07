@@ -4,132 +4,43 @@ description: This topic describes how to optimize cloud costs using asset govern
 # sidebar_position: 2
 ---
 
+### Governance in detail
 
-# Optimize cloud costs by using the asset governance rules
+#### Rule
+Anatomy of a Rule: Cloud policies use a declarative vocabulary of resources, filters, and actions to be configured in YAML. 
 
-:::note
-Currently, Azure support for Asset Governance is behind the feature flag **CCM_ENABLE_AZURE_CLOUD_ASSET_GOVERNANCE_UI** and GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+- Policy: A Cloud Custodian policy is defined in YAML format and consists of a set of filters and actions that are applied to a specific type of AWS resource.
 
+- Resource: In Cloud Custodian, a cloud resource or service (such as ASG, S3, EC2, ELBs, RDS, etc.) is referred to as a "key" in a policy file. This key specifies the type of cloud resource or service that the following actions and filters act upon. Go to Cloud Custodian documentation for more information.
 
-To optimize cloud costs, you need to create a governance rule or combine multiple rules into a ruleset and enforce it to provide a more comprehensive, consistent, and efficient approach to cloud asset governance.
+- Filters: In Cloud Custodian, filters are criteria that are used to narrow down resources based on their attributes. These attributes include tags, metadata, or other resource properties. The result of a filter is an output of resources that meet the criteria specified in the filter. This output is then used as the input for the actions defined in the policy. Filters in Cloud Custodian are essentially key-value pairs that can also be used more generically. They allow users to specify conditions that must be met for a resource to be included in the output. Go to Cloud Custodian documentation for more information.
 
+- Actions: In Cloud Custodian, actions are operations that can be performed on a resource and are applied to the output of the filters specified in the policy. Actions can include things like terminating an EC2 instance, deleting an S3 bucket, or sending an email notification.Actions in Cloud Custodian are essentially webhooks that are executed when the criteria specified in the policy are met. These webhooks can also be used more generically, allowing the automation of a wide range of tasks.
 
-## Create a new rule
+##### CRUD operations on Rule:
+** 1. Creating a Rule **
+** 2. Updating a Rule **
+** 3. Deletng a Rule **
 
-1. In **Harness**, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Rules**.
-4. Select **+ New Rule**. 
+#### Rule Sets
+Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. They are especially useful when dealing with numerous rules, as it can become challenging to keep track of them individually and they streamline governance by grouping related regulations, making them easier to track and maintain.
 
+By organizing rules into sets, organizations improve accessibility and simplify maintenance, as changes can be made to entire sets rather than individual rules. Rule sets help to keep rules organized and easily accessible, making it easier to manage and maintain complex rule configurations.
 
-  <DocImage path={require('./static/asset-governance-rule-creation.png')} width="60%" height="60%" title="Click to view full size image" />
+##### CRUD operations on Rule Sets:
+** 1. Creating a Rule Set **
+** 2. Updating a Rule Set **
+** 3. Deletng a Rule Set **
 
-5. Enter a name for the rule.
-6. Select the cloud provider.
-7. Optionally, enter a description of the rule.
-8. Select **Apply**.
-9. Enter the YAML policy in the rule editor.
-10. Select **Save**. If the policy is invalid, an error message is displayed.
-11. Select the **Account/ Subscription/ Projec**t and the **Region** (Region field isn't applicable in case of GCP) from the dropdown list in the Test Terminal.
-12. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
-13. After evaluating the output, select **Run Once** to execute the rule. 
+#### Enforcements
+Enforcements are automated actions taken when predefined conditions are met within our environment. These actions are typically designed to ensure compliance with governance policies, optimize resource utilization, enhance security, or streamline operations. For instance, an enforcement might automatically scale resources up or down based on predefined thresholds or schedule the deletion of unused instances after a specified period. 
 
-  <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
+The advantages of enforcements lie in their ability to automate routine tasks, reduce manual intervention, ensure consistency in policy enforcement, improve resource efficiency, and enhance overall system reliability and security. By automating actions based on predetermined conditions, enforcements enable organizations to maintain governance, optimize operations, and adapt to changing environments more effectively.
 
-Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 that can be enforced. These policies cannot be edited but can be cloned.
+#### Evaluations
+#### Audits
+#### RBAC
+#### Testing Terminal 
 
-## Create a new rule set
-
-Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. They are especially useful when dealing with numerous rules, as it can become challenging to keep track of them individually. Rule sets help to keep rules organized and easily accessible, making it easier to manage and maintain complex rule configurations.
-
-To create a rule set, perform the following steps:
-
-1. In **Harness**, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Rules**.
-4. Select the **Rule sets** tab.
-5. Select **+ New Rule Set**.
-6. Enter a name for the rule set.
-7. Optionally, enter a description of the rule set.
-8. Select the cloud provider.
-9. Select the rules that you want to enforce. 
-
-  <DocImage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-10. Select **Create Rule Set**. 
-The rule set is created successfully. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
-
-  <DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
-
-11. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
-
-
-## Enforce a rule or a rule set
-
-You need to create rule enforcement to automatically detect and take action when the conditions are met. Rule enforcement allows automated actions such as scaling resources up or down based on predefined thresholds. For example, you can create an enforcement to schedule the deletion of all unused EC2 instances older than 60 days.
-
-To create enforcement, perform the following steps:
-
-1. In your **Harness** application, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Enforcements**.
-4. Select **+ New Enforcement**.
-5. Enter a name for the enforcement.
-6. Optionally, enter a description of the enforcement.
-7. Select the cloud provider.
-8. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
-9. Select **Continue**. 
-10. Select the target accounts/subscriptions/projects and target region (Region field isn't applicable in case of GCP). You could select multiple accounts and regions.
-11. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
-12. Toggle the **Dry Run** mode if you do not want to take action immediately.
-13. Select **Finish**. 
-
-    <DocImage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. 
-
-<DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
-
-Furthermore, you can disable the enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) and switch to active mode.
-  
-<DocImage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-## Evaluate the rules
-
-1. In your **Harness** application, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Evaluations**.
-4. Select the rule to view the evaluation details. 
-The target accounts, regions, and evaluation logs are displayed.
-
- <DocImage path={require('./static/asset-gov-eval.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-## Use filters in rule evaluation
-
-You can create filters to view selected rules:
-
-1. Select the filter icon.
-2. Enter a name.
-3. Select who can edit and view the filter.
-4. Select one or more of the following criteria to filter the results:
-    * Rules
-    * Rule Sets
-    * Enforcements
-    * Minimum Cost Impact ($)
-    * AWS Filters
-
-      - Target Accounts
-      - Target Regions
-    * Azure Filters
-
-      - Azure Subscription
-      - Target Regions
-
-  <DocImage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
-
-5. Select **Apply**.
+In our rule editor, we have a test terminal so that when customers are trying out their rules, they can see the output in the terminal itself. This is done to ensure that customers can run the rules and try them accordingly to check how the output would look on the selected region and account on our terminals. We give them two options: first, to select the target region, and second, to select the subscription. They can provide the relevant inputs and run the rule at once, or they can choose to try and generate a simulation of rule enforcement. The test terminal helps with effective debugging and also assists in trying out the rules.
+#### Cost Correlation
