@@ -16,32 +16,226 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
+## March 2024
+### Version 1.9.1
+#### New features and enhancements
+This release does not include any new features.
 
-## Latest: version 81400
+#### Early access features
+This release does not include any early access features.
 
-### New features and enhancements
+#### Fixed issues
+- Previously the exported CSV was not reflecting the Perspective Preferences set by the user. Now it has been fixed and the rows of Perspective Grid and exported CSV should match. [CCM-16586]
 
-- Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+## February 2024
+### Version 1.8.1
 
-  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+#### New features and enhancements
+This release does not include any new features.
 
-### Early access features
+#### Early access features
 
 This release does not include any early access features.
 
-### Fixed issues
+#### Fixed issues
+-  We added a default value (CURRENT_MONTH) for the overviewTimeFilter parameter in the Overview Forecasting API, ensuring consistency and simplifying usage. [CCM-16458]
+
+- We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. [CCM-16052]
+
+### Version 1.7.3
+
+#### New features and enhancements
+
+- We have seamlessly integrated Azure preferences into the Account Settings. Users can conveniently configure your preferences there, and once the Azure preferences feature is launched, they will be applied across all Azure perspectives for enhanced customization and consistency. [ccm-15789]
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- In the Perspective UI, readability was previously compromised as the total cluster cost information overlapped behind the tile. With the latest update on the perspective details page, formatted cost will now be clearly visible, and users can access the full value through tooltips for enhanced clarity and usability. [CCM-16413]
+
+### Version 1.6.5
+
+#### New features and enhancements
+
+- In the Azure connector flow, a new field named "billing type" has been incorporated to identify users' billing types. This enhancement sets the groundwork for enabling Azure cost preferences in future updates. [CCM-15978]
+
+- We've implemented the edit flow for commitment orchestration, granting users the ability to modify their commitment orchestration details seamlessly. [CCM-11304]
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+- The Filter API is paginated; however, the UI filter component lacked pagination support. To address this, we have implemented a result limit of 1000. Now users will be able to see all the saved filters in the recommendation filters. [CCM-16364]
+
+- Previously, users faced limitations when attempting to adjust constituents within budget groups, hindering adaptability to organizational changes. Now, Budget group edit flow will not block the budgets or budget groups selected in that budget group eliminating constraints and enhancing flexibility. [CCM-16196]
+
+- After upgrading to SMP version 0.120, users encountered issues with BI Dashboards loading, prompting them to add connectors despite existing connectors at the account level. In response, for SMP Environment, we've implemented redirects to the Dashboards module to facilitate viewing BI Dashboards seamlessly. [CCM-15995]
+
+
+## January 2024
+
+### Version 1.5.1
+
+#### New features and enhancements
+This release does not include any new features.
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+- Previously, it was a bit difficult editing cost categories, especially on smaller monitors or when the web browser isn't maximized. To address this, we've implemented a fix in the layout of rules specifically for smaller windows. With this adjustment, users can now seamlessly edit cost categories even on smaller screens, ensuring a smoother experience across different viewing contexts. [CCM-15991]
+
+- Upon clicking back from the shared cost screen, users encountered a non-functional continue button due to form validation issues. We have resolved this impediment from the UI side, ensuring users can proceed seamlessly without hindrance. [CCM-15990]
+
+### Version 1.4.2
+
+#### New features and enhancements
+This release does not include any new features.
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+
+- In Commitment Orchestrator, the exclusion of resource instances was found confusing sometimes, necessitating a clearer flow. We've made enhancements to the commitment orchestration setup flow. [CCM-15844]
+
+### Version 1.3.0
+#### New features and enhancements
+This release does not include any new features.
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+- While filtering for a GCP anomaly and clicking on the Anomaly link in perspectives redirected users to the Azure-based anomaly screen. To rectify this, we've implemented a solution to ensure that only relevant anomalies are displayed by adding an "EQUAL" case in the switch condition with the appropriate condition format for equal cases. [CCM-15649]
+
+### Version 1.2.1
+#### New features and enhancements
+This release does not include any new features.
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+
+- Users without edit permissions for perspectives were still able to see the "+ New Perspective" button, which was not grayed out, leading to confusion. Now, if users lack edit access on perspectives or folders, the "+ New Perspective" button will be disabled, preventing confusion. Furthermore, error messages have been refined to provide clearer feedback. [CCM-15611]
+
+- when creating or updating a perspective with an "invalid" cost category. If a cost category shares the exact same name as the attribute "shared cost," attempting to include it in a perspective results in a failure message: "Oops, something went wrong on our end. Please contact Harness Support." We have improved the error message with details telling that the cost category name cannot be same as shared cost bucket name. [CCM-15536]
+
+- Horizontal scrolling was absent from all pages except perspective-details. This has now been successfully addressed and resolved. [CCM-14720]
+
+## December 2023
+
+### Version 82001
+
+#### New features and enhancements
+
+This release does not include any new features.
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+This release does not include any fixed issues.
+
+### Version 81904
+
+#### New features and enhancements
+
+This release does not include any new features.
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+This release does not include any fixed issues.
+
+### Version 81801
+
+#### New features and enhancements
+
+This release does not include any new features.
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+- Previously, clicking on "Log Section" in the Review Screen redirected users to Compute Coverage instead of defaulting to the Events Logs Section as intended. Now, from the review section of commitment orchestration, the link for the log section correctly directs users to the Events Logs Section. This issue has been successfully resolved. [CCM-15189]
+
+- Sometimes, changing filters in the default Perspective interface would reset the page but fail to display the table initially. This issue has now been resolved, with the table consistently appearing after filter and groupby adjustments. [CCM-14990]
+
+
+## November 2023
+
+### Version 81700
+
+#### New features and enhancements
+- Pagination for perspectives has been added for faster loading times of perspectives. By default only 20 perspectives will be shown. To see all the perspectives set the pageSize as 10,000 and pageNo as 0. By default all perspectives are ordered by most recent. (CCM-15124)
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+This release does not include any fixed issues.
+
+### Version 81601
+
+#### New features and enhancements
+- RBAC (Role-Based Access Control) support has been implemented for the Commitment Orchestrator. CCM Admins now possess the authority to configure the Commitment Orchestrator for master accounts. On the other hand, CCM Viewers are granted access to visibility screens within the Commitment Orchestrator interface. (CCM-15040)
+
+- Earlier, we didn't support adding relevant rule filters for perspectives created through cloud providers. As a result, all anomalies were being displayed on the cloud providers' perspective, regardless of whether they were relevant to that perspective or not. In this release, we have now added rule filters for cloud providers to address this issue. (CCM-15068)
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+
+- Previously, entering connector names resulted in incorrect error message "Delegate with that name already exists." This hindered the quick connection setup. Now, the system accurately reflects the correct error message for when Delegate validation failures. (CCM-14963)
+
+### Version 81501
+
+#### New features and enhancements
+
+- The perspectives page has been enhanced with pagination for both the Card and List views. Each page will display a maximum of 20 perspectives, addressing the issue where some customers experienced lag during the initial rendering of the perspectives list pages. (CCM-14018)
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- In the updated functionality for K8s connectors, the "View Costs" feature is now enabled based on the presence of cluster data rather than relying solely on the last events received. This enhancement ensures that users retain the ability to view historical costs. (CCM-14984)
+
+### Version 81402
+
+#### New features and enhancements
+
+- Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+
+Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
 
 - Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
 
-  However, now, the form (except Ticket Summary and Description) resets on project change, ensuring a smoother process.
+However, now, the form (except Ticket Summary and Description) resets on project change, ensuring a smoother process.
 
 - Previously, anomaly detection on K8s Services lacked a threshold, leading to excessive alerts. (CCM-14865)
 
-  Now, we have implemented a threshold of $3 for anomaly detection on K8s Services to refine the alerting process.
+Now, we have implemented a threshold of $3 for anomaly detection on K8s Services to refine the alerting process.
 
 - Previously, incorrect entity types for Azure in anomalies caused misdirected notifications on Slack and email. (CCM-14864)
 
-  However, this issue is fixed now by changing the logic for Azure entity types.
+However, this issue is fixed now by changing the logic for Azure entity types.
 
 ## Previous releases
 
