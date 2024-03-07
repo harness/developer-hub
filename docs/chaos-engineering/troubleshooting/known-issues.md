@@ -51,11 +51,11 @@ HCE platform provides native integration for chaos experiments with the CD modul
 
 ## GameDay support
 
-HCE currently offers [GameDay](/docs/chaos-engineering/features/gameday/) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, GameDay support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive GameDay exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
+HCE currently offers [GameDay](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. This feature allows teams to simulate real-world scenarios and assess the resilience of applications or microservices across different environments. However, GameDay support for Windows chaos experiments is not yet available. Once implemented, this feature will enable users to conduct comprehensive GameDay exercises involving Windows chaos experiments, providing a more holistic view of system resilience and facilitating targeted improvements.
 
 ## Inclusion in ChaosGuard policies
 
-[ChaosGuard](/docs/chaos-engineering/features/chaosguard/) is a HCE feature that enhances the security and control of chaos experiments. It allows for the creation of policies that define who can execute which experiments, when, and from which ChaosHub, based on customised security standards. Currently, Windows chaos experiments are not supported in ChaosGuard policies, but this integration is anticipated in future releases. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
+[ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md) is a HCE feature that enhances the security and control of chaos experiments. It allows for the creation of policies that define who can execute which experiments, when, and from which ChaosHub, based on customised security standards. Currently, Windows chaos experiments are not supported in ChaosGuard policies, but this integration is anticipated in future releases. Once implemented, it will provide a more robust and secure framework for managing Windows chaos experiments.
 
 ## Scheduled or Cron experiments
 
