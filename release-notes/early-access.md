@@ -296,6 +296,16 @@ You will also experience an enhanced user interface when configuring the integra
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
+### Default regular expressions for target baselines
+
+* **Release date:** March 2024
+* **Issue number:** STO-7127
+* **Feature flag:** `STO_DATA_OPA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recent two-dot version number if it can be detected.
+
+
 ### Write OPA policies based on STO scan results
 
 * **Release date:** February 2024

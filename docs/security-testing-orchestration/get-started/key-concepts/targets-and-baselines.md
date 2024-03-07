@@ -66,10 +66,9 @@ If you scanned the baseline, or the baseline isn't defined, you'll see
 </figure>
 
 
+### Every target needs a baseline
+
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
-
-
-### Why you should define a baseline for every STO target
 
 <StoWhyDefineBaselines />
 

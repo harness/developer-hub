@@ -26,6 +26,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2024
 
+### Version 1.86.1
+
+### Early access feature
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recent two-dot version number if it can be detected. (STO-7217)
+
+:::note
+Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For more information, go to [Default regular expressions for target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regular-expressions).
+
+
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->

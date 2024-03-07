@@ -1,33 +1,38 @@
 ---
-title: Set up target baselines in STO
-description: You need to specify the root branch, tag, or version for every target. 
-sidebar_label: Set up target baselines
+title: Target baselines in STO
+description: The target baseline is the root variant such as `main` or `latest.` 
+sidebar_label: Target baselines
 sidebar_position: 50
 ---
 
-You need to specify a baseline for every target. The baseline represents the root variant, such as the `main` branch or the `latest` tag. In some cases, you might want to use the name of the latest official release as the baseline. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
+Every scanned target should have a _baseline_, which represents the root variant such as the `main` branch or the `latest` tag.  Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
 
-To view all targets in your account, and specify baselines for your targets, go to **Security Tests** (left menu) and then **Test Targets**.
-
-<figure>
-
-![](../../get-started/static/targets-and-baselines.png)
-
-<figcaption>Figure 1: <b>Test Targets</b> page</figcaption>
-
-</figure>
-
-## Specify dynamic baselines using regular expressions
+<details open>
+<summary> Key concept: static and dynamic baselines</summary>
+You can specify _static baselines_ using fixed strings or _dynamic baselines_ using regular expressions. A dynamic baseline updates automatically when you scan a variant whose name matches the regular expression. You should use dynamic baselines whenever possible. 
+</details>
 
 <!-- 
 
-:::note
-Currently, this feature is behind the Feature Flag `STO_BASELINE_REGEX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+You can specify a default baseline for each target type: 
+- Code repositories
+- Container images
+- Web/API instances
+- Infrastructure configurations
+
+You can specify default baselines at the account, organization, and project scope. You can also specify a static or dynamic baseline for an individual target. Code repositories and container images have [predefined default baselines](#predefined-default-regexes) as described below. 
 
 -->
 
-In some cases, you might want to specify the name of the latest release for your target baseline. Suppose your organization publishes releases with names such as: 
+To see all targets in your project, and to view and specify the baseline for each target, go to **Test Targets**:
+
+![](../../get-started/static/targets-and-baselines.png)
+ 
+
+### Specify dynamic baselines using regular expressions
+
+
+Suppose your organization publishes releases with names such as: 
 
 * `3` , `3.17`, `3.17.3`, `3.18`, ...
 
@@ -36,13 +41,13 @@ In some cases, you might want to specify the name of the latest release for your
 * `2023-02-29`, `2023-03-05`, `2023-03-12`, `2023-03-19`, ... 
 
 
-With this cadence, the default baseline updates whenever you create a new release branch and scan it. In this case, you can use a regular expression (regex) to capture the latest release name and use it for the baseline.
+With this cadence, you can create a dynamic baseline that updates whenever you create a new release branch and scan it. The dynamic baseline is a regular expression (regex) that captures the latest release name and updates the baseline when you scan a matching variant.
  
 
 <details>
 <summary>Advantages of using regular expressions to define baselines</summary>
 
-Defining your baselines using regular expressions provides significant benefits over using hard-coded strings such as `main` or `latest`. 
+Defining your baselines using regular expressions provides significant benefits over using  hard-coded strings such as `main` or `latest`. 
 
 * Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. A typical sprint cycle might run like this:
   
@@ -61,22 +66,17 @@ Defining your baselines using regular expressions provides significant benefits 
    - A few sprints later, the vulnerability is remediated in a branch that gets merged into `1.2.7`.
    - `1.2.7` is scanned before getting merged into `main`, and **vXYZ** is no longer in the scan results. 
 
-   <figure>
-
    ![](../static/dynamic-baselines-example.png)
 
-   <figcaption>Figure 2: Tracking a vulnerability across baselines</figcaption>
-
-   </figure>
 
 </details>
 
 
 ### How dynamic baselines work
 
-You can specify a default baseline regex for each target type. The baseline for a target is the most recently scanned target that matches the default regex. 
+You can specify a default baseline for each target type: code repository, container image, application instance, and configuration. The baseline for a target is the most recently scanned target that matches the default regex. 
 
-For example, the Container Image target type has a default regex that matches on `latest` or a two-dot version tag such as `v1.2.3` or `2.3.4`.
+For example, you might want a default regex for your container images that matches on `latest` or a two-dot version tag such as `v1.2.3` or `2.3.4`.
 
 Suppose you scan a new image target, `jdoe/myimage`, with the following tags. The baseline gets updated as follows:
 
@@ -113,17 +113,6 @@ Suppose you scan a new image target, `jdoe/myimage`, with the following tags. Th
     </tr>
 </table>
 
-### Predefined default regexes
-
-STO includes a set of predefined default regexes for new repository and container image targets:
-
-- For repositories, the baseline is `master` or `main`.
-
-- For container images, the baseline is `latest` or the highest two-dot version number if it can be detected, such as
-  - `1.2.3` 
-  - `1.15.4-linux-amd64` 
-
-- STO does not include default regexes for application instances and configurations. 
 
 ### Important notes for setting up dynamic baselines in STO
 
@@ -137,7 +126,21 @@ STO includes a set of predefined default regexes for new repository and containe
 
 * Defining regular expressions is outside the scope of this documentation. Harness recommends that you test any regular expressions thoroughly to ensure that the expression matches any variant name that might be used for the scan target.
 
-### Define the default regex for an account, organization, or project
+### Default regular expressions for target baselines
+
+:::note
+Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets:
+
+- For repositories, the baseline is `master` or `main`.
+
+- For container images, the baseline is `latest` or the most recent two-dot version number if it can be detected, such as
+  - `1.2.3` 
+  - `v1.15.4` 
+
+- STO does not include default regexes for application instances and configurations. 
 
 To specify default regexes at a specific scope:
 
@@ -147,10 +150,10 @@ To specify default regexes at a specific scope:
 
 2. Go to **Default Settings** > **Security Testing Orchestration**. 
 
-   <DocImage path={require('./static/baselines-01-edit-default-regexes.png')} width="75%" height="75%" title="Add shared path for scan results" /> 
+   <DocImage path={require('./static/baselines-01-edit-default-regexes.png')} width="100%" height="100%" title="Add shared path for scan results" /> 
 
 
-### Override the default regex for an individual target
+### Define the regex for an individual target
 
 To override the default regex for an individual target, go to **Test Targets**. Then set the value type for the target to **RegEx** and enter the regex. 
 
