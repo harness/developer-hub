@@ -790,7 +790,7 @@ enabled = true
 
 # See available regions in the documentation:
 # https://aws.amazon.com/about-aws/global-infrastructure/regions_az
-region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1"
 
 # Static credentials
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
@@ -812,7 +812,7 @@ prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\", product_d
 [provider.amazon.pricing]
 # See available regions in the documentation:
 #
-region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1"
 
 # Static credentials
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]

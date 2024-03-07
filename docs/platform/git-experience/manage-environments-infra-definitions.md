@@ -4,12 +4,6 @@ description: Store and share environments and infrastructures in your Git repos.
 sidebar_position: 11
 ---
 
-:::info note
-Currently, Git Experience support for environments and infrastructure definition is behind the feature flags `CDS_ENV_GITX` and 
-`CDS_INFRA_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 When you create a new Harness environment or infrastructure definition, you can store it in one of the following ways:
 
 - Inline: Harness stores the entity in its platform.

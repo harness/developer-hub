@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/chaos-engineering/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/chaos-engineering/rss.xml" />
 
 The release notes describe recent changes to Harness Chaos Engineering.
 
@@ -42,9 +42,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
 
-* The [SSH chaos experiment](/docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
+* The [SSH chaos experiment](/docs/chaos-engineering/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
 
-* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
 
 #### Fixed issues
 
@@ -107,9 +107,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](../docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
 
-* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](../docs/chaos-engineering/technical-reference/chaos-faults/vmware). (CHAOS-2750)
+* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/chaos-faults/vmware). (CHAOS-2750)
 
 * Adds support for encoding metrics queries in Dynatrace probes. These metrics are constructed and executed using the metrics (or data) explorer before the API call [POST]. (CHAOS-2852)
 
@@ -583,7 +583,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/features/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
@@ -655,9 +655,8 @@ To upgrade chaos infrastructures and experiments:
 
     ![](./static/chaos-infra-upgrade-needed.png)
 
-1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project. (Not required for new expriments.)
+1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project (not required for new expriments).
 
-For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engineering/chaos-infrastructure/upgrade-infra).
 :::
 
 * Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)
@@ -692,7 +691,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 #### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/features/chaos-dashboard/overview). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
@@ -713,7 +712,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 #### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/features/gameday/run-gameday).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.

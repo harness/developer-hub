@@ -9,7 +9,7 @@ sidebar_position: 8
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-delivery/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-delivery/rss.xml" />
 
 These release notes describe recent changes to Harness Continuous Delivery & GitOps (NextGen SaaS). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
@@ -46,6 +46,50 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## March 2024
+
+### Version 1.27.11
+
+#### Fixed issues
+- Adding config files or manifests in a Custom stage, the environment step threw an error, `UnsupportedOperationException: Not inside service step or one of it's children`. (CDS-92218, ZD-58321)
+
+  This issue occurred because there was no option to add services to the Custom stage. This issue is fixed. 
+- For Slack and Microsoft Teams, if webhook URLs were provided as secret expressions like `<+secrets.getValue("account.slackUrl")>`, the Harness approval notifications didn't work. (CDS-92077, ZD-58153)
+  
+  This issue is fixed. For more information regarding approval notifications, go to [Harness approval notifications to approvers](https://developer.harness.io/docs/platform/approvals/adding-harness-approval-stages/#approval-notifications-to-approvers).
+- Creating a Terraform service override returned the error, `ServiceOverride already exists`. (CDS-92071, ZD-58189)
+  
+  The user created a secret without USER_PASSWORD in the Terraform script. During validation, an `InvalidRequestException` was thrown, and Terraform tried to create the overridden entity again causing the error. 
+
+  This issue is fixed. Now, the referred entities in overrides will be validated before creating the override. 
+- Fixed inconsistent date format in the Harness UI. (CDS-91975, ZD-58220)
+  
+  The timestamps in Step and Stage pop-up in the Execution page appeared in a different format compared to the format used in Step Details and Step Logs panes. Now, Harness uses the same format throughout the UI.
+- During pipeline execution, nodes from CD details page did not appear consistently before starting the Verify step even if the Node from CD checkbox was selected. (CDS-91960)
+  
+  This issue is fixed. Readable messages are now displayed before the Verify step starts.
+- The Amazon Autoscaling Groups (ASG) deployment failed due to load balancer failure. (CDS-91888)
+  
+  This issue occurred for old ASGs where the target groups health check failed. Target groups health check was not performed when updating the old ASGs as well as during the instance refresh. This issue is now fixed. 
+- Updated the Canary deployment Scale step behavior to publish all workload pods as new pods after the step is run. The Scale step is now used to scale pods as well as change traffic on the pods. (CDS-91534, ZD-54319)
+- The **Deploy environments and infrastructure in parallel** checkbox was missing for filtered list when using multi-environments. (CDS-91472)
+  
+  This issue is fixed by adding this option for filtered lists.
+- The Include Infrastructure Selector option was missing in the SSH step template. (CDS-91396, ZD-57775)
+  
+  This issue is fixed by adding the Include Infrastructure Selector field in the Shell Script step and step group templates (for CD deployments) and other templates based on the deployment type.
+- Dynamic provisioner inputs did not appear on the infra entity card when it was set as runtime input. (CDS-90757)
+  
+  This issue is fixed.
+- Continuous Verification for Google Cloud Operations logged error for the `resourceName` field. (CDS-89441)
+  
+  This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list).
+- The `orgIdentifier` and `projectIdentifier` fields were absent in the service YAML if the service was created inside a pipeline or template. (CDS-88749)
+  
+  This issue is fixed. Now, org and project identifiers will be added to service when it is created within a pipeline or template.
+- The Pipeline Studio view was disabled when switching from Pipeline Studio to YAML view after partially filling a stage or step until the errors in the pipeline were fixed. (CDS-85556)
+  
+  This issue is fixed by allowing users to return to the Pipeline Studio view if the pipeline is unmodified in the YAML view. Users can also discard the changes made in the YAML view to force switch the Pipeline Studio view.
 
 ## February 2024
 

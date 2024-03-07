@@ -81,7 +81,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
-    link: "docs/category/get-started-with-ce",
+    link: "docs/category/get-started-with-hce",
     type: [docType.Documentation],
   },
   {
