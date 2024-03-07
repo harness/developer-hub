@@ -97,7 +97,7 @@ When you do your own deployments, you might need additional permissions added to
 
 :::note 
 
-If you are using the OIDC credential type for your AWS connector, also add a trust relationship between this IAM role and your identity provider. For information on using OIDC with AWS at Harness, go to [AWS Connector -- Credentials](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md#credentials).
+If you are using the OIDC credential type for your AWS connector, add a trust relationship between the IAM role and your identity provider. For information on using OIDC with AWS at Harness, go to [AWS Connector -- Credentials](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md#credentials).
 
 :::
 
@@ -573,7 +573,7 @@ Create a Harness AWS Connector to connect to your AWS account using the IAM User
 4. In Credentials, enter the following and click **Continue**:
    1. Select **AWS Access Key**.
    :::note
-   If you would like to use AWS with OIDC, select **Use OIDC** here and ignore step 3 below. 
+   If you would like to use AWS with OIDC, select **Use OIDC** here and ignore Step 3 below. 
    :::
    2. **Access Key:** enter the IAM User access key.
    3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
