@@ -435,6 +435,12 @@ In the above example using the **Evaluate expression** we can match input values
 
 for eg. `+metadata.name>` would point to `artist-db` from the above example, and could be used to check the values 
  
+:::info
+
+We only support string and key-value pair data types in JEXL, some datatype like array, list aren't supported.
+
+:::
+
 ![](./static/checks-catalog-metadataname.png)
 
 2. **Owner is defined**:
