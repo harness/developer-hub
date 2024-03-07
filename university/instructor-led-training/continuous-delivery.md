@@ -9,7 +9,7 @@ redirect_from:
 
 # Instructor Led Training for Harness Continuous Delivery & GitOps
 
-<DocsButton icon = "fa-solid fa-calendar-check" text="Instructor Led Training Shared Virtual Calendar" link="https://university.harness.io/calendar" tooltip=
+<DocsButton icon = "fa-solid fa-calendar-check" text="Instructor Led Training Shared Virtual Calendar" link="https://university-registration.harness.io/calendar" tooltip=
 "Current Public ILT Calendar" size="medium"/>
 
 Instructor Led Training for Harness Continuous Delivery & GitOps is designed to be delivered over the course of two days. 

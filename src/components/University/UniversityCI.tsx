@@ -143,7 +143,7 @@ export default function CertificationsCI() {
 
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/certified-continuous-integration-developer">
+                    <Link href="https://university-registration.harness.io/certified-continuous-integration-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -167,7 +167,7 @@ export default function CertificationsCI() {
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/certified-continuous-integration-developer">
+                <Link href="https://university-registration.harness.io/certified-continuous-integration-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -230,7 +230,7 @@ export default function CertificationsCI() {
                   </div>
                   <AdminCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/continuous-integration-administrator">
+                    <Link href="https://university-registration.harness.io/continuous-integration-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -253,7 +253,7 @@ export default function CertificationsCI() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/continuous-integration-administrator">
+                <Link href="https://university-registration.harness.io/continuous-integration-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -313,7 +313,7 @@ export default function CertificationsCI() {
                   </div>
                   <ArchitectCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/continuous-integration-architect">
+                    <Link href="https://university-registration.harness.io/continuous-integration-architect">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -337,7 +337,7 @@ export default function CertificationsCI() {
             <div className={styles.examDetailsCard}>
             <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/continuous-integration-architect">
+                <Link href="https://university-registration.harness.io/continuous-integration-architect">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
