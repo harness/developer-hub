@@ -9,6 +9,6 @@ export const ilt: IltCardItem[] = [
     description:
       "Learn how to deploy your applications on Kubernetes and other infrastructure platforms.",
     version: "Harness CD & GitOps Enterprise Plan",
-    link: "/university/instructor-led-training/continuous-delivery",
+    link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
   },
 ];
