@@ -75,7 +75,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   
   This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list).  
 
-   This item requires Harness Delegate version 24.02.82500. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 24.02.82500. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+- Scaling down Autoscaling Groups (ASG) rolling deployment was causing downtime. (CDS-91335, ZD-57686)
+  
+  This issue is fixed by updating the AWS Java SDK for ASG utilized in deployments from version 1.12.261 to 1.12.654. 
+  
+  Also, Harness has improved the instance refresh operation parameters. Now, for ASG rolling deployments, the default values for the minimum healthy percentage and maximum healthy percentage parameters during instance refresh operations are set to 90% and 110% respectively. This change mitigates downtime during service deployment.
 
 ### Version 1.27.11
 
@@ -116,11 +121,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The Pipeline Studio view was disabled when switching from Pipeline Studio to YAML view after partially filling a stage or step until the errors in the pipeline were fixed. (CDS-85556)
   
   This issue is fixed by allowing users to return to the Pipeline Studio view if the pipeline is unmodified in the YAML view. Users can also discard the changes made in the YAML view to force switch the Pipeline Studio view.
-- Scaling down Autoscaling Groups (ASG) rolling deployment was causing downtime. (CDS-91335, ZD-57686)
-  
-  This issue is fixed by updating the AWS Java SDK for ASG utilized in deployments from version 1.12.261 to 1.12.654. 
-  
-  Also, Harness has improved the instance refresh operation parameters. Now, for ASG rolling deployments, the default values for the minimum healthy percentage and maximum healthy percentage parameters during instance refresh operations are set to 90% and 110% respectively. This change mitigates downtime during service deployment.
 
 ## February 2024
 
