@@ -141,22 +141,23 @@ To define a delegate selector in a step as an expression:
 
 1. Open your pipeline and select your step.
 2. Select **Advanced**.
-2. In n the **Delegate Selector (optional)** option, select the pencil icon. Harness displays the **Fixed value**, **Runtime input**, or **Expression** options. In this example, we'll define an expression.
-3. Select **Expression**.
+3. Expand the **Delegate Selector** option.
+4. Select the **Define Delegate Selector** pencil icon. Harness displays the **Fixed value**, **Runtime input**, or **Expression** options. In this example, we'll define an expression.
+5. Select **Expression**.
    
    :::info note
-   Under **Define Delegate Selector**, the **Delegate Selector** option is selected by default. You can also use **Delegate Selection Expression List** to enter delegate expression lists. In this example, we'll use the default **Define Delegate Selector** option.
+   Under **Define Delegate Selector**, the **Delegate Selector** option is selected by default. You can also use **Delegate Selection Expression List** to have the entire list of delegate selectors to be an expression. In this example, we'll use the default **Define Delegate Selector** option.
    :::
 
-4. Enter your expression, for example `<+org.description>`.
+6. Enter your expression, for example `<+org.description>`.
 
    :::info note
    You can also select a built-in expression from the list Harness generates as you type.
    ::: 
 
-5. (Optional) Select **+Add** to enter additional expressions.
-6. (Optional) Select ***YAML** to view your updated pipeline YAML.
-7. Select **Save**.
+7. (Optional) Select **+Add** to enter additional expressions.
+8. (Optional) Select ***YAML** to view your updated pipeline YAML.
+9. Select **Save**.
 
 ### See also
 
