@@ -22,7 +22,7 @@ You can use the Databricks plugin in a [Plugin step](/docs/continuous-integratio
                   identifier: databricks_plugin
                   spec:
                     connectorRef: account.harnessImage
-                    image: harnesscommunity/databricks
+                    image: harnesscommunity/databricks-ml
                     settings:
                       host: https://abc-1234-def.cloud.databricks.com/
                       pat: <+secrets.getValue("databricks_token")>
@@ -40,7 +40,7 @@ You can use the Databricks plugin in a [Plugin step](/docs/continuous-integratio
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
 *  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-*  `image: harnesscommunity/databricks`
+*  `image: harnesscommunity/databricks-ml`
 *  `settings:` Configure the plugin parameters.
    * `host`
    * `pat`
