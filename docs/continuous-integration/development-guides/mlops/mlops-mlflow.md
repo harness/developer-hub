@@ -96,48 +96,37 @@ In addition to the MLflow plugin, you run any MLflow commands in a Run step or S
 
 You can use the MLflow plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in a CI pipeline.
 
-<!--
-
 ```yaml
               - step:
                   type: Plugin
-                  name: upload_sonatype
-                  identifier: upload_sonatype
+                  name: mlflow plugin
+                  identifier: maven_plugin
                   spec:
                     connectorRef: account.harnessImage ## Docker Hub container registry connector
-                    image: harnesscommunity/publish-nexus-repository:1.1.1
+                    image: harnesscommunity/mlflow
                     settings:
-                      username: deploy-user ## Nexus Repository Manager username
-                      password: <+secrets.getValue("nexus_password")> ## Nexus Repository Manager password
-                      server_url: http://34.235.128.201:8081/ ## Nexus Repository instance URL
-                      filename: ./target/example-1.0.jar ## Path to the artifact to upload
-                      format: maven2 ## Repository format
-                      repository: maven-releases ## Destination repository name
-                      attributes: "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin" ## Key-value pairs providing additional metadata
+                      MLFLOW_TRACKING_URI: http://12.345.678.900:5000
+                      MLFLOW_EXPERIMENT_NAME: someExperimentName
+                      MLFLOW_PROJECT_PATH: https://github.com/someAccount/mlflow-example-project
+                      MLFLOW_RUN_PARAMETERS: n_estimators=150
+                    imagePullPolicy: Always
 ```
+
 ### MLflow plugin settings
 
 *  `type: Plugin`
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
 *  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-*  `image: harnesscommunity/publish-nexus-repository:1.1.1`
-*  `settings:` Configure the Nexus Publisher plugin's properties as described in the following table.
-
-| Keys | Type | Description | Value example |
-| - | - | - | - |
-| `username` | String | A username for accessing Nexus Repository Manager. | <ul><li>`admin`</li><li>`test-user`</li></ul> |
-| `password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
-| `server_url` | Public URL | The URL of your Nexus Repository Manager instance. | `http://11.222.333.444:8000/` |
-| `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
-| `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
-| `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
-| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata.  `"-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"` |
-
--->
+*  `image: harnesscommunity/mlflow`
+*  `settings:` Configure the plugin parameters.
+   * `MLFLOW_TRACKING_URI`: The URI for your [remote tracking server](#remote-tracking-server).
+   * `MLFLOW_EXPERIMENT_NAME`
+   * `MLFLOW_PROJECT_PATH`
+   * `MLFLOW_RUN_PARAMETERS`
 
 :::tip
 
-You can use expressions for plugin settings. For example, `password: <+stage.variables.nexus_password>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
+You can use expressions for plugin settings. For example, `<+stage.variables.trackingUri>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
 
 :::
