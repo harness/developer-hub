@@ -52,7 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- The account level environment broke the GitOps pipeline. (CDS-92546)
+- The account level environment broke the GitOps pipeline. (CDS-92546, CDS-92569)
   
   There was a bug in the account and org level service and environment in the Sync and Update GitOps Apps steps that caused this issue. This issue is fixed.
 - The Git primary artifact commits version list didn't appear in the Run Pipeline page. (CDS-92546, ZD-58687)
