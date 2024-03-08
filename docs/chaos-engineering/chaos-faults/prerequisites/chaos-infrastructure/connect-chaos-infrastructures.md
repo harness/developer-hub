@@ -269,6 +269,53 @@ To add a Linux chaos infrastructure:
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
+</TabItem>
+  <TabItem value="Windows">
+
+:::important
+Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) before connecting to a Windows chaos infrastructure.
+:::
+
+1. Navigate to **Environments** and click **Windows**. click **Enable chaos**.
+
+![](./static/windows-infrastructure/connect-1.png)
+
+
+2. Add name (mandatory), and admin user.
+
+![](./static/windows-infrastructure/enter-details-2.png)
+
+3. Copy the command generated. The [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not admin by default). Click **Done** once you finish the execution.
+
+![](./static/windows-infrastructure/copy-command-3.png)
+
+This displays the following updates about the installation on your terminal.
+
+```
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/7/2024   7:48 AM                HCE
+Downloading Testlimit...
+Extracting Testlimit...
+Accepting Testlimit EULA...
+Testlimit EULA accepted.
+Downloading windows-chaos-infrastructure binary...
+Config file created at C:\\HCE\config.yaml
+
+
+    Directory: C:\HCE\Logs
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          3/7/2024   7:51 AM              0 windows-chaos-infrastructure.log
+[SC] CreateService SUCCESS
+Service created and started successfully.
+
+```
 
 </TabItem>
 </Tabs>
@@ -276,8 +323,8 @@ To add a Linux chaos infrastructure:
 
 ## Step 3. Validate the chaos infrastructure installation
 
-After the final step of adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection status is `CONNECTED`.
+After the final step of adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. On the UI, if you navigate to **Environments** -> **Windows** (or Kubernetes or Linux), you can see the connection status is `CONNECTED`.
 
-![Infrastructure State](./static/connect-chaos-infrastructures/infrastructure-state.png)
+![](./static/windows-infrastructure/confirm-3.png)
 
 That's it! Now you're all set to inject chaos into your infrastructure.
