@@ -1,6 +1,6 @@
 ---
-title: Service-based licensing and usage for CD
-description: This topic describes the Harness Service-based license model for its Continuous Delivery module.
+title: Service-based usage for CD
+description: This topic describes the Harness Service Usage is calculated for its Continuous Delivery module.
 sidebar_position: 8
 helpdocs_topic_id: ihboxj8xlz
 helpdocs_category_id: Dxej4ug0n5
