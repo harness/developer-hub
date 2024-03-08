@@ -10,17 +10,19 @@ helpdocs_is_published: true
 
 Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. For more information, go to [How Harness Manager picks delegates](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
 
-In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in Pipelines, Connectors, and so on, with corresponding delegate tags.
+In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in pipelines, connectors, and so on, with corresponding delegate tags.
 
 :::info note
-If no delegates are selected for a CD step's **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the infrastructure definition connector. For more information, go to [Which delegate is used during pipeline execution?](/docs/platform/delegates/delegate-concepts/delegate-overview/#which-delegate-is-used-during-pipeline-execution)
+If no delegate is selected for a CD step's **Delegate Selector** setting, Harness prioritizes the delegate that was successfully used for the infrastructure definition connector.
+
+For more information, go to [Which delegate is used during pipeline execution?](/docs/platform/delegates/delegate-concepts/delegate-overview/#which-delegate-is-used-during-pipeline-execution).
 :::
 
 ### Delegate tags
 
 A delegate tag with the same name as your delegate is automatically added to your delegate during the configuration process. You can add one or more comma-separated tags on the `helm` command line or in the Kubernetes YAML file, as shown in the following example.
 
-```
+```yaml
 ...
     env:
     ....
@@ -81,7 +83,7 @@ Step and step group delegator selectors are not available for [Harness CI](/docs
 
 :::
 
-### Selecting a delegate for a connector using tags
+### Select a delegate for a connector using tags
 
 When you add a connector, you are given the option of connecting to your third-party account using any available delegate or specific delegates.
 
@@ -114,7 +116,7 @@ Delegates can be selected for the connector used in a stage's **Infrastructure**
 ![](./static/select-delegates-with-selectors-25.png)
 
 
-### Selecting a delegate for a step using tags
+### Select a delegate for a step using tags
 
 You can select one or more delegates for each pipeline step.
 
@@ -124,11 +126,11 @@ In each step, in **Advanced**, in the **Delegate Selector** option:
 
 You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
 
-### Modifying tags using Harness API
+### Modify tags using Harness API
 
 Go to [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Group-Tags-Resource/).
 
-### Defining delegate selectors as a fixed value, runtime input, or expression
+### Define delegate selectors as a fixed value, runtime input, or expression
 
 Delegate selectors in pipeline, stage, step, and step group can be defined as a fixed value, runtime input, or expression.
 
