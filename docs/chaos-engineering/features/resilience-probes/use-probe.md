@@ -8,7 +8,7 @@ This section describes steps you can follow to create and use a resilience probe
 
 ## Before you begin
 
-* [Introduction to probes](/docs/chaos-engineering/technical-reference/resilience-probes/introduction)
+* [Introduction to probes](/docs/chaos-engineering/features/resilience-probes/introduction)
 
 ## Create a resilience probe
 
@@ -76,9 +76,9 @@ If you are a first time user, you can create a resilience probe directly from Ch
 
 ## Next steps
 
-* [HTTP probe](/docs/chaos-engineering/technical-reference/probes/http-probe)
-* [Command probe](/docs/chaos-engineering/technical-reference/probes/cmd-probe)
-* [Kubernetes probe](/docs/chaos-engineering/technical-reference/probes/k8s-probe)
-* [Prometheus probe](/docs/chaos-engineering/technical-reference/probes/prom-probe)
-* [Datadog probe](/docs/chaos-engineering/technical-reference/probes/datadog-probe)
-* [SLO probe](/docs/chaos-engineering/technical-reference/probes/slo-probe)
+* [HTTP probe](/docs/chaos-engineering/features/probes/http-probe)
+* [Command probe](/docs/chaos-engineering/features/probes/cmd-probe)
+* [Kubernetes probe](/docs/chaos-engineering/features/probes/k8s-probe)
+* [Prometheus probe](/docs/chaos-engineering/features/probes/prom-probe)
+* [Datadog probe](/docs/chaos-engineering/features/probes/datadog-probe)
+* [SLO probe](/docs/chaos-engineering/features/probes/slo-probe)

@@ -8,7 +8,7 @@ This section describes the various operations that can be performed on resilienc
 
 ## Before you begin
 
-- [Introduction](/docs/chaos-engineering/resilience-probes/introduction.md)
+- [Introduction](/docs/chaos-engineering/features/resilience-probes/introduction.md)
 - [Probes overview](/docs/chaos-engineering/features/probes/overview.md)
 - [Use probes](/docs/chaos-engineering/features/resilience-probes/use-probe.md)
 
