@@ -38,6 +38,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
   - [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)
 
   Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+- The `name:` field is now `{{ .Release.Name }}-configmap`. The release name for the Helm deployment shoudn't exceed length 53. For more information, go to [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call).
 
 ## Supported platforms and technologies
 
