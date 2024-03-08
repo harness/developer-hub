@@ -2985,3 +2985,50 @@ echo "$variables"
 ```
 
 Please check and confirm if secret with this identifier is present on same project level as if the secret is at org or account level than need to add prefix org/account.idenifier while accessing the secret
+
+#### In ui how to check the pipeline id?
+
+Pipeline has a unique identifier, and it can be seen in url if you select the pipeline as /pipelines/mypipleine/ and same can also be seen if you go to yaml view under identifier
+
+```
+pipeline:
+  name: Test pipeline
+  identifier: mypipleine
+```
+
+#### Harness api to create overrides?
+
+You can use a service override api https://apidocs.harness.io/tag/ServiceOverrides
+
+#### How to logout from Harness?
+
+To logout from Harness platform, go to My Profile —> Sign Out at the bottom left of the screen.
+
+
+#### What is the service id naming convention?
+
+All identifiers in harness should follow the below naming convention and are case sensitive:
+Identifiers must start with a-z, A-Z, or _. Identifiers can then be followed by 0-9, a-z, A-Z, _ or $.
+More details can be found https://developer.harness.io/docs/platform/references/entity-identifier-reference
+
+
+#### How to get all services using curl command ?
+
+You can use getServiceList api and make a curl request by using a valid token. More details can be found https://apidocs.harness.io/tag/Services#operation/getServiceList
+
+#### How to trigger an azure pipeline?
+
+You can make use of the script step and can invoke/trigger any pipeline using curl/webhook
+
+
+#### What's the harness variable replacement for a service name?
+
+You can use <+service.name>
+
+
+#### Can I create an input variable, which is a checkbox?
+
+Use allowed values to provide a fixed range of acceptable values for a runtime input, so that you will see all listed allowed values.
+Use multiple selections if you want to choose one or more values from the list of allowed values.
+
+
