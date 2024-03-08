@@ -305,6 +305,22 @@ Here's an example of the step group structure:
                                     - step:
                                         ...
 ```
+### Service entity schema 
+A Harness [service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) represents what you're deploying.
+
+Harness service schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/service-yaml-v2.yaml).
+
+
+### Environment entity schema
+A Harness [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) represents where you are deploying your application. You categorize each environment as prod or non-prod.
+
+Harness environment schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/environment-yaml-v2.yaml).
+
+### Infrastructure definition entity schema
+A Harness [Infrastructure Definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-definitions) includes specific infrastructure details for the deployment, such as the Harness connector that provides credentials for the cluster and the cluster namespace.
+
+Harness environment schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/infra-structure-definition-yaml.yaml).
+
 
 ## Variables and advanced settings
 
@@ -394,7 +410,6 @@ pipeline:
             - name:
               identifier:
 ```
-
 ## Other entities in YAML
 
 In addition to pipelines, you can define other Harness components in YAML, such as triggers, connectors, and input sets.
