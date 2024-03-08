@@ -49,7 +49,7 @@ This fault helps determine how resilient an application is when stress is applie
 
 <FaultDetailsCard category="windows">
 
-### Windows Blackhole Chaos
+### Windows Network Blackhole Chaos
 
 Windows blackhole chaos blocks traffic to specified IP addresses on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
