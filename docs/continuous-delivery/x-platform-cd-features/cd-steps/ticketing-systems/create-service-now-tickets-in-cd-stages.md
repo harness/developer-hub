@@ -114,7 +114,7 @@ In **Template Name**, you can enter the name of an existing template, select fro
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
-Your ServiceNow ticket is now added to your pipeline. After standard template is loaded, fields are marked editable based on `Standard Change Properties` if `change_manager` role is present with the integration user. Else, the properties can't be fetched and fields are made read-only as per default settings in the ServiceNow documentation. 
+Your ServiceNow ticket is now added to your pipeline. After standard template is loaded, fields are marked editable based on `Standard Change Properties` if `change_manager` role is present with the integration user. Else, the properties can't be fetched and fields are made read-only as per default settings in the [ServiceNow documentation](https://docs.servicenow.com/bundle/utah-api-reference/page/integrate/inbound-rest/concept/change-management-api.html#title_change-POST-standard). 
 
 The fields ignored in the process of standard change creation are available in step output as `ignoredFields` in `fields`.
    ![](./static/create-service-now-tickets-in-cd-stages-14.png)
