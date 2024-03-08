@@ -1,41 +1,54 @@
 ---
 title: MLOps with Harness
 description: Use Harness for MLOps.
-sidebar_position: 101
-sidebar_label: MLOps
+sidebar_position: 1
+redirect_from:
+  - /docs/continuous-integration/development-guides/mlops-with-ci
 ---
 
 MLOps (Machine Learning Operations) and DevOps (Development Operations) represent two crucial paradigms in modern software development, each addressing distinct but interconnected aspects of the software lifecycle. The Harness vision is to reduce toil and enable Developer, DevOps, and MLOps teams to deliver functionality to end users quickly, reliably, and efficiently.
 
 This guide explains how to get started with MLOps in Harness.
 
-import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
-
-<CISignupTip />
-
-## What is DevOps
+## MLOps and DevOps
 
 DevOps emphasizes the integration and collaboration between development and operations teams, aiming to automate and streamline the delivery pipeline from code commit to deployment. It emphasizes practices such as continuous integration, continuous delivery (CI/CD), infrastructure as code (IaC), and monitoring, fostering a culture of rapid iteration, feedback, and accountability. DevOps ensures that software is delivered quickly, reliably, and with high quality, enabling organizations to respond swiftly to market demands and deliver value to customers efficiently
-
-## MLOps extends DevOps
 
 MLOps extends the principles of DevOps to the realm of machine learning, focusing on the operationalization and management of machine learning models throughout their lifecycle. MLOps integrates data engineering, model development, deployment, monitoring, and governance into a cohesive workflow, enabling organizations to efficiently develop, deploy, and manage machine learning applications at scale. MLOps addresses challenges unique to machine learning, such as data drift, model decay, versioning, and reproducibility, by applying DevOps practices like automation, version control, and collaboration.
 
 **By bridging the gap between data science and operations, MLOps ensures that machine learning models are deployed reliably, monitored effectively, and continually improved to meet evolving business needs.**
 
+To learn more about MLOps benefits and best practices, go to [MLOps best practices](./mlops-best-practices.md)
+
 ## Accelerate velocity with MLOps and Harness
 
 Developer velocity is about removing barriers and friction points by adopting the best tools and practices to enable your developers to achieve their full potential. Modern apps use a combination of traditional apps and ML/Generative AI models. Teams have to collaborate together from development to testing and through deployment. A modern toolset must help all these personas collaborate and deliver modern apps to end users quickly, reliably, efficiently, and securely.
 
-Harness can help orchestrate and govern the practices of deploying secure code. Here's an example of a typical application flow combining MLOps and DevOps.
+A typical MLOps project lifecycle includes:
+
+1. **Exploration** (Problem framing, data collection, data exploration)
+2. **Development** (Feature engineering, model training)
+3. **Model validation**
+4. **Model deployment**
+5. **Monitoring** (Performance monitoring, drift monitoring, alerts/feedback loops)
+
+DevOps complements MLOps. For example, here's a typical application flow combining MLOps and DevOps:
 
 ![MLOps process diagram](./static/mlops2.png)
 
-### Prerequisites
+## Harness MLOps demo
+
+Harness can help orchestrate and govern the practices of deploying secure ML code. Try it for yourself using the following demo.
+
+To get started, you need to:
 
 * Clone the [MLOps sample repository](https://github.com/harness-community/mlopssample).
 * Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) for your Docker Hub account.
 * Be familiar with [Harness CI pipeline creation](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
+
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
+
+<CISignupTip />
 
 ### Train model
 
@@ -65,6 +78,9 @@ Data scientists can use any tool/library for feature extraction and export model
 Harness can natively deploy to servers, containers, or serverless functions on Docker Hub, AWS, Google, Azure, and more.
 
 This example shows how to use ECR as model registry and deploy a model to AWS Lambda. Note that you need your cloud provider's credentials to deploy and serve models.
+
+<details>
+<summary>YAML example: Deploy model to AWS Lambda</summary>
 
 ```yaml
              - step:
@@ -130,6 +146,8 @@ This example shows how to use ECR as model registry and deploy a model to AWS La
                      AWS_REGION: us-east-2
 ```
 
+</details>
+
 ### Next steps
 
 Monitoring and managing machine learning models in production involves ensuring their reliability, performance, and alignment with business goals over time.
@@ -139,3 +157,11 @@ This involves setting up KPIs, monitoring infrastructure, drift detection, monit
 This video demonstrates how Harness can automate the process of training, deploying, and monitoring a machine learning model for a sample credit card loan application.
 
 <DocVideo src="https://www.youtube.com/watch?v=T6O7m15O-VQ"/>
+
+Harness integrates with common ML tools, including:
+
+* [AzureML](./mlops-azureml.md)
+* [AWS Sagemaker](./mlops-sagemaker.md)
+* [Databricks](./mlops-databricks.md)
+* [Google Vertex AI](./mlops-vertexai.md)
+* [MLflow](./mlops-mlflow.md)
