@@ -1,0 +1,26 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-memory-stress-4ap
+  labels:
+    context: windows-memory-stress
+    name: windows-memory-stress-4ap
+spec:
+  infraType: "windows"
+  steps:
+    - - name: windows-memory-stress-4ap
+  tasks:
+    - name: windows-memory-stress-4ap
+      infraId: ""
+      definition:
+        chaos:
+          fault: windows-memory-stress
+          env:
+            - name: MEMORY_CONSUMPTION
+              value: ""
+            - name: MEMORY_PERCENTAGE
+              value: "50"
+            - name: DURATION
+              value: "30s"
+            - name: RAMP_TIME
+              value: ""
