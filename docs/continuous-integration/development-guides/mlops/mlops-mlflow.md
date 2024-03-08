@@ -54,38 +54,6 @@ To use MLflow Tracking:
 
    MLflow automatically logs all the parameters, metrics, and artifacts you've specified.
 
-### Advanced tracking
-
-In addition to standard MLflow Tracking, you can enable these advanced tracking options:
-
-#### Log models
-
-You can log models in a format that can later be deployed for serving. In this example `sk_model` is a trained Scikit-Learn model, and `"model"` is the artifact path for this model in the MLflow run.
-
-```python
-mlflow.sklearn.log_model(sk_model, "model")
-```
-
-#### Use MLflow Projects and Models
-
-For more structured experimentation, consider packaging your code as an [MLflow Project](https://mlflow.org/docs/latest/projects.html) and using [MLflow Models](https://mlflow.org/docs/latest/models.html) for model packaging and deployment.
-
-#### Remote Tracking Server
-
-For team environments and in Harness pipelines (which are temporary workspaces), consider setting up a [remote tracking server](https://mlflow.org/docs/latest/tracking/tutorials/remote-server.html) that all team members can access instead of using the local file system. MLflow supports various backend stores for tracking, such as a SQL database, and artifact stores like S3, Azure Blob Storage, or Google Cloud Storage.
-
-To configure MLflow to use a remote server, set the `MLFLOW_TRACKING_URI` environment variable:
-
-```sh
-export MLFLOW_TRACKING_URI='http://your-tracking-server:5000'
-```
-
-Or set it within your Python code with the `mlflow.set_tracking_uri()` method:
-
-```python
-mlflow.set_tracking_uri('http://your-tracking-server:5000')
-```
-
 ### Use MLflow Tracking in Harness
 
 Training can be done in Harness or using native integrations with popular data science platforms, such as MLflow.
@@ -116,6 +84,38 @@ You can include MLflow Tracking in a Harness CI pipeline by using the MLflow plu
 You can use expressions for plugin settings. For example, `<+stage.variables.trackingUri>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
 
 :::
+
+### Advanced tracking
+
+In addition to standard MLflow Tracking, you can enable these advanced tracking options:
+
+#### Log models
+
+You can log models in a format that can later be deployed for serving. In this example `sk_model` is a trained Scikit-Learn model, and `"model"` is the artifact path for this model in the MLflow run.
+
+```python
+mlflow.sklearn.log_model(sk_model, "model")
+```
+
+#### Use MLflow Projects and Models
+
+For more structured experimentation, consider packaging your code as an [MLflow Project](https://mlflow.org/docs/latest/projects.html) and using [MLflow Models](https://mlflow.org/docs/latest/models.html) for model packaging and deployment.
+
+#### Remote Tracking Server
+
+For team environments and in Harness pipelines, consider setting up a [remote tracking server](https://mlflow.org/docs/latest/tracking/tutorials/remote-server.html) that all team members can access instead of using the local file system. MLflow supports various backend stores for tracking, such as a SQL database, and artifact stores like S3, Azure Blob Storage, or Google Cloud Storage.
+
+To configure MLflow to use a remote server, set the `MLFLOW_TRACKING_URI` environment variable:
+
+```sh
+export MLFLOW_TRACKING_URI='http://your-tracking-server:5000'
+```
+
+Or set it within your Python code with the `mlflow.set_tracking_uri()` method:
+
+```python
+mlflow.set_tracking_uri('http://your-tracking-server:5000')
+```
 
 ## View tracking results
 
