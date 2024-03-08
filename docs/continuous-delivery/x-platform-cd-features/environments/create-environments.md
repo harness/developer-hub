@@ -380,7 +380,7 @@ Currently, this feature is behind the feature flag `CDS_ENV_PROPAGATION`. Contac
 
 When modeling multiple Deploy stages in a pipeline, you can propagate the environment and infrastructure definition selected in one stage to one or more subsequent stages. 
 
-When you propagate an environment, the same infrastructure definition that was used in the parent stage is propagated to the child stage. You cannot propagate an environment and then select a different infrastructure definition.
+When you propagate an environment, you can either use the same infrastructure definition that was used in the parent stage or you can select a different infrastructure definition.
 
 :::info note
 
@@ -413,6 +413,24 @@ You can also propagate services between stages. For more information, go to [Pro
    The environment and infrastructure definition from the previous stage is now configured in this stage.
 
    <DocImage path={require('./static/cf661bc9c2f43bd4e33babeedb3ed9002bfdf3722c5bb3bd2417fe92c6b1122b.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+### Select a different infrastructure when propagating environment from a previous stage
+
+When you [propagate an environment](#propagate-an-environment) from a previous stage, you have the option to select a different infrastructure definition.
+
+1. Select a stage for which you want to propagate the environment and infrastructure. Make sure that the selected stage at least one previous Deploy stage.
+2. In the **Environment** tab, select **Propagate Environment From** and select the environment of a previous stage.
+3. Select **Deploy to Different Infrastructure** and select an infrastructure. This option allows you to select a different infrastructure definition. 
+4. Select **+ New Infrastructure** to [create a new infrastructure definition](#add-infrastructure-definitions) for use in your stage. 
+   
+   <DocImage path={require('./static/propagate-env-different-infra.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+:::note Limitation
+
+Harness doesn't support nested propagation. For example, if Stage 2 is propagated from Stage 1, you cannot propagate Stage 3 from Stage 2.
+
+:::  
+
 
 
 ## Define GitOps clusters
