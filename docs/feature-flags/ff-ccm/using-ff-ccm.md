@@ -1,6 +1,6 @@
 ---
 title: Features Flag with Cloud Cost Management Overview
-description: This page discusses using Harness Feature Flags with Cloud Cost Management, how to use it and common FAQs on how it's used. 
+description: This page discusses using Harness Feature Flags with Cloud Cost Module, how to use it and common FAQs on how it's used. 
 sidebar_position: 10
 ---
 
@@ -10,32 +10,15 @@ This topic describes using Cloud Cost Management with Harness Feature Flags (FF)
 If you'd like to learn more about Cloud Cost Management at Harness, you can have a read of the [Harness Cloud Cost Management (CCM) Overview](../../cloud-cost-management/get-started/overview.md) page.
 :::
 
-# Feature Flags with Cloud Cost Management Overview
+# Feature Flags with Cloud Cost Module Overview
 
 :::info note
 If you'd like to learn more about the various types of costs within Cloud Cost Management, have a look at [Harness' Cloud Cost Management Key Concepts](../../cloud-cost-management/get-started/key-concepts.md) page. 
 :::
 
-When a feature is enabled/disabled it may contribute to increased running costs.  For example:
-
- a new feature that introduces caching using GCP memstore may improve user experience by speeding up response times, but due to the increased amount of data stored in the cache, and increased volume of requests this could lead to higher running costs.
-
+Feature Flag with Cloud Cost Msnagement tool is a new feature that will enable you to easily identify cost anomalies when enabling a feature. The Feature Flags module integrates with the Harness Cloud Cost Management (CCM) and is able to correlate flag change events with cost anomalies.
  
-
-The purpose of this feature is to make it easy for customers to identify when enabling a feature may have lead to cost anomalies.  The feature flags module will integrate with the Harness cloud cost module (CCM) and correlate flag change events with cost anomalies i.e.
-
- 
-
-A CCM Perspective will be associated with a feature flag environment.   
-
-If a flag is changed within that environment it will be added to a watch list for 24hours.
-
-Every hour CCM will be queried to check for anomalies in the perspective.   If an anomaly is reported, then feature flags will correlate that anomaly with any flags currently on the watch list.
-
- 
-
-The feature flags UI will report the presence of anomalies, making it easy for the user to find which flags maybe related to the reported anomalies.
-
+From the UI within the Harness Application, you'll be able to report the presence of anomalies which will make it easier for you to find which flags may be related to the reported anomalies.
 
 ## Why use the Cloud Cost Management tool within Feature Flags?​
 
