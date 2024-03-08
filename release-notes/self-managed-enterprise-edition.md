@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-02-08T10:00
+date: 2024-03-06T10:00
 sidebar_position: 16
 ---
 
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 import delete_project from './static/delete-project.png'
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/self-managed-enterprise-edition/rss.xml" />
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
@@ -64,6 +64,276 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 6, 2024, version 0.14.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.3](https://github.com/harness/helm-charts/releases/tag/harness-0.14.3) |
+| Air Gap Bundle | [0.14.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.3) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.1 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.4 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+#### Continuous Delivery
+
+- You can now see AccountID in Switch Account screen (CDS-88728)
+
+   Enhanced the Switch Account experience to show more data i.e ``AccountId``.
+
+- Support to fetch primary manifest identifier when there's one helm manifest (CDS-88469)
+
+   The expression ``<+manifestConfig.primaryManifestId>`` was used to resolve for the case of multiple helm charts configured in service. The similar expression can be used to leverage single helm chart configured in service to use helm expression. See our [docs](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#helm-chart-expression) for more info.
+
+- Grouping and Collapsible are now supported for Overrides (CDS-82376)
+
+  Overrides in configurations are now grouped and collapsible, making them easier to search through.
+
+- Stage Selection component is moved to Pipeline Input tab from Configuration Tab (CDS-72890)
+
+   When setting up Triggers, you'll find the Stage Selection in the Pipeline Input tab for a smoother configuration experience.
+
+- Option to select secrets in script output variables has been removed. (CDS-86690)
+
+   Script output variables for the 'secrets' type no longer require explicit selection; instead, fixed variables need to be input to designate them as secret values for subsequent steps/stages.
+
+#### Continuous Integration
+
+- The [codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) `<+codebase.sourceBranch>` and `<+codebase.targetBranch>` are now always `null` for branch and tag builds. These expressions are primarily for differentiating the target and source branches for PR builds. For branch and tag builds, use `<+codebase.branch>` and `<+codebase.tag>`. (CI-10743, ZD-55284)
+
+#### Harness Platform
+
+- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
+
+- Configure an absolute session timeout for your account (PL-43587)
+
+   A new **Absolute Session Timeout (in minutes)** setting is available on the Authentication page. When the **Absolute Session Timeout (in minutes)** is set, users will be logged out of their account after the configured timeout, regardless of any activity.
+
+   The default absolute session timeout is 0, which means that it is not set. You can set this to a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
+
+    :::info note
+    When both the session inactivity timeout and the absolute session timeout are set, the condition that is met first will be honored.
+    :::
+
+- Removed the unused `org.redisson:redisson` library dependency from the delegate. (PL-42485, ZD-53588, ZD-53760)
+
+- Deletion of SCIM-managed user groups was not allowed. (PL-39439, ZD-53340)
+
+  You can now delete SCIM-managed user groups via the delete API for user groups.
+
+   :::info
+   Harness does not currently support the ability to delete SCIM-managed user groups in the UI.
+   :::
+
+- Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout) (PL-43630)
+
+- You can now customize Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. (PL-42139)
+
+   To disable Audit View for specific users, administrators can now:
+   - Create a role with Audit View permission disabled while enabling all other view permissions.
+   - Update the role binding for the "All Organisation Users" or "All Account Users" user group to this new role, effectively denying Audit View Permission for all users in the group.
+   - To grant Audit View access to specific users, assign the default "Organization Viewer" or "Account Viewer" role, as applicable, to the individual user or user group.
+
+   This enhancement provides greater flexibility and control over user permissions, streamlining the management of audit view access within the system.
+
+### Fixed issues
+
+#### Continuous Delivery
+
+- UI displays an error for deployments that are awaiting manual approval. (CDS-88625, ZD-56498, ZD-56500)
+
+   The issue is fixed now to handle null check for approval message.
+
+- Unauthorized errors while using GCP and a GCP access token in between steady state checks, intermittently (CDS-88446, ZD-56104)
+
+   It occurred when the access token expiration overlapped with steady state check (watch) API calls.
+    The issue is fixed now. 
+
+- Even though only delegates can perform 10 connection tests in parallel, the UI did not restrict further attempts and threw an error at a later stage.(CDS-88377, ZD-56296)
+   
+   The issue is fixed now by adding restriction on UI to match backend limitation for the Delegate.
+
+- Making edits to more than one variable simultaneously only applied the changes to the last variable in the list. (CDS-88198, ZD-56156)
+
+   The issue is fixed now.
+
+- Trigger with empty pipelineIdentifier is being saved in DB (CDS-88191)
+
+   The issue is fixed now by adding a validation, ensuring that the pipeline identifier cannot be empty in the trigger YAML during trigger creation or updates.
+
+- Unable to select a new pipeline or template version. (CDS-87809, ZD-55910)
+
+   The issue is fixed now.
+
+- Branch selector dropdown not populating in Harness code repo: issue arises when entity is absent, resulting in 'no entity found' page. (CDS-87788)
+
+   The issue is fixed now. 
+
+- During K8s Async Steps, an 'Invalid task type' exception was thrown when the task parameter was not provided, resulting in a test failure. (CDS-87708)
+
+   The issue is fixed now.
+
+- Hyperlinks in the Harness approval message are not clickable. (CDS-87675, ZD-55826)
+   
+   The issue is fixed by adding logic to render clickable links within the text. If any URLs or hyperlinks are present in the approval message they are converted to clickable links. 
+
+- Github release trigger were not working as expected because UI didn't show the Conditions (CDS-87647, ZD-55832)
+
+   The issue is fixed now.
+
+- Http step with MTLS not working due to exception caused during delegate capability check for the step (CDS-87547, ZD-55531)
+   
+   The issue is fixed now.
+
+- Unable to use '#' and '&' in branch names. (CDS-87468, ZD-55625)
+
+   The issue is fixed now.
+
+- There were issues while pulling tags of images in Github Container Registry when they have ``/`` inside the artifact name. (CDS-87457)
+
+   The issue is fixed now by replacing ``/`` in the package name to ``%2F``. Without this change, the REST API was failing to list the tags.
+
+- Pipeline was failing with delegate error to fetch JSON format. (CDS-87440, ZD-55387)
+
+   The JSON format was fetched using curl in the delegate but the same was not working in the UI.
+
+   The issue is fixed now.
+
+- Harness bidirectional sync webhook feature not working. (CDS-85694, ZD-54338)
+   
+   These events are unrelated to bidirectional GitExperience processing and will now be disregarded instead of being flagged as failures.
+
+- Plugin steps weren't following delegate selectors, leading to intermittent pipeline failures.(CDS-85489)
+
+   The issue is fixed now.
+
+- WimRM connector was changed to SSH connector when the template was added to the pipeline. (CDS-85388)
+
+  The issue is fixed now.
+
+- Template inputs were not showing up in Pipeline editor. (CDS-84490)
+   
+   It was due to an intermittent issue, this has been resolved now.
+
+- Users having viewer permissions were able to edit the pipeline.(CDS-85221)
+
+   The issue is fixed now.
+
+- FF validation used to work for name and ID fields but not any other field. (CDS-87581)
+
+   The issue is fixed, FF validation will work when importing resources from Git. 
+
+- When only one manifest is created in OCT Helm, runtime inputs were not being displayed. (CDS-87941)
+
+   The issue is fixed by updating the condition in code to select default behavior if only 1 manifest is available.
+
+- In the process of creating an input set or overlay input set from YAML view, the isHarnessCodeRepo query parameter was not being sent.(CDS-87956)
+
+   The issue is fixed.Whenever an input set or overlay input set is saved from YAML view, the provider value is sent to the handleSubmit function, which takes care of sending the query parameter to create APIs.
+
+-  In OCI Helm Connector with ECR type, during the new inline creation of a new connector, it opened the 'http' connector step.(CDS-88350)
+
+   The issue is fixed now and it correctly opens the appropriate ``AWS Connector``.
+
+- Pipeline template using a stage template was not honoring ``gitBranch`` field for service selection. (CDS-88378)
+
+   The issue is fixed now. 
+
+- The ExecutionList page overflowed the page when not needed. (CDS-88388)
+
+   The issue is fixed now.
+
+- Icon for trigger was missing in new nav. (CDS-88529)
+
+   This issue occurred due to browser rendering, and a similar issue was discussed and addressed as part of CDS-88645.
+
+- When attempting to save Stage Templates of Azure Webapp Deployment Type, the screen repeatedly asked to save. (CDS-88930)
+
+   The issue is fixed now. 
+   
+- Pipeline invocation failed when searching for the YAML in the wrong branch. (CDS-91080)
+
+   The issue is fixed now.
+
+#### Continuous Integration
+
+- Added a missing field validation for **Repository Name** when using [Harness Code Repository](/docs/code-repository/code-supported) as the pipeline's [default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#configure-the-default-codebase). (CI-11042)
+
+- [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
+
+- Added indexing to handle a `IncorrectResultSizeDataAccessException` error that rarely occurred in builds with [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) if some non-unique values were assigned. (CI-10884, ZD-55815)
+
+- Fixed a `NullPointerException` error that occurred if you provided no `args` when configuring [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby). (CI-10847, ZD-55658)
+
+- Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. This change requires Harness Delegate version 24.01.82108 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10789, ZD-55265)
+
+- Corrected the capitalization of `GitHub` in the **GitHub Action plugin** step in the step library. (CI-7325)
+
+#### Harness Platform
+
+- Fixed a license validation issue that caused ng-manager errors. (PL-46455)
+
+- Tooltips in the left navigation were incorrectly displayed behind the stage execution details panel. Now, tooltips are visible on the Execution page. (PL-43993)
+
+- `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
+
+   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
+   
+   This item is available with Harness Platform version 1.22.3 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Fixed the ACL list roles API to correctly display `HarnessManaged`, `CreatedAt`, and `LastModifiedAt` date fields, ensuring accurate role management data in responses. (PL-43952)
+
+- Multi-select dropdowns would reset to the top after each selection. This issue is fixed for all multi-select dropdowns unless explicitly specified by the user. (PL-43925)
+
+- When editing user group data, member data was not added as expected. Now, the user group data related to the user group members is not lost when the user group is updated. (PL-43855, ZD-55944)  
+
+- Running `terraform apply` for an existing SSO-linked user group resulted in an empty user list. (PL-43763, ZD-55505)
+
+   This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+     - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
+
+- Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
+
+- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connectors working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China, and so on). Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector. (PL-43333, ZD-54717)
+
+- Intermittent errors occurred when pulling secrets from a Custom Secret Manager. (PL-43193, ZD-54236, ZD-54555, ZD-55919)
+
+   This issue has been resolved by adding a timeout (in seconds) to fetch secrets from a custom provider in the Custom Secret Manager settings. The process interrupts and fails when it takes longer than the configured timeout to fetch the secret. The default value is 20 seconds.
+
+  This item requires Harness Delegate version 24.01.82108. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The `platform-service` was not publishing the response count metric. (PL-43123)
+
+   This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
+
 
 ## February 13, 2024, patch version 0.13.4
 
@@ -270,7 +540,7 @@ gsutil -m cp \
    Previously, the job was triggered after 30 minutes, which caused issues. However, this has now been resolved by reducing the time to 1 minute.
    
 
-## January 29, 2024, version 1.19.10
+## January 29, 2024, version 0.13.0
 
 ### New features and enhancements
 
@@ -555,7 +825,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
-## January 8, 2024, version 81720
+## January 8, 2024, version 0.12.0
 
 ### New features and enhancements
 
@@ -1116,7 +1386,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 <details>
 <summary>2023 releases</summary>
 
-#### November 30, 2023, version 81308
+#### November 30, 2023, version 0.11.0
 
 ##### New features and enhancements
 
@@ -1734,7 +2004,7 @@ gsutil -m cp \
 
 - Default values for external databases caused upgrade issues. Harness removed local default MongoDB values from `values.yaml` files to resolve the issue. (SMP-2339)
 
-#### November 1, 2023, version 80917
+#### November 1, 2023, version 0.10.0
 
 ##### New features and enhancements
 
@@ -2595,7 +2865,7 @@ gsutil -m cp \
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
 
-#### September 30, 2023, version 80220
+#### September 30, 2023, version 0.9.0
 
 ##### New features and enhancements
 
@@ -3425,7 +3695,7 @@ gsutil -m cp \
 
   Project, account, and organization names have also been added to the report.
 
-#### July 31, 2023, version 79819
+#### July 31, 2023, version 0.8.0
 
 ##### Known issues
 
@@ -4153,7 +4423,7 @@ gsutil -m cp \
 
 - Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
 
-#### July 12, 2023, patch release for version 79421
+#### July 12, 2023, patch version 0.7.2
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -4205,7 +4475,7 @@ This release does not include any early access features.
 
   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. Custom dashboards are available if enabled.
 
-#### July 7, 2023, patch release for version 79421
+#### July 7, 2023, patch version 0.7.1
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -4265,7 +4535,7 @@ This release does not include any early access features.
 
   This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
 
-#### June 30, 2023, version 79421
+#### June 30, 2023, version 0.7.0
 
 This release includes the following Harness module and component versions.
 
@@ -4719,7 +4989,7 @@ gsutil -m cp \
 
   This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
 
-#### June 14, 2023, version 79230
+#### June 14, 2023, version 0.6.0
 
 This release includes the following Harness module and component versions.
 
@@ -5362,7 +5632,7 @@ This release includes the following Harness module and component versions.
 
   This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
 
-#### May 30, 2023, patch release for version 78926
+#### May 30, 2023, patch version 0.5.5
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5412,7 +5682,7 @@ This release includes the following Harness module and component versions.
         tolerations: []
   ```
 
-#### May 12, 2023, patch release for version 78926
+#### May 12, 2023, patch version 0.5.4
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5439,7 +5709,7 @@ This release includes the following Harness module and component versions.
 
 - The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
 
-#### April 26, 2023, version 78926
+#### April 26, 2023, version 0.5.0
 
 This release includes the following Harness module and component versions.
 
@@ -7972,7 +8242,7 @@ As part of this story we have changed the label for the audits for NG Auth Setti
 
 PL-28284
 
-he migration will run to remove following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON.
+The migration will run to remove following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON.
 
 At Account Scope, Account Basic/Account Viewer -All Account Resources.
 

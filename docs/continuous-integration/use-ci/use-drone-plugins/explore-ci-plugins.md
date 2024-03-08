@@ -164,6 +164,10 @@ In addition to Harness CI's built-in [troubleshooting tools](/docs/continuous-in
 | Grafana Annotation | Create an annotation in [Grafana](https://grafana.com). | [drone-grafana-annotation](https://github.com/fdeschenes/drone-grafana-annotation) | fdeschenes/drone-grafana-annotation |
 | Newrelic Deployment | Report/log deployments to a Newrelic dashboard. | [newrelic-deployment](https://github.com/cityfurniture/newrelic-deployment) | cityfurniture/drone-newrelic-deployment |
 
+## Plugins for MLOps
+
+For information about MLOps plugins, go to [MLOps in Harness](/docs/continuous-integration/development-guides/mlops/mlops-overview).
+
 ## Plugins for notifications and chat
 
 Harness offers built-in support for [notifications](/docs/category/notifications), in addition to these plugins.

@@ -51,6 +51,12 @@ export const platformData: Horizon = {
         description:
           "",
       },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Multi tenant SMP",
+        description:
+          "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
+      },
     ],
   },
   Next: {
@@ -130,6 +136,7 @@ export const platformData: Horizon = {
   },
   Released: {
     description: "What has been released",
+
     feature: [
          {
         tag: [{ value: "Secure" }],
@@ -155,6 +162,25 @@ export const platformData: Horizon = {
         description:
           "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
       },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Backup and restore",
+        description:
+          "Use Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Disaster Recovery",
+        description:
+          "Setup a disaster recovery (DR) cluster for better node failure tolerance",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "External Database",
+        description:
+          "Configure external databases as a self-managed solution",
+      },
     ],
+
   },
 };

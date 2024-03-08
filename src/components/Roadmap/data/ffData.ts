@@ -7,7 +7,8 @@ export const FfData: Horizon = {
       {
         tag: [{ value: "Lifecycle Management" }],
         title: "Custom Configuration for Stale Flag Cleanup",
-        description: "Ability to choose custom criteria such as age of flag to determine stale flag definition.",
+        description:
+          "Ability to choose custom criteria such as age of flag to determine stale flag definition.",
       },
       {
         tag: [{ value: "RBAC" }],
@@ -42,7 +43,8 @@ export const FfData: Horizon = {
       {
         tag: [{ value: "Experimentation" }],
         title: "A/B Testing",
-        description: "Improved A/B testing framework for segmenting tests between targets.",
+        description:
+          "Improved A/B testing framework for segmenting tests between targets.",
       },
       {
         tag: [{ value: "Pipelines" }],
@@ -67,7 +69,8 @@ export const FfData: Horizon = {
       {
         tag: [{ value: "SDKs" }],
         title: "SDK Troubleshooting with AIDA",
-        description: "Use AIDA to help you diagnose SDK issues and improvements in your code.",
+        description:
+          "Use AIDA to help you diagnose SDK issues and improvements in your code.",
       },
       {
         tag: [{ value: "OpenSource" }],
@@ -87,7 +90,9 @@ export const FfData: Horizon = {
       {
         tag: [{ value: "Lifecycle Management" }],
         title: "Automated Stale Flag Removal",
-        description: "Ability to automatically identify stale flags and remove directly from your code base.",
+        description:
+          "Ability to automatically identify stale flags and remove directly from your code base.",
+        // link: "/release-notes/feature-flags#java-sdk-1",
       },
       {
         tag: [{ value: "Pipelines" }],

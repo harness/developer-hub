@@ -26,12 +26,14 @@ const DocVideo = ({
         name="youtube_embed"
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        data-ot-ignore
       ></iframe>
     );
   } else if (isYoutubeVideo) {
     videoSrc = (src || "").replace("/watch?v=", "/embed/");
     return (
       <iframe
+        data-ot-ignore
         width={width}
         height={height}
         src={videoSrc}
@@ -46,6 +48,7 @@ const DocVideo = ({
     videoSrc = (src || "").replace("/medias/", "/embed/iframe/");
     return (
       <iframe
+        data-ot-ignore
         // src={`${videoSrc}?&autoplay=1`}
         src={`${videoSrc}`}
         allowTransparency={true}
@@ -66,7 +69,8 @@ const DocVideo = ({
     videoSrc = (src || "").replace("/share/", "/embed/").replace(/\?.*$/, "");
     return (
       <iframe
-        src={`${videoSrc}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true`}
+        data-ot-ignore
+        src={`${videoSrc}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&dnt=1"`}
         allowTransparency={true}
         frameBorder="0"
         scrolling="no"
@@ -80,6 +84,7 @@ const DocVideo = ({
   }
   return (
     <iframe
+      data-ot-ignore
       width={width}
       height={height}
       src={videoSrc}

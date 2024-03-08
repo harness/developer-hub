@@ -208,7 +208,7 @@ When the pipeline runs, the **SSCA Orchestration** step performs the following a
 
 The signed attestation for an Image, stored as an `.att` file, is placed in the artifact repository alongside the Image. 
 
-SBOMs for both Containers and Code Repositories are accessible in the [Artifacts view](../artifact-view.md). Additionally, you can locate the SBOM for any artifact on the **Artifacts** tab within the **Execution Details** page in Harness. For detailed insights, including viewing attestations and identifying violations, please refer to the [View Attestations and Violations](../ssca-view-results.md) documentation.
+SBOMs for both Containers and Code Repositories are accessible in the [Artifacts view](../artifact-view.md). Additionally, you can locate the SBOM for any artifact on the **Supply Chain Assurance** tab within the **Execution Details** page in Harness. For detailed insights, please refer to the [view pipeline execution results](../ssca-view-results.md) documentation.
 
 
 ## Enforce policies

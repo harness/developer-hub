@@ -2958,3 +2958,68 @@ No, the additional encoding is not supported on the delegate token.
 
 #### In network security policies, what Harness IPs do I need to allowlist to connect to Harness?
 For a list of Harness IPs to allow, go to [Allowlist Harness domains and IPs](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips).
+
+#### How to get a failure error for the pipeline
+
+You can make use of the getExecutionDetailV2 API and get the error details under executionErrorInfo with a status as failed.
+
+#### While using AWS, KMS secrets are stored on the AWS or Harness end?
+
+Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
+
+#### Can we use any other encryption (other than the default one) while using the AWS secret manager?
+
+No, while using AWS Secret Manager, default encryption will be used. If you have to use custom encryption, then you need to use AWS KMS Secret Manager.
+
+#### How to print all custom defined pipeline variables in shell script
+You can install jq and can use below command
+```
+json_content='<+pipeline>'
+variables=$(echo "$json_content" | jq -r 'recurse | objects | select(has("variables")) | .variables | to_entries | map("\(.key) = \(.value)") | join(" ")')
+echo "$variables"
+```
+
+#### Getting error for no secret found although there is valid secret with identifier 
+```
+ InvalidRequestException: No secret found with identifier + [atiitmsservicedbpasswordstage]
+```
+
+Please check and confirm if secret with this identifier is present on same project level as if the secret is at org or account level than need to add prefix org/account.idenifier while accessing the secret
+
+#### How do I check the pipeline ID in the UI?
+
+To check the pipeline ID in the Harness UI, you can look at the URL of the pipeline you've selected. The unique identifier is present in the URL if you select the pipeline as `/pipelines/mypipeline/`. You can also find it in the YAML view under `identifier` as shown below:
+
+```yaml
+pipeline:
+  name: Test pipeline
+  identifier: mypipeline
+```
+
+#### Is there an API to create overrides?
+
+To create overrides via the Harness API, you can use the service override API. For more information, go to [Service overrides](https://apidocs.harness.io/tag/ServiceOverrides) in the API documentation.
+
+#### How do I sign out of Harness?
+
+To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
+
+#### What is the service ID naming convention?
+
+The naming convention for all identifiers in Harness is case sensitive. Identifiers must start with a letter or underscore, followed by letters, numbers, underscores, or dollar signs. For more information, go to [Entity identifier reference](/docs/platform/references/entity-identifier-reference).
+
+#### How can I get all services using a cURL command?
+
+To get all services using a cURL command, you can use the `getServiceList` API and make a cURL request using a valid token. For more information, go to [getServiceList](https://apidocs.harness.io/tag/Services#operation/getServiceList) in the API documentation.
+
+#### How do I trigger an Azure pipeline?
+
+To trigger an Azure pipeline, you can use the script step and invoke/trigger any pipeline using a cURL or webhook.
+
+#### What's the Harness variable replacement for a service name?
+
+To replace the service name with a Harness variable, use `<+service.name>`.
+
+#### Can I create an input variable as a checkbox?
+
+To create an input variable as a checkbox, use allowed values to provide a fixed range of acceptable values for a runtime input. Use multiple selections if you want to choose one or more values from the list of allowed values

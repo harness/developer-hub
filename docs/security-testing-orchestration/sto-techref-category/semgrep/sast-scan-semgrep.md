@@ -11,7 +11,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Security Testing Orchestration certification today!"
-  link="/certifications/sto"
+  link="/university/sto"
   closable={true}
   target="_self"
 />
@@ -64,7 +64,7 @@ Do the following:
 
 4. Go to **Overview** and add the following **Shared Path**: `/shared/scan_results`
 
-5. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.
+5. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 

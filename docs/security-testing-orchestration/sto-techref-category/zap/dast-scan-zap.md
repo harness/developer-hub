@@ -11,7 +11,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Security Testing Orchestration certification today!"
-  link="/certifications/sto"
+  link="/university/sto"
   closable={true}
   target="_self"
 />
@@ -56,13 +56,13 @@ Do the following:
 
    2. Unselect **Clone Codebase**.
 
-4. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.
+4. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
-## Add the Zap scan/ingest step
+## Add the Zap step
 
-Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep.
+Harness provides a set of customized steps that make it easy to set up popular scanners such as ZAP.
 
 import config_zap from './static/dast-scans-zap/config-zap-step-palette.png'
 
