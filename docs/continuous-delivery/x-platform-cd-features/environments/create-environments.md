@@ -418,6 +418,12 @@ You can also propagate services between stages. For more information, go to [Pro
 
 When you [propagate an environment](#propagate-an-environment) from a previous stage, you have the option to select a different infrastructure definition.
 
+:::info note
+
+Currently, this feature is behind the feature flag `CDS_SUPPORT_DIFFERENT_INFRA_DURING_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 1. Select a stage for which you want to propagate the environment and infrastructure. Make sure that the selected stage at least one previous Deploy stage.
 2. In the **Environment** tab, select **Propagate Environment From** and select the environment of a previous stage.
 3. Select **Deploy to Different Infrastructure** and select an infrastructure. This option allows you to select a different infrastructure definition. 
@@ -431,6 +437,20 @@ Harness doesn't support nested propagation. For example, if Stage 2 is propagate
 
 :::  
 
+Here's a sample YAML snipped when a different infrastructure definition is propagated:
+
+```yaml
+environment:
+  useFromStage:
+    stage: s1
+  infrastructureDefinitions:
+    - identifier: infra_1
+      inputs:
+        identifier: infra_1
+        type: KubernetesDirect
+        spec:
+          connectorRef: <+input>
+```
 
 
 ## Define GitOps clusters
