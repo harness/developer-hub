@@ -32,7 +32,7 @@ failureStrategies:
          type: PipelineRollback
 ```
 
-During pipeline execution, if the failure event occurs that triggers the rollback failure strategy, all steps and stage are rolled back accordingly.
+During pipeline execution, if the failure event occurs that triggers the rollback failure strategy, all steps and stages are rolled back accordingly.
 
 :::warning
 

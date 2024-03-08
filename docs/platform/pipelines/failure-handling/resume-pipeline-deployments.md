@@ -10,9 +10,9 @@ redirect_from:
   - /docs/platform/pipelines/resume-pipeline-deployments
 ---
 
-Pipeline execution fail for many reasons, such as infrastructure changes or changes to resource access. In such cases, rerunning an entire pipeline can be costly and time-consuming.
+Pipeline executions fail for many reasons, such as infrastructure changes or changes to resource access. In such cases, rerunning an entire pipeline can be costly and time-consuming.
 
-With Harness, you can resume pipeline executions from any successful stage or from the failed stage. These options enable you to quickly rerun stages after you identify the cause of the failure.
+With Harness, you can resume pipeline executions from any successful stage or a failed stage. These options enable you to quickly rerun stages after you identify the cause of the failure.
 
 *Retrying* a pipeline or stage is different from *rerunning* a pipeline or stage:
 
@@ -24,7 +24,7 @@ With Harness, you can resume pipeline executions from any successful stage or fr
 You need:
 
 * An understanding of [Harness' key concepts](/docs/get-started/key-concepts.md).
-* Pipeline execution permissions, such as is granted by the [Pipeline Executor role](/docs/platform/role-based-access-control/permissions-reference.md)
+* Pipeline execution permissions, such as is granted by the [Pipeline Executor role](/docs/platform/role-based-access-control/permissions-reference.md).
 * A pipeline that is in **Failed**, **Aborted**, **Expired,** or **Rejected** status.
 
 ## Retry stages

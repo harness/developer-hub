@@ -18,7 +18,7 @@ You can [configure Default Settings](/docs/platform/settings/default-settings.md
 These are the Default Settings for Pipelines.
 
 ### Pipeline triggers settings
-- **Mandate pipeline create and edit permission to create and edit triggers:** If enabled, users must have permission to create and edit pipelines in order to create and edit triggers for those pipelines. If disabled, users with permission to create triggers can create/edit triggers regardless of their access to create/edit the pipeline associated with the trigger.
+- **Mandate pipeline create and edit permission to create and edit triggers:** If enabled, users must have permission to create/edit pipelines to create/edit triggers for those pipelines. If disabled, users with permission to create/edit triggers can create/edit triggers regardless of their access to create/edit the pipelines associated with the triggers.
 - **Webhook Polling For Triggers**
 - **Mandate Authorization for Custom Webhook Triggers:** Enable this setting to require that all custom triggers in this Harness account use API key tokens. For more information, go to [Enforcing authorization for custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/#enforcing-authorization-for-custom-triggers).
 - **Mandate Webhook Secrets for Github Triggers:** Enable this setting to force [secrets for Webhook triggers](/docs/platform/triggers/triggers-reference/#configure-secret) for authenticating the webhook call. For the secret to work with your webhook, you need to configure the repository webhook with the same secret after creating the trigger in Harness.

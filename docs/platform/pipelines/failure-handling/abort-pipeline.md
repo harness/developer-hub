@@ -6,7 +6,7 @@ redirect_from:
   - /docs/platform/pipelines/abort-pipeline
 ---
 
-This topic explains how to abort an entire pipeline, a stage, or a step that is currently running. Take care when using this option as it can have additional impacts.
+This topic explains how to stop an in-progress pipeline, stage, or step. Take care when using this option as it can have additional impacts.
 
 ## Abort a pipeline
 

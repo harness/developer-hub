@@ -28,6 +28,6 @@ The pipeline timeout applies to the duration of the entire pipeline. It does not
 
 :::warning Approvals
 
-Approval steps and stages can *pause* execution but they *do not* stop the pipeline timeout counter. Make sure that the pipeline timeout setting accommodate the time required for approvals.
+Approval steps and stages can *pause* execution but they *do not* stop the pipeline timeout counter. Make sure that the pipeline timeout setting accommodates the time required for approvals.
 
 :::

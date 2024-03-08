@@ -11,7 +11,7 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Harness Default Settings are broadly-scoped configurations that apply to your entire account, an entire organization in your account, or a specific project. These settings control configurations for certain Platform features and high-level module settings.
+The Harness Default Settings are broadly scoped configurations that apply to your entire account, an entire organization in your account, or a specific project. These settings control configurations for certain Harness Platform features and high-level module settings.
 
 To manage default settings at the account, org, or project scope, you need **view** and **edit** permissions for Default Settings at the corresponding scope.
 
@@ -64,7 +64,7 @@ If necessary, you can configure the Default Settings differently at the account,
 
 To do this you must enable **Allow Overrides** at the account and/or org scope. This allows the setting to be overridden at lower scopes. **Allow Overrides** is not available at the project scope because that is the lowest scope.
 
-To force lower scopes to inherit the configuration from a higher scope, disable **Allow Overrides**
+To force lower scopes to inherit the configuration from a higher scope, disable **Allow Overrides**.
 
 ### Restore to Default
 
@@ -89,7 +89,7 @@ These settings are for the Harness CD module.
 - **Enable Emails to be sent to non-Harness Users:** To send emails to non-Harness users, you must configure your own SMTP server *and* enable this default setting.
 - **Project Scoped Resource Constraint Queue:** Resource Constraints protect resource capacity limits by preventing simultaneous deployments to the same Service + Infrastructure combination. For more information, go to [Resource constraints](/docs/continuous-delivery/manage-deployments/controlling-deployments-with-barriers-resource-constraints-and-queue-steps/#resource-constraints).
 - **Enable Native Helm steady state for jobs:** By default, the steady state check is only performed for Harness-managed workloads. To perform steady state check for jobs in Native Helm Deployment, you must enable this setting.
-- **Fetch files from Git using provider-specific APIs:** Utilize provider-specific APIs (works with Github, Gitlab, Bitbucket, and Azure Repos) for efficient file retrieval from Git, instead of relying on JGit. This approach can encounter API rate limits. Refer to your Git provider's documentation for limit details.
+- **Fetch files from Git using provider-specific APIs:** Utilize provider-specific APIs (works with GitHub, GitLab, Bitbucket, and Azure Repos) for efficient file retrieval from Git, instead of relying on JGit. This approach can encounter API rate limits. Refer to your Git provider's documentation for limit details.
 - **Disable addition of Harness track selector in Kubernetes deployments:** During canary deployments, Harness adds a selector (`harness.io/track: stable`) in deployment objects during the rolling deployment phase. If there are pre-existing deployment objects in the cluster (not deployed by Harness), this can cause an errors. For more information, go to [Skip Harness label selector tracking on Kubernetes deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments).
 - **Ignore status code for HTTP connections:** This setting is only relevant for HTTP steps and HTTP Helm repositories. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is useful when the Harness Delegate is configured with a proxy, because socket connection tests conducted by Harness from the delegate do not account for proxy details.
 

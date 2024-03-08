@@ -141,7 +141,7 @@ You can also use [both conditional executions and looping strategy when conditio
 
 ### Conditional execution with looping strategy
 
-Conditional executions determine whether a stage, step, or step group should run. If you add a conditional execution ot a stage or step with a looping strategy, the conditional execution is evaluated for every instance created by the looping strategy.
+Conditional executions determine whether a stage, step, or step group should run. If you add a conditional execution to a stage or step with a looping strategy, the conditional execution is evaluated for every instance created by the looping strategy.
 
 In this example, the stage has a matrix looping strategy *and* a conditional execution. When the pipeline runs, multiple stage instances are created by the matrix looping strategy (One for each item in the `jdk` list), and then Harness checks the stage's conditional execution against each instance created by the matrix.
 
