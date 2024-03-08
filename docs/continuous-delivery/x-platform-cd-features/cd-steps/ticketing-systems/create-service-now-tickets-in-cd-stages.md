@@ -84,7 +84,7 @@ The timezone settings govern the display value of the settings not their actu
 
 Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
-In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you click the field, or provide an expression. You can also search templates you need.
+In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
 
 :::note
 Existing templates are listed and can be searched only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
@@ -110,7 +110,7 @@ This option appears only when the value type in the **Ticket Type** field is **F
 
 Select **Create From Standard Template** to create a ticket by using an existing standard template in your ServiceNow integration.
 
-In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you click the field, or provide an expression. You can also search templates you need.
+In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 

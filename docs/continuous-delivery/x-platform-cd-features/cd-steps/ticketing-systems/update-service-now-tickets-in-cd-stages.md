@@ -10,7 +10,7 @@ Harness provides the ability to update [ServiceNow change requests](https://docs
 
 You can add the ServiceNow Update step to a Harness CD stage or an Approval stage and do the following:
 
-* Automatically update change requests in ServiceNow to track updates to your build, test, and production environments by adding a **ServiceNow Update** step in your Pipeline.
+* Automatically update change requests in ServiceNow to track updates to your build, test, and production environments by adding a **ServiceNow Update** step in your pipeline.
 * Automatically assign tickets in ServiceNow to triage and resolve incidents quickly in case of Pipeline failures.
 
 ## Important notes
