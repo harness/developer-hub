@@ -2990,7 +2990,7 @@ Please check and confirm if secret with this identifier is present on same proje
 
 To check the pipeline ID in the Harness UI, you can look at the URL of the pipeline you've selected. The unique identifier is present in the URL if you select the pipeline as `/pipelines/mypipeline/`. You can also find it in the YAML view under `identifier` as shown below:
 
-```
+```yaml
 pipeline:
   name: Test pipeline
   identifier: mypipeline
@@ -2999,7 +2999,6 @@ pipeline:
 #### Is there an API to create overrides?
 
 To create overrides via the Harness API, you can use the service override API. For more information, go to [Service overrides](https://apidocs.harness.io/tag/ServiceOverrides) in the API documentation.
-
 
 #### How do I sign out of Harness?
 
@@ -3017,7 +3016,6 @@ To get all services using a cURL command, you can use the `getServiceList` API a
 
 To trigger an Azure pipeline, you can use the script step and invoke/trigger any pipeline using a cURL or webhook.
 
-
 #### What's the Harness variable replacement for a service name?
 
 To replace the service name with a Harness variable, use `<+service.name>`.
@@ -3025,4 +3023,3 @@ To replace the service name with a Harness variable, use `<+service.name>`.
 #### Can I create an input variable as a checkbox?
 
 To create an input variable as a checkbox, use allowed values to provide a fixed range of acceptable values for a runtime input. Use multiple selections if you want to choose one or more values from the list of allowed values
-
