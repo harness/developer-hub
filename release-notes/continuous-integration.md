@@ -57,8 +57,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 * Pipelines that include test splitting on multiple sequential, parallel, or looped steps now fetch historical test data from the most-recent finished build. Previously, such pipelines would sometimes try to fetch "historical" test data from an earlier test step in the current build, rather than fetching this data from a previous completed build. (CI-11108, ZD-56810)
 * GitLab connectors using the SSH connection type no longer fail if the GitLab project name starts with a number. (CI-11392, ZD-58162)
 * When using self-signed certificates with Kubernetes delegates, Harness now sanitizes the secret's name so that pod creation doesn't fail due to Kubernetes detecting invalid characters in the secret's name. (CI-11188)
-
-<!-- * A version of CI was briefly released that contained a bug in the Harness `plancreator` service that caused multiple pipeline failures. That version was rolled back and the issue has been fixed in this version. (CI-11497, ZD-58699, ZD-58745) -->
+* A version of CI was briefly released that contained a bug in the Harness `plancreator` service that caused multiple pipeline failures. That version was rolled back and the issue has been fixed in this version. (CI-11497, ZD-58699, ZD-58745)
 
 ## February 2024
 
