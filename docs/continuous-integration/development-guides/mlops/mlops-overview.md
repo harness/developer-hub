@@ -163,5 +163,5 @@ Harness integrates with common ML tools, including:
 * [AzureML](./mlops-azureml.md)
 * [AWS Sagemaker](./mlops-sagemaker.md)
 * [Databricks](./mlops-databricks.md)
-* [Google VertexAI](./mlops-vertexai.md)
+* [Google Vertex AI](./mlops-vertexai.md)
 * [MLflow](./mlops-mlflow.md)

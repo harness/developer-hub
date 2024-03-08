@@ -23,9 +23,7 @@ sidebar_position: 12
 
 ## Use Databricks with Harness
 
-<!-- plugin - see MLflow example -->
-
-In addition to the Databricks plugin, you run any Databricks commands in a Run step or Shell Script step in your Harness CI/CD pipelines, not to mention the other steps and modules that Harness offers to support your full SDLC.
+Training can be done in Harness or using native integrations with popular data science platforms, such as Databricks.
 
 ### Databricks plugin
 

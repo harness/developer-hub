@@ -90,7 +90,7 @@ mlflow.set_tracking_uri('http://your-tracking-server:5000')
 
 ## Use MLflow in Harness
 
-In addition to the MLflow plugin, you run any MLflow commands in a Run step or Shell Script step in your Harness CI/CD pipelines, not to mention the other steps and modules that Harness offers to support your full SDLC.
+Training can be done in Harness or using native integrations with popular data science platforms, such as MLflow.
 
 ### MLflow plugin
 
@@ -102,7 +102,7 @@ You can use the MLflow plugin in a [Plugin step](/docs/continuous-integration/us
                   name: mlflow plugin
                   identifier: maven_plugin
                   spec:
-                    connectorRef: account.harnessImage ## Docker Hub container registry connector
+                    connectorRef: account.harnessImage
                     image: harnesscommunity/mlflow
                     settings:
                       MLFLOW_TRACKING_URI: http://12.345.678.900:5000
