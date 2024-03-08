@@ -4,6 +4,23 @@ description: Use Databricks with Harness.
 sidebar_position: 12
 ---
 
-Train, Evaluate, Deploy (optional - provider doc), Monitor
+<!-- Databricks is... -->
 
-(Notebook (code) - train command - model - evaluate model)
+## Databricks MLOps
+
+### Notebook
+
+### Train
+
+
+### Evaluate
+
+### Deploy
+
+<!-- ref to provider docs -->
+
+### Monitor
+
+## Use Databricks with Harness
+
+<!-- plugin - see MLflow example -->

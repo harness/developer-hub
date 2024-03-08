@@ -4,6 +4,9 @@ description: Use Mlflow with Harness.
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 [MLflow](https://mlflow.org/docs/latest/index.html) is an open-source platform for managing the end-to-end machine learning lifecycle. It includes features for tracking experiments, packaging code into reproducible runs, and sharing and deploying models.
 
 One of its core components is [MLflow Tracking](https://mlflow.org/docs/latest/tracking.html), which allows you to log parameters, code versions, metrics, and output files when running your data science code and later visualize them.
@@ -87,11 +90,54 @@ mlflow.set_tracking_uri('http://your-tracking-server:5000')
 
 ## Use MLflow in Harness
 
-You run any of these MLflow commands in a Run step or Shell Script step in your Harness CI/CD pipelines, not to mention the other steps and modules that Harness offers to support your full SDLC.
+In addition to the MLflow plugin, you run any MLflow commands in a Run step or Shell Script step in your Harness CI/CD pipelines, not to mention the other steps and modules that Harness offers to support your full SDLC.
 
-Harness also integrates with other ML tools, such as:
+### MLflow plugin
 
-* [AzureML](./mlops-azureml.md)
-* [AWS Sagemaker](./mlops-sagemaker.md)
-* [Databricks](./mlops-databricks.md)
-* [Google VertexAI](./mlops-vertexai.md)
+You can use the MLflow plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in a CI pipeline.
+
+<!--
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: upload_sonatype
+                  identifier: upload_sonatype
+                  spec:
+                    connectorRef: account.harnessImage ## Docker Hub container registry connector
+                    image: harnesscommunity/publish-nexus-repository:1.1.1
+                    settings:
+                      username: deploy-user ## Nexus Repository Manager username
+                      password: <+secrets.getValue("nexus_password")> ## Nexus Repository Manager password
+                      server_url: http://34.235.128.201:8081/ ## Nexus Repository instance URL
+                      filename: ./target/example-1.0.jar ## Path to the artifact to upload
+                      format: maven2 ## Repository format
+                      repository: maven-releases ## Destination repository name
+                      attributes: "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin" ## Key-value pairs providing additional metadata
+```
+### MLflow plugin settings
+
+*  `type: Plugin`
+*  `name:` Specify a step name.
+*  `identifier:` Specify a unique step ID.
+*  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+*  `image: harnesscommunity/publish-nexus-repository:1.1.1`
+*  `settings:` Configure the Nexus Publisher plugin's properties as described in the following table.
+
+| Keys | Type | Description | Value example |
+| - | - | - | - |
+| `username` | String | A username for accessing Nexus Repository Manager. | <ul><li>`admin`</li><li>`test-user`</li></ul> |
+| `password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
+| `server_url` | Public URL | The URL of your Nexus Repository Manager instance. | `http://11.222.333.444:8000/` |
+| `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
+| `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
+| `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
+| `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata.  `"-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"` |
+
+-->
+
+:::tip
+
+You can use expressions for plugin settings. For example, `password: <+stage.variables.nexus_password>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
+
+:::
