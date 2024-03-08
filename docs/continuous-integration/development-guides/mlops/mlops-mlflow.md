@@ -9,21 +9,25 @@ import TabItem from '@theme/TabItem';
 
 [MLflow](https://mlflow.org/docs/latest/index.html) is an open-source platform for managing the end-to-end machine learning lifecycle. It includes features for tracking experiments, packaging code into reproducible runs, and sharing and deploying models.
 
-One of its core components is [MLflow Tracking](https://mlflow.org/docs/latest/tracking.html), which allows you to log parameters, code versions, metrics, and output files when running your data science code and later visualize them.
+## Install MLflow
+
+Before you can leverage MLflow's functionality you need to install MLflow in your environment, such as a local machine, VM, or cloud provider environment.
+
+You can use pip to install MLflow:
+
+```sh
+pip install mlflow
+```
+
+## Track experiments with MLflow
+
+One of MLFlow's core components is [MLflow Tracking](https://mlflow.org/docs/latest/tracking.html), which allows you to log parameters, code versions, metrics, and output files when running your data science code and later visualize them.
 
 MLflow Tracking provides a flexible and easy-to-use approach to log and compare parameters, metrics, and models across experiments. By adopting MLflow for experiment tracking, you can significantly enhance the reproducibility, collaboration, and monitoring of your machine learning projects.
 
-## Experiment tracking with MLFlow
+To use MLflow Tracking:
 
-To use MLflow for model tracking:
-
-1. Install MLflow.
-
-   ```sh
-   pip install mlflow
-   ```
-
-2. Initialize MLflow tracking.
+1. Initialize MLflow Tracking.
 
    To track experiments, you can use the `mlflow.start_run()` method in your code. Within this context, you can log parameters, metrics, models, and artifacts.
 
@@ -46,15 +50,9 @@ To use MLflow for model tracking:
        mlflow.log_artifact("output_file.txt")
    ```
 
-3. Run your code. After integrating MLflow tracking into your code, run your script as you normally would.
+2. Run your code. After integrating MLflow tracking into your code, run your script as you normally would.
 
    MLflow automatically logs all the parameters, metrics, and artifacts you've specified.
-
-4. View the results in the MLflow UI.
-
-   Start the MLflow UI by running `mlflow ui`.
-
-   By default, this UI runs on `http://127.0.0.1:5000`. Navigate to this URL in a web browser to view your experiments, navigate through recorded runs, compare metrics, and visualize parameters and outputs.
 
 ### Advanced tracking
 
@@ -88,13 +86,14 @@ Or set it within your Python code with the `mlflow.set_tracking_uri()` method:
 mlflow.set_tracking_uri('http://your-tracking-server:5000')
 ```
 
-## Use MLflow in Harness
+### Use MLflow Tracking in Harness
 
 Training can be done in Harness or using native integrations with popular data science platforms, such as MLflow.
 
-### MLflow plugin
+You can include MLflow Tracking in a Harness CI pipeline by using the MLflow plugin.
 
-You can use the MLflow plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in a CI pipeline.
+1. [Install MLflow](#install-mlflow).
+2. Add the MLflow plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
 
 ```yaml
               - step:
@@ -102,31 +101,24 @@ You can use the MLflow plugin in a [Plugin step](/docs/continuous-integration/us
                   name: mlflow plugin
                   identifier: maven_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: account.harnessImage ## Harness Docker connector
                     image: harnesscommunity/mlflow
                     settings:
-                      MLFLOW_TRACKING_URI: http://12.345.678.900:5000
+                      MLFLOW_TRACKING_URI: http://12.345.678.900:5000 ## URI for your MLflow remote tracking server
                       MLFLOW_EXPERIMENT_NAME: someExperimentName
                       MLFLOW_PROJECT_PATH: https://github.com/someAccount/mlflow-example-project
                       MLFLOW_RUN_PARAMETERS: n_estimators=150
                     imagePullPolicy: Always
 ```
 
-### MLflow plugin settings
-
-*  `type: Plugin`
-*  `name:` Specify a step name.
-*  `identifier:` Specify a unique step ID.
-*  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-*  `image: harnesscommunity/mlflow`
-*  `settings:` Configure the plugin parameters.
-   * `MLFLOW_TRACKING_URI`: The URI for your [remote tracking server](#remote-tracking-server).
-   * `MLFLOW_EXPERIMENT_NAME`
-   * `MLFLOW_PROJECT_PATH`
-   * `MLFLOW_RUN_PARAMETERS`
-
 :::tip
 
 You can use expressions for plugin settings. For example, `<+stage.variables.trackingUri>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
 
 :::
+
+## View tracking results
+
+You can view MLflow Tracking results in the MLflow UI. To start the MLflow UI run `mlflow ui`.
+
+By default, this UI runs on `http://127.0.0.1:5000`, unless you are serving results to a [remote tracking server](#remote-tracking-server). Navigate to your UI or tracking server URL in a web browser to view your experiments, navigate through recorded runs, compare metrics, and visualize parameters and outputs.
