@@ -424,7 +424,7 @@ Currently, this feature is behind the feature flag `CDS_SUPPORT_DIFFERENT_INFRA_
 
 :::
 
-1. Select a stage for which you want to propagate the environment and infrastructure. Make sure that the selected stage at least one previous Deploy stage.
+1. Select a stage for which you want to propagate the environment and infrastructure. Make sure that the selected stage has at least one previous Deploy stage.
 2. In the **Environment** tab, select **Propagate Environment From** and select the environment of a previous stage.
 3. Select **Deploy to Different Infrastructure** and select an infrastructure. This option allows you to select a different infrastructure definition. 
 4. Select **+ New Infrastructure** to [create a new infrastructure definition](#add-infrastructure-definitions) for use in your stage. 
