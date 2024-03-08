@@ -115,7 +115,6 @@ Delegates can be selected for the connector used in a stage's **Infrastructure**
 
 ![](./static/select-delegates-with-selectors-25.png)
 
-
 ### Select a delegate for a step using tags
 
 You can select one or more delegates for each pipeline step.
@@ -135,6 +134,29 @@ Go to [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Gr
 Delegate selectors in pipeline, stage, step, and step group can be defined as a fixed value, runtime input, or expression.
 
 If you're using expressions, there are two options, either the entire list of delegate selectors can be an expression or elements of delegate selectors can be expressions.
+
+In this example, we'll define a delegate selector in a step as an expression.
+
+To define a delegate selector in a step as an expression:
+
+1. Open your pipeline and select your step.
+2. Select **Advanced**.
+2. In n the **Delegate Selector (optional)** option, select the pencil icon. Harness displays the **Fixed value**, **Runtime input**, or **Expression** options. In this example, we'll define an expression.
+3. Select **Expression**.
+   
+   :::info note
+   Under **Define Delegate Selector**, the **Delegate Selector** option is selected by default. You can also use **Delegate Selection Expression List** to enter delegate expression lists. In this example, we'll use the default **Define Delegate Selector** option.
+   :::
+
+4. Enter your expression, for example `<+org.description>`.
+
+   :::info note
+   You can also select a built-in expression from the list Harness generates as you type.
+   ::: 
+
+5. (Optional) Select **+Add** to enter additional expressions.
+6. (Optional) Select ***YAML** to view your updated pipeline YAML.
+7. Select **Save**.
 
 ### See also
 
