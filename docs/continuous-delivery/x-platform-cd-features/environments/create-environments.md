@@ -380,7 +380,7 @@ Currently, this feature is behind the feature flag `CDS_ENV_PROPAGATION`. Contac
 
 When modeling multiple Deploy stages in a pipeline, you can propagate the environment and infrastructure definition selected in one stage to one or more subsequent stages. 
 
-When you propagate an environment, you can either use the same infrastructure definition that was used in the parent stage or you can select a different infrastructure definition.
+When you propagate an environment, you can either use the same infrastructure definition that was used in the parent stage or you can [select a different infrastructure definition](#select-a-different-infrastructure-when-propagating-environment-from-a-previous-stage).
 
 :::info note
 
