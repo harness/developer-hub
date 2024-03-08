@@ -146,7 +146,7 @@ To define a delegate selector in a step as an expression:
 5. Select **Expression**.
    
    :::info note
-   Under **Define Delegate Selector**, the **Delegate Selector** option is selected by default. You can also use **Delegate Selection Expression List** to have the entire list of delegate selectors to be an expression. In this example, we'll use the default **Define Delegate Selector** option.
+   Under **Define Delegate Selector**, the **Delegate Selector** option is selected by default. You can also use **Delegate Selection Expression List** to use the entire list of delegate selectors as an expression. In this example, we'll use the default **Define Delegate Selector** option.
    :::
 
 6. Enter your expression, for example `<+org.description>`.
