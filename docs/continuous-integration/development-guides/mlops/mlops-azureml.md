@@ -8,7 +8,7 @@ You can use AzureML in your MLOps workflow. For more information about AzureML, 
 
 ## Use AzureML with Harness
 
-In addition to the AzureML plugin, you can run any AzureML commands in a Run step or Shell Script step in your Harness CI/CD pipelines, not to mention the other steps and modules that Harness offers to support your full SDLC.
+Training can be done in Harness or using native integrations with popular data science platforms, such as AzureML.
 
 ### AzureML plugin
 
@@ -64,6 +64,6 @@ You can use the AzureML plugin in a [Plugin step](/docs/continuous-integration/u
 
 :::tip
 
-You can use expressions for plugin settings. For example, `<+stage.variables.trackingUri>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
+You can use expressions for plugin settings. For example, `<+stage.variables.tenantId>` references a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables). You can also create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords, and then use expressions to reference those secrets.
 
 :::

@@ -4,64 +4,62 @@ description: Use AWS Sagemaker with Harness.
 sidebar_position: 11
 ---
 
-[MLOps sample repository](https://github.com/harness-community/mlopssample)
-
-<!-- Sagemaker is... -->
-
-## Sagemaker MLOps
-
-### Notebook
-
-### Train
-
-
-### Evaluate
-
-### Deploy
-
-<!-- ref to provider docs -->
-
-### Monitor
+You can use AWS Sagemaker in your MLOps workflow. For more information about Sagemaker, go to the [AWS ML workflows documentation](https://aws.amazon.com/tutorials/machine-learning-tutorial-mlops-automate-ml-workflows/).
 
 ## Use Sagemaker with Harness
 
-<!-- compile a model from a notebook and deploy it to sagemaker -->
-<!-- plugin - see MLflow example -->
-
 Training can be done in Harness or using native integrations with popular data science platforms, such as AWS Sagemaker.
 
-### MLflow plugin
+### Sagemaker plugin
 
-You can use the MLflow plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in a CI pipeline.
+You can use the Sagemaker plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in a CI pipeline.
 
 ```yaml
               - step:
                   type: Plugin
-                  name: mlflow plugin
-                  identifier: maven_plugin
+                  name: sagemaker plugin
+                  identifier: sagemaker_plugin
                   spec:
-                    connectorRef: account.harnessImage ## Docker Hub container registry connector
-                    image: harnesscommunity/mlflow
+                    connectorRef: account.harnessImage
+                    image: harnesscommunity/aws-sagemaker
                     settings:
-                      MLFLOW_TRACKING_URI: http://12.345.678.900:5000
-                      MLFLOW_EXPERIMENT_NAME: someExperimentName
-                      MLFLOW_PROJECT_PATH: https://github.com/someAccount/mlflow-example-project
-                      MLFLOW_RUN_PARAMETERS: n_estimators=150
+                      model_name: my-model-aws
+                      EXECUTION_ROLE_ARN: arn:aws:iam::12345:role/sagemakertest
+                      IMAGE_URL: 87654.dkr.ecr.us-east-1.amazonaws.com/pytorch-training:2.2.0-cpu-py310-ubuntu20.04-ec2
+                      MODEL_DATA_URL: s3://sagemakertest87678/biostats.csv
+                      ENDPOINT_CONFIG_NAME: aws-endpoint-cfg
+                      ENDPOINT_NAME: aws-endpoint
+                      INSTANCE_TYPE: ml.t2.medium
+                      INITIAL_INSTANCE_COUNT: "1"
+                      VARIANT_NAME: AllTraffic
+                      USERNAME: AWS
+                      AWS_ACCESS_KEY_ID: <+secrets.getValue("awsAccessKeyId")>
+                      AWS_SECRET_ACCESS_KEY: <+secrets.getValue("awsAccessKeySecret")>
+                      AWS_REGION: us-east-1
                     imagePullPolicy: Always
 ```
 
-### MLflow plugin settings
+### Sagemaker plugin settings
 
 *  `type: Plugin`
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
 *  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-*  `image: harnesscommunity/mlflow`
+*  `image: harnesscommunity/aws-sagemaker`
 *  `settings:` Configure the plugin parameters.
-   * `MLFLOW_TRACKING_URI`: The URI for your [remote tracking server](#remote-tracking-server).
-   * `MLFLOW_EXPERIMENT_NAME`
-   * `MLFLOW_PROJECT_PATH`
-   * `MLFLOW_RUN_PARAMETERS`
+   * `model_name`
+   * `EXECUTION_ROLE_ARN`
+   * `IMAGE_URL`
+   * `MODEL_DATA_URL`
+   * `ENDPOINT_CONFIG_NAME`
+   * `ENDPOINT_NAME`
+   * `INSTANCE_TYPE`
+   * `INITIAL_INSTANCE_COUNT`
+   * `VARIANT_NAME`
+   * `USERNAME: AWS`
+   * `AWS_ACCESS_KEY_ID`
+   * `AWS_SECRET_ACCESS_KEY`
+   * `AWS_REGION`
 
 :::tip
 
