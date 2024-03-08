@@ -505,6 +505,16 @@ If the volumes are not getting mounted to the build containers, or you see other
 
 2. Double-check that the base image used in the step reads certificates from the same path given in the destination path on the Delegate.
 
+### pnpm enters infinite loop without logs
+
+If your pipeline runs `pnpm` or `npm` commands that cause it to enter an infinite loop or wait indefinitely without producing logs, try adding the following command to your script to see if this allows the build to proceed:
+
+```
+npm config set strict-ssl false
+```
+
+If your `pnpm` commands are waiting for user input. Try using the [append-only flag](https://pnpm.io/cli/install#--reportername).
+
 ## Windows builds
 
 ### Error when running Docker commands on Windows build servers
