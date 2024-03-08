@@ -9,14 +9,17 @@ redirect_from:
 
 # Instructor Led Training for Harness Continuous Delivery & GitOps
 
-:::info
-
-Currently Instructor Led Training is scheduled via e-mail. Please reach out to [certifications@harness.io](mailto:certifications@harness.io)
-for the latest offerings and ability to schedule. 
-
-:::
+<DocsButton icon = "fa-solid fa-calendar-check" text="Instructor Led Training Shared Virtual Calendar" link="https://university-registration.harness.io/calendar" tooltip=
+"Current Public ILT Calendar" size="medium"/>
 
 Instructor Led Training for Harness Continuous Delivery & GitOps is designed to be delivered over the course of two days. 
+
+:::info
+
+Instructor Led Training can be delivered in a shared virtual, dedicated virtual, or dedicated on-site fashion. Please reach out to [university@harness.io](mailto:univerity@harness.io)
+for the availability to schedule a dedicated session. 
+
+:::
 
 ## Course Syllabus 
 These are proposed timings for the exercises. Timing can be adjusted based on your class need. This syllabus is subject to change. 

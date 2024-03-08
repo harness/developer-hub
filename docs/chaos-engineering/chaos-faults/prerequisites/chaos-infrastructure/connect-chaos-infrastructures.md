@@ -31,7 +31,6 @@ To create an environment:
 
 ## Step 2. Add a chaos infrastructure
 
-
 <Tabs>
   <TabItem value="Kubernetes">
 
@@ -51,6 +50,9 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
     * **On Existing Infrastructures** 
     * **On New Infrastructures**
+
+<Tabs>
+  <TabItem value="On Existing Infrastructure">
 
 2. If you selected **On Existing Infrastructures**, on the next screen, select any connector under the **Project**, **Organization**, or **Account** scope. (Otherwise skip this step.)
 
@@ -93,6 +95,10 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
   This is your final step. Harness installs the chaos infrastructure on your behalf.
 
+</TabItem>
+
+  <TabItem value="On New Infrastructure">
+
 1. If you're deploying on **new infrastructure**, you must run the given commands and/or download and apply the installation manifest YAML file.
 
     * **For cluster-wide access:** 
@@ -111,6 +117,72 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Select **Done**.
 
+### Use helm template to install chaos infrastructure
+
+HCE provides Helm support to install chaos infrastructure, in addition to installing with the help of a manifest (as explained earlier).
+
+To use Helm to install a chaos infrastructure,
+
+1. Navigate to **Chaos Experiments** -> **Environment**.
+
+![step 1](./static/connect-chaos-infrastructures/enable-chaos-1.png)
+
+2. You can select **New environment** and create an environment and install or upgrade chaos infrastructure. To enable chaos on an existing environment, click the environment.
+
+![step 2](./static/connect-chaos-infrastructures/env-2.png)
+
+3. Click **Enable chaos**.
+
+![step 3](./static/connect-chaos-infrastructures/chaos-3.png)
+
+4. You can use Helm commands to enable chaos on new infrastructure only. Click **On new infrastructures** and **Continue**.
+
+![step 4](./static/connect-chaos-infrastructures/new-infra-4.png)
+
+5. Add a name, description (optional) and a tag (optional). Click **Next**.
+
+![step 5](./static/connect-chaos-infrastructures/add-name-5.png)
+
+6. Choose installation type as **Helm**, and one of the access types (namespace or cluster-wide). Specify namespace and service account.
+
+![step 6](./static/connect-chaos-infrastructures/helm-select-6.png)
+
+7. Depending on the type of access you chose, you will see a set of commands. If you select namespace type, you will need to enter some advanced input values. Click **Next**. 
+
+![step 7a](./static/connect-chaos-infrastructures/namespace-7a.png)
+
+8. You will see the following commands that you need to execute on your terminal. One you are done, click **Completed Command Execution**.
+
+![step 8](./static/connect-chaos-infrastructures/command-clusterwide-8.png)
+
+9. If you select namespace scope, you will see the following commands that you need to execute on your terminal. One you are done, click **Completed Command Execution**.
+
+![step 7](./static/connect-chaos-infrastructures/command-namespace-7.png)
+
+### Use helm template to upgrade chaos infrastructure
+
+* To upgrade a chaos infrastructure that you installed using the Helm commands, you can navigate to the environment and click **Upgrade now**. This will list the set of commands that you can execute on your terminal.
+
+![step 9](./static/connect-chaos-infrastructures/upgrade-9.png)
+
+
+2. Choose an existing environment or create a new environment
+
+3. If you want to override other values, you can make the changes in the values.yaml file of the respective custom resource in the Helm repository.
+1. Download the [helm repository](https://github.com/harness/chaos-infra-helm-chart). This repository contains all the chaos resources required for chaos infrastructure management. The repository also contains resources necessary for namespace and scope installations. You can use this repository to install and manage the infrastructure.
+
+Based on the scope of installation, you have to execute the commands.
+
+1. If you wish to install the infrastructure in namespace scope, you will get a helm command to install the CRDs. You have to apply this command separately before installing or upgrading the infrastructure.
+2. If you wish to install the infrastructure in cluster scope, apply the helm upgrade command to install the CRDs and other infrastructure components.
+
+:::tip
+1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
+2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure. 
+:::
+
+</TabItem>
+</Tabs>
 
 </TabItem>
   <TabItem value="Linux">
@@ -197,6 +269,53 @@ To add a Linux chaos infrastructure:
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
+</TabItem>
+  <TabItem value="Windows">
+
+:::important
+Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) before connecting to a Windows chaos infrastructure.
+:::
+
+1. Navigate to **Environments** and click **Windows**. click **Enable chaos**.
+
+![](./static/windows-infrastructure/connect-1.png)
+
+
+2. Add name (mandatory), and admin user.
+
+![](./static/windows-infrastructure/enter-details-2.png)
+
+3. Copy the command generated. The [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not admin by default). Click **Done** once you finish the execution.
+
+![](./static/windows-infrastructure/copy-command-3.png)
+
+This displays the following updates about the installation on your terminal.
+
+```
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          3/7/2024   7:48 AM                HCE
+Downloading Testlimit...
+Extracting Testlimit...
+Accepting Testlimit EULA...
+Testlimit EULA accepted.
+Downloading windows-chaos-infrastructure binary...
+Config file created at C:\\HCE\config.yaml
+
+
+    Directory: C:\HCE\Logs
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          3/7/2024   7:51 AM              0 windows-chaos-infrastructure.log
+[SC] CreateService SUCCESS
+Service created and started successfully.
+
+```
 
 </TabItem>
 </Tabs>
@@ -204,8 +323,8 @@ To add a Linux chaos infrastructure:
 
 ## Step 3. Validate the chaos infrastructure installation
 
-After the final step of adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection status is `CONNECTED`.
+After the final step of adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. On the UI, if you navigate to **Environments** -> **Windows** (or Kubernetes or Linux), you can see the connection status is `CONNECTED`.
 
-![Infrastructure State](./static/connect-chaos-infrastructures/infrastructure-state.png)
+![](./static/windows-infrastructure/confirm-3.png)
 
 That's it! Now you're all set to inject chaos into your infrastructure.

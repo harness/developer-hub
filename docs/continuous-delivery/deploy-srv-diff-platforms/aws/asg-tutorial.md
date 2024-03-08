@@ -121,6 +121,11 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 
 </details>
 
+:::note
+
+Currently, Harness does not support ASG deployments with a OIDC-enabled AWS connector.
+
+:::
 
 ## Harness ASG services
 

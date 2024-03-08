@@ -6,7 +6,7 @@ date: 2023-08-09T10:00:15
 sidebar_position: 12
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/internal-developer-portal/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
