@@ -281,12 +281,32 @@ In the **Advanced** settings, you can use the following options:
 
 ## SonarQube pull-request scan configuration
 
-To implement a SonarQube pull-request scan, pass the pull request ID, branch, and base to SonarQube, add CLI arguments to [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
+To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
     - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
     - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
     - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
       
-      If the destination branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
+      If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
+
+<details>
+<summary>YAML configuration example</summary>
+```yaml
+              - step:
+                  type: Sonarqube
+                  # ...
+                  spec:
+                    mode: orchestration
+                    config: default
+                    # ...
+                    advanced:
+                      log:
+                        level: debug
+                      args:
+                        cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
+                    # ...
+
+```
+</details>
 
 ## Troubleshoot Sonar Scans
 
