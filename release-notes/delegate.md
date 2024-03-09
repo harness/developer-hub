@@ -71,13 +71,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
-### Version 24.02.82408 <!--  March 8, 2024 -->
+### Version 24.03.82408 <!--  March 8, 2024 -->
 
 #### Hotfix
 
 - Fixed an infinite loop issue in the delegate SCM service. (PL-48043)
 
-- Added support for GitOps pipeline steps with Harness Code and bumped scm version to `d78720584`. (CODE-1572)
+- Added support for GitOps pipeline steps with Harness Code and bumped the SCM version to `d78720584`. (CODE-1572)
 
 ### Version 24.02.82406 <!--  March 1, 2024 -->
 
