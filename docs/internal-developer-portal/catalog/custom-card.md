@@ -10,6 +10,8 @@ sidebar_label: Custom Card
 Now you can add a custom card to the overview page and populate it with the `catalog-info.yaml` metadata for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` along with the [supported values](https://backstage.io/docs/features/software-catalog/descriptor-format/#contents) under the root field. eg `<+spec.type>`
 
 
+<DocVideo src="https://www.youtube.com/embed/Qi1PIWSPves?si=44qlTho7ZQHKjw59" />
+
 ## Layout 
 
 This card component needs to be added in **Layout** under **Admin** section. Here's an example
