@@ -5850,3 +5850,64 @@ Please read more on this in the following [Documentation](https://developer.harn
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling)
 
+
+#### Is it possible to insert a hyperlink with markdown in the approval message?
+In order to resolve this version as an hyperlink on slack you can use (|) symbol to seperate the link and text to creeate a hyperlink. This Slack formatting includes the link and the text you want to display, separated by a pipe (|) character. Please replace the URL and version with your actual values.
+ 
+And you need to enclose the link and the version text inside \<\>. For Example -  \<https://github.com/harness/guestbook/blob/main/.harness/inputover.yaml | Version\>"
+
+#### How can we know the default branch on GitHub enterprise?
+In GitHub Enterprise, the default branch for repositories is typically set to "main" or "master" depending on the organization's preferences or configuration. To confirm the default branch for a repository in GitHub Enterprise, you can follow these steps:
+
+1: Navigate to the repository on GitHub Enterprise.
+
+2: Click on the "Settings" tab, located towards the right side of the repository's menu bar.
+
+3: In the Settings menu, select the "Branches" option from the left sidebar.
+
+4: Look for a section titled "Default branch" or "Default branch name."
+
+5: The default branch name will be displayed here.
+If you have the necessary permissions, you may also be able to change the default branch from this settings page.
+
+
+#### How to configure the boolean input?
+When asking for boolean input, you can use string as input. In this case, "true" and "false" would represent boolean values.
+
+
+#### How to deploy a manifest from the same branch as a build?
+You can use the output variable and pass it to the deploy stage or use webhook tigger and pass it using \<+tigger.sourceBranch\>
+
+#### What this message means "Error Summary Invalid argument(s): Loop items list cannot be null"?
+The error message "Invalid argument(s): Loop items list cannot be null" typically indicates where the loop is expecting a list of items to iterate over, but it receives a null value instead.
+
+
+#### Is there any OPA policy to prevent certain expressions in pipelines?
+To create an OPA (Open Policy Agent) policy that prevents certain expressions in pipelines within Harness, you'll need to define rules that evaluate the expressions used in your pipelines and deny execution based on specific criteria. Here's a simplified example of how you can achieve this:package harness.policies
+
+default allow = false
+
+deny_execution \{
+    input.request.method \== "POST"  \# Assuming we're checking for a specific HTTP method
+    pipeline \:= input.request.body.pipeline
+    expression \:= pipeline.steps[_].expression
+    contains(expression, "dangerous_function")  \# Check if the expression contains a dangerous function
+\}
+
+contains(expression, substring) \{
+    expression = substring
+\}
+
+contains(expression, substring) \{
+    startswith(expression, substring_with_dot)  # Check if the substring appears with a dot after it (to avoid matching within function names)
+    index := indexof(expression, ".")
+    expression[index + 1:] == substring
+\}
+
+
+#### What's this error means "HTTP Error Status (400 - Invalid Format) received."?
+The HTTP error status code 400 means "Bad Request," indicating that the server cannot process the request due to malformed syntax or invalid format in the client's request or yaml. This typically occurs when the server cannot understand the request due to missing or incorrect parameters, headers, or data formatting.
+
+#### What is the service id naming convention?
+As a best practice the name of entities should be in a such a way that it can be identified easily with the name and we do have Description field associated as well which will help us to provide more details.
+
