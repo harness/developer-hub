@@ -2826,3 +2826,15 @@ To replace the service name with a Harness variable, use `<+service.name>`.
 #### Can I create an input variable as a checkbox?
 
 To create an input variable as a checkbox, use allowed values to provide a fixed range of acceptable values for a runtime input. Use multiple selections if you want to choose one or more values from the list of allowed values
+
+
+#### Do we have account level delegate?
+Yes, we offer account-level delegates. You can create them by navigating to Account Settings > Account Resources > Delegate.
+
+#### Is there any Harness API to create overrides?
+You can use this API to create overrides - https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride
+
+
+#### Is there any jexl expressions to get all projects environment?
+We currently don't have a Jexl expression to retrieve all environments, but you can utilize the API endpoint to fetch all environments:https://apidocs.harness.io/tag/Monitored-Services#operation/getEnvironments
+

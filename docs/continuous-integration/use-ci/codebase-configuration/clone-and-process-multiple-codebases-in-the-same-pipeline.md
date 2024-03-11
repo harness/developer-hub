@@ -107,7 +107,10 @@ You can't specify `/harness/` as a target directory for a **Git Clone** step bec
 
 The number of commits to fetch when the step clones the repo.
 
-For manually-triggered builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits. For all other trigger types, the default depth is `0`, which fetches all commits from the relevant branch.
+The default depth varies by build and trigger type:
+
+* For manually-triggered branch and tag builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits.
+* For manually-triggered PR builds and all auto-triggered builds (such as webhook triggers), the default depth is `0`. This means each `git clone` operation fetches all commits from the relevant branch.
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
