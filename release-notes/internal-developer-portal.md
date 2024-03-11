@@ -22,6 +22,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### Version 0.23.0
 
+<!-- Mar 11, 2024 -->
+
 Continuing with the increased adoption of self-service flows, this release we're happy to introduce an intuitive minimalistic UI for the workflows page along with support for output variables on workflows page, to streamline user experiences seamlessly.
 
 - **Blogs:** [Why Harness IDP, powered by Backstage, is Your Gateway to Effortless Developer Portal Excellence](https://www.harness.io/blog/why-harness-idp-powered-by-backstage-is-your-gateway-to-effortless-developer-portal-excellence)
