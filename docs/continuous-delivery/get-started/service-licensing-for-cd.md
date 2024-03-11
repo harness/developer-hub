@@ -1,6 +1,6 @@
 ---
-title: Service-based licensing and usage for CD
-description: This topic describes the Harness Service-based license model for its Continuous Delivery module.
+title: Service-based usage for CD
+description: This topic describes the Harness Service Usage is calculated for its Continuous Delivery module.
 sidebar_position: 8
 helpdocs_topic_id: ihboxj8xlz
 helpdocs_category_id: Dxej4ug0n5
@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness uses a Service-based license model to charge Harness Continuous Delivery (CD) module customers.
+Harness uses a Service usage model to charge Harness Continuous Delivery (CD) module customers.
 
-The CD License calculation uses the **Active Services** count and the number of **Service Instances** each Active Service's deployment creates. These concepts, and how they apply to different deployment types, are described in this document.
+The CD service usage calculation uses the **Active Services** count and the number of **Service Instances** each Active Service's deployment creates. These concepts, and how they apply to different deployment types, are described in this document.
 
 ## Licensing FAQ
 

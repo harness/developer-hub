@@ -27,7 +27,7 @@ Harness is available in the following editions to meet different users' needs:
 * **Team:** Designed for growing teams, this version provides most Harness Professional features at lower per-usage pricing. It limits or excludes some integrations and enterprise security features, and limits real-time support to standard business hours.
 * **Free**: This is a free-forever edition with almost all Harness Professional features (excluding unlimited Services and license-based service Instances scaling).
 
-Support for Harness Free is available through the [Harness Community Forum](https://community.harness.io/).
+Support for Harness Free is available through the [Harness Community Forum](https://developer.harness.io/community/).
 
 ### What is a Service Instance in Harness?
 

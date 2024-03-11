@@ -1177,8 +1177,7 @@ Fix: We now first apply the pattern filter to all artifacts and then limit it to
 **Important information regarding certificates and Delegate upgrade to OpenJDK 11:**  
   
 As part of our migration to OpenJDK 11, Delegates will download OpenJDK 11 and get started with it instead of the previous OpenJDK 8 that was used. This means that Delegates will have Java installed on a different path. Any user actions which modify or use older Java versions would be affected. Some of the most common scenarios include adding certificates to the default Java keystore and running additional Java applications using Delegates installed Java (e.g. from a profile or init script).  
-  
-See [Information regarding certificates and Delegate upgrade to OpenJDK 11](https://community.harness.io/t/information-regarding-certificates-and-delegate-upgrade-to-openjdk-11/12074).
+
 :::
 
 We're pleased to present Harness On-Premise Minor Release 75281.
