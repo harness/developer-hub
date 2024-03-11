@@ -897,7 +897,7 @@ With a [Kubernetes cluster build infrastructure](/docs/continuous-integration/us
 
    * If you override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
 
-   * To save time and minimize the number of default certificates you need to declare, you can enable the auto-mount default certificates beta feature. This feature automatically mounts certificates for out-of-the-box step containers, and you no longer need to declare the certs path for the built-in steps in addition to your own self-signed certificates. Currently, auto-mounting default certificates is behind the feature flag `CI_DEFAULT_CERTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   * To save time and minimize the number of default certificates you need to declare, you can enable the auto-mount default certificates beta feature. This feature automatically mounts certificates for certain step containers<!--Git clone and kaniko steps-->, and you no longer need to declare the certs path for the built-in steps in addition to your own self-signed certificates. Currently, auto-mounting default certificates is behind the feature flag `CI_DEFAULT_CERTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
    :::
 
@@ -1012,7 +1012,7 @@ This workflow is applicable only if you're using a self-hosted registry to store
 
    * If you override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
 
-   * To save time and minimize the number of default certificates you need to declare, you can enable the auto-mount default certificates beta feature. This feature automatically mounts certificates for out-of-the-box step containers even if they are not specified in `DESTINATION_CA_PATH`. With this feature, you no longer need to declare the certs path for the built-in steps in addition to your own self-signed certificates. Currently, auto-mounting default certificates is behind the feature flag `CI_DEFAULT_CERTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   * To save time and minimize the number of default certificates you need to declare, you can enable the auto-mount default certificates beta feature. This feature automatically mounts certificates for certain step containers<!--Git clone and kaniko steps--> even if they are not specified in `DESTINATION_CA_PATH`. With this feature, you no longer need to declare the certs path for the built-in steps in addition to your own self-signed certificates. Currently, auto-mounting default certificates is behind the feature flag `CI_DEFAULT_CERTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
    :::
 
