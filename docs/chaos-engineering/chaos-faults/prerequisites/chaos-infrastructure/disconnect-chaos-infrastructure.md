@@ -17,11 +17,11 @@ Go to the **Environments** sidebar option under the **Chaos** tab, where all the
 <Tabs>
   <TabItem value="Kubernetes">
 
-To disconnect a Kubernetes infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
+1. To disconnect a Kubernetes infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
 ![Delete Chaos Infra](./static/disconnect-chaos-infrastructure/delete-chaos-infra-short.png)
 
-Next, execute the commands displayed in the modal from your terminal to remove the chaos infrastructure components. Finally, select **Confirm**.
+2. Next, execute the commands displayed in the modal from your terminal to remove the chaos infrastructure components. Finally, select **Confirm**.
 
 ![Execute Delete Commands](./static/disconnect-chaos-infrastructure/execute-delete-commands.png)
 
@@ -29,14 +29,24 @@ Next, execute the commands displayed in the modal from your terminal to remove t
 </TabItem>
   <TabItem value="Linux">
 
-To disconnect a Linux infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
+1. To disconnect a Linux infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
 ![Delete Chaos Infra](./static/disconnect-chaos-infrastructure/12.delete-infra.png)
 
-Next, copy the command displayed in the modal, and execute it in your Linux machine to uninstall the chaos infrastructure components. Finally, select **Confirm**.
+2. Next, copy the command displayed in the modal, and execute it in your Linux machine to uninstall the chaos infrastructure components. Finally, select **Confirm**.
 
 ![Execute Delete Command](./static/disconnect-chaos-infrastructure/13.execute-command.png)
 
+</TabItem>
+  <TabItem value="Windows">
+
+1. To disconnect a Windows infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
+
+![Delete Chaos Infra](./static/windows-infrastructure/disable-1.png)
+
+2. Next, copy the command displayed in the modal, and execute it in your Windows machine terminal to uninstall the chaos infrastructure components. Finally, select **Confirm**.
+
+![Execute Delete Command](./static/windows-infrastructure/click-confirm-2.png)
 
 </TabItem>
 </Tabs>

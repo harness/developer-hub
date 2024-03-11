@@ -242,10 +242,6 @@ const config = {
                 label: "FAQs",
                 to: "university/faqs",
               },
-              {
-                label: "Instructor Led Training",
-                to: "university/instructor-led-training",
-              },
             ],
           },
           {
