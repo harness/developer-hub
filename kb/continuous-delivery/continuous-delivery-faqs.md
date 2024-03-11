@@ -5915,3 +5915,15 @@ If Artifact Triggers stop working, it's possible that the Perpetual Task assigne
 
 #### Why can't I see a new Service Override I created through the API in the UI
 If using the `updateServiceOverride` [V1 Service API](https://apidocs.harness.io/tag/ServiceOverrides/#operation/updateServiceOverride) from our API Docs, you will not be able to see the Service Override as this API is creating a V1 Service Override. V1 Services have been deprecated and thus is no longer supported. To create a Service Override via the API, use the new [V2 Service API ](https://apidocs.harness.io/tag/Environments/#operation/upsertServiceOverride).
+
+
+#### Unable to Deploy ARM Template
+If you are getting the below error when trying to deploy ARM Templates
+
+```
+Status code 400, "{"error":{"code":"InvalidRequestContent","message":"The request content was invalid and could not be deserialized: 'Error converting value \"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#\" to type 'Azure.Deployments.Core.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.$schema', line 1, position 6636.'."}}"
+```
+
+It is likely because `$schema` and `contentVersion` parameters have not been removed from the Parameters File yet. This is due to a limitation in the Azure Java SDK and REST API. An example of a valid Paramters File can be found in the following [documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning/#arm-parameter-file).
+
+
