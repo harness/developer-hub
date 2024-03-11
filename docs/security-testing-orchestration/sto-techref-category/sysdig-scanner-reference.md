@@ -183,6 +183,7 @@ You can add a `tool_args` setting to run the scanner with specific command-line 
 
 -->
 
+<!-- 
 ### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
@@ -201,6 +202,8 @@ In the **Advanced** settings, you can use the following options:
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+-->
 
 ## Sysdig pipeline examples
 
