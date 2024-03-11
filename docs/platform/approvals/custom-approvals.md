@@ -40,9 +40,9 @@ When you add a Custom Approval stage, a Custom Approval step is added to the sta
 
 In the Custom Approval step, you enter a script that is executed at Pipeline runtime.
 
-If the script fails, the step fails and the step or stage [Failure Strategy](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) is initiated.
+If the script fails, the step fails and the step or stage [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
 
-You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](../variables-and-expressions/harness-variables.md).
+You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](/docs/platform/variables-and-expressions/harness-variables.md).
 
 Rejection criteria is optional.
 
@@ -55,7 +55,7 @@ Criteria can be the following:
 	+ Harness supports JEXL expressions and you can use these with script outputs or Harness variables to create expressions.
 	+ If the resolved JEXL expression is a Boolean true, the approval criteria is met.
 	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
-	+ Go to [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../variables-and-expressions/extracting-characters-from-harness-variable-expressions.md).
+	+ Go to [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md) and [Use Java string methods on expressions](../variables-and-expressions/expressions-java-methods.md).
 
 ## Add a Custom Approval stage
 
@@ -97,7 +97,7 @@ You can select one or more specific Delegates using the [Delegate Selector](../d
 
 It's important to understand how the Timeout, Retry Interval, and Script Timeout settings relate to each other.
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, `1d` for one day.
 
@@ -157,7 +157,7 @@ Custom Approval steps must have at least one **Approval Criteria**. You can also
 
 ![](./static/custom-approvals-07.png)
 
-Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
+Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
 In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system. The supported operators are `=`, `!=`, `in`, and `not in`. 
 For example, 
@@ -217,8 +217,8 @@ For **Script Input Variables** and **Script Output Variables**, you simply se
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
-* [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Apply and Test
 

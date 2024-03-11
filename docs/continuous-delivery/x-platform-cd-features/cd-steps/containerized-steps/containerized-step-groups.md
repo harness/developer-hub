@@ -165,8 +165,8 @@ For more information, go to [Connect to the Harness container image registry](/d
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
 ## Containerized step group example
@@ -212,28 +212,41 @@ Started container lite-engine
 
 </details>
 
-
 ## Harness Docker connector for all group steps
 
-In each step in the containerized step group, you must provide a Harness connector to a container registry and an image for the container step to run.
+In each step in a containerized step group, you must provide a [Harness connector](/docs/category/connectors) to a Docker container registry and an image for the container step to run.
 
-You can create the connector in the any of the steps and then select it in the other steps, or you can create it separately and select it in the steps.
-
-You select the image to use in each step separately.
-
-Here's how to create the connector separately using the Harness Docker registry connector:
+You can create connectors in-line while adding steps or separately outside of the pipeline creation process. Images are specified at the step level.
 
 <details>
-<summary>Add Docker registry connector</summary>
+<summary>Add a Docker registry connector</summary>
 
-
+Harness offers several types of Docker-compliant cloud provider and artifact repository connectors, and there are several ways you can create connectors. These steps demonstrate several ways you can create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 <Tabs>
-  <TabItem value="YAML" label="YAML" default>
+<TabItem value="platform" label="Harness Platform" default>
 
+In the Harness Platform, you can use the connector creation wizard to create connectors.
 
-<details>
-<summary>Docker connector YAML</summary>
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to create the connector.
+2. Select **Connectors**, select **New Connector**, and then select the **Docker Registry** connector.
+3. Enter a **Name** and select **Continue**.
+4. Configure the **Details** settings as follows, and then select **Continue**:
+
+   * **Provider Type:** Select **DockerHub**.
+   * **Docker Registry URL:** Enter `https://docker.dev.harness.io/v2/`.
+   * **Authentication:** For the quickest setup, select **Anonymous**.
+
+   ![Harness Docker Hub registry settings](../static/539247318e3a3170d30ef2b94e905a20c6be96af64838f30df8a9d54c4a6ac44.png)
+
+5. Connect using a Harness Delegate, and select **Continue**.
+6. Select any delegate or select/create a specific delegate, and then select **Save and Continue**.
+7. When the connection test is complete, select **Finish**.
+
+</TabItem>
+<TabItem value="yaml" label="YAML">
+
+You can create connectors in [Harness YAML](/docs/platform/pipelines/harness-yaml-quickstart), for example:
 
 ```yaml
 connector:
@@ -251,21 +264,12 @@ connector:
     executeOnDelegate: true
 ```
 
-</details>
-
-
-
-
 </TabItem>
-  <TabItem value="API" label="API">
+<TabItem value="API" label="API">
 
+You can create a Docker connector using the [Create a Connector endpoint](https://apidocs.harness.io/tag/Connectors#operation/createConnector), for example:
 
-Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
-
-<details>
-<summary>Docker connector example</summary>
-
-```yaml
+```
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' \
 --header 'Content-Type: text/yaml' \
 --header 'x-api-key: PERSONAL_ACCESS_TOKEN' \
@@ -283,17 +287,13 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
     auth:
       type: Anonymous'
 ```
-</details>
-
 
 </TabItem>
-  <TabItem value="Terraform Provider" label="Terraform Provider">
+<TabItem value="Terraform Provider" label="Terraform Provider">
 
+For the Terraform Provider Docker connector resource, go to the Terraform documentation for the [harness_platform_connector_docker](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_docker).
 
-For the Terraform Provider Docker connector resource, go to [harness_platform_connector_docker](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_docker).
-
-<details>
-<summary>Docker connector example</summary>
+Here's an example of Terraform provider Docker connector JSON:
 
 ```json
 # credentials anonymous
@@ -308,44 +308,28 @@ resource "harness_platform_connector_docker" "test" {
   delegate_selectors = ["harness-delegate"]
 }
 ```
-</details>
-
-
-</TabItem>
-  <TabItem value="Harness Manager" label="Harness Manager">
-
-
-1. At the Harness project, org, or account level, go to **Connectors**.
-2. Select **New Connector**, and then select **Docker Registry**.
-3. Name the connector and select **Continue**.
-4. Enter the following settings and select **Continue**:
-   1. **Provider Type:** `DockerHub`.
-   2. **Docker Registry URL:** `https://docker.dev.harness.io/v2/`.
-   3. **Authentication:** `Anonymous`.
-   
-   ![Harness Docker Hub registry settings](../static/539247318e3a3170d30ef2b94e905a20c6be96af64838f30df8a9d54c4a6ac44.png)  
-5. Connect using a Harness Delegate, and select **Continue**.
-6. Select any delegate or select/create a specific delegate, and then select **Save and Continue**.
-7. When the connection test is complete, select **Finish**.
-
 
 </TabItem>
 </Tabs>
 
+:::info
 
-#### Important notes
+- When pulling images from Docker repos, Harness is restricted by Docker repo limits, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
+- The maximum number of artifact image tags fetched by Harness is 10000.
 
-- For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
-- The maximum number of artifact image tags fetched by Harness that is 10000.
+:::
 
 </details>
 
+When configuring pipelines, you'll most often select a Docker connector when you need to pull images into individual steps. For example, if a Shell Script step needs to run curl commands, you might pull an image containing the curl binary.
+
+Behind the scenes, Harness also uses a Docker connector to pull the required Harness images that support pipeline execution. Harness can pull the images from the public Harness container registry (using the default, built-in Harness Image connector) or you can configure your pipelines to use your own Docker connector to pull with authentication credentials or pull from a private container registry where you have cloned the Harness images. For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ## DinD Background step
 
 Some steps in a containerized step group might require Docker in Docker (DinD). For example, some deployment types might use DinD because of the requirements of their platforms.
 
-:::note
+:::info
 
 There is no DinD requirement for containerized step groups. Unless a step requires DinD, Harness needs only a Kubernetes cluster to run the containerized step.
 

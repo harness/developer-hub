@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
-If Okta is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If Okta is your identity provider, you can efficiently provision and manage users in your Harness account. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
 This topic describes how to use an Okta SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both Okta and Harness.
 

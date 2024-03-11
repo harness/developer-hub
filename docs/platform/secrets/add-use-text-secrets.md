@@ -137,8 +137,8 @@ For more information about handling special characters in secret values, go to [
 You can use the `+` operator or `concat` method inside expressions referencing secrets. For example, each of the following expressions uses a concatenation method to combine a string and a variable expression into a complete secret identifier.
 
 ```
-<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>
-<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>
+<+secrets.getValue("test_secret" + <+pipeline.variables.envVar>)>
+<+secrets.getValue("test_secret")>.concat(<+pipeline.variables.envVar>)>
 ```
 
 ## Secrets in outputs
