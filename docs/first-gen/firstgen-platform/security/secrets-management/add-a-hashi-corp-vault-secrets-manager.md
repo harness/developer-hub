@@ -107,8 +107,6 @@ path "auth/token/renew-self"
 
 ### Option: Vault Agent
 
-For a detailed walkthrough, see [How to integrate Harness with Vault using Vault Agent (Delegate)](https://community.harness.io/t/hashicorp-vault-2022-review-how-to-integrate-harness-with-vault-using-vault-agent-delegate/11710) from Harness Community.This option enables the Harness Vault Secrets Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
-
 To authenticate with Vault Agent, make sure you have configured it on the required environment, with entries for **method** and **sinks**. For more information, see [Vault Agent](https://www.vaultproject.io/docs/agent).
 
 In the **Sink Path** field, enter any sink path you have in your Vault Agent Configuration. This is the path of the encrypted file with tokens. The specified Delegate reads this file through file protocol (file://).
