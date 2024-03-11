@@ -88,7 +88,7 @@ In addition to ingesting scan data in the external scanner's native format, STO 
 ####  Operating systems and architectures supported for STO
 
 
-import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
+import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-infrastructures.md';
 
 
 <StoInfraSupport />

@@ -1,7 +1,7 @@
 ---
 title: Harness Platform FAQs
 description: Frequently asked questions about Harness Platform.
-# sidebar_position: 2
+sidebar_position: 2
 ---
 
 # Harness Platform FAQs
@@ -33,10 +33,6 @@ Error: Process completed with exit code 1.
 ```
 
 To fix this, update your state file to change the tags field from a map to a set of strings, for example `"tags": {}` to `"tags": []`.
-
-### Which RBAC permissions are required for users who execute pipeline tasks using the API?
-
-The user needs the same permissions to execute pipeline tasks via API as they would need when running the same tasks through the Harness UI.
 
 ### How can I resolve environment variables in JEXL conditions?
 
@@ -438,10 +434,6 @@ Yes, Harness enforces rate limits. For more information, go to [Rate limits](/do
 
 No there isn't support for getting secrets as base64, but you can store the value as a base64-encoded secret and then get the value using the expression `secrets.getValue("my_secret")`.
 
-### In pipeline chaining, is it possible to reference a child's variables in the parent pipeline without using outputs?
-
-We can refer to child execution expression in parent pipeline only via outputs using the following expression `<+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag>`.
-
 ### Is create-namespace option available in Harness while deploying chart?
 
 You can point to a manifest file containing just the namespace YAML. This means you can create a Kubernetes YAML file that defines only the namespace you want to use for your application. Even a shell script step would be simple enough in this case, and use a kubectl command directly. This suggests that using a shell script as a step in your deployment process to apply the namespace YAML file is straightforward. You can use the kubectl command in the shell script to create the namespace.
@@ -729,10 +721,6 @@ When you push commits from the command line, the email address that you have con
 
 The expression `<+trigger.commitSha>` is available when the event comes from a Git operation. Instead, use the expression `<+codebase.commitSha>` for parsing manual triggers.
 
-### How can I specify my pipeline to select a delegate based on a tag?
-
-In the advanced tab of your pipeline, you can add specific tags in the [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-tags) field.
-
 ### How can I prevent lockouts when using SSO for login?
 
 To prevent lockouts or in the case of OAuth downtime, a user in the Harness Administrators Group can utilize the [Local Login](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/#harness-local-login) URL [http://app.harness.io/auth/#/local-login] to log in and update the OAuth settings.
@@ -923,7 +911,7 @@ Harness uses the ring methodology commonly used in software release management f
 
 The account password authentication might be disabled with another auth enabled, such as Active Directory. Reach out to your Active Directory Administrator in that case to reset it.
 
-### How can I restore deleted projects and pipelines?
+### How can I restore deleted projects?
 
 Unfortunately, we don't soft delete entities and hard delete them. Therefore they can't be easily restored. Some entities can be restored using YAML from the audit trail.
 
@@ -1107,12 +1095,6 @@ Yes, you can use alphanumeric characters, but the name can't start or end with a
 
 Yes, you can refer to the [release notes](/release-notes/self-managed-enterprise-edition).
 
-### If we have a main pipeline linked to a chained pipeline, when the main pipeline is executed, which pipeline settings have precedence?
-
-For example, if a main pipeline has notifications set, pipeline timeout set and chain pipeline is a template pipeline with notifications set, pipeline timeout set.
-
-The notification/timeout settings for each entity will be honored as the pipeline progresses.
-
 ### Can I use expressions in delegate tags in NextGen like I used custom selectors in delegates in FirstGen?
 
 Yes, expressions in delegate selections are supported. You can pass expressions during delegate selection in a pipeline. This will be resolved to the value of that variable. If that value is present as a tag in a delegate, then that delegate will be selected.
@@ -1148,10 +1130,6 @@ If you encounter decryption errors while working with a secret in your pipeline,
 At times, you might encounter an issue where you are unable to access your non-default account in a scenario where you are part of multiple accounts. This occurs due to a login mechanism that only works for the default account. However, you can still attempt to access your desired account by using a deep link. The deep link refers to the full URL of the account they wish to access.
 `https://app.harness.io/ng/account/**accountidhere**/main-dashboard`
 
-### How can I disable a pipeline?
-
-You can use the Deployment Freeze option. For more information, go to [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze/).
-
 ### Why aren't Slack notifications working?
 
 Begin by troubleshooting and validating the Slack webhook, then check the notification settings at the pipeline or user group level.
@@ -1165,15 +1143,6 @@ When you create a project using the API, by default the project inherits the pro
 ### How do I verify Harness API token validity?
 
 When creating a token in Harness under Service Account, the duration of the token's validity depends on how the token was set up. If you have specified an expiry date, the token will be valid until that date. However, if you want the token to never expire, you can choose the **No Expiration** option for the token's expiration date.
-
-### How can I provide access to specific pipelines in Harness?
-
-You can use [RBAC](/docs/platform/role-based-access-control/rbac-in-harness/)
- to create a resource group and select specific pipelines to have access.
-
-### Why can't I remove my pipeline?
-
-If you need to delete Harness Resources forcefully, you can go to **Account resources** and then to **Default Settings**. Under General, you can select the **Enable Force Delete of Harness Resources** option. Then you can delete the pipeline from the Harness UI. This option allows entities to be force deleted.
 
 ### Why did I receive "VAULT operation error: Decryption failed after 3 retries for secret"?
 
@@ -1214,11 +1183,6 @@ But you can view all of them together by selecting the scope to All instead of I
 ### I need to create an AWS Secrets Manager reference type secret. I am not sure how to accomplish it. Is the "secret_manager_identifier" for the AWS Secrets Manager secret name?
 
 Remember that the `secret_manager_identifier` refers to the identifier of your AWS secret manager, which you have added in Harness as a connector. It's important to note that the secrets must be stored in the same scope of the secret manager. For instance, if you have account secrets, they should be stored in the account secret manager.
-
-### What is the RBAC to hide pipelines?
-
-We currently don't support the ability to hide pipelines with RBAC.
-However, you can achieve this by creating a role and resource group that has access to specific pipelines. Once created, assign the role and resource group to the users. This way, users can view the pipelines but can only execute them based on the resource group assignments.
 
 ### What is the default delegate token behavior?
 
@@ -1264,10 +1228,6 @@ As customers manage their Harness Delegates in their own infrastructure, Harness
 
 To remove the delegate from your infrastructure, you need to stop the delegate service. Alternatively, you can revoke the token used by the delegate which will disconnect and automatically delete it in 7 days.
 
-### Is there a limit to the number of pipelines a project can have? What is the character limit on pipeline names?
-
-Harness allows an unlimited number of pipelines, but the pipeline name cannot exceed 128 characters.
-
 ### How does Harness handle data deletion for customers?
 
 The process of cleaning up a customer's data is triggered when their account expires, or they offboard.
@@ -1298,12 +1258,6 @@ The Harness Delegate is a software that gets installed in your environment which
 In Harness NextGen, ECS delegate can be deployed as a Docker delegate both for ECS and ECS Fargate. This tutorial shows you how to install the Harness Delegate in an ECS cluster as an ECS service to enable the Delegate to connect to your AWS resources.
 
 https://discuss.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056
-
-### I use a Slack bot to send messages about test job results. Why can't I find a variable for the job URL?
-
-For the pipeline execution URL: `\<+pipeline.execution.url>`
-
-https://docs.harness.io/article/lml71vhsim-harness-variables#pipeline_execution_url
 
 ### What is the Harness hosted GitOps IP address?
 
@@ -1496,15 +1450,6 @@ No, you cannot use a `bindSecret` in Harness LDAP settings to avoid using an inl
 
 No, it is not possible to use the same name within 30 days of revocation. There is a 30-day deletion TTL after token revocation.
 
-### What is the expected behavior when a customer aborts a pipeline task, and what actions are taken to ensure a clean state in the system?
-
-When you initiate an abort for a pipeline task, the expected behavior is to take actions to halt the task's execution as promptly as possible.
-Harness has a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, which is used to abort a task. This method typically leverages `Thread.interrupt()` to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
-
-An abort could leave the system in a potentially inconsistent or 'dirty' state, it's crucial to consider rollback procedures.
-
-Delegate actions, such as canceling or ending running tasks, should play a central role in preventing system inconsistencies and maintaining system integrity.
-
 ### How can I automatically start a delegate when running as a Docker container?
 
 Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts. Restart policies start linked containers in the correct order. Docker recommends that you use restart policies, and avoid using process managers to start containers.
@@ -1517,12 +1462,6 @@ To use a process manager, configure it to start your container or service using 
 **Warning:** Don't combine Docker restart policies with host-level process managers, as this creates conflicts.
 
 This information was provided by [Docker documentation](https://docs.docker.com/config/containers/start-containers-automatically/).
-
-### Which API method can I use to invoke a pipeline when using multiple dynamic parameters?
-
-It depends of your scenario. If you use the same set of inputs to invoke a pipeline, Harness recommends that you use the [Execute a Pipeline with Input Set References](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/postPipelineExecuteWithInputSetList) API method. You can refer to an existing input set in the InputSet API method, so you don't need to specify all the parameters each time. For example, if you have a pre-defined input set for staging deployments, you can create an input set called `staging-inputset`, as well as others for different environments. Then, you can use the `environment_name` to dynamically select the appropriate input set.
-
-If your pipeline has a very specific context of each execution, where you need to pass different parameters on each execution, Harness recommends that you execute your [Pipeline with Runtime Input YAML](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetYaml).
 
 ### Perpetual Task was not assigned to my delegate, what is most probably cause?
 
@@ -1948,10 +1887,6 @@ Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline 
 
 Go to the [AWS documentation on SMTP credentials](https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html) to create SMTP credentials using the SES console. Then, supply those SMTP credentials in your [Harness SMTP connector configuration](/docs/platform/notifications/add-smtp-configuration).
 
-### How can I increase the concurrent pipeline execution limit?
-
-You can increase the limit unto 1000 by navigating to Account Settings --> Account Resource --> Default Settings --> Pipeline
-
 ### Is it possible to hide Project/Org level default built-in roles?
 
 Yes, it's possible with the feature flag `PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE and PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -1983,12 +1918,6 @@ regex.extract("v[0-9]+.[0-9]+", artifact.fileName)
 ### What are the statuses of nodes using the Harness looping Strategy?
 
 Running, Failed, and Success
-
-### Why can't I resume my pipeline after a delegate release?
-
-Harness maintains a local cache of all connected delegates to execute tasks and optimize performance. The cache is refreshed every 3 minutes, which means that it may take up to 3 minutes for a new delegate to be eligible to execute a task once it's connected. This has been in production for a few years and has proven to be effective.
-
-To ensure a smooth transition between bringing up a new delegate and terminating an old pod, we recommend having a grace period. In our YAML configuration, we use the `minReadySeconds` field to ensure that old pods die after 2 minutes of a new pod being in the ready state. If your delegate YAML file doesn't have this field, you can download a new YAML and add it to prevent older pods from being killed before the new pod receives traffic.
 
 ### What is the account name in the authenticator APP When Setting up 2FA?
 
@@ -2066,10 +1995,6 @@ The `liveStatus` expression is designed for use within step groups under a matri
 
 Manual reset isn't supported. However all the metrics get reset when the delegate restarts
 
-### Is the user can approve the pipeline through the API using token of service account?
-
-The Service Account API token is not supported with Approval API, you need to use the personal access token.
-
 ### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
 
 You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.
@@ -2119,10 +2044,6 @@ Tasks currently poll for delegates at the start, and if initial delegates are un
 ### Is there any documentation we have around the APIs which we can use to fetch user details given userId?
 
 Yes you can refer here, [documentation](https://apidocs.harness.io/tag/User#operation/getUsers).
-
-### If we abort the pipeline and a step is being executed, will it be immediately stopped or it will finish the step task execution and after that abort the execution?
-
-When you abort a pipeline, the pipeline will finish executing its current task and then stop execution. For further details you can refer [here](https://developer.harness.io/docs/platform/pipelines/abort-pipeline/#key-considerations).
 
 ### Do we support referencing a ldap secret?
 
@@ -2297,11 +2218,7 @@ Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting
 ### Delegate connectivity issues because of proxy IP.
 
 While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
-We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
-
-### How do I avoid hitting the GitHub API rate limit when using multiple templates and Git-stored pipelines?
-
-To minimize GitHub calls from Harness, enabling the bi-directional git experience may significantly reduce the number of requests.
+We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues.
 
 ### Why am I getting an error while creating a template using a service account token generated under a project?
 
@@ -2378,13 +2295,6 @@ You can refer the [docs](https://developer.harness.io/docs/platform/delegates/in
 ### Are metrics for the Docker Delegate published, and how can Prometheus scraping be configured?
 
 Yes, metrics for the Docker Delegate are published. To enable Prometheus scraping, you would likely need to open a port on the container and bind it to the Delegate metric port. This allows Prometheus, running separately, to scrape and collect metrics from the Docker Delegate.
-
-### How can user only edit existing pipeline but should not be able to create any new pipeline?
-
-You can create the Roles and Resource Group like below..
-- Roles : Create/Edit,
-- RG : Select the specific pipelines within RG that the user should be able to edit.
-This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
 
 ### Why am I receiving a 400 status code error with an "unsuccessful HTTP call" message when using a Jira step in Harness?
 
@@ -2472,10 +2382,6 @@ Please check if entity id is set correctly in case if you are using multiple acc
 
 In case of above it needs to be the domain used to access harness(example : vanity.harness.io) 
 
-### How can I easily disable pipeline triggers
-
-You can navigate to the trigger under pipeline and can toggle the enable button to disable the trigger on top left
-
 ### Why can't I view projects?
 
 Please check if you have required Role and permission granted to view Projects, you can reach out to your account admin to confirm the permission granted for your account
@@ -2483,11 +2389,6 @@ Please check if you have required Role and permission granted to view Projects, 
 ### I want to share delegate from one project to another?
 
 In this case you can install the delegate on org level if both project are under same org, otherwise need to install delegate on Account level. As delegate installed under project has scope limited to same project
-
-### What permission do I need to see deployments for all projects?
-
-You can create a role and add view permission for pipeline with account scope, you can find sample one as below for having execute permission similarly you can create one for just view access
-https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples
 
 ### How do I sign out of Harness?
 
@@ -2554,14 +2455,6 @@ An Ingress resource is typically defined in a YAML file, often named ingress.yam
 
 By using Ingress, you can manage external access to your services more flexibly than using raw services or NodePort services. It provides a way to route traffic based on various criteria and allows you to handle SSL termination and other features. Keep in mind that the actual implementation of Ingress may vary depending on the Kubernetes cluster, as different cluster providers may have different Ingress controllers.
 
-### How can I easily disable pipeline triggers?
-
-On the triggers page, you'll see a toggle icon on the right side under Enabled, you just need to toggle it off and the trigger will be disabled.
-
-### What is my webhook identifier to trigger pipelines?
-
-When you name an entity, Harness automatically generates its identifier. You can edit the Identifier when you are creating the entity, but not after the entity is saved. If you rename the entity, the Identifier remains the same. The generated Identifier is based on the entity name and meets the identifier naming restrictions. If an entity name cannot be used because it's already occupied by another entity, Harness automatically adds a prefix in the form of -1, -2, etc.
-
 ### How do I verify my account?
 
 Harness has identified an increase in the unauthorized usage of the free pipeline minutes Harness makes available on Harness Cloud. To combat such unauthorized usage, Harness requires that you use your work email, not your personal email, to register your account.
@@ -2591,10 +2484,6 @@ Currently, we don’t support individual user e-mail notifications.
 ### How can we export users from Harness?
 
 Currently, we do not support a direct functionality for exporting all users. To export users from Harness, you can utilize our API method getUsers.
-
-### How do I fix the error “You are missing the following permission: Create / Edit Pipelines”?
-
-To resolve the error ```You are missing the following permission: Create / Edit Pipelines```, you need to assign the ```Write Pipelines``` permission to your user.
 
 ### How can I export all AutoStopping rules?
 
@@ -2681,11 +2570,6 @@ db.getCollection('allowedLimits').find({key: "CREATE_USER", accountId: "<account
 
 No, localization is not currently supported.
 
-### What is the recommended or consensus time delay before making an API call to the apiUrl returned from a Harness trigger for starting a pipeline?
-
-A good average would be 20-30 seconds, but unfortunately there is no way to give a precise estimate of an interval to wait before calling this API.
-This API only starts giving success response when the pipeline execution kicks in. In between, we need to load the pipeline’s yaml and all the referred templates, which can take some time, especially if the entities are git-synced, in which case we need to fetch all of them from git. To be 100% safe, we would recommend a polling approach, like, try calling the API 10s after the trigger execution was requested. If it fails, wait for another 10s, try again, and so forth.
-
 ### What does delegate resource threshold DYNAMIC_REQUEST_HANDLING do?
 
  By default delegate task capacity is purely based on the number of tasks which is not ideal as some tasks consume far less resources than the others. Enabling `DYNAMIC_REQUEST_HANDLING` would make delegate take tasks based on the available resources (CPU/Memory) instead, so if delegate is overloaded it would reject a task (default is 80% cpu/mem). If either CPU or Mem is at 80% or more, delegate would reject the task.
@@ -2693,18 +2577,6 @@ This API only starts giving success response when the pipeline execution kicks i
 ### What causes the delegate Out-of-memory error, and how can I fix it?
 
 The delegate throws an error indicating `java.lang.OutOfMemoryError` or that the delegate has run out of heap space. The container has run out of memory or the delegate has exceeded heap space. Review the container's memory usage. Harness recommends that you use `Xms` and `Xmx` or `MinRAMPercentage` and `MaxRAMPercentage` JVM arguments to adjust the heap size of the delegate. You can provide these arguments via the `JAVA_OPTS` environment variable when you set up the delegate.
-
-### Is the user able to execute the pipeline through the API?
-
-Yes, you can execute the pipeline through the [Pipeline execution API](https://apidocs.harness.io/tag/Pipeline-Execution).
-
-### Is the user can able to execute the pipeline through CLI?
-
-Yes, you can use the API curl or custom webhook curl in any CLI to execute the pipeline.
-
-### Is the user can able to execute the pipeline using the Harness CLI command?
-
-No, currently Harness CLI don't have any command for pipeline execution.
 
 ### How can the user remove the single disconnected delegate pod?
 
@@ -2737,52 +2609,6 @@ If you are using a step template, you will need to navigate to the template and 
 ### Create Connector API seems to not work for orgs and failing with the error INVALID_IDENTIFIER_REF while trying to create a vault connector.
 
 Please check and confirm if the token used here is proper and you are using the org or account prefix before passing the secret reference.
-
-### How do I make a pipeline step report to Slack?
-
-You can configure a notification strategy for Slack and trigger messages on different pipeline or stage events.
-
-### How can I include more data in Slack notifications for a Harness pipeline?
-
-Natively, we do not support adding additional details to Slack notifications. However, you can use a shell script step with the following script as an example:
-
-```
-curl -X POST -H 'Content-type: application/json' --data '{
-  "text": "Slack notifications - Harness",
-  "attachments": [
-    {
-      "fallback": "Notification from Harness",
-      "color": "#3AA3E3",
-      "fields": [
-        {
-          "title": "Pipeline Name",
-          "value": "<+pipeline.name>",
-          "short": true
-        },
-        {
-          "title": "Triggered by",
-          "value": "<+pipeline.triggeredBy.email>",
-          "short": true
-        },
-        {
-          "title": "Environment",
-          "value": "<+pipeline.stages.deploynginx.spec.env.name>",
-          "short": true
-        },
-        {
-          "title": "Service",
-          "value": "<+pipeline.stages.deploynginx.spec.service.name>",
-          "short": true
-        }
-      ]
-    }
-  ]
-}'  https://hooks.slack.com/services/<your information>
-```
-
-### How can I block an API key used to trigger a pipeline execution per environment?
-
-You can use Harness Service Accounts to define granular roles and permissions for what users have access to. This allows you to scope the API keys to specific resources/environments and ensure there is no cross-scope access.
 
 ### Is it possible to change the company name for my Harness Account?
 
@@ -2838,13 +2664,6 @@ We can make use of environment variable TMPDIR on the delegate and use any direc
   value: /opt/harness-delegate/deployvol/tmp
 
 ```
-
-### How can I make my pipeline dependent on the RBAC permissions of the user that runs the pipeline? Is that info accessible from inside the pipeline? 
-
-
-We don't have a variable like `<+currentuser.role>` that will return the role for user, but you can use a variable to get the user's email address. For more information, go to [Pipeline trigger by email](/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail).
-
-You can also make an API call to list all roles assigned to the user and decide the next step accordingly. For more information, go to [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) in the API documentation.
 
 ### Is there an SMP database query to validate whether a user was provisioned via SCIM or manually?
 
@@ -2941,10 +2760,6 @@ The `DELEGATE_TASK_CAPACITY` feature flag allows you to configure the maximum nu
 
 Delegates expire six months (24 weeks) from the date the delegate image was released on DockerHub. Although delegate expiration doesn't stop them from working immediately, issues may arise if the backend has advanced too far ahead, rendering the delegate no longer forward-compatible. While delegates are backward compatible, it's highly recommended to upgrade at least once every six months to ensure optimal performance and compatibility.
 
-#### How do I get error details for a failed pipeline execution?
-
-You can use the `getExecutionDetailV2` API to get the error details under `executionErrorInfo` with the status as `failed`.
-
 #### Are AWS KMS secrets stored in AWS or Harness?
 
 Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
@@ -2959,10 +2774,6 @@ No, the additional encoding is not supported on the delegate token.
 #### In network security policies, what Harness IPs do I need to allowlist to connect to Harness?
 For a list of Harness IPs to allow, go to [Allowlist Harness domains and IPs](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips).
 
-#### How to get a failure error for the pipeline
-
-You can make use of the getExecutionDetailV2 API and get the error details under executionErrorInfo with a status as failed.
-
 #### While using AWS, KMS secrets are stored on the AWS or Harness end?
 
 Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
@@ -2971,17 +2782,59 @@ Harness stores the secret in its Harness store and retrieves the encryption keys
 
 No, while using AWS Secret Manager, default encryption will be used. If you have to use custom encryption, then you need to use AWS KMS Secret Manager.
 
-#### How to print all custom defined pipeline variables in shell script
-You can install jq and can use below command
-```
-json_content='<+pipeline>'
-variables=$(echo "$json_content" | jq -r 'recurse | objects | select(has("variables")) | .variables | to_entries | map("\(.key) = \(.value)") | join(" ")')
-echo "$variables"
-```
-
 #### Getting error for no secret found although there is valid secret with identifier 
 ```
  InvalidRequestException: No secret found with identifier + [atiitmsservicedbpasswordstage]
 ```
 
 Please check and confirm if secret with this identifier is present on same project level as if the secret is at org or account level than need to add prefix org/account.idenifier while accessing the secret
+
+#### How do I check the pipeline ID in the UI?
+
+To check the pipeline ID in the Harness UI, you can look at the URL of the pipeline you've selected. The unique identifier is present in the URL if you select the pipeline as `/pipelines/mypipeline/`. You can also find it in the YAML view under `identifier` as shown below:
+
+```yaml
+pipeline:
+  name: Test pipeline
+  identifier: mypipeline
+```
+
+#### Is there an API to create overrides?
+
+To create overrides via the Harness API, you can use the service override API. For more information, go to [Service overrides](https://apidocs.harness.io/tag/ServiceOverrides) in the API documentation.
+
+#### How do I sign out of Harness?
+
+To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
+
+#### What is the service ID naming convention?
+
+The naming convention for all identifiers in Harness is case sensitive. Identifiers must start with a letter or underscore, followed by letters, numbers, underscores, or dollar signs. For more information, go to [Entity identifier reference](/docs/platform/references/entity-identifier-reference).
+
+#### How can I get all services using a cURL command?
+
+To get all services using a cURL command, you can use the `getServiceList` API and make a cURL request using a valid token. For more information, go to [getServiceList](https://apidocs.harness.io/tag/Services#operation/getServiceList) in the API documentation.
+
+#### How do I trigger an Azure pipeline?
+
+To trigger an Azure pipeline, you can use the script step and invoke/trigger any pipeline using a cURL or webhook.
+
+#### What's the Harness variable replacement for a service name?
+
+To replace the service name with a Harness variable, use `<+service.name>`.
+
+#### Can I create an input variable as a checkbox?
+
+To create an input variable as a checkbox, use allowed values to provide a fixed range of acceptable values for a runtime input. Use multiple selections if you want to choose one or more values from the list of allowed values
+
+
+#### Do we have account level delegate?
+Yes, we offer account-level delegates. You can create them by navigating to Account Settings > Account Resources > Delegate.
+
+#### Is there any Harness API to create overrides?
+You can use this API to create overrides - https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride
+
+
+#### Is there any jexl expressions to get all projects environment?
+We currently don't have a Jexl expression to retrieve all environments, but you can utilize the API endpoint to fetch all environments:https://apidocs.harness.io/tag/Monitored-Services#operation/getEnvironments
+

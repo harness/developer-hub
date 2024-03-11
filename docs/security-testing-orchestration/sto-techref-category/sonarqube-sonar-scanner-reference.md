@@ -245,7 +245,6 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
-
 #### Fail on Severity
 
 
@@ -275,10 +274,39 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+## SonarQube pull-request scan configuration
+
+To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
+    - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
+    - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
+    - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
+      
+      If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
+
+<details>
+<summary>YAML configuration example</summary>
+```yaml
+              - step:
+                  type: Sonarqube
+                  # ...
+                  spec:
+                    mode: orchestration
+                    config: default
+                    # ...
+                    advanced:
+                      log:
+                        level: debug
+                      args:
+                        cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
+                    # ...
+
+```
+</details>
 
 ## Troubleshoot Sonar Scans
 

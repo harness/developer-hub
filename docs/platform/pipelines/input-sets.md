@@ -1,7 +1,7 @@
 ---
 title: Input sets and overlays
 description: With input sets and overlays, you can reuse a single pipeline for multiple scenarios.
-sidebar_position: 5
+sidebar_position: 12
 helpdocs_topic_id: 3fqwa8et3d
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false

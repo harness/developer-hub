@@ -217,3 +217,124 @@ If you inject chaos into your application, but the experiment gets aborted due t
 ### Workaround
 1. Add 1 to 2 s of intial delay (**Initial Delay** is the field name while configuring the resilience probes); and
 2. Provide multiple attempts (**Attempt** is the field name in resilience probes).
+
+## While installating windows chaos infrastructure, service created but in Stopped state
+
+**Error Message:**
+Service 'WindowsChaosInfrastructure' cannot be started due to the following error: Cannot start service WindowsChaosInfrastructure on computer '.'.
+
+Solution:
+
+- **Verify User Credentials:** Ensure that the user credentials (-AdminPass) used for installation are correct and have the necessary permissions
+- **Set User Password:** If the user account lacks a password, set one using the following command:
+
+```
+C:\Users\Administrator>net user Administrator MyPassword@123
+```
+
+**(Method-1) Grant Logon as a Service Permission:**
+
+1. Open Local Security Policy.
+2. Navigate to User Rights Assignment.
+
+![](./static/images/local-security-policy.png)
+
+3. Find "_Log on as a service_" and add the user to this policy.
+
+![](./static/images/local-security-policy-logon.png)
+
+4. Apply and save the changes.
+
+Start the Service: Restart the WindowsChaosInfrastructure service from the Services tab in Task Manager.
+
+Check Logs: If the issue persists, refer to the log file at `C:\\HCE\Logs` for more details.
+
+**(Method-2) Grant Logon as a Service Permission:**
+
+If the Windows Chaos Infrastructure service is created but fails to start due to login permission issues for the user account, you can resolve this by manually granting logon permissions:
+
+1. Open Task Manager:
+
+![](./static/images/open-task-manager.png)
+
+  - Press Ctrl + Shift + Esc to open the Task Manager or search Task Manager.
+  - Switch to the "Services" tab.
+
+2. Locate the Service:
+
+![](./static/images/task-manager-service.png)
+
+  - Find the "WindowsChaosInfrastructure" service.
+  - Right-click on the service and select "Open Services".
+
+3. Modify Service Properties:
+
+  - In the Services window, locate "WindowsChaosInfrastructure" again.
+  - Right-click on it and choose "Properties".
+  - Go to the "_Log On_" tab.
+
+4. Provide User Credentials:
+
+![](./static/images/task-manager-service-logon.png)
+
+  - Enter the credentials of the user account that should run the service.
+  - Click "Apply". You should receive a confirmation that the account has been granted logon as a service rights.
+
+5. Start the Service:
+
+Apply the changes and start the service. The service should now enter a running state.
+
+By following these steps, you can manually grant the necessary permissions for the service to start successfully.
+
+# Windows chaos infrastructure troubleshooting
+
+## Windows chaos infrastructure installation failed with "The Specified Service Already Exists"
+
+**Error Message:**
+The specified service already exists.
+
+### Solution
+
+- Run the uninstallation script: Use the provided script to remove the previous installation.
+- Manually remove the previous installation:
+  - Delete the service using the command `sc delete WindowsChaosInfrastructure`.
+  - Remove the chaos directory, typically located at `C:\\HCE`.
+- Reinstall: After cleanup, re-run the installation script.
+
+## Windows infrastructure installation failed with "Account name is invalid"
+
+**Error Message:**
+The account name is invalid or does not exist, or the password is invalid for the account name specified.
+
+### Solution
+
+- Verify account name: Ensure that the account name provided in the `-AdminUser` flag is correct and exists on the system.
+- Correct Syntax: Use the correct syntax, for example, `.\Administrator` for the local administrator account.
+
+## Windows infrastructure service fails to create with error or Exit Code 216
+
+### Solution
+
+**Check Windows version:** The error indicates incompatibility with the Windows version. Currently, only 64-bit versions are supported. Support for 32-bit versions is planned for future releases.
+
+
+## Windows infrastructure default command fails with "Could not create SSL/TLS secure channel"
+
+
+### Solution
+
+Force TLS 1.2: Add the following line to the beginning of your command to force PowerShell to use TLS 1.2:
+
+```
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+```
+
+For example:
+
+```
+powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://app.harness.io/public/shared/tools/chaos/windows/1.32.0/install.ps1' -OutFile 'install.ps1' -UseBasicParsing; .\install.ps1 -AdminUser '.\uditgaurav' -AdminPass 'password@123' -InfraId '59cedc73-c544-432a-99e7-ec20b2fc73c0' -AccessKey 'ow03gxzvkjdck9ws5jjmznu2gzx7h0ep' -ServerUrl 'https://shubhamch.pr2.harness.io/chaos/mserver/api' }"
+```
+
+This modification forces PowerShell to use TLS 1.2 for secure connections, thereby resolving the SSL/TLS issue.
+
+For further assistance, please refer to the [documentation](/docs/chaos-engineering/chaos-faults/windows) or contact [Harness support](mailto:support@harness.io).

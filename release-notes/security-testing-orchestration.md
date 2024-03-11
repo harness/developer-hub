@@ -11,7 +11,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/security-testing-orchestration/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/security-testing-orchestration/rss.xml" />
 
 These release notes describe recent changes to Harness Security Testing Orchestration (NextGen SaaS).
 
@@ -122,10 +122,15 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 - Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
 
-#### Fixed issue
+#### Fixed issues
 
 - Fixed a UI issue where the Exemptions page would show the incorrect severity for an issue if that severity was overridden after the original scan. (STO-7069)
 
+- The SonarQube integration includes better support for orchestrated branch and pull-request scanning with SonarQube Enterprise. (STO-7122, STO-6840, STO-6857, ZD-58021, ZD-55282, ZD-55592)
+  - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the runtime input or the pull request.
+  - With this enhancement, the orchestration step always downloads results for the scanned branch or pull request.
+  - Branch scans require no additional configuration.
+  - To configure pull-request scans, go to [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration).
 
 ## January 2024 
 

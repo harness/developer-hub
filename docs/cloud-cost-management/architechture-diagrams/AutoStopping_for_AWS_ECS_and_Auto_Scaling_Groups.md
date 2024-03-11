@@ -4,7 +4,7 @@ description: AutoStopping for AWS ECS and Auto Scaling Groups
 sidebar_label: AutoStopping for AWS ECS and Auto Scaling Groups
 ---
 
-![](./static/AutoStopping_for_AWS_ECS_and_Auto_Scaling_Groups.png)
+<DocImage path={require('./static/AutoStopping_for_AWS_ECS_and_Auto_Scaling_Groups.png')} width="90%" height="90%" title="Click to view full size image" />
 
 In this high-level depiction, we illuminate the dynamic interplay between CCM services and customer infrastructure, highlighting the orchestrated process of AutoStopping for AWS ECS and Auto Scaling Groups. The onboarding journey involves Harness assuming the role of managing an existing Application Load Balancer (ALB) within the customer environment. If no ALB exists, Harness takes charge of creating a new one. Additionally, a freshly instantiated Proxy Manager enters the scene to meticulously track traffic directed towards the target resources.
 

@@ -1,7 +1,7 @@
 ---
-title: Harness YAML overview
-description: You can use YAML to create pipelines in Harness
-sidebar_position: 2
+title: Write pipelines in YAML
+description: You can use YAML to create pipelines in Harness.
+sidebar_position: 0
 helpdocs_topic_id: 1eishcolt3
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false
@@ -310,7 +310,7 @@ Here's an example of the step group structure:
 
 ### Conditional executions
 
-Use `when` to define [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) for stages and steps.
+Use `when` to define [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings) for stages and steps.
 
 You must indent `when` to the same depth as either `step.identifier` or `stage.identifier`.
 
@@ -321,7 +321,7 @@ You must indent `when` to the same depth as either `step.identifier` or `stage.i
 
 ### Failure strategies
 
-Use `failureStrategies` to define [failure strategies for stages and steps](./define-a-failure-strategy-on-stages-and-steps.md). You can also define failure strategies for pipelines to [rollback failed pipelines](./define-a-failure-strategy-for-pipelines.md).
+Use `failureStrategies` to define [failure strategies for stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can also define failure strategies for pipelines to [rollback failed pipelines](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines).
 
 ```yaml
               failureStrategies:  

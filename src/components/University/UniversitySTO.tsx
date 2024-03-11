@@ -139,7 +139,7 @@ export default function CertificationsSTO() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/security-testing-orchestration-developer">
+                    <Link href="https://university-registration.harness.io/security-testing-orchestration-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -156,7 +156,7 @@ export default function CertificationsSTO() {
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/security-testing-orchestration-developer">
+                <Link href="https://university-registration.harness.io/security-testing-orchestration-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -212,7 +212,7 @@ export default function CertificationsSTO() {
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/security-testing-orchestration-administrator">
+                    <Link href="https://university-registration.harness.io/security-testing-orchestration-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -229,7 +229,7 @@ export default function CertificationsSTO() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/security-testing-orchestration-administrator">
+                <Link href="https://university-registration.harness.io/security-testing-orchestration-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -284,7 +284,7 @@ export default function CertificationsSTO() {
                   </div>
                   <ArchitectCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
+                    <Link href="https://university-registration.harness.io/continuous-delivery-gitops-architect">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -312,7 +312,7 @@ export default function CertificationsSTO() {
             <div className={styles.examDetailsCard}>
               <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
+                <Link href="https://university-registration.harness.io/continuous-delivery-gitops-architect">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>

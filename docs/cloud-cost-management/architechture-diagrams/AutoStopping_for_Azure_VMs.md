@@ -4,7 +4,7 @@ description: AutoStopping for Azure VMs
 sidebar_label: AutoStopping for Azure VMs
 ---
 
-![](./static/AutoStopping_for_Azure_VMs.png)
+<DocImage path={require('./static/AutoStopping_for_Azure_VMs.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### AutoStopping for Azure VMs: High-Level Overview
 

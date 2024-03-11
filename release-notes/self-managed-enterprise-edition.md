@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-03-04T10:00
+date: 2024-03-06T10:00
 sidebar_position: 16
 ---
 
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 import delete_project from './static/delete-project.png'
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/self-managed-enterprise-edition/rss.xml" />
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
@@ -65,23 +65,21 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-<!--
-
-## March 4, 2024, version 1.24.7
+## March 6, 2024, version 0.14.3
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.14.1](https://github.com/harness/helm-charts/releases/tag/harness-0.14.1) |
-| Air Gap Bundle | [0.14.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.1) |
+| Helm Chart | [0.14.3](https://github.com/harness/helm-charts/releases/tag/harness-0.14.3) |
+| Air Gap Bundle | [0.14.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.3) |
 | NG Manager | 1.24.7 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
 | Platform Service | 1.12.0 |
 | Access Control Service | 1.33.1 |
 | Delegate | 24.02.82203 |
-| Change Data Capture | 1.5.2 |
+| Change Data Capture | 1.5.3 |
 | Test Intelligence Service | 1.8.1 |
 | NG UI | 1.7.4 |
 | LE NG | 1.1.0 |
@@ -92,14 +90,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.14.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.3/sto_images.tgz" \
   .
 ```
 
@@ -157,7 +155,7 @@ gsutil -m cp \
 
 - Account level Absolute Session Timeout support has been added. User will be logged out after absolute session expiry reaches irrespective of any activity. Default value for Absolute Session Timeout is 0, which means it is unset. For more information refer [documentation](https://developer.harness.io/docs/platform/authentication/authentication-overview/#set-absolute-session-timeout) (PL-43630)
 
-- You can now do customisation of Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. (PL-42139)
+- You can now customize Audit View permissions within a role. By default, Audit View permission is enabled for managed roles such as Account Viewer, Account Admin, Org Viewer, and Org Admin. (PL-42139)
 
    To disable Audit View for specific users, administrators can now:
    - Create a role with Audit View permission disabled while enabling all other view permissions.
@@ -211,7 +209,7 @@ gsutil -m cp \
 
    The issue is fixed now.
 
-- Http step with mtls not working due to exception caused during delegate capability check for the step (CDS-87547, ZD-55531)
+- Http step with MTLS not working due to exception caused during delegate capability check for the step (CDS-87547, ZD-55531)
    
    The issue is fixed now.
 
@@ -255,7 +253,7 @@ gsutil -m cp \
 
 - When only one manifest is created in OCT Helm, runtime inputs were not being displayed. (CDS-87941)
 
-   The issue is fixed by updating the condition in code to select default behaviour if only 1 manifest is available.
+   The issue is fixed by updating the condition in code to select default behavior if only 1 manifest is available.
 
 - In the process of creating an input set or overlay input set from YAML view, the isHarnessCodeRepo query parameter was not being sent.(CDS-87956)
 
@@ -335,7 +333,7 @@ gsutil -m cp \
 - The `platform-service` was not publishing the response count metric. (PL-43123)
 
    This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
--->
+
 
 ## February 13, 2024, patch version 0.13.4
 
@@ -542,7 +540,7 @@ gsutil -m cp \
    Previously, the job was triggered after 30 minutes, which caused issues. However, this has now been resolved by reducing the time to 1 minute.
    
 
-## January 29, 2024, version 1.19.10
+## January 29, 2024, version 0.13.0
 
 ### New features and enhancements
 
@@ -773,7 +771,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
 
-- Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/download-logs). (CI-9657, ZD-50664)
+- Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/executions-and-logs/download-logs). (CI-9657, ZD-50664)
 
 - Improved error messaging related to addon disconnects. (CI-8877)
 
@@ -827,7 +825,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - The role assignment list API was returning incorrect role assignments. This problem occurred because of the use of a regex query to match the scope for role assignments. The issue specifically affected projects or organizations under the same account that had overlapping project or organization identifiers, particularly when the filter INCLUDED_CHILD_SCOPES was used. This issue has been addressed and corrected. (PL-39051)
 
-## January 8, 2024, version 81720
+## January 8, 2024, version 0.12.0
 
 ### New features and enhancements
 
@@ -1212,7 +1210,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 - Fixed a thread safety issue that caused errors like `IncorrectResultsSizeDataAccessException` and `returned non unique result`. (CI-10061, ZD-52625)
 
-- A previous release simplified the format of the log base key used to [download logs](/docs/platform/pipelines/download-logs) for pipelines, and this release includes additional simplifications to support a new regex pattern. The simplified format is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. (CI-10085)
+- A previous release simplified the format of the log base key used to [download logs](/docs/platform/pipelines/executions-and-logs/download-logs) for pipelines, and this release includes additional simplifications to support a new regex pattern. The simplified format is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. (CI-10085)
 
 - The Get Started workflow can generate pipeline identifiers from repository names. To avoid failures due to invalid characters in pipeline identifiers, periods (`.`) in repository names are now replaced by underscores (`_`) in pipeline identifiers. (CI-10156, ZD-52954)
 
@@ -1388,7 +1386,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 <details>
 <summary>2023 releases</summary>
 
-#### November 30, 2023, version 81308
+#### November 30, 2023, version 0.11.0
 
 ##### New features and enhancements
 
@@ -1624,7 +1622,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 ###### Continuous Delivery & GitOps
 
-- When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
+- When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
 
   The issue in this situation was that you were not informed about what failure strategy was applied and by whom (the failure strategy might have been selected by a user before the specified timeout or by Harness after the specified timeout). To fix this issue, Harness has added the following step interrupt fields to the step details:
 
@@ -2006,7 +2004,7 @@ gsutil -m cp \
 
 - Default values for external databases caused upgrade issues. Harness removed local default MongoDB values from `values.yaml` files to resolve the issue. (SMP-2339)
 
-#### November 1, 2023, version 80917
+#### November 1, 2023, version 0.10.0
 
 ##### New features and enhancements
 
@@ -2616,7 +2614,7 @@ gsutil -m cp \
 
 - Fixed an issue where step-level [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) failed due to a mismatch in step identifiers. (CI-9325, ZD-49594, ZD-50209)
 
-- If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. <!-- not delegate dependent --> (CI-9428, ZD-50027)
+- If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings/#conditional-executions-as-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. <!-- not delegate dependent --> (CI-9428, ZD-50027)
 
 - In Kubernetes cluster build infrastructures, non-existent or unresolvable secrets are now handled in the same way as they are in VM and Harness Cloud build infrastructures. (CI-9677, ZD-50868, ZD-50901)
 
@@ -2867,7 +2865,7 @@ gsutil -m cp \
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
 
-#### September 30, 2023, version 80220
+#### September 30, 2023, version 0.9.0
 
 ##### New features and enhancements
 
@@ -3697,7 +3695,7 @@ gsutil -m cp \
 
   Project, account, and organization names have also been added to the report.
 
-#### July 31, 2023, version 79819
+#### July 31, 2023, version 0.8.0
 
 ##### Known issues
 
@@ -4425,7 +4423,7 @@ gsutil -m cp \
 
 - Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
 
-#### July 12, 2023, patch release for version 79421
+#### July 12, 2023, patch version 0.7.2
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -4477,7 +4475,7 @@ This release does not include any early access features.
 
   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. Custom dashboards are available if enabled.
 
-#### July 7, 2023, patch release for version 79421
+#### July 7, 2023, patch version 0.7.1
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -4537,7 +4535,7 @@ This release does not include any early access features.
 
   This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
 
-#### June 30, 2023, version 79421
+#### June 30, 2023, version 0.7.0
 
 This release includes the following Harness module and component versions.
 
@@ -4991,7 +4989,7 @@ gsutil -m cp \
 
   This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
 
-#### June 14, 2023, version 79230
+#### June 14, 2023, version 0.6.0
 
 This release includes the following Harness module and component versions.
 
@@ -5071,7 +5069,7 @@ This release includes the following Harness module and component versions.
 
 - The **Retry** timeout failure strategy is now supported in [TAS steps](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
 
-  If you set the [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
+  If you set the [failure strategy](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
 
   <DocImage path={require('./static/e467e7de04d6d257e1871fad7181b65a39b7712b68826b84b7c79d849b411f04.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -5634,7 +5632,7 @@ This release includes the following Harness module and component versions.
 
   This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
 
-#### May 30, 2023, patch release for version 78926
+#### May 30, 2023, patch version 0.5.5
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5684,7 +5682,7 @@ This release includes the following Harness module and component versions.
         tolerations: []
   ```
 
-#### May 12, 2023, patch release for version 78926
+#### May 12, 2023, patch version 0.5.4
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -5711,7 +5709,7 @@ This release includes the following Harness module and component versions.
 
 - The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
 
-#### April 26, 2023, version 78926
+#### April 26, 2023, version 0.5.0
 
 This release includes the following Harness module and component versions.
 
@@ -7456,7 +7454,7 @@ This release introduces the following features and enhancements.
 
   Earlier, only the Utilities steps were supported. Now you can add any CD step.
 
-- A [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) is now mandatory for all Deploy stages. (CDS-48951)
+- A [failure strategy](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is now mandatory for all Deploy stages. (CDS-48951)
 
   ![failure strategy](static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)
 

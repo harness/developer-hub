@@ -14,7 +14,7 @@ import delete_project from './static/delete-project.png'
 
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/platform/rss.xml" />
 
 These release notes describe recent changes to Harness Platform.
 
@@ -338,7 +338,7 @@ The following deprecated API endpoints are longer supported:
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
 
-   For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/allow-public-access-to-executions).
+   For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions).
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 

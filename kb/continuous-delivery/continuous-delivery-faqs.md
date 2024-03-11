@@ -1123,7 +1123,7 @@ You can add a failure strategy in the deploy stage by either ignoring the failur
 
 We do have a pipeline rollback feature that is behind a feature flag. This might work better as you would be able to have both stages separate, with different steps, as you did before, but a failure in the test job stage could roll back both stages.
  
-[Documentation](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-for-pipelines)
+[Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines)
   
 Also, for the kubernetes job, if you use the Apply step instead of Rollout then the step will wait for the job to complete before proceeding, and you would not need the wait step.
 
@@ -1148,7 +1148,7 @@ Customers should be mindful of the fact that connectors are often tied to a secr
 #### How to visualize and compare pipeline changes? 
 
 Harness allows users to compare changes to a pipeline YAML. This is often useful tool to determine why a pipeline has changed behavior. 
-See site for more details [here](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
+See site for more details [here](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions).
 
 #### Harness rollback deployments. 
 
@@ -1807,7 +1807,7 @@ You should see a Service Reliability module on your left panel. There you will s
 #### How to enable additional failure strategies
 
 Once you click on Add under Failure strategies, you can select the timeout failure strategy by default It select All Errors and you can an action say Manual Intervention or another option.
-[Documentataion](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+[Documentataion](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 #### Variables in NextGen from migration from First Gen to be used in Jira Approval step
 
@@ -2879,7 +2879,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 #### Does Harness have restrictions for running parallel jobs in trial accounts ?
 
-Yes, based on plan we have such restrictions. Please read more on this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings/)
+Yes, there are [concurrency limits](https://developer.harness.io/docs/platform/pipelines/pipeline-settings) by plan tier.
 
 #### What can be an alternative for facing API rate limit issues while running pipelines with templates backed up by Github ?
 
@@ -3096,17 +3096,16 @@ Please refer the same in this [Documentation](https://developer.harness.io/docs/
 
 Harness uses private keys to secure the Github App in the platform which ensures the security maintenance of the Github public App as well !
 
-#### What is the limitation time limit for a pipeline execution ?
+#### What is the time limit for a pipeline execution?
 
-The proposed times are `35 days` for Paid customers, and `4 hours` for Verified Free customers.
-This is taken affect as an enhancement from before with following reasons :
-- The total number of pipelines that the customer can run is limited. If some pipelines run/wait for months, they take up valuable resources from other projects in the account.
-- Most times, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout will raise the issue to the account users that something went wrong, instead of indefinitely waiting.
-- Long running pipelines are a drain on our resources as well.
+The maximum limits for a single pipeline run are 35 days for paid plans and 4 hour for free plans with a verified account.
 
-Please read more on this in the following Documentations:
-- [Document on deloyment logs](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations)
-- [Document on pipeline settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings/)
+These limits are applied because:
+- There is a limit on the total number of concurrent and queued executions. If some pipelines run/wait for days/weeks, they consume valuable resources from other projects in the account and delay queues.
+- Usually, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout makes it clear that something went wrong in the workflow, instead of indefinitely waiting.
+- Long running pipelines impact the availablility of Harness resources.
+
+For more information, go to [Deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) and [Pipeline settings](https://developer.harness.io/docs/platform/pipelines/pipeline-settings).
 
 #### Why can one not set Enironment Groups in Chained pipeline expression as expression ?
 
@@ -3289,7 +3288,7 @@ This config will do that  connector-scope: accountIn case you want to do it conn
 
 #### How to download pipeline logs based on the given pipeline execution key?
 
-You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
+You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/download-logs) from the Harness UI or via API.
 
 #### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
 
@@ -3896,10 +3895,6 @@ In Git Experience one can have following options:
 - Support for linking these entities in Remote and Inline pipelines
 - Moving inline resources to Remote resources
 - Support for in-built features such as Service Dashboard and  Post Production Rollback for remote Services
-
-#### What are the Feature Flags required for Git Experience ?
-
-Feature Flags for Git Experience usage are - `CDS_ENV_GITX`, ` CDS_INFRA_GITX` and  `CDS_SERVICE_GITX`
 
 #### How does Harness provide enhanced control to users in the deployment sequence for applying autoscaling policies in ECS Blue-Green deplotment ?
 
@@ -5853,4 +5848,65 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling)
+
+
+#### Is it possible to insert a hyperlink with markdown in the approval message?
+In order to resolve this version as an hyperlink on slack you can use (|) symbol to seperate the link and text to creeate a hyperlink. This Slack formatting includes the link and the text you want to display, separated by a pipe (|) character. Please replace the URL and version with your actual values.
+ 
+And you need to enclose the link and the version text inside \<\>. For Example -  \<https://github.com/harness/guestbook/blob/main/.harness/inputover.yaml | Version\>"
+
+#### How can we know the default branch on GitHub enterprise?
+In GitHub Enterprise, the default branch for repositories is typically set to "main" or "master" depending on the organization's preferences or configuration. To confirm the default branch for a repository in GitHub Enterprise, you can follow these steps:
+
+1: Navigate to the repository on GitHub Enterprise.
+
+2: Click on the "Settings" tab, located towards the right side of the repository's menu bar.
+
+3: In the Settings menu, select the "Branches" option from the left sidebar.
+
+4: Look for a section titled "Default branch" or "Default branch name."
+
+5: The default branch name will be displayed here.
+If you have the necessary permissions, you may also be able to change the default branch from this settings page.
+
+
+#### How to configure the boolean input?
+When asking for boolean input, you can use string as input. In this case, "true" and "false" would represent boolean values.
+
+
+#### How to deploy a manifest from the same branch as a build?
+You can use the output variable and pass it to the deploy stage or use webhook tigger and pass it using \<+tigger.sourceBranch\>
+
+#### What this message means "Error Summary Invalid argument(s): Loop items list cannot be null"?
+The error message "Invalid argument(s): Loop items list cannot be null" typically indicates where the loop is expecting a list of items to iterate over, but it receives a null value instead.
+
+
+#### Is there any OPA policy to prevent certain expressions in pipelines?
+To create an OPA (Open Policy Agent) policy that prevents certain expressions in pipelines within Harness, you'll need to define rules that evaluate the expressions used in your pipelines and deny execution based on specific criteria. Here's a simplified example of how you can achieve this:package harness.policies
+
+default allow = false
+
+deny_execution \{
+    input.request.method \== "POST"  \# Assuming we're checking for a specific HTTP method
+    pipeline \:= input.request.body.pipeline
+    expression \:= pipeline.steps[_].expression
+    contains(expression, "dangerous_function")  \# Check if the expression contains a dangerous function
+\}
+
+contains(expression, substring) \{
+    expression = substring
+\}
+
+contains(expression, substring) \{
+    startswith(expression, substring_with_dot)  # Check if the substring appears with a dot after it (to avoid matching within function names)
+    index := indexof(expression, ".")
+    expression[index + 1:] == substring
+\}
+
+
+#### What's this error means "HTTP Error Status (400 - Invalid Format) received."?
+The HTTP error status code 400 means "Bad Request," indicating that the server cannot process the request due to malformed syntax or invalid format in the client's request or yaml. This typically occurs when the server cannot understand the request due to missing or incorrect parameters, headers, or data formatting.
+
+#### What is the service id naming convention?
+As a best practice the name of entities should be in a such a way that it can be identified easily with the name and we do have Description field associated as well which will help us to provide more details.
 
