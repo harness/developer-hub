@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "What is being developed now",
+    description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
         tag: [{ value: "Fast" }],
@@ -11,18 +11,13 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Go",
+        title: "Build Cache for Bazel",
         description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {
         tag: [{ value: "Fast" }],
         title: "Cache Intelligence - Self-managed builds",
         description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage.  It's currently supported when running builds in Harness Cloud, and with this work we will make it available for users running self-managed builds as well.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for all test types",
-        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
       },
       {
         tag: [{ value: "Cloud" }],
@@ -62,8 +57,13 @@ export const CiData: Horizon = {
     ],
   },
   Next: {
-    description: "What is being developed next",
+    description: "Q2 2024, May-Jul 2024",
     feature: [
+      {
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for all test types",
+        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
+      },
       {
         tag: [{ value: "Fast" }],
         title: "Build Cache for Maven",
@@ -71,7 +71,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Bazel",
+        title: "Build Cache for Go",
         description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {
@@ -87,7 +87,7 @@ export const CiData: Horizon = {
     ],
   },
   Later: {
-    description: "What is being developed later",
+    description: "Q3 2024+, Aug 2024 & beyond",
     feature: [
       {
         tag: [{ value: "Secure" }],

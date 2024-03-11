@@ -398,6 +398,10 @@ Let's take a look at the inputs that the template expects from a developer. The 
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
+### Adding the owner
+
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
+
 ### Authenticate the request
 
 Once you have written all the inputs that the template requires, you must add the following YAML snippet under `spec.parameters.properties`.

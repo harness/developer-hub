@@ -105,7 +105,7 @@ Before you configure your service metrics/telemetry as SLOs in Harness SRM, you 
 
 * A [Harness account](https://harness.io/demo/srm).
 * The default project that is created in your account automatically or another Harness project that you've created.
-* A [Harness Delegate installed in your Kubernetes cluster](/docs/platform/delegates/install-delegates/install-delegate)
+* A [Harness Delegate installed in your Kubernetes cluster](/docs/platform/get-started/tutorials/install-delegate)
 
 ### Create an SLO
 

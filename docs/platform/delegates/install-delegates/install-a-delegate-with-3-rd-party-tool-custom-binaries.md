@@ -38,7 +38,7 @@ To install a delegate, you download its YAML file and run it in your target envi
 
 To modify the delegate image, you need to edit the delegate YAML file to specify delegate environment variables, the delegate base image, [Harness-required SDKs](#add-harness-required-sdks) (depending on the selected base image), and [third-party tools to install](#add-your-custom-tools).
 
-You can modify the delegate YAML before or after you install the delegate. To get the delegate YAML, follow the steps to [Install a delegate](./install-delegate). To follow along with the examples in this topic, use the **Kubernetes Manifest** option for delegate installation.
+You can modify the delegate YAML before or after you install the delegate. To get the delegate YAML, follow the steps to [Install a delegate](/docs/platform/get-started/tutorials/install-delegate). To follow along with the examples in this topic, use the **Kubernetes Manifest** option for delegate installation.
 
 Since the delegate is declaratively defined in YAML, it is easy to add custom scripts and customize the delegate in other ways too. SDKs and additional tools are specified in the `INIT_SCRIPT`, with the exception of [delegate Helm chart deployments](#delegate-helm-chart-deployments). For more examples, go to [Common delegate initialization scripts](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts.md).
 
@@ -131,7 +131,7 @@ Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate contain
 These examples show how to install some common tools.
 
 <Tabs>
-<TabItem value="git" label="Install Git vlient" default>
+<TabItem value="git" label="Install Git client" default>
 
 To install Git on the delegate, add an `install git` script to the `INIT_SCRIPT`, for example:
 
@@ -233,7 +233,7 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
 
 You can modify the delegate YAML before or after you install the delegate.
 
-If you haven't yet installed the delegate, finish [Installing the delegate](./install-delegate) in your target environment.
+If you haven't yet installed the delegate, finish [Installing the delegate](/docs/platform/get-started/tutorials/install-delegate) in your target environment.
 
 If you already installed the delegate, you need to apply the updated delegate YAML and restart the delegate. For example, if your delegate is in a Kubernetes cluster, run the kubectl command to apply it:
 

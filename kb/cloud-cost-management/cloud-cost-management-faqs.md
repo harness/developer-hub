@@ -631,3 +631,6 @@ Yes, users have the option to create budgets without alerts. However, it is reco
 #### Can users view the historical budget over time in Harness without the need to modify it every month?
 
 Yes, users can accomplish this by creating a Yearly budget and selecting the monthly breakdown option. This allows for a historical view without the need for monthly adjustments.
+
+#### What is FinOps in Harness?
+FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.

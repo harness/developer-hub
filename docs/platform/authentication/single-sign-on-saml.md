@@ -20,6 +20,12 @@ The XML SAML file used with Harness must use UTF-8.
 
 UTF-8 BOM is not supported. Some text editors like Notepad++ save in UTF-8 BOM by default.
 
+:::info note
+When integrating users through any SAML provider, it is important to note that users added to an external SAML provider are not automatically synchronized with Harness user groups. Synchronization occurs upon the first login by the user belonging to a specific provider’s user group into Harness. Only at this point will the newly added user, having logged in through SAML, inherit all permissions and access rights associated with the Harness group linked to the Okta user group.
+
+To ensure continuous and real-time synchronization of user group bindings and access controls, it is recommended to utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained. For implementation details and further guidance on provisioning users with SCIM, go to [Okta SCIM](/docs/platform/role-based-access-control/provision-users-with-okta-scim), [Microsoft Entra SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), and [OneLogin SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim).
+:::
+
 ## SAML SSO with Harness
 
 To set up SAML SSO with Harness, you add a SAML SSO provider to your Harness account and enable it as the default authentication method.

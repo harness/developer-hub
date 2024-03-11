@@ -10,7 +10,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Delivery & GitOps Certification today!"
-  link="/certifications/continuous-delivery"
+  link="/university/continuous-delivery"
   closable={true}
   target="_self"
 />
@@ -116,7 +116,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
 
@@ -542,7 +542,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate) steps to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
 

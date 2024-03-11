@@ -171,10 +171,23 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+## Troubleshoot Yarn Audit Analyzer exceptions 
+
+<!-- https://harness.atlassian.net/browse/STO-6975 -->
+
+The full exception is: `[DependencyCheck] [ERROR] Exception occurred initializing Yarn Audit Analyzer`
+
+The OWASP scan step does not include a Yarn package out of the box. Harness seeks to  keep these images as small and as lightweight as possible, and to minimize the number of vulnerabilities in each image.
+
+To scan a repository that uses Yarn or another package that isn't in the base image, create a custom OWASP scanner image with the packages you need. For more information, go to [Create custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images). This topic includes a step-by-step workflow for [creating a custom image with OWASP, Yarn, and PNPM](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images#hands-on-example-add-yarn-and-pnpm-to-an-owasp-image). 
+
+If you get this message when scanning a repo that doesn't use Yarn, there might be an errant `yarn.lock` file somewhere in the repo. To disable the OWASP Yarn Audit Analyzer, add the option `--disableYarnAudit` to [Additional CLI flags](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference#additional-cli-flags) in the OWASP scan step.
+
 
 
 <!-- STO-7187 remove legacy configs for scanners with step palettes

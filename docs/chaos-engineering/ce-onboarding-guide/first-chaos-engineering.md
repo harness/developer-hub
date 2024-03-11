@@ -1,5 +1,5 @@
 ---
-title: Run your first chaos experiment
+title: Walkthrough- Run your first chaos experiment
 description: Run a chaos experiment on Kubernetes for the first time.
 sidebar_position: 3
 redirect_from:

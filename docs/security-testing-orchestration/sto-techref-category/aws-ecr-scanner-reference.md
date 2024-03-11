@@ -140,10 +140,21 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 <StoSettingAuthAccessToken />
 
+#### Session Token
+
+If you need to specify a session token, add it using the key `AWS_SESSION_TOKEN` under **Settings**.
+
+![](./static/aws-ecr-session-token-setting.png)
+
 
 #### Access Region
 
-The AWS region of the image to scan.
+The AWS region of the image to scan. 
+
+
+
+
+
 
 <!-- 
 ### Ingestion
@@ -188,8 +199,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

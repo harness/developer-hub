@@ -16,6 +16,8 @@ You can use the Harness CI **Re-run in Debug Mode** feature to quickly and secur
 
 You can also use **Re-run in Debug Mode** to troubleshoot local builds.
 
+<DocVideo src="https://www.youtube.com/watch?v=HcSYidJSvK8" />
+
 ## Debug mode requirements
 
 Debug mode is available if the following conditions are met:
@@ -30,15 +32,11 @@ If debug mode isn't available for your pipeline, you might consider using [AIDA]
 
 ## Enable debug mode
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
 <Tabs>
-  <TabItem value="remote" label="Remote builds" default>
-
+<TabItem value="remote" label="Remote builds" default>
 
 Use these steps to use debug mode for builds on Harness Cloud, self-managed VM, or Kubernetes cluster build infrastructures.
 
@@ -65,10 +63,8 @@ Use these steps to use debug mode for builds on Harness Cloud, self-managed VM, 
 5. While in the debug session, use the CLI to reproduce and troubleshoot the issue on the remote host.
 6. To terminate the debug session, abort the build, and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-
 </TabItem>
-  <TabItem value="local" label="Local builds">
-
+<TabItem value="local" label="Local builds">
 
 Use these steps to use debug mode for builds on [local runner build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -98,10 +94,8 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 8. While in the debug session, use the CLI to reproduce and troubleshoot the issue.
 9. To terminate the debug session, abort the build, and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-
 </TabItem>
 </Tabs>
-
 
 :::tip
 

@@ -16,7 +16,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-Harness Delegate is installed as a Kubernetes [Deployment](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/) object**.** A legacy delegate, on the other hand, is installed as a Kubernetes [StatefulSet](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/) object. This means that the process used to delete a legacy delegate differs from the process used to delete Harness Delegate.
+Harness Delegate is installed as a Kubernetes [Deployment](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/) object. A legacy delegate, on the other hand, is installed as a Kubernetes [StatefulSet](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/) object. This means that the process used to delete a legacy delegate differs from the process used to delete Harness Delegate.
 
 You can verify the delegate you're using by looking at its manifest file or by running `kubectl get all -n harness-delegate-ng`.
 
@@ -49,7 +49,8 @@ metadata:
   namespace: harness-delegate-ng  
 ...
 ```
-In this example, the `name` field is specified as `doc-demos.`
+
+In this example, the `name` field is specified as `doc-demos`.
 
 Next, delete the Updater **CronJob**:
 
@@ -61,7 +62,7 @@ For example, if the **Deployment** name is `quickstart-delegate`:
 
 #### Step 2: Delete the delegate in Harness
 
-Locate the delegate in the Harness account/Project/Org, click more options (⋮), and then click **Delete**.
+Locate the delegate in the Harness account/Project/Org, select more options (⋮), and then select **Delete**.
 
 ![](static/delete-a-delegate-15.png)
 
@@ -73,7 +74,7 @@ If you do not delete the delegate in the UI, Harness automatically removes it af
 
 ### Delete a legacy delegate
 
-Use the following process to delete a Legacy Delegate.
+Use the following process to delete a legacy delegate.
 
 #### Step 1: Delete the StatefulSet for the delegate
 
@@ -89,6 +90,6 @@ The name of the delegate pod includes the name of the **StatefulSet** followed b
 
 #### Step 2: Delete the delegate in Harness
 
-Locate the delegate in the Harness account/Project/Org, click more options (⋮), and then click **Delete**.
+Locate the delegate in the Harness account/Project/Org, select more options (⋮), and then select **Delete**.
 
 ![](static/delete-a-delegate-16.png)
