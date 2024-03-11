@@ -24,11 +24,30 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-## February 2024
+## March 2024
+
 
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->
+
+#### Early Access feature: Auto-detect targets and variants
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
+
+<!-- 
+
+- For container images, the step detects the target and variant using the **Container Image Name** and **Tag**  defined in the step or runtime input. 
+- For code repositories, for code repositories, the step detects these values using `git`: 
+  - To detect the target, the step runs `git config --get remote.origin.url`. 
+  - To detect the variant, the step runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+- For application instances, the step detects these values as follows: 
+  - The target is based on the **Instance Domain** and **Path** defined in the step or runtime input, for example `https://qa.jpgr.org:3002/login/us`.
+  - The variant is the timestamp when the step scanned the instance.
+
+-->
+
+This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 #### Fixed issues
 
@@ -73,6 +92,8 @@ This release includes a set of security test policy samples, which make it easy 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
 -->
+
+## February 2024
 
 ### Version 1.84.0 
 
