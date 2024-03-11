@@ -12,7 +12,7 @@ Once you have saved your pipeline in your repo, you can set up your input Sets a
 
 This topic covers a simple workflow for setting up your input sets and triggers. It does not cover these topics in detail. For details on those, see:
 
-* [Input sets and overlays](../pipelines/input-sets)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets/)
 * [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines/)
 
 ### Before you begin
