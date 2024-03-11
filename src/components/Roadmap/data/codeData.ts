@@ -23,7 +23,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Integrations" }],
         title: "API Compatibility Proxy",
-        description: "Utilize 3rd party GitLab connectors when native connectors are absent.",
+        description: "Backward compatible with the GitLab repository API, allowing developers to use existing GitLab integrations with Harness",
       },
       {
         tag: [{ value: "Security" }],
