@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-03-08T10:00
+date: 2024-03-11T10:00
 sidebar_position: 4
 ---
 
@@ -71,7 +71,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
-### Harness version 1.28.9, Harness Delegate version 24.02.82500 <!--  February 27, 2024 -->
+### Harness version 1.28.9, Harness Delegate version 24.02.82501 <!--  February 27, 2024 -->
 
 #### New features and enhancements
 
