@@ -71,25 +71,25 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
-### Harness version 1.28.9, Harness Delegate version 24.02.82501 <!--  February 27, 2024 -->
+### Harness version 1.28.9, Harness Delegate version 24.03.82501 <!--  March xx, 2024 -->
 
 #### New features and enhancements
 
 - Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. (PL-47746)
 
-   - Use CPU_USAGE_THRESHOLD for CPU control (default: no limit)
+   - Use `CPU_USAGE_THRESHOLD` for CPU control (default: no limit)
 
-   - Use MEMORY_USAGE_THRESHOLD for memory control (default: 80%)
+   - Use `MEMORY_USAGE_THRESHOLD` for memory control (default: 80%)
 
-   If you are using RESOURCE_USAGE_THRESHOLD (deprecated), it exclusively controls the memory threshold.
+   If you are using `RESOURCE_USAGE_THRESHOLD` (deprecated), it exclusively controls the memory threshold.
 
-- OPA policy enforcement has been introduced to three new entities, namely Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming conventions policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the onSave action. (PL-46778)
+- OPA policy enforcement has been introduced to three new entities: Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming convention policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the `onSave` action. (PL-46778)
 
-- Support added to enable OPA policy for naming convention enforcement while creating or updating a Service Account. (PL-46777)
+- Support added to enable OPA policy for naming convention enforcement while creating or updating a service account. (PL-46777)
 
 #### Fixed issues
 
-- Attempts to use the `harness_platform_user` resource to create or delete users results in an error. The message "Request failed as you have an older version of entity, please reload the page and try again" is displayed and the Terraform state goes out of sync with Harness. (PL-39870, ZD-47107)
+- Attempts to use the `harness_platform_user` resource to create or delete users resulted in an error. The message "Request failed as you have an older version of an entity, please reload the page and try again" was displayed and the Terraform state went out of sync with Harness. (PL-39870, ZD-47107)
 
    This issue has been fixed.
 
