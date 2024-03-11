@@ -1432,6 +1432,15 @@ If an output variable's length is greater than 64KB, steps can fail or truncate 
 
 Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
+### How do I get a file from file store in a Run step?
+
+You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`. Here's an example in a script:
+
+```
+raw_file=<+fileStore.getAsBase64("someFile")>
+config_file="$(echo "$raw_file" | base64 --decode)"
+```
+
 ## Entry point
 
 ### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
@@ -1931,11 +1940,6 @@ Currently, Approval steps aren't compatible with CI stages.
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
-
-
-### How to get file from file Store in Run step?
-You can use the below expression to get the file from filestore: raw_file=\<+fileStore.getAsBase64("/a")\>
-config_file="$(echo "$raw_file" \| base64 \-\-decode)"
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
