@@ -71,7 +71,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
-### Harness version 1.28.xx, Harness Delegate version 24.02.82500 <!--  February 27, 2024 -->
+### Harness version 1.28.9, Harness Delegate version 24.02.82500 <!--  February 27, 2024 -->
 
 #### New features and enhancements
 
@@ -82,6 +82,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
    - Use MEMORY_USAGE_THRESHOLD for memory control (default: 80%)
 
    If you are using RESOURCE_USAGE_THRESHOLD (deprecated), it exclusively controls the memory threshold.
+
+- OPA policy enforcement has been introduced to three new entities, namely Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming conventions policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the onSave action. (PL-46778)
+
+- Support added to enable OPA policy for naming convention enforcement while creating or updating a Service Account. (PL-46777)
 
 #### Fixed issues
 
