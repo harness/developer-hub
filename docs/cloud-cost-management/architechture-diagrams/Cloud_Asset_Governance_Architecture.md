@@ -4,7 +4,7 @@ description: Cloud Asset Governance Architecture
 sidebar_label: Cloud Asset Governance Architecture
 ---
 
-![](./static/Cloud_Asset_Governance_Architecture.png)
+<DocImage path={require('./static/Cloud_Asset_Governance_Architecture.png')} width="90%" height="90%" title="Click to view full size image" />
 
 Let's take a simple look at how the Cloud Asset Governance feature works. This feature helps keep things organized in the cloud.
 
