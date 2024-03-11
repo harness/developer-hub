@@ -8,7 +8,7 @@ Mirroring syncs changes from one repo to another. In Harness, you can create CI 
 
 You can set up one-way or two-way mirroring.
 
-In Harness, mirroring works by triggering a pipeline when changes are pushed to the source/origin repo. The pipeline fetches the commit references from the source and pushes them to the target (mirrored) repo.
+In Harness, mirroring uses webhook triggers to run a pipeline that replicates commits from the source repo in the target repo. The webhook trigger runs whenever changes are pushed to the source repo. You can also run the mirror pipeline manually, rather than using a webhook trigger.
 
 The pipeline created in this guide is provider agnostic and direction agnostic. This means you can use one pipeline to configure mirroring for many pairs of repos as well as two-way syncing.
 
