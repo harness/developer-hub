@@ -5910,3 +5910,8 @@ The HTTP error status code 400 means "Bad Request," indicating that the server c
 #### What is the service id naming convention?
 As a best practice the name of entities should be in a such a way that it can be identified easily with the name and we do have Description field associated as well which will help us to provide more details.
 
+#### Why did my Artifact Triggers stop working?
+If Artifact Triggers stop working, it's possible that the Perpetual Task assigned to poll the artifact has gotten into a bad state. To reset the Perpetual Task so that new artifacts can be polled, disable all triggers pointing to the same Artifact and then re-enable them. Perpetual Tasks are shared across all triggers pointing to the same artifact so disabling all of them and re-enabling them will create a new Perpetual Task to poll the artifact.
+
+#### Why can't I see a new Service Override I created through the API in the UI
+If using the `updateServiceOverride` [V1 Service API](https://apidocs.harness.io/tag/ServiceOverrides/#operation/updateServiceOverride) from our API Docs, you will not be able to see the Service Override as this API is creating a V1 Service Override. V1 Services have been deprecated and thus is no longer supported. To create a Service Override via the API, use the new [V2 Service API ](https://apidocs.harness.io/tag/Environments/#operation/upsertServiceOverride).
