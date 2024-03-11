@@ -384,22 +384,20 @@ This also works for nested expressions. For example:
 
 ### Variable expression name restrictions
 
-A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
+Expressions can contain variable names, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
+Variable names can contain the following characters: lowecase and uppercase letter A through Z, numbers 0 through 9, underscores (`_`), periods (`.`), hyphens (`-`), and dollar signs (`$`). Variable names must start with a letter or underscore.
 
-Here is an example Bash script that demonstrates how to utilize dots (`.`) and hyphens (`-`) in variable names:
+To reference your variables that include a period or hyphen in the name, you must wrap the variable name in quotes and call it with `get()`, such as `.get("some-var")`. Here are some additional examples of this format:
 
 ```
-  echo <+pipeline.variables.get("pipeline-var")>
-  echo <+pipeline.stages.custom.variables.get("stage-var")>
-  echo <+pipeline.variables.get("pipeline.var")>
-  echo <+pipeline.stages.custom.variables.get("stage.var")>
+<+pipeline.variables.get("pipeline-var")>
+<+pipeline.stages.custom.variables.get("stage-var")>
+<+pipeline.variables.get("pipeline.var")>
+<+pipeline.stages.custom.variables.get("stage.var")>
 ```
 
-To access any custom variable with a dot (`.`) or a hyphen (`-`) in its name, you must use `.get("VARIABLE_NAME")`.
-
-Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
+In addition to the Harness Platform variable naming restrictions, certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
 ### Reserved words
 
