@@ -180,22 +180,22 @@ import future.keywords.if
 
 # Define a set of CVE ages (as old/older than given year) and severities (equal/greater than) that are denied
 # This example denies CVEs for any of the following filters:
-#   - Old Critical severities (2021 or earlier)
-#   - New Critical severities (2023 or later)
-#   - Very old Medium severities (2015 or earlier)
+#   - Critical severities, new (2021 or earlier)
+#   - High severities, old (2018 or earlier)
+#   - Medium severities, very old (2015 or earlier)
 
 deny_list := fill_defaults([
   {
-    "year": {"value": 2020, "operator": "<="},
+    "year": {"value": 2023, "operator": "<="},
     "severity": {"value": "Critical", "operator": "=="}
   },
     {
-    "year": {"value": 2023, "operator": ">="},
-    "severity": {"value": "Critical", "operator": "=="}
+    "year": {"value": 2018, "operator": ">="},
+    "severity": {"value": "High", "operator": "=="}
   },
   {
-    "year": {"value": 2020, "operator": "<="},
-    "severity": {"value": "High", "operator": "=="}
+    "year": {"value": 214, "operator": "<="},
+    "severity": {"value": "Medium", "operator": "=="}
   }
 ])
 
