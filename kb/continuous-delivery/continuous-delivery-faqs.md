@@ -5850,3 +5850,53 @@ Please read more on this in the following [Documentation](https://developer.harn
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling)
 
+#### What considerations need to be addressed regarding the integration of S3 steps within our containerized CD step groups, particularly concerning multi-line environment variables and file sharing across different stages?
+
+Harness provides plugins which execute predefined functions and essentially serve as templated scripts, adaptable to any programming language, to perform specific tasks. One can also leverage [Drone plugin](https://plugins.drone.io/plugins/s3) for the same.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step/)
+
+#### Is it normal for the `k8sdelete` step with the release name option to delete only specific entities, unlike helm uninstall, when the chart was initially deployed using the native helm option?
+
+The current behavior is as expected. Initially, only Kubernetes delete with the release name label was supported. However, a feature request has been made to support Helm uninstall or delete, which would be a separate type of step.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources/)
+
+#### For Helm Subchart support, if there are multiple subcharts, is there a way to define and manage these additional subcharts beyond the single field provided?
+
+The utilization of Multiple Helm Charts facilitates the deployment of individual standalone Helm Charts via a single service. These charts, akin to artifact sources, correspond to Helm Charts per environment. The Sub Chart feature becomes particularly beneficial when users possess an umbrella chart with dependencies, as exemplified in the provided [GitHub repository](https://github.com/thisrohangupta/custom-remote-test-repo/tree/main/parent-chart/charts). Upon accessing`/charts/`, both the primary chart and child chart can be obtained.
+One can also configure the YAML to add additional sub chart dependencies.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts#using-subcharts)
+
+#### Does the GitHub connector solely support authenticated access and lack provisions for anonymous access, particularly for public repositories?
+
+Yes, at present, Harness only supports authenticated access. However, the feature to enable anonymous access will soon be made available.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/)
+
+####  Can one use OPA policies for Terraform Lint?
+
+Yes, for Infrastructure as Code Management (IaCM) within Continuous Delivery (CD), you can use OPA (Open Policy Agent) policies for Terraform linting. 
+- For CD, you need to export the lint to a variable, limited to `256KB`, and pass it to the policy step, as we don't have a native lint step. 
+- For IaCM, while there isn't a built-in `tflint` step, it can be accomplished using a plugin. OPA policies can be written against Terraform plan, workspace, and state for enforcing governance.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/)
+
+#### Does Harness support deleting a Service and automatically removing associated resources from Kubernetes?
+
+Yes, Harness initially considered the request, but it was ultimately rejected. The majority of our users prefer to manage their Kubernetes clusters' cleanup processes independently. Uniformity across the platform is crucial, and introducing special actions within the delete service feature was deemed inappropriate. Instead, users can utilize a Kubernetes delete step by providing the manifest YAML or objects for cleanup, which aligns with current practices. For customers seeking cloud and infrastructure management capabilities, alternative solutions can be explored, such as those available through platforms like Spinnaker, which offer dedicated cloud management features.
+
+#### Does Harness support `Skip instances with the same artifact version already deployed` feature on NextGen?
+
+Yes, this feature parity to FirstGen is now available ! Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment)
+
+#### How does Harness ensure that the tag fetched in the service step is consistently the latest for both triggers and manual executions?
+
+The expression `<+lastPublished.tag>` sorts the tags lexically rather than by the "created at" date. One can try replacing `<+lastPublished.tag>` with `<+trigger.artifact.build>` in the trigger's configuration ensures that it always fires using the latest collected tag.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifact-limits-and-display-in-the-harness-ui)
+
+#### How to trigger one pipeline from another and use the first pipeline's shell script output as inputs for the second, ensuring runtime inputs like environment and infrastructure names are passed?
+
+One can use output variables from one pipeline as inputs for another, defining the receiving pipeline's variables as runtime inputs.
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
+
+#### Is there a way to switch aws accounts while using native terraform step?
+
+Yes, Harness supports an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#aws-connector-provider-credential-authentication-for-terraform-plan-and-apply-steps)
