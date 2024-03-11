@@ -42,9 +42,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
 
-- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
-
-<!-- 
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
 
 #### Early access feature
 
@@ -72,7 +70,6 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
--->
 
 ### Version 1.84.0 
 
