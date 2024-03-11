@@ -1123,7 +1123,7 @@ You can add a failure strategy in the deploy stage by either ignoring the failur
 
 We do have a pipeline rollback feature that is behind a feature flag. This might work better as you would be able to have both stages separate, with different steps, as you did before, but a failure in the test job stage could roll back both stages.
  
-[Documentation](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-for-pipelines)
+[Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines)
   
 Also, for the kubernetes job, if you use the Apply step instead of Rollout then the step will wait for the job to complete before proceeding, and you would not need the wait step.
 
@@ -1148,7 +1148,7 @@ Customers should be mindful of the fact that connectors are often tied to a secr
 #### How to visualize and compare pipeline changes? 
 
 Harness allows users to compare changes to a pipeline YAML. This is often useful tool to determine why a pipeline has changed behavior. 
-See site for more details [here](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
+See site for more details [here](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions).
 
 #### Harness rollback deployments. 
 
@@ -1807,7 +1807,7 @@ You should see a Service Reliability module on your left panel. There you will s
 #### How to enable additional failure strategies
 
 Once you click on Add under Failure strategies, you can select the timeout failure strategy by default It select All Errors and you can an action say Manual Intervention or another option.
-[Documentataion](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+[Documentataion](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 #### Variables in NextGen from migration from First Gen to be used in Jira Approval step
 
@@ -2879,7 +2879,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 #### Does Harness have restrictions for running parallel jobs in trial accounts ?
 
-Yes, based on plan we have such restrictions. Please read more on this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings/)
+Yes, there are [concurrency limits](https://developer.harness.io/docs/platform/pipelines/pipeline-settings) by plan tier.
 
 #### What can be an alternative for facing API rate limit issues while running pipelines with templates backed up by Github ?
 
@@ -3096,17 +3096,16 @@ Please refer the same in this [Documentation](https://developer.harness.io/docs/
 
 Harness uses private keys to secure the Github App in the platform which ensures the security maintenance of the Github public App as well !
 
-#### What is the limitation time limit for a pipeline execution ?
+#### What is the time limit for a pipeline execution?
 
-The proposed times are `35 days` for Paid customers, and `4 hours` for Verified Free customers.
-This is taken affect as an enhancement from before with following reasons :
-- The total number of pipelines that the customer can run is limited. If some pipelines run/wait for months, they take up valuable resources from other projects in the account.
-- Most times, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout will raise the issue to the account users that something went wrong, instead of indefinitely waiting.
-- Long running pipelines are a drain on our resources as well.
+The maximum limits for a single pipeline run are 35 days for paid plans and 4 hour for free plans with a verified account.
 
-Please read more on this in the following Documentations:
-- [Document on deloyment logs](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations)
-- [Document on pipeline settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings/)
+These limits are applied because:
+- There is a limit on the total number of concurrent and queued executions. If some pipelines run/wait for days/weeks, they consume valuable resources from other projects in the account and delay queues.
+- Usually, very long running pipelines are waiting on something (approvals, test results, deployments) that took longer than expected. A quicker timeout makes it clear that something went wrong in the workflow, instead of indefinitely waiting.
+- Long running pipelines impact the availablility of Harness resources.
+
+For more information, go to [Deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) and [Pipeline settings](https://developer.harness.io/docs/platform/pipelines/pipeline-settings).
 
 #### Why can one not set Enironment Groups in Chained pipeline expression as expression ?
 
@@ -3289,7 +3288,7 @@ This config will do that  connector-scope: accountIn case you want to do it conn
 
 #### How to download pipeline logs based on the given pipeline execution key?
 
-You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/download-logs) from the Harness UI or via API.
+You can [download execution logs](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/download-logs) from the Harness UI or via API.
 
 #### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
 
