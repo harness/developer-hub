@@ -140,7 +140,7 @@ export default function CertificationsChaos() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/chaos-engineering-developer">
+                    <Link href="https://university-registration.harness.io/chaos-engineering-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -163,7 +163,7 @@ export default function CertificationsChaos() {
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/chaos-engineering-developer">
+                <Link href="https://university-registration.harness.io/chaos-engineering-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -218,7 +218,7 @@ export default function CertificationsChaos() {
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
+                    <Link href="https://university-registration.harness.io/continuous-delivery-gitops-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -246,7 +246,7 @@ export default function CertificationsChaos() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
+                <Link href="https://university-registration.harness.io/continuous-delivery-gitops-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -302,7 +302,7 @@ export default function CertificationsChaos() {
                   </div>
                   <ArchitectCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
+                    <Link href="https://university-registration.harness.io/continuous-delivery-gitops-architect">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -330,7 +330,7 @@ export default function CertificationsChaos() {
             <div className={styles.examDetailsCard}>
               <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
+                <Link href="https://university-registration.harness.io/continuous-delivery-gitops-architect">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>

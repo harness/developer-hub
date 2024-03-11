@@ -505,6 +505,16 @@ If the volumes are not getting mounted to the build containers, or you see other
 
 2. Double-check that the base image used in the step reads certificates from the same path given in the destination path on the Delegate.
 
+### pnpm enters infinite loop without logs
+
+If your pipeline runs `pnpm` or `npm` commands that cause it to enter an infinite loop or wait indefinitely without producing logs, try adding the following command to your script to see if this allows the build to proceed:
+
+```
+npm config set strict-ssl false
+```
+
+If your `pnpm` commands are waiting for user input. Try using the [append-only flag](https://pnpm.io/cli/install#--reportername).
+
 ## Windows builds
 
 ### Error when running Docker commands on Windows build servers
@@ -1921,6 +1931,11 @@ Currently, Approval steps aren't compatible with CI stages.
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
+
+
+### How to get file from file Store in Run step?
+You can use the below expression to get the file from filestore: raw_file=\<+fileStore.getAsBase64("/a")\>
+config_file="$(echo "$raw_file" \| base64 \-\-decode)"
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 

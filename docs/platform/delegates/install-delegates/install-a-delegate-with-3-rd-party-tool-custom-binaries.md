@@ -131,7 +131,7 @@ Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate contain
 These examples show how to install some common tools.
 
 <Tabs>
-<TabItem value="git" label="Install Git vlient" default>
+<TabItem value="git" label="Install Git client" default>
 
 To install Git on the delegate, add an `install git` script to the `INIT_SCRIPT`, for example:
 

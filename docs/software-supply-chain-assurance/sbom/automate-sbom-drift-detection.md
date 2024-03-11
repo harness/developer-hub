@@ -174,7 +174,7 @@ Now that the trigger is in place, you can initiate it by either making a commit 
 
 :::warning
 It's crucial to have the SBOM for the main branch available to monitor any drift from new pull requests. Additionally, maintaining an up-to-date SBOM for the main branch is essential for successfully detecting SBOM drift when the `pull request submission` trigger is activated.
-::
+:::
 
 After you trigger the pipeline and it executes successfully, you will find the SBOM for the main branch in the **Artifacts** section within SSCA.
 
