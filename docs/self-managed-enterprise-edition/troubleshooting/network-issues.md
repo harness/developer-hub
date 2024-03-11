@@ -4,7 +4,9 @@ description: Troubleshoot network issues in the on-prem Harness Self-Managed Ent
 sidebar_position: 80
 ---
 
-### CI build pods error of `filter_chain_not_found`
+This topic provides solutions for network problems related to Harness Self-Managed Enterprise Edition.
+
+### CI build pods error of filter_chain_not_found
 
 CI build pods do not create and use a service for communication with the delegate. This can lead to errors due to Istio requirements for preauthentication.  
 For example:
