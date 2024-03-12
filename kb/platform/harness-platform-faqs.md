@@ -2838,3 +2838,11 @@ You can use this API to create overrides - https://apidocs.harness.io/tag/Servic
 #### Is there any jexl expressions to get all projects environment?
 We currently don't have a Jexl expression to retrieve all environments, but you can utilize the API endpoint to fetch all environments:https://apidocs.harness.io/tag/Monitored-Services#operation/getEnvironments
 
+
+#### Does the DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource or limit resource of the delegate pod?
+
+DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
+
+#### Does the docker delegate also show expiry message in UI if the image is older than expiry threshold ?
+
+Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
