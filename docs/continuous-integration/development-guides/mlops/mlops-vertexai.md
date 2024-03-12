@@ -8,9 +8,7 @@ sidebar_position: 13
 
 ## Train
 
-Before you create an MLOps pipeline in Harness, you need to prepare and store your training data according to the model type, MLOps best practices, and the GCP Vertex AI documentation. You also need to choose an ML framework and define the model architecture.
-
-Training can be done in Harness or using native integrations with GCP Vertex AI. Here are some general guidelines and code samples for training models with Vertex AI.
+Before you create an MLOps pipeline in Harness, you need to choose an ML framework and model architecture, and then prepare and store your training data according to the model type, MLOps best practices, and the usage documentation for your chosen ML framework, architecture, and associated tools.
 
 ### General Guidelines
 
