@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-03-12:T10:00:30
+date: 2024-03-13:T10:00:30
 sidebar_position: 3
 ---
 
@@ -83,7 +83,7 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2024
 
-### Version 1.28.10<!--  March 12, 2024 -->
+### Version 1.28.10<!--  March 13, 2024 -->
 
 #### New features and enhancements
 
@@ -95,7 +95,7 @@ The following deprecated API endpoints are longer supported:
 
 - The delegate list page now shows the latest delegate version beside the **New Delegate** button. This will help you compare your delegate version with the latest supported delegate version. (PL-47049)
    
-   This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 1.28.10 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding the use of hyphens. (PL-46959)
 
@@ -115,13 +115,13 @@ The following deprecated API endpoints are longer supported:
 
    The auto-switching mechanism for the remote logging destination is fixed, ensuring accessibility to delegate logs when GCP is blocked by a firewall.
 
-   This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 1.28.10 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Perpetual tasks experienced significant delays in reassignment after the current delegate was shut down. (PL-47781, ZD-58497, ZD-58522, ZD-58650)
 
    We have addressed the issue of prolonged delays in perpetual task reassignment following delegate shutdowns by increasing the frequency of cron jobs that reset the perpetual task state for reassignment.
 
-   This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 1.28.10 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed the issue that allowed the creation of user Personal Access Tokens (PATs) at the organization and project scope via API, ensuring consistent listing and management in the UI. PATs can only be created at the account scope. (PL-47558)
 
