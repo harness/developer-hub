@@ -2846,3 +2846,20 @@ DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
 #### Does the docker delegate also show expiry message in UI if the image is older than expiry threshold ?
 
 Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
+
+#### How can we export users from harness?
+
+You can use getAggregatedUsers and set the pageIndex and pageSize accordingly.  https://apidocs.harness.io/tag/User#operation/getAggregatedUsers
+
+#### What are all the fields of <+pipeline> in a step ?
+
+It contains all the pipeline details(name,id) and all the pipeline level variables.
+You can get all the details available at doc: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline
+
+#### How do I check what parameters were set for older executions?
+
+You can review the complied yaml of that execution by clicking on three dots on the top right, and you can also review the Input tab to see the value for all input fields used.
+
+####  How to ask for boolean input?
+
+By default, we have Number or String as a variable type. If you want to use a boolean, then you can define a variable as a string with allowed values as true/false and use that like input so that, while selecting, a user will be given true/false as an option to select from.
