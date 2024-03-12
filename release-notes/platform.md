@@ -97,11 +97,9 @@ The following deprecated API endpoints are longer supported:
    
    This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. With the introduction of the `EntityValidator` annotation and the `EntityValidator` class, we now provide more flexibility and precision in validating secret identifiers, particularly regarding the use of hyphens. (PL-46959)
+- In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding the use of hyphens. (PL-46959)
 
    Here's a breakdown of the changes:
-
-   - We have introduced the `EntityValidator` annotation and class.
 
    - While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage:
 
