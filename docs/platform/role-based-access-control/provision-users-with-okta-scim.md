@@ -58,7 +58,7 @@ To enable automated provisioning, you must add a Harness app to your Okta admini
 
    ![](./static/provision-users-with-okta-scim-08.png)
 
-11. In your newly created app, select the **General** tab, and then select **Edit** under **App Settings**.
+11. In your newly created app, select the **General** tab, and then under **App Settings**, select **Edit**.
 12. Select **Enable SCIM provisioning**, and then select **Save**.
 
    ![](./static/provision-users-with-okta-scim-09.png)
