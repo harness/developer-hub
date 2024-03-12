@@ -94,7 +94,7 @@ Make sure you have met the following requirements for searching form templates:
 - Integration for Harness Software Delivery Platform app version 1.0.2 or later.
 :::
 
-If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
+This option faciliates creation of tickets with values as defined in the linked form template of the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates. If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
 Your ServiceNow ticket is now added to your Pipeline.
 
