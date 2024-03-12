@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-03-11:T10:00:30
+date: 2024-03-12:T10:00:30
 sidebar_position: 3
 ---
 
@@ -83,37 +83,37 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2024
 
-### Version 1.28.9<!--  March 11, 2024 -->
+### Version 1.28.10<!--  March 12, 2024 -->
 
 #### New features and enhancements
 
 - You can now add multiple emails to User Group notifications. This support allows you to include Harness Users or add emails separated by commas. (PL-46480)
 
-- The UI has been updated to include an HEC (HTTP Event Collector) Auth Token option in the Splunk Connector, allowing users to select HEC type authentication. (PL-46977)
+- The UI has been updated to include an HTTP Event Collector (HEC) Auth Token option in the Splunk Connector, allowing users to select HEC-type authentication. (PL-46977)
 
-- Upgraded org.eclipse.jetty.* from v9.4.53.v20231009 to 9.4.54.v20240208. (PL-47854)
+- Upgraded `org.eclipse.jetty.*` from v9.4.53.v20231009 to 9.4.54.v20240208. (PL-47854)
 
-- The delegate list page now shows the latest delegate version beside the New Delegate button. This will help you compare your delegate version with the latest supported delegate version. (PL-47049)
+- The delegate list page now shows the latest delegate version beside the **New Delegate** button. This will help you compare your delegate version with the latest supported delegate version. (PL-47049)
    
    This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- In the recent update to ng-manager version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. With the introduction of the EntityValidator annotation and the EntityValidator class, we now provide more flexibility and precision in validating secret identifiers, particularly regarding the use of hyphens. (PL-46959)
+- In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. With the introduction of the `EntityValidator` annotation and the `EntityValidator` class, we now provide more flexibility and precision in validating secret identifiers, particularly regarding the use of hyphens. (PL-46959)
 
    Here's a breakdown of the changes:
 
-   - Introduction of EntityValidator Annotation and Class: We have introduced the EntityValidator annotation along with the EntityValidator class.
+   - We have introduced the `EntityValidator` annotation and class.
 
    - While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage:
 
-   Hyphen Placement: Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier.
+      - Hyphen placement: Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier.
 
-   Restriction on Starting with a Hyphen: Secret identifiers cannot start with a hyphen, following best practices. 
+      - Restriction on starting with a hyphen: Secret identifiers cannot start with a hyphen, following best practices. 
 
 #### Fixed issues
 
-- Customers were unable to view delegate logs due to the system not automatically switching to app.harness.io as the remote logging service when GCP is blocked by a firewall. (PL-46958, ZD-57844)
+- Delegate logs were unavailable due to the system not automatically switching to app.harness.io as the remote logging service when GCP was blocked by a firewall. (PL-46958, ZD-57844)
 
-   The issue is fixed regarding the auto-switching mechanism for the remote logging destination, ensuring accessibility to delegate logs when GCP is blocked by a firewall.
+   The auto-switching mechanism for the remote logging destination is fixed, ensuring accessibility to delegate logs when GCP is blocked by a firewall.
 
    This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -123,7 +123,7 @@ The following deprecated API endpoints are longer supported:
 
    This item is available with Harness Platform version 1.28.9 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Fixed the issue that is allowing the creation of user PATs (Personal Access Tokens) at the organization and project scope via API, ensuring consistent listing and management in the UI. PATs can only be created at the account scope. (PL-47558)
+- Fixed the issue that allowed the creation of user Personal Access Tokens (PATs) at the organization and project scope via API, ensuring consistent listing and management in the UI. PATs can only be created at the account scope. (PL-47558)
 
 ### Version 1.27.10<!--  March 5, 2024 -->
 
