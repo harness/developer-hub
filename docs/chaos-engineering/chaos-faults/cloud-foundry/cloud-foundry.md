@@ -24,10 +24,13 @@ Cloud Foundry faults disrupt the functioning of Cloud Foundry resources. This de
 
 CF app stop injects app stop chaos for a Cloud Foundry app.
 
+- Checks resilience against abrupt stop of application components/microservices.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
 <accordion color="green">
 <summary>Use cases</summary>
 
-- Checks resilience against abrupt stop of application components/microservices.
+- Checks app resilience against abrupt stopping.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 </accordion>
@@ -39,6 +42,9 @@ CF app stop injects app stop chaos for a Cloud Foundry app.
 ### CF app route unmap
 
 CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps it back to the app.
+
+- Checks resilience against abrupt un-mapping of an app route.
+- Validates the effectiveness of disaster recovery and high availability of the app.
 
 <accordion color="green">
 <summary>Use cases</summary>
@@ -54,12 +60,15 @@ CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps i
 
 ### CF app container kill
 
-CF app container kill crashes (or kills) a Cloud Foundry app instance container and restarts it after a certain duration.
+CF app container kill causes a Cloud Foundry app instance container to be killed and restarted.
+
+- Checks resilience upon app instance crash due to container unavailability.
+- Validates the effectiveness of disaster recovery and high availability of the app.
 
 <accordion color="green">
 <summary>Use cases</summary>
 
-- Checks the resilience when the app instance crashes due to container unavailability.
+- Checks resilience upon app instance crash due to container unavailability.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 </accordion>
