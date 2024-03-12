@@ -31,7 +31,7 @@ A delegate tag with the same name as your delegate is automatically added to you
 ...
 ```
 
-For Docker delegates, you can add tags using the following command.
+For Docker delegates, you can add tags using the following flag for your `docker run` command.
 
 ```
 -e DELEGATE_TAGS="tag1, tag2, tag3"
