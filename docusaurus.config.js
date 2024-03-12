@@ -91,6 +91,11 @@ const config = {
           name: "og:image",
           content: "https://developer.harness.io/img/hdh-social-card.png",
         },
+
+        {
+          name: "coveobot",
+          content: "all",
+        },
       ],
       navbar: {
         title: "Harness Developer Hub",
