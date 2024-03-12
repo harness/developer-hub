@@ -43,7 +43,7 @@ You can add a ServiceNow Import Set step anywhere in CD, approval, or custom sta
 
 1. In a Harness CD, approval, or custom stage, in **Execution**, click **Add Step**, and then select **ServiceNow Import Set**.
 2. Enter a name for the step.
-3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 4. In **ServiceNow Connector**, select or create the [Harness ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 
 ## Select the stage table
@@ -76,8 +76,8 @@ For details on creating a transform map, go to [create a transform map](https://
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

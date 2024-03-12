@@ -4,7 +4,7 @@ description: Kubernetes AutoStopping Workflow
 sidebar_label: Kubernetes AutoStopping Workflow
 ---
 
-![](./static/Kubernetes_AutoStopping_Workflow.png)
+<DocImage path={require('./static/Kubernetes_AutoStopping_Workflow.png')} width="90%" height="90%" title="Click to view full size image" />
 
 Just like the diagram shows, Kubernetes AutoStopping is a smart way to manage how programs run. It uses a special tool called an Envoy-based router to control how data moves around. This router is like a traffic director, making sure everything flows smoothly. Let's delve into its workings in more detail.
 

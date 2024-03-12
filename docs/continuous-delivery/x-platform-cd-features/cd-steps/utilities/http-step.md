@@ -112,8 +112,8 @@ Output variables also support [JEXL expressions](https://commons.apache.org/prop
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
@@ -209,6 +209,26 @@ Using `<<<and>>>` in HTTP requests might result in bad requests on the server si
 :::
 
 Capability checks are basic accessibility checks and do not follow multiple redirects. Hence, Harness returns from the first `302 Found` response during capability checks. 
+
+:::info
+You can enable **Ignore status code for HTTP connections**. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is particularly useful when the Harness Delegate is configured with a proxy because socket connection tests conducted by Harness from the delegate do not account for proxy details.
+
+This setting is only relevant for HTTP steps and HTTP Helm repositories.
+
+``Please note this setting can be enabled at Organization,Account as well as Project Level.``
+
+In this example, we will be discussing the process of enabling this setting at the project level.
+
+You can enable the setting by using the steps below:
+1. Enable the setting by navigating to **Project Settings**. 
+2. Select **Default Settings** under **General**.
+3. Under **Continuous Deployment**, you can set **Ignore status code for HTTP connections** as **true**.
+![](./static/Ignore%20status%20code%20for%20HTTP%20connections.png)
+
+This setting is independent of the feature flag; it will always be available. To currently use this feature, we require either the Feature Flag "CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG" to be enabled or the corresponding setting. The feature flag will soon be removed, and this feature will be solely managed by using this setting.
+
+:::
+
 
 ## HTTP polling
 
@@ -467,6 +487,7 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
   spec: {}  
 ...
 ```
+
 
 ## See also
 
