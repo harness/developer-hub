@@ -309,11 +309,8 @@ Now that you have a test image in your registry, you can add an Aqua Trivy step 
       scantest-DONOTUSE
       ```
 
-   4. [Container image Type](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1):
+   4. [Container image Type](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#type-1) = **Docker v2**
 
-      ```
-      V2
-      ```
 
    5. [Domain](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#domain):
 
