@@ -104,7 +104,7 @@ The timezone settings govern the display value of the settings not their actu
    All the fields corresponding to the Template are listed.
 3. Select **Apply Changes**.
 
-This option faciliates update of tickets with values as defined in the linked form template of the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates.
+This option creates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates.
 
 ## Custom table support
 
