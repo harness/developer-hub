@@ -5961,3 +5961,101 @@ The HTTP error status code 400 means "Bad Request," indicating that the server c
 #### What is the service id naming convention?
 As a best practice the name of entities should be in a such a way that it can be identified easily with the name and we do have Description field associated as well which will help us to provide more details.
 
+#### What is scopedFilePath parameter in the api call to fetch file-store detail?
+
+scopedFilePath Parameter is a way of specifying where the file-store is located. The convention for this is as below:
+Different scopes -
+```
+File on project level:
+  scopedFilePath = /path/to/file
+File on org level:
+  scopedFilePath = org:/path/to/file
+File on account level:
+  scopedFilePath = account:/path/to/file
+ ```
+
+#### How to specify scopedFilePath parameter in the api call?
+
+The scopedFilePath parameter needs to be encoded before passing as a parameter. For example  if the value is /path/to/file we need to provide the encoded value as "%2Fpath%2Fto%2Ffile" . Please note that currently the curl is needing a double encoded value so all the '%2' in the encoding should be converted to '%252F' while using curl.
+
+#### What is the example of a sample api call using scopedFilePath parameter ?
+
+Below is an example api, this already takes care of double encoding while being used in the curl, substitue the values as per the usage, please note that the scopedFilePath in the below example is double encoded.
+
+```
+curl -i -X GET \
+  'https://app.harness.io/ng/api/file-store/files/%252Ftestfolder%252Fdummy%2520folder%252Fdummy%2520file/content?accountIdentifier=xxxx&orgIdentifier=default&projectIdentifier=cseajhang' \
+  -H 'x-api-key: pat.xxx.xxx.xxx'
+
+```
+
+#### Can we configure looping strategy on the stage if the stage is created from a stage template?
+
+We have to do looping configuration inside the template itself as the stage will not have the looping configuration if it is created from a stage template.
+
+
+#### Is Nesting of chained pipelines allowed ?
+
+No, if the pipeline being chained also has a chained pipeline stage it is not allowed to be used in chained pipeline
+
+#### How to move dashboard to a different folder?
+
+Once you have created a dashboard inside a folder and want to move it you can simply edit the dashboard and change the folder name in the edit options. If the dashboard is inside a normal folder it will be moved completely, if it is inside a shared folder a copy of the dashboard will still remain in the shared folder.
+
+#### Does harness have banner messages that admins can set?
+
+Harness Does not have a way to configure a banner message for display in UI.
+
+#### Can I move a connector from one project to another?
+
+If you have the account level connector you can use it any project However there is no way to migrate the connector. You can copy the yaml and use it to create the connector in the other project.
+
+#### When do we get missing permission core_secret_access error?
+
+If the user does not have role assigned for secret at any specific scope, while accessing this resource the user will get such error. To avoid this add the secrete permission to any of the role assigned to the user through proper scope using resource group.
+
+#### Why I am not getting option to select multiple infrastructure?
+
+Multiple infrastructure option is enabled only when the option "Deploy to multiple Environments or Infrastructures" is selected in the environment section of the pipeline.
+
+#### Why I do not see the stages from the chained pipeline in the compiled yaml?
+
+As the pipeline is chained in the execution view we provide a link to the child pipeline execution, once we go to that execution we can view the compiled yaml of chained pipeline stages. But we can not see it in the compiled yaml of parent execution.
+
+#### How to run a pipeline with previous execution variables?
+
+If you rerun a pipeline it will by default tak the value that was passed to it during previous run. However if you want to pass any output variable from one execution to other that is not possible.
+
+#### When I use that template in my pipeline, I do not see it's output variables under the Variables section in my pipeline.
+
+Pipeline variables section is only for input variables that will be passed to the the pipeline during the run.
+
+#### How I can add runtime generated override file to a service before helm rendering?
+
+The values file resolution will only happen once the actual deployment step runs. We can add values.yaml override from file store or any other source repo in the manifest and update the values.yaml using api call or cli with dynamic information. If we want to use any output variable from the pipeline we can use the same expression directly in the values.yaml and while fetching the file the expressions will be resolved. We just need to ensure that the steps from where the output variable expressions are copied executes before the actual deployment step runs.
+
+#### What does fetch file step in helm deployment actually fetches?
+
+The fetch file step in the helm deployment fetches all the values.yaml and exapands any variable expression that have been used inside the values.yaml.
+
+#### How do we pass the initScript for delegates which are installed using default delegate helm chart?
+
+We can create a values.yaml file and provide the initScript in that values.yaml and use this as a values.yaml override in helm install command for delegate.
+
+#### What is the parent identifier in making call to fetch the details for apiKey?
+
+The parent identifier is the identifier of the user which has been used to create the api key. We need to get the actual user identifier and not the email id of the user. We can get the user identifier when we click on the user under AccessControl menu in the browser url or alternatively we can make a api call to fetch the details of the user which includes the identifier as well.
+
+#### Does Harness supports multiple IaC provisioners?
+
+Harness does support multiple Iac provisioners, few examples are terraform, terragrunt, cloud formation, shell script provisioning etc. 
+
+
+#### What happens if we use multiple delegate selectors in configuration?
+
+Providing multiple delegate selectors implies that we want a delegate which has all the tags used in the delegate selector configuration. If there is no delegate with all these selectors none of the delegates will be selected for the task.
+
+#### Does http step supports mtls?
+
+Http step does support mtls communication, we can use the certificate and private key for establishing the mtls connection with the provided end point.
+
