@@ -6,13 +6,13 @@ title: CF app container kill
 import CFSecrets from './shared/cf-secrets.md';
 import VSphereSecrets from './shared/vsphere-secrets.md';
 
-CF app container kill causes a Cloud Foundry app instance container to be killed (crash) and restarted.
+CF app container kill crashes (or kills) a Cloud Foundry app instance container and restarts it after a certain duration.
 
 <!-- ![CF App Container Kill](./static/images/cf-app-container-kill.png) -->
 
 ## Use cases
 CF app container kill:
-- Checks resilience upon app instance crash due to container unavailability.
+- Checks the resilience when the app instance crashes due to container unavailability.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 ### Mandatory tunables
@@ -24,7 +24,7 @@ CF app container kill:
   </tr>
   <tr>
     <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
+    <td> Deployment platform used for Cloud Foundry with respect to where the infrastructure is hosted. </td>
     <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform</a>. </td>
   </tr>
   <tr>
@@ -84,7 +84,7 @@ CF app container kill:
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time</a>.</td>
   </tr>
 </table>
 
@@ -95,7 +95,7 @@ CF app container kill:
 ### Signal
 The `signal` input determines the signal to be sent while killing the container.
 - It defaults to `SIGKILL`.
-- It can be specified using the name (eg. `SIGKILL`) or the corresponding integer (eg. `9`).
+- It can be specified using the name (for example, `SIGKILL`) or the corresponding integer (for example, `9`).
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -120,7 +120,7 @@ spec:
 ```
 
 ### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
+The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. It can be obtained using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -144,7 +144,7 @@ spec:
 ```
 
 ### Instance affected percentage
-The `instanceAffectedPercentage` input specifies the percentage of total number of app instances that will be targeted. It defaults to 0 (1 instance).
+The `instanceAffectedPercentage` input specifies the percentage of total number of app instances that are targeted. It defaults to 0 (1 instance).
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -170,7 +170,7 @@ spec:
 
 ### CF deployment platform
 The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
-- The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
+- The deployment platform can be local, that is, it can be the same environment used by the infrastructure or a remote machine.
 - The deployment platform is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this environment variable:
@@ -194,7 +194,7 @@ spec:
 ```
 
 ### Skip SSL validation
-The `skipSSLValidation` input variable determines whether to skip SSL validation for calling the CF APIs.
+The `skipSSLValidation` input variable determines whether to skip SSL validation for calling the CF APIs or no.
 
 The following YAML snippet illustrates the use of this environment variable:
 
