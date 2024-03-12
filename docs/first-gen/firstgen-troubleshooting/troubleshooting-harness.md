@@ -11,7 +11,7 @@ helpdocs_is_published: true
 This topic contains general troubleshooting information for error messages and other issues that can arise.
 
 :::note 
-If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
+If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://developer.harness.io/community/).
 :::
 
 ### Login Issues

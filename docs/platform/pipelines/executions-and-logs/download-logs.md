@@ -2,9 +2,11 @@
 title: Download execution logs
 description: Download pipeline or step execution logs via the UI. 
 sidebar_position: 3
+redirect_from:
+  - /docs/platform/pipelines/download-logs
 ---
 
-:::info note
+:::note
 Currently, this feature is behind the feature flag `SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
@@ -14,8 +16,8 @@ The process of downloading logs is the same for all Harness modules. Your access
 
 After you download the execution log files, you can view the JSON logs.
 
-:::info note
-The extracted files have many levels of nested directories. To locate specific log files, you may need to navigate through several levels.
+:::info
+The extracted files have many levels of nested directories. To locate specific log files, you might need to navigate through several levels.
 :::
 
 ## Download pipeline log files
@@ -25,7 +27,7 @@ To download pipeline log files, do the following:
 1. In Harness, select your pipeline.
 2. Select **More Options** (&vellip;), and then select **Download Logs**.
 
-   ![](./static/download-pipeline-logs.png)
+   ![](../static/download-pipeline-logs.png)
 
    Harness queries the log service, exports the log, and downloads the `logs.zip` file.
 
@@ -40,7 +42,7 @@ To download step log files, do the following:
 2. Select the step for which you want to download the execution log.
 3. Under **Details**, select the download icon.
 
-   ![](./static/download-step-logs.png)
+   ![](../static/download-step-logs.png)
 
    Harness queries the log service, exports the log, and downloads the `logs.zip` file. 
 

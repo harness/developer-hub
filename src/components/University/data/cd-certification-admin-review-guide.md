@@ -13,7 +13,7 @@
 | Utilizing Harness CD features for deployments| [CD steps, stages, and strategies](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies/) |
 | Addressing deployment issues | [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments)|
 | **4. Effective Use of Harness Expressions and Variables**  | |
-| Using Harness expressions and variables within deployments| [Extracting characters from Harness variable expressions](https://developer.harness.io/docs/platform/variables-and-expressions/extracting-characters-from-harness-variable-expressions/) |
+| Using Harness expressions and variables within deployments| [Built-in and custom Harness variables reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) |
 | Managing and referring service variables at runtime | [Services and environments basics](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview/)|
 | **5. Harness Configuration Management and Parameter Control** | |
 | Managing parameters securely using Harness | [Kubernetes steps timeouts and deadline parameters](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-steps-timeouts-and-deadline-parameters/) |

@@ -35,36 +35,7 @@ Harness pre-populates many variables, as documented below, and you can set your 
 
 ## Java string methods
 
-You can use all Java string methods on Harness variable expressions.
-
-The example mentioned in the previous section used `contains()`:
-
-`<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
-
-Let's look at the following example. For a pipeline variable called `abc` with value, `def:ghi`, you can use `split()` like this:
-
-```
-echo <+<+pipeline.variables.abc>.split(':')[1]>
-```
-
-The output of this expression is `ghi`.
-
-
-Let's look at another example. For a pipeline variable called `abc` with value, `5.6.0`, you can use `split()` like this:
-
-```
-echo <+<+pipeline.variables.abc>.split('\\.')[1]>
-```
-
-The output of this expression is `6`.
-
-The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
-
-For example, let's use a variable `myvar` using the methods `substring` and `indexOf` with value `Hello`. You can use these methods like this:
-
-`<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>`
-
-This expression evaluates to `ello`.
+You can [use any Java string method on Harness variable expressions](./expressions-java-methods.md).
 
 ## FQNs and expressions
 
@@ -321,7 +292,7 @@ You can only use variable expressions in the JEXL conditions that can be resolve
 
 Conditional execution settings are used to determine if the stage _should be run_, and therefore you cannot use variable expressions that can't be resolved until the stage _is run_.
 
-For more information on conditional execution, go to [Stage and Step Conditional Execution Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information on conditional execution, go to [Define conditional executions for steps and stages](/docs/platform/pipelines/step-skip-condition-settings).
 
 ### Variable value size
 
@@ -384,22 +355,20 @@ This also works for nested expressions. For example:
 
 ### Variable expression name restrictions
 
-A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
+Expressions can contain variable names, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
+Variable names can contain the following characters: lowecase and uppercase letter A through Z, numbers 0 through 9, underscores (`_`), periods (`.`), hyphens (`-`), and dollar signs (`$`). Variable names must start with a letter or underscore.
 
-Here is an example Bash script that demonstrates how to utilize dots (`.`) and hyphens (`-`) in variable names:
+To reference your variables that include a period or hyphen in the name, you must wrap the variable name in quotes and call it with `get()`, such as `.get("some-var")`. Here are some additional examples of this format:
 
 ```
-  echo <+pipeline.variables.get("pipeline-var")>
-  echo <+pipeline.stages.custom.variables.get("stage-var")>
-  echo <+pipeline.variables.get("pipeline.var")>
-  echo <+pipeline.stages.custom.variables.get("stage.var")>
+<+pipeline.variables.get("pipeline-var")>
+<+pipeline.stages.custom.variables.get("stage-var")>
+<+pipeline.variables.get("pipeline.var")>
+<+pipeline.stages.custom.variables.get("stage.var")>
 ```
 
-To access any custom variable with a dot (`.`) or a hyphen (`-`) in its name, you must use `.get("VARIABLE_NAME")`.
-
-Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
+In addition to the Harness Platform variable naming restrictions, certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
 ### Reserved words
 
@@ -763,35 +732,27 @@ For example:
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs/pipelines/Triggers/executions/EpE_zuNVQn2FXjhIkyFQ_w/pipeline
 ```
 
-:::important
-The expression \<+pipeline.execution.Url> has been deprecated.
+:::warning
+The version of this expression with an additional period, `<+pipeline.execution.Url>`, has been deprecated.
 :::
-
-
 
 ### \<+pipeline.executionMode>
 
-The execution mode  of the pipeline. This will tell the execution mode(i.e `NORMAL`, `POST_EXECUTION_ROLLBACK`, `PIPELINE_ROLLBACK`) of the pipeline.
+This expression describes the pipeline's execution mode:
 
-**Types of Execution Mode:**
-1) Normal Execution: A execution which could either be successful or failed.
-
-2) [Post deployment Rollback[POST_EXECUTION_ROLLBACK]](../../continuous-delivery/manage-deployments/rollback-deployments.md)
-
-3) [Rollback pipelines[PIPELINE_ROLLBACK]](../../platform/pipelines/define-a-failure-strategy-for-pipelines.md)
+* `NORMAL`: A normal execution. It could either have succeeded or failed.
+* `POST_EXECUTION_ROLLBACK`: A [post-deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments.md) execution.
+* `PIPELINE_ROLLBACK`: A [rollback pipeline](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) execution.
 
 ![](./static/execution-mode-expression.png)
 
-We can use the expression `<+pipeline.executionMode>` under conditional execution. Conditional execution is to ensure that a step only runs when a Post Execution Rollback has been triggered.
+You can use this expression in conditional executions.
 
 ![](./static/execution-mode-conditional-execution.png)
 
-For example:
-
-**Output:**
+For example, you can create a conditional execution to ensure that a step runs only when a post-deployment rollback happens. Here's an example of the logs for this conditional execution scenario:
 
 ![](./static/execution-mode-execution-output.png)
-
 
 ### \<+pipeline.name>
 
@@ -2075,7 +2036,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | helmChart.metadata.url                                                 | N/A                                                                                                                                                                                                                                                                                                                                   |
 | helmChart.name                                                         | pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                                                                    |
 | helmChart.version                                                      | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion                                                                                                                                                                                                                                             |
-| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")`     | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>`                                                                                                                                                                                    |
+| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")`     | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+<secrets.getValue("test_secret")>.concat(<+pipeline.variables.envVar>)>`                                                                                                                                                                                    |
 | **Email Step**                                                         | **Email Step**                                                                                                                                                                                                                                                                                                                        |
 | toAddress                                                              | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to                                                                                                                                                                                                                                                                         |
 | ccAddress                                                              | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc                                                                                                                                                                                                                                                                         |
