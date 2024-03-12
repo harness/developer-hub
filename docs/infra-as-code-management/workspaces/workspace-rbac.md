@@ -18,6 +18,10 @@ For each Role, you can define the following set of permissions:
 6. **Approve** - Giving users the permission to approve Infrastructure Stage (using the approval step)
 7. **Access State** - Giving users the permissions to view the state (including historical revisions)
 
-:::info
-Please note that Workspace don't support Resource Groups at the moment
-:::
+## Using Resource Groups
+Users can utilize Resource Groups functionality to specify which users can access specific Workspace. 
+To do that, users should create a resource group, add the specific (or all) Workspaces, and bind it to a specific user or user group. 
+
+![Resources](./static/workspace-rg.png)
+
+To learn more about Resource Group, refer to [this documentation](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/)
