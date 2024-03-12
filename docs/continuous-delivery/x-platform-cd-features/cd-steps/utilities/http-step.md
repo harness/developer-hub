@@ -212,14 +212,18 @@ Capability checks are basic accessibility checks and do not follow multiple redi
 
 :::info
 You can enable **Ignore status code for HTTP connections**. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is particularly useful when the Harness Delegate is configured with a proxy because socket connection tests conducted by Harness from the delegate do not account for proxy details.
+
 This setting is only relevant for HTTP steps and HTTP Helm repositories.
+
+``Please note this setting can be enabled at Organization,Account as well as Project Level.``
+
+In this example, we will be discussing the process of enabling this setting at the project level.
+
 You can enable the setting by using the steps below:
 1. Enable the setting by navigating to **Project Settings**. 
 2. Select **Default Settings** under **General**.
 3. Under **Continuous Deployment**, you can set **Ignore status code for HTTP connections** as **true**.
 ![](./static/Ignore%20status%20code%20for%20HTTP%20connections.png)
-
-This setting is behind the feature flag, ``CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG``. To enable this feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 :::
 
 
