@@ -1,7 +1,8 @@
 ---
-title: Mirror
+title: Set up repo mirroring
 description: Create pipelines to sync branch and tag changes across repos.
 sidebar_position: 45
+sidebar_label: Mirror
 ---
 
 import Tabs from '@theme/Tabs';
@@ -305,14 +306,3 @@ With bidirectional sync there is a chance of race conditions where both repos up
 In this scenario, the mirror script in this pipeline doesn't overwrite any changes in the target repo. Instead, the sync fails until the conflict is resolved.
 
 If sync fails due to race conditions in two-way mirroring, you must manually inspect and mitigate the issue. For example, you might need to fix the reference conflict between the two repos and manually get both repos on the same SHA. After that, the mirror script (and automatic syncing through triggers) should work again.
-
-## YAML examples
-
-While mirroring is not unique to Harness Code, these example pipelines assumes at least one of the repos is in Harness Code.
-
-These pipelines use a Linux platform on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
-
-* Generic mirror (any direction)
-* One-way from Harness Code to other SCM provider
-* One-way from other SCM provider to Harness Code
-* Two-way sync
