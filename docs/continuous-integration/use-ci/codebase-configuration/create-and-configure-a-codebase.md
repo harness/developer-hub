@@ -156,7 +156,7 @@ pipeline:
 </TabItem>
 </Tabs>
 
-In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
+In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following **Advanced** settings.
 
 ### Depth
 

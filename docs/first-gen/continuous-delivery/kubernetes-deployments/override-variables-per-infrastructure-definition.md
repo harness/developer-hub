@@ -194,8 +194,3 @@ You need to configure a shell script to handle the assignment of these variables
   ![](./static/override-variables-per-infrastructure-definition-136.png)
 
 7. Deploy the third Infrastructure Definition. This time both the variables are overridden with values specific to InfraDef3.
-
-### Next Steps
-
-Check out the community article on publishing variable outputs: [Publish Variables](https://community.harness.io/t/publish-variables/227)
-
