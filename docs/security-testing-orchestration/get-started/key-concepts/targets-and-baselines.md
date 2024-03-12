@@ -12,7 +12,7 @@ This topic discusses the following STO topics:
 - [Variants](#variants)
 - [Baselines](#baselines)
 - [Where was an issue detected: in the variant, in the baseline, or both?](#where-was-an-issue-detected-in-the-variant-in-the-baseline-or-both)
-- [Why you should define a baseline for every STO target](#why-you-should-define-a-baseline-for-every-sto-target)
+- [Every target needs a baseline](#every-target-needs-a-baseline)
 
 
 ### Targets
