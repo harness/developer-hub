@@ -121,7 +121,7 @@ Select the Pipeline Events for which you want to send notifications. Click **Con
 ![](./static/add-smtp-configuration-08.png)
 In **Notification Method**, select **Email**.
 
-Enter comma separated user email addresses to which you want to send the notifications.
+Enter comma-separated user email addresses to which you want to send the notifications.
 
 Select the User groups which you want to notify.
 
