@@ -112,13 +112,13 @@ Done.
 You can reference the resolved dry run manifest from the Dry Run step using this Harness expression:
 
 ```
-<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.manifestDryRun>
+<+pipeline.stages.deploy.spec.execution.steps.Dry_Run_and_Generate_Manifests.k8s.manifestDryRun>
 ```
 
 For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
 
 ```
-<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+<+pipeline.stages.deploy.spec.execution.steps.Dry_Run_and_Generate_Manifests.k8s.manifestDryRun>
 ```
 
 Another example is to use a Harness [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to perform logic using `kubectl diff`:
