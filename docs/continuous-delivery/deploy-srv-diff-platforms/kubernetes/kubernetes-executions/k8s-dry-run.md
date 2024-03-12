@@ -112,7 +112,7 @@ Done.
 You can reference the resolved dry run manifest from the Dry Run step using this Harness expression:
 
 ```
-<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.manifestDryRun>
+<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.manifestDryRun>
 ```
 
 For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
