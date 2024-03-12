@@ -11,7 +11,7 @@ This guide explains what you need to know to get started with the Harness Code R
 2. Learn about the [Harness Code key concepts](./key-concepts.md).
 3. Create your first [Harness Code repository](../config-repos/create-repo.md).
 
-   You can [create fresh repos](./create-repo.md) or [import repos](../config-repos/import-repo.md) from other Git SCM providers.
+   You can [create fresh repos](/docs/code-repository/config-repos/create-repo.md) or [import repos](/docs/code-repository/config-repos/import-repo.md) from other Git SCM providers.
 
    You can also [set up mirroring](../work-in-repos/mirror.md).
 
