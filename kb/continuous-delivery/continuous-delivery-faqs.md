@@ -6059,3 +6059,24 @@ Providing multiple delegate selectors implies that we want a delegate which has 
 
 Http step does support mtls communication, we can use the certificate and private key for establishing the mtls connection with the provided end point.
 
+#### How to get harness secrets from Powershell?
+
+You can refer to any harness secret inside the script <+secrets.getValue(“secret_identifier”)>
+
+#### Does Harness support multiple IaC provisioners?
+
+Yes Harness has inbuilt support for multiple IaC to provision Infra(Terraform, Terragrunt, Cloud Formation, Azure Blueprint, ARM)
+
+#### How to mask a secret that is used as an output variable
+
+Secret will be visible in the following areas of the pipeline execution:
+```
+On the Output tab of the step where the output variable originates.
+In the step logs for any later steps that reference that variable.
+```
+If there is any secret that needs to be used, we recommend creating a harness secret and referring to that directly within the pipeline instead of using it as an output variable.
+
+####  How to fix Invalid argument(s): Loop items list cannot be null
+
+Looks like you are using a looping strategy and either no item is configured or the expression used is not returning the correct set of values and resulting in a null.
+
