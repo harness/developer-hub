@@ -6,12 +6,15 @@ sidebar_position: 4
 
 Use these steps to add a WinRM credential key that can be referenced in Harness entities.
 
-You can add WinRM credentials when creating connectors and other account or project resources. Or, you can select **Secrets** under **Account/Organization/Project Setup** and create a WinRM credential secret.
+You can add WinRM credentials when creating connectors and other account or project resources. Or, you can select **Secrets** under **Account/Organization/Project Setup** and create a WinRM credential secret. In this example, we'll create a WinRM credential secret at the account scope.
 
-Configure the **WinRM Credential** settings as follows:
+To configure **WinRM Credential** settings:
 
-1. Enter a **Name** for the WinRM credential and select **Continue**.
-2. Under **Select an Auth Scheme**, select one of the following:
+1. In Harness, select **Account Settings**. The Account Settings page opens.
+2. Under **Account-level resources**, select **Secrets**. The Secrets list page opens.
+3. Select **+ New Secret**, then select **WinRM Credential**. The WinRM Details pane opens.
+Enter a **Name** for the WinRM credential and select **Continue**.
+4. Under **Select an Auth Scheme**, select one of the following:
 
    * **[NLTM](https://learn.microsoft.com/en-us/windows-server/security/kerberos/ntlm-overview)**
   
@@ -29,7 +32,6 @@ Configure the **WinRM Credential** settings as follows:
 
 :::
    ***[Kerberos](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview?source=recommendations)** (recommended)
-     
      
 :::info
 
@@ -111,9 +113,9 @@ Configure the **WinRM Credential** settings as follows:
         * **Key Tab File**: Generates a new TGT from KDC every time you authenticate with the service.
         * **Password**: Use Harness [encrypted text secrets](/docs/platform/secrets/add-use-text-secrets) to save the password and refer to it using this option.
 
-3. Select **Save and Continue**.
-4. Enter the **Host Name** of the remote server you want to connect to. For example, if the server is an AWS EC2 instance, the host name might be similar to `ec2-54-175-135-106.compute-1.amazonaws.com`.
-5. Select **Test Connection**.
+5. Select **Save and Continue**.
+6. Enter the **Host Name** of the remote server you want to connect to. For example, if the server is an AWS EC2 instance, the host name might be similar to `ec2-54-175-135-106.compute-1.amazonaws.com`.
+7. Select **Test Connection**.
 
    If a message appears stating that no Harness Delegate could reach the host, or that a credential is invalid, verify that your settings are correct, and your Harness Delegate is able to connect to the server.
-6. After the test succeeds, select **Finish** to save the WinRM credential.
+8. After the test succeeds, select **Finish** to save the WinRM credential.
