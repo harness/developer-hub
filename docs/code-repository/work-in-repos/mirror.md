@@ -23,7 +23,7 @@ To automate mirroring, a webhook trigger runs the pipeline whenever a change is 
 The pipeline created in this guide is provider agnostic and direction agnostic. This means you can use one pipeline for one-way or two-way mirroring across many pairs of repos and providers.
 
 1. Create a [CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-2. Add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) and **[disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md/#disable-clone-codebase-for-specific-stages)**.
+2. Add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) and **[disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages)**.
 3. Set up your desired [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), such as [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 ### Add variables
@@ -112,7 +112,7 @@ This script mirrors changes from one source repo to one target repo. Later, you'
 To use this pipeline to mirror changes from one source to multiple targets (or multiple pairs of sources and targets), you can create [input sets](#create-input-sets) and [triggers](#create-triggers) for each source-target combination.
 
 1. In the Build stage, add a [Run step](/docs/continuous-integration/use-ci/run-step-settings)
-2. Depending on your build infrastructure, you might need to select an [image](/docs/continuous-integration/use-ci/run-step-settings.md/#container-registry-and-image) that has Git installed and supports basic shell. If your build infrastructure already has these tools available, you don't need to specify an image.
+2. Depending on your build infrastructure, you might need to select an [image](/docs/continuous-integration/use-ci/run-step-settings/#container-registry-and-image) that has Git installed and supports basic shell. If your build infrastructure already has these tools available, you don't need to specify an image.
 3. In **Command**, enter the following shell script, and then save the step and the pipeline.
 
 ```shell
