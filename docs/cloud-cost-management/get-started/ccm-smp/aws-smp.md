@@ -208,10 +208,14 @@ You need to perform the following tasks to set up CCM for AWS:
 
 </details>
 
-:::important note
+:::info
+
 Make a note of your AWS Access key and Secret key.
+
 :::
+
 ## Create Amazon S3 Bucket
+
 1. Create an S3 bucket with the following naming convention. For more information, go to [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html). This bucket will be used to retrieve the CUR report from your master AWS accounts.
 
   `harness-ccm-service-data-bucket-<accountid>`
@@ -235,11 +239,10 @@ Make a note of your AWS Access key and Secret key.
             "Resource": "arn:aws:s3:::harness-ccm-service-template-bucket-<accountid>/*"
         }
     ]
-}
+  }
   ```
-  
 
-## Edit the CF template 
+## Edit the CF template
 
 In the given YAML template, modify the specified field.
 
@@ -251,10 +254,8 @@ PrincipalBilling:
     Default: 'arn:aws:iam::<accountid>:root'
 ```
 
-
 <details>
 <summary>YAML template</summary>
-
 
 ```
 AWSTemplateFormatVersion: 2010-09-09
@@ -562,44 +563,48 @@ Resources:
                 Resource: "*"
       Roles:
         - !Ref HarnessCloudFormationRole
-
 ```
+
 </details>
 
 ## Upload the CF template to S3 bucket
 
 Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<accountid>`.
 1. Go to **Amamzon S3** > **ccm-service-template-bucket**.
-1. Create a folder ‘v1’.
-2. Upload the file.
+2. Create a folder named `v1`.
+3. Upload the file.
 
-  <DocImage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
-:::important note
-Make a note of the following: 
+:::info
+
+Make a note of the following:
 
 - The names of the two S3 buckets.
 
 - The complete path of the CF template in the bucket. For example, https://ccm-service-template-bucket.s3.amazonaws.com/v1/HarnessCCMServiceAWSTemplate.yaml.
+
 :::
 
 ## Deploy workloads via Helm charts
 
 1. Clone the chart repository.
 
-```
-git clone git@github.com:harness/helm-charts.git
-cd main/src/harness
-```
-2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services. Perform the following steps to update the override files:
-     1. Retrieve the current override values provided during the installation or upgrade of the Helm charts.
-          ```
-          helm get values <chart-name> -n <namespace> > override.yaml
-          ```
-          
-      1. After obtaining the override file, you can make necessary modifications based on the type of environment.
+   ```
+   git clone git@github.com:harness/helm-charts.git
+   cd main/src/harness
+   ```
 
+2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services. Perform the following steps to update the override files:
+
+   1. Retrieve the current override values provided during the installation or upgrade of the Helm charts.
+
+      ```
+      helm get values <chart-name> -n <namespace> > override.yaml
+      ```
+
+   2. After obtaining the override file, you can make necessary modifications based on the type of environment.
 
 <details>
 <summary>Override file changes for a connected environment</summary>
@@ -628,7 +633,6 @@ ccm:
 <summary>Override file changes for an air-gapped environment</summary>
 
 CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
-
 
 ```
 global:
@@ -690,16 +694,14 @@ ccm:
       httpsProxyEnabled: true
       httpsProxyUrl: http://proxy.example.com:1234
 ```
+
 </details>
 
-3. After making the necessary updates to the override file, you can proceed with the Helm chart upgrade.  
-
+3. After making the necessary updates to the override file, you can proceed with the Helm chart upgrade.
 
 ```
-helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml 
+helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 ```
-          
-    
 
 ## Handling Kubernetes secrets
 
@@ -709,45 +711,42 @@ The following are the secrets specific to CCM services:
 
 - batch-processing
 
+   ```
+   kubectl edit secret batch-processing -n <namespace>
+   ```
 
-```
-kubectl edit secret batch-processing -n <namespace>
-```
-
-```
-S3_SYNC_CONFIG_ACCESSKEY: <S3_SYNC_CONFIG_ACCESSKEY> [AWS Setup - Add a new user - Use saved aws access key]
-S3_SYNC_CONFIG_SECRETKEY: <S3_SYNC_CONFIG_ACCESSKEY> [AWS Setup - Add a new user- Use saved aws secret key]
-```
+   ```
+   S3_SYNC_CONFIG_ACCESSKEY: <S3_SYNC_CONFIG_ACCESSKEY> [AWS Setup - Add a new user - Use saved aws access key]
+   S3_SYNC_CONFIG_SECRETKEY: <S3_SYNC_CONFIG_ACCESSKEY> [AWS Setup - Add a new user- Use saved aws secret key]
+   ```
 
 - cloud-info-secret-mount [config-file]
 
+   ```
+   kubectl edit secret cloud-info-secret-mount -n <namespace>
+   ```
 
-```
-kubectl edit secret cloud-info-secret-mount -n <namespace>
-```
-
-```
-config-file: <config-file> [Sample can be found below]
-```
+   ```
+   config-file: <config-file> [Sample can be found below]
+   ```
 
 - nextgen-ce
 
+   ```
+   kubectl edit secret nextgen-ce -n <namespace>
+   ```
 
-```
-kubectl edit secret nextgen-ce -n <namespace>
-```
+   ```
+   AWS_ACCESS_KEY: <AWS_ACCESS_KEY> [AWS Setup - Add a new user - Use saved aws access key]
+   AWS_SECRET_KEY: <AWS_SECRET_KEY> [AWS Setup - Add a new user- Use saved aws secret key]
+   AWS_ACCOUNT_ID: <AWS_ACCOUNT_ID> [AWS Setup - Id from here]
+   AWS_DESTINATION_BUCKET: <AWS_DESTINATION_BUCKET> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
+   AWS_TEMPLATE_LINK: <AWS_TEMPLATE_LINK> [AWS Setup - Create S3 buckets step - Use complete path of CF template]
+   CE_AWS_TEMPLATE_URL: <CE_AWS_TEMPLATE_URL> [AWS Setup - Create S3 buckets step - Use c
+   ```
 
-```
-AWS_ACCESS_KEY: <AWS_ACCESS_KEY> [AWS Setup - Add a new user - Use saved aws access key]
-AWS_SECRET_KEY: <AWS_SECRET_KEY> [AWS Setup - Add a new user- Use saved aws secret key]
-AWS_ACCOUNT_ID: <AWS_ACCOUNT_ID> [AWS Setup - Id from here]
-AWS_DESTINATION_BUCKET: <AWS_DESTINATION_BUCKET> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
-AWS_TEMPLATE_LINK: <AWS_TEMPLATE_LINK> [AWS Setup - Create S3 buckets step - Use complete path of CF template]
-CE_AWS_TEMPLATE_URL: <CE_AWS_TEMPLATE_URL> [AWS Setup - Create S3 buckets step - Use c
-```
 <details>
 <summary>Config file</summary>
-
 
 ```
 environment = "production"
@@ -791,7 +790,7 @@ enabled = true
 
 # See available regions in the documentation:
 # https://aws.amazon.com/about-aws/global-infrastructure/regions_az
-region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1"
 
 # Static credentials
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
@@ -812,8 +811,8 @@ prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\", product_d
 # Falls back to the primary credentials.
 [provider.amazon.pricing]
 # See available regions in the documentation:
-#  
-region = "us-east-1" [AWS Setup - Region where user is set up]
+#
+region = "us-east-1"
 
 # Static credentials
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
@@ -896,25 +895,25 @@ table = "products"
 expiration = 0
 cleanupInterval = 0
 ```
+
 </details>
 
 The following are some secrets from platform-service that you need to update:
 
 - smtp-secret - Required to support budget alerts email.
 
+   ```
+   kubectl edit secret smtp-secret -n <namespace> 
+   ```
 
-```
-kubectl edit secret smtp-secret -n <namespace> 
-```
+   ```
+   SMTP_HOST: <SMTP_HOST>
+   SMTP_PASSWORD: <SMTP_PASSWORD>
+   SMTP_USERNAME: <SMTP_USERNAME>
+   ```
 
-```
-SMTP_HOST: <SMTP_HOST>
-SMTP_PASSWORD: <SMTP_PASSWORD>
-SMTP_USERNAME: <SMTP_USERNAME>
-```
-
-:::important important
-Increase TimescaleDB to 100Gi: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
+:::info
+To increase TimescaleDB to 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
 :::
 
 ## Next steps

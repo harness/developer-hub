@@ -95,6 +95,12 @@ When you do your own deployments, you might need additional permissions added to
 1. Create or edit an IAM user and attach the custom managed policy you create above. In this example, we'll name this policy **HarnessECS**.
 2. Generate an access key for the IAM user for connecting Harness to AWS ECS. In the IAM User, click **Security credentials** and then in **Access keys** create and save the key. You will use the Access key ID and Secret access key in the Harness AWS connector later.
 
+:::note 
+
+If you are using the OIDC credential type for your AWS connector, add a trust relationship between the IAM role and your identity provider. For information on using OIDC with AWS at Harness, go to [AWS Connector -- Credentials](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md#credentials).
+
+:::
+
 Now that you have all the AWS credentials configured, you can create or select an ECS cluster to use for your deployment.
 
 ## Set up your ECS cluster
@@ -110,13 +116,13 @@ The cluster must meet the following specs:
 
 You will select this cluster later when your define the target Infrastructure Definition for the CD stage in your Harness Pipeline.
 
-### Install and register the Harness delegate
+### Install and register the Harness Delegate
 
-The Harness delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the delegate anywhere that has connectivity to your AWS account, even locally on your computer.
+The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the delegate anywhere that has connectivity to your AWS account, even locally on your computer.
 
 If you're new to Harness, read [Harness Platform architecture](/docs/get-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
 
-1. Follow the steps in [Delegate installation overview](/docs/platform/delegates/install-delegates/overview) to install a Harness delegate.
+1. Follow the steps in [Delegate installation overview](/docs/platform/delegates/install-delegates/overview) to install a Harness Delegate.
 
 2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
 
@@ -566,6 +572,9 @@ Create a Harness AWS Connector to connect to your AWS account using the IAM User
 3. In **AWS Cloud Provider**, in **Name**, enter a name, and click **Continue**.
 4. In Credentials, enter the following and click **Continue**:
    1. Select **AWS Access Key**.
+   :::note
+   If you would like to use AWS with OIDC, select **Use OIDC** here and ignore Step 3 below. 
+   :::
    2. **Access Key:** enter the IAM User access key.
    3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
    4. **Test Region:** US East (Virginia).
@@ -1256,12 +1265,6 @@ Lastly, the new ECS service is tagged with `BG_VERSION`, `BLUE`.
 By default, the previous service is downsized to 0. The service is downsized, but not deleted. If the older service needs to be brought back up again, it is still available.
 
 #### ECS Blue Green service validation
-
-:::note
-
-Currently, ECS Blue Green service validation is behind the feature flag `CDS_ECS_BG_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Harness performs some validations before the deployment. Before the deployment, Harness identifies ECS Blue and Green services based on the target group and updates tags accordingly. It then starts the deployment.
 

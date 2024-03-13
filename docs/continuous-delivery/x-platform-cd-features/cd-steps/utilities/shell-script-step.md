@@ -159,7 +159,7 @@ The Shell Script step succeeds or fails based on the exit value of the script. A
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
 
-* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use.
+* Execute scripts on the host running a Harness Delegate. You can use delegate selectors to identify which Harness Delegate to use.
 * Execute scripts on a remote target host in the deployment infrastructure definition.
 
 When executing a script, you can also **dynamically capture** the execution output from the script, providing runtime variables based on the script execution context, and export those to another step in the same stage or another stage in the same pipeline.
@@ -322,8 +322,8 @@ import WorkingDir from '/docs/continuous-delivery/shared/working-dir.md';
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
@@ -463,12 +463,6 @@ Variables of type Secret must have a non-empty value.
 :::
 
 ### Scoping output variables using aliases
-
-:::note
-
-Currently, scoping output variables using aliases is behind the feature flag `CDS_SHELL_VARIABLES_EXPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 To prevent variable name conflicts, you can use **Publish Variable Names (Alias)** to scope output variables to different entities.
 

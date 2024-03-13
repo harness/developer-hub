@@ -6,11 +6,11 @@ sidebar_position: 6
 
 This topic describes how to connect Harness with your Spot cloud.
 
-## Install the Harness delegate
+## Install the Harness Delegate
 
-The Harness delegate is a service you run in your local network or VPC to connect Harness with your artifact repos, Spot infrastructure, and any other providers needed for deployments.
+The Harness Delegate is a service you run in your local network or VPC to connect Harness with your artifact repos, Spot infrastructure, and any other providers needed for deployments.
 
-Expand the following section to learn how to install the Harness delegate.
+Expand the following section to learn how to install the Harness Delegate.
 
 <details>
 <summary>Use the delegate installation wizard</summary>
@@ -25,7 +25,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 </details>
 
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 
 <details>

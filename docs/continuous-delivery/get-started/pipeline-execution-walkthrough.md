@@ -169,7 +169,7 @@ A Harness service is made up of the following entities.
 
 The manifest definition is used to fetch files from the Harness File Store or a remote source like GitHub, GitLab, Bitbucket, etc. 
 
-When the stage's Rollout Deployment step is executed, a Harness delegate fetches the manifests for deployment.
+When the stage's Rollout Deployment step is executed, a Harness Delegate fetches the manifests for deployment.
 
 In this example, Harness uses a Harness BitBucket connector to fetch the manifest.
 
@@ -291,13 +291,4 @@ Here's the process:
 
 This topic explained how a CD pipeline execution uses Harness entities and settings at runtime.
 
-For more information on creating CD pipelines, go to:
-
-- [CD tutorials](/tutorials/cd-pipelines)
-
-
-
-
-
-
-
+For more information on creating CD pipelines, go to [CD tutorials](/docs/category/cd-and-gitops-tutorials).

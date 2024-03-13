@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-error-tracking/rss.xml" />
 
 These release notes describe recent changes to Harness Continuous Error Tracking.
 
@@ -22,6 +22,80 @@ These release notes describe recent changes to Harness Continuous Error Tracking
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## February 2024
+
+### Version ET-Agent 5.9.0 
+
+<!-- February 13, 2024 -->
+
+#### New features and enhancements
+
+- The CET agent supports Graviton 3. (CET-2136)
+
+- The CET agent supports Java 8+ on Graviton architecture. (CET-2136)
+
+#### Fixed issues
+
+- In some cases, the CET agent might report snapshots that are 3rd party. This might cause tiny links or statistics that show up, without a snapshot. This issue has been fixed, and only events with snapshots should have tiny links and metrics. (CET-2146)
+
+## January 2024
+
+### Versions ET-Service 5.34.0 and ET-Collector 5.34.0
+
+<!-- January 22, 2024 -->
+
+#### New features and enhancements
+
+- CET Service support for Java 21. (CET-2166, CET-2159)
+
+#### Fixed issues
+
+- The url is not being updated properly when changing filters in the event summary or the event list. This issue has been fixed, and now the url should be updated correctly. (CET-2080)
+
+- Filters in the event list and not being cleared when moving between time durations. Now, this issue should be resolved. (CET-1849)
+
+- In some cases, a hidden event that is marked as unhidden might not change its status. This issue has been fixed, and the event would unhide as expected. (CET-1958)
+
+- Additional bug fixes. (CET-2037, CET-2000)
+
+### Versions ET-Service 5.32.4 and ET-Collector 5.32.4
+
+<!-- January 17, 2024 -->
+
+#### Fixed issues
+
+- Updated version for updated SMP helm charts
+
+### Versions ET-Service 5.33.1 and ET-Collector 5.33.0
+
+<!-- January 12, 2024 -->
+
+#### New features and enhancements
+
+- Agent wizard is now available for all the supported operating systems. (CET-1778)
+
+#### Fixed issues
+
+- From a CI/CD pipeline, if a snapshot is not found, the arc screen would redirect to the wrong location. This issue has been fixed, and the redirection would go to the event list. (CET-2074)
+
+- For some Java versions, decompiled source code might not show up. Decompiler has been upgraded so this shouldn't happen now (CET-2043)
+
+### Version ET-Agent 5.8.0 
+
+<!-- January 8, 2024 -->
+
+#### New features and enhancements
+
+- Agent support of Java 21. CET Service support is required as well. (CET-2166)
+
+#### Fixed issues
+
+- On AIX machines, the CET agent fails to load and prevents the application from starting. Now, the CET agent should work as expected. (CET-2081)
+
+- In some cases, the CET agent might cause an increase of native memory. This issue has been fixed and the used memory should be consistent once settling after the warm-up phase. (CET-2001)
+
+- The agent might fail to register in case the CET service is unavailable. This issue has been fixed and the agent would retry connecting without permanently failing. (CET-1565)
 
 ## December 2023
 

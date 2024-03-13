@@ -24,7 +24,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 <details>
 <summary>Use the terminal</summary>
@@ -186,9 +186,7 @@ Perform the following steps to add a TAS connector.
 ### Refresh Token Support
 
 :::note
-
-Currently, Refresh token authentication support is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness Delegate version 23.12.81804 or later is required to use this feature.
-
+Harness Delegate version 23.12.81804 or later is required to use this feature.
 :::
 
 Harness provides the option to use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. These credentials are used to obtain a new Refresh token. Once the Refresh token is provided in the connector, Harness uses it to authenticate and perform each task. Harness will authenticate with the Refresh token before executing each Tanzu step defined in the pipeline.

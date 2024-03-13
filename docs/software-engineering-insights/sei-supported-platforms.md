@@ -11,7 +11,7 @@ SEI integrates with a number of third-party providers to provide a centralized v
 
 ## Integrations for SEI
 
-SEI supports a number of plugins to integrate your dashboard with third-party providers. Please find the growing list of [supported third-party integrations](./sei-integrations/sei-integrations-overview).&#x20;
+SEI supports a number of plugins to integrate your dashboard with third-party providers. Please find the growing list of [supported third-party integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
 
 The following table lists SEI support for platforms, repos, registries, and related technologies.
 
@@ -27,4 +27,4 @@ The integrations categorized under the **Others** label are now available with b
 
 :::
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).

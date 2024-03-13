@@ -27,7 +27,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 ## Import Services
 
-4. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e harness organisation is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
+4. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e harness organization is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
 
 5. User can choose all the services / individual services / no services
 
@@ -102,6 +102,8 @@ Create a secret with token and configure in the Personal Access token field. [Re
 
 ![](./static/bitbucket-connector.png)
 
+For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
+
 :::
 4. After the connection test runs, select Finish to save the connector.
 
@@ -149,11 +151,11 @@ https://github.com/sathish-soundarapandian/onboarding-test.git
 https://github.com/sathish-soundarapandian/onboarding-test
 ```
 
-- The provided repo in the repo URL should belong to the same organisation / project for which the connector has been setup. Ex -
+- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
 
 In connector - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
-- Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialised with README file
+- Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
 - Branch - Can be new branch / some existing branch. In both the cases, the commit will be done on top of the base HEAD branch.
 
@@ -178,3 +180,7 @@ In connector - The account path is `https://github.com/sathish-soundarapandian`.
 **Recommendations**
 
 If using GitHub connector, customers can go with App based authentication which provides higher number of API requests in an hour window. Read more about [GitHub Apps - GitHub Docs.](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/rate-limits-for-github-apps)
+
+## Next steps
+
+Check out the [IDP tutorials](/docs/category/idp-tutorials) for walkthroughs and deep dives into specific IDP use cases.

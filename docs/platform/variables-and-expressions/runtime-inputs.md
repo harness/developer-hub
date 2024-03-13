@@ -1,7 +1,7 @@
 ---
 title: Fixed values, runtime inputs, and expressions
 description: You can change the input type for most settings in Harness.
-sidebar_position: 8
+sidebar_position: 1
 helpdocs_topic_id: f6yobn7iq0
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
@@ -54,7 +54,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. More details on the usage of Fixed values [here](https://developer.harness.io/tutorials/cd-pipelines/variables#create-an-account-level-variable).
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you can use fixed values in [variables](/docs/platform/variables-and-expressions/add-a-variable).
 
 ## Runtime inputs
 
@@ -263,7 +263,7 @@ Use multiple selection if you want to choose one or more values from the list of
 
 ![](./static/runtime-inputs-11.png)
 
-## Supply runtime input during execution
+### Supply runtime input during execution
 
 Sometimes you might not know the value for a runtime input at the beginning of the pipeline run. For example:
 
@@ -275,7 +275,7 @@ In these cases, you might need to provide runtime input during pipeline executio
 
 You must have a role with **Pipeline Execute** [permission](/docs/platform/role-based-access-control/permissions-reference/) to be able to submit runtime inputs during execution.
 
-### Configure execution inputs
+#### Configure execution inputs
 
 You must configure runtime inputs to allow specification during pipeline execution.
 
@@ -323,7 +323,7 @@ There is a time limit for mid-run input. Pipelines don't wait indefinitely for m
 If you allow mid-run input *and* you specify a default values, you can configure the pipeline to use the default values instead of failing if the input time elapses. To do this:
 
 1. Go to the stage or step with the execution input.
-2. Add a [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+2. Add a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 3. For **On failure of type**, select **Execution-time Inputs Timeout Errors**.
 4. Under **Perform Action**, select **Proceed with Default Values**.
 To automatically use the default value during such timeouts: 

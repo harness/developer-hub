@@ -18,7 +18,10 @@ Certain roles are required in your GCP account, depending on how you are using t
 
 ### GKE/Kubernetes role requirements
 
-If you use the GCP connector to connect to GKE, the GCP service account used for any credentials requires the **Kubernetes Engine Developer** and **Storage Object Viewer** permissions.
+If you use the GCP connector to connect to GKE, the GCP service account used for any credentials requires:
+
+* **Kubernetes Engine Developer** (`roles/container.clusterAdmin`)
+* **Storage Object Viewer** (`roles/storage.objectViewer`)
 
 For instructions on adding roles to your service account, go to the Google documentation on [Granting Roles to Service Accounts](https://cloud.google.com/iam/docs/granting-roles-to-service-accounts). For more information about GCP roles, go to the GCP documentation on [Understanding Roles](https://cloud.google.com/iam/docs/understanding-roles?_ga=2.123080387.-954998919.1531518087#curated_roles).
 
@@ -37,9 +40,9 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 * Storage Object Viewer (`roles/storage.objectViewer`)
 * Storage Object Admin (`roles/storage.objectAdmin`)
 
-For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
+For more information, go to the GCP [Artifact registry roles reference](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
 
-Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md).
 
 ### GAR role requirements
 
@@ -47,6 +50,8 @@ For Google Artifact Registry, the following roles are required:
 
 * Artifact Registry Reader
 * Artifact Registry Writer
+
+For more information, go the GCP documentation about [Configuring Roles for Artifact Registry](https://cloud.google.com/artifact-registry/docs/access-control)
 
 ### Google Cloud Operations Suite (Stackdriver) requirements
 
@@ -133,6 +138,12 @@ Select the **Connect through Harness Platform for OIDC** option to allow Harness
 :::note
 
 Currently, the OIDC connectivity mode is compatible with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) only, and it is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+:::warning
+
+Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. 
 
 :::
 

@@ -57,7 +57,3 @@ then
 echo "Alias ca.cer already exists"  
 else
 ```
-## See Also
-
-* [Adding 3rd Party CA certificate(s) to Kubernetes and/or OpenShift Harness Delegates](https://community.harness.io/t/adding-3rd-party-ca-certificate-s-to-kubernetes-and-or-openshift-harness-delegates/831) from Harness Community
-

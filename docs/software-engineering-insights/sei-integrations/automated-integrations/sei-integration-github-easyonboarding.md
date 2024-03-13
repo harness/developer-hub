@@ -43,7 +43,22 @@ The GitHub App facilitates a seamless connection to GitHub with minimal user int
 
 ![](../static/github-app.png)
 
-To set up the integration using the GitHub App:
+The following permissions are required to configure the **Harness SEI Github App** integration:
+
+* **Read access to administration, code, commit statuses, issues, metadata, and pull requests:** This allows the app to view and access information about your repositories, including code, commits, issues, and metadata.
+* **Read access to email addresses:** This allows the app to view the email addresses of users who have authorized the app.
+
+<img
+  src={require('../static/github-app-permissions.png').default}
+  alt="Example banner" height="50%" width="70%" border="1"
+/>
+
+:::info
+It is important to note that these permissions are requested by the Harness SEI Github App.
+This means that the app will request these permissions from GitHub on its behalf, and not on behalf of the user who is installing the app.
+:::
+
+To set up the integration using the **GitHub App**:
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **GitHub integration**, and select **Install**.
@@ -81,14 +96,8 @@ To create a GitHub personal access token to configure the SEI GitHub integration
 
    ![The admin:org scope selections for a GitHub personal access token.](../static/github-token-scope2.png)
 
-   * The `admin:org_hook` scope is required to track issue cycle time (for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports)). If you don't want to track issue cycle time, you don't need to select this permission.
-
-   ![The admin:org_hook scope selections for a GitHub personal access token.](../static/github-token-scope3.png)
-
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 4. If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-
-
 
 #### Configure the integration
 
@@ -112,18 +121,10 @@ To create a GitHub personal access token to configure the SEI GitHub integration
    * **Fetch Commit Files**: Allow SEI to ingest data within commits from GitHub.
 
 :::info
-The support for Connecting via Webhook has been deprecated.
+The support for Connecting via Webhook has been deprecated as part of this feature.
 :::
 
 8. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
-
-:::info **ISSUE CYCLE TIME WEBHOOK**
-
-If you created a personal access token and allowed the admin:org\_hook permission, SEI creates a user webhook to receive issue cycle time data for the SCM Issue Time Across Stages Report.
-
-If you use GitHub App, SEI creates an organization webhook instead.
-:::
-
 
 ## Connect with GitHub Enterprise
 
@@ -157,7 +158,7 @@ To set up the integration for the GitHub Enterprise:
 
 ![](../static/github-enterprise-success.png)
 
-Once you have downloaded the `satellite.yml` file update it following the instructions [here](../../sei-ingestion-satellite/run-the-satellite-container).
+Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/run-the-satellite-container).
 
 :::info
 Please note that after adding an integration, it **may take up to 24 hours for the data to be fully reflected on SEI.** This means that any widgets you configure on Insights using this integration **may not display data until the synchronization is completed.**
@@ -185,4 +186,4 @@ integrations:
       fetch_commit_files: true
 ```
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](../../sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)

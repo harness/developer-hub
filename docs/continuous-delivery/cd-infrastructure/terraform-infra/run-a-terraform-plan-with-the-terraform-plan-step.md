@@ -18,7 +18,7 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 ## Before You Begin
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
+* [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ## Important: Install Terraform on Delegates
@@ -472,6 +472,10 @@ For example, if the Terraform Plan step with the Id `TfPlan` is in the **Executi
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
 
+When Terraform plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
+
 :::note
 When the `Run on Remote Workspace` option is selected, you will not be able to export the JSON representation of terraform plan.
 :::
@@ -520,7 +524,7 @@ and found no differences, so no changes are needed.
 
 ## Skip state storage
 
-The following feature requires a minimum Harness delegate version of 812xx.
+The following feature requires a minimum Harness Delegate version of 812xx.
 
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 
@@ -589,8 +593,8 @@ If you generate any local resources on the delegate in the directory where Terra
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

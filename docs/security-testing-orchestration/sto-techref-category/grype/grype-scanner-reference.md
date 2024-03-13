@@ -42,8 +42,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Grype step settings for STO
 
-The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Grype scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
+The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
 <!--
@@ -260,12 +259,23 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+## Troubleshoot "vulnerability database build date exceeds max allowed age" exception
+
+The full exception is: `db could not be loaded: the vulnerability database was built n weeks ago (max allowed age is 5 days)`
+
+This exception indicates that the Grype step in the STO process is unable to load the vulnerability database due to its age exceeding the maximum allowed age of 5 days. If the environment where you're running these scans has restricted internet connectivity (firewalled), you must set up a local database for Grype to update itself. For comprehensive documentation for the initial setup, configuring the local database, and final configuration, go to [Set up Grype in air-gapped environments](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/grype/grype-setup-in-airgapped/).
+
+While Harness updates the database every time it rebuilds the Grype image, this is primarily done for performance reasons. A fresher database requires less time and effort to update at runtime. However, this update is not sufficient to bypass the database access requirement, as the maximum allowed age is 5 days. You can temporarily disable the age check and run Grype with the database it ships with, but this is not recommended from a security standpoint. It's advisable to follow the provided instructions to resolve the database access issue in a more secure manner.
+
+
  
+<!-- STO-7187 remove legacy configs for scanners with step palettes 
+
 ## Security step settings for Grype scans in STO (legacy)
  
 :::note
@@ -311,7 +321,7 @@ The following settings are also required, depending on the container type:
 	- `container_access_id`: Username
 	- `container_access_token`: Password/token
 
--->
+
 
 #### Container scan settings
 
@@ -329,3 +339,4 @@ import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+-->

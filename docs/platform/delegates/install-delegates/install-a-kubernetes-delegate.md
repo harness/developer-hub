@@ -1,7 +1,7 @@
 ---
 title: Install a legacy Kubernetes delegate
 description: Install a legacy Kubernetes delegate.
-sidebar_position: 7
+sidebar_position: 8
 helpdocs_topic_id: f9bd10b3nj
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
@@ -9,6 +9,11 @@ helpdocs_is_published: true
 ---
 
 This topic describes how to install the legacy Kubernetes delegate, which always auto upgrades to the default delegate version associated with a Harness Manager version.
+
+import Delk8ssup from '/docs/platform/shared/delegate-install-k8s-supported-vernos.md'
+
+<Delk8ssup />
+
 
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 

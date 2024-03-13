@@ -1,6 +1,6 @@
 ---
-title: Use HCE with Service Reliability Management (SRM)
-sidebar_label: Use HCE with Service Reliability Management
+title: Walkthrough- Use HCE with Service Reliability Management (SRM)
+sidebar_label: Use CE with Service Reliability Management
 sidebar_position: 35
 description: Integrating HCE with SRM 
 ---

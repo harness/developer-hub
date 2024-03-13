@@ -7,7 +7,7 @@ redirect_from:
   - /docs/continuous-integration/use-ci/mobile-dev-with-ci
 ---
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 
 Harness CI supports mobile app development.
 
@@ -592,7 +592,7 @@ The above example was adapted from a [Canopas blog post that used GitLab CI to d
 </TabItem>
   <TabItem value="ex4" label="Example: Use Bitrise Integrations">
 
-This example shows how you can run Bitrise Integrations in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to deploy an Android app. This example is based on [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-android-apps.html), and the same concepts apply to [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-apps.html).
+This example shows how you can run Bitrise Integrations in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to deploy an Android app. This example is based on [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows/workflow-recipes-for-android-apps.html), and the same concepts apply to [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows/workflow-recipes-for-ios-apps.html).
 
 ```yaml
               - step:

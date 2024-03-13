@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 import { tag } from "../data/roadmapData";
+import Link from "@docusaurus/Link";
 
-const HorizonCard = ({ title, description, tag, module }) => {
+const HorizonCard = ({ title, description, tag, module, link }) => {
   const colorMap = new Map([
     [
       "red",
@@ -43,7 +44,7 @@ const HorizonCard = ({ title, description, tag, module }) => {
   ]);
 
   return (
-    <div className={clsx(styles.card, styles[module])}>
+    <Link to={link} className={clsx(styles.card, styles[module])}>
       <div className={styles.tag}>
         {tag.length > 0 &&
           tag.map((tagItem: tag) => {
@@ -67,7 +68,7 @@ const HorizonCard = ({ title, description, tag, module }) => {
       </div>
       <h4>{title}</h4>
       <p>{description}</p>
-    </div>
+    </Link>
   );
 };
 

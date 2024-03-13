@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-01-29T10:00
+date: 2024-03-13T10:00
 sidebar_position: 4
 ---
 
@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
 These release notes describe recent changes to Harness Delegate.
 
@@ -21,6 +21,38 @@ These release notes describe recent changes to Harness Delegate.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## Important upcoming changes
+
+:::warning important changes
+
+Please note that the following important changes will occur **March 31, 2024**:
+
+- The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
+
+   <details>
+   <summary>Legacy delegate installation flow</summary>
+
+   #### New Delegate Page
+
+   The `Switch back to old delegate install experience` link will be removed.
+
+   ![](./static/switch-to-old-delegate-install.png)
+
+   #### Legacy delegate installation flow deprecated
+
+   You will no longer be able to reach the legacy delegate installation flow.
+
+   ![](./static/old-delegate-install-exp.png)
+
+   </details>
+
+- Delegate tokens not used within the last 30 days will be revoked automatically.
+   
+   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
+
+:::
+
 
 <details>
 <summary>Deprecation notice</summary>
@@ -37,18 +69,118 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
+## March 2024
+
+### Harness version 1.28.11, Harness Delegate version 24.03.82502 <!--  March 13, 2024 -->
+
+#### New features and enhancements
+
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. Use `CPU_USAGE_THRESHOLD` for CPU control (default: no limit). Use `MEMORY_USAGE_THRESHOLD` for memory control (default: 80%). If you are using `RESOURCE_USAGE_THRESHOLD` (deprecated), it exclusively controls the memory threshold. (PL-47746)
+
+- OPA policy enforcement has been introduced to three new entities: Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming convention policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the `onSave` action. (PL-46778)
+
+- Support added to enable OPA policy for naming convention enforcement while creating or updating a service account. (PL-46777)
+
+#### Fixed issues
+
+- Attempts to use the `harness_platform_user` resource to create or delete users resulted in an error. The message "Request failed as you have an older version of an entity, please reload the page and try again" was displayed and the Terraform state went out of sync with Harness. This issue has been fixed. (PL-39870, ZD-47107)
+
+- Continuous Verification for Google Cloud Operations logged error for the `resourceName` field. This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list). (CDS-89441)
+
+### Version 24.03.82408 <!--  March 8, 2024 -->
+
+#### Hotfix
+
+- Fixed an infinite loop issue in the delegate SCM service. (PL-48043)
+
+- Added support for GitOps pipeline steps with Harness Code and bumped the SCM version to `d78720584`. (CODE-1572)
+
+### Version 24.02.82406 <!--  March 1, 2024 -->
+
+#### Hotfix
+
+- Previously, during the creation of rollback data, AWS Lambda would use string values for function versions. However, it now considers the integer values of function versions. This means that if you have deployed function versions `{8,9,10}` and you are currently deploying version `{11}`, the previous rollback version will be `{10}`, instead of `{9}`. (CDS-92300)
 
 ## February 2024
 
-### Version 24.02.82203 <!--  February 2, 2024 -->
+### Version 24.02.82404 <!--  February 29, 2024 -->
+
+#### Hotfix
+
+- Updated the behavior of the Scale step. After the Scale step is executed, all workload pods are published as new pods, as the scale step can be used to scale pods and change traffic on the pods. (CDS-91534, ZD-54319)
+
+### Harness version 1.26.14, Harness Delegate version 24.02.82402 <!--  February 27, 2024 -->
+
+#### Fixed issues
+
+- The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595, ZD-57053)
+
+  The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)  
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronization.
+
+- Pipelines were failing due to errors related to the inability to acquire delegate tasks. (PL-42600, ZD-54025, ZD-54324)
+
+   The logic for calculating CPU and Memory usage has been improved, specifically for scenarios utilizing the dynamic task request handling feature in delegates, enhancing the reliability of task allocation and pipeline execution.
+
+- A null pointer exception was occurring for enforcement limit accounts, triggered by the introduction of the startup plan. (GTM-3247)
+   
+   This issue has been resolved by implementing an appropriate error message code for enforcement limit accounts when customers reach their enforcement limits, eliminating the null pointer exception. 
+
+- Users were unable to create custom queries as a heath source for monitored services. (CDS-91181, ZD-57562)
+  
+   This issue is fixed by making the service instance field configurable for users.
+
+### Version 24.02.82309 <!--  February 28, 2024 -->
+
+#### Hotfix
+
+- We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. (CCM-16052)
+
+
+### Version 24.02.82308 <!--  February 21, 2024 -->
+
+#### Hotfix
+
+- Upgraded the SDK for the ASG swimlane. (CDS-91937)
+
+### Version 24.02.82306 <!--  February 16, 2024 -->
+
+#### Hotfix
+
+- Added default values for minimum healthy percentage as 90 and maximum healthy percentage as 110 for the instance refresh operation that is performed during ASG Rolling deployments to prevent service downtime. (CDS-91335, ZD-57686)
+
+### Version 24.02.82304 <!--  February 12, 2024 -->
+
+#### Hotfix
+
+- Fixed an issue in ECS Blue Green deployments where the ECS service was deleted after the first or second deployment. (CDS-91499, ZD-57892)
+
+### Version 24.02.82303 <!--  February 2, 2024 -->
 
 #### Hotfix
 
 - Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
 
+### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
+
+#### Fixed issues
+
+- Addressed an issue where pod deletion didn't trim excess whitespace in namespace names, which could prevent pod cleanup. (CI-10636, ZD-54688)
+
+- Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. (CI-11220, ZD-57421)
+
+- Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. (CI-10938)
+
+- The error message text for the `no eligible delegates present` error now includes additional potential causes. (CI-10933, ZD-55977)
+
 ## January 2024
 
 ### Harness version 1.22.3, Harness Delegate version 24.01.82202 <!--  January 29, 2024 -->
+
+#### Fixed issues
 
 - The Azure endpoints were not being set according to the Azure environment selected, which caused the Azure connectors to function properly only for the Azure public cloud but not for other Azure cloud variations such as Azure Gov, Azure China, and so on. (PL-43333, ZD-54717)
 
@@ -57,6 +189,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - [PR status updates](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) now send correctly when using a [GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support) with a secret (instead of plain text) for the **Application ID**. (CI-11025, ZD-56177)
 
 ### Version 24.01.82110 <!--  January 29, 2024 -->
+
+#### Hotfix
 
 - You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
@@ -155,8 +289,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
 
-   This feature is behind the feature flag `CDS_ECS_BG_VALIDATION`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
-
 ###### Fixed issues
 
 - For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
@@ -208,11 +340,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 ###### Hotfix
 
 - You can now use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
-
-    :::info note
-    Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-    
-    :::
 
 #### November 2023
 

@@ -63,13 +63,17 @@ By default, Harness uses the `--dry-run` flag on the `kubectl apply` command
 
 If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
 
+## Traffic Routing Configuration
+
+For information on how to configure traffic routing for Canary deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
+
 ## Advanced
 
 See the following topics for these settings:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

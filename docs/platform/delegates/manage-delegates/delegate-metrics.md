@@ -33,7 +33,7 @@ Also note that the above metrics are available only if your delegate version is 
 :::
 
 :::info note
-Metrics with # above include the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
+Metrics with # above the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
 
 :::
 
@@ -331,13 +331,26 @@ To configure the delegate resource threshold, make the following changes to the 
         value: "true"
    ```
 
-3. Set the `DELEGATE_RESOURCE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
+3. Set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```
    env:
-      - name: DELEGATE_RESOURCE_THRESHOLD
+      - name: DELEGATE_MEMORY_THRESHOLD
         value: "80"
    ```
    :::info note
    This step is optional if you want to use the default value of 80%.
-   ::: 
+   :::
+
+4. Set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold. When the threshold is exceeded, the delegate rejects new tasks.
+
+   ```
+   env:
+      - name: DELEGATE_CPU_THRESHOLD
+        value: "80"
+   ```
+   :::info note
+   This step is optional if you want to use the default value of infinite, which means no CPU threshold.
+   :::
+
+5. The `DELEGATE_RESOURCE_THRESHOLD` env variable is Deprecated. Use `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD` instead. If it is set, it will only set the Memory threshold.

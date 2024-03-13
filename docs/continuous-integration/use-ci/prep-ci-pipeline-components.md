@@ -98,7 +98,7 @@ If you need to shared data across stages, use [caching](/docs/continuous-integra
 
 A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on. Go to the following documentation for details about how you can use various CI steps in your pipelines:
 
-* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Build and push images or upload and download artifacts](/docs/category/build-push-upload-download)
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
@@ -112,7 +112,7 @@ Stages and steps have advanced settings you can use to control the flow of opera
 
 ### Conditional Executions
 
-Use [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
+Use [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
 
 You can specify conditional execution settings for an entire stage and for individual steps. A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings. A step's conditional execution settings overrides the stage's conditional execution settings.
 
@@ -125,7 +125,7 @@ For information about looping strategies to go:
 
 ### Failure Strategies
 
-[Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
+[Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
 Each failure strategy is comprised of the following:
 
@@ -136,7 +136,7 @@ Failure strategies are a critical pipeline design component that determine what 
 
 See also:
 
-* [Retry failed executions](/docs/platform/pipelines/resume-pipeline-deployments)
+* [Retry failed executions](/docs/platform/pipelines/failure-handling/resume-pipeline-deployments)
 
 ### Environment variables
 
@@ -155,4 +155,4 @@ You can freely switch between the two editors. When editing a pipeline in Harnes
 
 ![](./static/harness-yaml-quickstart-21.png)
 
-For more information about Harness YAML, go to the [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart).
+For more information about Harness YAML, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart).

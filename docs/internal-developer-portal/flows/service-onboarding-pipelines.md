@@ -14,13 +14,17 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 
 <!-- See it in action: Demo video -->
 
-**To get started, check out the tutorial to [create your first service onboarding pipeline](/tutorials/internal-developer-portal/service-onboarding-pipeline).**
+**To get started, check out the tutorial to [create your first service onboarding pipeline](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline).**
 
 ## How to write IDP Templates
 
 Templates in Harness IDP is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). You can create your own templates with a small yaml definition which describes the template and its metadata, along with some input variables that your template will need, and then a list of actions which are then executed by the scaffolding service. It is suggested to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
 **Templates** are stored in the **Catalog** under a **kind Template**. The minimum that is needed to define a template is a `template.yaml` file, but it would be good to also have some files in there that can be templated in.
+
+### Adding the owner
+
+By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi` and it should only contain the user name not the complete email id. 
 
 A simple `template.yaml` definition might look something like this:
 
@@ -793,7 +797,7 @@ Harness IDP ships the following Harness related built-in actions along with [som
 - `harness:create-secret`
 - `harness:delete-secret`
 
-Learn more about how to use them in the [service onboarding tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input).
+Learn more about how to use them in the [service onboarding tutorial](/docs/internal-developer-portal/tutorials/using-secret-as-an-input).
 
 ## Available UI pickers
 

@@ -38,6 +38,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
   - [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)
 
   Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+- The release name for the Helm deployment shouldn't exceed length 53. For more information, go to [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call).
 
 ## Supported platforms and technologies
 
@@ -270,7 +271,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview).
+If you haven't set up a Harness Delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -774,7 +775,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>
-        <td>Disables Helm repository caching on the Harness delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
+        <td>Disables Helm repository caching on the Harness Delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>

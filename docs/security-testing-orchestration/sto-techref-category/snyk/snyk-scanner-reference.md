@@ -5,21 +5,29 @@ sidebar_label: Snyk scanner reference
 sidebar_position: 10
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 
 Harness STO supports the following scan modes for the following Snyk products:
 - Snyk Open Source
-  - [Snyk Open Source orchestration example](./snyk-scans.md#snyk-open-source-orchestration-example)
-  - [Snyk Open Source ingestion example](./snyk-scans.md#snyk-open-source-ingestion-example)
+  - [Snyk Open Source — orchestration mode](./snyk-scans.md#snyk-open-source-orchestration-example)
+  - [Snyk Open Source — ingestion mode](./snyk-scans.md#snyk-open-source-ingestion-example)
 - Snyk Code 
-  - [Snyk Code ingestion example](snyk-scans.md#snyk-code-ingestion-example)
+  - [Snyk Code — ingestion mode](snyk-scans.md#snyk-code-ingestion-example)
 - Snyk Container
-  - [Snyk Container ingestion example](./snyk-scans.md#snyk-container-ingestion-example)
+  - [Snyk Container — ingestion mode](./snyk-scans.md#snyk-container-ingestion-example)
 - Snyk infrastructure as Code (currently in beta)
-  - [Snyk infrastructure as Code ingestion example](./snyk-scans.md#snyk-infrastructure-as-code-ingestion-example)
+  - [Snyk infrastructure as Code — ingestion mode](./snyk-scans.md#snyk-infrastructure-as-code-ingestion-example)
 
-For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans.md).
 
 ## Important notes for running Snyk scans in STO
+
+<!--
+
+You can configure the Snyk step to [show the original CVSS score](#show-the-original-cvss-score-when-snyk-overrode-it) when a Snyk security policy overrode the score for an issue. 
+
+-->
 
 
 ### Docker-in-Docker requirements
@@ -131,45 +139,83 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 #### Access Token (_Orchestration scans_)
 
-
 import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
-
-
 
 <StoSettingAuthAccessToken />
 
-#### Ingestion File
 
+### Ingestion File
 
 import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
-
-
 <StoSettingIngestionFile  />
 
-### Log Level, CLI flags, and Fail on Severity
+### Additional CLI flags
 
-<a name="log-level"></a>
+<!-- https://harness.atlassian.net/browse/STO-6983 -->
+<!-- https://harness.atlassian.net/browse/STO-7003 -->
 
-#### Log Level
+You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with specific command-line arguments. Useful arguments include:
 
+* `--all-projects` — Search recursively down the repo folder tree.
+* `--detection-depth=n` — The folder depth to scan. This argument has no effect if the repo has fewer levels than the specified depth.
+
+:::note
+
+STO does not support [context-specific arguments](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#less-than-context-specific_options-greater-than) or arguments that appear at the end of the command line, such as Maven or Gradle arguments.
+
+:::
+
+### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
-
-
 
 <StoSettingLogLevel />
 
 
-
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
 
+
+### Settings
+
+You can use this field to run the Snyk scan with additional options. 
+
+
+
+### Show original issue severities overridden by Snyk security policies 
+
+You can configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
+
+<DocImage path={require('../static/sto-7041-override-in-security-tests.png')} width="50%" height="50%" title="Snyk security override in Security Tests" />
+
+<DocImage path={require('../static/sto-6927-override-popup-for-snyk.png')} width="50%" height="50%" title="Override for Snyk issue in Issue Details table" />
+
+This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
+  
+To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
+
+  <Tabs>
+     <TabItem value="Visual" label="Visual" default>
+
+     <DocImage path={require('../static/sto-7041-add-setting-in-visual-editor.png')} width="40%" height="40%" title="Add ingest_tool_severity to Snyk ste" />
+
+    </TabItem>
+  
+    <TabItem value="YAML" label="YAML">
+      ``` yaml
+      - step:
+          type: Snyk
+          spec:
+            settings:
+              ingest_tool_severity: "true"
+      ```
+
+    </TabItem>
+    </Tabs>
 
 
 ### Additional Configuration
@@ -186,12 +232,12 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
-
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Snyk scans in STO (legacy)
 
@@ -235,3 +281,4 @@ import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+-->

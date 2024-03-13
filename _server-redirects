@@ -14,20 +14,42 @@
 /docs/category/apis /docs/category/api
 
 # Added by schoudhury on 9-3-2023
-/docs/continuous-delivery/get-started/cd-tutorial /tutorials/cd-pipelines
-/docs/continuous-delivery/get-started/create-first-pipeline /tutorials/cd-pipelines/kubernetes/manifest
 /docs/category/get-started /docs/category/get-started-with-cd
 /docs/category/get-started-with-harness-chaos-engineering-ce /docs/category/get-started-with-ce
 /docs/category/get-started-1 /docs/category/get-started-with-ccm
 
-# Added by schoudhury on 9-5-2023
-/docs/category/quickstarts /tutorials/category/cloud-autostopping
-
 # Added by aimurphy on Oct-25-2023 for 3809
 /release-notes/whats-new /release-notes
+
+# Added by aimurphy on Jan-31-2024 for build and upload artifact reorg on ci-rn-1-11-x branch
+/docs/category/build-and-upload-artifacts /docs/category/build-push-upload-download
 
 # Added by douglas-j-bothwell on Feb-5-2024
 /docs/category/sto-workflows /docs/category/use-sto
 
-# Redirects generated from Front Matter [sytem generated goes below here]:
+# Added by aimurphy in Feb 2024 for Tutorial Unification
+/tutorials/ci-pipelines /docs/continuous-integration
+/tutorials/feature-flags /docs/feature-flags
+/tutorials/self-managed-enterprise-edition /docs/self-managed-enterprise-edition
+/tutorials/platform /docs/platform
+/tutorials/error-tracking /docs/continuous-error-tracking
+/tutorials/service-reliability /docs/service-reliability-management
+/tutorials/software-engineering-insights /docs/software-engineering-insights
+/tutorials/internal-developer-portal /docs/internal-developer-portal
+/tutorials/secure-supply-chain /docs/software-supply-chain-assurance
+/tutorials/chaos-experiments /docs/chaos-engineering
+/tutorials/category/cloud-autostopping /docs/category/autostopping-guides
+/tutorials/cloud-costs /docs/cloud-cost-management
+/tutorials/security-tests /docs/security-testing-orchestration
+/docs/continuous-delivery/get-started/cd-tutorial /docs/continuous-delivery
+/tutorials/cd-pipelines /docs/continuous-delivery
+/tutorials/cd-pipelines/unified-cicd /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/kubernetes /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/serverless /docs/category/cd-and-gitops-tutorials
+/tutorials/cd-pipelines/vm /docs/category/cd-and-gitops-tutorials
+/tutorials /docs
 
+# Added by schoudhury on 3-2-2024
+/certifications /university 
+
+# Redirects generated from Front Matter [sytem generated goes below here]:

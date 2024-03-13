@@ -56,7 +56,7 @@ Lead Time for Changes measures the time it takes for a task to progress from dev
 
 ![](./static/lead-time-for-changes.png)
   
-To learn more about how lead time metrics are calculated, Go to [Lead Time for Changes calculation](../sei-metrics-and-reports/dora-metrics.md#lead-time-for-changes-calculation).
+To learn more about how lead time metrics are calculated, Go to [Lead Time for Changes calculation](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes-calculation).
 
 ### Deployment Frequency
 
@@ -119,7 +119,7 @@ Note: The additional filters being used to define the deployments will be applic
 2. Add a profile description. (Optional)
 3. **Lead Time for Changes:** Define the settings for calculating the DORA Lead Time for Changes report. 
    * Select the Issue Management tool that you want to use to track tasks in your team.
-   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](../sei-metrics-and-reports/dora-metrics.md#development-stages-in-lead-time-for-changes).
+   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages-in-lead-time-for-changes).
 4. **Deployment Frequency:** Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
    * Choose the tool that you want to use to measure deployments in your team.
    * Select the existing integrations that you would like to use to calculate the Deployment Frequency.
@@ -145,7 +145,7 @@ To create a Velocity Lead Time profile, you need to follow these key steps:
 2. Add a profile description. (Optional)
 3. Select either **JIRA** or **Azure** as your issue management system. 
 4. Configure the Workflow Profile Definition. Here you can define the setting for **Stages**, **New Features**, **Deployment**, **Hotfix** and **Defects**.
-5. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](../sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports.md#development-stages-in-velocity-lead-time).
+5. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#development-stages-in-velocity-lead-time).
 6. For **NEW FEATURE**, **DEPLOYMENT**, **HOTFIX**, **DEFECT** the configuration is done based on the below parameters:
    * **Pull Requests to Branches:** Specify values that the branches for pull requests should start with or contain.
    * **Pull Requests from Branches:** Define values that the source branches for pull requests should start with or contain.
@@ -192,17 +192,13 @@ You can modify Workflow profile stages and grades according to your team's SDLC 
 
 ## Add the Jira Release stage
 
-:::info
-This feature is currently not supported on Harness SEI. 
-:::
-
-<!-- When configuring a workflow profile in Jira, you have the option to add a release stage. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
+When configuring a workflow profile in Jira, you have the option to add a release stage. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
 
 By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to `Ticket Created` and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
 
-If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile. -->
+If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile.
 
-## Measure Lead Time by JIRA Statuses
+## Measure Lead Time by Jira Statuses
 
 You can choose to measure lead time exclusively by JIRA statuses. This feature is especially useful for teams using JIRA as their primary issue management tool. It is a mandatory configuration for the JIRA releases report.
 

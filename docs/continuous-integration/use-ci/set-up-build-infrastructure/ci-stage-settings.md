@@ -64,10 +64,7 @@ These settings are for the [Harness SSCA module](/docs/software-supply-chain-ass
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For some examples, go to:
-
-* [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
-* [Set plugin runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-plugin-runtime-flags)
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For example, stage variables are inherently available to steps as environment variables.
 
 ## Infrastructure
 
@@ -294,7 +291,7 @@ The following **Platform** settings are available:
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-Use the **VMs** infrastructure option for [self-hosted cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Use the **VMs** infrastructure option for [self-managed cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 The following **Platform** settings are available:
 
@@ -311,7 +308,7 @@ The following **Platform** settings are available:
 
 The **Execution** tab is where you add steps to the stage. For details about different step types, go to:
 
-* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Build and push images or upload and download artifacts](/docs/category/build-push-upload-download)
 * [Run tests](/docs/category/run-tests)
 * [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
@@ -321,4 +318,4 @@ The **Execution** tab is where you add steps to the stage. For details about dif
 
 ## Advanced
 
-The **Advanced** tab contains settings for [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+The **Advanced** tab contains settings for [conditional execution](/docs/platform/pipelines/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).

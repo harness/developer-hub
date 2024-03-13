@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-02-05:T10:00:30
+date: 2024-03-13:T10:00:30
 sidebar_position: 3
 ---
 
@@ -14,7 +14,7 @@ import delete_project from './static/delete-project.png'
 
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/platform/rss.xml" />
 
 These release notes describe recent changes to Harness Platform.
 
@@ -80,7 +80,204 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+
+## March 2024
+
+### Version 1.28.11<!--  March 13, 2024 -->
+
+#### New features and enhancements
+
+- You can now add multiple emails to User Group notifications. This support allows you to include Harness Users or add emails separated by commas. (PL-46480)
+
+- The UI has been updated to include an HTTP Event Collector (HEC) Auth Token option in the Splunk Connector, allowing users to select HEC-type authentication. (PL-46977)
+
+- Upgraded `org.eclipse.jetty.*` from v9.4.53.v20231009 to 9.4.54.v20240208. (PL-47854)
+
+- The delegate list page now shows the latest delegate version beside the **New Delegate** button. This will help you compare your delegate version with the latest supported delegate version. This item is available with Harness Platform version 1.28.11 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47049)
+
+- In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding hyphen usage. While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage. Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier. Secret identifiers cannot start with a hyphen, following best practices. (PL-46959)
+
+- OPA policy enforcement has been introduced to three new entities, namely Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming convention policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the onSave action. (PL-41877)
+
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. Use `CPU_USAGE_THRESHOLD` for CPU control (default: no limit). Use `MEMORY_USAGE_THRESHOLD` for memory control (default: 80%). If you are using `RESOURCE_USAGE_THRESHOLD` (deprecated), it exclusively controls the memory threshold. This item requires Harness Delegate version 24.03.82502. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47746)
+
+- OPA policy enforcement has been introduced to three new entities: Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming convention policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the `onSave` action. This item requires Harness Delegate version 24.03.82502. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46778)
+
+- Support added to enable OPA policy for naming convention enforcement while creating or updating a service account. This item requires Harness Delegate version 24.03.82502. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46777)
+
+#### Fixed issues
+
+- Delegate logs were unavailable due to the system not automatically switching to app.harness.io as the remote logging service when GCP was blocked by a firewall. The auto-switching mechanism for the remote logging destination is fixed, ensuring accessibility to delegate logs when GCP is blocked by a firewall. This item is available with Harness Platform version 1.28.11 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46958, ZD-57844)
+
+- Perpetual tasks experienced significant delays in reassignment after the current delegate was shut down. We have addressed the issue of prolonged delays in perpetual task reassignment following delegate shutdowns by increasing the frequency of cron jobs that reset the perpetual task state for reassignment. This item is available with Harness Platform version 1.28.11 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47781, ZD-58497, ZD-58522, ZD-58650)
+
+- Fixed the issue that allowed the creation of user Personal Access Tokens (PATs) at the organization and project scope via API, ensuring consistent listing and management in the UI. PATs can only be created at the account scope. (PL-47558)
+
+- Attempts to use the `harness_platform_user` resource to create or delete users resulted in an error. The message "Request failed as you have an older version of an entity, please reload the page and try again" was displayed and the Terraform state went out of sync with Harness. This issue has been fixed. This item requires Harness Delegate version 24.03.82502. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-39870, ZD-47107)
+
+### Version 1.27.10<!--  March 5, 2024 -->
+
+#### New features and enhancements
+
+- Support added to enable OPA policy for TTL enforcement while creating or updating an API Key Token. (PL-46779)
+
+- Invitation emails now include the inviter's username and email address, enhancing clarity for recipients. (PL-47694)
+
+   Additionally, the name of the account to which the user is being added is now specified in the invite, providing better context for the invitation.
+
+#### Fixed issues
+
+- After adding users to an Azure AD group, which then propagated to Harness, not all users were reflected in the "All Account Users" and "Harness Prod Users" user groups. The "Harness Prod Users" group, tied to SCIM, did not automatically include all newly created users in Harness, affecting the Harness STO module go-live. (PL-47669, ZD-55559, ZD-57091, ZD-58412, ZD-58486)
+
+   We have fixed this issue with concurrent updates to user groups during user synchronization through SCIM, ensuring complete sync of all users in user groups from Azure AD to Harness.
+
 ## February 2024
+
+### Version 1.26.14<!--  February 27, 2024 -->
+
+#### Fixed issues
+
+- Creating or updating a project with an org identifier absent in the account used to throw error code: 500. (PL-47059, ZD-58093)
+
+   Now, the UI displays the following improved error message if the provided org identifier is absent: `Organisation with identifier "OrgId" does not exist in accountIdentifier: "accountId"`.
+
+- The retry interval for attempting to create or read secrets from HashiCorp Vault was fixed at 1 second after each failure. (PL-46595, ZD-57053)
+   
+   The retry interval has now been modified to increase by a factor of 2 times the number of failures. Consequently, after the first failure, the second attempt will occur after a 2-second delay, and the third attempt will be made after a 4-second delay, enhancing the robustness of secret management operations.
+
+   This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronisation.
+
+   This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Pipelines were failing due to errors related to the inability to acquire delegate tasks. (PL-42600, ZD-54025, ZD-54324)
+
+   The logic for calculating CPU and Memory usage has been improved, specifically for scenarios utilizing the dynamic task request handling feature in delegates, enhancing the reliability of task allocation and pipeline execution.
+
+   This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Version 1.25.5 <!--  February 19, 2024 -->
+
+#### New features and enhancements
+
+:::danger Important default delegate YAML update
+
+- Harness has updated the default HPA in the Harness Delegate YAML to use `autoscaling/v2` instead of `autoscaling/v1` which was used in earlier delegate versions.
+
+   With this update, the delegate default scaling metrics are now 70% of CPU and 70% of memory utilization.
+
+   ```yaml
+   
+   ---
+   
+   
+   apiVersion: autoscaling/v2
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: kubernetes-delegate-hpa
+     namespace: harness-delegate-ng
+     labels:
+         harness.io/name: kubernetes-delegate
+   spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: kubernetes-delegate
+    minReplicas: 1
+    maxReplicas: 1
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+   
+   
+   ---
+   
+   ```
+   
+   Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` of your delegate YAML to `autoscaling/v1`.
+
+   For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes).
+
+   
+   This update only affects new delegate installations. Your existing, running delegates are not affected.
+   
+   :::
+
+- Added ability to write delegate logs in JSON format using logstash-logback-encoder library. This can be useful if logs are injected into third party services like DataDog which works better with JSON format. (PL-43525)
+
+  This item is available with Harness Platform version 1.25.5 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Enhanced the `override-delegate-tag` API documentation to include details on `validForDays` and `validTillNextRelease` parameters. Additionally, the default value for `validForDays` has been updated to 180 days, extending from the previous 30 days. For more information, go to [Override delegate image tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) in the API documentation. (PL-46879)
+
+  This item is available with Harness Platform version 1.25.5 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- Errors occurred when creating a connector with an identifier (Account, Organization, or Project Identifier) that did not exist, displaying a generic "something went wrong, please contact Harness Support" message. (PL-46909, ZD-57678)
+
+   The code has been updated to provide accurate error messages and the current status code when the provided identifiers are incorrect or absent, enhancing clarity and user guidance.
+
+- Delegates were restarting in the middle of execution, disrupting ongoing tasks. (PL-46793)
+
+   Implemented a fix to wait for the task response to complete before marking it as expired or failed during the delegate's unregistering process, preventing premature restarts.
+
+   This item is available with Harness Platform version 1.25.5 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- API keys created using the harness_platform_apikey Terraform provider were expiring even when no expiration date was set. (PL-43308)
+
+   You can now view the API key expiration date at the top of the API Key table on the user profile page. Additionally, for API key’s tokens where the expiration was intended to be set as No Expiration, you can see the default expiration date, clarifying the token's validity period.
+
+### Version 1.24.7 <!--  February 12, 2024 -->
+
+#### New features and enhancements
+
+- You can now enable file logging for supported services through override in Harness Self-Managed Enterprise Edition (On-prem) installations. (PL-44211)
+
+   To enable file logging, add the following to your `override.yaml` file in the `global` section:
+
+   ```yaml
+   global:
+       fileLogging:
+           enabled: true
+           logFilename: /opt/harness/logs/pod.log #provide log filename
+           maxFileSize: 50MB #max single file size, for log archiving
+           maxBackupFileCount: 10 #max count of files
+           totalFileSizeCap: 1GB
+
+   ```
+
+- Added support for encrypted assertions in the SAML response. (PL-43353)
+
+- Added support for selecting the environment in the manual credentials option while creating an Azure key vault connector. (PL-46485)
+
+#### Fixed issues
+
+- The authentication mechanism of a secret manager couldn't be changed from a non-password-based to a password-based mechanism due to a bug in the secret manager update API. (PL-46657)
+
+   This issue has been fixed, enabling the modification of the authentication mechanism for secret managers to a password-based mechanism.
+
+- Git connectors worked intermittently and failed with a `Please provide valid git repository url Provided repo url is invalid. Invalid request: Couldn't connect to given repo` error message. (PL-43598, ZD-55236)
+
+   This issue has been resolved. Now, if there are multiple connectors whose secrets are stored in a secret manager connector, when you update the connector's secret, Harness updates the PPTs of all the linked connectors, along with the secret manager connector.
+
+   This item is available with Harness Platform version 1.24.7 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)
+
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronization.
 
 ### Version 1.23.5 <!--  February 05, 2024 -->
 
@@ -173,7 +370,7 @@ The following deprecated API endpoints are longer supported:
 
    Pipeline executions for pipelines marked for public view will be accessible without the need to authenticate in Harness. You can share pipeline execution URLs, which include console logs for the pipeline steps.
 
-   For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/allow-public-access-to-executions).
+   For more information, go to [Allow public access to pipeline executions](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions).
 
    This is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`.
 
