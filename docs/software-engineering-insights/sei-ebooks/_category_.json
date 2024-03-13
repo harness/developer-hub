@@ -1,0 +1,11 @@
+{
+    "label":"Resource Center",
+    "position": 75,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Resource Center"
+    }
+ }
