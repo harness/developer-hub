@@ -280,5 +280,5 @@ When you click ``Run`` you will be prompted to provide a value for your environm
 In this case, the the step conditional execution will not get skipped and the variable will get resloved to true. 
 ![](./static/unresolved_expressio_true_1.png)
 
-In this case, the deploy stage first started the ``Service`` step and then fetched the ``Environment and Infrastructure`` information. Afterward, it proceeded with the execution of step ``ShellScript_1`. Therefore, before the execution of this step, the pipeline had information about the environment, and it checked if the environment name is ``harnessdevenv``. In this case, it was true, so the step got executed. Even if it were false, the step would have been skipped, but the variable would still have been resolved.
+In this case, the deploy stage first started the ``Service`` step and then fetched the ``Environment and Infrastructure`` information. Afterward, it proceeded with the execution of step ``ShellScript_1 ``. Therefore, before the execution of this step, the pipeline had information about the environment, and it checked if the environment name is ``harnessdevenv``. In this case, it was true, so the step got executed. Even if it were false, the step would have been skipped, but the variable would still have been resolved.
 
