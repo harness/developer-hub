@@ -26,6 +26,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2024
 
+### Version 1.87.2
+
+#### New enhancement
+
+- The **Issue Details** tab now includes a link to the scanned target in **Test Targets**. This link is included for all issues. Previously it was included only for issues with exemptions. (STO-7114)
+
+
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->
