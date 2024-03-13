@@ -38,7 +38,7 @@ The following Harness modules are indirectly involved in a developer’s day-to-
 - a VM in the traditional VM-based apps
 - 6 serverless functions in serverless environments
 
-CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window.
+CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window. Read [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/), for detailed understanding of CD services and how these are tracked.
 
 #### Feature Flags (FF)
 
@@ -74,7 +74,7 @@ IACM tracks ‘Executions’ license consumption, instead of Developers.
 
 #### Security Test Orchestration (STO)
 
-**Security Scans** A Security Scan is defined as the execution of the STO step within a pipeline, tracked over a last 30 day active window. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or ana live application, for security vulnerabilities.
+**Security Scans** A Security Scan is defined as the execution of the STO step within a pipeline, tracked over a last 30 day active window. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or a live application, for security vulnerabilities.
 
 STO tracks ‘Security Scans’ license consumption, instead of Developers.
 
