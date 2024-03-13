@@ -110,7 +110,7 @@ You can't create a trigger for this, but you can set up [Pipeline chaining](http
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
 
-When you [abort a pipeline, stage, or step](https://developer.harness.io/docs/platform/pipelines/failiure-handling/abort-pipeline), the expected behavior is to take actions to halt the task's execution as promptly as possible.
+When you [abort a pipeline, stage, or step](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline), the expected behavior is to take actions to halt the task's execution as promptly as possible.
 
 Harness has a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, that aborts a task. This method typically leverages `Thread.interrupt()` to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
 
