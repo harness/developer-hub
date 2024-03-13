@@ -68,7 +68,7 @@ CE tracks ‘Service’ license consumption, instead of Developers. Note that al
 
 #### Infrastructure as Code Management (IACM)
 
-**Executions** Every successful IACM stage execution that uses an Infrastructure Provider’s `Apply’ command (such as terraform apply) that results in resource changes, is counted as an execution. All executions are tracked over a last 30 day active window.
+**Executions** Every successful IACM stage execution that uses an Infrastructure Provider’s `Apply’ command (such as terraform apply) that results in resource changes, is counted as an execution.
 
 IACM tracks ‘Executions’ license consumption, instead of Developers.
 
