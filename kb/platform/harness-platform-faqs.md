@@ -2849,7 +2849,7 @@ Yes, the docker delegates also will show expiry status in the UI if the image is
 
 #### I'm using Entra ID (formerly Azure Active Directory) as my identity provider and some users aren't being assigned to their groups on login. Why is this happening?
 
-Due to a limitation in Entra ID, users with more than 150 groups might not be assigned any group, which could cause issues for members of >150 groups.  For more information, go to [Users in over 150 groups](/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups).
+Due to a limitation in Entra ID, users with more than 150 groups might not be assigned any group, which could also cause issues for members of >150 groups.  For more information, go to [Users in over 150 groups](/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups).
 
 
 You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
