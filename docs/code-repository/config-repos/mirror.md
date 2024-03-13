@@ -1,8 +1,7 @@
 ---
-title: Set up repo mirroring
+title: Mirror repositories
 description: Create pipelines to sync branch and tag changes across repos.
-sidebar_position: 45
-sidebar_label: Mirror
+sidebar_position: 30
 ---
 
 import Tabs from '@theme/Tabs';
