@@ -55,3 +55,22 @@ CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps i
 </accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app container kill
+
+CF app container kill causes a Cloud Foundry app instance container to be killed and restarted.
+
+- Checks resilience upon app instance crash due to container unavailability.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance crash due to container unavailability.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>

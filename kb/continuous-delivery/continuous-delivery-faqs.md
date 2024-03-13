@@ -5961,10 +5961,28 @@ The HTTP error status code 400 means "Bad Request," indicating that the server c
 #### What is the service id naming convention?
 As a best practice the name of entities should be in a such a way that it can be identified easily with the name and we do have Description field associated as well which will help us to provide more details.
 
-#### What is scopedFilePath parameter in the api call to fetch file-store detail?
+#### Why did my Artifact Triggers stop working?
 
-scopedFilePath Parameter is a way of specifying where the file-store is located. The convention for this is as below:
-Different scopes -
+If Artifact Triggers stop working, it's possible that the Perpetual Task assigned to poll the artifact has gotten into a bad state. To reset the Perpetual Task so that new artifacts can be polled, disable all triggers pointing to the same Artifact and then re-enable them. Perpetual Tasks are shared across all triggers pointing to the same artifact so disabling all of them and re-enabling them will create a new Perpetual Task to poll the artifact.
+
+#### Why can't I see a new Service Override I created through the API in the UI
+
+If using the `updateServiceOverride` [V1 Service API](https://apidocs.harness.io/tag/ServiceOverrides/#operation/updateServiceOverride) API, you will not be able to see the Service Override as this API is creating a V1 Service Override. V1 Services have been deprecated and thus is no longer supported. To create a Service Override via the API, use the new [V2 Service API ](https://apidocs.harness.io/tag/Environments/#operation/upsertServiceOverride).
+
+#### Why can't I deploy an ARM template?
+
+If you are getting the below error when attempting to deploy ARM templates, it might be because `$schema` and `contentVersion` parameters have not been removed from the Parameters File yet. This is due to a limitation in the Azure Java SDK and REST API.
+
+```
+Status code 400, "{"error":{"code":"InvalidRequestContent","message":"The request content was invalid and could not be deserialized: 'Error converting value \"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#\" to type 'Azure.Deployments.Core.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.$schema', line 1, position 6636.'."}}"
+```
+
+For an example of a valid Paramters File, go to [ARM parameter file](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning/#arm-parameter-file).
+
+#### What is the scopedFilePath parameter in the API call to fetch file-store detail?
+
+The `scopedFilePath` parameter is a way of specifying where the file-store is located. The convention for this is as below:
+
 ```
 File on project level:
   scopedFilePath = /path/to/file
@@ -5974,11 +5992,11 @@ File on account level:
   scopedFilePath = account:/path/to/file
  ```
 
-#### How to specify scopedFilePath parameter in the api call?
+#### How do I specify the `scopedFilePath` parameter in the API call?
 
-The scopedFilePath parameter needs to be encoded before passing as a parameter. For example  if the value is /path/to/file we need to provide the encoded value as "%2Fpath%2Fto%2Ffile" . Please note that currently the curl is needing a double encoded value so all the '%2' in the encoding should be converted to '%252F' while using curl.
+The `scopedFilePath` parameter must be encoded before passing it as a parameter. For example, if the value is `/path/to/file`, you must provide the encoded value as "%2Fpath%2Fto%2Ffile". Currently, the curl requires a double encoded value, so all the `%2` in the encoding must be converted to `%252F` when using curl.
 
-#### What is the example of a sample api call using scopedFilePath parameter ?
+#### What is the example of a sample API call using scopedFilePath parameter?
 
 Below is an example api, this already takes care of double encoding while being used in the curl, substitue the values as per the usage, please note that the scopedFilePath in the below example is double encoded.
 

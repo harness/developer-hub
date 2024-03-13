@@ -4,7 +4,7 @@ description: Caching improves build times and enables you to share data across s
 sidebar_position: 41
 ---
 
-You can use the [drone-cache plugin](https://github.com/meltwater/drone-cache) in your CI pipelines to save and retrieve cached data from Azure storage.
+You can use the [cache plugin](https://github.com/drone-plugins/drone-meltwater-cache) in your CI pipelines to save and retrieve cached data from Azure storage.
 
 This is the same plugin used by Harness for [S3 caching](./saving-cache.md) and [GCS caching](./save-cache-in-gcs.md) steps.
 
@@ -32,7 +32,7 @@ Arrangement of save and restore cache steps depends on how you're using caching 
 
 ### Configure restore cache step
 
-To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-cache` plugin, for example:
+To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `cache` plugin, for example:
 
 ```yaml
               - step:
@@ -41,7 +41,7 @@ To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-s
                   identifier: restore_cache_from_Azure
                   spec:
                     connectorRef: account.harnessImage
-                    image: meltwater/drone-cache
+                    image: plugins/cache
                     settings:
                       restore: true
                       cache_key: <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
@@ -54,14 +54,14 @@ To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-s
                       backend: azure
 ```
 
-The Plugin step requires the following settings. For more information about the drone-cache settings, go to the [drone-cache GitHub repository](https://github.com/meltwater/drone-cache).
+The Plugin step requires the following settings:
 
 * `connectorRef` - Use the built-in Docker connector or specify a Docker connector to pull the plugin image.
-* `image: meltwater/drone-cache` - Indicates the drone-cache plugin image.
+* `image: plugins/cache` - Indicates the cache plugin image.
 * `restore: true` - Indicates that you want to use the plugin to restore a cache.
 * `cache_key` - Specify the Azure container and the identifier of the cache to restore.
-   * The drone-cache plugin can accept a `blob_container_name` value; however, this is not needed because the Azure container name is referenced in the `cache_key`.
-   * For pipelines stored in Git repos, the drone-cache plugin attempts to find an Azure container named after your Git repo.
+   * The cache plugin can accept a `blob_container_name` value; however, this is not needed because the Azure container name is referenced in the `cache_key`.
+   * For pipelines stored in Git repos, the cache plugin attempts to find an Azure container named after your Git repo.
    * For the cache identifier, you can use a checksum for a build tool or a static identifier. Usually the identifier is some form of a variable value based on the build number or a checksum.
    * This example [uses stage variables](#use-stage-variables) to populate parts of the cache key:
 
@@ -78,7 +78,7 @@ The Plugin step requires the following settings. For more information about the 
 
 ### Configure save cache step
 
-To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-cache` plugin, for example:
+To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `cache` plugin, for example:
 
 ```yaml
               - step:
@@ -87,7 +87,7 @@ To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-s
                   identifier: save_cache_to_Azure
                   spec:
                     connectorRef: account.harnessImage
-                    image: meltwater/drone-cache
+                    image: plugins/cache
                     settings:
                       rebuild: true
                       cache_key: <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
@@ -100,14 +100,14 @@ To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-s
                       backend: azure
 ```
 
-The Plugin step requires the following settings. For more information about the drone-cache settings, go to the [drone-cache GitHub repository](https://github.com/meltwater/drone-cache).
+The Plugin step requires the following settings:
 
 * `connectorRef` - Use the built-in Docker connector or specify a Docker connector to pull the plugin image.
-* `image: meltwater/drone-cache` - Indicates the drone-cache plugin image.
+* `image: plugins/cache` - Indicates the cache plugin image.
 * `rebuild: true` - Indicates that you want to use the plugin to save a cache.
 * `cache_key` - Specify the Azure container and the identifier of the cache to save.
-   * The drone-cache plugin can accept a `blob_container_name` value; however, this is not needed because the Azure container name is referenced in the `cache_key`.
-   * For pipelines stored in Git repos, the drone-cache plugin attempts to find an Azure container named after your Git repo.
+   * The cache plugin can accept a `blob_container_name` value; however, this is not needed because the Azure container name is referenced in the `cache_key`.
+   * For pipelines stored in Git repos, the cache plugin attempts to find an Azure container named after your Git repo.
    * For the cache identifier, you can use a checksum for a build tool or a static identifier. Usually the identifier is some form of a variable value based on the build number or a checksum.
    * This example [uses stage variables](#use-stage-variables) to populate parts of the cache key:
 
@@ -136,7 +136,7 @@ Steps in the same stage share the same [workspace](/docs/continuous-integration/
 
 ### Use stage variables
 
-The drone-cache plugin requires several settings, including secrets and other sensitive values. You might find it useful to provide these values through [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables), rather than placing the literal values directly in the Plugin steps.
+The cache plugin requires several settings, including secrets and other sensitive values. You might find it useful to provide these values through [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables), rather than placing the literal values directly in the Plugin steps.
 
 These examples uses Gradle. Your variables and values might differ depending on your build tool, caching needs, and where you choose to use variables.
 

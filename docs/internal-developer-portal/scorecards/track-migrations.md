@@ -1,7 +1,7 @@
 ---
 title: How to track migrations using Scorecards
 description: Create a Scorecards to filter file contents to track versions of Libraries and Tools  during migrations
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 ## Introduction
