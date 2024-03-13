@@ -1,19 +1,38 @@
 ---
-title: Create and execute rules
+title: Harness Concepts
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
 
 
-# Optimize cloud costs by using the asset governance rules
+# Harness Concepts: Rules, Rule Sets, Enforcements and Evaluations to optimise cloud costs
 
 :::note
-Currently, Azure support for Asset Governance is behind the feature flag **CCM_ENABLE_AZURE_CLOUD_ASSET_GOVERNANCE_UI** and GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+## Overview
 
-To optimize cloud costs, you need to create a governance rule or combine multiple rules into a ruleset and enforce it to provide a more comprehensive, consistent, and efficient approach to cloud asset governance.
 
+## Rules
+
+Rules help you set up asset governance for your cloud provider. A rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate your Amazon EBS volumes from GP2 to GP3. In such a case, we will write a small file which will run this logic for us. 
+
+Ideally, rules include policy, resource filters, and actions.
+
+- A **policy** is defined in YAML format and consists of filters and actions that are applied to a specific type of cloud resource set up by you.
+
+- A **resource** is the type of cloud resource or service on which the rule will be run or to which the actions and filters will be applied, such as AWS EC2, AWS S3, GCP SQL, or Azure VMs.
+
+- A **filter**, as the name suggests, is a criteria used to narrow down the results based on the attributes. These attributes can include anything such as tags, metadata, or any other resource property provided by you. When the filter is applied, only those resources that match the criteria specified in the filter are given as a result.
+
+- **Actions** are operations that have to be performed on the resource and are applied to the output of the filters specified in the policy when the rule is run. Actions can include things like terminating an EC2 instance, deleting an S3 bucket, or sending an email notification.
+
+So essentially, a rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user. Rules can include multiple policies, and policies include resource filters and actions.
+
+<DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
+
+<DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ## Create a new rule
 
@@ -41,9 +60,11 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 
 Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 that can be enforced. These policies cannot be edited but can be cloned.
 
-## Create a new rule set
+## Rule Sets
 
-Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. They are especially useful when dealing with numerous rules, as it can become challenging to keep track of them individually. Rule sets help to keep rules organized and easily accessible, making it easier to manage and maintain complex rule configurations.
+As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where rule sets come into the picture. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
+
+  <DocImage path={require('./static/rule_set.png')} width="90%" height="90%" title="Click to view full size image" />
 
 To create a rule set, perform the following steps:
 
@@ -68,9 +89,11 @@ The rule set is created successfully. You can view the rule set on the **Asset G
 11. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
 
 
-## Enforce a rule or a rule set
+## Enforcements
 
-You need to create rule enforcement to automatically detect and take action when the conditions are met. Rule enforcement allows automated actions such as scaling resources up or down based on predefined thresholds. For example, you can create an enforcement to schedule the deletion of all unused EC2 instances older than 60 days.
+Enforcements enable you to enforce a certain set of rules or rule sets (also known as governance guardrails) against a specific set of targets (accounts, subscriptions, and projects) to run periodically. Sometimes, we need rules to run periodically, such as every day, week, or month. However, running these rules manually every day or week at a specified time creates extra overhead and is a slow process prone to manual errors. To solve this, enforcements allow users to set up a timely schedule and choose the day, time, and frequency at which they want their rules or rule sets to be enforced.
+
+For example, a user can create an enforcement to schedule the deletion of all unused EC2 instances older than 60 days. This enforcement will run on the **days specified by the user**, at the **specified time**, and with the **specified frequency (hourly, daily, monthly**). For instance, you could set it to run daily at 2:00 AM to ensure that any EC2 instances meeting the criteria are removed. Alternatively, you might choose to run it hourly during peak usage times, or monthly for less critical cleanup tasks. 
 
 To create enforcement, perform the following steps:
 
