@@ -4,7 +4,7 @@ title: Preventing GitHub API Rate Limits with Bidirectional Sync
 ---
 # Introduction
 
-This knowledge base article discusses how bidirectional sync can help prevent reaching the GitHub API limit issue.
+This knowledge base article discusses how bidirectional sync can help prevent reaching the GitHub API limit issue. 
 
 ## API rate limits, what causes them?
 
@@ -12,8 +12,11 @@ GitHub limits the number of REST API requests that you can make within a specifi
 
 ## Solving GitHub API Limits with Bidirectional Sync
 
-In bidirectional sync, changes made on either the Git repository or Harness are automatically synchronized. Updates to the entity on the platform are determined by the received event payload. Therefore, it is required to enable bidirectional sync configuration before the remote entities are created. 
+In bidirectional sync, changes made on either the Git repository or Harness are automatically synchronized.With bidirectional sync, files are cached at Harness's end which is a copy of Git. Instead of making frequent requests to the Git API for every operation, the system can rely on the cached data for most tasks, thus reducing overall API usage.
 
+:::info note
+Currently the git file cache duration is set to 30 days.
+:::
 Read more on how to enable [Biderectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
 
 
