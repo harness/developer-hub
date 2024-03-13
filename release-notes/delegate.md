@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-03-08T10:00
+date: 2024-03-13T10:00
 sidebar_position: 4
 ---
 
@@ -70,6 +70,22 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 <Deleos />
 
 ## March 2024
+
+### Harness version 1.28.11, Harness Delegate version 24.03.82502 <!--  March 13, 2024 -->
+
+#### New features and enhancements
+
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. Use `CPU_USAGE_THRESHOLD` for CPU control (default: no limit). Use `MEMORY_USAGE_THRESHOLD` for memory control (default: 80%). If you are using `RESOURCE_USAGE_THRESHOLD` (deprecated), it exclusively controls the memory threshold. (PL-47746)
+
+- OPA policy enforcement has been introduced to three new entities: Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming convention policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the `onSave` action. (PL-46778)
+
+- Support added to enable OPA policy for naming convention enforcement while creating or updating a service account. (PL-46777)
+
+#### Fixed issues
+
+- Attempts to use the `harness_platform_user` resource to create or delete users resulted in an error. The message "Request failed as you have an older version of an entity, please reload the page and try again" was displayed and the Terraform state went out of sync with Harness. This issue has been fixed. (PL-39870, ZD-47107)
+
+- Continuous Verification for Google Cloud Operations logged error for the `resourceName` field. This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list). (CDS-89441)
 
 ### Version 24.03.82408 <!--  March 8, 2024 -->
 
