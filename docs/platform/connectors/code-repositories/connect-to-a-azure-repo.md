@@ -18,29 +18,48 @@ You must have:
 
 * An Azure Project and at least one repo.
 * Permission to create connectors in Harness.
-* A [Harness project](../../organizations-and-projects/create-an-organization.md).
+* A [Harness project](/docs/platform/organizations-and-projects/create-an-organization.md).
 
 ## Create the connector
 
-1. In your Harness project, select **Project Setup**, and then select **Connectors**.
-
-   You can also create connectors at the account and organization levels. For example, go to **Account Settings** to create a connector at the account level.
-
-2. Select **New Connector**, and then select the **Azure Repos** connector.
+1. In Harness, go to **Project Settings**, **Organization Settings**, or **Account Settings**, depending on the scope where you want to create the connector. For example, a connector created at the project scope is only available within that project.
+2. Select **Connectors**, select **New Connector**, and then select the **Azure Repos** connector.
 3. Enter a **Name** for your connector, and then select **Continue**.
 4. Select **Project** or **Repository** for the **URL Type**.
 5. Select **HTTP** or **SSH** for the **Connection Type**.
 6. Enter your Azure Repos Project or Repository URL.
 
-   * Example: Repo URL, HTTP format: `https://ORG_NAME@dev.azure.com/ORG_NAME/PROJECT_NAME/_git/REPO_NAME`
-   * Example: Project URL, HTTP format: `https://dev.azure.com/ORG_NAME/PROJECT_NAME`
-   * You can get the URL from Azure Repos.
+   Make sure the URL uses the correct format for the URL Type and Connection Type. For example:
 
-      ![](../static/connect-to-a-azure-repo-03.png)
+      * HTTP Repository URL: `https://ORG_OR_USER@dev.azure.com/ORG_NAME/PROJECT_NAME/_git/REPO_NAME`
+      * HTTP Project URL: `https://dev.azure.com/ORG_NAME/PROJECT_NAME`
+      * HTTP Project URL: `https://ORG_OR_USER@dev.azure.com/ORG_NAME/PROJECT_NAME`
 
-   * Be careful when copying Project URLs from Azure Repos, because the URL path can include `_git/REPO_NAME`. Don't include this part of the path when you paste the URL into the **Azure Repos Project URL** field.
+   You can get the URL from Azure Repos.
 
-      ![](../static/connect-to-a-azure-repo-02.png)
+   ![](../static/connect-to-a-azure-repo-03.png)
+
+   :::info Project URLs
+
+   When copying Project URLs from Azure Repos remove `_git/REPO_NAME` from the URL path.
+
+   For Project URLs, don't include `_git` or a repo name in the **Azure Repos Project URL** field.
+
+   ![](../static/connect-to-a-azure-repo-02.png)
+
+   Examples of **invalid** Azure Repos Project URL formats include:
+
+   `https://USER@dev.azure.com/ORG/PROJECT/_git`
+   `https://USER@dev.azure.com/ORG/PROJECT/_git/REPO`
+   `https://dev.azure.com/ORG/PROJECT/_git`
+   `https://dev.azure.com/ORG/PROJECT/_git/REPO`
+
+   To make these **valid**, exclude `_git` and the repo name. For example, these are **valid** Azure Repos Project URLs:
+
+   `https://USER@dev.azure.com/ORG/PROJECT`
+   `https://dev.azure.com/ORG/PROJECT`
+
+   :::
 
 7. If you selected **Project**, in **Test Repository**, enter the name of a repository that Harness can use to test the connector's connection.
 8. Select **Continue**, and then configure **Credentials** based on the **Connection Type**:
