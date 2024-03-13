@@ -7,13 +7,13 @@ sidebar_position: 30
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Mirroring syncs changes from one repo to another. In Harness, you can create CI pipelines that mirror branch and tag changes.
+Mirroring syncs changes from one repo to another. In Harness, you can create CI pipelines that mirror branch and tag changes from one repo to another.
 
 You can set up one-way or two-way mirroring.
 
 ## Configure mirroring in Harness
 
-In Harness, mirroring uses a mirror script in a CI pipeline. This script replicates commits from the source repo in the target repo.
+In Harness, mirroring uses a mirror script in a CI pipeline. This script replicates commits from the source repo on the target repo.
 
 To automate mirroring, a webhook trigger runs the pipeline whenever a change is pushed to the source repo. You can also run the mirror pipeline manually, rather than using a webhook trigger.
 
@@ -50,7 +50,7 @@ To add pipeline variables in the Pipeline Studio's Visual editor:
 | String | `targetURL` | `<+input>` | True | The `https`-format clone URL for the target repo. |
 | String | `reference` | `<+input>` | True | The full reference path to sync from source to target, such as `refs/heads/main` for branches and `refs/tags/v.1.2.3` for tags. |
 | String | `referenceShaOld` | `<+input>` | False | The previous value of the `reference` on the source repo. For example, on a branch update, the `referenceShaOld` is the old SHA of the branch before the update. If provided, this value's usage depends on the change on the reference:<br/>If the reference was deleted, this SHA is used only to delete the reference on the target repo if it has the exact same value on the target repo.<br/>If the reference was updated, this SHA is used to update the reference by either fast forward or force update if the reference has the same value on the target repo. For example, after force pushing changes to the source repo, fast forward to source isn't possible. Providing the old SHA ensures mirroring overwrites the target only if the reference in the target repo has the same value as the source repo's reference before the force push. If the old SHA isn't provided, only fast forward updates of a reference are possible and force updates fail to sync. |
-| String | `syncDelete` | `<+input>.default(false).allowedValues(true,false)`  | False | Indicates if deletion of a branch or tag reference on the source repo should be synced to the target repo. Set to `true` to delete branches/tags in the target repo when they are deleted in the source repo. Set to `false` to block such deletions from being mirrored in the target. Default is `false`. This applies to branch and tag deletions only. Deleting files is considered a reference update, which is not impacted by this flag. |
+| String | `syncDelete` | `<+input>.default(false).allowedValues(true,false)`  | False | Indicates if deletion of a branch or tag reference on the source repo should be synced to the target repo. Set to `true` to delete branches/tags on the target repo when they are deleted on the source repo. Set to `false` to block such deletions from being mirrored on the target. Default is `false`. This applies to branch and tag deletions only. Deleting files is considered a reference update, which is not impacted by this flag. |
 
 </TabItem>
 <TabItem value="YAML" label="YAML editor" default>
@@ -256,7 +256,7 @@ Create as many triggers as you need for all source-target combinations.
 
    This applies to branch and tag deletions only. Deleting files is considered a reference *update*, which is not impacted by this flag.
 
-   Set `syncDelete` to `true` if you want to delete branches/tags in the target repo when they are deleted in the source repo. Otherwise, set `syncDelete` to `false` to block such deletions from being mirrored in the target.
+   Set `syncDelete` to `true` if you want to delete branches/tags on the target repo when they are deleted on the source repo. Otherwise, set `syncDelete` to `false` to block such deletions from being mirrored on the target.
 
 7. Set the `reference` and `referenceShaOld` as follows depending on the *source* repo's SCM provider:
 
@@ -274,7 +274,7 @@ Create as many triggers as you need for all source-target combinations.
    For definitions of these inputs, go to [Add variables](#add-variables).
 
 8. Save the trigger.
-9. Register the trigger's webhook in the source repo.
+9. Register the trigger's webhook on the source repo.
    1. In Harness, obtain the trigger's webhook URL by selecting the **Webhook/Link** icon in the list of triggers.
    2. In your SCM provider, go to the source repo's webhook setting and add a webhook.
    3. Paste the webhook URL from Harness in the webhook's payload URL.
@@ -290,18 +290,18 @@ Create as many triggers as you need for all source-target combinations.
 
 ### Test the mirror
 
-To test the trigger and verify that mirroring works, create a branch in the source repo.
+To test the trigger and verify that mirroring works, create a branch on the source repo.
 
 Branch creation should activate the trigger and run the mirror pipeline.
 
 In Harness, you can [view the build](/docs/continuous-integration/use-ci/viewing-builds) to monitor the pipeline's progress and inspect pipeline inputs and outputs.
 
-If the run is successful, you can check that the new branch is present in the target repo.
+If the run is successful, you can check that the new branch is present on the target repo.
 
 ## Race conditions can occur in two-way mirrors
 
 With bidirectional sync there is a chance of race conditions where both repos update the same reference before one could get synced.
 
-In this scenario, the mirror script in this pipeline doesn't overwrite any changes in the target repo. Instead, the sync fails until the conflict is resolved.
+In this scenario, the mirror script in this pipeline doesn't overwrite any changes on the target repo. Instead, the sync fails until the conflict is resolved.
 
 If sync fails due to race conditions in two-way mirroring, you must manually inspect and mitigate the issue. For example, you might need to fix the reference conflict between the two repos and manually get both repos on the same SHA. After that, the mirror script (and automatic syncing through triggers) should work again.
