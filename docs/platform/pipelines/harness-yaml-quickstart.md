@@ -306,7 +306,8 @@ Here's an example of the step group structure:
                                         ...
 ```
 ### Service entity schema 
-A Harness [service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) represents what you're deploying.
+A Harness [service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
+
 
 Harness service schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/service-yaml-v2.yaml).
 
