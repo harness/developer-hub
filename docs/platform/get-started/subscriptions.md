@@ -15,11 +15,11 @@ Customers subscribe to Harness modules using a subscription model called [Develo
 
 ### Who is a developer?
 
-Every user who contributes to software development / deployment / maintenance / optimization and more, is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model. These users use Harness to create code repositories, build software, test & secure software, deploy software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more. Note that the definition of a developer (and the consumption entitlements if any) remain the same for all plans, namely Free, Startup and Enterprise.
+Every user who contributes to software development / deployment / maintenance / optimization and more, is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model. These users use Harness to create code repositories, build software, test & secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more. Note that the definition of a developer (and the consumption entitlements if any) remain the same for all plans, namely Free, Startup and Enterprise.
 
 ### Modules with direct developer tracking
 
-Following Harness modules are directly involved in a developer’s day-to-day workflow, and hence consume a developer license for every developer involved.
+The following Harness modules are directly involved in a developer’s day-to-day workflow, and hence consume a developer license for every developer involved.
 
 - Code Repository (CR)
 - Continuous Integration (CI)
@@ -28,13 +28,17 @@ Following Harness modules are directly involved in a developer’s day-to-day wo
 
 ### Modules with no direct developer tracking
 
-Following Harness modules are indirectly involved in a developer’s day-to-day workflow and hence track an indirect unit instead of a developer. Harness calls these indirect units as ‘Consumption Entitlements’. In these cases, developer license acts as a proxy for granting a predetermined set of consumption entitlements. Customers can subscribe to more consumption entitlements if needed at an additional cost.
+The following Harness modules are indirectly involved in a developer’s day-to-day workflow and hence track an indirect unit instead of a developer. Harness calls these indirect units as ‘Consumption Entitlements’. In these cases, developer license acts as a proxy for granting a predetermined set of consumption entitlements. Customers can subscribe to more consumption entitlements if needed at an additional cost.
 
 #### Continuous Delivery & GitOps (CD)
 
-**Services** CD module deploys and manages any number of software services, spanning traditional VMs, Kubernetes, Clouds, Serverless and other custom deployments. A Service is an independent unit of software you track & manage. This will typically map to a Service in Kubernetes apps, or to a cloud container service on cloud (such as AWS ECS or Azure ACS or Google Container Engine) or to a VM in the traditional VM-based apps or to 6 serverless functions in serverless environments. All Service licenses are consumed over a last 30 day active window.
+**Services** CD module deploys software services, onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, Serverless functions and other custom deployment targets. A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to 
+- a service in Kubernetes 
+- a containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- a VM in the traditional VM-based apps
+- 6 serverless functions in serverless environments
 
-CD tracks ‘Service’ license consumption, instead of Developers.
+CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window.
 
 #### Feature Flags (FF)
 
@@ -44,15 +48,23 @@ FF tracks ‘Developers’ and ‘MAU’ license consumption.
 
 #### Service Reliability Management (SRM)
 
-**Services** SRM helps manage SLOs/SLIs for various services in a R&D organization. A Service is an independent unit of software you track & manage through Harness SRM. This will typically map to a Service in Kubernetes apps, or to a cloud container service on cloud (such as AWS ECS or Azure ACS or Google Container Engine) or to a VM in the traditional VM-based apps or to 6 serverless functions in serverless environments. All Service licenses are consumed over a last 30 day active window.
+**Services** SRM helps manage SLOs/SLIs for various services in a R&D organization. A Service is an independent unit of software you track & manage through Harness SRM. This will typically map to 
+- a service in Kubernetes 
+- a containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- a VM in the traditional VM-based apps
+- 6 serverless functions in serverless environments
 
-SRM tracks ‘Service’ license consumption, instead of Developers.
+SRM tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window.
 
 #### Chaos Engineering (CE)
 
-**Services** CE helps run chaos experiments across various services in a R&D organization, towards the goal of making them resilient . A Service is an independent unit of software you track & manage through Harness CE. This will typically map to a Service in Kubernetes apps, or to a cloud container service on cloud (such as AWS ECS or Azure ACS or Google Container Engine) or to a VM in the traditional VM-based apps or to 6 serverless functions in serverless environments. All Service licenses are consumed over a last 30 day active window.
+**Services** CE helps run chaos experiments across various services in a R&D organization, towards the goal of making them resilient . A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to 
+- a service in Kubernetes 
+- a containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- a VM in the traditional VM-based apps
+- 6 serverless functions in serverless environments
 
-CE tracks ‘Service’ license consumption, instead of Developers.
+CE tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window.
 
 #### Infrastructure as Code Management (IACM)
 
@@ -62,13 +74,13 @@ IACM tracks ‘Executions’ license consumption, instead of Developers.
 
 #### Security Test Orchestration (STO)
 
-**Security Scans** A Security Scan is defined as the execution of the STO step within a pipeline, tracked over a last 30 day active window. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or application, for any security vulnerabilities.
+**Security Scans** A Security Scan is defined as the execution of the STO step within a pipeline, tracked over a last 30 day active window. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or ana live application, for security vulnerabilities.
 
 STO tracks ‘Security Scans’ license consumption, instead of Developers.
 
 #### Software Supply Chain Assurance (SSCA)
 
-**Supply Chain Executions** A Supply Chain Execution is defined as the execution of SSCA Step in a pipeline, tracked over a last 30 day active window. Generating SBOMs, Enforcing SBOM policies, Generating SLSA Provenance or Verifying SLSA provenance - all are counted as unique SSCA steps.
+**Supply Chain Executions** A Supply Chain Execution is defined as the execution of SSCA step in a pipeline, tracked over a last 30 day active window. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance or verifying SLSA provenance are all counted as unique SSCA steps.
 
 SSCA tracks ‘Supply Chain Executions’ license consumption, instead of Developers.
 
@@ -78,7 +90,7 @@ SSCA tracks ‘Supply Chain Executions’ license consumption, instead of Develo
 
 ### Included & Add-on consumption entitlements
 
-Developer 360 subscription model includes module-specific consumption entitlements by default. This means every Developer license for a module, includes a corresponding consumption entitlement, where it applies. Additionally, customers always have the flexibility to buy add-on consumption entitlements, as it applies to their needs.
+The Developer 360 subscription model includes module-specific consumption entitlements by default. This means every developer license for a module, includes a corresponding consumption entitlement, where it applies. Additionally, customers always have the flexibility to buy add-on consumption entitlements, as it applies to their needs.
 
 #### Included consumption entitlements
 
@@ -100,7 +112,7 @@ Developer 360 subscription model includes module-specific consumption entitlemen
 
 For every module where a consumption entitlement applies, customers can purchase any number of add-on entitlements. This implies that customers can buy more:
 
-- Services for CD, SRM and CE
+- Services for CD, SRM, and CE
 - MAUs for Feature Flags
 - Executions for IACM
 - Security Scans for STO
