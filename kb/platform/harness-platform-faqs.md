@@ -2847,22 +2847,21 @@ DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
 
 Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
 
-#### How can we export users from harness?
+#### How can we export users from Harness?
 
-You can use getAggregatedUsers and set the pageIndex and pageSize accordingly.  https://apidocs.harness.io/tag/User#operation/getAggregatedUsers
+You can use the `getAggregatedUsers` API and set the `pageIndex` and `pageSize` accordingly. For more information, go to [Get aggregated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
-#### What are all the fields of <+pipeline> in a step ?
+#### What are all the fields of `<+pipeline>` in a step?
 
-It contains all the pipeline details(name,id) and all the pipeline level variables.
-You can get all the details available at doc: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline
+It contains all the pipeline details (name, id, and so on) and all the pipeline-level variables. For more information, go to [Pipeline variables](/docs/platform/variables-and-expressions/harness-variables/#pipeline).
 
-#### How do I check what parameters were set for older executions?
+#### How do I check which parameters were set for older executions?
 
-You can review the complied yaml of that execution by clicking on three dots on the top right, and you can also review the Input tab to see the value for all input fields used.
+You can review the compiled YAML of the execution. Go to your pipeline, select **More Options** (&vellip;), and then select **View Executions**. The Executions page opens. Select **More Options** (&vellip;) for the execution for which you want to view details, then select **View Compiled YAML**. You can also review the **Input Sets** tab to see the value for all input fields used.
 
-####  How to ask for boolean input?
+####  How do I use boolean inputs?
 
-By default, we have Number or String as a variable type. If you want to use a boolean, then you can define a variable as a string with allowed values as true/false and use that like input so that, while selecting, a user will be given true/false as an option to select from.
+By default, Harness uses Number or String as a variable type. To use a boolean, you can declare a variable as a string with allowed values of `true` or `false`. This variable can be used as an input for the user to select from, where will have a choice between true or false.
 
 #### I'm using Entra ID (formerly Azure Active Directory) as my identity provider and some users aren't being assigned to their groups on login. Why is this happening?
 
