@@ -28,9 +28,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.87.2
 
+<!-- 2024-03-13 -->
+
 #### New enhancement
 
-- The **Issue Details** tab now includes a link to the scanned target in **Test Targets**. This link is included for all issues. Previously it was included only for issues with exemptions. (STO-7114)
+- The **Pipeline Execution** > **Security Tests** > **Issue Details** pane now includes a link to the scanned target on the Test Targets page. This link is included for all issues. Previously, only the **Exemptions** > **Issues Details** pane included this link. (STO-7114)
+
+#### Fixed issues
+
+- Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
+
+- Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
 
 
 ### Version 1.85.0 
