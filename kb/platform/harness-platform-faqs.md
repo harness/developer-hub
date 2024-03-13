@@ -2846,3 +2846,11 @@ DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
 #### Does the docker delegate also show expiry message in UI if the image is older than expiry threshold ?
 
 Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
+
+#### I am using EntraID(formerly AAD) as my identity provider and I have just one user, or a small select set of users that are not getting assigned to their groups properly on login, is there any reason for this, and how would I tell?
+
+Commonly, users who are members of >150 groups will experience this issue, no group assignment at all because of a limitation in Azure AD(EntraID) where users with more than 150 groups require additional steps seen here:
+
+https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups
+
+You can determine whether or not this is the problem, by using SAML tracer, or capturing the SAML assertion on user sign-in and look to see if an attribute 'groups.link' exists, if so this is the issue confirmed.
