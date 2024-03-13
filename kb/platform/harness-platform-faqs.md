@@ -2846,3 +2846,10 @@ DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
 #### Does the docker delegate also show expiry message in UI if the image is older than expiry threshold ?
 
 Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
+
+#### I'm using Entra ID (formerly Azure Active Directory) as my identity provider and some users aren't being assigned to their groups on login. Why is this happening?
+
+Due to a limitation in Entra ID, users with more than 150 groups might not be assigned any group, which could also cause issues for members of >150 groups.  For more information, go to [Users in over 150 groups](/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups).
+
+
+You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
