@@ -2847,9 +2847,9 @@ DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
 
 Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
 
-#### I am using EntraID(formerly AAD) as my identity provider and I have just one user, or a small select set of users that are not getting assigned to their groups properly on login, is there any reason for this, and how would I tell?
+#### I'm using Entra ID (formerly Azure Active Directory) as my identity provider and some users aren't being assigned to their groups on login. Why is this happening?
 
-Commonly, users who are members of >150 groups will experience this issue, no group assignment at all because of a limitation in Azure AD(EntraID) where users with more than 150 groups require additional steps seen here:
+Due to a limitation in Entra ID, users with more than 150 groups may not be assigned any group, which could cause issues for members of >150 groups.  For more information, go to [Users in over 150 groups](/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups).
 
 https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups
 
