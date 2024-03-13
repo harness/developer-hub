@@ -112,7 +112,7 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ## Unresolved Expressions during Conditional Execution
 
-This topic explains why some expressions in Conditional Execution goes unresolved during execution. Let's try to understand this scenerio with an example:-
+This topic explains why some expressions in Conditional Execution goes unresolved during execution. Let's try to understand this scenario with an example:-
 
 Consider this pipeline yaml:
 
@@ -194,7 +194,7 @@ Let's try to understand why this happened even though we provided the environmen
 
 2. In this case, when the pipeline ran, it first checked whether the environment name is ``harnessdevenv`` and it resolved to null because at that time the stage had not proceeded with fetching environment information and got skipped as the environment name was ``null`` at that time.
 
-Now, let's discuss an example where above scenerio will work.
+Now, let's discuss an example where above scenario will work.
 
 Consider the below pipeline yaml:
 ```yaml
