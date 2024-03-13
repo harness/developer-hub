@@ -12,12 +12,11 @@ This topic explains how to work with branches in the Harness Code UI. For inform
 
 ## Create a branch
 
-1. In your Harness project, go to the **Code** module, select **Repositories**, and then select your repository.
-2. Go to **Branches** and select **New Branch**.
-3. Enter a branch **Name**.
-4. Select the branch or tag that you want to base your new branch on.
-5. Select **Create Branch**.
-6. On the list of branches, select your new branch to start working in it. You can work directly in the Harness Code UI or [clone your repo](./clone-repos.md) to work locally.
+1. When viewing a repository in Harness Code, go to **Branches** and select **New Branch**.
+2. Enter a branch **Name**.
+3. Select the branch or tag that you want to base your new branch on.
+4. Select **Create Branch**.
+5. On the list of branches, select your new branch to start working in it. You can work directly in the Harness Code UI or [clone your repo](./clone-repos.md) to work locally.
 
 :::tip
 
