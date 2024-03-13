@@ -3,6 +3,11 @@
 
 User-Agent: *
 Allow: /
+Disallow: /docs/first-gen
+Disallow: /docs/first-gen/
+
+User-agent: coveobot
+Allow: /
 
 Sitemap: https://developer.harness.io/sitemap.xml
 
@@ -10,3 +15,4 @@ Sitemap: https://developer.harness.io/sitemap.xml
 # User-Agent: *
 # Disallow: /docs/infra-as-code-management
 # Disallow: /docs/infra-as-code-management/
+

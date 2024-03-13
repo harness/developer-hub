@@ -104,6 +104,8 @@ For each cluster, you need to create a CCM Kubernetes connector. CCM can now con
 In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters you need 20 Delegates and 40 Connectors (1 Cloud Provider K8s Connector and 1 CCM Connector each).  
   
 Alternatively, if you wish to use a single Delegate to access multiple Kubernetes clusters, you need to specify the Kubernetes master node URL.
+
+Please note, the delegate will be working only on a Linux machine. In cases where the cluster comprises mixed nodes, you can consider utilizing delegate selectors. 
 :::
 
 

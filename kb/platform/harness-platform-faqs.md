@@ -2838,3 +2838,35 @@ You can use this API to create overrides - https://apidocs.harness.io/tag/Servic
 #### Is there any jexl expressions to get all projects environment?
 We currently don't have a Jexl expression to retrieve all environments, but you can utilize the API endpoint to fetch all environments:https://apidocs.harness.io/tag/Monitored-Services#operation/getEnvironments
 
+
+#### Does the DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource or limit resource of the delegate pod?
+
+DELEGATE_RESOURCE_THRESHOLD checks the memory threshold on the request resource.
+
+#### Does the docker delegate also show expiry message in UI if the image is older than expiry threshold ?
+
+Yes, the docker delegates also will show expiry status in the UI if the image is beyond expiry threshold.
+
+#### How can we export users from Harness?
+
+You can use the `getAggregatedUsers` API and set the `pageIndex` and `pageSize` accordingly. For more information, go to [Get aggregated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+
+#### What are all the fields of `<+pipeline>` in a step?
+
+It contains all the pipeline details (name, id, and so on) and all the pipeline-level variables. For more information, go to [Pipeline variables](/docs/platform/variables-and-expressions/harness-variables/#pipeline).
+
+#### How do I check which parameters were set for older executions?
+
+You can review the compiled YAML of the execution. Go to your pipeline, select **More Options** (&vellip;), and then select **View Executions**. The Executions page opens. Select **More Options** (&vellip;) for the execution for which you want to view details, then select **View Compiled YAML**. You can also review the **Input Sets** tab to see the value for all input fields used.
+
+####  How do I use boolean inputs?
+
+By default, Harness uses Number or String as a variable type. To use a boolean, you can declare a variable as a string with allowed values of `true` or `false`. This variable can be used as an input for the user to select from, where will have a choice between true or false.
+
+#### I'm using Entra ID (formerly Azure Active Directory) as my identity provider and some users aren't being assigned to their groups on login. Why is this happening?
+
+Due to a limitation in Entra ID, users with more than 150 groups might not be assigned any group, which could also cause issues for members of >150 groups.  For more information, go to [Users in over 150 groups](/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups).
+
+
+You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
+
