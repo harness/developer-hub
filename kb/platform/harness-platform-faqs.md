@@ -2851,6 +2851,5 @@ Yes, the docker delegates also will show expiry status in the UI if the image is
 
 Due to a limitation in Entra ID, users with more than 150 groups may not be assigned any group, which could cause issues for members of >150 groups.  For more information, go to [Users in over 150 groups](/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups).
 
-https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#users-in-over-150-groups
 
-You can determine whether or not this is the problem, by using SAML tracer, or capturing the SAML assertion on user sign-in and look to see if an attribute 'groups.link' exists, if so this is the issue confirmed.
+You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
