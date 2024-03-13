@@ -12,6 +12,7 @@ import DeveloperCertificationExamDetails from "./data/ce-certification-developer
 // import ArchitectCertificationReviewDetails from "./data/ce-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/ce-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
+import Tooltip from "rc-tooltip";
 
 const getCertBadges = (url: string) => [
   {
@@ -79,6 +80,24 @@ export default function CertificationsChaos() {
             />
           ))}
         </div>
+      </div>
+      <div className={styles.btns}>
+        <Link className={styles.certBtn} to="/university/#certs">
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </Link>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
+        >
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
 
       {/* Tab Content */}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -8,6 +8,8 @@ import { university } from "./data/certificationsData";
 import IltCard, { iltType } from "./IltCard";
 import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
+import Link from "@docusaurus/Link";
+import Tooltip from "rc-tooltip";
 
 const devFeatures = ["Free Plan"];
 const administratorFeatures = ["Enterprise Plan"];
@@ -48,6 +50,7 @@ export const getCertLevel = (search: string) => {
 };
 
 export default function University() {
+  const certRef = useRef(null);
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
   const location = useLocation();
@@ -70,13 +73,22 @@ export default function University() {
     }
   }, [searchKey]);
 
+  const handleCertficationClick = () => {
+    window.scrollTo({
+      top: certRef.current.offsetTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className={styles.university}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <h1>Harness University</h1>
           <div>
-            Learn modern software delivery the Harness way.
+            Harness University offers comprehensive training for all users, with
+            certifications and Instructor-Led Training. Master software delivery
+            and the Harness way.
           </div>
         </div>
         <div className={styles.right}>
@@ -89,32 +101,30 @@ export default function University() {
           ))}
         </div>
       </div>
-
-      <div className={styles.tabs}>
-        <h2>Instructor-Led Training</h2>
-        <div
-          className={clsx(
-            styles.tabContent,
-            styles.active
-          )}
+      <div className={styles.btns}>
+        <button className={styles.certBtn} onClick={handleCertficationClick}>
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </button>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
         >
-          <div className={styles.cardContainer}>
-            {ilt
-              .filter((ilt) => iltType.user)
-              .map((ilt) => (
-                <IltCard {...ilt} />
-              ))}
-          </div>
-        </div>
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
-
-      <div className={styles.tabs}>
-      <h2>Certifications</h2>
-          <div>
-            Test and validate your knowledge of Harness by
-            becoming a Harness Certified Expert.
-            <br/>
-          </div>
+      <div className={styles.tabs} ref={certRef} id="#certs">
+        <h2>Overview</h2>
+        <p>
+          Test and validate your knowledge of Harness by becoming a Harness
+          Certified Expert.
+        </p>
         <ul className={styles.tabItems}>
           {Object.entries(certType).map(([tabKey, tabVal], index) => (
             <div className={styles.listTabItems}>
@@ -181,8 +191,8 @@ export default function University() {
           <h3>Which Certification is right for you?</h3>
 
           <p>
-            Progress from Developer to Architect level university. Follow
-            the learning paths to progress to the next level.
+            Progress from Developer to Architect level university. Follow the
+            learning paths to progress to the next level.
           </p>
 
           <div className={styles.availableCertsBox}>
@@ -226,7 +236,7 @@ export default function University() {
                     src={`${baseUrl}img/cert_dev_sto_badge.svg`}
                     alt="Develop STO Badge"
                   />
-                     <img
+                  <img
                     src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                     alt="Develop Chaos Badge"
                   />
@@ -270,7 +280,7 @@ export default function University() {
                     src={`${baseUrl}img/cert_adm_ff_badge.svg`}
                     alt="Administrator FF Badge"
                   />
-                   <img
+                  <img
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Administrator STO Badge"
                   />

@@ -14,6 +14,7 @@ import ArchitectCertificationExamDetails from "./data/cd-certification-architect
 import IltCard, { iltType } from "./IltCard";
 import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
+import Tooltip from "rc-tooltip";
 
 const getCertBadges = (url: string) => [
   {
@@ -85,27 +86,28 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      <div className={styles.tabs}>
-        <h2>Instructor-Led Training</h2>
-        <div
-          className={clsx(
-            styles.tabContent,
-            styles.active
-          )}
+      <div className={styles.btns}>
+        <Link className={styles.certBtn} to="/university/#certs">
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </Link>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
         >
-          <div className={styles.cardContainer}>
-            {ilt
-              .filter((ilt) => iltType.user)
-              .map((ilt) => (
-                <IltCard {...ilt} />
-              ))}
-          </div>
-        </div>
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
-  
+
       {/* Tab Content */}
       <div className={styles.tabs}>
-      <h2>Certifications</h2>
+        <h2>Certifications</h2>
         <ul className={styles.tabItems}>
           {Object.entries(certType).map(([tabKey, tabVal], index) => (
             <div className={styles.listTabItems}>
@@ -157,7 +159,8 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                  Assesses the fundamental skills to deploy your applications with CD & GitOps projects.
+                    Assesses the fundamental skills to deploy your applications
+                    with CD & GitOps projects.
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
@@ -235,9 +238,9 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain CD & GitOps
-                    projects and the overall Harness Platform. This exam builds
-                    upon the{" "}
+                    Assesses the fundamental skills to deploy and maintain CD &
+                    GitOps projects and the overall Harness Platform. This exam
+                    builds upon the{" "}
                     <a href="/university/continuous-delivery?lvl=developer">
                       Continuous Delivery & GitOps Developer Certification
                     </a>
@@ -305,9 +308,7 @@ export default function CertificationsCD() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>
-                    Continuous Delivery & GitOps - Architect
-                  </h2>
+                  <h2>Continuous Delivery & GitOps - Architect</h2>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
                     alt="Harness Certified Expert - CD & GitOps Architect"
@@ -322,8 +323,8 @@ export default function CertificationsCD() {
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CD & GitOps. This exam builds
-                    upon the{" "}
+                    design, implementation and management of CD & GitOps. This
+                    exam builds upon the{" "}
                     <a href="/university/continuous-delivery?lvl=administrator">
                       Continuous Delivery & GitOps Administrator Certification
                     </a>

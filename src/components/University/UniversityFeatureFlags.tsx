@@ -10,6 +10,7 @@ import DeveloperCertificationExamDetails from "./data/ff-certification-developer
 import AdminCertificationReviewDetails from "./data/ff-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/ff-certification-admin-exam-details.md";
 import styles from "./styles.module.scss";
+import Tooltip from "rc-tooltip";
 
 const getCertBadges = (url: string) => [
   {
@@ -63,8 +64,9 @@ export default function FeatureFlags() {
           </div>
           <h1>Feature Flags</h1>
           <div>
-            Drastically reduce rollbacks, deploy faster with less risk,
-            spend more time building and coding, and less time fixing production with Progressive Delivery.
+            Drastically reduce rollbacks, deploy faster with less risk, spend
+            more time building and coding, and less time fixing production with
+            Progressive Delivery.
           </div>
         </div>
         <div className={styles.right}>
@@ -76,6 +78,24 @@ export default function FeatureFlags() {
             />
           ))}
         </div>
+      </div>
+      <div className={styles.btns}>
+        <Link className={styles.certBtn} to="/university/#certs">
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </Link>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
+        >
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
 
       {/* Tab Content */}
@@ -123,13 +143,15 @@ export default function FeatureFlags() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness FF Free/Team Plans
+                    <strong>Product version: </strong> Harness FF Free/Team
+                    Plans
                   </span>
                 </div>
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to progressivly deploy/toggle your applications with FF projects.
+                    Assesses the fundamental skills to progressivly
+                    deploy/toggle your applications with FF projects.
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
@@ -215,24 +237,22 @@ export default function FeatureFlags() {
               </div>
             </div>
           </div>
-        
 
-        {/* Admin Exam Details */}
-        <div className={styles.examDetails}>
-          <h2 id="exam-details">Exam Details </h2>
-          <div className={styles.examDetailsCard}>
-            <AdminCertificationExamDetails />
-            <div className={styles.btnContainer}>
-              <Link href="https://university-registration.harness.io/feature-flags-administrator">
-                <button className={styles.moreDetails}>
-                  Register for Exam
-                </button>
-              </Link>
+          {/* Admin Exam Details */}
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details </h2>
+            <div className={styles.examDetailsCard}>
+              <AdminCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="https://university-registration.harness.io/feature-flags-administrator">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
 
         {/* Architect Tab Content */}
         <div
@@ -278,6 +298,6 @@ export default function FeatureFlags() {
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 }

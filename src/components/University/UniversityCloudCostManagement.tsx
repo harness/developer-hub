@@ -10,6 +10,7 @@ import DeveloperCertificationExamDetails from "./data/ccm-certification-develope
 import AdminCertificationExamDetails from "./data/ccm-certification-admin-exam-details.md";
 import AdminCertificationReviewDetails from "./data/ccm-certification-admin-review-guide.md";
 import styles from "./styles.module.scss";
+import Tooltip from "rc-tooltip";
 
 const getCertBadges = (url: string) => [
   {
@@ -78,6 +79,24 @@ export default function CloudCostManagement() {
             />
           ))}
         </div>
+      </div>
+       <div className={styles.btns}>
+        <Link className={styles.certBtn} to="/university/#certs">
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </Link>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
+        >
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
 
       {/* Tab Content */}

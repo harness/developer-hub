@@ -12,6 +12,7 @@ import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-d
 // import ArchitectCertificationReviewDetails from "./data/sto-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
+import Tooltip from "rc-tooltip";
 
 const getCertBadges = (url: string) => [
   {
@@ -65,8 +66,10 @@ export default function CertificationsSTO() {
           </div>
           <h1>Security Testing Orchestration</h1>
           <div>
-            Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.
-            Enable developers to rapidly remediate vulnerabilities through intelligent prioritization and deduplication.
+            Seamlessly integrate security scanners and orchestrate tests
+            anywhere across your build pipelines. Enable developers to rapidly
+            remediate vulnerabilities through intelligent prioritization and
+            deduplication.
           </div>
         </div>
         <div className={styles.right}>
@@ -78,6 +81,24 @@ export default function CertificationsSTO() {
             />
           ))}
         </div>
+      </div>
+      <div className={styles.btns}>
+        <Link className={styles.certBtn} to="/university/#certs">
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </Link>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
+        >
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
 
       {/* Tab Content */}
@@ -127,8 +148,8 @@ export default function CertificationsSTO() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Security Testing Orchestration
-                    Free/Team Plans
+                    <strong>Product version: </strong> Security Testing
+                    Orchestration Free/Team Plans
                   </span>
                 </div>
                 <div className={styles.right}>
@@ -161,7 +182,6 @@ export default function CertificationsSTO() {
                     Register for Exam
                   </button>
                 </Link>
-
               </div>
             </div>
           </div>
@@ -195,8 +215,8 @@ export default function CertificationsSTO() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Security Testing Orchestration
-                    Enterprise Plan
+                    <strong>Product version: </strong> Security Testing
+                    Orchestration Enterprise Plan
                   </span>
                 </div>
                 <div className={styles.right}>
@@ -260,15 +280,18 @@ export default function CertificationsSTO() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Architect (BETA COMING SOON)</h2>
+                  <h2>
+                    Security Testing Orchestration - Architect (BETA COMING
+                    SOON)
+                  </h2>
                   <img
                     src={`${baseUrl}img/cert_arc_sto_badge.svg`}
                     alt="Harness Certified Expert - STO Architect"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Security Testing Orchestration
-                    Enterprise Plan
+                    <strong>Product version: </strong> Security Testing
+                    Orchestration Enterprise Plan
                   </span>
                 </div>
                 <div className={styles.right}>

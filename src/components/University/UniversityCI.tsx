@@ -10,8 +10,9 @@ import DeveloperCertificationExamDetails from "./data/ci-certification-developer
 import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/ci-certification-admin-exam-details.md";
 import ArchitectCertificationReviewGuide from "./data/ci-certification-architect-review-guide.md";
-import ArchitectCertificationExamDetails from "./data/ci-certification-architect-exam-details.md"; 
+import ArchitectCertificationExamDetails from "./data/ci-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
+import Tooltip from "rc-tooltip";
 
 const getCertBadges = (url: string) => [
   {
@@ -81,6 +82,24 @@ export default function CertificationsCI() {
             />
           ))}
         </div>
+      </div>
+      <div className={styles.btns}>
+        <Link className={styles.certBtn} to="/university/#certs">
+          <img src="/img/certification_icon.svg" />
+          Certification
+        </Link>
+        <Tooltip
+          placement="top"
+          overlay={<p>Go to https://university-registration.harness.io/</p>}
+        >
+          <Link
+            to="https://university-registration.harness.io/"
+            className={styles.InstLedTrainBtn}
+          >
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training
+          </Link>
+        </Tooltip>
       </div>
 
       {/* Tab Content */}
@@ -172,7 +191,7 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                   {/*<Link href="/docs/continuous-integration">
+                {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -204,9 +223,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>
-                    Continuous Integration - Administrator
-                  </h2>
+                  <h2>Continuous Integration - Administrator</h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
                     alt="Harness Certified Expert - CIs Administrator"
@@ -235,7 +252,7 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                       {/*<Link href="/docs/continuous-integration">
+                    {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -258,7 +275,7 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                   {/*<Link href="/docs/continuous-integration">
+                {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -305,8 +322,8 @@ export default function CertificationsCI() {
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CI. This exam builds
-                    upon the{" "}
+                    design, implementation and management of CI. This exam
+                    builds upon the{" "}
                     <a href="/university/continuous-integration?lvl=administrator">
                       CI Admin Certification
                     </a>
@@ -318,7 +335,7 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                       {/*<Link href="/docs/continuous-integration">
+                    {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -329,13 +346,13 @@ export default function CertificationsCI() {
               </div>
             </div>
           </div>
-        
+
           {/* Arch Exam Details  */}
 
           <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
-            <ArchitectCertificationExamDetails />
+              <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
                 <Link href="https://university-registration.harness.io/continuous-integration-architect">
                   <button className={styles.moreDetails}>
@@ -345,7 +362,6 @@ export default function CertificationsCI() {
               </div>
             </div>
           </div>
-       
         </div>
       </div>
     </div>
