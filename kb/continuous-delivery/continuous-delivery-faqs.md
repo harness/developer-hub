@@ -302,7 +302,7 @@ The release name is used to create a harness release history object, which conta
 
 #### I have a pipeline in CG that has a variable of ```${artifact.buildNo}``` in a command and same variable is not working in NextGen.
 
-You can use artifact.tag in NG , which is equivalent to artifact.buildNo from CG, you can find more details around mapping in : [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
+You can use artifact.tag in NG , which is equivalent to artifact.buildNo from CG, you can find more details around mapping in : [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrate-firstgen-expressions-to-nextgen)
 
 #### Is it possible to apply Notification Rule on Environment level for workflow failure/success
 
@@ -2823,7 +2823,7 @@ Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline
 #### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
 
 For infomation about this, go to:
-* [Migrating variables and expressions from firstgen to nextgen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
+* [Migrate variables and expressions from firstgen to nextgen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrate-firstgen-expressions-to-nextgen)
 * [Workflow variables](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
 * [Add and reference variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable)
 

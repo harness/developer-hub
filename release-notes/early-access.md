@@ -261,6 +261,15 @@ No early access (beta) features are available for Harness Code Repository. -->
 
 The following early access (beta) features are available for the Harness Software Engineering Insights module.
 
+### Diagnostic Tab
+
+* **Release date:** March 2024
+* **Issue number:** SEI-5818
+* **Feature flag:** `SHOW_DIAGNOSTIC_TILE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.
+
 ### SEI Jira Integration Enhanced Experience
 
 * **Release date:** February 2024

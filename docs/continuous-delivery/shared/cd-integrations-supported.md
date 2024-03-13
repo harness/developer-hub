@@ -700,6 +700,23 @@ The following table lists where you can store your manifests or config files for
 | **Google Cloud Function**    | ✅         | ✅         | ✅            | ✅                    | ✅          |              |              |           |           |                         |                         |
 
 
+The following table lists supported manifest overrides for each integration.
+
+| **Deployment Type** | **Supported Manifest Overrides** | 
+| --- | --- |
+| Kubernetes | <ul><li>Values YAML</li><li>OpenShift Param</li><li>Kustomize Patches</li></ul> |
+| Helm | <ul><li>Values YAML</li><li>Helm Repo Override</li></ul> |
+| AWS ECS | <ul><li>ECS Task Definition</li><li>ECS Service Definition</li><li>ECS Scalable Target</li><li>ECS Policy Scaling</li></ul> |
+| AWS ASG | N/A |
+| AWS Lambda | <ul><li>AWS Lambda Function Definition</li><li>AWS Lambda Function Alias Definition</li></ul> |
+| AWS SAM | <ul><li>Values YAML</li><li>AWS SAM Directory</li></ul> |
+| Azure Web Apps | <ul><li>Application Settings</li><li>Connection Strings</li></ul> |
+| Tanzu Application Services | <ul><li>TAS Manifests</li><li>TAS Vars</li><li>TAS Autoscaler</li></ul> |
+| SSH | N/A |
+| WinRM | N/A |
+| Serverless.com Framework | <ul><li>Values YAML</li><li>Serverless AWS Lambda Manifest</li></ul> |
+| Google Cloud Functions | N/A |
+| Spot Elastigroup | N/A |
 
 
 </TabItem>

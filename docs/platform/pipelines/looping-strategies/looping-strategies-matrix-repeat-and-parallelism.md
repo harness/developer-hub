@@ -481,3 +481,25 @@ Use the following expressions to access the index values for each iteration of a
 Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+
+## Determine execution status of a stage with looping strategy
+
+The status of a stage with looping strategy is determined based on the status of execution of its child stages. The status calculation logic works based on priority of child stage execution statuses. 
+
+Negative status takes precedence over positive status. 
+
+If any child stage has negative status, then the parent stage status is marked as negative. 
+
+The negative statuses priority is as follows: ABORTED > FAILED > FREEZE_FAILED > APPROVAL_REJECTED > EXPIRED. For example, if a child stage is marked FAILED and another child stage is marked EXPIRED, then the parent pipeline status is marked FAILED because it takes precedence.
+
+
+
+If all child stages are marked positive, the status of the parent stage is also marked positive. 
+
+The positive statuses priority is as follows: IGNORE_FAILED > SUCCEEDED. For example, if a child stage is marked IGNORE_FAILED and another child stage is marked SUCCEEDED, then the parent pipeline status is marked as IGNORE_FAILED.
+
+If a child stage has negative status and another child stage has positive status, then the parent pipeline status is marked negative. 
+
+
+
+
