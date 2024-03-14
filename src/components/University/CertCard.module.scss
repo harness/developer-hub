@@ -44,6 +44,14 @@
       width: 24px;
       transform: rotate(45deg);
     }
+    p {
+      position: absolute;
+      left: 8px;
+      top: 40px;
+      font-size: 16px;
+      transform: rotate(45deg);
+      color: white;
+    }
   }
   .numberOfCerts {
     font-weight: 500;

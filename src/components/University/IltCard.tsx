@@ -38,6 +38,9 @@ export default function IltCard({
         [styles.thumb]: thumb,
       })}
     >
+      <div className={styles.Topright}>
+        <p> ILT</p>
+      </div>
       <div>
         <div className={styles.moduleLine}>
           <h6>
