@@ -337,7 +337,7 @@ export default function FeatureFlags() {
                   <IltCard {...ilt} />
                 ))}
               {ilt.filter((ilt) => ilt.module === "ff").length < 1 ? (
-                <p>Coming Soon ...</p>
+                <p>ILT Coming Soon</p>
               ) : null}
             </div>
           </div>

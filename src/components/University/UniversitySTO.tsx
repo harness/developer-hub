@@ -387,7 +387,7 @@ export default function CertificationsSTO() {
                   <IltCard {...ilt} />
                 ))}
               {ilt.filter((ilt) => ilt.module === "sto").length < 1 ? (
-                <p>Coming Soon ...</p>
+                <p>ILT Coming Soon</p>
               ) : null}
             </div>
           </div>

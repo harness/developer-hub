@@ -409,7 +409,7 @@ export default function CertificationsCD() {
                   <IltCard {...ilt} />
                 ))}
               {ilt.filter((ilt) => ilt.module === "cd").length < 1 ? (
-                <p>Coming Soon ...</p>
+                <p>ILT Coming Soon</p>
               ) : null}
             </div>
           </div>
