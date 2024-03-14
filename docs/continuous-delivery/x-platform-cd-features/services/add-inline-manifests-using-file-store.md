@@ -263,6 +263,10 @@ metadata:
 
 The expression `fileStore.getAsString()` can be used to fetch files in the File Store in a script or runtime input.
 
+:::note
+You can create a two files with same name inside two different folders by having different identifer for one of the file. Path of the file is constructed based on the name not identifer.
+:::
+
 For example:
 
 - Project-level File Store: `fileStore.getAsString("/folder1/myfile.yaml")`.
