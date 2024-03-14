@@ -6203,3 +6203,120 @@ You can refer to this documentation to know what all IaC provisioner harness sup
 
 #### How can I see all currently running pipelines from all projects?
 There is no option as of now to see the currently running pipeline for all projects in one place. You can though create an enhancement request regarding adding an option to see all the running executions from all the projects in one place on our idea portal [API] ( https://ideas.harness.io/ ) 
+=======
+#### Can we modify the audience in the generated JWT token to use it for purposes beyond AWS authentication?
+
+Modifying the audience (aud) claim in a JWT means changing who the token is intended for. In AWS authentication, it typically specifies AWS services. However, you can adjust it for other systems or services as long as they understand and accept this change. Just make sure the system you're sending the token to knows how to handle the modified audience claim according to its own requirements and security rules. 
+
+#### Can we use the harness cli tool to import a YAML file and create a new job?
+
+You can first import the pipeline YAML from git via Harness CLI, [example] (https://developer.harness.io/docs/platform/automation/cli/examples)
+
+#### How do I use an HTTP Step to send multipart requests in harness
+
+Harness doesn't directly support multipart/form-data uploads in the HTTP step , you can:
+ 
+1. Prepare your data in the desired format (e.g., JSON payload) within the script step of your pipeline.
+Utilize a tool like jq or similar to modify the data into multipart/form-data format, generating key-value pairs separated by boundaries.
+Store the formatted data as a string variable within the pipeline.
+ 
+2. Use a script step to call the API:
+ 
+In a subsequent script step, utilize tools like wget or curl to make the PUT request to the File Store API endpoint.
+Include the pre-processed data variable as the body of the request, setting the Content-Type header to "multipart/form-data".
+Use appropriate authentication mechanisms (e.g., API key) in the request headers.
+
+#### what is a stateful set
+
+Stateful Blue-Green Deployment in Kubernetes is a method of updating applications in a way that reduces downtime and ensures data consistency, especially for applications that store data or have stateful components like databases [Doc] (https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/)
+
+#### Pipeline execution failed and giving an pop up "Plan execution not found"
+
+The error "Plan execution not found" indicates that the system cannot locate the execution plan needed to run the pipeline. To resolve it:
+
+Double-check the pipeline configuration.
+Ensure the execution plan exists and is accessible.
+Check permissions for accessing the plan.
+Review logs
+Retry the execution after addressing any issues found.
+
+#### Where are the settings for an individual user email notifications?
+
+However, in general, email notification settings can be configured at the account level in Harness. To enable or disable email notifications, go to Account Settings > Account Resources > Default Settings > Notifications, and then turn on or off the corresponding toggle. If you want to send email notifications to non-Harness users, you must configure your own SMTP server and enable the Enable Emails to be sent to non-Harness Users default setting. [Sources] (https://developer.harness.io/docs/platform/notifications/notification-settings)
+
+#### How to move pipeline from one project to another
+
+You can try the following steps:
+
+Export the pipeline from the source project as a YAML file.
+Import the YAML file into the target project.
+Update any references to input sets or other entities that may have changed due to the move.
+Test the pipeline in the target project to ensure it is working as expected.
+
+#### How to trigger a pipeline on a pipeline completion
+
+You can add the curl command from the trigger at the last step of the current pipeline to trigger the next pipeline.
+
+#### How to check if a key exist in serviceVariables
+
+You can use [API](https://apidocs.harness.io/tag/Services#operation/createServicesV2) to retrive complete information about the service.
+
+#### Is there a way to obtain the account private key to authenticate with Hashicorp Vault using the OIDC public key?
+
+We don't support OIDC with Hashicorp Vault as of today.
+
+#### can we use Terraform to reconcile pipeline
+
+No, Terraform does not have the ability to reconcile the pipeline. However, Harness warns you when a pipeline references a template that needs to be reconciled when you change it. To resolve conflicts in the pipeline YAML, you can select Reconcile in the Pipeline Studio, which opens the Template Error Inspection page where you can view the Git YAML differences for the pipeline and see which lines have been modified.
+
+#### Expression results in String, but custom filter expressions must result in yes or no.
+
+As of now string, number and expression is supported
+
+#### Harness NG API
+
+We do have Harness NG API, [API Doc](https://apidocs.harness.io/)
+
+#### Are there any access permissions or restrictions that might be affecting the execution of Python commands within Terraform?
+
+No We don't have any restrictions on running the python in terraform
+
+#### Can i convert the pipeline.startTS to a datetime in Harness using a ternery operator
+
+Ternary operator are essentially used for expressing conditional statements and cannot be used for conversion. [DOC](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
+
+#### Can I use Harness OIDC provider with Hashicorp vault
+
+We don't support OIDC with Hashicorp Vault as of today.
+
+#### what is the pipeline retry interval in harness
+
+When you set the failure strategy to Retry Step, you can specify the retry count for a step or all steps in the stage. [Doc](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/#retry-count-expression)
+
+#### How to format pipeline.startTs field in a human readable way?
+
+You can use echo ```<+new("java.util.Date", <+pipeline.startTs>)>```
+
+#### How to list harness services using curl ?
+
+You can use [API](https://apidocs.harness.io/tag/Account-Services#operation/get-account-scoped-services)
+
+####  How to ensure a stage with a step group appears before a stage with a deployment of kubernetes
+
+You can create a OPA policy to ensure this.
+
+#### How to get all services using Harness API ?
+
+ [API](https://apidocs.harness.io/tag/Monitored-Services#operation/getServices) you can use this to fetch the services in specfiic project
+
+####  Getting error Invalid request: API rate limit exceeded for user ID 102833628. If you reach out to GitHub Support for help, please include the request ID D775:6578D3C5.
+
+The rate limit issue is from GitHub (which will be autoreslved in sometime) [Doc](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations) ,if you are using same connector for all remote entities. You can use different connectors with different access token to avoid this issue.
+
+#### Can I authenticate to a secret manager with workload identity
+
+Currently, Harness does not support authentication to a secret manager with workload identity. However, you can use a custom secret manager to authenticate with a secret manager.
+
+#### How to get all the stage names that has been executed till now
+
+You can use [API](https://apidocs.harness.io/tag/Pipeline#operation/getPipelineSummary) to fetch the pipeline summary.
