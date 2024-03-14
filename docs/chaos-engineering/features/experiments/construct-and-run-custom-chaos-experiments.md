@@ -11,7 +11,7 @@ Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate ch
 
 A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
 
-For more information, go to [flow of control in a chaos experiment](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/experiment-execution.md).
+For more information, go to [flow of control in a chaos experiment](/docs/chaos-engineering/features/experiments/experiment-execution.md).
 
 ## Construct a chaos experiment
 
@@ -26,7 +26,7 @@ To add a chaos experiment:
 	![Experiment Overview](./static/construct-and-run-custom-chaos-experiments/experiment-overview.png)
 
 :::tip
-For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/chaos-faults/prerequisites/chaos-infrastructure/connect-chaos-infrastructures.md).
+For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures.md).
 :::
 
 3. This takes you to the **Experiment Builder** tab, where you can choose how to start building your experiment.
