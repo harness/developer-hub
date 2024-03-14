@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 import { certType } from "./CertCard";
+import IltCard from "./IltCard";
 import { getCertLevel } from "./LandingPage";
-import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
-import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/ci-certification-admin-exam-details.md";
+import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
+import ArchitectCertificationExamDetails from "./data/ci-certification-architect-exam-details.md";
 import ArchitectCertificationReviewGuide from "./data/ci-certification-architect-review-guide.md";
-import ArchitectCertificationExamDetails from "./data/ci-certification-architect-exam-details.md"; 
+import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
+import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -53,7 +55,20 @@ export default function CertificationsCI() {
       setTab(searchKey);
     }
   }, [searchKey]);
-
+  const [showCerts, setShowCerts] = useState<boolean>(true);
+  useEffect(() => {
+    if (location.search === "?ilt") {
+      setShowCerts(false);
+    }
+  }, []);
+  const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
+    setShowCerts(true);
+  };
+  const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
+    setShowCerts(false);
+  };
   return (
     <div className={styles.certificationsCI}>
       <div className={styles.hero}>
@@ -82,272 +97,319 @@ export default function CertificationsCI() {
           ))}
         </div>
       </div>
+      <div className={styles.btns}>
+        <button
+          className={`${styles.certBtn} ${showCerts ? styles.active : ""}`}
+          onClick={handleCertficationClick}
+        >
+          {!showCerts ? (
+            <img src="/img/certification_icon_unactive.svg" />
+          ) : (
+            <img src="/img/certification_icon.svg" />
+          )}
+          Certification
+        </button>
+
+        <button
+          onClick={handleInstLedTrainClick}
+          className={`${styles.InstLedTrainBtn} ${
+            !showCerts ? styles.active : ""
+          }`}
+        >
+          {showCerts ? (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          )}
+          Instructor-Led Training
+        </button>
+      </div>
 
       {/* Tab Content */}
-      <div className={styles.tabs}>
-        <h2>Certifications</h2>
-        <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal], index) => (
-            <div className={styles.listTabItems}>
-              <li
-                key={tabKey}
-                className={tab === tabKey ? styles.active : ""}
-                onClick={() => handleSwitchTab(tabKey)}
+      {showCerts && (
+        <div className={styles.tabs}>
+          <h2>Certifications</h2>
+          <ul className={styles.tabItems}>
+            {Object.entries(certType).map(([tabKey, tabVal], index) => (
+              <div className={styles.listTabItems}>
+                <li
+                  key={tabKey}
+                  className={tab === tabKey ? styles.active : ""}
+                  onClick={() => handleSwitchTab(tabKey)}
+                >
+                  For {tabVal}
+                </li>
+                {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+              </div>
+            ))}
+          </ul>
+
+          {/* Developer Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.developer && styles.active
+            )}
+          >
+            {/* Developer Study Guide */}
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.developer]
+                )}
               >
-                For {tabVal}
-              </li>
-              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
-            </div>
-          ))}
-        </ul>
-
-        {/* Developer Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.developer && styles.active
-          )}
-        >
-          {/* Developer Study Guide */}
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.developer]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>Continuous Integration - Developer</h2>
-                  <img
-                    src={`${baseUrl}img/cert_dev_cI_badge.svg`}
-                    alt="Harness Certified Expert - CI Developer"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CI Free/Team
-                    Plans
-                  </span>
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
                 </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy CI projects.
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Continuous Integration - Developer</h2>
+                    <img
+                      src={`${baseUrl}img/cert_dev_cI_badge.svg`}
+                      alt="Harness Certified Expert - CI Developer"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Harness CI Free/Team
+                      Plans
+                    </span>
                   </div>
-                  {/* Developer Study Guide */}
+                  <div className={styles.right}>
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assesses the fundamental skills to deploy CI projects.
+                    </div>
+                    {/* Developer Study Guide */}
 
-                  <DeveloperCertificationReviewGuide />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/certified-continuous-integration-developer">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
-                    {/*<Link href="/docs/continuous-integration">
+                    <DeveloperCertificationReviewGuide />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/certified-continuous-integration-developer">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                      {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Developer Exam Details */}
+
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details</h2>
+              <div className={styles.examDetailsCard}>
+                <DeveloperCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="https://university-registration.harness.io/certified-continuous-integration-developer">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
+                  {/*<Link href="/docs/continuous-integration">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Developer Exam Details */}
-
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
-            <div className={styles.examDetailsCard}>
-              <DeveloperCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/certified-continuous-integration-developer">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-                   {/*<Link href="/docs/continuous-integration">
+          {/* Administrator Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.administrator && styles.active
+            )}
+          >
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.administrator]
+                )}
+              >
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
+                </div>
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Continuous Integration - Administrator</h2>
+                    <img
+                      src={`${baseUrl}img/cert_adm_ci_badge.svg`}
+                      alt="Harness Certified Expert - CIs Administrator"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Harness CI Enterprise
+                      Plan
+                    </span>
+                  </div>
+                  <div className={styles.right}>
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assesses the fundamental skills to deploy and maintain CI
+                      projects and the overall Harness Platform. This exam
+                      builds upon the{" "}
+                      <a href="/university/continuous-integration?lvl=developer">
+                        CI Developer Certification
+                      </a>
+                      .
+                    </div>
+                    <AdminCertificationReviewGuide />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/continuous-integration-administrator">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                      {/*<Link href="/docs/continuous-integration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Admin Exam Details */}
+
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details</h2>
+              <div className={styles.examDetailsCard}>
+                <AdminCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="https://university-registration.harness.io/continuous-integration-administrator">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
+                  {/*<Link href="/docs/continuous-integration">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Architect Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.architect && styles.active
+            )}
+          >
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.architect]
+                )}
+              >
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
+                </div>
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Continuous Integration - Architect</h2>
+                    <img
+                      src={`${baseUrl}img/cert_arc_ci_badge.svg`}
+                      alt="Harness Certified Expert - CI Architect"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Harness CI Enterprise
+                      Plan
+                    </span>
+                  </div>
+                  <div className={styles.right}>
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assess key technical job functions and advanced skills in
+                      design, implementation and management of CI. This exam
+                      builds upon the{" "}
+                      <a href="/university/continuous-integration?lvl=administrator">
+                        CI Admin Certification
+                      </a>
+                    </div>
+                    <ArchitectCertificationReviewGuide />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/continuous-integration-architect">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                      {/*<Link href="/docs/continuous-integration">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Arch Exam Details  */}
+
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details</h2>
+              <div className={styles.examDetailsCard}>
+                <ArchitectCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="https://university-registration.harness.io/continuous-integration-architect">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Administrator Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.administrator && styles.active
-          )}
-        >
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.administrator]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>
-                    Continuous Integration - Administrator
-                  </h2>
-                  <img
-                    src={`${baseUrl}img/cert_adm_ci_badge.svg`}
-                    alt="Harness Certified Expert - CIs Administrator"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CI Enterprise
-                    Plan
-                  </span>
-                </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain CI
-                    projects and the overall Harness Platform. This exam builds
-                    upon the{" "}
-                    <a href="/university/continuous-integration?lvl=developer">
-                      CI Developer Certification
-                    </a>
-                    .
-                  </div>
-                  <AdminCertificationReviewGuide />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/continuous-integration-administrator">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
-                       {/*<Link href="/docs/continuous-integration">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Admin Exam Details */}
-
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
-            <div className={styles.examDetailsCard}>
-              <AdminCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/continuous-integration-administrator">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-                   {/*<Link href="/docs/continuous-integration">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-              </div>
+      )}
+      {!showCerts && (
+        <div className={styles.tabs}>
+          <h2>Instructor-Led Training</h2>
+          <p>
+            Test and validate your knowledge of Harness by becoming a Harness
+            Certified Expert.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {ilt
+                .filter((ilt) => ilt.module === "ci")
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
+              {ilt.filter((ilt) => ilt.module === "ci").length < 1 ? (
+                <p>Coming Soon ...</p>
+              ) : null}
             </div>
           </div>
         </div>
-
-        {/* Architect Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.architect && styles.active
-          )}
-        >
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.architect]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>Continuous Integration - Architect</h2>
-                  <img
-                    src={`${baseUrl}img/cert_arc_ci_badge.svg`}
-                    alt="Harness Certified Expert - CI Architect"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CI Enterprise
-                    Plan
-                  </span>
-                </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CI. This exam builds
-                    upon the{" "}
-                    <a href="/university/continuous-integration?lvl=administrator">
-                      CI Admin Certification
-                    </a>
-                  </div>
-                  <ArchitectCertificationReviewGuide />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/continuous-integration-architect">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
-                       {/*<Link href="/docs/continuous-integration">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          {/* Arch Exam Details  */}
-
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
-            <div className={styles.examDetailsCard}>
-            <ArchitectCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/continuous-integration-architect">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-       
-        </div>
-      </div>
+      )}
     </div>
   );
 }
