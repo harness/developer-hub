@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-02-21T10:00
+date: 2024-03-13T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -24,7 +24,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-## February 2024
+## March 2024
+
+### Version 1.87.3
+
+#### New feature: Ingest Aqua Security assurance policy violations
+
+The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
+
+<!-- ![](/docs/security-testing-orchestration/sto-techref-category/static/sto-7164-aquasec-external-policies.png) -->
+
+The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan . You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
+
+For more information, go to:
+
+- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
 
 ### Version 1.87.2
 
@@ -85,6 +100,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
+## February 2024
 
 ### Version 1.84.0 
 
@@ -234,7 +250,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### New features and enhancements
 
-- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). (STO-5661, ZD-41491) 
+- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-5661, ZD-41491) 
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
@@ -249,7 +265,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### Early access feature
 
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration is behind the feature flag `STO_STEP_PALETTE_AQUASEC`. (STO-6382)
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-6382)
 
 #### Fixed issues
 
