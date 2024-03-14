@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-02-21T10:00
+date: 2024-03-13T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -27,6 +27,21 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 ## March 2024
 
 
+### Version 1.87.2
+
+<!-- 2024-03-13 -->
+
+#### New enhancement
+
+- The **Pipeline Execution** > **Security Tests** > **Issue Details** pane now includes a link to the scanned target on the Test Targets page. This link is included for all issues. Previously, only the **Exemptions** > **Issues Details** pane included this link. (STO-7114)
+
+#### Fixed issues
+
+- Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
+
+- Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
+
+
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->
@@ -34,8 +49,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Early Access feature: Auto-detect targets and variants
 
 Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
-
-<!-- 
 
 - For container images, the step detects the target and variant using the **Container Image Name** and **Tag**  defined in the step or runtime input. 
 - For code repositories, for code repositories, the step detects these values using `git`: 
@@ -45,7 +58,6 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
   - The target is based on the **Instance Domain** and **Path** defined in the step or runtime input, for example `https://qa.jpgr.org:3002/login/us`.
   - The variant is the timestamp when the step scanned the instance.
 
--->
 
 This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
@@ -61,9 +73,7 @@ This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [
 
 - Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
 
-- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
-
-<!-- 
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
 
 #### Early access feature
 
@@ -91,7 +101,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
--->
+
 
 ## February 2024
 

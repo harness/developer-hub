@@ -110,7 +110,7 @@ You can't create a trigger for this, but you can set up [Pipeline chaining](http
 
 ### What is expected when I abort a pipeline, and what actions are taken to ensure a clean state in the system?
 
-When you [abort a pipeline, stage, or step](https://developer.harness.io/docs/platform/pipelines/failiure-handling/abort-pipeline), the expected behavior is to take actions to halt the task's execution as promptly as possible.
+When you [abort a pipeline, stage, or step](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline), the expected behavior is to take actions to halt the task's execution as promptly as possible.
 
 Harness has a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, that aborts a task. This method typically leverages `Thread.interrupt()` to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
 
@@ -198,6 +198,10 @@ You need permissions to view pipelines at the account scope to access deployment
 
 It is not possible to view all pipeline executions for an entire account under a single view due to the [three-tier permissions hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). You need to drill down into an organization or project to view the execution history for that org/project.
 
+### What queries can I use in the pipeline execution history search?
+
+You can search by pipeline name or tag.
+
 ## Pipeline notifications
 
 ### How do I make a pipeline report to Slack?
@@ -279,3 +283,7 @@ json_content='<+pipeline>'
 variables=$(echo "$json_content" | jq -r 'recurse | objects | select(has("variables")) | .variables | to_entries | map("\(.key) = \(.value)") | join(" ")')
 echo "$variables"
 ```
+
+### How do I get the stage execution ID to use in a template?
+
+You can use the expression `<+pipeline.stages.STAGE_ID.executionId>` to get the execution ID of a specific stage in the pipeline. Replace `STAGE_ID` with the identifier of the stage you want to reference.

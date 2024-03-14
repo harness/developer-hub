@@ -118,14 +118,14 @@ You can reference the resolved dry run manifest from the Dry Run step using this
 For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
 
 ```
-<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.manifestDryRun>
 ```
 
 Another example is to use a Harness [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to perform logic using `kubectl diff`:
 
 ```
 cat << EOM > manifest.yaml
-<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.manifestDryRun>
 EOM
 cat manifest.yaml
 echo "K8s client/server version:"

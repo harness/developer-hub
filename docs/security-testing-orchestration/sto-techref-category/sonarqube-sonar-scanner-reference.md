@@ -289,11 +289,12 @@ To implement a SonarQube pull-request scan, include the following arguments in [
     - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
     - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
     - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
-      
+
       If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
 
 <details>
 <summary>YAML configuration example</summary>
+
 ```yaml
               - step:
                   type: Sonarqube
@@ -308,8 +309,8 @@ To implement a SonarQube pull-request scan, include the following arguments in [
                       args:
                         cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
                     # ...
-
 ```
+
 </details>
 
 ## Troubleshoot Sonar Scans
@@ -320,15 +321,19 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 * Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
 * Solution: Change the `depth` to `0`.
 
-### How to add the sonar.projectVersion in a Harness pipeline
+### Add the sonar.projectVersion to a Harness pipeline
 
 In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
 
+### SonarQube doesn't scanning the main branch and pull request branches in the same pipeline
 
+If SonarQube isn't scanning both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube.
 
+One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
+
+This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
 
 <!-- STO-7187 remove legacy configs for scanners with step palettes
-
 
 ## Security step settings for SonarQube scans in STO (legacy)
 
@@ -341,9 +346,7 @@ You can set up SonarQube scans using a Security step, but this is a legacy funct
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-
 <StoDinDRequirements />
-
 
 #### Scan modes
 

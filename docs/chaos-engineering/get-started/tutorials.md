@@ -20,6 +20,6 @@ These guides and tutorials help you get started with Harness Chaos Engineering o
 
 ## Run experiments as pipelines
 
-* [Integrate with CE with Harness CD](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/experiment-as-cd-pipeline)
-* [Run experiments as GitLab pipelines](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/experiment-as-gitlab-pipeline)
-* [Run experiments as Jenkins pipelines](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/experiment-as-jenkins-pipeline)
+* [Integrate with CE with Harness CD](/docs/chaos-engineering/integrations/experiment-as-cd-pipeline)
+* [Run experiments as GitLab pipelines](/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline)
+* [Run experiments as Jenkins pipelines](/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline)

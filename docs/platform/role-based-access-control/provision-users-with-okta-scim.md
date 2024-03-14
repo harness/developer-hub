@@ -48,17 +48,18 @@ To enable automated provisioning, you must add a Harness app to your Okta admini
    ```
 
    Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
+   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
 
-5. For **Audience URI (SP Entity ID)**, enter `app.harness.io`.
-6. For **Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name Format**, and set the **Value** to **user.email**.
-7. For **Group Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name format (optional)**, select an appropriate **Filter**, and enter the appropriate corresponding filter value.
-8. Select **Next**.
-9. In the **Feedback** options, select the relevant option, and then select **Finish**.
+6. For **Audience URI (SP Entity ID)**, enter `app.harness.io`.
+7. For **Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name Format**, and set the **Value** to **user.email**.
+8. For **Group Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name format (optional)**, select an appropriate **Filter**, and enter the appropriate corresponding filter value.
+9. Select **Next**.
+10. In the **Feedback** options, select the relevant option, and then select **Finish**.
 
    ![](./static/provision-users-with-okta-scim-08.png)
 
-10. In your newly created app, select the **General** tab, and then select **Edit** under **App Settings**.
-11. Select **Enable SCIM provisioning**, and then select **Save**.
+11. In your newly created app, select the **General** tab, and then under **App Settings**, select **Edit**.
+12. Select **Enable SCIM provisioning**, and then select **Save**.
 
    ![](./static/provision-users-with-okta-scim-09.png)
 
