@@ -400,6 +400,10 @@ noIGUi15TS-_XrJIPwYczQ here is the evaluation ID
 
 Cloud Asset Governance evaluations taking longer than three minutes can be due to complex policies with multiple resource checks or due to high volume of resources being evaluated. Additionally, limitations in the cloud provider's API response times and network latency can also contribute to longer execution times.
 
+#### We need an Asset Governance rule to merge different labels into one AppID label for Azure
+
+To achieve this use case, You can first remove the tags and than add the req tag. [Doc Link] (https://cloudcustodian.io/docs/azure/resources/azure-common-actions.html#tag)
+
 
 ### Autostopping
 
@@ -631,3 +635,6 @@ Yes, users have the option to create budgets without alerts. However, it is reco
 #### Can users view the historical budget over time in Harness without the need to modify it every month?
 
 Yes, users can accomplish this by creating a Yearly budget and selecting the monthly breakdown option. This allows for a historical view without the need for monthly adjustments.
+
+#### What is FinOps in Harness?
+FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.

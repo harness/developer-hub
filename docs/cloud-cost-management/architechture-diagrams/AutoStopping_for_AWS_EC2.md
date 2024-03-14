@@ -4,7 +4,7 @@ description: AutoStopping for AWS EC2
 sidebar_label: AutoStopping for AWS EC2 
 ---
 
-![](./static/AutoStopping_for_AWS_EC2.png)
+<DocImage path={require('./static/AutoStopping_for_AWS_EC2.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### AutoStopping for AWS EC2: High-Level Overview
 

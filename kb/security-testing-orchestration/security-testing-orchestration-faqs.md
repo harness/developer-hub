@@ -44,3 +44,20 @@ This section discusses the following:
 - [Can't generate SonarQube report due to shallow clone](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#cant-generate-sonarqube-report-due-to-shallow-clone)
 - [How to include arguments such as `sonar.projectVersion` in a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#additional-cli-flags)
 
+## Why is SonarQube not scanning the main branch and pull request branches within the same pipeline?
+
+A: If SonarQube is not scanning both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube. One potential solution involves configuring conditional arguments within the Harness platform to handle PR and branch scan requests separately.
+
+To implement this solution, conditional arguments can be used to execute specific steps based on whether it's a PR scan request or a branch scan request. For instance, expressions like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"` can be utilized for this purpose.
+
+For further guidance and details on utilizing built-in CI/CD codebase variables like `<+codebase.build.type>`, go to [Codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference). This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
+
+## Why do I face a "Could not connect to addon client after max retries" error during BlackDuck scans in my pipeline, whereas I cannot reproduce the error locally?
+
+The "Could not connect to addon client after max retries" error typically indicates that the container running the BlackDuck scan step is terminated abruptly due to insufficient resources. To address this issue, Harness recommends increasing the resources allocated to the BlackDuck step.
+
+You can begin by adjusting the resource allocation to `memory: 1Gi` and `cpu: "1.0"`. Then, monitor the memory and CPU consumption of the container during the scan to gauge its resource requirements accurately. Based on this observation, you can further refine the resource allocation as needed to prevent container termination and ensure successful BlackDuck scans in your pipeline.
+
+#### I don't see Test Execution Summary widget in the list
+
+We will have to enable the CI_TI_DASHBOARDS_ENABLED flag which will show a dashboard called "Unit Tests Metrics" Please contact Harness support to enable the FF.

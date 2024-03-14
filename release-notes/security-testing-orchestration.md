@@ -26,6 +26,21 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2024
 
+### Version 1.87.2
+
+<!-- 2024-03-13 -->
+
+#### New enhancement
+
+- The **Pipeline Execution** > **Security Tests** > **Issue Details** pane now includes a link to the scanned target on the Test Targets page. This link is included for all issues. Previously, only the **Exemptions** > **Issues Details** pane included this link. (STO-7114)
+
+#### Fixed issues
+
+- Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
+
+- Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
+
+
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->
@@ -42,9 +57,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
 
-- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
-
-<!-- 
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
 
 #### Early access feature
 
@@ -72,7 +85,6 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
--->
 
 ### Version 1.84.0 
 
@@ -122,10 +134,15 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 - Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
 
-#### Fixed issue
+#### Fixed issues
 
 - Fixed a UI issue where the Exemptions page would show the incorrect severity for an issue if that severity was overridden after the original scan. (STO-7069)
 
+- The SonarQube integration includes better support for orchestrated branch and pull-request scanning with SonarQube Enterprise. (STO-7122, STO-6840, STO-6857, ZD-58021, ZD-55282, ZD-55592)
+  - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the runtime input or the pull request.
+  - With this enhancement, the orchestration step always downloads results for the scanned branch or pull request.
+  - Branch scans require no additional configuration.
+  - To configure pull-request scans, go to [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration).
 
 ## January 2024 
 

@@ -296,3 +296,29 @@ To check what variation a target got served in Harness UI, you can go to the Fea
 #### How to fetch stale flags in org and projects?
 
 You can use the API https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures to fetch stale FF, you need to use status=potentially-stale in the API.
+
+#### Why am I getting a target segment not found error?
+```
+target segment not found%!(EXTRA string-some-target-here)
+```
+
+This error occurs if a user is trying to add a target group that does not exist as a target to a Feature Flag.
+
+#### Why am I getting a target not created error?
+```
+target not created 'target'
+```
+
+This error occurs if a user is trying to add a target that already exists.
+
+#### I want to restrict the ability for users that are not in the QA or admin user groups from toggling feature flags on in an environment.
+
+You can use RBAC permissions to restrict certain user from toggling FF in particular environments.
+
+#### Can i export all feature flag states?
+
+You can use [API](https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures) to fetch all FF in a project.
+
+#### Can i associate tag to a feature flag?
+
+Yes you can attach a tag to a Feature Flag.

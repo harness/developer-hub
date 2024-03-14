@@ -45,7 +45,7 @@ The timezone settings govern the display value of the settings not their actu
 1. In a Harness CD or Approval stage, in **Execution**, select **Add Step**.
 2. Select **ServiceNow Update**. The ServiceNow Update settings appear.
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)).
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 
@@ -103,6 +103,8 @@ The timezone settings govern the display value of the settings not their actu
 2. In **Template Name**, enter the name of an existing template or provide an expression.  
    All the fields corresponding to the Template are listed.
 3. Select **Apply Changes**.
+
+This option updates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates.
 
 ## Custom table support
 

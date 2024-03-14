@@ -228,7 +228,7 @@ And in the pipeline, you can view and add comments to your approval. This inform
 
 <DocImage path={require('./static/dd1c42ed04b5df33e8f1658c9e8ca03d5f363de80487d118607c445e25119f24.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Select **Approve** and the pipeline will progress. If you reject the approval, the pipeline will end and initiate rollback or the [pipeline failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
+Select **Approve** and the pipeline will progress. If you reject the approval, the pipeline will end and initiate rollback or the [pipeline failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
 For more information, go to [Using manual Harness approval stages](/docs/platform/approvals/adding-harness-approval-stages), and the [Approvals tutorial](https://developer.harness.io/docs/platform/approvals/approvals-tutorial), and [Notifications settings](https://developer.harness.io/docs/platform/notifications/notification-settings).
 

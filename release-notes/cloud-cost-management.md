@@ -17,7 +17,8 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 ## March 2024
-### Version 1.9.1
+
+### Version 1.9.3
 #### New features and enhancements
 This release does not include any new features.
 

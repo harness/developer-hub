@@ -261,6 +261,15 @@ No early access (beta) features are available for Harness Code Repository. -->
 
 The following early access (beta) features are available for the Harness Software Engineering Insights module.
 
+### Diagnostic Tab
+
+* **Release date:** March 2024
+* **Issue number:** SEI-5818
+* **Feature flag:** `SHOW_DIAGNOSTIC_TILE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.
+
 ### SEI Jira Integration Enhanced Experience
 
 * **Release date:** February 2024
@@ -497,6 +506,16 @@ In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root
 Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
 
 ### STO features promoted to GA
+
+### Write OPA policies based on STO scan results
+
+* **Release date:** November 2023
+* **Issue number:** STO-6738
+* **Feature flag:** `STO_DATA_OPA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+
 
 #### UI enhancements for working with exemptions
 
