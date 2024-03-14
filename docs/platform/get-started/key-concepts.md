@@ -81,6 +81,12 @@ You assign roles and resource groups to service accounts, just as you would a us
 
 Similarly, when you create an API key for a personal user account, the API key inherits the user's permissions.
 
+## Governance using Policy as Code
+
+Add governance guardrails with policies based on Open Policy Agent (OPA).
+
+[Use built-in sample policies or write your own.](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
 ## Secrets management
 
 Harness includes built-in secrets management to store your encrypted secrets, such as access keys, and use them in your Harness account. Harness also integrates with all popular secrets managers.
@@ -111,7 +117,7 @@ Pipelines are a feature of several Harness modules. Pipelines represent a workfl
 
 For example, a pipeline can use the CI module to build, test, and push code, and then a CD module to deploy the artifact to your production infrastructure.
 
-###  Pipeline Studio
+### Pipeline Studio
 
 In Harness, you can write pipelines in YAML or build pipelines visually in the Pipeline Studio.
 
@@ -140,12 +146,6 @@ For more information, go to [Run Steps in a Step Group](/docs/continuous-deliver
 
 [Templates](/docs/platform/templates/template) enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create templates for steps, step groups, stages, and pipelines.
 
-## Governance using Policy as Code
-
-Add governance guardrails with policies based on Open Policy Agent (OPA).
-
-[Use built-in sample policies or write your own.](/docs/platform/governance/policy-as-code/harness-governance-overview)
-
 ## Automation
 
 Harness offers several approaches for automating management of Harness entities in your account:
@@ -159,6 +159,12 @@ Harness offers several approaches for automating management of Harness entities 
 With the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview), you can sync your Harness account, orgs, and projects with your Git repo to manage Harness entirely from Git.
 
 Harness can respond to Git events to trigger pipelines and pass in event data.
+
+## Learn more about the Harness Platform
+
+* [Navigation](/docs/get-started/harness-ui-overview.md)
+* [Architecture](/docs/get-started/harness-platform-architecture.md)
+* [Supported platforms and technologies](../platform-whats-supported.md)
 
 ## FirstGen vs NextGen
 
