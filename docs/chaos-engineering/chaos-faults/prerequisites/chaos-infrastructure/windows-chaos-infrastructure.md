@@ -10,6 +10,10 @@ HCE supports executing Windows faults similar to Linux faults.
 ## Before you begin
 * [Prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md)
 
+The diagram represents a high-level architecture of the interaction between the Windows execution plane and control plane components.
+
+![](./static/windows-infrastructure/detailed-architecture.png)
+
 ## Advanced setup
 
 The mandatory input required for the installation of the chaos infrastructure is the `name`.
