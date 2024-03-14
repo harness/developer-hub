@@ -46,8 +46,8 @@
     margin-top: 32px;
     display: flex;
     gap: 16px;
+  
     .certBtn {
-      background-color: var(--primary-9);
       width: 227px;
       height: 52px;
       padding: 10px 32px 10px 32px;
@@ -58,14 +58,14 @@
       line-height: 28px;
       letter-spacing: 0px;
       text-align: left;
-      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      &:hover {
-        text-decoration: none;
-      }
+      border: 2px solid var(--primary-9);
+
+      color: var(--primary-9);
+
       img {
         width: 28px;
         height: 22.67px;
@@ -96,6 +96,11 @@
         top: 4.67px;
         left: 2px;
       }
+    }
+      .active {
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
     }
   }
   .tabs {

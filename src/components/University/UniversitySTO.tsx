@@ -13,7 +13,8 @@ import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-d
 // import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
 import Tooltip from "rc-tooltip";
-
+import IltCard, { iltType } from "./IltCard";
+import { ilt } from "./data/iltData";
 const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_sto_badge.svg`,
@@ -54,7 +55,13 @@ export default function CertificationsSTO() {
       setTab(searchKey);
     }
   }, [searchKey]);
-
+  const [showCerts, setShowCerts] = useState<boolean>(true);
+  const handleCertficationClick = () => {
+    setShowCerts(true);
+  };
+  const handleInstLedTrainClick = () => {
+    setShowCerts(false);
+  };
   return (
     <div className={styles.certificationsSTO}>
       <div className={styles.hero}>
@@ -83,219 +90,229 @@ export default function CertificationsSTO() {
         </div>
       </div>
       <div className={styles.btns}>
-        <Link className={styles.certBtn} to="/university/#certs">
-          <img src="/img/certification_icon.svg" />
-          Certification
-        </Link>
-        <Tooltip
-          placement="top"
-          overlay={<p>Go to https://university-registration.harness.io/</p>}
+        <button
+          className={`${styles.certBtn} ${showCerts ? styles.active : ""}`}
+          onClick={handleCertficationClick}
         >
-          <Link
-            to="https://university-registration.harness.io/"
-            className={styles.InstLedTrainBtn}
-          >
+          {!showCerts ? (
+            <img src="/img/certification_icon_unactive.svg" />
+          ) : (
+            <img src="/img/certification_icon.svg" />
+          )}
+          Certification
+        </button>
+
+        <button
+          onClick={handleInstLedTrainClick}
+          className={`${styles.InstLedTrainBtn} ${
+            !showCerts ? styles.active : ""
+          }`}
+        >
+          {showCerts ? (
             <img src="/img/Instructor_led_trainin_logo.svg" />
-            Instructor-Led Training
-          </Link>
-        </Tooltip>
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          )}
+          Instructor-Led Training
+        </button>
       </div>
 
       {/* Tab Content */}
-      <div className={styles.tabs}>
-        <h2>Certifications</h2>
-        <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal], index) => (
-            <div className={styles.listTabItems}>
-              <li
-                key={tabKey}
-                className={tab === tabKey ? styles.active : ""}
-                onClick={() => handleSwitchTab(tabKey)}
+      {showCerts && (
+        <div className={styles.tabs}>
+          <h2>Certifications</h2>
+          <ul className={styles.tabItems}>
+            {Object.entries(certType).map(([tabKey, tabVal], index) => (
+              <div className={styles.listTabItems}>
+                <li
+                  key={tabKey}
+                  className={tab === tabKey ? styles.active : ""}
+                  onClick={() => handleSwitchTab(tabKey)}
+                >
+                  For {tabVal}
+                </li>
+                {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+              </div>
+            ))}
+          </ul>
+
+          {/* Developer Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.developer && styles.active
+            )}
+          >
+            {/* Developer Study Guide */}
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.developer]
+                )}
               >
-                For {tabVal}
-              </li>
-              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
-            </div>
-          ))}
-        </ul>
-
-        {/* Developer Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.developer && styles.active
-          )}
-        >
-          {/* Developer Study Guide */}
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.developer]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Developer</h2>
-                  <img
-                    src={`${baseUrl}img/cert_dev_sto_badge.svg`}
-                    alt="Harness Certified Expert - STO Engineering Developer"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Security Testing
-                    Orchestration Free/Team Plans
-                  </span>
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
                 </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy your applications
-                    with STO projects.
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Security Testing Orchestration - Developer</h2>
+                    <img
+                      src={`${baseUrl}img/cert_dev_sto_badge.svg`}
+                      alt="Harness Certified Expert - STO Engineering Developer"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Security Testing
+                      Orchestration Free/Team Plans
+                    </span>
                   </div>
-                  <DeveloperCertificationReviewGuide />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/security-testing-orchestration-developer">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
+                  <div className={styles.right}>
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assesses the fundamental skills to deploy your
+                      applications with STO projects.
+                    </div>
+                    <DeveloperCertificationReviewGuide />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/security-testing-orchestration-developer">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Developer Exam Details */}
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details</h2>
+              <div className={styles.examDetailsCard}>
+                <DeveloperCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="https://university-registration.harness.io/security-testing-orchestration-developer">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Developer Exam Details */}
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
-            <div className={styles.examDetailsCard}>
-              <DeveloperCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/security-testing-orchestration-developer">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Administrator Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.administrator && styles.active
-          )}
-        >
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.administrator]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Administrator </h2>
-                  <img
-                    src={`${baseUrl}img/cert_adm_sto_badge.svg`}
-                    alt="Harness Certified Expert - STO Administrator"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Security Testing
-                    Orchestration Enterprise Plan
-                  </span>
+          {/* Administrator Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.administrator && styles.active
+            )}
+          >
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.administrator]
+                )}
+              >
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
                 </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide </h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain STO
-                    Engineering projects and the overall Harness Platform. This
-                    exam builds upon the{" "}
-                    <a href="/university/sto?lvl=developer">
-                      STO Developer Certification
-                    </a>
-                    .
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Security Testing Orchestration - Administrator </h2>
+                    <img
+                      src={`${baseUrl}img/cert_adm_sto_badge.svg`}
+                      alt="Harness Certified Expert - STO Administrator"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Security Testing
+                      Orchestration Enterprise Plan
+                    </span>
                   </div>
-                  <AdminCertificationReviewDetails />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/security-testing-orchestration-administrator">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
+                  <div className={styles.right}>
+                    <h3>Review Study Guide </h3>
+                    <div className={styles.desc}>
+                      Assesses the fundamental skills to deploy and maintain STO
+                      Engineering projects and the overall Harness Platform.
+                      This exam builds upon the{" "}
+                      <a href="/university/sto?lvl=developer">
+                        STO Developer Certification
+                      </a>
+                      .
+                    </div>
+                    <AdminCertificationReviewDetails />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/security-testing-orchestration-administrator">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Admin Exam Details */}
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details </h2>
-            <div className={styles.examDetailsCard}>
-              <AdminCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/security-testing-orchestration-administrator">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
+            {/* Admin Exam Details */}
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details </h2>
+              <div className={styles.examDetailsCard}>
+                <AdminCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="https://university-registration.harness.io/security-testing-orchestration-administrator">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Architect Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.architect && styles.active
-          )}
-        >
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.architect]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>
-                    Security Testing Orchestration - Architect (BETA COMING
-                    SOON)
-                  </h2>
-                  <img
-                    src={`${baseUrl}img/cert_arc_sto_badge.svg`}
-                    alt="Harness Certified Expert - STO Architect"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Security Testing
-                    Orchestration Enterprise Plan
-                  </span>
+          {/* Architect Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.architect && styles.active
+            )}
+          >
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.architect]
+                )}
+              >
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
                 </div>
-                <div className={styles.right}>
-                  {/* <h3>Review Study Guide</h3>
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>
+                      Security Testing Orchestration - Architect (BETA COMING
+                      SOON)
+                    </h2>
+                    <img
+                      src={`${baseUrl}img/cert_arc_sto_badge.svg`}
+                      alt="Harness Certified Expert - STO Architect"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Security Testing
+                      Orchestration Enterprise Plan
+                    </span>
+                  </div>
+                  <div className={styles.right}>
+                    {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of STO Engineering.
@@ -312,25 +329,25 @@ export default function CertificationsSTO() {
                         Register for Exam
                       </button>
                     </Link> */}
-                  {/* <Link href="/docs/security-testing-orchestration">
+                    {/* <Link href="/docs/security-testing-orchestration">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
-                  {/* </div> */}
-                  <h3>Coming Soon...</h3>
-                  <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of STO.
+                    {/* </div> */}
+                    <h3>Coming Soon...</h3>
+                    <div className={styles.desc}>
+                      Assess key technical job functions and advanced skills in
+                      design, implementation and management of STO.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Arch Exam Details */}
-          {/* <div className={styles.examDetails}>
+            {/* Arch Exam Details */}
+            {/* <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <ArchitectCertificationExamDetails />
@@ -344,8 +361,30 @@ export default function CertificationsSTO() {
               </div>
             </div>
           </div> */}
+          </div>
         </div>
-      </div>
+      )}
+      {!showCerts && (
+        <div className={styles.tabs}>
+          <h2>Instructor-Led Training</h2>
+          <p>
+            Test and validate your knowledge of Harness by becoming a Harness
+            Certified Expert.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {ilt
+                .filter((ilt) => ilt.module === "sto")
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
+              {ilt.filter((ilt) => ilt.module === "sto").length < 1 ? (
+                <p>Coming Soon ...</p>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
