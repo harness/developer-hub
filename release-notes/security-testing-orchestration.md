@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-02-21T10:00
+date: 2024-03-13T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -24,7 +24,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-## February 2024
+## March 2024
+
+### Version 1.87.2
+
+<!-- 2024-03-13 -->
+
+#### New enhancement
+
+- The **Pipeline Execution** > **Security Tests** > **Issue Details** pane now includes a link to the scanned target on the Test Targets page. This link is included for all issues. Previously, only the **Exemptions** > **Issues Details** pane included this link. (STO-7114)
+
+#### Fixed issues
+
+- Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
+
+- Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
+
 
 ### Version 1.85.0 
 
@@ -70,6 +85,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
+## February 2024
 
 ### Version 1.84.0 
 
