@@ -17,7 +17,7 @@ With Harness, you can resume pipeline executions from any successful stage or a 
 *Retrying* a pipeline or stage is different from *rerunning* a pipeline or stage:
 
 * When you rerun, you start fresh. For example, you can select new values for runtime inputs. You can rerun the entire pipeline or [rerun from a specific stage](/docs/platform/pipelines/run-specific-stage-in-pipeline.md).
-* When you retry, you are run the pipeline/stage exactly as it was run before. You can't change mandatory settings, parameters, or conditions. You can't retry executions older than 30 days.
+* When you retry, you are run the pipeline/stage exactly as it was run before. You can't change mandatory settings, parameters, or conditions. You cannot retry any execution whose first (original) execution is more than 30 days old
 
 ## Prerequisites
 
