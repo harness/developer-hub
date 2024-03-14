@@ -31,7 +31,8 @@ So essentially, a rule is a file that includes logic defined by a policy that pe
 
 <DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
 
-## Create a new rule
+### CRUD operations on a Rule
+### Create a new rule
 
 1. In **Harness**, go to **Cloud Costs**.
 2. Select **Asset Governance**.
@@ -46,22 +47,25 @@ So essentially, a rule is a file that includes logic defined by a policy that pe
 7. Optionally, enter a description of the rule.
 8. Select **Apply**.
 9. Enter the YAML policy in the rule editor.
-10. Select **Save**. 
-
-  If the policy is invalid, an error message is displayed.
+10. Select **Save**. If the policy is invalid, an error message is displayed.
 10. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
-11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
+11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule.
 12. After evaluating the output, select **Run Once** to execute the rule. 
 
   <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
 
+:::important note
 Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 that can be enforced. These policies cannot be edited but can be cloned.
+:::
 
 ## Rule Sets
 
-As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where rule sets come into the picture. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
+As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** come into the picture. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
   <DocImage path={require('./static/rule_set.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### CRUD operations on Rule Sets
+### Create a new Rule Set
 
 To create a rule set, perform the following steps:
 
@@ -84,7 +88,12 @@ The rule set is created successfully. You can view the rule set on the **Asset G
   <DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
 11. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
+### Update a Rule Set
 
+You can view the Rule Set on the Asset Governance Rules page. Expand the rule set to view the individual rules in the rule set. You can click on individual rules to update them and/or use the “Edit” option to update the entire rule set.
+
+### Delete a Rule Set
+To delete a Rule Set, simply click on the “Delete” option.
 
 ## Enforcements
 
@@ -92,6 +101,20 @@ Enforcements enable you to enforce a certain set of rules or rule sets (also kno
 
 For example, a user can create an enforcement to schedule the deletion of all unused EC2 instances older than 60 days. This enforcement will run on the **days specified by the user**, at the **specified time**, and with the **specified frequency (hourly, daily, monthly**). For instance, you could set it to run daily at 2:00 AM to ensure that any EC2 instances meeting the criteria are removed. Alternatively, you might choose to run it hourly during peak usage times, or monthly for less critical cleanup tasks. 
 
+While setting up a new enforcement, you can select the following:
+- Cloud provider: Currently we support GCP, Azure and AWS
+Rule Sets: You can select the Rule Sets that your Enforcement will consist of.
+- Target Accounts: The target accounts that you will be running the Enforcements on.
+- Frequency: The frequency for running the Enforcement. Currently, it can be set for hourly, daily or weekly.
+- Time: After setting the frequency, you can choose the time at which it runs.
+- Dry Run Mode: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
+
+
+
+  <DocImage path={require('./static/enforcements.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### CRUD operations on Enforcements
+### Create a new Enforcement
 To create enforcement, perform the following steps:
 
 1. In your **Harness** application, go to **Cloud Costs**.
@@ -111,7 +134,7 @@ To create enforcement, perform the following steps:
     <DocImage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. 
+After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. 
 
 <DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -119,8 +142,21 @@ Furthermore, you can disable the enforcement at any time using the toggle button
   
 <DocImage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
 
+### Update an Enforcement
 
-## Evaluate the rules
+You can view any Enforcements on Rule Enforcements page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. For updating, you can use the “Edit” option to update the enforcements as per your convenience.
+
+### Delete an Enforcement
+
+To delete an enforcement, simply click on “Delete”
+
+
+## Evaluations
+
+Evaluations include all the data about enforcements run (both, directly and from the test terminal). The Evaluations window also shows you the total cost impact with each enforcement i.e. the costs or spendings associated with each evaluation along with the last time that rule/rule set was enforced. With evaluations, you can view and audit all the enforcements and have access to all the historical data on your account. 
+
+<DocImage path={require('./static/evaluations.png')} width="90%" height="90%" title="Click to view full size image" />
+
 
 1. In your **Harness** application, go to **Cloud Costs**.
 2. Select **Asset Governance**.
