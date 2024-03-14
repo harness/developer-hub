@@ -26,8 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-
-### Version 1.87.3
+### Version 1.87.4
 
 #### New feature: Ingest Aqua Security assurance policy violations
 
@@ -44,6 +43,8 @@ For more information, go to:
 - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
 
+
+### Version 1.87.2
 
 <!-- 2024-03-13 -->
 
@@ -62,21 +63,23 @@ For more information, go to:
 
 <!-- 2024-03-01 -->
 
-#### Fixed issues
+#### Early Access feature: Auto-detect targets and variants
 
-- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
 
-- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+- For container images, the step detects the target and variant using the **Container Image Name** and **Tag**  defined in the step or runtime input. 
+- For code repositories, for code repositories, the step detects these values using `git`: 
+  - To detect the target, the step runs `git config --get remote.origin.url`. 
+  - To detect the variant, the step runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+- For application instances, the step detects these values as follows: 
+  - The target is based on the **Instance Domain** and **Path** defined in the step or runtime input, for example `https://qa.jpgr.org:3002/login/us`.
+  - The variant is the timestamp when the step scanned the instance.
 
-- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
 
-- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
-- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
 
-- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
-
-#### Early access feature
+#### Early access feature: OPA policies for Security Test results
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
 
@@ -101,6 +104,24 @@ This release includes a set of security test policy samples, which make it easy 
 - A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+
+
+#### Fixed issues
+
+- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+
+- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+
+- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
+
+- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+
+- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
+
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
+
+
+
 
 ## February 2024
 
