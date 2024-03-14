@@ -57,3 +57,7 @@ For further guidance and details on utilizing built-in CI/CD codebase variables 
 The "Could not connect to addon client after max retries" error typically indicates that the container running the BlackDuck scan step is terminated abruptly due to insufficient resources. To address this issue, Harness recommends increasing the resources allocated to the BlackDuck step.
 
 You can begin by adjusting the resource allocation to `memory: 1Gi` and `cpu: "1.0"`. Then, monitor the memory and CPU consumption of the container during the scan to gauge its resource requirements accurately. Based on this observation, you can further refine the resource allocation as needed to prevent container termination and ensure successful BlackDuck scans in your pipeline.
+
+#### I don't see Test Execution Summary widget in the list
+
+We will have to enable the CI_TI_DASHBOARDS_ENABLED flag which will show a dashboard called "Unit Tests Metrics" Please contact Harness support to enable the FF.

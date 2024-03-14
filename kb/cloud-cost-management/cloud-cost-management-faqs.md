@@ -400,6 +400,10 @@ noIGUi15TS-_XrJIPwYczQ here is the evaluation ID
 
 Cloud Asset Governance evaluations taking longer than three minutes can be due to complex policies with multiple resource checks or due to high volume of resources being evaluated. Additionally, limitations in the cloud provider's API response times and network latency can also contribute to longer execution times.
 
+#### We need an Asset Governance rule to merge different labels into one AppID label for Azure
+
+To achieve this use case, You can first remove the tags and than add the req tag. [Doc Link] (https://cloudcustodian.io/docs/azure/resources/azure-common-actions.html#tag)
+
 
 ### Autostopping
 
