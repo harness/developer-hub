@@ -8,15 +8,16 @@ redirect_from:
 
 This topic explains how to stop an in-progress pipeline, stage, or step. Take care when using this option as it can have additional impacts.
 
-::: info
+## Required permissions
 
-In order to run the Abort operation on any of the levels listed below, you need to have the Abort permission on the Pipeline. This can be configured using [RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md).
+To abort a pipeline, stage, or step, you need permission to abort pipelines. There are two primary ways you can configure this with [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md):
 
-In case you don't find the Abort permission listed in your RABC pages, it means that the Pipeline Execute permission is being used to allow or disallow Aborts. You can enable Abort as a separate permissions by contacting [Harness Support](mailto:support@harness.io) to enable the Feature Flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION` for you. Enabling this permission will also require a migration of your existing users; so turning on the Feature Flag is likely to take two days. 
+* **Pipeline Execute** permission: By default, this permission grants you the ability to initiate and interact with pipeline executions, including running pipelines, aborting pipelines and pipeline components (stages and steps), retrying/rerunning pipelines, and so on.
+* (Beta) **Abort** permission: To control the **Abort** permission separately from other pipeline execute functions, you can enable the Feature Flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION` by contacting [Harness Support](mailto:support@harness.io).
+   * Enabling this feature flag can take several days because it requires migrating your existing users to this permissions structure.
+   * If the **Abort** permission isn't listed in your account's RBAC settings, then your account is using the default **Pipeline Execute** permission functionality to control all pipeline execution functions (run, abort, retry, and so on).
 
-
-:::
-
+Permissions are contained in [roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles), which can be narrowly scoped, such as the **Pipeline Executor** role, or broadly scoped, like the **Account Admin** role.
 
 ## Abort a pipeline
 
