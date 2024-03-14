@@ -9,6 +9,7 @@ import { MODULES } from "../../constants";
 
 export enum iltType {
   user = "All Users",
+  admin = "Administrators",
 }
 
 export type IltCardItem = {

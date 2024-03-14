@@ -90,9 +90,9 @@ export default function University() {
         <div className={styles.left}>
           <h1>Harness University</h1>
           <div>
-            Harness University offers comprehensive training for all users, with
-            certifications and Instructor-Led Training. Master software delivery
-            and the Harness way.
+            Harness University offers comprehensive learning for all users, with
+            Certifications and Instructor-Led Training. Master software delivery
+            the Harness way.
           </div>
         </div>
         <div className={styles.right}>
@@ -115,7 +115,7 @@ export default function University() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button
@@ -205,7 +205,7 @@ export default function University() {
             <h3>Which Certification is right for you?</h3>
 
             <p>
-              Progress from Developer to Architect level university. Follow the
+              Progress from Developer to Architect. Follow the
               learning paths to progress to the next level.
             </p>
 
@@ -358,8 +358,7 @@ export default function University() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-            Test and validate your knowledge of Harness by becoming a Harness
-            Certified Expert.
+           Intensive two-day courses is designed for IT professionals looking to deepen their understanding and expertise in Harness. 
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>

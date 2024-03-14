@@ -109,7 +109,7 @@ export default function CertificationsSTO() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button
@@ -377,8 +377,7 @@ export default function CertificationsSTO() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-            Test and validate your knowledge of Harness by becoming a Harness
-            Certified Expert.
+          Intensive two-day course is designed for IT professionals looking to deepen their understanding and expertise.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
