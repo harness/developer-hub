@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-### Version 1.87.2
+### Version 1.87.3
 
 #### New feature: Ingest Aqua Security assurance policy violations
 
