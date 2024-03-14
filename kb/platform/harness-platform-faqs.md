@@ -2870,3 +2870,23 @@ Due to a limitation in Entra ID, users with more than 150 groups might not be as
 
 You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
 
+#### what is my org identifier
+
+To check org identifier, Navigate to Account Settings. select the Organizations option. Here, you will see a list of all the organizations in your account, along with their respective identifiers.
+
+#### I want to add another delegate_tag on top of existing. When i look at the delegates page, i dont see an edit option. why?
+
+Tags to a delegate can be added from delegate YAML, from UI adding of tag is not possible. After adding the tags into YAML, you will need to reapply the YAML.
+
+#### How many projects are there
+
+You can use [API](https://apidocs.harness.io/tag/Org-Project#operation/get-org-scoped-projects) to list number of projects under Org.
+
+#### Getting harness-uHbXhYlQQ5uaJ81qoeA4FQ.sh: line 27: apt-get: command not found
+
+As delegate image is UBI based, you can use Microdnf to install packages.
+
+#### Getting error you are missing the following permission: Create / Edit Pipelines
+
+You need to check RBAC permission for the user, to check if user has appropriate permission to Create/Edit permission on pipeline.
+

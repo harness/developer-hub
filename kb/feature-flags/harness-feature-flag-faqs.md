@@ -310,3 +310,15 @@ target not created 'target'
 ```
 
 This error occurs if a user is trying to add a target that already exists.
+
+#### I want to restrict the ability for users that are not in the QA or admin user groups from toggling feature flags on in an environment.
+
+You can use RBAC permissions to restrict certain user from toggling FF in particular environments.
+
+#### Can i export all feature flag states?
+
+You can use [API](https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures) to fetch all FF in a project.
+
+#### Can i associate tag to a feature flag?
+
+Yes you can attach a tag to a Feature Flag.

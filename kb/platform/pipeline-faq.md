@@ -279,3 +279,10 @@ json_content='<+pipeline>'
 variables=$(echo "$json_content" | jq -r 'recurse | objects | select(has("variables")) | .variables | to_entries | map("\(.key) = \(.value)") | join(" ")')
 echo "$variables"
 ```
+#### There is a search box on pipeline execution history list page. Does this search fields other than "Pipeline name"?
+
+Yes, you can search pipeline with Tag too.
+
+#### How do i get the stage execution id in a template
+
+You can use the expression ```<+pipeline.stages.STAGE_ID.executionId>``` to get the execution ID of a specific stage in the pipeline. Replace STAGE_ID with the identifier of the stage you want to reference.
