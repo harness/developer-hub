@@ -335,7 +335,7 @@ export default function CloudCostManagement() {
                   <IltCard {...ilt} />
                 ))}
               {ilt.filter((ilt) => ilt.module === "ccm").length < 1 ? (
-                <p>Coming Soon ...</p>
+                <p>ILT Coming Soon</p>
               ) : null}
             </div>
           </div>
