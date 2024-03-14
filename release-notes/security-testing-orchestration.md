@@ -26,6 +26,23 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
+### Version 1.87.4
+
+#### New feature: Ingest Aqua Security assurance policy violations
+
+<!-- 2024-03-14 -->
+
+The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
+
+<!-- ![](/docs/security-testing-orchestration/sto-techref-category/static/sto-7164-aquasec-external-policies.png) -->
+
+The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan . You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
+
+For more information, go to:
+
+- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+
 
 ### Version 1.87.2
 
@@ -61,21 +78,8 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
-#### Fixed issues
 
-- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
-
-- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
-
-- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
-
-- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
-
-- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
-
-- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
-
-#### Early access feature
+#### Early access feature: OPA policies for Security Test results
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
 
@@ -100,6 +104,22 @@ This release includes a set of security test policy samples, which make it easy 
 - A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+
+
+#### Fixed issues
+
+- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+
+- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+
+- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
+
+- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+
+- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
+
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
+
 
 
 
@@ -253,7 +273,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### New features and enhancements
 
-- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). (STO-5661, ZD-41491) 
+- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-5661, ZD-41491) 
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
@@ -268,7 +288,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### Early access feature
 
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration is behind the feature flag `STO_STEP_PALETTE_AQUASEC`. (STO-6382)
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-6382)
 
 #### Fixed issues
 
