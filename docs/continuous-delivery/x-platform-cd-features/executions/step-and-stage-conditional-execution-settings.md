@@ -186,10 +186,10 @@ Now if you click on ``Run Pipeline`` and check the execution the stage ``deploy_
 
 
 Let's try to understand why this happened even though we provided the environment name as ``harnessdevenv``:
-1. When you run a deploy stage, it first starts the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
 
+1. When you run a deploy stage, it first check a 
 
-
+it first starts the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
 ![](./static/unresolved_expression_execution_2.png)
 
 2. In this case, when the pipeline ran, it first checked whether the environment name is ``harnessdevenv`` and it resolved to null because at that time the stage had not proceeded with fetching environment information and got skipped as the environment name was ``null`` at that time.
