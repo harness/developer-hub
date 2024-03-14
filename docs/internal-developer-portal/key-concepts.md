@@ -5,9 +5,7 @@ sidebar_label: Key Concepts
 sidebar_position: 2
 ---
 
-For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](/docs/get-started/key-concepts).
-
-Before you begin using Harness IDP, you should be familiar with the key concepts.
+Get familiar with these key terms and concepts for Harness IDP. For general Harness Platform concepts, go to [Harness Platform key concepts](/docs/platform/get-started/key-concepts.md).
 
 ## Internal Developer Platform
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use cron triggers to schedule pipeline executions. For example, to schedule a pipeline run every Monday at 1AM, Harness uses the cron expression `0 1 * * MON`. For information about other trigger types and triggers in general, go to the [Triggers overview](./triggers-overview).
 
-This topic assumes you're familiar with [Harness' key concepts](../../get-started/key-concepts.md) and that you have created a Harness CI or CD pipeline.
+This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md) and that you have created a Harness CI or CD pipeline.
 
 import Variables from '/docs/platform/shared/variables-not-supported.md'
 

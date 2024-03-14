@@ -868,7 +868,7 @@ Custom deployments use shell scripts to connect to target platforms, obtain targ
 
 ### Harness entities
 
-For an overview of Harness entities, see [Learn Harness' key concepts](../get-started/key-concepts.md).
+For an overview of Harness entities, see [Learn Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 #### What are organizations and projects?
 

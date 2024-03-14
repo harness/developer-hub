@@ -64,13 +64,13 @@ import {
               "Learn about the Harness components and editions.",
             link: "/docs/get-started/harness-platform-architecture",
           },
-          {
-            title: "Harness key concepts",
-            module: MODULES.platform,
-            description:
-              "Learn about the key concepts and terms used in Harness products.",
-            link: "/docs/get-started/key-concepts",
-          },
+          //{
+          //  title: "Harness key concepts",
+          //  module: MODULES.platform,
+          //  description:
+          //    "Learn about the key concepts and terms used in Harness products.",
+          // link: "/docs/get-started/key-concepts",
+          //},
           {
             title: "Supported platforms and technologies",
             module: MODULES.platform,

@@ -20,7 +20,7 @@ Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/plat
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-- [Learn Harness' key concepts](/docs/get-started/key-concepts)
+- [Learn Harness' key concepts](/docs/platform/get-started/key-concepts)
 
 ### How does Harness use OPA?
 

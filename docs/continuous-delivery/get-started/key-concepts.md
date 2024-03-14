@@ -11,7 +11,7 @@ redirect_from:
   - /docs/continuous-delivery/get-started/cd-pipeline-basics
 ---
 
-For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
+For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts.md).
 
 ## Introduction
 

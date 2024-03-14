@@ -17,7 +17,7 @@ In addition to Harness' many [built-in variable expressions](./harness-variables
 
 Account, org, and project variables store values that you can share and use across multiple pipelines in multiple projects. Pipeline variables include variables added to the pipelines, stages, services, and environments used in the pipelines.
 
-This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
+This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
 
 ## Variable parameters
 
