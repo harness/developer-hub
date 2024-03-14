@@ -108,7 +108,6 @@ This script is a basic example. If you wanted to try it on Vertex AI, you need t
 - Create a [custom training job](https://cloud.google.com/vertex-ai/docs/training/overview), specifying the training container image for Scikit-learn, your script file, and any required command-line arguments.
 - Configure GCP access permissions so that your Vertex AI training job can access the GCS bucket where your data and outputs will be stored.
 
-
 ### Harness Vertex AI plugin
 
 You can use the Vertex AI plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) in a CI pipeline.
