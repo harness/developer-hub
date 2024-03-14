@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-02-21T10:00
+date: 2024-03-13T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-## February 2024
+## March 2024
 
 ### Version 1.87.2
 
@@ -85,6 +85,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
+## February 2024
 
 ### Version 1.84.0 
 
