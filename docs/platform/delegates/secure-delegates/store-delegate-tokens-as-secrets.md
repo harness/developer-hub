@@ -1,7 +1,7 @@
 ---
 title: Store delegate tokens as Kubernetes secrets
 description: How to store delegate tokens as Kubernetes secrets
-# sidebar_position: 20
+sidebar_position: 30
 ---
 
 You can store your delegate tokens as a Kubernetes secret instead of a ConfigMap. 
