@@ -26,9 +26,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-### Version 1.87.3
+### Version 1.87.2
 
 #### New feature: Ingest Aqua Security assurance policy violations
+
+<!-- 2024-03-14 -->
 
 The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
 
@@ -41,7 +43,6 @@ For more information, go to:
 - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
 
-### Version 1.87.2
 
 <!-- 2024-03-13 -->
 

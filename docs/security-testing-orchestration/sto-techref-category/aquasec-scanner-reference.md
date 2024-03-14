@@ -9,13 +9,9 @@ You can ingest container-image scan results from [Aqua Security Enterprise](http
 
 The Aqua Security step can also ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**.
 
-![](./static/sto-7164-aquasec-external-policies.png)
+<DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
 
-:::note
 
-Currently, this [early access feature](/release-notes/early-access) is behind the feature flag `STO_STEP_PALETTE_AQUASEC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 ## Important notes for running Aqua Security scans in STO
 
