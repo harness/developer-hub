@@ -212,6 +212,10 @@ pipeline:
                 value: <+input>.default(new york).executionInput()
 ```
 
+If you want to provide the default value in the parent entity(Pipeline), then you can define the field value as `<+input>` in the child entity(Template). And in parent entity(Pipeline) you can define the default value like `<+input>.deault(default_val)` for any input. 
+
+Kindly note that if default value is defined in the child entity(Template) then parent entity(Pipeline) can not override the default value for that input.
+
 ### Allowed values
 
 Use allowed values to provide a fixed range of acceptable values for a runtime input.
