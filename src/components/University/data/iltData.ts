@@ -7,7 +7,7 @@ export const ilt: IltCardItem[] = [
     module: MODULES.cd,
     iltType: iltType.user,
     description:
-      "Learn how to deploy your applications on Kubernetes and other infrastructure platforms.",
+      "Deep dive into advanced Continus Delivery concepts focusing on Kubernetes.",
     version: "Harness CD & GitOps Enterprise Plan",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
   },
