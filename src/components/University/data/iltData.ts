@@ -11,4 +11,13 @@ export const ilt: IltCardItem[] = [
     version: "Harness CD & GitOps Enterprise Plan",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
   },
+  {
+    title: "Introduction to the Harness Platform",
+    module: MODULES.platform,
+    iltType: iltType.user,
+    description:
+      "Self-paced, asynchronous course as a recomended prerequisite to ILT offerings.",
+    version: "Harness Enterprise Plan",
+    link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
+  },
 ];
