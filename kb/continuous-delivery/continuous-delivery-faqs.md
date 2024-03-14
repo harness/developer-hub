@@ -1347,12 +1347,11 @@ By using the following expression on the target stage, you will be able to propa
 #### How do I redeploy all services in a new cluster?
  Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
 
-#### What documents bundle should I refer to when migrating from CG to NG ?
+#### What documents should I refer to when migrating from CG/FG to NG?
 
-On migration you can refer the following documentations for assistance :
-- [Migrator GH](https://github.com/harness/migrator)
-- [Comparison page to compare different aspects](https://developer.harness.io/docs/get-started/harness-first-gen-vs-harness-next-gen)
-- [Feature Parity Matrix](https://developer.harness.io/assets/files/FirstGen%20and%20NextGen%20CD%20feature%20parity%20matrix-43d79b7d53d3a9abfda19ffa59c6ea78.pdf)
+- [Migrator tool GitHub repository](https://github.com/harness/migrator)
+- [Upgrade guide](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd)
+- [Feature Parity Matrix](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix)
 - [CDNG Upgrade Faq](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 - [Recording for Project V/S Application](https://www.loom.com/share/62f698a3820e4542a471e4d40d41c686?sid=3dc6f3b9-9369-4133-9452-08795c597351)
 

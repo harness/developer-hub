@@ -6,9 +6,7 @@ sidebar_position: 1
 
 This topic provides answers to common questions about upgrading from Harness Continuous Delivery (CD) FirstGen to NextGen.
 
-For steps on upgrading, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
-
-For information on the differences between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
+For more information, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
 
 ## Harness NextGen overview video
 

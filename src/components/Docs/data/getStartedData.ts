@@ -51,13 +51,6 @@ import {
             link: "/docs/get-started/harness-ui-overview",
           },
           {
-            title: "Harness FirstGen vs Harness NextGen",
-            module: MODULES.platform,
-            description:
-              "Compare the two Harness product suite versions.",
-            link: "/docs/get-started/harness-first-gen-vs-harness-next-gen",
-          },
-          {
             title: "Harness Platform architecture",
             module: MODULES.platform,
             description:

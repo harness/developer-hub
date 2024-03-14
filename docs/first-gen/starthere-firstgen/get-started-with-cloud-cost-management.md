@@ -8,11 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md).
+:::warning
+
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../cloud-cost-management/get-started/key-concepts.md).
+
 :::
 
-Switch to [NextGen](../../cloud-cost-management/get-started/key-concepts.md).Harness Cloud Cost Management (CCM) provides engineers and DevOps granular detail of their resource consumption hourly. It is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
+Harness Cloud Cost Management (CCM) provides engineers and DevOps granular detail of their resource consumption hourly. It is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
 
 The following topics will guide you through the concepts and how-tos of Cloud Cost Management:
 
