@@ -12,7 +12,7 @@ This topic explains how to stop an in-progress pipeline, stage, or step. Take ca
 
 In order to run the Abort operation on any of the levels listed below, you need to have the Abort permission on the Pipeline. This can be configured using [RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md).
 
-In case you don't find the Abort permission listed in your RABC pages, it means that the Pipeline Execute permission is being used to allow or disallow Aborts. You can enable Abort as a separate permissions by contacting [Harness Support](support@Harness.io) to enable the Feature Flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION` for you. Enabling this permission will also require a migration of your existing users; so turning on the Feature Flag is likely to take two days. 
+In case you don't find the Abort permission listed in your RABC pages, it means that the Pipeline Execute permission is being used to allow or disallow Aborts. You can enable Abort as a separate permissions by contacting [Harness Support](mailto:support@harness.io) to enable the Feature Flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION` for you. Enabling this permission will also require a migration of your existing users; so turning on the Feature Flag is likely to take two days. 
 
 
 :::
