@@ -26,32 +26,32 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 
 ### <a href="#phase-1-setup-your-harness-account"> Phase 1: Setup your Harness account </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/software-engineering-insights/get-started/sei-key-concepts">Review Key Concepts</a> | Learn about the basic concepts of SEI | [Click here](/docs/software-engineering-insights/get-started/sei-key-concepts) |  |
-| <a href="/docs/platform/organizations-and-projects/create-an-organization">Account and Project setup</a> | Create projects and invite users | [Click here](/docs/platform/organizations-and-projects/create-an-organization) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/software-engineering-insights/get-started/sei-key-concepts">Review Key Concepts</a> | Learn about the basic concepts of SEI | [Click here](/docs/software-engineering-insights/get-started/sei-key-concepts) |  
+| <a href="/docs/platform/organizations-and-projects/create-an-organization">Account and Project setup</a> | Create projects and invite users | [Click here](/docs/platform/organizations-and-projects/create-an-organization) |   
 
 ### <a href="#phase-2-single-sign-on-automate-onboarding-of-users-from-external-sources​​"> Phase 2: Single Sign-On (Automate onboarding of users from external sources​) </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/platform/authentication/authentication-overview">Configure SSO</a> | Automate the onboarding of users from external sources | [Click here](/docs/platform/authentication/authentication-overview) |  |
-| <a href="/docs/platform/automation/api/api-quickstart">API Guide</a> | Learn about how you can create any resource on SEI using Rest APIs | [Click here](/docs/platform/automation/api/api-quickstart) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/platform/authentication/authentication-overview">Configure SSO</a> | Automate the onboarding of users from external sources | [Click here](/docs/platform/authentication/authentication-overview) |  
+| <a href="/docs/platform/automation/api/api-quickstart">API Guide</a> | Learn about how you can create any resource on SEI using Rest APIs | [Click here](/docs/platform/automation/api/api-quickstart) |
 
 ### <a href="#phase-3-integration-mapping"> Phase 3: Integration Mapping </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/software-engineering-insights/sei-integrations/sei-integrations-overview">Create Integrations (Cloud)</a> | Learn how to create cloud integrations for third-party tools | [Click here](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) |  |
-| <a href="/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview">Ingestion Satellite Overview</a> | Use the Ingestion Satellite to connect SEI with on-premise tools | [Click here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations">Create custom CI/CD integrations</a> | Learn how to create custom CI/CD integrations | [Click here](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-mapping">Integration Mapping</a> | Map integrations to your project | [Click here](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-mapping) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-monitoring">Integration Monitoring</a> | Monitor the health status of the integrations | [Click here](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-monitoring) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github">Configure GitHub Integration</a> | Create and configure the integration for GitHub Cloud or GitHub Enterprise | <ul><li>[Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)</li> <li>[Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-enterprise)</li></ul> |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding">Configure GitHub Integration - Enhanced User Experience</a> | Create and configure the integration for GitHub Cloud or Enterprise with additional support for GitHub App | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira">Configure Jira Integration</a> | Create and configure the integration for Jira Cloud or Jira Data Center | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding">Configure Jira Integration - Enhanced User Experience</a> | Create and configure the integration for Jira Cloud or Jira Data Center with additional support for Jira Connect App | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding) |   |
-| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops">Azure DevOps Integration</a> | Create and configure the integration for Azure Pipelines, Azure Repos and Azure Boards | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/software-engineering-insights/sei-integrations/sei-integrations-overview">Create Integrations (Cloud)</a> | Learn how to create cloud integrations for third-party tools | [Click here](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) |
+| <a href="/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview">Ingestion Satellite Overview</a> | Use the Ingestion Satellite to connect SEI with on-premise tools | [Click here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview) |
+| <a href="/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations">Create custom CI/CD integrations</a> | Learn how to create custom CI/CD integrations | [Click here](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations) |
+| <a href="/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-mapping">Integration Mapping</a> | Map integrations to your project | [Click here](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-mapping) |
+| <a href="/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-monitoring">Integration Monitoring</a> | Monitor the health status of the integrations | [Click here](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#integration-monitoring) |
+| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github">Configure GitHub Integration</a> | Create and configure the integration for GitHub Cloud or GitHub Enterprise | <ul><li>[GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)</li> <li>[GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-enterprise)</li></ul> |
+| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding">Configure GitHub Integration - Enhanced User Experience</a> | Create and configure the integration for GitHub Cloud or Enterprise with additional support for GitHub App | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding) |
+| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira">Configure Jira Integration</a> | Create and configure the integration for Jira Cloud or Jira Data Center | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) |
+| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding">Configure Jira Integration - Enhanced User Experience</a> | Create and configure the integration for Jira Cloud or Jira Data Center with additional support for Jira Connect App | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding) |
+| <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops">Azure DevOps Integration</a> | Create and configure the integration for Azure Pipelines, Azure Repos and Azure Boards | [Click here](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) |
 
 
 ### <a href="#phase-4-collection-setup"> Phase 4: Collection Setup </a>
@@ -81,6 +81,10 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | <a href="/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations">Manage Insight association</a> | Associate or Disassociate Insights with collections | [Click here](/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations) |   |
 | <a href="/docs/software-engineering-insights/insights/sei-insights#view-insights">View Insight</a> | View existing Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#view-insights) |   |
 | <a href="/docs/software-engineering-insights/insights/sei-insights#explore-data">Explore Insight data</a> | Derive value out of the widget data on the Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#explore-data) |   |
+| <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/dora-insight) |   |
+| <a href="/docs/software-engineering-insights/insights/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/trellis-insight) |   |
+| <a href="/docs/software-engineering-insights/insights/sprint-metrics-insight">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |   |
+| <a href="/docs/software-engineering-insights/insights/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/developer-insight) |   |
 
 ### <a href="#phase-7-role-based-access-control"> Phase 7: Role-Based Access Control </a>
 
