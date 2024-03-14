@@ -11,19 +11,25 @@ redirect_from:
   - /docs/continuous-delivery/get-started/cd-pipeline-basics
 ---
 
-For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts.md).
+The page introduces key concepts that you need to know when working with Harness Continuous Delivery.
 
-## Introduction
+These concepts align with generic continuous delivery workflow components, including:
 
-This table explains how to map your existing CD needs to the key Harness concepts outlined on this page.
+| Generic CD workflow concept | Harness CD concept |
+| ---- | ---- |
+| What you deploy | Service and Service Definition  |
+| Where you deploy it | Environment and Infrastructure Definition |
+| How you deploy it | Steps and Failure Strategy  |
+| When you deploy it | Triggers  |
+| Who approves the deployment | Approval Steps and Stages |
 
-|       **Your CD Process**         |     **Harness CD Concept**                |
-| --------------------------------- | ----------------------------------------- |
-| What you are deploying            | Service and Service Definition            |
-| Where you are deploying it        | Environment and Infrastructure Definition |
-| How you are deploying it          | Steps and Failure Strategy                |
-| When you want it deployed         | Triggers                                  |
-| Who can approve deployment stages | Approval Steps and Stages                 |
+For general Harness concepts, go to [Harness Platform key concepts](/docs/platform/get-started/key-concepts.md).
+
+## Deployments
+
+Deployments make developed artifacts available for use in test or production. They release applications for access by users or systems, and can be manual or automated. In Harness pipelines, deployments are modeled using services, environments, and execution steps.
+
+For more information, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts) and [Deploy services on different platforms](/docs/category/deploy-services-on-different-platforms).
 
 ## Service
 
@@ -55,6 +61,7 @@ Environments represent your deployment targets logically (QA, Prod, etc). You ca
 Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
 
 For an example, go to [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
+
 ## Pipeline
 
 A CD Pipeline is a series of Stages where each Stage deploys a Service to an Environment. It can perform many additional CD operations, including, but not limited to:
@@ -167,4 +174,14 @@ Failure strategies are a critical pipeline design component that determine what 
 
 For more information, go to [Step and Stage Failure Strategy References](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md).
 
+## GitOps
 
+GitOps is an approach to managing and automating deployment and management of infrastructure and applications using Git. The desired state of the apps and infrastructure is stored in a Git repo as code. Harness automation tools monitor the Git repo for changes and synchronize the actual state with the desired state.
+
+For more information, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics).
+
+### Why are Deployments and GitOps different
+
+In GitOps, changes are managed via Git files and Agents, without requiring pipelines. Deployments refer to executed pipelines in Harness.
+
+This difference is why you see **Deployments** and **GitOps** separated in the Harness UI.
