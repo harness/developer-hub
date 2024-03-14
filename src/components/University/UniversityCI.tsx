@@ -56,10 +56,17 @@ export default function CertificationsCI() {
     }
   }, [searchKey]);
   const [showCerts, setShowCerts] = useState<boolean>(true);
+  useEffect(() => {
+    if (location.search === "?ilt") {
+      setShowCerts(false);
+    }
+  }, []);
   const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
     setShowCerts(true);
   };
   const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
     setShowCerts(false);
   };
   return (

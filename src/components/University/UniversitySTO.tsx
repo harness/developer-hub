@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -56,12 +56,22 @@ export default function CertificationsSTO() {
     }
   }, [searchKey]);
   const [showCerts, setShowCerts] = useState<boolean>(true);
+  useEffect(() => {
+    if (location.search === "?ilt") {
+      setShowCerts(false);
+    }
+  }, []);
+  const certRef = useRef(null);
   const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
     setShowCerts(true);
+    console.log(certRef.current);
   };
   const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
     setShowCerts(false);
   };
+
   return (
     <div className={styles.certificationsSTO}>
       <div className={styles.hero}>
@@ -118,8 +128,8 @@ export default function CertificationsSTO() {
       </div>
 
       {/* Tab Content */}
-      {showCerts && (
-        <div className={styles.tabs}>
+      {showCerts ? (
+        <div className={styles.tabs} ref={certRef}>
           <h2>Certifications</h2>
           <ul className={styles.tabItems}>
             {Object.entries(certType).map(([tabKey, tabVal], index) => (
@@ -363,8 +373,7 @@ export default function CertificationsSTO() {
           </div> */}
           </div>
         </div>
-      )}
-      {!showCerts && (
+      ) : (
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>

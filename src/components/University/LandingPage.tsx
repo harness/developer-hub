@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Link from "@docusaurus/Link";
 import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
@@ -50,7 +50,7 @@ export const getCertLevel = (search: string) => {
 
 export default function University() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  // React router provides the current component's route, even in SSR
+  const [showCerts, setShowCerts] = useState<boolean>(true);
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
@@ -71,11 +71,17 @@ export default function University() {
     }
   }, [searchKey]);
 
-  const [showCerts, setShowCerts] = useState<boolean>(true);
+  useEffect(() => {
+    if (location.search === "?ilt") {
+      setShowCerts(false);
+    }
+  }, []);
   const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
     setShowCerts(true);
   };
   const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
     setShowCerts(false);
   };
   return (
@@ -126,7 +132,7 @@ export default function University() {
           Instructor-Led Training
         </button>
       </div>
-      {showCerts && (
+      {showCerts ? (
         <div className={styles.tabs}>
           <h2>Certifications</h2>
           <p>
@@ -348,9 +354,7 @@ export default function University() {
             </div>
           </div>
         </div>
-      )}
-
-      {!showCerts && (
+      ) : (
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>

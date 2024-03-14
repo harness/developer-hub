@@ -27,6 +27,7 @@ export type CardItem = {
   link?: string;
   thumb?: boolean;
   numberOfCerts?: number;
+  ILT_available?: boolean;
 };
 
 export default function CertCard({

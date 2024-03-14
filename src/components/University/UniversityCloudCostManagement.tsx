@@ -54,10 +54,17 @@ export default function CloudCostManagement() {
     }
   }, [searchKey]);
   const [showCerts, setShowCerts] = useState<boolean>(true);
+  useEffect(() => {
+    if (location.search === "?ilt") {
+      setShowCerts(false);
+    }
+  }, []);
   const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
     setShowCerts(true);
   };
   const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
     setShowCerts(false);
   };
   return (
@@ -328,9 +335,6 @@ export default function CloudCostManagement() {
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {ilt.filter((ilt) => ilt.module === "ccm").length < 1 ? (
-                <p>Coming Soon ...</p>
-              ) : null}
             </div>
           </div>
         </div>

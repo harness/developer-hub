@@ -54,12 +54,19 @@ export default function FeatureFlags() {
     }
   }, [searchKey]);
   const [showCerts, setShowCerts] = useState<boolean>(true);
-  const handleCertficationClick = () => {
-    setShowCerts(true);
-  };
-  const handleInstLedTrainClick = () => {
-    setShowCerts(false);
-  };
+   useEffect(() => {
+     if (location.search === "?ilt") {
+       setShowCerts(false);
+     }
+   }, []);
+   const handleCertficationClick = () => {
+     history.push(`${pathname}?lvl=developer`);
+     setShowCerts(true);
+   };
+   const handleInstLedTrainClick = () => {
+     history.push(`${pathname}?ilt`);
+     setShowCerts(false);
+   };
   return (
     <div className={styles.certificationsFF}>
       <div className={styles.hero}>

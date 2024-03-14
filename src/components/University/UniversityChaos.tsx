@@ -53,12 +53,19 @@ export default function CertificationsChaos() {
     }
   }, [searchKey]);
   const [showCerts, setShowCerts] = useState<boolean>(true);
-  const handleCertficationClick = () => {
-    setShowCerts(true);
-  };
-  const handleInstLedTrainClick = () => {
-    setShowCerts(false);
-  };
+    useEffect(() => {
+      if (location.search === "?ilt") {
+        setShowCerts(false);
+      }
+    }, []);
+    const handleCertficationClick = () => {
+      history.push(`${pathname}?lvl=developer`);
+      setShowCerts(true);
+    };
+    const handleInstLedTrainClick = () => {
+      history.push(`${pathname}?ilt`);
+      setShowCerts(false);
+    };
   return (
     <div className={styles.certificationsCE}>
       <div className={styles.hero}>
@@ -390,9 +397,6 @@ export default function CertificationsChaos() {
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {ilt.filter((ilt) => ilt.module === "ce").length < 1 ? (
-                <p>Coming Soon ...</p>
-              ) : null}
             </div>
           </div>
         </div>
