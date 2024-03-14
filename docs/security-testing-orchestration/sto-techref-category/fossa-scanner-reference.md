@@ -82,49 +82,42 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-
 import StoSettingScanType from './shared/step_palette/scan/_type.md';
-
-
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <!-- StoSettingScanTypeCont / -->
 
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 
 #### Name 
 
-
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
-
 
 <StoSettingTargetName />
 
 
-<a name="target-variant"></a>
-
 #### Variant
-
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
-
-
 <StoSettingTargetVariant  />
+
 
 #### Workspace (_repository_)
 
-
 import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
-
-
 <StoSettingTargetWorkspace  />
-
 
 
 ### Ingestion File

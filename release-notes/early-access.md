@@ -305,6 +305,15 @@ You will also experience an enhanced user interface when configuring the integra
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
+### Auto-detect option for targets and variants
+
+* **Release date:** March 2024
+* **Issue number:** STO-6704
+* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
+
 ### Write OPA policies based on STO scan results
 
 * **Release date:** February 2024
