@@ -12,20 +12,20 @@ DORA (DevOps Research Assessment) identified the following key metrics that desc
 
 | **Step** | **Details** | **Documentation** |
 | - | - | - | 
-| <a href="#">Key Concepts in DORA metrics</a> | Learn about the basic concepts of DORA Metrics on Harness SEI | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics) |
-| <a href="#">Engineering Team Use Cases for Measuring DORA Metrics</a> | Learn how engineering teams can utilize DORA metrics | [Click here](#engineering-team-use-cases-for-measuring-dora-metrics) |
-| <a href="#">DORA under-the-hood</a> | Learn how Harness SEI correlates data across different tools and services | [Click here](#dora-under-the-hood) |
-| <a href="#">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile) |
-| <a href="#">Create DORA Insight</a> | Step by Step guide to create a DORA Insight | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
-| <a href="#">DORA Metrics Calculation</a> | How are the different DORA metrics calculated on Harness SEI | [Click here](/docs/category/dora-metrics-calculation) |
-| <a href="#">Best Practices & Recommendations for measuring DORA Metrics</a> | Recommendations to improve your DORA Metrics reporting | [Click here](#best-practices) |
+| <a href="/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics">Key Concepts in DORA metrics</a> | Learn about the basic concepts of DORA Metrics on Harness SEI | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics) |
+| <a href="#engineering-team-use-cases-for-measuring-dora-metrics">Engineering Team Use Cases for Measuring DORA Metrics</a> | Learn how engineering teams can utilize DORA metrics | [Click here](#engineering-team-use-cases-for-measuring-dora-metrics) |
+| <a href="#dora-under-the-hood">DORA under-the-hood</a> | Learn how Harness SEI correlates data across different tools and services | [Click here](#dora-under-the-hood) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile) |
+| <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Step by Step guide to create a DORA Insight | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
+| <a href="/docs/category/dora-metrics-calculation">DORA Metrics Calculation</a> | How are the different DORA metrics calculated on Harness SEI | [Click here](/docs/category/dora-metrics-calculation) |
+| <a href="#best-practices--recommendations">Best Practices & Recommendations for measuring DORA Metrics</a> | Recommendations to improve your DORA Metrics reporting | [Click here](#best-practices--recommendations) |
 | <a href="#">DORA Roadmap</a> | List of enhancements and improvements for DORA Metrics | [Click here](#roadmap) |
 
 ## List of all DORA Metrics
 
 ### Deployment Frequency
 
-Deployment Frequency is key to understanding the pace of software releases. It is categorized into four levels – Elite, High, Medium, and Low – based on the frequency of deployments. 
+Deployment Frequency is key to understanding the pace of software releases. It is categorized into four levels – Elite, High, Medium, and Low – based on the frequency of deployments.
 
 * Elite: More than one deployment per day.
 * High: Deployments occur anywhere from once per day to once per week.
@@ -42,7 +42,7 @@ To learn more, go to [Lead Time in DORA](/docs/software-engineering-insights/sei
 
 ### Change Failure Rate
 
-The Change Failure Rate indicates the percentage of deployments causing production failures. It is categorized into Elite, High, Medium, and Low, based on the percentage of failures. 
+The Change Failure Rate indicates the percentage of deployments causing production failures. It is categorized into Elite, High, Medium, and Low, based on the percentage of failures.
 
 * Elite: Failure rate under 15 percent.
 * High: Failure rate of 16 to 30 percent.
@@ -155,7 +155,7 @@ To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-eng
 
 ## DORA Insights & Profile
 
-A DORA Insight can essentially be defined as a dashboard with a combination of reports i.e. widgets displaying essential information on various DORA metrics such as DORA Lead Time for Changes, Deployment Frequency etc configured on the profile level related to your developer's activity. 
+A DORA Insight can essentially be defined as a dashboard with a combination of reports i.e. widgets displaying essential information on various DORA metrics such as DORA Lead Time for Changes, Deployment Frequency etc configured on the profile level related to your developer's activity.
 
 DORA Reports are available for configuration only of you already have an associated profile DORA profile (i.e. DORA type Workflow Profile) configuration with the Collection under which the Insight is created. 
 
@@ -174,7 +174,7 @@ Review the following resources to learn more about defining and managing DORA Pr
 
 By following these recommendations, you can effectively track your deployment frequency and gain valuable insights into your team's software release process.
 
-#### Configuration Examples for Profile Setup
+#### Configuration Examples for DORA Profile Setup
 
 * Comprehensive Pipeline Analysis: Configure the profile to analyze pipelines with all statuses, paying special attention to Continuous Delivery pipelines if applicable. Set a specific timeframe to capture recent deployment activities accurately.
 * Golden Pipeline Standardization: If you have established a standard "golden" pipeline template, utilize Stage Variables for precise control. Associate services with each pipeline run for comprehensive tracking and analysis.
@@ -252,7 +252,7 @@ Ensuring an accurate correlation between JIRA and SCM depends on including the J
 
 When there are several stages within the CI and CD pipelines (such as Unit Test, Vulnerability Check, Image Building, Staging Deployment, Pre-Prod Approval, Production Deployment), SEI considers the entire pipeline as a single stage. While this approach may simplify the process, it could also obscure the time spent in each individual stage.
 
-#### Integrations we support
+### Integrations we support
 
 #### Issue Management Platform
 
@@ -286,5 +286,3 @@ The following Issue Management Platforms are supported for calculating the DORA 
     * Integration can be set up by using your own custom implementation through webhooks.
 
 To learn more about all the supported integrations on SEI, go to [What's Supported](/docs/software-engineering-insights/sei-supported-platforms)
-
-
