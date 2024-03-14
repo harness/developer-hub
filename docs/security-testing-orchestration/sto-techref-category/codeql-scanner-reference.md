@@ -26,9 +26,6 @@ This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that i
 
 ## Important notes for running CodeQL scans in STO
 
-
-
-
 ### Root access requirements
 
 You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
@@ -41,9 +38,7 @@ You can set up your STO scan images and pipelines to run scans as non-root and e
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
@@ -75,18 +70,14 @@ The recommended workflow is to add a CodeQL step to a Security Tests or CI Build
 
 ### Scan mode
 
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
 
 <StoSettingScanModeIngest />
 
 
 #### Scan configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
@@ -96,36 +87,36 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
-
-
 <StoSettingScanTypeRepo />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
+
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
 
 ### Ingestion file
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
@@ -136,34 +127,26 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Log Level
 
-
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
-
-
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
+
 
 #### Additional CLI flags
 
-
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-
 
 <StoSettingCliFlags />
 
-<a name="fail-on-severity"></a>
 
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
 
 ### Settings
 

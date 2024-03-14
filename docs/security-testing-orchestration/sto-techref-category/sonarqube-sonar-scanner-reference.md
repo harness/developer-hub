@@ -79,29 +79,33 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 ### Target
 
-#### Type
 
+#### Type
 
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
-
 <StoSettingScanTypeRepo />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
