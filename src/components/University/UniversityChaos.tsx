@@ -391,11 +391,14 @@ export default function CertificationsChaos() {
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
-              {ilt
+            {ilt
                 .filter((ilt) => ilt.module === "ce")
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
+              {ilt.filter((ilt) => ilt.module === "ce").length < 1 ? (
+                <p>ILT Coming Soon</p>
+              ) : null}
             </div>
           </div>
         </div>

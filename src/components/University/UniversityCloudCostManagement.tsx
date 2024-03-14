@@ -329,11 +329,14 @@ export default function CloudCostManagement() {
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
-              {ilt
+            {ilt
                 .filter((ilt) => ilt.module === "ccm")
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
+              {ilt.filter((ilt) => ilt.module === "ccm").length < 1 ? (
+                <p>ILT Coming Soon</p>
+              ) : null}
             </div>
           </div>
         </div>

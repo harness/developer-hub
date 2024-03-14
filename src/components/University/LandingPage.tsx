@@ -358,7 +358,7 @@ export default function University() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-           Intensive two-day courses is designed for IT professionals looking to deepen their understanding and expertise in Harness. 
+           Intensive two-day courses are designed for IT professionals looking to deepen their understanding and expertise in Harness. 
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
