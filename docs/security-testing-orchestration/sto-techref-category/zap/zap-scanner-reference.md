@@ -156,29 +156,35 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-### Log Level, CLI flags, and Fail on Severity
 
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
-
 <StoSettingLogLevel />
 
-#### Additional CLI flags
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+### Additional CLI flags
 
+You can run the [`zap_cli`](https://github.com/Grunny/zap-cli) binary with CLI arguments such as:
 
-<StoSettingCliFlags />
+   * `context export --name DevTest --file-path /harness/zap/contexts/DevTest.context`
+   
+   * `--platform=linux/arm jsmith/my-image`
 
+:::caution
 
-#### Fail on Severity
+STO supports passing CLI arguments to ZAP but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of ZAP.
+
+:::
+
+### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
+
 
 ### Additional Configuration
 

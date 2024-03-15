@@ -196,41 +196,33 @@ import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-te
 
 #### Access Token 
 
-
 import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-token.md';
-
-
 
 <StoSettingImageAccessToken />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
 #### Log Level
-
 
 import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
 #### Additional CLI flags
 
+You can run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) with CLI arguments such as:
 
-import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags.md';
+* `--scanners misconfig jsmith/my-image-with-iac-files`
+	
+* `--platform=linux/arm jsmith/my-image`
 
+* `--only-fixed`
 
+:::caution
 
-<StoSettingCliFlags />
+STO supports passing CLI arguments to Grype but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Grype.
 
-For example, you can report vulnerabilities with known fixes only using `--only-fixed`.
-
-<a name="fail-on-severity"></a>
+:::
 
 
 #### Fail on Severity

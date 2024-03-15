@@ -193,35 +193,42 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
+You can run the [`trivy image`](https://aquasecurity.github.io/trivy/v0.49/docs/target/container_image/) scanner with CLI arguments such as:
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+    * `--scanners misconfig jsmith/my-image-with-iac-files` 
+    
+       Detect Infrastructure-as-Code misconfigurations in the specified image.
+      
+    * `--platform=linux/arm jsmith/my-image` 
+    
+       Scan the image on a specific platform.
 
+:::caution
 
+STO supports passing CLI arguments to Aqua Trivy but  does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Aqua Trivy.
+
+:::
+
+<!-- 
 <StoSettingCliFlags />
 
 For example, you can customize the security issues to detect using the `scanners` argument. To scan vulnerabilities only, add `--scanners vuln` to this field.
 
 <a name="fail-on-severity"></a>
 
+-->
 
-#### Fail on Severity
+
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';

@@ -112,13 +112,31 @@ Log Level, CLI flags, and Fail on Severity
 
 -->
 
-<a name="log-level"></a>
+
 
 ### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
+
+### Additional CLI flags
+
+You can run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with CLI arguments such as:
+
+    * `--exclude=GLOB_PATTERN`
+      
+      Skip any file or directory that matches this pattern.
+
+    * `--experimental`
+           
+      Enable experimental features.
+
+:::caution
+
+STO supports passing CLI arguments to Semgrep but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Semgrep.
+
+:::
 
 ### Fail on Severity
 

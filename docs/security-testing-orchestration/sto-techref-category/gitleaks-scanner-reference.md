@@ -103,49 +103,36 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 ### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
 
-
-
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
+You can run the [`gitleaks`](`https://github.com/gitleaks/gitleaks`) scanner with CLI arguments such as: 
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+  * `--log-opts="-n 1000"`
+    
+  * `--platform=linux/arm jsmith/my-image`
 
+:::caution
 
+STO supports passing CLI arguments to Gitleaks but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Gitleaks.
 
-<StoSettingCliFlags />
-
-<a name="fail-on-severity"></a>
+:::
 
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 
