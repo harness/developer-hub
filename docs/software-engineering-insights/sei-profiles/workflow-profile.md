@@ -162,10 +162,13 @@ DORA Profile is a type of Workflow Profile that allows you to define the thresho
    * Configure the additional filters to define the criteria for deployments to be considered in the calculation.
 7. **Mean Time to Restore:** Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
 8. **Change Failure Rate:** Define the configuration for measuring the Change Failure Rate for your team.
+
+   * Select factors to use to calculate failed deployments.
+   * Select factors to use to calculate total deployments. Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
    * Ensure to select the checkbox incase you want to calculate the Change Failure Rate using only deployments that causes failure.
-   * Choose the tool that you want to use to measure deployments in your team.
-   * Select the existing integrations that you would like to use for the calculation.
-   * Configure the additional filters to define the criteria for total deployment and deployments causing failure to be considered in the calculation.
+   * Choose the integration that you want to use to measure deployments in your team.
+   * Select the existing integrations that you would like to use for the calculation. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired.
+   * Configure the additional Filters to define the criteria for total deployment and deployments causing failure to be considered in the calculation.
 9. **Association:** Modify the Collection and Project associated with this profile.
 10. Once you have finished configuring the profile setting click on **Save** to save the profile.
 
