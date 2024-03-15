@@ -5095,7 +5095,7 @@ Currently you can't obfuscate the httpsresponse body.
 
 #### Environment Selection Options appearing in Custom Stages
 
-Yes you can have the environment selection in custom stage with the FF CDS_CUSTOM_STAGE_WITH_ENV_INFRA. 
+Yes you can have the environment selection in custom stage. 
 https://developer.harness.io/docs/platform/pipelines/add-a-stage/#environments-and-infrastructure-definitions-in-custom-stages
 
 #### Create WinRM Credential using terraform.
