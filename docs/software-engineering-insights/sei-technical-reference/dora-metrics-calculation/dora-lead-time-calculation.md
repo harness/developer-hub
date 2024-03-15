@@ -43,7 +43,7 @@ Total Lead Time = 10 min + 5 min + 5 min + 1 min + 4 min + 1 min + 1 min + 3 min
              = 70 minutes
 ```
 
-Therefore, the Total Lead Time for Case 1 (1 PR to 1 Jira) is **70 minutes**.
+Therefore, the Total Lead Time is **70 minutes**.
 
 ### Calculation Example 2 - Two Sequential PRs associated with a Single Jira Ticket 
 
@@ -63,14 +63,16 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CD process is completed. | `First JIRA Done Time - First CD Time` | `10:20 AM - 10:17 AM = 3 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:20 AM = 40 minutes` |
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+#### Total Lead Time
+
+**Total Lead Time** is the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 5 min + 5 min + 1 min + 34 min + 0 min + 1 min + 3 min + 40 min
              = 99 minutes
 ```
 
-Therefore, the Total Lead Time for Case 2 (Two Sequential PRs to Single Jira Ticket) is **99 minutes**.
+Therefore, the Total Lead Time is **99 minutes**.
 
 ### Calculation Example 3 - Two Overlapping PRs associated with a Single Jira Ticket
 
@@ -90,14 +92,16 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CD process is completed. | `First JIRA Done Time - First CD Time` | `10:20 AM - 10:17 AM = 3 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:20 AM = 40 minutes` |
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+#### Total Lead Time
+
+**Total Lead Time** is the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 5 min + 3 min + 3 min + 4 min + 1 min + 1 min + 3 min + 40 min
              = 70 minutes
 ```
 
-Therefore, the Total Lead Time for Case 3 (Two Overlapping PRs to Single Jira Ticket) is **70 minutes**.
+Therefore, the Total Lead Time is **70 minutes**.
 
 ### Calculation Example 4 - Two Overlapping PRs associated with a Single Jira Ticket with Jira Re-Entry
 
@@ -117,14 +121,16 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CD process is completed. | `First JIRA Done Time - First CD Time` | `10:20 AM - 10:17 AM = 3 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:20 AM = 40 minutes` |
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+#### Total Lead Time
+
+**Total Lead Time** is the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 5 min + 3 min + 3 min + 39 min + 0 min + 1 min + 3 min + 40 min
              = 104 minutes
 ```
 
-Therefore, the Total Lead Time for Case 4 (Two Overlapping PRs to Single Jira Ticket with Jira Re-Entry) is **104 minutes**.
+Therefore, the Total Lead Time is **104 minutes**.
 
 ### Calculation Example 5 - Two PRs associated with a Single Jira Ticket and Jira Ticket was re-opened after Release
 
@@ -144,14 +150,16 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CD process is completed. | `First JIRA Done Time - First CD Time` | `10:20 AM - 10:17 AM = 3 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:20 AM = 40 minutes` |
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+#### Total Lead Time
+
+**Total Lead Time** is the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 5 min + 3 min + 3 min + 99 min + 0 min + 1 min + 3 min + 40 min
              = 164 minutes
 ```
 
-Therefore, the Total Lead Time for Case 5 (Two PRs to Single Jira Ticket with Jira Reopen after Release) is **164 minutes**.
+Therefore, the Total Lead Time is **164 minutes**.
 
 ### Calculation Example 6 - No Associated PR or Commit (No Ticket ID Mentioned in PRs)
 
@@ -171,16 +179,18 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CD process is completed. | `First JIRA Done Time - First CD Time` | `10:20 AM - 0 = 20 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:20 AM = 40 minutes` |
 
+#### Total Lead Time
+
 In this case, since there are no pull requests (PRs) or commits associated with the Jira ticket, several stages in the lead time calculation have zero values. The lead time calculation in this case gets computed based on the time taken for the ticket to move through the "In Progress," "Done," and "Released" states in the issue management system (e.g., Jira).
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+For the given example, the **Total Lead Time** is calculated as the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 0 min + 0 min + 0 min + 0 min + 0 min + 0 min + 20 min + 40 min
              = 70 minutes
 ```
 
-Therefore, the Total Lead Time for Case 6 (No Attached PR or Commit) is **70 minutes**.
+Therefore, the Total Lead Time is **70 minutes**.
 
 ### Calculation Example 7 - Same Job for CI and CD
 
@@ -199,14 +209,16 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CI and CD processes are completed. | `First JIRA Done Time - First CI and CD Time` | `10:20 AM - 10:20 AM = 0 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:20 AM = 40 minutes` |
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+#### Total Lead Time
+
+**Total Lead Time** is the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 5 min + 5 min + 1 min + 4 min + 5 min + 0 min + 40 min
              = 70 minutes
 ```
 
-Therefore, the Total Lead Time for Case 7 (Same Job for CI and CD) is **70 minutes**.
+Therefore, the Total Lead Time is **70 minutes**.
 
 In this case, a single job handles both the CI and CD processes, so the "First CI and CD Completion Time" stage represents the time taken for this single job to complete both processes. The "First Issue Management Done Time" is zero because the issue is marked as 'Done' immediately after the CI and CD processes are completed by this single job.
 
@@ -228,7 +240,9 @@ The following table outlines the different stages, their descriptions, formulas,
 | First Issue Management Done Time | The time taken to mark the issue as 'Done' in the issue management system (e.g., Jira) after the CD process is completed. | `First JIRA Done Time - First CD Time` | `10:30 AM - 10:20 AM = 10 minutes` |
 | First Release Time | The time taken to mark the issue as 'Released' after it is marked as 'Done'. | `Release Time - First JIRA Done Time` | `11:00 AM - 10:30 AM = 30 minutes` |
 
-For the given example, the Total Lead Time is calculated as the sum of all the above stages:
+#### Total Lead Time
+
+**Total Lead Time** is the sum of all the above stages:
 
 ```
 Total Lead Time = 10 min + 5 min + 5 min + 1 min + 4 min + 3 min + 2 min + 10 min + 30 min

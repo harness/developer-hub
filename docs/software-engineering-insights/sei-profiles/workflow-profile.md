@@ -155,7 +155,7 @@ DORA Profile is a type of Workflow Profile that allows you to define the thresho
 4. Add a profile description. (Optional)
 5. **Lead Time for Changes:** Define the settings for calculating the DORA Lead Time for Changes report. 
    * Select the Issue Management tool that you want to use to track tasks in your team.
-   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages-in-lead-time-for-changes).
+   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages).
 6. **Deployment Frequency:** Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
    * Choose the tool that you want to use to measure deployments in your team.
    * Select the existing integrations that you would like to use to calculate the Deployment Frequency.
@@ -183,7 +183,7 @@ To create a Velocity Lead Time profile, you need to follow these key steps:
 4. Add a profile description. (Optional)
 5. Select either **JIRA** or **Azure** as your issue management system. 
 6. Configure the Workflow Profile Definition. Here you can define the setting for **Stages**, **New Features**, **Deployment**, **Hotfix** and **Defects**.
-7. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#development-stages-in-velocity-lead-time).
+7. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#development-stages).
 8. For **NEW FEATURE**, **DEPLOYMENT**, **HOTFIX**, **DEFECT** the configuration is done based on the below parameters:
    * **Pull Requests to Branches:** Specify values that the branches for pull requests should start with or contain.
    * **Pull Requests from Branches:** Define values that the source branches for pull requests should start with or contain.
@@ -312,10 +312,10 @@ Use this profile configuration to use an API event to initiate Lead Time trackin
 5. Use the following REST API request to push custom API events to SEI:
 
 ```bash
-curl --location --request POST 'https://api.levelops.io/v1/generic-events' \
+curl --location --request POST 'https://app.harness.io/gratis/sei/api/v1/generic-events' \ 
 --header 'accept: application/json' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Apikey YOUR_API_KEY' \
+--header 'Authorization: Apikey <SEI_API_KEY>' \
 --header 'Cookie: JSESSIONID=23F...BA12' \
 --data-raw '{
     "component": "jira",
@@ -323,8 +323,9 @@ curl --location --request POST 'https://api.levelops.io/v1/generic-events' \
     "event_type": "incident_1",
     "event_time": 1664925769
 }'
-
 ```
+
+Note that the API endpoint mentioned in the REQUEST is relative to the environment you are using. You will need to replace it with the actual URL that are specific to your environment.
 
 In addition to an API Key and session ID, you must supply relevant values for the `data-raw` object according to the following definitions:
 

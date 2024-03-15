@@ -111,7 +111,7 @@ Note that for lead time metrics you can define stages based on either of the fol
 * **Commit Created:** This event ensures that lead time tracking starts when the first commit is committed.
 * **API Event:** This This event triggers the lead time calculation based on a custom API event.
 
-The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time).
+The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](/docs/software-engineering-insights/sei-profiles/workflow-profile#lead-time-profile).
 
 For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports).
 
@@ -194,6 +194,8 @@ Overall lead time is the sum of the time spent in each stage in a workflow, such
 
 The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
+To learn more about how the DORA Lead Time metric is calculated, go to [DORA Lead Time Calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
+
 The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
 
 When reviewing these examples, consider the following:
@@ -219,11 +221,9 @@ As a result the following calculations are made:
 ```
 PR creation time = Time to First PR creation - Time to Commit (Default)
 Time to Comment = Time to first comment - Time to PR creation (Default)
-Approval Time = 0
-Merge Time = Time for the first approval - Time to the PR creationb(Default)
+Approval Time = Time to first PR Approval - PR Creation Time (Default)
+Merge Time = Time for the first approval - Time to the PR creation (Default)
 ```
-
-Approval Time is calculated as `0` because there were no review comments made on the PR.
 
 </details>
 
@@ -231,9 +231,9 @@ Approval Time is calculated as `0` because there were no review comments made on
 
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
-To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile), and then add the **Change Failure Rate** widget to Insights.
+To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile), and then add the **Change Failure Rate** widget to Insights.
 
-To measure the Change Failure Rate accurately, define your workflow profile configuration to choose a set of pipelines that are responsible for deploying to Production environments and have specific "]`Failure` statuses or have specific run parameters configured. It is recommended for the denominator i.e. Total deployments to have an identical configuration as the Deployment Frequency definition.
+To measure the Change Failure Rate accurately, define your workflow profile configuration to choose a set of pipelines that are responsible for deploying to Production environments and have specific `Failure` statuses or have specific run parameters configured. It is recommended for the denominator i.e. **Total Deployments** to have an identical configuration as the Deployment Frequency definition.
 
 ### Add the Change Failure Rate report
 
@@ -327,5 +327,5 @@ To add the **DORA Mean Time To Restore** report to the Insight:
 2. Select the **Mean Time To Restore** widget.
 3. Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations. 
 4. Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
-5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
+5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile).
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
