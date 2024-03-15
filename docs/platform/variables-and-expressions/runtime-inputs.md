@@ -212,13 +212,13 @@ pipeline:
                 value: <+input>.default(new york).executionInput()
 ```
 
-For any variable defined in a template, the default method can be added to either its declaration in the child entity(Template in this case), or else in the parent entity (Pipeline), but not both. Here's what the two different usages mean:
-- When the default value is specified in the child entity, all other entities that use it, cannot specify a different default. They can, however, specify a different value directly, by writing a fixed value for the variable.
+For any variable defined in a template, the default method can be added to either its declaration in the child entity (Template in this case), or else in the parent entity (Pipeline), but not both. Here's what the two different usages mean:
+- When the default value is specified in the child entity, all other entities that use it cannot specify a different default. They can, however, specify a different value directly, by writing a fixed value for the variable.
 
-  For example if you have specified any input like `<+input>.default(default_val)` in child entity then you can not override this default in the parent entity.
+  For example, if you have specified any input like `<+input>.default(default_val)` in the child entity, then you cannot override this default in the parent entity.
 - When there's no default value specified in the child entity, the parent entities may or may not add a default, and this default value can be different in each of these parents.
 
-  For example if you have specified input like `<+input>` for any field then you can provide default in the parent entity like `<+input>.default(default_val_in_parent)`.
+  For example, if you have specified input like `<+input>` for any field, then you can provide a default in the parent entity like `<+input>.default(default_val_in_parent)`.
 
 ### Allowed values
 
