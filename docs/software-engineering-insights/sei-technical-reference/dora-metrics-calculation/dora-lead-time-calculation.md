@@ -1,7 +1,7 @@
 ---
 title: DORA Lead Time Calculation
 description: How is Lead Time calculated for DORA metrics on SEI?
-sidebar_label: Lines of Code
+sidebar_label: DORA Lead Time
 sidebar_position: 10
 ---
 

@@ -254,7 +254,7 @@ The adoption of various branching strategies has a direct impact on Lead Time ca
 
 #### Correlation Prerequisite
 
-Ensuring an accurate correlation between JIRA and SCM depends on including the `JIRA ticket ID` in the `SCM commit message` and `PR title`. If this information is missing, the correlation, and consequently, the Lead Time calculation will be inaccurate.
+Ensuring an accurate correlation between JIRA and SCM depends on including the `JIRA ticket ID` in the **SCM commit message** and **PR title**. If this information is missing, the correlation, and consequently, the Lead Time calculation will be inaccurate.
 
 #### Multiple Stages in CI/CD
 
