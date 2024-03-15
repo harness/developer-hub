@@ -237,6 +237,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
      <tr>
         <td>CV_NEWRELIC_NEW_API</td>
-        <td>Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This feature is in Beta.</b></td>
+        <td>Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This is a Beta feature.</b></td>
     </tr>
 </table>
