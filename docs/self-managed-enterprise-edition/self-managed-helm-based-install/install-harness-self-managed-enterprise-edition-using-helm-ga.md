@@ -10,6 +10,9 @@ redirect_from:
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
 
 This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
@@ -51,6 +54,9 @@ Depending on your target environment, you'll need to update the `override.yaml` 
 
 Use the following procedure to add a load balancer.
 
+<Tabs>
+<TabItem value="NLB" label="NLB" default>
+
 To add the URL for a load balancer, do the following:
 
 1. In the `values.yaml` file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
@@ -65,11 +71,68 @@ To add the URL for a load balancer, do the following:
 
 3. Save the file.
 
+</TabItem>
+
+
+<TabItem value="ELB" label="ELB">
+
+
+</TabItem>
+
+<TabItem value="Ingress ALB" label="IngressALB">
+
+1. Copy the following YAML, then save it to an `ingress-alb.yaml` file.
+
+   ```yaml
+   apiVersion: networking.k8s.io/v1
+   kind: Ingress
+   metadata:
+     annotations:
+       alb.ingress.kubernetes.io/backend-protocol: HTTP
+       alb.ingress.kubernetes.io/inbound-cidrs: 10.0.0.0/8
+       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+       alb.ingress.kubernetes.io/load-balancer-attributes: deletion_protection.enabled=false
+       alb.ingress.kubernetes.io/scheme: internal
+       alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-Ext-2018-06
+       alb.ingress.kubernetes.io/subnets: <subnets>
+       alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=300
+       alb.ingress.kubernetes.io/target-type: ip
+       ingress.kubernetes.io/tls-minimum-version: "1.2"
+     name: harness-public-ingress
+     namespace: harness
+   spec:
+     ingressClassName: alb
+     rules:
+     - host: <YOUR_HOST_URL>
+       http:
+         paths:
+         - backend:
+             service:
+               name: harness-ingress-controller
+               port:
+                 number: 80
+           path: /
+           pathType: Prefix
+   ```
+2. Replace `<YOU_HOST_URL>` with your load balancer's URL.
+
+3. Replace `<YOUR_SUBNETS>` with your subnets. 
+
+   This sets traffic to internal only `alb.ingress.kubernetes.io/scheme: internal`.
+
+4. Run the following command.
+
+   ```
+   kubectl apply -f ingress-alb.yaml -n <namespace>
+   ```
+
+</TabItem>
+</Tabs>
+
 ### Deploy Harness modules
 
 Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
 
-<!-- PR-1002 -->
 The Platform component and the module below is enabled by default:
 
 * Harness Continuous Deployment (CD) - Next Generation
@@ -85,8 +148,6 @@ The Harness modules below can be enabled or disabled conditionally:
 * Harness Continuous Error Tracking (CET)
 * (**Beta**) Harness Software Supply Chain Assurance (SSCA)
 
-<!-- PR-1002 -->
-
 You can conditionally disable or enable the modules by specifying a boolean value in the `enabled` field of the YAML:
 
 #### Deploy the CI module
@@ -97,7 +158,6 @@ ci:
 enabled: true
 ```
 
-<!-- PR-1002 -->
 #### Deploy the SRM module
 
 ```
@@ -105,7 +165,6 @@ srm:
 # -- Enable to deploy SRM to your cluster
 enabled: true
 ```
-<!-- PR-1002 -->
 
 #### Deploy the FF module
 
