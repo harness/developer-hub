@@ -1,13 +1,13 @@
 ---
 title: Features Flag with Cloud Cost Management Overview
-description: This page discusses using Harness Feature Flags with Cloud Cost Module, how to use it and common FAQs on how it's used. 
+description: This page discusses using Harness Feature Flags with Cloud Cost Module and how it's used. 
 sidebar_position: 10
 ---
 
 This page describes using Cloud Cost Management with Harness Feature Flags (FF).
 
 :::info note
-If you'd like to learn more about Cloud Cost Management at Harness, you can have a read of the [Harness Cloud Cost Management (CCM) Overview](./ff-what-is-ccm.md) page.
+If you'd like to learn more about Cloud Cost Management at Harness, you can have a read of the [Harness Cloud Cost Management (CCM) Overview](../../cloud-cost-management/get-started/overview.md) page.
 :::
 
 # Feature Flags with Cloud Cost Module Overview
@@ -24,11 +24,11 @@ From the UI within the Harness Application, you'll be able to report the presenc
 
 Using Cloud Cost Management within Feature Flags will help you to: 
 
-1. *Increase Visibility*: Prior to this integration, customers had limited visibility into the costs of enabling or modifying features within their applications. This made it challenging for Harness users to identify any cost related cloud costs which was in relations to the Feature Flags tool. Now you're able to gain insights into the cost of your Feature Flags 
+1. *Increased Visibility*: You're able to gain insights into the cost of your Feature Flags.
 
-2. *Have an Improved Proactive Cost Management Experience*: Rather than relying on reactive approaches to managing the cloud costs specifically to Feature Flags, you can now have real-time insights into the impact of your Feature Flag changes and optimize your cloud spending into a less manual and time-consuming process. 
+2. *Have an Improved Proactive Cost Management Experience*: You can now have real-time insights into the impact of your Feature Flag changes and optimize your cloud spending into a less manual and time-consuming process.
 
-3. *Adopt Higher Level Troubleshooting*: You'll be able to pinpoint the root cause of any cost ananomalies to any events around your Feature Flag changes. The hope we have at Harness is that this will help you to reduce time to finding solutions around any cost disparaties as well as help to improve your operational effiency of your products.
+3. *Adopt Higher Level Troubleshooting*: The hope we have at Harness is that this will help you to reduce time to finding solutions around any cost disparaties as well as help to improve your operational effiency of your products.
 
 There are two ways for you to turn on the CCM feature. Follow the steps below of whichever guide best suits your needs:
 
@@ -39,7 +39,9 @@ There are two ways for you to turn on the CCM feature. Follow the steps below of
  1. On the Home Page of the Harness Application, select your Project and click on *Feature Flags*.
  2. Under the dropdown menu that appears, click *Feature Flags*. This should take you to the dashboard of the Feature Flags page of your project.
  3. Click on one of your pre-existing Feature Flags on your dashboard. 
- 4. On the left hand side, the option to toggle *Cloud Cost Monitoring* should appear. Select *Cost perspective to monitor*. If you haven't set up connected your Harness account to your Cloud Provider before, the option to do so will appear. 
+ 4. On the left hand side, the option to toggle *Cloud Cost Monitoring* should appear. 
+ 
+If you haven't set up your Harness account to your Cloud Provider before, the option to do so will appear. 
 
 :::info note
 If you haven't already created any Feature Flags, do follow the [Harness 'Create a Feature Flag'](../ff-creating-flag/create-a-feature-flag.md) documentation. 
@@ -92,7 +94,9 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-#### Connect CCM to your AWS account
+### Connect CCM to your AWS account
+
+#### Set up CCM for AWS
 
 To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
 
@@ -215,7 +219,7 @@ import TabItem from '@theme/TabItem';
 If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md) documentation. 
 :::
 
-### Setting Up For GCP
+### Set Up CCM For GCP
 
 import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
 import create_dataset from './static/set-up-cost-visibility-for-gcp-02.png'
@@ -273,7 +277,7 @@ import TabItem from '@theme/TabItem';
 If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md) documentation. 
 :::
 
-### Setting Up For Kubernetes
+### Set Up CCM For Kubernetes
 
 ## Prerequisites
 
@@ -343,8 +347,6 @@ Perform the following steps to connect your Kubernetes cluster to CCM.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
 
@@ -370,17 +372,3 @@ import TabItem from '@theme/TabItem';
 :::info note
 If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md) documentation. 
 :::
-
-## FAQs About Your Feature
-
-### Question 1
-
-<insert text>
-
-### Question 2
-
-<insert text>
-
-## Related Pages
-
-You can provide links to any related pages. 
