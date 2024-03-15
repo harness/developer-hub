@@ -216,7 +216,7 @@ Following these recommendations can refine your Lead Time for Changes report and
 * Create a standard template for the workflow profiles across teams to maintain consistency in metric tracking.
 * Define workflow profile at a granular level to capture the entire software delivery lifecycle. This includes specifying events such as the exclusion of PRs and commits, events defining what constitutes a deployment or a failure for CI/CD jobs, and other crucial items to provide a comprehensive view of the deployment process.
 * Customize **Collection Filters** within reports carefully. These filters impact not only the widget but the collection as a whole. Optimize filters to focus on the specific aspects of your software development process that you want to analyze.
-* * To get accurate data for **Deployment Frequency** and **Change Failure Rate** report it is recommended to configure the DORA profile to calculate the metrics using CI/CD integrations i.e. receive data for production-level deployments from the relevant CI/CD platform.
+* To get accurate data for **Deployment Frequency** and **Change Failure Rate** report it is recommended to configure the DORA profile to calculate the metrics using CI/CD integrations i.e. receive data for production-level deployments from the relevant CI/CD platform.
 
 ## Roadmap
 
