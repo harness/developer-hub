@@ -142,6 +142,8 @@ SEI can connect to one or more CI/CD integrations. The jobs and executions are n
 
 The correlation between CI & CD execution is built on generated artifacts (by CI execution) and consumed artifacts (by CD execution). At this time, only container image-type artifacts are supported.
 
+You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions#ingest-artifacts-and-environment-variable-data).
+
 ### Commits we fetch
 
 SEI facilitates the retrieval of commit data in two ways, each catering to different aspects of version control and collaborative development.
