@@ -24,7 +24,7 @@ If your security policy doesn't allow running as root for any step, you must use
 To use the Buildah plugin, you must meet the following requirements:
 
 * You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/ci-stage-settings.md#run-as-non-root-or-a-specific-user).
+* The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user).
 * `anyuid` SCC is required. For more information, go to the OpenShift documentation on [Managing Security Context Constraints](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html).
 
 ### Add a Plugin step
