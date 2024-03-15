@@ -89,11 +89,18 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 
 #### Type
 
-
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
-
 <StoSettingScanTypeCont />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
@@ -106,10 +113,7 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 #### Variant
 
-
 import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 

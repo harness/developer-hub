@@ -16,7 +16,7 @@ These guides and tutorials help you get started with Harness Chaos Engineering o
 
 ## Run experiments with APIs
 
-* [Run experiments with APIs](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/experiment-using-api)
+* [Run experiments with APIs](/docs/chaos-engineering/features/experiments/experiment-using-api)
 
 ## Run experiments as pipelines
 
