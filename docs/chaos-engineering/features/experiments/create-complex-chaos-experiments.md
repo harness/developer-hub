@@ -5,7 +5,7 @@ description: Guide to execute serial and parallel chaos
 ---
 import Launch from '/docs/chaos-engineering/features/shared/launch-experiment-from-hub.md'
 
-import Analyze from '/docs/chaos-engineering/chaos-faults/prerequisites/experiments/shared/analyze-chaos-experiment.md'
+import Analyze from '/docs/chaos-engineering/features/experiments/shared/analyze-chaos-experiment.md'
 
 This section describes adding and executing serial and parallel faults within a single chaos experiment, analyzing chaos experiments and launching an experiment from chaos hub. 
 
