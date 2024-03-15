@@ -1,5 +1,5 @@
 ---
-title: DORA Metrics Guide
+title: DORA Handbook
 description: The central hub to learn everything about the DORA metrics on Harness SEI
 sidebar_position: 10
 ---
@@ -25,36 +25,44 @@ DORA (DevOps Research Assessment) identified the following key metrics that desc
 
 ### Deployment Frequency
 
-Deployment Frequency is key to understanding the pace of software releases. It is categorized into four levels – Elite, High, Medium, and Low – based on the frequency of deployments.
+**Deployment Frequency** is key to understanding the pace of software releases. It is categorized into four levels – Elite, High, Medium, and Low – based on the frequency of deployments.
 
-* Elite: More than one deployment per day.
-* High: Deployments occur anywhere from once per day to once per week.
-* Medium: Deployments occur anywhere from once per week to once per month.
-* Low: Deployment occurs less than once per month.
+* **Elite:** More than one deployment per day.
+* **High:** Deployments occur anywhere from once per day to once per week.
+* **Medium:** Deployments occur anywhere from once per week to once per month.
+* **Low:** Deployment occurs less than once per month.
 
 To learn more, go to [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 
+![](./static/deployment-frequency-report.png)
+
 ### Lead Time
 
-Lead Time for Changes measures the duration from commit to production. The overall lead time is the sum of time spent in each workflow stage, with the specific stages depending on your Workflow profile.
+**Lead Time for Changes** measures the duration from commit to production. The overall lead time is the sum of time spent in each workflow stage, with the specific stages depending on your Workflow profile.
 
 To learn more, go to [Lead Time in DORA](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes)
 
+![](./static/lead-time-report.png)
+
 ### Change Failure Rate
 
-The Change Failure Rate indicates the percentage of deployments causing production failures. It is categorized into Elite, High, Medium, and Low, based on the percentage of failures.
+The **Change Failure Rate** indicates the percentage of deployments causing production failures. It is categorized into Elite, High, Medium, and Low, based on the percentage of failures.
 
-* Elite: Failure rate under 15 percent.
-* High: Failure rate of 16 to 30 percent.
-* Medium: Failure rate of 31 to 45 percent.
+* **Elite:** Failure rate under 15 percent.
+* **High:** Failure rate of 16 to 30 percent.
+* **Medium:** Failure rate of 31 to 45 percent.
 
 To learn more, go to [Change Failure Rate](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#change-failure-rate)
 
+![](./static/cf-rate-report.png)
+
 ### Mean Time to Restore (MTTR)
 
-Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how long it takes an organization to recover from a failure in production. MTTR is a good metric for assessing the speed of your recovery process across several areas of technology.
+**Mean Time To Restore/Recover (MTTR)** indicates how long it takes an organization to recover from a failure in production. MTTR is a good metric for assessing the speed of your recovery process across several areas of technology.
 
 To learn more, go to [Mean Time to Restore](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#mean-time-to-restore-mttr)
+
+![](./static/mttr-report.png)
 
 With SEI, you can generate insights by measuring the DORA Metrics to understand how your organization or team is performing and help you get an overview of daily, weekly, and monthly trends.
 
@@ -110,6 +118,8 @@ It's important to remember that DORA metrics should not be used solely for indiv
 
 ## DORA under-the-hood
 
+![](./static/dora-under-the-hood.png)
+
 ### Issue Management to SCM Correlations
 
 * **JIRA to SCM:** This correlation is done by matching issue IDs from JIRA tickets with commit messages in SCM. The calculation of lead time here starts from the ticket's creation date to the first commit in SCM related to that ticket.
@@ -128,7 +138,7 @@ It's important to note that certain use cases like the Lead Time calculations, o
 
 ### CI to CD Correlations
 
-SEI can connect to one or more CI/CD integrations. The jobs and executions are normalized and can be correlated across multiple sources. For example, a customer could be using GitHub Actions as their CI, and Harness as their CD.
+SEI can connect to one or more CI/CD integrations. The jobs and executions are normalized and can be correlated across multiple sources. For example, you could be using GitHub Actions as your CI platform, and Harness as the CD.
 
 The correlation between CI & CD execution is built on generated artifacts (by CI execution) and consumed artifacts (by CD execution). At this time, only container image-type artifacts are supported.
 
@@ -155,9 +165,9 @@ To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-eng
 
 ## DORA Insights & Profile
 
-A DORA Insight can essentially be defined as a dashboard with a combination of reports i.e. widgets displaying essential information on various DORA metrics such as DORA Lead Time for Changes, Deployment Frequency etc configured on the profile level related to your developer's activity.
+A **DORA Insight** can essentially be defined as a dashboard with a combination of reports i.e. widgets displaying essential information on various DORA metrics such as [DORA Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes), [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#deployment-frequency) etc configured on the profile level related to your developer's activity.
 
-DORA Reports are available for configuration only of you already have an associated profile DORA profile (i.e. DORA type Workflow Profile) configuration with the Collection under which the Insight is created. 
+DORA Reports are available for configuration only of you already have an associated profile [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile) (i.e. DORA type Workflow Profile) configuration associated with the **Collection** under which the **Insight** is created. 
 
 Review the following resources to learn more about defining and managing DORA Profiles and DORA Insight on Harness SEI:
 
@@ -168,41 +178,43 @@ Review the following resources to learn more about defining and managing DORA Pr
 
 ### Improve your Deployment Frequency reporting
 
-* Measure using CI/CD integrations: To receive accurate results for Deployment Frequency metrics it is recommended to configure the profile to utilize CI/CD tool for deployment tracking.
-* Identify Production Deployments: Clearly differentiate deployments specific to your production environment add define the DORA profile configuration wrt that.
-* Team-based Insights: Implement a team-level collection structure to categorize deployments by team for deeper analysis.
+* **Measure using CI/CD integrations:** To receive accurate results for Deployment Frequency metrics it is recommended to configure the profile to utilize CI/CD tool for deployment tracking.
+* **Identify Production Deployments:** Clearly differentiate deployments specific to your production environment add define the DORA profile configuration wrt that.
+* **Team-based Insights:** Implement a team-level collection structure to categorize deployments by team for deeper analysis.
 
 By following these recommendations, you can effectively track your deployment frequency and gain valuable insights into your team's software release process.
 
 #### Configuration Examples for DORA Profile Setup
 
-* Comprehensive Pipeline Analysis: Configure the profile to analyze pipelines with all statuses, paying special attention to Continuous Delivery pipelines if applicable. Set a specific timeframe to capture recent deployment activities accurately.
-* Golden Pipeline Standardization: If you have established a standard "golden" pipeline template, utilize Stage Variables for precise control. Associate services with each pipeline run for comprehensive tracking and analysis.
-* Production Environment Monitoring: Monitor deployments to production environments by capturing data on all pipeline executions linked to a specific production deployment stage, such as "deploy-prod".
-* Alignment with Jira Releases (Not Recommended): Although aligning deployment activities with Jira releases may provide insights into deployment frequency concerning software release cycles, it's not recommended due to potential complexities and overhead.
+* **Pipline Configuration:** Configure the profile to analyze pipelines with all statuses, paying special attention to Continuous Delivery pipelines if applicable. Set a specific timeframe to capture recent deployment activities accurately.
+* **Golden / Production Pipeline Standardization:** If you have established a standard "production" pipeline template, utilize Stage Variables for precise control. Associate services with each pipeline execution for accurate tracking and analysis.
+* **Production Environment Monitoring:** Monitor deployments to production environments by capturing data on all pipeline executions linked to a specific production deployment stage, such as `deploy-prod`.
+* **Alignment with Jira Releases (Not Recommended):** Although aligning deployment activities with Jira releases may provide insights into deployment frequency concerning software release cycles, it's not recommended due to potential complexities and overhead.
 
 These configurations will help streamline your deployment frequency reporting process and provide valuable insights into your team's release activities.
 
 ### Improve your Lead Time tracking
 
-* Maintain One-to-One PR Ticket Relationship: It is recommended to maintain one pull request (PR) corresponding to one associated ticket in your issue management system (e.g., Jira). This creates a clear link between requested changes and deployed code.
-* Complete the CI/CD Cycle: Every step in your continuous integration and continuous delivery (CI/CD) pipeline should be mapped with the stages in the workflow profile. This ensures all stages are covered as part of the metric calculation.
-* Jira Releases for Tracking: Use the Jira Release stage only when tracking Jira releases.
+* **Maintain One-to-One PR Ticket Relationship:** It is recommended to maintain one pull request (PR) corresponding to one associated ticket in your issue management system (e.g., Jira). This creates a clear link between requested changes and deployed code.
+* **Complete the CI/CD Cycle:** Every step in your continuous integration and continuous delivery (CI/CD) pipeline should be mapped with the stages in the workflow profile. This ensures all stages are covered as part of the metric calculation.
+* **Jira Releases for Tracking:** Use the Jira Release stage only when tracking Jira releases.
 
 Following these recommendations can refine your Lead Time for Changes report and provide more accurate insights into your development workflow's efficiency.
 
 ### Improve your Change Failure Rate tracking
 
-* Choose a set of pipelines that are responsible for deploying to Production environments and have specific "Failure" statuses or have specific run parameters configured.
-* Pick out a list of pipeline runs that meet specific execution filters indicating a Rollback, Hotfix and so on.
-* It is advisable for the denominator i.e. Total deployments to have an identical configuration as the Deployment Frequency definition.
+* Choose a set of pipelines that are responsible for deploying to Production environments and have specific `Failure` statuses or have specific run parameters configured.
+* Pick out a list of pipeline runs that meet specific execution filters indicating a **Rollback**, **Hotfix** and so on.
+* It is recommended for the denominator i.e. Total deployments to have an identical configuration as the **Deployment Frequency** definition.
+* Calculating the **Change Failure Rate** metric for large teams can be challenging due to the sheer volume of changes. It is recommended to use **Collection Level Filters** and view reports at the individual team or **Project Level** (Sub Collection) instead of the entire parent **Collection**. This provides a more granular view of change failures and allows for targeted improvements.
 
 ### Improve your DORA Insights
 
 * Ensure that the added DORA Reports align with your organization's engineering goals and objectives.
 * Create a standard template for the workflow profiles across teams to maintain consistency in metric tracking.
 * Define workflow profile at a granular level to capture the entire software delivery lifecycle. This includes specifying events such as the exclusion of PRs and commits, events defining what constitutes a deployment or a failure for CI/CD jobs, and other crucial items to provide a comprehensive view of the deployment process.
-* Customize Collection Filters within reports carefully. These filters impact not only the widget but the collection as a whole. Optimize filters to focus on the specific aspects of your software development process that you want to analyze.
+* Customize **Collection Filters** within reports carefully. These filters impact not only the widget but the collection as a whole. Optimize filters to focus on the specific aspects of your software development process that you want to analyze.
+* * To get accurate data for **Deployment Frequency** and **Change Failure Rate** report it is recommended to configure the DORA profile to calculate the metrics using CI/CD integrations i.e. receive data for production-level deployments from the relevant CI/CD platform.
 
 ## Roadmap
 
@@ -210,18 +222,14 @@ While DORA metrics provide valuable insights, it's important to consider some li
 
 ### DORA Reports
 
-* To get accurate data for Deployment Frequency and Change Failure Rate report it is recommended to configure the DORA profile to calculate the metrics using CI/CD integrations i.e. receive data for production-level deployments from the relevant CI/CD platform.
-
-* Calculating the Change Failure Rate metric for large teams can be challenging due to the sheer volume of changes. It is recommended to use Collection Level Filters and view reports at the individual team or Project Level (Sub Collection) instead of the entire parent Collection. This provides a more granular view of change failures and allows for targeted improvements.
-* Currently, the ability to associate a DORA profile with a collection is disabled if the collection lacks the necessary integration.
-* This is an enhancement on the Roadmap where support will be added for enabling the association of any Collection with the DORA profile, regardless of existing integration.
-* Existing propels in some cases do not accurately reflect trends for the DORA metrics after the profile is customized or modified. This is an enhancement on the Roadmap where support will be added to implement the ability to add trend graphs across various timeframes within DORA widgets would provide valuable insights into changes over time and the effectiveness of implemented improvements.
+* Currently, the ability to associate a DORA profile with a Collection is disabled if the collection lacks the necessary integration. This is an enhancement under consideration for the future Roadmap where support will be added for enabling the association of any Collection with the DORA profile, regardless of existing integration.
+* Existing [Propels](/docs/software-engineering-insights/sei-propels-scripts/propels-overview) in some cases do not accurately reflect trends for the DORA metrics after the profile is customized or modified. This is an enhancement under consideration for the future Roadmap where support will be added to implement the ability to add trend graphs across various timeframes within DORA widgets which would provide valuable insights into changes over time and the effectiveness of implemented improvements.
 
 ### DORA Calculation Requirements
 
 #### Artifact Information Unavailability for Jenkins
 
-Due to the limitations of the Jenkins Propel plugin, if there is no artifact information available, the calculation of CI/CD Lead Time cannot be performed accurately since artifact generation and deployment times are essential for these metrics.
+Due to the limitations of the [Jenkins Harness SEI plugin](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin), if there is no artifact information available, the calculation of CI/CD Lead Time cannot be performed accurately since artifact generation and deployment times are essential for these metrics.
 
 #### CI/CD Job Configuration for Jenkins
 
@@ -246,7 +254,7 @@ The adoption of various branching strategies has a direct impact on Lead Time ca
 
 #### Correlation Prerequisite
 
-Ensuring an accurate correlation between JIRA and SCM depends on including the JIRA ticket ID in the SCM commit message and PR title. If this information is missing, the correlation, and consequently, the Lead Time calculation will be inaccurate.
+Ensuring an accurate correlation between JIRA and SCM depends on including the `JIRA ticket ID` in the `SCM commit message` and `PR title`. If this information is missing, the correlation, and consequently, the Lead Time calculation will be inaccurate.
 
 #### Multiple Stages in CI/CD
 

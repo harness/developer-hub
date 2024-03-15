@@ -15,20 +15,7 @@ You can configure the profile depending on the factors you want to include in yo
 
 ![](./static/workflow-profile.png)
 
-## Configure Workflow profiles
-
-To add or edit Workflow profiles:
-
-1. In your Harness project, go to the SEI module.
-2. Select **Account**.
-3. Select **Workflow** under **Profiles**.
-4. To create a profile, select **+Add Profile**. To edit a profile, select the profile's name in the profiles list.
-
-:::tip
-
-You can create profiles by copying existing profiles. Make sure to edit copies accordingly and that your Lead Time widgets reference the correct profile.
-
-:::
+## Workflow Profile Settings
 
 **Workflow profile settings include:**
 
@@ -113,56 +100,9 @@ Define job run parameters in key-value pairs. When using multiple job run parame
 Note: The additional filters being used to define the deployments will be applicable to all the integrations that you have selected.
 :::
 
-## Configure the DORA type workflow profile
+## Lead Time Profile
 
-1. Enter a name for the profile.
-2. Add a profile description. (Optional)
-3. **Lead Time for Changes:** Define the settings for calculating the DORA Lead Time for Changes report. 
-   * Select the Issue Management tool that you want to use to track tasks in your team.
-   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages-in-lead-time-for-changes).
-4. **Deployment Frequency:** Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
-   * Choose the tool that you want to use to measure deployments in your team.
-   * Select the existing integrations that you would like to use to calculate the Deployment Frequency.
-   * Configure the additional filters to define the criteria for deployments to be considered in the calculation.
-5. **Mean Time to Restore:** Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
-6. **Change Failure Rate:** Define the configuration for measuring the Change Failure Rate for your team.
-   * Ensure to select the checkbox incase you want to calculate the Change Failure Rate using only deployments that causes failure.
-   * Choose the tool that you want to use to measure deployments in your team.
-   * Select the existing integrations that you would like to use for the calculation.
-   * Configure the additional filters to define the criteria for total deployment and deployments causing failure to be considered in the calculation.
-7. **Association:** Modify the Collection and Project associated with this profile.
-8. Once you have finished configuring the profile setting click on **Save** to save the profile.
-
-:::tip
-Note that for calculating DORA metrics, each profile can be associated with only one Collection in a one-to-one mapping
-:::
-
-## Configure the Velocity lead time type workflow profile
-
-To create a Velocity Lead Time profile, you need to follow these key steps:
-
-1. Enter a name for the profile.
-2. Add a profile description. (Optional)
-3. Select either **JIRA** or **Azure** as your issue management system. 
-4. Configure the Workflow Profile Definition. Here you can define the setting for **Stages**, **New Features**, **Deployment**, **Hotfix** and **Defects**.
-5. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#development-stages-in-velocity-lead-time).
-6. For **NEW FEATURE**, **DEPLOYMENT**, **HOTFIX**, **DEFECT** the configuration is done based on the below parameters:
-   * **Pull Requests to Branches:** Specify values that the branches for pull requests should start with or contain.
-   * **Pull Requests from Branches:** Define values that the source branches for pull requests should start with or contain.
-   * **Direct Merges to Branches:** Set criteria for branches that should be considered for direct merges, based on starting or containing specified values.
-   * **Tags on Commits of Merged PRs:** Specify values that tags on commits of merged pull requests should start with or contain.
-   * **Labels on Pull Requests:** Define values for labels on pull requests that should start with or contain specific values.
-
-![](./static/velocity-profile.png)
-
-
-:::tip
-Separate multiple values with a comma.
-:::
-
-## Workflow profiles for lead time
-
-Lead time is based on time spent in stages defined in a Workflow profile.
+Lead time is based on time spent in stages defined in a Velocity Lead Time type Workflow profile.
 
 For example, the default configuration for a [PR-based Workflow profile](#create-a-profile-to-track-lead-time-in-scm) has four stages:
 
@@ -190,15 +130,107 @@ You can configure grading thresholds (good, acceptable, and slow) for each stage
 
 You can modify Workflow profile stages and grades according to your team's SDLC process. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
-## Add the Jira Release stage
+## Configure Workflow profiles
 
-When configuring a workflow profile in Jira, you have the option to add a release stage. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
+To add or edit Workflow profiles:
+
+1. In your Harness project, go to the SEI module.
+2. Select **Account**.
+3. Select **Workflow** under **Profiles**.
+4. To create a profile, select **+New Workflow Profile**. To edit a profile, select the profile's name in the profiles list.
+
+:::tip
+
+You can create profiles by copying existing profiles. Make sure to edit copies accordingly and that your Lead Time widgets reference the correct profile.
+
+:::
+
+### Configure the DORA Profile
+
+DORA Profile is a type of Workflow Profile that allows you to define the thresholds for measuring the DORA metrics for your engineering team. Follow the steps below to configure the DORA profile:
+
+1. In the **Workflow** tab under **Profiles** select **+New Workflow Profile**
+2. Select **DORA profile** as the type for the Workflow profile.
+3. Enter a **Name** for the profile.
+4. Add a profile description. (Optional)
+5. **Lead Time for Changes:** Define the settings for calculating the DORA Lead Time for Changes report. 
+   * Select the Issue Management tool that you want to use to track tasks in your team.
+   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages-in-lead-time-for-changes).
+6. **Deployment Frequency:** Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
+   * Choose the tool that you want to use to measure deployments in your team.
+   * Select the existing integrations that you would like to use to calculate the Deployment Frequency.
+   * Configure the additional filters to define the criteria for deployments to be considered in the calculation.
+7. **Mean Time to Restore:** Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
+8. **Change Failure Rate:** Define the configuration for measuring the Change Failure Rate for your team.
+   * Ensure to select the checkbox incase you want to calculate the Change Failure Rate using only deployments that causes failure.
+   * Choose the tool that you want to use to measure deployments in your team.
+   * Select the existing integrations that you would like to use for the calculation.
+   * Configure the additional filters to define the criteria for total deployment and deployments causing failure to be considered in the calculation.
+9. **Association:** Modify the Collection and Project associated with this profile.
+10. Once you have finished configuring the profile setting click on **Save** to save the profile.
+
+:::tip
+Note that for calculating DORA metrics, each profile can be associated with only one Collection in a one-to-one mapping
+:::
+
+### Configure the Lead Time Profile
+
+To create a Velocity Lead Time profile, you need to follow these key steps:
+
+1. In the **Workflow** tab under **Profiles** select **+New Workflow Profile**
+2. Select **Velocity lead time profile** as the type for the Workflow profile.
+3. Enter a **Name** for the profile.
+4. Add a profile description. (Optional)
+5. Select either **JIRA** or **Azure** as your issue management system. 
+6. Configure the Workflow Profile Definition. Here you can define the setting for **Stages**, **New Features**, **Deployment**, **Hotfix** and **Defects**.
+7. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time calculation](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#development-stages-in-velocity-lead-time).
+8. For **NEW FEATURE**, **DEPLOYMENT**, **HOTFIX**, **DEFECT** the configuration is done based on the below parameters:
+   * **Pull Requests to Branches:** Specify values that the branches for pull requests should start with or contain.
+   * **Pull Requests from Branches:** Define values that the source branches for pull requests should start with or contain.
+   * **Direct Merges to Branches:** Set criteria for branches that should be considered for direct merges, based on starting or containing specified values.
+   * **Tags on Commits of Merged PRs:** Specify values that tags on commits of merged pull requests should start with or contain.
+   * **Labels on Pull Requests:** Define values for labels on pull requests that should start with or contain specific values.
+
+![](./static/velocity-profile.png)
+
+:::tip
+Separate multiple values with a comma.
+:::
+
+### Stages
+
+Depending on your chosen start event, the stage configuration can vary:
+
+You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages you can customize the fields, define ideal and acceptable time ranges, grades, and more. This refines how you track KPIs.
+
+* For **Ticket Created** Start Event by default the Development stages are enabled which includes Lead time to first commit, PR creation time, Time to Comment, Approval time, and Merge time (requires destination branch confirmation). For Approval Time you have the option to choose between choosing the First Approval or the Final Approval depending on your workflow's needs.
+  
+  PR review stages cannot be rearranged. Default values for stages are customizable to meet specific requirements. We can add new custom stages at the beginning of the workflow or after the completion of the Development stages.
+
+* For **Commit Created** Start Event Workflow starts with `Commit Created` followed by PR Creation Time, Time to Comment, Approval Time, and Merge Time stages. Default values are customizable based on specific requirements. Custom stages can only be added after completing the default stages.
+
+* For **API Event** Start Event Development stages are the same as for `Ticket Created` and the PR review stages cannot be rearranged. The default values are customizable and custom stages can be added at the beginning or after the development stages.
+
+### Add a custom stage
+
+To add custom stages, follow these steps:
+
+1. Click on the plus button within the workflow.
+2. Add a stage name and description.
+3. Define the Stage Definition by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and set event parameters.
+4. Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
+
+![](./static/custom-stage.png)
+
+### Add the Jira Release stage
+
+When configuring a workflow profile in Jira, you have the option to add a release stage to measure Lead Time. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
 
 By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to `Ticket Created` and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
 
 If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile.
 
-## Measure Lead Time by Jira Statuses
+### Measure Lead Time by Jira Statuses
 
 You can choose to measure lead time exclusively by JIRA statuses. This feature is especially useful for teams using JIRA as their primary issue management tool. It is a mandatory configuration for the JIRA releases report.
 
@@ -229,31 +261,6 @@ In cases where a single ticket is associated with multiple versions, the user ca
 
 * **Considering the Earliest Released Version:** This option measures lead time to the first released version linked to the ticket. This approach prioritizes the initial delivery of value to stakeholders, emphasizing the initial completion of the issue and its subsequent release.
 * **Considering the Latest Released Version:** This option measures lead time to the most recently released version associated with the ticket. This approach focuses on the final iteration of the issue, capturing the cumulative development effort and ensuring that the lead time reflects the issue's final state as it reaches users.
-
-## Stages
-
-Depending on your chosen start event, the stage configuration can vary:
-
-You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages you can customize the fields, define ideal and acceptable time ranges, grades, and more. This refines how you track KPIs.
-
-* For **Ticket Created** Start Event by default the Development stages are enabled which includes Lead time to first commit, PR creation time, Time to Comment, Approval time, and Merge time (requires destination branch confirmation). For Approval Time you have the option to choose between choosing the First Approval or the Final Approval depending on your workflow's needs.
-  
-  PR review stages cannot be rearranged. Default values for stages are customizable to meet specific requirements. We can add new custom stages at the beginning of the workflow or after the completion of the Development stages.
-
-* For **Commit Created** Start Event Workflow starts with `Commit Created` followed by PR Creation Time, Time to Comment, Approval Time, and Merge Time stages. Default values are customizable based on specific requirements. Custom stages can only be added after completing the default stages.
-
-* For **API Event** Start Event Development stages are the same as for `Ticket Created` and the PR review stages cannot be rearranged. The default values are customizable and custom stages can be added at the beginning or after the development stages.
-
-### Add a custom stage
-
-To add custom stages, follow these steps:
-
-1. Click on the plus button within the workflow.
-2. Add a stage name and description.
-3. Define the Stage Definition by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and set event parameters.
-4. Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
-
-![](./static/custom-stage.png)
 
 ## Configuration examples​
 

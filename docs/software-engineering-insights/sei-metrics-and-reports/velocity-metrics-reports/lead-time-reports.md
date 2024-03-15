@@ -271,13 +271,13 @@ You might want to set the time range to **Use Insight time**, which allows the u
 
 ## DORA Lead Time For Changes
 
-DORA calculation is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the profile level. 
+DORA calculation is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the Profile level. 
 
-DORA Lead Time for Change and DORA Mean Time for Restore reports do not require a DORA profile to be associated in the widget configuration, as it is already expected to be associated with a collection under which Insight is defined. 
+DORA Lead Time for Change and DORA Mean Time for Restore reports do not require a DORA profile to be associated in the widget configuration, as it is already expected to be associated with a collection under which Insight is defined.
 
 DORA profiles can be configured to calculate the Lead time concerning either Issue (`start event: Ticket Created`) or SCM Pull Requests (`start event: Commit Created`).
 
-For information about the Lead Time For Changes DORA metric, go to [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
+For information about the DORA Lead Time For Changes report, go to [DORA Reports](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
 
 ## PR and SCM lead time
 
