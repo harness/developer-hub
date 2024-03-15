@@ -305,6 +305,15 @@ You will also experience an enhanced user interface when configuring the integra
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
+### Auto-detect option for targets and variants
+
+* **Release date:** March 2024
+* **Issue number:** STO-6704
+* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
+
 ### Write OPA policies based on STO scan results
 
 * **Release date:** February 2024
@@ -324,14 +333,6 @@ You can now write and apply OPA policies against all results from a scan. This g
 
 You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
 
-### Aqua Security integration
-
-* **Release date:** November 2023
-* **Issue number:** STO-6382
-* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
 
 ### STO Jira integration
 
@@ -507,7 +508,7 @@ Harness released a beta version of an Apex SDK for Feature Flags. For more infor
 
 ### STO features promoted to GA
 
-### Write OPA policies based on STO scan results
+<!-- ### Write OPA policies based on STO scan results
 
 * **Release date:** November 2023
 * **Issue number:** STO-6738
@@ -516,6 +517,36 @@ Harness released a beta version of an Apex SDK for Feature Flags. For more infor
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
+-->
+
+#### Aqua Security integration
+
+* **GA date:** November 2023
+* **Early access release date:** November 2023
+* **Early access Release version:** 1.74.1
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+
+
+#### Anchore Enterprise integration
+
+* **GA date:** March 2024
+* **Early access release date:** November 2023
+* **Early access Release version:** 1.73.1
+* **Feature flag:** `STO_STEP_PALETTE_ANCORE_ENTERPRISE`
+
+You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
+
+#### Time limits for exemptions
+
+* **GA date:** March 2024
+* **Early access release date:** October 2023
+* **Early access Release version:** 1.72.0
+* **Feature flag:** `STO_TIMEBOUND_EXEMPTIONS`
+
+You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
 #### UI enhancements for working with exemptions
 
