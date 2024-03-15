@@ -1,15 +1,21 @@
 ---
 title: Onboarding guide
 description: A self-service onboarding guide for Harness Platform
-sidebar_position: 1
+sidebar_position: 2
 redirect_from:
   - /docs/platform/get-started/tutorials
   - /docs/get-started/tutorials
 ---
 
-Harness Platform is purpose built to help developers and DevOps teams deliver software with the highest velocity, quality, security, reliability, resilience as well as lowest cost possible while remaining inside the governance guardrails necessary for meeting organizational goals. 
+Harness Platform is purpose built to help developers and DevOps teams deliver software with the highest velocity, quality, security, reliability, resilience as well as lowest cost possible while remaining inside the governance guardrails necessary for meeting organizational goals.
+
+<!-- add tutorials links -->
+<!-- add module info -->
 
 ## Prerequisite: Access your Harness account
+
+<!-- use tabs here -->
+<!-- incorporate "start for free -->
 
 ### SaaS
 Harness SaaS is a fully-managed cloud version of Harness Platform that is accessible via multiple plans.

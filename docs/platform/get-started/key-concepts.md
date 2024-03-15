@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Key concepts of the Harness Platform
-sidebar_position: 3
+sidebar_position: 1
 helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
