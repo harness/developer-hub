@@ -30,7 +30,13 @@ Using Cloud Cost Management within Feature Flags will help you to:
 
 3. *Adopt Higher Level Troubleshooting*: The hope we have at Harness is that this will help you to reduce time to finding solutions around any cost disparaties as well as help to improve your operational effiency of your products.
 
-There are two ways for you to turn on the CCM feature. Follow the steps below of whichever guide best suits your needs:
+Also, we've also added an additional feature to the Cloud Cost Monitoring tool. There are three status modes which helps us to categorise anomalies under *Monitoring*, *Anomaly Found* and *No Changes*. 
+
+![The "No Changes" status within Cloud Cost Monitoring](./static/ff-ccm-no_changes_status.png)
+
+![The "100% of Analomous Spending Reached" status within Cloud Cost Monitoring](./static/ff-ccm-anomalous_spending_status.png)
+
+![The "Monitoring" status within Cloud Cost Monitoring](./static/ff-ccm-monitoring_status.png)
 
 ## How To Set Up The CCM Feature For Your Environments
 
