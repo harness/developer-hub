@@ -1,31 +1,81 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-For information about referencing variables, using expressions, and adding custom variables, go to:
+For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
 
-- [Variables and expressions](/docs/category/variables-and-expressions)
-- [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md)
+You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more.
+
+This topic describes some built-in and custom Harness expressions, as well as the prefixes used to identify user-created variables.
+
+Expressions are powerful and offer many options for modification or interaction. For more information about using expressions, go to:
+
+* [Write expressions using any JSON parser tool](./expression-v2.md)
+* [Use Java string methods](./expressions-java-methods.md)
+* [Expression status type reference](./status-type-reference.md)
+* [Add variables](./add-a-variable.md)
 
 ## What is a Harness variable expression?
 
-Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
+Harness variable expressions refer to a value in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates any expressions present in the pipeline and replaces them with the resolved value.
 
-Harness variables are powerful because they let you template configuration information, pipeline settings, and values in your scripts, and they enable your pipelines to pass information between stages and settings.
+For example, the expression `<+pipeline.name>` resolves to name of the pipeline where you're using that expression.
 
-When you use a variable, you add it as an expression.
+**Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
-Harness expressions are identified using the `<+...>` syntax. For example, `<+pipeline.name>` references the name of the pipeline where the expression is evaluated.
+## Expression usage
 
-The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
+Harness variables are declared as expressions using the expression delimiter `<+...>`, such as `<+pipeline.name>` or `<+secrets.getValue("someSecret")>`.
+
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+
+In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Expression**.
+
+![](./static/runtime-inputs-03.png)
+
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+
+![](./static/runtime-inputs-10.png)
+
+In free-text fields, such as **Command**, you can directly enter values using the appropriate syntax without changing the value type.
+
+![](./static/runtime-inputs-12.png)
+
+You can continue typing or select the expression from the list of suggestions.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+When writing pipelines in YAML, enter the expression as the value for a field.
+
+For example, this expression references a [pipeline variable]() named `myConnector`.
+
+```
+          connectorRef: <+pipeline.variables.myConnector>
+```
+
+When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+
+![](./static/runtime-inputs-13.png)
+
+You can continue typing or select the expression from the list of suggestions.
+
+</TabItem>
+</Tabs>
+
+Mechanically, Harness passes the content within the delimiter (`<+...>`) to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) for evaluation.
+
+You can [use JEXL methods to build complex variable expressions](./expression-v2.md). For example, here is a complex expression that uses information from a [webhook trigger](/docs/platform/triggers/triggers-reference.md) payload:
 
 ```
 <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software"
