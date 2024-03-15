@@ -58,7 +58,7 @@ You can continue typing or select the expression from the list of suggestions.
 
 When writing pipelines in YAML, enter the expression as the value for a field.
 
-For example, this expression references a [pipeline variable]() named `myConnector`.
+For example, this expression references a [pipeline variable](./add-a-variable.md) named `myConnector`.
 
 ```
           connectorRef: <+pipeline.variables.myConnector>
