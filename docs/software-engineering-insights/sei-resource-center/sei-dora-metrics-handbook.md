@@ -122,8 +122,8 @@ It's important to remember that DORA metrics should not be used solely for indiv
 
 ### Issue Management to SCM Correlations
 
-* **JIRA to SCM:** This correlation is done by matching issue IDs from JIRA tickets with commit messages in SCM. The calculation of lead time here starts from the ticket's creation date to the first commit in SCM related to that ticket.
-* **SCM to CI:** The correlation is established through commit SHAs, which are used to identify the specific build in CI that corresponds to the change made in SCM. The calculation here involves the time from the first commit to the first successful build in CI.
+* **JIRA to Source Code Manager:** This correlation is done by matching issue IDs from JIRA tickets with commit messages in SCM. The calculation of lead time here starts from the ticket's creation date to the first commit in SCM related to that ticket.
+* **Source Code Manager to CI:** The correlation is established through commit SHAs, which are used to identify the specific build in CI that corresponds to the change made in SCM. The calculation here involves the time from the first commit to the first successful build in CI.
 * **CI to CD:** This step involves correlating the artifact (or build) from CI to deployment in CD using artifact identifiers (like tags or digests). The calculation of lead time considers the duration from the first successful CI build to the deployment in CD.
 
 ### How is data correlated between the Tickets, Commits and Pull Requests?​
