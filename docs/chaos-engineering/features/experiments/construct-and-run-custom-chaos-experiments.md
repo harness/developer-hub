@@ -64,7 +64,7 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 
 		* **Add chaos probes:** (Optional) On the **Probes** tab, you can add chaos [probes](/docs/chaos-engineering/features/probes/overview.md) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
 
-		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/resilience-score) of the experiment.
+		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/features/experiments/resilience-score) of the experiment.
 
 		![Tune Fault](./static/construct-and-run-custom-chaos-experiments/tune-fault.png)
 
