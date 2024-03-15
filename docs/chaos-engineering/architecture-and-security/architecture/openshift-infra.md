@@ -83,7 +83,7 @@ To learn more about SCC, go to [SCC documentation](/docs/chaos-engineering/archi
 
 ## 3. Get the manifest to install chaos infrastructure
 
-After [connecting to a chaos infrastructure](./connect-chaos-infrastructures), select the installation mode (cluster scope or namespace scope).
+After [connecting to a chaos infrastructure](./connect-chaos-infrastructures.md), select the installation mode (cluster scope or namespace scope).
 
 ![configure-chaos-infra](https://user-images.githubusercontent.com/35391335/226420643-6490d8bc-90fc-438e-92cc-f90a736ab374.png)
 

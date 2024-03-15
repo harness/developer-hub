@@ -261,7 +261,7 @@ To add a Linux chaos infrastructure:
 
   ![Specify Details](./static/connect-chaos-infrastructures/3.configure-chaos.png)
   
-  You can also specify the [advanced setup](./linux-chaos-infrastructure-advanced-management.md#advanced-setup) options for the infrastructure. 
+  You can also specify the [advanced setup](/docs/chaos-engineering/architecture-and-security/arhitecture/linux-chaos-infrastructure-advanced-management#advanced-setup) options for the infrastructure. 
 
 1. Select **Next**.
 
