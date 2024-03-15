@@ -226,7 +226,7 @@ To learn more about how to use the satellite to configure an integration, go to 
 
 You can also create custom CI/CD integration. Find the instructions to create a custom CI/CD integration on SEI [here](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations).
 
-The required credentials and method of authentication vary with the integration type and the third-party tool. To learn more about how to configure the integration on SEI, refer to the [integration-specific documentation](/docs/category/integrations-1).
+The required credentials and method of authentication vary with the integration type and the third-party tool. To learn more about how to configure the integration on SEI, refer to the [integration-specific documentation](/docs/category/sei-integrations).
 
 ## Phase 4: Collection Setup
 

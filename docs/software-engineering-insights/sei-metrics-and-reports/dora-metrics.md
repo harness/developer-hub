@@ -9,7 +9,7 @@ DORA (DevOps Research Assessment) identified the following key metrics that desc
 
 With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/insights/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
-Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
+Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/sei-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
 ## DORA Metrics Reports
 
@@ -240,7 +240,7 @@ To measure the Change Failure Rate accurately, define your workflow profile conf
 1. Go to **Settings** and select **Workflow Profiles**.
 2. Select **Add Profile** or select an existing profile to modify.
 3. If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile.
-4. Select **Change Failure Rate**, and select the [SEI integration](/docs/category/integrations) to use. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired. For example:
+4. Select **Change Failure Rate**, and select the [SEI integration](/docs/category/sei-integrations) to use. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired. For example:
 
    * Select factors to use to calculate failed deployments.
    * Select factors to use to calculate total deployments.
