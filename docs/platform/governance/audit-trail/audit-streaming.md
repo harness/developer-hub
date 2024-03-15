@@ -4,10 +4,6 @@ description: Stream your audit logs to an external destination.
 sidebar_position: 3
 ---
 
-:::important
-Currently, this feature is in Beta and behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can configure a streaming destination in Harness to send audit log data to another location for processing. Integrating audit data with other Security Incident and Event Management (SIEM) tools lets you do the following:
 
 - Trigger alerts for specific events.
