@@ -10,6 +10,8 @@ redirect_from:
   - /docs/platform/get-started/platform-overview
   - /docs/getting-started/key-concepts
   - /docs/get-started/key-concepts
+  - /docs/getting-started/harness-platform-architecture
+  - /docs/get-started/harness-platform-architecture
 ---
 
 The *Harness Platform* is the common structure underlying the *Harness modules*.
@@ -31,6 +33,8 @@ Resources, such as [connectors](#connectors), can be added at all scopes (accoun
 Creating a thoughtful hierarchy of organizations and projects in your account allows teams to  manage their organization-level and project-level resources without relying on account admins.
 
 ### Account information
+
+For instructions on accessing your account, go to the [Platform onboarding guide](./onboarding-guide.md).
 
 You can find information about your account on the [Account Overview page](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts), such as your Harness Account Name, Account ID, the Harness SaaS cluster that hosts your account, as well as the [module subscription and license information](/docs/platform/get-started/subscriptions). You'll need this information to configure your delegates, Terraform provider, CLI, and other automation tools that help in administering your account.
 
@@ -95,9 +99,31 @@ For more information, go to [Harness secrets management overview](/docs/platform
 
 ## Delegates
 
-[Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview) are lightweight worker processes that you install on your infrastructure (such as a Kubernetes cluster). Delegates communicate only via outbound HTTP/HTTPS to the Harness Platform.
+[Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview) are lightweight worker processes that you install on your infrastructure (such as a Kubernetes cluster). Delegates connect to the Harness Platform (also referred to as the Harness Manager) to perform tasks using your container orchestration platforms, artifact repositories, monitoring systems, and so on. Delegates communicate only via outbound HTTP/HTTPS to the Harness Platform.
 
 This enables the Harness Platform to leverage the delegate to execute Harness tasks on your behalf, without any of your secrets leaving your network.
+
+The delegate is key to enabling Harness to perform tasks on your behalf, but you don't need to install it right away. You can install the delegate while setting up your pipelines or connectors. The Harness Platform guides you through the process.
+
+<figure>
+
+![](./static/harness-platform-architecture-00.png)
+
+<figcaption>Diagram of Harness Delegate architecture</figcaption>
+</figure>
+
+<details>
+<summary>Harness GitOps Agent</summary>
+
+The Harness GitOps Agent is similar to the Harness Delegate, but it handles GitOps based workflows and management. 
+
+GitOps is part of Harness CD. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/) and [Delegate and GitOps Agent strategy](https://www.harness.io/blog/delegates-and-agents-onramp-to-scale-with-harness).
+
+This video describes the Harness Delegate and GitOps Agent Strategy.
+
+<DocVideo src="https://www.youtube.com/watch?v=_4k4I8g-Fo0" />
+
+</details>
 
 ## Connectors
 
@@ -116,6 +142,8 @@ Harness offers many types of connectors, including:
 Pipelines are a feature of several Harness modules. Pipelines represent a workflow, and, in Harness, they are comprised of pipeline-level settings, [stages](#stages), and [steps](#steps-and-step-groups). Pipelines can be a cyclical process that include integration, delivery, operations, testing, deployment, real-time changes, and monitoring.
 
 For example, a pipeline can use the CI module to build, test, and push code, and then a CD module to deploy the artifact to your production infrastructure.
+
+Pipelines are triggered manually in the Harness Platform or automatically in response to Git events, schedules, new artifacts, and so on.
 
 ### Pipeline Studio
 
@@ -154,16 +182,19 @@ Harness offers several approaches for automating management of Harness entities 
 - [Harness CLI](/docs/category/cli)
 - [Harness API](/docs/category/api)
 
+## Harness Manager
+
+The *Harness Manager* can be a synonym for the Harness Platform and it can refer to "inline" (within the platform) storage and management of configurations and pipelines. It can also refer to the orchestration and handling of internal Harness functions, for example, when you run a pipeline.
+
 ## Git Experience
 
 With the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview), you can sync your Harness account, orgs, and projects with your Git repo to manage Harness entirely from Git.
 
-Harness can respond to Git events to trigger pipelines and pass in event data.
+Components that you can write in YAML can also be managed purely through Git with the Git Experience.
 
 ## Learn more about the Harness Platform
 
 * [Navigation](/docs/get-started/harness-ui-overview.md)
-* [Architecture](/docs/get-started/harness-platform-architecture.md)
 * [Supported platforms and technologies](../platform-whats-supported.md)
 
 ## FirstGen vs NextGen

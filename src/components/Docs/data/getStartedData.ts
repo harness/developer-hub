@@ -29,13 +29,6 @@ import {
               "A self-service onboarding guide for Harness Platform.",
             link: "/docs/platform/get-started/onboarding-guide",
           },
-          {
-            title: "Start for free",
-            module: MODULES.platform,
-            description:
-              "Use the Harness Software Delivery Platform for free.",
-            link: "/docs/get-started/start-for-free",
-          },
         ],
       },
       {
@@ -49,13 +42,6 @@ import {
             description:
               "Explore the Harness UI and learn how to navigate to different modules.",
             link: "/docs/get-started/harness-ui-overview",
-          },
-          {
-            title: "Harness Platform architecture",
-            module: MODULES.platform,
-            description:
-              "Learn about the Harness components and editions.",
-            link: "/docs/get-started/harness-platform-architecture",
           },
           //{
           //  title: "Harness key concepts",

@@ -1224,7 +1224,7 @@ Also, if you try to do the cat in the first step, it won't print the secret in p
 
 ### How can we forcibly disconnect a delegate and delete it as admin?
 
-As customers manage their Harness Delegates in their own infrastructure, Harness cannot control them. In Harness's architecture, the delegates in your infrastructure connect to Harness Manager. For more information, go to [Harness Platform components](/docs/get-started/harness-platform-architecture/#harness-platform-components).
+As customers manage their Harness Delegates in their own infrastructure, Harness cannot control them. In Harness's architecture, the delegates in your infrastructure connect to Harness Manager. For more information, go to [Harness Platform key concepts](/docs/platform/get-started/key-concepts).
 
 To remove the delegate from your infrastructure, you need to stop the delegate service. Alternatively, you can revoke the token used by the delegate which will disconnect and automatically delete it in 7 days.
 

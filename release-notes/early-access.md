@@ -206,7 +206,7 @@ You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-
 * **Feature flag:** `CI_LE_STATUS_REST_ENABLED`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.
+This feature causes CI steps to send status updates to the Harness Manager directly by HTTP, rather than through a delegate.
 
 **Update (Version 5003, July 2023):** This feature was rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates.
 
