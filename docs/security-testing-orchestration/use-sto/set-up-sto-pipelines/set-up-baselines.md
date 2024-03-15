@@ -41,15 +41,15 @@ To view and edit the current baseline for a target, go to **Test Targets**:
 
 Every target needs a baseline to enable the full suite of STO features. Here's why:
 
-  - For developers, it’s critical to distinguish between security issues in the baseline vs. issues in the variant you’re working on.  Thus if you’re working in a downstream branch, you want to detect and resolve issues in your branch (the variant) before merging, so you don’t introduce them into the main branch (the baseline). 
+  - For developers, it’s critical to distinguish between security issues in the baseline vs. issues in the variant you’re working on. You want to detect and resolve issues in your downstream branch (the variant) before merging, so you don’t introduce them into the main branch (the baseline). 
 
-  - When you scan a variant of a target with a baseline defined, the scan results make it easy to identify issues in the variant only (“your” issues) vs. issues also found in the baseline. The [Security Tests tab](//docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) divides these issues into two lists:
+  - When your target has a baseline defined, the [Security Tests tab](//docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) divides your issues into two lists:
 
-    - **Only in \<_target_>:\<_variant_>** Issues found in the scanned variant only.
+    - **Only in \<_target_>:\<_variant_>** Issues detected in the scanned variant only.
 
-    - **Common to \<_target_>:\<_baseline_>** Issues also found in the target baseline.
+    - **Common to \<_target_>:\<_baseline_>** Issues also detected in the target baseline.
 
-  - The [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) show detected issues for targets with baselines defined. While individual scan results focus on variant issues, these views focus on baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
+  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) focus on baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
 
   - In short, baselines make it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in  production targets.
   
@@ -59,7 +59,7 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
 <details>
 <summary>Advantages of using regular expressions to define baselines</summary>
 
-Defining your baselines using regular expressions provides significant benefits over using  hard-coded strings such as `main` or `latest`. 
+Defining your baselines using regular expressions provides significant benefits over using fixed values such as `main` or `latest`. 
 
 * RegEx baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. A typical sprint cycle might run like this:
   
@@ -69,9 +69,9 @@ Defining your baselines using regular expressions provides significant benefits 
   - When the release is ready to publish, merge the various branches into `1.2.4`. 
   - Publish the release, merge `1.2.4` into `main`, create a new release branch such as `1.2.5`, and repeat the cycle.
 
-  Given this cadence, `1.2.4` more accurately reflects the baseline for the current sprint than  `main`. Given a matching RegEx, the first scan after creating the branch establishes `1.2.4` as the current baseline. This remains the current baseline until `1.2.4` gets merged into `main` and `1.2.5` gets created and scanned.
+  Given this cadence, `1.2.4` more accurately reflects the baseline for the current sprint than `main`. Given a matching RegEx, the first scan after creating the branch establishes `1.2.4` as the current baseline. This remains the current baseline until `1.2.4` gets merged into `main` and `1.2.5` gets created and scanned.
 
-* RegEx baselines make it easier to track the introduction and remediation of specific vulnerabilities. The lifecyle of a specific vulnerability might run like this:
+* RegEx baselines make it easier to track the introduction and remediation of specific vulnerabilities. The lifecycle of a specific vulnerability might run like this:
 
    - A new release branch `1.2.3` is created. You scan this branch, which matches your RegEx, and it becomes the current baseline. 
    - The scan detects a new vulnerability, **vXYZ**, with a severity of MEDIUM.
@@ -91,7 +91,7 @@ You can specify a fixed value if you know that the baseline for a target will no
 
 2. Go to **Test Targets**.
 
-3. In **Baseline for Comparison**, set the value type to **Fixed** and select the baseline from the pulldown of scanned variants. 
+3. In **Baseline for Comparison**, set the value type to **Fixed** and select the baseline from the menu of scanned variants. 
 
    <DocImage path={require('./static/baseline-fixed-individual-target.png')} width="100%" height="100%" title="Add shared path for scan results" /> 
 
@@ -149,7 +149,7 @@ With this cadence, you can create a RegEx baseline that updates whenever you cre
 Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets.
+You can specify default baselines for specific target types: code repositories, container images, web/API instances, and infrastructure configurations. STO includes a set of predefined defaults for repository and container image targets.
 
 - For repositories, the baseline is `master` or `main`.
 
@@ -227,7 +227,19 @@ The following table shows a few simple examples of expressions for specific use 
         </td>
     </tr>
     <tr>
-        <td>2023-02-11 <br /> 2023-02-17 <br /> 2023-02-23  </td>
+        <td>2023-02-11, 17:59:12 <br /> 2023-02-17, 11:17:23 <br /> 2023-02-23, 08:36:47   </td>
+        <td valign="top"><code>\d{2}/\d{2}/\d{4}\,\s\d{2}\:\d{2}\:\d{2}</code></td>
+        <td valign="top">
+            <ul>
+                 <li>
+                    <p>Four digits, dash, two digits, dash, two digits, comma, two digits, colon, two digits, colon, two digits</p>
+                    <p>This is the format used for scanned variants when [auto-detect for targets and variants](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection) is enabled for instance scanners such as ZAP.</p> 
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>2023-02-11, <br /> 2023-02-17 <br /> 2023-02-23  </td>
         <td valign="top"><code>\d\d\d\d-\d\d\-\d\d</code></td>
         <td valign="top">
             <ul>

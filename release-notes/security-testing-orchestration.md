@@ -61,7 +61,9 @@ For more information, go to:
 
 ### Version 1.86.1
 
-#### Early access feature
+<!-- 2024-03-08 -->
+
+#### Early access feature: default regular expressions for target baselines
 
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recent two-dot version number if it can be detected. (STO-7217)
 

@@ -318,10 +318,10 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 * **Release date:** March 2024
 * **Issue number:** STO-7127
-* **Feature flag:** `STO_DATA_OPA`
+* **Feature flag:** `STO_BASELINE_DEFAULTING`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recent two-dot version number if it can be detected.
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
 
 
 ### Write OPA policies based on STO scan results
