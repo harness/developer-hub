@@ -194,9 +194,7 @@ The response from the cURL command will contain the status of the deployment. Fo
             "planExecutionId":"_iodHvEhT2y_Mn_DLaR32A",  
             "name":"Triggers",  
             "status":"Success",  
-            "tags":[  
-                 
-            ],  
+            "tags":[],  
             "executionTriggerInfo":{  
                "triggerType":"WEBHOOK_CUSTOM",  
                "triggeredBy":{  
@@ -213,9 +211,7 @@ The response from the cURL command will contain the status of the deployment. Fo
             "governanceMetadata":{  
                "id":"0",  
                "deny":false,  
-               "details":[  
-                    
-               ],  
+               "details":[],  
                "message":"",  
                "timestamp":"1663276236674",  
                "status":"pass",  
@@ -292,12 +288,8 @@ The response from the cURL command will contain the status of the deployment. Fo
                   "startTs":1663276236851,  
                   "endTs":1663276251023,  
                   "edgeLayoutList":{  
-                     "currentNodeChildren":[  
-                          
-                     ],  
-                     "nextIds":[  
-                          
-                     ]  
+                     "currentNodeChildren":[],  
+                     "nextIds":[]  
                   },  
                   "nodeRunInfo":{  
                      "whenCondition":"<+OnPipelineSuccess>",  
@@ -315,12 +307,8 @@ The response from the cURL command will contain the status of the deployment. Fo
                   },  
                   "failureInfoDTO":{  
                      "message":"",  
-                     "failureTypeList":[  
-                          
-                     ],  
-                     "responseMessages":[  
-                          
-                     ]  
+                     "failureTypeList":[],  
+                     "responseMessages":[]  
                   },  
                   "nodeExecutionId":"YC_1XgBQSUu79da21J7aVA",  
                   "executionInputConfigured":false  
@@ -344,7 +332,8 @@ The response from the cURL command will contain the status of the deployment. Fo
             "allowStageExecutions":false,  
             "stagesExecution":false  
          }  
-      }  
+      },
+      "executionUrl": "https://app.harness.io/ng/#/account/xxx/cd/orgs/default/projects/CD_Docs/pipeline/Custom/executionS/_iodHvEhT2y_Mn_DLaR32A/pipeline" 
    },  
    "metaData":null,  
    "correlationId":"4b76cec6-c4b3-408c-b66b-7e14540c6e14"  
