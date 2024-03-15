@@ -32,6 +32,14 @@ Using Cloud Cost Management within Feature Flags will help you to:
 
 There are two ways for you to turn on the CCM feature. Follow the steps below of whichever guide best suits your needs:
 
+## How To Set Up The CCM Feature For Your Environments
+
+![The Cloud Cost Monitoring Feature Within The Environments Menu](./static/ff-ccm-environment.png)
+
+ 1. On the Home Page of the Harness Application, select *Environmentss*.
+ 2. On the *Environments* page, you should see the option to open *Add Cloud Cost Monitoring*.
+ 3. If you are yet to set up your CCM with your Cloud Provider, check the instructions below.
+
 ## How To Set Up The CCM Feature For Your Flags
 
 ![The Cloud Cost Monitoring Feature Within Harness Feature Flags](./static/ff-ccm.png)
@@ -40,7 +48,7 @@ There are two ways for you to turn on the CCM feature. Follow the steps below of
  2. Under the dropdown menu that appears, click *Feature Flags*. This should take you to the dashboard of the Feature Flags page of your project.
  3. Click on one of your pre-existing Feature Flags on your dashboard. 
  4. On the left hand side, the option to toggle *Cloud Cost Monitoring* should appear. 
- 
+
 If you haven't set up your Harness account to your Cloud Provider before, the option to do so will appear. 
 
 :::info note
@@ -231,7 +239,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 
-## Before you begin
+#### Before you begin
 
 * The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](../../../first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
@@ -239,7 +247,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 	+ **Billing Account Administrator** role for the target Cloud Billing account
 	+ [BigQuery User role for the Cloud project](https://cloud.google.com/bigquery/docs/dataset-access-controls) that contains the BigQuery dataset that will be used to store the Cloud Billing data
 
-## Connect Harness to Google Cloud Platform (GCP) Account
+#### Connect Harness to Google Cloud Platform (GCP) Account
 
 > **☆ NOTE —** Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
@@ -279,7 +287,7 @@ If you'd like further information about setting up your Cloud Provider, have a r
 
 ### Set Up CCM For Kubernetes
 
-## Prerequisites
+#### Prerequisites
 
 Make sure you have the following set up before you create a Kubernetes connector for CCM:
 
@@ -338,7 +346,7 @@ Resources can be adjusted proportionally based on number of nodes in the cluster
   * 1m core per node
   * 2MiB memory per node
 
-## Connect Your Kubernetes Cluster to CCM
+### Connect Your Kubernetes Cluster to CCM
 
 Perform the following steps to connect your Kubernetes cluster to CCM.
 
