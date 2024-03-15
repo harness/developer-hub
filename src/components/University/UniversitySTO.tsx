@@ -1,20 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
-import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/sto-certification-developer-exam-details.md";
-import AdminCertificationReviewDetails from "./data/sto-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-details.md";
+import AdminCertificationReviewDetails from "./data/sto-certification-admin-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/sto-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/sto-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
-import styles from "./styles.module.scss";
-import Tooltip from "rc-tooltip";
-import IltCard, { iltType } from "./IltCard";
+import IltCard from "./IltCard";
 import { ilt } from "./data/iltData";
+import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_sto_badge.svg`,
@@ -61,11 +60,9 @@ export default function CertificationsSTO() {
       setShowCerts(false);
     }
   }, []);
-  const certRef = useRef(null);
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
     setShowCerts(true);
-    console.log(certRef.current);
   };
   const handleInstLedTrainClick = () => {
     history.push(`${pathname}?ilt`);
@@ -129,7 +126,7 @@ export default function CertificationsSTO() {
 
       {/* Tab Content */}
       {showCerts ? (
-        <div className={styles.tabs} ref={certRef}>
+        <div className={styles.tabs}>
           <h2>Certifications</h2>
           <ul className={styles.tabItems}>
             {Object.entries(certType).map(([tabKey, tabVal], index) => (
