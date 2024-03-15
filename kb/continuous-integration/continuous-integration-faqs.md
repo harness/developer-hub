@@ -117,7 +117,19 @@ For Linux runners, you can use a tool such as `nohup` when you start the runner,
 nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
 ```
 
-## Self-managed VM build infrastructures
+### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+
+The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
+
+### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+
+```
+failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+```
+
+This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+
+## Self-managed VM build infrastructure
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -178,17 +190,22 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
    * Lite engine logs: `C:\Program Files\lite-engine\log.out`
    * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
 
-### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+### What does it mean if delegate.task throws a "ConnectException failed to connect" error?
 
-The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
-
-### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+<!-- CI-11679 -->
+Before submitting a task to a delegate, Harness runs a capability check to confirm that the delegate is connected to the runner. If the delegate can't connect, then the capability check fails and that delegate is ignored for the task. This can cause `failed to connect` errors on delegate task assignment, such as:
 
 ```
-failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+INFO  io.harness.delegate.task.citasks.vm.helper.HttpHelper - [Retrying failed to check pool owner; attempt: 18 [taskId=1234-DEL] \
+java.net.ConnectException: Failed to connect to /127.0.0.1:3000\
 ```
 
-This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+To debug this issue, investigate delegate connectivity in your VM build infrastructure configuration:
+
+* [Verify connectivity for AWS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#verify-connectivity)
+* [Verify connectivity for Microsoft Azure VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#verify-connectivity)
+* [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
+* [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
 ## Harness Cloud
 

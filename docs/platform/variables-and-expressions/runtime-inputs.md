@@ -113,14 +113,7 @@ If you rerun this pipeline, the pipeline uses the same inputs you provided for t
 
 ### Default values
 
-:::note
-
-If a runtime input is an expression that resolves to `null`, it will not be replaced by the default value. In this case, please consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
-
-:::
-
 By default, runtime input accepts virtually any sting input. You can specify a default value to avoid empty values.
-
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
@@ -157,6 +150,12 @@ If your default value has a comma, you must escape the value string using the fo
 </TabItem>
 </Tabs>
 
+#### Null values are valid values
+
+When you run a pipeline that includes default values for runtime input, if you provide an expression for a runtime input that resolves to `null`, then the expression **isn't** replaced by the default value.
+
+To avoid unwanted `null` values, consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
 #### Use a JSON object as the default value
 
 You can use a JSON object, such as the JSON-formatted body of a webhook payload, as the default value for runtime input. Here's an example of a default value that uses a JSON object. Note the use of double quotes around the entire expression and slashes to escape commas and double quotes within the object.
@@ -187,7 +186,9 @@ Harness doesn't support *nested* JSON objects in runtime input. For example, thi
 
 #### Default values in templates
 
-You can specify default values in [templates](/docs/platform/templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
+You can specify default values in [templates](/docs/platform/templates/template). However, if you want to be able to override these values at runtime, append the `.executionInput()` method.
+
+For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
 
 ```yaml
 pipeline:
@@ -211,6 +212,20 @@ pipeline:
                 default: ABC
                 value: <+input>.default(new york).executionInput()
 ```
+
+**Harness generally recommends using `executionInput()` when defining default values in templates.** This is due to the way default values behave in templates. Review the following information to determine whether or not to include `executionInput()`.
+
+For any expression or runtime input defined in a template, you can add the default method (`default()`) to it either in the template directly or when using the template in a parent entity (such as a pipeline), but not both.
+
+- When a default value is specified in the template, any parent entities that use it can't change the default value unless:
+   - You also provide `.executionInput()` for runtime input, as shown in the above example.
+   - A template that uses a variable expression has a fixed value specified for the expression in the parent entity.
+
+   For example, a runtime input like `<+input>.default(default_val)` can't be changed, but `<+input>.default(default_val).executionInput()` can be changed.
+
+- When a default value isn't specified in the template, you can add a default value in the parent entity, and the default value can be different in each parent entity.
+
+  For example, when using a template with runtime input (`<+input>`), you can append the `default()` method to specify a default value in the parent entity, such as `<+input>.default(default_val_in_parent)`.
 
 ### Allowed values
 
