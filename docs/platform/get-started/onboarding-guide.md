@@ -16,9 +16,6 @@ The Harness Platform and modules are built to help developers and DevOps teams d
 
 Follow this guide to get started with the Harness Platform.
 
-<!-- add tutorials links -->
-<!-- add module info -->
-
 ## Access your Harness account
 
 Harness offers both SaaS and on-premises editions.
@@ -59,72 +56,96 @@ Then [create your Harness SMP Account](/docs/self-managed-enterprise-edition/get
 Get familiar with terminology and functionality found in the Harness Platform and Harness modules.
 
 * [Harness Platform key concepts](/docs/platform/get-started/key-concepts)
+* [Navigation and user interface](/docs/get-started/harness-ui-overview.md)
 * [Supported platforms and technologies](/docs/platform/platform-whats-supported)
 
-## Create a sample org or project and invite collaborators
+## Create projects and invite collaborators
 
-- [Create org/project and invite collaborators including admin](/docs/platform/organizations-and-projects/create-an-organization)
+To begin, [create a project and invite a few collaborators](/docs/platform/organizations-and-projects/create-an-organization). Harness recommends creating a sample project with a few pilot users to get familiar with the Harness Platform.
 
-## Automate onboarding of users from external sources 
-You can automate the onboarding of users from external sources along with their user group memberships & role assignments. 
+Once you're familiar with the mechanics, you can create more organizations and projects or represent your business units and product development initiatives.
+
+## Manage users
+
+Learn about [authentication](/docs/platform/authentication/authentication-overview) and [RBAC](/docs/platform/role-based-access-control/rbac-in-harness) to understand how to manage users in your Harness Account.
+
+You can configure broad or highly-granular permissions structures.
+
+You can also automate provisioning of users from external sources, along with their user group memberships and role assignments:
 
 - [Provision users and groups with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
 - [Provision users and groups using Microsoft Entra ID (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 - [Provision users and groups with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
 - [Just-in-time user provisioning](/docs/platform/role-based-access-control/provision-use-jit)
 
-## Install delegate
+## Configure shared resources
 
+Shared resources in Harness include [delegates](/docs/platform/delegates/delegate-concepts/delegate-overview), [connectors](/docs/category/connectors), [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview), and more. You'll use these resources with practically everything you do in Harness.
+
+You can configure these at the account, organization, or project scope depending on how broadly you want to share them.
+
+### Shared resources tutorials
+
+- [Add a secret manager](/docs/platform/get-started/tutorials/add-secrets-manager.md)
 - [Install delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate)
 - [Build and set up a delegate with a minimal image type](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 - [Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload Identity](/docs/platform/delegates/install-delegates/gke-workload-identity)
 
-## Automate setup of shared resources
-Account-level resources such as secrets, delegates & connectors are shared with all organizations and projects in the account. We recommend you either use the Harness Terraform Provider or the Harness REST API for this step.
+### Automate setup of shared resources
 
-### Terraform Provider
-You can achieve a high degree of automation and repeatability in deploying and managing resources on Harness by simply integrating the Harness Terraform Provider into your Harness onboarding workflows. Keep in mind to follow best practices for Terraform and CI/CD to get the best results.
+Shared resources created at the account scope are shared with all organizations and projects in your account.
 
-#### Install the Harness Terraform Provider & Setup Terraform Configuration
+Harness recommends you use the Harness Terraform Provider or the Harness REST API to automate configuration of these shard resources.
 
-Harness Terraform Registry is available here: https://registry.terraform.io/providers/harness/harness. You can use the following docs to get started.
+<Tabs>
+<TabItem value="terraform" label="Terraform Provider" default>
+
+You can achieve a high degree of automation and repeatability in deploying and managing resources on Harness by integrating the Harness Terraform Provider into your Harness onboarding workflows.
+
+Use the following documentation and [Harness Terraform Registry](https://registry.terraform.io/providers/harness/harness) to the Install the Harness Terraform Provider and set up Terraform configuration:
+
 - [Onboard with Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider)
 - [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview)
 - [Advanced Terraform onboarding](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 
-#### Build Automation with Terraform Provider
+A [sample Terraform deployment repo](https://github.com/harness-community/solutions-architecture/tree/main/terraform-development-factory) is available for your use.
 
-You should adhere to the following best practices.
-- Source Control: Save your Terraform configurations in a version control system like Git. This helps in tracking changes and enables collaboration.
+For the best results, follow best practices for Terraform and CI/CD, such as:
 
-- Automate Plan & Apply: Implement CI/CD tools to automate the `terraform plan` and `terraform apply` steps. Popular choices include using Harness CD Pipelines to automate and onboard services. 
-
-- State Management: Use remote state storage solutions, such as Terraform Cloud or AWS S3 with state locking, to ensure that your state is consistent across various environments or teams.
-
-- Notifications: Implement notifications for Terraform actions. If something goes wrong during `terraform apply`, it can be beneficial to have notifications sent to Slack, Email, etc.
-
+- **Source control:** Save your Terraform configurations in a version control system like Git. This helps in tracking changes and enables collaboration.
+- **Automate plan and apply:** Implement CI/CD tools to automate the `terraform plan` and `terraform apply` steps. Popular choices include using Harness CD Pipelines to automate and onboard services. 
+- **State management:** Use remote state storage solutions, such as Terraform Cloud or AWS S3 with state locking, to ensure that your state is consistent across various environments or teams.
+- **Notifications:** Implement notifications for Terraform actions. If something goes wrong during `terraform apply`, it can be beneficial to have notifications sent to Slack, Email, etc.
 - Monitoring and Logging: Monitor your infrastructure with tools like Grafana or Prometheus. Logging changes and activities help in audit trails.
+- **Secrets management:** Use tools like HashiCorp Vault or AWS Secrets Manager to securely store sensitive information like API keys.
+- **Backup:** Regularly back up your Terraform state files to prevent data loss.
+- **Documentation:** Maintain a well-documented record of all Terraform scripts and modules. Documenting the design decisions and usage instructions ensures that any team member can understand and use the automation built around the Terraform provider.
 
-- Secrets Management: Use tools like HashiCorp Vault or AWS Secrets Manager to securely store sensitive information like API keys.
+</TabItem>
+<TabItem value="api" label="Harness API">
 
-- Backup: Regularly back up your Terraform state files to prevent data loss.
+Go to [Get started with Harness API](/docs/platform/automation/api/api-quickstart).
 
-- Documentation: Maintain a well-documented record of all Terraform scripts and modules. Documenting the design decisions and usage instructions ensures that any team member can understand and use the automation built around the Terraform provider.
-
-#### Sample Architecture
-
-A sample repo is available for your use here:
-https://github.com/harness-community/solutions-architecture/tree/main/terraform-development-factory
-
-### API
-
-Use the [API quickstart](/docs/platform/automation/api/api-quickstart) to get started.
+</TabItem>
+</Tabs>
 
 ## Dive into modules
 
 After onboarding to the Harness Platform, you're ready to start using Harness modules to supercharge your SDLC.
 
-Explore module documentation to [get started with Harness modules](https://developer.harness.io/).
+Explore module documentation to [get started with Harness modules](https://developer.harness.io/) and start building CI/CD [pipelines](/docs/category/pipelines).
+
+The Harness Platform has several cross-module features that can optimize and enhance your pipelines and module usage, including:
+
+* [Harness AIDA](/docs/platform/harness-aida/aida-overview)
+* [Variables, expressions, and runtime input](/docs/platform/variables-and-expressions/runtime-inputs)
+* [Templates](/docs/platform/templates/template)
+* [Triggers](/docs/platform/triggers/triggers-overview)
+* [Notifications](/docs/platform/notifications/notification-settings)
+* [Approvals](/docs/platform/approvals/approvals-tutorial)
+* [Governance](/docs/category/governance-1) and [monitored services](/docs/platform/monitored-service)
+* [Dashboards](/docs/platform/dashboards/dashboards-overview)
+* [Global default settings](/docs/platform/settings/default-settings)
 
 ## Become a Harness Certified Expert
 
