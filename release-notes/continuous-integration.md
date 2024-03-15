@@ -48,8 +48,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### Fixed issues
 
-* Fixed an issue where the Get Started wizard failed to generate some pipeline YAML. (CI-11323)
-* Fixed an issue where [Bitbucket connectors with API access enabled](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access) sometimes became unresponsive. (CDS-93298, ZD-56619, ZD-58844, ZD-59381)
+Fixed an issue where the Get Started wizard failed to generate some pipeline YAML. (CI-11323)
 
 ### Version 1.17.5
 
