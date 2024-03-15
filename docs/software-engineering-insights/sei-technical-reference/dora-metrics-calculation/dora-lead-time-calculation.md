@@ -12,7 +12,7 @@ The Lead Time calculation measures the total time taken from the moment a ticket
 ### Calculation Example 1: One Pull Request associated with a Single Jira Ticket
 
 <img
-  src={require('./static/lead-time-example1.png').default}
+  src={require('./static/lead-time-ex1.png').default}
   alt="Example banner" height="100%" width="100%" border="0"
 />
 
