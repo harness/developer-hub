@@ -89,7 +89,9 @@ The following deprecated API endpoints are longer supported:
 
 - You can now add multiple emails to User Group notifications. This support allows you to include Harness Users or add emails separated by commas. (PL-46480)
 
+<!--
 - The UI has been updated to include an HTTP Event Collector (HEC) Auth Token option in the Splunk Connector, allowing users to select HEC-type authentication. (PL-46977)
+-->
 
 - Upgraded `org.eclipse.jetty.*` from v9.4.53.v20231009 to 9.4.54.v20240208. (PL-47854)
 
