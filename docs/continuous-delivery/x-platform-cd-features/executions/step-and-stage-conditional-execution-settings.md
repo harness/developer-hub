@@ -110,7 +110,7 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
-## Unresolved Expressions during Conditional Execution
+## Resolved and Unresolved Expressions during Conditional Execution
 
 This topic explains why some expressions in Conditional Execution goes unresolved during execution. Let's try to understand this scenario with an example:-
 
@@ -193,11 +193,12 @@ Let's try to understand the flow of execution of a pipeline:-
 ![](./static/unresolved_expression_execution_2.png)
 
 
-2. After when stage starts it checks ``step`` conditional execution and proceed further,
+2. After when stage starts it checks ``step`` conditional execution and proceed further with resolving the variables of the step.
 
 
-In this case, when the pipeline ran, it first checked whether the environment name is ``harnessdevenv`` and it resolved to null because at that time the stage had not proceeded with fetching environment information and got skipped as the environment name was ``null`` at that time.
+In this case, when the pipeline ran, it first checked the stage ``deploy_stage``  conditional execution i.e whether the environment name is ``harnessdevenv`` and and it resolved to null because at that time the stage had not proceeded with fetching environment information and got skipped as the environment name was ``null`` at that time.
 
+#### Resolved Variable example
 Now, let's discuss an example where above scenario will work.
 
 Consider the below pipeline yaml:
@@ -286,3 +287,4 @@ In this case, the the step conditional execution will not get skipped and the va
 
 In this case, the deploy stage first started the ``Service`` step and then fetched the ``Environment and Infrastructure`` information. Afterward, it proceeded with the execution of step ``ShellScript_1 ``. Therefore, before the execution of this step, the pipeline had information about the environment, and it checked if the environment name is ``harnessdevenv``. In this case, it was true, so the step got executed. Even if it were false, the step would have been skipped, but the variable would still have been resolved.
 
+Let's consider an another example where the variables will get resolved
