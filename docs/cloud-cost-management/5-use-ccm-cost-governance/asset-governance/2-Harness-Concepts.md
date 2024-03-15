@@ -8,24 +8,24 @@ description: This topic describes how to optimize cloud costs using asset govern
 # Harness Concepts: Rules, Rule Sets, Enforcements and Evaluations to optimise cloud costs
 
 :::note
-Currently, GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ## Rules
 
-Rules help you set up asset governance for your cloud provider. A rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate your Amazon EBS volumes from GP2 to GP3. In such a case, we will write a small file which will run this logic for us. 
+Rules help you set up asset governance for your cloud provider. A rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate your Amazon EBS volumes from GP2 to GP3. In such a case, we write and run a rule which does this for us.
 
-Ideally, rules include policy, resource filters, and actions.
+Ideally, rules include policy, resource, filters, and actions.
 
-- A **policy** is defined in YAML format and consists of filters and actions that are applied to a specific type of cloud resource set up by you.
+- A **policy** is defined in YAML format and consists of filters and actions that are applied to a specific type of cloud resource.
 
-- A **resource** is the type of cloud resource or service on which the rule will be run or to which the actions and filters will be applied, such as AWS EC2, AWS S3, GCP SQL, or Azure VMs.
+- A **resource** is the type of cloud resource or service on which the rule will be run with the actions and filters, such as AWS EC2, AWS S3, GCP SQL, or Azure VMs.
 
 - A **filter**, as the name suggests, is a criteria used to narrow down the results based on the attributes. These attributes can include anything such as tags, metadata, or any other resource property provided by you. When the filter is applied, only those resources that match the criteria specified in the filter are given as a result.
 
-- **Actions** are operations that have to be performed on the resource and are applied to the output of the filters specified in the policy when the rule is run. Actions can include things like terminating an EC2 instance, deleting an S3 bucket, or sending an email notification.
+- **Actions** are operations performed on the filtered resources. Actions include things like terminating an EC2 instance, deleting an S3 bucket, or sending an email notification.
 
-So essentially, a rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user. Rules can include multiple policies, and policies include resource filters and actions.
+So essentially, a rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user. Rules can include multiple policies, and policies include resource, filters and actions.
 
 <DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
@@ -55,12 +55,12 @@ So essentially, a rule is a file that includes logic defined by a policy that pe
   <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
 
 :::important note
-Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 that can be enforced. These policies cannot be edited but can be cloned.
+Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB,azure.vm, gcp.instance and S3 that can be enforced. These policies cannot be edited but can be cloned.
 :::
 
 ## Rule Sets
 
-As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** come into the picture. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
+As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
   <DocImage path={require('./static/rule_set.png')} width="90%" height="90%" title="Click to view full size image" />
 
@@ -72,12 +72,12 @@ To create a rule set, perform the following steps:
 1. In **Harness**, go to **Cloud Costs**.
 2. Select **Asset Governance**.
 3. Select **Rules**.
-4. Select the **Rule sets** tab.
+4. Select the **Rule Sets** tab.
 5. Select **+ New Rule Set**.
 6. Enter a name for the rule set.
 7. Optionally, enter a description of the rule set.
 8. Select the cloud provider.
-9. Select the rules that you want to enforce. 
+9. Select the rules that you want to add to the rule set. 
 
   <DocImage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -93,7 +93,7 @@ The rule set is created successfully. You can view the rule set on the **Asset G
 You can view the Rule Set on the Asset Governance Rules page. Expand the rule set to view the individual rules in the rule set. You can click on individual rules to update them and/or use the “Edit” option to update the entire rule set.
 
 ### Delete a Rule Set
-To delete a Rule Set, simply click on the “Delete” option.
+To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
 ## Enforcements
 
@@ -153,7 +153,7 @@ To delete an enforcement, simply click on “Delete”
 
 ## Evaluations
 
-Evaluations include all the data about enforcements run (both, directly and from the test terminal). The Evaluations window also shows you the total cost impact with each enforcement i.e. the costs or spendings associated with each evaluation along with the last time that rule/rule set was enforced. With evaluations, you can view and audit all the enforcements and have access to all the historical data on your account. 
+Evaluations include all the data about enforcements run (both, directly and from the test terminal). The Evaluations window also shows you the total cost impact with each enforcement i.e. the costs or spendings associated with each evaluation along with the last time that rule/rule set was enforced. With evaluations, you can view and audit all the enforcements that ran in the past.
 
 <DocImage path={require('./static/evaluations.png')} width="90%" height="90%" title="Click to view full size image" />
 
