@@ -104,7 +104,7 @@ export default function CloudCostManagement() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button

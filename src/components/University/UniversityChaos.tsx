@@ -102,7 +102,7 @@ export default function CertificationsChaos() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button

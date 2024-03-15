@@ -106,7 +106,7 @@ export default function CertificationsSTO() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button

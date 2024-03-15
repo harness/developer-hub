@@ -103,7 +103,7 @@ export default function FeatureFlags() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button

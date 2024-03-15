@@ -115,7 +115,7 @@ export default function University() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button

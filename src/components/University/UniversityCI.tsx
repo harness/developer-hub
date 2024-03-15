@@ -107,7 +107,7 @@ export default function CertificationsCI() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button

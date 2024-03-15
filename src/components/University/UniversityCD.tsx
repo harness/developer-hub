@@ -109,7 +109,7 @@ export default function CertificationsCD() {
           ) : (
             <img src="/img/certification_icon.svg" />
           )}
-          Certification
+          Certifications
         </button>
 
         <button
