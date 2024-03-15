@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/chaos-engineering/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/chaos-engineering/rss.xml" />
 
 The release notes describe recent changes to Harness Chaos Engineering.
 
@@ -21,6 +21,27 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 2024
+
+### Version 1.32.1
+
+#### New features and enhancements
+
+* Adds `listInfrasWithExperimentStats` API to fetch the experiment statistics for the requested chaos infrastructure. The API takes a list of infrastructure IDs (infraIDs) and returns the associated experiment and experiment run count. The `listInfras` API is deprecated. (CHAOS-4417)
+
+* Updates the `getHelmInfra` API to `getHelmInfraCommand`, and the updated API gives the command necessary to install and upgrade the chaos infrastructure using Helm. (CHAOS-4296)
+
+* Adds conditions to the experiment name, i.e.,
+    * Number of characters is not more than 47;
+    * Names can contain only lowercase, numbers, and dashes;
+    * Names should not start or end with a dash. (CHAOS-3749)
+
+* Adds Helm support to install chaos infrastructure. (CHAOS-3327)
+
+#### Fixed issues
+
+* When a chaos experiment was cloned and the probe configuration of the cloned experiment was modified, the changes to the probe configuration were not reflected in the experiment. This issue is resolved. (CHAOS-4249)
 
 ## February 2024
 
@@ -42,13 +63,13 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
 
-* The [SSH chaos experiment](/docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
+* The [SSH chaos experiment](/docs/chaos-engineering/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
 
-* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts#1-condition). (CHAOS-3254)
 
 #### Fixed issues
 
-* Chaos hub icons were not visible when the hub name consisted of the '/' character. This has been fixed so that a user can't create a hub with the '/' character. (CHAOS-3753)
+* Chaos hub icons were not visible when the hub name consisted of the '/' character. This is fixed so that a user can't create a hub with the '/' character. (CHAOS-3753)
 
 ### Version 1.29.0
 
@@ -84,11 +105,11 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
-* After selecting an experiment, when a user tried to select an active infrastructure for the experiment, the page would throw an error. This has been fixed. (CHAOS-3585)
+* After selecting an experiment, when a user tried to select an active infrastructure for the experiment, the page would throw an error. This is fixed. (CHAOS-3585)
 
-* Editing a Linux experiment to change the infrastructure would not update the infrastructure. This has been fixed. (CHAOS-3536)
+* Editing a Linux experiment to change the infrastructure would not update the infrastructure. This is fixed. (CHAOS-3536)
 
-* When multiple faults are executed in parallel, faults that transitioned into an "errored" state would not reflect in the logs, whereas faults in **success** state reflected in the logs with an "errored" status. This has been fixed. (CHAOS-3363)
+* When multiple faults are executed in parallel, faults that transitioned into an "errored" state would not reflect in the logs, whereas faults in **success** state reflected in the logs with an "errored" status. This is fixed. (CHAOS-3363)
 
 
 ## December 2023
@@ -107,19 +128,19 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](../docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
 
-* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](../docs/chaos-engineering/technical-reference/chaos-faults/vmware). (CHAOS-2750)
+* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/chaos-faults/vmware). (CHAOS-2750)
 
 * Adds support for encoding metrics queries in Dynatrace probes. These metrics are constructed and executed using the metrics (or data) explorer before the API call [POST]. (CHAOS-2852)
 
 #### Fixed issues
 
-* After an experiment timed out, the execution nodes would remain in the **running** state. This has been fixed. (CHAOS-3094)
+* After an experiment timed out, the execution nodes would remain in the **running** state. This is fixed. (CHAOS-3094)
 
 * Adding a probe without the `description` key broke the `addProbe` API. The API is now fixed to accept a blank string if no value is provided in the `description` or the key is missing in the API request. (CHAOS-3224)
 
-* For probe failures, the probe success iteration ratio would show up twice in the experiment logs. This has been fixed. (CHAOS-3421)
+* For probe failures, the probe success iteration ratio would show up twice in the experiment logs. This is fixed. (CHAOS-3421)
 
 ## November 2023
 
@@ -140,27 +161,27 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
-* While editing probes, the name validation check resulted in the error "probe name not available". This has been fixed. (CHAOS-3216)
+* While editing probes, the name validation check resulted in the error "probe name not available". This is fixed. (CHAOS-3216)
 
-* When a user creates an experiment by selecting the predefined experiments, the dropdown menu shows experiment type instead of Chaoshubs. This has been fixed. (CHAOS-3193)
+* When a user creates an experiment by selecting the predefined experiments, the dropdown menu shows experiment type instead of Chaoshubs. This is fixed. (CHAOS-3193)
 
-* HTTP Linux OnChaos probe usage halted the fault execution because the probe finished executing before the fault thread could begin the evaluation of probes, which resulted in a deadlock. This issue has been fixed. (CHAOS-3180)
+* HTTP Linux OnChaos probe usage halted the fault execution because the probe finished executing before the fault thread could begin the evaluation of probes, which resulted in a deadlock. This is fixed. (CHAOS-3180)
 
-* Erroneous timestamps were displayed in the UI, which led to wrong values and headings being shown in the UI. This has been fixed. (CHAOS-3178)
+* Erroneous timestamps were displayed in the UI, which led to wrong values and headings being shown in the UI. This is fixed. (CHAOS-3178)
 
-* Previously configured SLO probe property fields appeared empty when the user tried to edit them. This has been fixed. (CHAOS-3176)
+* Previously configured SLO probe property fields appeared empty when the user tried to edit them. This is fixed. (CHAOS-3176)
 
-* The node selector attribute in ChaosEngine added two fields, namely key and value, instead of **key:value**. This has been fixed. (CHAOS-3173)
+* The node selector attribute in ChaosEngine added two fields, namely key and value, instead of **key:value**. This is fixed. (CHAOS-3173)
 
-* With changes in the image registry, the LIB_IMAGE environment variable was being overwritten by chaos-go-runner. This has been fixed. (CHAOS-3172)
+* With changes in the image registry, the LIB_IMAGE environment variable was being overwritten by chaos-go-runner. This is fixed. (CHAOS-3172)
 
-* Probes whose execution time exceeded 180 seconds would error out with N/A status, regardless of probeTimeout settings. This has been fixed. (CHAOS-3169)
+* Probes whose execution time exceeded 180 seconds would error out with N/A status, regardless of probeTimeout settings. This is fixed. (CHAOS-3169)
 
 * When a gameday was deleted, the name of a deleted gameday would not show up in the audit event. It has been fixed. (CHAOS-3158)
 
-* Probe details, such as verdict, status and mode were not retrieved for the correct runID and notifyID. This has been fixed. (CHAOS-3144)
+* Probe details, such as verdict, status and mode were not retrieved for the correct runID and notifyID. This is fixed. (CHAOS-3144)
 
-* An experiment would keep running in the pipeline even if it transitioned to an error status. This has been fixed. (CHAOS-1985)
+* An experiment would keep running in the pipeline even if it transitioned to an error status. This is fixed. (CHAOS-1985)
 
 ### Version 1.25.5
 
@@ -195,23 +216,23 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
-* The sandbox API was being called when the corresponding flag was off. This has been fixed. (CHAOS-3126)
+* The sandbox API was being called when the corresponding flag was off. This is fixed. (CHAOS-3126)
 
-* SLO probe properties in the fault selection and probe details in the runs view UI were not being displayed. This has been fixed. (CHAOS-3119)
+* SLO probe properties in the fault selection and probe details in the runs view UI were not being displayed. This is fixed. (CHAOS-3119)
 
 * Added support for **SKIP_SSL_VERIFY** in readiness probes for the execution plane components. (CHAOS-3115)
 
-* Mongo queries resulted in fetching results for deleted gamedays. This has been fixed by adding a field "is_removed" to the Mongo queries. (CHAOS-3091)
+* Mongo queries resulted in fetching results for deleted gamedays. This is fixed by adding a field "is_removed" to the Mongo queries. (CHAOS-3091)
 
-* Linux chaos infrastructure did not provide JSON log output. This issue has been fixed. (CHAOS-2989)
+* Linux chaos infrastructure did not provide JSON log output. This is fixed. (CHAOS-2989)
 
 * The probe mode would be pre-selected as SOT by default. Now, it will be empty, and no value will be present by default. (CHAOS-2455)
 
-* CRIO runtime would give an unknown service runtime.v1alpha2.RuntimeService error. This issue has been fixed. (CHAOS-3019)
+* CRIO runtime would give an unknown service runtime.v1alpha2.RuntimeService error. This is fixed. (CHAOS-3019)
 
-* When a user who does not have view access in one of the scopes (Project/Organization/Account) tried to run an experiment, they encountered a permission error. This issue has been fixed. (CHAOS-2810)
+* When a user who does not have view access in one of the scopes (Project/Organization/Account) tried to run an experiment, they encountered a permission error. This is fixed. (CHAOS-2810)
 
-* When no tunables were selected for a fault, the **Learn more** link did not redirect to a destination. This issue has been fixed. (CHAOS-2973)
+* When no tunables were selected for a fault, the **Learn more** link did not redirect to a destination. This is fixed. (CHAOS-2973)
 
 ### Version 1.24.5
 
@@ -267,25 +288,25 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * The tag filter in the query that fetches Linux experiments was removed so that Linux experiments can be edited. Previously, the Linux experiments could not be edited. (CHAOS-2827)
 
-* Once an experiment was pushed to the chaos hub, every fault was displayed twice in the CSV file. This has been fixed. (CHAOS-2971)
+* Once an experiment was pushed to the chaos hub, every fault was displayed twice in the CSV file. This is fixed. (CHAOS-2971)
 
 #### Fixed issues
 
-* Attempting to delete a GameDay resulted in an internal server error. This has been fixed. (CHAOS-2975)
+* Attempting to delete a GameDay resulted in an internal server error. This is fixed. (CHAOS-2975)
 
 * The cron button on the right sidebar could not be updated in real time. It has been fixed so that the button can be toggled while updating the cron schedule. (CHAOS-2904)
 
-* Memory consumption fluctuated when the Linux memory stress fault was in action. This has been fixed. (CHAOS-2806)
+* Memory consumption fluctuated when the Linux memory stress fault was in action. This is fixed. (CHAOS-2806)
 
 * If an experiment was stuck in the queued state for more than 2 hours, it would remain so indefinitely. It was fixed so that the experiment run times out if it is in the queued state for more than 2 hours. (CHAOS-2843)
 
-* Executing parallel faults resulted in write conflicts. This has been fixed by adding helper pod names as annotations and patching these names to the chaos result, thereby preventing the write conflict. (CHAOS-2834)
+* Executing parallel faults resulted in write conflicts. This is fixed by adding helper pod names as annotations and patching these names to the chaos result, thereby preventing the write conflict. (CHAOS-2834)
 
 * The reports of chaos experiment runs were missing details such as experiment run ID, experiment end time, and chaos injection duration. The issue was fixed to reflect these details. (CHAOS-2830)
 
-* Clicking the copy button on the infrastructure page led to rendering the details of the infrastructure. This has been fixed. (CHAOS-2791)
+* Clicking the copy button on the infrastructure page led to rendering the details of the infrastructure. This is fixed. (CHAOS-2791)
 
-* The probe name in the URL field broke the probe configuration tab. This has been fixed by adding the URL search parameters to the URL. (CHAOS-2821)
+* The probe name in the URL field broke the probe configuration tab. This is fixed by adding the URL search parameters to the URL. (CHAOS-2821)
 
 * Clicking the Chaos Studio tab navigation would reset the states of the header and sidebar and hide some buttons. It was fixed so that the states are not reset and all buttons are visible. (CHAOS-2837)
 
@@ -330,7 +351,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Added a fix to display the appropriate user information upon performing chaos experiment operations when the user has been accorded permissions at the account level instead of at the project level. (CHAOS-1585)
 
-* Fixed an issue in VMware experiments where aborting an experiment was not updating the chaos result properly. This has been fixed by adding a wait for the result update before terminating the experiment for the abort. (CHAOS-2655)
+* Fixed an issue in VMware experiments where aborting an experiment was not updating the chaos result properly. This is fixed by adding a wait for the result update before terminating the experiment for the abort. (CHAOS-2655)
 
 * Fixed an issue where ImagePullSecrets were not getting propagated to helper pods. (CHAOS-2608)
 
@@ -368,9 +389,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
-* Refreshing the chaos studio after saving was leading to unsaved changes earlier. This issue has now been resolved. (CHAOS-2654)
+* Refreshing the chaos studio after saving was leading to unsaved changes earlier. This issue is resolved. (CHAOS-2654)
 
-* Previously when the cron schedule was edited in YAML, there was no validation for the same in UI, which would sometimes lead to UI crash when shifting to the Schedule Tab in Visual Builder. This issue has now been fixed and validation has been added for both Visual and YAML editor modes. (CHAOS-2631)
+* Previously when the cron schedule was edited in YAML, there was no validation for the same in UI, which would sometimes lead to UI crash when shifting to the Schedule Tab in Visual Builder. This issue is fixed and validation has been added for both Visual and YAML editor modes. (CHAOS-2631)
 
 
 ### Version 1.21.2
@@ -410,14 +431,14 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - Added support for evaluation of mulitple app labels when running experiments with multiple target app labels. (CHAOS-2315)
 
 * Linux Chaos Faults: This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`.
-    - In Linux experiments, the Resilience Score was sometimes showing as 0, although only one probe amongst multiple had failed. This was happening because of incorrect propagation of the probe error, which led to its misinterpretation as an experiment error rather than a probe failure. This issue has been fixed now. (CHAOS-2472)
+    - In Linux experiments, the Resilience Score was sometimes showing as 0, although only one probe amongst multiple had failed. This was happening because of incorrect propagation of the probe error, which led to its misinterpretation as an experiment error rather than a probe failure. This issue is fixed now. (CHAOS-2472)
 
 * Resilience Probes: This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`.
     - Enhanced mode selection drawer to show the UI according to selected mode by the users. Previously it was showing the image indicating SOT for all modes irrespective of the selected mode. (CHAOS-1997)
 
 #### Fixed issues
 
-* There was an issue where users were getting an error when an  experiment triggered via a pipeline failed to start and there is no notifyID created. This has been fixed now. (CHAOS-2490)
+* There was an issue where users were getting an error when an  experiment triggered via a pipeline failed to start and there is no notifyID created. This is fixed now. (CHAOS-2490)
 
 * Fixed an issue where the topology settings (taint-tolerations, nodeselectors) made in the advanced configuration section during experiment construction were getting applied only to the Argo workflow pods. Now, the topology settings are propagated to Chaos Fault Pods as well. (CHAOS-2186)
 
@@ -453,7 +474,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * The logs for the **install chaos experiment** step were getting lost immediately post execution. This issue was occurring in the subscriber component, after the custom pods cleanup, the component was still trying to stream Kubernetes pod logs. As a fix, we have added a check to fetch the pod details and gracefully return the error if pods are not found with a proper error message. (CHAOS-2321)
 
-* As Account Viewer, users were not able to view Chaos Dashboards. This was happening because the `getDashboards` API was missing routingID, which was failing the API calls. This has been fixed now. (CHAOS-1797)
+* As Account Viewer, users were not able to view Chaos Dashboards. This was happening because the `getDashboards` API was missing routingID, which was failing the API calls. This is fixed now. (CHAOS-1797)
 
 * The frontend was making unnecessary queries to the backend for listWorkflow API whenever changing experiment details via the UI. Now ChaosStep has been optimized to only query when changing selected experiment using memoization. (CHAOS-883)
 
@@ -517,7 +538,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues 
 
-* There was an issue where users were not getting audit events for the rules created under the Security Governance tab. This issue has been fixed. (CHAOS-2259)
+* There was an issue where users were not getting audit events for the rules created under the Security Governance tab. This issue is fixed. (CHAOS-2259)
 
 ### Version 1.16.5
 
@@ -535,7 +556,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues 
 
-* Previously, the pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
+* Previously, the pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue is fixed. (CHAOS-2148)
 
 * In advanced configuration for experiments and chaos infrastructures, if you add a toleration, tolerationSeconds is now optional if the toleration effect is NoSchedule. (CHAOS-1955)
 
@@ -545,7 +566,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues 
 
-* Audit events for pipeline-triggered experiments were not available due to a missing parameter. This issue has been resolved. (CHAOS-2168)
+* Audit events for pipeline-triggered experiments were not available due to a missing parameter. This issue is resolved. (CHAOS-2168)
 
 ## July 2023
 
@@ -561,13 +582,13 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Fixed an issue in the Gameday details screen where the fault count for selected experiments was incorrect. (CHAOS-2052)
 
-* Previously, user details were not appearing in audit events when using a service account for authentication. This issue has been fixed by adding support for account-level service account authentication for the Chaos Module. (CHAOS-1959)
+* Previously, user details were not appearing in audit events when using a service account for authentication. This issue is fixed by adding support for account-level service account authentication for the Chaos Module. (CHAOS-1959)
 
 * Fixed an issue where the audit event for the summary of a GameDay run was not showing the name or ID of the associated GameDay. (CHAOS-1958)
 
 * Fixed an issue where editing an existing experiment would directly open in the YAML builder view instead of the visual builder view. (CHAOS-1954)
 
-* The **Create GameDay** and **Edit GameDay** buttons were displayed as active for users who did not have those permissions. This issue has been fixed. (CHAOS-1795)
+* The **Create GameDay** and **Edit GameDay** buttons were displayed as active for users who did not have those permissions. This issue is fixed. (CHAOS-1795)
 
 ### Version 0.14.5
 
@@ -583,7 +604,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/features/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
@@ -593,7 +614,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
     Previously when users triggered chaos experiments, the execution graph generated step nodes progressively as the experiments executed. Now, the execution graph shows all step nodes after experiments start execution. The nodes yet to start remain in a pending state. 
 
-* Previously, when users connected a ChaosHub, CE cloned the whole Github repository. This caused storage issues if the repository was very large, or users were using the same repository for multiple purposes. This has been enhanced so that CE clones only a single branch provided by users. (CHAOS-1722)
+* Previously, when users connected a ChaosHub, CE cloned the whole Github repository. This caused storage issues if the repository was very large, or users were using the same repository for multiple purposes. This is enhanced so that CE clones only a single branch provided by users. (CHAOS-1722)
 
 * When a user deletes a project, organization, or account, CE now deletes all chaos entities associated with that project, organization, or account. (CHAOS-1143)
     * When a project is deleted, all chaos entities in that project are deleted.
@@ -608,17 +629,17 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
-* When generating a chaos infrastructure manifest that included `NodeSelectors` or `Tolerations`, there was an issue causing the first letter of key/value pairs to be capitalized. This issue has been fixed. (CHAOS-1917)
+* When generating a chaos infrastructure manifest that included `NodeSelectors` or `Tolerations`, there was an issue causing the first letter of key/value pairs to be capitalized. This issue is fixed. (CHAOS-1917)
 
 * When adding or updating a step in a chaos experiment, in the Probes tab, the **Probe mode** field is now required. (CHAOS-1882)
     
 * The **Discard** button in Chaos Studio is now disabled if there are no changes in an experiment. (CHAOS-1878)
 
-* The stop workflow feature wasn't able to stop experiments in the case of namespace-scoped chaos infrastructures. This issue has been resolved and the stop workflow now works as expected. (CHAOS-1778)
+* The stop workflow feature wasn't able to stop experiments in the case of namespace-scoped chaos infrastructures. This issue is resolved and the stop workflow now works as expected. (CHAOS-1778)
 
-* There was an issue where if the user aborted an experiment running as part of a pipeline, the pipeline step displayed `All your faults executed without an issue`. This has been fixed, and the correct details are now displayed based on the experiment execution. (CHAOS-733)
+* There was an issue where if the user aborted an experiment running as part of a pipeline, the pipeline step displayed `All your faults executed without an issue`. This is fixed, and the correct details are now displayed based on the experiment execution. (CHAOS-733)
 
-* There was an issue where a CD step was not showing parallel faults even though the selected experiment had multiple parallel experiments. This issue has been fixed. (CHAOS-1208)
+* There was an issue where a CD step was not showing parallel faults even though the selected experiment had multiple parallel experiments. This issue is fixed. (CHAOS-1208)
 
 ### Version 0.13.5
 
@@ -632,7 +653,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
-* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in the faults metadata file. This issue has been fixed. (CHAOS-1841)
+* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in the faults metadata file. This issue is fixed. (CHAOS-1841)
 
 ### Version 0.13.4
 
@@ -655,9 +676,8 @@ To upgrade chaos infrastructures and experiments:
 
     ![](./static/chaos-infra-upgrade-needed.png)
 
-1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project. (Not required for new expriments.)
+1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project (not required for new expriments).
 
-For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engineering/chaos-infrastructure/upgrade-infra).
 :::
 
 * Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)
@@ -692,7 +712,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 #### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/features/chaos-dashboard/overview). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
@@ -704,7 +724,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 * Corrected the UI text for Linux infrastructure screens. (CHAOS-1619) 
 
-* There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
+* There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This is fixed. (CHAOS-1618)
 
 * Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
 
@@ -713,7 +733,7 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 #### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/features/gameday/run-gameday).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
@@ -756,10 +776,10 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 #### Fixed issues
 
-* When connecting to an existing chaos hub, selecting a connector from the **Organization** failed to load the page. This has been fixed. (CHAOS-1456)
+* When connecting to an existing chaos hub, selecting a connector from the **Organization** failed to load the page. This is fixed. (CHAOS-1456)
 
 
-* When an experiment terminated with an error but the probes passed, the user interface showed the experiment as **Completed**. This has been fixed. (CHAOS-1410)
+* When an experiment terminated with an error but the probes passed, the user interface showed the experiment as **Completed**. This is fixed. (CHAOS-1410)
 
 
 ### Version 0.9.6
@@ -859,17 +879,17 @@ From this release onward, chaos infrastructures will communicate with the contro
 
 #### Fixed issues
 
-* When two faults were being executed in parallel, the timestamp in the **View detailed execution** showed only for the first fault. The second fault showed an empty timestamp field. This issue has been fixed. (CHAOS-1064)
+* When two faults were being executed in parallel, the timestamp in the **View detailed execution** showed only for the first fault. The second fault showed an empty timestamp field. This issue is fixed. (CHAOS-1064)
  
 * When the latest run of a chaos experiment was stopped or had not started yet, the latest run showed the message "This experiment has not been run yet". Now, it has been fixed so that the summary of a chaos experiment shows the latest runs that were successful. (CHAOS-1076)
  
-* When the details of a chaos experiment were being filled, clicking **Cancel** would show a message "Are you sure you want to proceed?" irrespective of whether or not the fields were populated. This issue has been fixed. (CHAOS-1072)
+* When the details of a chaos experiment were being filled, clicking **Cancel** would show a message "Are you sure you want to proceed?" irrespective of whether or not the fields were populated. This issue is fixed. (CHAOS-1072)
  
-* When you tried to enable chaos on an infrastructure, clicking anywhere outside the prompt would close the chaos infrastructure selection prompt. This issue has been fixed. Only by clicking the **X** button at the top does the chaos infrastructure prompt close. (CHAOS-1070)
+* When you tried to enable chaos on an infrastructure, clicking anywhere outside the prompt would close the chaos infrastructure selection prompt. This issue is fixed. Only by clicking the **X** button at the top does the chaos infrastructure prompt close. (CHAOS-1070)
  
-* In **Pipeline**, in the **Resilience** tab, the text in the ‘View in chaos module’ button overflowed when the name of the probe was too long. This issue has been fixed so that the probe name is displayed when you hover on it. (CHAOS-1044)
+* In **Pipeline**, in the **Resilience** tab, the text in the ‘View in chaos module’ button overflowed when the name of the probe was too long. This issue is fixed so that the probe name is displayed when you hover on it. (CHAOS-1044)
  
-* In **Pipeline**, when you tried to select an experiment in the chaos experiments page, the pagination section overflowed. This issue has been fixed so that the chaos experiments plage shows two buttons: **Prev** and **Next** to navigate through the pages. (CHAOS-1045)  
+* In **Pipeline**, when you tried to select an experiment in the chaos experiments page, the pagination section overflowed. This issue is fixed so that the chaos experiments plage shows two buttons: **Prev** and **Next** to navigate through the pages. (CHAOS-1045)  
  
 * In chaos hubs, the number of experiments in the category tab for the chaos experiments overflowed. This issue is fixed. (CHAOS-1053)
 
@@ -928,7 +948,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 #### Fixed issues
 
 * Searching for chaos experiments by using the search bar showed only those experiments that had been run at least once. Now, when you search for an experiment, the search results include those experiments that were aborted and experiments that were saved but not run. (CHAOS-916)
-* When specifying the target application parameters through a YAML manifest, if you left some parameters empty, the user interface of the target application page would stop responding. This has been fixed so that, irrespective of the values that you enter in the YAML manifest, you can change the values of the target application on the user interface. (CHAOS-970)
+* When specifying the target application parameters through a YAML manifest, if you left some parameters empty, the user interface of the target application page would stop responding. This is fixed so that, irrespective of the values that you enter in the YAML manifest, you can change the values of the target application on the user interface. (CHAOS-970)
 * In a chaos experiment, the fault library incorrectly showed fault categories and fault labels even when the hub was disconnected. The fault library persisted data from the previously selected chaos hub. This is now fixed. A disconnected chaos hub now displays the message “No faults found in the selected hub.” (CHAOS-971)
 * On the chaos hub screen, you could not scroll through the list of hubs from any location on the screen. This issue is now fixed by moving the scroll bar to the extreme right of the screen. (CHAOS-964)
 * If you hovered over a probe, its details would overflow if they were too long. Now, it has been fixed. (CHAOS-990)

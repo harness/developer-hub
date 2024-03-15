@@ -9,6 +9,7 @@ export const university: CardItem[] = [
       "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
     link: "/university/continuous-delivery",
     numberOfCerts: 3,
+    ILT_available: true,
   },
   {
     title: "Continuous Integrations",

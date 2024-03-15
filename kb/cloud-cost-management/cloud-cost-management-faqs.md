@@ -202,7 +202,8 @@ You can set up perspectives/folders for each of those and then limit access to t
 
 #### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
 
-We display recommendations that are up to ~4 days old. Even if an instance is stopped within 4 days after generating the recommendation, we still show that recommendation.
+We display recommendations that are up to approximately four days old. Even if an instance is stopped within four days after generating the recommendation, we still show that recommendation.
+
 Once a recommendation is generated, it is not updated at a later time. So regardless of the instance’s current state it will be visible for ~4
 
 #### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
@@ -215,7 +216,7 @@ No. Currently, CCM supports only moving the recommendations from the **Open** to
 
 #### Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?
 
-Currently, CCM does not offer any GCP-specific recommendations. Support is limited to the recommendations specified in the [documentation](https://developer.harness.io/docs/category/recommendations).
+Currently, CCM does not offer any GCP-specific recommendations. For supported recommendations, go to the [CMM recommendations documentation](https://developer.harness.io/docs/category/recommendations).
 
 #### Does CCM offer support for on-premises/Self Managed Platform (SMP) installations?
 
@@ -229,18 +230,13 @@ Yes. CCM supports the following features and functionalities in the SMP environm
 - Recommendations 
 For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
 
+#### Why aren't there any actions for RDS recommendations?
 
-#### Why we don't have action for RDS recommendations?
+Harness shows the RDS resize recommendations, but you can't take action from within CCM.
 
-We do not have action for RDS recommendations for the following reasons: 
+This is because the [RDS resize action](https://repost.aws/knowledge-center/rds-db-storage-size) is usually a manual operation where it is necessary to dump the database, depending on the database type (such as Mysql, MariaDB, or Postgres). You then need to spin up a new DB instance with lower storage requirements and restore the data.
 
-RDS resize action is a manual operation in most cases where one is required to take a dump of DB (depends on DB flavour like Mysql/MariaDB/Postgres etc.) Refer https://repost.aws/knowledge-center/rds-db-storage-size
-
-Then spin up a new DB instance with lower storage requirements.
- 
-Then Restore the data
-
-It is up to the user or the use case how much they want to reduce the storage too. Reducing the storage is a manual operation and is not supported via Cloud Custodian at this time.
+The degree to which you reduce the storage depends on your needs. Reducing storage requirements is a manual operation that is not supported by Cloud Custodian at this time.
 
 #### Why doesn't the Workload Recommendation API change the percentile and recommendations based on changes in the time duration?
 
@@ -254,7 +250,7 @@ The recommendations for Nodepool and Workload are influenced by both the cluster
 
 To enable CPU metrics CloudWatch has to be enabled for the AWS account.
 
-To enable Memory metrics cloud watch agent has to be installed on every EC2 instance. you can use the external metrics ingestion feature in AWS to configure the AWS Compute Optimizer to ingest EC2 memory utilization metrics from Datadog, among other observability products like Datadog, Dynatrace, Instana, and New Relic [1](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html).
+To enable Memory metrics cloud watch agent has to be installed on every EC2 instance. you can use the external metrics ingestion feature in AWS to [configure the AWS Compute Optimizer to ingest EC2 memory utilization metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html) from observability products like Datadog, Dynatrace, Instana, and New Relic.
 
 #### Why my service is not coming up when I tried applying Workload Recommendations? It's giving the impression that our recommendations are indicating too low and wrong resources.
 
@@ -268,7 +264,6 @@ Cost Optimized recommendations are computed using the 50th percentile of the CPU
 Performance Optimized recommendations are calculated based on the 90th percentiles of CPU samples and memory peaks. The probability of having any effect on the performance is minimum. However, the cost may go high for the resources that are optimized using this method.
 
 Also, do not update `limit` of CPU and Memory manually based on recommended `request` CPU and Memory. The recommended `request` CPU and Memory are computed using 95 percentile CPU/Memory samples.
-
 
 #### Why RDS instance resize recommendation not showing in results?
 
@@ -326,17 +321,15 @@ No, you would have to manually apply preferred instance families for each recomm
 
 No, we do not provide asset governance recommendations at the perspective level.
 
-
 ### Governance
 
 #### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
 
-You can add permissions in the same role as given in the connector. Depending on the governance usecase, you can add more permissions for different resource types.
-Then add GOVERNANCE in the features enabled in connector.
+You can add permissions in the same role as given in the connector. Depending on the governance use case, you can add more permissions for different resource types. Then add GOVERNANCE in the features enabled in connector.
 
-#### Do we have an API to validate asset governance rule?
+#### Does Harness have an API to validate asset governance rule?
 
-Yes, [here](https://apidocs.harness.io/tag/Rule#operation/ValidateRule)
+Yes. You can use the [Validate rule endpoint](https://apidocs.harness.io/tag/Rule/#operation/ValidateRule).
 
 #### What is RDS resize down policy in asset governance?
 
@@ -348,7 +341,9 @@ While Amazon RDS offers some automation capabilities, the resizing process, part
 
 #### Does CCM show RDS resize recommendations?
 
-Yes, we do show the recommendations but action cant be taken from CCM, RDS resize action is a manual operation in most cases where one is required to take a dump of DB (depends on DB flavour like Mysql/MariaDB/Postgres etc.), please refer [here](https://repost.aws/knowledge-center/rds-db-storage-size)
+Yes, Harness shows the RDS resize recommendations, but you can't take action from within CCM.
+
+Usually, the [RDS resize action](https://repost.aws/knowledge-center/rds-db-storage-size) is a manual operation where it is necessary to dump the database, depending on the database type (such as Mysql, MariaDB, or Postgres).
 
 #### Can the reader role alone be employed in Cloud Asset Governance for production purposes if no actions are intended, and the focus is solely on achieving potential cost savings and resource governance?
 
@@ -383,23 +378,26 @@ rds-delete-unused
 rds-resize-down
 elb-delete-unused
 
-#### For Asset Governances, What are the minimum permissions required for Azure connectors?
+#### For Asset Governance, what are the minimum permissions required for Azure connectors?
 
 Reader role on the subscription is minimum to be able to list resources, For actions, corresponding permissions needs to be added.
 
-#### Is it possible to get Assets Governance evaluation URL having execution_id?
+#### Is it possible to get Asset Governance evaluation URL with the execution_id?
 
-We can use this API: 
+You can use the `governance` endpoint. In this example, the evaluation ID is `noIGUi15TS-_XrJIPwYczQ`
 
+```
 curl 'https://app.harness.io/gateway/ccm/api/governance/status/noIGUi15TS-_XrJIPwYczQ?routingId=&accountIdentifier=' \
   -H 'x-api-key: pat.token' \
+```
 
-noIGUi15TS-_XrJIPwYczQ here is the evaluation ID
-
-#### Why are my evaluations taking longer than 3 minutes to execute? 
+#### Why are my evaluations taking longer than 3 minutes to execute?
 
 Cloud Asset Governance evaluations taking longer than three minutes can be due to complex policies with multiple resource checks or due to high volume of resources being evaluated. Additionally, limitations in the cloud provider's API response times and network latency can also contribute to longer execution times.
 
+#### Can I create an Asset Governance rule to merge different labels into one AppID label for Azure?
+
+To achieve this use case, you can first remove the tags and than add the req tag. For more information, go to the Cloud Custodian documentation on the [Azure tag command](https://cloudcustodian.io/docs/azure/resources/azure-common-actions.html#tag).
 
 ### Autostopping
 
@@ -450,43 +448,41 @@ If your fixed schedule is not operating within the expected time windows or freq
 * Ensure the correct timezone for the schedule.
 * Check the specified start and end times of the schedule. This configuration is optional and restricts the schedule to run only within this specified window.
 
-#### when we create an Autostopping rule, does it create target group in AWS account?
+#### When I create an Autostopping rule, does Harness create a target group in the AWS account?
 
-No while creating the rule we do not automatically create a target group, here is how you can create [Doc](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-proxy-as-downstream-alb/#create-a-target-group-for-the-autostopping-proxy-vm-with-a-health-check-configuration)
+No. While creating the rule Harness doesn't automatically create a target group. To configure this, go to [Create a target group for the AutoStopping Proxy VM with a health check configuration](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-proxy-as-downstream-alb/#create-a-target-group-for-the-autostopping-proxy-vm-with-a-health-check-configuration).
 
-#### Can we do a k8s autostopping (CP AWS) using the Free Plan?
+#### Does the Free plan allow Kubernetes autostopping (CP AWS)?
 
-Yes we can do.
+Yes. You can perform Kubernetes autostopping on the Free tier of CCM.
 
-####  Is there any way to work with K8s Autostopping and bypass the need to use a Cloud Provider Connector?
+#### Is there any way to work with K8s Autostopping and bypass the need to use a Cloud Provider Connector?
 
 You can provide a dummy connector. It need not have permissions at the provider. However, only the AutoStopping functionality will work, and CCM won't be able to show the cost savings.
 
-
-
 ### Dashboards
 
-#### In dashboards, when creating a custom field can I filter the entire dashboard on it? 
+#### When creating a custom field, can I filter the entire dashboard on the custom field?
 
-Looker doesn’t support filtering on custom fields at a global level at this point, we would need to filter it per tile.
+Currently, Looker doesn't support filtering on custom fields at a global level. Instead, you can filter on each tile.
 
 #### Can CCM operate independently from the Harness Platform? Or do we need to install CCM as a module on the harness platform and run it?
- 
+
 CCM (Cloud Cost Management) is a standalone product offered by Harness that can operate independently in the Harness Platform. It does not require installation as a module on the Harness Platform or any specific dependencies on the platform itself.
- 
+
 CCM provides organizations with the ability to monitor, optimize, and manage cloud costs across different cloud providers (such as AWS, Azure, GCP) in a centralized manner. It offers several advantages compared to other competing products.
 
 #### Do we have support for hourly granularity in the Unified Table?
 
 No, hourly granularity is not maintained in the Unified Table. It supported at a daily granularity.
 
-#### How long does it take for cluster utilisation data to appear on the dashboards?
+#### How long does it take for cluster utilization data to appear on the dashboards?
 
-The data on cluster utilisation is collected every 20 minutes and processed hourly on the CCM side. We compute billing charges with hourly and daily granularity based on utilisation data. If you choose the perspective, billing data based on hourly granularity is displayed for the previous seven days' filter. However, if you choose a different period, a daily calculation is used to display the billing data.
+The data on cluster utilization is collected every 20 minutes and processed hourly on the CCM side. We compute billing charges with hourly and daily granularity based on utilization data. If you choose the perspective, billing data based on hourly granularity is displayed for the previous seven days' filter. However, if you choose a different period, a daily calculation is used to display the billing data.
 
 #### How long does it take for Recommendations data to appear on the dashboards?
 
-We require a few days of data to provide suggestions during the initial setup because NodePool and Workload recommendations are based on the utilisation statistics from the previous seven days. As soon as data is available, recommendations are created and updated every day using the data from the previous seven days.
+We require a few days of data to provide suggestions during the initial setup because NodePool and Workload recommendations are based on the utilization statistics from the previous seven days. As soon as data is available, recommendations are created and updated every day using the data from the previous seven days.
 We ingest CUR data from cloud provider once a day. This is employed to accurately estimate the cost of the cluster and the cloud.
 
 #### How long does it take for anomaly data to appear on the dashboards?
@@ -499,9 +495,9 @@ We have the support to leverage the unified view to attribute costs across cloud
 
 #### Do we support AutoStopping savings for visualizing in the dashboards?
 
-Yes. Customers should be able to create a dashboard to visualise the savings though the dashboard is not available out of the box.
+Yes. Customers should be able to create a dashboard to visualize the savings though the dashboard is not available out of the box.
 
-#### Do we have support for asset goveranance in the dashboards?
+#### Do we have support for asset governance in the dashboards?
 
 No. Asset governance data is not exposed for dashboards yet.
 
@@ -515,11 +511,11 @@ We don't have memory measurements for virtual machines on GCP.
 
 Yes.
 
-#### Can we bring in recommendations in BI or is it only at the perspective level ?
+#### Can we bring in recommendations in BI or is it only at the perspective level?
 
 We have a recommendations explore in dashboards, this is limited to savings and potential. We do not intend to extend support to granular recommendation details in dashboards
 
-####  when we are filtering on date in an AWS dashboard, is the date we are using on the line items the usage start/end date or the billing date?
+####  When we are filtering on date in an AWS dashboard, is the date we are using on the line items the usage start/end date or the billing date?
 
 It is usage start/end date and If there is both start and end, Usage dates is used.
 
@@ -532,9 +528,9 @@ We need to check on following points :
 
 ### Anomalies
 
-#### Do we have functionality to just alert on ANY anomoly found to a specific email? if so how?
+#### Can I send an alert for any anomaly found to a specific email?
 
-we can set alerts for any perspective created [here](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/#create-an-anomaly-alert-for-your-perspective), the alerts can be sent over a mail.
+Yes. You can [set alerts for any perspective](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/#create-an-anomaly-alert-for-your-perspective). Alerts can be sent by email.
 
 #### How are anomalies associated with specific perspectives and which notification channels are used for alerting?
 
@@ -631,3 +627,6 @@ Yes, users have the option to create budgets without alerts. However, it is reco
 #### Can users view the historical budget over time in Harness without the need to modify it every month?
 
 Yes, users can accomplish this by creating a Yearly budget and selecting the monthly breakdown option. This allows for a historical view without the need for monthly adjustments.
+
+#### What is FinOps in Harness?
+FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.

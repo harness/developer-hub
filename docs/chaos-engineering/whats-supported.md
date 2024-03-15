@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 This topic lists the platforms and technologies that Harness Chaos Engineering (CE) supports for deploying chaos infrastructure.
-To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/technical-reference/architecture#chaos-infrastructure).
+To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/architecture-and-security/architecture#chaos-infrastructure).
 
 Harness Chaos Engineering is supported on the following platforms: 
 - [Harness SaaS](#harness-saas)
@@ -48,7 +48,7 @@ The supported container runtimes are as follows:
 
 ### Chaos fault types
 
-The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/).
+The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/chaos-faults/).
 
 | Fault type | Linux | K8s | Windows | VMware | AWS | GCP | Azure |
 |------------|-------|-----|---------|--------|-----|-----|-------|
@@ -64,7 +64,7 @@ The following table shows available fault types and where they are supported. Fo
 
 Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness SaaS with the following limitations:
 * Harness enterprise chaos hub is not connected by default.
-  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness enterprise chaos hub. For more information on adding the chaos hub, go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
+  * Contact [Harness Support](mailto:support@harness.io) for access to the Harness enterprise chaos hub. For more information on adding the chaos hub, go to [Add a custom chaos hub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md).
 * Custom dashboards
 * Harness AI Development Assistant (AIDA™) for CE
 

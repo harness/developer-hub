@@ -121,6 +121,11 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 
 </details>
 
+:::note
+
+Currently, Harness does not support ASG deployments with a OIDC-enabled AWS connector.
+
+:::
 
 ## Harness ASG services
 
@@ -1103,7 +1108,9 @@ The Rolling Deploy step has the following options:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Minimum Healthy Percentage (optional)**
-  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, Harness sets the default value for this field as 90%.
+  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, harness sets the default value for this field as 90% during rolling deployment and 100% during rollback.
+- **Maximum Healthy Percentage (optional)**
+  - The percentage of the desired capacity of the ASG that your ASG can increase to when replacing instances. For more information, go to [Instance refresh core concepts](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html#instance-refresh-core-concepts) from AWS. If not specified, harness sets the default value for this field as 110% during rolling deployment and 200% during rollback.
 - **Instance Warmup (optional)**
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
@@ -1186,7 +1193,7 @@ Rolling Deployment Finished Successfully
   <TabItem4 value="Rolling Rollback step" label="Rolling Rollback step">
 
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
 
 During rollback of the first deployment, Harness deletes the ASG.
 
@@ -1299,7 +1306,7 @@ This is the standard Harness ASG Rolling Deploy step. For details, go to [Rollin
   <TabItem5 value="Rollback steps" label="Rollback steps">
 
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
 
 For ASG canary deployments there are two rollback steps:
 
@@ -1339,40 +1346,31 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 
 </details>
 
-
-<details>
-<summary>AWS requirements</summary>
+#### AWS Requirements
 
 In addition to the requirements of the Harness ASG service and environment, an ASG Blue Green deployment requires you to set up the following resources up within AWS:
 
 - A security group that allows inbound access to your Application Load Balancer's listener ports.
-- A pair of target groups—typically staging (Stage) and production (Prod)—both with the instance target type.
-- An Application Load Balancer (ALB), with listeners for both your target groups' ports.
-
-</details>
+  ![SG for ALB listener](./static/aws-req-for-esg-2.png)
+- A pair of target groups, typically staging (Stage) and production (Prod) both with the instance target type.
+- An Application Load Balancer (ALB) with one listener rule for both your target groups.
+  ![listener rule](./static/aws-req-for-esg-1.png)
 
 Let's take a look at the first two deployments.
 
-<details>
-<summary>First Blue Green deployment</summary>
+#### First Blue Green deployment
 
 The first Blue Green deployment follows these steps:
 
 1. ASG Blue Green Deploy step:
-   1. Checks that listener ARN and listener rule ARN for prod are valid.
-   2. Fetches target group ARNs for prod.
-   3. Checks that listener ARN and listener rule ARN for stage are valid.
-   4. Fetches target group ARNs for stage.
-   5. Creates launch template and ASG using the format `[app_name]__1`, like `asgdemo__1`.
-   6. Sets the tag `BG_VERSION=BLUE` on new ASG.
+   1. Checks that listener ARN and listener rule ARN are valid.
+   2. Fetches target groups' ARN.
+   3. Creates launch template and ASG using the format `[app_name]__1`, like `asgdemo__1`.
+   4. Sets the tag `BG_VERSION=BLUE` on new ASG.
 2. ASG Blue Green Swap step:
    1. Not used as there is only one ASG at this point.
 
-</details>
-
-
-<details>
-<summary>Second Blue Green deployment</summary>
+#### Second Blue Green deployment
 
 At the start, the second Blue Green deployment will only have one prod ASG (the one deployed in the first Blue Green deployment). 
 
@@ -1381,19 +1379,16 @@ Harness will create a new ASG with the suffix `__2` and swap prod traffic to it.
 The second Blue Green deployment follows these steps:
 
 1. ASG Blue Green Deploy step:
-   1. Checks that listener ARN and listener rule ARN for prod are valid.
-   2. Fetches target group ARNs for prod.
-   3. Checks that listener ARN and listener rule ARN for stage are valid.
-   4. Fetches target group ARNs for stage.
-   5. Creates launch template and new ASG using the format `[app_name]__2`, like `asgdemo__2`.
-   6. Sets the tag `BG_VERSION=GREEN` on new ASG, for example, `asgdemo__2`.
+   1. Checks that listener ARN and listener rule ARN are valid.
+   2. Fetches target groups' ARN.
+   3. Creates launch template and new ASG using the format `[app_name]__2`, like `asgdemo__2`.
+   4. Sets the tag `BG_VERSION=GREEN` on new ASG, for example, `asgdemo__2`.
 2. ASG Blue Green Swap step swaps target groups and updates tags:
    1. Modifies the ELB prod listener to forward requests to target groups associated with new autoscaling group.
    2. Modifies the ELB stage listener to forward requests to target groups associated with the old autoscaling group.
    3. Updates tags of the autoscaling groups.
 
 Now there are two ASGs being used: a prod and a stage ASG. Subsequent deployments will create a new *versions* of these ASGs and swap prod traffic to the new ASG version from the previous ASG.
-</details>
 
 Blue Green deployment steps:
 
@@ -1413,9 +1408,14 @@ The ASG Blue Green Deploy step has the following settings:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Load Balancer:** select the load balancer(s) to use.
 - **Prod Listener:** select the listener to use for prod traffic.
-- **Prod Listener Rule ARN:** select the ARN for the prod listener rule.
+- **Prod Listener Rule ARN:** select the ARN for the prod listener rule. 
 - **Stage Listener:** select the listener to use for stage traffic.
 - **Stage Listener Rule ARN:** select the ARN for the stage listener rule.
+  
+  :::important
+  There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.
+  :::
+  
 
 Harness fetches these AWS settings using the Harness AWS connector you have set up in the **Infrastructure Definition** in the **Environment** section of the stage.
 
@@ -1451,8 +1451,7 @@ Harness stores configurations of the ASG you are deploying twice:
 
 There are two options for traffic-shifting with blue green deployments: instant and incremental.
 
-<details>
-<summary>Blue/Green with Instant Traffic Shift Summary</summary>
+#### Blue/Green with Instant Traffic Shift Summary
 
 In this strategy, you specify production and stage listener ports and rules to use in the ASG Blue Green Deploy step. Next, the ASG Swap Services step swaps all traffic from stage to production.
 
@@ -1466,10 +1465,8 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 
 ![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)
 
-</details>
 
-<details>
-<summary>Blue/Green with Incremental Traffic Shift Summary</summary>
+#### Blue/Green with Incremental Traffic Shift Summary
 
 :::note
 
@@ -1477,13 +1474,11 @@ Currently, this feature is behind the feature flag `CDS_ASG_SHIFT_TRAFFIC_STEP_N
 
 :::
 
-#### Demo Video
+Here's a demo video of Blue Green with incremental traffic shift summary:  
 
 <!-- Video:
 https://www.loom.com/share/5193b65dafa34d63921efc6f0c7fa798?sid=0ea60fd7-376d-4c92-a2ee-dfe47af6075b-->
 <DocVideo src="https://www.loom.com/share/5193b65dafa34d63921efc6f0c7fa798?sid=0ea60fd7-376d-4c92-a2ee-dfe47af6075b" />
-
-
 
 
 This deployment method lets you add **ASG Shift Traffic** steps to incrementally shift traffic from the Target Group used by the previous ASG to the Target Group used by the new ASG you are deploying.
@@ -1505,18 +1500,14 @@ The **Downsize Old ASG at 0% weight** setting should only be selected for the AS
 
 When this setting is enabled, the old ASG is downsized.
 
-</details>
-
-
-
 
 ## Advanced settings for all steps
 
 In the **Advanced** settings of all step, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

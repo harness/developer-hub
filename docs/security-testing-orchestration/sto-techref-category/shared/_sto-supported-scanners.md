@@ -94,6 +94,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a> Extraction, Ingestion</li> 
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference">Burp Enterprise</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/hql-appscan-scanner-reference">HQL AppScan</a> Ingestion</li> 
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/metasploit-scanner-reference">Metasploit Pro</a> Orchestration, Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>
@@ -123,6 +124,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a> Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference">Sysdig</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Extraction, Ingestion  </li>
         	</ul>
      </td>

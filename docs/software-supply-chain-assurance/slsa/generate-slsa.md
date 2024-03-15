@@ -75,7 +75,7 @@ When you run a pipeline with SLSA generation enabled, Harness SSCA:
 * Generates and signs an attestation using the provided key and password.
 * Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 
-The signed attestation is stored, as an `.att` file, in the artifact repository along with the image. You can also find the SLSA Provenance on the **Artifacts** tab on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
+The signed attestation is stored, as an `.att` file, in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain Assurance** tab on the **Execution details** page in Harness. For more information, go to [view pipeline execution results](../ssca-view-results.md).
 
 ## Provenance example
 

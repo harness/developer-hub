@@ -53,6 +53,10 @@ We can't recover (undelete) deleted Feature Flags projects due to GDPR Data Rete
 
 Your bill will be generated at your next billing date. You can [check your billing date in the Harness UI](https://app.harness.io/ng/account/replaceWithYourAccountIDHere/settings/billing).
 
+### Can I associate tags with feature flags?
+
+Yes, you can attach tags to feature flags.
+
 ## FF permissions and users
 
 ### What's the difference between the Feature Flag Create/Edit and Toggle permissions?
@@ -63,9 +67,9 @@ The **Toggle** permission allows users to turn flags on and off for users.
 
 This separation of permission allows you to follow the security principle of least privilege. For example, internally you can have multiple people who create flags, several who can toggle flags in QA, and only a few who can toggle flags in production.
 
-### I want to block toggling of feature flags through the FF UI exclusively in the production environment. How can I do this with Harness OPA Policy or RBAC?
+### Can I block users from toggling feature flags in certain environments, such as QA or production environments?
 
-We suggest using [Harness RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) for this requirement.
+Harness suggests using [Harness RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) to restrict users from toggling flags in certain environments.
 
 OPA exists to assert if the current state of a flag is allowed by the policy or not, regardless of what change was just made. RBAC exists to decide if someone is allowed to perform a certain change or not, such as toggling a flag in the production environment.
 
@@ -149,6 +153,10 @@ While using the `/stream` endpoint, you can't observe data transmission. To keep
 ### Is there a maximum duration for the stream connection, and what happens if it's terminated?
 
 The `/stream` connection is automatically terminated by the load balancer every 24 hours. In such cases, the FF SDK is designed to promptly reestablish the connection to ensure continuous operation.
+
+#### Can I use an API to export all feature flag states?
+
+Yes, you can use the [Get all Feature Flags for the Project endpoint](https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures).
 
 ## FF targets
 
@@ -296,3 +304,17 @@ To check what variation a target got served in Harness UI, you can go to the Fea
 #### How to fetch stale flags in org and projects?
 
 You can use the API https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures to fetch stale FF, you need to use status=potentially-stale in the API.
+
+#### Why am I getting a target segment not found error?
+```
+target segment not found%!(EXTRA string-some-target-here)
+```
+
+This error occurs if a user is trying to add a target group that does not exist as a target to a Feature Flag.
+
+#### Why am I getting a target not created error?
+```
+target not created 'target'
+```
+
+This error occurs if a user is trying to add a target that already exists.

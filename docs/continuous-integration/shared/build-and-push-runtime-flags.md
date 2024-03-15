@@ -2,7 +2,13 @@
 
 These plugins have a number of additional runtime flags that you might need for certain use cases. For information about the flags, go to the [kaniko plugin documentation](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#additional-flags) and the [drone-docker plugin documentation](https://plugins.drone.io/plugins/docker).
 
-Use **Environment Variables** to set these flags. You must input a **Name** and **Value** for each variable. Format the name as `PLUGIN_FLAG_NAME`.
+In **Build and Push** steps, you use the **Environment Variables** setting to set these plugin runtime flags. You must input a **Name** and **Value** for each variable. Format the name as `PLUGIN_FLAG_NAME`.
+
+:::warning
+
+Unlike in other Harness CI steps, the **Environment Variables** setting in **Build and Push** steps *only* accepts the known plugin runtime flags. You must set other types of environment variables in your Dockerfile, build arguments, or as stage variables, depending on their usage and purpose in your build.
+
+:::
 
 <details>
 <summary>YAML example: Build and Push step with environment variables</summary>
@@ -66,6 +72,8 @@ Plugin runtime flags are also used to [build without pushing](/docs/continuous-i
 
 :::info Stage variables
 
-Previously, you could set some plugin runtime flags as [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables). Harness recommends changing these to environment variables; however, stage variables are still inherently available to steps as environment variables.
+Previously, you could set some plugin runtime flags as [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables). If you had done this, Harness recommends moving these stage variables to the **Environment Variables** in your **Build and Push** step.
+
+For other types of environment variables (that aren't Build and Push plugin runtime flags), stage variables are still inherently available to steps as environment variables. However, where you declare environment variables depends on their usage and purpose in your build. You might need to set them in your Dockerfile, build args, or otherwise.
 
 :::

@@ -212,6 +212,14 @@ pipeline:
                 value: <+input>.default(new york).executionInput()
 ```
 
+For any variable defined in a template, the default method can be added to either its declaration in the child entity (Template in this case), or else in the parent entity (Pipeline), but not both. Here's what the two different usages mean:
+- When the default value is specified in the child entity, all other entities that use it cannot specify a different default. They can, however, specify a different value directly, by writing a fixed value for the variable.
+
+  For example, if you have specified any input like `<+input>.default(default_val)` in the child entity, then you cannot override this default in the parent entity.
+- When there's no default value specified in the child entity, the parent entities may or may not add a default, and this default value can be different in each of these parents.
+
+  For example, if you have specified input like `<+input>` for any field, then you can provide a default in the parent entity like `<+input>.default(default_val_in_parent)`.
+
 ### Allowed values
 
 Use allowed values to provide a fixed range of acceptable values for a runtime input.
@@ -263,7 +271,7 @@ Use multiple selection if you want to choose one or more values from the list of
 
 ![](./static/runtime-inputs-11.png)
 
-## Supply runtime input during execution
+### Supply runtime input during execution
 
 Sometimes you might not know the value for a runtime input at the beginning of the pipeline run. For example:
 
@@ -275,7 +283,7 @@ In these cases, you might need to provide runtime input during pipeline executio
 
 You must have a role with **Pipeline Execute** [permission](/docs/platform/role-based-access-control/permissions-reference/) to be able to submit runtime inputs during execution.
 
-### Configure execution inputs
+#### Configure execution inputs
 
 You must configure runtime inputs to allow specification during pipeline execution.
 
@@ -323,7 +331,7 @@ There is a time limit for mid-run input. Pipelines don't wait indefinitely for m
 If you allow mid-run input *and* you specify a default values, you can configure the pipeline to use the default values instead of failing if the input time elapses. To do this:
 
 1. Go to the stage or step with the execution input.
-2. Add a [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+2. Add a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 3. For **On failure of type**, select **Execution-time Inputs Timeout Errors**.
 4. Under **Perform Action**, select **Proceed with Default Values**.
 To automatically use the default value during such timeouts: 

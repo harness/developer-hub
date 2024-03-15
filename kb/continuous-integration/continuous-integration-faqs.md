@@ -117,7 +117,19 @@ For Linux runners, you can use a tool such as `nohup` when you start the runner,
 nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
 ```
 
-## Self-managed VM build infrastructures
+### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+
+The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
+
+### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+
+```
+failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+```
+
+This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+
+## Self-managed VM build infrastructure
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -178,17 +190,22 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
    * Lite engine logs: `C:\Program Files\lite-engine\log.out`
    * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
 
-### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+### What does it mean if delegate.task throws a "ConnectException failed to connect" error?
 
-The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
-
-### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+<!-- CI-11679 -->
+Before submitting a task to a delegate, Harness runs a capability check to confirm that the delegate is connected to the runner. If the delegate can't connect, then the capability check fails and that delegate is ignored for the task. This can cause `failed to connect` errors on delegate task assignment, such as:
 
 ```
-failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+INFO  io.harness.delegate.task.citasks.vm.helper.HttpHelper - [Retrying failed to check pool owner; attempt: 18 [taskId=1234-DEL] \
+java.net.ConnectException: Failed to connect to /127.0.0.1:3000\
 ```
 
-This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+To debug this issue, investigate delegate connectivity in your VM build infrastructure configuration:
+
+* [Verify connectivity for AWS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#verify-connectivity)
+* [Verify connectivity for Microsoft Azure VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#verify-connectivity)
+* [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
+* [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
 ## Harness Cloud
 
@@ -505,6 +522,16 @@ If the volumes are not getting mounted to the build containers, or you see other
 
 2. Double-check that the base image used in the step reads certificates from the same path given in the destination path on the Delegate.
 
+### pnpm enters infinite loop without logs
+
+If your pipeline runs `pnpm` or `npm` commands that cause it to enter an infinite loop or wait indefinitely without producing logs, try adding the following command to your script to see if this allows the build to proceed:
+
+```
+npm config set strict-ssl false
+```
+
+If your `pnpm` commands are waiting for user input. Try using the [append-only flag](https://pnpm.io/cli/install#--reportername).
+
 ## Windows builds
 
 ### Error when running Docker commands on Windows build servers
@@ -730,7 +757,7 @@ Yes, you can disable the built-in clone codebase step for any Build stage. For i
 
 ### Can I configure a failure strategy for a built-in clone codebase step?
 
-No, you can't configure a [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) for the built-in clone codebase step. If you have concerns about clone failures, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Git Clone step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) with a [step failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps#add-a-step-failure-strategy) at the beginning of each stage where you need to clone your codebase.
+No, you can't configure a [failure strategy](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) for the built-in clone codebase step. If you have concerns about clone failures, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Git Clone step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) with a [step failure strategy](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps#add-a-step-failure-strategy) at the beginning of each stage where you need to clone your codebase.
 
 ### Can I recursively clone a repo?
 
@@ -914,7 +941,7 @@ To do this, you could:
 
 1. Modify the failed step's command to save output to a file, such as `your_command 2>&1 | tee output_file.log`.
 2. After the failed step, add a Run step that reads the file's content and uses your Git provider's API to export the file's contents to a pull request comment.
-3. Configure the subsequent step's [conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to **Always execute this step**.
+3. Configure the subsequent step's [conditional execution settings](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) to **Always execute this step**.
 
 ### Does my pipeline have to have a Build stage to get the build status on the PR?
 
@@ -1422,6 +1449,15 @@ If an output variable's length is greater than 64KB, steps can fail or truncate 
 
 Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) or [exporting artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
+### How do I get a file from file store in a Run step?
+
+You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`. Here's an example in a script:
+
+```
+raw_file=<+fileStore.getAsBase64("someFile")>
+config_file="$(echo "$raw_file" | base64 --decode)"
+```
+
 ## Entry point
 
 ### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
@@ -1716,7 +1752,7 @@ FQN is required for images in private repos.
 
 ### Run a step only run if a certain file, like a .toml configuration file, changes in my repo
 
-To run a step only when a certain file changes, you can configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
+To run a step only when a certain file changes, you can [define conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
 
 Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
 
@@ -1728,11 +1764,11 @@ The conditions in JEXL only allow the use of variable expressions that can be re
 
 ### What does a failure strategy consist of?
 
-[Failure strategies](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) include error conditions that trigger the failure and actions to take when the specified failure occurs.
+[Failure strategies](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) include error conditions that trigger the failure and actions to take when the specified failure occurs.
 
 ### Can I make a step, stage, or pipeline fail based on the percentage of test cases that fail or succeed?
 
-Currently, Harness can't fail a step/stage/pipeline based on a percentage of test results. To achieve this, you would need to manually parse the test results (which are created after the test step execution) and export some variables containing the percentages you want to track. You could then have a step throw an error code based on the variable values to trigger a [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps), or you could manually review the outputs and manually [mark the stage as failed](https://developer.harness.io/docs/platform/pipelines/mark-as-failed).
+Currently, Harness can't fail a step/stage/pipeline based on a percentage of test results. To achieve this, you would need to manually parse the test results (which are created after the test step execution) and export some variables containing the percentages you want to track. You could then have a step throw an error code based on the variable values to trigger a [failure strategy](https://developer.harness.io/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps), or you could manually review the outputs and manually [mark the stage as failed](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed).
 
 Due to potential subjectivity of test results, it would probably be better to handle this case with an [Approval stage or step](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) where the approver [reviews the test results](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
@@ -1824,7 +1860,7 @@ Finally, if your build is older than six months, it is outside the data retentio
 
 ### Can I compare pipeline changes between builds?
 
-Yes. Go to [view and compare pipeline executions](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
+Yes. Go to [view and compare pipeline executions](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions).
 
 ### How do I create a dashboard to identify builds that end with a timeout in a specific task?
 
