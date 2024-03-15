@@ -192,9 +192,6 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
 ```yaml
   - name: INIT_SCRIPT
     value: |
-        ## Install Git
-        apt-get update
-        yes | apt-get install git`
 
         ## Install AWS CLI
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
