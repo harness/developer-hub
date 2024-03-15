@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-03-13:T10:00:30
+date: 2024-03-18:T10:00:30
 sidebar_position: 3
 ---
 
@@ -82,6 +82,18 @@ The following deprecated API endpoints are longer supported:
 
 
 ## March 2024
+
+### Version 1.29.xx<!--  March 18, 2024 -->
+
+#### Fixed issues
+
+- In the old Git sync flow, the system failed to fetch connector details because the `branch` and `yamlGitRef` attributes were not included in the query process after the method was changed to utilize scope uniqueId and identifier. (PL-47942, ZD-58953, ZD-59089)
+
+   We have updated the system to account for the `branch` and `yamlGitRef` parameters, ensuring connector details now load correctly. This adjustment affects a single production account using the deprecated old git sync feature, which has limited QA support.
+
+- The user aggregate API did not support selected view permissions, leading to errors when a user was granted view permission for specific user groups due to the lack of permissions on the USERGROUP resource as a whole. (PL-31279)
+
+   We have resolved this issue by allowing users to be granted view permissions for selected user groups. Now, only those user groups specified will be visible to the user.
 
 ### Version 1.28.11<!--  March 13, 2024 -->
 
