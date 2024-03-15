@@ -227,4 +227,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_AWS_OIDC_AUTHENTICATION</td>
         <td>Enables the option to connect to AWS with OIDC. Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and Cloudformation. <b>This is a Beta feature.</b> </td>
     </tr>
+     <tr>
+        <td>CV_NEWRELIC_NEW_API</td>
+        <td>Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This is a Beta feature.</b></td>
+    </tr>
 </table>
