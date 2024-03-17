@@ -304,6 +304,10 @@ Harness Cloud builds use a delegate hosted in the Harness Cloud runner. You don'
 
 No. Currently, you can't use Harness Cloud build infrastructure to run CD steps or stages. Currently, Harness Cloud is specific to Harness CI.
 
+### How can we connect to the services running inside a private corporate network from the Harness cloud VM?
+
+You could consider cofiguring secure conect as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) 
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -455,6 +459,17 @@ Yes, the build pod is cleaned up after stage execution, regardless of whether th
 ### How do I know if the pod cleanup task fails?
 
 To help identify pods that aren't cleaned up after a build, pod deletion logs include details such as the cluster endpoint targeted for deletion. If a pod can't be located for cleanup, then the logs include the pod identifier, namespace, and API endpoint response from the pod deletion API. You can find logs in the [Build details](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds#build-details).
+
+### Is there a native way to mount an exesiting k8s secret into the build pod?
+Currently, mounting an existing k8s scret into the build pod is not supported
+
+### Can I configure ECS cluster as the CI build infra and run the build in ECS cluster?
+
+Running CI builds on ECS cluster is not currently supported
+
+### Can I use a docker delegate to run the build on k8s cluster?
+
+You could use the docker delegate to run the build on k8s cluster as long as the docker delegate has connectivity to the k8s cluster and the k8s connector should be configured with the master URL and creds rather than configuring with the option ```inherit the credential from delegate```
 
 ## Self-signed certificates
 
@@ -907,6 +922,14 @@ You can add a Run step to the beginning of your Build stage that runs `ls -ltr`.
 
 Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
 
+### Why isn't the default cloning depth of 50 applied when manually running a PR build?
+
+For PR builds, since the number of commits can be larger than 50, the default depth value is not limited to 50
+
+### The deafult depth of 50 for manual build is same for all build types?
+
+The default depth of 50 is applicable for the manual execution of branch and tag build however this is not applicable for PR builds whether it is manually triggered or via webhook.
+
 ## SCM status updates and PR checks
 
 ### Does Harness supports Pull Request status updates?
@@ -1220,6 +1243,10 @@ Go to the [Kaniko container runtime error article](./articles/kaniko_container_r
 
 The default build context is the stage workspace directory, which is `/harness`.
 
+### Why the ```build and push``` step is trying to push to dockerhub public repository even if the connector used in the step is pointing to an internal container resistry?
+
+This scenario might occur if the Docker connector used is pointing to an internal private container registry, but the Fully Qualified Name (FQN) of the repository name is not configured in the build and push step. Make sure to use the FQN for the repo when pushing it to an internal private container registry
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1516,6 +1543,14 @@ You can also [add a parallel Run step to monitor and help debug the Background s
 
 If you run [Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage), and your `docker build` commands fail due to OOM errors, you need to increase the memory and CPU limit for the Background step. While the `docker build` command can be in a Run step or a Build and Push step, the build executes on the DinD container, which is the Background step running DinD. Therefore, you need to increase the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#set-container-resources).
 
+### I need to start few containers while executing tests? How can I start the containers during the CI piepline execution?
+
+You could consider running the dind container in the back ground step. More details about the same can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
+
+### I have pipeline with a dind container running as a background step and Im starting a new container on top of the dind container from the subsequent run step in the CI pipeline. How can I connect to an application running inside this container from the run step?
+
+When you start the container from run step, attach the container to host network by passing the flag ```--net host``` and then you can hit the endpoint ```localhost:port``` from the run step to connect to the application running inside the container
+
 ## Plugins and integrations
 
 ### Which Drone plugins are supported in Harness CI?
@@ -1570,6 +1605,10 @@ If the Action allows you to override the `working-directory`, such as with the [
 ### Can I integrate my CI builds with the Datadog Pipeline Visibility feature?
 
 Harness doesn't have OOTB support for Datadog Pipeline Visibility, but you can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
+
+### Why the plugin step is trying to connect to the dockerhub public endpoint to fetch the entry point even if the docker connector used in the plgin step is pointing to an internal container registry?
+
+It could happen if the docker connector used is pointing to an internal private container registry but the FQN (Fully qualified name) of the image name is not configured in the plugin step. Ensure that you use the FQN for the the image when pulling the image from an internal private container resistry.
 
 ## Workspaces, shared volumes, and shared paths
 
