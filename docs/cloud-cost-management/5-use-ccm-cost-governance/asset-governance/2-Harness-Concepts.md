@@ -169,7 +169,7 @@ Evaluations include all the data about enforcements run (both RUN ONCE from rule
 2. Select **Asset Governance**.
 3. Select **Evaluations**.
 4. You can see all the Evaluations of Rules listed on  the window.
-4. Select the rule for which you want to view the Evaluation details. The target accounts, regions, and evaluation logs are displayed.
+4. Select the rule for which you want to view the Evaluation details. The target subscription, region, identified resources and evaluation logs are displayed.
 
 <DocImage path={require('./static/evaluations.png')} width="90%" height="90%" title="Click to view full size image" />
 
