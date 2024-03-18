@@ -112,9 +112,11 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ## Resolved and Unresolved Expressions during Conditional Execution
 
-This topic explains why some expressions in Conditional Execution goes unresolved during execution. Let's try to understand this scenario with an example:-
+This topic explains why some expressions in Conditional Execution goes unresolved during execution. 
 
-Consider this pipeline yaml:
+Let's try to understand this scenario with an example:
+
+Consider this pipeline YAML:
 
 ```yaml
   tags: {}
@@ -175,17 +177,18 @@ Consider this pipeline yaml:
           condition: <+env.name> == "harnessdevenv"
 ```
 Here, the above pipeline's stage will execute only if the environment name is ``harnessdevenv``.
-When you click ``Run`` you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``.
+
+When you select ``Run``, you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``.
 ![](./static/unresolved_runtime_input.png)
 
-Now if you click on ``Run Pipeline`` and check the execution the stage ``deploy_stage`` will be skipped as the conditional execution resolved to ``null``.
+Now, if you select ``Run Pipeline``, the execution the stage ``deploy_stage`` will be skipped as conditional execution resolves to ``null``.
 
 
 ![](./static/unresolved_execution_1.png)
 
 
 
-Let's try to understand the flow of execution of a pipeline:-
+Let's try to understand the pipeline execution flow:
 
 1. When you run a deploy stage, it first checks the ``stage`` conditional execution and then starts filling the variable defined in stage definition and after that it starts the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
 
