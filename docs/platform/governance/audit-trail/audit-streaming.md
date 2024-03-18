@@ -86,6 +86,12 @@ To configure the Amazon S3 streaming connector:
 
 <TabItem value="Splunk" label="Splunk">
 
+:::important
+
+Currently, this feature is behind the feature flag `PL_AUDIT_STREAMING_USING_SPLUNK_HEC_ENABLE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 :::info
 Splunk audit log streaming is compatible with Splunk enterprise and SaaS.
 :::
