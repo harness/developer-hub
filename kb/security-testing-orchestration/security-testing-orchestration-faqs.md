@@ -12,6 +12,10 @@ To approve exemptions, users must have the **Approve/Reject** permission. Curren
 
 Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans.
 
+## These is no Test Execution Summary widget in the list of dashboard widgets
+
+To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
 ## Aqua scans
 
 ### Pod evicted during an Aqua scan
@@ -19,6 +23,14 @@ Yes, the size of the container image contributes to resource utilization, especi
 Pod eviction during an Aqua scan can be attributed to resource constraints, especially with a large image size (around 4GB).
 
 To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
+
+## BlackDuck scans
+
+### During BlackDuck scans in my pipeline, I get a "Could not connect to addon client after max retries" error, but this error doesn't occur locally
+
+The "Could not connect to addon client after max retries" error typically indicates that the container running the BlackDuck scan step is terminated abruptly due to insufficient resources. To address this issue, Harness recommends increasing the resources allocated to the BlackDuck step.
+
+You can begin by adjusting the resource allocation to `memory: 1Gi` and `cpu: "1.0"`. Then, monitor the memory and CPU consumption of the container during the scan to gauge its resource requirements accurately. Based on this observation, you can further refine the resource allocation as needed to prevent container termination and ensure successful BlackDuck scans in your pipeline.
 
 ## Grype scans
 
@@ -33,14 +45,27 @@ Go to [Troubleshoot "vulnerability database build date exceeds max allowed age" 
 <!-- https://harness.atlassian.net/browse/STO-6975 -->
 
 Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference#owasp-step-generates-yarn-audit-analyzer-exception) in the OWASP scanner reference.
-  
 
 ## Sonar scans
 
-Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference. 
+Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference.
 
-This section discusses the following:
+### Does the STO plugin support execution on an ARM64 OS architecture?
 
-- [Can't generate SonarQube report due to shallow clone](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#cant-generate-sonarqube-report-due-to-shallow-clone)
-- [How to include arguments such as `sonar.projectVersion` in a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#additional-cli-flags)
+No, the STO plugin currently does not support running on ARM64 machines
 
+### How to configure a session token in AWS ECR scan step?
+
+You could add a key named ```AWS_SESSION_TOKEN``` in the settings of the scan step, with its corresponding token value
+
+### Why the STO dashboard doesnt populate the data from targets?
+
+It could happen when the scan executions don’t have baselines set. Currently you will be able to see the data in the STO dashboard only if the test target baselines are set
+
+### Is there any APIs to extract data on Vulnerabilities that are detected by STO?
+
+Currently, we have internal STO APIs that are not yet published for public use. However, this is part of our roadmap for the future
+
+### How to configure a specific image tag for sto plugin?
+
+This can be configured similar to how it can be done for CI images. More details about the same can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/)

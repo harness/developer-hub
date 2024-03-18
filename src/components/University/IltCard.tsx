@@ -9,6 +9,7 @@ import { MODULES } from "../../constants";
 
 export enum iltType {
   user = "All Users",
+  admin = "Administrators",
 }
 
 export type IltCardItem = {
@@ -38,6 +39,9 @@ export default function IltCard({
         [styles.thumb]: thumb,
       })}
     >
+      <div className={styles.Topright}>
+        <p> ILT</p>
+      </div>
       <div>
         <div className={styles.moduleLine}>
           <h6>

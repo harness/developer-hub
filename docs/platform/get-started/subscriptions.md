@@ -32,13 +32,14 @@ The following Harness modules are indirectly involved in a developer’s day-to-
 
 #### Continuous Delivery & GitOps (CD)
 
-**Services** CD module deploys software services, onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, Serverless functions and other custom deployment targets. A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to 
-- a service in Kubernetes 
-- a containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
-- a VM in the traditional VM-based apps
+**Services** CD module deploys software services, onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, Serverless functions and other custom deployment targets. A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to:
+
+- A service in Kubernetes 
+- A containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- A VM in the traditional VM-based apps
 - 6 serverless functions in serverless environments
 
-CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window.
+CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
 #### Feature Flags (FF)
 
@@ -74,7 +75,7 @@ IACM tracks ‘Executions’ license consumption, instead of Developers.
 
 #### Security Test Orchestration (STO)
 
-**Security Scans** A Security Scan is defined as the execution of the STO step within a pipeline, tracked over a last 30 day active window. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or ana live application, for security vulnerabilities.
+**Security Scans** A Security Scan is defined as the execution of the STO step within a pipeline, tracked over a last 30 day active window. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or a live application, for security vulnerabilities.
 
 STO tracks ‘Security Scans’ license consumption, instead of Developers.
 

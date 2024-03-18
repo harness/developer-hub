@@ -131,18 +131,6 @@ Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate contain
 These examples show how to install some common tools.
 
 <Tabs>
-<TabItem value="git" label="Install Git client" default>
-
-To install Git on the delegate, add an `install git` script to the `INIT_SCRIPT`, for example:
-
-```yaml
-  - name: INIT_SCRIPT
-    value: |
-        apt-get update
-        yes | apt-get install git`
-```
-
-</TabItem>
 <TabItem value="aws" label="Install AWS CLI">
 
 The following `INIT_SCRIPT` installs the AWS CLI:
@@ -204,9 +192,6 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
 ```yaml
   - name: INIT_SCRIPT
     value: |
-        ## Install Git
-        apt-get update
-        yes | apt-get install git`
 
         ## Install AWS CLI
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"

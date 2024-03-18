@@ -27,6 +27,7 @@ export type CardItem = {
   link?: string;
   thumb?: boolean;
   numberOfCerts?: number;
+  ILT_available?: boolean;
 };
 
 export default function CertCard({
@@ -47,17 +48,20 @@ export default function CertCard({
         [styles.thumb]: thumb,
       })}
     >
+      <div className={styles.Topright}>
+        <img src="/img/certification_icon.svg" alt="" />
+      </div>
       <div>
         <div className={styles.moduleLine}>
           <h6>
             <img src={`${baseUrl}img/icon_${module}.svg`} />{" "}
             {type ? type : module.toUpperCase()}
+            <span>
+              {[...new Array(stars[type || ""] || 0)].map(() => (
+                <i className="fa-solid fa-star"></i>
+              ))}
+            </span>
           </h6>
-          <span>
-            {[...new Array(stars[type || ""] || 0)].map(() => (
-              <i className="fa-solid fa-star"></i>
-            ))}
-          </span>
         </div>
         <h4>{title}</h4>
         {numberOfCerts && (

@@ -2870,3 +2870,22 @@ Due to a limitation in Entra ID, users with more than 150 groups might not be as
 
 You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
 
+#### What is my org identifier?
+
+To find your organiation identifier, go to **Account Settings**, and then select **Organizations**. All organizations in your account are listed along with their respective identifiers.
+
+#### I want to add another tag to an existing delegate, but I can't edit it from the Delegate page in Harness.
+
+To add tags to existing delegates, you need to edit the delegate YAML and then reapply the delegate YAML.
+
+#### How can I tell how many projects I have?
+
+You can use [List projects endpoint](https://apidocs.harness.io/tag/Org-Project/#operation/get-org-scoped-projects) to get a list of all projects under an organization.
+
+If your account has multiple organizations, you'll need to hit the endpoint for each org to get the total list of all projects across your account.
+
+#### I'm getting an apt-get command not found error when harness-ID.sh is running.
+
+<!-- this question isn't clear. What was the user doing when they got the error? Which module? Was this from a pipeline run or when trying to install the delegate? -->
+
+The `apt-get: command not found` error can occur because the delegate image is UBI-based. Try using Microdnf to install packages.
