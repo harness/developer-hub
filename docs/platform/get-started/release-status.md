@@ -1,13 +1,23 @@
 ---
-title: Beta, Limited GA, and GA definitions
+title: Feature development and availability
 description: Learn about what's included in Harness Beta, Limited GA, and GA releases.
-sidebar_position: 100
+sidebar_position: 30
 redirect_from:
-  - /docs/get-started/beta-preview-ga/
+  - /docs/get-started/beta-preview-ga
+  - /docs/get-started/release-status
 ---
-Harness releases features and modules that may be in various states of development, including Beta, Limited GA, and GA. Review the following information for definitions of each status.
 
-A Beta feature or module:
+Learn about recent and upcoming changes to the Harness Platform and modules.
+
+* [Release notes](/release-notes)
+* [Product roadmap](/roadmap)
+* [Early access features](/release-notes/early-access)
+
+## Beta, Limited GA, and GA definitions
+
+Harness releases features and modules that may be in various states of development, including **Beta**, **Limited GA**, and **GA**.
+
+A **Beta** feature or module:
 * Is released behind a feature flag.
 * May include bugs or have performance issues.
 * May include functionality that will not be included in the GA release.
@@ -16,12 +26,12 @@ A Beta feature or module:
 * May not be suitable for production environments.
 * May not include all functionality.
 
-A Limited GA feature or module:
+A **Limited GA** feature or module:
 * Is released behind a feature flag.
 * Includes basic documentation.
 * May be suitable for specific production environments.
 
-A GA feature or module:
+A **GA** feature or module:
 * Is suitable for production environments.
 * Includes complete documentation.
 * Includes a stable UI.

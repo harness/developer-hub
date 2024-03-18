@@ -14,13 +14,11 @@ redirect_from:
   - /docs/get-started/harness-platform-architecture
 ---
 
-The *Harness Platform* is the common structure underlying the *Harness modules*.
+The Harness Platform provides a common framework underlying the Harness modules to help you onboard and enable diverse teams leveraging different modules for different use cases.
 
-The Harness Platform includes features and functionality described on this page, such as your Harness account, organizations, projects, delegates, RBAC, global settings, and more. The Harness Platform provides a common framework underlying the Harness modules to help you onboard and enable diverse teams leveraging different modules for different use cases.
+This page describes key concepts related to Harness Platform features and functionality, such as your Harness account, organizations, projects, delegates, RBAC, global settings, and more.
 
-Harness modules include Harness Continuous Integration (CI), Harness Continuous Delivery (CD), Harness Security Testing Orchestration (STO), and so on. In addition to each module's unique features, some modules share common or similar features, such as pipelines.
-
-To learn more about module features, functionality, and key concepts, go to the [documentation](https://developer.harness.io/) for the module you're interested in. For example, for information about deploying services, go to[Continuous Delivery key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
+Harness modules include Harness Continuous Integration (CI), Harness Continuous Delivery (CD), Harness Security Testing Orchestration (STO), and so on. In addition to each module's unique features, some modules share common or similar features, such as pipelines. To learn more about module features, functionality, and key concepts, go to the [documentation](https://developer.harness.io/) for the module you're interested in. For example, for information about deploying services, go to [Continuous Delivery key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
 
 ## Account
 
@@ -150,13 +148,13 @@ Pipelines are triggered manually in the Harness Platform or automatically in res
 In Harness, you can write pipelines in YAML or build pipelines visually in the Pipeline Studio.
 
 * The **Visual editor** provides a GUI experience where you can easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them, organize them in parallel, or add or remove them from step groups.
-* The **YAML editor** provides a [text editor experience for creating pipelines](../platform/pipelines/harness-yaml-quickstart.md). You can also user the [Harness Git Experience](#git-experience) to manage your Harness YAML entities from your Git repos.
+* The **YAML editor** provides a [text editor experience for creating pipelines](/docs/platform/pipelines/harness-yaml-quickstart.md). You can also user the [Harness Git Experience](#git-experience) to manage your Harness YAML entities from your Git repos.
 
 You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the Pipeline Studio to switch between the Visual and YAML editors.
 
 ### Stages
 
-A [stage](../platform/pipelines/add-a-stage.md) is a subset of a pipeline that contains the logic to perform one major segment of the pipeline process. Stages are based on the different milestones of your pipeline, such as building, approving, and delivering.
+A [stage](/docs/platform/pipelines/add-a-stage.md) is a subset of a pipeline that contains the logic to perform one major segment of the pipeline process. Stages are based on the different milestones of your pipeline, such as building, approving, and delivering.
 
 Some stages, like a deploy stage, use strategies that automatically add the necessary steps.
 
@@ -191,11 +189,6 @@ The *Harness Manager* can be a synonym for the Harness Platform and it can refer
 With the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview), you can sync your Harness account, orgs, and projects with your Git repo to manage Harness entirely from Git.
 
 Components that you can write in YAML can also be managed purely through Git with the Git Experience.
-
-## Learn more about the Harness Platform
-
-* [Navigation](/docs/get-started/harness-ui-overview.md)
-* [Supported platforms and technologies](../platform-whats-supported.md)
 
 ## FirstGen vs NextGen
 
