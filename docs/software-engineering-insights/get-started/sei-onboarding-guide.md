@@ -56,46 +56,46 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 
 ### <a href="#phase-4-collection-setup"> Phase 4: Collection Setup </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collection-categories">Collection Hierarchy</a> | Learn how to use collection-level hierarchies to keep data in SEI organized | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collection-categories) |  |
-| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat">Manage Collection Categories</a> | View, add, edit, enable/disable collection categories | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat) |   |
-| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-collections">Manage Collections</a> | View, add, edit and remove collections | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |   |
-| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors">Manage Contributors</a> | View, add, edit and remove contributors | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collection-categories">Collection Hierarchy</a> | Learn how to use collection-level hierarchies to keep data in SEI organized | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview#collection-categories) |
+| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat">Manage Collection Categories</a> | View, add, edit, enable/disable collection categories | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat) |
+| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-collections">Manage Collections</a> | View, add, edit and remove collections | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |
+| <a href="/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors">Manage Contributors</a> | View, add, edit and remove contributors | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors) |
 
 ### <a href="#phase-5-profiles-setup"> Phase 5: Profiles Setup </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/software-engineering-insights/sei-profiles/investment-profile">Configure Investment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/sei-profiles/investment-profile) |  |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile) |   |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile) |   |
-| <a href="/docs/software-engineering-insights/sei-profiles/trellis-profile">Configure Trellis profile</a> | Learn how to create/edit a Trellis profile | [Click here](/docs/software-engineering-insights/sei-profiles/trellis-profile) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/software-engineering-insights/sei-profiles/investment-profile">Configure Investment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/sei-profiles/investment-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/trellis-profile">Configure Trellis profile</a> | Learn how to create/edit a Trellis profile | [Click here](/docs/software-engineering-insights/sei-profiles/trellis-profile) |
 
 ### <a href="#phase-6-insights-creation"> Phase 6: Insights Creation </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/software-engineering-insights/insights/sei-insights#create-insights">Create a new Insight</a> | Learn how to create a new Insight on SEI | [Click here](/docs/software-engineering-insights/insights/sei-insights#create-insights) |  |
-| <a href="/docs/software-engineering-insights/insights/sei-insights#add-reports">Add reports</a> | Configure widgets on the Insight | [Click here](/docs/software-engineering-insights/insights/sei-insights#add-reports) |   |
-| <a href="/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations">Manage Insight association</a> | Associate or Disassociate Insights with collections | [Click here](/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations) |   |
-| <a href="/docs/software-engineering-insights/insights/sei-insights#view-insights">View Insight</a> | View existing Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#view-insights) |   |
-| <a href="/docs/software-engineering-insights/insights/sei-insights#explore-data">Explore Insight data</a> | Derive value out of the widget data on the Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#explore-data) |   |
-| <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/dora-insight) |   |
-| <a href="/docs/software-engineering-insights/insights/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/trellis-insight) |   |
-| <a href="/docs/software-engineering-insights/insights/sprint-metrics-insight">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |   |
-| <a href="/docs/software-engineering-insights/insights/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/developer-insight) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/software-engineering-insights/insights/sei-insights#create-insights">Create a new Insight</a> | Learn how to create a new Insight on SEI | [Click here](/docs/software-engineering-insights/insights/sei-insights#create-insights) |
+| <a href="/docs/software-engineering-insights/insights/sei-insights#add-reports">Add reports</a> | Configure widgets on the Insight | [Click here](/docs/software-engineering-insights/insights/sei-insights#add-reports) |
+| <a href="/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations">Manage Insight association</a> | Associate or Disassociate Insights with collections | [Click here](/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations) |
+| <a href="/docs/software-engineering-insights/insights/sei-insights#view-insights">View Insight</a> | View existing Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#view-insights) |
+| <a href="/docs/software-engineering-insights/insights/sei-insights#explore-data">Explore Insight data</a> | Derive value out of the widget data on the Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#explore-data) |
+| <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
+| <a href="/docs/software-engineering-insights/insights/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/trellis-insight) |
+| <a href="/docs/software-engineering-insights/insights/sprint-metrics-insight">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
+| <a href="/docs/software-engineering-insights/insights/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
 
 ### <a href="#phase-7-role-based-access-control"> Phase 7: Role-Based Access Control </a>
 
-| **Step** | **Details** | **Documentation** | **Demo** |
-| - | - | - | - |
-| <a href="/docs/software-engineering-insights/access-control/sei-roles-and-permissions">RBAC Overview (Roles and Resource Groups)</a> | A brief overview of RBAC support for Harness SEI | [Click here](/docs/software-engineering-insights/access-control/sei-roles-and-permissions) |  |
-| <a href="/docs/platform/role-based-access-control/add-resource-groups">Create Resource Groups</a> | Learn how to create resource groups | [Click here](/docs/platform/role-based-access-control/add-resource-groups) |   |
-| <a href="/docs/platform/role-based-access-control/add-user-groups">Create User Groups</a> | Learn how to create user groups | [Click here](/docs/platform/role-based-access-control/add-user-groups) |   |
-| <a href="/docs/software-engineering-insights/access-control/manage-access-control-for-insights">Manage access control for SEI Insights</a> | Configure and manage access control for Insights on Harness SEI | [Click here](/docs/software-engineering-insights/access-control/manage-access-control-for-insights) |   |
-| <a href="/docs/software-engineering-insights/access-control/manage-access-control-for-collections">Manage access control for SEI Collections</a> | Configure and manage access control for Collections on Harness SEI | [Click here](/docs/software-engineering-insights/access-control/manage-access-control-for-collections) |   |
-| <a href="/docs/software-engineering-insights/access-control/manage-acess-control-for-config-settings">Manage access control for SEI Configuration Settings (Account Level Resources)</a> | Configure and manage access control for all account-level SEI module resources | [Click here](/docs/software-engineering-insights/access-control/manage-acess-control-for-config-settings) |   |
+| **Step** | **Details** | **Documentation** |
+| - | - | - |
+| <a href="/docs/software-engineering-insights/access-control/sei-roles-and-permissions">RBAC Overview (Roles and Resource Groups)</a> | A brief overview of RBAC support for Harness SEI | [Click here](/docs/software-engineering-insights/access-control/sei-roles-and-permissions) |
+| <a href="/docs/platform/role-based-access-control/add-resource-groups">Create Resource Groups</a> | Learn how to create resource groups | [Click here](/docs/platform/role-based-access-control/add-resource-groups) |
+| <a href="/docs/platform/role-based-access-control/add-user-groups">Create User Groups</a> | Learn how to create user groups | [Click here](/docs/platform/role-based-access-control/add-user-groups) |
+| <a href="/docs/software-engineering-insights/access-control/manage-access-control-for-insights">Manage access control for SEI Insights</a> | Configure and manage access control for Insights on Harness SEI | [Click here](/docs/software-engineering-insights/access-control/manage-access-control-for-insights) |
+| <a href="/docs/software-engineering-insights/access-control/manage-access-control-for-collections">Manage access control for SEI Collections</a> | Configure and manage access control for Collections on Harness SEI | [Click here](/docs/software-engineering-insights/access-control/manage-access-control-for-collections) |
+| <a href="/docs/software-engineering-insights/access-control/manage-acess-control-for-config-settings">Manage access control for SEI Configuration Settings (Account Level Resources)</a> | Configure and manage access control for all account-level SEI module resources | [Click here](/docs/software-engineering-insights/access-control/manage-acess-control-for-config-settings) |
 
 ## Phase 1: Setup your Harness account
 
@@ -289,4 +289,22 @@ Review the following resources to learn more about defining and managing access 
 * [Manage access control for SEI Insights](/docs/software-engineering-insights/access-control/manage-access-control-for-insights)
 * [Manage access control for SEI Collections](/docs/software-engineering-insights/access-control/manage-access-control-for-collections)
 * [Manage access control for SEI Configuration Settings](/docs/software-engineering-insights/access-control/manage-acess-control-for-config-settings)
+
+## Training & Knowledge
+
+Find the list of demos for the latest Harness SEI features.
+
+| **Topic** | **Video** | **Documentation** |
+| - | - | - |
+| Insights on Harness SEI |<a href="https://youtu.be/gJ1gLT6ldGs">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sei-insights) |
+| Role-Based Access Control on Harness SEI |<a href="https://youtu.be/7GProEXyB9c">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/access-control/sei-roles-and-permissions) |
+| Account Level Settings on Harness SEI |<a href="https://youtu.be/NCzw--puYmY">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
+| Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
+| Business Alignment 2.0 - BETA |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
+| Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
+| DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
+| Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
+| Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
+
+
 
