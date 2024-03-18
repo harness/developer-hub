@@ -145,7 +145,7 @@ After setting up the schedule, you can view the Enforcement on the **Enforcement
 
 <DocImage path={require('./static/enforcements_list.png')} width="90%" height="90%" title="Click to view full size image" />
 
-Furthermore, you can disable the Enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) and switch to active mode and then go to "Target And Schedule", use slider to turn off "Enforce Rule(s) in Dry Run mode" and click on Finish.
+Furthermore, you can disable the Enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) then go to "Target And Schedule", use slider to turn off "Enforce Rule(s) in Dry Run mode" and click on Finish.
 
 ### Update an Enforcement
 
