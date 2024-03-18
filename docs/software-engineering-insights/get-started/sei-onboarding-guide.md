@@ -224,7 +224,7 @@ SEI integrates with several third-party providers to provide centralized visibil
 If you want to integrate SEI with your on-premise tools, you can use the [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview) to configure the integration.
 **Ingestion Satellite** is used to integrate your on-premise tools and custom integrations into your SEI project. 
 
-It enables data ingestion and integration with various third-party applications and services. **Satellites** are configured while installing the **SEI integrations** in the integration configuration, within the **Data Settings**. Now we can configure the satellite for a supported, application-specific integration or a custom integration. SEI ​does not​ store satellite credentials.
+It enables data ingestion and integration with various third-party applications and services. **Satellites** are configured while installing the **SEI integrations** in the integration configuration, within the **Data Settings**. Now we can configure the satellite for a supported, application-specific integration or a Custom CI/CD integration. SEI ​does not​ store satellite credentials.
 
 To learn more about how to use the satellite to configure an integration, go to [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
