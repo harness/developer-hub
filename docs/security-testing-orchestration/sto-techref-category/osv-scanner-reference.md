@@ -120,15 +120,15 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-  You can run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with CLI arguments such as:
+You can run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with CLI arguments such as:
 
-    * `--lockfile /path/to/lockfile`
-      
-    * `--out /path/to/config.toml`
+`--no-ignore --sbom=/path/to/your/sbom.json`
+
+With these flags, the `osv` binary scans vulnerabilities in the specified SBOM even if it's included in a `.gitignore` file.
 
 :::caution
 
-STO supports passing CLI arguments to OSV but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of OSV.
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
 
 :::
 

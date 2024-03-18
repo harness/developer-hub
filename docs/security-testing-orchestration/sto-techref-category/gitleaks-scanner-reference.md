@@ -119,13 +119,13 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can run the [`gitleaks`](`https://github.com/gitleaks/gitleaks`) scanner with CLI arguments such as: 
 
-  * `--log-opts="-n 1000"`
-    
-  * `--platform=linux/arm jsmith/my-image`
+`--log-opts="-n 1000" --max-target-megabytes 10`
+
+With these flags, `gitleaks` limits the scan to the last 1000 commits and skips files that are larger than 10 MB. 
 
 :::caution
 
-STO supports passing CLI arguments to Gitleaks but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Gitleaks.
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
 
 :::
 

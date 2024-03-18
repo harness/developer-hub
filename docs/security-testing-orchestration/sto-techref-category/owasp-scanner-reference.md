@@ -124,17 +124,15 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with CLI arguments such as:
+You can run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags, for example: 
 
-    * `--exclude /path/to/folder/to/exclude/from/scan`
+`--scan ‘/harness/**/*.jar --log /shared/scan_logs/owasp.txt`
       
-    * `--log /shared/scan_logs/owasp` 
-
-    * `--scan ‘directory/**/*.jar’` 
+With these flags, the scanner scans JAR files and outputs the log to a shared folder, where it can be accessed by a later step.  
 
 :::caution
 
-STO supports passing CLI arguments to OWASP Dependency Check but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of OWASP Dependency Check.
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
 
 :::
 
