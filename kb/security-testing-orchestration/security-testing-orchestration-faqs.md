@@ -49,3 +49,23 @@ Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orche
 ## Sonar scans
 
 Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference.
+
+### Does the STO plugin support execution on an ARM64 OS architecture?
+
+No, the STO plugin currently does not support running on ARM64 machines
+
+### How to configure a session token in AWS ECR scan step?
+
+You could add a key named ```AWS_SESSION_TOKEN``` in the settings of the scan step, with its corresponding token value
+
+### Why the STO dashboard doesnt populate the data from targets?
+
+It could happen when the scan executions don’t have baselines set. Currently you will be able to see the data in the STO dashboard only if the test target baselines are set
+
+### Is there any APIs to extract data on Vulnerabilities that are detected by STO?
+
+Currently, we have internal STO APIs that are not yet published for public use. However, this is part of our roadmap for the future
+
+### How to configure a specific image tag for sto plugin?
+
+This can be configured similar to how it can be done for CI images. More details about the same can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/)
