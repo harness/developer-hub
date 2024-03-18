@@ -128,7 +128,7 @@ The Harness AWS connector to use when saving the cache to S3. The AWS IAM roles 
 
 This step supports AWS connectors using **AWS access key**, **Assume IAM role on delegate**, and **IRSA** authentication methods *without* cross-account access (ARN/STS).
 
-[IRSA requires modifications to the delegate YAML](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings:~:text=Configure%20IRSA%20credentials%20for%20AWS%20connectors) and build infrastructure settings. The service account to be used for uploading to S3 must be specified in the delegate YAML and in the [Service Account Name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the stage's build infrastructure settings.
+[IRSA requires modifications to the delegate YAML](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings:~:text=Configure%20IRSA%20credentials%20for%20AWS%20connectors) and build infrastructure settings. The service account to be used for uploading to S3 must be specified in the delegate YAML and in the [Service Account Name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#service-account-name) in the stage's build infrastructure settings.
 
 This step *doesn't* support AWS connectors that have enabled cross-account access (ARN/STS) for any authentication method.
 

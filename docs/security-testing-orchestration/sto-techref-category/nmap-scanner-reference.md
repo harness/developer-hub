@@ -99,31 +99,28 @@ Accepted values(s):
 
 #### Type
 
-
 import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+
+<StoSettingScanTypeAutodetectApp/>
 
 #### Name 
 
-
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
-
 
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 

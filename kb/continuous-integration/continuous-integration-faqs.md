@@ -117,7 +117,19 @@ For Linux runners, you can use a tool such as `nohup` when you start the runner,
 nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
 ```
 
-## Self-managed VM build infrastructures
+### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+
+The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
+
+### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+
+```
+failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+```
+
+This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+
+## Self-managed VM build infrastructure
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -178,17 +190,22 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
    * Lite engine logs: `C:\Program Files\lite-engine\log.out`
    * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
 
-### Where does the harness-docker-runner create the hostpath volume directories on macOS?
+### What does it mean if delegate.task throws a "ConnectException failed to connect" error?
 
-The harness-docker-runner creates the host volumes under `/tmp/harness-*` on macOS platforms.
-
-### Why do I get a "failed to create directory" error when trying to run a build on local build infra?
+<!-- CI-11679 -->
+Before submitting a task to a delegate, Harness runs a capability check to confirm that the delegate is connected to the runner. If the delegate can't connect, then the capability check fails and that delegate is ignored for the task. This can cause `failed to connect` errors on delegate task assignment, such as:
 
 ```
-failed to create directory for host volume path: /addon: mkdir /addon: read-only file system
+INFO  io.harness.delegate.task.citasks.vm.helper.HttpHelper - [Retrying failed to check pool owner; attempt: 18 [taskId=1234-DEL] \
+java.net.ConnectException: Failed to connect to /127.0.0.1:3000\
 ```
 
-This error could occur when there's a mismatch between the OS type of the local build infrastructure and the OS type selected in the pipeline's infrastructure settings. For example, if your local runner is on a macOS platform, but the pipeline's infrastructure is set to Linux, this error can occur.
+To debug this issue, investigate delegate connectivity in your VM build infrastructure configuration:
+
+* [Verify connectivity for AWS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#verify-connectivity)
+* [Verify connectivity for Microsoft Azure VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#verify-connectivity)
+* [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
+* [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
 ## Harness Cloud
 
@@ -331,27 +348,27 @@ By default, resource requests are always set to the minimum, and additional reso
 
 ### How do I configure the build pod to communicate with the Kubernetes API server?
 
-By default, the namespace's default service account is auto-mounted on the build pod, through which it can communicate with API server. To use a non-default service account, specify the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the Kubernetes cluster build infrastructure settings.
+By default, the namespace's default service account is auto-mounted on the build pod, through which it can communicate with API server. To use a non-default service account, specify the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
 ### Do I have to mount a service account on the build pod?
 
-No. Mounting a service account isn't required if the pod doesn't need to communicate with the Kubernetes API server during pipeline execution. To disable service account mounting, deselect [Automount Service Account Token](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#automount-service-account-token) in the Kubernetes cluster build infrastructure settings.
+No. Mounting a service account isn't required if the pod doesn't need to communicate with the Kubernetes API server during pipeline execution. To disable service account mounting, deselect [Automount Service Account Token](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#automount-service-account-token) in the Kubernetes cluster build infrastructure settings.
 
 ### What types of volumes can be mounted on a CI build pod?
 
-You can mount many types of volumes, such as empty directories, host paths, and persistent volumes, onto the build pod. Use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) in the Kubernetes cluster build infrastructure settings to do this.
+You can mount many types of volumes, such as empty directories, host paths, and persistent volumes, onto the build pod. Use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) in the Kubernetes cluster build infrastructure settings to do this.
 
 ### How can I run the build pod on a specific node?
 
-Use the [Node Selector](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#node-selector) setting to do this.
+Use the [Node Selector](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#node-selector) setting to do this.
 
 ### It is possible to make a toleration configuration at the project, org, or account level?
 
-[Tolerations in a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#tolerations) can only be set at the stage level.
+[Tolerations in a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#tolerations) can only be set at the stage level.
 
 ### I want to use an EKS build infrastructure with an AWS connector that uses IRSA
 
-You need to set the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the Kubernetes cluster build infrastructure settings.
+You need to set the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
 If you get `error checking push permissions` or similar, go to the [Build and Push to ECR error article](./articles/delegate_eks_cluster).
 
@@ -359,7 +376,7 @@ If you get `error checking push permissions` or similar, go to the [Build and Pu
 
 Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes.
 
-If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#infrastructure):
+If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#infrastructure):
 
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
@@ -375,7 +392,7 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 ### How do I set the priority class level? Can I prioritize my build pod if there are resource shortages on the host node?
 
-Use the [Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#priority-class) setting to ensure that the build pod is prioritized in cases of resource shortages on the host node.
+Use the [Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#priority-class) setting to ensure that the build pod is prioritized in cases of resource shortages on the host node.
 
 ### What's the default priority class level?
 
@@ -718,7 +735,7 @@ If your build runs as non-root (meaning you have set `runAsNonRoot: true` in you
 
 ### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
 
-This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#run-as-non-root-or-a-specific-user).
+This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-non-root-or-a-specific-user).
 
 ## Codebases
 
@@ -994,7 +1011,7 @@ Make sure to update the [expressions referencing the variables](https://develope
 
 ### Initialize step occasionally times out at 8 minutes
 
-Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#init-timeout) in the stage Infrastructure settings.
+Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#init-timeout) in the stage Infrastructure settings.
 
 ### Problems cloning code repo during initialization.
 
@@ -1447,7 +1464,7 @@ config_file="$(echo "$raw_file" | base64 --decode)"
 
 This error suggests that there is an issue accessing the entrypoint of the Docker image. It can occur in a Kubernetes cluster build infrastructure when running PostgreSQL services in Background steps.
 
-To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 ### Does the Harness Run step overwrite the base image container entry point?
 
@@ -1717,7 +1734,7 @@ Yes. Depending on the build infrastructure, Background steps can either use exis
 
 ### How do I add volumes for PostgreSQL data in the build workspace?
 
-With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 ### Can I run a LocalStack service in a Background step?
 

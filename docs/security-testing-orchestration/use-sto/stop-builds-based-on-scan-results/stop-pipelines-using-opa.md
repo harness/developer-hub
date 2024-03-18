@@ -160,7 +160,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
 ## YAML pipeline example
 
-The following pipeline that can generate two different notifications. For every successful scan, it sends an automated email like this:
+The following pipeline that can generate two different notifications. If the code scan detects any CRITICAL or NEW_CRITICAL issues, it sends an automated email like this:
 
 ```
 "STO scan of sto-notification-example found the following issues:
@@ -244,7 +244,7 @@ pipeline:
                   spec:
                     to: john.smithh@myorg.org
                     cc: ""
-                    subject: "STO ALERT: Issues found in <+pipeline.name>"
+                    subject: "STO ALERT: Critical issues found in <+pipeline.name>"
                     body: |-
                       "STO scan of <+pipeline.name> found the following issues: <br> 
                        Critical : <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.CRITICAL> <br>
@@ -255,6 +255,9 @@ pipeline:
                        New Medium: <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_MEDIUM>  <br>
                        See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
                   timeout: 1d
+                  when:
+                    stageStatus: All
+                    condition: <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_CRITICAL> > 0 || <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.CRITICAL> > 0
               - step:
                   type: Policy
                   name: Policy_1

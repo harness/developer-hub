@@ -2870,23 +2870,22 @@ Due to a limitation in Entra ID, users with more than 150 groups might not be as
 
 You can check if this is the issue by using SAML tracer or capturing the SAML assertion during user sign-in. Look for an attribute called `groups.link`. If it exists, then the issue is confirmed.
 
-#### what is my org identifier
+#### What is my org identifier?
 
-To check org identifier, Navigate to Account Settings. select the Organizations option. Here, you will see a list of all the organizations in your account, along with their respective identifiers.
+To find your organiation identifier, go to **Account Settings**, and then select **Organizations**. All organizations in your account are listed along with their respective identifiers.
 
-#### I want to add another delegate_tag on top of existing. When i look at the delegates page, i dont see an edit option. why?
+#### I want to add another tag to an existing delegate, but I can't edit it from the Delegate page in Harness.
 
-Tags to a delegate can be added from delegate YAML, from UI adding of tag is not possible. After adding the tags into YAML, you will need to reapply the YAML.
+To add tags to existing delegates, you need to edit the delegate YAML and then reapply the delegate YAML.
 
-#### How many projects are there
+#### How can I tell how many projects I have?
 
-You can use [API](https://apidocs.harness.io/tag/Org-Project#operation/get-org-scoped-projects) to list number of projects under Org.
+You can use [List projects endpoint](https://apidocs.harness.io/tag/Org-Project/#operation/get-org-scoped-projects) to get a list of all projects under an organization.
 
-#### Getting harness-uHbXhYlQQ5uaJ81qoeA4FQ.sh: line 27: apt-get: command not found
+If your account has multiple organizations, you'll need to hit the endpoint for each org to get the total list of all projects across your account.
 
-As delegate image is UBI based, you can use Microdnf to install packages.
+#### I'm getting an apt-get command not found error when harness-ID.sh is running.
 
-#### Getting error you are missing the following permission: Create / Edit Pipelines
+<!-- this question isn't clear. What was the user doing when they got the error? Which module? Was this from a pipeline run or when trying to install the delegate? -->
 
-You need to check RBAC permission for the user, to check if user has appropriate permission to Create/Edit permission on pipeline.
-
+The `apt-get: command not found` error can occur because the delegate image is UBI-based. Try using Microdnf to install packages.

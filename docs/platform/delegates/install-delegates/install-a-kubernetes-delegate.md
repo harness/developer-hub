@@ -368,7 +368,7 @@ All delegates include proxy settings you can use to change how the delegate conn
 You can run scripts on delegate using `INIT_SCRIPT`. For example, if you wanted to install software on the delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the delegate YAML. A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688). For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
 
   ```
-  - name: INIT_SCRIPT  value: |-    echo install wget    apt-get install wget    echo wget installed
+  - name: INIT_SCRIPT  value: |-    echo install wget    microdnf install wget    echo wget installed
   ```
  
 #### POLL_FOR_TASKS 
