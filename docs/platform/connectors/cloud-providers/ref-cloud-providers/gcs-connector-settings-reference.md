@@ -140,7 +140,7 @@ Select the **Connect through Harness Delegate for OIDC** option to allow Harness
 
 :::warning
 
-Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. 
+Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. Feature is behind feature flag: `PL_GCP_OIDC_AUTHENTICATION`
 
 :::
 
