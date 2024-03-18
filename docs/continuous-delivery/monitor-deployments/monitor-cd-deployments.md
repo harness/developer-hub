@@ -185,7 +185,7 @@ You can view the configuration of the selected service in Visual and YAML view u
 
 ### Referenced by
 
-This tab list all pipelines that are using the selected service.  
+This tab lists all pipelines that are using the selected service.  
 
 
 ## Platform Dashboards
