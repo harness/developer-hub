@@ -56,7 +56,7 @@ Then [create your Harness SMP Account](/docs/self-managed-enterprise-edition/get
 Get familiar with terminology and functionality found in the Harness Platform and Harness modules.
 
 * [Harness Platform key concepts](/docs/platform/get-started/key-concepts)
-* [Navigation and user interface](/docs/get-started/harness-ui-overview.md)
+* [Navigation and user interface](/docs/platform/get-started/harness-ui-overview)
 * [Supported platforms and technologies](/docs/platform/platform-whats-supported)
 
 ## Create projects and invite collaborators

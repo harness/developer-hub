@@ -9,6 +9,8 @@ redirect_from:
 
 import select_modules from './static/select-modules-leftnav.png'
 import customize_left_nav from './static/configure-leftnav.png'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 You can interact with the Harness platform through the Harness UI. It is designed to be intuitive and easy to use, while also providing robust features and capabilities for managing software releases.
 
@@ -25,6 +27,8 @@ You can explore Harness through various dimensions:
 
 Currently, Harness navigation version 2.0 is behind the feature flag `CDS_NAV_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+While navigation 2.0 is in beta, you can select your profile to swap between navigation 1.0 and 2.0. Note that some links, such as pipeline or project links, aren't able to redirect between navigation 1.0 and 2.0.
+
 :::
 
 Harness navigation 2.0 brings an overhauled navigation experience that caters to different personas, addresses their unique needs, and ultimately reduces task completion time.
@@ -39,9 +43,10 @@ This video provides a walkthrough of the new navigation experience and highlight
 https://www.loom.com/share/776bbe67da47483598a07196aec3915f?sid=fda91036-713d-4201-a8b6-7cc44cd2e07f-->
 <DocVideo src="https://www.loom.com/share/776bbe67da47483598a07196aec3915f?sid=fda91036-713d-4201-a8b6-7cc44cd2e07f" />
 
-While navigation 2.0 is in beta, you can select your profile to swap between navigation 1.0 and 2.0. Note that some links, such as pipeline or project links, aren't able to redirect between navigation 1.0 and 2.0.
+The left navigation for version 2.0 includes the following options.
 
-### Scope
+<Tabs>
+<TabItem value="scope" label="Scope" default>
 
 Your [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) is given at the top of the left navigation. Select the scope (**Account**, **Organization**, or **Project**) to change your scope.
 
@@ -49,15 +54,24 @@ You can change scope levels entirely (or example, drill down from organization o
 
 The remainder of the left nav updates based on the selected scope.
 
-### Overview
+For example, at the account and project scope, the Overview summarizes recent activity in the account or project, but there is no overview at the Organization scope.
 
-At the account and project scope, the Overview summarizes recent activity in the account or project.
+</TabItem>
+<TabItem value="dashboards" label="Dashboards">
 
-### Pipelines and Executions
+To access Dashboard view, select the grid at the top of the left navigation, and then select **Dashboards**.
+
+Dashboard view streamlines the left navigation to focus on dashboards, minimizing modules and non-dashboard settings.
+
+To exit Dashboard view, select the grid again and then select either **Productivity View** or **Administrative Settings**.
+
+</TabItem>
+<TabItem value="pande" label="Pipelines and Executions">
 
 At the project scope, use the **Pipelines** and **Executions** links to explore all pipelines and the execution history for the project.
 
-### Modules
+</TabItem>
+<TabItem value="modules" label="Modules">
 
 Each scope reflects a list of modules used in or available to that account, organization, or project.
 
@@ -79,7 +93,8 @@ To quickly drill down into a module, select the grid at the top of the left navi
 
 :::
 
-### Organizations and Projects
+</TabItem>
+<TabItem value="oandp" label="Organizations and Projects">
 
 You can drill down to lower [organization and project](/docs/platform/organizations-and-projects/create-an-organization) scopes from higher scopes.
 
@@ -88,7 +103,8 @@ You can drill down to lower [organization and project](/docs/platform/organizati
 
 Visibility depends on your permissions.
 
-### Settings
+</TabItem>
+<TabItem value="settings" label="Settings">
 
 Each scope provides access to its respective scope-level settings: **Account Settings**, **Organization Settings**, and **Project Settings**.
 
@@ -114,11 +130,13 @@ This enables Admin Settings view, which focuses on account administration and mi
 
 :::
 
-### Help
+</TabItem>
+<TabItem value="help" label="Help">
 
 This section provides links to documentation, community, and support resources.
 
-### My Profile
+</TabItem>
+<TabItem value="profile" label="My Profile">
 
 You profile, indicated by an initial icon at the bottom of the left navigation, includes:
 
@@ -129,25 +147,25 @@ You profile, indicated by an initial icon at the bottom of the left navigation, 
 * Options to change your password or toggle 2FA.
 * Option to switch accounts if your email address is linked to multiple Harness accounts.
 
-### Dashboards
+</TabItem>
+</Tabs>
 
-To access Dashboard view, select the grid at the top of the left navigation, and then select **Dashboards**.
+## Harness legacy navigation version 1.0
 
-Dashboard view streamlines the left navigation to focus on dashboards, minimizing modules and non-dashboard settings.
+The left navigation for version 1.0 includes the following options.
 
-To exit Dashboard view, select the grid again and then select either **Productivity View** or **Administrative Settings**.
-
-## Legacy navigation (version 1.0)
-
-### Overview
-
-The Overview summarizes recent activity in the account, organization, or project.
-
-### Projects
+<Tabs>
+<TabItem value="project" label="Project" default>
 
 Explore [projects](/docs/platform/organizations-and-projects/create-an-organization) in your Harness account. Project visibility depends on your permissions.
 
-### Modules
+</TabItem>
+<TabItem value="dashboards1" label="Dashboards">
+
+Explore dashboards relevant to your account and modules.
+
+</TabItem>
+<TabItem value="modules1" label="Modules">
 
 Modules are labeled by their icon and primary functionality:
 
@@ -161,15 +179,8 @@ Modules are labeled by their icon and primary functionality:
 * **Chaos:** [Chaos Engineering](/docs/chaos-engineering)
 * **Error Tracking:** [Continuous Error Tracking](/docs/continuous-error-tracking)
 
-### Help
-
-This section provides links to documentation, community, and support resources.
-
-### Dashboards
-
-Explore dashboards relevant to your account and modules.
-
-### Account settings
+</TabItem>
+<TabItem value="accountsettings" label="Account Settings">
 
 Account settings include:
 
@@ -184,7 +195,13 @@ Account settings include:
 
 Additional options may be present depending on your module usage and access.
 
-### My Profile
+</TabItem>
+<TabItem value="help1" label="Help">
+
+This section provides links to documentation, community, and support resources.
+
+</TabItem>
+<TabItem value="profile1" label="My Profile">
 
 You profile, indicated by an initial icon at the bottom of the left navigation, includes:
 
@@ -195,11 +212,17 @@ You profile, indicated by an initial icon at the bottom of the left navigation, 
 * Options to change your password or toggle 2FA.
 * Option to switch accounts if your email address is linked to multiple Harness accounts.
 
+</TabItem>
+</Tabs>
+
 ## Customize navigation
 
 You can show or hide modules according to your preferences.
 
-To do this in legacy navigation (1.0):
+<Tabs>
+<TabItem value="legacy" label="Navigation 1.0" default>
+
+To customize your navigation in legacy navigation (1.0):
 
 1. Below the list of modules in the left navigation, select the **Select Modules** grid icon.
 
@@ -212,7 +235,8 @@ To do this in legacy navigation (1.0):
 3. To show or hide a module on the left nav, select or deselect the checkbox next to the module name.
 4. To rearrange the order of the modules, drag and drop the modules.
 5. Harness automatically saves your changes. Select the **X** in the upper right corner to exit navigation configuration.
-
+</TabItem>
+<TabItem value="new" label="Navigation 2.0">
 
 To customize navigation in navigation 2.0:
 
@@ -221,3 +245,6 @@ To customize navigation in navigation 2.0:
 3. To show or hide a module on the left nav, select or deselect the checkbox next to the module name.
 4. To rearrange the order of the modules, drag and drop the modules.
 5. Harness automatically saves your changes. Select the **X** in the upper right corner to exit navigation configuration.
+
+</TabItem>
+</Tabs>

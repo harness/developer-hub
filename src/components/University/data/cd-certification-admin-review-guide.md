@@ -38,8 +38,8 @@
 | Implementing deployment halts or restrictions | [Freeze deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)  |
 | Managing stability during critical times  | [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/)|
 | **12. Harness UI and UX Proficiency** ||
-| Navigating and utilizing Harness UI for configurations | [Harness UI Overview](https://developer.harness.io/docs/get-started/harness-ui-overview/) |
-| Efficiently locating and modifying configurations within the UI| [Account Settings](https://developer.harness.io/docs/get-started/harness-ui-overview/#account-settings)|
+| Navigating and utilizing Harness UI for configurations | [Harness UI Overview](https://developer.harness.io/docs/platform/get-started/harness-ui-overview) |
+| Efficiently locating and modifying configurations within the UI| [Account Settings](https://developer.harness.io/docs/platform/get-started/harness-ui-overview)|
 | **13. Custom and Advanced Deployment Strategies**  |  |
 | Creating and managing custom deployment strategies| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/) |
 | Handling deployment to various infrastructure types| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/)|
