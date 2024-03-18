@@ -116,6 +116,14 @@ Even if your base pipeline YAML is only a few kilobytes, if the pipeline pulls i
 
 Exceeding this limit produces an [error message](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#the-incoming-yaml-document-exceeds-the-limit-3145728-code-points).
 
+### Queue Limit on Concurrent Stage Processing
+
+**Queue Limitation on Concurrent Stage Processing (Maximum of 20 Executions)**
+
+When a certain number of stages are concurrently running, delays may occur due to limited resources. If this number surpasses a predefined limit, typically around 20, additional stages will begin to fail.
+
+For example, If you are running more than 20 stages concurrently, with each stage taking approximately 8 hours to complete, resource constraints will block others for the same duration, causing them to queue up. However, after 20 executions, failures will begin to occur.
+
 ## Individual pipeline and module-specific pipeline settings
 
 For individual pipeline settings, such as stage and step settings, pipeline triggers, and so on, go to the documentation for the topic of your choice. For example:
