@@ -125,7 +125,7 @@ This video describes the Harness Delegate and GitOps Agent Strategy.
 
 ## Connectors
 
-[Harness connectors](/docs/category/connector) contain the information necessary to integrate and work with 3rd party tools. For example, a GitHub connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy stage in a pipeline.
+[Harness connectors](/docs/category/connectors) contain the information necessary to integrate and work with 3rd party tools. For example, a GitHub connector authenticates with a GitHub account and repo and fetches files as part of a build or deploy stage in a pipeline.
 
 Harness offers many types of connectors, including:
 
