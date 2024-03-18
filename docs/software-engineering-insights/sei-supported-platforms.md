@@ -48,11 +48,11 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_JIRA</td>
-        <td>Enables access to the new user experience for connecting to Jira Cloud & Data Center using the Jira Connect App</td>
+        <td>Enables access to the new user experience for connecting to Jira Cloud & Data Center using the <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding#configure-the-integration-using-the-jira-connect-app">Jira Connect App</a></td>
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_GITHUB</td>
-        <td>Enables access to the new user experience for connecting to Github Cloud and Enterprise using the GitHub App</td>
+        <td>Enables access to the new user experience for connecting to Github Cloud and Enterprise using the <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app"> GitHub App </a></td>
     </tr>
     <tr>
         <td>SEI_SHOULD_ENABLE_REAUTH</td>
