@@ -120,7 +120,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with CLI arguments such as:
+You can run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with flags such as:
 
 `--no-ignore --sbom=/path/to/your/sbom.json`
 

@@ -202,19 +202,15 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can run the [`trivy image`](https://aquasecurity.github.io/trivy/v0.49/docs/target/container_image/) scanner with CLI arguments such as:
+You can run the [`trivy image`](https://aquasecurity.github.io/trivy/v0.49/docs/target/container_image/) scanner with flags such as:
 
-    * `--scanners misconfig jsmith/my-image-with-iac-files` 
-    
-       Detect Infrastructure-as-Code misconfigurations in the specified image.
-      
-    * `--platform=linux/arm jsmith/my-image` 
-    
-       Scan the image on a specific platform.
+`--platform=linux/arm alpine:3.16.1 --scanners vuln`
+
+With these flags, `trivy image` loads the image on an ARM machine and scans it for vulnerabilities only. 
 
 :::caution
 
-STO supports passing CLI arguments to Aqua Trivy but  does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Aqua Trivy.
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
 
 :::
 

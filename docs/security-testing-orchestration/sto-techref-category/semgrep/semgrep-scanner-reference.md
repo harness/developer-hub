@@ -122,19 +122,15 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with CLI arguments such as:
+You can run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with flags such as:
 
-    * `--exclude=GLOB_PATTERN`
-      
-      Skip any file or directory that matches this pattern.
+`--severity=ERROR --use-git-ignore`
 
-    * `--experimental`
-           
-      Enable experimental features.
+With these flags, `semgrep` considers only ERROR severity rules and ignores files included in `.gitignore`. 
 
 :::caution
 
-STO supports passing CLI arguments to Semgrep but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Semgrep.
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
 
 :::
 

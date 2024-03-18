@@ -212,15 +212,13 @@ import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref
 
 You can run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) with CLI arguments such as:
 
-* `--scanners misconfig jsmith/my-image-with-iac-files`
-	
-* `--platform=linux/arm jsmith/my-image`
+`--only-fixed`
 
-* `--only-fixed`
+With this flag, `grype` reports only vulnerabilities that have known fixes. 
 
 :::caution
 
-STO supports passing CLI arguments to Grype but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of Grype.
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
 
 :::
 
