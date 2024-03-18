@@ -416,7 +416,14 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 </TabItem>
 </Tabs>
 
-:::tip delegate selectors
+<details>
+<summary>Early access feature: Delegate selectors with self-managed VM build infrastructures</summary>
+
+:::note
+
+Currently, delegate selectors for self-managed VM build infrastructures is behind the feature flag `CI_ENABLE_VM_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Although you must install a delegate to use a self-managed VM build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
@@ -433,7 +440,11 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 <details>
 <summary>Early access feature: Use delegate selectors for codebase tasks</summary>
 
+:::note
+
 Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
 
@@ -441,7 +452,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 </details>
 
-:::
+</details>
 
 ## Troubleshoot AWS VM build infrastructure
 
