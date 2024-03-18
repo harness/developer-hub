@@ -504,13 +504,17 @@ With Harness CI, you can split tests for any language or tool. Here are some exa
                       go install github.com/jstemmer/go-junit-report/v2@latest
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
-                      FILES=`/addon/bin/split_tests --file-path "SUITES.txt" --split-by testsuite_timing \
+
+                      go list ./... > test_suites.txt
+
+                      SUITES=`split_tests --verbose --split-by testsuite_timing --file-path test_suites.txt` \
                          --split-index ${HARNESS_NODE_INDEX} \
                          --split-total ${HARNESS_NODE_TOTAL}`
-                      echo $FILES
 
-                      # Use the test files list as input and produce results in JUnit XML format.
-                      go test -v $FILES | tee report_<+strategy.iteration>.out
+                      echo $SUITES
+
+                      # Use the test suites list as input and produce results in JUnit XML format.
+                      go test -v $SUITES | tee report_<+strategy.iteration>.out
                       cat report_<+strategy.iteration>.out | $HOME/go/bin/go-junit-report -set-exit-code > report_<+strategy.iteration>.xml
 
                     reports:
