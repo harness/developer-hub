@@ -433,7 +433,8 @@ Currently, this feature is behind the feature flag `CDS_SUPPORT_DIFFERENT_INFRA_
 
 :::note Limitation
 
-Harness doesn't support nested propagation. For example, if Stage 2 is propagated from Stage 1, you cannot propagate Stage 3 from Stage 2.
+* Harness doesn't support nested propagation. For example, if Stage 2 is propagated from Stage 1, you cannot propagate Stage 3 from Stage 2.
+* This feature is not supported when deploying to multiple environments or infrastructures.
 
 :::  
 
