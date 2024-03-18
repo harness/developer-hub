@@ -4,7 +4,7 @@ description: CCM SaaS Architecture
 sidebar_label: CCM SaaS Architecture
 ---
 
-![](./static/CCM_SaaS_Architecture.png)
+<DocImage path={require('./static/CCM_SaaS_Architecture.png')} width="90%" height="90%" title="Click to view full size image" />
 
 In this high-level overview of the CCM SaaS infrastructure, we delve into the inner workings of CCM as it performs crucial operations for cloud cost visibility and optimization across popular platforms such as K8S, AWS, GCP, and Azure.
 

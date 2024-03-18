@@ -937,7 +937,7 @@ execution:
 
 ### Rollbacks
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically.
 
 The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
 

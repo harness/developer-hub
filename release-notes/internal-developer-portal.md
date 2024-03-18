@@ -6,7 +6,7 @@ date: 2023-08-09T10:00:15
 sidebar_position: 12
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/internal-developer-portal/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
@@ -17,6 +17,58 @@ Review the notes below for details about recent changes to Harness Internal Deve
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 2024
+
+### Version 0.23.0
+
+<!-- Mar 11, 2024 -->
+
+Continuing with the increased adoption of self-service flows, this release we're happy to introduce an intuitive minimalistic UI for the workflows page along with support for output variables on workflows page, to streamline user experiences seamlessly.
+
+- **Blogs:** [Why Harness IDP, powered by Backstage, is Your Gateway to Effortless Developer Portal Excellence](https://www.harness.io/blog/why-harness-idp-powered-by-backstage-is-your-gateway-to-effortless-developer-portal-excellence)
+
+- **New Docs:** [Custom Card Plugin](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-card), [Catalog Entity YAML Examples](https://developer.harness.io/docs/internal-developer-portal/catalog/yaml-file)
+
+- **New Videos:** [Custom Card Plugin](https://youtu.be/Qi1PIWSPves), [Workflow Upgrades](https://youtu.be/aethqdKmZOo)
+
+#### New features and enhancements
+
+- Now we have a [new UI](https://youtu.be/aethqdKmZOo) for the Workflows page, as part of the Backstage Upgrades. [IDP-2355]
+
+![](./static/new-template.png)
+
+- We have added a new custom processor to convert the email-id used under `owner` field in `catalog-info.yaml` to an `user` incase the username is part of the email-id. [IDP-2369]
+
+- We have added a new [Custom Card Plugin](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-card) to help users display the information, stored under the root fields of `catalog-info.yaml`, on a card in the overview tab. [IDP-2352]
+
+- We have added a new [Evaluate expression](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) datapoint under the Catalog datasource to match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the supported values under the root field. [IDP-2111]
+
+- Now you can configure the output of `trigger:harness-custom-pipeline` to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below: [IDP-2328]
+
+```YAML
+...
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}` 
+...
+```
+There are two ways in which you can add the output variable to the template syntax. 
+
+1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
+
+2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs. 
+
+![](./static/output-variables.png)
+
+#### Bug Fixes
+
+- Fixed the issue with missing labelSelector annotation resulting in scorecards checks failure message not getting displayed for some k8s related checks. [IDP-2270] 
 
 ## February 2024
 
@@ -313,7 +365,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
 
 #### New features and enhancements
 

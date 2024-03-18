@@ -1,0 +1,19 @@
+# CPU hog in the Windows VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-cpu-stress
+spec:
+  infraType: "windows"
+  steps:
+    - - name: windows-cpu-stress
+  tasks:
+    - name: windows-cpu-stress
+      infraId: ""
+      definition:
+        chaos:
+          fault: windows-cpu-stress
+          env:
+           # CPU cores for stress
+            - name: CPU_PERCENTAGE 
+              value: '50'

@@ -4,7 +4,8 @@ description: AutoStopping for GCP VMs and Instance Groups
 sidebar_label: AutoStopping for GCP VMs and Instance Groups
 ---
 
-![](./static/AutoStopping_for_GCP_VMs_and_Instance_Groups.png)
+
+<DocImage path={require('./static/AutoStopping_for_GCP_VMs_and_Instance_Groups.png')} width="90%" height="90%" title="Click to view full size image" />
 
 This diagram illustrates how various computer services collaborate to implement an **AutoStopping feature** for Google Cloud Platform (GCP) virtual machines (VMs) and Instance Groups. The process involves deploying **custom Envoy-based proxy components** within the customer's infrastructure to facilitate seamless cooperation.
 
