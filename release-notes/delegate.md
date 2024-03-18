@@ -71,6 +71,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
+### Version 24.03.82505 <!--  March 18, 2024 -->
+
+#### Hotfix
+
+- Support for `ap-south-2` AWS region for AWS secret manager. (CDS-92541)
+
 ### Harness version 1.28.11, Harness Delegate version 24.03.82502 <!--  March 13, 2024 -->
 
 #### New features and enhancements
