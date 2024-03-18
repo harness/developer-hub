@@ -385,31 +385,46 @@ NAME = <+pipeline.name>
 if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
 
-### Variable names across the pipeline
+### Variable name uniqueness
 
-Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+<!-- This seems like it's missing information. You couldn't have two pipeline variables or account variables with the same name either? And I think you could have a stage variable and pipeline variable with the same names, but the expression reference would differentiate their scope, eg. https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables-in-a-pipeline ?? -->
 
-### Hyphens in variable names
+When defining variables at the stage level, variable names must be unique within that stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
-Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them. Also, hyphens (dashes) in variable names can cause issues with headers.
+### Avoid hyphens in variable names
 
-For example, `<+execution.steps.httpstep.spec.headers.x-auth>` will not work.
+Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
 
-As a workaround, you can put the variable name in `["..."]`. For example, `<+execution.steps.httpstep.spec.headers["x-auth"]>`
+For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`.
 
-This also works for nested expressions. For example:
+If you must reference a variable name that has a hyphen, such as `x-auth`, you can wrap the variable name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
 
-`<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>`
+This also works for nested expressions, such as:
 
-`<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>`
+```
+<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>
+<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>
+```
 
-### Variable expression name restrictions
+When referencing your [custom variables](./add-a-variable.md), you need to use the `get()` method, as explained in [Special characters in custom variables can required escaping or additional handling](#special-characters-in-custom-variables-can-require-escaping-or-additional-handling).
 
-Expressions can contain variable names, such as `foo` in `<+stage.variables.foo>`.
+### Special characters in custom variables can require escaping or additional handling
 
-Variable names can contain the following characters: lowecase and uppercase letter A through Z, numbers 0 through 9, underscores (`_`), periods (`.`), hyphens (`-`), and dollar signs (`$`). Variable names must start with a letter or underscore.
+When you [add a variable](./add-a-variable.md), note the following restrictions and considerations for variable names:
 
-To reference your variables that include a period or hyphen in the name, you must wrap the variable name in quotes and call it with `get()`, such as `.get("some-var")`. Here are some additional examples of this format:
+* Variable names must start with a letter or underscore (`_`).
+* Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`).
+* Variable names can't contain [reserved words](#reserved-words).
+* Periods and hyphens require [additional escaping](#use-get-for-custom-variable-names-with-hyphens-and-periods) when referencing those variable names in Harness expressions, such as `foo` in `<+stage.variables.foo>`. This handling is explained below.
+* Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
+
+#### Use get() for custom variable names with hyphens and periods
+
+Harness recommends [avoiding hyphens in variable names](#avoid-hyphens-in-variable-names).
+
+However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
+
+For example:
 
 ```
 <+pipeline.variables.get("pipeline-var")>
@@ -418,13 +433,33 @@ To reference your variables that include a period or hyphen in the name, you mus
 <+pipeline.stages.custom.variables.get("stage.var")>
 ```
 
-In addition to the Harness Platform variable naming restrictions, certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
+This handling is also required for [matrix dimension names](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) with hyphens.
 
 ### Reserved words
 
 The following keywords are reserved, and cannot be used as a variable name or property.
 
-`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner class`
+```
+or
+and
+eq
+ne
+lt
+gt
+le
+ge
+div
+mod
+not
+null
+true
+false
+new
+var
+return
+shellScriptProvisioner
+class
+```
 
 For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
 
