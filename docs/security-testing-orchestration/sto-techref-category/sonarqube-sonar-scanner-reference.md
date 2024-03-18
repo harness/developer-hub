@@ -79,29 +79,33 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 ### Target
 
-#### Type
 
+#### Type
 
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
-
 <StoSettingScanTypeRepo />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
@@ -226,10 +230,24 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 #### Additional CLI flags
 
 
-You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. The following flag increases the timeout window: `-sonar.ws.timeout 300`
+You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
-<a name="fail-on-severity"></a>
+* `-sonar.ws.timeout 300` Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
 
+* `-Dsonar.projectVersion=<version_number>` The project version to scan
+
+* `-Dsonar.test.exclusions=**src/test/**/*.*` The test files to include from the scan
+
+##### YAML example
+
+```yaml
+              - step:
+                  type: Sonarqube
+                  spec:
+                    advanced:
+                      args:
+                        cli: "-Dsonar.projectVersion=1.2.3"
+```
 
 #### Fail on Severity
 
@@ -260,11 +278,62 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+## SonarQube pull-request scan configuration
+
+To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
+    - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
+    - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
+    - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
+
+      If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
+
+<details>
+<summary>YAML configuration example</summary>
+
+```yaml
+              - step:
+                  type: Sonarqube
+                  # ...
+                  spec:
+                    mode: orchestration
+                    config: default
+                    # ...
+                    advanced:
+                      log:
+                        level: debug
+                      args:
+                        cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
+                    # ...
+```
+
+</details>
+
+## Troubleshoot Sonar Scans
+
+### Can't generate SonarQube report due to shallow clone
+
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
+* Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Solution: Change the `depth` to `0`.
+
+### Add the sonar.projectVersion to a Harness pipeline
+
+In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
+
+### SonarQube doesn't scanning the main branch and pull request branches in the same pipeline
+
+If SonarQube isn't scanning both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube.
+
+One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
+
+This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
+
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for SonarQube scans in STO (legacy)
 
@@ -277,9 +346,7 @@ You can set up SonarQube scans using a Security step, but this is a legacy funct
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-
 <StoDinDRequirements />
-
 
 #### Scan modes
 
@@ -330,3 +397,5 @@ Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-tok
 * `product_exclude` — If you want to exclude some files from a scan, you can use this setting to configure the `sonar.exclusions` in your SonarQube project. For more information, go to [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
 * `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 * `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
+
+-->

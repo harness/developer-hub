@@ -85,8 +85,8 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## View artifacts on the Artifacts tab
 
@@ -221,7 +221,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted">
+  <TabItem value="k8s" label="Self-managed">
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces test reports, uploads the reports to GCS, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 

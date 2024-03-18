@@ -1,27 +1,28 @@
 ---
 title: Writing expressions using any JSON parser tool
 description: Learn about the enhanced expressions experience using any JSON parser tool.
-sidebar_position: 4
+sidebar_position: 6
 ---
 
-To provide you with the best experience when using expressions, Harness has introduced support for writing expressions by using any JSON parser tool. With this enhancement, Harness effectively addresses customer concerns and provides a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower you to have greater control and customization capabilities in your evaluation processes.
+To provide you with the best experience when using expressions, Harness supports writing expressions by using any JSON parser tool. This provides a more user-friendly and adaptable expression engine that increases productivity and empowers you to have greater control and customization capabilities for expressions.
 
-The key enhancements are as follows:
+Key features of this enhancement include:
 
-* **Enhanced expression discovery**: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better, and thereby reduce reliance on external support.
-* **Comprehensive execution JSON**: You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. This lets you analyze and troubleshoot workflows effectively and extract the required information easily.
-* **Flexible JSON parsing**: You can utilize any JSON parsing tool of your choice. This gives you the freedom to parse the execution JSON based on your preferred methods and extract the necessary information as per your requirements.
-* **JEXL script support**: This enhancement enables you to leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can now write complex expressions and customize the evaluation process to meet specific needs.
+* **Enhanced expression discovery:** You can independently determine the expressions associated with a specific step, helping you explore and understand your Harness pipeline ecosystem better.
+* **Comprehensive execution JSON:** You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. You can analyze and troubleshoot workflows effectively and extract the required information easily.
+   * Step inputs or parameters larger than 4 KB aren't included in expanded JSON. This is to safeguard your system.
+* **Flexible JSON parsing:** You can use any JSON parsing tool, giving you the freedom to parse the execution JSON based on your preferred methods and extract the necessary information as per your requirements.
+* **JEXL script support:** You can leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can write complex expressions and customize the evaluation process to meet specific needs.
 
-## Limitations
+:::info
 
-* If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
-* Harness uses the greater than sign (`>`) to terminate expressions. To avoid ambiguous results, make sure that your scripts do not include a greater than sign. 
+The Harness expression delimiter (`<+...>`) uses the greater-than sign (`>`) to terminate expressions. To avoid ambiguous results, make sure that your scripts don't include a greater than sign.
 
+:::
 
-## Obtaining the execution JSON
+## Obtain the execution JSON
 
-You can now obtain an execution JSON for all stages or individual steps of your pipeline. 
+You can now obtain an execution JSON for all stages or individual steps of your pipeline.
 
 To access the JSON, you must enable the **Enable JSON Support for expressions** setting first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. 
 
@@ -612,7 +613,7 @@ Use the `function` keyword in JEXL to define functions. For example, the followi
 }
    var keyName = "keyName";
    identityFunction(keyName);
-   
+
 >
 ```
 

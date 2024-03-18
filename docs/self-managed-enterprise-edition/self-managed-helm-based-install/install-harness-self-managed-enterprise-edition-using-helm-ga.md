@@ -16,6 +16,17 @@ This document explains how to use Helm to install, upgrade, or uninstall Harness
 
 Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
+## Helm client version compatibility
+
+Harness validates Helm client compatibility against the following versions:
+
+- 3.9.4
+- 3.10.3
+- 3.11.3
+- 3.12.3
+- 3.13.3
+- 3.14.2 
+
 :::info note
 You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
 :::
@@ -224,6 +235,6 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Integration, go to the [CI key concepts](../../continuous-integration/get-started/key-concepts.md).
 * For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
-* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).
-* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition/).
-* For Harness Continuous Error Tracking, go to the [CET tutorials](/tutorials/error-tracking/).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-hce).
+* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+* For Harness Continuous Error Tracking, go to the [CET onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).

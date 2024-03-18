@@ -30,7 +30,7 @@ Harness CI supports `DRONE_` environment variables. For more information, go to 
 | AWS ECS Deploy | Update an ECS service. The plugin is a wrapper for `ecs-deploy`. It takes the current task definition of a service and changes the image. All configuration stays the same. You can also use [Harness CD](/docs/continuous-delivery) for deployments. | [drone-ecs-deploy](https://github.com/joshdvir/drone-ecs-deploy) | joshdvir/drone-ecs-deploy |
 | AWS Elastic Beanstalk | Deploy an app to a Beanstalk environment. | [drone-elastic-beanstalk](https://github.com/josmo/drone-elastic-beanstalk) | pelotech/drone-elastic-beanstalk |
 | AWS Lambda | Deploy a serverless function to AWS Lambda from a zip file located in an S3 bucket. This plugin doesn't create or upload the zip file. | [drone-lambda-plugin](https://github.com/omerxx/drone-lambda-plugin) | omerxx/drone-lambda-plugin |
-| AWS RDS Snapper | Clean up a specific RDS instance's snapshots, keep a specified number of copies, and create new snapshots | [rds-snapper](https://github.com/honestbee/devops-tools/tree/master/rds-snapper) | [honestbee/rds-snapper](http://quay.io/honestbee/rds-snapper) |
+| AWS RDS Snapper | Clean up a specific RDS instance's snapshots, keep a specified number of copies, and create new snapshots | rds-snapper | [honestbee/rds-snapper](http://quay.io/honestbee/rds-snapper) |
 | AWS S3 Cache | Cache files and directories to S3 storage to preserve them between builds. You can also use the built-in [Save and Restore Cache from S3 steps](../caching-ci-data/saving-cache.md). | [drone-s3-cache](https://github.com/drone-plugins/drone-s3-cache) | plugins/s3-cache |
 | AWS S3 Sync | Synchronize files and build artifacts in a source directory with a destination directory. Directories can be local or in S3. | [drone-s3-sync](https://github.com/drone-plugins/drone-s3-sync) | plugins/s3-sync |
 | AWS S3 Upload and Publish | [Upload artifacts to S3 and publish the artifact URL on the Artifacts tab.](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md#use-the-s3-upload-and-publish-plugin) | [drone-s3-upload-publish](https://github.com/harness-community/drone-s3-upload-publish) | harnesscommunity/drone-s3-upload-publish |
@@ -63,7 +63,7 @@ Harness CI has built-in support for [building and pushing artifacts and images](
 | Jenkins | Trigger Jenkins jobs. | [drone-jenkins](https://github.com/appleboy/drone-jenkins) | appleboy/drone-jenkins |
 | Load and Store | Build and push images to a Docker registry. This is useful when you can't use the [built-in Build and Push to Docker step](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md), such as when building Docker images with nix, which produces a Docker image archive. | [drone-load-and-store](https://github.com/allgreed/drone-load-and-store) | allgreed/drone-load-and-store |
 | Manifest | Push manifests for [multi-architecture Docker images](../build-and-upload-artifacts/build-multi-arch.md). | [drone-manifest](https://github.com/drone-plugins/drone-manifest) | plugins/manifest |
-| Marathon | Deploy apps to a Marathon server. | [drone-marathon](https://github.com/expansioncap/drone-marathon) | e20co/drone-marathon |
+| Marathon | Deploy apps to a Marathon server. | drone-marathon | e20co/drone-marathon |
 | Netlify | Deploy your build to Netlify. | [drone-netlify](https://github.com/lucaperret/drone-netlify) | https://github.com/lucaperret/drone-netlify |
 | Nexus Publish | [Upload Artifacts to Sonatype Nexus.](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md) | [drone-nexus-publish](https://github.com/harness-community/drone-nexus-publish) | harnesscommunity/nexus-publish |
 | Nomad | Deploy services from a Nomad template file. | [drone-nomad](https://github.com/loq9/drone-nomad) | loq9/drone-nomad |
@@ -118,6 +118,7 @@ These plugins are in addition to Harness CI's [built-in codebase and SCM integra
 
 | Plugin | Use | Source | Image |
 | ------ | --- | ------ | ----- |
+| GCP OIDC Token | [Generate a Google access token from your OIDC token](../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc](https://github.com/harness-community/drone-gcp-oidc) | plugins/gcp-oidc |
 | Google Chat | Post build status messages to your organization's Google Chat. | [drone-google-chat](https://github.com/josmo/drone-google-chat) | pelotech/drone-google-chat |
 | Google Cloud Functions | Deploy, list, and delete Google Cloud Functions. | [drone-gcf](https://github.com/oliver006/drone-gcf) | oliver006/drone-gcf |
 | Google Cloud Storage Cache | Preserve files and directories between builds. You can also use the built-in [Save and Restore Cache from GCS steps](../caching-ci-data/save-cache-in-gcs.md). | [drone-gcs-cache](https://github.com/hvalle/drone-gcs-cache) | homerovalle/drone-gcs-cache |
@@ -163,6 +164,10 @@ In addition to Harness CI's built-in [troubleshooting tools](/docs/continuous-in
 | Grafana Annotation | Create an annotation in [Grafana](https://grafana.com). | [drone-grafana-annotation](https://github.com/fdeschenes/drone-grafana-annotation) | fdeschenes/drone-grafana-annotation |
 | Newrelic Deployment | Report/log deployments to a Newrelic dashboard. | [newrelic-deployment](https://github.com/cityfurniture/newrelic-deployment) | cityfurniture/drone-newrelic-deployment |
 
+## Plugins for MLOps
+
+For information about MLOps plugins, go to [MLOps in Harness](/docs/continuous-integration/development-guides/mlops/mlops-overview).
+
 ## Plugins for notifications and chat
 
 Harness offers built-in support for [notifications](/docs/category/notifications), in addition to these plugins.
@@ -195,13 +200,12 @@ Harness offers built-in support for [notifications](/docs/category/notifications
 
 These plugins are useful for security-related tasks, such as authentication or scanning. For more information about security features available in Harness CI, go to [Security hardening for Harness CI](/docs/continuous-integration/secure-ci/security-hardening).
 
-<!-- Temporarily hidden for further development: GCP OIDC - [Generate a Google access token from your OIDC token]  (../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc] (https://github.com/harness-community/drone-gcp-oidc) plugins/gcp-oidc -->
-
 | Plugin | Use | Source | Image |
 | ------ | --- | ------ | ----- |
 | Cloudflare Caching | Use Cloudflare's API to purge cache. | [drone-cloudflare-caching](https://github.com/jetrails/drone-cloudflare-caching) | jetrails/drone-cloudflare-caching |
 | Cloudflare DNS | Use Cloudflare's API to create/update/delete DNS records. | [drone-cloudflare-dns](https://github.com/jetrails/drone-cloudflare-dns) | jetrails/drone-cloudflare-dns |
 | DCO | Enforce Developer Certificate of Origin. | [drone-plugin-dco](https://git.madhouse-project.org/algernon/drone-plugin-dco) | algernon/drone-plugin-dco |
+| GCP OIDC Token | [Generate a Google access token from your OIDC token](../../secure-ci/gcp-oidc-token-plugin.md) | [drone-gcp-oidc](https://github.com/harness-community/drone-gcp-oidc) | plugins/gcp-oidc |
 | GPG Sign | Sign your artifacts and build results with [GnuPG](https://www.gnupg.org/). | [drone-gpgsign](https://github.com/drone-plugins/drone-gpgsign) | plugins/gpgsign |
 | Maven Auth | Generate `settings.xml` with server authentication for a Maven repository. | [drone-mvn-auth](https://github.com/robertstettner/drone-mvn-auth) | robertstettner/drone-mvn-auth |
 | NPM Auth | Generate a `.npmrc` file locally to authenticate against any public/private NPM repository. | [drone-npm-auth](https://github.com/robertstettner/drone-npm-auth) | robertstettner/drone-npm-auth |
@@ -248,7 +252,7 @@ These plugins are used by built-in Harness CI steps. You don't need to run them 
 | Azure Container Registry | Harness uses this plugin to [build and push images to ACR](../build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md). | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/acr |
 | Artifactory | Harness uses a similar plugin to [upload artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md). | [drone-artifactory](https://github.com/athieriot/drone-artifactory) | athieriot/drone-artifactory |
 | Bitrise | With Harness Cloud build infrastructure, you can run Bitrise integrations in the built-in [Bitrise step](./ci-bitrise-plugin.md). | N/A | N/A |
-| Cache | Harness uses this plugin for [caching](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/#use-caching-to-reduce-build-time) | [drone-meltwater-cache](https://github.com/drone-plugins/drone-meltwater-cache) | plugins/cache |
+| Cache | Harness uses this plugin for [caching](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/#use-caching-to-reduce-build-time). | [drone-meltwater-cache](https://github.com/drone-plugins/drone-meltwater-cache) | plugins/cache |
 | Docker | Harness uses this plugin to [build and push images to Docker registries](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md). | [drone-docker](https://github.com/drone-plugins/drone-docker) | plugins/docker |
 | Git | Harness uses this plugin image to clone a pipeline's [default codebase](../codebase-configuration/create-and-configure-a-codebase.md). You can also use it to [clone a git repository](../codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) into your stage workspace. | [drone-git](https://github.com/drone/drone-git) | drone/drone-git |
 | GitHub Actions | Harness uses this for the built-in [GitHub Actions Plugin step](./ci-github-action-step.md). | [github-actions](https://github.com/drone-plugins/github-actions). You can also run it separately in a Plugin step. | plugins/github-actions |

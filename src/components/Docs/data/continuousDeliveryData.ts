@@ -6,23 +6,7 @@ import {
 import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
-export const featuredTutorials: CardItem[] = []
-/* Uncomment if you want to show the Featured Tutorials section -->
-// Featured Tutorials
-export const featuredTutorials: CardItem[] = [
-    {
-      title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
-      module: MODULES.cd,
-      icon: "img/icon_cd.svg",
-      description: "Get started with Harness GitOps for Argo CD.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "8min",
-      link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-    },
-  ];
-  */
-  
+
   // Docs
   export const docsCards: CardSections = [
     {
@@ -51,13 +35,6 @@ export const featuredTutorials: CardItem[] = [
               description:
                 "",
               link: "/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview",
-            },
-            {
-              title: "Create your first CD pipeline",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/tutorials/cd-pipelines/kubernetes/manifest",
             },
             {
               title: "Integrate CD with other Harness modules",

@@ -76,9 +76,9 @@ Harness services allows you to identify artifacts using their metadata. At deplo
 
 Let's review the differences between the copy artifact/config and download commands.
 
-- **Download:** At deployment runtime, the Harness delegate executes commands on the target host(s) to download the artifact directly to the target host(s).
+- **Download:** At deployment runtime, the Harness Delegate executes commands on the target host(s) to download the artifact directly to the target host(s).
   The delegate must have access to the target host(s) and the target host(s) must have network connectivity to the artifact server.
-- **Copy:** During deployment runtime, Harness uses the metadata to download the artifact to the Harness delegate. The delegate then copies the artifact to the target host(s).
+- **Copy:** During deployment runtime, Harness uses the metadata to download the artifact to the Harness Delegate. The delegate then copies the artifact to the target host(s).
 
 The delegate must have network connectivity to the artifact server and target hosts.
 
@@ -93,7 +93,7 @@ The Command step can be added to SSH, WinRM, and deployment template deployment 
 1. In the stage **Execution**, select **Add Step**.
 2. Select **Command**.
 3. In **Name**, enter a name for the command.
-4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 5. In **Run the following commands**, select **Add Command**.
 
    ![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-08.png)

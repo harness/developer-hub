@@ -49,11 +49,11 @@ If you're running DAST scans of a large website, and these scans are taking too 
 1. Create a copy of the website's sitemap. 
 2. Strip out all irrelevant pages from the sitemap copy and save it in the code repository of your website. 
     1. Go to your pipeline and open the ZAP scan step. 
-    2. Set the [**Scan Configuration**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) to **Quick**. With this mode enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
+    2. Set the [**Scan Configuration**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) to **Quick**. With this mode enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
        ![](./static/zap-quick-scan.png)    
     
-    3. Set the [**Path**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#path) to the location of the sitemap you added to the website.
+    3. Set the [**Path**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#path) to the location of the sitemap you added to the website.
 
        ![](./static/sitemap-copy-in-zap-step.png)
 
@@ -69,4 +69,4 @@ Make sure that the **Log Level** setting in your scanner is not set to **Debug**
 
 <!-- https://harness.atlassian.net/browse/STO-6171 -->
 
-You might find that STO scans run slower than expected when you're running STO in Harness Self-Managed Platform. This issue has been observed when the Harness delegate and Harness server are running in the same cluster with a load balancer that has `preserve client IP` enabled. In this case, consider disabling this option to speed up your scans. 
+You might find that STO scans run slower than expected when you're running STO in Harness Self-Managed Platform. This issue has been observed when the Harness Delegate and Harness server are running in the same cluster with a load balancer that has `preserve client IP` enabled. In this case, consider disabling this option to speed up your scans. 

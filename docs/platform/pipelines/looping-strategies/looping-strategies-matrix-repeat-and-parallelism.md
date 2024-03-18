@@ -267,7 +267,10 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-
+:::info note
+1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, the original stage name.
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the matrix.
+:::
 ### Matrix examples and best practices
 
 - [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
@@ -328,15 +331,106 @@ repeat:
 
 For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
+#### Use a custom label for repeat stages and steps
+You can use the keyword `nodeName` when specifying your repeat items to define your stage and step naming convention. Expressions are supported, so you can customize the name as required. For example:
+
+##### Customize the stage name:
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: custom_1
+        identifier: custom_1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          repeat:
+            items:
+              - host1
+              - host2
+              - host3
+            nodeName: TestDeploy_<+repeat.item>
+```
+![](./static/looping_name_example_1.png)
+
+##### Customize the step name:
+
+```yaml
+tags: {}
+  stages:
+    - stage:
+        name: custom_stage_2
+        identifier: custom_stage_2
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello_world
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items:
+                        - host1
+                        - host2
+                        - host3
+                      nodeName: Test_Deploy_step_<+repeat.item>
+
+
+```
+![](./static/looping_name_example_2.png)
+:::info 
+When creating a CI pipeline where both stage and step uses looping strategy and you want to use expressions inside nodeName in step then you have to use ``Test_Deploy_step_<+step.item>`` instead of ``Test_Deploy_step_<+repeat.item>``.
+:::
+
+:::info note
+1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, and the original stage name will be there.
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the repeats. 
+:::
+
 ## Looping strategies as runtime input
 
 You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
 
-When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run the a pipeline with a `parallelism` strategy, and then run the same pipeline with a `matrix` strategy, simply by providing different runtime input.
+When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run s pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
-The following video demonstrates how to configure and use runtime input for looping strategies.
+To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
-<DocVideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
+![Selecting runtime input for the looping strategy.](./static/looping-runtime-input.png)
+
+When you run the pipeline, you'll be prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
+
+Due to the potential complexity of looping strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
 
 ## Looping strategy expressions
 
@@ -387,3 +481,25 @@ Use the following expressions to access the index values for each iteration of a
 Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+
+## Determine execution status of a stage with looping strategy
+
+The status of a stage with looping strategy is determined based on the status of execution of its child stages. The status calculation logic works based on priority of child stage execution statuses. 
+
+Negative status takes precedence over positive status. 
+
+If any child stage has negative status, then the parent stage status is marked as negative. 
+
+The negative statuses priority is as follows: ABORTED > FAILED > FREEZE_FAILED > APPROVAL_REJECTED > EXPIRED. For example, if a child stage is marked FAILED and another child stage is marked EXPIRED, then the parent pipeline status is marked FAILED because it takes precedence.
+
+
+
+If all child stages are marked positive, the status of the parent stage is also marked positive. 
+
+The positive statuses priority is as follows: IGNORE_FAILED > SUCCEEDED. For example, if a child stage is marked IGNORE_FAILED and another child stage is marked SUCCEEDED, then the parent pipeline status is marked as IGNORE_FAILED.
+
+If a child stage has negative status and another child stage has positive status, then the parent pipeline status is marked negative. 
+
+
+
+

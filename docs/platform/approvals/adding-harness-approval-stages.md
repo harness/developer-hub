@@ -230,9 +230,9 @@ Use the **Include stage execution details in approval** option to include stage 
 
 Go to:
 
-- [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-- [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-- [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
+- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+- [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### Notes
 

@@ -134,6 +134,12 @@ For example, the **Sprint Metrics Single Stat** widget can help you [use histori
 * **Sprint Goal Report**
 * **Sprint Distribution Retrospective Report**
 
+:::info
+* Sprint metric reports, only includes the issues that were both started and completed during the sprint timeframe.
+* If an issue is completed outside of the sprint, it is not included in the sprint metrics report for that specific sprint. Instead, the completion of the issue is reflected in the sprint where it was actually resolved.
+* If an issue is removed mid-sprint from the current sprint, it is not included in the sprint metrics report for that particular sprint. SEI excludes such issues from the calculation as it may affect the team's velocity and other related metrics.
+:::
+
 ## Sprint metrics
 
 Sprint metrics measure points and tickets in a sprint. This includes work that was planned (committed), completed (done/delivered), incomplete (missed), or added after the sprint started (creep).
@@ -217,6 +223,22 @@ A creep ticket is a ticket added to a sprint after the sprint starts. The **cree
 ### Creep missed tickets
 
 **Creep missed tickets** is the total number of individual work items (tickets) that were added after the sprint started *and not* completed by the end of the sprint.
+
+### Churn rate
+
+**Churn Rate** measures the scope change during a sprint, providing insights into the volatility of the sprint backlog. It is calculated using the following formula:
+
+```bash
+Churn Rate = (Points added mid-sprint + Points removed mid-sprint + Positive difference of changes in planned issues) / Points committed at the start of the sprint
+
+```
+
+* Points added mid-sprint represent the sum of story points for items added during the sprint.
+* Points removed mid-sprint represent the sum of story points for items removed during the sprint
+* The Positive difference of changes in planned issues is the positive sum of story points for items with planned changes.
+* Points committed at the start of the sprint is the sum of story points for planned issues at the beginning of the sprint.
+
+This metric helps teams assess how much their scope is changing during a sprint, providing a quantitative measure of the impact of mid-sprint changes and adjustments.
 
 ### Done tickets
 

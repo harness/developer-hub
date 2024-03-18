@@ -14,12 +14,12 @@ import TabItem from '@theme/TabItem';
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
 
-You can build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -43,7 +43,7 @@ If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-step-sett
 
 </TabItem>
 
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -77,9 +77,9 @@ Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -174,7 +174,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-step-settings) steps to bu
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -231,7 +231,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -319,7 +319,7 @@ strategy:
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -535,7 +535,7 @@ pipeline:
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 

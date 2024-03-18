@@ -13,21 +13,17 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) non-Docker registries. To upload artifacts to a JFrog Docker registry, you can use a script in a [Run step](../../run-step-settings.md).
+Use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to [upload artifacts](../build-and-upload-an-artifact/#upload-artifacts) to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) *non-Docker* registries. To upload artifacts to a JFrog *Docker* registry, use a script in a [Run step](../../run-step-settings.md).
 
-You need:
+To configure this step, you need access to a JFrog Artifactory instance with a non-Docker registry.
 
-* Access to a JFrog Artifactory instance with a non-Docker registry.
-* A [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) and steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
-* A Harness [Artifactory connector](#artifactory-connector).
+## Prepare artifacts to upload
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s3.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, including JFrog Docker registries, you can use a script in a [Run step](../../run-step-settings.md).
+The **Upload Artifacts** step needs artifacts to upload. Make sure your [CI pipeline](../../prep-ci-pipeline-components.md) has steps that generate artifacts to upload, such as [build artifacts](../build-and-upload-an-artifact), output generated from [scripts](../../run-step-settings), test reports from [running tests](../../run-tests/run-tests-in-ci), or anything else you want to upload to JFrog. The steps you use depend on the artifacts you want to upload.
 
-## Add an Upload Artifacts to JFrog step
+## Add the Upload Artifacts step
 
-In your pipeline's **Build** stage, add an **Upload Artifacts to JFrog Artifactory** step and configure the [settings](#upload-artifacts-to-jfrog-step-settings) accordingly.
-
-Here is a YAML example of a minimum **Upload Artifacts to JFrog Artifactory** step.
+Add the **Upload Artifacts to JFrog Artifactory** step to your pipeline's [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 
 ```yaml
               - step:
@@ -40,31 +36,84 @@ Here is a YAML example of a minimum **Upload Artifacts to JFrog Artifactory** st
                     sourcePath: path/to/source
 ```
 
-### Upload Artifacts to JFrog step settings
+The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional.
 
-The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+### Name, Description, Tags
 
-#### Name
+* **Name**: A name for the step. Harness automatically assigns an **ID** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **ID** until the step is saved, then it is locked.
+* **Description** and **Tags**: Optional metadata.
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+### Artifactory Connector
 
-#### Artifactory Connector
-
-Select the Harness Artifactory connector to use for this upload. The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+Select the [Harness Artifactory connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) to use for this upload. The JFrog Account associated with the connector must have read/write permission.
 
 This step supports Artifactory connectors that use either anonymous or username and password authentication.
 
 If the connector uses username and password authentication, the `PLUGIN_USERNAME` and `PLUGIN_PASSWORD` used by this step are derived from the selected Artifactory connector.
 
-#### Target and Source Path
+### Target, Source Path
 
 The **Target** is the target path in the JFrog Artifactory registry. This is a target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
 
-**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload.
+**Source Path** is a path, relative to the stage workspace, to the artifact file/folder that you want to upload. The root stage workspace directory is `/harness`.
 
 If you want to upload a compressed file, you must use a [Run step](../../run-step-settings.md) to compress the artifact before uploading it.
 
-![](../static/upload-artifacts-to-jfrog-519.png)
+### JFrog CLI flags
+
+You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) to pass the following optional flags supported by the [JFrog CLI](https://docs.jfrog-applications.jfrog.io/jfrog-applications/jfrog-cli):
+
+- `PLUGIN_BUILD_NAME`: Specify the name of the build associated with the uploaded artifacts in JFrog Artifactory. Use this flag to organize and track artifacts by their build name.
+
+   ```yaml
+           variables:
+             - name: PLUGIN_BUILD_NAME
+               type: String
+               description: "Name of the build associated with the uploaded artifacts in JFrog"
+               required: false
+               value: "some-build-name"
+   ```
+
+- `PLUGIN_BUILD_NUMBER`: Specify the build number associated with the uploaded artifacts in JFrog Artifactory. Use this flag to version and identify different builds of the same project or component.
+
+   ```yaml
+           variables:
+             - name: PLUGIN_BUILD_NUMBER
+               type: String
+               description: "Build number associated with the uploaded artifacts in JFrog"
+               required: false
+               value: "some-build-number"
+   ```
+
+<details>
+<summary>Use the Artifactory Drone plugin</summary>
+
+The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/athieriot/drone-artifactory). If you don't (or can't) use the built-in step, you can also run this plugin directly in a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference). You might need to do this if there is a particular configuration or flag that is not supported by the way the plugin is used in the built-in step.
+
+The settings are declared slightly differently when using a Plugin step, but you can still pass the `--build-name` and `--build-number` flags when using a Plugin step. For example:
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: plugin
+                  identifier: plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifactory
+                    settings:
+                      access_token: YOUR_JFROG_TOKEN
+                      url: YOUR_JFROG_ARTIFACTORY_URL
+                      source: /path/to/source
+                      target: /path/to/target
+                      build_name: ARTIFACTS_BUILD_NAME
+                      build_number: ARTIFACTS_BUILD_NUMBER
+```
+
+</details>
+
+### Additional container settings
+
+Settings specific to containers are not applicable when using the step in a stage with self-managed VM or Harness Cloud build infrastructure.
 
 #### Run as User
 
@@ -77,12 +126,12 @@ Set maximum resource limits for the resources used by the container at runtime:
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-#### Timeout
+### Timeout
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## View artifacts on the Artifacts tab
 

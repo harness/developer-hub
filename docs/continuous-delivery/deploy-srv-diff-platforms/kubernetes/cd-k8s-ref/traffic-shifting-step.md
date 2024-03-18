@@ -4,6 +4,12 @@ description: This topic describes how to route traffic in pipelines using the tr
 sidebar_position: 6
 ---
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTING_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This topic describes the Kubernetes Traffic Routing step. These configuration options can be found in the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
 
 Here is a video demo of traffic shifting in a Kubernetes deployments.
@@ -34,7 +40,7 @@ Each provider will have some common configuration options and some provider spec
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
 
 :::note
-Currently, we only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1alpha4 resources.
+Currently, we only support `specs.smi-spec.io/v1alpha3` and `specs.smi-spec.io/v1alpha4` TrafficSplit resource versions since these are the only versions that support having rules (such as uri, method, and headers described below).
 :::
 
 * **Parameters**:
@@ -52,7 +58,7 @@ Currently, we only support specs.smi-spec.io/v1alpha3 and specs.smi-spec.io/v1al
     * **method**:
         * **Rule Value**: Specify the request method type you want.
 
-    * **header**:
+    * **headers**:
         * **Values**:
             - **Key**: Specify the key of the request header
             - **Value**: Specify the value you want for this key
@@ -94,7 +100,7 @@ Before you begin, make sure you have an understanding of Istio and how it works 
     * **method**:
         * **Rule Value**: Specify the request method type you want.
 
-    * **header**:
+    * **headers**:
         * **Values**:
             - **Key**: Specify the key of the request header
             - **Value**: Specify the value you want for this key
@@ -138,7 +144,7 @@ Before you begin, make sure you have an understanding of Istio and how it works 
 See the following topics for advanced settings:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)

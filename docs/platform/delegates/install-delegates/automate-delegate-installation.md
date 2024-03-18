@@ -1,7 +1,7 @@
 ---
 title: Automate delegate installation
 description: Automate delegate installation and registration.
-sidebar_position: 6
+sidebar_position: 7
 helpdocs_topic_id: 9deaame3qz
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

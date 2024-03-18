@@ -1,7 +1,7 @@
 ---
 title: Expression status type reference
 description: Learn about the differences between `status`, `currentStatus`, and `liveStatus` expressions.
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 When using expressions in Harness, there are differences between the `status`, `currentStatus`, and `liveStatus` expression types. `status` refers to the running status of a single node. `currentStatus` and `liveStatus` provide the combined statuses of all running steps within a pipeline or stage. The difference between status types is based on how they handle step failures and if the status of steps running in a matrix or strategy is included in the overall status calculation.

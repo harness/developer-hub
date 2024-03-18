@@ -53,3 +53,10 @@ You can create a Custom metric health source and use the NewRelic Health Source 
 
 #### Primary/Canary node is not getting identified while doing verification 
 Node is identified in case metrics were reported by your verification provider used here (AppD, Prometheus, etc.) for the duration of the analysis window, so you can check the API call being made and see if nodes were reporting data or not during that time. You can also navigate to the provider dashboard and verify directly.
+
+#### While creating  SLO via terraform provider can see request was successful but SLO is not showing up in UI
+Please check the variable passed is correct(like for healthSourceRef its identifier of the source and not name)
+
+#### What is Metric packs
+
+With Metrics Packs section you can select the metrics that you want to use for the health source. The options available are Errors and Performance.

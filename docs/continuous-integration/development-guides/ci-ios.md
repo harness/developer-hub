@@ -13,12 +13,18 @@ import TabItem from '@theme/TabItem';
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
 
-You can build and test [iOS](https://developer.apple.com/ios/) and [macOS](https://developer.apple.com/macos/) applications using a macOS platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted macOS VM](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
+You can build and test [iOS](https://developer.apple.com/ios/) and [macOS](https://developer.apple.com/macos/) applications using a macOS platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-managed macOS VM](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
+
+:::info
+
+Harness recommends running macOS/iOS builds on Harness Cloud.
+
+:::
 
 The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You can also use [Fastlane](https://docs.fastlane.tools/) to build and test your iOS and macOS apps.
 
@@ -50,9 +56,9 @@ stages:
 If you need to use Intel-based architecture, [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is pre-installed on Harness Cloud's M1 machines. If you need to use it, add the prefix `arch -x86_64` to commands in your scripts. Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+To configure a self-managed macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 This example uses a VM build infrastructure:
 
@@ -113,7 +119,7 @@ You can [add package dependencies](https://developer.apple.com/documentation/xco
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 Due to the long install time, make sure [Xcode](https://developer.apple.com/xcode/) is pre-installed on your build infrastructure machines. If [Homebrew](https://brew.sh/) is not already installed, use **Run** steps to install it and any other dependencies.
 
@@ -173,9 +179,9 @@ Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cac
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -273,7 +279,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 ```yaml
 - step:
@@ -359,7 +365,7 @@ Use `xcode-select` in a **Run** step to switch between pre-installed versions of
 -->
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 If your build infrastructure machines have multiple versions of Xcode installed, you can use `xcode-select` in a **Run** step to switch versions.
 
@@ -471,7 +477,7 @@ To learn more about app distribution, go to the Apple Developer documentation on
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
 ```yaml
 - step:
@@ -610,9 +616,9 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+  <TabItem value="selfmanaged" label="Self-managed">
 
-This pipeline uses a [self-hosted VM build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
+This pipeline uses a [self-managed VM build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), repository name, and other applicable values. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 

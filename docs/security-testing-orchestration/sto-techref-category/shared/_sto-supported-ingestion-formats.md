@@ -18,6 +18,7 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Fortify on Demand** — JSON
 - **Fossa** — JSON
 - **Gitleaks** — JSON, SARIF
+- **HQL AppScan** — XML 
 - **Grype** — JSON
 - **Mend (_formerly Whitesource_)** — JSON  
 - **Nessus** — XML
@@ -34,6 +35,7 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Semgrep** — SARIF
 - **Snyk** — JSON, SARIF
 - **SonarQube** — JSON
+- **Sysdig** — JSON 
 - **Tenable** — JSON
 - **Veracode** — XML
 - **JFrog Xray** — JSON

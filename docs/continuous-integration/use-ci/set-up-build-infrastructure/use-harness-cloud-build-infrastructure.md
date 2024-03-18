@@ -1,12 +1,14 @@
 ---
 title: Use Harness Cloud build infrastructure
-description: You can use Harness-hosted build infrastructure for your Harness CI pipelines.
+description: You can use Harness-managed build infrastructure for your Harness CI pipelines.
 sidebar_position: 20
+redirect_from:
+  - /docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence
 ---
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
+With Harness Cloud, you can run builds in isolation on Harness-managed VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
 Harness Cloud provides the following advantages:
 
@@ -242,6 +244,32 @@ Steps running in containers can't communicate with [Background steps](../manage-
 ## Secure connect (private networking)
 
 You can use Harness Cloud build infrastructure in firewalled environments. For more information, go to [Secure connector for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+## Queue Intelligence
+
+:::note
+
+Currently, Queue Intelligence is behind a feature flag. Contact Harness Support to enable the feature.
+
+:::
+
+With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. This replaces the previous behavior where the Harness Delegate would fail any job that it could not schedule or run immediately.
+
+The Queue Intelligence feature introduces a `queued` state for individual builds. Builds progress through the following states:
+
+* `pending`: Build request created and waiting for a delegate. The maximum timeout for this state is 12 hours.
+* `queued`: Build request queued by a delegate. The maximum timeout for this state is 12 hours. When viewing the build in the UI, this state is indicated by a **Queued license limit reached** message.
+* `running`: The delegate runs a build for each build stage in the pipeline. The maximum timeout for this state is one hour.
+
+<!-- No longer applicable:
+
+### Concurrency and resource limits
+
+Your CI license `https://www.harness.io/pricing?module=ci#` determines the maximum number of concurrent builds you can run. Each account has a specified maximum that applies to all builds on all pipelines in the account. Upon hitting the concurrency limit, builds show the **Queued license limit reached** state in the UI.
+
+If you're using a Docker build infrastructure, you also have resource limits per delegate. For example, a delegate installed on your laptop might have just enough RAM and CPU to run two builds concurrently. In the `docker-compose.yml` file, you can set the `MAX_CONCURRENCY_LIMIT` if you want to limit the number of concurrent jobs for a delegate based on the node's available resources. Note that this constraint does not apply to Harness Cloud, Kubernetes, and VM-based build infrastructures, which can scale up as needed.
+
+-->
 
 ## Troubleshoot Harness Cloud build infrastructure
 

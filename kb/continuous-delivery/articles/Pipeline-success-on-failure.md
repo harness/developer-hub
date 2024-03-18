@@ -1,5 +1,5 @@
 ---
-title: Pipline success on failure
+title: Pipeline success on failure
 ---
 
 # Introduction

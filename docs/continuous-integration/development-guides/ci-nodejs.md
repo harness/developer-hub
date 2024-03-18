@@ -13,12 +13,12 @@ import TabItem from '@theme/TabItem';
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
 
-You can build and test a [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -41,7 +41,7 @@ Use [Run step](/docs/continuous-integration/use-ci/run-step-settings) to install
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -81,9 +81,9 @@ Cache Node dependencies with [Cache Intelligence](/docs/continuous-integration/u
 ```
 
 </TabItem>
-<TabItem value="selfhosted" label="Self-hosted">
+<TabItem value="selfmanaged" label="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -182,7 +182,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -286,7 +286,7 @@ If your application requires a specific Node version, add a **Run** step to inst
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in your steps. There is no need for a separate install step when using Docker.
 

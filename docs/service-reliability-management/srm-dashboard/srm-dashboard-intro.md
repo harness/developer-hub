@@ -12,7 +12,7 @@ Harness dashboards provide you with the ability to:
 	
 - Set up automated delivery schedules and configure alert notifications based on the dashboard data.
 
-For a complete guide to Harness dashboards, go to [Dashboards](/docs/category/dashboards-1).
+For more information, go to [Harness dashboards](/docs/category/harness-dashboards).
 
 This topic provides comprehensive insights into Harness SRM dashboards.
 
@@ -21,7 +21,7 @@ This topic provides comprehensive insights into Harness SRM dashboards.
 
 To view the SRM dashboards, do the following:
 
-1. In your Harness project, navigate to **Dashboards**. 
+1. In your Harness project, navigate to **Dashboards**.
 
    The Dashboards page is displayed.
     

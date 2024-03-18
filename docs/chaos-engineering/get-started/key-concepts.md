@@ -9,10 +9,10 @@ This section deals with the key concepts associated with Harness Chaos Engineeri
 ![Component Relationship](./static/terminologies/component-relationship.png)
 
 #### 1. Chaos experiment
-A chaos experiment, simply referred as experiment, injects one or more chaos faults into a specified chaos infrastructure and summarizes the result of the chaos execution. The experiment can be defined using the Chaos Studio via the guided UI or by uploading the workflow CR manifest.
+A chaos experiment (experiment in short), injects one or more chaos faults into a specified chaos infrastructure and summarizes the result of the chaos execution. You can define the experiment using the Chaos Studio through the guided UI or by uploading the workflow CR (custom resource) manifest.
 
 #### 2. Chaos fault
-A chaos fault, or simply fault, refers to the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource and can be customized using the fault tunables, which are defined as part of the ChaosExperiment CR and ChaosEngine CR. Optionally, one or more probes can be defined as part of a chaos fault.
+A chaos fault (fault in short), refers to the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource and you can customize the fault using the fault tunables, which are defined as part of the Chaos Experiment CR and Chaos Engine CR. Optionally, one or more probes can be defined as part of a chaos fault.
 
 #### 3. ChaosHub 
 ChaosHub is a collection of experiment templates (defined as workflow CRs) and faults (defined as ChaosExperiment CR and ChaosEngine CR) that helps create and execute new chaos experiments against your target resources. Apart from the Enterprise ChaosHub, which is present by default, custom ChaosHub can be added for the management and distribution of custom experiment templates and faults.
@@ -27,7 +27,7 @@ A Harness environment represents your deployment environment such as Dev, QA, St
 Chaos Studio is used for the creation of new chaos experiments using varied chaos faults and templates from the ChaosHub, probes, and custom action steps. New experiments can be created using the guided UI or using the experiment manifest represented by the workflow CR.
 
 #### 7. Resilience score
-The resilience score is a quantitative measure of how resilient the target application is to a chaos experiment. It is [calculated](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score) based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
+The resilience score is a quantitative measure of how resilient the target application is to a chaos experiment. It is [calculated](/docs/chaos-engineering/features/experiments/resilience-score) based on the priority set for every fault in the experiment and the probe success percentage of the faults (if the probes are defined).
 
 #### 8. Probe
 Chaos probes automate the chaos hypothesis validation performed during a fault execution. They are declarative checks that determine the outcome of a fault. Probes are scoped to the faults and you can define as many probes as required as part of each fault.

@@ -47,7 +47,7 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
   - Product defects will not be addressed. 
 
 - 4/1/2024. FirstGen SaaS product shutdown.
-  - Harness delegates will no longer register with Harness SaaS.
+  - Harness Delegates will no longer register with Harness SaaS.
   - Users will no longer be able to use the Harness FirstGen UI to perform CD deployments.
   - Triggers will fail as webhook URLs will be deprecated.
   - The default experience for signing into Harness will be Harness CD NextGen. 
@@ -66,7 +66,7 @@ Here are some NextGen highlights.
 
 Harness provides out-of-the-box Canary, Blue Green, and Rolling Deployment capabilities for any tech stack.
 
-For examples of how these deployment types work with different platforms and services, go to [CD tutorials](/tutorials/cd-pipelines).
+For examples of how these deployment types work with different platforms and services, go to [CD tutorials](/docs/category/cd-and-gitops-tutorials).
 
 ### Revamped template library experience
 

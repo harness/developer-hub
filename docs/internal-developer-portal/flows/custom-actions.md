@@ -1,11 +1,7 @@
 ---
 title: Supported Custom Actions
 description: These Custom Actions are supported in Harness IDP
-sidebar_position: 3
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 ## Introduction
@@ -35,20 +31,31 @@ A list of all registered custom actions can be found under
 This custom action requires **pipeline variables**(`<+pipeline.variables.VARIABLE_IDENTIFIER>`) as input along with the pipeline url, and then trigger the pipeline based in the inputset obtained from the user. 
 
 ```YAML
+...
 ## Example
 steps:
-- id: trigger
-    name: Creating your react app
-    action: trigger:harness-custom-pipeline
-    input:
-    url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/communityeng/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
-    inputset:
-        project_name: ${{ parameters.project_name }}
-        github_repo: ${{ parameters.github_repo }}
-        cloud_provider: ${{ parameters.provider }}
-        db: ${{ parameters.db }}
-        cache: ${{ parameters.cache }}
-    apikey: ${{ parameters.token }}
+  - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+      url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/communityeng/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+      inputset:
+          project_name: ${{ parameters.project_name }}
+          github_repo: ${{ parameters.github_repo }}
+          cloud_provider: ${{ parameters.provider }}
+          db: ${{ parameters.db }}
+          cache: ${{ parameters.cache }}
+      apikey: ${{ parameters.token }}
+      showOutputVariables: true
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
+...
 ```
 
 :::info
@@ -78,12 +85,34 @@ Once you create the workflow with this custom action, you can see the pipeline U
 
 ![](./static/flow-ca-1.png)
 
+3. You can as well configure the output to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below:
+
+```YAML
+...
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}` 
+...
+```
+There are two ways in which you can add the output variable to the template syntax. 
+
+1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
+
+2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs. 
+
+![](./static/output-variables.png)
+
 ### 2. `trigger:trigger-pipeline-with-webhook`
 
 This custom action could be used to trigger a pipeline execution based on the [webhook url](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#trigger-a-deployment-using-the-curl-command-for-a-custom-trigger) input for [custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#create-the-custom-trigger). 
 
-
 ![](./static/trigger-webhook-ca.png)
+
 
 ```YAML
 ## Example
@@ -174,28 +203,10 @@ spec:
 
 3. `HarnessAutoOrgPicker` : It auto populates org id on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input.
 
-:::info
-
-For `HarnessAutoOrgPicker` to work, the Project Identifier under Properties should be named `projectId` and using the `HarnessProjectPicker`. **Here's an example YAML that won't auto populate the org name.**
-
-```
-# Example template.yaml file
-properties:
-    <ANY NAME OTHER THAN projectId>:
-        title: Project Identifier
-        description: Harness Project Identifier
-        type: string
-        ui:field: HarnessProjectPicker
-    orgId:
-        title: Org Identifier
-        description: Harness org Identifier
-        type: string
-        ui:field: HarnessAutoOrgPicker  
-```
-:::
 
 
-A working example: 
+1. For `HarnessAutoOrgPicker` to work, it is suggested to name the Project Identifier under Properties as `projectId` and using the `HarnessProjectPicker`.
+
 
 ```YAML
 # Example template.yaml file
@@ -222,6 +233,26 @@ spec:
 
 ```
 
+2. In case the properties Project Identifier is named something else other than `projectId` in that case for the custom action to function as desired we need to add it as a dependency under `projectPickerRef`
+
+
+```YAML
+# Example template.yaml file
+properties:
+    <ANY NAME OTHER THAN projectId>:
+        title: Project Identifier
+        description: Harness Project Identifier
+        type: string
+        ui:field: HarnessProjectPicker
+    orgId:
+        title: Org Identifier
+        description: Harness org Identifier
+        type: string
+        ui:field: HarnessAutoOrgPicker
+        dependencies:
+          projectPickerRef:
+            - 'project_name'          
+```
 
 ### Custom Actions Usage Limitations
 

@@ -326,7 +326,7 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted">
+  <TabItem value="k8s" label="Self-managed">
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) and uploads the Allure report artifact to GCS.
 

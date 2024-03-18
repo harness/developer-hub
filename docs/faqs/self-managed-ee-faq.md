@@ -48,12 +48,12 @@ For more information on supported features, go to [What's supported in Self-Mana
 
 Yes, the following tutorials are available for self-managed external database setup.
 
-- [Configure an external self-managed MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb)
-- [Configure an external self-managed TimescaleDB](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb)
-- [Configure an external self-managed Redis](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database/)
-- [Configure an external self-managed PostgreSQL](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/)
+- [Configure an external self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb/)
+- [Configure an external self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/)
+- [Configure an external self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database/)
+- [Configure an external self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database/)
 
-For more information, go to [Configure Harness Self-Managed Enterprise Edition to use external databases](/docs/self-managed-enterprise-edition/advanced-configurations/configure-external-databases).
+For more information, go to [Configure Harness Self-Managed Enterprise Edition to use external databases](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases).
 
 ## Can I use self-signed certificates?
 

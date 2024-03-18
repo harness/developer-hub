@@ -2,14 +2,9 @@
 title: Scorecard Data Sources
 description: Adding Custom Checks and Data Sources for Scorecards 
 sidebar_position: 4
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/checks-datasources
 ---
-
 
 Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for [scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) in Harness IDP.
 
@@ -38,7 +33,7 @@ The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
 
 ### Supported Operators
 
-We support the folowing `regex operators` as Operators for all the Data Points.
+We support the following `regex operators` as Operators for all the Data Points.
 
 1. Less Than
 2. Less than or equal to
@@ -70,6 +65,12 @@ metadata:
 ```
 
 ![](./static/metadata-name-scorecards.png)
+
+:::info
+
+Few datasources like **PagerDuty**, **Kubernetes** are dependant on the Plugins to fetch data using the annotations meant for the plugins in `catalog-info.yaml` as well as the proxy defined in the plugins section. 
+
+:::
 
 
 ## GitHub
@@ -338,7 +339,19 @@ spec:
 
 ### Pre-Requisites
 
-- For the functioning of Harness Data Source related checks, the Harness CI/CD plugin should be configured with new annotations in catalog info YAML, `harness.io/pipelines` and `harness.io/services` as mentioned in the setup steps instruction of [Harness CI/CD plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd#harness-nextgen-cicd-plugin)
+- For the functioning of Harness Data Source related checks, the Harness CI/CD plugin should be configured with annotations in catalog info YAML, `harness.io/pipelines` and `harness.io/services`.
+
+- `harness.io/pipelines`: The pipeline URL is used as input and it should only be fetched from under **Projects** and not from specific modules. 
+
+Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/pipelines/pipeline_id`
+
+![](./static/projects-pipelines.png)
+
+- `harness.io/services`: The URL for the Service should be used as an input and it should only be fetched from under **Projects** and not from specific modules.
+
+Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/services/service_id`
+
+![](./static/service-projects.png)
 
 :::info
 
@@ -394,9 +407,55 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 ## Catalog 
 
-The following **Data Points** are avilable for Catalog Data Source. 
+The following **Data Points** are available for Catalog Data Source. 
 
-1. **Owner is defined**:
+1. **Evaluate expression (JEXL):**
+- *Objective:* Evaluate [JEXL expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) on the catalog YAML file.
+- *Calculation Method:* The catalog YAML is inspected to perform custom JEXL expression and returns the evaluated data.
+
+#### Example Usage: 
+
+Below is an example of `catalog-info.yaml` 
+
+```YAML
+##Example
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: artist-web
+  description: The place to be, for great artists
+  labels:
+    example.com/custom: custom_label_value
+  annotations:
+    example.com/service-discovery: artistweb
+    circleci.com/project-slug: github/example-org/artist-website
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: website
+  lifecycle: production
+  owner: artist-relations-team
+  system: public-websites
+```
+
+In the above example using the **Evaluate expression** we can match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the [supported values](https://backstage.io/docs/features/software-catalog/descriptor-format#contents) under the root field. 
+
+for eg. `<+metadata.name>` would point to `artist-db` from the above example, and could be used to check the values 
+ 
+:::info
+
+We only support string and key-value pair data types in JEXL, some datatype like array, list aren't supported.
+
+:::
+
+![](./static/checks-catalog-metadataname.png)
+
+2. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
 - *Calculation Method:* The catalog YAML is inspected to check if the owner is under the spec field and the owner should not be Unknown.
 
@@ -416,7 +475,7 @@ spec:
   owner: order-team
 ```
 
-2. **Documentation Exists**:
+3. **Documentation Exists**:
 - *Objective:* Checks if the catalog YAML file has the annotation `backstage.io/techdocs-ref` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `backstage.io/techdocs-ref` is present under the metadata field.
 - *Prerequisites:* The directory configured should have the `mkdocs.yml` file and a docs directory having all the documentation in markdown format.
@@ -438,11 +497,11 @@ spec:
 
 ```
 
-3. **Pagerduty is set**:
+4. **Pagerduty is set**:
 
 - *Objective:* Checks if the catalog YAML file has the annotation `pagerduty.com/service-id` configured or not.
 - *Calculation Method:* The catalog YAML is inspected to check if the `pagerduty.com/service-id` is present under the metadata field.
-- *Prerequisites:* The Pagerduty plugin needs to be configured and enabled in the admin section. Please [refer](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/) here for more details. 
+- *Prerequisites:* The PagerDuty plugin needs to be configured and enabled in the admin section. Please [refer](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/) here for more details. 
 
 ![](./static/pager-catalog.png)
 
@@ -461,6 +520,14 @@ spec:
 ```
 
 ## Kubernetes
+
+:::info
+
+The Kubernetes datasource being dependant on the Kubernetes Plugin for annotations and proxy we only support `label-selector` eg. `'backstage.io/kubernetes-label-selector': 'app=my-app,component=front-end'` rest all other annotation type mentioned [here](https://backstage.io/docs/features/kubernetes/configuration#common-backstageiokubernetes-id-label) are planned to be supported in the next few releases. 
+
+Also for additional filtering we support namespace in annotation `'backstage.io/kubernetes-namespace': dice-space` as well, but `label-selector` is mandatory. 
+
+:::
 
 ### Prerequisites:
 
@@ -498,7 +565,7 @@ The following **Data Points** are available for Kubernetes Data Source.
 
 ## Jira
 
-The following **Data Points** are avilable for Jira Data Source.
+The following **Data Points** are available for Jira Data Source.
 
 1. **Issues Count**:
 
@@ -583,7 +650,7 @@ spec:
 - The PagerDuty plugin must be configured and enabled in the admin section. Refer [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/).
 
 
-The following **Data Points** are avilable for PagerDuty Data Source.
+The following **Data Points** are available for PagerDuty Data Source.
 
 1. **Is on-call Set** - This data point can be used for creating rules that will check if the on-call is set for a given service.
 
@@ -622,15 +689,15 @@ The following **Data Points** are avilable for PagerDuty Data Source.
 
 ![](./static/check-overview.png)
 
-- To have an overview of a single check and information on all the componenets it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
+- To have an overview of a single check and information on all the components it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
 
-- The overview page lists all the components on which the check is appled and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades accross your software ecosystem. 
+- The overview page lists all the components on which the check is applied and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades across your software ecosystem. 
 
 ![](./static/check-component-overview.png)
 
 :::info
 
-Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and indvidual check overview page
+Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and individual check overview page
 
 ![](./static/breadcrumbs.png)
 

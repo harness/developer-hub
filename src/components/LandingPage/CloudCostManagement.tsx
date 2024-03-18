@@ -5,8 +5,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, CCMList } from "./data/cloudCostManagementData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CCM() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CCM" description="CCM">
@@ -88,8 +89,18 @@ export default function CCM() {
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/ccm.svg`} />
+          </div> */}
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/ccm.svg`
+                  : `${baseUrl}img/CCM_Landing_Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>
