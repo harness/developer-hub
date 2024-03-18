@@ -68,17 +68,51 @@ README.md @ravilach
 # FF Docs
 /docs/feature-flags/ @HarnessTheChaos @jenniferopal
 
-# FirstGen Docs
-/docs/first-gen/ @krishi0408 @SushrutHarness
-
-# FAQ Docs
-/docs/faqs/ @krishi0408 @SushrutHarness
-
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @suryabhagvat @ankit-harness
 
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv
+
+# FirstGen Docs ###
+
+# CD Docs
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @roshnisarangadharan
+
+# Platform Docs
+/docs/category/platform-firstgen/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+
+# SMP Docs
+/docs/category/self-managed-enterprise-edition-fg/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+
+# CCM Docs
+/docs/category/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+
+# FAQ Docs ###
+
+# CD FAQs
+/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @roshnisarangadharan
+
+# FF FAQs
+/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
+
+# CCM FAQs
+/docs/faqs/cloud-cost-management-faqs/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+
+# STO FAQs
+/docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
+
+# Chaos FAQs
+/docs/faqs/chaos-engineering-faq/ @neelanjan00 @SmritiSatya
+
+# Delegate FAQs
+/docs/faqs/harness-delegate-faqs/ @brian-f-harness @harishkammanahalli
+
+# GitEx FAQs
+/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @roshnisarangadharan
+
+# SMP FAQs
+/docs/faqs/self-managed-ee-faq/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
 
 # Release Notes ###
 

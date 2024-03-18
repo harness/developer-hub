@@ -86,7 +86,7 @@ Services types that are calculated this way:
 
 
 ### Serverless Applications
-For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.2 Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. 
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. 
 
 Service types that are classified as a serverless application:
 
@@ -100,10 +100,10 @@ Service types that are classified as a serverless application:
 | **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
 | ------------------ | ------------------------------------ | ------------------------------------ |
 | hello-lambda       | 0                                    | 0                                    |
-| hello-lambda       | 1                                    | 0.2 (this will round to 1)           |
-| hello-lambda       | 5                                    | 1                                    |
-| hello-lambda       | 7                                    | 1.4 (this will round to 2)           |
-| hello-lambda       | 15                                   | 3                                    |
+| hello-lambda       | 1                                    | 1/6 (this will round to 1)           |
+| hello-lambda       | 5                                    | 5/6                                  |
+| hello-lambda       | 7                                    | 7/6 (this will round to 2)           |
+| hello-lambda       | 15                                   | 15/6                                 |
 
 #### GitOps Applications
 
