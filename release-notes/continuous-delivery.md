@@ -68,7 +68,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Users were incorrectly prompted about unsaved changes when viewing variables with default values in Pipeline Studio and Input Sets page. This issue is resolved. (CDS-89117, ZD-57388, ZD-57603)
 - When a certain version of a template in use was deleted, the pipeline referring the template threw and error, and did not let the users select an alternate version of the template. As a workaround, users were recommended to edit the YAML directly. Now, this issue is fixed and users can select an alternate version of the template from the pipeline itself. (CDS-87809, ZD-55910)
 - Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. (CDS-92355)
-- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541)
+- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541, ZD-58686)
 
 ### Version 1.28.11
 
