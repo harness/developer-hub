@@ -6,7 +6,7 @@ Role-based access control (RBAC) lets you control who can access your resources 
 
 ### Secrets management
 
-import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
+import Secretmgmtsup from '/docs/platform/shared/secret-management-supported.md'
 
 <Secretmgmtsup />
 
@@ -26,7 +26,7 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 ### AuthN
 
-import Authsup from '/docs/get-started/shared/auth-supported.md'
+import Authsup from '/docs/platform/shared/auth-supported.md'
 
 <Authsup />
 
@@ -41,7 +41,7 @@ import Authsup from '/docs/get-started/shared/auth-supported.md'
 
 ### Git experience
 
-import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
+import Gitxsup from '/docs/platform/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
