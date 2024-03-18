@@ -177,7 +177,13 @@ If you use Harness expressions, ensure that the expression can be resolved at ru
 
 If you use custom variable expressions that reference information from subsequent steps, ensure that those custom variable expressions will be resolved.
 
-In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). You can use a JEXL expression if the field is set to **Fixed value** or **Expression**. The JEXL expression format for a Custom Approval step is `<+output.bashVarOutput> == "testValue"`.
+In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) when you set approval criteria. You can use a JEXL expression if the field is set to **Fixed value** or **Expression**. 
+
+The JEXL expression format for a Custom Approval step is `<+output.bashVarOutput> == "testValue"`.
+
+First, create a variable in **Script**, then create variables in **Script Output Variables** that references those variables, and then use the **Script Output Variables**' variables and the **Script** variables' va;ue in the **Approval Criteria**:  
+
+![](./static/jexl-expression-approval-criteria.png)
 
 ### Option: Script Input Variables
 
