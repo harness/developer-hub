@@ -110,13 +110,11 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
-## Resolved and Unresolved Expressions during Conditional Execution
+## Resolved and unresolved expressions during conditional execution
 
-This topic explains why some expressions in Conditional Execution goes unresolved during execution. 
+This topic explains why some expressions in conditional execution are unresolved during execution. 
 
-Let's try to understand this scenario with an example:
-
-Consider this pipeline YAML:
+Consider the following pipeline YAML:
 
 ```yaml
   tags: {}
@@ -176,35 +174,34 @@ Consider this pipeline YAML:
           pipelineStatus: Success
           condition: <+env.name> == "harnessdevenv"
 ```
+
 Here, the above pipeline's stage will execute only if the environment name is ``harnessdevenv``.
 
-When you select ``Run``, you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``.
-![](./static/unresolved_runtime_input.png)
+When you select ``Run``, you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``:
 
-Now, if you select ``Run Pipeline``, the execution the stage ``deploy_stage`` will be skipped as conditional execution resolves to ``null``.
+![unresolved pipeline input](./static/unresolved_runtime_input.png)
 
+When running the pipeline, the execution the stage ``deploy_stage`` will be skipped as conditional execution resolves to ``null``.
 
-![](./static/unresolved_execution_1.png)
+![unresolved execution](./static/unresolved_execution_1.png)
 
+When you run a deploy stage, this is the pipeline execution flow:
 
+1. Harness checks the ``stage`` conditional execution and then starts filling the variable defined in stage definition.
+2. Checks the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
 
-Let's try to understand the pipeline execution flow:
+![unresolved expresssion execution](./static/unresolved_expression_execution_2.png)
 
-1. When you run a deploy stage, it first checks the ``stage`` conditional execution and then starts filling the variable defined in stage definition and after that it starts the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
+3. When the stage starts, Harness checks the ``step`` conditional execution and proceed to resolve the variable step.
 
+In this case, when the pipeline ran, Harness first checked the stage ``deploy_stage`` conditional execution. Harness checked for the environment name, ``harnessdevenv`` here, but it resolved to null because at that time the stage had not proceeded with fetching environment information. Hence, resolved as ``null`` at that time.
 
-![](./static/unresolved_expression_execution_2.png)
+* **Resolved variable example:**
 
+Now, let's discuss an example an example where above scenario will work.
 
-2. After when stage starts it checks ``step`` conditional execution and proceed further with resolving the variables of the step.
+Consider the below pipeline YAML:
 
-
-In this case, when the pipeline ran, it first checked the stage ``deploy_stage``  conditional execution i.e whether the environment name is ``harnessdevenv`` and and it resolved to null because at that time the stage had not proceeded with fetching environment information and got skipped as the environment name was ``null`` at that time.
-
-#### Resolved Variable example
-Now, let's discuss an example where above scenario will work.
-
-Consider the below pipeline yaml:
 ```yaml
   tags: {}
   stages:
@@ -282,10 +279,13 @@ Consider the below pipeline yaml:
 
 
 Here, the above pipeline's step ``ShellScript_1``  will execute only if the environment name is ``harnessdevenv``.
-When you click ``Run`` you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``.
+
+When you select ``Run``, you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``:
+
 ![](./static/unresolved_runtime_input.png)
 
-In this case, the the step conditional execution will not get skipped and the variable will get resloved to true. 
+In this case, the the step conditional execution will not skip and the variable resloves to true. 
+
 ![](./static/unresolved_expressio_true_1.png)
 
-In this case, the deploy stage first started the ``Service`` step and then fetched the ``Environment and Infrastructure`` information. Afterward, it proceeded with the execution of step ``ShellScript_1 ``. Therefore, before the execution of this step, the pipeline had information about the environment, and it checked if the environment name is ``harnessdevenv``. In this case, it was true, so the step got executed. Even if it were false, the step would have been skipped, but the variable would still have been resolved.
+In this case, the deploy stage first started the ``Service`` step and then fetched the ``Environment and Infrastructure`` information. Afterwards, it proceeded with the execution of step ``ShellScript_1 ``. Therefore, before the executing this step, the pipeline had information about the environment, and it checked if the environment name is ``harnessdevenv``. In this case, it was true, so the step got executed. If it was false, the step would get skipped but the variable would still get resolved.
