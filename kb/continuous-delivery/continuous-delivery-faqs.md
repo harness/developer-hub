@@ -6323,7 +6323,7 @@ You can use [API](https://apidocs.harness.io/tag/Pipeline#operation/getPipelineS
 
 #### What image tag expression should be used for periodic deployment of a binary version triggered by cron?
 
-If it's not a custom trigger, use <+trigger.artifact.build> in the image tag field. Otherwise, reference the payload JSON to construct the expression.
+If it's not a custom trigger, use `<+trigger.artifact.build>` in the image tag field. Otherwise, reference the payload JSON to construct the expression.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions)
 
 #### Can one deploy Salesforce component without using S3 bucket ?
