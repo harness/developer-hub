@@ -53,14 +53,22 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### Early access
 
 - You can select a different infrastructure when propagating an environment from a previous stage. Currently, this feature is behind the feature flag `CDS_SUPPORT_DIFFERENT_INFRA_DURING_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [CD documentation](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#select-a-different-infrastructure-when-propagating-environment-from-a-previous-stage). (CDS-85143)
+- A **Metrics** tab is added to the individual service dashboard to provide details of the selected service's deployments, failure rate, deployment frequency, active service instances, the underlying environment and infrastructure for the service instance, and a summary of instances over a selected period. Currently, this feature is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Individual service dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards). (CDS-88414)
+- Harness now displays the execution context for each step in the Execution Details page along with the inputs and outputs of the step. This enhancement helps debug pipeline executions. Currently, this feature is behind the feature flag `CDS_SAVE_EXECUTION_EXPRESSIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-91921)
   
 #### Fixed issues
 
+- The Git cache was getting reset during every webhook event. This bug resulted in cache misses causing increased load time for remote entities. This issue is fixed. (CDS-93603, ZD-59392)
 - Adding the Fetch Linked Apps step in a PR pipeline failed with the error, `Failed to parse yaml file`. This issue is fixed by improving the error response for the Fetch Linked Apps step. (CDS-93056)
+- The path validation process for Google Cloud Storage is optimized for faster and efficient validation. Instead of searching the entire storage, Harness now verifies the provided path directly. (CDS-92796, ZD-58789, ZD-59199)
+- Rolling back the current version of a service from the Services page did not show to which old version of the service did it roll back to. This issue is fixed by displaying the rollback version on the Rollback pop-up window. (CDS-92461)
+- Fixed an issue where Harness was not able to reconcile and refresh pipelines when its services were in a different, dynamically linked repository. (CDS-92169)
 - Fixed an issue where a Git branch was being populated in YAML when switching the version of a remote stage template linked to a remote pipeline in the same repository and branch. (CDS-92675, ZD-58750)
-- The secret passed from a parent pipeline to a child pipeline was not getting resolved because the expression functor token for thr child pipeline is different from that of the parent pipeline. This issue is fixed. (CDS-92434, ZD-58526)
+- The secret passed from a parent pipeline to a child pipeline was not getting resolved because the expression functor token for the child pipeline is different from that of the parent pipeline. This issue is fixed. (CDS-92434, ZD-58526)
 - Users were incorrectly prompted about unsaved changes when viewing variables with default values in Pipeline Studio and Input Sets page. This issue is resolved. (CDS-89117, ZD-57388, ZD-57603)
 - When a certain version of a template in use was deleted, the pipeline referring the template threw and error, and did not let the users select an alternate version of the template. As a workaround, users were recommended to edit the YAML directly. Now, this issue is fixed and users can select an alternate version of the template from the pipeline itself. (CDS-87809, ZD-55910)
+- Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. (CDS-92355)
+- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541)
 
 ### Version 1.28.11
 
