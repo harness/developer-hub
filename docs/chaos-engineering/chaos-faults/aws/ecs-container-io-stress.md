@@ -152,6 +152,11 @@ Below is an example AWS policy to execute the fault.
       <td> Path to the AWS secret credentials.</td>
       <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
     </tr>
+    <tr>
+          <td> SERVICE_NAME </td>
+          <td> Target ECS service name. </td>
+          <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
+        </tr>
     <tr> 
       <td> FILESYSTEM_UTILIZATION_BYTES </td>
       <td> Memory consumed during I/O stress (in GB). </td>
@@ -223,7 +228,7 @@ The `FILESYSTEM_UTILIZATION_BYTES` and `FILESYSTEM_UTILIZATION_PERCENTAGE` envir
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/ecs-container-io-stress/filesystem-utilization-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/ecs-stress-chaos/filesystem-utilization-bytes.yaml yaml)
 ```yaml
 # stress the i/o of the targeted pod with FILESYSTEM_UTILIZATION_PERCENTAGE of total free space 
 # it is mutually exclusive with the FILESYSTEM_UTILIZATION_BYTES.
@@ -254,7 +259,7 @@ Location that points to the volume mount path used in I/O stress. Tune it by usi
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/ecs-container-io-stress/mount-path.yaml yaml)
+[embedmd]:# (./static/manifests/ecs-stress-chaos/mount-path.yaml yaml)
 ```yaml
 # provide the volume mount path, which needs to be filled
 apiVersion: litmuschaos.io/v1alpha1
@@ -283,7 +288,7 @@ The number of workers on which you apply stress. Tune it by using the `NUMBER_OF
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/ecs-container-io-stress/io-number-of-workers.yaml yaml)
+[embedmd]:# (./static/manifests/ecs-stress-chaos/io-number-of-workers.yaml yaml)
 ```yaml
 # number of workers for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -302,6 +307,39 @@ spec:
         # number of io workers 
         - name: NUMBER_OF_WORKERS
           value: '4'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### ECS service name
+
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-stress-chaos/service-name.yaml yaml)
+```yaml
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: SERVICE_NAME
+          vale: 'test-svc'
+        - name: REGION
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
