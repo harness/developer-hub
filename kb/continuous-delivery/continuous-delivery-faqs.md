@@ -6311,7 +6311,7 @@ You can create a OPA policy to ensure this.
 
 ####  Getting error Invalid request: API rate limit exceeded for user ID 102833628. If you reach out to GitHub Support for help, please include the request ID D775:6578D3C5.
 
-The rate limit issue is from GitHub (which will be autoreslved in sometime) [Doc](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations) ,if you are using same connector for all remote entities. You can use different connectors with different access token to avoid this issue.
+The rate limit issue is from GitHub (which will be autoreslved in some time) [Doc](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations) ,if you are using same connector for all remote entities. You can use different connectors with different access token to avoid this issue.
 
 #### Can I authenticate to a secret manager with workload identity
 
@@ -6320,3 +6320,49 @@ Currently, Harness does not support authentication to a secret manager with work
 #### How to get all the stage names that has been executed till now
 
 You can use [API](https://apidocs.harness.io/tag/Pipeline#operation/getPipelineSummary) to fetch the pipeline summary.
+
+#### What image tag expression should be used for periodic deployment of a binary version triggered by cron?
+
+If it's not a custom trigger, use `<+trigger.artifact.build>` in the image tag field. Otherwise, reference the payload JSON to construct the expression.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions)
+
+#### Can one deploy Salesforce component without using S3 bucket ?
+
+Yes, one can deploy using custom artifact without using the S3 artifact. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#salesforce-deployment-template-support)
+
+#### How does the AWS connector currently handle OIDC authentication?
+
+Users can now leverage the AWS connector to configure OIDC authentication. This only leverages the account ID parameter when we send the token payload to the AWS STS service. This feature is provided behind the feature flag `FF:CDS_AWS_OIDC_AUTHENTICATION`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings)
+
+#### How can I force a template consumer to a new version?
+
+One can use the provided OPA policies to enforce. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/governance/policy-as-code/sample-policy-use-case/)
+
+#### Can template changes cascade down to end users, or must users always update with a new version?
+
+Best practice suggests that end users reference the "stable" version of the template, allowing updates whenever necessary without requiring user intervention. Non-ideal condition is to change the version of the template via editing template.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/templates/template/#versioning)
+
+#### What is the recommended approach for achieving fine-grained access tokens restricted to a single repository per pipeline? Is creating one GitHub app per repository overkill, and how do other finance customers typically address this challenge?
+
+The primary recommendation is to use GitHub Apps, but considering the limit, an alternative is "Deploy Keys," although this option entails significant overhead. Another suggestion is to have their instance of GitHub Enterprise, which may mitigate some limitations, albeit at an additional cost.
+
+#### How can one troubleshoot the error `ERROR: Error during SonarScanner execution`?
+
+Most scanners cannot scan java source code, only compiled images like jar files. Also, configure the Exclude field with `**/*.java`
+Please read more on STO requirements in the following [Documentation](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/)
+
+#### Do we have the capability in a dashboard or anything that will surface untagged resources?
+
+Yes, we have options for identifying untagged resources. In perspectives, filtering label X = NULL can indicate the percentage of untagged resources and their trend over time. For detailed identification, Cloud Asset Governance provides a better approach.
+Please read more on Cloud Asset Governance Architecture in the following [Documentation](https://developer.harness.io/docs/cloud-cost-management/architechture-diagrams/cloud_asset_governance_architecture/)
+
+#### How can variables/outputs be accessed between steps using the looping strategy, especially in dynamically provisioned infrastructure scenarios like Terraform within a Deployment stage?
+
+Use `<+pipeline.stages.Deploy_<+strategy.iteration.toString()>.spec.provisioner.steps.TerraformApply.output.logic_app_callback_url>` to reference dynamically provisioned infrastructure within the same stage in a looping strategy.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/)
+
+#### How can one enable a dropdown box to display the list of versions available in a Google Cloud Storage bucket when using it as an Artifact source for a service?
+
+Harness does not support this feature yet. Please read more on GCS service in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#adding-a-cloud-function-service)
