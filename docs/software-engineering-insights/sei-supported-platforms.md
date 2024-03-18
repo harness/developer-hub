@@ -67,5 +67,3 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enable this feature if you want to use the new user experience for Collection Navigation under the Insights</td>
     </tr>
 </table>
-
-
