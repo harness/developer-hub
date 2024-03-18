@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md). For a list of the platforms and technologies supported by Harness, go to [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies.md).
+You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md).
 
 This page explains how to set up the provider-agnostic Kubernetes cluster connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 

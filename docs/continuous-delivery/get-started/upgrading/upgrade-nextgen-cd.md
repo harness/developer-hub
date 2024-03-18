@@ -28,7 +28,7 @@ Harness NextGen is Harness' new version with a redesigned experience and new Con
 To compare supported platforms and technologies between Harness CD FirstGen and NextGen, go to:
 
 * [FirstGen supported platforms and technologies](/docs/first-gen/starthere-firstgen/supported-platforms.md)
-* [NextGen supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md#continuous-delivery-cd)
+* [NextGen supported platforms and technologies](/docs/continuous-delivery/cd-integrations.md)
 
 ## What's happening to the FirstGen CD product?
 

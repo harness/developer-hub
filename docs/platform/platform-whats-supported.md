@@ -53,7 +53,6 @@ For more information about delegates, go to:
 - [Deploy delegate on Kubernetes](/docs/platform/delegates/install-delegates/overview)
 - [Deploy delegate on Docker](/docs/platform/delegates/install-delegates/overview)
 - [Install delegate minimal image without SDKs](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
-- [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
 - [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md)
 
 ### SDKs installed with Harness Delegate
@@ -93,62 +92,11 @@ To support customization, Harness provides a Harness Delegate image that does no
 
 Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the No Tools Delegate image and installing specific SDK versions, go to [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+For steps on using the No Tools Delegate image and installing specific SDK versions, go to [Install a Delegate with 3rd Party Tool Custom Binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 ## Git Experience
 
 <Gitxsup />
-
-## Hierarchy
-
-The Harness Platform is structured hierarchically with three levels of access: Account, Organization (Org), and Project. Each level can have its own set of permissions configured, allowing for delegation of responsibilities to various teams. This approach facilitates efficient organization and management of resources, enabling granular access control that is both scalable and easy to manage.
-
-### Scopes
-
-- **Account** is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
-
-- **Organization** encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
-
-- **Project** contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
-
-The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
-
-To learn about organizations and projects, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
-
-### Resources across scopes
-
-The following table lists some resources and their availability at various scopes in Harness:
-
-| **Resources** | **Account** | **Org** | **Project** |
-| --- | --- | --- | --- |
-| **Pipeline** | No | No | Yes |
-| **Services** | Yes | Yes | Yes |
-| **Environments** | Yes | Yes | Yes |
-| **Git Management** | No | No | Yes |
-| **Connectors** | Yes | Yes | Yes |
-| **Secrets** | Yes | Yes | Yes |
-| **SMTP Configuration** | Yes | No | No |
-| **Templates** | Yes | Yes | Yes |
-| **Audit Trail** | Yes | Yes | Yes |
-| **Delegates** | Yes | Yes | Yes |
-| **Governance** | Yes | Yes | Yes |
 
 ## Notifications and collaboration
 
@@ -171,7 +119,7 @@ For other providers, you can use [custom approvals](/docs/platform/approvals/cus
 
 ## Open Source Software (OSS) components
 
-For a list of the open source libraries and third-party software Harness uses, download the [Harness Open Source Software (OSS) components PDF](static/harness-open-source-software-components.pdf).
+For a list of the open source libraries and third-party software Harness uses, download the [Harness Open Source Software (OSS) components PDF](./static/harness-open-source-software-components.pdf).
 
 ## RBAC
 
@@ -208,6 +156,40 @@ Using RBAC helps you:
 - Use just-in-time (JIT) user provisioning: Automated provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.
 
    JIT provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
+
+## Resource hierarchy
+
+The Harness Platform is structured hierarchically with three levels of access: Account, Organization (Org), and Project. Each level can have its own set of permissions configured, allowing for delegation of responsibilities to various teams. This approach facilitates efficient organization and management of resources, enabling granular access control that is both scalable and easy to manage.
+
+### Scopes
+
+- **Account** is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
+
+- **Organization** encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
+
+- **Project** contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
+
+The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
+
+To learn about organizations and projects, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
+
+### Resources across scopes
+
+The following table lists some resources and their availability at various scopes in Harness:
+
+| **Resources** | **Account** | **Org** | **Project** |
+| --- | --- | --- | --- |
+| **Pipeline** | No | No | Yes |
+| **Services** | Yes | Yes | Yes |
+| **Environments** | Yes | Yes | Yes |
+| **Git Management** | No | No | Yes |
+| **Connectors** | Yes | Yes | Yes |
+| **Secrets** | Yes | Yes | Yes |
+| **SMTP Configuration** | Yes | No | No |
+| **Templates** | Yes | Yes | Yes |
+| **Audit Trail** | Yes | Yes | Yes |
+| **Delegates** | Yes | Yes | Yes |
+| **Governance** | Yes | Yes | Yes |
 
 ## Secrets management
 

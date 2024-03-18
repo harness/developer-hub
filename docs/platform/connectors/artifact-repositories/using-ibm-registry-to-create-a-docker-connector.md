@@ -26,10 +26,6 @@ To set up and manage IAM policies, see [Defining access role policies](https://c
 
 When you switch or modify the IAM role, it might take up to 5 minutes to take effect.
 
-### Supported Platforms and Technologies
-
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../get-started/supported-platforms-and-technologies.md).
-
 ### Step 1: Generate an API Key in IBM Cloud Console
 
 Follow the instructions outlined in [Creating an API Key](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui#create_user_key) from IBM.

@@ -33,7 +33,7 @@ Looking for other methods? See [Add Kubernetes Manifests](/docs/continuous-deliv
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/continuous-delivery/cd-integrations.md).
 
 ## Limitations
 

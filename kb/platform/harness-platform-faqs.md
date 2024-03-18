@@ -2620,7 +2620,7 @@ You can use the following repository as a sample to install it through Terraform
 
 ### How often does Harness upgrade the kubectl binary version within the delegate?
 
-We don’t have an exact period for when these upgrades occur, but we maintain a list of [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies/). You can customize the kubectl binary version using ```INIT_SCRIPT```.
+We don't have an exact period for when these upgrades occur, but we maintain a list of [Supported platforms and technologies](/docs/platform/platform-whats-supported). You can customize the kubectl binary version using `INIT_SCRIPT`.
 
 ### Can we add a Custom Selector in the Harness Delegate chart for legacy delegates?
 

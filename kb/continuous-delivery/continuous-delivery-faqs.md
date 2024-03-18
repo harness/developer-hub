@@ -4634,7 +4634,7 @@ Please read more on Native Helm in the following [Documentation](https://develop
 #### Does old version to K8S Server (eg. v1.11.10) service deploy get supported in Harness ?
 
 Yes, if the deployment versions supported in First Genwas available, the NextGen will be available as well.
-Please read more on Supported versions in the following [Documentation](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/)
+For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 #### Does Harness actively working on the connector to make it compatible with Jira Cloud , or should one initiate the setup of a delegate for the Jira connector ?
 

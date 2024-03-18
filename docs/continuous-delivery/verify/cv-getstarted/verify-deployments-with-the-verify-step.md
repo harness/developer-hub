@@ -15,7 +15,7 @@ This topic provides an overview of the prerequisites and steps involved in setti
 
 * [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts).
 * [Learn about Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
-* [Refer to the supported platforms and technologies](../../../get-started/supported-platforms-and-technologies.md)
+* [Refer to the supported platforms and technologies](../cv-whats-supported.md)
 
 
 ## Deployment strategies for CV

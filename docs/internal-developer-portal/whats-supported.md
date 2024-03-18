@@ -32,7 +32,7 @@ Backstage doesn't support SSH auth type for integrations, hence only HTTP connec
 
 Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience but it's not required.
 
-For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 :::info
 

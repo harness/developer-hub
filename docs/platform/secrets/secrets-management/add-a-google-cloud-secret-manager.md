@@ -36,8 +36,6 @@ You need an understanding of:
 * You cannot update the name of an inline or referenced secret stored in the Google Cloud Secret Manager using the Harness Secret Manager.
 * Harness does not support changing an inline secret to a reference secret or vice versa in Harness.
 
-For more information, go to [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
-
 ## Google Cloud secret manager permission requirements
 
 * Make sure you have Create/Edit permissions for Secrets.

@@ -22,7 +22,7 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 - Install delegate minimal image without SDKs
 
-- [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
+- [Install delegate maximal image without certified SDKs](/docs/platform/platform-whats-supported.md#sdks-installed-with-harness-delegate)
 
 ### AuthN
 
