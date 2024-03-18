@@ -4,35 +4,34 @@ description: Explore the Harness UI and navigate to the desired modules.
 sidebar_position: 40
 redirect_from:
   - /docs/getting-started/harness-ui-overview
+  - /docs/get-started/harness-ui-overview
 ---
 
-import new_left_nav from './static/new-nav-left.png'
 import select_modules from './static/select-modules-leftnav.png'
-import module_info from './static/module-info1.png'
 import customize_left_nav from './static/configure-leftnav.png'
-import reorder_modules from './static/drag-drop-modules1.png'
-
-Harness is a comprehensive CI/CD platform that streamlines software delivery for modern enterprises. It provides a powerful and user-friendly interface for managing software releases, deployments, and rollbacks.
 
 You can interact with the Harness platform through the Harness UI. It is designed to be intuitive and easy to use, while also providing robust features and capabilities for managing software releases.
 
-The Harness UI is organized into several key areas. This topic explains how you can:
+You can explore Harness through various dimensions:
 
-- View your account and profile information.
-- View subscription details.
-- Navigate and select modules.
+* Account: The account scope includes account-level settings and account-wide view of projects, modules, and so on.
+* Organization: Drill down into a specific organization to access organization-level settings and project/module usage within that organization.
+* Project: Drill down further into a specific project and access project-level settings and module usage within that project.
+* Module: Select a module to access the features and functionality of that module.
 
-## Harness Navigation version 2.0
+## Harness navigation version 2.0
 
 :::note
 
-Currently, Harness Navigation version 2.0 is behind the feature flag `CDS_NAV_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, Harness navigation version 2.0 is behind the feature flag `CDS_NAV_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
-The new navigation is designed to cater to different personas, address their needs, and reduce task completion time. Once the navigation is enabled on your account, you will notice a different side panel and modules menu on the top.
+Harness navigation 2.0 brings an overhauled navigation experience that caters to different personas, addresses their unique needs, and ultimately reduces task completion time.
 
-We have introduced a multi-module mode and a single module mode for working across multiple modules or focusing on a specific module. You can configure the side panel to show or hide specific modules.
+Once enabled on your account, you'll notices changes to the left and top navigation, while most of the central page experience remains consistent with navigation 1.0.
+
+This experience also introduces *multi-module mode* and *single module mode* so you can work across multiple modules or focus on a specific module, depending on your needs. As you could in navigation 1.0, you can configure the side panel to show or hide specific modules.
 
 This video provides a walkthrough of the new navigation experience and highlights its benefits.
 
@@ -40,144 +39,185 @@ This video provides a walkthrough of the new navigation experience and highlight
 https://www.loom.com/share/776bbe67da47483598a07196aec3915f?sid=fda91036-713d-4201-a8b6-7cc44cd2e07f-->
 <DocVideo src="https://www.loom.com/share/776bbe67da47483598a07196aec3915f?sid=fda91036-713d-4201-a8b6-7cc44cd2e07f" />
 
-## Projects
+While navigation 2.0 is in beta, you can select your profile to swap between navigation 1.0 and 2.0. Note that some links, such as pipeline or project links, aren't able to redirect between navigation 1.0 and 2.0.
 
-A Harness project is a group of Harness modules, their pipelines, and resources. For example, a project might have a Harness CI pipeline to build code and push an image and a Harness CD pipeline to deploy that image to a cloud platform.
+### Scope
 
-For more information, see [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+Your [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) is given at the top of the left navigation. Select the scope (**Account**, **Organization**, or **Project**) to change your scope.
 
-## Deployments
+You can change scope levels entirely (or example, drill down from organization or project scope) or select different entities at the same scope (such as a different project or organization).
 
-The **Deployments** module in Harness is designed to provide visibility and control over the deployment process, making it easier to manage and troubleshoot deployments across multiple projects and environments. You can create your CD pipelines in this module and view the status of all deployments across all projects, filter and sort the deployments based on various criteria, and drill down into the details of individual deployments.
-
-For more information, see [Continuous Delivery & GitOps](/docs/continuous-delivery).
-
-## Builds
-
-The **Builds** module in Harness is a component of the platform that provides a centralized view of all the builds that have been executed or are currently in progress. It allows you to manage and monitor your build activity across all your projects and environments.
-
-For more information, see [Continuous Integration](/docs/continuous-integration).
-
-## Feature Flags
-
-Feature flags are a key component of Harness that allows you to control the availability and behavior of specific features in your application. With feature flags, you can release new features to specific groups of users, test features before making them available to all users, and gradually roll out features to ensure a smooth transition.
-
-For more information, see [Feature Flags](/docs/feature-flags)
-
-## Select modules and customize left navigation
-
-Harness also has the following modules:
-
-- Chaos Engineering
-- Security Tests
-- Cloud Cost Management
-- Service Reliability Management
-
-To navigate to your desired module, perform the following steps:
-
-1. In the left navigation, click **Select Modules**.
-
-   <img src={select_modules} alt="Select module option in left nav" height="50" width="200"/>
-
-   The modules appear in various functional categories:
-
-   - Build & Test
-     - Continuous Integration
-     - Chaos Engineering
-     - Security Tests
-   - Deploy Changes
-     - Continuous Delivery & GitOps
-     - Feature Flags
-   - Manage Impact
-     - Cloud Cost Management
-     - Service Reliability Management
-
-   You can find more information about each module by selecting the info icon beside it.
-
-    <img src={module_info} alt="Option to view module info" height="70" width="300"/>
-
-
-2. To configure your left navigation, select **Customize your navigation**.
-
-<img src={customize_left_nav} alt="Option to customize left nav" height="70" width="300"/>
-
-3. To reorder the modules, drag each module to its desired position.
-
-<img src={reorder_modules} alt="Reorder modules" height="70" width="300"/>
-
-4. Select the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
-
-## Account Settings
+The remainder of the left nav updates based on the selected scope.
 
 ### Overview
 
-Account Overview shows your Harness account details.
+At the account and project scope, the Overview summarizes recent activity in the account or project.
 
-To view your Harness account details, go to **Account Settings** and click **Overview**.
+### Pipelines and Executions
 
-Your account overview details are shown.
+At the project scope, use the **Pipelines** and **Executions** links to explore all pipelines and the execution history for the project.
 
-### Authentication
+### Modules
 
-This section provides options for you to set up authentication for users, enforce password policies, and restrict email domain.
+Each scope reflects a list of modules used in or available to that account, organization, or project.
 
-For more information, refer to [Authentication Overview](../platform/authentication/authentication-overview.md).
+Modules are labeled by their primary functionality:
 
-### Account Resources
+* **Deployments:** [Continuous Delivery & GitOps](/docs/continuous-delivery)
+* **Builds:** [Continuous Integration](/docs/continuous-integration)
+* **Feature Flags:** [Feature Flags](/docs/feature-flags)
+* **Code:** [Code Repository](/docs/code-repository)
+* **Cloud Costs:** [Cloud Cost Management](/docs/cloud-cost-management)
+* **Service Reliability:** [Service Reliability Management](/docs/service-reliability-management)
+* **Security Tests:** [Security Testing Orchestration](/docs/security-testing-orchestration)
+* **Chaos:** [Chaos Engineering](/docs/chaos-engineering)
+* **Error Tracking:** [Continuous Error Tracking](/docs/continuous-error-tracking)
 
-Account resources are shared and available for use within any organization or project within your account.​
+:::tip
 
-For better isolation of resources, it is recommended that you create resources at the organization or project scope.​
+To quickly drill down into a module, select the grid at the top of the left navigation, and then select a module.
 
-### Policies
+:::
 
-You can define and store policies centrally and then apply them to entities and events across the Harness Platform.
+### Organizations and Projects
 
-For more information, see [Harness Policy as Code](/docs/category/policy-as-code)
+You can drill down to lower [organization and project](/docs/platform/organizations-and-projects/create-an-organization) scopes from higher scopes.
 
-### Access Control
+* At the account scope, you can find lists of **Organizations** and **Projects** under that account.
+* At the organization scope, you can find a list of **Projects** under that account.
 
-Harness Role-Based Access Control (RBAC) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.​
+Visibility depends on your permissions.
 
-For more information, see [Role-based Access Control](/docs/category/platform-access-control)
+### Settings
 
-### Subscriptions
+Each scope provides access to its respective scope-level settings: **Account Settings**, **Organization Settings**, and **Project Settings**.
 
-Harness provides the following plans:
+While the contents of these pages are the same, navigation 2.0 introduces a cleaned-up interface for simplified browsing and minimal distraction.
 
-- Free
-- Team
-- Enterprise
+Account settings include:
 
-You can activate a yearly or monthly subscription with Harness after choosing your modules and plan.
+* General: Account Details, [Default Settings](/docs/platform/settings/default-settings), and SMTP configuration
+* Account-level shared resources like [delegates](/docs/platform/delegates/delegate-concepts/delegate-overview), [variables](/docs/platform/variables-and-expressions/add-a-variable), [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview), [templates](/docs/platform/templates/template), and more.
+* [Access Control](/docs/category/platform-access-control)
+* Security and governance, including [Authentication](/docs/platform/authentication/authentication-overview.md), [Policies](/docs/category/policy-as-code), and [Audit Trail](/docs/category/audit-trail).
+* [Subscriptions](/docs/platform/get-started/subscriptions)
 
-Your subscription and plan details are displayed in Subscriptions.
+Additional options may be present depending on your module usage and access, such as GitOps settings and cloud cost integrations.
 
-### Audit Trail
+Not all settings are available at all scopes.
 
-With Audit Trail in Harness, you can view and track changes to the Harness resources in your Harness account.​
+:::tip
 
-For more information, go to [Audit Trail](/docs/category/audit-trail).
+To quickly jump to the account view and manage account settings, select the grid at the top of the left navigation, and then select **Administrative Settings**.
 
-### Organizations
+This enables Admin Settings view, which focuses on account administration and minimizes visibility of modules.
 
-Harness Organizations (Orgs) allow you to group projects that share the same goal.​
+:::
 
-For more information, refer to [Projects and Organizations](/docs/platform/organizations-and-projects/projects-and-organizations).
+### Help
 
-## My Profile
+This section provides links to documentation, community, and support resources.
 
-To view your profile information, go to MY PROFILE.
+### My Profile
 
-The following profile information is displayed:
+You profile, indicated by an initial icon at the bottom of the left navigation, includes:
 
-- Basic information
-- Projects
-- API keys
+* Your API keys and tokens.
+* Quick links for projects you own.
+* Your display name.
+* The email address associated with your profile.
+* Options to change your password or toggle 2FA.
+* Option to switch accounts if your email address is linked to multiple Harness accounts.
 
-You can also do the following from the profile page:
+### Dashboards
 
-- Enable/disable two-factor authentication​
-- Change password
-- Switch account​
-- Add a new API key and token.
+To access Dashboard view, select the grid at the top of the left navigation, and then select **Dashboards**.
+
+Dashboard view streamlines the left navigation to focus on dashboards, minimizing modules and non-dashboard settings.
+
+To exit Dashboard view, select the grid again and then select either **Productivity View** or **Administrative Settings**.
+
+## Legacy navigation (version 1.0)
+
+### Overview
+
+The Overview summarizes recent activity in the account, organization, or project.
+
+### Projects
+
+Explore [projects](/docs/platform/organizations-and-projects/create-an-organization) in your Harness account. Project visibility depends on your permissions.
+
+### Modules
+
+Modules are labeled by their icon and primary functionality:
+
+* **Deployments:** [Continuous Delivery & GitOps](/docs/continuous-delivery)
+* **Builds:** [Continuous Integration](/docs/continuous-integration)
+* **Feature Flags:** [Feature Flags](/docs/feature-flags)
+* **Code:** [Code Repository](/docs/code-repository)
+* **Cloud Costs:** [Cloud Cost Management](/docs/cloud-cost-management)
+* **Service Reliability:** [Service Reliability Management](/docs/service-reliability-management)
+* **Security Tests:** [Security Testing Orchestration](/docs/security-testing-orchestration)
+* **Chaos:** [Chaos Engineering](/docs/chaos-engineering)
+* **Error Tracking:** [Continuous Error Tracking](/docs/continuous-error-tracking)
+
+### Help
+
+This section provides links to documentation, community, and support resources.
+
+### Dashboards
+
+Explore dashboards relevant to your account and modules.
+
+### Account settings
+
+Account settings include:
+
+* Overview
+* [Authentication](/docs/platform/authentication/authentication-overview.md)
+* Account resources (shared resources such as [delegates](/docs/platform/delegates/delegate-concepts/delegate-overview), [variables](/docs/platform/variables-and-expressions/add-a-variable), [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview), [templates](/docs/platform/templates/template), [default settings](/docs/platform/settings/default-settings), and more)
+* [Policies](/docs/category/policy-as-code)
+* [Access Control](/docs/category/platform-access-control)
+* [Billing, Subscriptions, and Plans](/docs/platform/get-started/subscriptions)
+* [Audit Trail](/docs/category/audit-trail)
+* [Organizations](/docs/platform/organizations-and-projects/projects-and-organizations)
+
+Additional options may be present depending on your module usage and access.
+
+### My Profile
+
+You profile, indicated by an initial icon at the bottom of the left navigation, includes:
+
+* Your API keys and tokens.
+* Quick links for projects you own.
+* Your display name.
+* The email address associated with your profile.
+* Options to change your password or toggle 2FA.
+* Option to switch accounts if your email address is linked to multiple Harness accounts.
+
+## Customize navigation
+
+You can show or hide modules according to your preferences.
+
+To do this in legacy navigation (1.0):
+
+1. Below the list of modules in the left navigation, select the **Select Modules** grid icon.
+
+   <img src={select_modules} alt="Select module option in left nav" width="25%" height="25%"/>
+
+2. Select the wrench icon to customize your navigation.
+
+   <img src={customize_left_nav} alt="Option to customize left nav" width="50%" height="50%"/>
+
+3. To show or hide a module on the left nav, select or deselect the checkbox next to the module name.
+4. To rearrange the order of the modules, drag and drop the modules.
+5. Harness automatically saves your changes. Select the **X** in the upper right corner to exit navigation configuration.
+
+
+To customize navigation in navigation 2.0:
+
+1. At the top of the left navigation, select the grid icon.
+2. Select **Configure**.
+3. To show or hide a module on the left nav, select or deselect the checkbox next to the module name.
+4. To rearrange the order of the modules, drag and drop the modules.
+5. Harness automatically saves your changes. Select the **X** in the upper right corner to exit navigation configuration.
