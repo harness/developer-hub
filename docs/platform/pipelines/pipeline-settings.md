@@ -120,7 +120,7 @@ Exceeding this limit produces an [error message](https://developer.harness.io/do
 
 **Queue Limitation on Concurrent Stage Processing (Maximum of 20 Executions)**
 
-When a certain number of stages are concurrently running, delays may occur due to limited resources. If this number surpasses a predefined limit, typically around 20, additional stages will begin to fail.
+When we have 20 stages running concurrently and waiting on resources then any stage execution which is supposed to wait on the same resource will start failing.
 
 For example, If you are running more than 20 stages concurrently, with each stage taking approximately 8 hours to complete, resource constraints will block others for the same duration, causing them to queue up. However, after 20 executions, failures will begin to occur.
 
