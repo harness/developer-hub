@@ -132,6 +132,11 @@ Below is an example AWS policy to execute the fault.
             <td> Default: 0. This means all available CPU cores are consumed. For more information, go to <a href="#cpu-core"> CPU core.</a></td>
         </tr>
         <tr>
+          <td> CPU_PERCENTAGE </td>
+          <td> Percentage of CPU core that is consumed.</td>
+          <td> <code>CPU_CORES</code> and <code>CPU_PERCENTAGE</code> are mututally exclusive, and if values for both there tunables are provided, the latter takes precedence. For example, if <code>CPU_CORES</code> is 1 and <code>CPU_PERCENTAGE</code> is 50, 50 percent of the resources are stressed. For more information, go to <a href="#cpu-percentage">CPU percentage</a>.</td>
+      </tr>
+        <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
             <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
@@ -173,6 +178,38 @@ spec:
         - name: REGION
           value: 'us-east-1'
 ```
+
+### CPU percentage
+The `CPU_PERCENTAGE` environment variable specifies the percentage of stress applied on the target Windows VM for a specific duration. If the variable is set to `0`, the fault consumes all the available CPU cores.
+
+Following YAML snippet illustrates the use of this input variable.
+
+[embedmd]:# (./static/manifests/windows-cpu-stress/win-cpu-stress-perc.yaml yaml)
+```yaml
+# CPU hog in the Windows VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-cpu-stress
+spec:
+  infraType: "windows"
+  steps:
+    - - name: windows-cpu-stress
+  tasks:
+    - name: windows-cpu-stress
+      infraId: ""
+      definition:
+        chaos:
+          fault: windows-cpu-stress
+          env:
+           # CPU cores for stress
+            - name: CPU_PERCENTAGE 
+              value: '50'
+```
+
+:::info note
+If both `CPU_CORE` and `CPU_PERCENTAGE` are set to 0, no stress is applied on any of the Windows machine resources.
+:::
 
 ### Multiple EC2 instances
 

@@ -165,6 +165,16 @@ No early access (beta) features are available for the Harness Continuous Error T
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
 
+### Delegate selectors for self-managed VM build infrastructures
+
+* **Release date:** March 2024
+* **Release version:** 1.18.2
+* **Issue number:** CI-11545
+* **Feature flag:** `CI_ENABLE_VM_DELEGATE_SELECTOR`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures).
+
 ### Secure connect for Harness Cloud
 
 * **Release date:** January 2024
