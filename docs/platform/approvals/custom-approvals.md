@@ -181,7 +181,7 @@ In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.
 
 The JEXL expression format for a Custom Approval step is `<+output.bashVarOutput> == "testValue"`.
 
-First, create a variable in **Script**, then create variables in **Script Output Variables** that references those variables, and then use the **Script Output Variables**' variables and the **Script** variables' va;ue in the **Approval Criteria**:  
+First, create a variable in **Script**, then create variables in **Script Output Variables** that reference those variables, and then use the **Script Output Variables**' variables and the **Script** variables' value in **Approval Criteria**:  
 
 ![](./static/jexl-expression-approval-criteria.png)
 
