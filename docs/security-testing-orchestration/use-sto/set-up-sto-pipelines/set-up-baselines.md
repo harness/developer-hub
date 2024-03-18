@@ -5,16 +5,15 @@ sidebar_label: Target baselines
 sidebar_position: 50
 ---
 
-Every scanned target should have a _baseline_, which represents the root variant such as the `main` branch or the `latest` tag.  Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
+Every scanned target should have a _baseline_, which represents the root variant such as the `main` branch of a Git repository or the `latest` tag of a container image.  Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
 
 :::info key concepts: target baselines
 - [Every scanned target needs a baseline](#every_target_needs_a_baseline) to enable the full suite of STO features.
-- You can specify a baseline using a fixed value or a regular expression (RegEx). 
-- When a target with a RegEx baseline gets scanned, and the variant name matches the RegEx, the target baseline updates automatically. [RegEx baselines are recommended](#advantages_of_regex_baselines) unless you know that the [target baseline is fixed](#specify-a-fixed-baseline-for-an-individual-target) and will not change. 
-- You can specify [default RegEx baselines](#default-regular-expressions-for-target-baselines) for each target type.
-- Repositories and images have predefined defaults:
-  - For repositories, the default is the `main` or `master` branch.
-  - For images, the default is `latest` or the most recently scanned two-dot release. 
+- You can specify a baseline using a fixed value or a regular expression (RegEx).
+  - If you always want to compare against a specific variant — such as the `main` branch of your git repository — use a [fixed value](#specify-a-fixed-baseline-for-an-individual-target).
+  - You might find that the variant you want use as your baseline changes over time. Suppose your team creates a new `X.Y.Z` branch with each release. In this case you can use a [RegEx baseline](#advantages_of_regex_baselines) that updates automatically. 
+- You can specify a [default RegEx baseline](#default-regular-expressions-for-target-baselines) for each target type. This RegEx will automatically be used as the baseline for any new targets.
+- Repositories and images have predefined defaults. For repositories, the default is the `main` or `master` branch. For images, the default is `latest` or the most recently scanned Semantic Versioned release. 
 :::
 
 <!-- 
@@ -49,17 +48,15 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
 
     - **Common to \<_target_>:\<_baseline_>** Issues also detected in the target baseline.
 
-  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) focus on baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
+  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
 
-  - In short, baselines make it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in  production targets.
+  - In short, baselines make it easy for developers to drill down into “shift-left” issues in the variants they're currently working on, and security personnel to monitor the security posture of production targets.
   
 </details>
 
 <a name="advantages_of_regex_baselines"></a>
 <details>
-<summary>Advantages of using regular expressions to define baselines</summary>
-
-Defining your baselines using regular expressions provides significant benefits over using fixed values such as `main` or `latest`. 
+<summary>Benefits of using regular expressions to define baselines</summary>
 
 * RegEx baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. A typical sprint cycle might run like this:
   
@@ -100,7 +97,7 @@ You can specify a fixed value if you know that the baseline for a target will no
 
 Suppose your organization publishes container images with a `latest` tag as well as two-dot versions such as:  `3.0.0` , `3.17`, `3.17.3`, `3.18.0`, `3.18.2`, ...
 
-With this cadence, you can create a RegEx baseline that updates whenever you create a new image with a matching tag. If you scan a new image target, `jdoe/myimage`, with the following tags, the baseline gets updated as follows:
+To support proper functioning of STO with this workflow, you can set a RegEx baseline that updates whenever you scan a new image with a matching tag. If you scan a new image target with the following tags, the baseline gets updated as follows:
 
 
 <table>
@@ -118,22 +115,22 @@ With this cadence, you can create a RegEx baseline that updates whenever you cre
     </tr>
     <tr>
         <th>Scan 2</th>
-        <td><code>3.3.0</code></td>
+        <td><code>3.2.0</code></td>
         <td>none</td>
-        <td><code>3.3.0</code></td>
+        <td><code>3.2.0</code></td>
     </tr>
     <tr>
         <th>Scan 3</th>
-        <td><code>latest</code></td>
         <td><code>3.3.0</code></td>
-        <td><code>latest</code></td>
+        <td><code>3.2.0</code></td>
+        <td><code>3.3.0</code></td>
     </tr>
 </table>
 
 
 ### Important notes for setting up RegEx baselines in STO
 
-* You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
+* You must use a consistent naming scheme for your scanned variants. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
 
 * Carefully consider which targets you want to use for your baselines. In general, the baseline should be the root element for all your current variants. 
 
