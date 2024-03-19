@@ -186,7 +186,7 @@ Perform the following steps to connect to your Azure account:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs queryString="tab-number">
+<Tabs>
 <TabItem value="4" label="From Account Settings">
 
 1. Go to **Account Resources** > **Connectors**.
