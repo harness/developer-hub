@@ -41,10 +41,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
-<table width="900" cellspacing="0" cellpadding="0">
+<table>
     <tr>
-        <td width="300" word-wrap="break-word"><b>Flag</b></td>
-        <td width="600"><b>Description</b></td>
+        <td><b>Flag</b></td>
+        <td><b>Description</b></td>
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_JIRA</td>
@@ -67,3 +67,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enable this feature if you want to use the new user experience for Collection Navigation under the Insights</td>
     </tr>
 </table>
+
+<!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
+
+<!-- Please don't use fixed width for tables. It breaks mobile browsing and small desktop windows. -->
