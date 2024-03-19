@@ -160,7 +160,7 @@ This video demonstrates how Harness can automate the process of training, deploy
 
 Harness integrates with common ML tools, including:
 
-* [AzureML](./mlops-azureml.md)
+* [Azure ML](./mlops-azureml.md)
 * [AWS SageMaker](./mlops-sagemaker.md)
 * [Databricks](./mlops-databricks.md)
 * [Google Vertex AI](./mlops-vertexai.md)

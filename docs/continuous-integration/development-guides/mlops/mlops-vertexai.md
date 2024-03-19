@@ -104,7 +104,7 @@ if __name__ == '__main__':
 This script is a basic example. If you wanted to try it on Vertex AI, you need to:
 
 - Modify the script according to your specific feature engineering, model parameters, and evaluation metrics requirements.
-- Pre-process and prepare your data for use in ML models.
+- Preprocess and prepare your data for use in ML models.
 - Create a [custom training job](https://cloud.google.com/vertex-ai/docs/training/overview), specifying the training container image for Scikit-learn, your script file, and any required command-line arguments.
 - Configure GCP access permissions so that your Vertex AI training job can access the GCS bucket where your data and outputs will be stored.
 
