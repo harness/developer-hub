@@ -12,9 +12,31 @@ To approve exemptions, users must have the **Approve/Reject** permission. Curren
 
 Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans.
 
-## These is no Test Execution Summary widget in the list of dashboard widgets
+## Does STO support execution on ARM64 architecture?
+
+Currently, STO doesn't support running on ARM64 platforms.
+
+## Can I use a specific image tag for STO images?
+
+Yes. For instructions and information about customizing your STO images, go to:
+
+- [Update your STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images)
+- [Create custom scanner images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images)
+- [Store images in a private registry](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry)
+
+## Can I use an API to extract data on vulnerabilities detected by STO?
+
+Public APIs for this functionality are on the [STO roadmap](https://developer.harness.io/roadmap/#sto).
+
+## STO dashboards
+
+### These is no Test Execution Summary widget in the list of dashboard widgets
 
 To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
+### Why doesn't the STO dashboard populate the data from targets?
+
+This happens when scan executions don't have baselines set. You must set test target baselines to shown this data on your STO dashboards.
 
 ## Aqua scans
 
@@ -23,6 +45,12 @@ To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled 
 Pod eviction during an Aqua scan can be attributed to resource constraints, especially with a large image size (around 4GB).
 
 To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
+
+## AWS ECR scans
+
+## How do I configure a session token in the AWS ECR scan step?
+
+You can set the `AWS_SESSION_TOKEN` in the [Authentication settings](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference/#authentication).
 
 ## BlackDuck scans
 

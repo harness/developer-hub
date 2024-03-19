@@ -1,6 +1,6 @@
 ---
 title: Image registry
-sidebar_position: 2
+sidebar_position: 4
 description: A repository that hosts container images used by chaos experiments
 ---
 

@@ -183,6 +183,14 @@ You can also use matrix values as variable values. For example, this [Action ste
         token: <+secrets.getValue("github_token")>
 ```
 
+### Avoid hyphens and periods in matrix tag/dimension names
+
+Harness recommends avoiding hyphens and periods in matrix tag/dimension names, such as `matrixTag` instead of `matrix-tag`.
+
+However, if you need to reference a matrix dimension name that includes a period or hyphen/dash, you must wrap the tag in double quotes and use the `get()` method in the expression, such as `<+stage.matrix.get("python-version")>`.
+
+If a dimension with a hyphen/dash or period is not referenced correctly, the expression resolves as null and doesn't throw an error.
+
 ### Matrix expressions in multi-layer matrix strategies
 
 If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
@@ -247,7 +255,7 @@ By default, Harness uses indices for the matrix naming strategy (stages are name
 
 #### Use matrix axes as stage labels
 
-You can turn on a setting at the account, organization, or project level to use the names of the matrix indices as labels.
+You can set **Enable Matrix Labels by Name** at the account, organization, or project level. This setting uses the names of the matrix indices as labels.
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
    - To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
@@ -259,7 +267,7 @@ You can turn on a setting at the account, organization, or project level to use 
 
 #### Use a custom label for matrix stages
 
-You can use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example:
+You can use the `nodeName` key in your `matrix` YAML to define a matrix stage naming convention. Expressions are supported, so you can customize the name as required. For example:
 
 ```yaml
 matrix:
@@ -267,10 +275,11 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-:::info note
-1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, the original stage name.
-2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the matrix.
-:::
+
+When you specify a `nodeName`, the original/parent stage name is prepended to the `nodeName`. Therefore, the final, resolved name of each stage is `OriginalStageName_nodeName`.
+
+If the resolved value of `nodeName` is the same for multiple stages, Harness automatically appends an index identifier to the name, such as `OriginalStageName_nodeName_0`, `OriginalStageName_nodeName_1`, and so on.
+
 ### Matrix examples and best practices
 
 - [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)

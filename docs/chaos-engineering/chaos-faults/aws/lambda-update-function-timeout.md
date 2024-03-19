@@ -99,6 +99,11 @@ Below is an example AWS policy to execute the fault.
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive instance termination.</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>

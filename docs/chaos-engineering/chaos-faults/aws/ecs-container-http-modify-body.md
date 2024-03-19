@@ -145,6 +145,26 @@ Below is an example AWS policy to execute the fault.
             <td> Provide the path for AWS secret credentials.</td>
             <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
           </tr>
+        <tr> 
+          <td> CLUSTER_NAME </td>
+          <td> Name of the target ECS cluster</td>
+          <td> Single name supported For example, <code>demo-cluster</code>. For more information, go to <a href="#agent-stop"> cluster name.</a></td>
+        </tr>
+        <tr>
+          <td> TASK_REPLICA_AFFECTED_PERC </td>
+          <td> Percentage of total tasks that are targeted. </td>
+          <td> Default: 100. For more information, go to <a href="#ecs-task-replica-affected-percentage"> ECS task replica affected percentage.</a></td>
+      </tr>
+        <tr>
+          <td> SERVICE_NAME </td>
+          <td> Target ECS service name. </td>
+          <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
+        </tr>
+        <tr>
+          <td> TASK_REPLICA_ID </td>
+          <td> Comma-separated target task replica IDs. </td>
+          <td> `SERVICE_NAME` and `TASK_REPLICA_ID` are mutually exclusive. If both the values are provided, `SERVICE_NAME` takes precedence. For more information, go to <a href="#ecs-task-replica-ids"> ECS task replica ID.</a></td>
+        </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Defines the sequence of chaos execution for multiple instances. </td>
@@ -287,4 +307,136 @@ spec:
         # provide the port of the targeted service
         - name: TARGET_SERVICE_PORT
           value: '80'
+```
+
+### Agent stop
+
+Target agent that is stopped for a specific duration. Tune it by using the `CLUSTER_NAME` environment variable. 
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-container-http-modify-body/cluster-name.yaml yaml)
+```yaml
+# stops the agent of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-agent-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### ECS task replica affected percentage
+
+Number of tasks to target (in percentage). Tune it by using the `TASK_REPLICA_AFFECTED_PERC` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-container-http-modify-body/task-replica-affected-perc.yaml yaml)
+```yaml
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: SERVICE_NAME
+          vale: 'test-svc'
+        - name: TASK_REPLICA_AFFECTED_PERC
+          vale: '100'
+        - name: REGION
+          value: 'us-east-1'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### ECS task replica IDs
+
+Task replicas that have a specific ID which are to be stoppee. Tune it by using the `TASK_REPLICA_ID` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-container-http-modify-body/task-replica-id.yaml yaml)
+```yaml
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: TASK_REPLICA_ID
+          vale: '1b751cf956e34e54b9d83b6a5c067f60,20d5041c044941dfb2126f1722d10558'
+        - name: REGION
+          value: 'us-east-1'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### ECS service name
+
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-container-http-modify-body/service-name.yaml yaml)
+```yaml
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: SERVICE_NAME
+          vale: 'test-svc'
+        - name: REGION
+          value: 'us-east-1'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
 ```

@@ -106,4 +106,4 @@ We can also check the Chaos Results tab to get a summary of the experiment execu
 
 With that, you have successfully created and executed a chaos experiment from scratch!
 
-For more information about creating and running chaos experiments, go to [Configure chaos experiments](/docs/chaos-engineering/chaos-faults/prerequisites/experiments/construct-and-run-custom-chaos-experiments.md).
+For more information about creating and running chaos experiments, go to [Configure chaos experiments](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md).

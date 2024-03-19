@@ -1,31 +1,81 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-For information about referencing variables, using expressions, and adding custom variables, go to:
+For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
 
-- [Variables and expressions](/docs/category/variables-and-expressions)
-- [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md)
+You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more.
+
+This topic describes some built-in and custom Harness expressions, as well as the prefixes used to identify user-created variables.
+
+Expressions are powerful and offer many options for modification or interaction. For more information about using expressions, go to:
+
+* [Write expressions using any JSON parser tool](./expression-v2.md)
+* [Use Java string methods](./expressions-java-methods.md)
+* [Expression status type reference](./status-type-reference.md)
+* [Add variables](./add-a-variable.md)
 
 ## What is a Harness variable expression?
 
-Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
+Harness variable expressions refer to a value in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates any expressions present in the pipeline and replaces them with the resolved value.
 
-Harness variables are powerful because they let you template configuration information, pipeline settings, and values in your scripts, and they enable your pipelines to pass information between stages and settings.
+For example, the expression `<+pipeline.name>` resolves to name of the pipeline where you're using that expression.
 
-When you use a variable, you add it as an expression.
+**Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
-Harness expressions are identified using the `<+...>` syntax. For example, `<+pipeline.name>` references the name of the pipeline where the expression is evaluated.
+## Expression usage
 
-The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
+Harness variables are declared as expressions using the expression delimiter `<+...>`, such as `<+pipeline.name>` or `<+secrets.getValue("someSecret")>`.
+
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+
+In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Expression**.
+
+![](./static/runtime-inputs-03.png)
+
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+
+![](./static/runtime-inputs-10.png)
+
+In free-text fields, such as **Command**, you can directly enter values using the appropriate syntax without changing the value type.
+
+![](./static/runtime-inputs-12.png)
+
+You can continue typing or select the expression from the list of suggestions.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+When writing pipelines in YAML, enter the expression as the value for a field.
+
+For example, this expression references a [pipeline variable](./add-a-variable.md) named `myConnector`.
+
+```
+          connectorRef: <+pipeline.variables.myConnector>
+```
+
+When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+
+![](./static/runtime-inputs-13.png)
+
+You can continue typing or select the expression from the list of suggestions.
+
+</TabItem>
+</Tabs>
+
+Mechanically, Harness passes the content within the delimiter (`<+...>`) to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) for evaluation.
+
+You can [use JEXL methods to build complex variable expressions](./expression-v2.md). For example, here is a complex expression that uses information from a [webhook trigger](/docs/platform/triggers/triggers-reference.md) payload:
 
 ```
 <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software"
@@ -335,31 +385,46 @@ NAME = <+pipeline.name>
 if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
 
-### Variable names across the pipeline
+### Variable name uniqueness
 
-Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+<!-- This seems like it's missing information. You couldn't have two pipeline variables or account variables with the same name either? And I think you could have a stage variable and pipeline variable with the same names, but the expression reference would differentiate their scope, eg. https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables-in-a-pipeline ?? -->
 
-### Hyphens in variable names
+When defining variables at the stage level, variable names must be unique within that stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
-Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them. Also, hyphens (dashes) in variable names can cause issues with headers.
+### Avoid hyphens in variable names
 
-For example, `<+execution.steps.httpstep.spec.headers.x-auth>` will not work.
+Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
 
-As a workaround, you can put the variable name in `["..."]`. For example, `<+execution.steps.httpstep.spec.headers["x-auth"]>`
+For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`.
 
-This also works for nested expressions. For example:
+If you must reference a variable name that has a hyphen, such as `x-auth`, you can wrap the variable name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
 
-`<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>`
+This also works for nested expressions, such as:
 
-`<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>`
+```
+<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>
+<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>
+```
 
-### Variable expression name restrictions
+When referencing your [custom variables](./add-a-variable.md), you need to use the `get()` method, as explained in [Special characters in custom variables can required escaping or additional handling](#special-characters-in-custom-variables-can-require-escaping-or-additional-handling).
 
-Expressions can contain variable names, such as `foo` in `<+stage.variables.foo>`.
+### Special characters in custom variables can require escaping or additional handling
 
-Variable names can contain the following characters: lowecase and uppercase letter A through Z, numbers 0 through 9, underscores (`_`), periods (`.`), hyphens (`-`), and dollar signs (`$`). Variable names must start with a letter or underscore.
+When you [add a variable](./add-a-variable.md), note the following restrictions and considerations for variable names:
 
-To reference your variables that include a period or hyphen in the name, you must wrap the variable name in quotes and call it with `get()`, such as `.get("some-var")`. Here are some additional examples of this format:
+* Variable names must start with a letter or underscore (`_`).
+* Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`).
+* Variable names can't contain [reserved words](#reserved-words).
+* Periods and hyphens require [additional escaping](#use-get-for-custom-variable-names-with-hyphens-and-periods) when referencing those variable names in Harness expressions, such as `foo` in `<+stage.variables.foo>`. This handling is explained below.
+* Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
+
+#### Use get() for custom variable names with hyphens and periods
+
+Harness recommends [avoiding hyphens in variable names](#avoid-hyphens-in-variable-names).
+
+However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
+
+For example:
 
 ```
 <+pipeline.variables.get("pipeline-var")>
@@ -368,13 +433,33 @@ To reference your variables that include a period or hyphen in the name, you mus
 <+pipeline.stages.custom.variables.get("stage.var")>
 ```
 
-In addition to the Harness Platform variable naming restrictions, certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
+This handling is also required for [matrix dimension names](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) with hyphens.
 
 ### Reserved words
 
 The following keywords are reserved, and cannot be used as a variable name or property.
 
-`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner class`
+```
+or
+and
+eq
+ne
+lt
+gt
+le
+ge
+div
+mod
+not
+null
+true
+false
+new
+var
+return
+shellScriptProvisioner
+class
+```
 
 For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
 

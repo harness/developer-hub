@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-03-13T10:00
+date: 2024-03-18T10:00
 sidebar_position: 10
 ---
 
@@ -36,6 +36,22 @@ You will be impacted by this deprecation if:
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## March 2024
+
+### Version 1.18.2
+
+<!-- Mar 18, 2024 -->
+
+#### New features and enhancements
+
+In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. You can use the Test Globs setting to override the default test globs pattern if you want change this behavior, for example to limit it to directories at the root level or at a certain path. (CI-11272, ZD-57661)
+
+#### Early access features
+
+To use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_ENABLE_VM_DELEGATE_SELECTOR` in your account. (CI-11545)
+
+#### Fixed issues
+
+Fixed an issue where the Get Started wizard failed to generate some pipeline YAML. (CI-11323)
 
 ### Version 1.17.5
 
@@ -72,7 +88,6 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 * The error message text for the `no eligible delegates present` error now includes additional potential causes. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10933, ZD-55977)
 * Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10938)
 * Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
-* In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. If you want change this behavior, for example to limit it to directories at the root level or at a certain path, you can use the Test Globs setting to override the default test globs pattern. (CI-11272, ZD-57661)
 * The Harness Community team has developed a new plugin to help you automate more processes in your CI pipelines:
    * The [GCP OIDC Token plugin](/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin) generates a Google Cloud access token from your OIDC token and then stores the GCP token in an output variable that you can use in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
 

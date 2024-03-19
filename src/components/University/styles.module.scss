@@ -46,9 +46,9 @@
     margin-top: 32px;
     display: flex;
     gap: 16px;
-  
+
     .certBtn {
-      width: 227px;
+      min-width: 227px;
       height: 52px;
       padding: 10px 32px 10px 32px;
       border-radius: 50px;
@@ -63,7 +63,7 @@
       align-items: center;
       gap: 10px;
       border: 2px solid var(--primary-9);
-
+      background-color: white;
       color: var(--primary-9);
 
       img {
@@ -74,7 +74,7 @@
       }
     }
     .InstLedTrainBtn {
-      // width: 330px;
+      min-width: 330px;
       height: 52px;
       padding: 10px 32px 10px 32px;
       border: 2px solid var(--primary-9);
@@ -90,6 +90,7 @@
       align-items: center;
       gap: 10px;
       color: var(--primary-9);
+      background-color: white;
       img {
         width: 28px;
         height: 22.67px;
@@ -97,7 +98,7 @@
         left: 2px;
       }
     }
-      .active {
+    .active {
       background-color: var(--primary-9);
       border: 2px solid var(--primary-9);
       color: white;
@@ -807,6 +808,9 @@
           height: auto;
         }
       }
+    }
+    .btns {
+      flex-direction: column;
     }
     .tabs {
       margin-top: 20px;

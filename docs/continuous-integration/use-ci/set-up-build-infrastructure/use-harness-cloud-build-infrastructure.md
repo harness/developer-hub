@@ -282,3 +282,9 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs/#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
 * [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
 * [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)
+
+### Known issues
+
+There is a known issue impacting macOS machines on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) due to incorrect permissions for the `.netrc` file at `/Users/anka/.netrc`. The permissions are set to `644` when they should be `600`.
+
+This can cause errors when installing Cocoapods. If your build installs Cocoapods, uses a macOS platform on Harness Cloud build infrastructure, and fails due to an error like `Couldn't determine repo type for URL` when installing Cocoapods, then, until this issue is fixed, make sure the pipeline edits the permissions on the `.netrc` file before attempting to install Cocoapods.
