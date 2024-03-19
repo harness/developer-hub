@@ -1,0 +1,248 @@
+---
+title: Cost Savings
+description: This topic describes how to optimize cloud costs using asset governance.
+# sidebar_position: 2
+---
+# Cost Savings
+
+## Recommendations
+
+Recommendations help kickstart your journey with Governance. Essentially, we run certain policies behind the scenes using the permissions we have and then recommend the best-suited policies for your accounts. These policies not only help cut costs but also increase the efficiency of your system. On our Overview page, we also showcase how our Recommendations will benefit you and the associated costs. You can click on any Recommendation to view its details. Listed below are the Recommendations we offer for Azure along with their descriptions and how savings are computed for each, along with the required permissions to implement these Recommendations.
+ 
+**Recommendation: delete-low-utilised-cosmodb**  
+**Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-cosmodb
+    resource: azure.cosmosdb
+    description: |
+      Delete low utilised CosmosDB based on total requests in last 72 hours
+    filters:
+      - type: metric
+        metric: TotalRequests
+        op: le
+        aggregation: total
+        threshold: 1000
+        timeframe: 72
+    actions:
+      - type: delete    
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-unattached-disk**  
+**Description:** Delete all unattached disks. 
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-unattached-disk
+    resource: azure.disk
+    description: |
+      Delete all unattached disks
+    filters:
+      - type: value
+        key: properties.diskState
+        value: Unattached
+    actions:
+      - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-low-utilised-load-balancers**  
+**Description:** Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours.  
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-load-balancers
+    resource: azure.loadbalancer
+    description: |
+      Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours
+    filters:
+      - type: metric
+        metric: PacketCount
+        op: le
+        aggregation: total
+        threshold: 1000
+        timeframe: 72
+    actions:
+      - type: delete      
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-orphaned-network-interface**  
+**Description:** Delete network interface which are not attached to virtual machine. 
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-orphaned-network-interface
+    resource: azure.networkinterface
+    description: |
+      Delete network interface which are not attached to virtual machine
+    filters:
+      - type: value
+        key: properties.virtualMachine
+        value: null
+    actions:
+        - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: stop-underutilized-vms**  
+**Description:** Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours.  
+**Policy Used:**
+```yaml
+policies:
+  - name: stop-underutilized-vms
+    resource: azure.vm
+    description: |
+      Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours
+    filters:
+      - type: metric
+        metric: Percentage CPU
+        op: le
+        aggregation: average
+        threshold: 5
+        timeframe: 72
+    actions:
+      - type: stop
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-low-utilised-keyvaults**  
+**Description:** Delete KeyVaults with less than 10 API hits in last 72 hours.
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-keyvaults
+    resource: azure.keyvault
+    description: |
+      Delete KeyVaults with less than 10 API hits in last 72 hours
+    filters:
+      - type: metric
+        metric: ServiceApiHit
+        aggregation: total
+        op: lt
+        threshold: 10
+        timeframe: 72
+    actions:
+      - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-low-utilised-sql-server**  
+**Description:** Delete SQL servers with less than 10% average DTU consumption over last 72 hours.  
+**Policy Used:** 
+```yaml
+policies:
+  - name: delete-low-utilised-sql-server
+    resource: azure.sqlserver
+    description: |
+      Delete SQL servers with less than 10% average DTU consumption over last 72 hours
+    filters:
+      - type: metric
+        metric: dtu_consumption_percent
+        aggregation: average
+        op: lt
+        threshold: 10
+        timeframe: 72
+        filter:  "DatabaseResourceId eq '*'"
+    actions:
+      - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-unattached-publicip**  
+**Description:** Delete public ip which are not attached to any network interface.  
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-unattached-publicip
+    resource: azure.publicip
+    description: |
+      Delete public ip which are not attached to any network interface
+    filters:
+      - type: value
+        key: properties.ipConfiguration
+        value: null
+    actions:
+      - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running
+
+ actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-low-utilised-datalake**  
+**Description:** Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours.  
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-datalake
+    resource: azure.datalake
+    description: |
+      Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours
+    filters:
+      - or:
+        - type: metric
+          metric: ReadRequests	
+          op: le
+          aggregation: total
+          threshold: 1000
+          timeframe: 72
+        - type: metric
+          metric: WriteRequests	
+          op: le
+          aggregation: total
+          threshold: 100
+          timeframe: 72          
+    actions:
+      - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+
+---
+
+**Recommendation: delete-unused-postgresql-servers**  
+**Description:** Delete PostgreSQL Servers that have had zero active connections in the last 72 hours. 
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-unused-postgresql-servers
+    resource: azure.postgresql-server
+    description: |
+      Delete PostgreSQL Servers that have had zero active connections in the last 72 hours
+    filters:
+      - type: metric
+        metric: active_connections
+        op: eq
+        threshold: 0
+        timeframe: 72
+    actions:
+      - type: delete
+```
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
