@@ -683,7 +683,7 @@ Also, when you create the personal access token, make sure it has the required t
 
 Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
 
-For more information, go to [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func/).
+For more information, go to [Google Cloud Functions](/docs/continuous-delivery/get-started/cd-tutorials/gcp-cloud-func).
 
 ### Is create-namespace option available in Harness while deploying chart?
 
