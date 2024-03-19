@@ -1,5 +1,5 @@
 ---
-title: Secure connect for Harness Cloud
+title: Secure Connect for Harness Cloud
 description: Private networking with Harness-managed runners.
 sidebar_position: 20
 ---
