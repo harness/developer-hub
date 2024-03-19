@@ -1321,6 +1321,12 @@ For ASG canary deployments there are two rollback steps:
 
 You can create a multi-phase workflow that progressively deploy your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. 
 
+
+:::important
+Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+
 A phased deployment uses two step groups:  
 1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.
 2. A Primary phase that deploys your image to the full count of instances defined in your ASG.
