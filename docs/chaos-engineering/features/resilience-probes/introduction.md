@@ -22,9 +22,8 @@ Depending on your requirement, probes can do a lot more than what is discussed e
 
 ## Why is it important?
 
-
-* Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults. 
-* It also brings reusability since you create the validation instance first and use it across different experiments. 
+* **Shareable**: Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults. 
+* **Reusability**: You can create the validation instance first and use it across different experiments. 
 * It avoids repeated creation of same probes for similar requirements. 
 
 This is also in accordance with how chaos engineering pans out:
