@@ -1317,6 +1317,100 @@ For ASG canary deployments there are two rollback steps:
 </TabItem5>
 </Tabs5>
 
+### Canary phased deployment
+
+You can create a multi-phase workflow that progressively deploy your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. 
+
+A phased deployment uses two step groups:  
+1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.
+2. A Primary phase that deploys your image to the full count of instances defined in your ASG.
+   
+![ASG phased deploy](./static/asg-phased-deploy.png)
+
+Here're the steps we build:  
+
+**ASG Setup:** 
+
+This step will remove older non-used ASGs, and create new a new ASG with zero instances and desired launch template configuration. In this step, you can specify how many EC2 instances to launch in the ASG that Harness deploys at the end of the workflow. You can also specify the resizing order and steady state timeout of the instances.
+
+The instance can be **Fixed Instances** and **Same as already running instances**. If you select same as already running instances, then Harness fetches the minimum, maximum, and desired capacity of current live ASG and use that for configuring this step.
+
+There are two resize options:  
+* Resize New First: Select to resize new ASG first and then downsize older ASG.
+* Downsize Old First: Select to downsize older ASG first and then resize new ASG.
+
+![ASG Setup step config](./static/asg-setup.png)
+
+Here's a sample ASG Setup step YAML for the **Fixed Instances** option:  
+
+```yaml
+              - step:
+                  type: AsgSetup
+                  name: AsgSetup_1
+                  identifier: AsgSetup_1
+                  spec:
+                    asgName: abcd
+                    instances:
+                      type: CurrentRunning
+                    resizeStrategy: "resize_new_first"
+                  timeout: 10m
+```
+Here's a sample ASG Setup step YAML for the **Same as already running instances** option:  
+
+```yaml
+          - step:
+              type: AsgSetup
+              name: AsgSetup_1
+              identifier: AsgSetup_1
+              spec:
+                asgName: abcd
+                instances:
+                  type: Fixed
+                  spec:
+                    desired: 2
+                    max: 3
+                    min: 1
+                resizeStrategy: "downsize_old_first"
+              timeout: 10m
+```
+
+
+**ASG Phased Deploy:** 
+
+In this step, you can specify the percentage or count of instances to deploy in this phase. When you add additional Canary phases, each phase automatically includes an ASG Phase Deploy, which you must configure with the count or percentage of instances you want deployed in that phase.
+
+This step will resize the new ASG to desired instance, and then downsize the older ASG to desired instance. For example, increase the instance count of new ASG by 1, then decrease the instance count of older ASG by 1.
+
+Here's a sample ASG Phased Deploy step YAML:  
+
+```yaml
+              - step:
+                  type: AsgPhasedDeploy
+                  name: AsgPhasedDeployStep_1
+                  identifier: AsgPhasedDeployStep_1
+                  spec:
+                    instanceSelection:
+                      type: Count
+                      spec:
+                        count: 1
+                  timeout: 10m
+```
+
+
+**ASG Rollback:** 
+
+This step will rollback to the initial setup (setup before ASG setup was created). Here, the new ASG is deleted and the old ASG is up-sized to its pre-deployment instance count.
+
+Here's a sample ASG Rollback step YAML: 
+
+```yaml
+          - step:
+              name: Asg Rollback
+              identifier: AsgRollback
+              type: AsgRollback
+              timeout: 10m
+              spec: {} 
+```
 
 
 ### Blue Green
