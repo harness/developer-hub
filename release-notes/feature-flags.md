@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 15th 2024
+### Latest Updated: March 19th 2024
 
 ## March 2024
 
@@ -63,7 +63,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.10.0
 
- - We've updated the Javascript Client SDK to 1.26.0.
+ - We've updated the Javascript Client SDK to 1.26.0 and we've updated the `README` to show you how to override the internal logger. (FFM-10886)
 
 #### Version 1.9.0
 
