@@ -717,12 +717,12 @@ You cannot delete a SAML SSO Provider from Harness that is linked to a Harness G
 
 ## SAML SSO with Keycloak
 
-Harness supports configuration with or without [Just-In-Time (JIT) user provisioning](/docs/platform/role-based-access-control/provision-use-jit/). Without JIT, you will want to perform the following steps to add new users:
+Harness supports configuration with or without [Just-In-Time (JIT) user provisioning](/docs/platform/role-based-access-control/provision-use-jit/). Without JIT, perform the following steps to add new users:
 
 1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.​
 2. In Keycloak, add the users and make sure they are in scope for the client you create in the configuration steps below.
 
-With JIT, you add users to Keycloak and they will automatically be added to Harness upon first login.
+With JIT, you add users to Keycloak, and they will automatically be added to Harness upon first login.
 
 ### Set Up a Client in Keycloak
 
@@ -805,6 +805,7 @@ With JIT, you add users to Keycloak and they will automatically be added to Harn
 	| **Single Group Attribute**     | On                                                                                                                                              |
 	| **Full group path**            | Off                                                                                                                                             |
    5. Select **Save**.
+
 ### Set up Keycloak SAML SSO in Harness
 
 1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
@@ -819,11 +820,10 @@ With JIT, you add users to Keycloak and they will automatically be added to Harn
 	| **Add Entity Id**              | _Enabled_                                                                                                                                       |
 	| **Entity Id**                  | app.harness.io                                                                                                                                  |
 	| **Enable JIT Provisioning**    | _Enable if Just In Time user provisioning is desired_                                                                                           |
+
 3. Select **Add**.
 4. In **Upload the Identity Provider metadata XML downloaded from your app**, select **Upload**, then select the XML file you added when you set your Keycloak configuration steps.
-5. Select **Add**.  
-
-The new SSO provider is displayed under **Login via SAML**. You might have to expand this section using the arrow on the right-hand side of the screen.​
+5. Select **Add**. The new SSO provider is displayed under **Login via SAML**. You might need to expand this section using the arrow on the right-hand side of the screen.​
 
 ### Enable and Test SSO with Keycloak
 
