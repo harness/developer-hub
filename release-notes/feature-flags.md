@@ -63,7 +63,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.10.0
 
- - We've updated the Javascript SDK to 1.26.0.
+ - We've updated the Javascript Client SDK to 1.26.0.
 
 #### Version 1.9.0
 
