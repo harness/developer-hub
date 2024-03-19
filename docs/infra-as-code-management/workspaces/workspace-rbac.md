@@ -24,4 +24,4 @@ To do that, users should create a resource group, add the specific (or all) Work
 
 ![Resources](./static/workspace-rg.png)
 
-To learn more about Resource Group, refer to [this documentation](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/)
+To learn more about Resource Groups, refer to [this documentation](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/)
