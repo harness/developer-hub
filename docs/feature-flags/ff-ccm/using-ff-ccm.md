@@ -183,25 +183,25 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 Perform the following steps to connect to your Azure account:
 1. Create a new Kubernetes connector using one of the two options below:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 
-<Tabs>
-<TabItem value="4" label="From Account Settings">
+<Tabs2>
+<TabItem2 value="4" label="From Account Settings">
 
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Azure**.
 
-</TabItem>
-<TabItem value="5" label="From Cloud Costs">
+</TabItem2>
+<TabItem2 value="5" label="From Cloud Costs">
 
 1. Go to **Setup** > **Cloud Integration**.
 2. Select on **New Cluster/Cloud account**.
 3. Select **Azure**.
 
-</TabItem>
-</Tabs>
+</TabItem2>
+</Tabs2>
 
 2. Perform the following tasks in the **Azure Connector** wizard.
 
@@ -259,26 +259,26 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 
 1. Create a new Kubernetes connector using one of the two options below:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
 
 
-<Tabs queryString="tab-number">
-<TabItem value="4" label="From Account Settings">
+<Tabs3 queryString="tab-number">
+<TabItem3 value="4" label="From Account Settings">
 
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **GCP**.
 
-</TabItem>
-<TabItem value="5" label="From Cloud Costs">
+</TabItem3>
+<TabItem3 value="5" label="From Cloud Costs">
 
 1. Go to **Setup** > **Cloud Integration**.  
 2. Select **New Cluster/Cloud account**.
 3. Select **GCP**.
 
-</TabItem>
-</Tabs>
+</TabItem3>
+</Tabs3>
 
 2. Perform the following tasks in the **GCP Connector** wizard.
 
@@ -358,18 +358,18 @@ Perform the following steps to connect your Kubernetes cluster to CCM.
 
 1. Create a new Kubernetes connector using one of the two options below:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs4 from '@theme/Tabs';
+import TabItem4 from '@theme/TabItem';
 
-<Tabs queryString="tab-number">
-<TabItem value="4" label="From Account Settings">
+<Tabs4 queryString="tab-number">
+<TabItem4 value="4" label="From Account Settings">
 
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Kubernetes**.
 
-</TabItem>
-<TabItem value="5" label="From Cloud Costs">
+</TabItem4>
+<TabItem4 value="5" label="From Cloud Costs">
 
 1. Go to **Setup** > **Cloud Integration**.  
 2. Select **New Cluster/Cloud account**.
@@ -380,8 +380,8 @@ import TabItem from '@theme/TabItem';
    For the Quick Create option, go to [Kubernetes Quick Create](/docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s).
 :::
 
-</TabItem>
-</Tabs>
+</TabItem4>
+</Tabs4>
 
 :::info note
 If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md) documentation. 
