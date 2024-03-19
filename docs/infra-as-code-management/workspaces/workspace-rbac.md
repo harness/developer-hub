@@ -19,7 +19,7 @@ For each Role, you can define the following set of permissions:
 7. **Access State** - Giving users the permissions to view the state (including historical revisions)
 
 ## Using Resource Groups
-Users can utilize Resource Groups functionality to specify which users can access specific Workspace. 
+Users can utilize Resource Groups functionality to specify which users can access a specific Workspace. 
 To do that, users should create a resource group, add the specific (or all) Workspaces, and bind it to a specific user or user group. 
 
 ![Resources](./static/workspace-rg.png)
