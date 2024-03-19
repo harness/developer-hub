@@ -111,7 +111,7 @@ You can use the Azure ML plugin in a [Plugin step](/docs/continuous-integration/
                     imagePullPolicy: Always
 ```
 
-### Azure ML plugin settings
+#### Azure ML plugin settings
 
 *  `type: Plugin`
 *  `name:` Specify a step name.

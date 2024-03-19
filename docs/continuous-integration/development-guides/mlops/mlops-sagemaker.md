@@ -24,7 +24,7 @@ Training models with SageMaker includes creating training jobs, selecting datase
 
 ### Sample training scripts
 
-The following Python scripts provide simplified examples of how you might use SageMaker to train a Scikit-learn model for a task like credit card approval predictions.
+The following Python scripts provide simplified examples of how you might use SageMaker and Scikit-learn to train a model for a task like credit card approval predictions.
 
 These examples assume the following:
 
