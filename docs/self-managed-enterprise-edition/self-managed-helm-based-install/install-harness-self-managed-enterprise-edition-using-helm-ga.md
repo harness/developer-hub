@@ -73,13 +73,17 @@ To add the URL for a load balancer, do the following:
 
 </TabItem>
 
-
+<!---
 <TabItem value="ELB" label="ELB">
 
 
 </TabItem>
 
-<TabItem value="Ingress ALB" label="IngressALB">
+--->
+
+<TabItem value="Ingress ALB" label="Ingress ALB">
+
+To an ingress ALB, do the following:
 
 1. Copy the following YAML, then save it to an `ingress-alb.yaml` file.
 
