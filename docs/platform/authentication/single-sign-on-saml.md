@@ -788,7 +788,7 @@ With JIT, you add users to Keycloak and they will automatically be added to Harn
 
 8. Save the data to a file to use when configuring Harness.
 
-9. (Optional) If you want to automatically sync group memberships in Harness based on group memberships in Keycloak, perform the following steps.
+9. (Optional) To automatically sync group memberships in Harness based on group memberships in Keycloak, perform the following steps.
 	
    1. Go to your newly-created Client, then select the **Client Scopes** tab.
 
