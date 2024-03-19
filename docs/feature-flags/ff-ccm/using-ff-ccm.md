@@ -30,7 +30,7 @@ Using Cloud Cost Management within Feature Flags will help you to:
 
 3. *Adopt Higher Level Troubleshooting*: The hope we have at Harness is that this will help you to reduce time to finding solutions around any cost disparaties as well as help to improve your operational effiency of your products.
 
-Also, we've also added an additional feature to the Cloud Cost Monitoring tool. There are three status modes which helps us to categorise anomalies under *Monitoring*, *Anomaly Found* and *No Changes*. 
+We've also added an additional feature to the Cloud Cost Monitoring tool. There are three status modes which helps us to categorise anomalies under *Monitoring*, *Anomaly Found* and *No Changes*. 
 
 ![The "No Changes" status within Cloud Cost Monitoring](./static/ff-ccm-no_changes_status.png)
 
