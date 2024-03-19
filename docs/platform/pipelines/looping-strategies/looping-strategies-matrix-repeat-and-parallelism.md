@@ -183,6 +183,14 @@ You can also use matrix values as variable values. For example, this [Action ste
         token: <+secrets.getValue("github_token")>
 ```
 
+### Avoid hyphens and periods in matrix tag/dimension names
+
+Harness recommends avoiding hyphens and periods in matrix tag/dimension names, such as `matrixTag` instead of `matrix-tag`.
+
+However, if you need to reference a matrix dimension name that includes a period or hyphen/dash, you must wrap the tag in double quotes and use the `get()` method in the expression, such as `<+stage.matrix.get("python-version")>`.
+
+If a dimension with a hyphen/dash or period is not referenced correctly, the expression resolves as null and doesn't throw an error.
+
 ### Matrix expressions in multi-layer matrix strategies
 
 If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
@@ -247,7 +255,7 @@ By default, Harness uses indices for the matrix naming strategy (stages are name
 
 #### Use matrix axes as stage labels
 
-You can turn on a setting at the account, organization, or project level to use the names of the matrix indices as labels.
+You can set **Enable Matrix Labels by Name** at the account, organization, or project level. This setting uses the names of the matrix indices as labels.
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
    - To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
@@ -259,7 +267,7 @@ You can turn on a setting at the account, organization, or project level to use 
 
 #### Use a custom label for matrix stages
 
-You can use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example:
+You can use the `nodeName` key in your `matrix` YAML to define a matrix stage naming convention. Expressions are supported, so you can customize the name as required. For example:
 
 ```yaml
 matrix:
@@ -267,10 +275,11 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-:::info note
-1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, the original stage name.
-2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the matrix.
-:::
+
+When you specify a `nodeName`, the original/parent stage name is prepended to the `nodeName`. Therefore, the final, resolved name of each stage is `OriginalStageName_nodeName`.
+
+If the resolved value of `nodeName` is the same for multiple stages, Harness automatically appends an index identifier to the name, such as `OriginalStageName_nodeName_0`, `OriginalStageName_nodeName_1`, and so on.
+
 ### Matrix examples and best practices
 
 - [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
@@ -422,11 +431,15 @@ When creating a CI pipeline where both stage and step uses looping strategy and 
 
 You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
 
-When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run the a pipeline with a `parallelism` strategy, and then run the same pipeline with a `matrix` strategy, simply by providing different runtime input.
+When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run s pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
-The following video demonstrates how to configure and use runtime input for looping strategies.
+To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
-<DocVideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
+![Selecting runtime input for the looping strategy.](./static/looping-runtime-input.png)
+
+When you run the pipeline, you'll be prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
+
+Due to the potential complexity of looping strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
 
 ## Looping strategy expressions
 
@@ -477,3 +490,25 @@ Use the following expressions to access the index values for each iteration of a
 Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+
+## Determine execution status of a stage with looping strategy
+
+The status of a stage with looping strategy is determined based on the status of execution of its child stages. The status calculation logic works based on priority of child stage execution statuses. 
+
+Negative status takes precedence over positive status. 
+
+If any child stage has negative status, then the parent stage status is marked as negative. 
+
+The negative statuses priority is as follows: ABORTED > FAILED > FREEZE_FAILED > APPROVAL_REJECTED > EXPIRED. For example, if a child stage is marked FAILED and another child stage is marked EXPIRED, then the parent pipeline status is marked FAILED because it takes precedence.
+
+
+
+If all child stages are marked positive, the status of the parent stage is also marked positive. 
+
+The positive statuses priority is as follows: IGNORE_FAILED > SUCCEEDED. For example, if a child stage is marked IGNORE_FAILED and another child stage is marked SUCCEEDED, then the parent pipeline status is marked as IGNORE_FAILED.
+
+If a child stage has negative status and another child stage has positive status, then the parent pipeline status is marked negative. 
+
+
+
+

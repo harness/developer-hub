@@ -89,11 +89,18 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 
 #### Type
 
-
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
-
 <StoSettingScanTypeCont />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
@@ -106,10 +113,7 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 #### Variant
 
-
 import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
@@ -259,8 +263,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

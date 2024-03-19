@@ -118,7 +118,7 @@ When the pipeline runs, the **SLSA Verification** step does the following:
 * Records the policy evaluation results in the step's logs.
 * Reports the overall pass/fail for SLSA verification on the **Artifacts** tab.
 
-For more information about inspecting SLSA verification results, go to [View attestations and violations](../ssca-view-results.md).
+For more information about inspecting SLSA verification results, go to [view pipeline execution results](../ssca-view-results.md).
 
 ## Verify provenance from third-party build systems
 

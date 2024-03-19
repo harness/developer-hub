@@ -49,7 +49,7 @@ Pipeline is a core construct of the Harness platform. All of the SLIs defined he
 
 | **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|----------------|
-| Pipeline/Triggers                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| Pipeline/Triggers/Input Sets                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
 |                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded Performance|
 | Pipeline Executions failure caused by Harness platform | Failure rate Increase| More than 1% over 5 min rolling window |Partial Outage|
 |                                           | Slow Executions | 2x of average latency in a rolling window of 5 mins|Degraded Performance|
@@ -127,7 +127,6 @@ All the Platform SLIs are applicable here. Pipeline relevant if the chaos use ca
 |-------------------------------------------|-----------------|-----------------------------------------|
 | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
 | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
-| Chaos UI components are not accessible | Not accessible for more than 60s |Major Outage|
 | Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
 | ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
 

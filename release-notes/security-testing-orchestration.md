@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-02-21T10:00
+date: 2024-03-13T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -11,7 +11,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/security-testing-orchestration/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/security-testing-orchestration/rss.xml" />
 
 These release notes describe recent changes to Harness Security Testing Orchestration (NextGen SaaS).
 
@@ -24,29 +24,62 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 
-## February 2024
+## March 2024
+
+### Version 1.87.4
+
+#### New feature: Ingest Aqua Security assurance policy violations
+
+<!-- 2024-03-14 -->
+
+The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
+
+<!-- ![](/docs/security-testing-orchestration/sto-techref-category/static/sto-7164-aquasec-external-policies.png) -->
+
+The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan . You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
+
+For more information, go to:
+
+- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+
+
+### Version 1.87.2
+
+<!-- 2024-03-13 -->
+
+#### New enhancement
+
+- The **Pipeline Execution** > **Security Tests** > **Issue Details** pane now includes a link to the scanned target on the Test Targets page. This link is included for all issues. Previously, only the **Exemptions** > **Issues Details** pane included this link. (STO-7114)
+
+#### Fixed issues
+
+- Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
+
+- Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
+
 
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->
 
-#### Fixed issues
+#### Early Access feature: Auto-detect targets and variants
 
-- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
 
-- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+- For container images, the step detects the target and variant using the **Container Image Name** and **Tag**  defined in the step or runtime input. 
+- For code repositories, for code repositories, the step detects these values using `git`: 
+  - To detect the target, the step runs `git config --get remote.origin.url`. 
+  - To detect the variant, the step runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+- For application instances, the step detects these values as follows: 
+  - The target is based on the **Instance Domain** and **Path** defined in the step or runtime input, for example `https://qa.jpgr.org:3002/login/us`.
+  - The variant is the timestamp when the step scanned the instance.
 
-- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
 
-- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
-- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
 
-- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786)
-
-<!-- 
-
-#### Early access feature
+#### Early access feature: OPA policies for Security Test results
 
 You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
 
@@ -72,7 +105,25 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
--->
+
+#### Fixed issues
+
+- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+
+- Upgraded `twistcli` to version 32.03.123 in the Twistlock scanner image to resolve intermittent 400 response errors. (STO-7223)
+
+- Previously, the ingestion engine assigned a scan type of SAST to all SARIF data by default. As a result, the STO UI would display SARIF scan results as SAST even when they were not. With this fix, the ingestion engine assigns the correct scan type based on the scan results. (STO-7176, ZD-58495)
+
+- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+
+- Fixed an issue where the Aqua Security normalizer copied top-level scan data across all raw issues, which caused the wrong reference identifiers to be shown across all issues in the same scan. This fix ensures that all new Aqua Security issues have the correct reference identifiers and vulnerability data. (STO-7140)
+
+- With this release, the STO UI shows expiration values for Approved and Expired exemptions only. (STO-6786) 
+
+
+
+
+## February 2024
 
 ### Version 1.84.0 
 
@@ -80,7 +131,7 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 <!-- 2024-02-21 -->
 
-- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies). (STO-6927)
+- The Issues table in **Issue Details** and the **Exemptions** tables now include popups for issues whose original severities were [overridden by a Snyk security policy](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies). (STO-6927)
 
   ![](./static/sto-6927-override-popup-for-snyk.png)
 
@@ -109,7 +160,7 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 #### Enhancements
 
-- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#show-original-cvss-scores-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
+- You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
 
 
 <!-- 
@@ -122,10 +173,15 @@ For more information, go to [Stop pipelines using OPA](/docs/security-testing-or
 
 - Implemented back-end changes to improve performance and scalability when processing scan results. (STO-7037)
 
-#### Fixed issue
+#### Fixed issues
 
 - Fixed a UI issue where the Exemptions page would show the incorrect severity for an issue if that severity was overridden after the original scan. (STO-7069)
 
+- The SonarQube integration includes better support for orchestrated branch and pull-request scanning with SonarQube Enterprise. (STO-7122, STO-6840, STO-6857, ZD-58021, ZD-55282, ZD-55592)
+  - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the runtime input or the pull request.
+  - With this enhancement, the orchestration step always downloads results for the scanned branch or pull request.
+  - Branch scans require no additional configuration.
+  - To configure pull-request scans, go to [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration).
 
 ## January 2024 
 
@@ -217,7 +273,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### New features and enhancements
 
-- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). (STO-5661, ZD-41491) 
+- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-5661, ZD-41491) 
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
@@ -232,7 +288,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### Early access feature
 
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration is behind the feature flag `STO_STEP_PALETTE_AQUASEC`. (STO-6382)
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-6382)
 
 #### Fixed issues
 

@@ -1,0 +1,11 @@
+{
+   "label":"MLOps",
+   "position": 101,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"MLOps"
+   }
+}

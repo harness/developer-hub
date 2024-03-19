@@ -224,6 +224,22 @@ A creep ticket is a ticket added to a sprint after the sprint starts. The **cree
 
 **Creep missed tickets** is the total number of individual work items (tickets) that were added after the sprint started *and not* completed by the end of the sprint.
 
+### Churn rate
+
+**Churn Rate** measures the scope change during a sprint, providing insights into the volatility of the sprint backlog. It is calculated using the following formula:
+
+```bash
+Churn Rate = (Points added mid-sprint + Points removed mid-sprint + Positive difference of changes in planned issues) / Points committed at the start of the sprint
+
+```
+
+* Points added mid-sprint represent the sum of story points for items added during the sprint.
+* Points removed mid-sprint represent the sum of story points for items removed during the sprint
+* The Positive difference of changes in planned issues is the positive sum of story points for items with planned changes.
+* Points committed at the start of the sprint is the sum of story points for planned issues at the beginning of the sprint.
+
+This metric helps teams assess how much their scope is changing during a sprint, providing a quantitative measure of the impact of mid-sprint changes and adjustments.
+
 ### Done tickets
 
 **Done tickets** is the total number of individual work items (tickets) that were marked as done (or an equivalent completed status) before the end of the sprint.

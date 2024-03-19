@@ -217,14 +217,22 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
-        <td>Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/download-logs">Download execution logs</a>.</td>
+        <td>Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/executions-and-logs/download-logs">Download execution logs</a>.</td>
     </tr>
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_ECS_BG_VALIDATION</td>
-        <td>If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact.<br/>For more information, go to <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services">Update green services</a> and <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation">ECS blue/green service validations</a>.<br/><b>This feature is in Beta, and it requires Harness Delegate version 23.11.81820.</b> </td>
+        <td>CDS_AWS_OIDC_AUTHENTICATION</td>
+        <td>Enables the option to connect to AWS with OIDC. Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and Cloudformation. <b>This is a Beta feature.</b> </td>
+    </tr>
+     <tr>
+        <td>CV_NEWRELIC_NEW_API</td>
+        <td>Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This is a Beta feature.</b></td>
+    </tr>
+     <tr>
+        <td>CDS_K8S_TRAFFIC_ROUTING_NG</td>
+        <td>Enable this feature if you want to use traffic shifting as a part of your pipeline. Also enables traffic shifting as configuration for the kubernetes B/G Deploy Step as well as the Canary Deploy Step. <b>This is a Beta feature.</b></td>
     </tr>
 </table>

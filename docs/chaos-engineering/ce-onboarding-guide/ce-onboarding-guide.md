@@ -32,12 +32,12 @@ The execution plane helps setup the resources (clusters) and you can use the con
 ## Get started with Chaos Engineering
 
 To create a chaos experiment, complete the following steps:
-1. [Fulfill the resource requirements](/docs/chaos-engineering/configure-chaos-experiments/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
-2. [Add an environment](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures#step-1-create-an-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
-3. [Add a chaos infrastructure](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure): The required chaos infrastructure is created within a chaos environment.
-4. [Validate the chaos infrastructure installation](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures#step-3-validate-the-chaos-infrastructure-installation): Once you create your chaos infrastructure, ensure that it has been created in the right manner. 
+1. [Fulfill the resource requirements](/docs/chaos-engineering/features/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
+2. [Add an environment](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-1-create-an-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
+3. [Add a chaos infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure): The required chaos infrastructure is created within a chaos environment.
+4. [Validate the chaos infrastructure installation](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-3-validate-the-chaos-infrastructure-installation): Once you create your chaos infrastructure, ensure that it has been created in the right manner. 
 5. [Create a demo application](/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering#creating-a-demo-application-and-observability-infrastructure): You can either create a demo application or use your own application on which you can execute chaos experiments. 
-6. [Create and run a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments.md): Once you have setup your application, you can decide which resources to target and execute the chaos experiments on.
+6. [Create and run a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md): Once you have setup your application, you can decide which resources to target and execute the chaos experiments on.
 
 For a guided experience, try:
 

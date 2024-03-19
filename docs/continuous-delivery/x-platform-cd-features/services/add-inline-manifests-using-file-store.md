@@ -101,7 +101,7 @@ To access sample manifest files:
 
 You have now completed adding folders and manifests to file store.
 
-## Select Kubernetes manifests and the *values.yaml* file from file store
+## Select Kubernetes manifests and the values.yaml file from file store
 
 You can select and apply the file store folder with the Kubernetes manifests and the *values.yaml* file to your pipeline.
 
@@ -263,6 +263,7 @@ metadata:
 
 The expression `fileStore.getAsString()` can be used to fetch files in the File Store in a script or runtime input.
 
+
 For example:
 
 - Project-level File Store: `fileStore.getAsString("/folder1/myfile.yaml")`.
@@ -270,4 +271,7 @@ For example:
 - Account-level File Store: `fileStore.getAsString("account:/folder1/myfile.yaml")`.
 - Base64 encoded: `fileStore.getAsBase64("account:/folder1/folder2/myfile")`.
 
+:::note
+You can create a two files with same name inside two different folders by having different identifer for one of the file. Path of the file is constructed based on the name not identifer.
+:::
 

@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-02-29T10:00
+date: 2024-03-13T10:00
 sidebar_position: 4
 ---
 
@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate/rss.xml" />
 
 These release notes describe recent changes to Harness Delegate.
 
@@ -21,6 +21,38 @@ These release notes describe recent changes to Harness Delegate.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## Important upcoming changes
+
+:::warning important changes
+
+Please note that the following important changes will occur **March 31, 2024**:
+
+- The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
+
+   <details>
+   <summary>Legacy delegate installation flow</summary>
+
+   #### New Delegate Page
+
+   The `Switch back to old delegate install experience` link will be removed.
+
+   ![](./static/switch-to-old-delegate-install.png)
+
+   #### Legacy delegate installation flow deprecated
+
+   You will no longer be able to reach the legacy delegate installation flow.
+
+   ![](./static/old-delegate-install-exp.png)
+
+   </details>
+
+- Delegate tokens not used within the last 30 days will be revoked automatically.
+   
+   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
+
+:::
+
 
 <details>
 <summary>Deprecation notice</summary>
@@ -38,6 +70,36 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 <Deleos />
 
 ## March 2024
+
+### Version 24.03.82505 <!--  March 18, 2024 -->
+
+#### Hotfix
+
+- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541, ZD-58686)
+
+### Harness version 1.28.11, Harness Delegate version 24.03.82502 <!--  March 13, 2024 -->
+
+#### New features and enhancements
+
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. Use `CPU_USAGE_THRESHOLD` for CPU control (default: no limit). Use `MEMORY_USAGE_THRESHOLD` for memory control (default: 80%). If you are using `RESOURCE_USAGE_THRESHOLD` (deprecated), it exclusively controls the memory threshold. (PL-47746)
+
+- OPA policy enforcement has been introduced to three new entities: Service Accounts, API Keys, and Tokens. For Service Accounts and API Keys, naming convention policies are enforced, while for Tokens, Time-To-Live (TTL) policies are enforced. These enforcement mechanisms are seamlessly integrated into both create and update operations, ensuring adherence to predefined standards during the `onSave` action. (PL-46778)
+
+- Support added to enable OPA policy for naming convention enforcement while creating or updating a service account. (PL-46777)
+
+#### Fixed issues
+
+- Attempts to use the `harness_platform_user` resource to create or delete users resulted in an error. The message "Request failed as you have an older version of an entity, please reload the page and try again" was displayed and the Terraform state went out of sync with Harness. This issue has been fixed. (PL-39870, ZD-47107)
+
+- Continuous Verification for Google Cloud Operations logged error for the `resourceName` field. This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list). (CDS-89441)
+
+### Version 24.03.82408 <!--  March 8, 2024 -->
+
+#### Hotfix
+
+- Fixed an infinite loop issue in the delegate SCM service. (PL-48043)
+
+- Added support for GitOps pipeline steps with Harness Code and bumped the SCM version to `d78720584`. (CODE-1572)
 
 ### Version 24.02.82406 <!--  March 1, 2024 -->
 
@@ -63,7 +125,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - When linking an SSO group with over 1,000 users, only 1,000 users were syncing in Harness due to a limitation with LDAP groups syncing. (PL-46492, ZD-56741)  
 
-   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronisation.
+   Implemented LDAP to perform paginated queries by default for large groups, with a fallback to non-paginated calls, ensuring complete user synchronization.
 
 - Pipelines were failing due to errors related to the inability to acquire delegate tasks. (PL-42600, ZD-54025, ZD-54324)
 
@@ -109,6 +171,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
 
 ### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
+
+#### Behavior Changes
+
+- In the blue/green stage scale down step, we used to scale down deployments, statefulsets, daemonsets, deploymentConfig and delete HPA, and PDB resources. During scale down, we updated the field `replicas` to 0. In Kubernetes, if HPA is configured it is not mandatory to define replicas. So when another deployment happens and we apply the same old deployments manifest it does not update the replicas field and it remains set to 0. This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
 
 #### Fixed issues
 
@@ -233,8 +299,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
 
-   This feature is behind the feature flag `CDS_ECS_BG_VALIDATION`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
-
 ###### Fixed issues
 
 - For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
@@ -286,11 +350,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 ###### Hotfix
 
 - You can now use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
-
-    :::info note
-    Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-    
-    :::
 
 #### November 2023
 

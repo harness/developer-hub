@@ -4,7 +4,7 @@ date: 2024-01-18T10:00
 sidebar_position: 2
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/early-access/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/early-access/rss.xml" />
 
 These early access (beta) features are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
 
@@ -165,6 +165,16 @@ No early access (beta) features are available for the Harness Continuous Error T
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
 
+### Delegate selectors for self-managed VM build infrastructures
+
+* **Release date:** March 2024
+* **Release version:** 1.18.2
+* **Issue number:** CI-11545
+* **Feature flag:** `CI_ENABLE_VM_DELEGATE_SELECTOR`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures).
+
 ### Secure connect for Harness Cloud
 
 * **Release date:** January 2024
@@ -259,60 +269,40 @@ No early access (beta) features are available for Harness Code Repository. -->
 
 ## SEI early access features
 
-The following early access (beta) features are available for the Harness Software Engineering Insights module.
-
-### SEI Jira Integration Enhanced Experience
-
-* **Release date:** February 2024
-* **Issue number:** SEI-5188
-* **Feature flag:** `SHOULD_ENABLE_REAUTH`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new re-authorization flow for the Jira and GitHub Integrations. The feature is related to SEI-3727.
-
-### SEI Jira Integration Enhanced Experience
-
-* **Release date:** January 2024
-* **Issue number:** SEI-3727
-* **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App.
-
-You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
-
-### SEI GitHub Integration Enhanced Experience
-
-* **Release date:** January 2024
-* **Issue number:** SEI-3727
-* **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
-
-You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
+For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags).
 
 ## STO early access features
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
+### Auto-detect option for targets and variants
+
+* **Release date:** March 2024
+* **Issue number:** STO-6704
+* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
+
 ### Write OPA policies based on STO scan results
 
-* **Release date:** November 2023
+* **Release date:** February 2024
 * **Issue number:** STO-6738
 * **Feature flag:** `STO_DATA_OPA`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
-### Aqua Security integration
 
-* **Release date:** November 2023
-* **Issue number:** STO-6382
-* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+### Open Source Vulnerabilities (OSV) scanner integration
+
+* **Release date:** February 2024
+* **Issue number:** STO-6767
+* **Feature flag:** `STO_STEP_PALETTE_OSV`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
+
 
 ### STO Jira integration
 
@@ -487,6 +477,46 @@ In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root
 Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
 
 ### STO features promoted to GA
+
+<!-- ### Write OPA policies based on STO scan results
+
+* **Release date:** November 2023
+* **Issue number:** STO-6738
+* **Feature flag:** `STO_DATA_OPA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+
+-->
+
+#### Aqua Security integration
+
+* **GA date:** November 2023
+* **Early access release date:** November 2023
+* **Early access Release version:** 1.74.1
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+
+
+#### Anchore Enterprise integration
+
+* **GA date:** March 2024
+* **Early access release date:** November 2023
+* **Early access Release version:** 1.73.1
+* **Feature flag:** `STO_STEP_PALETTE_ANCORE_ENTERPRISE`
+
+You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
+
+#### Time limits for exemptions
+
+* **GA date:** March 2024
+* **Early access release date:** October 2023
+* **Early access Release version:** 1.72.0
+* **Feature flag:** `STO_TIMEBOUND_EXEMPTIONS`
+
+You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
 #### UI enhancements for working with exemptions
 

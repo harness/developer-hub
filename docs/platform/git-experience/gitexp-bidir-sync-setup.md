@@ -16,16 +16,15 @@ This topic explains how to set up and use bidirectional sync.
 - Pipelines
 - Templates
 - Input Sets
+- Services
+- Environments
+- Infrastructure
 
 #### Behind a Feature Flag
 
 :::note
 These entities are behind feature flags. Contact [Harness Support](mailto:support@harness.io) to enable the feature, and reference the corresponding feature flag below. 
 :::
-
-- Services (CDS_SERVICE_GITX)
-- Environments (CDS_ENV_GITX)
-- Infrastructure (CDS_INFRA_GITX)
 - Overrides (CDS_OVERRIDES_GITX)
 
 ## Important notes

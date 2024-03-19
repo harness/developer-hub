@@ -32,6 +32,8 @@ The name of the plugin's Docker image. The image name should include the tag, or
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
 
+For private registries, provide the fully-qualified name (FQN) of the image.
+
 :::info
 
 These fields are optional when using a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), [self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure). These fields are only required if the build machine doesn't have the required binaries pre-installed.
@@ -129,5 +131,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
