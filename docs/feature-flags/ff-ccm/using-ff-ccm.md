@@ -24,7 +24,7 @@ From the UI within the Harness Application, you'll be able to report the presenc
 
 Using Cloud Cost Management within Feature Flags will help you to: 
 
-1. *Increased Visibility*: You're able to gain insights into the cost of your Feature Flags.
+1. *Increase Visibility*: You're able to gain insights into the cost of your Feature Flags.
 
 2. *Have an Improved Proactive Cost Management Experience*: You can now have real-time insights into the impact of your Feature Flag changes and optimize your cloud spending into a less manual and time-consuming process.
 
