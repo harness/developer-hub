@@ -50,7 +50,7 @@ Review the following image specifications for information about image components
 
 :::note
 
-Currently, macOS platforms for Harness Cloud are behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
 
 :::
 
