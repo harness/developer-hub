@@ -17,7 +17,6 @@ Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECUR
 * **Can I prove that this tool is secure so I can get it approved quickly by the required stakeholders (security team, ARB, DevOps platform team, infrastructure teams, and so on)?** Yes. Harness CI Cloud has been pentested by external experts and it is ISO and SOC2 certified. If you're already using Harness CI Cloud, additional approval isn't needed to enable Secure Connect to connect to your firewalled assets.
 
 <!--
-Harness CI Cloud vs Harness Cloud terms?
 
 Harness CI Cloud enterprise readiness
 
@@ -56,7 +55,7 @@ To use Harness Cloud in firewalled environments, such as a corporate network, yo
    ```
 
    * `REMOTE_PORT` can be any port from 30000 to 30100.
-   * `API_KEY` must be a valid [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys).
+   * `API_KEY` can be any valid [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys).
 
 2. Enable **Secure Connect** for each connector you use with Harness Cloud that needs to route through a secure tunnel. This setting is available in the connector's **Connect to Provider** settings.
 
@@ -71,7 +70,7 @@ To use Harness Cloud in firewalled environments, such as a corporate network, yo
    * [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
    * [AWS connectors](/docs/platform/connectors/cloud-providers/add-aws-connector)
 
-### Secure Connect environment variables
+### Use Secure Connect environment variables to route other clients
 
 When you enable Secure Connect, Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
 
@@ -82,3 +81,5 @@ curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
 ```
 
 Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
+
+The client must support connection by proxy.
