@@ -12,9 +12,31 @@ To approve exemptions, users must have the **Approve/Reject** permission. Curren
 
 Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans.
 
-## These is no Test Execution Summary widget in the list of dashboard widgets
+## Does STO support execution on ARM64 architecture?
+
+Currently, STO doesn't support running on ARM64 platforms.
+
+## Can I use a specific image tag for STO images?
+
+Yes. For instructions and information about customizing your STO images, go to:
+
+- [Update your STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images)
+- [Create custom scanner images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images)
+- [Store images in a private registry](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry)
+
+## Can I use an API to extract data on vulnerabilities detected by STO?
+
+Public APIs for this functionality are on the [STO roadmap](https://developer.harness.io/roadmap/#sto).
+
+## STO dashboards
+
+### These is no Test Execution Summary widget in the list of dashboard widgets
 
 To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
+### Why doesn't the STO dashboard populate the data from targets?
+
+This happens when scan executions don't have baselines set. You must set test target baselines to shown this data on your STO dashboards.
 
 ## Aqua scans
 
@@ -23,6 +45,12 @@ To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled 
 Pod eviction during an Aqua scan can be attributed to resource constraints, especially with a large image size (around 4GB).
 
 To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
+
+## AWS ECR scans
+
+## How do I configure a session token in the AWS ECR scan step?
+
+You can set the `AWS_SESSION_TOKEN` in the [Authentication settings](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference/#authentication).
 
 ## BlackDuck scans
 
@@ -49,23 +77,3 @@ Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orche
 ## Sonar scans
 
 Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference.
-
-### Does the STO plugin support execution on an ARM64 OS architecture?
-
-No, the STO plugin currently does not support running on ARM64 machines
-
-### How to configure a session token in AWS ECR scan step?
-
-You could add a key named ```AWS_SESSION_TOKEN``` in the settings of the scan step, with its corresponding token value
-
-### Why the STO dashboard doesnt populate the data from targets?
-
-It could happen when the scan executions don’t have baselines set. Currently you will be able to see the data in the STO dashboard only if the test target baselines are set
-
-### Is there any APIs to extract data on Vulnerabilities that are detected by STO?
-
-Currently, we have internal STO APIs that are not yet published for public use. However, this is part of our roadmap for the future
-
-### How to configure a specific image tag for sto plugin?
-
-This can be configured similar to how it can be done for CI images. More details about the same can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/)
