@@ -2,11 +2,8 @@
 title: Continuous Delivery & GitOps FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps.
 ---
-# FAQ
 
 This article addresses some frequently asked questions about Harness Continuous Delivery (CD).
-
-
 
 #### How to use the "for" condition while using jexl condition for the trigger?
 
@@ -60,8 +57,6 @@ https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 #### How do I submit a feature request for the Harness Platform?
 
 In the documentation scroll down and at the bottom under Resources click on Feature Requests.  It will lead you to this internal portal: https://ideas.harness.io/
-
-We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
 
 #### The deployment still got triggered despite the freeze window I've set.  What gives?
 
@@ -1286,9 +1281,6 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 #### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
 
-#### I have a placmenetStrategy defined but I don't see it reflected in the task.
-Please check if you have defined placement strategy in service definition and not under task definition
-
 #### When I started setting up the pipelines in Harness, I used my Github PAT. But I couldn't find where I set it and was wondering if it's allowed to be updated by the PAT owner or from your side.
 Usually Git PAT is stored in secret manager and you reference that secret inside connector, so need to update the PAT in secret manager where it's stored.
 
@@ -1366,9 +1358,6 @@ Yes, it is mandatory for the infrastructure definition in a First Gen workflow t
 #### Can Harness able to monitor for when a particular image tag changes on DockerHub in order to initiate a hands-free build and push to our repo?
 
 Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
-
-#### Why can't I refer to an output within a CD stage using a looping strategy anymore? 
-If you're using an absolute expression (for example: `<+pipeline.stages.stage_identifier>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `<+steps.step_identifier>`), and then you don't need to specify the stage identifier.
 
 #### How do I dynamically load values.yaml per environment?
 Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `<+env.name>-values.yaml`. Then, in your repository, create a value per environment.
@@ -2897,6 +2886,10 @@ Please find the pre-requisite for migration documentation [here](https://harness
 
 Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
 
+### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
+
+You can select the Artifact filter option and configure the service's Artifact source as needed.
+
 #### How does Harness currently handle sorting based on timestamps for fetching the GCR Artifacts ?
 
 As of today, our system does not sort data based on timestamps. Instead, it employs lexical sorting.
@@ -3258,9 +3251,6 @@ There is no built-in variable to check if a pipeline is triggered by another pip
 No, You should not face any issues with the trigger when it comes to inline or remote pipeline. There is no way to roll back. 
  
 However, you can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline let us know if you encounter any issues with the trigger we will help you with the next steps.
-
-#### Is it possible to remove permissible actions from the Wait Step?
-No, it is not possible to remove the permissible actions from the Wait Step. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
 
 #### How to change the pipeline source code back from the repository to inline? Is there a way to roll back this change as we cannot find it in the UI?
 There is no way to roll back, You can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline. 
@@ -5285,6 +5275,10 @@ Currently, we do not support this kind of restriction. However, if your Git prov
 
 When deploying multiple Helm charts using the same infrastructure definition, the default release naming scheme can potentially use the same release name for each chart. However, Harness allows for customization of the release name using pipeline variables or runtime inputs. This flexibility ensures that each deployment can have a unique release name, preventing any confusion during the upgrade or rollback of charts.
 
+#### The Deploy stage requires a service defined. Can I set up a pipeline without a service defined in the stage?
+
+Yes, you can use the Custom stage. This is a selection you can make initially while defining a pipeline stage.
+
 #### How to retrieve the service artifact tag in the deploy stage?
 
 You can retrieve the service artifact by using the following expression `<+artifacts.primary.tag>`.
@@ -5296,137 +5290,6 @@ We use a kubectl command similar to the one below: `kubectl --kubeconfig=config 
 #### How can I retrieve the list of files modified in a pull request that triggered a pipeline execution?
 
 The method to fetch modified files varies based on your Git provider, as the payload structure is unique for each provider's trigger mechanism. For instance, when using GitHub, you can obtain the list of modified files within a pull request by utilizing the following expression: `<+trigger.payload.head_commit.modified>`. This approach allows you to access specific details about the changes that initiated the pipeline execution.
-
-#### Can we send pipeline notification for events based on variable expression evaluation?
-
-We do not currently have a way to add a condition based on variable expression evaluation in pipeline. We do have notify step which can be added in the pipeline and we can execute the step based on some condition.
-
-#### Can we use variable expression in ecs task service definition and service config definition?
-
-We can add variable expression in the yaml used for task service definition or service config definition. These will be expanded and correspodning evaluated values will be uesd.
-
-#### Why terraform script file is initialising with null value in the path ?
-
-Terraform script directory on delegate is based on some default values like org project however it also has the provisioner identifier in the path. If we are using provisioner identifier with an expression and for some reason the expression resolves to null, we will see a null in the path initialized as well.
-
-#### How to make a  file we create in a step accessible in next step?
-
-If there are multiple pods in a delegate then we can not gurantee the same pod will be selected if the delegate name is being used as a delegate selector. If one step is executed in one pod and the other one on a differnet pod the file will not be accessible. To avoid this scenario we can make use of pod affinfity by using delegate hostname as selector. Below documentation guides on how we can use the same as selector:
-https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
-
-#### Why writing the secret to a file and displaying the content of the file in the same step still shows up as masked in log ?
-
-Within the same step context we will still be aware about the secret so it is treated as same in the log. If you still want to see the content in the log you can output the same file in a separate shell step. 
-
-#### Why terraform provider does not allow to change pipeline name in the input set created using terraform provider ?
-
-The input set is associated with specific pipelines. So once it is created it can not be associated with other pipelines. That is why when you are changing the pipeline identifier it is giving you the corresponding error. I can see the same error at my end also if I try to change the pipeline identifier.
-The other attributes of input set you can change in the yaml like what are the variables and their value but not the pipeline tagged.
-
-#### How to read files under project's helm folder during project deployment?
-
-We do not have a way to read the values file directly and access any variables from the same. It can only be read as part of the service deployment.
-If you need to access the file values you need to pull the file from your repo in a shell script step and then publish the corresponding value as output variable. 
-
-#### Does FirstGen support authentication using the GitHub app?
-
-Github_app authentication is only supported for next gen. First gen does not have support for this authentication.
-
-#### What is the difference between git provider and github provider in first gen?
-
-Git provider is platform agnostic and can be used for all the source repos. Github provider is specifically designed for git and to laverage the functionality provided by OPTIMIZED_GOT_FETCH_FILES feature.
-
-#### Do we have a way to optionally exclude some values file fetch in the manifest based on condition ?
-
-Currently we do not have a way to exclude or make the values file list optional. If you run a helm deployment by specifying a values.yaml and if the yaml does not exist it will fail the deployment.
-
-#### What does the below error in the lambda function deployment signifies ?
-`aws/lambda/testLambda-dev already exists in stack arn:aws:cloudformation:us-east-2:xxxxxxxx...`
-
-The error comes in scenario where there was a previous failed deployment but the logs still exist in the cloudwatch logs. We need to remove the log and try the deployment again.
-
-#### Which certificate harness uses to validate connectivity to terraform Cloud end point while using terraform cloud provider ?
-
-The terraform cloud connector will use the delegate to test the connectivity and for any task run by delegate itslef it will be utilising the jvm truststore for ssl validation of the connection. So if the terraform cloud endpoint is using a self-signed cert we need to update the delegate truststore with the cert detail for the same.
-
-#### How to create a harness file using api with the content from a file?
-
-We can pass the file as well in the api to create a harness file and not only the content. The below sample demonstrate how we can pass the file name in the api call.
-```
-curl -i -X POST 'https://app.harness.io/gateway/ng/api/file-store?routingId=ux26DQG4Rg6K7J8jWagkjg&accountIdentifier=ux26DQG4Rg6K7J8jWagkjg&orgIdentifier=default&projectIdentifier=cseajhang' \
- -H 'authority: app.harness.io' \
- -H 'accept: */*' \
- -H 'accept-language: en-GB,en;q=0.5' \
- -H 'x-api-key: xxx.xxx.xxx.xxx' \
- -F name="myfileapi" \
- -F description="" \
- -F identifier="myfileapi" \
- -F fileUsage="CONFIG" \
- -F content=@"/Users/amitjha/deletethisfile.txt" \
- -F tags="[]" \
- -F type="FILE" \
- -F parentIdentifier="Root" \
- -F mimeType="txt/plain"
- ```
-#### How can we pass variable to stage templates from pipeline ?
-
-We can create stage variables in the stage template and make it as runtimeInputs. In the pipeline where we are using this template these stage variables will now be reflected under variable options. We can either let them be runtime input or pass an expression as per our requirement. This way we do not have to change the template and let them be generic and only make corresponding changes in the pipeline where we are using them.
-
-#### Why the pipeline gets failed with message `deployment exceeded it's progress deadline`?
-
-When we deploy any workload in ouir kubernetes deployment after the deployment is done we run the wait for steady step during which we check for the status of the deployment done in kubernetes with help of kubectl command. If the command is not returning anything and it exceeds the task run time threshold on kubernetes we see this error message. Also as we were unable to confirm the status of the deployment due to above failure we mark the deployment as failure as well.
-
-#### Can we delete the default organisation?
-
-We do not have a way to delete the default organisation either through UI or api.
-
-#### Does Harness run bash scripts with "set -e" as default ?
-
-We do not set any additional command option on top of the script that was provided in the script task.
-
-#### How to check for the script file which harness creates for running the script task?
-
-Harness by default creates a script file with the script provided in shell script configuration inside the /tmp folder.
-
-#### Does the temp script file created by Harness gets automatically removed?
-
-At the end of execution Harness cleans up the temporary script file. If we need to view the content of the file we can add a sleep command in our script and while it is executing the task we can check in /tmp location on the delegate where the script is being executed for the content of the file.
-
-#### Does aws secret manager supports IRSA?
-
-We support RSA for secret manager authentication. We can use Assume role using STS option and configure our delegate for IRSA.
-
-#### Is there a way to restrict user to have only create permission for all the environment but execute on only few ?
-
-For environment we do have access role , in case you do not want to give the user the ability to deploy to the environment and just create/edit it you can remove the access role for the same. So one uer can have a role binding with create access for all the environment types and another role binding with access permission to only few environment types to which we want to allow this user to deploy.
-
-#### Can we create our own custom environment types?
-
-We do not have a way to create environment types, by default there are only two environment types, production and pre-production.
-
-#### Can we have dynamic tags for the pipeline execution?
-
-We can use variable expression to have dynamic tags for the pipeline. For example we can create a pipeline variable and set the variable as runtime. We can use this variable in the tag configuration for the pipeline. Each time the pipeline executes the tag for that execution will be set as per the value of the expression passed.
-
-#### Can I run multiple terraform pipeline concurrently?
-
-Terraform init command does not work if we run init for the same work directory in parallel. Hence such concurrent execution will fail with the error 'Failed to Install Provider'.
-
-#### Does http step for mtls end point also ignore certificate check ?
-
-If we do not provide any certificate for the end point the TLS ignore will basically force the client to not validate the server however the same is not true for the server which is expecting certificate as well for client validation. Hence for mtls end point this will fail.
-
-#### Is there a way to disable the banner for license expiry for selected user groups ?
-
-We do not have a way to disable the banner for license expiry by any configuration.
-
-#### Why we are not getting values for new helm manifest variables?
-
-The feature to get the newer variables for helm manifest (currently behind CDS_HELM_FETCH_CHART_METADATA_NG)requires delegate versions to be 801xx or newer. If there is any delegate in the account which is older we do not enable the feature and the variables will not be populated even if the task runs on a newer version of delegate.
-
-#### Is there a way to force helm deployments to use helm upgrade command instead of helm install for first helm deployment?
-
-Harness by default while performing the helm deployment look for any previous installation, if it does not find one it consider the current deployment as first and then runs the helm install command. From the next run it will run the helm upgrade command, this behaviour is not configurable.
 
 #### What does the message "TERRAFORM_TASK_NG_V7 Task type not supported by delegate(s)" indicate ?
 
@@ -6024,10 +5887,6 @@ Once you have created a dashboard inside a folder and want to move it you can si
 
 Harness Does not have a way to configure a banner message for display in UI.
 
-#### Can I move a connector from one project to another?
-
-If you have the account level connector you can use it any project However there is no way to migrate the connector. You can copy the yaml and use it to create the connector in the other project.
-
 #### When do we get missing permission core_secret_access error?
 
 If the user does not have role assigned for secret at any specific scope, while accessing this resource the user will get such error. To avoid this add the secrete permission to any of the role assigned to the user through proper scope using resource group.
@@ -6039,10 +5898,6 @@ Multiple infrastructure option is enabled only when the option "Deploy to multip
 #### Why I do not see the stages from the chained pipeline in the compiled yaml?
 
 As the pipeline is chained in the execution view we provide a link to the child pipeline execution, once we go to that execution we can view the compiled yaml of chained pipeline stages. But we can not see it in the compiled yaml of parent execution.
-
-#### How to run a pipeline with previous execution variables?
-
-If you rerun a pipeline it will by default tak the value that was passed to it during previous run. However if you want to pass any output variable from one execution to other that is not possible.
 
 #### When I use that template in my pipeline, I do not see it's output variables under the Variables section in my pipeline.
 
@@ -6103,28 +5958,31 @@ Within the expanded menu, you should find the "Submit a Ticket" option.
 Click on "Submit a Ticket" to proceed with submitting a ticket for assistance.
 Following these steps should help you access the "Submit a Ticket" option within the Harness platform.
 
-#### What does the PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST Feature flag do?
+#### What does the PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST feature flag do?
 
 When this feature flag is enabled, delegates utilizing an immutable image type are required to undergo allowlist verification by the Harness Manager. This entails verifying if their IP/CIDR address is included in the allowed list provided by the Harness Manager.
 
 However, when this feature flag is disabled, delegates with an immutable image type can register without undergoing allowlist verification. In other words, they are not required to have their IP/CIDR address listed in the allowlist to register.
 
-For additional context and detailed information on delegate registration and allowlist verification, you can refer to the Harness documentation available at the following link:  
-[API] (https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-registration/#allowlist-verification)
+For additional context and detailed information on delegate registration and allowlist verification, you can refer to the Harness documentation available at the following link: [API](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-registration/#allowlist-verification)
 
-#### HTTP Error Status (400 - Invalid Format) received. Please check the requested file path [.harness/request_formTEST_Clone.yaml] / branch [master] / Github repo name [RequestForm] to see if they exist or not.
-The error message "HTTP Error Status (400 - Invalid Format)"  indicates that there's an issue with the format of the requested file path .harness/request_formTEST_Clone.yaml in the master branch of the GitHub repo named RequestForm. The solution involves checking if the file path, branch, and repository exist and ensuring the correct format is used. This could include verifying the file path's spelling, ensuring proper GitHub repository access, and confirming the file's YAML syntax is correct.
+#### HTTP Error Status 400 Invalid Format received
+
+```HTTP Error Status (400 - Invalid Format) received. Please check the requested file path [.harness/request_formTEST_Clone.yaml] / branch [master] / Github repo name [RequestForm] to see if they exist or not.
+```
+
+This error indicates that there's an issue with the format of the requested file path `.harness/request_formTEST_Clone.yaml` in the master branch of the GitHub repo named RequestForm. The solution involves checking if the file path, branch, and repository exist and ensuring the correct format is used. This could include verifying the file path's spelling, ensuring proper GitHub repository access, and confirming the file's YAML syntax is correct.
 
 #### How do I copy a connector?
 You can copy the connector yaml but there is no option to copy a connector in UI.
 
 #### lastPublished.tag does not support alternate branch name strategy?
 Harness does not always look for a master for lastPublished.tag. The successful services have their git artefacts ending with -master. But I believe the failed one does not have any tag that ends with the master but may be -the main.
- 
-This is coming from your trigger settings and the input given here is to check for ```<+lastPublished.tag>.regex(-master$) ```
- 
-Please change the value to ```<+lastPublished.tag>.regex(-main$)```  if the tags end in -main only for this service
- 
+
+This is coming from your trigger settings and the input given here is to check for `<+lastPublished.tag>.regex(-master$)`
+
+Please change the value to `<+lastPublished.tag>.regex(-main$)` if the tags end in -main only for this service
+
 #### What does this error mean ERROR io.harness.delegate.message.MessageServiceImpl - Error reading message from the channel
 This error message indicates that there was an issue reading a message from a channel in Harness Delegate. It could be caused by a network connectivity issue or a problem with the channel itself.
 
@@ -6154,11 +6012,13 @@ This error message indicates that the user or role does not have the required pe
 #### How to send Slack notifications for rules evaluations
 This is not supported yet. You can always raise this as a feature request using our new idea portal (https://ideas.harness.io/) 
 
-#### What does expression ```<+infra.variables.projectID>```means?
+#### What does expression infra.variables.projectID mean?
+
 There are no variables inside an infrastructure definition. But, When you are using a custom deployment template in your infrastructure you can use variables inside that.
 
 #### How to run a pipeline with previous execution variables?
-When you click on re-run the pipeline of a particular execution the variables at the runtime are already populated, but they are selectable as of now. Means they can be edited. 
+
+When you click on re-run the pipeline of a particular execution the variables at the runtime are already populated, but they are selectable as of now. Means they can be edited.
 
 #### What's the time zone for CT M-F
 Central Time (CT) is UTC-6 during standard time and UTC-5 during daylight saving time, observed Monday to Friday.
@@ -6201,9 +6061,6 @@ A harness pipeline returning exit status 1 typically signifies an error during e
 #### Does Harness support multiple IaC provisioners?
 You can refer to this documentation to know what all IaC provisioner harness supports -[API] (https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/provisioning-overview/#dynamic-provisioning-and-deployment-type-support-matrix)
 
-#### How can I see all currently running pipelines from all projects?
-There is no option as of now to see the currently running pipeline for all projects in one place. You can though create an enhancement request regarding adding an option to see all the running executions from all the projects in one place on our idea portal [API] ( https://ideas.harness.io/ ) 
-=======
 #### Can we modify the audience in the generated JWT token to use it for purposes beyond AWS authentication?
 
 Modifying the audience (aud) claim in a JWT means changing who the token is intended for. In AWS authentication, it typically specifies AWS services. However, you can adjust it for other systems or services as long as they understand and accept this change. Just make sure the system you're sending the token to knows how to handle the modified audience claim according to its own requirements and security rules. 
@@ -6307,7 +6164,7 @@ You can create a OPA policy to ensure this.
 
 #### How to get all services using Harness API ?
 
- [API](https://apidocs.harness.io/tag/Monitored-Services#operation/getServices) you can use this to fetch the services in specfiic project
+You can use the [Monitored services API get services endpoint](https://apidocs.harness.io/tag/Monitored-Services#operation/getServices) to fetch the services in specific project, or you can use the [Services API get service list endpoint] (https://apidocs.harness.io/tag/Services#operation/getServiceList).
 
 ####  Getting error Invalid request: API rate limit exceeded for user ID 102833628. If you reach out to GitHub Support for help, please include the request ID D775:6578D3C5.
 
@@ -6365,4 +6222,4 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 #### How can one enable a dropdown box to display the list of versions available in a Google Cloud Storage bucket when using it as an Artifact source for a service?
 
-Harness does not support this feature yet. Please read more on GCS service in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#adding-a-cloud-function-service)
+Harness does not support this feature yet. Please read more on GCS service in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#adding-a-cloud-function-service).
