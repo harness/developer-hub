@@ -117,7 +117,7 @@ Next, we can use the Delegate to set up Harness' connections to TAS and Artifact
 Harness integrates with many different types of repositories and providers. For this tutorial, you will connect to your TAS account.
 
 :::note
-The TAS user account you use must have **Admin**, **Org Manager**, or **Space Manager** role. The user account must be able to update spaces, orgs, and applications. For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Pivotal.
+The TAS user account you use must have **Admin**, **Org Manager**, or **Space Manager** role. The user account must be able to update spaces, orgs, and applications. For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/roles.html) from VMWare Tanzu.
 :::
 
 1. In **Setup**, click **Cloud Providers**.
