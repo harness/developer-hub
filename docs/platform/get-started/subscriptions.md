@@ -15,7 +15,7 @@ Customers subscribe to Harness modules using a subscription model called [Develo
 
 ### Who is a developer?
 
-Every user who contributes to software development / deployment / maintenance / optimization and more, is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model. These users use Harness to create code repositories, build software, test & secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more. Note that the definition of a developer (and the consumption entitlements if any) remain the same for all plans, namely Free, Startup and Enterprise.
+Every user who contributes to software development, deployment, operations, optimization, is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model. These users use Harness to create code repositories, build software, test & secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more. Note that the definition of a developer (and the consumption entitlements if any) remain the same for all plans, namely Free, Startup and Enterprise.
 
 ### Modules with direct developer tracking
 
@@ -32,14 +32,14 @@ The following Harness modules are indirectly involved in a developer’s day-to-
 
 #### Continuous Delivery & GitOps (CD)
 
-**Services** CD module deploys software services, onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, Serverless functions and other custom deployment targets. A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to:
+**Services** CD module deploys software services, on to infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, Serverless functions and other custom deployment targets. A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to:
 
-- A service in Kubernetes 
-- A containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
-- A VM in the traditional VM-based apps
+- a service in Kubernetes 
+- a containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- a VM in the traditional VM-based apps
 - 6 serverless functions in serverless environments
 
-CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
+CD tracks ‘Service’ license consumption, instead of Developers. Note that all Service licenses are tracked over a last 30 day active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
 #### Feature Flags (FF)
 
@@ -50,8 +50,9 @@ FF tracks ‘Developers’ and ‘MAU’ license consumption.
 #### Service Reliability Management (SRM)
 
 **Services** SRM helps manage SLOs/SLIs for various services in a R&D organization. A Service is an independent unit of software you track & manage through Harness SRM. This will typically map to 
+
 - a service in Kubernetes 
-- a containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- a containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine) 
 - a VM in the traditional VM-based apps
 - 6 serverless functions in serverless environments
 
@@ -60,8 +61,9 @@ SRM tracks ‘Service’ license consumption, instead of Developers. Note that a
 #### Chaos Engineering (CE)
 
 **Services** CE helps run chaos experiments across various services in a R&D organization, towards the goal of making them resilient . A Service is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to 
+
 - a service in Kubernetes 
-- a containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine) 
+- a containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine) 
 - a VM in the traditional VM-based apps
 - 6 serverless functions in serverless environments
 
