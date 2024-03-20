@@ -1321,6 +1321,10 @@ For ASG canary deployments there are two rollback steps:
 
 You can create a multi-phase workflow that progressively deploy your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. 
 
+When you select the Canary execution strategy for your pipeline, make sure to select the **Add Multi Phase Canary Steps** to enable phased deployment. 
+
+![ASG phased execution](./static/asg-phased-execution.png)
+
 
 :::important
 Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
