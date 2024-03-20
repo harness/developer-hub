@@ -208,6 +208,8 @@ You can search by pipeline name or tag.
 
 You can [configure Slack notifications](https://developer.harness.io/docs/platform/notifications/send-notifications-using-slack) to trigger messages for different pipeline events.
 
+When executing the pipeline don't check the box for notifying only me.
+
 ### Can I include more data in a pipeline's Slack notifications?
 
 Harness doesn't provide built-in support for adding additional details to Slack notifications; however, you can use a Shell Script or Run step with a script such as the following:
@@ -287,3 +289,246 @@ echo "$variables"
 ### How do I get the stage execution ID to use in a template?
 
 You can use the expression `<+pipeline.stages.STAGE_ID.executionId>` to get the execution ID of a specific stage in the pipeline. Replace `STAGE_ID` with the identifier of the stage you want to reference.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Pipelines
+
+### How do I trigger an Azure pipeline?
+
+To trigger an Azure pipeline, you can use the script step and invoke/trigger any pipeline using a cURL or webhook.
+
+### How do I verify my account?
+
+Harness has identified an increase in the unauthorized usage of the free pipeline minutes Harness makes available on Harness Cloud. To combat such unauthorized usage, Harness requires that you use your work email, not your personal email, to register your account.
+ 
+If you face this issue on an account that was registered using your work mail ID, please reach out to our support team and share the execution URL where you got this error so we can review it further.
+
+### Unable to view shell script content used in pipeline
+
+If you are using a step template, you will need to navigate to the template and switch to the yaml view, and you will be able to see the content.
+
+### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
+
+You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.
+
+### Deploy stage requires a service defined. Can I set up a pipeline without a service defined at a stage?
+
+Yes, you can use the custom stage. This is a selection you can make initially while defining a pipeline stage.
+
+### How can I pass input variables to pipelines using a custom Curl trigger in Harness?
+
+You can pass input variables to a pipeline using a custom Curl trigger in Harness by making a POST request to the Webhook URL associated with the pipeline trigger. You can include your custom variables as JSON data in the request body. Here's an example command:
+
+```shell
+curl -X POST -H 'content-type: application/json' \
+--url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Triggers&triggerIdentifier=Custom' \
+-d '{"sample_key": "sample_value"}'
+```
+
+Replace `{"sample_key": "sample_value"}` with your custom variables, such as `{"tag": "stable-perl"}`, which can be declared as part of the pipeline and provided as runtime inputs when triggering the pipeline.
+
+### How can I assign the same delegate replica to all steps in my pipeline?
+
+While there isn't a dedicated configuration option for this purpose, you can output the environment variable $HOSTNAME in a Shell script and refer the delegate selector of the subsequent steps to that output.
+**Short example:**
+
+```
+# Step 1
+name: select_delegate
+identifier: select_delegate
+spec:
+  spec:
+    script: |
+      HOST_SELECTOR=$HOSTNAME
+  ...
+  outputVariables:
+    - name: HOST_SELECTOR
+      type: String
+      value: HOST_SELECTOR
+# Step 2
+name: use delegate
+identifier: use_delegate
+spec:
+  ...
+  delegateSelectors:
+    - <+execution.steps.select_delegate.output.outputVariables.HOST_SELECTOR>
+```
+
+### Does the NextGen platform support the same cron syntax for triggers as the FirstGen platform?
+
+Yes, the NextGen platform supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
+
+### How can I customize a build pipeline? For example, how can I create a script to clone the repo from TFS?
+
+You can run a script in a run step of a build pipeline, as detailed in this [Run step settings](/docs/continuous-integration/use-ci/run-step-settings), and you should be able to clone the repo.
+
+
+
+
+
+
+
+
+### When we try to open a Git-enabled pipeline, why doesn't the branch dropdown display all the branches?
+
+This behavior is expected when there are many branches in the repo due to pagination. To select branches that are not listed, try entering the full branch name manually. This should allow you to open the pipeline from that branch.
+
+### How many branches are listed in the branch dropdown UI when we try to open a Git-enabled pipeline?
+
+We typically list 20-30 branches, depending on the Git provider. Fetching all branches would be time-consuming.
+
+
+
+
+
+### What is the Graphql API query to list executions with details between a specific time range?
+
+```
+{
+    executions(filters:[{startTime:{operator:AFTER, value:1643285847000}},{endTime:{operator:BEFORE,value:1656332247000}}], limit:30) {
+      pageInfo {
+           limit
+           offset
+       total
+     }
+     nodes {
+            startedAt
+            endedAt
+     tags {
+           name
+           value
+     }
+       id
+       application {
+                    id
+                    name
+     }
+      status
+     cause {
+    ... on ExecutedByUser {
+             user {
+                   email
+      }
+     }
+    ... on ExecutedByTrigger {
+       trigger {
+                id
+                name
+       }
+      }
+     }
+    ... on PipelineExecution {
+      pipeline {
+                id
+                name
+     }
+     memberExecutions{
+      nodes{
+    ... on WorkflowExecution{
+       workflow{
+                id
+                name
+     }
+      id
+     artifacts {
+                buildNo
+     artifactSource {
+                     name
+      }
+     }
+     outcomes{
+      nodes{
+    ... on DeploymentOutcome{
+          service{
+                  id
+                  name
+     }
+          environment{
+                      id
+                      name
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    ... on WorkflowExecution {
+       workflow {
+                 id
+                 name
+     }
+              id
+       artifacts {
+                  buildNo
+    artifactSource {
+                  name
+       }
+      }
+    outcomes{
+             nodes{
+    ... on DeploymentOutcome{
+             service{
+                     id
+                     name
+     }
+             environment{
+                         id
+                         name
+        }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+```
+
+### Connector error causing pipeline failure
+
+Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
+
+### What is the workflow for secrets, especially concerning the potential exposure of production secrets? Do secrets pulled by a delegate ever flow back to the Harness platform?
+
+The secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform. Delegates connect to various secret managers as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform. You can refer to these [docs](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+
+### VAULT operation error: Decryption failed after 3 retries for secret
+
+Sometimes, you might encounter errors while executing pipelines. These errors could be due to issues with the network or the delegate's connection to the Vault where the secret is created. The first step is to verify that the delegates are operational and that the connectors used in the pipelines are connected properly. If the connectivity test fails, log in to the delegate and attempt to reach the connector URL from there.
+
+
+### Is there a limit to the number of triggers a pipeline can have?
+
+There is no limit to the number of triggers for a pipeline.
