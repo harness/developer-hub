@@ -5094,7 +5094,7 @@ Currently you can't obfuscate the httpsresponse body.
 
 #### Environment Selection Options appearing in Custom Stages
 
-Yes you can have the environment selection in custom stage with the FF CDS_CUSTOM_STAGE_WITH_ENV_INFRA. 
+Yes you can have the environment selection in custom stage. 
 https://developer.harness.io/docs/platform/pipelines/add-a-stage/#environments-and-infrastructure-definitions-in-custom-stages
 
 #### Create WinRM Credential using terraform.
@@ -5901,9 +5901,10 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 
 #### Is it possible to insert a hyperlink with markdown in the approval message?
-In order to resolve this version as an hyperlink on slack you can use (|) symbol to seperate the link and text to creeate a hyperlink. This Slack formatting includes the link and the text you want to display, separated by a pipe (|) character. Please replace the URL and version with your actual values.
- 
-And you need to enclose the link and the version text inside \<\>. For Example -  \<https://github.com/harness/guestbook/blob/main/.harness/inputover.yaml | Version\>"
+
+In order to resolve this version as an hyperlink on slack you can use (`|`) symbol to seperate the link and text to creeate a hyperlink. This Slack formatting includes the link and the text you want to display, separated by a pipe (`|`) character. 
+
+Replace the URL and version with your actual values, and enclose the link and the version text inside `<>`, such as `<https://github.com/harness/guestbook/blob/main/.harness/inputover.yaml | Version>`
 
 #### How can we know the default branch on GitHub enterprise?
 In GitHub Enterprise, the default branch for repositories is typically set to "main" or "master" depending on the organization's preferences or configuration. To confirm the default branch for a repository in GitHub Enterprise, you can follow these steps:

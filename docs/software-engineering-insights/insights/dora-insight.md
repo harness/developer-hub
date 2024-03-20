@@ -12,21 +12,29 @@ That's where DORA metrics come in handy. By using Harness SEI, you can streamlin
 
 This tutorial explains how to set up a DORA metrics Insight on Harness SEI, ensuring a smoother and simpler software delivery process for your engineering team.
 
-## DORA Metrics Overview
-
-DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Time to Restore (MTTR).
-
-With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
-
-Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
-
-To learn more, go to [DORA Metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
-
 ## Prerequisites
 
 * Ensure that Harness SEI is enabled for your Account.
 * Complete setting up your [Projects and Collection](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
-* Setup and configure the Integrations for your Issue Management tool, Source Code Manager and Deployment Manager.
+* Setup and configure the Integrations for your Issue Management Platform, Source Code Manager and Deployment Manager.
+* DORA Profile (DORA type Workflow Profile)
+
+## DORA Profile
+
+DORA metrics are vital for evaluating and enhancing engineering team performance. The available DORA metrics are Lead Time for Changes, Deployment Frequency, Mean Time to Restore, and Change Failure Rate. You can adjust the threshold and definition for each of this Metric in the associated DORA Profile which acts as the single source of truth for your DORA Metrics calculations.
+
+To create or edit a **DORA type Workflow profile**:
+
+* In your **Harness project**, go to the **SEI** module.
+* Select **Account**.
+* Select **Workflow** under **Profiles**.
+* To create a profile, select **+New Workflow Profile** and select the **DORA profile**. To edit an existing DORA type workflow profile, select the profile's name in the profiles list.
+
+:::info
+To calculate the DORA Metrics, this profile must be associated with the collection under which your DORA Insight is configured.
+:::
+
+To learn more about customizing an existing DORA profile or creating a new profile, go to [DORA type Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#dora-profile).
 
 ## Set up your project, integration and collection
 
@@ -62,11 +70,15 @@ You can also create new integrations and associate the integration with the curr
 
 ## Create the Insight
 
-1. Select the **Collection** under which your **DORA-type workflow profile** is associated. If you already have Insights in your project:
-   1. Select any Insight. For instructions, go to [View Insights](/docs/software-engineering-insights/insights/sei-insights).
-   2. In the header, select **All Insights**, and then select **Manage Insights**.
-   3. Select **New Insight**.
-2. If you don't have any Insight under the collection click on the **Associate Insight to this Collection** button.
+1. Log in to the **Harness Platform** and go to the SEI module.
+2. Go the **Project** scope and select your **Project**.
+3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
+
+![](./static/create-insight.png)
+
+4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
+5. In the header, select **All Insights**, and then select **Manage Insights**.
+6. Select **Create Insight**.
 
 ### Insight settings
 

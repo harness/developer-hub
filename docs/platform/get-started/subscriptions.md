@@ -23,7 +23,7 @@ The following sections explain how this subscription model works across the vari
 
 ### Who is a developer?
 
-Every user who contributes to software development, deployment, maintenance, optimization, and more is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model.
+Every user who contributes to software development, deployment, operations, and optimization is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model.
 
 These users use Harness to create code repositories, build software, test and secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more.
 
@@ -46,42 +46,83 @@ In these cases, the developer license acts as a proxy for granting a predetermin
 
 You can subscribe to more consumption entitlements, if needed, at an additional cost.
 
-* **Continuous Delivery and GitOps (CD) Services:** CD deploys software services onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, serverless functions, and other custom deployment targets. A **Service** is an independent unit of software you track and manage through Harness CD and GitOps. This typically maps to:
+<details>
+<summary>Continuous Delivery and GitOps (CD) Services</summary>
 
-   - A service in Kubernetes
-   - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine)
-   - A VM in the traditional VM-based apps
-   - Six serverless functions in serverless environments
+CD deploys software services onto infrastructure platforms spanning traditional VMs, Kubernetes, public cloud platforms, serverless functions, and other custom deployment targets. A **Service** is an independent unit of software you track and manage through Harness CD and GitOps. This typically maps to:
 
-   CD tracks **Service** license consumption instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
+- A service in Kubernetes.
+- A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
+- A VM in the traditional VM-based apps.
+- Six serverless functions in serverless environments.
 
-* **Feature Flags (FF) Developers and Monthly Active Users (MAUs):** Harness Feature Flags is a feature flag rollout and management module that tracks Developers based on their active engagement with the FF module. FF tracks **Developers** and **MAU** license consumption.
+CD tracks **Service** license consumption instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
-   Every platform user that actively creates, edits, or deletes a flag or a group is tracked as a FF developer. Monthly Active Users (MAUs) represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
+</details>
 
-* **Service Reliability Management (SRM) Services:** SRM helps manage SLOs/SLIs for various services in an R&D organization. A **Service** is an independent unit of software you track & manage through Harness SRM. This will typically map to:
+<details>
+<summary>Feature Flags (FF) Developers and Monthly Active Users (MAUs)</summary>
 
-   - A service in Kubernetes
-   - A containerized service on acloud (such as AWS ECS or Azure ACS or Google Container Engine)
-   - A VM in the traditional VM-based apps
-   - Six serverless functions in serverless environments
+Harness Feature Flags is a feature flag rollout and management module that tracks Developers based on their active engagement with the FF module. FF tracks **Developers** and **MAU** license consumption.
 
-   SRM tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
+Every platform user that actively creates, edits, or deletes a flag or a group is tracked as a FF developer. Monthly Active Users (MAUs) represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
 
-* **Chaos Engineering (CE) Services:** CE helps run chaos experiments across various services in an R&D organization, towards the goal of making them resilient . A **Service** is an independent unit of software you track & manage through Harness CD & GitOps. This will typically map to:
+</details>
 
-   - A service in Kubernetes
-   - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine)
-   - A VM in the traditional VM-based apps
-   - Six serverless functions in serverless environments
+<details>
+<summary>Service Reliability Management (SRM) Services</summary>
 
-   CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
+SRM helps manage SLOs/SLIs for various services in an R&D organization. A **Service** is an independent unit of software you track & manage through Harness SRM. This typically maps to:
 
-* **Infrastructure as Code Management (IACM) Executions:** An IACM **Execution** is counted as every successful IACM stage execution that uses an Infrastructure Provider's `apply` command (such as `terraform apply`) and results in resource changes. IACM tracks **Executions** license consumption, instead of **Developers**.
+- A service in Kubernetes.
+- A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
+- A VM in the traditional VM-based apps.
+- Six serverless functions in serverless environments.
 
-* **Security Test Orchestration (STO) Security Scans:** A **Security Scan** is defined as the execution of the STO step within a pipeline. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or a live application, for security vulnerabilities. STO tracks **Security Scans** license consumption, instead of **Developers**. Security Scans are tracked over a *last 30 days* active window.
+SRM tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 
-* **Software Supply Chain Assurance (SSCA) Supply Chain Executions:** A **Supply Chain Execution** is defined as the execution of the SSCA step in a pipeline. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance or verifying SLSA provenance are all counted as unique SSCA steps. SSCA tracks **Supply Chain Executions** license consumption, instead of **Developers**. Supply Chain Executions are tracked over a *last 30 days* active window.
+</details>
+
+<details>
+<summary>Chaos Engineering (CE) Services</summary>
+
+CE helps run chaos experiments across various services in an R&D organization, towards the goal of making them resilient . A **Service** is an independent unit of software you track & manage through Harness CD & GitOps. This typically maps to:
+
+- A service in Kubernetes.
+- A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
+- A VM in the traditional VM-based apps.
+- Six serverless functions in serverless environments.
+
+CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
+
+</details>
+
+<details>
+<summary>Infrastructure as Code Management (IACM) Executions</summary>
+
+An IACM **Execution** is counted as every successful IACM stage execution that uses an Infrastructure Provider's `apply` command (such as `terraform apply`) and results in resource changes.
+
+IACM tracks **Executions** license consumption, instead of **Developers**.
+
+</details>
+
+<details>
+<summary>Security Test Orchestration (STO) Security Scans</summary>
+
+A **Security Scan** is defined as the execution of the STO step within a pipeline. This involves scanning an artifact (referred to as the Target), which can be a Repository, Docker image, or a live application, for security vulnerabilities.
+
+STO tracks **Security Scans** license consumption, instead of **Developers**. Security Scans are tracked over a *last 30 days* active window.
+
+</details>
+
+<details>
+<summary>Software Supply Chain Assurance (SSCA) Supply Chain Executions</summary>
+
+A **Supply Chain Execution** is defined as the execution of the SSCA step in a pipeline. Generating SBOMs, enforcing SBOM policies, generating SLSA provenance or verifying SLSA provenance are all counted as unique SSCA steps.
+
+SSCA tracks **Supply Chain Executions** license consumption, instead of **Developers**. Supply Chain Executions are tracked over a *last 30 days* active window.
+
+</details>
 
 ### Included and add-on consumption entitlements
 

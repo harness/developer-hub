@@ -48,6 +48,12 @@ Review the following image specifications for information about image components
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
+
 ## Requirements for connectors and secrets
 
 * You must use the built-in Harness Secret Manager to store connector credentials and other secrets.
@@ -132,6 +138,12 @@ pipeline:
 
 </TabItem>
 </Tabs>
+
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
 
 ### Harness Cloud best practices
 

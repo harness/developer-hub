@@ -18,7 +18,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 ## March 2024
 
-### Version 1.9.3
+### Version 1.10.2
+#### New features and enhancements
+- Perspectives update: Added a new query parameter called `updateTotalCost` in the create and update perspective call. When set to false, the total cost that is displayed on the list perspective page will not be calculated. Instead,  only create/update operation for the perspective will be performed.[CCM-16724]
+- New limits for cost categories: Per account, there can be up to 25 cost categories, 1000 cost buckets, and 10 shared buckets. Additionally, nested cost category hierarchy can extend up to 5 levels per cost category. [CCM-13843]
+
+#### Early access features
+This release does not include any early access features.
+
+#### Fixed issues
+- Fixed intermittent issues which resulted in failure in S3 data sync and data ingestion for seamless and on-time updation of data. [CCM-14988]
+
+### Version 1.9.5
 #### New features and enhancements
 This release does not include any new features.
 

@@ -12,7 +12,7 @@ The general recommendation is to use IaC whenever possible for creating these ex
 
 Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org (or in every AWS account you want costs for if you do not leverage AWS organizations). Once the CUR is created, we will need to create a role that trusts Harness' AWS account, and has access to the S3 bucket that the CUR resides in.
 
-There is a cloudformation template to provision this role, or a Terraform module. [The cloudformation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
+There is a cloudformation template to provision this role, or a Terraform module. You can find the [Harness CCM AWS Terraform module on GitHub](https://github.com/harness-community/terraform-aws-harness-ccm) as well as a link to download the [Harness CCM CloudFormation stack](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml).
 
 ```terraform
 module "ccm" {

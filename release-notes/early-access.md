@@ -271,47 +271,7 @@ No early access (beta) features are available for Harness Code Repository. -->
 
 ## SEI early access features
 
-The following early access (beta) features are available for the Harness Software Engineering Insights module.
-
-### Diagnostic Tab
-
-* **Release date:** March 2024
-* **Issue number:** SEI-5818
-* **Feature flag:** `SHOW_DIAGNOSTIC_TILE`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.
-
-### SEI Jira Integration Enhanced Experience
-
-* **Release date:** February 2024
-* **Issue number:** SEI-5188
-* **Feature flag:** `SHOULD_ENABLE_REAUTH`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new re-authorization flow for the Jira and GitHub Integrations. The feature is related to SEI-3727.
-
-### SEI Jira Integration Enhanced Experience
-
-* **Release date:** January 2024
-* **Issue number:** SEI-3727
-* **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App.
-
-You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
-
-### SEI GitHub Integration Enhanced Experience
-
-* **Release date:** January 2024
-* **Issue number:** SEI-3727
-* **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
-
-You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
+For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags).
 
 ## STO early access features
 
