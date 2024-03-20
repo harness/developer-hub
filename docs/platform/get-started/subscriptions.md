@@ -105,7 +105,7 @@ The Developer 360 subscription model includes module-specific consumption entitl
 | Feature Flags | 10K MAUs per Developer per Month|
 | Service Reliability Management | 1 Service for every 3 Developers |
 | Chaos Engineering | 1 Service for every 3 Developers |
-| Infrastructure as Code Management | 10 Executions per Developer per Month|
+| Infrastructure as Code Management | 120 Executions per Developer per Year|
 | Software Engineering Insights | Not applicable since Developers are tracked directly |
 | Internal Developer Portal | Not applicable since Developers are tracked directly|
 | Security Testing Orchestration | 100 Security Scans per Developer per Month |
