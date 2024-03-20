@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 19th 2024
+### Latest Updated: March 20th 2024
 
 ## March 2024
 
@@ -29,6 +29,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - We've added support for the `Retry-After` header. (FFM-10745)
  - The `TooManyRequestsException` error has now been resolved. (FFM-10879)
+
+### Flutter SDK
+
+#### Version 2.2.0
+
+ - We've tidied up behaviours around flag deletion: 
+ -- Previously, if a flag was deleted, its evaluations would remain in the SDK cache and any variation calls made to it would result in an out-of-date evaluation for your target. (FFM-8138)
+ -- This update exposes a new `EVALUATION_DETE` event you can listen for which is emitted when a flag has been deleted.
+ - We've fixed an issue in iOS where if an evaluation failed, `null` would be returned instead of the default variation that was supplied.
+ - We've upgraded Feature Flags iOS SDK to 1.3.0.
+ - We've upgraded Feature Flags Android SDK to 2.0.2.
 
 ### iOS SDK
 
