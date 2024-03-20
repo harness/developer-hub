@@ -75,6 +75,10 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
       </tr>
     </table>
 
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
+
 ### Destination IPs and destination hosts
 
 Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.

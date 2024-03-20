@@ -1576,10 +1576,6 @@ This is not supported. Delegates with an immutable image type should be run with
 
 Here is an [example manifest file for NextGen](/docs/platform/delegates/install-delegates/overview/#example-manifest-file).
 
-### Where can I find the source code to the Harness Delegate?
-
-[Here is the link](https://github.com/harness/harness-core/tree/develop/260-delegate) to the source code for the delegate.
-
 ### Where can I find the source of the Helm chart for the delegate?
 
 [Here is the source](https://app.harness.io/storage/harness-download/delegate-helm-chart/) of the Helm chart for the delegate.
