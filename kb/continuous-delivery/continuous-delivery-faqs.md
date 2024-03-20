@@ -2898,6 +2898,10 @@ Please find the pre-requisite for migration documentation [here](https://harness
 
 Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
 
+### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
+
+You can select the Artifact filter option and configure the service's Artifact source as needed.
+
 #### How does Harness currently handle sorting based on timestamps for fetching the GCR Artifacts ?
 
 As of today, our system does not sort data based on timestamps. Instead, it employs lexical sorting.
@@ -5285,6 +5289,10 @@ Currently, we do not support this kind of restriction. However, if your Git prov
 #### How does the default release naming scheme work when deploying multiple Helm charts with the same infrastructure definition?
 
 When deploying multiple Helm charts using the same infrastructure definition, the default release naming scheme can potentially use the same release name for each chart. However, Harness allows for customization of the release name using pipeline variables or runtime inputs. This flexibility ensures that each deployment can have a unique release name, preventing any confusion during the upgrade or rollback of charts.
+
+#### The Deploy stage requires a service defined. Can I set up a pipeline without a service defined in the stage?
+
+Yes, you can use the Custom stage. This is a selection you can make initially while defining a pipeline stage.
 
 #### How to retrieve the service artifact tag in the deploy stage?
 
