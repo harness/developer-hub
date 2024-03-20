@@ -15,15 +15,17 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for patch release 0.13.4 and 0.12.1
+:::danger important upgrade instructions for patch release 0.14.4, 0.13.4 and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
 If you are currently on version 0.13.0, 0.13.1, 0.13.2, or 0.13.3, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.4.
 
-You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.4.
+If you are currently on version 0.14.3, you must follow the applicable upgrade process below to latest stable release, 0.14.4.
 
-**Upgrade using Helm**
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.14.4.
+
+**Upgrade using Helm to version 0.12.1 OR 0.13.4**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
