@@ -155,7 +155,7 @@ If you'd like further information about setting up your Cloud Provider, have a r
 
 #### Set up CCM for Azure
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-azure).
+Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md).
 
 :::info
 
@@ -172,7 +172,7 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 
 #### Azure Connector requirements
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating an Azure connector in the FirstGen see [Set Up Cost Visibility for Azure](../../../first-gen/cloud-cost-management/setup-cost-visibility/set-up-cost-visibility-for-azure.md).
+* The same connector cannot be used in NextGen and FirstGen. For information on creating an Azure connector in the FirstGen see [Set Up Cost Visibility for Azure](../../../docs/first-gen/cloud-cost-management/setup-cost-visibility/set-up-cost-visibility-for-azure.md).
 * For CCM, Azure connectors are available only at the Account level in Harness.
 * You can create multiple Azure connectors for each Harness Account.
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs. 
@@ -213,7 +213,7 @@ import TabItem2 from '@theme/TabItem';
       1. Launch Microsoft Entra ID (formerly Active Directory).
       2. Copy the tenant ID from the Tenant information.
 
-      ![](./static/set-up-cost-visibility-for-azure-03.png)
+      ![The Tenant Information section in Azure](./static/ff-set-up-cost-visibility-for-azure-01.png)
 
       If you don't find the tenant ID in the Azure console, run the `az account show` command using the Azure CLI.
 
@@ -222,7 +222,7 @@ import TabItem2 from '@theme/TabItem';
       2. Under **Product + services**, select **Azure subscriptions**.
       3. Copy the **Subscription ID** for your subscription.
 
-      ![](static/set-up-cost-visibility-for-azure-04.png)
+      ![The Cost Management page on Azure](./static/ff-set-up-cost-visibility-for-azure-02.png)
 
       If you don't find the Subscription ID in the Azure console, you can use Azure CLI. See [List your Azure subscriptions with CLI](https://docs.microsoft.com/en-us/azure/media-services/latest/setup-azure-subscription-how-to?tabs=cli).
    4. **Description** (optional): Enter a brief description that conveys the purpose of this connector.
@@ -230,16 +230,10 @@ import TabItem2 from '@theme/TabItem';
 5. Select **Continue**.
 
 :::info note
-If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md) documentation. 
+If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for Azure'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md) documentation. 
 :::
 
 ### Set Up CCM For GCP
-
-import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
-import create_dataset from './static/set-up-cost-visibility-for-gcp-02.png'
-import dataset_name from './static/set-up-cost-visibility-for-gcp-03.png'
-import dataset_permissions from './static/data-permissions-gcp.png'
-
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
 
@@ -247,7 +241,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 
 #### Before you begin
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](../../../first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
+* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](../../first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
 	+ **Billing Account Administrator** role for the target Cloud Billing account
@@ -288,7 +282,7 @@ import TabItem3 from '@theme/TabItem';
 2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
 :::info note
-If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md) documentation. 
+If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for GCP'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md) documentation. 
 :::
 
 ### Set Up CCM For Kubernetes
@@ -377,12 +371,12 @@ import TabItem4 from '@theme/TabItem';
 4. Select **Advanced**.
 
 :::note
-   For the Quick Create option, go to [Kubernetes Quick Create](/docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s).
+   For the Quick Create option, go to [Kubernetes Quick Create](../../cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s.md).
 :::
 
 </TabItem4>
 </Tabs4>
 
 :::info note
-If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for AWS'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md) documentation. 
+If you'd like further information about setting up your Cloud Provider, have a read of the [Harness 'Set up CCM for Kubernetes'](../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md) documentation. 
 :::
