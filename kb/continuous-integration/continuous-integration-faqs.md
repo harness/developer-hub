@@ -1468,12 +1468,27 @@ Output variables don't support multi-line output. Content after the first line i
 
 ### How do I get a file from file store in a Run step?
 
-You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`. Here's an example in a script:
+You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`.
+
+Here's an example in a script:
 
 ```
 raw_file=<+fileStore.getAsBase64("someFile")>
 config_file="$(echo "$raw_file" | base64 --decode)"
 ```
+
+:::warning
+
+File store expressions don't work for all secrets, and some secrets require additional handling.
+
+For more information, go to:
+
+* [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step)
+* [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - JKS files](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#jks-files)
+
+:::
 
 ### Can I start containers during pipeline execution? For example, I need to start some containers while executing tests.
 
