@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 The host running the Harness Delegate must run the Cloud Foundry CLI in order to execute the CF commands used by Harness during a Tanzu Application Service (TAS) deployment.
 
-You can follow the steps in [Installing the cf CLI](https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html) from Tanzu to install the CLI, or you can also use a Delegate Profile to install the CLI, as described in this topic.
+You can follow the steps in [Installing the cf CLI](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/install-go-cli.html) from Tanzu to install the CLI, or you can also use a Delegate Profile to install the CLI, as described in this topic.
 
 The version of the CF CLI you install on the Delegate should always match the TAS features you are using in your Harness TAS deployment. For example, if you are using `buildpacks` in your manifest.yml in your Harness Service, the CLI you install on the Delegate should be version 3.6 or later.
 

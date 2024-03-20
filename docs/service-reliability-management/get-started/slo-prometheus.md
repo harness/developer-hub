@@ -8,7 +8,7 @@ redirect_from:
 
 In information technology, the adage that you can not improve what you can't measure is true. Indicators and measurements of how well a system is performing can be represented by one of the Service Level (SLx) commitments. There is a trio of metrics, SLAs, SLOs, and SLIs, that paint a picture of the agreement made vs the objectives and actuals to meet the agreement. Focusing on the SLO or Service Level objectives, those are the goals to meet in your system.
 
-Service Level Objectives are goals that need to be met in order to meet Service Level Agreements [SLAs]. Looking at Tom Wilkie's [RED Method](https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture/) can help you come up with good metrics for SLOs: requests, errors, and duration. Google's [Four Golden Signals](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/) are also great metrics to have as SLOs, but also includes saturation.
+Service Level Objectives are goals that need to be met in order to meet Service Level Agreements [SLAs]. Looking at Tom Wilkie's [RED Method](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/) can help you come up with good metrics for SLOs: requests, errors, and duration. Google's [Four Golden Signals](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/) are also great metrics to have as SLOs, but also includes saturation.
 
 For example, there might be an SLA defined by the business as "we require 99% uptime". The SLO to make that happen would be "we need to reply in 1000 ms or less 99% of the time" to meet that agreement.
 
