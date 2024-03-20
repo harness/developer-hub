@@ -65,6 +65,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.6.1
+
+ - We've fixed an analytics issue that caused a target's attributes to not be sent in analytics payloads, as well fail to appear in the UI. (FFM-10943)
+ - We've resolved an issue that caused new targets to not be sent in analytics payloads. This issue commonly happened when multiple instances of the SDK were created.
+
 #### Version 1.5.0
 
  - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
