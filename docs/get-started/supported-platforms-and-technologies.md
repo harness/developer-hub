@@ -182,7 +182,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the delegat
 - Kustomize: v4.5.4
 - OpenShift: v4.2.16
 
-The versions can be found in the [Harness public GitHub repo](https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools).
+<!-- The versions can be found in the [Harness public GitHub repo](https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools). -->
 
 For details on updating the default tool versions, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 

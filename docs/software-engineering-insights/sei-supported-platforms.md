@@ -28,3 +28,46 @@ The integrations categorized under the **Others** label are now available with b
 :::
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
+
+## Active SEI Feature flags
+
+Some Harness SEI features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
+
+The following table describes each of the active feature flags relevant to Harness SEI.
+
+:::note
+
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](/docs/get-started/release-status/) in the descriptions below.
+
+:::
+
+<table>
+    <tr>
+        <td><b>Flag</b></td>
+        <td><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>SEI_EASY_ONBOARDING_JIRA</td>
+        <td>Enables access to the new user experience for connecting to Jira Cloud & Data Center using the <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding#configure-the-integration-using-the-jira-connect-app">Jira Connect App</a></td>
+    </tr>
+    <tr>
+        <td>SEI_EASY_ONBOARDING_GITHUB</td>
+        <td>Enables access to the new user experience for connecting to Github Cloud and Enterprise using the <a href="/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app"> GitHub App </a></td>
+    </tr>
+    <tr>
+        <td>SEI_SHOULD_ENABLE_REAUTH</td>
+        <td>Enables access to new re-authorization user experience for a GitHub integration</td>
+    </tr>
+    <tr>
+        <td>SEI_SHOW_TRELIS_NEW_INTERVAL</td>
+        <td>Enables Trellis Profile configuration using Trellis Factors at the Central Profile. This feature is in BETA. </td>
+    </tr>
+    <tr>
+        <td>SEI_NEW_COLLECTION_TREE</td>
+        <td>Enable this feature if you want to use the new user experience for Collection Navigation under the Insights</td>
+    </tr>
+</table>
+
+<!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
+
+<!-- Please don't use fixed width for tables. It breaks mobile browsing and small desktop windows. -->

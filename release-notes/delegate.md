@@ -71,6 +71,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
+### Version 24.03.82505 <!--  March 18, 2024 -->
+
+#### Hotfix
+
+- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541, ZD-58686)
+
 ### Harness version 1.28.11, Harness Delegate version 24.03.82502 <!--  March 13, 2024 -->
 
 #### New features and enhancements
@@ -165,6 +171,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
 
 ### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
+
+#### Behavior Changes
+
+- In the blue/green stage scale down step, we used to scale down deployments, statefulsets, daemonsets, deploymentConfig and delete HPA, and PDB resources. During scale down, we updated the field `replicas` to 0. In Kubernetes, if HPA is configured it is not mandatory to define replicas. So when another deployment happens and we apply the same old deployments manifest it does not update the replicas field and it remains set to 0. This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
 
 #### Fixed issues
 

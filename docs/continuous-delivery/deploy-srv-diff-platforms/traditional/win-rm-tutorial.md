@@ -270,7 +270,13 @@ Ensure the mapped settings are set to the **Expression** option.
 
 For WinRM PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
 
-For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
+`OUTPUT_NAME` depends on your provisioner outputs configuration, make sure `OUTPUT_NAME` to be an array object.
+
+In case the `OUTPUT_NAME` is stored into several output objects, make sure the map the full path to it.
+
+Below you will see a Terraform provisioner example where terraform `OUTPUT_NAME` is called 'hostInstances'.
+
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<HOST_PROPERTY>`. For example, `<+public_dns>` or `<+privateIp>` which are part of terraform output configuration in below snippet example.
 
 Here's an example:
 
@@ -329,20 +335,15 @@ resource "aws_instance" "example" {
   }
 }
 
-output "hostname" {
-  value = aws_instance.example.public_dns
-}
-
-output "privateIp" {
-  value = aws_instance.example.private_ip
-}
-
-output "subnetId" {
-  value = aws_subnet.example.id
-}
-
-output "region" {
-  value = provider.aws.region
+output "hostInstances" {
+  value = [
+    {
+      public_dns  = aws_instance.example.public_dns
+      privateIp = aws_instance.example.private_ip
+      subnetId  = aws_subnet.example.id
+      region    = provider.aws.region
+    }
+  ]
 }
 
 ```

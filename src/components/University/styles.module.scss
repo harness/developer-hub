@@ -65,6 +65,9 @@
       border: 2px solid var(--primary-9);
       background-color: white;
       color: var(--primary-9);
+      &:hover {
+        cursor: pointer;
+      }
 
       img {
         width: 28px;
@@ -91,6 +94,9 @@
       gap: 10px;
       color: var(--primary-9);
       background-color: white;
+      &:hover {
+        cursor: pointer;
+      }
       img {
         width: 28px;
         height: 22.67px;
